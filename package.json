@@ -1,0 +1,37 @@
+{
+  "name": "mathsplanner",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Open-source maths question generator for every EYFS to KS5 learning statement in England.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huntj/mathsplanner.git"
+  },
+  "type": "module",
+  "packageManager": "pnpm@12.14.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "pnpm -r --if-present build",
+    "test": "vitest run",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "typecheck": "tsc -p tsconfig.json && pnpm -r --if-present typecheck",
+    "data:import": "node --conditions=@mathsplanner/source tools/import-map/src/import-cli.ts",
+    "data:check": "node --conditions=@mathsplanner/source tools/import-map/src/check-cli.ts",
+    "coverage": "node --conditions=@mathsplanner/source packages/generators/scripts/coverage.ts",
+    "new": "node --conditions=@mathsplanner/source packages/generators/scripts/new.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.19.2",
+    "eslint": "^10.13.0",
+    "prettier": "^3.9.10",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.71.2",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.5"
+  }
+}
