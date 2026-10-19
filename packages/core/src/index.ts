@@ -1,5 +1,10 @@
-// @mathsplanner/core: schema types, seeded random numbers, exact maths, LaTeX helpers and defineGenerator.
-// Phase 0 holds only the statement data types and ID scheme; the rest arrives in Phase 1.
-// See docs/design.md.
+// @mathsplanner/core: schema types, seeded random numbers, exact maths, LaTeX helpers and
+// defineGenerator. See docs/design.md.
+export * from "./generator.ts";
 export * from "./ids.ts";
+export * from "./latex.ts";
+export * from "./question.ts";
+export * from "./random.ts";
+export * from "./rational.ts";
 export * from "./statement.ts";
+export * from "./surd.ts";
