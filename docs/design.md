@@ -1,14 +1,16 @@
-# Maths Question Generator: Design Document
+# MathsPlanner: Design Document
 
-Oct 14, 2026 · @J
+Oct 14, 2026 · @J · updated Oct 19, 2026 with the decisions below
 
-An open-source TypeScript library and web app that generates unlimited, reproducible questions for every statement in the EYFS to Year 13 progression map, at five depths of understanding, with LaTeX maths, SVG diagrams, worked solutions, auto-marking and print export.
+MathsPlanner is an open-source TypeScript library and web app that generates unlimited, reproducible questions for every statement in the EYFS to Year 13 progression map, at five depths of understanding, with LaTeX maths, SVG diagrams, worked solutions, auto-marking and print export.
 
 ## Goals and principles
 
 The repository will be public so any teacher, school or developer can use, adapt and improve it. Success means every one of the 686 statements has a generator that can tell a teacher whether a student has mastered it, not just whether they can follow a method.
 
-**Licensing.** Code under the MIT licence; generated questions, archetype text and misconception notes under CC BY 4.0, so schools can reuse them freely with attribution. Statement wording is paraphrased from national curriculum documents (Open Government Licence) and Pearson specifications; Pearson content references are used only as identifiers.
+**Licensing.** Code under the MIT licence (`LICENSE`); generated questions, archetype text and the misconception catalogue (`data/misconceptions.json`) under CC BY 4.0 (`LICENSE-CONTENT`), so schools can reuse them freely with attribution. Statement wording is paraphrased from national curriculum documents (Open Government Licence v3) and Pearson specifications; Pearson content references are used only as identifiers (`NOTICE`).
+
+**Scope.** MathsPlanner covers the curriculum currently in force (the national curriculum, the EYFS framework and the Pearson Edexcel specifications in the progression map). It does not plan for the new national curriculum due in 2028.
 
 **Design rules**
 
@@ -31,24 +33,26 @@ Because the Question is data, the render package serves both the gallery and pri
 
 ## Statement data
 
-The progression map becomes one versioned file, `data/statements.json`, which is the single source of truth for IDs, wording and prerequisites; generators are keyed to it and CI fails if any statement lacks a generator or any generator points at a missing ID.
+The progression map becomes one versioned file, `data/statements.json`, which is the single source of truth for IDs, wording and prerequisites; generators are keyed to it. `pnpm coverage` lists statements that lack a generator (a report, which never fails) and fails if any generator points at a missing ID.
 
 ```typescript
 interface Statement {
   id: string;            // "Y6-FR-03", "GH-A18", "AL-P7.4"
   stage: Stage;          // "N" | "R" | "Y1" … "Y9" | "GF" | "GH" | "AL" | "FM" | "CM"
-  strand: string;        // "FR", "ALG", "P7" …
+  strand: string;        // "FR", "ALG", "N", "P7", "CP", "FS1" …
   text: string;          // the "I can…" wording
   needs: string[];       // prerequisite IDs
-  year?: 12 | 13;        // KS5 recommended year
-  tier?: "F" | "H";      // GCSE tier
-  option?: string;       // Further Maths option, e.g. "FS1"
+  years?: (12 | 13)[];   // KS5 recommended year; some statements span both
+  tier?: "F" | "H";      // GCSE tier: "F" (GF) is tested on both tiers, "H" (GH) is Higher only
+  option?: "FP1" | "FP2" | "FS1" | "FS2" | "FM1" | "FM2" | "D1" | "D2"; // Further Maths option
   source: string;        // "NC KS2", "Edexcel 1MA1", "Edexcel 9MA0" …
   statutory: boolean;
 }
 ```
 
-A script, `pnpm data:import`, parses the progression map's Markdown export into this shape and checks it: every Needs ID exists, the graph has no cycles, and no ID appears twice. Edits after import are made in the JSON by pull request, so changes are reviewed and versioned. When the new national curriculum is published in 2027, a new `curriculum` field can mark which version each statement belongs to without breaking existing IDs.
+Stage and strand come from the ID, as do tier (GF or GH) and option; KS3 statements use the map's recommended Year 7, 8 and 9 split exactly. `source` names the section the statement comes from: Development Matters (Nursery), EYFS framework (Reception), NC KS1, NC KS2, NC KS3, Edexcel 1MA1, Edexcel 9MA0, Edexcel 9FM0 or Edexcel 7MC0. `statutory` is true only for national curriculum content (Years 1 to 9) and the Reception Early Learning Goals; Nursery Development Matters and all qualification specifications are false.
+
+A script, `pnpm data:import`, parses the progression map's Markdown export into this shape, and `pnpm data:check` checks it against a JSON Schema in `data/schema/`: no ID appears twice, every Needs ID exists, the graph has no cycles, and the counts match the map's summary table. Edits after import are made in the JSON by pull request, so changes are reviewed and versioned.
 
 ## Mastery model
 
@@ -113,7 +117,7 @@ interface Misconception {
 interface SolutionStep { say: Rich; math?: string; diagram?: number }
 ```
 
-Misconception codes live in a shared catalogue, `data/misconceptions.json`, so the same error (for example adding numerators and denominators) is recognised everywhere it appears and teachers see consistent class-level reports. `key.version` is the generator's version, so a stored question can still be regenerated identically after the generator changes.
+Misconception codes live in a shared catalogue, `data/misconceptions.json`, so the same error (for example adding numerators and denominators) is recognised everywhere it appears and teachers see consistent misconceptions in the results they export. `key.version` is the generator's version, so a stored question can still be regenerated identically after the generator changes.
 
 ## Archetypes
 
@@ -141,7 +145,7 @@ Fifteen archetypes supply the question structure for every statement; a generato
 
 ## Diagram engine
 
-All visuals come from one package, `@mqg/diagrams`, which turns a small JSON `DiagramSpec` into a self-contained SVG string with no browser dependency, so the same code draws on screen, in print and in tests. Generators describe *what* to draw; the engine decides *where* labels go.
+All visuals come from one package, `@mathsplanner/diagrams`, which turns a small JSON `DiagramSpec` into a self-contained SVG string with no browser dependency, so the same code draws on screen, in print and in tests. Generators describe *what* to draw; the engine decides *where* labels go.
 
 | Diagram type | Covers | Key behaviours |
 | --- | --- | --- |
@@ -192,9 +196,9 @@ Every part declares an `AnswerSpec`, which decides both the input widget shown a
 A generator is one file, `generators/<stage>/<ID>.ts`, that picks parameters from a seeded random source and hands the maths to archetypes; the example below for Y6-FR-03 (add and subtract fractions with different denominators) is about 70 lines and covers all five depths.
 
 ```typescript
-import { defineGenerator, frac, pick, latex as L } from "@mqg/core";
-import { barModel } from "@mqg/diagrams";
-import * as A from "@mqg/archetypes";
+import { defineGenerator, frac, pick, latex as L } from "@mathsplanner/core";
+import { barModel } from "@mathsplanner/diagrams";
+import * as A from "@mathsplanner/archetypes";
 
 export default defineGenerator({
   id: "Y6-FR-03",
@@ -245,7 +249,7 @@ export default defineGenerator({
 
 **Contract.** A generator must be pure (same inputs, same output), must not render anything, must declare every depth it supports, and must list the misconception codes it can produce. `defineGenerator` wraps it with seeding, retries when `accept` or `requireExists` rejects a parameter set, and attaches the statement metadata.
 
-**Shared helpers** in `@mqg/core` cover the repeated maths: rationals with BigInt, surds, polynomials, angle and triangle builders, "nice" number pickers (Pythagorean triples, integer-root quadratics, terminating decimals), unit conversion, and LaTeX formatting that prints fractions, mixed numbers and signs correctly.
+**Shared helpers** in `@mathsplanner/core` cover the repeated maths: rationals with BigInt, surds, polynomials, angle and triangle builders, "nice" number pickers (Pythagorean triples, integer-root quadratics, terminating decimals), unit conversion, and LaTeX formatting that prints fractions, mixed numbers and signs correctly.
 
 ## Quality
 
@@ -255,49 +259,56 @@ No generator is merged until it passes automated checks across 500 seeds at ever
 | --- | --- | --- |
 | Answer verification | Wrong answers | Each generator ships an independent `verify` that recomputes the answer a different way (e.g. by evaluation instead of algebra) |
 | Misconception distinctness | Distractors equal to the right answer or to each other | Compared after simplification |
-| Degeneracy | Impossible or trivial questions: zero-length sides, angles of 0°, answers of 1 or 0 where unwanted | Per-type rules in `@mqg/core` |
+| Degeneracy | Impossible or trivial questions: zero-length sides, angles of 0°, answers of 1 or 0 where unwanted | Per-type rules in `@mathsplanner/core` |
 | Number niceness | Answers messier than the numbers dial allows | Declared bounds per setting |
 | Diagram truth | Drawings that contradict the numbers | Geometry truth checks on every spec |
 | Label collisions | Overlapping labels or labels crossing lines | Placement solver reports unresolved overlaps |
 | Determinism | Same key giving different questions | Generate twice, compare JSON |
 | Visual regression | Unintended changes to diagrams | SVG snapshot tests for fixed seeds |
-| Coverage | Statements without generators; depths missing | Compared against statements.json |
+| Coverage | Statements without generators; depths missing; generators naming unknown statements | `pnpm coverage` compares against statements.json: missing generators are reported, unknown IDs fail |
 | Accessibility | Missing descriptions, low contrast | Lint on every SVG and rendered page |
 
 Tests use Vitest with fast-check for property-based testing. GitHub Actions runs everything on each pull request and publishes the gallery as a preview site, so reviewers click through real questions rather than reading code.
 
 **Human review.** Each statement has a review checklist in the gallery: is depth 4 genuinely about understanding, are the distractors misconceptions students really make, would a teacher put this in front of a class? Reviews are recorded in the generator file's header so the coverage dashboard can show reviewed and unreviewed statements.
 
+**AI-assisted contributions** are accepted. They must pass the same automated checks as any other contribution, be disclosed in the pull request (which tool, and what it did), and carry a recorded human teacher review in the generator file header before they are merged.
+
 ## Repository layout and tooling
 
-The repo is a pnpm workspace monorepo in TypeScript: small packages others can install on their own (for example just the diagram engine), plus two apps. `@mqg` is a placeholder scope until the project is named.
+The repo is a pnpm workspace monorepo in TypeScript, hosted at github.com/huntj/mathsplanner: small packages others can install on their own (for example just the diagram engine), published under the `@mathsplanner` scope, plus two apps.
 
 ```text
-maths-question-generator/
+mathsplanner/
 ├─ data/
 │  ├─ statements.json          # from the progression map
-│  └─ misconceptions.json      # shared misconception catalogue
+│  ├─ misconceptions.json      # shared misconception catalogue
+│  └─ schema/                  # JSON Schemas for both files
 ├─ packages/
 │  ├─ core/                    # schema types, seeded RNG, exact maths, LaTeX helpers, defineGenerator
 │  ├─ diagrams/                # DiagramSpec → SVG, label placement, truth checks
 │  ├─ archetypes/              # the 15 question patterns and solution-step builders
 │  ├─ marking/                 # AnswerSpec checking, equivalence, form rules
 │  ├─ render/                  # Question → HTML (KaTeX + SVG), used by web and print
-│  └─ generators/              # one file per statement, by stage: eyfs/, ks1/ … ks5/
+│  └─ generators/              # one file per statement, by stage: eyfs/, ks1/ … ks5/; coverage and `new` scripts
 ├─ apps/
 │  ├─ gallery/                 # browse every statement × depth × numbers × seed; review checklist
-│  └─ practice/                # student-facing web app with input widgets and marking
+│  └─ practice/                # student-facing web app with input widgets and marking; stateless
 ├─ tools/
-│  ├─ import-map/              # progression map → statements.json
+│  ├─ import-map/              # progression map → statements.json; data:check
 │  └─ print/                   # worksheet builder → PDF via headless Chromium
 └─ .github/workflows/          # test, gallery preview, release
 ```
 
+**The practice app is stateless.** It has no accounts and stores no student results, so there is no personal data to protect. The teacher exports results at the end of a session as CSV or prints them.
+
 | Concern | Choice | Why |
 | --- | --- | --- |
 | Language | TypeScript, strict mode | One language for generators, browser and print |
-| Runtime | Current Node LTS | Long support window |
+| Runtime | Current Node LTS (Node 24) | Long support window |
 | Workspace | pnpm workspaces | Fast, strict dependency handling across packages |
+| Lint and format | ESLint with typescript-eslint, and Prettier | Consistent code without review comments about style |
+| Data validation | JSON Schema, checked with Ajv | Statement and misconception files are validated in CI |
 | Maths display | KaTeX with MathML output | Fast, accurate, accessible, works server-side for print |
 | Maths input | MathLive | Open-source maths keyboard producing LaTeX |
 | Equivalence | Cortex Compute Engine | Parses LaTeX and checks symbolic equality |
@@ -308,11 +319,11 @@ maths-question-generator/
 
 **Print export.** The print tool lays out a worksheet in A4 HTML (questions, then a separate answers and worked-solutions section), with options for number of questions, depth mix, seed, and the reduced-ink style teachers prefer for photocopying, then prints to PDF. Every sheet carries its seed so it can be regenerated.
 
-**Contributing.** A `CONTRIBUTING.md` explains how to claim a statement (one GitHub issue per statement, generated automatically from statements.json), the generator contract, the quality checks, and the review checklist. A `pnpm new Y5-FR-04` command scaffolds a generator file, a test file and a gallery entry from a template.
+**Contributing.** A `CONTRIBUTING.md` explains how to claim a statement (one GitHub issue per statement, generated automatically from statements.json), the generator contract, the quality checks, the review checklist, and the policy for AI-assisted contributions. A `pnpm new Y5-FR-04` command scaffolds a generator file, a test file and a gallery entry from a template.
 
 ## Roadmap
 
-The build runs in eight phases; each ends with a check that must pass before the next starts, and phase 4's fractions slice is the test of the whole design.
+The build runs in eight phases; each ends with a check that must pass before the next starts, and phase 4's angles and geometry slice is the test of the whole design, chosen because it stresses the diagram engine hardest.
 
 | Phase | Delivers | Exit criteria |
 | --- | --- | --- |
@@ -320,32 +331,21 @@ The build runs in eight phases; each ends with a check that must pass before the
 | 1. Core | Schema types, seeded RNG, exact rationals and surds, LaTeX helpers, defineGenerator | Property tests pass for the maths library |
 | 2. Render and gallery | Question → HTML with KaTeX; gallery browsing by ID, depth, numbers, seed | A placeholder generator displays and regenerates identically from a link |
 | 3. Diagram engine, first types | geometry, cartesian, number-line, bar-model, with label placement and truth checks | 50 reference diagrams reviewed with no label collisions |
-| 4. Vertical slice: fractions | About 40 generators from Y1-FR-01 to AL-P2.10, all 15 archetypes implemented | Every slice statement passes quality checks at all its depths; a teacher review agrees depth 4 tests understanding |
-| 5. Marking and practice app | All answer types, input widgets, misconception feedback | Every slice question can be answered and marked in the browser |
+| 4. Vertical slice: angles and geometry | About 40 generators following the angles and geometry chain, from turns and right angles (Y1-POS-01, Y3-GEO-02) to circle theorems (GH-G10); all 15 archetypes implemented | Every slice statement passes quality checks at all its depths; a teacher review agrees depth 4 tests understanding |
+| 5. Marking and practice app | All answer types, input widgets, misconception feedback; stateless, with results exported by the teacher as CSV or print | Every slice question can be answered and marked in the browser |
 | 6. Print export | A4 worksheets with answers and worked solutions | A mixed-depth worksheet prints correctly from a seed |
 | 7. Scale out | Remaining diagram types and generators, strand by strand following the prerequisite graph; contributor issues opened | Coverage dashboard shows every statement generated and reviewed |
 
 Phases 0 to 6 are the core build; phase 7 is where most generators get written and where outside contributors can help in parallel, one statement per pull request.
 
-## Open questions
+## Decisions
 
-- [ ] Project name and GitHub owner (personal account or a new organisation); this sets the package scope that replaces `@mqg`.\
-\
-MathsPlanner\
-pesonal github account\
+The open questions from the first draft are settled; the sections above reflect them.
 
-- [ ] Fractions as the vertical slice, or another strand such as angles and geometry, which would stress the diagram engine harder.\
-\
-Angles and geometry so that is completed first.\
-
-- [ ] Should the practice app store student results (needing accounts and data protection work) or stay stateless, with results exported by the teacher?\
-\
-Stateless with results exported to teacher\
-
-- [ ] How to handle the new national curriculum in 2028: keep both versions side by side, or migrate statement years when it is published.\
-\
-Keep current version, don't worry about the 2028 curriculum \
-
-- [ ] Whether to accept AI-assisted generator contributions, and what extra review those need.\
-\
-Yes
+- [x] **Name and owner.** The project is MathsPlanner, hosted on a personal GitHub account (github.com/huntj/mathsplanner). The package scope is `@mathsplanner`.
+- [x] **Vertical slice.** Phase 4's slice is angles and geometry rather than fractions, so that strand is completed first and the diagram engine is tested hardest.
+- [x] **Practice app.** Stateless: no accounts and no stored student results. Results are exported by the teacher as CSV or print.
+- [x] **Curriculum version.** Current curriculum only. There is no `curriculum` field and no plan for migrating to the 2028 national curriculum.
+- [x] **AI-assisted contributions.** Accepted. They must pass the same automated checks, be disclosed in the pull request, and carry a recorded human teacher review in the generator file header.
+- [x] **KS3 years.** KS3 statements use the progression map's recommended Year 7, 8 and 9 split exactly.
+- [x] **KS5 years.** Some KS5 statements are recommended for both Year 12 and Year 13, so `year` became `years: (12 | 13)[]`.
