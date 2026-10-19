@@ -1,0 +1,60 @@
+name: Statement generator
+description: Claim or track the generator for one statement in data/statements.json.
+title: "[Generator] <ID>: <I can… text>"
+labels: ["generator"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        One issue per statement. Search first: the statement may already have an issue.
+        Comment on the issue to claim it, and read [CONTRIBUTING.md](https://github.com/huntj/mathsplanner/blob/main/CONTRIBUTING.md#claiming-a-statement) before starting.
+  - type: input
+    id: statement-id
+    attributes:
+      label: Statement ID
+      description: Exactly as in data/statements.json.
+      placeholder: Y6-FR-03
+    validations:
+      required: true
+  - type: input
+    id: statement-text
+    attributes:
+      label: Statement text
+      placeholder: Add and subtract fractions with different denominators and mixed numbers
+    validations:
+      required: true
+  - type: checkboxes
+    id: depths
+    attributes:
+      label: Planned depths
+      description: Which depths make sense for this statement? Early statements may stop at depth 3.
+      options:
+        - label: 1 Fluency
+        - label: 2 Varied fluency
+        - label: 3 Representation
+        - label: 4 Reasoning
+        - label: 5 Problem solving
+  - type: textarea
+    id: plan
+    attributes:
+      label: Plan
+      description: Archetypes and diagram types you expect to use, parameter ranges for each numbers setting, and any prerequisite generators you will reuse.
+  - type: textarea
+    id: misconceptions
+    attributes:
+      label: Misconceptions
+      description: Mistakes students really make with this statement. Use existing codes from data/misconceptions.json where they fit.
+  - type: dropdown
+    id: ai
+    attributes:
+      label: Do you plan to use AI tools?
+      description: AI-assisted contributions are welcome; they need disclosure and a recorded teacher review.
+      options:
+        - "No"
+        - "Yes"
+        - Not sure yet
+  - type: input
+    id: reviewer
+    attributes:
+      label: Reviewing teacher (if known)
+      description: GitHub handle of the teacher who will review the generator, if you have one lined up.

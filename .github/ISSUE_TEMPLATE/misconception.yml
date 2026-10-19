@@ -1,0 +1,55 @@
+name: Misconception suggestion
+description: Suggest a mistake students really make, for the shared catalogue in data/misconceptions.json.
+title: "[Misconception] "
+labels: ["misconception"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The catalogue lets the same error be recognised everywhere it appears, so every wrong option
+        in a question can be a real misconception with useful feedback. Contributions to the catalogue
+        are licensed under CC BY 4.0.
+  - type: textarea
+    id: description
+    attributes:
+      label: What does the student do or believe?
+      placeholder: Adds the numerators and adds the denominators, so 1/3 + 1/4 = 2/7.
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Example wrong answer
+      description: A specific question and the answer the misconception produces.
+    validations:
+      required: true
+  - type: input
+    id: statements
+    attributes:
+      label: Statements where it appears
+      description: Statement IDs where students make this mistake.
+      placeholder: Y6-FR-03, Y5-FR-04
+    validations:
+      required: true
+  - type: input
+    id: code
+    attributes:
+      label: Suggested code
+      description: Dot-separated and upper case, strand first.
+      placeholder: FR.ADD.TOPS-AND-BOTTOMS
+  - type: input
+    id: remediate
+    attributes:
+      label: Statement to step back to
+      description: The earlier statement a student with this misconception should revisit, if any.
+      placeholder: Y5-FR-02
+  - type: textarea
+    id: feedback
+    attributes:
+      label: Suggested feedback
+      description: What a student who made this mistake should be told.
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Classroom experience, research or an exam report that shows students make this mistake.

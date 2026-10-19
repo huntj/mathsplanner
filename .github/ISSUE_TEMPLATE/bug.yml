@@ -1,0 +1,51 @@
+name: Bug report
+description: Something is wrong, such as an incorrect answer, a misleading diagram or a broken page.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting this. A wrong answer or misleading question matters as much as a crash.
+        Please do not include any student names or other personal data.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you saw, and what you expected instead.
+    validations:
+      required: true
+  - type: input
+    id: key
+    attributes:
+      label: Question key or link
+      description: If it is about a question, the statement ID, depth, numbers setting and seed (or the gallery link), so it can be regenerated exactly.
+      placeholder: Y6-FR-03, depth 4, standard, seed 12345
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where?
+      options:
+        - A generated question or answer
+        - A diagram
+        - Marking or feedback
+        - Gallery
+        - Practice app
+        - Print or PDF export
+        - Statement data
+        - Tooling, CI or docs
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Run …
+        2. Open …
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser and device, or Node and pnpm versions for tooling problems.
