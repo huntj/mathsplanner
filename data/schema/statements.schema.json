@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/huntj/mathsplanner/main/data/schema/statements.schema.json",
+  "title": "MathsPlanner statements",
+  "description": "Every EYFS to KS5 learning statement, its prerequisites and where it comes from. Imported from docs/progression-map.md, then edited by pull request.",
+  "type": "object",
+  "required": ["version", "statements"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": {
+      "description": "Version of the statement data (semver).",
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "statements": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/statement" }
+    }
+  },
+  "$defs": {
+    "id": {
+      "description": "Stage-Strand-Number, e.g. Y6-FR-03, GH-A18, AL-P7.4, FM-FS1-02, CM-LP3.",
+      "type": "string",
+      "pattern": "^(?:(?:N|R|Y[1-9])-[A-Z]+-\\d{2}|G[FH]-[NARGPS]\\d{1,2}|AL-[PSM]\\d{1,2}\\.\\d{1,2}[a-z]?|FM-(?:CP|FP1|FP2|FS1|FS2|FM1|FM2|D1|D2)-\\d{2}|CM-(?:A|P|LP|SG)\\d{1,2})$"
+    },
+    "statement": {
+      "type": "object",
+      "required": ["id", "stage", "strand", "text", "needs", "source", "statutory"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "stage": {
+          "enum": [
+            "N",
+            "R",
+            "Y1",
+            "Y2",
+            "Y3",
+            "Y4",
+            "Y5",
+            "Y6",
+            "Y7",
+            "Y8",
+            "Y9",
+            "GF",
+            "GH",
+            "AL",
+            "FM",
+            "CM"
+          ]
+        },
+        "strand": {
+          "description": "Strand code derived from the ID, e.g. FR, N, P7, CP, FS1.",
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9]*$"
+        },
+        "text": {
+          "description": "The \"I can…\" wording.",
+          "type": "string",
+          "minLength": 1
+        },
+        "needs": {
+          "description": "Nearest direct prerequisite IDs.",
+          "type": "array",
+          "items": { "$ref": "#/$defs/id" },
+          "uniqueItems": true
+        },
+        "years": {
+          "description": "KS5 recommended year or years.",
+          "type": "array",
+          "items": { "enum": [12, 13] },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "tier": {
+          "description": "GCSE tier: F is tested on both tiers, H is Higher only.",
+          "enum": ["F", "H"]
+        },
+        "option": {
+          "description": "Further Maths option paper.",
+          "enum": ["FP1", "FP2", "FS1", "FS2", "FM1", "FM2", "D1", "D2"]
+        },
+        "source": {
+          "description": "Document the statement is paraphrased from, e.g. NC KS2, Edexcel 1MA1.",
+          "type": "string",
+          "minLength": 1
+        },
+        "statutory": {
+          "description": "True only for national curriculum content and the Reception Early Learning Goals.",
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}
