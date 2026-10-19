@@ -1,0 +1,21 @@
+{
+  "name": "@mathsplanner/import-map",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Imports the progression map into data/statements.json and checks the data files.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huntj/mathsplanner.git",
+    "directory": "tools/import-map"
+  },
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@mathsplanner/core": "workspace:*",
+    "ajv": "^8.20.0",
+    "prettier": "^3.9.10"
+  }
+}

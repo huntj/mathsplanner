@@ -1,0 +1,26 @@
+{
+  "name": "@mathsplanner/core",
+  "version": "0.0.0",
+  "description": "Schema types, seeded random numbers, exact maths, LaTeX helpers and defineGenerator.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huntj/mathsplanner.git",
+    "directory": "packages/core"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "@mathsplanner/source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json"
+  }
+}

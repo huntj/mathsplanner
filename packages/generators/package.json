@@ -1,0 +1,29 @@
+{
+  "name": "@mathsplanner/generators",
+  "version": "0.0.0",
+  "description": "One generator per statement, plus the coverage report.",
+  "license": "MIT AND CC-BY-4.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huntj/mathsplanner.git",
+    "directory": "packages/generators"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "@mathsplanner/source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json && tsc -p scripts/tsconfig.json"
+  },
+  "dependencies": {
+    "@mathsplanner/core": "workspace:*"
+  }
+}

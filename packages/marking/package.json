@@ -1,0 +1,26 @@
+{
+  "name": "@mathsplanner/marking",
+  "version": "0.0.0",
+  "description": "AnswerSpec checking, equivalence and form rules.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huntj/mathsplanner.git",
+    "directory": "packages/marking"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "@mathsplanner/source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json"
+  }
+}
