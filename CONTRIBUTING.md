@@ -29,7 +29,7 @@ Each statement in [`data/statements.json`](data/statements.json) gets one genera
 1. Find the statement's issue. Issues will be opened automatically from `statements.json` when generators are opened up to contributors (Phase 7); until then, search the issues for the statement ID and, if there is none, open one with the _Statement generator_ form.
 2. Comment on the issue to claim it. A maintainer assigns it to you. If you can no longer work on it, say so on the issue so someone else can pick it up; claims with no activity for 30 days may be released.
 3. Check the statement's prerequisites (`needs`). Generators for prerequisites should usually exist first, because depth 5 and multi-step questions reuse them.
-4. Run `pnpm new <ID>` to scaffold the generator, its test file and its gallery entry (available from Phase 1).
+4. Run `pnpm new <ID>` to scaffold the generator and its test file (a gallery entry will be added too once the gallery exists, in Phase 2). The scaffold's test fails until you write `build`.
 5. Open one pull request per statement, filling in the template.
 
 ## The generator contract

@@ -247,7 +247,9 @@ export default defineGenerator({
 });
 ```
 
-**Contract.** A generator must be pure (same inputs, same output), must not render anything, must declare every depth it supports, and must list the misconception codes it can produce. `defineGenerator` wraps it with seeding, retries when `accept` or `requireExists` rejects a parameter set, and attaches the statement metadata.
+**Contract.** A generator must be pure (same inputs, same output), must not render anything, must declare every depth it supports, and must list the misconception codes it can produce. `defineGenerator` wraps it with seeding, retries when `accept` or `requireExists` rejects a parameter set (a generator can also call `reject()` from `params` or `build`), and checks the result: every misconception used is declared, every diagram reference exists, and the question is plain JSON. `createRegistry` attaches the statement metadata from `data/statements.json`.
+
+**Seeding.** Parameters are drawn from a stream seeded by statement ID, numbers setting and seed but not depth, so one seed shows the same numbers at every depth unless a depth rejects them; `build` gets its own stream that also depends on depth. Open-construction parts keep their validator function outside the JSON: `generate` returns the plain Question, and `generateFull` also returns the validators for marking.
 
 **Shared helpers** in `@mathsplanner/core` cover the repeated maths: rationals with BigInt, surds, polynomials, angle and triangle builders, "nice" number pickers (Pythagorean triples, integer-root quadratics, terminating decimals), unit conversion, and LaTeX formatting that prints fractions, mixed numbers and signs correctly.
 
