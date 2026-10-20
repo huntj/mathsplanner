@@ -1,7 +1,8 @@
 /**
  * @statement Y8-GEO-03
  * @author @huntj
- * @ai-assisted yes: Claude wrote this generator for the Phase 4 slice; awaiting teacher review
+ * @ai-assisted yes: Claude wrote this generator for the Phase 4 slice
+ * @reviewed 2026-10-20 @huntj (teacher): depth 4 checked in the gallery, all numbers settings
  */
 // Y8-GEO-03: Derive and illustrate properties of triangles, quadrilaterals, circles and other plane
 // figures (e.g. equal lengths and angles) using appropriate language and technologies

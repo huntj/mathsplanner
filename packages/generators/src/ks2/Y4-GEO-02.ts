@@ -1,7 +1,8 @@
 /**
  * @statement Y4-GEO-02
  * @author @huntj
- * @ai-assisted yes: Claude wrote this generator for the Phase 4 slice; awaiting teacher review
+ * @ai-assisted yes: Claude wrote this generator for the Phase 4 slice
+ * @reviewed 2026-10-20 @huntj (teacher): depth 4 checked in the gallery, all numbers settings
  */
 // Y4-GEO-02: Identify acute and obtuse angles and compare and order angles up to two right
 // angles by size

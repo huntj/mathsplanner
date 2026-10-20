@@ -352,7 +352,7 @@ The build runs in eight phases; each ends with a check that must pass before the
 | 6. Print export | A4 worksheets with answers and worked solutions | A mixed-depth worksheet prints correctly from a seed |
 | 7. Scale out | Remaining diagram types and generators, strand by strand following the prerequisite graph; contributor issues opened | Coverage dashboard shows every statement generated and reviewed |
 
-Phases 0 to 3 are complete. Phase 4's 36 generators are written and pass every automated check; its exit still needs a teacher review of depth 4 in the gallery.
+Phases 0 to 4 are complete: Phase 4's 36 generators pass every automated check and have a recorded teacher review of depth 4.
 
 Phases 0 to 6 are the core build; phase 7 is where most generators get written and where outside contributors can help in parallel, one statement per pull request.
 

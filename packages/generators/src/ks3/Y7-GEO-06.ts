@@ -1,7 +1,8 @@
 /**
  * @statement Y7-GEO-06
  * @author @huntj
- * @ai-assisted yes: Claude wrote this generator for the Phase 4 slice; awaiting teacher review
+ * @ai-assisted yes: Claude wrote this generator for the Phase 4 slice
+ * @reviewed 2026-10-20 @huntj (teacher): depth 4 checked in the gallery, all numbers settings
  */
 // Y7-GEO-06: Derive and use the sum of angles in a triangle; use it to deduce the angle sum in
 // any polygon and derive properties of regular polygons

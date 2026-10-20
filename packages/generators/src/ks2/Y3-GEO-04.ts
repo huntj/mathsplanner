@@ -1,7 +1,8 @@
 /**
  * @statement Y3-GEO-04
  * @author @huntj
- * @ai-assisted yes: Claude wrote this generator for the Phase 4 slice; awaiting teacher review
+ * @ai-assisted yes: Claude wrote this generator for the Phase 4 slice
+ * @reviewed 2026-10-20 @huntj (teacher): depth 4 checked in the gallery, all numbers settings
  */
 // Y3-GEO-04: Identify horizontal and vertical lines and pairs of perpendicular and parallel lines
 import * as A from "@mathsplanner/archetypes";

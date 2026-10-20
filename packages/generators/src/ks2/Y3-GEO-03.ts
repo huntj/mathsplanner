@@ -1,7 +1,8 @@
 /**
  * @statement Y3-GEO-03
  * @author @huntj
- * @ai-assisted yes: Claude wrote this generator for the Phase 4 slice; awaiting teacher review
+ * @ai-assisted yes: Claude wrote this generator for the Phase 4 slice
+ * @reviewed 2026-10-20 @huntj (teacher): depth 4 checked in the gallery, all numbers settings
  */
 // Y3-GEO-03: Identify right angles; recognise that two right angles make a half-turn, three a
 // three-quarter turn and four a complete turn; identify whether angles are greater or less than

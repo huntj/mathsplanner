@@ -1,7 +1,8 @@
 /**
  * @statement Y2-POS-02
  * @author @huntj
- * @ai-assisted yes: Claude wrote this generator for the Phase 4 slice; awaiting teacher review
+ * @ai-assisted yes: Claude wrote this generator for the Phase 4 slice
+ * @reviewed 2026-10-20 @huntj (teacher): depth 4 checked in the gallery, all numbers settings
  */
 // Y2-POS-02: Use mathematical vocabulary for position, direction and movement, including
 // straight-line movement and rotation as a turn (quarter, half, three-quarter; clockwise and

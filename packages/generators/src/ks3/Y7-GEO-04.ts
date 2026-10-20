@@ -1,7 +1,8 @@
 /**
  * @statement Y7-GEO-04
  * @author @huntj
- * @ai-assisted yes: Claude wrote this generator for the Phase 4 slice; awaiting teacher review
+ * @ai-assisted yes: Claude wrote this generator for the Phase 4 slice
+ * @reviewed 2026-10-20 @huntj (teacher): depth 4 checked in the gallery, all numbers settings
  */
 // Y7-GEO-04: Describe, sketch and draw using conventional terms and notation: points, lines,
 // parallel lines, perpendicular lines, right angles, regular polygons, and other polygons that are

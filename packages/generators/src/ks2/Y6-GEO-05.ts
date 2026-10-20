@@ -1,7 +1,8 @@
 /**
  * @statement Y6-GEO-05
  * @author @huntj
- * @ai-assisted yes: Claude wrote this generator for the Phase 4 slice; awaiting teacher review
+ * @ai-assisted yes: Claude wrote this generator for the Phase 4 slice
+ * @reviewed 2026-10-20 @huntj (teacher): depth 4 checked in the gallery, all numbers settings
  */
 // Y6-GEO-05: Recognise angles where they meet at a point, are on a straight line, or are
 // vertically opposite, and find missing angles

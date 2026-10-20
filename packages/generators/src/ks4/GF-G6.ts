@@ -1,7 +1,8 @@
 /**
  * @statement GF-G6
  * @author @huntj
- * @ai-assisted yes: Claude wrote this generator for the Phase 4 slice; awaiting teacher review
+ * @ai-assisted yes: Claude wrote this generator for the Phase 4 slice
+ * @reviewed 2026-10-20 @huntj (teacher): depth 4 checked in the gallery, all numbers settings
  */
 // GF-G6: Use angle facts, congruence, similarity and quadrilateral properties to derive results,
 // including Pythagoras, and write simple proofs
