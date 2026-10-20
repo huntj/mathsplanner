@@ -1,3 +1,3 @@
 # @mathsplanner/gallery
 
-A web app for browsing every statement × depth × numbers setting × seed, regenerating any question exactly from a link, and recording the human review checklist for each generator. Pull requests publish it as a preview site so reviewers can click through real questions. Built with React and Vite from Phase 2.
+A React and Vite app for browsing every statement × depth × numbers setting × seed. Search and filter the 686 statements, follow their prerequisites both ways, and view any statement's generator at any depth, numbers setting and seed, with answers, misconceptions and worked solutions on request. Every view's URL is a complete question key (`#/s/Y5-GEO-04?depth=1&numbers=standard&seed=42&v=0.1.0`), so a link always regenerates the same question. Run it with `pnpm gallery`; pushes to `main` deploy it to GitHub Pages at https://huntj.github.io/mathsplanner/. Still to come: pull request preview sites and recording the review checklist.
