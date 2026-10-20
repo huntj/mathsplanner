@@ -185,15 +185,17 @@ Every part declares an `AnswerSpec`, which decides both the input widget shown a
 | choice | Buttons | Correct option; wrong options map to misconceptions | Depth 3 and 4 archetypes |
 | multi-select | Checkboxes | All correct options and no others; partial credit optional | Select all that apply |
 | choice-with-reason | Two button groups | Both parts correct | always-sometimes-never, true-or-false-why |
-| order | Drag to sort | Exact order | Ordering numbers, steps of a proof |
-| match | Drag to pair | All pairs correct | match-representations |
-| plot | Interactive SVG: place points, draw lines, shade regions | Geometric tolerance | Plotting, transformations, inequalities |
+| order | Drag to sort, or move up and down with buttons | Exact order | Ordering numbers, steps of a proof |
+| match | Drag to pair, or choose a partner from a list | All pairs correct | match-representations |
+| plot | Interactive SVG: tap to place points, draw a protractor arm, or construct with an on-screen protractor; arrow keys work too | Geometric tolerance | Plotting, transformations, inequalities, constructions |
 | condition | Any of the above | A validator function checks the conditions | open-construction |
 | free-text | Text box | Not auto-marked; flagged for teacher review, shown with a mark scheme | Optional written explanations |
 
 **Form matters.** "Write in its simplest form" or "give your answer in the form a√b" is enforced: `exact` answers carry a `form` rule (simplest, mixed number, improper, factorised, expanded, standard form, a√b, and so on). A right value in the wrong form gets a specific message rather than a cross.
 
-**Equivalence.** Student LaTeX from MathLive is parsed with the open-source Cortex Compute Engine and compared to the expected answer by exact symbolic simplification first, then by evaluation at random points for expressions as a fallback, so 2(x + 3) and 2x + 6 both pass when no form is required.
+**Equivalence.** Student LaTeX from MathLive is parsed with the open-source Cortex Compute Engine and compared to the expected answer by exact symbolic simplification first, then by evaluation at random points for expressions as a fallback, so 2(x + 3) and 2x + 6 both pass when no form is required. The engine is large, so it loads only when a question needs it: `prepareMarking(question)` fetches it before an exact answer is marked, and marking itself stays synchronous.
+
+**Partial marks and misconceptions.** A choice-with-reason part scores half for the right choice with a wrong reason, or the reverse. Every wrong option, and every wrong reason, can carry a misconception code; in a choice-with-reason part a `choice` misconception names a reason, whichever option goes with it. A plot part lists the points the student places (`place`), and diagrams report their coordinate frame so a tap becomes a point in the diagram's own units.
 
 **Misconception detection.** Before marking a response wrong, it is compared against each misconception's answer; a match returns that misconception's feedback and remediation link.
 
@@ -352,7 +354,7 @@ The build runs in eight phases; each ends with a check that must pass before the
 | 6. Print export | A4 worksheets with answers and worked solutions | A mixed-depth worksheet prints correctly from a seed |
 | 7. Scale out | Remaining diagram types and generators, strand by strand following the prerequisite graph; contributor issues opened | Coverage dashboard shows every statement generated and reviewed |
 
-Phases 0 to 4 are complete: Phase 4's 36 generators pass every automated check and have a recorded teacher review of depth 4.
+Phases 0 to 4 are complete: Phase 4's 36 generators pass every automated check and have a recorded teacher review of depth 4. Phase 5 is built: a test marks every slice question (the right answer scores full marks and every recorded misconception is caught), and the practice app is published at /practice/ beside the gallery.
 
 Phases 0 to 6 are the core build; phase 7 is where most generators get written and where outside contributors can help in parallel, one statement per pull request.
 
