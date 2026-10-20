@@ -1,0 +1,1066 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Y7-NPV-09 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y7-NPV-09",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "kg",
+          "value": 93,
+        },
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Write down the upper bound of ",
+          },
+          {
+            "t": "math",
+            "v": "m",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Truncating chops off digits, so m could be anything from 92 up to, but not including, 93.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The mass of a load is ",
+      },
+      {
+        "t": "math",
+        "v": "92\\text{ kg}",
+      },
+      {
+        "t": "text",
+        "v": ", truncated to a whole number.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y7-NPV-09",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "kg",
+          "value": 935,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 930,
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The bounds are half a unit either side of 940, not a whole unit.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Write down the lower bound of ",
+          },
+          {
+            "t": "math",
+            "v": "m",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Half of 10 is 5. Anything from 935 up to, but not including, 945 rounds to 940.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The mass of a load is ",
+      },
+      {
+        "t": "math",
+        "v": "940\\text{ kg}",
+      },
+      {
+        "t": "text",
+        "v": ", correct to the nearest 10.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y7-NPV-09",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "m",
+          "value": 965,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 970,
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The bounds are half a unit either side of 960, not a whole unit.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Write down the upper bound of ",
+          },
+          {
+            "t": "math",
+            "v": "l",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Half of 10 is 5. Anything from 955 up to, but not including, 965 rounds to 960.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The length of a rope is ",
+      },
+      {
+        "t": "math",
+        "v": "960\\text{ m}",
+      },
+      {
+        "t": "text",
+        "v": ", correct to the nearest 10.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y7-NPV-09",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "92 \\le m < 93",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "92 < m \\le 93",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "91 \\le m < 93",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "91.5 \\le m < 92.5",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "92 itself truncates to 92, so it is included; 93 is not.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is a whole unit either side; the interval is only one unit wide altogether.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which is the error interval for ",
+          },
+          {
+            "t": "math",
+            "v": "m",
+          },
+          {
+            "t": "text",
+            "v": "?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Truncating chops off digits, so m could be anything from 92 up to, but not including, 93.",
+          },
+        ],
+      },
+      {
+        "math": "92 \\le m < 93",
+        "say": [
+          {
+            "t": "text",
+            "v": "So",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The mass of a load is ",
+      },
+      {
+        "t": "math",
+        "v": "92\\text{ kg}",
+      },
+      {
+        "t": "text",
+        "v": ", truncated to a whole number.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y7-NPV-09",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "940 \\le m < 950",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "935 \\le m < 945",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "935 < m \\le 945",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "930 \\le m < 950",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "935 itself rounds to 940, so it is included; 945 is not.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "D",
+              "type": "choice",
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is a whole unit either side; the interval is only one unit wide altogether.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which is the error interval for ",
+          },
+          {
+            "t": "math",
+            "v": "m",
+          },
+          {
+            "t": "text",
+            "v": "?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Half of 10 is 5. Anything from 935 up to, but not including, 945 rounds to 940.",
+          },
+        ],
+      },
+      {
+        "math": "935 \\le m < 945",
+        "say": [
+          {
+            "t": "text",
+            "v": "So",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The mass of a load is ",
+      },
+      {
+        "t": "math",
+        "v": "940\\text{ kg}",
+      },
+      {
+        "t": "text",
+        "v": ", correct to the nearest 10.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y7-NPV-09",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "955 \\le l < 965",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "955 < l \\le 965",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "950 \\le l < 970",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "960 \\le l < 970",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "955 itself rounds to 960, so it is included; 965 is not.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is a whole unit either side; the interval is only one unit wide altogether.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which is the error interval for ",
+          },
+          {
+            "t": "math",
+            "v": "l",
+          },
+          {
+            "t": "text",
+            "v": "?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Half of 10 is 5. Anything from 955 up to, but not including, 965 rounds to 960.",
+          },
+        ],
+      },
+      {
+        "math": "955 \\le l < 965",
+        "say": [
+          {
+            "t": "text",
+            "v": "So",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The length of a rope is ",
+      },
+      {
+        "t": "math",
+        "v": "960\\text{ m}",
+      },
+      {
+        "t": "text",
+        "v": ", correct to the nearest 10.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y7-NPV-09",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False: the bounds themselves are never included.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False: it must be exactly 92.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 92 is the lower bound, and it truncates to 92, so it is included.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Truncating chops off digits, so m could be anything from 92 up to, but not including, 93.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The mass of a load is ",
+      },
+      {
+        "t": "math",
+        "v": "92\\text{ kg}",
+      },
+      {
+        "t": "text",
+        "v": ", truncated to a whole number.",
+      },
+      {
+        "t": "text",
+        "v": " Ali says ",
+      },
+      {
+        "t": "math",
+        "v": "m",
+      },
+      {
+        "t": "text",
+        "v": " could be ",
+      },
+      {
+        "t": "math",
+        "v": "92\\text{ kg}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y7-NPV-09",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True: any number with the same first digit is possible.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True: 945 is the upper bound, so it is the biggest value m can be.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 945 rounds to 950, so m < 945.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Half of 10 is 5. Anything from 935 up to, but not including, 945 rounds to 940.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The mass of a load is ",
+      },
+      {
+        "t": "math",
+        "v": "940\\text{ kg}",
+      },
+      {
+        "t": "text",
+        "v": ", correct to the nearest 10.",
+      },
+      {
+        "t": "text",
+        "v": " Ali says ",
+      },
+      {
+        "t": "math",
+        "v": "m",
+      },
+      {
+        "t": "text",
+        "v": " could be ",
+      },
+      {
+        "t": "math",
+        "v": "945\\text{ kg}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y7-NPV-09",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True: any number with the same first digit is possible.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True: 965 is the upper bound, so it is the biggest value l can be.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 965 rounds to 970, so l < 965.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Half of 10 is 5. Anything from 955 up to, but not including, 965 rounds to 960.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The length of a rope is ",
+      },
+      {
+        "t": "math",
+        "v": "960\\text{ m}",
+      },
+      {
+        "t": "text",
+        "v": ", correct to the nearest 10.",
+      },
+      {
+        "t": "text",
+        "v": " Ali says ",
+      },
+      {
+        "t": "math",
+        "v": "l",
+      },
+      {
+        "t": "text",
+        "v": " could be ",
+      },
+      {
+        "t": "math",
+        "v": "965\\text{ m}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+]
+`;

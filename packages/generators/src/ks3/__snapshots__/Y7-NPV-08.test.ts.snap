@@ -1,0 +1,914 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Y7-NPV-08 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y7-NPV-08",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 7.12,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 7.1,
+            },
+            "code": "NPV.ROUND.DP-SF",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is to significant figures. Decimal places are counted after the decimal point.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Keep 2 decimal places after the point. The next digit is 1, so round down: 7.121 ≈ 7.12.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Round ",
+      },
+      {
+        "t": "math",
+        "v": "7.121",
+      },
+      {
+        "t": "text",
+        "v": " to 2 decimal places.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y7-NPV-08",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 0.0074,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 0.01,
+            },
+            "code": "NPV.ROUND.SF-LEADING-ZERO",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Zeros before the first non-zero digit are not significant: they only hold the place.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 0.0073,
+            },
+            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The next digit is 6, which is 5 or more, so round up.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The first significant figure is the first non-zero digit. Keep 2 significant figures. The next digit is 6, so round up: 0.007361 ≈ 0.0074.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Round ",
+      },
+      {
+        "t": "math",
+        "v": "0.007361",
+      },
+      {
+        "t": "text",
+        "v": " to 2 significant figures.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y7-NPV-08",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 13.49,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 13,
+            },
+            "code": "NPV.ROUND.DP-SF",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is to significant figures. Decimal places are counted after the decimal point.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Keep 2 decimal places after the point. The next digit is 4, so round down: 13.4947 ≈ 13.49.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Round ",
+      },
+      {
+        "t": "math",
+        "v": "13.4947",
+      },
+      {
+        "t": "text",
+        "v": " to 2 decimal places.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y7-NPV-08",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "7.1",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "7.121",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "7.12",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.DP-SF",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is to significant figures. Decimal places are counted after the decimal point.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Keep 2 decimal places after the point. The next digit is 1, so round down: 7.121 ≈ 7.12.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Which is ",
+      },
+      {
+        "t": "math",
+        "v": "7.121",
+      },
+      {
+        "t": "text",
+        "v": " rounded to 2 decimal places?",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y7-NPV-08",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "0.01",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "0.0073",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "0.0074",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "0.00736",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.SF-LEADING-ZERO",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Zeros before the first non-zero digit are not significant: they only hold the place.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The next digit is 6, which is 5 or more, so round up.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The first significant figure is the first non-zero digit. Keep 2 significant figures. The next digit is 6, so round up: 0.007361 ≈ 0.0074.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Which is ",
+      },
+      {
+        "t": "math",
+        "v": "0.007361",
+      },
+      {
+        "t": "text",
+        "v": " rounded to 2 significant figures?",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y7-NPV-08",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "13.49",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "13.4947",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "13",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "13.495",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.DP-SF",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is to significant figures. Decimal places are counted after the decimal point.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Keep 2 decimal places after the point. The next digit is 4, so round down: 13.4947 ≈ 13.49.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Which is ",
+      },
+      {
+        "t": "math",
+        "v": "13.4947",
+      },
+      {
+        "t": "text",
+        "v": " rounded to 2 decimal places?",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y7-NPV-08",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False: it should be counted from the first non-zero digit.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Keep 2 decimal places after the point. The next digit is 1, so round down: 7.121 ≈ 7.12.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False: you always round down.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.DP-SF",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Keep 2 decimal places after the point. The next digit is 1, so round down: 7.121 ≈ 7.12.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Kit says ",
+      },
+      {
+        "t": "math",
+        "v": "7.121",
+      },
+      {
+        "t": "text",
+        "v": " rounded to 2 decimal places is ",
+      },
+      {
+        "t": "math",
+        "v": "7.12",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y7-NPV-08",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The first significant figure is the first non-zero digit. Keep 2 significant figures. The next digit is 6, so round up: 0.007361 ≈ 0.0074.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True: rounding never changes the first digit.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True: the zeros after the point count as significant figures.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.SF-LEADING-ZERO",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The first significant figure is the first non-zero digit. Keep 2 significant figures. The next digit is 6, so round up: 0.007361 ≈ 0.0074.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Kit says ",
+      },
+      {
+        "t": "math",
+        "v": "0.007361",
+      },
+      {
+        "t": "text",
+        "v": " rounded to 2 significant figures is ",
+      },
+      {
+        "t": "math",
+        "v": "0.01",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y7-NPV-08",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Keep 2 decimal places after the point. The next digit is 4, so round down: 13.4947 ≈ 13.49.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True: rounding never changes the first digit.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True: count from the first non-zero digit.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.DP-SF",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Keep 2 decimal places after the point. The next digit is 4, so round down: 13.4947 ≈ 13.49.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Kit says ",
+      },
+      {
+        "t": "math",
+        "v": "13.4947",
+      },
+      {
+        "t": "text",
+        "v": " rounded to 2 decimal places is ",
+      },
+      {
+        "t": "math",
+        "v": "13",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+]
+`;
