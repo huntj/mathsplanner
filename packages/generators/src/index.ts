@@ -80,3 +80,5 @@ export const generators: Generator[] = [
 
 /** Unreviewed placeholders that exercise the gallery; real generators replace them. */
 export const examples: Generator[] = [];
+
+export { selectQuestions, type SelectedItem, type Selection } from "./select.ts";
