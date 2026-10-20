@@ -220,8 +220,8 @@ const SHAPES: Record<ShapeKind, Coord[]> = {
   rhombus: [
     [0, 0],
     [2, 0],
-    [3.1, 1.66],
-    [1.1, 1.66],
+    [3.2, 1.6],
+    [1.2, 1.6],
   ],
   parallelogram: [
     [0, 0],
