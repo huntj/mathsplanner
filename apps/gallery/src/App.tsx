@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { PRACTICE_URL } from "./data.ts";
 import { DiagramsPage } from "./DiagramsPage.tsx";
 import { formatRoute, parseRoute, type Route } from "./route.ts";
 import { StatementList } from "./StatementList.tsx";
@@ -40,6 +41,7 @@ export function App() {
           <a href="#/diagrams" aria-current={route.page === "diagrams" ? "page" : undefined}>
             Diagrams
           </a>
+          <a href={PRACTICE_URL}>Practice</a>
           <a href="https://github.com/huntj/mathsplanner">GitHub</a>
         </nav>
       </header>

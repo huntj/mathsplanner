@@ -1,6 +1,6 @@
 name: Deploy gallery
 
-# Publishes apps/gallery to GitHub Pages on every push to main.
+# Publishes apps/gallery to GitHub Pages on every push to main, with apps/practice at /practice/.
 # One-off setup: Settings → Pages → Build and deployment → Source: GitHub Actions.
 on:
   push:
@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   build:
-    name: Build gallery
+    name: Build gallery and practice
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -27,7 +27,8 @@ jobs:
           node-version-file: .nvmrc
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter @mathsplanner/gallery build
+      - run: pnpm --filter @mathsplanner/gallery --filter @mathsplanner/practice build
+      - run: cp -r apps/practice/dist apps/gallery/dist/practice
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:

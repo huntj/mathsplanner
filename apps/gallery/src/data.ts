@@ -58,6 +58,9 @@ export const STAGE_NAMES: Record<Stage, string> = {
   CM: "Core Maths",
 };
 
+/** The practice app: published at ./practice/ next to the gallery, and on its own port in dev. */
+export const PRACTICE_URL = import.meta.env.DEV ? "http://localhost:5174/" : "./practice/";
+
 export const DEPTH_NAMES = {
   1: "Fluency",
   2: "Varied fluency",

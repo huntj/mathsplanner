@@ -5,6 +5,7 @@ import {
   DEPTH_NAMES,
   generatorFor,
   neededBy,
+  PRACTICE_URL,
   STAGE_NAMES,
   statementById,
   type GeneratorInfo,
@@ -197,6 +198,23 @@ function QuestionPanel({
         <button type="button" className="primary" onClick={() => void copyLink()}>
           {copied ? "Link copied" : "Copy link"}
         </button>
+        {!example && (
+          <a
+            className="button"
+            href={`${PRACTICE_URL}#/session?${new URLSearchParams({
+              statements: generator.id,
+              depths: generator.depths.join(","),
+              numbers: route.numbers,
+              count: "10",
+              seed: String(seed),
+              feedback: "each",
+            })
+              .toString()
+              .replace(/%2C/g, ",")}`}
+          >
+            Practise this
+          </a>
+        )}
       </div>
       {"error" in result ? (
         <p className="banner error" role="alert">
