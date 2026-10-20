@@ -196,6 +196,9 @@ importers:
       '@mathsplanner/core':
         specifier: workspace:*
         version: link:../../packages/core
+      '@mathsplanner/diagrams':
+        specifier: workspace:*
+        version: link:../../packages/diagrams
       '@mathsplanner/generators':
         specifier: workspace:*
         version: link:../../packages/generators
@@ -235,13 +238,27 @@ importers:
         specifier: ^4.10.2
         version: 4.10.2
 
-  packages/diagrams: {}
+  packages/diagrams:
+    dependencies:
+      '@mathsplanner/core':
+        specifier: workspace:*
+        version: link:../core
+      katex:
+        specifier: ^0.19.0
+        version: 0.19.0
+    devDependencies:
+      fast-check:
+        specifier: ^4.10.2
+        version: 4.10.2
 
   packages/generators:
     dependencies:
       '@mathsplanner/core':
         specifier: workspace:*
         version: link:../core
+      '@mathsplanner/diagrams':
+        specifier: workspace:*
+        version: link:../diagrams
 
   packages/marking: {}
 
@@ -250,6 +267,9 @@ importers:
       '@mathsplanner/core':
         specifier: workspace:*
         version: link:../core
+      '@mathsplanner/diagrams':
+        specifier: workspace:*
+        version: link:../diagrams
       katex:
         specifier: ^0.19.0
         version: 0.19.0
