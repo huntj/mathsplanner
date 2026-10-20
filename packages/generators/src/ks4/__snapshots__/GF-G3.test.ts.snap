@@ -1,0 +1,1347 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`GF-G3 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "B",
+            "to": "C",
+            "value": 100,
+            "vertex": "A",
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value": 40,
+            "vertex": "C",
+          },
+          {
+            "from": "D",
+            "label": "x",
+            "to": "C",
+            "value": 140,
+            "vertex": "B",
+          },
+        ],
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            5,
+            0,
+          ],
+          "C": [
+            -0.868240888,
+            4.924038765,
+          ],
+          "D": [
+            7.2,
+            0,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "B",
+            "to": "D",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-G3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 140,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 40,
+            },
+            "code": "GEO.POLYGON.INTERIOR-EXTERIOR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is the interior angle at B. Angle x is outside the triangle, on the straight line with it.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 220,
+            },
+            "code": "GEO.ANGLES.TRIANGLE-360",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angles in a triangle add up to 180°, not 360°.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle ",
+          },
+          {
+            "t": "math",
+            "v": "x",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "180^\\circ - 100^\\circ - 40^\\circ = 40^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "The angles in a triangle add up to 180°, so the angle inside the triangle at B is",
+          },
+        ],
+      },
+      {
+        "math": "x = 180^\\circ - 40^\\circ = 140^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Angles on a straight line add up to 180°.",
+          },
+        ],
+      },
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "This shows the exterior angle equals the two opposite interior angles added together.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The side AB of the triangle is extended to D.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "B",
+            "to": "C",
+            "value": 60,
+            "vertex": "A",
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value": 55,
+            "vertex": "C",
+          },
+          {
+            "from": "D",
+            "label": "x",
+            "to": "C",
+            "value": 115,
+            "vertex": "B",
+          },
+        ],
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            5,
+            0,
+          ],
+          "C": [
+            2.76599379,
+            4.790841778,
+          ],
+          "D": [
+            7.2,
+            0,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "B",
+            "to": "D",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-G3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 115,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 65,
+            },
+            "code": "GEO.POLYGON.INTERIOR-EXTERIOR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is the interior angle at B. Angle x is outside the triangle, on the straight line with it.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 245,
+            },
+            "code": "GEO.ANGLES.TRIANGLE-360",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angles in a triangle add up to 180°, not 360°.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle ",
+          },
+          {
+            "t": "math",
+            "v": "x",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "180^\\circ - 60^\\circ - 55^\\circ = 65^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "The angles in a triangle add up to 180°, so the angle inside the triangle at B is",
+          },
+        ],
+      },
+      {
+        "math": "x = 180^\\circ - 65^\\circ = 115^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Angles on a straight line add up to 180°.",
+          },
+        ],
+      },
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "This shows the exterior angle equals the two opposite interior angles added together.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The side AB of the triangle is extended to D.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "B",
+            "to": "C",
+            "value": 75,
+            "vertex": "A",
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value": 74,
+            "vertex": "C",
+          },
+          {
+            "from": "D",
+            "label": "x",
+            "to": "C",
+            "value": 149,
+            "vertex": "B",
+          },
+        ],
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            5,
+            0,
+          ],
+          "C": [
+            0.693368223,
+            2.587685436,
+          ],
+          "D": [
+            7.2,
+            0,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "B",
+            "to": "D",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-G3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 149,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 31,
+            },
+            "code": "GEO.POLYGON.INTERIOR-EXTERIOR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is the interior angle at B. Angle x is outside the triangle, on the straight line with it.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 211,
+            },
+            "code": "GEO.ANGLES.TRIANGLE-360",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angles in a triangle add up to 180°, not 360°.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle ",
+          },
+          {
+            "t": "math",
+            "v": "x",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "180^\\circ - 75^\\circ - 74^\\circ = 31^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "The angles in a triangle add up to 180°, so the angle inside the triangle at B is",
+          },
+        ],
+      },
+      {
+        "math": "x = 180^\\circ - 31^\\circ = 149^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Angles on a straight line add up to 180°.",
+          },
+        ],
+      },
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "This shows the exterior angle equals the two opposite interior angles added together.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The side AB of the triangle is extended to D.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-G3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 150,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 30,
+            },
+            "code": "GEO.POLYGON.INTERIOR-EXTERIOR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is the exterior angle; the interior angle makes a straight line with it.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 180,
+            },
+            "code": "GEO.POLYGON.SUM-N-TIMES-180",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angle sum is (n − 2) × 180°, not n × 180°.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of one interior angle.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "360^\\circ \\div 12 = 30^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "The exterior angles add up to 360°.",
+          },
+        ],
+      },
+      {
+        "math": "180^\\circ - 30^\\circ = 150^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Interior and exterior angles add up to 180°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A regular polygon has 12 sides.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-G3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 150,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 30,
+            },
+            "code": "GEO.POLYGON.INTERIOR-EXTERIOR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is the exterior angle; the interior angle makes a straight line with it.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 180,
+            },
+            "code": "GEO.POLYGON.SUM-N-TIMES-180",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angle sum is (n − 2) × 180°, not n × 180°.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of one interior angle.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "360^\\circ \\div 12 = 30^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "The exterior angles add up to 360°.",
+          },
+        ],
+      },
+      {
+        "math": "180^\\circ - 30^\\circ = 150^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Interior and exterior angles add up to 180°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A regular polygon has 12 sides.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-G3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 165,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 15,
+            },
+            "code": "GEO.POLYGON.INTERIOR-EXTERIOR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is the exterior angle; the interior angle makes a straight line with it.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 180,
+            },
+            "code": "GEO.POLYGON.SUM-N-TIMES-180",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angle sum is (n − 2) × 180°, not n × 180°.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of one interior angle.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "360^\\circ \\div 24 = 15^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "The exterior angles add up to 360°.",
+          },
+        ],
+      },
+      {
+        "math": "180^\\circ - 15^\\circ = 165^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Interior and exterior angles add up to 180°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A regular polygon has 24 sides.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-G3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "The angles of every polygon add up to 360°.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "A hexagon splits into 4 triangles from one vertex, so its angles add up to 720°.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "6 × 180° = 1080°, so it is true.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "A hexagon splits into 4 triangles from one vertex, so its angles add up to 720°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The interior angles of a hexagon add up to 1080°.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-G3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Interior and exterior angles are always equal in regular polygons.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Interior angles are inside the shape, so they are always bigger.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "An equilateral triangle has interior angles of 60° but exterior angles of 120°.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "An equilateral triangle has interior angles of 60° but exterior angles of 120°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Each interior angle of a regular polygon is always more than its exterior angle.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-G3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "It depends on the number of sides: (n − 2) × 180°.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Only regular polygons, because their exterior angles are equal.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Walking round the polygon, you turn through each exterior angle and end up facing the way you started: one full turn.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Walking round the polygon, you turn through each exterior angle and end up facing the way you started: one full turn.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The exterior angles of any polygon add up to 360°.",
+      },
+    ],
+  },
+  {
+    "archetype": "multi-step-context",
+    "diagrams": [],
+    "key": {
+      "depth": 5,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-G3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 165,
+        },
+        "label": "(a)",
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What is the interior angle of the third polygon?",
+          },
+        ],
+      },
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 24,
+        },
+        "label": "(b)",
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "How many sides does the third polygon have?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Interior angles: 3 sides gives 60^\\circ, 8 sides gives 135^\\circ.",
+          },
+        ],
+      },
+      {
+        "math": "360^\\circ - 60^\\circ - 135^\\circ = 165^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Angles at a point add up to 360°.",
+          },
+        ],
+      },
+      {
+        "math": "360^\\circ \\div (180^\\circ - 165^\\circ) = 24",
+        "say": [
+          {
+            "t": "text",
+            "v": "Its exterior angle is 180° minus that, and the exterior angles add up to 360°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Three regular polygons fit together round a point with no gaps and no overlaps. One is a equilateral triangle and one is a regular octagon.",
+      },
+    ],
+  },
+  {
+    "archetype": "multi-step-context",
+    "diagrams": [],
+    "key": {
+      "depth": 5,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-G3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 150,
+        },
+        "label": "(a)",
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What is the interior angle of the third polygon?",
+          },
+        ],
+      },
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 12,
+        },
+        "label": "(b)",
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "How many sides does the third polygon have?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Interior angles: 3 sides gives 60^\\circ, 12 sides gives 150^\\circ.",
+          },
+        ],
+      },
+      {
+        "math": "360^\\circ - 60^\\circ - 150^\\circ = 150^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Angles at a point add up to 360°.",
+          },
+        ],
+      },
+      {
+        "math": "360^\\circ \\div (180^\\circ - 150^\\circ) = 12",
+        "say": [
+          {
+            "t": "text",
+            "v": "Its exterior angle is 180° minus that, and the exterior angles add up to 360°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Three regular polygons fit together round a point with no gaps and no overlaps. One is a equilateral triangle and one is a regular dodecagon.",
+      },
+    ],
+  },
+  {
+    "archetype": "multi-step-context",
+    "diagrams": [],
+    "key": {
+      "depth": 5,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-G3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 135,
+        },
+        "label": "(a)",
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What is the interior angle of the third polygon?",
+          },
+        ],
+      },
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 8,
+        },
+        "label": "(b)",
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "How many sides does the third polygon have?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Interior angles: 4 sides gives 90^\\circ, 8 sides gives 135^\\circ.",
+          },
+        ],
+      },
+      {
+        "math": "360^\\circ - 90^\\circ - 135^\\circ = 135^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Angles at a point add up to 360°.",
+          },
+        ],
+      },
+      {
+        "math": "360^\\circ \\div (180^\\circ - 135^\\circ) = 8",
+        "say": [
+          {
+            "t": "text",
+            "v": "Its exterior angle is 180° minus that, and the exterior angles add up to 360°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Three regular polygons fit together round a point with no gaps and no overlaps. One is a square and one is a regular octagon.",
+      },
+    ],
+  },
+]
+`;

@@ -3,6 +3,7 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import type { Statement } from "@mathsplanner/core";
 import { afterEach, describe, expect, it } from "vitest";
+import { generators as registered } from "../src/index.ts";
 import { coverageReport, findGenerators, loadStatements } from "./coverage.ts";
 
 const statement = (id: string, stage: Statement["stage"]): Statement => ({
@@ -89,9 +90,12 @@ describe("coverage", () => {
     ]);
   });
 
-  it("reports all 686 real statements as missing in Phase 0", () => {
+  it("accounts for every real statement and registers every generator file", () => {
     const report = coverageReport(loadStatements(), findGenerators());
     expect(report.errors).toEqual([]);
-    expect(report.missing).toHaveLength(686);
+    expect(report.warnings).toEqual([]);
+    expect(report.covered.length + report.missing.length).toBe(686);
+    // Every generator file is in src/index.ts, so the gallery and registry can find it.
+    expect(registered.map((g) => g.id).sort()).toEqual([...report.covered].sort());
   });
 });

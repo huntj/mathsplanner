@@ -1,10 +1,201 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "misconceptions": [
     {
       "code": "GEO.ANGLES.STRAIGHT-LINE-360",
-      "description": "Uses 360° as the total for angles on a straight line, confusing it with angles at a point."
+      "description": "Uses 360° as the total for angles on a straight line, confusing it with angles at a point.",
+      "remediate": "Y5-GEO-04"
+    },
+    {
+      "code": "GEO.ANGLES.POINT-180",
+      "description": "Uses 180° as the total for angles at a point, confusing it with angles on a straight line.",
+      "remediate": "Y5-GEO-04"
+    },
+    {
+      "code": "GEO.ANGLES.ADDS-KNOWN",
+      "description": "Adds the known angles together instead of subtracting them from the total.",
+      "remediate": "Y5-GEO-04"
+    },
+    {
+      "code": "GEO.ANGLES.TRIANGLE-360",
+      "description": "Uses 360° as the total for the angles in a triangle.",
+      "remediate": "Y6-GEO-03"
+    },
+    {
+      "code": "GEO.ANGLES.QUADRILATERAL-180",
+      "description": "Uses 180° as the total for the angles in a quadrilateral.",
+      "remediate": "Y6-GEO-03"
+    },
+    {
+      "code": "GEO.ANGLES.VERT-OPP-SUPPLEMENTARY",
+      "description": "Thinks vertically opposite angles add up to 180° instead of being equal.",
+      "remediate": "Y6-GEO-05"
+    },
+    {
+      "code": "GEO.ANGLES.SIZE-BY-ARMS",
+      "description": "Judges the size of an angle by the length of its arms rather than the amount of turn.",
+      "remediate": "Y4-GEO-02"
+    },
+    {
+      "code": "GEO.ANGLES.TYPE-CONFUSED",
+      "description": "Mixes up the names of angle types, for example calling an obtuse angle reflex or a reflex angle obtuse.",
+      "remediate": "Y5-GEO-02"
+    },
+    {
+      "code": "GEO.ANGLES.NAMING",
+      "description": "Names an angle with the vertex letter first or last instead of in the middle, so ∠ABC is read as the angle at A.",
+      "remediate": "Y7-GEO-04"
+    },
+    {
+      "code": "GEO.PROTRACTOR.WRONG-SCALE",
+      "description": "Reads the wrong scale of a protractor, giving 180° minus the angle.",
+      "remediate": "Y5-GEO-03"
+    },
+    {
+      "code": "GEO.SCALE.DIVIDES",
+      "description": "Divides by the scale factor instead of multiplying when turning a scale drawing into real lengths (or the reverse).",
+      "remediate": "Y7-GEO-03"
+    },
+    {
+      "code": "GEO.TURNS.DIRECTION",
+      "description": "Confuses clockwise with anticlockwise.",
+      "remediate": "Y2-POS-02"
+    },
+    {
+      "code": "GEO.TURNS.FRACTION",
+      "description": "Confuses quarter, half and three-quarter turns, for example calling two right angles a quarter turn.",
+      "remediate": "Y1-POS-01"
+    },
+    {
+      "code": "GEO.LINES.PARALLEL-PERPENDICULAR",
+      "description": "Mixes up parallel and perpendicular lines.",
+      "remediate": "Y3-GEO-04"
+    },
+    {
+      "code": "GEO.LINES.PARALLEL-ON-PAGE",
+      "description": "Thinks two lines are parallel just because they do not meet in the part that is drawn.",
+      "remediate": "Y3-GEO-04"
+    },
+    {
+      "code": "GEO.PARALLEL.ALTERNATE-SUPPLEMENTARY",
+      "description": "Thinks alternate or corresponding angles add up to 180° instead of being equal.",
+      "remediate": "Y8-GEO-05"
+    },
+    {
+      "code": "GEO.PARALLEL.CO-INTERIOR-EQUAL",
+      "description": "Thinks co-interior angles are equal instead of adding up to 180°.",
+      "remediate": "Y8-GEO-05"
+    },
+    {
+      "code": "GEO.SHAPES.ORIENTATION",
+      "description": "Thinks a shape changes when it is turned, for example that a square standing on a corner is not a square.",
+      "remediate": "Y1-GEO-01"
+    },
+    {
+      "code": "GEO.SHAPES.HIERARCHY",
+      "description": "Does not see that one shape can be a special case of another, for example that a square is a rectangle.",
+      "remediate": "Y4-GEO-01"
+    },
+    {
+      "code": "GEO.SHAPES.SIDES-VERTICES",
+      "description": "Counts the corners (vertices) of a shape when asked for its sides, or the reverse, or counts one side twice.",
+      "remediate": "Y2-GEO-01"
+    },
+    {
+      "code": "GEO.ISOSCELES.APEX-EQUALS-BASE",
+      "description": "Takes the angle between the two equal sides of an isosceles triangle to be equal to the base angles.",
+      "remediate": "Y6-GEO-03"
+    },
+    {
+      "code": "GEO.SYMMETRY.DIAGONAL",
+      "description": "Thinks the diagonals of a rectangle or parallelogram are lines of symmetry.",
+      "remediate": "Y4-GEO-03"
+    },
+    {
+      "code": "GEO.SYMMETRY.TRANSLATES",
+      "description": "Slides half of a shape across the mirror line instead of reflecting it.",
+      "remediate": "Y4-GEO-04"
+    },
+    {
+      "code": "GEO.POLYGON.REGULAR-SIDES-ONLY",
+      "description": "Thinks a polygon is regular just because its sides are equal, ignoring its angles.",
+      "remediate": "Y5-GEO-06"
+    },
+    {
+      "code": "GEO.POLYGON.SUM-N-TIMES-180",
+      "description": "Uses n × 180° for the sum of the interior angles of an n-sided polygon instead of (n − 2) × 180°.",
+      "remediate": "Y7-GEO-06"
+    },
+    {
+      "code": "GEO.POLYGON.INTERIOR-EXTERIOR",
+      "description": "Confuses the interior and exterior angles of a polygon.",
+      "remediate": "Y7-GEO-06"
+    },
+    {
+      "code": "GEO.RECTANGLE.DIAGONALS-PERPENDICULAR",
+      "description": "Thinks the diagonals of every rectangle meet at right angles, as they do in a square.",
+      "remediate": "Y5-GEO-05"
+    },
+    {
+      "code": "GEO.CIRCLE.RADIUS-DIAMETER",
+      "description": "Confuses the radius and the diameter, for example halving when it should double.",
+      "remediate": "Y6-GEO-04"
+    },
+    {
+      "code": "GEO.CIRCLE.SECTOR-SEGMENT",
+      "description": "Mixes up a sector (between two radii) and a segment (between a chord and an arc).",
+      "remediate": "GF-G9"
+    },
+    {
+      "code": "GEO.CIRCLE.CHORD-DIAMETER",
+      "description": "Thinks every chord is a diameter, or that a diameter is not a chord.",
+      "remediate": "GF-G9"
+    },
+    {
+      "code": "GEO.CIRCLE.CENTRE-HALF",
+      "description": "Halves instead of doubling: thinks the angle at the centre is half the angle at the circumference.",
+      "remediate": "GH-G10"
+    },
+    {
+      "code": "GEO.CIRCLE.TANGENT-RADIUS",
+      "description": "Forgets that a tangent meets the radius at a right angle.",
+      "remediate": "GH-G10"
+    },
+    {
+      "code": "GEO.CONGRUENCE.AAA",
+      "description": "Thinks three equal angles (AAA) prove two triangles are congruent, when they only prove the triangles are similar.",
+      "remediate": "GF-G5"
+    },
+    {
+      "code": "GEO.CONGRUENCE.SSA",
+      "description": "Thinks two sides and an angle that is not between them (SSA) always prove two triangles are congruent.",
+      "remediate": "GF-G5"
+    },
+    {
+      "code": "GEO.TRIANGLE.SIDE-LABELS",
+      "description": "Labels the side next to an angle with that angle's letter, instead of the side opposite it.",
+      "remediate": "Y8-GEO-02"
+    },
+    {
+      "code": "GEO.TRIANGLE.INEQUALITY",
+      "description": "Thinks any three lengths make a triangle, without checking the two shorter sides add up to more than the longest.",
+      "remediate": "Y6-GEO-01"
+    },
+    {
+      "code": "GEO.BEARINGS.ANTICLOCKWISE",
+      "description": "Measures a bearing anticlockwise from north instead of clockwise.",
+      "remediate": "GF-G15"
+    },
+    {
+      "code": "GEO.BEARINGS.BACK-BEARING",
+      "description": "Gives the same bearing for the return journey instead of adding or subtracting 180°.",
+      "remediate": "GF-G15"
+    },
+    {
+      "code": "GEO.PROOF.REASON",
+      "description": "Gives a correct number but the wrong reason, or a reason that does not justify the step.",
+      "remediate": "Y9-GEO-03"
     }
   ]
 }

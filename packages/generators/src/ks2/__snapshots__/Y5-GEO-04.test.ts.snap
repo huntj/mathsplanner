@@ -1,0 +1,2179 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Y5-GEO-04 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "A",
+            "to": "B",
+            "value": 130,
+            "vertex": "O",
+          },
+          {
+            "from": "B",
+            "label": "x",
+            "to": "C",
+            "value": 50,
+            "vertex": "O",
+          },
+        ],
+        "points": {
+          "A": [
+            1,
+            0,
+          ],
+          "B": [
+            -0.64278761,
+            0.766044443,
+          ],
+          "C": [
+            -1,
+            0,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "extend": false,
+            "from": "A",
+            "to": "C",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y5-GEO-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 50,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 230,
+            },
+            "code": "GEO.ANGLES.STRAIGHT-LINE-360",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Angles on a straight line add up to 180°, not 360°.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 130,
+            },
+            "code": "GEO.ANGLES.ADDS-KNOWN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Subtract the known angles from 180°; do not add them.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle ",
+          },
+          {
+            "t": "math",
+            "v": "x",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Angles on a straight line add up to 180°.",
+          },
+        ],
+      },
+      {
+        "math": "x = 180^\\circ - 130^\\circ = 50^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Subtract the known angles.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The diagram shows angles on a straight line.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "A",
+            "to": "B",
+            "value": 65,
+            "vertex": "O",
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value": 85,
+            "vertex": "O",
+          },
+          {
+            "from": "C",
+            "label": "x",
+            "to": "D",
+            "value": 30,
+            "vertex": "O",
+          },
+        ],
+        "points": {
+          "A": [
+            1,
+            0,
+          ],
+          "B": [
+            0.422618262,
+            0.906307787,
+          ],
+          "C": [
+            -0.866025404,
+            0.5,
+          ],
+          "D": [
+            -1,
+            0,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "extend": false,
+            "from": "A",
+            "to": "D",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+          {
+            "from": "O",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y5-GEO-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 30,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 210,
+            },
+            "code": "GEO.ANGLES.STRAIGHT-LINE-360",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Angles on a straight line add up to 180°, not 360°.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 150,
+            },
+            "code": "GEO.ANGLES.ADDS-KNOWN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Subtract the known angles from 180°; do not add them.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle ",
+          },
+          {
+            "t": "math",
+            "v": "x",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Angles on a straight line add up to 180°.",
+          },
+        ],
+      },
+      {
+        "math": "x = 180^\\circ - 65^\\circ - 85^\\circ = 30^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Subtract the known angles.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The diagram shows angles on a straight line.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "A",
+            "to": "B",
+            "value": 123,
+            "vertex": "O",
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value": 40,
+            "vertex": "O",
+          },
+          {
+            "from": "C",
+            "label": "x",
+            "to": "D",
+            "value": 17,
+            "vertex": "O",
+          },
+        ],
+        "points": {
+          "A": [
+            1,
+            0,
+          ],
+          "B": [
+            -0.544639035,
+            0.838670568,
+          ],
+          "C": [
+            -0.956304756,
+            0.292371705,
+          ],
+          "D": [
+            -1,
+            0,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "extend": false,
+            "from": "A",
+            "to": "D",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+          {
+            "from": "O",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y5-GEO-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 17,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 197,
+            },
+            "code": "GEO.ANGLES.STRAIGHT-LINE-360",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Angles on a straight line add up to 180°, not 360°.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 163,
+            },
+            "code": "GEO.ANGLES.ADDS-KNOWN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Subtract the known angles from 180°; do not add them.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle ",
+          },
+          {
+            "t": "math",
+            "v": "x",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Angles on a straight line add up to 180°.",
+          },
+        ],
+      },
+      {
+        "math": "x = 180^\\circ - 123^\\circ - 40^\\circ = 17^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Subtract the known angles.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The diagram shows angles on a straight line.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "missing-value",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y5-GEO-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 50,
+        },
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What goes in the box?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Angles on a straight line add up to 180°.",
+          },
+        ],
+      },
+      {
+        "math": "\\square = 180^\\circ - 130^\\circ = 50^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Subtract the known angles.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "These angles are on a straight line.",
+      },
+      {
+        "display": true,
+        "t": "math",
+        "v": "130^\\circ + \\square = 180^\\circ",
+      },
+    ],
+  },
+  {
+    "archetype": "missing-value",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y5-GEO-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 30,
+        },
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What goes in the box?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Angles on a straight line add up to 180°.",
+          },
+        ],
+      },
+      {
+        "math": "\\square = 180^\\circ - 65^\\circ - 85^\\circ = 30^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Subtract the known angles.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "These angles are on a straight line.",
+      },
+      {
+        "display": true,
+        "t": "math",
+        "v": "65^\\circ + 85^\\circ + \\square = 180^\\circ",
+      },
+    ],
+  },
+  {
+    "archetype": "missing-value",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y5-GEO-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 123,
+        },
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What goes in the box?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Angles on a straight line add up to 180°.",
+          },
+        ],
+      },
+      {
+        "math": "\\square = 180^\\circ - 40^\\circ - 17^\\circ = 123^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Subtract the known angles.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "These angles are on a straight line.",
+      },
+      {
+        "display": true,
+        "t": "math",
+        "v": "\\square + 40^\\circ + 17^\\circ = 180^\\circ",
+      },
+    ],
+  },
+  {
+    "archetype": "choose-the-diagram",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "A",
+            "to": "B",
+            "value": 130,
+            "vertex": "O",
+          },
+          {
+            "from": "B",
+            "label": "x",
+            "to": "C",
+            "value": 50,
+            "vertex": "O",
+          },
+        ],
+        "points": {
+          "A": [
+            1,
+            0,
+          ],
+          "B": [
+            -0.64278761,
+            0.766044443,
+          ],
+          "C": [
+            -1,
+            0,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "extend": false,
+            "from": "A",
+            "to": "C",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "angles": [
+          {
+            "from": "A",
+            "to": "B",
+            "value": 120,
+            "vertex": "O",
+          },
+          {
+            "from": "B",
+            "label": "x",
+            "to": "C",
+            "value": 60,
+            "vertex": "O",
+          },
+        ],
+        "points": {
+          "A": [
+            1,
+            0,
+          ],
+          "B": [
+            -0.5,
+            0.866025404,
+          ],
+          "C": [
+            -1,
+            0,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "extend": false,
+            "from": "A",
+            "to": "C",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "angles": [
+          {
+            "from": "A",
+            "to": "B",
+            "value": 140,
+            "vertex": "O",
+          },
+          {
+            "from": "B",
+            "label": "x",
+            "to": "C",
+            "value": 40,
+            "vertex": "O",
+          },
+        ],
+        "points": {
+          "A": [
+            1,
+            0,
+          ],
+          "B": [
+            -0.766044443,
+            0.64278761,
+          ],
+          "C": [
+            -1,
+            0,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "extend": false,
+            "from": "A",
+            "to": "C",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 3,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y5-GEO-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "i": 0,
+                  "t": "diagram",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "i": 1,
+                  "t": "diagram",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "i": 2,
+                  "t": "diagram",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which diagram matches this calculation?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The calculation starts from 180°, so the angles are on a straight line, and the known angles are 130°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "display": true,
+        "t": "math",
+        "v": "x = 180^\\circ - 130^\\circ",
+      },
+    ],
+  },
+  {
+    "archetype": "choose-the-diagram",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "A",
+            "to": "B",
+            "value": 75,
+            "vertex": "O",
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value": 85,
+            "vertex": "O",
+          },
+          {
+            "from": "C",
+            "label": "x",
+            "to": "D",
+            "value": 20,
+            "vertex": "O",
+          },
+        ],
+        "points": {
+          "A": [
+            1,
+            0,
+          ],
+          "B": [
+            0.258819045,
+            0.965925826,
+          ],
+          "C": [
+            -0.939692621,
+            0.342020143,
+          ],
+          "D": [
+            -1,
+            0,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "extend": false,
+            "from": "A",
+            "to": "D",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+          {
+            "from": "O",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "angles": [
+          {
+            "from": "A",
+            "to": "B",
+            "value": 55,
+            "vertex": "O",
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value": 85,
+            "vertex": "O",
+          },
+          {
+            "from": "C",
+            "label": "x",
+            "to": "D",
+            "value": 40,
+            "vertex": "O",
+          },
+        ],
+        "points": {
+          "A": [
+            1,
+            0,
+          ],
+          "B": [
+            0.573576436,
+            0.819152044,
+          ],
+          "C": [
+            -0.766044443,
+            0.64278761,
+          ],
+          "D": [
+            -1,
+            0,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "extend": false,
+            "from": "A",
+            "to": "D",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+          {
+            "from": "O",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "angles": [
+          {
+            "from": "A",
+            "to": "B",
+            "value": 65,
+            "vertex": "O",
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value": 85,
+            "vertex": "O",
+          },
+          {
+            "from": "C",
+            "label": "x",
+            "to": "D",
+            "value": 30,
+            "vertex": "O",
+          },
+        ],
+        "points": {
+          "A": [
+            1,
+            0,
+          ],
+          "B": [
+            0.422618262,
+            0.906307787,
+          ],
+          "C": [
+            -0.866025404,
+            0.5,
+          ],
+          "D": [
+            -1,
+            0,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "extend": false,
+            "from": "A",
+            "to": "D",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+          {
+            "from": "O",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 3,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y5-GEO-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "i": 0,
+                  "t": "diagram",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "i": 1,
+                  "t": "diagram",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "i": 2,
+                  "t": "diagram",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which diagram matches this calculation?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The calculation starts from 180°, so the angles are on a straight line, and the known angles are 65° and 85°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "display": true,
+        "t": "math",
+        "v": "x = 180^\\circ - 65^\\circ - 85^\\circ",
+      },
+    ],
+  },
+  {
+    "archetype": "choose-the-diagram",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "A",
+            "to": "B",
+            "value": 88,
+            "vertex": "O",
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value": 19,
+            "vertex": "O",
+          },
+          {
+            "from": "C",
+            "label": "x",
+            "to": "D",
+            "value": 73,
+            "vertex": "O",
+          },
+        ],
+        "points": {
+          "A": [
+            1,
+            0,
+          ],
+          "B": [
+            0.034899497,
+            0.999390827,
+          ],
+          "C": [
+            -0.292371705,
+            0.956304756,
+          ],
+          "D": [
+            -1,
+            0,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "extend": false,
+            "from": "A",
+            "to": "D",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+          {
+            "from": "O",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "angles": [
+          {
+            "from": "A",
+            "to": "B",
+            "value": 68,
+            "vertex": "O",
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value": 19,
+            "vertex": "O",
+          },
+          {
+            "from": "C",
+            "label": "x",
+            "to": "D",
+            "value": 93,
+            "vertex": "O",
+          },
+        ],
+        "points": {
+          "A": [
+            1,
+            0,
+          ],
+          "B": [
+            0.374606593,
+            0.927183855,
+          ],
+          "C": [
+            0.052335956,
+            0.998629535,
+          ],
+          "D": [
+            -1,
+            0,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "extend": false,
+            "from": "A",
+            "to": "D",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+          {
+            "from": "O",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "angles": [
+          {
+            "from": "A",
+            "to": "B",
+            "value": 78,
+            "vertex": "O",
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value": 19,
+            "vertex": "O",
+          },
+          {
+            "from": "C",
+            "label": "x",
+            "to": "D",
+            "value": 83,
+            "vertex": "O",
+          },
+        ],
+        "points": {
+          "A": [
+            1,
+            0,
+          ],
+          "B": [
+            0.207911691,
+            0.978147601,
+          ],
+          "C": [
+            -0.121869343,
+            0.992546152,
+          ],
+          "D": [
+            -1,
+            0,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "extend": false,
+            "from": "A",
+            "to": "D",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+          {
+            "from": "O",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 3,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y5-GEO-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "i": 0,
+                  "t": "diagram",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "i": 1,
+                  "t": "diagram",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "i": 2,
+                  "t": "diagram",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which diagram matches this calculation?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The calculation starts from 180°, so the angles are on a straight line, and the known angles are 78° and 19°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "display": true,
+        "t": "math",
+        "v": "x = 180^\\circ - 78^\\circ - 19^\\circ",
+      },
+    ],
+  },
+  {
+    "archetype": "explain-the-error",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "A",
+            "to": "B",
+            "value": 130,
+            "vertex": "O",
+          },
+          {
+            "from": "B",
+            "label": "x",
+            "to": "C",
+            "value": 50,
+            "vertex": "O",
+          },
+        ],
+        "points": {
+          "A": [
+            1,
+            0,
+          ],
+          "B": [
+            -0.64278761,
+            0.766044443,
+          ],
+          "C": [
+            -1,
+            0,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "extend": false,
+            "from": "A",
+            "to": "C",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y5-GEO-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [
+        "GEO.ANGLES.STRAIGHT-LINE-360",
+      ],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "He measured the angle with a protractor instead of calculating it.",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "He should have used 90°, because the lines make a right angle.",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "He used 360°, but angles on a straight line add up to 180°.",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "He added the known angles together instead of taking them away.",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "D",
+              "type": "choice",
+            },
+            "code": "GEO.ANGLES.ADDS-KNOWN",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which explanation of the mistake is correct?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x = 180^\\circ - 130^\\circ = 50^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Angles on a straight line add up to 180°.",
+          },
+        ],
+      },
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "So x is 50°, not 230°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The diagram shows angles on a straight line.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+      {
+        "t": "text",
+        "v": "Sam says angle ",
+      },
+      {
+        "t": "math",
+        "v": "x",
+      },
+      {
+        "t": "text",
+        "v": " is ",
+      },
+      {
+        "t": "math",
+        "v": "230^\\circ",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "explain-the-error",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "A",
+            "to": "B",
+            "value": 65,
+            "vertex": "O",
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value": 85,
+            "vertex": "O",
+          },
+          {
+            "from": "C",
+            "label": "x",
+            "to": "D",
+            "value": 30,
+            "vertex": "O",
+          },
+        ],
+        "points": {
+          "A": [
+            1,
+            0,
+          ],
+          "B": [
+            0.422618262,
+            0.906307787,
+          ],
+          "C": [
+            -0.866025404,
+            0.5,
+          ],
+          "D": [
+            -1,
+            0,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "extend": false,
+            "from": "A",
+            "to": "D",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+          {
+            "from": "O",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y5-GEO-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [
+        "GEO.ANGLES.STRAIGHT-LINE-360",
+      ],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "He used 360°, but angles on a straight line add up to 180°.",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "He added the known angles together instead of taking them away.",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "He should have used 90°, because the lines make a right angle.",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "He measured the angle with a protractor instead of calculating it.",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "GEO.ANGLES.ADDS-KNOWN",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which explanation of the mistake is correct?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x = 180^\\circ - 150^\\circ = 30^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Angles on a straight line add up to 180°.",
+          },
+        ],
+      },
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "So x is 30°, not 210°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The diagram shows angles on a straight line.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+      {
+        "t": "text",
+        "v": "Sam says angle ",
+      },
+      {
+        "t": "math",
+        "v": "x",
+      },
+      {
+        "t": "text",
+        "v": " is ",
+      },
+      {
+        "t": "math",
+        "v": "210^\\circ",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "explain-the-error",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "A",
+            "to": "B",
+            "value": 123,
+            "vertex": "O",
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value": 40,
+            "vertex": "O",
+          },
+          {
+            "from": "C",
+            "label": "x",
+            "to": "D",
+            "value": 17,
+            "vertex": "O",
+          },
+        ],
+        "points": {
+          "A": [
+            1,
+            0,
+          ],
+          "B": [
+            -0.544639035,
+            0.838670568,
+          ],
+          "C": [
+            -0.956304756,
+            0.292371705,
+          ],
+          "D": [
+            -1,
+            0,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "extend": false,
+            "from": "A",
+            "to": "D",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+          {
+            "from": "O",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y5-GEO-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [
+        "GEO.ANGLES.STRAIGHT-LINE-360",
+      ],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "D",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "He measured the angle with a protractor instead of calculating it.",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "He added the known angles together instead of taking them away.",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "He should have used 90°, because the lines make a right angle.",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "He used 360°, but angles on a straight line add up to 180°.",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "GEO.ANGLES.ADDS-KNOWN",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which explanation of the mistake is correct?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x = 180^\\circ - 163^\\circ = 17^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Angles on a straight line add up to 180°.",
+          },
+        ],
+      },
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "So x is 17°, not 197°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The diagram shows angles on a straight line.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+      {
+        "t": "text",
+        "v": "Sam says angle ",
+      },
+      {
+        "t": "math",
+        "v": "x",
+      },
+      {
+        "t": "text",
+        "v": " is ",
+      },
+      {
+        "t": "math",
+        "v": "197^\\circ",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "open-construction",
+    "diagrams": [],
+    "key": {
+      "depth": 5,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y5-GEO-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "describe": [
+            {
+              "t": "text",
+              "v": "2 different whole-degree angles, each bigger than 40°, adding up to 180°.",
+            },
+          ],
+          "inputs": [
+            "number",
+            "number",
+          ],
+          "type": "condition",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Angles on a straight line add up to 180°. Choose angles bigger than 40° that add up to 180°, for example 50° and 130°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find 2 different angles on a straight line. Each angle must be bigger than ",
+      },
+      {
+        "t": "math",
+        "v": "40^\\circ",
+      },
+      {
+        "t": "text",
+        "v": ". Give your angles in degrees.",
+      },
+    ],
+  },
+  {
+    "archetype": "open-construction",
+    "diagrams": [],
+    "key": {
+      "depth": 5,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y5-GEO-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "describe": [
+            {
+              "t": "text",
+              "v": "3 different whole-degree angles, each bigger than 100°, adding up to 360°.",
+            },
+          ],
+          "inputs": [
+            "number",
+            "number",
+            "number",
+          ],
+          "type": "condition",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Angles at a point add up to 360°. Choose angles bigger than 100° that add up to 360°, for example 110°, 120° and 130°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find 3 different angles at a point. Each angle must be bigger than ",
+      },
+      {
+        "t": "math",
+        "v": "100^\\circ",
+      },
+      {
+        "t": "text",
+        "v": ". Give your angles in degrees.",
+      },
+    ],
+  },
+  {
+    "archetype": "open-construction",
+    "diagrams": [],
+    "key": {
+      "depth": 5,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y5-GEO-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "describe": [
+            {
+              "t": "text",
+              "v": "3 different whole-degree angles, each bigger than 34°, adding up to 360°.",
+            },
+          ],
+          "inputs": [
+            "number",
+            "number",
+            "number",
+          ],
+          "type": "condition",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Angles at a point add up to 360°. Choose angles bigger than 34° that add up to 360°, for example 44°, 54° and 262°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find 3 different angles at a point. Each angle must be bigger than ",
+      },
+      {
+        "t": "math",
+        "v": "34^\\circ",
+      },
+      {
+        "t": "text",
+        "v": ". Give your angles in degrees.",
+      },
+    ],
+  },
+]
+`;
