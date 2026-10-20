@@ -416,11 +416,15 @@ export function layoutGeometry(spec: GeometrySpec): Scene {
       // Small angles get a larger arc, so their label has room.
       const deg = degrees(sweep);
       const base = deg < 40 ? 22 + (40 - deg) * 0.7 : deg > 200 ? 16 : 20;
-      const r = Math.max(10, Math.min(base, shortest * 0.45));
+      // Turn arrows are drawn large: the turn itself is what the student has to read.
+      const r = a.turn
+        ? Math.max(28, shortest * 0.35)
+        : Math.max(10, Math.min(base, shortest * 0.45));
       const arcs = a.arcs ?? 1;
       for (let n = 0; n < arcs; n++) {
         const pts = arcPoints(v, r + n * 4, d1, sweep, Math.max(8, Math.ceil(degrees(sweep) / 6)));
         shapes.push(polyline(pts, { width: 1.4 }));
+        drawn.push(...pts);
         addSegments(id, polylineSegments(pts));
         if (a.turn && n === 0) {
           // The arrowhead points along the arc in the direction of the turn.
