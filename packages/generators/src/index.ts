@@ -1,6 +1,24 @@
 // @mathsplanner/generators: one generator per statement, by key stage. See docs/design.md.
 // Add each new generator to the list below so the gallery and registry can find it.
 import type { Generator } from "@mathsplanner/core";
+import nNpv01 from "./eyfs/N-NPV-01.ts";
+import nNpv02 from "./eyfs/N-NPV-02.ts";
+import nNpv03 from "./eyfs/N-NPV-03.ts";
+import nNpv04 from "./eyfs/N-NPV-04.ts";
+import nNpv05 from "./eyfs/N-NPV-05.ts";
+import nNpv06 from "./eyfs/N-NPV-06.ts";
+import nNpv07 from "./eyfs/N-NPV-07.ts";
+import nNpv08 from "./eyfs/N-NPV-08.ts";
+import rNpv01 from "./eyfs/R-NPV-01.ts";
+import rNpv02 from "./eyfs/R-NPV-02.ts";
+import rNpv03 from "./eyfs/R-NPV-03.ts";
+import rNpv04 from "./eyfs/R-NPV-04.ts";
+import rNpv05 from "./eyfs/R-NPV-05.ts";
+import rNpv06 from "./eyfs/R-NPV-06.ts";
+import rNpv07 from "./eyfs/R-NPV-07.ts";
+import rNpv08 from "./eyfs/R-NPV-08.ts";
+import rNpv09 from "./eyfs/R-NPV-09.ts";
+import rNpv10 from "./eyfs/R-NPV-10.ts";
 import y1Geo01 from "./ks1/Y1-GEO-01.ts";
 import y1Pos01 from "./ks1/Y1-POS-01.ts";
 import y2Geo01 from "./ks1/Y2-GEO-01.ts";
@@ -40,6 +58,24 @@ import gfG15 from "./ks4/GF-G15.ts";
 
 /** Every generator, in the order of data/statements.json. */
 export const generators: Generator[] = [
+  nNpv01,
+  nNpv02,
+  nNpv03,
+  nNpv04,
+  nNpv05,
+  nNpv06,
+  nNpv07,
+  nNpv08,
+  rNpv01,
+  rNpv02,
+  rNpv03,
+  rNpv04,
+  rNpv05,
+  rNpv06,
+  rNpv07,
+  rNpv08,
+  rNpv09,
+  rNpv10,
   y1Geo01,
   y1Pos01,
   y2Geo01,

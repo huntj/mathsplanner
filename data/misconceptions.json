@@ -1,7 +1,52 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "misconceptions": [
+    {
+      "code": "NPV.COUNT.SKIP-OR-DOUBLE",
+      "description": "Misses an object or counts one twice when counting, so the count is one out.",
+      "remediate": "N-NPV-03"
+    },
+    {
+      "code": "NPV.COUNT.CARDINAL",
+      "description": "Does not see that the last number said when counting is how many there are; counts again or gives the whole counting sequence.",
+      "remediate": "N-NPV-04"
+    },
+    {
+      "code": "NPV.SEQUENCE.BEFORE-AFTER",
+      "description": "Mixes up the number before and the number after, or one more and one less.",
+      "remediate": "R-NPV-06"
+    },
+    {
+      "code": "NPV.SEQUENCE.DECADE",
+      "description": "Does not cross a tens boundary correctly when counting, e.g. 28, 29, 20 or 39, 40, 50.",
+      "remediate": "R-NPV-09"
+    },
+    {
+      "code": "NPV.COMPARE.SPREAD",
+      "description": "Thinks a group that is spread out, or takes up more space, has more objects.",
+      "remediate": "N-NPV-08"
+    },
+    {
+      "code": "NPV.TEENS.REVERSAL",
+      "description": "Confuses teen numbers with multiples of ten or reverses their digits, e.g. 14 with 40 or 41.",
+      "remediate": "R-NPV-04"
+    },
+    {
+      "code": "NPV.REPRESENT.NUMERALS-ONLY",
+      "description": "Thinks only numerals can show an amount, not marks, pictures, fingers or objects.",
+      "remediate": "N-NPV-07"
+    },
+    {
+      "code": "NPV.SUBITISE.ARRANGEMENT",
+      "description": "Thinks a different arrangement of the same objects is a different number.",
+      "remediate": "R-NPV-02"
+    },
+    {
+      "code": "NPV.COMPOSITION.ADD-NOT-PART",
+      "description": "Adds the whole and a part instead of finding the missing part.",
+      "remediate": "R-NPV-07"
+    },
     {
       "code": "GEO.ANGLES.STRAIGHT-LINE-360",
       "description": "Uses 360° as the total for angles on a straight line, confusing it with angles at a point.",
