@@ -42,6 +42,13 @@ export interface QuestionDraft {
   meta?: Partial<QuestionMeta>;
 }
 
+export interface AnswerBounds {
+  min?: number;
+  max?: number;
+  /** Most decimal places a numeric answer may have. */
+  dp?: number;
+}
+
 export interface GeneratorDefinition<P> {
   /** Statement ID, e.g. "Y6-FR-03". */
   id: string;
@@ -61,6 +68,11 @@ export interface GeneratorDefinition<P> {
   solution?(params: P, depth: Depth): SolutionStep[];
   /** Recomputes the answer a different way; used by the quality checks. */
   verify?(params: P, question: Question): boolean;
+  /**
+   * How nice numeric answers must be at each numbers setting; the quality checks enforce it.
+   * For example { friendly: { min: 10, max: 170, dp: 0 } }.
+   */
+  bounds?: Partial<Record<Numbers, AnswerBounds>>;
   /** Parameter draws before giving up. Default 1000. */
   maxAttempts?: number;
 }

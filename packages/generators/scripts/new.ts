@@ -1,6 +1,6 @@
-// pnpm new <ID>: scaffolds a generator file and its test file from a template. The test fails
-// until the generator is written, so a scaffold cannot be merged by accident. Gallery entries
-// arrive with the gallery in Phase 2.
+// pnpm new <ID>: scaffolds a generator file and its test file from a template. The test runs the
+// full quality checks, so it fails until the generator is written and a scaffold cannot be
+// merged by accident. The gallery picks the generator up once it is added to src/index.ts.
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { keyStageFolder, type Statement } from "@mathsplanner/core";
@@ -14,6 +14,7 @@ export function generatorTemplate(statement: Statement): string {
  */
 // ${statement.id}: ${statement.text}
 import { defineGenerator } from "@mathsplanner/core";
+// import * as A from "@mathsplanner/archetypes";
 
 export default defineGenerator({
   id: "${statement.id}",
@@ -26,9 +27,13 @@ export default defineGenerator({
     return { n: rng.int(1, numbers === "friendly" ? 10 : 100) };
   },
 
+  // Build each depth with an archetype, e.g. A.standard({ question, answer: A.number(…) }).
   build() {
     throw new Error("${statement.id}: build is not written yet");
   },
+
+  // Recompute the answer a different way.
+  verify: () => false,
 });
 `;
 }
@@ -36,19 +41,20 @@ export default defineGenerator({
 export function testTemplate(statement: Statement): string {
   return `import { NUMBERS } from "@mathsplanner/core";
 import { describe, expect, it } from "vitest";
+import { assertQuality } from "../quality.ts";
 import generator from "./${statement.id}.ts";
 
 describe("${statement.id}", () => {
-  for (const depth of generator.depths) {
-    for (const numbers of NUMBERS) {
-      it(\`generates depth \${depth} \${numbers} questions deterministically\`, () => {
-        for (let seed = 0; seed < 50; seed++) {
-          const question = generator.generate({ depth, numbers, seed });
-          expect(generator.generate({ depth, numbers, seed })).toEqual(question);
-        }
-      });
-    }
-  }
+  it("passes the quality checks across 500 seeds", () => {
+    assertQuality(generator);
+  }, 120_000);
+
+  it("keeps fixed seeds unchanged", () => {
+    const fixed = generator.depths.flatMap((depth) =>
+      NUMBERS.map((numbers) => generator.generate({ depth, numbers, seed: 1 })),
+    );
+    expect(fixed).toMatchSnapshot();
+  });
 });
 `;
 }
