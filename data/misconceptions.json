@@ -48,6 +48,46 @@
       "remediate": "R-NPV-07"
     },
     {
+      "code": "NPV.SEQUENCE.STEP-ONE",
+      "description": "Counts on or back in ones instead of in the step asked for (2s, 5s, 10s and so on).",
+      "remediate": "Y2-NPV-01"
+    },
+    {
+      "code": "NPV.PLACE.TENS-ONES-MIXUP",
+      "description": "Changes the wrong digit when finding one more, ten more and so on, e.g. one more than 34 is 44.",
+      "remediate": "Y1-NPV-03"
+    },
+    {
+      "code": "NPV.NUMBERLINE.COUNT-TICKS",
+      "description": "Counts the marks on a number line instead of the jumps between them, so is one out, or ignores the scale.",
+      "remediate": "Y1-NPV-04"
+    },
+    {
+      "code": "NPV.PLACE.FACE-VALUE",
+      "description": "Gives a digit's face value instead of its value from its place, e.g. says the 4 in 47 is worth 4.",
+      "remediate": "Y2-NPV-02"
+    },
+    {
+      "code": "NPV.PLACE.DIGIT-ORDER",
+      "description": "Writes the digits in the wrong order, e.g. 3 tens and 5 ones as 53.",
+      "remediate": "Y2-NPV-02"
+    },
+    {
+      "code": "NPV.COMPARE.SIGN-DIRECTION",
+      "description": "Reads or writes < and > the wrong way round.",
+      "remediate": "Y2-NPV-04"
+    },
+    {
+      "code": "NPV.COMPARE.ONES-FIRST",
+      "description": "Compares numbers by their ones digits, or by the number of digits shown, rather than from the largest place.",
+      "remediate": "Y2-NPV-04"
+    },
+    {
+      "code": "NPV.PLACE.WRITE-AS-SAID",
+      "description": "Writes numbers as they are said, e.g. sixty-three as 603 or one hundred and five as 1005.",
+      "remediate": "Y2-NPV-05"
+    },
+    {
       "code": "GEO.ANGLES.STRAIGHT-LINE-360",
       "description": "Uses 360° as the total for angles on a straight line, confusing it with angles at a point.",
       "remediate": "Y5-GEO-04"

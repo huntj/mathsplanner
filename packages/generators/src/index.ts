@@ -19,8 +19,19 @@ import rNpv07 from "./eyfs/R-NPV-07.ts";
 import rNpv08 from "./eyfs/R-NPV-08.ts";
 import rNpv09 from "./eyfs/R-NPV-09.ts";
 import rNpv10 from "./eyfs/R-NPV-10.ts";
+import y1Npv01 from "./ks1/Y1-NPV-01.ts";
+import y1Npv02 from "./ks1/Y1-NPV-02.ts";
+import y1Npv03 from "./ks1/Y1-NPV-03.ts";
+import y1Npv04 from "./ks1/Y1-NPV-04.ts";
+import y1Npv05 from "./ks1/Y1-NPV-05.ts";
 import y1Geo01 from "./ks1/Y1-GEO-01.ts";
 import y1Pos01 from "./ks1/Y1-POS-01.ts";
+import y2Npv01 from "./ks1/Y2-NPV-01.ts";
+import y2Npv02 from "./ks1/Y2-NPV-02.ts";
+import y2Npv03 from "./ks1/Y2-NPV-03.ts";
+import y2Npv04 from "./ks1/Y2-NPV-04.ts";
+import y2Npv05 from "./ks1/Y2-NPV-05.ts";
+import y2Npv06 from "./ks1/Y2-NPV-06.ts";
 import y2Geo01 from "./ks1/Y2-GEO-01.ts";
 import y2Pos02 from "./ks1/Y2-POS-02.ts";
 import y3Geo02 from "./ks2/Y3-GEO-02.ts";
@@ -76,8 +87,19 @@ export const generators: Generator[] = [
   rNpv08,
   rNpv09,
   rNpv10,
+  y1Npv01,
+  y1Npv02,
+  y1Npv03,
+  y1Npv04,
+  y1Npv05,
   y1Geo01,
   y1Pos01,
+  y2Npv01,
+  y2Npv02,
+  y2Npv03,
+  y2Npv04,
+  y2Npv05,
+  y2Npv06,
   y2Geo01,
   y2Pos02,
   y3Geo02,

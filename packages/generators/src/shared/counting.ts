@@ -76,6 +76,37 @@ export const partWhole = (whole: string, parts: string[]): CountersSpec => ({
   parts,
 });
 
+/** What one counter or block is worth in each place-value column. */
+export const PLACE_VALUE: Record<string, number> = {
+  HTh: 100_000,
+  TTh: 10_000,
+  Th: 1000,
+  H: 100,
+  T: 10,
+  O: 1,
+};
+
+/** A number as place-value counters (or base-10 blocks), one column per digit. */
+export function placeValue(
+  n: number,
+  options: { style?: "counters" | "blocks"; columns?: string[]; hidden?: boolean } = {},
+): CountersSpec {
+  const columns =
+    options.columns ??
+    (n >= 1000 ? ["Th", "H", "T", "O"] : n >= 100 ? ["H", "T", "O"] : ["T", "O"]);
+  const counts = columns.map((c) => Math.floor(n / (PLACE_VALUE[c] ?? 1)) % 10);
+  return {
+    type: "counters",
+    layout: "place-value",
+    columns,
+    counts,
+    ...(options.style ? { style: options.style } : {}),
+    ...(options.hidden
+      ? { description: `A place-value chart with columns ${columns.join(", ")}, showing a number.` }
+      : {}),
+  };
+}
+
 /** How many things a counting picture shows, read from the spec rather than the parameters. */
 export function countOf(spec: DiagramSpec | undefined): number {
   const s = spec as CountersSpec | undefined;
@@ -90,6 +121,11 @@ export function countOf(spec: DiagramSpec | undefined): number {
     case "fingers":
     case "tally":
       return s.count;
+    case "place-value":
+      return s.counts.reduce(
+        (sum, c, i) => sum + c * (PLACE_VALUE[s.columns[i] ?? ""] ?? Number.NaN),
+        0,
+      );
     default:
       return Number.NaN;
   }
