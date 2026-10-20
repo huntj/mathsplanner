@@ -2,18 +2,22 @@ import { useEffect, useState } from "react";
 import { formatRoute, parseRoute, type Route } from "./session.ts";
 import { SessionView } from "./SessionView.tsx";
 import { SetupView } from "./SetupView.tsx";
+import { WorksheetView } from "./WorksheetView.tsx";
 
-function useRoute(): [Route, (route: Route) => void] {
+function useRoute(): [Route, (route: Route, replace?: boolean) => void] {
   const [route, setRoute] = useState(() => parseRoute(window.location.hash));
   useEffect(() => {
     const onHash = () => setRoute(parseRoute(window.location.hash));
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
-  const navigate = (next: Route) => {
-    window.history.pushState(null, "", formatRoute(next));
+  const navigate = (next: Route, replace = false) => {
+    if (replace) window.history.replaceState(null, "", formatRoute(next));
+    else {
+      window.history.pushState(null, "", formatRoute(next));
+      window.scrollTo(0, 0);
+    }
     setRoute(next);
-    window.scrollTo(0, 0);
   };
   return [route, navigate];
 }
@@ -34,6 +38,8 @@ export function App() {
       <main>
         {route.page === "setup" ? (
           <SetupView navigate={navigate} />
+        ) : route.page === "worksheet" ? (
+          <WorksheetView spec={route.spec} sheet={route.sheet} navigate={navigate} />
         ) : (
           <SessionView
             key={formatRoute(route)}

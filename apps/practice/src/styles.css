@@ -904,3 +904,32 @@ fieldset.radio legend {
 .correct-answer .label {
   font-weight: 600;
 }
+
+/* --- worksheets ---------------------------------------------------------------------------- */
+
+.sheet-preview {
+  margin: 1.5rem auto 0;
+  width: 210mm;
+  max-width: 100%;
+  padding: 14mm 15mm;
+  background: #fff;
+  color: #111;
+  border-radius: 4px;
+  box-shadow: 0 2px 14px rgb(0 0 0 / 0.25);
+  overflow-x: auto;
+}
+
+@media print {
+  body,
+  main {
+    background: #fff;
+  }
+  .sheet-preview {
+    margin: 0;
+    width: auto;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+  }
+}

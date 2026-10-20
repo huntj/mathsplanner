@@ -3,6 +3,7 @@
 import { DEPTHS, NUMBERS, type Depth, type Numbers } from "@mathsplanner/core";
 import { useMemo, useState } from "react";
 import {
+  DEFAULT_SHEET,
   formatRoute,
   MAX_QUESTIONS,
   practisable,
@@ -195,6 +196,13 @@ export function SetupView({ navigate }: { navigate: (route: Route) => void }) {
             onClick={() => navigate({ page: "session", spec })}
           >
             Start
+          </button>
+          <button
+            type="button"
+            disabled={!available}
+            onClick={() => navigate({ page: "worksheet", spec, sheet: DEFAULT_SHEET })}
+          >
+            Print a worksheet
           </button>
         </div>
       </div>

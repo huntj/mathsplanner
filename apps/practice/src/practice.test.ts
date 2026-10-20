@@ -41,6 +41,19 @@ describe("session links", () => {
     });
   });
 
+  it("round-trips a worksheet link with its print options", () => {
+    const sheet = { title: "Angles & turns", answers: true, solutions: false, reducedInk: true };
+    expect(parseRoute(formatRoute({ page: "worksheet", spec, sheet }))).toEqual({
+      page: "worksheet",
+      spec,
+      sheet,
+    });
+    expect(parseRoute("#/worksheet?statements=Y5-GEO-04&title=")).toMatchObject({
+      page: "worksheet",
+      sheet: { title: "Maths practice", answers: true, solutions: true, reducedInk: false },
+    });
+  });
+
   it("gives the same questions for the same link, easiest first", () => {
     const items = sessionItems(spec);
     expect(items).toEqual(sessionItems(spec));

@@ -3,7 +3,6 @@
 // same questions, which is what lets a teacher hand one link to a class.
 import {
   createRegistry,
-  createRng,
   DEPTHS,
   NUMBERS,
   type Depth,
@@ -11,7 +10,7 @@ import {
   type Numbers,
   type StatementsFile,
 } from "@mathsplanner/core";
-import { generators } from "@mathsplanner/generators";
+import { generators, selectQuestions, type SelectedItem } from "@mathsplanner/generators";
 import statementsFile from "../../../data/statements.json" with { type: "json" };
 
 export const statements = (statementsFile as StatementsFile).statements;
@@ -35,7 +34,25 @@ export interface SessionSpec {
   feedback: FeedbackMode;
 }
 
-export type Route = { page: "setup" } | { page: "session"; spec: SessionSpec };
+/** How a printed worksheet looks; its questions come from a SessionSpec like a session's. */
+export interface SheetOptions {
+  title: string;
+  answers: boolean;
+  solutions: boolean;
+  reducedInk: boolean;
+}
+
+export const DEFAULT_SHEET: SheetOptions = {
+  title: "Maths practice",
+  answers: true,
+  solutions: true,
+  reducedInk: false,
+};
+
+export type Route =
+  | { page: "setup" }
+  | { page: "session"; spec: SessionSpec }
+  | { page: "worksheet"; spec: SessionSpec; sheet: SheetOptions };
 
 export const MAX_QUESTIONS = 40;
 
@@ -48,15 +65,21 @@ export function formatRoute(route: Route): string {
     numbers: s.numbers,
     count: String(s.count),
     seed: String(s.seed),
-    feedback: s.feedback,
   });
-  return `#/session?${params.toString().replace(/%2C/g, ",")}`;
+  if (route.page === "session") params.set("feedback", s.feedback);
+  else {
+    params.set("title", route.sheet.title);
+    params.set("answers", route.sheet.answers ? "1" : "0");
+    params.set("solutions", route.sheet.solutions ? "1" : "0");
+    if (route.sheet.reducedInk) params.set("ink", "reduced");
+  }
+  return `#/${route.page}?${params.toString().replace(/%2C/g, ",")}`;
 }
 
 /** Reads a route, dropping anything invalid rather than failing. */
 export function parseRoute(hash: string): Route {
   const [path = "", query = ""] = hash.replace(/^#/, "").split("?");
-  if (path !== "/session") return { page: "setup" };
+  if (path !== "/session" && path !== "/worksheet") return { page: "setup" };
   const q = new URLSearchParams(query);
   const ids = (q.get("statements") ?? "").split(",").filter((id) => generatorFor(id));
   const depths = (q.get("depths") ?? "")
@@ -67,45 +90,28 @@ export function parseRoute(hash: string): Route {
   const count = Math.round(Number(q.get("count")));
   const seed = Number(q.get("seed"));
   if (ids.length === 0) return { page: "setup" };
+  const spec: SessionSpec = {
+    statements: [...new Set(ids)],
+    depths: depths.length ? [...new Set(depths)].sort() : [...DEPTHS],
+    numbers: NUMBERS.includes(numbers) ? numbers : "standard",
+    count: count >= 1 && count <= MAX_QUESTIONS ? count : 10,
+    seed: Number.isSafeInteger(seed) && seed >= 0 ? seed : 0,
+    feedback: q.get("feedback") === "end" ? "end" : "each",
+  };
+  if (path === "/session") return { page: "session", spec };
   return {
-    page: "session",
-    spec: {
-      statements: [...new Set(ids)],
-      depths: depths.length ? [...new Set(depths)].sort() : [...DEPTHS],
-      numbers: NUMBERS.includes(numbers) ? numbers : "standard",
-      count: count >= 1 && count <= MAX_QUESTIONS ? count : 10,
-      seed: Number.isSafeInteger(seed) && seed >= 0 ? seed : 0,
-      feedback: q.get("feedback") === "end" ? "end" : "each",
+    page: "worksheet",
+    spec,
+    sheet: {
+      title: (q.get("title") ?? "").trim().slice(0, 120) || DEFAULT_SHEET.title,
+      answers: q.get("answers") !== "0",
+      solutions: q.get("solutions") !== "0",
+      reducedInk: q.get("ink") === "reduced",
     },
   };
 }
 
-export interface SessionItem {
-  statementId: string;
-  depth: Depth;
-  seed: number;
-}
+export type SessionItem = SelectedItem;
 
-/**
- * The questions in a session: every statement and depth asked for that the generator supports,
- * shuffled from the seed and repeated until there are enough, each with its own question seed.
- * They are then ordered by depth.
- */
-export function sessionItems(spec: SessionSpec): SessionItem[] {
-  const pairs = spec.statements.flatMap((id) => {
-    const supported = generatorFor(id)?.depths ?? [];
-    return spec.depths
-      .filter((d) => supported.includes(d))
-      .map((depth) => ({ statementId: id, depth }));
-  });
-  if (pairs.length === 0) return [];
-  const rng = createRng(`session/${spec.seed}`);
-  const items: SessionItem[] = [];
-  while (items.length < spec.count) {
-    for (const pair of rng.shuffle(pairs)) {
-      if (items.length < spec.count) items.push({ ...pair, seed: rng.int(0, 999_999) });
-    }
-  }
-  // Easier depths first, so a session builds up from fluency to reasoning.
-  return items.sort((a, b) => a.depth - b.depth);
-}
+/** The questions in a session; see selectQuestions. */
+export const sessionItems = (spec: SessionSpec): SessionItem[] => selectQuestions(generators, spec);
