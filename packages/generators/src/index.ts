@@ -56,11 +56,21 @@ import y4Geo01 from "./ks2/Y4-GEO-01.ts";
 import y4Geo02 from "./ks2/Y4-GEO-02.ts";
 import y4Geo03 from "./ks2/Y4-GEO-03.ts";
 import y4Geo04 from "./ks2/Y4-GEO-04.ts";
+import y5Npv01 from "./ks2/Y5-NPV-01.ts";
+import y5Npv02 from "./ks2/Y5-NPV-02.ts";
+import y5Npv03 from "./ks2/Y5-NPV-03.ts";
+import y5Npv04 from "./ks2/Y5-NPV-04.ts";
+import y5Npv05 from "./ks2/Y5-NPV-05.ts";
+import y5Npv06 from "./ks2/Y5-NPV-06.ts";
 import y5Geo02 from "./ks2/Y5-GEO-02.ts";
 import y5Geo03 from "./ks2/Y5-GEO-03.ts";
 import y5Geo04 from "./ks2/Y5-GEO-04.ts";
 import y5Geo05 from "./ks2/Y5-GEO-05.ts";
 import y5Geo06 from "./ks2/Y5-GEO-06.ts";
+import y6Npv01 from "./ks2/Y6-NPV-01.ts";
+import y6Npv02 from "./ks2/Y6-NPV-02.ts";
+import y6Npv03 from "./ks2/Y6-NPV-03.ts";
+import y6Npv04 from "./ks2/Y6-NPV-04.ts";
 import y6Geo01 from "./ks2/Y6-GEO-01.ts";
 import y6Geo03 from "./ks2/Y6-GEO-03.ts";
 import y6Geo04 from "./ks2/Y6-GEO-04.ts";
@@ -139,11 +149,21 @@ export const generators: Generator[] = [
   y4Geo02,
   y4Geo03,
   y4Geo04,
+  y5Npv01,
+  y5Npv02,
+  y5Npv03,
+  y5Npv04,
+  y5Npv05,
+  y5Npv06,
   y5Geo02,
   y5Geo03,
   y5Geo04,
   y5Geo05,
   y5Geo06,
+  y6Npv01,
+  y6Npv02,
+  y6Npv03,
+  y6Npv04,
   y6Geo01,
   y6Geo03,
   y6Geo04,

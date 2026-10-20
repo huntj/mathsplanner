@@ -1169,8 +1169,9 @@ export function negatives(
                 type: "number-line",
                 min: -span,
                 max: span,
-                step: span >= 20 ? 5 : 1,
-                ...(span >= 20 ? { minor: 5 } : {}),
+                // Labels every 5 up to ±20, every 10 beyond, with a tick for every whole number.
+                step: span > 20 ? 10 : span >= 20 ? 5 : 1,
+                ...(span > 20 ? { minor: 10 } : span >= 20 ? { minor: 5 } : {}),
                 labels:
                   span >= 20
                     ? "all"
