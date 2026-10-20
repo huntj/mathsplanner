@@ -88,6 +88,51 @@
       "remediate": "Y2-NPV-05"
     },
     {
+      "code": "NPV.PLACE.COLUMN-SHIFT",
+      "description": "Gives a digit the value of the place next to its own, e.g. says the 3 in 4372 is worth 3000 or 30.",
+      "remediate": "Y3-NPV-02"
+    },
+    {
+      "code": "NPV.PLACE.ZERO-PLACEHOLDER",
+      "description": "Leaves out zero as a placeholder, e.g. writes 3 hundreds and 5 ones as 35.",
+      "remediate": "Y3-NPV-02"
+    },
+    {
+      "code": "NPV.COMPARE.FIRST-DIGIT",
+      "description": "Compares the first digits without checking how many digits each number has, e.g. thinks 9856 is greater than 10 002.",
+      "remediate": "Y4-NPV-05"
+    },
+    {
+      "code": "NPV.ROUND.ALWAYS-DOWN",
+      "description": "Rounds down whatever the next digit is, or simply cuts off the digits.",
+      "remediate": "Y4-NPV-07"
+    },
+    {
+      "code": "NPV.ROUND.HALFWAY",
+      "description": "Rounds a number exactly halfway down instead of up, e.g. rounds 250 to 200.",
+      "remediate": "Y4-NPV-07"
+    },
+    {
+      "code": "NPV.ROUND.WRONG-PLACE",
+      "description": "Rounds to the wrong place, e.g. to the nearest 10 when asked for the nearest 100.",
+      "remediate": "Y4-NPV-07"
+    },
+    {
+      "code": "NPV.NEGATIVE.MIRROR",
+      "description": "Counts back through zero as 2, 1, 0, 1, 2, or drops the minus sign.",
+      "remediate": "Y4-NPV-04"
+    },
+    {
+      "code": "NPV.NEGATIVE.ORDER",
+      "description": "Thinks a negative number with a bigger digit is greater, e.g. that −8 is greater than −3.",
+      "remediate": "Y5-NPV-03"
+    },
+    {
+      "code": "NPV.ROMAN.SUBTRACTIVE",
+      "description": "Adds every Roman numeral, so reads IV as 6 or XC as 110, instead of subtracting a smaller numeral before a larger one.",
+      "remediate": "Y4-NPV-08"
+    },
+    {
       "code": "GEO.ANGLES.STRAIGHT-LINE-360",
       "description": "Uses 360° as the total for angles on a straight line, confusing it with angles at a point.",
       "remediate": "Y5-GEO-04"

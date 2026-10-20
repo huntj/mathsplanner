@@ -2,7 +2,7 @@
 // and fails if any generator names a statement ID that is not in data/statements.json.
 //
 // Generators are found by reading files rather than importing them, so the check is fast: each
-// file in src/<key stage>/ is named after its statement ID, every `id: "…"` it contains must be
+// file in src/<key stage>/ is named after its statement ID, every ID it declares must be
 // a known ID, and its header records any teacher review.
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { basename, join, relative, resolve } from "node:path";
@@ -14,13 +14,19 @@ export const GENERATORS_DIR = resolve(import.meta.dirname, "../src");
 export const STATEMENTS_PATH = resolve(ROOT, "data/statements.json");
 export const KEY_STAGE_FOLDERS = ["eyfs", "ks1", "ks2", "ks3", "ks4", "ks5"] as const;
 
+/**
+ * `id: "Y3-NPV-02"`, or a statement ID passed first to a shared family, as in
+ * `digitValue("Y3-NPV-02", …)`. Statement IDs have a dash after their stage; codes have dots.
+ */
+const DECLARED_ID = /\bid:\s*["']([^"']+)["']|\w\(\s*["']([A-Z][A-Z0-9]*-[A-Z0-9.-]+)["']/g;
+
 export interface GeneratorFile {
   /** Path relative to the generators src folder, with forward slashes. */
   path: string;
   folder: string;
   /** The statement ID the file name claims. */
   fileId: string;
-  /** Every `id: "…"` literal in the file. */
+  /** Every ID the file declares, as `id: "…"` or as the first argument to a shared family. */
   declaredIds: string[];
   header: GeneratorHeader;
 }
@@ -54,7 +60,7 @@ export function findGenerators(dir = GENERATORS_DIR): GeneratorFile[] {
         path: relative(dir, full).replaceAll("\\", "/"),
         folder,
         fileId: basename(entry.name, ".ts"),
-        declaredIds: [...source.matchAll(/\bid:\s*["']([^"']+)["']/g)].map((m) => m[1] ?? ""),
+        declaredIds: [...source.matchAll(DECLARED_ID)].map((m) => m[1] ?? m[2] ?? ""),
         header: parseHeader(source),
       });
     }
