@@ -1,6 +1,7 @@
 // @mathsplanner/generators: one generator per statement, by key stage. See docs/design.md.
 // Add each new generator to the list below so the gallery and registry can find it.
 import type { Generator } from "@mathsplanner/core";
+import y1Geo01 from "./ks1/Y1-GEO-01.ts";
 import y1Pos01 from "./ks1/Y1-POS-01.ts";
 import y2Pos02 from "./ks1/Y2-POS-02.ts";
 import y3Geo02 from "./ks2/Y3-GEO-02.ts";
@@ -22,6 +23,7 @@ import gfG15 from "./ks4/GF-G15.ts";
 
 /** Every generator, in the order of data/statements.json. */
 export const generators: Generator[] = [
+  y1Geo01,
   y1Pos01,
   y2Pos02,
   y3Geo02,
