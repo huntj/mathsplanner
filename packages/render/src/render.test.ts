@@ -88,9 +88,9 @@ describe("renderRich", () => {
   });
 
   it("shows types the engine does not draw yet as labelled placeholders", () => {
-    const html = renderRich([{ t: "diagram", i: 0 }], [{ type: "counters" }]);
+    const html = renderRich([{ t: "diagram", i: 0 }], [{ type: "chart" }]);
     expect(html).toContain('role="img"');
-    expect(html).toContain("counters diagram");
+    expect(html).toContain("chart diagram");
     expect(() => renderRich([{ t: "diagram", i: 1 }], [])).toThrow("diagram 1 does not exist");
   });
 

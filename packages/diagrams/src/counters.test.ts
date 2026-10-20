@@ -2,8 +2,10 @@ import { describe, expect, it } from "vitest";
 import { renderDiagram } from "./render.ts";
 import type { CountersSpec } from "./spec.ts";
 
-const draw = (spec: Omit<CountersSpec, "type">) =>
-  renderDiagram({ type: "counters", ...spec } as CountersSpec);
+/** A counters spec without its type field; distributes over the layouts. */
+type Layout<T = CountersSpec> = T extends unknown ? Omit<T, "type"> : never;
+
+const draw = (spec: Layout) => renderDiagram({ type: "counters", ...spec } as CountersSpec);
 const count = (svg: string, tag: string) => svg.split(`<${tag} `).length - 1;
 
 describe("counters", () => {
