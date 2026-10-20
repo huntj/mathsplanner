@@ -11,6 +11,14 @@
   },
   "type": "module",
   "scripts": {
+    "print": "node --conditions=@mathsplanner/source src/cli.ts",
     "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@mathsplanner/core": "workspace:*",
+    "@mathsplanner/generators": "workspace:*",
+    "@mathsplanner/render": "workspace:*",
+    "katex": "^0.19.0",
+    "playwright-core": "1.63.0"
   }
 }

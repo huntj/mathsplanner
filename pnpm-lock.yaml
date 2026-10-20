@@ -353,7 +353,23 @@ importers:
         specifier: ^3.9.10
         version: 3.9.10
 
-  tools/print: {}
+  tools/print:
+    dependencies:
+      '@mathsplanner/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@mathsplanner/generators':
+        specifier: workspace:*
+        version: link:../../packages/generators
+      '@mathsplanner/render':
+        specifier: workspace:*
+        version: link:../../packages/render
+      katex:
+        specifier: ^0.19.0
+        version: 0.19.0
+      playwright-core:
+        specifier: 1.63.0
+        version: 1.63.0
 
 packages:
 
@@ -1017,6 +1033,11 @@ packages:
   picomatch@4.0.7:
     resolution: {integrity: sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==}
     engines: {node: '>=12'}
+
+  playwright-core@1.63.0:
+    resolution: {integrity: sha512-rYCsBF/M5HjUch52bbtVONEFjv6Xu8sm8h72dNlR5bzIE1fvC/bxgspzkjSfU+MweEMmPM8KJebG6nnyxo5mCg==}
+    engines: {node: '>=20'}
+    hasBin: true
 
   postcss@8.5.31:
     resolution: {integrity: sha512-YUbWYCgErwnMAVkjUnYa+KlMBzGpHwiIt/DE7f0G33AuX2LH9UcTk6KgWxd3zRU+pN3u/C+Xl3EnMLM4Hea7Sg==}
@@ -1802,6 +1823,8 @@ snapshots:
   picocolors@1.1.1: {}
 
   picomatch@4.0.7: {}
+
+  playwright-core@1.63.0: {}
 
   postcss@8.5.31:
     dependencies:
