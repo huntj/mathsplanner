@@ -83,7 +83,7 @@ const EQUAL = twoSegments(
 
 export default defineGenerator<Params>({
   id: "Y7-GEO-04",
-  version: "1.0.0",
+  version: "1.0.1",
   depths: [1, 3, 4],
   misconceptions: ["GEO.ANGLES.NAMING"],
 

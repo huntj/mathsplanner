@@ -31,7 +31,7 @@ const armsFor = (a: number, all: number[]): [number, number] => {
 
 export default defineGenerator<Params>({
   id: "Y4-GEO-02",
-  version: "1.0.0",
+  version: "1.0.1",
   depths: [1, 2, 3, 4],
   misconceptions: ["GEO.ANGLES.SIZE-BY-ARMS", "GEO.ANGLES.TYPE-CONFUSED"],
 

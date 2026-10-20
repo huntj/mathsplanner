@@ -54,7 +54,7 @@ const FACT: Record<Relation, string> = {
 
 export default defineGenerator<Params>({
   id: "Y8-GEO-05",
-  version: "1.0.0",
+  version: "1.0.1",
   depths: [1, 3, 4, 5],
   misconceptions: [
     "GEO.PARALLEL.ALTERNATE-SUPPLEMENTARY",

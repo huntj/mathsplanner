@@ -106,7 +106,7 @@ function exteriorDiagram(a: number, b: number): GeometrySpec {
 
 export default defineGenerator<Params>({
   id: "GF-G3",
-  version: "1.0.0",
+  version: "1.0.1",
   depths: [1, 2, 4, 5],
   misconceptions: [
     "GEO.POLYGON.INTERIOR-EXTERIOR",

@@ -100,7 +100,7 @@ const CLAIMS = [
 
 export default defineGenerator<Params>({
   id: "Y4-GEO-01",
-  version: "1.0.0",
+  version: "1.0.1",
   depths: [1, 2, 3, 4],
   misconceptions: ["GEO.SHAPES.HIERARCHY", "GEO.SHAPES.ORIENTATION"],
 

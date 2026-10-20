@@ -85,7 +85,7 @@ const NAME: Record<Part, string> = {
 
 export default defineGenerator<Params>({
   id: "Y6-GEO-04",
-  version: "1.0.0",
+  version: "1.0.1",
   depths: [1, 3, 4],
   misconceptions: ["GEO.CIRCLE.RADIUS-DIAMETER"],
 

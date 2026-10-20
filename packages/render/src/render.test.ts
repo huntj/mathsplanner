@@ -177,6 +177,7 @@ describe("renderAnswer", () => {
         type: "plot",
         target: { type: "cartesian", x: { min: 0, max: 5 }, y: { min: 0, max: 5 } },
         tolerance: 0.2,
+        place: ["P"],
       },
       "Coordinate grid",
     ],

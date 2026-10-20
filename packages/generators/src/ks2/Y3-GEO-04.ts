@@ -46,7 +46,7 @@ function pair(relation: Relation, heading: number, skew: number): GeometrySpec {
 
 export default defineGenerator<Params>({
   id: "Y3-GEO-04",
-  version: "1.0.0",
+  version: "1.0.1",
   depths: [1, 2, 3, 4],
   misconceptions: ["GEO.LINES.PARALLEL-PERPENDICULAR", "GEO.LINES.PARALLEL-ON-PAGE"],
 

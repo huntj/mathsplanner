@@ -67,7 +67,7 @@ const CLAIMS = [
 
 export default defineGenerator<Params>({
   id: "Y5-GEO-02",
-  version: "1.0.0",
+  version: "1.0.1",
   depths: [1, 2, 3, 4],
   misconceptions: ["GEO.ANGLES.TYPE-CONFUSED", "GEO.ANGLES.SIZE-BY-ARMS"],
 

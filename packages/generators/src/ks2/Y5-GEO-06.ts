@@ -77,7 +77,7 @@ const verdictOf = (f: { sidesEqual: boolean; anglesEqual: boolean }): keyof type
 
 export default defineGenerator<Params>({
   id: "Y5-GEO-06",
-  version: "1.0.0",
+  version: "1.0.1",
   depths: [1, 3, 4],
   misconceptions: ["GEO.POLYGON.REGULAR-SIDES-ONLY", "GEO.SHAPES.ORIENTATION"],
 

@@ -399,7 +399,11 @@ export function compareMethods(input: CompareMethodsInput): QuestionDraft {
 export interface Reason {
   text: RichInput;
   correct?: boolean;
+  /** The misconception behind a wrong reason. */
   code?: string;
+  /** What to tell a student who picks it; the catalogue description is used if missing. */
+  feedback?: RichInput;
+  remediate?: string;
 }
 
 function reasonPart(
@@ -426,7 +430,15 @@ function reasonPart(
       reasons: ordered.map(({ item, id }) => ({ id, content: c.rich(item.text) })),
       correctReason: ordered.find(({ item }) => item.correct)?.id ?? "",
     },
-    misconceptions: [],
+    // A wrong reason's misconception is recorded as a choice of that reason, whatever the option.
+    misconceptions: ordered
+      .filter(({ item }) => !item.correct && item.code !== undefined)
+      .map(({ item, id }) => ({
+        code: item.code ?? "",
+        answer: { type: "choice", id } satisfies AnswerValue,
+        feedback: c.rich(item.feedback ?? ""),
+        ...(item.remediate === undefined ? {} : { remediate: item.remediate }),
+      })),
     marks: marks ?? 2,
   };
 }
@@ -572,6 +584,18 @@ export interface DrawOrPlotInput extends Common {
 }
 
 /** Depth 3. Plot, shade or construct. Marked interactively from Phase 5. */
+/** What the student places: the target's points missing from the canvas, or a protractor arm. */
+function placed(target: DiagramSpec, canvas: DiagramSpec | undefined): string[] {
+  if (target.type === "measure") return ["arm"];
+  const names = (spec: DiagramSpec | undefined) =>
+    Object.keys((spec?.points as Record<string, unknown> | undefined) ?? {});
+  const given = new Set(names(canvas));
+  const place = names(target).filter((n) => !given.has(n));
+  if (place.length === 0)
+    throw new ArchetypeError("draw-or-plot", "nothing for the student to place");
+  return place;
+}
+
 export function drawOrPlot(input: DrawOrPlotInput): QuestionDraft {
   const c = new Collector();
   const stem = c.rich(input.canvas ? [input.question, figure(input.canvas)] : input.question);
@@ -582,7 +606,12 @@ export function drawOrPlot(input: DrawOrPlotInput): QuestionDraft {
     [
       {
         prompt: [],
-        answer: { type: "plot", target: input.target, tolerance: input.tolerance },
+        answer: {
+          type: "plot",
+          target: input.target,
+          tolerance: input.tolerance,
+          place: placed(input.target, input.canvas),
+        },
         misconceptions: [],
         ...(input.marks === undefined ? {} : { marks: input.marks }),
       },

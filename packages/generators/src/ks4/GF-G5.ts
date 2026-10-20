@@ -32,7 +32,7 @@ const NOT_ENOUGH = "The marks do not prove the triangles are congruent";
 
 export default defineGenerator<Params>({
   id: "GF-G5",
-  version: "1.0.0",
+  version: "1.0.1",
   depths: [1, 3, 4],
   misconceptions: ["GEO.CONGRUENCE.AAA", "GEO.CONGRUENCE.SSA"],
 

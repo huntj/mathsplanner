@@ -114,7 +114,16 @@ export type AnswerSpec =
     }
   | { type: "order"; options: Option[]; correct: string[] }
   | { type: "match"; left: Option[]; right: Option[]; correct: [string, string][] }
-  | { type: "plot"; target: DiagramSpec; tolerance: number }
+  | {
+      type: "plot";
+      target: DiagramSpec;
+      tolerance: number;
+      /**
+       * What the student places: named points of a geometry target (in its units), or "arm" for
+       * the free end of a protractor's second arm (tolerance in degrees).
+       */
+      place: string[];
+    }
   | { type: "condition"; inputs: ConditionInput[]; describe: Rich }
   | { type: "free-text"; markScheme: Rich };
 
@@ -134,7 +143,10 @@ export type AnswerValue =
   | { type: "values"; values: AnswerValue[] }
   | { type: "text"; text: string };
 
-/** A predictable wrong answer. */
+/**
+ * A predictable wrong answer. In a choice-with-reason part, a `choice` answer names a wrong reason,
+ * whichever option goes with it.
+ */
 export interface Misconception {
   /** A code from data/misconceptions.json, e.g. "FR.ADD.TOPS-AND-BOTTOMS". */
   code: string;

@@ -64,6 +64,8 @@ function matchesCorrect(answer: AnswerSpec, wrong: AnswerValue): boolean {
       return wrong.type === "coordinate" && wrong.x === answer.x && wrong.y === answer.y;
     case "choice":
       return wrong.type === "choice" && wrong.id === answer.correct;
+    case "choice-with-reason":
+      return wrong.type === "choice" && wrong.id === answer.correctReason;
     default:
       return false;
   }

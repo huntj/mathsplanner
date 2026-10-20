@@ -46,7 +46,7 @@ function rightTriangle(right: "A" | "B" | "C", equal: boolean, rotation: number)
 
 export default defineGenerator<Params>({
   id: "GF-G1",
-  version: "1.0.0",
+  version: "1.0.1",
   depths: [1, 3, 4],
   misconceptions: [
     "GEO.ISOSCELES.APEX-EQUALS-BASE",

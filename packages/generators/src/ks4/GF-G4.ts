@@ -97,7 +97,7 @@ const CLAIMS = [
 
 export default defineGenerator<Params>({
   id: "GF-G4",
-  version: "1.0.0",
+  version: "1.0.1",
   depths: [1, 2, 4, 5],
   misconceptions: [
     "GEO.PARALLEL.CO-INTERIOR-EQUAL",

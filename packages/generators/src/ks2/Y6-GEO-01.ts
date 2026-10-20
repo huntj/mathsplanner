@@ -35,7 +35,7 @@ function target(p: Params): GeometrySpec {
 
 export default defineGenerator<Params>({
   id: "Y6-GEO-01",
-  version: "1.0.0",
+  version: "1.0.1",
   depths: [3, 4],
   misconceptions: ["GEO.TRIANGLE.INEQUALITY"],
 

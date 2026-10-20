@@ -46,7 +46,7 @@ const sideOpposite = (names: string[], i: number) => names.filter((_, k) => k !=
 
 export default defineGenerator<Params>({
   id: "Y8-GEO-02",
-  version: "1.0.0",
+  version: "1.0.1",
   depths: [1, 2, 3, 4],
   misconceptions: ["GEO.TRIANGLE.SIDE-LABELS", "GEO.CONGRUENCE.AAA"],
 

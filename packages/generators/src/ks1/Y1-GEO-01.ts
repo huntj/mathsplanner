@@ -43,7 +43,7 @@ function figure(name: Name, p: Params): GeometrySpec {
 
 export default defineGenerator<Params>({
   id: "Y1-GEO-01",
-  version: "1.1.0",
+  version: "1.1.1",
   depths: [1, 3, 4],
   misconceptions: ["GEO.SHAPES.ORIENTATION"],
 

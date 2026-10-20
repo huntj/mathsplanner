@@ -159,7 +159,7 @@ const CLAIMS = [
 
 export default defineGenerator<Params>({
   id: "GH-G10",
-  version: "1.0.0",
+  version: "1.0.1",
   depths: [1, 4, 5],
   misconceptions: [
     "GEO.CIRCLE.CENTRE-HALF",

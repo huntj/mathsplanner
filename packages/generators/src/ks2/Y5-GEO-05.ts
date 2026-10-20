@@ -73,7 +73,7 @@ const CLAIMS = [
 
 export default defineGenerator<Params>({
   id: "Y5-GEO-05",
-  version: "1.0.0",
+  version: "1.0.1",
   depths: [1, 2, 4],
   misconceptions: [
     "GEO.RECTANGLE.DIAGONAL-BISECTS",

@@ -67,7 +67,7 @@ const CLAIMS = [
 
 export default defineGenerator<Params>({
   id: "Y3-GEO-02",
-  version: "1.0.0",
+  version: "1.0.1",
   depths: [1, 2, 4],
   misconceptions: ["GEO.SHAPES.SIDES-VERTICES", "GEO.TURNS.FRACTION"],
 

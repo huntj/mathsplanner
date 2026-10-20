@@ -117,7 +117,7 @@ const CONFUSED: Partial<Record<Feature, A.Distractor>> = {
 
 export default defineGenerator<Params>({
   id: "GF-G9",
-  version: "1.0.0",
+  version: "1.0.1",
   depths: [1, 3, 4],
   misconceptions: [
     "GEO.CIRCLE.CHORD-DIAMETER",

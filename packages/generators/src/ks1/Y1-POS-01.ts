@@ -64,7 +64,7 @@ const FACTS = [
 
 export default defineGenerator<Params>({
   id: "Y1-POS-01",
-  version: "1.0.0",
+  version: "1.0.1",
   depths: [1, 2, 3, 4],
   misconceptions: ["GEO.TURNS.FRACTION", "GEO.TURNS.DIRECTION"],
 
