@@ -230,7 +230,15 @@ importers:
 
   apps/practice: {}
 
-  packages/archetypes: {}
+  packages/archetypes:
+    dependencies:
+      '@mathsplanner/core':
+        specifier: workspace:*
+        version: link:../core
+    devDependencies:
+      fast-check:
+        specifier: ^4.10.2
+        version: 4.10.2
 
   packages/core:
     devDependencies:
@@ -253,12 +261,19 @@ importers:
 
   packages/generators:
     dependencies:
+      '@mathsplanner/archetypes':
+        specifier: workspace:*
+        version: link:../archetypes
       '@mathsplanner/core':
         specifier: workspace:*
         version: link:../core
       '@mathsplanner/diagrams':
         specifier: workspace:*
         version: link:../diagrams
+    devDependencies:
+      '@mathsplanner/render':
+        specifier: workspace:*
+        version: link:../render
 
   packages/marking: {}
 
