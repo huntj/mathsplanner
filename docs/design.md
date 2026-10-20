@@ -141,6 +141,8 @@ Fifteen archetypes supply the question structure for every statement; a generato
 | open-construction | 5 | Find an example meeting conditions | condition check | a validator, not a fixed answer |
 | multi-step-context | 5 | Solve a non-routine problem combining statements | value or expression | a chain using prerequisite generators |
 
+**Choice-marked versions.** Some single-answer questions are best answered by choosing: naming a shape, an angle type, or a value with its reason. `A.choice` builds a standard, varied-form or reverse question marked by choice, with each wrong option tied, where it can be, to a misconception code. Options are shuffled and given neutral letters, so the markup never reveals the answer.
+
 **open-construction** matters most for mastery: "find two unit fractions that add to 7/12" has several right answers, so the part is marked by a function that checks the conditions rather than against a stored answer. **multi-step-context** reuses the generators of prerequisite statements, so a GCSE ratio problem can call the Year 6 ratio generator for one of its steps.
 
 ## Diagram engine
@@ -255,7 +257,11 @@ export default defineGenerator({
 
 **Seeding.** Parameters are drawn from a stream seeded by statement ID, numbers setting and seed but not depth, so one seed shows the same numbers at every depth unless a depth rejects them; `build` gets its own stream that also depends on depth. Open-construction parts keep their validator function outside the JSON: `generate` returns the plain Question, and `generateFull` also returns the validators for marking.
 
-**Shared helpers** in `@mathsplanner/core` cover the repeated maths: rationals with BigInt, surds, polynomials, angle and triangle builders, "nice" number pickers (Pythagorean triples, integer-root quadratics, terminating decimals), unit conversion, and LaTeX formatting that prints fractions, mixed numbers and signs correctly.
+**In practice.** The example above shows the shape of a generator; the real API differs in small ways. Wrong answers are listed per part as `wrong: [{ code, value, feedback }]`, `verify(params, question)` is part of the definition, solutions are `solution: [{ say, math }]` steps passed to each archetype, and a generator can call `reject()` from `params` or `build` as well as using `accept`. The Phase 4 generators in `packages/generators/src` are working examples; `ks2/Y5-GEO-04.ts` is a short one.
+
+**Ambiguous answers.** A right answer can have several correct names: a square is also a rectangle, a rhombus, a parallelogram, a kite and a trapezium, and a diameter is also a chord. A wrong option must be definitely wrong, so shape generators pick distractors with `wrongNames` and build match sets with `distinctKinds`, both driven by the shape hierarchy in `generators/src/shared/shapes.ts`. The same care applies anywhere one answer is a special case of another.
+
+**Shared helpers** in `@mathsplanner/core` cover the repeated maths: rationals with BigInt, surds, polynomials, angle and triangle builders, "nice" number pickers (Pythagorean triples, integer-root quadratics, terminating decimals), unit conversion, and LaTeX formatting that prints fractions, mixed numbers and signs correctly. Helpers that only generators need live in `packages/generators/src/shared/`: angle pickers and distractor filters, turns, the shape hierarchy, marked triangle pairs (which read the congruence condition back from their marks), and circles with sectors and segments.
 
 ## Quality
 
@@ -273,6 +279,8 @@ No generator is merged until it passes automated checks across 500 seeds at ever
 | Visual regression | Unintended changes to diagrams | SVG snapshot tests for fixed seeds |
 | Coverage | Statements without generators; depths missing; generators naming unknown statements | `pnpm coverage` compares against statements.json: missing generators are reported, unknown IDs fail |
 | Accessibility | Missing descriptions, low contrast | Lint on every SVG and rendered page |
+
+Each generator's test runs the checks with `assertQuality` from `packages/generators/src/quality.ts`, which generates every depth and numbers setting for 500 seeds (set `QUALITY_SEEDS` to change this locally) and reports failures by check, depth, setting and seed. Alongside the table above it checks that every question renders, every solution is non-empty, and every misconception code is in `data/misconceptions.json`. Visual regression is covered by snapshots of fixed seeds.
 
 Tests use Vitest with fast-check for property-based testing. GitHub Actions runs everything on each pull request and publishes the gallery as a preview site, so reviewers click through real questions rather than reading code.
 
@@ -343,6 +351,8 @@ The build runs in eight phases; each ends with a check that must pass before the
 | 5. Marking and practice app | All answer types, input widgets, misconception feedback; stateless, with results exported by the teacher as CSV or print | Every slice question can be answered and marked in the browser |
 | 6. Print export | A4 worksheets with answers and worked solutions | A mixed-depth worksheet prints correctly from a seed |
 | 7. Scale out | Remaining diagram types and generators, strand by strand following the prerequisite graph; contributor issues opened | Coverage dashboard shows every statement generated and reviewed |
+
+Phases 0 to 3 are complete. Phase 4's 36 generators are written and pass every automated check; its exit still needs a teacher review of depth 4 in the gallery.
 
 Phases 0 to 6 are the core build; phase 7 is where most generators get written and where outside contributors can help in parallel, one statement per pull request.
 

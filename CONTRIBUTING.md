@@ -42,12 +42,13 @@ A generator lives at `packages/generators/src/<key stage>/<ID>.ts`, where the ke
 - **declare every depth it supports** (1 to 5) and handle all three numbers settings (friendly, standard, stretch);
 - **list every misconception code it can produce**, each one in `data/misconceptions.json`, and make every wrong option a real misconception;
 - **ship an independent `verify`** that recomputes the answer a different way;
-- **reject bad parameter sets** with `accept` (or `requireExists` for open-construction) rather than producing degenerate questions;
+- **reject bad parameter sets** with `accept`, or by calling `reject()` from `params` or `build`, rather than producing degenerate questions;
+- **offer only wrong options that are definitely wrong**: when the answer has several correct names (a square is also a rectangle), use `wrongNames` and `distinctKinds` from `packages/generators/src/shared/shapes.ts` or the same idea;
 - **bump its `version`** whenever a change would alter the question produced for an existing key.
 
 Draw diagrams with the builders in `@mathsplanner/diagrams` (for example `anglesOnLine` or `triangleSSS`) rather than computing coordinates by hand, and check in your tests that every diagram renders with no `collisions` and no `problems`.
 
-Anything two statements need belongs in a shared package (`@mathsplanner/core`, `@mathsplanner/archetypes` or `@mathsplanner/diagrams`), not in a generator.
+Anything two statements need belongs in shared code, not in a generator: a shared package (`@mathsplanner/core`, `@mathsplanner/archetypes` or `@mathsplanner/diagrams`), or `packages/generators/src/shared/` for helpers only generators use.
 
 ### Generator file header
 
@@ -82,7 +83,7 @@ No generator is merged until it passes the automated checks across **500 seeds a
 | Coverage                   | Generators naming unknown statements (`pnpm coverage`)                |
 | Accessibility              | Missing text descriptions, low contrast                               |
 
-These checks are built during Phases 1 to 5; today CI runs lint, typecheck, tests and `pnpm data:check`. Run the same locally before opening a pull request:
+Each generator's test calls `assertQuality`, which runs these checks (except coverage and visual regression, which have their own tests) at 500 seeds. Set `QUALITY_SEEDS=50` for a faster local run while you work. Run everything before opening a pull request:
 
 ```bash
 pnpm lint && pnpm typecheck && pnpm test && pnpm data:check && pnpm coverage
