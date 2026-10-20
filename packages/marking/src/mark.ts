@@ -1,7 +1,7 @@
 // Marking a response against a part's AnswerSpec. Pure and synchronous, so it runs in the browser
 // and in tests alike.
 import type { AnswerValue, Misconception, Part, Question, Validator } from "@mathsplanner/core";
-import { equivalent, formProblem } from "./exact.ts";
+import { equivalent, formProblem, loadEquivalence } from "./exact.ts";
 import { accuracyWords, judgeNumber, parseNumber } from "./number.ts";
 
 export type MarkStatus =
@@ -221,6 +221,22 @@ export function markPart(
     case "free-text":
       return result(part, "unmarked", 0);
   }
+}
+
+/** Whether marking this question needs the Compute Engine: exact values or symbolic coordinates. */
+export function needsEquivalence(question: Question): boolean {
+  return question.parts.some((part) => {
+    const a = part.answer;
+    if (a.type === "exact") return true;
+    if (a.type === "coordinate")
+      return parseNumber(a.x) === undefined || parseNumber(a.y) === undefined;
+    return a.type === "condition" && a.inputs.includes("exact");
+  });
+}
+
+/** Gets ready to mark a question: loads the Compute Engine only if the question needs it. */
+export async function prepareMarking(question: Question): Promise<void> {
+  if (needsEquivalence(question)) await loadEquivalence();
 }
 
 /** Marks every part of a question; validators are by part index, as generateFull returns them. */

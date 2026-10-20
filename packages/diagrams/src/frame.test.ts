@@ -5,7 +5,10 @@ describe("diagram frames", () => {
   const toSvg = (
     frame: { origin: [number, number]; scale: [number, number] },
     [x, y]: [number, number],
-  ): [number, number] => [frame.origin[0] + frame.scale[0] * x, frame.origin[1] - frame.scale[1] * y];
+  ): [number, number] => [
+    frame.origin[0] + frame.scale[0] * x,
+    frame.origin[1] - frame.scale[1] * y,
+  ];
 
   it("maps geometry points to where they are drawn", () => {
     const result = renderDiagram({

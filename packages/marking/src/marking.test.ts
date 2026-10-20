@@ -1,7 +1,8 @@
 import type { AnswerSpec, Misconception, Part } from "@mathsplanner/core";
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 import { equivalent, formProblem } from "./exact.ts";
 import { markPart } from "./mark.ts";
+import { loadEquivalence } from "./exact.ts";
 import { judgeNumber, parseNumber } from "./number.ts";
 
 const part = (answer: AnswerSpec, misconceptions: Misconception[] = [], marks = 1): Part => ({
@@ -10,6 +11,8 @@ const part = (answer: AnswerSpec, misconceptions: Misconception[] = [], marks = 
   marks,
   misconceptions,
 });
+
+beforeAll(loadEquivalence);
 
 describe("parseNumber", () => {
   it.each([

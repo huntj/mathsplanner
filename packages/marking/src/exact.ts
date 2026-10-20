@@ -1,11 +1,24 @@
 // Exact answers: equivalence with the Cortex Compute Engine, then the required form.
-import { ComputeEngine } from "@cortex-js/compute-engine";
+// The engine is a large module, so it is loaded only when a question needs it: call
+// loadEquivalence() (or prepareMarking) before marking exact answers.
+import type { ComputeEngine } from "@cortex-js/compute-engine";
 import type { AnswerForm } from "@mathsplanner/core";
 
 type Engine = InstanceType<typeof ComputeEngine>;
-let engine: Engine | undefined;
 /** One engine for every check; creating it is slow. */
-const ce = (): Engine => (engine ??= new ComputeEngine());
+let engine: Engine | undefined;
+
+/** Loads the Compute Engine once. Exact and symbolic marking need it first. */
+export async function loadEquivalence(): Promise<void> {
+  if (engine) return;
+  const module = await import("@cortex-js/compute-engine");
+  engine ??= new module.ComputeEngine();
+}
+
+const ce = (): Engine => {
+  if (!engine) throw new Error("call loadEquivalence() before marking exact answers");
+  return engine;
+};
 
 type Json = unknown;
 type Expr = NonNullable<ReturnType<Engine["parse"]>>;

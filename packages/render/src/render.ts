@@ -271,7 +271,11 @@ function renderPart(part: Part, diagrams: readonly DiagramSpec[], options: Rende
   return `<li class="mp-part"><div class="mp-prompt">${label}${renderRich(part.prompt, diagrams)} ${marks}</div>${renderResponseArea(part.answer, diagrams, options.showAnswers ?? false)}${answer}</li>`;
 }
 
-function renderSolution(steps: readonly SolutionStep[], diagrams: readonly DiagramSpec[]): string {
+/** A worked solution on its own, e.g. after a student has answered. */
+export function renderSolution(
+  steps: readonly SolutionStep[],
+  diagrams: readonly DiagramSpec[] = [],
+): string {
   if (steps.length === 0) return "";
   const items = steps.map((s) => {
     const math = s.math ? `<div class="mp-math-display">${renderMath(s.math, true)}</div>` : "";

@@ -2,8 +2,9 @@
 // marks, and every predictable wrong answer is marked wrong and named.
 import type { AnswerSpec, AnswerValue } from "@mathsplanner/core";
 import { generators } from "@mathsplanner/generators";
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 import { markPart } from "./mark.ts";
+import { loadEquivalence } from "./exact.ts";
 
 /** The response a student who gets it right would give; undefined for condition parts. */
 function rightAnswer(a: AnswerSpec): AnswerValue | undefined {
@@ -43,6 +44,8 @@ function rightAnswer(a: AnswerSpec): AnswerValue | undefined {
       return undefined;
   }
 }
+
+beforeAll(loadEquivalence);
 
 describe("every slice question can be marked", () => {
   for (const generator of generators) {
