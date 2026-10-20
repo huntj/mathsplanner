@@ -20,6 +20,13 @@ interface Params {
 
 const NAMES: Name[] = ["square", "rectangle", "circle", "triangle"];
 
+/**
+ * Names that are definitely wrong. The national curriculum counts squares as rectangles in
+ * KS1, so "rectangle" is never offered as a wrong name for a square.
+ */
+const wrongFor = (name: Name) =>
+  NAMES.filter((n) => n !== name && !(name === "square" && n === "rectangle"));
+
 function figure(name: Name, p: Params): GeometrySpec {
   if (name === "circle") {
     return {
@@ -35,7 +42,7 @@ function figure(name: Name, p: Params): GeometrySpec {
 
 export default defineGenerator<Params>({
   id: "Y1-GEO-01",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 3, 4],
   misconceptions: ["GEO.SHAPES.ORIENTATION"],
 
@@ -62,15 +69,7 @@ export default defineGenerator<Params>({
           question: ["Look at this shape.", A.figure(figure(p.name, p))],
           ask: "What is it called?",
           correct: capital(p.name),
-          distractors: NAMES.filter((n) => n !== p.name).map((n) => ({
-            content: capital(n),
-            ...(p.name === "square" && n === "rectangle" && p.rotation
-              ? {
-                  code: "GEO.SHAPES.ORIENTATION",
-                  feedback: "Turning a square does not change it: it still has four equal sides.",
-                }
-              : {}),
-          })),
+          distractors: wrongFor(p.name).map((n) => ({ content: capital(n) })),
           solution: [
             {
               say: `It is a ${p.name}${p.rotation && p.name !== "circle" ? ", even though it has been turned" : ""}.`,
@@ -78,7 +77,8 @@ export default defineGenerator<Params>({
           ],
         });
       case 3: {
-        const others = NAMES.filter((n) => n !== p.name);
+        // A square drawn as a distractor would also be a rectangle, so it cannot be one.
+        const others = wrongFor(p.name).filter((n) => !(p.name === "rectangle" && n === "square"));
         return A.chooseTheDiagram({
           rng,
           question: `Which shape is a ${p.name}?`,

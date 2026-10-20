@@ -1,0 +1,1964 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Y5-GEO-06 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "points": {
+          "A": [
+            -1.732050808,
+            -1,
+          ],
+          "B": [
+            1.732050808,
+            -1,
+          ],
+          "C": [
+            0,
+            2,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "ticks": 1,
+            "to": "C",
+          },
+          {
+            "from": "C",
+            "ticks": 1,
+            "to": "A",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y5-GEO-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "D",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Irregular: its sides are not all equal and its angles are not all equal.",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Irregular: its sides are all equal, but its angles are not.",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Irregular: its angles are all equal, but its sides are not.",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Regular: all its sides are equal and all its angles are equal.",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this polygon regular or irregular?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "A polygon is regular only when all its sides are equal and all its angles are equal. Check both.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The marks show which sides are equal and which angles are right angles.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            2,
+            0,
+          ],
+          "C": [
+            2.347296355,
+            1.969615506,
+          ],
+          "D": [
+            1.347296355,
+            3.701666314,
+          ],
+          "E": [
+            -0.532088887,
+            3.017626027,
+          ],
+          "F": [
+            -1.532088887,
+            1.285575219,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "ticks": 1,
+            "to": "C",
+          },
+          {
+            "from": "C",
+            "ticks": 1,
+            "to": "D",
+          },
+          {
+            "from": "D",
+            "ticks": 1,
+            "to": "E",
+          },
+          {
+            "from": "E",
+            "ticks": 1,
+            "to": "F",
+          },
+          {
+            "from": "F",
+            "ticks": 1,
+            "to": "A",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y5-GEO-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Regular: all its sides are equal.",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Regular: all its sides are equal and all its angles are equal.",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Irregular: its sides are all equal, but its angles are not.",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Irregular: its angles are all equal, but its sides are not.",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "GEO.POLYGON.REGULAR-SIDES-ONLY",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Equal sides are not enough: a regular polygon also has all its angles equal.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this polygon regular or irregular?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "A polygon is regular only when all its sides are equal and all its angles are equal. Check both.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The marks show which sides are equal and which angles are right angles.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "B",
+            "right": true,
+            "to": "D",
+            "vertex": "A",
+          },
+          {
+            "from": "C",
+            "right": true,
+            "to": "A",
+            "vertex": "B",
+          },
+          {
+            "from": "D",
+            "right": true,
+            "to": "B",
+            "vertex": "C",
+          },
+          {
+            "from": "A",
+            "right": true,
+            "to": "C",
+            "vertex": "D",
+          },
+        ],
+        "points": {
+          "A": [
+            -0.82695769,
+            -1.695918919,
+          ],
+          "B": [
+            1.886796218,
+            -0.000177273,
+          ],
+          "C": [
+            0.82695769,
+            1.695918919,
+          ],
+          "D": [
+            -1.886796218,
+            0.000177273,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "ticks": 2,
+            "to": "C",
+          },
+          {
+            "from": "C",
+            "ticks": 1,
+            "to": "D",
+          },
+          {
+            "from": "D",
+            "ticks": 2,
+            "to": "A",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y5-GEO-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Irregular: its sides are all equal, but its angles are not.",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Irregular: its sides are not all equal and its angles are not all equal.",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Irregular: its angles are all equal, but its sides are not.",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Regular: all its sides are equal and all its angles are equal.",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this polygon regular or irregular?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "A polygon is regular only when all its sides are equal and all its angles are equal. Check both.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The marks show which sides are equal and which angles are right angles.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "choose-the-diagram",
+    "diagrams": [
+      {
+        "points": {
+          "A": [
+            -1.224586984,
+            -1.847759065,
+          ],
+          "B": [
+            1.224586984,
+            -1.847759065,
+          ],
+          "C": [
+            2.956414504,
+            -0.765366865,
+          ],
+          "D": [
+            2.956414504,
+            0.765366865,
+          ],
+          "E": [
+            1.224586984,
+            1.847759065,
+          ],
+          "F": [
+            -1.224586984,
+            1.847759065,
+          ],
+          "G": [
+            -2.956414504,
+            0.765366865,
+          ],
+          "H": [
+            -2.956414504,
+            -0.765366865,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F",
+              "G",
+              "H",
+            ],
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "points": {
+          "A": [
+            -0.765366865,
+            -1.847759065,
+          ],
+          "B": [
+            0.765366865,
+            -1.847759065,
+          ],
+          "C": [
+            1.847759065,
+            -0.765366865,
+          ],
+          "D": [
+            1.847759065,
+            0.765366865,
+          ],
+          "E": [
+            0.765366865,
+            1.847759065,
+          ],
+          "F": [
+            -0.765366865,
+            1.847759065,
+          ],
+          "G": [
+            -1.847759065,
+            0.765366865,
+          ],
+          "H": [
+            -1.847759065,
+            -0.765366865,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F",
+              "G",
+              "H",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "ticks": 1,
+            "to": "C",
+          },
+          {
+            "from": "C",
+            "ticks": 1,
+            "to": "D",
+          },
+          {
+            "from": "D",
+            "ticks": 1,
+            "to": "E",
+          },
+          {
+            "from": "E",
+            "ticks": 1,
+            "to": "F",
+          },
+          {
+            "from": "F",
+            "ticks": 1,
+            "to": "G",
+          },
+          {
+            "from": "G",
+            "ticks": 1,
+            "to": "H",
+          },
+          {
+            "from": "H",
+            "ticks": 1,
+            "to": "A",
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "points": {
+          "A": [
+            -0.994976924,
+            -2.402086784,
+          ],
+          "B": [
+            0.765366865,
+            -1.847759065,
+          ],
+          "C": [
+            1.847759065,
+            -0.765366865,
+          ],
+          "D": [
+            1.847759065,
+            0.765366865,
+          ],
+          "E": [
+            0.765366865,
+            1.847759065,
+          ],
+          "F": [
+            -0.765366865,
+            1.847759065,
+          ],
+          "G": [
+            -1.847759065,
+            0.765366865,
+          ],
+          "H": [
+            -1.847759065,
+            -0.765366865,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F",
+              "G",
+              "H",
+            ],
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "points": {
+          "A": [
+            -0.867767478,
+            -1.801937736,
+          ],
+          "B": [
+            0.867767478,
+            -1.801937736,
+          ],
+          "C": [
+            1.949855824,
+            -0.445041868,
+          ],
+          "D": [
+            1.563662965,
+            1.246979604,
+          ],
+          "E": [
+            0,
+            2,
+          ],
+          "F": [
+            -1.563662965,
+            1.246979604,
+          ],
+          "G": [
+            -1.949855824,
+            -0.445041868,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F",
+              "G",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "ticks": 1,
+            "to": "C",
+          },
+          {
+            "from": "C",
+            "ticks": 1,
+            "to": "D",
+          },
+          {
+            "from": "D",
+            "ticks": 1,
+            "to": "E",
+          },
+          {
+            "from": "E",
+            "ticks": 1,
+            "to": "F",
+          },
+          {
+            "from": "F",
+            "ticks": 1,
+            "to": "G",
+          },
+          {
+            "from": "G",
+            "ticks": 1,
+            "to": "A",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 3,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y5-GEO-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "i": 0,
+                  "t": "diagram",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "i": 1,
+                  "t": "diagram",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "i": 2,
+                  "t": "diagram",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "i": 3,
+                  "t": "diagram",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Choose the picture.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "A regular octagon has 8 equal sides and 8 equal angles.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Which picture shows a regular octagon?",
+      },
+    ],
+  },
+  {
+    "archetype": "choose-the-diagram",
+    "diagrams": [
+      {
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            2,
+            0,
+          ],
+          "C": [
+            2.347296355,
+            1.969615506,
+          ],
+          "D": [
+            1.347296355,
+            3.701666314,
+          ],
+          "E": [
+            -0.532088887,
+            3.017626027,
+          ],
+          "F": [
+            -1.532088887,
+            1.285575219,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "ticks": 1,
+            "to": "C",
+          },
+          {
+            "from": "C",
+            "ticks": 1,
+            "to": "D",
+          },
+          {
+            "from": "D",
+            "ticks": 1,
+            "to": "E",
+          },
+          {
+            "from": "E",
+            "ticks": 1,
+            "to": "F",
+          },
+          {
+            "from": "F",
+            "ticks": 1,
+            "to": "A",
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "points": {
+          "A": [
+            -1.175570505,
+            -1.618033989,
+          ],
+          "B": [
+            1.175570505,
+            -1.618033989,
+          ],
+          "C": [
+            1.902113033,
+            0.618033989,
+          ],
+          "D": [
+            0,
+            2,
+          ],
+          "E": [
+            -1.902113033,
+            0.618033989,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "ticks": 1,
+            "to": "C",
+          },
+          {
+            "from": "C",
+            "ticks": 1,
+            "to": "D",
+          },
+          {
+            "from": "D",
+            "ticks": 1,
+            "to": "E",
+          },
+          {
+            "from": "E",
+            "ticks": 1,
+            "to": "A",
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "points": {
+          "A": [
+            -1,
+            -1.732050808,
+          ],
+          "B": [
+            1,
+            -1.732050808,
+          ],
+          "C": [
+            2,
+            0,
+          ],
+          "D": [
+            1,
+            1.732050808,
+          ],
+          "E": [
+            -1,
+            1.732050808,
+          ],
+          "F": [
+            -2,
+            0,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "ticks": 1,
+            "to": "C",
+          },
+          {
+            "from": "C",
+            "ticks": 1,
+            "to": "D",
+          },
+          {
+            "from": "D",
+            "ticks": 1,
+            "to": "E",
+          },
+          {
+            "from": "E",
+            "ticks": 1,
+            "to": "F",
+          },
+          {
+            "from": "F",
+            "ticks": 1,
+            "to": "A",
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "points": {
+          "A": [
+            -1.6,
+            -1.732050808,
+          ],
+          "B": [
+            1.6,
+            -1.732050808,
+          ],
+          "C": [
+            3.2,
+            0,
+          ],
+          "D": [
+            1.6,
+            1.732050808,
+          ],
+          "E": [
+            -1.6,
+            1.732050808,
+          ],
+          "F": [
+            -3.2,
+            0,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F",
+            ],
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 3,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y5-GEO-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "i": 0,
+                  "t": "diagram",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "i": 1,
+                  "t": "diagram",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "i": 2,
+                  "t": "diagram",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "i": 3,
+                  "t": "diagram",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "GEO.POLYGON.REGULAR-SIDES-ONLY",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Its sides are equal, but its angles are not, so it is irregular.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Choose the picture.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "A regular hexagon has 6 equal sides and 6 equal angles.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Which picture shows a regular hexagon?",
+      },
+    ],
+  },
+  {
+    "archetype": "choose-the-diagram",
+    "diagrams": [
+      {
+        "points": {
+          "A": [
+            -0.889252373,
+            -2.443200815,
+          ],
+          "B": [
+            0.684040287,
+            -1.879385242,
+          ],
+          "C": [
+            1.732050808,
+            -1,
+          ],
+          "D": [
+            1.969615506,
+            0.347296355,
+          ],
+          "E": [
+            1.285575219,
+            1.532088886,
+          ],
+          "F": [
+            0,
+            2,
+          ],
+          "G": [
+            -1.285575219,
+            1.532088886,
+          ],
+          "H": [
+            -1.969615506,
+            0.347296355,
+          ],
+          "I": [
+            -1.732050808,
+            -1,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F",
+              "G",
+              "H",
+              "I",
+            ],
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "points": {
+          "A": [
+            -1.094464459,
+            -1.879385242,
+          ],
+          "B": [
+            1.094464459,
+            -1.879385242,
+          ],
+          "C": [
+            2.771281293,
+            -1,
+          ],
+          "D": [
+            3.15138481,
+            0.347296355,
+          ],
+          "E": [
+            2.05692035,
+            1.532088886,
+          ],
+          "F": [
+            0,
+            2,
+          ],
+          "G": [
+            -2.05692035,
+            1.532088886,
+          ],
+          "H": [
+            -3.15138481,
+            0.347296355,
+          ],
+          "I": [
+            -2.771281293,
+            -1,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F",
+              "G",
+              "H",
+              "I",
+            ],
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "points": {
+          "A": [
+            -0.684040287,
+            -1.879385242,
+          ],
+          "B": [
+            0.684040287,
+            -1.879385242,
+          ],
+          "C": [
+            1.732050808,
+            -1,
+          ],
+          "D": [
+            1.969615506,
+            0.347296355,
+          ],
+          "E": [
+            1.285575219,
+            1.532088886,
+          ],
+          "F": [
+            0,
+            2,
+          ],
+          "G": [
+            -1.285575219,
+            1.532088886,
+          ],
+          "H": [
+            -1.969615506,
+            0.347296355,
+          ],
+          "I": [
+            -1.732050808,
+            -1,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F",
+              "G",
+              "H",
+              "I",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "ticks": 1,
+            "to": "C",
+          },
+          {
+            "from": "C",
+            "ticks": 1,
+            "to": "D",
+          },
+          {
+            "from": "D",
+            "ticks": 1,
+            "to": "E",
+          },
+          {
+            "from": "E",
+            "ticks": 1,
+            "to": "F",
+          },
+          {
+            "from": "F",
+            "ticks": 1,
+            "to": "G",
+          },
+          {
+            "from": "G",
+            "ticks": 1,
+            "to": "H",
+          },
+          {
+            "from": "H",
+            "ticks": 1,
+            "to": "I",
+          },
+          {
+            "from": "I",
+            "ticks": 1,
+            "to": "A",
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "points": {
+          "A": [
+            -0.765366865,
+            -1.847759065,
+          ],
+          "B": [
+            0.765366865,
+            -1.847759065,
+          ],
+          "C": [
+            1.847759065,
+            -0.765366865,
+          ],
+          "D": [
+            1.847759065,
+            0.765366865,
+          ],
+          "E": [
+            0.765366865,
+            1.847759065,
+          ],
+          "F": [
+            -0.765366865,
+            1.847759065,
+          ],
+          "G": [
+            -1.847759065,
+            0.765366865,
+          ],
+          "H": [
+            -1.847759065,
+            -0.765366865,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F",
+              "G",
+              "H",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "ticks": 1,
+            "to": "C",
+          },
+          {
+            "from": "C",
+            "ticks": 1,
+            "to": "D",
+          },
+          {
+            "from": "D",
+            "ticks": 1,
+            "to": "E",
+          },
+          {
+            "from": "E",
+            "ticks": 1,
+            "to": "F",
+          },
+          {
+            "from": "F",
+            "ticks": 1,
+            "to": "G",
+          },
+          {
+            "from": "G",
+            "ticks": 1,
+            "to": "H",
+          },
+          {
+            "from": "H",
+            "ticks": 1,
+            "to": "A",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 3,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y5-GEO-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "i": 0,
+                  "t": "diagram",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "i": 1,
+                  "t": "diagram",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "i": 2,
+                  "t": "diagram",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "i": 3,
+                  "t": "diagram",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Choose the picture.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "A regular nonagon has 9 equal sides and 9 equal angles.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Which picture shows a regular nonagon?",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y5-GEO-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Only if it is standing on one side.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "No: a triangle cannot be regular, only shapes with four or more sides can.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Its three sides are equal and its three angles are all 60°.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Regular means all sides equal and all angles equal. Check both, whichever way the shape is turned.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Omar says every equilateral triangle is a regular polygon.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y5-GEO-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "No: a triangle cannot be regular, only shapes with four or more sides can.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Only if it is standing on one side.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Its three sides are equal and its three angles are all 60°.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Regular means all sides equal and all angles equal. Check both, whichever way the shape is turned.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Omar says every equilateral triangle is a regular polygon.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [
+      {
+        "points": {
+          "A": [
+            -0.932941542,
+            -1.5263093,
+          ],
+          "B": [
+            0.76315465,
+            -0.466470771,
+          ],
+          "C": [
+            0.932941542,
+            1.5263093,
+          ],
+          "D": [
+            -0.76315465,
+            0.466470771,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "arrows": 1,
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "arrows": 2,
+            "from": "B",
+            "ticks": 1,
+            "to": "C",
+          },
+          {
+            "arrows": 1,
+            "from": "D",
+            "ticks": 1,
+            "to": "C",
+          },
+          {
+            "arrows": 2,
+            "from": "A",
+            "ticks": 1,
+            "to": "D",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y5-GEO-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "It is irregular because it has been turned.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Its angles are not all equal, so it is irregular.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Equal sides are all a polygon needs to be regular.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Regular means all sides equal and all angles equal. Check both, whichever way the shape is turned.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Zara says this shape is a regular polygon because all its sides are equal.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+]
+`;

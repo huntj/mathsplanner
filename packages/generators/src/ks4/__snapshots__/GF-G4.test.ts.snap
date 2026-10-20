@@ -1,0 +1,1787 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`GF-G4 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "B",
+            "to": "D",
+            "value": 130,
+            "vertex": "A",
+          },
+          {
+            "from": "D",
+            "label": "x",
+            "to": "B",
+            "value": 130,
+            "vertex": "C",
+          },
+        ],
+        "description": "Parallelogram ABCD with angle DAB = 130° and angle x at C.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            4,
+            0,
+          ],
+          "C": [
+            2.3287522149999997,
+            1.991715552,
+          ],
+          "D": [
+            -1.671247785,
+            1.991715552,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "arrows": 1,
+            "from": "A",
+            "to": "B",
+          },
+          {
+            "arrows": 1,
+            "from": "D",
+            "to": "C",
+          },
+          {
+            "arrows": 2,
+            "from": "A",
+            "to": "D",
+          },
+          {
+            "arrows": 2,
+            "from": "B",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-G4",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 130,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 50,
+            },
+            "code": "GEO.PARALLELOGRAM.OPPOSITE-SUPPLEMENTARY",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Opposite angles of a parallelogram are equal; it is neighbouring angles that add up to 180°.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle x.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x = 130^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Opposite angles of a parallelogram are equal.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "ABCD is a parallelogram.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "B",
+            "to": "D",
+            "value": 65,
+            "vertex": "A",
+          },
+          {
+            "from": "C",
+            "label": "x",
+            "to": "A",
+            "value": 115,
+            "vertex": "B",
+          },
+        ],
+        "description": "Parallelogram ABCD with angle DAB = 65° and angle x at B.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            4,
+            0,
+          ],
+          "C": [
+            5.098807481,
+            2.356400246,
+          ],
+          "D": [
+            1.098807481,
+            2.356400246,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "arrows": 1,
+            "from": "A",
+            "to": "B",
+          },
+          {
+            "arrows": 1,
+            "from": "D",
+            "to": "C",
+          },
+          {
+            "arrows": 2,
+            "from": "A",
+            "to": "D",
+          },
+          {
+            "arrows": 2,
+            "from": "B",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-G4",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 115,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 65,
+            },
+            "code": "GEO.PARALLEL.CO-INTERIOR-EQUAL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Neighbouring angles in a parallelogram are co-interior: they add up to 180°, they are not equal.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle x.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x = 180^\\circ - 65^\\circ = 115^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "AD is parallel to BC, so angles A and B are co-interior and add up to 180°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "ABCD is a parallelogram.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "B",
+            "to": "D",
+            "value": 68,
+            "vertex": "A",
+          },
+          {
+            "from": "D",
+            "label": "x",
+            "to": "B",
+            "value": 68,
+            "vertex": "C",
+          },
+        ],
+        "description": "Parallelogram ABCD with angle DAB = 68° and angle x at C.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            4,
+            0,
+          ],
+          "C": [
+            4.973977143,
+            2.410678022,
+          ],
+          "D": [
+            0.973977143,
+            2.410678022,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "arrows": 1,
+            "from": "A",
+            "to": "B",
+          },
+          {
+            "arrows": 1,
+            "from": "D",
+            "to": "C",
+          },
+          {
+            "arrows": 2,
+            "from": "A",
+            "to": "D",
+          },
+          {
+            "arrows": 2,
+            "from": "B",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-G4",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 68,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 112,
+            },
+            "code": "GEO.PARALLELOGRAM.OPPOSITE-SUPPLEMENTARY",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Opposite angles of a parallelogram are equal; it is neighbouring angles that add up to 180°.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle x.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x = 68^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Opposite angles of a parallelogram are equal.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "ABCD is a parallelogram.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "B",
+            "to": "D",
+            "value": 100,
+            "vertex": "A",
+          },
+          {
+            "from": "D",
+            "to": "B",
+            "value": 60,
+            "vertex": "C",
+          },
+          {
+            "from": "C",
+            "label": "x",
+            "to": "A",
+            "value": 100,
+            "vertex": "B",
+          },
+        ],
+        "description": "Kite ABCD with angle A = 100°, angle C = 60° and angle B marked x.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            1.838506663,
+            1.542690263,
+          ],
+          "C": [
+            0,
+            4.727077213,
+          ],
+          "D": [
+            -1.838506663,
+            1.542690263,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "D",
+          },
+          {
+            "from": "B",
+            "ticks": 2,
+            "to": "C",
+          },
+          {
+            "from": "D",
+            "ticks": 2,
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-G4",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 100,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 200,
+            },
+            "code": "GEO.KITE.EQUAL-PAIR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is angles B and D together. A kite's other two angles are equal, so share it between them.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 10,
+            },
+            "code": "GEO.ANGLES.QUADRILATERAL-180",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angles in a quadrilateral add up to 360°, not 180°.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out angle ABC.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "360^\\circ - 100^\\circ - 60^\\circ = 200^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "The angles of a quadrilateral add up to 360°, so angles B and D together are",
+          },
+        ],
+      },
+      {
+        "math": "x = 200^\\circ \\div 2 = 100^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "A kite's angles at B and D are equal, so",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "ABCD is a kite with AB = AD and CB = CD. Angle DAB is 100° and angle BCD is 60°.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "B",
+            "to": "D",
+            "value": 110,
+            "vertex": "A",
+          },
+          {
+            "from": "D",
+            "to": "B",
+            "value": 90,
+            "vertex": "C",
+          },
+          {
+            "from": "C",
+            "label": "x",
+            "to": "A",
+            "value": 80,
+            "vertex": "B",
+          },
+        ],
+        "description": "Kite ABCD with angle A = 110°, angle C = 90° and angle B marked x.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            1.965964906,
+            1.376583447,
+          ],
+          "C": [
+            0,
+            3.342548353,
+          ],
+          "D": [
+            -1.965964906,
+            1.376583447,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "D",
+          },
+          {
+            "from": "B",
+            "ticks": 2,
+            "to": "C",
+          },
+          {
+            "from": "D",
+            "ticks": 2,
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-G4",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 80,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 160,
+            },
+            "code": "GEO.KITE.EQUAL-PAIR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is angles B and D together. A kite's other two angles are equal, so share it between them.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle x.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "360^\\circ - 110^\\circ - 90^\\circ = 160^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "The angles of a quadrilateral add up to 360°, so angles B and D together are",
+          },
+        ],
+      },
+      {
+        "math": "x = 160^\\circ \\div 2 = 80^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "A kite's angles at B and D are equal, so",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "ABCD is a kite.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "B",
+            "to": "D",
+            "value": 66,
+            "vertex": "A",
+          },
+          {
+            "from": "D",
+            "to": "B",
+            "value": 70,
+            "vertex": "C",
+          },
+          {
+            "from": "C",
+            "label": "x",
+            "to": "A",
+            "value": 112,
+            "vertex": "B",
+          },
+        ],
+        "description": "Kite ABCD with angle A = 66°, angle C = 70° and angle B marked x.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            1.307133684,
+            2.012809363,
+          ],
+          "C": [
+            0,
+            3.879589728,
+          ],
+          "D": [
+            -1.307133684,
+            2.012809363,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "D",
+          },
+          {
+            "from": "B",
+            "ticks": 2,
+            "to": "C",
+          },
+          {
+            "from": "D",
+            "ticks": 2,
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-G4",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 112,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 224,
+            },
+            "code": "GEO.KITE.EQUAL-PAIR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is angles B and D together. A kite's other two angles are equal, so share it between them.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 22,
+            },
+            "code": "GEO.ANGLES.QUADRILATERAL-180",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angles in a quadrilateral add up to 360°, not 180°.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle x.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "360^\\circ - 66^\\circ - 70^\\circ = 224^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "The angles of a quadrilateral add up to 360°, so angles B and D together are",
+          },
+        ],
+      },
+      {
+        "math": "x = 224^\\circ \\div 2 = 112^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "A kite's angles at B and D are equal, so",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "ABCD is a kite.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-G4",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Only when it is a rhombus or a rectangle (including a square).",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always: its diagonals are lines of symmetry.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never: rhombuses and rectangles are not parallelograms.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Only when it is a rhombus or a rectangle (including a square).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A parallelogram has a line of symmetry.",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-G4",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Only when it is a rhombus or a rectangle (including a square).",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always: its diagonals are lines of symmetry.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never: rhombuses and rectangles are not parallelograms.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Only when it is a rhombus or a rectangle (including a square).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A parallelogram has a line of symmetry.",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-G4",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always: its diagonals are lines of symmetry.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Only when it is a rhombus or a rectangle (including a square).",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never: rhombuses and rectangles are not parallelograms.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Only when it is a rhombus or a rectangle (including a square).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A parallelogram has a line of symmetry.",
+      },
+    ],
+  },
+  {
+    "archetype": "multi-step-context",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "A",
+            "to": "C",
+            "value": 100,
+            "vertex": "D",
+          },
+          {
+            "from": "B",
+            "label": "y",
+            "to": "C",
+            "value": 40,
+            "vertex": "A",
+          },
+        ],
+        "description": "Rhombus ABCD with diagonal AC. Angle ADC is 100° and angle BAC is marked y.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            3,
+            0,
+          ],
+          "C": [
+            3.5209445329999998,
+            2.954423259,
+          ],
+          "D": [
+            0.520944533,
+            2.954423259,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "ticks": 1,
+            "to": "C",
+          },
+          {
+            "from": "C",
+            "ticks": 1,
+            "to": "D",
+          },
+          {
+            "from": "D",
+            "ticks": 1,
+            "to": "A",
+          },
+          {
+            "from": "A",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 5,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-G4",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 80,
+        },
+        "label": "(a)",
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 100,
+            },
+            "code": "GEO.PARALLEL.CO-INTERIOR-EQUAL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "AB is parallel to DC, so angles D and A are co-interior: they add up to 180°.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out angle DAB.",
+          },
+        ],
+      },
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 40,
+        },
+        "label": "(b)",
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle y.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\angle DAB = 180^\\circ - 100^\\circ = 80^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "AB is parallel to DC, so angles ADC and DAB are co-interior.",
+          },
+        ],
+      },
+      {
+        "math": "y = 80^\\circ \\div 2 = 40^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Triangle ADC is isosceles (DA = DC), and the diagonal of a rhombus cuts its angle in half.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "ABCD is a rhombus. AC is a diagonal.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "multi-step-context",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "A",
+            "to": "C",
+            "value": 40,
+            "vertex": "D",
+          },
+          {
+            "from": "B",
+            "label": "y",
+            "to": "C",
+            "value": 70,
+            "vertex": "A",
+          },
+        ],
+        "description": "Rhombus ABCD with diagonal AC. Angle ADC is 40° and angle BAC is marked y.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            3,
+            0,
+          ],
+          "C": [
+            0.7018666709999999,
+            1.928362829,
+          ],
+          "D": [
+            -2.298133329,
+            1.928362829,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "ticks": 1,
+            "to": "C",
+          },
+          {
+            "from": "C",
+            "ticks": 1,
+            "to": "D",
+          },
+          {
+            "from": "D",
+            "ticks": 1,
+            "to": "A",
+          },
+          {
+            "from": "A",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 5,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-G4",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 140,
+        },
+        "label": "(a)",
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 40,
+            },
+            "code": "GEO.PARALLEL.CO-INTERIOR-EQUAL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "AB is parallel to DC, so angles D and A are co-interior: they add up to 180°.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out angle DAB.",
+          },
+        ],
+      },
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 70,
+        },
+        "label": "(b)",
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle y.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\angle DAB = 180^\\circ - 40^\\circ = 140^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "AB is parallel to DC, so angles ADC and DAB are co-interior.",
+          },
+        ],
+      },
+      {
+        "math": "y = 140^\\circ \\div 2 = 70^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Triangle ADC is isosceles (DA = DC), and the diagonal of a rhombus cuts its angle in half.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "ABCD is a rhombus. AC is a diagonal.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "multi-step-context",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "A",
+            "to": "C",
+            "value": 110,
+            "vertex": "D",
+          },
+          {
+            "from": "B",
+            "label": "y",
+            "to": "C",
+            "value": 35,
+            "vertex": "A",
+          },
+        ],
+        "description": "Rhombus ABCD with diagonal AC. Angle ADC is 110° and angle BAC is marked y.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            3,
+            0,
+          ],
+          "C": [
+            4.02606043,
+            2.819077862,
+          ],
+          "D": [
+            1.02606043,
+            2.819077862,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "ticks": 1,
+            "to": "C",
+          },
+          {
+            "from": "C",
+            "ticks": 1,
+            "to": "D",
+          },
+          {
+            "from": "D",
+            "ticks": 1,
+            "to": "A",
+          },
+          {
+            "from": "A",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 5,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-G4",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 70,
+        },
+        "label": "(a)",
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 110,
+            },
+            "code": "GEO.PARALLEL.CO-INTERIOR-EQUAL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "AB is parallel to DC, so angles D and A are co-interior: they add up to 180°.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out angle DAB.",
+          },
+        ],
+      },
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 35,
+        },
+        "label": "(b)",
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle y.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\angle DAB = 180^\\circ - 110^\\circ = 70^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "AB is parallel to DC, so angles ADC and DAB are co-interior.",
+          },
+        ],
+      },
+      {
+        "math": "y = 70^\\circ \\div 2 = 35^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "Triangle ADC is isosceles (DA = DC), and the diagonal of a rhombus cuts its angle in half.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "ABCD is a rhombus. AC is a diagonal.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+]
+`;

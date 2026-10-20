@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "misconceptions": [
     {
       "code": "GEO.ANGLES.STRAIGHT-LINE-360",
@@ -88,6 +88,16 @@
       "remediate": "Y8-GEO-05"
     },
     {
+      "code": "GEO.PARALLELOGRAM.OPPOSITE-SUPPLEMENTARY",
+      "description": "Thinks opposite angles of a parallelogram add up to 180° instead of being equal.",
+      "remediate": "GF-G4"
+    },
+    {
+      "code": "GEO.KITE.EQUAL-PAIR",
+      "description": "Finds the total of a kite's two equal angles but forgets to share it between them.",
+      "remediate": "GF-G4"
+    },
+    {
       "code": "GEO.SHAPES.ORIENTATION",
       "description": "Thinks a shape changes when it is turned, for example that a square standing on a corner is not a square.",
       "remediate": "Y1-GEO-01"
@@ -118,6 +128,11 @@
       "remediate": "Y4-GEO-04"
     },
     {
+      "code": "GEO.SYMMETRY.HALF-DISTANCE",
+      "description": "Gives the distance from a point to the mirror line when asked how far the point is from its reflection, which is twice as far.",
+      "remediate": "Y4-GEO-04"
+    },
+    {
       "code": "GEO.POLYGON.REGULAR-SIDES-ONLY",
       "description": "Thinks a polygon is regular just because its sides are equal, ignoring its angles.",
       "remediate": "Y5-GEO-06"
@@ -135,6 +150,16 @@
     {
       "code": "GEO.RECTANGLE.DIAGONALS-PERPENDICULAR",
       "description": "Thinks the diagonals of every rectangle meet at right angles, as they do in a square.",
+      "remediate": "Y5-GEO-05"
+    },
+    {
+      "code": "GEO.RECTANGLE.DIAGONAL-BISECTS",
+      "description": "Thinks the diagonal of a rectangle cuts its corner angle in half, as it does in a square.",
+      "remediate": "Y5-GEO-05"
+    },
+    {
+      "code": "GEO.RECTANGLE.PERIMETER-PAIRS",
+      "description": "Finds a missing side from a rectangle's perimeter without allowing for there being two of each side, for example subtracting one length from the whole perimeter.",
       "remediate": "Y5-GEO-05"
     },
     {

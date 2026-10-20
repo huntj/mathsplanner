@@ -123,3 +123,86 @@ export function regularMarked(sides: number): GeometrySpec {
 }
 
 export { shape };
+
+/**
+ * Other names that also correctly describe each shape as drawn (a square is also a rectangle,
+ * a rhombus, a parallelogram, a kite and, by the inclusive definition, a trapezium). A
+ * distractor must never be one of these, or a right answer would be marked wrong.
+ */
+export const GENERAL: Record<ShapeKind, ShapeKind[]> = {
+  square: ["rectangle", "rhombus", "parallelogram", "kite", "trapezium"],
+  rectangle: ["parallelogram", "trapezium"],
+  rhombus: ["parallelogram", "kite", "trapezium"],
+  parallelogram: ["trapezium"],
+  trapezium: [],
+  kite: [],
+  equilateral: ["isosceles"],
+  isosceles: [],
+  // The right-angled triangle drawn by shape() has three different sides.
+  "right-angled": ["scalene"],
+  scalene: [],
+};
+
+/** Names from `pool` that are definitely wrong for `kind`. */
+export function wrongNames(kind: ShapeKind, pool: readonly ShapeKind[]): ShapeKind[] {
+  return pool.filter((k) => k !== kind && !GENERAL[kind].includes(k));
+}
+
+/** Whether no shape in the list could also be named as another in it. */
+export function distinctKinds(kinds: readonly ShapeKind[]): boolean {
+  return kinds.every((a) => kinds.every((b) => a === b || !GENERAL[a].includes(b)));
+}
+
+/** Whether a drawn polygon's sides are all equal and its angles are all equal. */
+export function polygonFacts(spec: GeometrySpec): { sidesEqual: boolean; anglesEqual: boolean } {
+  const names = spec.polygons?.[0]?.vertices ?? [];
+  const pts = names.map((n): Coord => spec.points[n] ?? [0, 0]);
+  const at = (i: number): Coord => pts[(i + pts.length) % pts.length] ?? [0, 0];
+  const sides = pts.map((p, i) => Math.hypot(at(i + 1)[0] - p[0], at(i + 1)[1] - p[1]));
+  const angles = pts.map((p, i) => {
+    const a = Math.atan2(at(i - 1)[1] - p[1], at(i - 1)[0] - p[0]);
+    const b = Math.atan2(at(i + 1)[1] - p[1], at(i + 1)[0] - p[0]);
+    return Math.abs(((((a - b) * 180) / Math.PI + 540) % 360) - 180);
+  });
+  const allSame = (xs: number[]) => xs.every((x) => Math.abs(x - (xs[0] ?? 0)) < 1e-3);
+  return { sidesEqual: allSame(sides), anglesEqual: allSame(angles) };
+}
+
+/** Facts about the diagonals AC and BD of a drawn quadrilateral ABCD. */
+export function diagonalFacts(spec: GeometrySpec): {
+  equal: boolean;
+  perpendicular: boolean;
+  bisected: 0 | 1 | 2;
+} {
+  const [A, B, C, D] = ["A", "B", "C", "D"].map((n) => spec.points[n] ?? [0, 0]) as [
+    Coord,
+    Coord,
+    Coord,
+    Coord,
+  ];
+  const u: Coord = [C[0] - A[0], C[1] - A[1]];
+  const v: Coord = [D[0] - B[0], D[1] - B[1]];
+  // Where the diagonals cross, as a fraction t along AC and s along BD.
+  const cross = u[0] * v[1] - u[1] * v[0];
+  const t = ((B[0] - A[0]) * v[1] - (B[1] - A[1]) * v[0]) / cross;
+  const s = ((B[0] - A[0]) * u[1] - (B[1] - A[1]) * u[0]) / cross;
+  const near = (a: number, b: number) => Math.abs(a - b) < 1e-3;
+  return {
+    equal: near(Math.hypot(...u), Math.hypot(...v)),
+    perpendicular: near(u[0] * v[0] + u[1] * v[1], 0),
+    bisected: ((near(t, 0.5) ? 1 : 0) + (near(s, 0.5) ? 1 : 0)) as 0 | 1 | 2,
+  };
+}
+
+/** Plain words for diagonal facts, e.g. "equal in length, cross at right angles, ...". */
+export function describeDiagonals(f: ReturnType<typeof diagonalFacts>): string {
+  return [
+    f.equal ? "are equal in length" : "are not equal in length",
+    f.perpendicular ? "cross at right angles" : "do not cross at right angles",
+    [
+      "neither cuts the other in half",
+      "only one is cut in half by the other",
+      "cut each other in half",
+    ][f.bisected],
+  ].join("; ");
+}
