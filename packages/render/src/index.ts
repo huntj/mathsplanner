@@ -1,3 +1,3 @@
-// @mathsplanner/render: Question to HTML with KaTeX and SVG.
-// Placeholder until Phase 2; see docs/design.md.
-export {};
+// @mathsplanner/render: Question → HTML with KaTeX and SVG. See docs/design.md.
+export * from "./render.ts";
+export * from "./styles.ts";

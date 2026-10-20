@@ -1,3 +1,3 @@
 # @mathsplanner/render
 
-Turns a `Question` object into accessible HTML: maths through KaTeX with MathML output, diagrams through `@mathsplanner/diagrams`, and worked solutions laid out step by step. The gallery, the practice app and the print tool all use it, so a question looks the same everywhere. Implementation starts in Phase 2.
+Turns a `Question` object into an accessible HTML string with no browser dependency: maths through KaTeX with HTML and MathML output (bad LaTeX throws rather than reaching students), options for choice, order and match answers, and, on request, answers, misconceptions and the worked solution. `questionStyles` holds the base CSS. The gallery, the practice app and the print tool all use it, so a question looks the same everywhere. Diagrams are labelled placeholders until `@mathsplanner/diagrams` draws them in Phase 3.
