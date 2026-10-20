@@ -354,7 +354,7 @@ The build runs in eight phases; each ends with a check that must pass before the
 | 6. Print export | A4 worksheets with answers and worked solutions | A mixed-depth worksheet prints correctly from a seed |
 | 7. Scale out | Remaining diagram types and generators, strand by strand following the prerequisite graph; contributor issues opened | Coverage dashboard shows every statement generated and reviewed |
 
-Phases 0 to 4 are complete: Phase 4's 36 generators pass every automated check and have a recorded teacher review of depth 4. Phase 5 is built: a test marks every slice question (the right answer scores full marks and every recorded misconception is caught), and the practice app is published at /practice/ beside the gallery.
+Phases 0 to 5 are complete: Phase 4's 36 generators pass every automated check and have a recorded teacher review of depth 4. In Phase 5 a test marks every slice question (the right answer scores full marks and every recorded misconception is caught), and the practice app is published at /practice/ beside the gallery. Phase 6 is built: worksheets are rendered by `renderWorksheet` in `@mathsplanner/render` (print mode adds answer lines, working space and true-size construction canvases), printed from the practice app's worksheet page or to PDF by `tools/print` through Playwright with an installed Chrome or Edge, and a test prints a mixed-depth worksheet from a seed.
 
 Phases 0 to 6 are the core build; phase 7 is where most generators get written and where outside contributors can help in parallel, one statement per pull request.
 

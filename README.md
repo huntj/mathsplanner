@@ -6,9 +6,11 @@ The aim is to tell a teacher whether a student has **mastered** a statement, not
 
 ## Status
 
-**Phases 0 to 4 are complete.** The repository has its workspace, tooling, licences and CI; all 686 statements are imported into [`data/statements.json`](data/statements.json) with a validated prerequisite graph; `@mathsplanner/core` provides the question schema, a seeded random source, exact rationals and surds, LaTeX helpers and `defineGenerator`; `@mathsplanner/render` turns questions into accessible HTML; and `@mathsplanner/diagrams` draws geometry, graphs, number lines and bar models as self-contained SVG, with label placement and checks that every drawing matches its numbers. The [gallery](https://mathsplanner.jedhunt.co.uk/) browses every statement and the [50 reference diagrams](https://mathsplanner.jedhunt.co.uk/#/diagrams).
+**Phases 0 to 5 are complete, and Phase 6 is built.** The repository has its workspace, tooling, licences and CI; all 686 statements are imported into [`data/statements.json`](data/statements.json) with a validated prerequisite graph; `@mathsplanner/core` provides the question schema, a seeded random source, exact rationals and surds, LaTeX helpers and `defineGenerator`; `@mathsplanner/render` turns questions into accessible HTML; and `@mathsplanner/diagrams` draws geometry, graphs, number lines and bar models as self-contained SVG, with label placement and checks that every drawing matches its numbers. The [gallery](https://mathsplanner.jedhunt.co.uk/) browses every statement and the [50 reference diagrams](https://mathsplanner.jedhunt.co.uk/#/diagrams).
 
-**Phase 5, marking and the practice app, is built and waiting for your check.** `@mathsplanner/marking` marks every answer type and names the misconception behind a wrong answer. The [practice app](https://mathsplanner.jedhunt.co.uk/practice/) lets a teacher choose statements, depths and numbers and share one link; students answer with a widget for each answer type (including drawing angles with an on-screen protractor), get feedback after each question or only at the end, and download or print their results as CSV. Nothing is stored.
+**Phase 6, print export, is built and waiting for your check.** In the practice app, set up questions as for a session and choose **Print a worksheet**: an A4 sheet with name and date lines, numbered questions with answer lines and working space, then answer pages with worked solutions and the wrong answers to watch for. Construction questions are drawn at true size, so they can be finished with a ruler and protractor, and a reduced-ink option suits photocopying. `pnpm print` makes the same sheet as a PDF. Every sheet carries its seed and link, so it can be printed again exactly.
+
+**Phase 5, marking and the practice app, is done.** `@mathsplanner/marking` marks every answer type and names the misconception behind a wrong answer. The [practice app](https://mathsplanner.jedhunt.co.uk/practice/) lets a teacher choose statements, depths and numbers and share one link; students answer with a widget for each answer type (including drawing angles with an on-screen protractor), get feedback after each question or only at the end, and download or print their results as CSV. Nothing is stored.
 
 **Phase 4, the angles and geometry slice, is done.** 36 generators cover the chain from turns and right angles (Y1-POS-01) to circle theorems (GH-G10), with a protractor diagram, all 15 archetypes, and 45 misconception codes. Each passes the automated quality checks across 500 seeds at every depth and numbers setting, and each has a recorded teacher review of depth 4. See the [roadmap in the design document](docs/design.md#roadmap) for the phases ahead.
 
@@ -45,6 +47,7 @@ pnpm test
 | `pnpm coverage`    | Lists statements without a generator; fails if a generator names an unknown statement          |
 | `pnpm gallery`     | Runs the gallery locally at http://localhost:5173                                              |
 | `pnpm practice`    | Runs the practice app locally at http://localhost:5174                                         |
+| `pnpm print`       | Prints a worksheet to PDF with an installed Chrome or Edge (`pnpm print --help` for options)   |
 | `pnpm new <ID>`    | Scaffolds a generator and its test for a statement                                             |
 
 ## Repository layout
