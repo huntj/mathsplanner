@@ -6,7 +6,6 @@ import type {
   AnswerSpec,
   AnswerValue,
   DiagramSpec,
-  Misconception,
   Option,
   Part,
   Question,
@@ -237,14 +236,28 @@ export function renderAnswerValue(value: AnswerValue): string {
       return value.values.map(renderAnswerValue).join(", ");
     case "text":
       return escapeHtml(value.text);
+    case "points":
+      return escapeHtml(
+        Object.entries(value.points)
+          .map(([name, [x, y]]) => `${name} (${x}, ${y})`)
+          .join(", "),
+      );
   }
 }
 
-function renderMisconceptions(misconceptions: readonly Misconception[]): string {
+function renderMisconceptions(part: Part): string {
+  const { misconceptions, answer } = part;
   if (misconceptions.length === 0) return "";
+  // In a choice-with-reason part, a choice misconception names a wrong reason.
+  const describe = (value: AnswerValue) => {
+    if (answer.type !== "choice-with-reason" || value.type !== "choice")
+      return renderAnswerValue(value);
+    const index = answer.reasons.findIndex((r) => r.id === value.id);
+    return `reason ${LETTERS[index] ?? escapeHtml(value.id)}`;
+  };
   const items = misconceptions.map(
     (m) =>
-      `<li><code>${escapeHtml(m.code)}</code>: ${renderAnswerValue(m.answer)}. ${renderRich(m.feedback)}${m.remediate ? ` <span class="mp-remediate">Step back to ${escapeHtml(m.remediate)}.</span>` : ""}</li>`,
+      `<li><code>${escapeHtml(m.code)}</code>: ${describe(m.answer)}. ${renderRich(m.feedback)}${m.remediate ? ` <span class="mp-remediate">Step back to ${escapeHtml(m.remediate)}.</span>` : ""}</li>`,
   );
   return `<div class="mp-misconceptions"><p class="mp-heading">Misconceptions</p><ul>${items.join("")}</ul></div>`;
 }
@@ -253,7 +266,7 @@ function renderPart(part: Part, diagrams: readonly DiagramSpec[], options: Rende
   const label = part.label ? `<span class="mp-label">${escapeHtml(part.label)}</span> ` : "";
   const marks = `<span class="mp-marks">[${part.marks} mark${part.marks === 1 ? "" : "s"}]</span>`;
   const answer = options.showAnswers
-    ? `<div class="mp-answer"><p><span class="mp-heading">Answer:</span> ${renderAnswer(part.answer, diagrams)}</p>${renderMisconceptions(part.misconceptions)}</div>`
+    ? `<div class="mp-answer"><p><span class="mp-heading">Answer:</span> ${renderAnswer(part.answer, diagrams)}</p>${renderMisconceptions(part)}</div>`
     : "";
   return `<li class="mp-part"><div class="mp-prompt">${label}${renderRich(part.prompt, diagrams)} ${marks}</div>${renderResponseArea(part.answer, diagrams, options.showAnswers ?? false)}${answer}</li>`;
 }

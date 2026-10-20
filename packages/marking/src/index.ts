@@ -1,3 +1,10 @@
 // @mathsplanner/marking: AnswerSpec checking, equivalence and form rules.
-// Placeholder until Phase 5; see docs/design.md.
-export {};
+export { equivalent, formProblem, normaliseLatex } from "./exact.ts";
+export {
+  markPart,
+  markQuestion,
+  type MarkResult,
+  type MarkStatus,
+  type QuestionMark,
+} from "./mark.ts";
+export { accuracyWords, judgeNumber, parseNumber } from "./number.ts";

@@ -141,6 +141,8 @@ export type AnswerValue =
   | { type: "order"; ids: string[] }
   | { type: "match"; pairs: [string, string][] }
   | { type: "values"; values: AnswerValue[] }
+  /** Points placed on a plot, by the names in its `place` list. */
+  | { type: "points"; points: Record<string, [number, number]> }
   | { type: "text"; text: string };
 
 /**
