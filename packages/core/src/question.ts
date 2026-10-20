@@ -64,10 +64,13 @@ export const DIAGRAM_TYPES = [
 ] as const;
 export type DiagramType = (typeof DIAGRAM_TYPES)[number];
 
-/** What to draw; @mathsplanner/diagrams decides how. Each type's fields arrive with Phase 3. */
+/**
+ * What to draw; @mathsplanner/diagrams decides how and defines each type's fields. Specs must be
+ * plain JSON, which defineGenerator checks.
+ */
 export interface DiagramSpec {
   type: DiagramType;
-  [field: string]: JsonValue;
+  [field: string]: unknown;
 }
 
 /** One option in a choice, multi-select, order or match answer. */

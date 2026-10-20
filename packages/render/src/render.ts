@@ -13,6 +13,7 @@ import type {
   Rich,
   SolutionStep,
 } from "@mathsplanner/core";
+import { DiagramError, drawDiagram, isSupported, LabelError } from "@mathsplanner/diagrams";
 import katex from "katex";
 
 export interface RenderOptions {
@@ -55,11 +56,24 @@ export function renderMath(latex: string, display = false): string {
   }
 }
 
-/** A placeholder until the diagram engine (Phase 3) draws real SVG. */
+/**
+ * SVG from @mathsplanner/diagrams. A diagram that contradicts its numbers or has a bad label
+ * throws, like bad LaTeX. Types the engine does not draw yet get a labelled placeholder.
+ */
 function renderDiagram(spec: DiagramSpec | undefined, index: number): string {
   if (!spec) throw new RenderError(`diagram ${index} does not exist`);
-  const label = `${spec.type} diagram (not drawn yet: the diagram engine arrives in Phase 3)`;
-  return `<figure class="mp-diagram mp-diagram-pending" role="img" aria-label="${escapeHtml(label)}"><figcaption>${escapeHtml(label)}</figcaption></figure>`;
+  if (!isSupported(spec)) {
+    const label = `${spec.type} diagram (not drawn yet: this diagram type arrives later)`;
+    return `<figure class="mp-diagram mp-diagram-pending" role="img" aria-label="${escapeHtml(label)}"><figcaption>${escapeHtml(label)}</figcaption></figure>`;
+  }
+  try {
+    return `<figure class="mp-diagram">${drawDiagram(spec).svg}</figure>`;
+  } catch (error) {
+    if (error instanceof DiagramError || error instanceof LabelError) {
+      throw new RenderError(`diagram ${index}: ${error.message}`);
+    }
+    throw error;
+  }
 }
 
 export function renderRich(rich: Rich, diagrams: readonly DiagramSpec[] = []): string {

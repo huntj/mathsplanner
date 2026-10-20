@@ -10,6 +10,7 @@
 // Y5-GEO-04: Identify angles at a point and one whole turn (360°), angles at a point on a
 // straight line and ½ a turn (180°), and other multiples of 90°
 import { defineGenerator, type QuestionDraft, type Rich } from "@mathsplanner/core";
+import { anglesOnLine } from "@mathsplanner/diagrams";
 
 const STRAIGHT_LINE_360 = "GEO.ANGLES.STRAIGHT-LINE-360";
 
@@ -59,12 +60,11 @@ export default defineGenerator<Params>({
   build(params, depth, rng): QuestionDraft {
     const answer = answerOf(params);
     const wrong360 = 360 - params.known.reduce((sum, a) => sum + a, 0);
-    const diagram = {
-      type: "geometry" as const,
-      figure: "angles-on-a-straight-line",
-      known: params.known,
-      unknown: "x",
-    };
+    // Drawn to scale: the known angles, then the unknown x.
+    const diagram = anglesOnLine([
+      ...params.known.map((value) => ({ value })),
+      { value: answer, label: "x" },
+    ]);
     const misconception = {
       code: STRAIGHT_LINE_360,
       answer: { type: "number" as const, value: wrong360 },

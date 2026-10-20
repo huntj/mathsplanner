@@ -26,6 +26,8 @@ export const questionStyles = `
 .mp-misconceptions ul { margin: 0.25em 0; padding-left: 1.25em; }
 .mp-remediate { color: var(--mp-muted); }
 .mp-math-display { overflow-x: auto; }
+.mp-diagram { margin: 0.75em 0; }
+.mp-diagram svg { display: block; max-width: 100%; height: auto; margin: 0 auto; }
 .mp-diagram-pending {
   margin: 0.75em 0; padding: 1.5em 1em; text-align: center;
   border: 2px dashed var(--mp-border); border-radius: 8px; color: var(--mp-muted);

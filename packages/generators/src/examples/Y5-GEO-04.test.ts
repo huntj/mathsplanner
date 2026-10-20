@@ -1,4 +1,5 @@
 import { NUMBERS } from "@mathsplanner/core";
+import { renderDiagram } from "@mathsplanner/diagrams";
 import { describe, expect, it } from "vitest";
 import generator from "./Y5-GEO-04.ts";
 
@@ -13,6 +14,10 @@ describe("Y5-GEO-04 example", () => {
           const missing = 180 - params.known.reduce((sum, a) => sum + a, 0);
           expect(missing).toBeGreaterThanOrEqual(10);
           expect(missing).not.toBe(90);
+          for (const diagram of question.diagrams) {
+            const { collisions, problems } = renderDiagram(diagram);
+            expect({ seed, collisions, problems }).toEqual({ seed, collisions: [], problems: [] });
+          }
         }
       });
     }

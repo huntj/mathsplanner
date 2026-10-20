@@ -18,7 +18,7 @@ const question: Question = {
     { t: "text", v: ". Is he right? <check>" },
     { t: "diagram", i: 0 },
   ],
-  diagrams: [{ type: "bar-model", parts: [1, 3] }],
+  diagrams: [{ type: "bar-model", bars: [{ parts: [{ size: 1 }, { size: 3 }] }] }],
   parts: [
     {
       label: "(a)",
@@ -78,11 +78,34 @@ describe("renderRich", () => {
     expect(escapeHtml("'")).toBe("&#39;");
   });
 
-  it("shows diagrams as labelled placeholders until Phase 3", () => {
-    const html = renderRich([{ t: "diagram", i: 0 }], [{ type: "geometry" }]);
+  it("draws supported diagrams as SVG with a description", () => {
+    const html = renderRich(
+      [{ t: "diagram", i: 0 }],
+      [{ type: "number-line", min: 0, max: 10, step: 1 }],
+    );
+    expect(html).toContain('<figure class="mp-diagram"><svg');
+    expect(html).toContain('aria-label="Number line from 0 to 10, marked every 1."');
+  });
+
+  it("shows types the engine does not draw yet as labelled placeholders", () => {
+    const html = renderRich([{ t: "diagram", i: 0 }], [{ type: "counters" }]);
     expect(html).toContain('role="img"');
-    expect(html).toContain("geometry diagram");
+    expect(html).toContain("counters diagram");
     expect(() => renderRich([{ t: "diagram", i: 1 }], [])).toThrow("diagram 1 does not exist");
+  });
+
+  it("refuses diagrams that contradict their numbers or are malformed", () => {
+    const lying = {
+      type: "geometry" as const,
+      points: { A: [0, 0], B: [1, 0], C: [0, 1] },
+      angles: [{ vertex: "A", from: "B", to: "C", value: 60 }],
+    };
+    expect(() => renderRich([{ t: "diagram", i: 0 }], [lying])).toThrow(
+      "stated as 60° but drawn as 90.0°",
+    );
+    expect(() => renderRich([{ t: "diagram", i: 0 }], [{ type: "cartesian" }])).toThrow(
+      "x and y need numeric min and max",
+    );
   });
 });
 
@@ -149,7 +172,14 @@ describe("renderAnswer", () => {
       { type: "free-text", markScheme: [{ t: "text", v: "mentions 180" }] },
       "Mark scheme: mentions 180",
     ],
-    [{ type: "plot", target: { type: "cartesian" }, tolerance: 0.2 }, "cartesian diagram"],
+    [
+      {
+        type: "plot",
+        target: { type: "cartesian", x: { min: 0, max: 5 }, y: { min: 0, max: 5 } },
+        tolerance: 0.2,
+      },
+      "Coordinate grid",
+    ],
   ];
 
   it.each(cases)("renders %j", (answer, expected) => {
