@@ -99,10 +99,12 @@ function optionList(
   options: readonly Option[],
   diagrams: readonly DiagramSpec[],
   correct: readonly string[] = [],
+  numbered = false,
 ): string {
   const items = options.map((o, i) => {
     const mark = correct.includes(o.id) ? ' class="mp-correct"' : "";
-    return `<li${mark} data-option="${escapeHtml(o.id)}"><span class="mp-option-letter">${LETTERS[i] ?? i + 1}</span> ${renderRich(o.content, diagrams)}</li>`;
+    const marker = numbered ? String(i + 1) : (LETTERS[i] ?? String(i + 1));
+    return `<li${mark} data-option="${escapeHtml(o.id)}"><span class="mp-option-letter">${marker}</span> ${renderRich(o.content, diagrams)}</li>`;
   });
   return `<ol class="mp-options">${items.join("")}</ol>`;
 }
@@ -127,7 +129,7 @@ function renderResponseArea(
     case "order":
       return optionList(answer.options, diagrams);
     case "match":
-      return `<div class="mp-match">${optionList(answer.left, diagrams)}${optionList(answer.right, diagrams)}</div>`;
+      return `<div class="mp-match">${optionList(answer.left, diagrams, [], true)}${optionList(answer.right, diagrams)}</div>`;
     default:
       return "";
   }
@@ -190,13 +192,20 @@ export function renderAnswer(answer: AnswerSpec, diagrams: readonly DiagramSpec[
       return `${optionContent(answer.options, answer.correct, diagrams)}, because ${optionContent(answer.reasons, answer.correctReason, diagrams)}`;
     case "order":
       return answer.correct.map((id) => optionContent(answer.options, id, diagrams)).join(", ");
-    case "match":
+    case "match": {
+      // A compact key, "1 ↔ B; 2 ↔ A", using the numbers and letters shown on the options.
+      const position = (options: readonly Option[], id: string) => {
+        const i = options.findIndex((o) => o.id === id);
+        if (i < 0) throw new RenderError(`option "${id}" does not exist`);
+        return i;
+      };
       return answer.correct
         .map(
           ([l, r]) =>
-            `${optionContent(answer.left, l, diagrams)} ↔ ${optionContent(answer.right, r, diagrams)}`,
+            `${position(answer.left, l) + 1} ↔ ${LETTERS[position(answer.right, r)] ?? ""}`,
         )
         .join("; ");
+    }
     case "plot":
       return `${escapeHtml("Plot as shown")} ${renderDiagram(answer.target, -1)}`;
     case "condition":

@@ -163,7 +163,7 @@ describe("renderAnswer", () => {
       "option f, because",
     ],
     [{ type: "order", options: [option("1"), option("2")], correct: ["2", "1"] }, "option 2, "],
-    [{ type: "match", left: [option("l")], right: [option("r")], correct: [["l", "r"]] }, "↔"],
+    [{ type: "match", left: [option("l")], right: [option("r")], correct: [["l", "r"]] }, "1 ↔ A"],
     [
       { type: "condition", inputs: ["exact"], describe: [{ t: "text", v: "two unit fractions" }] },
       "two unit fractions",

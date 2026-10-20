@@ -19,8 +19,10 @@ export const questionStyles = `
 .mp-options li { border: 1px solid var(--mp-border); border-radius: 6px; padding: 0.4em 0.6em; }
 .mp-options li.mp-correct { border: 2px solid var(--mp-correct); }
 .mp-options li.mp-correct::after { content: " ✓ correct"; color: var(--mp-correct); font-weight: 600; }
+.mp-options:has(svg) { grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
 .mp-option-letter { font-weight: 600; margin-right: 0.35em; }
-.mp-match { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; }
+.mp-match { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; align-items: start; }
+.mp-match .mp-options { grid-template-columns: 1fr; }
 .mp-answer, .mp-solution { border-left: 3px solid var(--mp-correct); padding: 0.25em 0.75em; margin: 0.5em 0; }
 .mp-heading { font-weight: 600; }
 .mp-misconceptions ul { margin: 0.25em 0; padding-left: 1.25em; }
