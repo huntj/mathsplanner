@@ -35,13 +35,13 @@ describe("routes", () => {
 describe("links regenerate questions exactly (the Phase 2 exit check)", () => {
   const info = generatorFor("Y5-GEO-04");
 
-  it("has the example placeholder generator", () => {
-    expect(info?.example).toBe(true);
+  it("uses the real generator, which replaced the Phase 1 placeholder", () => {
+    expect(info?.example).toBe(false);
   });
 
   it("renders the same HTML from a link as from the original key", () => {
     const generator = info?.generator;
-    if (!generator) throw new Error("no example generator");
+    if (!generator) throw new Error("no generator");
     for (const depth of generator.depths) {
       for (const numbers of NUMBERS) {
         for (let seed = 0; seed < 25; seed++) {
