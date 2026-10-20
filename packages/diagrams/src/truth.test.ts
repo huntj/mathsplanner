@@ -163,8 +163,11 @@ describe("other truth checks", () => {
   });
 
   it("refuses diagram types the engine does not draw yet, and malformed specs", () => {
-    expect(() => renderDiagram({ type: "counters" })).toThrow(
-      '"counters" diagrams are not supported yet',
+    expect(() => renderDiagram({ type: "chart" })).toThrow(
+      '"chart" diagrams are not supported yet',
+    );
+    expect(() => renderDiagram({ type: "counters", layout: "abacus" })).toThrow(
+      "layout must be one of",
     );
     expect(() => renderDiagram({ type: "number-line" })).toThrow(
       "min, max and step must be numbers",

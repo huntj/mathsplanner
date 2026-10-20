@@ -4,6 +4,7 @@ import { compose, type DiagramResult } from "./scene.ts";
 import type { SupportedDiagramSpec } from "./spec.ts";
 import { layoutBarModel } from "./types/barModel.ts";
 import { layoutCartesian } from "./types/cartesian.ts";
+import { layoutCounters } from "./types/counters.ts";
 import { layoutGeometry } from "./types/geometry.ts";
 import { layoutProtractor } from "./types/measure.ts";
 import { layoutNumberLine } from "./types/numberLine.ts";
@@ -21,6 +22,7 @@ export const SUPPORTED_TYPES = [
   "number-line",
   "bar-model",
   "measure",
+  "counters",
 ] as const;
 
 export function isSupported(
@@ -50,12 +52,24 @@ export function renderDiagram(spec: DiagramSpec | SupportedDiagramSpec): Diagram
       return compose(layoutBarModel(spec));
     case "measure":
       return compose(layoutProtractor(spec));
+    case "counters":
+      return compose(layoutCounters(spec));
   }
 }
 
 const isNumber = (v: unknown) => typeof v === "number" && Number.isFinite(v);
 const isObject = (v: unknown): v is Record<string, unknown> =>
   typeof v === "object" && v !== null && !Array.isArray(v);
+
+const COUNTER_LAYOUTS = [
+  "objects",
+  "ten-frame",
+  "array",
+  "place-value",
+  "part-whole",
+  "fingers",
+  "tally",
+];
 
 /** Catches specs with missing or mistyped fields before layout, with a readable message. */
 function shapeProblem(spec: SupportedDiagramSpec): string | undefined {
@@ -79,6 +93,10 @@ function shapeProblem(spec: SupportedDiagramSpec): string | undefined {
       return s.instrument === "protractor" && isNumber(s.angle)
         ? undefined
         : "only protractors with a numeric angle are supported so far";
+    case "counters":
+      return COUNTER_LAYOUTS.includes(s.layout as string)
+        ? undefined
+        : `layout must be one of ${COUNTER_LAYOUTS.join(", ")}`;
   }
 }
 

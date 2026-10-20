@@ -1,5 +1,5 @@
 // Reference diagrams: the 50 of the Phase 3 exit check, plus the measuring, turning and bearing
-// diagrams added for the Phase 4 slice. Every one must render with no label collisions and no
+// diagrams added for the Phase 4 slice and the counters added in Phase 7. Every one must render with no label collisions and no
 // truth problems, and a teacher reviews them in the gallery.
 import {
   anglesAtPoint,
@@ -754,5 +754,69 @@ export const REFERENCE_DIAGRAMS: ReferenceDiagram[] = [
     id: "g-bearing",
     title: "A bearing of 070°",
     spec: { ...bearing(70, { label: "070^\\circ" }), names: { N: "\\mathrm{N}" } },
+  },
+  // Counters for early number, added in Phase 7.
+  {
+    id: "c-dice-five",
+    title: "Five in a dice pattern",
+    spec: { type: "counters", layout: "objects", counts: [5], arrangement: "dice" },
+  },
+  {
+    id: "c-scatter-stars",
+    title: "Scattered stars in two colours",
+    spec: {
+      type: "counters",
+      layout: "objects",
+      counts: [4, 3],
+      shape: "star",
+      arrangement: "scatter",
+      seed: 2,
+    },
+  },
+  {
+    id: "c-ten-frames",
+    title: "Two ten frames showing 13",
+    spec: { type: "counters", layout: "ten-frame", frames: [10, 3] },
+  },
+  {
+    id: "c-ten-frame-bond",
+    title: "A ten frame showing 6 and 4",
+    spec: { type: "counters", layout: "ten-frame", frames: [10], second: [4] },
+  },
+  {
+    id: "c-array",
+    title: "An array of 3 rows of 4",
+    spec: { type: "counters", layout: "array", rows: 3, columns: 4 },
+  },
+  {
+    id: "c-place-value",
+    title: "Place-value counters for 235",
+    spec: { type: "counters", layout: "place-value", columns: ["H", "T", "O"], counts: [2, 3, 5] },
+  },
+  {
+    id: "c-base-ten",
+    title: "Base-10 blocks for 142",
+    spec: {
+      type: "counters",
+      layout: "place-value",
+      columns: ["H", "T", "O"],
+      counts: [1, 4, 2],
+      style: "blocks",
+    },
+  },
+  {
+    id: "c-part-whole",
+    title: "Part-whole model for 7",
+    spec: { type: "counters", layout: "part-whole", whole: "7", parts: ["4", "3"] },
+  },
+  {
+    id: "c-fingers",
+    title: "Seven fingers",
+    spec: { type: "counters", layout: "fingers", count: 7 },
+  },
+  {
+    id: "c-tally",
+    title: "Tally marks for 12",
+    spec: { type: "counters", layout: "tally", count: 12 },
   },
 ];

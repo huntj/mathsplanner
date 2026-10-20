@@ -193,5 +193,47 @@ export type ProtractorSpec = {
 
 export type MeasureSpec = ProtractorSpec;
 
+// --- counters ----------------------------------------------------------------------------
+
+/** How a group of counters is laid out. "scatter" is jittered from `seed` but always the same. */
+export type CounterArrangement = "dice" | "row" | "scatter";
+export type CounterShape = "circle" | "square" | "star" | "triangle";
+
+/**
+ * Countable pictures for early number: dots and objects, ten frames, arrays, place-value charts,
+ * part-whole models, fingers and tally marks. Counts are checked against what is drawn.
+ */
+export type CountersSpec = { type: "counters"; description?: string } & (
+  | {
+      layout: "objects";
+      /** How many of each colour: filled, then outlined. One number for a single colour. */
+      counts: number[];
+      shape?: CounterShape;
+      arrangement?: CounterArrangement;
+      seed?: number;
+    }
+  | {
+      layout: "ten-frame";
+      /** Counters in each frame, 0 to 10; with `second`, that many of them are outlined. */
+      frames: number[];
+      second?: number[];
+    }
+  | { layout: "array"; rows: number; columns: number; shape?: CounterShape }
+  | {
+      layout: "place-value";
+      /** Column headings, largest place first, e.g. ["H", "T", "O"] or ["Th", "H", "T", "O"]. */
+      columns: string[];
+      /** How many counters or blocks in each column. */
+      counts: number[];
+      /** Counters labelled with their value, or base-10 blocks (hundreds, tens, ones only). */
+      style?: "counters" | "blocks";
+      /** The value each column's counters show, e.g. ["100", "10", "1"]. */
+      values?: string[];
+    }
+  | { layout: "part-whole"; whole: Label; parts: Label[] }
+  | { layout: "fingers"; count: number }
+  | { layout: "tally"; count: number }
+);
+
 export type SupportedDiagramSpec =
-  GeometrySpec | CartesianSpec | NumberLineSpec | BarModelSpec | MeasureSpec;
+  GeometrySpec | CartesianSpec | NumberLineSpec | BarModelSpec | MeasureSpec | CountersSpec;
