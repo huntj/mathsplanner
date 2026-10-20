@@ -90,7 +90,9 @@ export function checkCartesian(spec: CartesianSpec): string[] {
 export function describeCartesian(spec: CartesianSpec): string {
   if (spec.description) return spec.description;
   const parts = [
-    `Coordinate ${spec.grid === false ? "axes" : "grid"} with x from ${numberPlain(spec.x.min)} to ${numberPlain(spec.x.max)} and y from ${numberPlain(spec.y.min)} to ${numberPlain(spec.y.max)}.`,
+    spec.axes === false
+      ? `Square grid, ${numberPlain(spec.x.max - spec.x.min)} squares wide and ${numberPlain(spec.y.max - spec.y.min)} squares high.`
+      : `Coordinate ${spec.grid === false ? "axes" : "grid"} with x from ${numberPlain(spec.x.min)} to ${numberPlain(spec.x.max)} and y from ${numberPlain(spec.y.min)} to ${numberPlain(spec.y.max)}.`,
   ];
   const coord = ([x, y]: Coord) => `(${numberPlain(x)}, ${numberPlain(y)})`;
   for (const p of spec.points ?? []) {
@@ -204,78 +206,84 @@ export function layoutCartesian(spec: CartesianSpec): Scene {
     shapes.push(`<g stroke-opacity="0.22">${grid.join("")}</g>`);
   }
 
-  // Axes cross at the origin when it is in view, otherwise along the bottom and left edges.
-  const ax = X.min <= 0 && X.max >= 0 ? 0 : X.min;
-  const ay = Y.min <= 0 && Y.max >= 0 ? 0 : Y.min;
-  const xAxis: [Point, Point] = [px([X.min, ay]), add(px([X.max, ay]), [12, 0])];
-  const yAxis: [Point, Point] = [add(px([ax, Y.min]), [0, 0]), add(px([ax, Y.max]), [0, -12])];
-  shapes.push(line(...xAxis), polyline(arrowhead(xAxis[1], [1, 0])));
-  shapes.push(line(...yAxis), polyline(arrowhead(yAxis[1], [0, -1])));
-  obstacles.push({ id: "x-axis", segment: xAxis }, { id: "y-axis", segment: yAxis });
+  // Plain squared grids (for symmetry and drawing) leave out the axes and their numbers.
+  if (spec.axes !== false) {
+    // Axes cross at the origin when it is in view, otherwise along the bottom and left edges.
+    const ax = X.min <= 0 && X.max >= 0 ? 0 : X.min;
+    const ay = Y.min <= 0 && Y.max >= 0 ? 0 : Y.min;
+    const xAxis: [Point, Point] = [px([X.min, ay]), add(px([X.max, ay]), [12, 0])];
+    const yAxis: [Point, Point] = [add(px([ax, Y.min]), [0, 0]), add(px([ax, Y.max]), [0, -12])];
+    shapes.push(line(...xAxis), polyline(arrowhead(xAxis[1], [1, 0])));
+    shapes.push(line(...yAxis), polyline(arrowhead(yAxis[1], [0, -1])));
+    obstacles.push({ id: "x-axis", segment: xAxis }, { id: "y-axis", segment: yAxis });
 
-  const xName = label(X.label ?? "x");
-  labels.push({
-    id: "x-axis name",
-    text: xName,
-    candidates: [add(xAxis[1], [6 + xName.width / 2, 0]), add(xAxis[1], [0, 8 + xName.height / 2])],
-  });
-  const yName = label(Y.label ?? "y");
-  labels.push({
-    id: "y-axis name",
-    text: yName,
-    candidates: [
-      add(yAxis[1], [0, -6 - yName.height / 2]),
-      add(yAxis[1], [8 + yName.width / 2, 0]),
-    ],
-  });
+    const xName = label(X.label ?? "x");
+    labels.push({
+      id: "x-axis name",
+      text: xName,
+      candidates: [
+        add(xAxis[1], [6 + xName.width / 2, 0]),
+        add(xAxis[1], [0, 8 + xName.height / 2]),
+      ],
+    });
+    const yName = label(Y.label ?? "y");
+    labels.push({
+      id: "y-axis name",
+      text: yName,
+      candidates: [
+        add(yAxis[1], [0, -6 - yName.height / 2]),
+        add(yAxis[1], [8 + yName.width / 2, 0]),
+      ],
+    });
 
-  const originShown = ax === 0 && ay === 0;
-  for (const t of xTicks) {
-    const p = px([t, ay]);
-    shapes.push(line(add(p, [0, -4]), add(p, [0, 4]), { width: 1.2 }));
-    if (originShown && t === 0) continue;
-    const text = label(numberLabel(t));
-    // Negative numbers sit a little left so the minus sign clears the tick.
-    const dx = t < 0 ? -3 : 0;
-    labels.push({
-      id: `x tick ${t}`,
-      text,
-      candidates: [
-        add(p, [dx, 7 + text.height / 2]),
-        add(p, [dx + text.width / 2 + 3, 7 + text.height / 2]),
-        add(p, [dx - text.width / 2 - 3, 7 + text.height / 2]),
-        add(p, [dx, -7 - text.height / 2]),
-        add(p, [dx + text.width / 2 + 3, -7 - text.height / 2]),
-        add(p, [dx - text.width / 2 - 3, -7 - text.height / 2]),
-      ],
-      optional: true,
-    });
-  }
-  for (const t of yTicks) {
-    const p = px([ax, t]);
-    shapes.push(line(add(p, [-4, 0]), add(p, [4, 0]), { width: 1.2 }));
-    if (originShown && t === 0) continue;
-    const text = label(numberLabel(t));
-    labels.push({
-      id: `y tick ${t}`,
-      text,
-      candidates: [
-        add(p, [-7 - text.width / 2, 0]),
-        add(p, [-7 - text.width / 2, -text.height / 2 - 1]),
-        add(p, [-7 - text.width / 2, text.height / 2 + 1]),
-        add(p, [7 + text.width / 2, 0]),
-      ],
-      optional: true,
-    });
-  }
-  if (originShown) {
-    const text = label("\\mathrm{O}");
-    const o = px([0, 0]);
-    labels.push({
-      id: "origin",
-      text,
-      candidates: [add(o, [-6 - text.width / 2, 6 + text.height / 2])],
-    });
+    const originShown = ax === 0 && ay === 0;
+    for (const t of xTicks) {
+      const p = px([t, ay]);
+      shapes.push(line(add(p, [0, -4]), add(p, [0, 4]), { width: 1.2 }));
+      if (originShown && t === 0) continue;
+      const text = label(numberLabel(t));
+      // Negative numbers sit a little left so the minus sign clears the tick.
+      const dx = t < 0 ? -3 : 0;
+      labels.push({
+        id: `x tick ${t}`,
+        text,
+        candidates: [
+          add(p, [dx, 7 + text.height / 2]),
+          add(p, [dx + text.width / 2 + 3, 7 + text.height / 2]),
+          add(p, [dx - text.width / 2 - 3, 7 + text.height / 2]),
+          add(p, [dx, -7 - text.height / 2]),
+          add(p, [dx + text.width / 2 + 3, -7 - text.height / 2]),
+          add(p, [dx - text.width / 2 - 3, -7 - text.height / 2]),
+        ],
+        optional: true,
+      });
+    }
+    for (const t of yTicks) {
+      const p = px([ax, t]);
+      shapes.push(line(add(p, [-4, 0]), add(p, [4, 0]), { width: 1.2 }));
+      if (originShown && t === 0) continue;
+      const text = label(numberLabel(t));
+      labels.push({
+        id: `y tick ${t}`,
+        text,
+        candidates: [
+          add(p, [-7 - text.width / 2, 0]),
+          add(p, [-7 - text.width / 2, -text.height / 2 - 1]),
+          add(p, [-7 - text.width / 2, text.height / 2 + 1]),
+          add(p, [7 + text.width / 2, 0]),
+        ],
+        optional: true,
+      });
+    }
+    if (originShown) {
+      const text = label("\\mathrm{O}");
+      const o = px([0, 0]);
+      labels.push({
+        id: "origin",
+        text,
+        candidates: [add(o, [-6 - text.width / 2, 6 + text.height / 2])],
+      });
+    }
   }
 
   for (const v of spec.verticals ?? []) {

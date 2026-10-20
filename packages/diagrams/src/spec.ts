@@ -118,6 +118,8 @@ export type CartesianSpec = {
   x: Axis;
   y: Axis;
   grid?: boolean;
+  /** Draw the axes and their numbers (default). Turn off for a plain squared grid. */
+  axes?: boolean;
   points?: CartesianPoint[];
   curves?: CartesianCurve[];
   /** Vertical lines x = value. */
