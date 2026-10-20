@@ -161,9 +161,13 @@ All visuals come from one package, `@mathsplanner/diagrams`, which turns a small
 | complex | Argand diagrams, loci in the complex plane | Modulus-argument arcs |
 | vector | Vectors on grids and in geometric figures | Arrowheads, midpoint markers |
 
-**Label placement** is the hardest part to get right and is shared by every type: each label proposes candidate positions in priority order, and a solver picks the set with no overlaps between labels, lines and arcs. Labels contain LaTeX, measured and rendered with KaTeX before placement so their size is known.
+**Label placement** is the hardest part to get right and is shared by every type: each label proposes candidate positions in priority order, and a solver picks the set with no overlaps between labels, lines and arcs, moving earlier labels aside where that frees a spot. Overlaps it cannot avoid are reported, never hidden, and the quality checks fail a generator on them. The one exception is axis numbers on graphs: one that would sit on a curve tries the other side of the axis or a small shift, and is otherwise left out, as on a hand-drawn graph.
 
-**Truth checks.** Geometry specs are validated before drawing: triangle inequality, angle sums, that a stated right angle is 90° in the drawing, and that marked equal sides really are equal unless the diagram is flagged not to scale.
+**Label text.** Labels are written in LaTeX but drawn as real SVG text, so every SVG is self-contained and works in print, downloads and tests without KaTeX's stylesheet. The engine lays out a classroom subset (numbers, italic variables, operators with KaTeX's spacing, degrees, powers and subscripts, fractions, roots, Greek letters, `\text`, `\mathrm`) in KaTeX's fonts, measured with KaTeX's own font metrics so each label's size is known before placement. LaTeX outside the subset throws, so a generator's tests catch it.
+
+**Truth checks.** Specs are checked against the drawing before it is shown. For geometry: every stated angle and right angle matches the drawing; stated lengths share one scale; sides with equal tick marks are equal; sides with parallel arrows are parallel; and polygons have area. When a diagram is flagged not to scale, the angle and length checks give way to a check that the stated angles still add up. Number lines, graphs and bar models check their values fit the axes and parts. The renderer refuses a diagram that fails.
+
+**Specs and builders.** Geometry specs give named points in maths coordinates, so the drawing is to scale by construction. Curves on graphs are expressions in x, such as `x^2 - 3x + 2` or `2sin(x)`, parsed by a small safe parser rather than evaluated. Builders such as `anglesOnLine`, `anglesAtPoint`, `regularPolygon`, `triangleSSS` and `triangleASA` turn the numbers a generator knows into specs, so generators never compute coordinates by hand. Fifty reference diagrams, with SVG snapshot tests, cover the four Phase 3 types; the gallery's Diagrams page shows them for review.
 
 **Accessibility.** Every spec produces a text description as well as the SVG, for example "Triangle ABC. Angle A is 52°. Angle B is a right angle. Side AC is 8 cm."
 
@@ -352,4 +356,5 @@ The open questions from the first draft are settled; the sections above reflect 
 - [x] **Curriculum version.** Current curriculum only. There is no `curriculum` field and no plan for migrating to the 2028 national curriculum.
 - [x] **AI-assisted contributions.** Accepted. They must pass the same automated checks, be disclosed in the pull request, and carry a recorded human teacher review in the generator file header.
 - [x] **KS3 years.** KS3 statements use the progression map's recommended Year 7, 8 and 9 split exactly.
+- [x] **Diagram labels.** Labels are drawn as SVG text in KaTeX's fonts, measured with KaTeX's font metrics, rather than as KaTeX HTML embedded in the SVG, so every diagram is a self-contained SVG.
 - [x] **KS5 years.** Some KS5 statements are recommended for both Year 12 and Year 13, so `year` became `years: (12 | 13)[]`.

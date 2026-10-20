@@ -45,6 +45,8 @@ A generator lives at `packages/generators/src/<key stage>/<ID>.ts`, where the ke
 - **reject bad parameter sets** with `accept` (or `requireExists` for open-construction) rather than producing degenerate questions;
 - **bump its `version`** whenever a change would alter the question produced for an existing key.
 
+Draw diagrams with the builders in `@mathsplanner/diagrams` (for example `anglesOnLine` or `triangleSSS`) rather than computing coordinates by hand, and check in your tests that every diagram renders with no `collisions` and no `problems`.
+
 Anything two statements need belongs in a shared package (`@mathsplanner/core`, `@mathsplanner/archetypes` or `@mathsplanner/diagrams`), not in a generator.
 
 ### Generator file header
