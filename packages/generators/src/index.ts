@@ -19,14 +19,23 @@ import y5Geo05 from "./ks2/Y5-GEO-05.ts";
 import y5Geo06 from "./ks2/Y5-GEO-06.ts";
 import y6Geo01 from "./ks2/Y6-GEO-01.ts";
 import y6Geo03 from "./ks2/Y6-GEO-03.ts";
+import y6Geo04 from "./ks2/Y6-GEO-04.ts";
 import y6Geo05 from "./ks2/Y6-GEO-05.ts";
 import y7Geo03 from "./ks3/Y7-GEO-03.ts";
+import y7Geo04 from "./ks3/Y7-GEO-04.ts";
 import y7Geo05 from "./ks3/Y7-GEO-05.ts";
 import y7Geo06 from "./ks3/Y7-GEO-06.ts";
+import y8Geo02 from "./ks3/Y8-GEO-02.ts";
 import y8Geo03 from "./ks3/Y8-GEO-03.ts";
 import y8Geo05 from "./ks3/Y8-GEO-05.ts";
+import y9Geo03 from "./ks3/Y9-GEO-03.ts";
+import gfG1 from "./ks4/GF-G1.ts";
 import gfG3 from "./ks4/GF-G3.ts";
 import gfG4 from "./ks4/GF-G4.ts";
+import gfG5 from "./ks4/GF-G5.ts";
+import gfG6 from "./ks4/GF-G6.ts";
+import gfG9 from "./ks4/GF-G9.ts";
+import ghG10 from "./ks4/GH-G10.ts";
 import gfG15 from "./ks4/GF-G15.ts";
 
 /** Every generator, in the order of data/statements.json. */
@@ -49,14 +58,23 @@ export const generators: Generator[] = [
   y5Geo06,
   y6Geo01,
   y6Geo03,
+  y6Geo04,
   y6Geo05,
   y7Geo03,
+  y7Geo04,
   y7Geo05,
   y7Geo06,
+  y8Geo02,
   y8Geo03,
   y8Geo05,
+  y9Geo03,
+  gfG1,
   gfG3,
   gfG4,
+  gfG5,
+  gfG6,
+  gfG9,
+  ghG10,
   gfG15,
 ] as Generator[];
 

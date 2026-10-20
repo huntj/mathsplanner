@@ -1,0 +1,1309 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`GH-G10 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "A",
+            "to": "B",
+            "value": 60,
+            "vertex": "O",
+          },
+          {
+            "from": "A",
+            "label": "x",
+            "to": "B",
+            "value": 30,
+            "vertex": "C",
+          },
+        ],
+        "circles": [
+          {
+            "centre": "O",
+            "radius": 2.5,
+          },
+        ],
+        "description": "A circle with centre O. Points A, B and C are on the circle; angle AOB is at the centre and angle ACB at the circumference.",
+        "dots": [
+          "O",
+        ],
+        "pointLabels": [
+          "O",
+          "A",
+          "B",
+          "C",
+        ],
+        "points": {
+          "A": [
+            -1.25,
+            -2.165063509,
+          ],
+          "B": [
+            1.25,
+            -2.165063509,
+          ],
+          "C": [
+            0,
+            2.5,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "from": "O",
+            "to": "A",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+          {
+            "from": "C",
+            "to": "A",
+          },
+          {
+            "from": "C",
+            "to": "B",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GH-G10",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 30,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 120,
+            },
+            "code": "GEO.CIRCLE.CENTRE-HALF",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angle at the circumference is half the angle at the centre.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle x.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x = 60^\\circ \\div 2 = 30^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "The angle at the centre is twice the angle at the circumference.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "O is the centre of the circle.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "A",
+            "label": "x",
+            "to": "B",
+            "value": 120,
+            "vertex": "O",
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value": 60,
+            "vertex": "C",
+          },
+        ],
+        "circles": [
+          {
+            "centre": "O",
+            "radius": 2.5,
+          },
+        ],
+        "description": "A circle with centre O. Points A, B and C are on the circle; angle AOB is at the centre and angle ACB at the circumference.",
+        "dots": [
+          "O",
+        ],
+        "pointLabels": [
+          "O",
+          "A",
+          "B",
+          "C",
+        ],
+        "points": {
+          "A": [
+            -2.165063509,
+            -1.25,
+          ],
+          "B": [
+            2.165063509,
+            -1.25,
+          ],
+          "C": [
+            0.813920386,
+            2.363796439,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "from": "O",
+            "to": "A",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+          {
+            "from": "C",
+            "to": "A",
+          },
+          {
+            "from": "C",
+            "to": "B",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GH-G10",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 120,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 30,
+            },
+            "code": "GEO.CIRCLE.CENTRE-HALF",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angle at the centre is twice the angle at the circumference, not half.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle x.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x = 2 \\times 60^\\circ = 120^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "The angle at the centre is twice the angle at the circumference.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "O is the centre of the circle.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "A",
+            "label": "x",
+            "to": "B",
+            "value": 78,
+            "vertex": "O",
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value": 39,
+            "vertex": "C",
+          },
+        ],
+        "circles": [
+          {
+            "centre": "O",
+            "radius": 2.5,
+          },
+        ],
+        "description": "A circle with centre O. Points A, B and C are on the circle; angle AOB is at the centre and angle ACB at the circumference.",
+        "dots": [
+          "O",
+        ],
+        "pointLabels": [
+          "O",
+          "A",
+          "B",
+          "C",
+        ],
+        "points": {
+          "A": [
+            -1.573300978,
+            -1.942864904,
+          ],
+          "B": [
+            1.573300978,
+            -1.942864904,
+          ],
+          "C": [
+            0.604804739,
+            2.425739316,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "from": "O",
+            "to": "A",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+          {
+            "from": "C",
+            "to": "A",
+          },
+          {
+            "from": "C",
+            "to": "B",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GH-G10",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 78,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 19.5,
+            },
+            "code": "GEO.CIRCLE.CENTRE-HALF",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angle at the centre is twice the angle at the circumference, not half.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle x.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x = 2 \\times 39^\\circ = 78^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "The angle at the centre is twice the angle at the circumference.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "O is the centre of the circle.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GH-G10",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "They can meet at any angle, depending on where the tangent is drawn.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "The tangent is perpendicular to the radius at the point of contact.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Only when the tangent is horizontal.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The tangent is perpendicular to the radius at the point of contact.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A tangent meets the radius at the point where it touches the circle at 90°.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GH-G10",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "No: the angle at the circumference is 180°, the same as at the centre.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "The diameter makes a 180° angle at the centre, so the angle at the circumference is half of it: 90°.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Only when the triangle is isosceles.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The diameter makes a 180° angle at the centre, so the angle at the circumference is half of it: 90°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The angle in a semicircle is a right angle.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GH-G10",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "The tangent is perpendicular to the radius at the point of contact.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "They can meet at any angle, depending on where the tangent is drawn.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Only when the tangent is horizontal.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The tangent is perpendicular to the radius at the point of contact.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A tangent meets the radius at the point where it touches the circle at 90°.",
+      },
+    ],
+  },
+  {
+    "archetype": "multi-step-context",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "A",
+            "label": "x",
+            "to": "B",
+            "value": 60,
+            "vertex": "O",
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value": 30,
+            "vertex": "C",
+          },
+          {
+            "from": "B",
+            "label": "y",
+            "to": "O",
+            "value": 60,
+            "vertex": "A",
+          },
+        ],
+        "circles": [
+          {
+            "centre": "O",
+            "radius": 2.5,
+          },
+        ],
+        "description": "A circle with centre O. Points A, B and C are on the circle; angle AOB is at the centre and angle ACB at the circumference.",
+        "dots": [
+          "O",
+        ],
+        "pointLabels": [
+          "O",
+          "A",
+          "B",
+          "C",
+        ],
+        "points": {
+          "A": [
+            -1.25,
+            -2.165063509,
+          ],
+          "B": [
+            1.25,
+            -2.165063509,
+          ],
+          "C": [
+            0,
+            2.5,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "from": "O",
+            "to": "A",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+          {
+            "from": "C",
+            "to": "A",
+          },
+          {
+            "from": "C",
+            "to": "B",
+          },
+          {
+            "from": "A",
+            "to": "B",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 5,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GH-G10",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 60,
+        },
+        "label": "(a)",
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 15,
+            },
+            "code": "GEO.CIRCLE.CENTRE-HALF",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angle at the centre is twice the angle at the circumference.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle x.",
+          },
+        ],
+      },
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 60,
+        },
+        "label": "(b)",
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle y.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x = 2 \\times 30^\\circ = 60^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "The angle at the centre is twice the angle at the circumference:",
+          },
+        ],
+      },
+      {
+        "math": "y = (180^\\circ - 60^\\circ) \\div 2 = 60^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "OA and OB are radii, so triangle OAB is isosceles and its base angles are equal:",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "O is the centre of the circle. A, B and C lie on the circle.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "multi-step-context",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "A",
+            "label": "x",
+            "to": "B",
+            "value": 120,
+            "vertex": "O",
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value": 60,
+            "vertex": "C",
+          },
+          {
+            "from": "B",
+            "label": "y",
+            "to": "O",
+            "value": 30,
+            "vertex": "A",
+          },
+        ],
+        "circles": [
+          {
+            "centre": "O",
+            "radius": 2.5,
+          },
+        ],
+        "description": "A circle with centre O. Points A, B and C are on the circle; angle AOB is at the centre and angle ACB at the circumference.",
+        "dots": [
+          "O",
+        ],
+        "pointLabels": [
+          "O",
+          "A",
+          "B",
+          "C",
+        ],
+        "points": {
+          "A": [
+            -2.165063509,
+            -1.25,
+          ],
+          "B": [
+            2.165063509,
+            -1.25,
+          ],
+          "C": [
+            0.813920386,
+            2.363796439,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "from": "O",
+            "to": "A",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+          {
+            "from": "C",
+            "to": "A",
+          },
+          {
+            "from": "C",
+            "to": "B",
+          },
+          {
+            "from": "A",
+            "to": "B",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 5,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GH-G10",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 120,
+        },
+        "label": "(a)",
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 30,
+            },
+            "code": "GEO.CIRCLE.CENTRE-HALF",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angle at the centre is twice the angle at the circumference.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle x.",
+          },
+        ],
+      },
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 30,
+        },
+        "label": "(b)",
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 120,
+            },
+            "code": "GEO.ISOSCELES.APEX-EQUALS-BASE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "OA = OB (both radii), so triangle OAB is isosceles: its base angles are equal, but not equal to the angle at O.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle y.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x = 2 \\times 60^\\circ = 120^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "The angle at the centre is twice the angle at the circumference:",
+          },
+        ],
+      },
+      {
+        "math": "y = (180^\\circ - 120^\\circ) \\div 2 = 30^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "OA and OB are radii, so triangle OAB is isosceles and its base angles are equal:",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "O is the centre of the circle. A, B and C lie on the circle.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "multi-step-context",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "A",
+            "label": "x",
+            "to": "B",
+            "value": 78,
+            "vertex": "O",
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value": 39,
+            "vertex": "C",
+          },
+          {
+            "from": "B",
+            "label": "y",
+            "to": "O",
+            "value": 51,
+            "vertex": "A",
+          },
+        ],
+        "circles": [
+          {
+            "centre": "O",
+            "radius": 2.5,
+          },
+        ],
+        "description": "A circle with centre O. Points A, B and C are on the circle; angle AOB is at the centre and angle ACB at the circumference.",
+        "dots": [
+          "O",
+        ],
+        "pointLabels": [
+          "O",
+          "A",
+          "B",
+          "C",
+        ],
+        "points": {
+          "A": [
+            -1.573300978,
+            -1.942864904,
+          ],
+          "B": [
+            1.573300978,
+            -1.942864904,
+          ],
+          "C": [
+            0.604804739,
+            2.425739316,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "segments": [
+          {
+            "from": "O",
+            "to": "A",
+          },
+          {
+            "from": "O",
+            "to": "B",
+          },
+          {
+            "from": "C",
+            "to": "A",
+          },
+          {
+            "from": "C",
+            "to": "B",
+          },
+          {
+            "from": "A",
+            "to": "B",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 5,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GH-G10",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 78,
+        },
+        "label": "(a)",
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 19.5,
+            },
+            "code": "GEO.CIRCLE.CENTRE-HALF",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angle at the centre is twice the angle at the circumference.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle x.",
+          },
+        ],
+      },
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 51,
+        },
+        "label": "(b)",
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 78,
+            },
+            "code": "GEO.ISOSCELES.APEX-EQUALS-BASE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "OA = OB (both radii), so triangle OAB is isosceles: its base angles are equal, but not equal to the angle at O.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle y.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x = 2 \\times 39^\\circ = 78^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "The angle at the centre is twice the angle at the circumference:",
+          },
+        ],
+      },
+      {
+        "math": "y = (180^\\circ - 78^\\circ) \\div 2 = 51^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "OA and OB are radii, so triangle OAB is isosceles and its base angles are equal:",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "O is the centre of the circle. A, B and C lie on the circle.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+]
+`;

@@ -1,0 +1,2155 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Y8-GEO-02 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "description": "Triangle ABC.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            8,
+            0,
+          ],
+          "C": [
+            1.1875,
+            5.881313097,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+            ],
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y8-GEO-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "BC",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "AC",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "AB",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "GEO.TRIANGLE.SIDE-LABELS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Side b is not next to B: it is the side opposite angle B.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "GEO.TRIANGLE.SIDE-LABELS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Side b is not next to B: it is the side opposite angle B.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which side of triangle ABC is side ",
+          },
+          {
+            "t": "math",
+            "v": "b",
+          },
+          {
+            "t": "text",
+            "v": "?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Side b is opposite angle B, so it joins the other two vertices: AC.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Sides of a triangle are named with lower-case letters, using the usual convention.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "description": "Triangle ABC.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            -0,
+          ],
+          "B": [
+            -5.362311102,
+            -4.499513268,
+          ],
+          "C": [
+            2.633799108,
+            -4.250070853,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+            ],
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y8-GEO-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "AC",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "AB",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "BC",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "GEO.TRIANGLE.SIDE-LABELS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Side a is not next to A: it is the side opposite angle A.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "GEO.TRIANGLE.SIDE-LABELS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Side a is not next to A: it is the side opposite angle A.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which side of triangle ABC is side ",
+          },
+          {
+            "t": "math",
+            "v": "a",
+          },
+          {
+            "t": "text",
+            "v": "?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Side a is opposite angle A, so it joins the other two vertices: BC.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Sides of a triangle are named with lower-case letters, using the usual convention.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "description": "Triangle PQR.",
+        "pointLabels": true,
+        "points": {
+          "P": [
+            0,
+            0,
+          ],
+          "Q": [
+            7.308363661,
+            -3.253893145,
+          ],
+          "R": [
+            8.615673976,
+            2.601953484,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "P",
+              "Q",
+              "R",
+            ],
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y8-GEO-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "PQ",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "PR",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "QR",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "GEO.TRIANGLE.SIDE-LABELS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Side r is not next to R: it is the side opposite angle R.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "GEO.TRIANGLE.SIDE-LABELS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Side r is not next to R: it is the side opposite angle R.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which side of triangle PQR is side ",
+          },
+          {
+            "t": "math",
+            "v": "r",
+          },
+          {
+            "t": "text",
+            "v": "?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Side r is opposite angle R, so it joins the other two vertices: PQ.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Sides of a triangle are named with lower-case letters, using the usual convention.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y8-GEO-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "cm",
+          "value": 6,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 9,
+            },
+            "code": "GEO.TRIANGLE.SIDE-LABELS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "AC is opposite B, so it is side b.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 8,
+            },
+            "code": "GEO.TRIANGLE.SIDE-LABELS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "AC is opposite B, so it is side b.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Write down the length of AC.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "b = 6\\text{ cm}",
+        "say": [
+          {
+            "t": "text",
+            "v": "AC is the side opposite B, so it is side b:",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Triangle ABC has ",
+      },
+      {
+        "t": "math",
+        "v": "a = 9\\text{ cm},\\ b = 6\\text{ cm},\\ c = 8\\text{ cm}",
+      },
+      {
+        "t": "text",
+        "v": ", using the usual labels.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y8-GEO-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "cm",
+          "value": 8,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 5,
+            },
+            "code": "GEO.TRIANGLE.SIDE-LABELS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "BC is opposite A, so it is side a.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 7,
+            },
+            "code": "GEO.TRIANGLE.SIDE-LABELS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "BC is opposite A, so it is side a.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Write down the length of BC.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "a = 8\\text{ cm}",
+        "say": [
+          {
+            "t": "text",
+            "v": "BC is the side opposite A, so it is side a:",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Triangle ABC has ",
+      },
+      {
+        "t": "math",
+        "v": "a = 8\\text{ cm},\\ b = 5\\text{ cm},\\ c = 7\\text{ cm}",
+      },
+      {
+        "t": "text",
+        "v": ", using the usual labels.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y8-GEO-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "cm",
+          "value": 8,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 6,
+            },
+            "code": "GEO.TRIANGLE.SIDE-LABELS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "PQ is opposite R, so it is side r.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 9,
+            },
+            "code": "GEO.TRIANGLE.SIDE-LABELS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "PQ is opposite R, so it is side r.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "How long is side PQ?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "r = 8\\text{ cm}",
+        "say": [
+          {
+            "t": "text",
+            "v": "PQ is the side opposite R, so it is side r:",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "In triangle PQR, ",
+      },
+      {
+        "t": "math",
+        "v": "p = 6\\text{ cm},\\ q = 9\\text{ cm},\\ r = 8\\text{ cm}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "match-representations",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "arcs": 1,
+            "from": "C",
+            "to": "A",
+            "vertex": "B",
+          },
+          {
+            "arcs": 1,
+            "from": "F",
+            "to": "D",
+            "vertex": "E",
+          },
+        ],
+        "description": "Triangles ABC and DEF, marked with two pairs of equal sides and the angle between them.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            4,
+            0,
+          ],
+          "C": [
+            3.29375,
+            2.605995191,
+          ],
+          "D": [
+            8.105995191,
+            0,
+          ],
+          "E": [
+            8.105995191,
+            4,
+          ],
+          "F": [
+            5.5,
+            3.29375,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+            ],
+          },
+          {
+            "vertices": [
+              "D",
+              "E",
+              "F",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "ticks": 2,
+            "to": "C",
+          },
+          {
+            "from": "D",
+            "ticks": 1,
+            "to": "E",
+          },
+          {
+            "from": "E",
+            "ticks": 2,
+            "to": "F",
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "angles": [
+          {
+            "from": "C",
+            "right": true,
+            "to": "A",
+            "vertex": "B",
+          },
+          {
+            "from": "F",
+            "right": true,
+            "to": "D",
+            "vertex": "E",
+          },
+        ],
+        "description": "Triangles ABC and DEF, marked with a right angle, equal hypotenuses and one other pair of equal sides.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            3.6,
+            0,
+          ],
+          "C": [
+            3.6,
+            4.8,
+          ],
+          "D": [
+            5.1,
+            0,
+          ],
+          "E": [
+            8.217691454,
+            1.8,
+          ],
+          "F": [
+            5.817691454,
+            5.956921938,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+            ],
+          },
+          {
+            "vertices": [
+              "D",
+              "E",
+              "F",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "C",
+            "ticks": 1,
+            "to": "A",
+          },
+          {
+            "from": "A",
+            "ticks": 2,
+            "to": "B",
+          },
+          {
+            "from": "F",
+            "ticks": 1,
+            "to": "D",
+          },
+          {
+            "from": "D",
+            "ticks": 2,
+            "to": "E",
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "angles": [
+          {
+            "arcs": 1,
+            "from": "B",
+            "to": "C",
+            "vertex": "A",
+          },
+          {
+            "arcs": 2,
+            "from": "C",
+            "to": "A",
+            "vertex": "B",
+          },
+          {
+            "arcs": 1,
+            "from": "E",
+            "to": "F",
+            "vertex": "D",
+          },
+          {
+            "arcs": 2,
+            "from": "F",
+            "to": "D",
+            "vertex": "E",
+          },
+        ],
+        "description": "Triangles ABC and DEF, marked with two pairs of equal angles and the side between them.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            4,
+            0,
+          ],
+          "C": [
+            3.51875,
+            3.264720269,
+          ],
+          "D": [
+            6.567955689,
+            0,
+          ],
+          "E": [
+            8.567955689,
+            3.464101615,
+          ],
+          "F": [
+            5.5,
+            4.679687024,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+            ],
+          },
+          {
+            "vertices": [
+              "D",
+              "E",
+              "F",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "D",
+            "ticks": 1,
+            "to": "E",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 3,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y8-GEO-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": [
+            [
+              "1",
+              "B",
+            ],
+            [
+              "2",
+              "C",
+            ],
+            [
+              "3",
+              "A",
+            ],
+          ],
+          "left": [
+            {
+              "content": [
+                {
+                  "i": 0,
+                  "t": "diagram",
+                },
+              ],
+              "id": "1",
+            },
+            {
+              "content": [
+                {
+                  "i": 1,
+                  "t": "diagram",
+                },
+              ],
+              "id": "2",
+            },
+            {
+              "content": [
+                {
+                  "i": 2,
+                  "t": "diagram",
+                },
+              ],
+              "id": "3",
+            },
+          ],
+          "right": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "ASA",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "SAS",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "RHS",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "match",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "SAS: two pairs of equal sides and the angle between them.",
+          },
+        ],
+      },
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "RHS: a right angle, equal hypotenuses and one other pair of equal sides.",
+          },
+        ],
+      },
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "ASA: two pairs of equal angles and the side between them.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Match each pair of triangles to the condition that proves they are congruent.",
+      },
+    ],
+  },
+  {
+    "archetype": "match-representations",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "arcs": 1,
+            "from": "C",
+            "to": "A",
+            "vertex": "B",
+          },
+          {
+            "arcs": 1,
+            "from": "F",
+            "to": "D",
+            "vertex": "E",
+          },
+        ],
+        "description": "Triangles ABC and DEF, marked with two pairs of equal sides and the angle between them.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            4,
+            0,
+          ],
+          "C": [
+            3.25625,
+            2.491352231,
+          ],
+          "D": [
+            6.029449322,
+            0,
+          ],
+          "E": [
+            8.029449322,
+            3.464101615,
+          ],
+          "F": [
+            5.5,
+            4.065671337,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+            ],
+          },
+          {
+            "vertices": [
+              "D",
+              "E",
+              "F",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "ticks": 2,
+            "to": "C",
+          },
+          {
+            "from": "D",
+            "ticks": 1,
+            "to": "E",
+          },
+          {
+            "from": "E",
+            "ticks": 2,
+            "to": "F",
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "angles": [],
+        "description": "Triangles ABC and DEF, marked with three pairs of equal sides.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            4,
+            0,
+          ],
+          "C": [
+            3.36875,
+            2.830463467,
+          ],
+          "D": [
+            5.5,
+            0,
+          ],
+          "E": [
+            8.964101615,
+            2,
+          ],
+          "F": [
+            7.002191345,
+            4.135628267,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+            ],
+          },
+          {
+            "vertices": [
+              "D",
+              "E",
+              "F",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "ticks": 2,
+            "to": "C",
+          },
+          {
+            "from": "C",
+            "ticks": 3,
+            "to": "A",
+          },
+          {
+            "from": "D",
+            "ticks": 1,
+            "to": "E",
+          },
+          {
+            "from": "E",
+            "ticks": 2,
+            "to": "F",
+          },
+          {
+            "from": "F",
+            "ticks": 3,
+            "to": "D",
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "angles": [
+          {
+            "from": "C",
+            "right": true,
+            "to": "A",
+            "vertex": "B",
+          },
+          {
+            "from": "F",
+            "right": true,
+            "to": "D",
+            "vertex": "E",
+          },
+        ],
+        "description": "Triangles ABC and DEF, marked with a right angle, equal hypotenuses and one other pair of equal sides.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            2.7,
+            0,
+          ],
+          "C": [
+            2.7,
+            3.6,
+          ],
+          "D": [
+            5.967691454,
+            0,
+          ],
+          "E": [
+            7.317691454,
+            2.33826859,
+          ],
+          "F": [
+            4.2,
+            4.13826859,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+            ],
+          },
+          {
+            "vertices": [
+              "D",
+              "E",
+              "F",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "C",
+            "ticks": 1,
+            "to": "A",
+          },
+          {
+            "from": "A",
+            "ticks": 2,
+            "to": "B",
+          },
+          {
+            "from": "F",
+            "ticks": 1,
+            "to": "D",
+          },
+          {
+            "from": "D",
+            "ticks": 2,
+            "to": "E",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 3,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y8-GEO-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": [
+            [
+              "1",
+              "C",
+            ],
+            [
+              "2",
+              "B",
+            ],
+            [
+              "3",
+              "A",
+            ],
+          ],
+          "left": [
+            {
+              "content": [
+                {
+                  "i": 0,
+                  "t": "diagram",
+                },
+              ],
+              "id": "1",
+            },
+            {
+              "content": [
+                {
+                  "i": 1,
+                  "t": "diagram",
+                },
+              ],
+              "id": "2",
+            },
+            {
+              "content": [
+                {
+                  "i": 2,
+                  "t": "diagram",
+                },
+              ],
+              "id": "3",
+            },
+          ],
+          "right": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "RHS",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "SSS",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "SAS",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "match",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "SAS: two pairs of equal sides and the angle between them.",
+          },
+        ],
+      },
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "SSS: three pairs of equal sides.",
+          },
+        ],
+      },
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "RHS: a right angle, equal hypotenuses and one other pair of equal sides.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Match each pair of triangles to the condition that proves they are congruent.",
+      },
+    ],
+  },
+  {
+    "archetype": "match-representations",
+    "diagrams": [
+      {
+        "angles": [],
+        "description": "Triangles ABC and DEF, marked with three pairs of equal sides.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            4,
+            0,
+          ],
+          "C": [
+            3.33125,
+            2.718965509,
+          ],
+          "D": [
+            8.218965509,
+            0,
+          ],
+          "E": [
+            8.218965509,
+            4,
+          ],
+          "F": [
+            5.5,
+            3.33125,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+            ],
+          },
+          {
+            "vertices": [
+              "D",
+              "E",
+              "F",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "ticks": 2,
+            "to": "C",
+          },
+          {
+            "from": "C",
+            "ticks": 3,
+            "to": "A",
+          },
+          {
+            "from": "D",
+            "ticks": 1,
+            "to": "E",
+          },
+          {
+            "from": "E",
+            "ticks": 2,
+            "to": "F",
+          },
+          {
+            "from": "F",
+            "ticks": 3,
+            "to": "D",
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "angles": [
+          {
+            "arcs": 1,
+            "from": "C",
+            "to": "A",
+            "vertex": "B",
+          },
+          {
+            "arcs": 1,
+            "from": "F",
+            "to": "D",
+            "vertex": "E",
+          },
+        ],
+        "description": "Triangles ABC and DEF, marked with two pairs of equal sides and the angle between them.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            4,
+            0,
+          ],
+          "C": [
+            3.44375,
+            3.049686203,
+          ],
+          "D": [
+            5.5,
+            0,
+          ],
+          "E": [
+            8.964101615,
+            2,
+          ],
+          "F": [
+            6.957531883,
+            4.362980725,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+            ],
+          },
+          {
+            "vertices": [
+              "D",
+              "E",
+              "F",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "ticks": 2,
+            "to": "C",
+          },
+          {
+            "from": "D",
+            "ticks": 1,
+            "to": "E",
+          },
+          {
+            "from": "E",
+            "ticks": 2,
+            "to": "F",
+          },
+        ],
+        "type": "geometry",
+      },
+      {
+        "angles": [
+          {
+            "from": "C",
+            "right": true,
+            "to": "A",
+            "vertex": "B",
+          },
+          {
+            "from": "F",
+            "right": true,
+            "to": "D",
+            "vertex": "E",
+          },
+        ],
+        "description": "Triangles ABC and DEF, marked with a right angle, equal hypotenuses and one other pair of equal sides.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            3.3,
+            0,
+          ],
+          "C": [
+            3.3,
+            4.4,
+          ],
+          "D": [
+            9.2,
+            0,
+          ],
+          "E": [
+            9.2,
+            3.3,
+          ],
+          "F": [
+            4.8,
+            3.3,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+            ],
+          },
+          {
+            "vertices": [
+              "D",
+              "E",
+              "F",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "C",
+            "ticks": 1,
+            "to": "A",
+          },
+          {
+            "from": "A",
+            "ticks": 2,
+            "to": "B",
+          },
+          {
+            "from": "F",
+            "ticks": 1,
+            "to": "D",
+          },
+          {
+            "from": "D",
+            "ticks": 2,
+            "to": "E",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 3,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y8-GEO-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": [
+            [
+              "1",
+              "B",
+            ],
+            [
+              "2",
+              "C",
+            ],
+            [
+              "3",
+              "A",
+            ],
+          ],
+          "left": [
+            {
+              "content": [
+                {
+                  "i": 0,
+                  "t": "diagram",
+                },
+              ],
+              "id": "1",
+            },
+            {
+              "content": [
+                {
+                  "i": 1,
+                  "t": "diagram",
+                },
+              ],
+              "id": "2",
+            },
+            {
+              "content": [
+                {
+                  "i": 2,
+                  "t": "diagram",
+                },
+              ],
+              "id": "3",
+            },
+          ],
+          "right": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "RHS",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "SSS",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "SAS",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "match",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "SSS: three pairs of equal sides.",
+          },
+        ],
+      },
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "SAS: two pairs of equal sides and the angle between them.",
+          },
+        ],
+      },
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "RHS: a right angle, equal hypotenuses and one other pair of equal sides.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Match each pair of triangles to the condition that proves they are congruent.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y8-GEO-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Only if both triangles are drawn the same way up.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "They have the same shape, but one can be larger than the other.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Equal angles mean equal sides, so they are congruent.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "They have the same shape, but one can be larger than the other.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Two triangles with the same three angles must be congruent.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y8-GEO-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "They have the same shape, but one can be larger than the other.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Only if both triangles are drawn the same way up.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Equal angles mean equal sides, so they are congruent.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "They have the same shape, but one can be larger than the other.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Two triangles with the same three angles must be congruent.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y8-GEO-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "It depends how the triangle is drawn.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "No: side r must touch vertex R.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Side r is opposite angle R, and the side opposite R joins the other two vertices.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Side r is opposite angle R, and the side opposite R joins the other two vertices.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "In triangle PQR, side ",
+      },
+      {
+        "t": "math",
+        "v": "r",
+      },
+      {
+        "t": "text",
+        "v": " joins P and Q.",
+      },
+    ],
+  },
+]
+`;

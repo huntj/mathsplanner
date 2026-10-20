@@ -1,0 +1,2034 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`GF-G6 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "description": "A large square of side a + b with a tilted square of side c inside it, leaving four right-angled triangles with legs a and b.",
+        "points": {
+          "E": [
+            1.3,
+            0,
+          ],
+          "F": [
+            3.5,
+            1.3,
+          ],
+          "G": [
+            2.2,
+            3.5,
+          ],
+          "H": [
+            0,
+            2.2,
+          ],
+          "P": [
+            0,
+            0,
+          ],
+          "Q": [
+            3.5,
+            0,
+          ],
+          "R": [
+            3.5,
+            3.5,
+          ],
+          "S": [
+            0,
+            3.5,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "P",
+              "Q",
+              "R",
+              "S",
+            ],
+          },
+          {
+            "shaded": true,
+            "vertices": [
+              "E",
+              "F",
+              "G",
+              "H",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "P",
+            "label": "a",
+            "to": "E",
+          },
+          {
+            "from": "E",
+            "label": "b",
+            "to": "Q",
+          },
+          {
+            "from": "E",
+            "label": "c",
+            "to": "F",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-G6",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Pythagoras' theorem",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "factorising",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "expanding the brackets",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "halving both sides",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "GEO.PROOF.REASON",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That uses the result being proved, or a fact that does not apply here.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which reason completes line 4?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Line 4 holds because expanding the brackets.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "This proves that pythagoras' theorem: a² + b² = c² for a right-angled triangle with hypotenuse c.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+      {
+        "t": "text",
+        "v": " Line 1: ",
+      },
+      {
+        "t": "text",
+        "v": "The large square has area ",
+      },
+      {
+        "t": "math",
+        "v": "(a + b)^2",
+      },
+      {
+        "t": "text",
+        "v": " (its side is a + b)",
+      },
+      {
+        "t": "text",
+        "v": " Line 2: ",
+      },
+      {
+        "t": "text",
+        "v": "The four triangles have area ",
+      },
+      {
+        "t": "math",
+        "v": "4 \\times \\tfrac{1}{2}ab = 2ab",
+      },
+      {
+        "t": "text",
+        "v": " (each is right-angled with legs a and b)",
+      },
+      {
+        "t": "text",
+        "v": " Line 3: ",
+      },
+      {
+        "t": "math",
+        "v": "(a + b)^2 = 2ab + c^2",
+      },
+      {
+        "t": "text",
+        "v": " (the large square is the four triangles plus the tilted square)",
+      },
+      {
+        "t": "text",
+        "v": " Line 4: ",
+      },
+      {
+        "t": "math",
+        "v": "a^2 + 2ab + b^2 = 2ab + c^2",
+      },
+      {
+        "t": "text",
+        "v": " (……)",
+      },
+      {
+        "t": "text",
+        "v": " Line 5: ",
+      },
+      {
+        "t": "math",
+        "v": "a^2 + b^2 = c^2",
+      },
+      {
+        "t": "text",
+        "v": " (subtracting 2ab from both sides)",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "description": "Parallelogram ABCD with diagonal BD.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            4,
+            0,
+          ],
+          "C": [
+            5.3,
+            2.25166605,
+          ],
+          "D": [
+            1.3,
+            2.25166605,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "arrows": 1,
+            "from": "A",
+            "to": "B",
+          },
+          {
+            "arrows": 1,
+            "from": "D",
+            "to": "C",
+          },
+          {
+            "arrows": 2,
+            "from": "A",
+            "to": "D",
+          },
+          {
+            "arrows": 2,
+            "from": "B",
+            "to": "C",
+          },
+          {
+            "from": "B",
+            "to": "D",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-G6",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "SSS",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "RHS",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "ASA",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "AAA",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "D",
+              "type": "choice",
+            },
+            "code": "GEO.CONGRUENCE.AAA",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Equal angles alone do not prove congruence.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which reason completes line 4?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Line 4 holds because ASA.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "This proves that opposite angles of a parallelogram are equal.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+      {
+        "t": "text",
+        "v": " Line 1: ",
+      },
+      {
+        "t": "math",
+        "v": "\\angle ABD = \\angle CDB",
+      },
+      {
+        "t": "text",
+        "v": " (alternate angles, as AB is parallel to DC)",
+      },
+      {
+        "t": "text",
+        "v": " Line 2: ",
+      },
+      {
+        "t": "math",
+        "v": "\\angle ADB = \\angle CBD",
+      },
+      {
+        "t": "text",
+        "v": " (alternate angles, as AD is parallel to BC)",
+      },
+      {
+        "t": "text",
+        "v": " Line 3: ",
+      },
+      {
+        "t": "math",
+        "v": "BD",
+      },
+      {
+        "t": "text",
+        "v": " is a side of both triangles",
+      },
+      {
+        "t": "text",
+        "v": " (common side)",
+      },
+      {
+        "t": "text",
+        "v": " Line 4: ",
+      },
+      {
+        "t": "text",
+        "v": "Triangles ABD and CDB are congruent",
+      },
+      {
+        "t": "text",
+        "v": " (……)",
+      },
+      {
+        "t": "text",
+        "v": " Line 5: ",
+      },
+      {
+        "t": "math",
+        "v": "\\angle DAB = \\angle BCD",
+      },
+      {
+        "t": "text",
+        "v": " (corresponding angles of congruent triangles are equal)",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "description": "Isosceles triangle ABC with AB = AC, and M the midpoint of BC joined to A.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            2,
+            4.289013841,
+          ],
+          "B": [
+            0,
+            0,
+          ],
+          "C": [
+            4,
+            0,
+          ],
+          "M": [
+            2,
+            0,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "C",
+          },
+          {
+            "from": "B",
+            "ticks": 2,
+            "to": "M",
+          },
+          {
+            "from": "M",
+            "ticks": 2,
+            "to": "C",
+          },
+          {
+            "from": "A",
+            "to": "M",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-G6",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "AAA",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "SSS",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "SAS",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "RHS",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "GEO.CONGRUENCE.AAA",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Equal angles alone do not prove congruence.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which reason completes line 4?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Line 4 holds because SSS.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "This proves that the base angles of an isosceles triangle are equal.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+      {
+        "t": "text",
+        "v": " Line 1: ",
+      },
+      {
+        "t": "math",
+        "v": "AB = AC",
+      },
+      {
+        "t": "text",
+        "v": " (given)",
+      },
+      {
+        "t": "text",
+        "v": " Line 2: ",
+      },
+      {
+        "t": "math",
+        "v": "BM = CM",
+      },
+      {
+        "t": "text",
+        "v": " (M is the midpoint of BC)",
+      },
+      {
+        "t": "text",
+        "v": " Line 3: ",
+      },
+      {
+        "t": "math",
+        "v": "AM",
+      },
+      {
+        "t": "text",
+        "v": " is a side of both triangles",
+      },
+      {
+        "t": "text",
+        "v": " (common side)",
+      },
+      {
+        "t": "text",
+        "v": " Line 4: ",
+      },
+      {
+        "t": "text",
+        "v": "Triangles ABM and ACM are congruent",
+      },
+      {
+        "t": "text",
+        "v": " (……)",
+      },
+      {
+        "t": "text",
+        "v": " Line 5: ",
+      },
+      {
+        "t": "math",
+        "v": "\\angle ABM = \\angle ACM",
+      },
+      {
+        "t": "text",
+        "v": " (corresponding angles of congruent triangles are equal)",
+      },
+    ],
+  },
+  {
+    "archetype": "spot-the-mistake",
+    "diagrams": [
+      {
+        "description": "A large square of side a + b with a tilted square of side c inside it, leaving four right-angled triangles with legs a and b.",
+        "points": {
+          "E": [
+            1.3,
+            0,
+          ],
+          "F": [
+            3.5,
+            1.3,
+          ],
+          "G": [
+            2.2,
+            3.5,
+          ],
+          "H": [
+            0,
+            2.2,
+          ],
+          "P": [
+            0,
+            0,
+          ],
+          "Q": [
+            3.5,
+            0,
+          ],
+          "R": [
+            3.5,
+            3.5,
+          ],
+          "S": [
+            0,
+            3.5,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "P",
+              "Q",
+              "R",
+              "S",
+            ],
+          },
+          {
+            "shaded": true,
+            "vertices": [
+              "E",
+              "F",
+              "G",
+              "H",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "P",
+            "label": "a",
+            "to": "E",
+          },
+          {
+            "from": "E",
+            "label": "b",
+            "to": "Q",
+          },
+          {
+            "from": "E",
+            "label": "c",
+            "to": "F",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-G6",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "D",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Line 1",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Line 2",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Line 3",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Line 4",
+                },
+              ],
+              "id": "D",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Line 5",
+                },
+              ],
+              "id": "E",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which line contains the first mistake?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Line 4 gives the wrong reason. It should be: expanding the brackets.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Lena tries to prove that pythagoras' theorem: a² + b² = c² for a right-angled triangle with hypotenuse c.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+      {
+        "t": "text",
+        "v": " Line 1: ",
+      },
+      {
+        "t": "text",
+        "v": "The large square has area ",
+      },
+      {
+        "t": "math",
+        "v": "(a + b)^2",
+      },
+      {
+        "t": "text",
+        "v": " (its side is a + b)",
+      },
+      {
+        "t": "text",
+        "v": " Line 2: ",
+      },
+      {
+        "t": "text",
+        "v": "The four triangles have area ",
+      },
+      {
+        "t": "math",
+        "v": "4 \\times \\tfrac{1}{2}ab = 2ab",
+      },
+      {
+        "t": "text",
+        "v": " (each is right-angled with legs a and b)",
+      },
+      {
+        "t": "text",
+        "v": " Line 3: ",
+      },
+      {
+        "t": "math",
+        "v": "(a + b)^2 = 2ab + c^2",
+      },
+      {
+        "t": "text",
+        "v": " (the large square is the four triangles plus the tilted square)",
+      },
+      {
+        "t": "text",
+        "v": " Line 4: ",
+      },
+      {
+        "t": "math",
+        "v": "a^2 + 2ab + b^2 = 2ab + c^2",
+      },
+      {
+        "t": "text",
+        "v": " (Pythagoras' theorem)",
+      },
+      {
+        "t": "text",
+        "v": " Line 5: ",
+      },
+      {
+        "t": "math",
+        "v": "a^2 + b^2 = c^2",
+      },
+      {
+        "t": "text",
+        "v": " (subtracting 2ab from both sides)",
+      },
+    ],
+  },
+  {
+    "archetype": "spot-the-mistake",
+    "diagrams": [
+      {
+        "description": "Parallelogram ABCD with diagonal BD.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            4,
+            0,
+          ],
+          "C": [
+            5.3,
+            2.25166605,
+          ],
+          "D": [
+            1.3,
+            2.25166605,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "arrows": 1,
+            "from": "A",
+            "to": "B",
+          },
+          {
+            "arrows": 1,
+            "from": "D",
+            "to": "C",
+          },
+          {
+            "arrows": 2,
+            "from": "A",
+            "to": "D",
+          },
+          {
+            "arrows": 2,
+            "from": "B",
+            "to": "C",
+          },
+          {
+            "from": "B",
+            "to": "D",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-G6",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "D",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Line 1",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Line 2",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Line 3",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Line 4",
+                },
+              ],
+              "id": "D",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Line 5",
+                },
+              ],
+              "id": "E",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which line contains the first mistake?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Line 4 gives the wrong reason. It should be: ASA.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Lena tries to prove that opposite angles of a parallelogram are equal.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+      {
+        "t": "text",
+        "v": " Line 1: ",
+      },
+      {
+        "t": "math",
+        "v": "\\angle ABD = \\angle CDB",
+      },
+      {
+        "t": "text",
+        "v": " (alternate angles, as AB is parallel to DC)",
+      },
+      {
+        "t": "text",
+        "v": " Line 2: ",
+      },
+      {
+        "t": "math",
+        "v": "\\angle ADB = \\angle CBD",
+      },
+      {
+        "t": "text",
+        "v": " (alternate angles, as AD is parallel to BC)",
+      },
+      {
+        "t": "text",
+        "v": " Line 3: ",
+      },
+      {
+        "t": "math",
+        "v": "BD",
+      },
+      {
+        "t": "text",
+        "v": " is a side of both triangles",
+      },
+      {
+        "t": "text",
+        "v": " (common side)",
+      },
+      {
+        "t": "text",
+        "v": " Line 4: ",
+      },
+      {
+        "t": "text",
+        "v": "Triangles ABD and CDB are congruent",
+      },
+      {
+        "t": "text",
+        "v": " (AAA)",
+      },
+      {
+        "t": "text",
+        "v": " Line 5: ",
+      },
+      {
+        "t": "math",
+        "v": "\\angle DAB = \\angle BCD",
+      },
+      {
+        "t": "text",
+        "v": " (corresponding angles of congruent triangles are equal)",
+      },
+    ],
+  },
+  {
+    "archetype": "spot-the-mistake",
+    "diagrams": [
+      {
+        "description": "Isosceles triangle ABC with AB = AC, and M the midpoint of BC joined to A.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            2,
+            4.289013841,
+          ],
+          "B": [
+            0,
+            0,
+          ],
+          "C": [
+            4,
+            0,
+          ],
+          "M": [
+            2,
+            0,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "B",
+          },
+          {
+            "from": "A",
+            "ticks": 1,
+            "to": "C",
+          },
+          {
+            "from": "B",
+            "ticks": 2,
+            "to": "M",
+          },
+          {
+            "from": "M",
+            "ticks": 2,
+            "to": "C",
+          },
+          {
+            "from": "A",
+            "to": "M",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-G6",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "D",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Line 1",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Line 2",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Line 3",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Line 4",
+                },
+              ],
+              "id": "D",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Line 5",
+                },
+              ],
+              "id": "E",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which line contains the first mistake?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Line 4 gives the wrong reason. It should be: SSS.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Lena tries to prove that the base angles of an isosceles triangle are equal.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+      {
+        "t": "text",
+        "v": " Line 1: ",
+      },
+      {
+        "t": "math",
+        "v": "AB = AC",
+      },
+      {
+        "t": "text",
+        "v": " (given)",
+      },
+      {
+        "t": "text",
+        "v": " Line 2: ",
+      },
+      {
+        "t": "math",
+        "v": "BM = CM",
+      },
+      {
+        "t": "text",
+        "v": " (M is the midpoint of BC)",
+      },
+      {
+        "t": "text",
+        "v": " Line 3: ",
+      },
+      {
+        "t": "math",
+        "v": "AM",
+      },
+      {
+        "t": "text",
+        "v": " is a side of both triangles",
+      },
+      {
+        "t": "text",
+        "v": " (common side)",
+      },
+      {
+        "t": "text",
+        "v": " Line 4: ",
+      },
+      {
+        "t": "text",
+        "v": "Triangles ABM and ACM are congruent",
+      },
+      {
+        "t": "text",
+        "v": " (AAA)",
+      },
+      {
+        "t": "text",
+        "v": " Line 5: ",
+      },
+      {
+        "t": "math",
+        "v": "\\angle ABM = \\angle ACM",
+      },
+      {
+        "t": "text",
+        "v": " (corresponding angles of congruent triangles are equal)",
+      },
+    ],
+  },
+  {
+    "archetype": "multi-step-context",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "D",
+            "to": "A",
+            "value": 30,
+            "vertex": "B",
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value": 90,
+            "vertex": "D",
+          },
+          {
+            "from": "B",
+            "label": "x",
+            "to": "C",
+            "value": 30,
+            "vertex": "D",
+          },
+          {
+            "from": "D",
+            "label": "y",
+            "to": "B",
+            "value": 60,
+            "vertex": "C",
+          },
+        ],
+        "description": "Parallelogram ABCD with diagonal BD. Angle ABD is 30° and angle ADB is 90°; angle CDB is x and angle BCD is y.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            4,
+            0,
+          ],
+          "C": [
+            5,
+            1.732050808,
+          ],
+          "D": [
+            1,
+            1.732050808,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "arrows": 1,
+            "from": "A",
+            "to": "B",
+          },
+          {
+            "arrows": 1,
+            "from": "D",
+            "to": "C",
+          },
+          {
+            "arrows": 2,
+            "from": "A",
+            "to": "D",
+          },
+          {
+            "arrows": 2,
+            "from": "B",
+            "to": "C",
+          },
+          {
+            "from": "B",
+            "to": "D",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 5,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-G6",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 30,
+        },
+        "label": "(a)",
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 150,
+            },
+            "code": "GEO.PARALLEL.ALTERNATE-SUPPLEMENTARY",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "∠ABD and ∠CDB are alternate angles (AB is parallel to DC), so they are equal.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle x. Give a reason.",
+          },
+        ],
+      },
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 60,
+        },
+        "label": "(b)",
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 240,
+            },
+            "code": "GEO.ANGLES.TRIANGLE-360",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angles in triangle BCD add up to 180°.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle y.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x = 30^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "AB is parallel to DC, so ∠CDB = ∠ABD (alternate angles).",
+          },
+        ],
+      },
+      {
+        "math": "y = 180^\\circ - 30^\\circ - 90^\\circ = 60^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "∠CBD = ∠ADB (alternate angles, AD parallel to BC), so in triangle BCD:",
+          },
+        ],
+      },
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "∠DAB is also 180° − 30° − 90° = 60°, so the opposite angles at A and C are equal.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "ABCD is a parallelogram. BD is a diagonal.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "multi-step-context",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "D",
+            "to": "A",
+            "value": 30,
+            "vertex": "B",
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value": 40,
+            "vertex": "D",
+          },
+          {
+            "from": "B",
+            "label": "x",
+            "to": "C",
+            "value": 30,
+            "vertex": "D",
+          },
+          {
+            "from": "D",
+            "label": "y",
+            "to": "B",
+            "value": 110,
+            "vertex": "C",
+          },
+        ],
+        "description": "Parallelogram ABCD with diagonal BD. Angle ABD is 30° and angle ADB is 40°; angle CDB is x and angle BCD is y.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            4,
+            0,
+          ],
+          "C": [
+            2.935822228,
+            2.9238044,
+          ],
+          "D": [
+            -1.064177772,
+            2.9238044,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "arrows": 1,
+            "from": "A",
+            "to": "B",
+          },
+          {
+            "arrows": 1,
+            "from": "D",
+            "to": "C",
+          },
+          {
+            "arrows": 2,
+            "from": "A",
+            "to": "D",
+          },
+          {
+            "arrows": 2,
+            "from": "B",
+            "to": "C",
+          },
+          {
+            "from": "B",
+            "to": "D",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 5,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-G6",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 30,
+        },
+        "label": "(a)",
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 150,
+            },
+            "code": "GEO.PARALLEL.ALTERNATE-SUPPLEMENTARY",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "∠ABD and ∠CDB are alternate angles (AB is parallel to DC), so they are equal.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle x. Give a reason.",
+          },
+        ],
+      },
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 110,
+        },
+        "label": "(b)",
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 290,
+            },
+            "code": "GEO.ANGLES.TRIANGLE-360",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angles in triangle BCD add up to 180°.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle y.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x = 30^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "AB is parallel to DC, so ∠CDB = ∠ABD (alternate angles).",
+          },
+        ],
+      },
+      {
+        "math": "y = 180^\\circ - 30^\\circ - 40^\\circ = 110^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "∠CBD = ∠ADB (alternate angles, AD parallel to BC), so in triangle BCD:",
+          },
+        ],
+      },
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "∠DAB is also 180° − 30° − 40° = 110°, so the opposite angles at A and C are equal.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "ABCD is a parallelogram. BD is a diagonal.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "multi-step-context",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "D",
+            "to": "A",
+            "value": 73,
+            "vertex": "B",
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value": 36,
+            "vertex": "D",
+          },
+          {
+            "from": "B",
+            "label": "x",
+            "to": "C",
+            "value": 73,
+            "vertex": "D",
+          },
+          {
+            "from": "D",
+            "label": "y",
+            "to": "B",
+            "value": 71,
+            "vertex": "C",
+          },
+        ],
+        "description": "Parallelogram ABCD with diagonal BD. Angle ABD is 73° and angle ADB is 36°; angle CDB is x and angle BCD is y.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            4,
+            0,
+          ],
+          "C": [
+            6.11874914,
+            6.1532943,
+          ],
+          "D": [
+            2.11874914,
+            6.1532943,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "arrows": 1,
+            "from": "A",
+            "to": "B",
+          },
+          {
+            "arrows": 1,
+            "from": "D",
+            "to": "C",
+          },
+          {
+            "arrows": 2,
+            "from": "A",
+            "to": "D",
+          },
+          {
+            "arrows": 2,
+            "from": "B",
+            "to": "C",
+          },
+          {
+            "from": "B",
+            "to": "D",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 5,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-G6",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 73,
+        },
+        "label": "(a)",
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 107,
+            },
+            "code": "GEO.PARALLEL.ALTERNATE-SUPPLEMENTARY",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "∠ABD and ∠CDB are alternate angles (AB is parallel to DC), so they are equal.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle x. Give a reason.",
+          },
+        ],
+      },
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 71,
+        },
+        "label": "(b)",
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 251,
+            },
+            "code": "GEO.ANGLES.TRIANGLE-360",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angles in triangle BCD add up to 180°.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle y.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x = 73^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "AB is parallel to DC, so ∠CDB = ∠ABD (alternate angles).",
+          },
+        ],
+      },
+      {
+        "math": "y = 180^\\circ - 73^\\circ - 36^\\circ = 71^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "∠CBD = ∠ADB (alternate angles, AD parallel to BC), so in triangle BCD:",
+          },
+        ],
+      },
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "∠DAB is also 180° − 73° − 36° = 71°, so the opposite angles at A and C are equal.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "ABCD is a parallelogram. BD is a diagonal.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+]
+`;
