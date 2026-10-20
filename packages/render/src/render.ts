@@ -20,6 +20,11 @@ export interface RenderOptions {
   showAnswers?: boolean;
   /** Show the worked solution. */
   showSolution?: boolean;
+  /**
+   * Lay the question out for paper: answer lines and working space, and a drawing canvas at true
+   * size (one unit is one centimetre) so it can be finished with a real ruler and protractor.
+   */
+  print?: boolean;
 }
 
 export class RenderError extends Error {
@@ -59,14 +64,24 @@ export function renderMath(latex: string, display = false): string {
  * SVG from @mathsplanner/diagrams. A diagram that contradicts its numbers or has a bad label
  * throws, like bad LaTeX. Types the engine does not draw yet get a labelled placeholder.
  */
-function renderDiagram(spec: DiagramSpec | undefined, index: number): string {
+function renderDiagram(spec: DiagramSpec | undefined, index: number, trueSize = false): string {
   if (!spec) throw new RenderError(`diagram ${index} does not exist`);
   if (!isSupported(spec)) {
     const label = `${spec.type} diagram (not drawn yet: this diagram type arrives later)`;
     return `<figure class="mp-diagram mp-diagram-pending" role="img" aria-label="${escapeHtml(label)}"><figcaption>${escapeHtml(label)}</figcaption></figure>`;
   }
   try {
-    return `<figure class="mp-diagram">${drawDiagram(spec).svg}</figure>`;
+    const drawn = drawDiagram(spec);
+    const unit = drawn.frame?.scale[0];
+    if (trueSize && spec.type === "geometry" && unit) {
+      // One unit is one centimetre on paper, with room above the given side to construct on.
+      const svg = drawn.svg.replace(
+        / width="[^"]+" height="[^"]+"/,
+        ` style="width: ${(drawn.width / unit).toFixed(2)}cm; height: auto"`,
+      );
+      return `<figure class="mp-diagram mp-true-size">${svg}</figure>`;
+    }
+    return `<figure class="mp-diagram">${drawn.svg}</figure>`;
   } catch (error) {
     if (error instanceof DiagramError || error instanceof LabelError) {
       throw new RenderError(`diagram ${index}: ${error.message}`);
@@ -75,7 +90,12 @@ function renderDiagram(spec: DiagramSpec | undefined, index: number): string {
   }
 }
 
-export function renderRich(rich: Rich, diagrams: readonly DiagramSpec[] = []): string {
+/** Rich text as HTML. `trueSize` draws that diagram at true size, for printed constructions. */
+export function renderRich(
+  rich: Rich,
+  diagrams: readonly DiagramSpec[] = [],
+  trueSize?: number,
+): string {
   return rich
     .map((node) => {
       switch (node.t) {
@@ -86,7 +106,7 @@ export function renderRich(rich: Rich, diagrams: readonly DiagramSpec[] = []): s
             ? `<div class="mp-math-display">${renderMath(node.v, true)}</div>`
             : renderMath(node.v);
         case "diagram":
-          return renderDiagram(diagrams[node.i], node.i);
+          return renderDiagram(diagrams[node.i], node.i, node.i === trueSize);
       }
     })
     .join("");
@@ -262,13 +282,63 @@ function renderMisconceptions(part: Part): string {
   return `<div class="mp-misconceptions"><p class="mp-heading">Misconceptions</p><ul>${items.join("")}</ul></div>`;
 }
 
-function renderPart(part: Part, diagrams: readonly DiagramSpec[], options: RenderOptions): string {
+/** A part's answer and the misconceptions it watches for, as a teacher reads them. */
+export function renderPartAnswer(part: Part, diagrams: readonly DiagramSpec[] = []): string {
+  return `<div class="mp-answer"><p><span class="mp-heading">Answer:</span> ${renderAnswer(part.answer, diagrams)}</p>${renderMisconceptions(part)}</div>`;
+}
+
+const BLANK = '<span class="mp-blank"></span>';
+const SHORT = '<span class="mp-blank mp-short"></span>';
+
+/** Where a student writes a typed answer on paper; choices are circled, so they need none. */
+function answerLine(answer: AnswerSpec): string {
+  const line = (html: string) => `<p class="mp-answer-line">${html}</p>`;
+  switch (answer.type) {
+    case "number": {
+      const units = answer.units
+        ? /^[°%]$/.test(answer.units)
+          ? answer.units
+          : ` ${answer.units}`
+        : "";
+      return line(`Answer: ${BLANK}${escapeHtml(units)}`);
+    }
+    case "exact":
+      return line(`Answer: ${BLANK}`);
+    case "coordinate":
+      return line(`Answer: ( ${SHORT} , ${SHORT} )`);
+    case "condition":
+      return line(`Answers: ${answer.inputs.map(() => SHORT).join(", ")}`);
+    case "order":
+      return line(`Order: ${answer.options.map(() => SHORT).join(" ")}`);
+    case "match":
+      return line(answer.left.map((_, i) => `${i + 1} → ${SHORT}`).join(" &nbsp; "));
+    case "free-text":
+      return '<div class="mp-lines"><span></span><span></span><span></span></div>';
+    default:
+      return "";
+  }
+}
+
+/** Blank space for working, more for deeper questions; only where an answer is written. */
+const WORKING_CM: Record<number, number> = { 1: 1.2, 2: 2, 3: 1.5, 4: 2, 5: 3.5 };
+const TYPED = new Set(["number", "exact", "coordinate", "condition"]);
+
+function renderPart(
+  part: Part,
+  diagrams: readonly DiagramSpec[],
+  options: RenderOptions,
+  depth: number,
+): string {
   const label = part.label ? `<span class="mp-label">${escapeHtml(part.label)}</span> ` : "";
   const marks = `<span class="mp-marks">[${part.marks} mark${part.marks === 1 ? "" : "s"}]</span>`;
-  const answer = options.showAnswers
-    ? `<div class="mp-answer"><p><span class="mp-heading">Answer:</span> ${renderAnswer(part.answer, diagrams)}</p>${renderMisconceptions(part)}</div>`
-    : "";
-  return `<li class="mp-part"><div class="mp-prompt">${label}${renderRich(part.prompt, diagrams)} ${marks}</div>${renderResponseArea(part.answer, diagrams, options.showAnswers ?? false)}${answer}</li>`;
+  const answer = options.showAnswers ? renderPartAnswer(part, diagrams) : "";
+  const paper =
+    options.print && !options.showAnswers
+      ? (TYPED.has(part.answer.type)
+          ? `<div class="mp-working" style="min-height: ${WORKING_CM[depth] ?? 1.5}cm"></div>`
+          : "") + answerLine(part.answer)
+      : "";
+  return `<li class="mp-part"><div class="mp-prompt">${label}${renderRich(part.prompt, diagrams)} ${marks}</div>${renderResponseArea(part.answer, diagrams, options.showAnswers ?? false)}${paper}${answer}</li>`;
 }
 
 /** A worked solution on its own, e.g. after a student has answered. */
@@ -289,7 +359,12 @@ export function renderSolution(
 export function renderQuestion(question: Question, options: RenderOptions = {}): string {
   const { key, diagrams } = question;
   const keyText = `${key.statementId} depth ${key.depth} ${key.numbers} seed ${key.seed} v${key.version}`;
-  const parts = question.parts.map((p) => renderPart(p, diagrams, options)).join("");
+  const parts = question.parts.map((p) => renderPart(p, diagrams, options, key.depth)).join("");
+  // On paper, the canvas a plot part draws on (the stem's last diagram) is drawn at true size.
+  const canvas =
+    options.print && question.parts.some((p) => p.answer.type === "plot")
+      ? question.stem.flatMap((n) => (n.t === "diagram" ? [n.i] : [])).at(-1)
+      : undefined;
   const solution = options.showSolution ? renderSolution(question.solution, diagrams) : "";
-  return `<article class="mp-question" data-key="${escapeHtml(keyText)}"><div class="mp-stem">${renderRich(question.stem, diagrams)}</div><ol class="mp-parts">${parts}</ol>${solution}</article>`;
+  return `<article class="mp-question" data-key="${escapeHtml(keyText)}"><div class="mp-stem">${renderRich(question.stem, diagrams, canvas)}</div><ol class="mp-parts">${parts}</ol>${solution}</article>`;
 }

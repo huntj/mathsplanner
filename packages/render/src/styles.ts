@@ -34,4 +34,10 @@ export const questionStyles = `
   margin: 0.75em 0; padding: 1.5em 1em; text-align: center;
   border: 2px dashed var(--mp-border); border-radius: 8px; color: var(--mp-muted);
 }
+.mp-answer-line { margin: 0.5em 0 0; text-align: right; }
+.mp-blank { display: inline-block; min-width: 8em; height: 1.2em; border-bottom: 1px solid currentColor; vertical-align: -0.2em; }
+.mp-blank.mp-short { min-width: 3em; }
+.mp-lines span { display: block; height: 1.8em; border-bottom: 1px solid var(--mp-border); }
+.mp-true-size { display: flex; align-items: flex-end; justify-content: center; min-height: 7cm; }
+.mp-true-size svg { max-width: none; margin: 0; }
 `;
