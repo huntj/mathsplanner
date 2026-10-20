@@ -664,3 +664,31 @@ export function multiStepContext(input: MultiStepInput): QuestionDraft {
     input,
   );
 }
+
+// --- choice-marked versions of the single-answer archetypes ---------------------------------
+
+export interface ChoiceInput extends Common {
+  question: RichInput;
+  ask?: RichInput;
+  /** The right option. */
+  correct: RichInput;
+  /** Wrong options, each ideally tied to a misconception. */
+  distractors: Distractor[];
+  rng: Rng;
+  /** Which single-answer pattern this is; marked by choice rather than by a typed value. */
+  archetype?: "standard" | "varied-form" | "reverse";
+}
+
+/** A direct question answered by choosing, e.g. naming a shape or an angle type. */
+export function choice(input: ChoiceInput): QuestionDraft {
+  const archetype = input.archetype ?? "standard";
+  const c = new Collector();
+  const stem = c.rich(input.question);
+  const part = choicePart(
+    c,
+    { correct: input.correct, distractors: input.distractors, rng: input.rng },
+    input.ask ?? [],
+    input.marks,
+  );
+  return draft(archetype, c, stem, [part], input);
+}

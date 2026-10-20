@@ -300,3 +300,26 @@ describe("archetypes", () => {
     expect(A.sameValue(A.degrees(63), A.degrees(64))).toBe(false);
   });
 });
+
+describe("choice", () => {
+  it("marks a standard question by choice", () => {
+    const q = A.choice({
+      rng: rng(),
+      question: "What type of angle is 120°?",
+      correct: "obtuse",
+      distractors: [
+        { content: "acute" },
+        {
+          content: "reflex",
+          code: "GEO.ANGLES.TYPE-CONFUSED",
+          feedback: "Reflex angles are more than 180°.",
+        },
+      ],
+    });
+    expect(q.archetype).toBe("standard");
+    const answer = q.parts[0]?.answer;
+    if (answer?.type !== "choice") throw new Error("expected a choice");
+    expect(answer.options).toHaveLength(3);
+    expect(q.parts[0]?.misconceptions).toHaveLength(1);
+  });
+});
