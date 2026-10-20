@@ -319,6 +319,8 @@ mathsplanner/
 | Tests | Vitest and fast-check | Fast unit and property-based tests |
 | Hosting | GitHub Pages for the gallery and practice app | Free for public repos |
 
+**Gallery links.** The gallery keeps its state in the URL hash, so it runs on GitHub Pages without a server, and every question view is a complete key: `#/s/Y5-GEO-04?depth=1&numbers=standard&seed=42&v=0.1.0`. Opening a link regenerates the question exactly; if the generator has changed version since, the gallery says so.
+
 **Print export.** The print tool lays out a worksheet in A4 HTML (questions, then a separate answers and worked-solutions section), with options for number of questions, depth mix, seed, and the reduced-ink style teachers prefer for photocopying, then prints to PDF. Every sheet carries its seed so it can be regenerated.
 
 **Contributing.** A `CONTRIBUTING.md` explains how to claim a statement (one GitHub issue per statement, generated automatically from statements.json), the generator contract, the quality checks, the review checklist, and the policy for AI-assisted contributions. A `pnpm new Y5-FR-04` command scaffolds a generator file, a test file and a gallery entry from a template.

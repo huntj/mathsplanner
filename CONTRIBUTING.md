@@ -88,7 +88,7 @@ pnpm lint && pnpm typecheck && pnpm test && pnpm data:check && pnpm coverage
 
 ## Review checklist
 
-Reviewers (ideally a teacher of the relevant phase) click through the generator in the gallery preview on the pull request, across several seeds at every depth and numbers setting, and check:
+Reviewers (ideally a teacher of the relevant phase) click through the generator in the gallery (run `pnpm gallery` on the pull request's branch until pull request previews exist), across several seeds at every depth and numbers setting, and check:
 
 - [ ] Every question matches the statement and its stage; nothing needs content the student has not met (check `needs`).
 - [ ] Depth 1 to 3 questions test fluency, varied fluency and representation as described in the [mastery model](docs/design.md#mastery-model).

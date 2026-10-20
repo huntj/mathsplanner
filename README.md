@@ -6,7 +6,7 @@ The aim is to tell a teacher whether a student has **mastered** a statement, not
 
 ## Status
 
-**Phases 0 (Foundations) and 1 (Core) are complete.** The repository has its workspace, tooling, licences and CI; all 686 statements are imported into [`data/statements.json`](data/statements.json) with a validated prerequisite graph; and `@mathsplanner/core` provides the question schema, a seeded random source, exact rationals and surds, LaTeX helpers and `defineGenerator`, all covered by property tests. No real generators exist yet. See the [roadmap in the design document](docs/design.md#roadmap) for the phases ahead; Phase 4's first vertical slice is angles and geometry.
+**Phases 0 to 2 are complete.** The repository has its workspace, tooling, licences and CI; all 686 statements are imported into [`data/statements.json`](data/statements.json) with a validated prerequisite graph; `@mathsplanner/core` provides the question schema, a seeded random source, exact rationals and surds, LaTeX helpers and `defineGenerator`, all covered by property tests; and `@mathsplanner/render` turns questions into accessible HTML for the [gallery](https://huntj.github.io/mathsplanner/), where every statement can be browsed and every question regenerated from a link. No real generators exist yet: the gallery shows one unreviewed example (Y5-GEO-04), and diagrams appear as placeholders until Phase 3. See the [roadmap in the design document](docs/design.md#roadmap) for the phases ahead; Phase 4's first vertical slice is angles and geometry.
 
 | Stage                        | Statements |
 | ---------------------------- | ---------: |
@@ -39,6 +39,7 @@ pnpm test
 | `pnpm data:check`  | Validates `data/` and the prerequisite graph                                                   |
 | `pnpm data:import` | Re-imports `docs/progression-map.md` into `data/statements.json` (overwrites edits made since) |
 | `pnpm coverage`    | Lists statements without a generator; fails if a generator names an unknown statement          |
+| `pnpm gallery`     | Runs the gallery locally at http://localhost:5173                                              |
 | `pnpm new <ID>`    | Scaffolds a generator and its test for a statement                                             |
 
 ## Repository layout
