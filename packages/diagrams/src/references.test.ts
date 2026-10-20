@@ -4,9 +4,9 @@ import { REFERENCE_DIAGRAMS } from "./references.ts";
 import { renderDiagram } from "./render.ts";
 
 describe("reference diagrams", () => {
-  it("has 50 diagrams with unique IDs", () => {
-    expect(REFERENCE_DIAGRAMS).toHaveLength(50);
-    expect(new Set(REFERENCE_DIAGRAMS.map((r) => r.id)).size).toBe(50);
+  it("has at least the 50 diagrams of the Phase 3 exit check, with unique IDs", () => {
+    expect(REFERENCE_DIAGRAMS.length).toBeGreaterThanOrEqual(50);
+    expect(new Set(REFERENCE_DIAGRAMS.map((r) => r.id)).size).toBe(REFERENCE_DIAGRAMS.length);
   });
 
   it.each(REFERENCE_DIAGRAMS.map((r) => [r.id, r] as const))(

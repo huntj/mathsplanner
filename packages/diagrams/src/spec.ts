@@ -25,6 +25,8 @@ export type GeoSegment = {
   dashed?: boolean;
   /** Extend beyond both points, to show a line rather than a segment. */
   extend?: boolean;
+  /** An arrowhead at `to`, for rays, directions and north lines. */
+  arrow?: boolean;
 };
 
 export type GeoPolygon = {
@@ -45,12 +47,16 @@ export type GeoAngle = {
   right?: boolean;
   /** Number of arcs, to mark equal angles. Default 1. */
   arcs?: number;
+  /** An arrowhead on the arc, to show a turn: at the `to` end (anticlockwise) or the `from` end (clockwise). */
+  turn?: "anticlockwise" | "clockwise";
 };
 
 export type GeoCircle = {
   centre: string;
   radius: number;
   dashed?: boolean;
+  /** A label just outside the circle, e.g. "circumference". */
+  label?: Label;
 };
 
 export type GeometrySpec = {
@@ -63,6 +69,8 @@ export type GeometrySpec = {
   circles?: GeoCircle[];
   /** Points to name on the diagram: true for all, or a list. Labels default to the point name. */
   pointLabels?: boolean | string[];
+  /** Label text for named points, e.g. { N1: "\mathrm{N}" } for a north line. */
+  names?: Record<string, Label>;
   /** Points to mark with a dot. */
   dots?: string[];
   /** The drawing deliberately does not match the numbers; adds the caption and relaxes checks. */
@@ -161,4 +169,27 @@ export type BarModelSpec = {
   description?: string;
 };
 
-export type SupportedDiagramSpec = GeometrySpec | CartesianSpec | NumberLineSpec | BarModelSpec;
+// --- measures -----------------------------------------------------------------------------
+
+export type ProtractorSpec = {
+  type: "measure";
+  instrument: "protractor";
+  /** The angle between the two arms, 0° to 180°. */
+  angle: number;
+  /** Which way the first arm runs along the zero line. "right" is read on the inner scale, "left" on the outer. */
+  baseline: "right" | "left";
+  /** Labels at the ends of the arms, e.g. point names. */
+  armLabels?: [Label, Label];
+  /** Hide the second arm, for drawing an angle. */
+  hideSecondArm?: boolean;
+  /**
+   * Overrides the generated description. The default does not give the reading away, since
+   * reading the scale is the question.
+   */
+  description?: string;
+};
+
+export type MeasureSpec = ProtractorSpec;
+
+export type SupportedDiagramSpec =
+  GeometrySpec | CartesianSpec | NumberLineSpec | BarModelSpec | MeasureSpec;

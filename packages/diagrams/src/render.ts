@@ -5,6 +5,7 @@ import type { SupportedDiagramSpec } from "./spec.ts";
 import { layoutBarModel } from "./types/barModel.ts";
 import { layoutCartesian } from "./types/cartesian.ts";
 import { layoutGeometry } from "./types/geometry.ts";
+import { layoutProtractor } from "./types/measure.ts";
 import { layoutNumberLine } from "./types/numberLine.ts";
 
 export class DiagramError extends Error {
@@ -14,7 +15,13 @@ export class DiagramError extends Error {
   }
 }
 
-export const SUPPORTED_TYPES = ["geometry", "cartesian", "number-line", "bar-model"] as const;
+export const SUPPORTED_TYPES = [
+  "geometry",
+  "cartesian",
+  "number-line",
+  "bar-model",
+  "measure",
+] as const;
 
 export function isSupported(
   spec: DiagramSpec | SupportedDiagramSpec,
@@ -41,6 +48,8 @@ export function renderDiagram(spec: DiagramSpec | SupportedDiagramSpec): Diagram
       return compose(layoutNumberLine(spec));
     case "bar-model":
       return compose(layoutBarModel(spec));
+    case "measure":
+      return compose(layoutProtractor(spec));
   }
 }
 
@@ -66,6 +75,10 @@ function shapeProblem(spec: SupportedDiagramSpec): string | undefined {
       return Array.isArray(s.bars) && s.bars.every((b) => isObject(b) && Array.isArray(b.parts))
         ? undefined
         : "bars must be a list of { parts: [...] }";
+    case "measure":
+      return s.instrument === "protractor" && isNumber(s.angle)
+        ? undefined
+        : "only protractors with a numeric angle are supported so far";
   }
 }
 

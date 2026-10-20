@@ -1,13 +1,15 @@
-// The 50 reference diagrams for the Phase 3 exit check: they must render with no label
-// collisions and no truth problems, and a teacher reviews them in the gallery. They lean
-// towards angles and geometry, the Phase 4 slice.
+// Reference diagrams: the 50 of the Phase 3 exit check, plus the measuring, turning and bearing
+// diagrams added for the Phase 4 slice. Every one must render with no label collisions and no
+// truth problems, and a teacher reviews them in the gallery.
 import {
   anglesAtPoint,
   anglesOnLine,
+  bearing,
   pointAt,
   regularPolygon,
   triangleASA,
   triangleSSS,
+  turn,
 } from "./builders.ts";
 import type { Coord, GeometrySpec, SupportedDiagramSpec } from "./spec.ts";
 
@@ -725,5 +727,32 @@ export const REFERENCE_DIAGRAMS: ReferenceDiagram[] = [
       bars: [{ parts: [1, 2, 3, 4].map((k) => ({ size: 1, label: "25\\%", shaded: k === 1 })) }],
       braces: [{ bar: 0, from: 0, to: 3, label: "£80" }],
     },
+  },
+  // --- measures, turns and bearings (Phase 4) -----------------------------------------------
+  {
+    id: "m-protractor-inner",
+    title: "Protractor reading on the inner scale",
+    spec: { type: "measure", instrument: "protractor", angle: 65, baseline: "right" },
+  },
+  {
+    id: "m-protractor-outer",
+    title: "Protractor reading on the outer scale",
+    spec: {
+      type: "measure",
+      instrument: "protractor",
+      angle: 130,
+      baseline: "left",
+      armLabels: ["\\mathrm{A}", "\\mathrm{B}"],
+    },
+  },
+  {
+    id: "g-quarter-turn",
+    title: "A quarter turn clockwise",
+    spec: turn(90, "clockwise"),
+  },
+  {
+    id: "g-bearing",
+    title: "A bearing of 070°",
+    spec: { ...bearing(70, { label: "070^\\circ" }), names: { N: "\\mathrm{N}" } },
   },
 ];

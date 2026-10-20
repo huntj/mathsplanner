@@ -26,7 +26,7 @@ import type { LabelRequest, Obstacle } from "../labels.ts";
 import type { Scene } from "../scene.ts";
 import type { GeoAngle, GeometrySpec } from "../spec.ts";
 import { circle, line, polygon as polygonSvg, polyline, type Point } from "../svg.ts";
-import { aroundPoint, label, listJoin, plain, reach } from "./shared.ts";
+import { aroundPoint, arrowhead, label, listJoin, plain, reach } from "./shared.ts";
 
 const MAX_WIDTH = 340;
 const MAX_HEIGHT = 250;
@@ -210,10 +210,16 @@ export function describeGeometry(spec: GeometrySpec): string {
       parts.push(s.extend ? `A line through ${s.from} and ${s.to}.` : `Line segment ${name}.`);
     if (s.label) parts.push(`${name} is labelled ${plain(s.label)}.`);
   }
-  for (const c of spec.circles ?? []) parts.push(`A circle with centre ${c.centre}.`);
+  for (const c of spec.circles ?? []) {
+    parts.push(`A circle with centre ${c.centre}${c.label ? `, labelled ${plain(c.label)}` : ""}.`);
+  }
   for (const a of spec.angles ?? []) {
     const name = `Angle ${a.from}${a.vertex}${a.to}`;
-    if (a.right) parts.push(`${name} is a right angle.`);
+    if (a.turn) {
+      parts.push(
+        `An arrow shows a turn ${a.turn} from ${a.from} to ${a.to}${a.label ? `, labelled ${plain(a.label)}` : ""}.`,
+      );
+    } else if (a.right) parts.push(`${name} is a right angle.`);
     else if (a.label) parts.push(`${name} is labelled ${plain(a.label)}.`);
     else if (a.value !== undefined) parts.push(`${name} is ${a.value}°.`);
   }
@@ -305,6 +311,11 @@ export function layoutGeometry(spec: GeometrySpec): Scene {
       b = add(b, scale(along, extra));
     }
     shapes.push(line(a, b, { dashed: s.dashed }));
+    if (s.arrow) {
+      const head = arrowhead(b, along, 10);
+      shapes.push(polyline(head));
+      addSegments(`arrow on ${id}`, polylineSegments(head));
+    }
     addSegments(`line ${id}`, [[a, b]]);
     drawn.push(a, b);
     const pa = P(s.from) as Point;
@@ -365,6 +376,15 @@ export function layoutGeometry(spec: GeometrySpec): Scene {
     if (!o) continue;
     const r = c.radius * k;
     shapes.push(circle(o, r, { dashed: c.dashed }));
+    if (c.label) {
+      const text = label(c.label);
+      // Just outside the circle, trying the top right first.
+      const candidates: Point[] = [45, 135, 315, 225, 90, 0, 180, 270].map((deg) => {
+        const u: Point = [Math.cos((deg * Math.PI) / 180), -Math.sin((deg * Math.PI) / 180)];
+        return add(o, scale(u, r + 6 + reach(text, u)));
+      });
+      labels.push({ id: `label of circle ${c.centre}`, text, candidates });
+    }
     addSegments(`circle centre ${c.centre}`, polylineSegments(arcPoints(o, r, 0, 2 * Math.PI, 48)));
     drawn.push(add(o, [-r, -r]), add(o, [r, r]));
   }
@@ -402,6 +422,18 @@ export function layoutGeometry(spec: GeometrySpec): Scene {
         const pts = arcPoints(v, r + n * 4, d1, sweep, Math.max(8, Math.ceil(degrees(sweep) / 6)));
         shapes.push(polyline(pts, { width: 1.4 }));
         addSegments(id, polylineSegments(pts));
+        if (a.turn && n === 0) {
+          // The arrowhead points along the arc in the direction of the turn.
+          const [tip, before] =
+            a.turn === "anticlockwise"
+              ? [pts[pts.length - 1], pts[pts.length - 2]]
+              : [pts[0], pts[1]];
+          if (tip && before) {
+            const head = arrowhead(tip, sub(tip, before), 8);
+            shapes.push(polyline(head, { width: 1.4 }));
+            addSegments(id, polylineSegments(head));
+          }
+        }
       }
       reachOut = r + (arcs - 1) * 4;
     }
@@ -445,7 +477,7 @@ export function layoutGeometry(spec: GeometrySpec): Scene {
           ? rotate(dirs[0], Math.PI / 2)
           : sub(p, allCentre);
     if (length(away) === 0) away = [0, -1];
-    const text = label(`\\mathrm{${name}}`);
+    const text = label(spec.names?.[name] ?? `\\mathrm{${name}}`);
     labels.push({ id: `point ${name}`, text, candidates: aroundPoint(p, away, text, 5) });
   }
 

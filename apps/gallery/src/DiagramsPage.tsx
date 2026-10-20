@@ -1,7 +1,7 @@
 import { REFERENCE_DIAGRAMS, renderDiagram, type DiagramResult } from "@mathsplanner/diagrams";
 import { useMemo, useState } from "react";
 
-type Kind = "all" | "geometry" | "cartesian" | "number-line" | "bar-model";
+type Kind = "all" | "geometry" | "cartesian" | "number-line" | "bar-model" | "measure";
 
 const KINDS: [Kind, string][] = [
   ["all", "All"],
@@ -9,6 +9,7 @@ const KINDS: [Kind, string][] = [
   ["cartesian", "Graphs"],
   ["number-line", "Number lines"],
   ["bar-model", "Bar models"],
+  ["measure", "Measures"],
 ];
 
 /** The reference diagrams the Phase 3 exit check reviews, with their automated checks. */

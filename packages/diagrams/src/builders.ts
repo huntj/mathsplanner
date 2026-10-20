@@ -114,3 +114,79 @@ export function triangleSSS(ab: number, bc: number, ca: number): Record<"A" | "B
   const x = (ab * ab + ca * ca - bc * bc) / (2 * ab);
   return { A: [0, 0], B: [ab, 0], C: [round(x), round(Math.sqrt(ca * ca - x * x))] };
 }
+
+/**
+ * A bearing: a north line at A and a line to B, with the angle measured clockwise from north.
+ * The bearing is in degrees from 0 to 360.
+ */
+export function bearing(
+  degrees: number,
+  options: { label?: Label; distance?: number } = {},
+): GeometrySpec {
+  if (!(degrees > 0 && degrees < 360))
+    throw new RangeError(`a bearing is between 0° and 360°, not ${degrees}°`);
+  const distance = options.distance ?? 3;
+  return {
+    type: "geometry",
+    points: { A: [0, 0], N: [0, 1.6], B: pointAt([0, 0], 90 - degrees, distance) },
+    segments: [
+      { from: "A", to: "N", arrow: true },
+      { from: "A", to: "B" },
+    ],
+    // Clockwise from north to B is anticlockwise from B to north.
+    angles: [
+      {
+        vertex: "A",
+        from: "B",
+        to: "N",
+        value: degrees,
+        turn: "clockwise",
+        ...(options.label === undefined ? {} : { label: options.label }),
+      },
+    ],
+    pointLabels: ["A", "B", "N"],
+    dots: ["A", "B"],
+  };
+}
+
+/** A turn: an arrow facing `heading` (degrees anticlockwise from east), turned through `degrees`. */
+export function turn(
+  degrees: number,
+  direction: "clockwise" | "anticlockwise",
+  options: { heading?: number; label?: Label } = {},
+): GeometrySpec {
+  if (!(degrees > 0 && degrees < 360))
+    throw new RangeError(`a turn is between 0° and 360°, not ${degrees}°`);
+  const heading = options.heading ?? 90;
+  const end = direction === "anticlockwise" ? heading + degrees : heading - degrees;
+  const start = pointAt([0, 0], heading, 2);
+  const finish = pointAt([0, 0], end, 2);
+  return {
+    type: "geometry",
+    points: { O: [0, 0], S: start, F: finish },
+    segments: [
+      { from: "O", to: "S", arrow: true, dashed: true },
+      { from: "O", to: "F", arrow: true },
+    ],
+    angles: [
+      direction === "anticlockwise"
+        ? {
+            vertex: "O",
+            from: "S",
+            to: "F",
+            value: degrees,
+            turn: "anticlockwise",
+            ...(options.label === undefined ? {} : { label: options.label }),
+          }
+        : {
+            vertex: "O",
+            from: "F",
+            to: "S",
+            value: degrees,
+            turn: "clockwise",
+            ...(options.label === undefined ? {} : { label: options.label }),
+          },
+    ],
+    dots: ["O"],
+  };
+}
