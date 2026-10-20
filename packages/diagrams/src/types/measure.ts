@@ -104,6 +104,8 @@ export function layoutProtractor(spec: ProtractorSpec): Scene {
   });
 
   return {
+    // The vertex is at the origin, in pixels with y up, as the marking of a drawn arm expects.
+    frame: { origin: [0, 0], scale: [1, 1] },
     shapes: [`<g fill="none">${shapes.join("")}</g>`],
     bounds: { x: -reach, y: -reach, w: 2 * reach, h: reach + 8 },
     obstacles,

@@ -412,6 +412,7 @@ export function layoutCartesian(spec: CartesianSpec): Scene {
   }
 
   return {
+    frame: { origin: [-X.min * kx, Y.max * ky], scale: [kx, ky] },
     shapes: [`<g fill="none">${shapes.join("")}</g>`],
     bounds: { x: plot.x - 4, y: plot.y - 16, w: plot.w + 20, h: plot.h + 20 },
     obstacles,

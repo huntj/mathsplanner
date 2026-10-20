@@ -5,8 +5,18 @@ import { placeLabels, type Collision, type LabelRequest, type Obstacle } from ".
 import { escapeXml, fmt } from "./svg.ts";
 import { layoutLabel } from "./text.ts";
 
+/**
+ * How the diagram's own coordinates map to SVG pixels: svg = (origin.x + scale.x × x,
+ * origin.y − scale.y × y). Interactive questions use it to turn a tap into a point.
+ */
+export interface Frame {
+  origin: [number, number];
+  scale: [number, number];
+}
+
 export interface Scene {
   shapes: string[];
+  frame?: Frame;
   /** Bounds of everything in `shapes`. */
   bounds: Rect;
   obstacles: Obstacle[];
@@ -29,6 +39,8 @@ export interface DiagramResult {
   collisions: Collision[];
   /** Ways the drawing contradicts the numbers; the renderer refuses to show these. */
   problems: string[];
+  /** The diagram's coordinate frame, for types that have one (geometry, cartesian, protractor). */
+  frame?: Frame;
 }
 
 /** Size of label text in px. */
@@ -59,5 +71,13 @@ export function compose(scene: Scene): DiagramResult {
     scene.shapes.join("") +
     `<g fill="currentColor">${placements.map((p) => p.svg).join("")}${caption}</g>` +
     `</svg>`;
-  return { svg, description, width, height, collisions, problems: scene.problems };
+  return {
+    svg,
+    description,
+    width,
+    height,
+    collisions,
+    problems: scene.problems,
+    ...(scene.frame ? { frame: scene.frame } : {}),
+  };
 }

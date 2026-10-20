@@ -9,7 +9,7 @@ export {
   renderDiagram,
   SUPPORTED_TYPES,
 } from "./render.ts";
-export type { DiagramResult } from "./scene.ts";
+export type { DiagramResult, Frame } from "./scene.ts";
 export * from "./spec.ts";
 export { LabelError, latexToPlain, layoutLabel } from "./text.ts";
 export { REFERENCE_DIAGRAMS, type ReferenceDiagram } from "./references.ts";

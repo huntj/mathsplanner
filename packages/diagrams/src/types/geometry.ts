@@ -487,6 +487,7 @@ export function layoutGeometry(spec: GeometrySpec): Scene {
 
   const bounds: Rect = union([boundsOf(drawn.length ? drawn : [[0, 0]])]);
   return {
+    frame: { origin: [-fit.x * k, (fit.y + fit.h) * k], scale: [k, k] },
     shapes: [`<g fill="none">${shapes.join("")}</g>`],
     bounds,
     obstacles,
