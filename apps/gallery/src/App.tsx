@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { PRACTICE_URL } from "./data.ts";
+import { CoveragePage } from "./CoveragePage.tsx";
 import { DiagramsPage } from "./DiagramsPage.tsx";
 import { formatRoute, parseRoute, type Route } from "./route.ts";
 import { StatementList } from "./StatementList.tsx";
@@ -35,8 +36,14 @@ export function App() {
           MathsPlanner <span>gallery</span>
         </a>
         <nav className="site-nav">
-          <a href="#/" aria-current={route.page === "diagrams" ? undefined : "page"}>
+          <a
+            href="#/"
+            aria-current={route.page === "list" || route.page === "statement" ? "page" : undefined}
+          >
             Statements
+          </a>
+          <a href="#/coverage" aria-current={route.page === "coverage" ? "page" : undefined}>
+            Coverage
           </a>
           <a href="#/diagrams" aria-current={route.page === "diagrams" ? "page" : undefined}>
             Diagrams
@@ -51,6 +58,7 @@ export function App() {
           <StatementPage key={route.id} route={route} navigate={navigate} />
         )}
         {route.page === "diagrams" && <DiagramsPage />}
+        {route.page === "coverage" && <CoveragePage />}
       </main>
     </>
   );

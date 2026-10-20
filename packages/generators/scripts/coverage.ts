@@ -1,12 +1,13 @@
-// pnpm coverage: lists statements without a generator (report only) and fails if any generator
-// names a statement ID that is not in data/statements.json.
+// pnpm coverage: lists statements without a generator and how many are reviewed (report only),
+// and fails if any generator names a statement ID that is not in data/statements.json.
 //
-// Until defineGenerator exists (Phase 1) generators are found by reading files rather than
-// importing them: each file in src/<key stage>/ is named after its statement ID, and every
-// `id: "…"` it contains must be a known ID.
+// Generators are found by reading files rather than importing them, so the check is fast: each
+// file in src/<key stage>/ is named after its statement ID, every `id: "…"` it contains must be
+// a known ID, and its header records any teacher review.
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { basename, join, relative, resolve } from "node:path";
 import { keyStageFolder, type Statement, type StatementsFile } from "@mathsplanner/core";
+import { parseHeader, type GeneratorHeader } from "./header.ts";
 
 export const ROOT = resolve(import.meta.dirname, "../../..");
 export const GENERATORS_DIR = resolve(import.meta.dirname, "../src");
@@ -21,10 +22,13 @@ export interface GeneratorFile {
   fileId: string;
   /** Every `id: "…"` literal in the file. */
   declaredIds: string[];
+  header: GeneratorHeader;
 }
 
 export interface CoverageReport {
   covered: string[];
+  /** Covered statements whose generator has at least one recorded teacher review. */
+  reviewed: string[];
   missing: Statement[];
   /** Fail the run. */
   errors: string[];
@@ -51,6 +55,7 @@ export function findGenerators(dir = GENERATORS_DIR): GeneratorFile[] {
         folder,
         fileId: basename(entry.name, ".ts"),
         declaredIds: [...source.matchAll(/\bid:\s*["']([^"']+)["']/g)].map((m) => m[1] ?? ""),
+        header: parseHeader(source),
       });
     }
   }
@@ -65,6 +70,7 @@ export function coverageReport(
   const errors: string[] = [];
   const warnings: string[] = [];
   const covered = new Map<string, string>();
+  const reviewed = new Set<string>();
 
   for (const g of generators) {
     for (const id of new Set([g.fileId, ...g.declaredIds])) {
@@ -79,11 +85,15 @@ export function coverageReport(
     if (g.folder !== expected) warnings.push(`${g.path}: ${g.fileId} belongs in src/${expected}/`);
     const earlier = covered.get(g.fileId);
     if (earlier) warnings.push(`${g.path}: ${g.fileId} already has a generator in ${earlier}`);
-    else covered.set(g.fileId, g.path);
+    else {
+      covered.set(g.fileId, g.path);
+      if (g.header.reviews.length > 0) reviewed.add(g.fileId);
+    }
   }
 
   return {
     covered: [...covered.keys()],
+    reviewed: [...reviewed],
     missing: statements.filter((s) => !covered.has(s.id)),
     errors,
     warnings,
@@ -91,7 +101,9 @@ export function coverageReport(
 }
 
 export function printCoverage(report: CoverageReport, total: number): void {
-  console.log(`Generator coverage: ${report.covered.length} of ${total} statements.`);
+  console.log(
+    `Generator coverage: ${report.covered.length} of ${total} statements, ${report.reviewed.length} reviewed by a teacher.`,
+  );
   if (report.missing.length > 0) {
     console.log(`\n${report.missing.length} statement(s) without a generator:`);
     const byStage = new Map<string, string[]>();

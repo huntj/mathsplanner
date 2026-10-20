@@ -2,6 +2,8 @@
 //   #/                                   statement list
 //   #/?q=angle&stage=Y5                  filtered list
 //   #/s/Y5-GEO-04?depth=1&numbers=standard&seed=42&v=0.1.0&answers=1&solution=1
+//   #/diagrams                           reference diagrams
+//   #/coverage                           which statements have generators and reviews
 import { DEPTHS, NUMBERS, STAGES, type Depth, type Numbers, type Stage } from "@mathsplanner/core";
 
 export interface ListRoute {
@@ -27,7 +29,11 @@ export interface DiagramsRoute {
   page: "diagrams";
 }
 
-export type Route = ListRoute | StatementRoute | DiagramsRoute;
+export interface CoverageRoute {
+  page: "coverage";
+}
+
+export type Route = ListRoute | StatementRoute | DiagramsRoute | CoverageRoute;
 
 export const LIST: ListRoute = { page: "list", query: "", stage: "", generatedOnly: false };
 
@@ -35,6 +41,7 @@ export function parseRoute(hash: string): Route {
   const [path = "", search = ""] = hash.replace(/^#/, "").split("?", 2);
   const params = new URLSearchParams(search);
   if (path === "/diagrams") return { page: "diagrams" };
+  if (path === "/coverage") return { page: "coverage" };
   const statement = /^\/s\/(.+)$/.exec(path);
   if (!statement) {
     const stage = params.get("stage") ?? "";
@@ -65,6 +72,7 @@ export function parseRoute(hash: string): Route {
 
 export function formatRoute(route: Route): string {
   if (route.page === "diagrams") return "#/diagrams";
+  if (route.page === "coverage") return "#/coverage";
   const params = new URLSearchParams();
   if (route.page === "list") {
     if (route.query) params.set("q", route.query);

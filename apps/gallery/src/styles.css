@@ -12,6 +12,7 @@
   --error: #fde2e1;
   --cell: #e3e0d8;
   --cell-on: #2f8a4c;
+  --coverage-generated: #e0a43a;
   font-family:
     system-ui,
     -apple-system,
@@ -34,6 +35,7 @@
     --error: #3d1d1d;
     --cell: #333840;
     --cell-on: #4cc277;
+    --coverage-generated: #c98b25;
   }
 }
 
@@ -369,4 +371,90 @@ fieldset.depths button span {
   border-radius: 6px;
   padding: 0.5rem;
   margin: 0;
+}
+
+.coverage-summary {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+}
+
+.coverage-summary p {
+  margin: 0 0 0.6rem;
+}
+
+.coverage-bar {
+  display: flex;
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--cell);
+}
+
+.coverage-bar .reviewed,
+.cell.reviewed {
+  background: var(--cell-on);
+}
+
+.coverage-bar .generated,
+.cell.generated {
+  background: var(--coverage-generated);
+}
+
+.cell.missing {
+  background: var(--cell);
+}
+
+.coverage-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+}
+
+.coverage-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.coverage-strands {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.coverage-strand {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 0.5rem;
+  align-items: start;
+}
+
+.strand-name {
+  font-family: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.cells {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+.cell {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+a.cell:hover,
+a.cell:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
 }
