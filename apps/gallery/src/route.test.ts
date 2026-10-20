@@ -9,6 +9,7 @@ describe("routes", () => {
     const list = { ...LIST, query: "angles & turns", stage: "Y5" as const, generatedOnly: true };
     expect(parseRoute(formatRoute(list))).toEqual(list);
     expect(parseRoute(formatRoute(LIST))).toEqual(LIST);
+    expect(parseRoute(formatRoute({ page: "diagrams" }))).toEqual({ page: "diagrams" });
 
     const route: StatementRoute = {
       ...statementRoute("AL-P7.4"),

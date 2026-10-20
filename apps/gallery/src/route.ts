@@ -23,13 +23,18 @@ export interface StatementRoute {
   showSolution: boolean;
 }
 
-export type Route = ListRoute | StatementRoute;
+export interface DiagramsRoute {
+  page: "diagrams";
+}
+
+export type Route = ListRoute | StatementRoute | DiagramsRoute;
 
 export const LIST: ListRoute = { page: "list", query: "", stage: "", generatedOnly: false };
 
 export function parseRoute(hash: string): Route {
   const [path = "", search = ""] = hash.replace(/^#/, "").split("?", 2);
   const params = new URLSearchParams(search);
+  if (path === "/diagrams") return { page: "diagrams" };
   const statement = /^\/s\/(.+)$/.exec(path);
   if (!statement) {
     const stage = params.get("stage") ?? "";
@@ -59,6 +64,7 @@ export function parseRoute(hash: string): Route {
 }
 
 export function formatRoute(route: Route): string {
+  if (route.page === "diagrams") return "#/diagrams";
   const params = new URLSearchParams();
   if (route.page === "list") {
     if (route.query) params.set("q", route.query);

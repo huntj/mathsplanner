@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { DiagramsPage } from "./DiagramsPage.tsx";
 import { formatRoute, parseRoute, type Route } from "./route.ts";
 import { StatementList } from "./StatementList.tsx";
 import { StatementPage } from "./StatementPage.tsx";
@@ -23,7 +24,7 @@ export function App() {
   const [route, navigate] = useRoute();
 
   useEffect(() => {
-    if (route.page === "list") window.scrollTo(0, 0);
+    if (route.page !== "statement") window.scrollTo(0, 0);
   }, [route.page]);
 
   return (
@@ -32,14 +33,22 @@ export function App() {
         <a className="site-title" href="#/">
           MathsPlanner <span>gallery</span>
         </a>
-        <a href="https://github.com/huntj/mathsplanner">GitHub</a>
+        <nav className="site-nav">
+          <a href="#/" aria-current={route.page === "diagrams" ? undefined : "page"}>
+            Statements
+          </a>
+          <a href="#/diagrams" aria-current={route.page === "diagrams" ? "page" : undefined}>
+            Diagrams
+          </a>
+          <a href="https://github.com/huntj/mathsplanner">GitHub</a>
+        </nav>
       </header>
       <main>
-        {route.page === "list" ? (
-          <StatementList route={route} navigate={navigate} />
-        ) : (
+        {route.page === "list" && <StatementList route={route} navigate={navigate} />}
+        {route.page === "statement" && (
           <StatementPage key={route.id} route={route} navigate={navigate} />
         )}
+        {route.page === "diagrams" && <DiagramsPage />}
       </main>
     </>
   );
