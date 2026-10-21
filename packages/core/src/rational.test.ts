@@ -101,12 +101,15 @@ describe("Rational: order", () => {
     fc.assert(
       fc.property(rational, rational, (a, b) => {
         expect(a.cmp(b)).toBe(a.sub(b).sign());
-        expect(a.cmp(b)).toBe(-b.cmp(a));
+        // Not toBe(-b.cmp(a)): for equal values that is -0, which toBe tells apart from 0.
+        expect(a.cmp(b) + b.cmp(a)).toBe(0);
         expect(a.lt(b) || a.eq(b) || a.gt(b)).toBe(true);
         if (Math.abs(a.toNumber() - b.toNumber()) > 1e-6) {
           expect(a.lt(b)).toBe(a.toNumber() < b.toNumber());
         }
       }),
+      // Equal values, which fast-check draws about once in 40,000 runs (seed -235523522).
+      { numRuns: 10_000, examples: [[frac(1), frac(1)]] },
     );
   });
 
