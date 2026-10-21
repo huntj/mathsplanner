@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.19.0",
+  "version": "0.20.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -641,6 +641,66 @@
       "code": "ALG.INEQUALITY.FLIP",
       "description": "Does not reverse the inequality when multiplying or dividing by a negative number, or uses the wrong circle on a number line.",
       "remediate": "Y9-ALG-09"
+    },
+    {
+      "code": "ALG.EXPAND.NEGATIVE",
+      "description": "Multiplies out a bracket after a minus sign without changing every sign inside, e.g. −2(x − 4) = −2x − 8.",
+      "remediate": "GF-A4"
+    },
+    {
+      "code": "ALG.REARRANGE.ORDER",
+      "description": "Undoes the operations in the wrong order when changing the subject, e.g. y = mx + c gives x = y ÷ m − c.",
+      "remediate": "GF-A5"
+    },
+    {
+      "code": "ALG.EQUATION.IDENTITY",
+      "description": "Confuses an equation, true for particular values, with an identity, true for every value.",
+      "remediate": "GF-A6"
+    },
+    {
+      "code": "ALG.FUNCTION.ORDER",
+      "description": "Applies the steps of a function or function machine in the wrong order, or reverses it without reversing the order.",
+      "remediate": "GF-A7"
+    },
+    {
+      "code": "ALG.MIDPOINT.DIFFERENCE",
+      "description": "Finds a midpoint by halving the difference of the coordinates instead of averaging them.",
+      "remediate": "GF-A8"
+    },
+    {
+      "code": "ALG.QUADRATIC.TURNING",
+      "description": "Confuses the roots, the turning point and the y-intercept of a quadratic graph.",
+      "remediate": "GF-A11"
+    },
+    {
+      "code": "ALG.GRAPH.SHAPE",
+      "description": "Matches an equation to the wrong type of graph, e.g. thinks y = x³ is a parabola or y = 1/x is a straight line.",
+      "remediate": "GF-A12"
+    },
+    {
+      "code": "ALG.GRAPH.DISTANCE-TIME",
+      "description": "Misreads a distance–time graph, e.g. thinks a horizontal section means moving at a steady speed or a steeper line means slower.",
+      "remediate": "GF-A14"
+    },
+    {
+      "code": "ALG.QUADRATIC.ROOT-SIGN",
+      "description": "Gives the solutions of (x − a)(x − b) = 0 with the wrong signs, e.g. x = −a.",
+      "remediate": "GF-A18"
+    },
+    {
+      "code": "ALG.QUADRATIC.ONE-ROOT",
+      "description": "Gives only the positive solution of a quadratic, e.g. x² = 9 gives only x = 3.",
+      "remediate": "GF-A18"
+    },
+    {
+      "code": "ALG.FORM.WORDS",
+      "description": "Writes a situation in algebra in the wrong order or with the wrong operation, e.g. \"5 less than n\" as 5 − n.",
+      "remediate": "GF-A21"
+    },
+    {
+      "code": "ALG.SEQUENCE.TYPE",
+      "description": "Names a sequence type wrongly, e.g. calls 1, 4, 9, 16 arithmetic or 2, 4, 8 linear.",
+      "remediate": "GF-A24"
     },
     {
       "code": "STA.KEY-IGNORED",

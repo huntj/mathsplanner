@@ -35,6 +35,18 @@ export function clearOfOrigin(m: number, c: number): boolean {
   return Math.abs(m * px - py + c) / Math.hypot(m, 1) > 0.9;
 }
 
+/**
+ * Whether a curve y = f(x) keeps clear of the origin's "O" label and the nearby tick labels, which
+ * sit in the square from (−1.2, −1.2) to (0.2, 0.2).
+ */
+export function curveClearOfOrigin(f: (x: number) => number): boolean {
+  for (let x = -1.2; x <= 0.2001; x += 0.05) {
+    const y = f(x);
+    if (Number.isFinite(y) && y >= -1.2 && y <= 0.2) return false;
+  }
+  return true;
+}
+
 /** y = mx + c as LaTeX, e.g. y = 2x - 3. */
 export const lineLatex = (m: number, c: number, v = "x") => `y = ${poly([m, c], v)}`;
 
