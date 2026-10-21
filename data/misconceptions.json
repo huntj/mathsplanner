@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -526,6 +526,86 @@
       "code": "RAT.COMPOUND.SIMPLE",
       "description": "Treats repeated percentage change as simple, e.g. adds 3 × 5% for three years of 5% compound interest.",
       "remediate": "Y9-RAT-03"
+    },
+    {
+      "code": "ALG.NOTATION.JUXTAPOSE",
+      "description": "Reads 3y or ab as addition or as digits side by side, e.g. if y = 4 then 3y = 34 or 7.",
+      "remediate": "Y7-ALG-01"
+    },
+    {
+      "code": "ALG.SUBSTITUTE.NEGATIVE-SQUARE",
+      "description": "Squares a negative number to get a negative, e.g. (−3)² = −9, or squares only the digit.",
+      "remediate": "Y7-ALG-02"
+    },
+    {
+      "code": "ALG.VOCAB",
+      "description": "Mixes up expression, equation, formula, inequality and identity.",
+      "remediate": "Y7-ALG-03"
+    },
+    {
+      "code": "ALG.LIKE-TERMS.UNLIKE",
+      "description": "Collects unlike terms together, e.g. 3a + 2b = 5ab.",
+      "remediate": "Y7-ALG-04"
+    },
+    {
+      "code": "ALG.EXPAND.FIRST-ONLY",
+      "description": "Multiplies only the first term in a bracket, e.g. 3(x + 4) = 3x + 4.",
+      "remediate": "Y7-ALG-04"
+    },
+    {
+      "code": "ALG.SEQUENCE.POSITION-RULE",
+      "description": "Gets a position-to-term rule wrong by ignoring the first term or using the difference as the constant, e.g. 5, 8, 11 as 3n or n + 3.",
+      "remediate": "Y7-ALG-05"
+    },
+    {
+      "code": "ALG.SOLVE.WRONG-INVERSE",
+      "description": "Uses the wrong inverse operation, or applies it to only one side, when solving or rearranging, e.g. x + 5 = 12 gives x = 17.",
+      "remediate": "Y7-ALG-06"
+    },
+    {
+      "code": "ALG.EXPAND.BINOMIAL-TWO-TERMS",
+      "description": "Multiplies only the first terms and the last terms when expanding two brackets, e.g. (x + 2)(x + 3) = x² + 6.",
+      "remediate": "Y8-ALG-01"
+    },
+    {
+      "code": "ALG.COORD.ORDER",
+      "description": "Reads or plots coordinates the wrong way round, as (y, x).",
+      "remediate": "Y8-ALG-05"
+    },
+    {
+      "code": "ALG.GRADIENT.RUN-RISE",
+      "description": "Works out a gradient as horizontal change over vertical change, or ignores its sign.",
+      "remediate": "Y9-ALG-04"
+    },
+    {
+      "code": "ALG.LINE.M-C",
+      "description": "Mixes up the gradient and the intercept in y = mx + c.",
+      "remediate": "Y9-ALG-05"
+    },
+    {
+      "code": "ALG.FACTORISE.SIGNS",
+      "description": "Chooses a factor pair with the right product but the wrong sum or signs when factorising x² + bx + c.",
+      "remediate": "Y9-ALG-01"
+    },
+    {
+      "code": "ALG.INDICES.MULTIPLY",
+      "description": "Multiplies the powers when multiplying terms with the same base, e.g. a² × a³ = a⁶.",
+      "remediate": "Y9-ALG-02"
+    },
+    {
+      "code": "ALG.SIMULTANEOUS.SIGN",
+      "description": "Adds the equations when it should subtract to eliminate a variable, or the reverse.",
+      "remediate": "Y9-ALG-06"
+    },
+    {
+      "code": "ALG.SEQUENCE.GEOMETRIC-ADD",
+      "description": "Treats a geometric sequence as arithmetic, adding a difference instead of multiplying by a ratio.",
+      "remediate": "Y9-ALG-08"
+    },
+    {
+      "code": "ALG.INEQUALITY.FLIP",
+      "description": "Does not reverse the inequality when multiplying or dividing by a negative number, or uses the wrong circle on a number line.",
+      "remediate": "Y9-ALG-09"
     },
     {
       "code": "GEO.ANGLES.STRAIGHT-LINE-360",
