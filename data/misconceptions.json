@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.20.0",
+  "version": "0.21.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -561,6 +561,21 @@
       "code": "RAT.COMPOUND.SIMPLE",
       "description": "Treats repeated percentage change as simple, e.g. adds 3 × 5% for three years of 5% compound interest.",
       "remediate": "Y9-RAT-03"
+    },
+    {
+      "code": "RAT.PERCENT.CHANGE-BASE",
+      "description": "Works out a percentage change by dividing by the new value instead of the original value.",
+      "remediate": "GF-R9"
+    },
+    {
+      "code": "RAT.RATE.VALUE",
+      "description": "Reads a value from a graph as the rate of change, instead of working out the change in y divided by the change in x.",
+      "remediate": "GF-R14"
+    },
+    {
+      "code": "RAT.PROPORTION.LINEAR-INTERCEPT",
+      "description": "Thinks any straight-line graph shows direct proportion, even one that does not pass through the origin.",
+      "remediate": "GF-R8"
     },
     {
       "code": "ALG.NOTATION.JUXTAPOSE",

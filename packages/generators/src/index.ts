@@ -373,6 +373,21 @@ import gfA22 from "./ks4/GF-A22.ts";
 import gfA23 from "./ks4/GF-A23.ts";
 import gfA24 from "./ks4/GF-A24.ts";
 import gfA25 from "./ks4/GF-A25.ts";
+import gfR1 from "./ks4/GF-R1.ts";
+import gfR2 from "./ks4/GF-R2.ts";
+import gfR3 from "./ks4/GF-R3.ts";
+import gfR4 from "./ks4/GF-R4.ts";
+import gfR5 from "./ks4/GF-R5.ts";
+import gfR6 from "./ks4/GF-R6.ts";
+import gfR7 from "./ks4/GF-R7.ts";
+import gfR8 from "./ks4/GF-R8.ts";
+import gfR9 from "./ks4/GF-R9.ts";
+import gfR10 from "./ks4/GF-R10.ts";
+import gfR11 from "./ks4/GF-R11.ts";
+import gfR12 from "./ks4/GF-R12.ts";
+import gfR13 from "./ks4/GF-R13.ts";
+import gfR14 from "./ks4/GF-R14.ts";
+import gfR16 from "./ks4/GF-R16.ts";
 import gfG1 from "./ks4/GF-G1.ts";
 import gfG3 from "./ks4/GF-G3.ts";
 import gfG4 from "./ks4/GF-G4.ts";
@@ -756,6 +771,21 @@ export const generators: Generator[] = [
   gfA23,
   gfA24,
   gfA25,
+  gfR1,
+  gfR2,
+  gfR3,
+  gfR4,
+  gfR5,
+  gfR6,
+  gfR7,
+  gfR8,
+  gfR9,
+  gfR10,
+  gfR11,
+  gfR12,
+  gfR13,
+  gfR14,
+  gfR16,
   gfG1,
   gfG3,
   gfG4,
