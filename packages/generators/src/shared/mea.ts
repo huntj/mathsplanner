@@ -468,3 +468,25 @@ export function parallelogram(
     description: `A parallelogram with base ${base} ${unit}, perpendicular height ${height} ${unit} and sloping sides ${slant} ${unit}.`,
   };
 }
+
+/** A trapezium with parallel sides a (top) and b (bottom) and the perpendicular height labelled. */
+export function trapezium(
+  a: number,
+  b: number,
+  h: number,
+  offset: number,
+  unit = "cm",
+): GeometrySpec {
+  return {
+    type: "geometry",
+    points: { A: [0, 0], B: [b, 0], C: [offset + a, h], D: [offset, h], F: [offset, 0] },
+    polygons: [{ vertices: ["A", "B", "C", "D"] }],
+    segments: [
+      { from: "A", to: "B", label: cm(b, unit), length: b },
+      { from: "D", to: "C", label: cm(a, unit), length: a },
+      { from: "F", to: "D", label: cm(h, unit), length: h, dashed: true },
+    ],
+    angles: [{ vertex: "F", from: "B", to: "D", right: true }],
+    description: `A trapezium with parallel sides ${a} ${unit} and ${b} ${unit}, ${h} ${unit} apart.`,
+  };
+}

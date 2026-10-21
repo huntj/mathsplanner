@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -758,6 +758,16 @@
       "remediate": "Y5-MEA-05"
     },
     {
+      "code": "MEA.AREA.TRAPEZIUM-HALF",
+      "description": "Multiplies the sum of the parallel sides by the height without halving, or adds all four sides, for the area of a trapezium.",
+      "remediate": "Y7-GEO-01"
+    },
+    {
+      "code": "MEA.CIRCLE.FORMULA",
+      "description": "Confuses the formulae for the circumference and the area of a circle, e.g. uses πr² for the circumference or 2πr for the area.",
+      "remediate": "Y8-GEO-01"
+    },
+    {
       "code": "PRO.ODDS",
       "description": "Writes favourable over unfavourable outcomes instead of over all outcomes, e.g. 3 red and 5 blue gives P(red) = 3/5.",
       "remediate": "Y7-PRO-01"
@@ -1046,6 +1056,31 @@
       "code": "GEO.PROOF.REASON",
       "description": "Gives a correct number but the wrong reason, or a reason that does not justify the step.",
       "remediate": "Y9-GEO-03"
+    },
+    {
+      "code": "GEO.CONSTRUCT.BISECTORS",
+      "description": "Confuses the perpendicular bisector (points equidistant from two points) with the angle bisector (points equidistant from two lines).",
+      "remediate": "Y8-GEO-04"
+    },
+    {
+      "code": "GEO.DISTANCE.SLANT",
+      "description": "Measures the distance from a point to a line along a slanted line instead of the perpendicular, which is the shortest.",
+      "remediate": "Y8-GEO-04"
+    },
+    {
+      "code": "GEO.PYTHAG.NO-SQUARE",
+      "description": "Adds or subtracts the side lengths without squaring them, or forgets to take the square root at the end.",
+      "remediate": "Y9-GEO-01"
+    },
+    {
+      "code": "GEO.PYTHAG.ADD-FOR-SHORT",
+      "description": "Adds the squares when finding a shorter side, so gets a length longer than the hypotenuse.",
+      "remediate": "Y9-GEO-01"
+    },
+    {
+      "code": "GEO.TRIG.RATIO",
+      "description": "Chooses the wrong trigonometric ratio, e.g. uses sin with the opposite and adjacent sides.",
+      "remediate": "Y9-GEO-01"
     }
   ]
 }

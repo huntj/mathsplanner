@@ -262,6 +262,7 @@ import y7Rat02 from "./ks3/Y7-RAT-02.ts";
 import y7Rat03 from "./ks3/Y7-RAT-03.ts";
 import y7Rat04 from "./ks3/Y7-RAT-04.ts";
 import y7Rat05 from "./ks3/Y7-RAT-05.ts";
+import y7Geo01 from "./ks3/Y7-GEO-01.ts";
 import y7Geo03 from "./ks3/Y7-GEO-03.ts";
 import y7Geo04 from "./ks3/Y7-GEO-04.ts";
 import y7Geo05 from "./ks3/Y7-GEO-05.ts";
@@ -285,8 +286,10 @@ import y8Rat02 from "./ks3/Y8-RAT-02.ts";
 import y8Rat03 from "./ks3/Y8-RAT-03.ts";
 import y8Rat04 from "./ks3/Y8-RAT-04.ts";
 import y8Rat05 from "./ks3/Y8-RAT-05.ts";
+import y8Geo01 from "./ks3/Y8-GEO-01.ts";
 import y8Geo02 from "./ks3/Y8-GEO-02.ts";
 import y8Geo03 from "./ks3/Y8-GEO-03.ts";
+import y8Geo04 from "./ks3/Y8-GEO-04.ts";
 import y8Geo05 from "./ks3/Y8-GEO-05.ts";
 import y8Pos01 from "./ks3/Y8-POS-01.ts";
 import y8Sta01 from "./ks3/Y8-STA-01.ts";
@@ -305,6 +308,7 @@ import y9Alg09 from "./ks3/Y9-ALG-09.ts";
 import y9Rat01 from "./ks3/Y9-RAT-01.ts";
 import y9Rat02 from "./ks3/Y9-RAT-02.ts";
 import y9Rat03 from "./ks3/Y9-RAT-03.ts";
+import y9Geo01 from "./ks3/Y9-GEO-01.ts";
 import y9Geo03 from "./ks3/Y9-GEO-03.ts";
 import y9Pos01 from "./ks3/Y9-POS-01.ts";
 import y9Pro01 from "./ks3/Y9-PRO-01.ts";
@@ -581,6 +585,7 @@ export const generators: Generator[] = [
   y7Rat03,
   y7Rat04,
   y7Rat05,
+  y7Geo01,
   y7Geo03,
   y7Geo04,
   y7Geo05,
@@ -604,8 +609,10 @@ export const generators: Generator[] = [
   y8Rat03,
   y8Rat04,
   y8Rat05,
+  y8Geo01,
   y8Geo02,
   y8Geo03,
+  y8Geo04,
   y8Geo05,
   y8Pos01,
   y8Sta01,
@@ -624,6 +631,7 @@ export const generators: Generator[] = [
   y9Rat01,
   y9Rat02,
   y9Rat03,
+  y9Geo01,
   y9Geo03,
   y9Pos01,
   y9Pro01,
