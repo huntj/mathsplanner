@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -768,6 +768,16 @@
       "remediate": "Y8-GEO-01"
     },
     {
+      "code": "MEA.SURFACE.MISSING-FACES",
+      "description": "Finds the surface area of a cuboid or prism from only the faces that can be seen, e.g. adds three faces of a cuboid instead of six.",
+      "remediate": "Y9-GEO-02"
+    },
+    {
+      "code": "MEA.SURFACE.VOLUME",
+      "description": "Confuses surface area and volume, e.g. multiplies the three edges when asked for the surface area.",
+      "remediate": "Y9-GEO-02"
+    },
+    {
       "code": "PRO.ODDS",
       "description": "Writes favourable over unfavourable outcomes instead of over all outcomes, e.g. 3 red and 5 blue gives P(red) = 3/5.",
       "remediate": "Y7-PRO-01"
@@ -1081,6 +1091,36 @@
       "code": "GEO.TRIG.RATIO",
       "description": "Chooses the wrong trigonometric ratio, e.g. uses sin with the opposite and adjacent sides.",
       "remediate": "Y9-GEO-01"
+    },
+    {
+      "code": "GEO.SOLIDS.NAME-2D",
+      "description": "Names a 3D shape with the name of a 2D shape, e.g. calls a cube a square or a sphere a circle.",
+      "remediate": "Y1-GEO-02"
+    },
+    {
+      "code": "GEO.SOLIDS.FACES-EDGES",
+      "description": "Mixes up faces, edges and vertices when describing a 3D shape, e.g. says a cube has 8 edges.",
+      "remediate": "Y2-GEO-02"
+    },
+    {
+      "code": "GEO.SOLIDS.VISIBLE-ONLY",
+      "description": "Counts only the faces, edges or vertices that can be seen in a drawing of a 3D shape.",
+      "remediate": "Y2-GEO-02"
+    },
+    {
+      "code": "GEO.SOLIDS.FACE-SHAPE",
+      "description": "Names the wrong 2D shape for the faces of a 3D shape, e.g. thinks every face of a triangular prism is a triangle.",
+      "remediate": "Y2-GEO-03"
+    },
+    {
+      "code": "GEO.SOLIDS.PRISM-PYRAMID",
+      "description": "Confuses prisms and pyramids, e.g. thinks a pyramid has the same cross-section all the way through.",
+      "remediate": "Y5-GEO-01"
+    },
+    {
+      "code": "GEO.NET.ANY-SIX",
+      "description": "Thinks any six squares joined edge to edge will fold into a cube.",
+      "remediate": "Y6-GEO-02"
     }
   ]
 }

@@ -43,6 +43,7 @@ import y1Mea04 from "./ks1/Y1-MEA-04.ts";
 import y1Mea05 from "./ks1/Y1-MEA-05.ts";
 import y1Mea06 from "./ks1/Y1-MEA-06.ts";
 import y1Geo01 from "./ks1/Y1-GEO-01.ts";
+import y1Geo02 from "./ks1/Y1-GEO-02.ts";
 import y1Pos01 from "./ks1/Y1-POS-01.ts";
 import y2Npv01 from "./ks1/Y2-NPV-01.ts";
 import y2Npv02 from "./ks1/Y2-NPV-02.ts";
@@ -69,6 +70,9 @@ import y2Mea05 from "./ks1/Y2-MEA-05.ts";
 import y2Mea06 from "./ks1/Y2-MEA-06.ts";
 import y2Mea07 from "./ks1/Y2-MEA-07.ts";
 import y2Geo01 from "./ks1/Y2-GEO-01.ts";
+import y2Geo02 from "./ks1/Y2-GEO-02.ts";
+import y2Geo03 from "./ks1/Y2-GEO-03.ts";
+import y2Geo04 from "./ks1/Y2-GEO-04.ts";
 import y2Pos02 from "./ks1/Y2-POS-02.ts";
 import y2Sta01 from "./ks1/Y2-STA-01.ts";
 import y2Sta02 from "./ks1/Y2-STA-02.ts";
@@ -100,6 +104,7 @@ import y3Mea04 from "./ks2/Y3-MEA-04.ts";
 import y3Mea05 from "./ks2/Y3-MEA-05.ts";
 import y3Mea06 from "./ks2/Y3-MEA-06.ts";
 import y3Mea07 from "./ks2/Y3-MEA-07.ts";
+import y3Geo01 from "./ks2/Y3-GEO-01.ts";
 import y3Geo02 from "./ks2/Y3-GEO-02.ts";
 import y3Geo03 from "./ks2/Y3-GEO-03.ts";
 import y3Geo04 from "./ks2/Y3-GEO-04.ts";
@@ -185,6 +190,7 @@ import y5Mea04 from "./ks2/Y5-MEA-04.ts";
 import y5Mea05 from "./ks2/Y5-MEA-05.ts";
 import y5Mea06 from "./ks2/Y5-MEA-06.ts";
 import y5Mea07 from "./ks2/Y5-MEA-07.ts";
+import y5Geo01 from "./ks2/Y5-GEO-01.ts";
 import y5Geo02 from "./ks2/Y5-GEO-02.ts";
 import y5Geo03 from "./ks2/Y5-GEO-03.ts";
 import y5Geo04 from "./ks2/Y5-GEO-04.ts";
@@ -233,6 +239,7 @@ import y6Mea05 from "./ks2/Y6-MEA-05.ts";
 import y6Mea06 from "./ks2/Y6-MEA-06.ts";
 import y6Mea07 from "./ks2/Y6-MEA-07.ts";
 import y6Geo01 from "./ks2/Y6-GEO-01.ts";
+import y6Geo02 from "./ks2/Y6-GEO-02.ts";
 import y6Geo03 from "./ks2/Y6-GEO-03.ts";
 import y6Geo04 from "./ks2/Y6-GEO-04.ts";
 import y6Geo05 from "./ks2/Y6-GEO-05.ts";
@@ -263,6 +270,7 @@ import y7Rat03 from "./ks3/Y7-RAT-03.ts";
 import y7Rat04 from "./ks3/Y7-RAT-04.ts";
 import y7Rat05 from "./ks3/Y7-RAT-05.ts";
 import y7Geo01 from "./ks3/Y7-GEO-01.ts";
+import y7Geo02 from "./ks3/Y7-GEO-02.ts";
 import y7Geo03 from "./ks3/Y7-GEO-03.ts";
 import y7Geo04 from "./ks3/Y7-GEO-04.ts";
 import y7Geo05 from "./ks3/Y7-GEO-05.ts";
@@ -292,6 +300,7 @@ import y8Geo03 from "./ks3/Y8-GEO-03.ts";
 import y8Geo04 from "./ks3/Y8-GEO-04.ts";
 import y8Geo05 from "./ks3/Y8-GEO-05.ts";
 import y8Pos01 from "./ks3/Y8-POS-01.ts";
+import y8Geo06 from "./ks3/Y8-GEO-06.ts";
 import y8Sta01 from "./ks3/Y8-STA-01.ts";
 import y8Sta02 from "./ks3/Y8-STA-02.ts";
 import y8Pro01 from "./ks3/Y8-PRO-01.ts";
@@ -309,6 +318,7 @@ import y9Rat01 from "./ks3/Y9-RAT-01.ts";
 import y9Rat02 from "./ks3/Y9-RAT-02.ts";
 import y9Rat03 from "./ks3/Y9-RAT-03.ts";
 import y9Geo01 from "./ks3/Y9-GEO-01.ts";
+import y9Geo02 from "./ks3/Y9-GEO-02.ts";
 import y9Geo03 from "./ks3/Y9-GEO-03.ts";
 import y9Pos01 from "./ks3/Y9-POS-01.ts";
 import y9Pro01 from "./ks3/Y9-PRO-01.ts";
@@ -366,6 +376,7 @@ export const generators: Generator[] = [
   y1Mea05,
   y1Mea06,
   y1Geo01,
+  y1Geo02,
   y1Pos01,
   y2Npv01,
   y2Npv02,
@@ -392,6 +403,9 @@ export const generators: Generator[] = [
   y2Mea06,
   y2Mea07,
   y2Geo01,
+  y2Geo02,
+  y2Geo03,
+  y2Geo04,
   y2Pos02,
   y2Sta01,
   y2Sta02,
@@ -423,6 +437,7 @@ export const generators: Generator[] = [
   y3Mea05,
   y3Mea06,
   y3Mea07,
+  y3Geo01,
   y3Geo02,
   y3Geo03,
   y3Geo04,
@@ -508,6 +523,7 @@ export const generators: Generator[] = [
   y5Mea05,
   y5Mea06,
   y5Mea07,
+  y5Geo01,
   y5Geo02,
   y5Geo03,
   y5Geo04,
@@ -556,6 +572,7 @@ export const generators: Generator[] = [
   y6Mea06,
   y6Mea07,
   y6Geo01,
+  y6Geo02,
   y6Geo03,
   y6Geo04,
   y6Geo05,
@@ -586,6 +603,7 @@ export const generators: Generator[] = [
   y7Rat04,
   y7Rat05,
   y7Geo01,
+  y7Geo02,
   y7Geo03,
   y7Geo04,
   y7Geo05,
@@ -615,6 +633,7 @@ export const generators: Generator[] = [
   y8Geo04,
   y8Geo05,
   y8Pos01,
+  y8Geo06,
   y8Sta01,
   y8Sta02,
   y8Pro01,
@@ -632,6 +651,7 @@ export const generators: Generator[] = [
   y9Rat02,
   y9Rat03,
   y9Geo01,
+  y9Geo02,
   y9Geo03,
   y9Pos01,
   y9Pro01,
