@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -570,7 +570,7 @@
     {
       "code": "ALG.COORD.ORDER",
       "description": "Reads or plots coordinates the wrong way round, as (y, x).",
-      "remediate": "Y8-ALG-05"
+      "remediate": "Y4-POS-01"
     },
     {
       "code": "ALG.GRADIENT.RUN-RISE",
@@ -786,6 +786,41 @@
       "code": "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
       "description": "Treats outcomes such as the total of two dice as equally likely, e.g. thinks 7 and 2 are equally likely.",
       "remediate": "Y9-PRO-02"
+    },
+    {
+      "code": "POS.TRANSLATE.DIRECTION",
+      "description": "Moves a shape or point the wrong way in a translation, e.g. left instead of right, or applies the across and up amounts to the wrong coordinates.",
+      "remediate": "Y4-POS-02"
+    },
+    {
+      "code": "POS.TRANSLATE.COUNT-GAP",
+      "description": "Counts the empty squares between a shape and its image as the distance moved, rather than how far one vertex moves to its matching vertex.",
+      "remediate": "Y4-POS-02"
+    },
+    {
+      "code": "POS.TRANSFORM.CHANGES-SHAPE",
+      "description": "Thinks a translation, reflection or rotation changes the size or shape of a figure.",
+      "remediate": "Y5-POS-01"
+    },
+    {
+      "code": "POS.REFLECT.WRONG-AXIS",
+      "description": "Reflects in the other axis, e.g. changes the sign of x when reflecting in the x-axis.",
+      "remediate": "Y6-POS-02"
+    },
+    {
+      "code": "POS.ROTATE.CENTRE",
+      "description": "Rotates about the wrong point, e.g. a vertex of the shape instead of the given centre.",
+      "remediate": "Y8-POS-01"
+    },
+    {
+      "code": "POS.ENLARGE.ADD",
+      "description": "Adds the scale factor to lengths or coordinates instead of multiplying, e.g. enlarges a 3 cm side by scale factor 2 to 5 cm.",
+      "remediate": "Y9-POS-01"
+    },
+    {
+      "code": "POS.ENLARGE.CENTRE",
+      "description": "Ignores the centre of enlargement, e.g. multiplies the coordinates by the scale factor as if the centre were the origin.",
+      "remediate": "Y9-POS-01"
     },
     {
       "code": "GEO.ANGLES.STRAIGHT-LINE-360",
