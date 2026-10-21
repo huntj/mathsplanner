@@ -328,13 +328,30 @@ export type ChartSpec = { type: "chart"; description?: string; title?: Label } &
  * Probability diagrams. So far, two-set Venn diagrams: each region holds a label (a count, a list
  * of elements, or an unknown such as x), in the order only A, both, only B, neither.
  */
-export type ProbabilitySpec = {
+export type VennSpec = {
   type: "probability";
   kind: "venn";
   sets: [Label, Label];
   regions: [Label, Label, Label, Label];
   description?: string;
 };
+
+/** One branch of a tree: its label (a probability or count) and the outcome at its end. */
+export type TreeBranch = { label: Label; outcome: Label; children?: TreeBranch[] };
+
+/**
+ * Tree diagrams and frequency trees, drawn left to right: each branch carries a label (a
+ * probability, or a frequency) and ends at an outcome. A frequency tree can label the root too.
+ */
+export type TreeSpec = {
+  type: "probability";
+  kind: "tree";
+  root?: Label;
+  branches: TreeBranch[];
+  description?: string;
+};
+
+export type ProbabilitySpec = VennSpec | TreeSpec;
 
 export type SupportedDiagramSpec =
   | ProbabilitySpec

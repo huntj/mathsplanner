@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.22.0",
+  "version": "0.23.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -753,6 +753,36 @@
       "remediate": "Y8-STA-02"
     },
     {
+      "code": "STA.SAMPLE.BIAS",
+      "description": "Trusts a small or biased sample to represent the population, e.g. surveys only one class about the whole school.",
+      "remediate": "GF-S1"
+    },
+    {
+      "code": "STA.GROUPED.MIDPOINT",
+      "description": "Uses the class width, an end point or the class number instead of the midpoint when estimating the mean of grouped data, or divides by the number of classes.",
+      "remediate": "GF-S4"
+    },
+    {
+      "code": "STA.CORRELATION.TYPE",
+      "description": "Confuses positive and negative correlation, or reads no correlation as negative.",
+      "remediate": "GF-S6"
+    },
+    {
+      "code": "STA.EXTRAPOLATE",
+      "description": "Trusts a line of best fit far outside the range of the data.",
+      "remediate": "GF-S6"
+    },
+    {
+      "code": "STA.OUTLIER.MEAN",
+      "description": "Uses the mean to represent data with an extreme outlier, when the median would be more typical.",
+      "remediate": "GF-S4"
+    },
+    {
+      "code": "STA.RANGE.HIGHER-BETTER",
+      "description": "Reads a larger range as better or higher performance, rather than as less consistent results.",
+      "remediate": "Y7-STA-01"
+    },
+    {
       "code": "MEA.TIME.DECIMAL",
       "description": "Works with times as if they were decimals, with 100 minutes in an hour, e.g. 9:50 to 10:05 is 55 minutes.",
       "remediate": "Y3-MEA-07"
@@ -976,6 +1006,26 @@
       "code": "POS.ENLARGE.CENTRE",
       "description": "Ignores the centre of enlargement, e.g. multiplies the coordinates by the scale factor as if the centre were the origin.",
       "remediate": "Y9-POS-01"
+    },
+    {
+      "code": "PRO.EXPECTED.DIVIDE",
+      "description": "Finds an expected frequency by dividing the number of trials by the probability, or adding, instead of multiplying.",
+      "remediate": "GF-P2"
+    },
+    {
+      "code": "PRO.SAMPLE.SMALL",
+      "description": "Trusts the relative frequency from a few trials more than one from many trials.",
+      "remediate": "GF-P5"
+    },
+    {
+      "code": "PRO.TREE.ADD-ALONG",
+      "description": "Adds the probabilities along a path of a tree diagram instead of multiplying them.",
+      "remediate": "GF-P8"
+    },
+    {
+      "code": "PRO.TREE.REPLACEMENT",
+      "description": "Uses the same probabilities on the second branches when items are not replaced.",
+      "remediate": "GF-P8"
     },
     {
       "code": "GEO.ANGLES.STRAIGHT-LINE-360",

@@ -935,4 +935,57 @@ export const REFERENCE_DIAGRAMS: ReferenceDiagram[] = [
       regions: ["12", "5", "8", "3"],
     },
   },
+  {
+    id: "p-tree",
+    title: "Tree diagram for two picks without replacement",
+    spec: {
+      type: "probability",
+      kind: "tree",
+      branches: [
+        {
+          label: "\\frac{3}{7}",
+          outcome: "\\text{red}",
+          children: [
+            { label: "\\frac{2}{6}", outcome: "\\text{red}" },
+            { label: "\\frac{4}{6}", outcome: "\\text{blue}" },
+          ],
+        },
+        {
+          label: "\\frac{4}{7}",
+          outcome: "\\text{blue}",
+          children: [
+            { label: "\\frac{3}{6}", outcome: "\\text{red}" },
+            { label: "\\frac{3}{6}", outcome: "\\text{blue}" },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: "p-frequency-tree",
+    title: "Frequency tree",
+    spec: {
+      type: "probability",
+      kind: "tree",
+      root: "60",
+      branches: [
+        {
+          label: "25",
+          outcome: "\\text{boys}",
+          children: [
+            { label: "15", outcome: "\\text{walk}" },
+            { label: "10", outcome: "\\text{bus}" },
+          ],
+        },
+        {
+          label: "35",
+          outcome: "\\text{girls}",
+          children: [
+            { label: "20", outcome: "\\text{walk}" },
+            { label: "15", outcome: "\\text{bus}" },
+          ],
+        },
+      ],
+    },
+  },
 ];

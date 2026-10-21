@@ -1,0 +1,948 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-P5",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Ben's, because 50 is a sensible middle amount.",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Dee's, because 500 spins is the largest sample.",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "They are all equally reliable, because it is the same spinner.",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Ava's, because fewer spins means fewer mistakes.",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "PRO.SAMPLE.SMALL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The more trials, the closer the relative frequency tends to the true probability.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "PRO.SAMPLE.SMALL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The spinner is the same, but small samples wobble more.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "D",
+              "type": "choice",
+            },
+            "code": "PRO.SAMPLE.SMALL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Small samples vary a lot; more trials give a more reliable estimate.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Whose results give the most reliable estimate?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The relative frequency tends towards the theoretical probability as the number of trials grows.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Four friends spin the same spinner to estimate the probability of red. Ava spins it 10 times, Ben spins it 50 times, Cal spins it 100 times, Dee spins it 500 times.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-P5",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Ben's, because 50 is a sensible middle amount.",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Ava's, because fewer spins means fewer mistakes.",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Dee's, because 500 spins is the largest sample.",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "They are all equally reliable, because it is the same spinner.",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "PRO.SAMPLE.SMALL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The more trials, the closer the relative frequency tends to the true probability.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "PRO.SAMPLE.SMALL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Small samples vary a lot; more trials give a more reliable estimate.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "D",
+              "type": "choice",
+            },
+            "code": "PRO.SAMPLE.SMALL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The spinner is the same, but small samples wobble more.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Whose results give the most reliable estimate?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The relative frequency tends towards the theoretical probability as the number of trials grows.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Four friends spin the same spinner to estimate the probability of red. Ava spins it 10 times, Ben spins it 50 times, Cal spins it 100 times, Dee spins it 500 times.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-P5",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Ava's, because fewer spins means fewer mistakes.",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Dee's, because 500 spins is the largest sample.",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "They are all equally reliable, because it is the same spinner.",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Ben's, because 50 is a sensible middle amount.",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "PRO.SAMPLE.SMALL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Small samples vary a lot; more trials give a more reliable estimate.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "PRO.SAMPLE.SMALL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The spinner is the same, but small samples wobble more.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "D",
+              "type": "choice",
+            },
+            "code": "PRO.SAMPLE.SMALL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The more trials, the closer the relative frequency tends to the true probability.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Whose results give the most reliable estimate?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The relative frequency tends towards the theoretical probability as the number of trials grows.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Four friends spin the same spinner to estimate the probability of red. Ava spins it 10 times, Ben spins it 50 times, Cal spins it 100 times, Dee spins it 500 times.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-P5",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 0.7,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 0.5,
+            },
+            "code": "PRO.SAMPLE.SMALL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Use the largest sample: 350 ÷ 500.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Give the best estimate of the probability that the spinner lands on red.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The 500 spins give the most reliable estimate: 350 ÷ 500 = 0.7.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Some friends spin the same spinner and record how often it lands on red.",
+      },
+      {
+        "display": true,
+        "t": "math",
+        "v": "\\begin{array}{|l|c|c|c|c|}\\hline \\text{spins} & \\text{10} & \\text{50} & \\text{100} & \\text{500} \\\\ \\hline \\text{reds} & 5 & 35 & 67 & 350 \\\\ \\hline\\end{array}",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-P5",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 0.616,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 0.8,
+            },
+            "code": "PRO.SAMPLE.SMALL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Use the largest sample: 308 ÷ 500.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Give the best estimate of the probability that the spinner lands on red.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The 500 spins give the most reliable estimate: 308 ÷ 500 = 0.616.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Some friends spin the same spinner and record how often it lands on red.",
+      },
+      {
+        "display": true,
+        "t": "math",
+        "v": "\\begin{array}{|l|c|c|c|c|}\\hline \\text{spins} & \\text{10} & \\text{50} & \\text{100} & \\text{500} \\\\ \\hline \\text{reds} & 8 & 36 & 57 & 308 \\\\ \\hline\\end{array}",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-P5",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 0.582,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 0.4,
+            },
+            "code": "PRO.SAMPLE.SMALL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Use the largest sample: 291 ÷ 500.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Give the best estimate of the probability that the spinner lands on red.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The 500 spins give the most reliable estimate: 291 ÷ 500 = 0.582.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Some friends spin the same spinner and record how often it lands on red.",
+      },
+      {
+        "display": true,
+        "t": "math",
+        "v": "\\begin{array}{|l|c|c|c|c|}\\hline \\text{spins} & \\text{10} & \\text{50} & \\text{100} & \\text{500} \\\\ \\hline \\text{reds} & 4 & 35 & 58 & 291 \\\\ \\hline\\end{array}",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-P5",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. A fair dice would give exactly 3 sixes.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 18 rolls is too few to tell; results vary a lot in small samples. Sam needs many more rolls.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 4 out of 18 is more than a sixth, and that proves it.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "PRO.RELATIVE-FREQUENCY.EXACT",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "PRO.SAMPLE.SMALL",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "A small sample can easily stray from the theoretical probability; only a large sample is good evidence of bias.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Sam rolls a dice 18 times and gets 4 sixes. Sam says the dice must be biased towards six.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-P5",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 3 out of 6 is more than a sixth, and that proves it.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. A fair dice would give exactly 1 sixes.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 6 rolls is too few to tell; results vary a lot in small samples. Sam needs many more rolls.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "PRO.SAMPLE.SMALL",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "PRO.RELATIVE-FREQUENCY.EXACT",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "A small sample can easily stray from the theoretical probability; only a large sample is good evidence of bias.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Sam rolls a dice 6 times and gets 3 sixes. Sam says the dice must be biased towards six.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-P5",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. A fair dice would give exactly 2 sixes.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 4 out of 12 is more than a sixth, and that proves it.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 12 rolls is too few to tell; results vary a lot in small samples. Sam needs many more rolls.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "PRO.RELATIVE-FREQUENCY.EXACT",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "PRO.SAMPLE.SMALL",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "A small sample can easily stray from the theoretical probability; only a large sample is good evidence of bias.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Sam rolls a dice 12 times and gets 4 sixes. Sam says the dice must be biased towards six.",
+      },
+    ],
+  },
+]
+`;

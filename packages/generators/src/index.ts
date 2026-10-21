@@ -410,6 +410,20 @@ import gfG20 from "./ks4/GF-G20.ts";
 import gfG21 from "./ks4/GF-G21.ts";
 import gfG24 from "./ks4/GF-G24.ts";
 import gfG25 from "./ks4/GF-G25.ts";
+import gfP1 from "./ks4/GF-P1.ts";
+import gfP2 from "./ks4/GF-P2.ts";
+import gfP3 from "./ks4/GF-P3.ts";
+import gfP4 from "./ks4/GF-P4.ts";
+import gfP5 from "./ks4/GF-P5.ts";
+import gfP6 from "./ks4/GF-P6.ts";
+import gfP7 from "./ks4/GF-P7.ts";
+import gfP8 from "./ks4/GF-P8.ts";
+import gfS1 from "./ks4/GF-S1.ts";
+import gfS2 from "./ks4/GF-S2.ts";
+import gfS3 from "./ks4/GF-S3.ts";
+import gfS4 from "./ks4/GF-S4.ts";
+import gfS5 from "./ks4/GF-S5.ts";
+import gfS6 from "./ks4/GF-S6.ts";
 
 /** Every generator, in the order of data/statements.json. */
 export const generators: Generator[] = [
@@ -822,6 +836,20 @@ export const generators: Generator[] = [
   gfG21,
   gfG24,
   gfG25,
+  gfP1,
+  gfP2,
+  gfP3,
+  gfP4,
+  gfP5,
+  gfP6,
+  gfP7,
+  gfP8,
+  gfS1,
+  gfS2,
+  gfS3,
+  gfS4,
+  gfS5,
+  gfS6,
 ] as Generator[];
 
 /** Unreviewed placeholders that exercise the gallery; real generators replace them. */

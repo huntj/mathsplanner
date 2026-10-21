@@ -128,9 +128,10 @@ function shapeProblem(spec: SupportedDiagramSpec): string | undefined {
           return "instrument must be protractor, clock, ruler, jug, thermometer or scales";
       }
     case "probability":
-      return s.kind === "venn" && Array.isArray(s.regions)
+      return (s.kind === "venn" && Array.isArray(s.regions)) ||
+        (s.kind === "tree" && Array.isArray(s.branches))
         ? undefined
-        : "only Venn diagrams (kind venn, with four regions) are supported so far";
+        : "kind must be venn (with four regions) or tree (with branches)";
     case "chart":
       return ["bar", "pictogram", "pie"].includes(s.kind as string) && Array.isArray(s.values)
         ? undefined

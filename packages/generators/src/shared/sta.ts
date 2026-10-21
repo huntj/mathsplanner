@@ -80,6 +80,18 @@ export function tableLatex(headers: string[], rows: (string | number)[][]): stri
   return `\\begin{array}{${cols}}\\hline ${lines.join(" \\\\ \\hline ")} \\\\ \\hline\\end{array}`;
 }
 
+/** A grouped frequency table with classes lo < v ≤ lo + width; `heading` is LaTeX. */
+export function groupedTable(
+  variable: string,
+  heading: string,
+  lows: number[],
+  width: number,
+  freqs: number[],
+): string {
+  const rows = lows.map((lo, i) => `${lo} < ${variable} \\le ${lo + width} & ${freqs[i] ?? 0}`);
+  return `\\begin{array}{|c|c|}\\hline ${heading} & \\text{frequency} \\\\ \\hline ${rows.join(" \\\\ \\hline ")} \\\\ \\hline\\end{array}`;
+}
+
 /** A line graph of y against x as joined points on a grid. */
 export function lineGraph(
   points: [number, number][],
