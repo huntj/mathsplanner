@@ -268,7 +268,22 @@ export type ChartSpec = { type: "chart"; description?: string; title?: Label } &
     }
 );
 
+// --- probability -------------------------------------------------------------------------
+
+/**
+ * Probability diagrams. So far, two-set Venn diagrams: each region holds a label (a count, a list
+ * of elements, or an unknown such as x), in the order only A, both, only B, neither.
+ */
+export type ProbabilitySpec = {
+  type: "probability";
+  kind: "venn";
+  sets: [Label, Label];
+  regions: [Label, Label, Label, Label];
+  description?: string;
+};
+
 export type SupportedDiagramSpec =
+  | ProbabilitySpec
   | GeometrySpec
   | CartesianSpec
   | NumberLineSpec

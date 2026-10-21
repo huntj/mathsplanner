@@ -163,8 +163,8 @@ describe("other truth checks", () => {
   });
 
   it("refuses diagram types the engine does not draw yet, and malformed specs", () => {
-    expect(() => renderDiagram({ type: "probability" })).toThrow(
-      '"probability" diagrams are not supported yet',
+    expect(() => renderDiagram({ type: "network" })).toThrow(
+      '"network" diagrams are not supported yet',
     );
     expect(() => renderDiagram({ type: "counters", layout: "abacus" })).toThrow(
       "layout must be one of",

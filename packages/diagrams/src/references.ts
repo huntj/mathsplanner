@@ -853,4 +853,14 @@ export const REFERENCE_DIAGRAMS: ReferenceDiagram[] = [
       showAngles: true,
     },
   },
+  {
+    id: "p-venn",
+    title: "Venn diagram with counts",
+    spec: {
+      type: "probability",
+      kind: "venn",
+      sets: ["\\text{Football}", "\\text{Tennis}"],
+      regions: ["12", "5", "8", "3"],
+    },
+  },
 ];

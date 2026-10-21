@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -646,6 +646,36 @@
       "code": "MEA.TIME.DECIMAL",
       "description": "Works with times as if they were decimals, with 100 minutes in an hour, e.g. 9:50 to 10:05 is 55 minutes.",
       "remediate": "Y3-MEA-07"
+    },
+    {
+      "code": "PRO.ODDS",
+      "description": "Writes favourable over unfavourable outcomes instead of over all outcomes, e.g. 3 red and 5 blue gives P(red) = 3/5.",
+      "remediate": "Y7-PRO-01"
+    },
+    {
+      "code": "PRO.SCALE.WORDS",
+      "description": "Places probability words in the wrong place on the 0 to 1 scale, e.g. calls 0.3 likely.",
+      "remediate": "Y7-PRO-01"
+    },
+    {
+      "code": "PRO.RELATIVE-FREQUENCY.EXACT",
+      "description": "Expects results of an experiment to match the theoretical probability exactly, or thinks past results change the next outcome.",
+      "remediate": "Y7-PRO-01"
+    },
+    {
+      "code": "PRO.COMPLEMENT",
+      "description": "Finds the probability of something not happening wrongly, e.g. 1 − 0.35 = 0.75.",
+      "remediate": "Y7-PRO-02"
+    },
+    {
+      "code": "PRO.VENN.DOUBLE-COUNT",
+      "description": "Counts the overlap of a Venn diagram twice, or leaves it out, when finding totals.",
+      "remediate": "Y9-PRO-01"
+    },
+    {
+      "code": "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
+      "description": "Treats outcomes such as the total of two dice as equally likely, e.g. thinks 7 and 2 are equally likely.",
+      "remediate": "Y9-PRO-02"
     },
     {
       "code": "GEO.ANGLES.STRAIGHT-LINE-360",

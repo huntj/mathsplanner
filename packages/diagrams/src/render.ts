@@ -9,6 +9,7 @@ import { layoutCounters } from "./types/counters.ts";
 import { layoutGeometry } from "./types/geometry.ts";
 import { layoutProtractor } from "./types/measure.ts";
 import { layoutNumberLine } from "./types/numberLine.ts";
+import { layoutProbability } from "./types/probability.ts";
 
 export class DiagramError extends Error {
   constructor(message: string) {
@@ -25,6 +26,7 @@ export const SUPPORTED_TYPES = [
   "measure",
   "counters",
   "chart",
+  "probability",
 ] as const;
 
 export function isSupported(
@@ -58,6 +60,8 @@ export function renderDiagram(spec: DiagramSpec | SupportedDiagramSpec): Diagram
       return compose(layoutCounters(spec));
     case "chart":
       return compose(layoutChart(spec));
+    case "probability":
+      return compose(layoutProbability(spec));
   }
 }
 
@@ -97,6 +101,10 @@ function shapeProblem(spec: SupportedDiagramSpec): string | undefined {
       return s.instrument === "protractor" && isNumber(s.angle)
         ? undefined
         : "only protractors with a numeric angle are supported so far";
+    case "probability":
+      return s.kind === "venn" && Array.isArray(s.regions)
+        ? undefined
+        : "only Venn diagrams (kind venn, with four regions) are supported so far";
     case "chart":
       return ["bar", "pictogram", "pie"].includes(s.kind as string) && Array.isArray(s.values)
         ? undefined
