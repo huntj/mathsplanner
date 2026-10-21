@@ -451,7 +451,7 @@ export function cylinder(r: number, h: number, unit = "cm"): GeometrySpec {
   points.C = [0, h];
   segments.push(
     { from: "L0", to: "L1" },
-    { from: "R1", to: "R0", label: `${h}\text{ ${unit}}` },
+    { from: "R1", to: "R0", label: `${h}\\text{ ${unit}}` },
     { from: "C", to: "R1", dashed: true },
   );
   return {

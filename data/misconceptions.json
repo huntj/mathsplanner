@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.21.0",
+  "version": "0.22.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -908,6 +908,11 @@
       "remediate": "N-POS-02"
     },
     {
+      "code": "MEA.VOLUME.FORMULA",
+      "description": "Uses the wrong formula for the volume of a pyramid, cone or sphere, e.g. forgets the third in ⅓πr²h or uses r² instead of r³ for a sphere.",
+      "remediate": "GF-G17"
+    },
+    {
       "code": "PRO.ODDS",
       "description": "Writes favourable over unfavourable outcomes instead of over all outcomes, e.g. 3 red and 5 blue gives P(red) = 3/5.",
       "remediate": "Y7-PRO-01"
@@ -1261,6 +1266,36 @@
       "code": "GEO.COMPOSE.COUNT",
       "description": "Miscounts the smaller shapes that make up a shape, e.g. counts only the outline or misses some parts.",
       "remediate": "R-GEO-02"
+    },
+    {
+      "code": "GEO.LOCUS.TYPE",
+      "description": "Draws the wrong locus, e.g. a straight line for points a fixed distance from a point, or confuses the locus of points equidistant from two points with that from two lines.",
+      "remediate": "GF-G2"
+    },
+    {
+      "code": "GEO.CONGRUENT.SIMILAR",
+      "description": "Confuses congruent and similar shapes, e.g. thinks an enlargement gives a congruent image.",
+      "remediate": "GF-G7"
+    },
+    {
+      "code": "GEO.PLAN.ELEVATION",
+      "description": "Confuses the plan with an elevation, or the front elevation with the side elevation.",
+      "remediate": "GF-G13"
+    },
+    {
+      "code": "GEO.SECTOR.FRACTION",
+      "description": "Uses the wrong fraction of the circle for a sector, e.g. angle ÷ 180 instead of angle ÷ 360.",
+      "remediate": "GF-G18"
+    },
+    {
+      "code": "GEO.TRIG.EXACT",
+      "description": "Gives the wrong exact value of a trigonometric ratio, e.g. sin 30° = √3/2 or cos 60° = √3/2.",
+      "remediate": "GF-G21"
+    },
+    {
+      "code": "GEO.VECTOR.COMPONENTS",
+      "description": "Writes a column vector with its components swapped or with the wrong signs, or subtracts vectors the wrong way round.",
+      "remediate": "GF-G24"
     }
   ]
 }

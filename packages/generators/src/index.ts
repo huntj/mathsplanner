@@ -389,13 +389,27 @@ import gfR13 from "./ks4/GF-R13.ts";
 import gfR14 from "./ks4/GF-R14.ts";
 import gfR16 from "./ks4/GF-R16.ts";
 import gfG1 from "./ks4/GF-G1.ts";
+import gfG2 from "./ks4/GF-G2.ts";
 import gfG3 from "./ks4/GF-G3.ts";
 import gfG4 from "./ks4/GF-G4.ts";
 import gfG5 from "./ks4/GF-G5.ts";
 import gfG6 from "./ks4/GF-G6.ts";
+import gfG7 from "./ks4/GF-G7.ts";
 import gfG9 from "./ks4/GF-G9.ts";
 import ghG10 from "./ks4/GH-G10.ts";
+import gfG11 from "./ks4/GF-G11.ts";
+import gfG12 from "./ks4/GF-G12.ts";
+import gfG13 from "./ks4/GF-G13.ts";
+import gfG14 from "./ks4/GF-G14.ts";
 import gfG15 from "./ks4/GF-G15.ts";
+import gfG16 from "./ks4/GF-G16.ts";
+import gfG17 from "./ks4/GF-G17.ts";
+import gfG18 from "./ks4/GF-G18.ts";
+import gfG19 from "./ks4/GF-G19.ts";
+import gfG20 from "./ks4/GF-G20.ts";
+import gfG21 from "./ks4/GF-G21.ts";
+import gfG24 from "./ks4/GF-G24.ts";
+import gfG25 from "./ks4/GF-G25.ts";
 
 /** Every generator, in the order of data/statements.json. */
 export const generators: Generator[] = [
@@ -787,13 +801,27 @@ export const generators: Generator[] = [
   gfR14,
   gfR16,
   gfG1,
+  gfG2,
   gfG3,
   gfG4,
   gfG5,
   gfG6,
+  gfG7,
   gfG9,
   ghG10,
+  gfG11,
+  gfG12,
+  gfG13,
+  gfG14,
   gfG15,
+  gfG16,
+  gfG17,
+  gfG18,
+  gfG19,
+  gfG20,
+  gfG21,
+  gfG24,
+  gfG25,
 ] as Generator[];
 
 /** Unreviewed placeholders that exercise the gallery; real generators replace them. */

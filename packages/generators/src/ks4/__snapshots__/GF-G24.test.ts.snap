@@ -1,0 +1,1323 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`GF-G24 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "description": "Two congruent shapes, A and B, on a coordinate grid.",
+        "grid": true,
+        "polygons": [
+          {
+            "label": "A",
+            "shaded": true,
+            "vertices": [
+              [
+                0,
+                -5,
+              ],
+              [
+                2,
+                -5,
+              ],
+              [
+                0,
+                -2,
+              ],
+            ],
+          },
+          {
+            "label": "B",
+            "shaded": true,
+            "vertices": [
+              [
+                -4,
+                -2,
+              ],
+              [
+                -2,
+                -2,
+              ],
+              [
+                -4,
+                1,
+              ],
+            ],
+          },
+        ],
+        "type": "cartesian",
+        "x": {
+          "max": 7,
+          "min": -7,
+          "step": 1,
+        },
+        "y": {
+          "max": 7,
+          "min": -7,
+          "step": 1,
+        },
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-G24",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} -4 \\\\ 3 \\end{pmatrix}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} -4 \\\\ -3 \\end{pmatrix}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 3 \\\\ -4 \\end{pmatrix}",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 4 \\\\ -3 \\end{pmatrix}",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Up is positive, down is negative.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.COMPONENTS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The top number is the movement across (x); the bottom is up or down (y).",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "D",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.COMPONENTS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That moves B back onto A.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Write down the column vector that translates shape A onto shape B.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\begin{pmatrix} -4 \\\\ 3 \\end{pmatrix}",
+        "say": [
+          {
+            "t": "text",
+            "v": "Follow one vertex from A to B: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "description": "Two congruent shapes, A and B, on a coordinate grid.",
+        "grid": true,
+        "polygons": [
+          {
+            "label": "A",
+            "shaded": true,
+            "vertices": [
+              [
+                -6,
+                -4,
+              ],
+              [
+                -3,
+                -4,
+              ],
+              [
+                -3,
+                -3,
+              ],
+              [
+                -5,
+                -3,
+              ],
+              [
+                -5,
+                -2,
+              ],
+              [
+                -6,
+                -2,
+              ],
+            ],
+          },
+          {
+            "label": "B",
+            "shaded": true,
+            "vertices": [
+              [
+                -3,
+                -6,
+              ],
+              [
+                0,
+                -6,
+              ],
+              [
+                0,
+                -5,
+              ],
+              [
+                -2,
+                -5,
+              ],
+              [
+                -2,
+                -4,
+              ],
+              [
+                -3,
+                -4,
+              ],
+            ],
+          },
+        ],
+        "type": "cartesian",
+        "x": {
+          "max": 7,
+          "min": -7,
+          "step": 1,
+        },
+        "y": {
+          "max": 7,
+          "min": -7,
+          "step": 1,
+        },
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-G24",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "D",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} -2 \\\\ 3 \\end{pmatrix}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} -3 \\\\ 2 \\end{pmatrix}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix}",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix}",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.COMPONENTS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The top number is the movement across (x); the bottom is up or down (y).",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.COMPONENTS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That moves B back onto A.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Up is positive, down is negative.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Write down the column vector that translates shape A onto shape B.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix}",
+        "say": [
+          {
+            "t": "text",
+            "v": "Follow one vertex from A to B: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "description": "Two congruent shapes, A and B, on a coordinate grid.",
+        "grid": true,
+        "polygons": [
+          {
+            "label": "A",
+            "shaded": true,
+            "vertices": [
+              [
+                -6,
+                -4,
+              ],
+              [
+                -3,
+                -4,
+              ],
+              [
+                -3,
+                -3,
+              ],
+              [
+                -5,
+                -3,
+              ],
+              [
+                -5,
+                -2,
+              ],
+              [
+                -6,
+                -2,
+              ],
+            ],
+          },
+          {
+            "label": "B",
+            "shaded": true,
+            "vertices": [
+              [
+                -5,
+                0,
+              ],
+              [
+                -2,
+                0,
+              ],
+              [
+                -2,
+                1,
+              ],
+              [
+                -4,
+                1,
+              ],
+              [
+                -4,
+                2,
+              ],
+              [
+                -5,
+                2,
+              ],
+            ],
+          },
+        ],
+        "type": "cartesian",
+        "x": {
+          "max": 7,
+          "min": -7,
+          "step": 1,
+        },
+        "y": {
+          "max": 7,
+          "min": -7,
+          "step": 1,
+        },
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-G24",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} -1 \\\\ -4 \\end{pmatrix}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 1 \\\\ 4 \\end{pmatrix}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix}",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 1 \\\\ -4 \\end{pmatrix}",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.COMPONENTS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That moves B back onto A.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.COMPONENTS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The top number is the movement across (x); the bottom is up or down (y).",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "D",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Up is positive, down is negative.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Write down the column vector that translates shape A onto shape B.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\begin{pmatrix} 1 \\\\ 4 \\end{pmatrix}",
+        "say": [
+          {
+            "t": "text",
+            "v": "Follow one vertex from A to B: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-G24",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "(-2, 1)",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "(-1, 2)",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "(-9, 8)",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.COMPONENTS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Add the top number to x and the bottom to y.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Add the vector; do not subtract it.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Where does it end up?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "(-5, 5) + \\begin{pmatrix} -4 \\\\ 3 \\end{pmatrix} = (-9, 8)",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The point ",
+      },
+      {
+        "t": "math",
+        "v": "(-5, 5)",
+      },
+      {
+        "t": "text",
+        "v": " is translated by the vector ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} -4 \\\\ 3 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-G24",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "(1, 6)",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "(0, 5)",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "(6, 1)",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.COMPONENTS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Add the top number to x and the bottom to y.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Add the vector; do not subtract it.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Where does it end up?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "(3, 3) + \\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix} = (6, 1)",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The point ",
+      },
+      {
+        "t": "math",
+        "v": "(3, 3)",
+      },
+      {
+        "t": "text",
+        "v": " is translated by the vector ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-G24",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "(-1, -4)",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "(-4, -1)",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "(-6, -9)",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.COMPONENTS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Add the top number to x and the bottom to y.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Add the vector; do not subtract it.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Where does it end up?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "(-5, -5) + \\begin{pmatrix} 1 \\\\ 4 \\end{pmatrix} = (-4, -1)",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The point ",
+      },
+      {
+        "t": "math",
+        "v": "(-5, -5)",
+      },
+      {
+        "t": "text",
+        "v": " is translated by the vector ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 1 \\\\ 4 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-G24",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The top number is horizontal: 4 left; the bottom is vertical: 3 up.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The top number of a column vector is the vertical movement.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The order of the numbers does not matter.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.COMPONENTS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.COMPONENTS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Column vector: top = x (across), bottom = y (up or down).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Jo says the vector ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} -4 \\\\ 3 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": " means 4 down and 3 right.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-G24",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The top number of a column vector is the vertical movement.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The order of the numbers does not matter.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The top number is horizontal: 3 right; the bottom is vertical: 2 down.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.COMPONENTS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.COMPONENTS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Column vector: top = x (across), bottom = y (up or down).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Jo says the vector ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": " means 3 up and 2 left.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-G24",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The top number of a column vector is the vertical movement.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The top number is horizontal: 1 right; the bottom is vertical: 4 up.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The order of the numbers does not matter.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.COMPONENTS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.COMPONENTS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Column vector: top = x (across), bottom = y (up or down).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Jo says the vector ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 1 \\\\ 4 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": " means 1 up and 4 right.",
+      },
+    ],
+  },
+]
+`;

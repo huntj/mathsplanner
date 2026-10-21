@@ -107,3 +107,15 @@ export const distinctFrom =
       key !== JSON.stringify(right) && all.findIndex((e) => JSON.stringify(e.content) === key) === i
     );
   };
+
+/** Whether a shape stays clear of the "O" label just below and left of the origin. */
+export function shapeClearOfOrigin(v: Coord[]): boolean {
+  const xs = v.map((q) => q[0]);
+  const ys = v.map((q) => q[1]);
+  return !(
+    Math.min(...xs) <= 0 &&
+    Math.max(...xs) >= -1 &&
+    Math.min(...ys) <= 0 &&
+    Math.max(...ys) >= -1
+  );
+}

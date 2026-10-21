@@ -490,3 +490,27 @@ export function trapezium(
     description: `A trapezium with parallel sides ${a} ${unit} and ${b} ${unit}, ${h} ${unit} apart.`,
   };
 }
+
+/** A sector of radius r and angle θ°, with the radius and the angle labelled. */
+export function sector(r: number, theta: number, unit = "cm"): GeometrySpec {
+  const t = (theta * Math.PI) / 180;
+  const n = Math.max(12, Math.round(theta / 4));
+  const points: Record<string, Coord> = { O: [0, 0] };
+  const segments: GeoSegment[] = [];
+  for (let i = 0; i <= n; i++) {
+    const a = (t * i) / n;
+    points[`s${i}`] = [r * Math.cos(a), r * Math.sin(a)];
+    if (i > 0) segments.push({ from: `s${i - 1}`, to: `s${i}` });
+  }
+  segments.push(
+    { from: "O", to: "s0", label: `${r}\\text{ ${unit}}`, length: r },
+    { from: "O", to: `s${n}` },
+  );
+  return {
+    type: "geometry",
+    points,
+    segments,
+    angles: [{ vertex: "O", from: "s0", to: `s${n}`, label: `${theta}^\\circ`, value: theta }],
+    description: `A sector of a circle with radius ${r} ${unit} and angle ${theta}°.`,
+  };
+}
