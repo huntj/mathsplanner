@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -251,6 +251,51 @@
       "code": "NPV.INFINITE.NOTHING-BETWEEN",
       "description": "Thinks there is no number between two close decimals or fractions.",
       "remediate": "Y8-NPV-02"
+    },
+    {
+      "code": "AS.COUNT-ON.INCLUDES-START",
+      "description": "Counts the starting number when counting on or back, so the answer is one out, e.g. 5 + 3 counted as 5, 6, 7.",
+      "remediate": "Y1-AS-03"
+    },
+    {
+      "code": "AS.EQUALS.ANSWER-NEXT",
+      "description": "Reads = as \"the answer comes next\" rather than \"is the same as\", e.g. writes 7 in 3 + 4 = ? + 5.",
+      "remediate": "Y1-AS-01"
+    },
+    {
+      "code": "AS.SUBTRACT.ORDER",
+      "description": "Thinks subtraction can be done in either order, like addition, e.g. 3 − 8 = 5.",
+      "remediate": "Y2-AS-03"
+    },
+    {
+      "code": "AS.INVERSE.SAME-OPERATION",
+      "description": "Uses the same operation instead of the inverse to find a missing number or check an answer, e.g. ? − 6 = 9 gives 3.",
+      "remediate": "Y2-AS-04"
+    },
+    {
+      "code": "AS.PROBLEM.KEYWORD",
+      "description": "Picks the operation from a key word rather than the structure of the problem, e.g. adds because the question says \"more\".",
+      "remediate": "Y2-AS-05"
+    },
+    {
+      "code": "AS.COLUMN.SMALLER-FROM-LARGER",
+      "description": "Takes the smaller digit from the larger in each column instead of exchanging, e.g. 52 − 27 = 35.",
+      "remediate": "Y3-AS-02"
+    },
+    {
+      "code": "AS.COLUMN.NO-CARRY",
+      "description": "Forgets to carry the exchanged ten (or hundred) into the next column when adding.",
+      "remediate": "Y3-AS-02"
+    },
+    {
+      "code": "AS.COLUMN.MISALIGNED",
+      "description": "Lines numbers up from the left instead of by place value, e.g. 345 + 27 worked as 345 + 270.",
+      "remediate": "Y3-AS-02"
+    },
+    {
+      "code": "AS.MULTISTEP.ONE-STEP",
+      "description": "Stops after the first step of a problem that needs two or more steps.",
+      "remediate": "Y4-AS-03"
     },
     {
       "code": "GEO.ANGLES.STRAIGHT-LINE-360",
