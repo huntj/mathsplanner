@@ -114,7 +114,19 @@ export function placeLabels(
     // 3. An optional label that cannot be placed cleanly is left out.
     if (choice < 0 && request.optional) continue;
 
-    // 4. Otherwise the least-bad candidate, with every overlap reported.
+    // 4. A required label pushes out optional labels (such as tick numbers) that block it and
+    //    cannot move, rather than overlapping them.
+    for (let c = 0; c < rects.length && choice < 0; c++) {
+      const rect = rects[c] as Rect;
+      if (blockedByObstacles(rect).length > 0) continue;
+      const blockers = blockingLabels(rect);
+      if (blockers.length > 0 && blockers.every((b) => b.request.optional)) {
+        for (const b of blockers) placed.splice(placed.indexOf(b), 1);
+        choice = c;
+      }
+    }
+
+    // 5. Otherwise the least-bad candidate, with every overlap reported.
     if (choice < 0) {
       const penalty = (r: Rect) =>
         blockedByObstacles(r).length * 100 +
