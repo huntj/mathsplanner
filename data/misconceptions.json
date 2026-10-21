@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -606,6 +606,46 @@
       "code": "ALG.INEQUALITY.FLIP",
       "description": "Does not reverse the inequality when multiplying or dividing by a negative number, or uses the wrong circle on a number line.",
       "remediate": "Y9-ALG-09"
+    },
+    {
+      "code": "STA.KEY-IGNORED",
+      "description": "Counts the symbols in a pictogram without using the key, e.g. reads 3 symbols as 3 when each stands for 2.",
+      "remediate": "Y2-STA-01"
+    },
+    {
+      "code": "STA.SCALE.READ",
+      "description": "Misreads a chart scale, e.g. counts each grid line as 1 when the scale goes up in 2s, 5s or 10s.",
+      "remediate": "Y3-STA-01"
+    },
+    {
+      "code": "STA.PIE.ANGLE-AS-COUNT",
+      "description": "Reads a pie chart sector angle as the frequency, or compares pie charts of different totals by angle alone.",
+      "remediate": "Y6-STA-01"
+    },
+    {
+      "code": "STA.MEAN.DIVISOR",
+      "description": "Divides by the wrong number when finding a mean, e.g. leaves out a zero or divides by the number of rows in a frequency table.",
+      "remediate": "Y6-STA-02"
+    },
+    {
+      "code": "STA.MEDIAN.UNORDERED",
+      "description": "Takes the middle value of the data without putting it in order first.",
+      "remediate": "Y7-STA-01"
+    },
+    {
+      "code": "STA.MODE.FREQUENCY",
+      "description": "Gives the highest frequency instead of the value that has it as the mode.",
+      "remediate": "Y7-STA-01"
+    },
+    {
+      "code": "STA.SCATTER.CAUSATION",
+      "description": "Thinks a correlation shows that one variable causes the other.",
+      "remediate": "Y8-STA-02"
+    },
+    {
+      "code": "MEA.TIME.DECIMAL",
+      "description": "Works with times as if they were decimals, with 100 minutes in an hour, e.g. 9:50 to 10:05 is 55 minutes.",
+      "remediate": "Y3-MEA-07"
     },
     {
       "code": "GEO.ANGLES.STRAIGHT-LINE-360",
