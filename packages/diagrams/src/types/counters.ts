@@ -87,6 +87,10 @@ export function checkCounters(spec: CountersSpec): string[] {
     case "fingers":
       if (!isCount(spec.count, 10)) problems.push("fingers show 0 to 10");
       break;
+    case "pattern":
+      if (spec.items.length < 2 || spec.items.length > 16)
+        problems.push("a pattern has 2 to 16 items");
+      break;
     case "tally":
       if (!isCount(spec.count, 50)) problems.push("tally marks show 0 to 50");
       break;
@@ -129,6 +133,10 @@ export function describeCounters(spec: CountersSpec): string {
       return `${spec.count > 5 ? "Two hands" : "A hand"} showing ${plural(spec.count, "finger")}.`;
     case "tally":
       return `${plural(spec.count, "tally mark")}.`;
+    case "pattern":
+      return `A row of shapes: ${spec.items
+        .map((it) => (it ? `${it.filled === false ? "outlined" : "filled"} ${it.shape}` : "a gap"))
+        .join(", ")}.`;
   }
 }
 
@@ -455,6 +463,24 @@ function layoutFingers(
   extents.push(box(-4, 0, (hands - 1) * 110 + 104, 132));
 }
 
+function layoutPattern(
+  spec: Extract<CountersSpec, { layout: "pattern" }>,
+  shapes: string[],
+  extents: Rect[],
+) {
+  spec.items.forEach((it, i) => {
+    const at: Point = [i * CELL, 0];
+    if (it) shapes.push(counter(at, it.shape, it.filled !== false));
+    else {
+      shapes.push(
+        `<rect x="${fmt(at[0] - R)}" y="${fmt(-R)}" width="${fmt(2 * R)}" height="${fmt(2 * R)}" rx="3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="4 3"/>`,
+        text("?", at[0], 0, 16),
+      );
+    }
+    extents.push(box(at[0] - R - 2, -R - 2, 2 * R + 4, 2 * R + 4));
+  });
+}
+
 function layoutTally(
   spec: Extract<CountersSpec, { layout: "tally" }>,
   shapes: string[],
@@ -501,6 +527,9 @@ export function layoutCounters(spec: CountersSpec): Scene {
         break;
       case "tally":
         layoutTally(spec, shapes, extents);
+        break;
+      case "pattern":
+        layoutPattern(spec, shapes, extents);
         break;
     }
   }

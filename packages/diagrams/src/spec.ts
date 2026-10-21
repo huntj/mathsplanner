@@ -282,6 +282,11 @@ export type CountersSpec = { type: "counters"; description?: string } & (
   | { layout: "part-whole"; whole: Label; parts: Label[] }
   | { layout: "fingers"; count: number }
   | { layout: "tally"; count: number }
+  | {
+      layout: "pattern";
+      /** Shapes in a row, filled or outlined; null leaves a dashed gap marked "?". */
+      items: ({ shape: CounterShape; filled?: boolean } | null)[];
+    }
 );
 
 // --- charts ------------------------------------------------------------------------------

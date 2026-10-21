@@ -10,7 +10,15 @@ import nNpv06 from "./eyfs/N-NPV-06.ts";
 import nNpv07 from "./eyfs/N-NPV-07.ts";
 import nAs01 from "./eyfs/N-AS-01.ts";
 import nNpv08 from "./eyfs/N-NPV-08.ts";
+import nPos01 from "./eyfs/N-POS-01.ts";
+import nPos02 from "./eyfs/N-POS-02.ts";
+import nPos03 from "./eyfs/N-POS-03.ts";
 import nMea01 from "./eyfs/N-MEA-01.ts";
+import nGeo01 from "./eyfs/N-GEO-01.ts";
+import nGeo02 from "./eyfs/N-GEO-02.ts";
+import nPat01 from "./eyfs/N-PAT-01.ts";
+import nPat02 from "./eyfs/N-PAT-02.ts";
+import nPat03 from "./eyfs/N-PAT-03.ts";
 import nMea02 from "./eyfs/N-MEA-02.ts";
 import rNpv01 from "./eyfs/R-NPV-01.ts";
 import rNpv02 from "./eyfs/R-NPV-02.ts";
@@ -23,6 +31,10 @@ import rNpv08 from "./eyfs/R-NPV-08.ts";
 import rAs01 from "./eyfs/R-AS-01.ts";
 import rNpv09 from "./eyfs/R-NPV-09.ts";
 import rNpv10 from "./eyfs/R-NPV-10.ts";
+import rPat01 from "./eyfs/R-PAT-01.ts";
+import rGeo01 from "./eyfs/R-GEO-01.ts";
+import rGeo02 from "./eyfs/R-GEO-02.ts";
+import rPat02 from "./eyfs/R-PAT-02.ts";
 import rMea01 from "./eyfs/R-MEA-01.ts";
 import y1Npv01 from "./ks1/Y1-NPV-01.ts";
 import y1Npv02 from "./ks1/Y1-NPV-02.ts";
@@ -73,6 +85,7 @@ import y2Geo01 from "./ks1/Y2-GEO-01.ts";
 import y2Geo02 from "./ks1/Y2-GEO-02.ts";
 import y2Geo03 from "./ks1/Y2-GEO-03.ts";
 import y2Geo04 from "./ks1/Y2-GEO-04.ts";
+import y2Pos01 from "./ks1/Y2-POS-01.ts";
 import y2Pos02 from "./ks1/Y2-POS-02.ts";
 import y2Sta01 from "./ks1/Y2-STA-01.ts";
 import y2Sta02 from "./ks1/Y2-STA-02.ts";
@@ -343,7 +356,15 @@ export const generators: Generator[] = [
   nNpv07,
   nAs01,
   nNpv08,
+  nPos01,
+  nPos02,
+  nPos03,
   nMea01,
+  nGeo01,
+  nGeo02,
+  nPat01,
+  nPat02,
+  nPat03,
   nMea02,
   rNpv01,
   rNpv02,
@@ -356,6 +377,10 @@ export const generators: Generator[] = [
   rAs01,
   rNpv09,
   rNpv10,
+  rPat01,
+  rGeo01,
+  rGeo02,
+  rPat02,
   rMea01,
   y1Npv01,
   y1Npv02,
@@ -406,6 +431,7 @@ export const generators: Generator[] = [
   y2Geo02,
   y2Geo03,
   y2Geo04,
+  y2Pos01,
   y2Pos02,
   y2Sta01,
   y2Sta02,

@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -778,6 +778,26 @@
       "remediate": "Y9-GEO-02"
     },
     {
+      "code": "PAT.REPEAT.UNIT",
+      "description": "Continues a repeating pattern by copying the last item or the wrong group, rather than finding the part that repeats.",
+      "remediate": "N-PAT-02"
+    },
+    {
+      "code": "PAT.EVEN-ODD",
+      "description": "Mixes up odd and even numbers, e.g. says 7 is even, rather than checking whether it shares equally into two groups.",
+      "remediate": "R-PAT-01"
+    },
+    {
+      "code": "PAT.DOUBLE.ADD",
+      "description": "Doubles a number by adding 1 or 2 instead of adding the number to itself, e.g. says double 4 is 6.",
+      "remediate": "R-PAT-01"
+    },
+    {
+      "code": "POS.WORDS.OPPOSITE",
+      "description": "Confuses opposite position words, e.g. on and under, in front of and behind, or before and after in a line.",
+      "remediate": "N-POS-02"
+    },
+    {
       "code": "PRO.ODDS",
       "description": "Writes favourable over unfavourable outcomes instead of over all outcomes, e.g. 3 red and 5 blue gives P(red) = 3/5.",
       "remediate": "Y7-PRO-01"
@@ -940,7 +960,7 @@
     {
       "code": "GEO.SHAPES.ORIENTATION",
       "description": "Thinks a shape changes when it is turned, for example that a square standing on a corner is not a square.",
-      "remediate": "Y1-GEO-01"
+      "remediate": "R-GEO-01"
     },
     {
       "code": "GEO.SHAPES.HIERARCHY",
@@ -1121,6 +1141,16 @@
       "code": "GEO.NET.ANY-SIX",
       "description": "Thinks any six squares joined edge to edge will fold into a cube.",
       "remediate": "Y6-GEO-02"
+    },
+    {
+      "code": "GEO.SOLIDS.ROLL-STACK",
+      "description": "Thinks a shape with curved surfaces will stack steadily, or that a shape with only flat faces will roll.",
+      "remediate": "N-GEO-01"
+    },
+    {
+      "code": "GEO.COMPOSE.COUNT",
+      "description": "Miscounts the smaller shapes that make up a shape, e.g. counts only the outline or misses some parts.",
+      "remediate": "R-GEO-02"
     }
   ]
 }

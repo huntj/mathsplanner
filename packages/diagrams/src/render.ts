@@ -87,6 +87,7 @@ const COUNTER_LAYOUTS = [
   "part-whole",
   "fingers",
   "tally",
+  "pattern",
 ];
 
 /** Catches specs with missing or mistyped fields before layout, with a readable message. */

@@ -874,6 +874,23 @@ export const REFERENCE_DIAGRAMS: ReferenceDiagram[] = [
     title: "Tally marks for 12",
     spec: { type: "counters", layout: "tally", count: 12 },
   },
+  {
+    id: "c-pattern",
+    title: "Repeating pattern with a gap",
+    spec: {
+      type: "counters",
+      layout: "pattern",
+      items: [
+        { shape: "circle" },
+        { shape: "square", filled: false },
+        { shape: "star" },
+        { shape: "circle" },
+        { shape: "square", filled: false },
+        null,
+        { shape: "circle" },
+      ],
+    },
+  },
   // Charts for statistics, added in Phase 7.
   {
     id: "s-bar-chart",
