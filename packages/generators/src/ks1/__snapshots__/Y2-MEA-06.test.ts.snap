@@ -1,0 +1,1461 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Y2-MEA-06 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "hours": 8,
+        "instrument": "clock",
+        "minutes": 5,
+        "type": "measure",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y2-MEA-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "D",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "1 minute past 8",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "5 to 8",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "5 past 9",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "5 past 8",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.MINUTE-NUMBER",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The minute hand points to 1, which means 5 minutes past. Count in fives.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.PAST-TO",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The minute hand is on the right of the clock, so it is minutes past 8.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.HOUR-AHEAD",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The hour hand has only just passed 8.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The minute hand points to 1: 5 minutes past, which is 5 past 8.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "What time does the clock show?",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "hours": 4,
+        "instrument": "clock",
+        "minutes": 35,
+        "type": "measure",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y2-MEA-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "25 to 5",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "7 minutes past 4",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "25 past 5",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "25 to 6",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.MINUTE-NUMBER",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The minute hand points to 7, which means 35 minutes past. Count in fives.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.PAST-TO",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The minute hand is on the left of the clock, so it is minutes to 5.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "D",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.HOUR-AHEAD",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The hour hand has passed 4 but not reached 5.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The minute hand points to 7: 35 minutes past, which is 25 to 5.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "What time does the clock show?",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "hours": 6,
+        "instrument": "clock",
+        "minutes": 25,
+        "type": "measure",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y2-MEA-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "25 past 6",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "25 past 7",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "25 to 6",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "5 past 6",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.HOUR-AHEAD",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The hour hand has only just passed 6.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.PAST-TO",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The minute hand is on the right of the clock, so it is minutes past 6.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "D",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.MINUTE-NUMBER",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The minute hand points to 5, which means 25 minutes past. Count in fives.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The minute hand points to 5: 25 minutes past, which is 25 past 6.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "What time does the clock show?",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y2-MEA-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "5 past 9",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "5 past 8",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "5 to 8",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.HOUR-AHEAD",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The hour is 8, and past counts from 8.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.PAST-TO",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "5 minutes after 8 o'clock is 5 past 8.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "How do you say this time?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "5 minutes after 8: 5 past 8.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A digital clock shows 8:05.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y2-MEA-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "25 past 5",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "25 to 5",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "25 to 4",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.PAST-TO",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "35 minutes after 4 o'clock is 25 to 5.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.HOUR-AHEAD",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The hour is 4, and to counts from 5.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "How do you say this time?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "35 minutes past 4 is 25 minutes before 5: 25 to 5.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A digital clock shows 4:35.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y2-MEA-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "25 past 6",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "25 past 7",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "25 to 6",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.HOUR-AHEAD",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The hour is 6, and past counts from 6.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.PAST-TO",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "25 minutes after 6 o'clock is 25 past 6.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "How do you say this time?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "25 minutes after 6: 25 past 6.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A digital clock shows 6:25.",
+      },
+    ],
+  },
+  {
+    "archetype": "choose-the-diagram",
+    "diagrams": [
+      {
+        "hours": 7,
+        "instrument": "clock",
+        "minutes": 55,
+        "type": "measure",
+      },
+      {
+        "hours": 8,
+        "instrument": "clock",
+        "minutes": 1,
+        "type": "measure",
+      },
+      {
+        "hours": 8,
+        "instrument": "clock",
+        "minutes": 5,
+        "type": "measure",
+      },
+    ],
+    "key": {
+      "depth": 3,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y2-MEA-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "i": 0,
+                  "t": "diagram",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "i": 1,
+                  "t": "diagram",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "i": 2,
+                  "t": "diagram",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.PAST-TO",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That clock shows 5 to 8.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.MINUTE-NUMBER",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The minute hand should point to 1, for 5 minutes.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which diagram shows this?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The minute hand points to 1 and the hour hand is just past 8.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Which clock shows 5 past 8?",
+      },
+    ],
+  },
+  {
+    "archetype": "choose-the-diagram",
+    "diagrams": [
+      {
+        "hours": 4,
+        "instrument": "clock",
+        "minutes": 35,
+        "type": "measure",
+      },
+      {
+        "hours": 4,
+        "instrument": "clock",
+        "minutes": 7,
+        "type": "measure",
+      },
+      {
+        "hours": 5,
+        "instrument": "clock",
+        "minutes": 35,
+        "type": "measure",
+      },
+    ],
+    "key": {
+      "depth": 3,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y2-MEA-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "i": 0,
+                  "t": "diagram",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "i": 1,
+                  "t": "diagram",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "i": 2,
+                  "t": "diagram",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.MINUTE-NUMBER",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The minute hand should point to 7, for 35 minutes.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.HOUR-AHEAD",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That clock shows 25 to 6.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which diagram shows this?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The minute hand points to 7 and the hour hand is just before 5.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Which clock shows 25 to 5?",
+      },
+    ],
+  },
+  {
+    "archetype": "choose-the-diagram",
+    "diagrams": [
+      {
+        "hours": 6,
+        "instrument": "clock",
+        "minutes": 25,
+        "type": "measure",
+      },
+      {
+        "hours": 5,
+        "instrument": "clock",
+        "minutes": 35,
+        "type": "measure",
+      },
+      {
+        "hours": 6,
+        "instrument": "clock",
+        "minutes": 5,
+        "type": "measure",
+      },
+    ],
+    "key": {
+      "depth": 3,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y2-MEA-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "i": 0,
+                  "t": "diagram",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "i": 1,
+                  "t": "diagram",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "i": 2,
+                  "t": "diagram",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.PAST-TO",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That clock shows 25 to 6.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.MINUTE-NUMBER",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The minute hand should point to 5, for 25 minutes.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which diagram shows this?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The minute hand points to 5 and the hour hand is just past 6.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Which clock shows 25 past 6?",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [
+      {
+        "hours": 8,
+        "instrument": "clock",
+        "minutes": 5,
+        "type": "measure",
+      },
+    ],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y2-MEA-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The minute hand points to the number of minutes.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Each number on the clock is 5 minutes for the minute hand, so 1 means 1 × 5 = 5 minutes past. It is 5 past 8.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 1 o'clock.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.MINUTE-NUMBER",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Count in fives round the clock to read the minute hand.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Look at the clock.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+      {
+        "t": "text",
+        "v": "Kim says it is 1 minute past 8, because the minute hand points to 1.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [
+      {
+        "hours": 4,
+        "instrument": "clock",
+        "minutes": 35,
+        "type": "measure",
+      },
+    ],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y2-MEA-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The minute hand points to the number of minutes.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Each number on the clock is 5 minutes for the minute hand, so 7 means 7 × 5 = 35 minutes past. It is 25 to 5.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 7 o'clock.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.MINUTE-NUMBER",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Count in fives round the clock to read the minute hand.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Look at the clock.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+      {
+        "t": "text",
+        "v": "Kim says it is 7 minutes past 4, because the minute hand points to 7.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [
+      {
+        "hours": 6,
+        "instrument": "clock",
+        "minutes": 25,
+        "type": "measure",
+      },
+    ],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y2-MEA-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The minute hand points to the number of minutes.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 5 o'clock.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Each number on the clock is 5 minutes for the minute hand, so 5 means 5 × 5 = 25 minutes past. It is 25 past 6.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "MEA.CLOCK.MINUTE-NUMBER",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Count in fives round the clock to read the minute hand.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Look at the clock.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+      {
+        "t": "text",
+        "v": "Kim says it is 5 past 6, because the minute hand points to 5.",
+      },
+    ],
+  },
+]
+`;

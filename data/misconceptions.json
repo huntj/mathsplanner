@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -646,6 +646,116 @@
       "code": "MEA.TIME.DECIMAL",
       "description": "Works with times as if they were decimals, with 100 minutes in an hour, e.g. 9:50 to 10:05 is 55 minutes.",
       "remediate": "Y3-MEA-07"
+    },
+    {
+      "code": "MEA.COMPARE.LOOKS",
+      "description": "Judges length, weight or capacity by how an object looks, e.g. thinks the taller container always holds more or the bigger object is always heavier.",
+      "remediate": "N-MEA-01"
+    },
+    {
+      "code": "MEA.SEQUENCE.ORDER",
+      "description": "Puts events, days or months in the wrong order, or mixes up words such as before, after, first and next.",
+      "remediate": "N-MEA-02"
+    },
+    {
+      "code": "MEA.SCALE.INTERVAL",
+      "description": "Reads a scale on a jug, thermometer or weighing scales as if each mark were worth 1, without working out what each interval is worth.",
+      "remediate": "Y2-MEA-01"
+    },
+    {
+      "code": "MEA.RULER.END",
+      "description": "Reads the number at the end of an object on a ruler without starting from 0 or taking away the starting reading.",
+      "remediate": "Y2-MEA-01"
+    },
+    {
+      "code": "MEA.MONEY.COIN-COUNT",
+      "description": "Counts the coins rather than adding their values, or thinks a bigger coin is worth more, e.g. three coins make 3p.",
+      "remediate": "Y1-MEA-03"
+    },
+    {
+      "code": "MEA.MONEY.POUNDS-PENCE",
+      "description": "Mixes pounds and pence, e.g. writes 250p as £25.0, £3.05 as 35p, or adds £1.50 and 75p to make £76.50.",
+      "remediate": "Y2-MEA-03"
+    },
+    {
+      "code": "MEA.MONEY.CHANGE",
+      "description": "Works out change wrongly by taking each digit from 10, e.g. change from £1 for 35p as 75p.",
+      "remediate": "Y2-MEA-04"
+    },
+    {
+      "code": "MEA.CLOCK.HANDS",
+      "description": "Mixes up the hour hand and the minute hand.",
+      "remediate": "Y1-MEA-06"
+    },
+    {
+      "code": "MEA.CLOCK.MINUTE-NUMBER",
+      "description": "Reads the number the minute hand points to as the minutes, e.g. reads 20 past as 4 past because the hand points to 4.",
+      "remediate": "Y2-MEA-06"
+    },
+    {
+      "code": "MEA.CLOCK.HOUR-AHEAD",
+      "description": "Reads the hour the hour hand is nearest to rather than the one it has passed, e.g. reads 2:50 as 3:50.",
+      "remediate": "Y2-MEA-06"
+    },
+    {
+      "code": "MEA.CLOCK.PAST-TO",
+      "description": "Confuses past and to, e.g. reads quarter to 4 as quarter past 4, or counts minutes to the hour from the wrong hour.",
+      "remediate": "Y2-MEA-06"
+    },
+    {
+      "code": "MEA.TIME.FACTS",
+      "description": "Uses a wrong time fact, e.g. 100 minutes in an hour, 100 seconds in a minute, 12 hours in a day or 30 days in every month.",
+      "remediate": "Y2-MEA-07"
+    },
+    {
+      "code": "MEA.TIME.24-HOUR",
+      "description": "Converts between 12-hour and 24-hour times wrongly, e.g. writes 3 pm as 03:00 or 13:00, or reads 17:00 as 7 pm.",
+      "remediate": "Y3-MEA-04"
+    },
+    {
+      "code": "MEA.UNITS.MIXED",
+      "description": "Adds, takes away or compares measures in different units without converting first, e.g. 1 kg + 300 g = 301 g.",
+      "remediate": "Y3-MEA-01"
+    },
+    {
+      "code": "MEA.CONVERT.FACTOR",
+      "description": "Uses the wrong factor or the wrong operation to convert between metric units, e.g. 1 km = 100 m or 3 m = 0.03 cm.",
+      "remediate": "Y4-MEA-01"
+    },
+    {
+      "code": "MEA.CONVERT.APPROX",
+      "description": "Converts between metric and imperial units the wrong way round, e.g. says 10 inches is about 4 cm.",
+      "remediate": "Y5-MEA-02"
+    },
+    {
+      "code": "MEA.PERIMETER.AREA",
+      "description": "Confuses perimeter and area, e.g. counts the squares inside a shape when asked for its perimeter.",
+      "remediate": "Y4-MEA-03"
+    },
+    {
+      "code": "MEA.PERIMETER.MISSING-SIDES",
+      "description": "Adds only the labelled sides of a rectilinear shape, leaving out sides whose lengths have to be worked out.",
+      "remediate": "Y4-MEA-02"
+    },
+    {
+      "code": "MEA.AREA.SAME-PERIMETER",
+      "description": "Thinks shapes with the same area must have the same perimeter, or the reverse.",
+      "remediate": "Y6-MEA-04"
+    },
+    {
+      "code": "MEA.AREA.TRIANGLE-HALF",
+      "description": "Multiplies base by height for a triangle without halving.",
+      "remediate": "Y6-MEA-06"
+    },
+    {
+      "code": "MEA.AREA.SLANT",
+      "description": "Uses a slanted side instead of the perpendicular height for the area of a parallelogram or triangle.",
+      "remediate": "Y6-MEA-06"
+    },
+    {
+      "code": "MEA.VOLUME.ADDS",
+      "description": "Adds the length, width and height of a cuboid instead of multiplying them, or counts only the cubes that can be seen.",
+      "remediate": "Y5-MEA-05"
     },
     {
       "code": "PRO.ODDS",

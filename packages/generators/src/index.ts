@@ -10,6 +10,8 @@ import nNpv06 from "./eyfs/N-NPV-06.ts";
 import nNpv07 from "./eyfs/N-NPV-07.ts";
 import nAs01 from "./eyfs/N-AS-01.ts";
 import nNpv08 from "./eyfs/N-NPV-08.ts";
+import nMea01 from "./eyfs/N-MEA-01.ts";
+import nMea02 from "./eyfs/N-MEA-02.ts";
 import rNpv01 from "./eyfs/R-NPV-01.ts";
 import rNpv02 from "./eyfs/R-NPV-02.ts";
 import rNpv03 from "./eyfs/R-NPV-03.ts";
@@ -21,6 +23,7 @@ import rNpv08 from "./eyfs/R-NPV-08.ts";
 import rAs01 from "./eyfs/R-AS-01.ts";
 import rNpv09 from "./eyfs/R-NPV-09.ts";
 import rNpv10 from "./eyfs/R-NPV-10.ts";
+import rMea01 from "./eyfs/R-MEA-01.ts";
 import y1Npv01 from "./ks1/Y1-NPV-01.ts";
 import y1Npv02 from "./ks1/Y1-NPV-02.ts";
 import y1Npv03 from "./ks1/Y1-NPV-03.ts";
@@ -33,6 +36,12 @@ import y1As04 from "./ks1/Y1-AS-04.ts";
 import y1Md01 from "./ks1/Y1-MD-01.ts";
 import y1Fr01 from "./ks1/Y1-FR-01.ts";
 import y1Fr02 from "./ks1/Y1-FR-02.ts";
+import y1Mea01 from "./ks1/Y1-MEA-01.ts";
+import y1Mea02 from "./ks1/Y1-MEA-02.ts";
+import y1Mea03 from "./ks1/Y1-MEA-03.ts";
+import y1Mea04 from "./ks1/Y1-MEA-04.ts";
+import y1Mea05 from "./ks1/Y1-MEA-05.ts";
+import y1Mea06 from "./ks1/Y1-MEA-06.ts";
 import y1Geo01 from "./ks1/Y1-GEO-01.ts";
 import y1Pos01 from "./ks1/Y1-POS-01.ts";
 import y2Npv01 from "./ks1/Y2-NPV-01.ts";
@@ -52,6 +61,13 @@ import y2Md03 from "./ks1/Y2-MD-03.ts";
 import y2Md04 from "./ks1/Y2-MD-04.ts";
 import y2Fr01 from "./ks1/Y2-FR-01.ts";
 import y2Fr02 from "./ks1/Y2-FR-02.ts";
+import y2Mea01 from "./ks1/Y2-MEA-01.ts";
+import y2Mea02 from "./ks1/Y2-MEA-02.ts";
+import y2Mea03 from "./ks1/Y2-MEA-03.ts";
+import y2Mea04 from "./ks1/Y2-MEA-04.ts";
+import y2Mea05 from "./ks1/Y2-MEA-05.ts";
+import y2Mea06 from "./ks1/Y2-MEA-06.ts";
+import y2Mea07 from "./ks1/Y2-MEA-07.ts";
 import y2Geo01 from "./ks1/Y2-GEO-01.ts";
 import y2Pos02 from "./ks1/Y2-POS-02.ts";
 import y2Sta01 from "./ks1/Y2-STA-01.ts";
@@ -77,6 +93,13 @@ import y3Fr04 from "./ks2/Y3-FR-04.ts";
 import y3Fr05 from "./ks2/Y3-FR-05.ts";
 import y3Fr06 from "./ks2/Y3-FR-06.ts";
 import y3Fr07 from "./ks2/Y3-FR-07.ts";
+import y3Mea01 from "./ks2/Y3-MEA-01.ts";
+import y3Mea02 from "./ks2/Y3-MEA-02.ts";
+import y3Mea03 from "./ks2/Y3-MEA-03.ts";
+import y3Mea04 from "./ks2/Y3-MEA-04.ts";
+import y3Mea05 from "./ks2/Y3-MEA-05.ts";
+import y3Mea06 from "./ks2/Y3-MEA-06.ts";
+import y3Mea07 from "./ks2/Y3-MEA-07.ts";
 import y3Geo02 from "./ks2/Y3-GEO-02.ts";
 import y3Geo03 from "./ks2/Y3-GEO-03.ts";
 import y3Geo04 from "./ks2/Y3-GEO-04.ts";
@@ -109,6 +132,12 @@ import y4Fr07 from "./ks2/Y4-FR-07.ts";
 import y4Fr08 from "./ks2/Y4-FR-08.ts";
 import y4Fr09 from "./ks2/Y4-FR-09.ts";
 import y4Fr10 from "./ks2/Y4-FR-10.ts";
+import y4Mea01 from "./ks2/Y4-MEA-01.ts";
+import y4Mea02 from "./ks2/Y4-MEA-02.ts";
+import y4Mea03 from "./ks2/Y4-MEA-03.ts";
+import y4Mea04 from "./ks2/Y4-MEA-04.ts";
+import y4Mea05 from "./ks2/Y4-MEA-05.ts";
+import y4Mea06 from "./ks2/Y4-MEA-06.ts";
 import y4Geo01 from "./ks2/Y4-GEO-01.ts";
 import y4Geo02 from "./ks2/Y4-GEO-02.ts";
 import y4Geo03 from "./ks2/Y4-GEO-03.ts";
@@ -146,6 +175,13 @@ import y5Fr09 from "./ks2/Y5-FR-09.ts";
 import y5Fr10 from "./ks2/Y5-FR-10.ts";
 import y5Fr11 from "./ks2/Y5-FR-11.ts";
 import y5Fr12 from "./ks2/Y5-FR-12.ts";
+import y5Mea01 from "./ks2/Y5-MEA-01.ts";
+import y5Mea02 from "./ks2/Y5-MEA-02.ts";
+import y5Mea03 from "./ks2/Y5-MEA-03.ts";
+import y5Mea04 from "./ks2/Y5-MEA-04.ts";
+import y5Mea05 from "./ks2/Y5-MEA-05.ts";
+import y5Mea06 from "./ks2/Y5-MEA-06.ts";
+import y5Mea07 from "./ks2/Y5-MEA-07.ts";
 import y5Geo02 from "./ks2/Y5-GEO-02.ts";
 import y5Geo03 from "./ks2/Y5-GEO-03.ts";
 import y5Geo04 from "./ks2/Y5-GEO-04.ts";
@@ -185,6 +221,13 @@ import y6Alg02 from "./ks2/Y6-ALG-02.ts";
 import y6Alg03 from "./ks2/Y6-ALG-03.ts";
 import y6Alg04 from "./ks2/Y6-ALG-04.ts";
 import y6Alg05 from "./ks2/Y6-ALG-05.ts";
+import y6Mea01 from "./ks2/Y6-MEA-01.ts";
+import y6Mea02 from "./ks2/Y6-MEA-02.ts";
+import y6Mea03 from "./ks2/Y6-MEA-03.ts";
+import y6Mea04 from "./ks2/Y6-MEA-04.ts";
+import y6Mea05 from "./ks2/Y6-MEA-05.ts";
+import y6Mea06 from "./ks2/Y6-MEA-06.ts";
+import y6Mea07 from "./ks2/Y6-MEA-07.ts";
 import y6Geo01 from "./ks2/Y6-GEO-01.ts";
 import y6Geo03 from "./ks2/Y6-GEO-03.ts";
 import y6Geo04 from "./ks2/Y6-GEO-04.ts";
@@ -278,6 +321,8 @@ export const generators: Generator[] = [
   nNpv07,
   nAs01,
   nNpv08,
+  nMea01,
+  nMea02,
   rNpv01,
   rNpv02,
   rNpv03,
@@ -289,6 +334,7 @@ export const generators: Generator[] = [
   rAs01,
   rNpv09,
   rNpv10,
+  rMea01,
   y1Npv01,
   y1Npv02,
   y1Npv03,
@@ -301,6 +347,12 @@ export const generators: Generator[] = [
   y1Md01,
   y1Fr01,
   y1Fr02,
+  y1Mea01,
+  y1Mea02,
+  y1Mea03,
+  y1Mea04,
+  y1Mea05,
+  y1Mea06,
   y1Geo01,
   y1Pos01,
   y2Npv01,
@@ -320,6 +372,13 @@ export const generators: Generator[] = [
   y2Md04,
   y2Fr01,
   y2Fr02,
+  y2Mea01,
+  y2Mea02,
+  y2Mea03,
+  y2Mea04,
+  y2Mea05,
+  y2Mea06,
+  y2Mea07,
   y2Geo01,
   y2Pos02,
   y2Sta01,
@@ -345,6 +404,13 @@ export const generators: Generator[] = [
   y3Fr05,
   y3Fr06,
   y3Fr07,
+  y3Mea01,
+  y3Mea02,
+  y3Mea03,
+  y3Mea04,
+  y3Mea05,
+  y3Mea06,
+  y3Mea07,
   y3Geo02,
   y3Geo03,
   y3Geo04,
@@ -377,6 +443,12 @@ export const generators: Generator[] = [
   y4Fr08,
   y4Fr09,
   y4Fr10,
+  y4Mea01,
+  y4Mea02,
+  y4Mea03,
+  y4Mea04,
+  y4Mea05,
+  y4Mea06,
   y4Geo01,
   y4Geo02,
   y4Geo03,
@@ -414,6 +486,13 @@ export const generators: Generator[] = [
   y5Fr10,
   y5Fr11,
   y5Fr12,
+  y5Mea01,
+  y5Mea02,
+  y5Mea03,
+  y5Mea04,
+  y5Mea05,
+  y5Mea06,
+  y5Mea07,
   y5Geo02,
   y5Geo03,
   y5Geo04,
@@ -453,6 +532,13 @@ export const generators: Generator[] = [
   y6Alg03,
   y6Alg04,
   y6Alg05,
+  y6Mea01,
+  y6Mea02,
+  y6Mea03,
+  y6Mea04,
+  y6Mea05,
+  y6Mea06,
+  y6Mea07,
   y6Geo01,
   y6Geo03,
   y6Geo04,

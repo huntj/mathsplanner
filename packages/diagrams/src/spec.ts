@@ -191,7 +191,56 @@ export type ProtractorSpec = {
   description?: string;
 };
 
-export type MeasureSpec = ProtractorSpec;
+/** An analogue clock. The default description does not give the time away. */
+export type ClockSpec = {
+  type: "measure";
+  instrument: "clock";
+  /** 0 to 23, shown on a 12-hour face. */
+  hours: number;
+  /** 0 to 59. */
+  minutes: number;
+  /** Roman numerals I to XII rather than 1 to 12. */
+  roman?: boolean;
+  /** Leave the hands off, for drawing a time. */
+  hideHands?: boolean;
+  description?: string;
+};
+
+/** A centimetre ruler, with an object lying along it from one reading to another. */
+export type RulerSpec = {
+  type: "measure";
+  instrument: "ruler";
+  /** Length of the ruler in whole centimetres, 1 to 15. */
+  length: number;
+  /** The object's ends as readings in cm, to the nearest millimetre. */
+  object?: { from: number; to: number };
+  /** Millimetre marks (default true). */
+  mm?: boolean;
+  description?: string;
+};
+
+/**
+ * A scale read like a number line: the liquid in a measuring jug, the mercury in a thermometer or
+ * the pointer on a dial of weighing scales. Marks every `step` are numbered, with `divisions`
+ * equal spaces between them.
+ */
+export type ScaleSpec = {
+  type: "measure";
+  instrument: "jug" | "thermometer" | "scales";
+  /** Default 0; a thermometer can go below. */
+  min?: number;
+  max: number;
+  step: number;
+  /** Equal spaces in each step, 1 to 10 (default 1: no unnumbered marks). */
+  divisions?: number;
+  /** The amount shown. */
+  reading: number;
+  /** The unit, e.g. \text{ml}, ^\circ\text{C} or \text{g}. */
+  unit: Label;
+  description?: string;
+};
+
+export type MeasureSpec = ProtractorSpec | ClockSpec | RulerSpec | ScaleSpec;
 
 // --- counters ----------------------------------------------------------------------------
 

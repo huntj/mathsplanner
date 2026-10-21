@@ -7,6 +7,7 @@ import { layoutCartesian } from "./types/cartesian.ts";
 import { layoutChart } from "./types/chart.ts";
 import { layoutCounters } from "./types/counters.ts";
 import { layoutGeometry } from "./types/geometry.ts";
+import { layoutClock, layoutRuler, layoutScale } from "./types/instruments.ts";
 import { layoutProtractor } from "./types/measure.ts";
 import { layoutNumberLine } from "./types/numberLine.ts";
 import { layoutProbability } from "./types/probability.ts";
@@ -55,7 +56,16 @@ export function renderDiagram(spec: DiagramSpec | SupportedDiagramSpec): Diagram
     case "bar-model":
       return compose(layoutBarModel(spec));
     case "measure":
-      return compose(layoutProtractor(spec));
+      switch (spec.instrument) {
+        case "protractor":
+          return compose(layoutProtractor(spec));
+        case "clock":
+          return compose(layoutClock(spec));
+        case "ruler":
+          return compose(layoutRuler(spec));
+        default:
+          return compose(layoutScale(spec));
+      }
     case "counters":
       return compose(layoutCounters(spec));
     case "chart":
@@ -98,9 +108,24 @@ function shapeProblem(spec: SupportedDiagramSpec): string | undefined {
         ? undefined
         : "bars must be a list of { parts: [...] }";
     case "measure":
-      return s.instrument === "protractor" && isNumber(s.angle)
-        ? undefined
-        : "only protractors with a numeric angle are supported so far";
+      switch (s.instrument) {
+        case "protractor":
+          return isNumber(s.angle) ? undefined : "a protractor needs a numeric angle";
+        case "clock":
+          return isNumber(s.hours) && isNumber(s.minutes)
+            ? undefined
+            : "a clock needs numeric hours and minutes";
+        case "ruler":
+          return isNumber(s.length) ? undefined : "a ruler needs a numeric length";
+        case "jug":
+        case "thermometer":
+        case "scales":
+          return [s.max, s.step, s.reading].every(isNumber) && typeof s.unit === "string"
+            ? undefined
+            : "max, step and reading must be numbers, with a unit";
+        default:
+          return "instrument must be protractor, clock, ruler, jug, thermometer or scales";
+      }
     case "probability":
       return s.kind === "venn" && Array.isArray(s.regions)
         ? undefined
