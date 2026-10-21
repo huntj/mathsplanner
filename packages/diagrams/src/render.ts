@@ -4,6 +4,7 @@ import { compose, type DiagramResult } from "./scene.ts";
 import type { SupportedDiagramSpec } from "./spec.ts";
 import { layoutBarModel } from "./types/barModel.ts";
 import { layoutCartesian } from "./types/cartesian.ts";
+import { layoutChart } from "./types/chart.ts";
 import { layoutCounters } from "./types/counters.ts";
 import { layoutGeometry } from "./types/geometry.ts";
 import { layoutProtractor } from "./types/measure.ts";
@@ -23,6 +24,7 @@ export const SUPPORTED_TYPES = [
   "bar-model",
   "measure",
   "counters",
+  "chart",
 ] as const;
 
 export function isSupported(
@@ -54,6 +56,8 @@ export function renderDiagram(spec: DiagramSpec | SupportedDiagramSpec): Diagram
       return compose(layoutProtractor(spec));
     case "counters":
       return compose(layoutCounters(spec));
+    case "chart":
+      return compose(layoutChart(spec));
   }
 }
 
@@ -93,6 +97,10 @@ function shapeProblem(spec: SupportedDiagramSpec): string | undefined {
       return s.instrument === "protractor" && isNumber(s.angle)
         ? undefined
         : "only protractors with a numeric angle are supported so far";
+    case "chart":
+      return ["bar", "pictogram", "pie"].includes(s.kind as string) && Array.isArray(s.values)
+        ? undefined
+        : "kind must be bar, pictogram or pie, with a list of values";
     case "counters":
       return COUNTER_LAYOUTS.includes(s.layout as string)
         ? undefined

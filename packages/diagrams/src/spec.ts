@@ -235,5 +235,44 @@ export type CountersSpec = { type: "counters"; description?: string } & (
   | { layout: "tally"; count: number }
 );
 
+// --- charts ------------------------------------------------------------------------------
+
+/**
+ * Statistical charts drawn from their data: bar charts, pictograms and pie charts. Line graphs and
+ * scatter graphs use the cartesian type. The default description lists the data; a generator asking
+ * the student to read the chart sets its own description so it does not give the answer.
+ */
+export type ChartSpec = { type: "chart"; description?: string; title?: Label } & (
+  | {
+      kind: "bar";
+      categories: Label[];
+      values: number[];
+      /** The value axis runs from 0 to max, labelled every step. */
+      axis: { max: number; step: number; label?: Label };
+    }
+  | {
+      kind: "pictogram";
+      categories: Label[];
+      values: number[];
+      /** What one whole symbol stands for. Values must be whole quarters of it. */
+      key: number;
+      symbol?: "circle" | "square";
+    }
+  | {
+      kind: "pie";
+      categories: Label[];
+      /** Frequencies; each sector's angle is in proportion. */
+      values: number[];
+      /** Write each sector's angle on it as well as its name. */
+      showAngles?: boolean;
+    }
+);
+
 export type SupportedDiagramSpec =
-  GeometrySpec | CartesianSpec | NumberLineSpec | BarModelSpec | MeasureSpec | CountersSpec;
+  | GeometrySpec
+  | CartesianSpec
+  | NumberLineSpec
+  | BarModelSpec
+  | MeasureSpec
+  | CountersSpec
+  | ChartSpec;

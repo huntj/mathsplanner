@@ -819,4 +819,38 @@ export const REFERENCE_DIAGRAMS: ReferenceDiagram[] = [
     title: "Tally marks for 12",
     spec: { type: "counters", layout: "tally", count: 12 },
   },
+  // Charts for statistics, added in Phase 7.
+  {
+    id: "s-bar-chart",
+    title: "Bar chart of favourite fruit",
+    spec: {
+      type: "chart",
+      kind: "bar",
+      categories: ["\\text{apple}", "\\text{banana}", "\\text{grape}", "\\text{pear}"],
+      values: [12, 7, 15, 4],
+      axis: { max: 16, step: 2, label: "\\text{children}" },
+    },
+  },
+  {
+    id: "s-pictogram",
+    title: "Pictogram with half symbols",
+    spec: {
+      type: "chart",
+      kind: "pictogram",
+      categories: ["\\text{Mon}", "\\text{Tue}", "\\text{Wed}"],
+      values: [8, 6, 9],
+      key: 4,
+    },
+  },
+  {
+    id: "s-pie-chart",
+    title: "Pie chart with angles",
+    spec: {
+      type: "chart",
+      kind: "pie",
+      categories: ["\\text{bus}", "\\text{car}", "\\text{walk}", "\\text{bike}"],
+      values: [9, 6, 12, 3],
+      showAngles: true,
+    },
+  },
 ];
