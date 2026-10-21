@@ -1,0 +1,1090 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`GF-N15 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-N15",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 0.04,
+        },
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The first significant figure is the first non-zero digit: 0.04015 ≈ 0.04.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Round ",
+      },
+      {
+        "t": "math",
+        "v": "0.04015",
+      },
+      {
+        "t": "text",
+        "v": " to 2 significant figures.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-N15",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 0.035,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 0.03,
+            },
+            "code": "NPV.ROUND.SF-LEADING-ZERO",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Zeros before the first non-zero digit are not significant. Start counting at the first non-zero digit.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The first significant figure is the first non-zero digit: 0.03469 ≈ 0.035.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Round ",
+      },
+      {
+        "t": "math",
+        "v": "0.03469",
+      },
+      {
+        "t": "text",
+        "v": " to 2 significant figures.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-N15",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 0.026,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 0.03,
+            },
+            "code": "NPV.ROUND.SF-LEADING-ZERO",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Zeros before the first non-zero digit are not significant. Start counting at the first non-zero digit.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The first significant figure is the first non-zero digit: 0.02618 ≈ 0.026.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Round ",
+      },
+      {
+        "t": "math",
+        "v": "0.02618",
+      },
+      {
+        "t": "text",
+        "v": " to 2 significant figures.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-N15",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 3.05,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 3,
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Rounding to 1 d.p. means within half of 0.1 = 0.05 either side.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What is the smallest possible value of y?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Any y from 3.05 up to (not including) 3.15 rounds to 3.1.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A number y is rounded to 1 decimal place. The result is 3.1.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-N15",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 10.4,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 10.35,
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Truncating chops off the extra digits; it never rounds up, so y is at least 10.4.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What is the smallest possible value of y?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Truncation keeps 10.4 for any y from 10.4 up to (not including) 10.5.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A number y is truncated to 1 decimal place. The result is 10.4.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-N15",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 6.75,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 6.7,
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Rounding to 1 d.p. means within half of 0.1 = 0.05 either side.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What is the smallest possible value of y?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Any y from 6.75 up to (not including) 6.85 rounds to 6.8.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A number y is rounded to 1 decimal place. The result is 6.8.",
+      },
+    ],
+  },
+  {
+    "archetype": "match-representations",
+    "diagrams": [],
+    "key": {
+      "depth": 3,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-N15",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": [
+            [
+              "1",
+              "C",
+            ],
+            [
+              "2",
+              "A",
+            ],
+            [
+              "3",
+              "B",
+            ],
+          ],
+          "left": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "y = 3.1\\text{ (1 d.p.)}",
+                },
+              ],
+              "id": "1",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "y = 3\\text{ (nearest whole number)}",
+                },
+              ],
+              "id": "2",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "y = 30\\text{ (nearest 10)}",
+                },
+              ],
+              "id": "3",
+            },
+          ],
+          "right": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "2.5 \\le y < 3.5",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "25 \\le y < 35",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "3.05 \\le y < 3.15",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "match",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Go half a unit either side of the rounded value; include the lower bound but not the upper bound.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Match each rounded value to its error interval.",
+      },
+    ],
+  },
+  {
+    "archetype": "match-representations",
+    "diagrams": [],
+    "key": {
+      "depth": 3,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-N15",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": [
+            [
+              "1",
+              "A",
+            ],
+            [
+              "2",
+              "B",
+            ],
+            [
+              "3",
+              "C",
+            ],
+          ],
+          "left": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "y = 10.4\\text{ (1 d.p.)}",
+                },
+              ],
+              "id": "1",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "y = 10\\text{ (nearest whole number)}",
+                },
+              ],
+              "id": "2",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "y = 100\\text{ (nearest 10)}",
+                },
+              ],
+              "id": "3",
+            },
+          ],
+          "right": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "10.35 \\le y < 10.45",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "9.5 \\le y < 10.5",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "95 \\le y < 105",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "match",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Go half a unit either side of the rounded value; include the lower bound but not the upper bound.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Match each rounded value to its error interval.",
+      },
+    ],
+  },
+  {
+    "archetype": "match-representations",
+    "diagrams": [],
+    "key": {
+      "depth": 3,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-N15",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": [
+            [
+              "1",
+              "C",
+            ],
+            [
+              "2",
+              "B",
+            ],
+            [
+              "3",
+              "A",
+            ],
+          ],
+          "left": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "y = 6.8\\text{ (1 d.p.)}",
+                },
+              ],
+              "id": "1",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "y = 7\\text{ (nearest whole number)}",
+                },
+              ],
+              "id": "2",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "y = 70\\text{ (nearest 10)}",
+                },
+              ],
+              "id": "3",
+            },
+          ],
+          "right": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "65 \\le y < 75",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "6.5 \\le y < 7.5",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "6.75 \\le y < 6.85",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "match",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Go half a unit either side of the rounded value; include the lower bound but not the upper bound.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Match each rounded value to its error interval.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-N15",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 3.15 rounds up to 3.2, so the length is less than 3.15 cm.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The upper bound is included in the error interval.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Any length from 3.05 to 3.15 is possible.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Error interval: 3.05 ≤ length < 3.15.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A length is 3.1 cm to 1 decimal place. Ben says the length could be 3.15 cm.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-N15",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Any length from 10.35 to 10.45 is possible.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 10.45 rounds up to 10.5, so the length is less than 10.45 cm.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The upper bound is included in the error interval.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Error interval: 10.35 ≤ length < 10.45.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A length is 10.4 cm to 1 decimal place. Ben says the length could be 10.45 cm.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-N15",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Any length from 6.75 to 6.85 is possible.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 6.85 rounds up to 6.9, so the length is less than 6.85 cm.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The upper bound is included in the error interval.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Error interval: 6.75 ≤ length < 6.85.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A length is 6.8 cm to 1 decimal place. Ben says the length could be 6.85 cm.",
+      },
+    ],
+  },
+]
+`;

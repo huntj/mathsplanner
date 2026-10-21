@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.18.0",
+  "version": "0.19.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -251,6 +251,41 @@
       "code": "NPV.INFINITE.NOTHING-BETWEEN",
       "description": "Thinks there is no number between two close decimals or fractions.",
       "remediate": "Y8-NPV-02"
+    },
+    {
+      "code": "NPV.RECIPROCAL.NEGATIVE",
+      "description": "Gives the negative of a number as its reciprocal, e.g. the reciprocal of 4 is −4.",
+      "remediate": "GF-N3"
+    },
+    {
+      "code": "NPV.LISTING.INCOMPLETE",
+      "description": "Misses or repeats arrangements when listing systematically, or adds the number of choices instead of multiplying.",
+      "remediate": "GF-N5"
+    },
+    {
+      "code": "NPV.INDEX.NEGATIVE",
+      "description": "Reads a negative index as making the number negative, e.g. 2⁻³ = −8 instead of 1/8.",
+      "remediate": "GF-N7"
+    },
+    {
+      "code": "NPV.INDEX.ZERO",
+      "description": "Thinks any number to the power 0 is 0, rather than 1.",
+      "remediate": "GF-N7"
+    },
+    {
+      "code": "FR.RECURRING.TRUNCATE",
+      "description": "Writes a recurring decimal as if it stopped, e.g. 1/3 = 0.3, or thinks every fraction gives a terminating decimal.",
+      "remediate": "GF-N10"
+    },
+    {
+      "code": "NPV.BOUNDS.DIVIDE",
+      "description": "Uses the upper bound of both numbers to find the upper bound of a division, instead of dividing the upper bound by the lower bound.",
+      "remediate": "GF-N16"
+    },
+    {
+      "code": "RAT.PERCENT.UNDO",
+      "description": "Thinks increasing and then decreasing by the same percentage gets back to the start.",
+      "remediate": "Y8-RAT-03"
     },
     {
       "code": "AS.COUNT-ON.INCLUDES-START",
