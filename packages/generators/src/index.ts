@@ -30,6 +30,7 @@ import y1As01 from "./ks1/Y1-AS-01.ts";
 import y1As02 from "./ks1/Y1-AS-02.ts";
 import y1As03 from "./ks1/Y1-AS-03.ts";
 import y1As04 from "./ks1/Y1-AS-04.ts";
+import y1Md01 from "./ks1/Y1-MD-01.ts";
 import y1Geo01 from "./ks1/Y1-GEO-01.ts";
 import y1Pos01 from "./ks1/Y1-POS-01.ts";
 import y2Npv01 from "./ks1/Y2-NPV-01.ts";
@@ -43,6 +44,10 @@ import y2As02 from "./ks1/Y2-AS-02.ts";
 import y2As03 from "./ks1/Y2-AS-03.ts";
 import y2As04 from "./ks1/Y2-AS-04.ts";
 import y2As05 from "./ks1/Y2-AS-05.ts";
+import y2Md01 from "./ks1/Y2-MD-01.ts";
+import y2Md02 from "./ks1/Y2-MD-02.ts";
+import y2Md03 from "./ks1/Y2-MD-03.ts";
+import y2Md04 from "./ks1/Y2-MD-04.ts";
 import y2Geo01 from "./ks1/Y2-GEO-01.ts";
 import y2Pos02 from "./ks1/Y2-POS-02.ts";
 import y3Npv01 from "./ks2/Y3-NPV-01.ts";
@@ -55,6 +60,9 @@ import y3As01 from "./ks2/Y3-AS-01.ts";
 import y3As02 from "./ks2/Y3-AS-02.ts";
 import y3As03 from "./ks2/Y3-AS-03.ts";
 import y3As04 from "./ks2/Y3-AS-04.ts";
+import y3Md01 from "./ks2/Y3-MD-01.ts";
+import y3Md02 from "./ks2/Y3-MD-02.ts";
+import y3Md03 from "./ks2/Y3-MD-03.ts";
 import y3Geo02 from "./ks2/Y3-GEO-02.ts";
 import y3Geo03 from "./ks2/Y3-GEO-03.ts";
 import y3Geo04 from "./ks2/Y3-GEO-04.ts";
@@ -70,6 +78,11 @@ import y4Npv09 from "./ks2/Y4-NPV-09.ts";
 import y4As01 from "./ks2/Y4-AS-01.ts";
 import y4As02 from "./ks2/Y4-AS-02.ts";
 import y4As03 from "./ks2/Y4-AS-03.ts";
+import y4Md01 from "./ks2/Y4-MD-01.ts";
+import y4Md02 from "./ks2/Y4-MD-02.ts";
+import y4Md03 from "./ks2/Y4-MD-03.ts";
+import y4Md04 from "./ks2/Y4-MD-04.ts";
+import y4Md05 from "./ks2/Y4-MD-05.ts";
 import y4Geo01 from "./ks2/Y4-GEO-01.ts";
 import y4Geo02 from "./ks2/Y4-GEO-02.ts";
 import y4Geo03 from "./ks2/Y4-GEO-03.ts";
@@ -84,6 +97,15 @@ import y5As01 from "./ks2/Y5-AS-01.ts";
 import y5As02 from "./ks2/Y5-AS-02.ts";
 import y5As03 from "./ks2/Y5-AS-03.ts";
 import y5As04 from "./ks2/Y5-AS-04.ts";
+import y5Md01 from "./ks2/Y5-MD-01.ts";
+import y5Md02 from "./ks2/Y5-MD-02.ts";
+import y5Md03 from "./ks2/Y5-MD-03.ts";
+import y5Md04 from "./ks2/Y5-MD-04.ts";
+import y5Md05 from "./ks2/Y5-MD-05.ts";
+import y5Md06 from "./ks2/Y5-MD-06.ts";
+import y5Md07 from "./ks2/Y5-MD-07.ts";
+import y5Md08 from "./ks2/Y5-MD-08.ts";
+import y5Md09 from "./ks2/Y5-MD-09.ts";
 import y5Geo02 from "./ks2/Y5-GEO-02.ts";
 import y5Geo03 from "./ks2/Y5-GEO-03.ts";
 import y5Geo04 from "./ks2/Y5-GEO-04.ts";
@@ -93,6 +115,14 @@ import y6Npv01 from "./ks2/Y6-NPV-01.ts";
 import y6Npv02 from "./ks2/Y6-NPV-02.ts";
 import y6Npv03 from "./ks2/Y6-NPV-03.ts";
 import y6Npv04 from "./ks2/Y6-NPV-04.ts";
+import y6Md01 from "./ks2/Y6-MD-01.ts";
+import y6Md02 from "./ks2/Y6-MD-02.ts";
+import y6Md03 from "./ks2/Y6-MD-03.ts";
+import y6Md04 from "./ks2/Y6-MD-04.ts";
+import y6Md05 from "./ks2/Y6-MD-05.ts";
+import y6Md06 from "./ks2/Y6-MD-06.ts";
+import y6Md07 from "./ks2/Y6-MD-07.ts";
+import y6Md08 from "./ks2/Y6-MD-08.ts";
 import y6Geo01 from "./ks2/Y6-GEO-01.ts";
 import y6Geo03 from "./ks2/Y6-GEO-03.ts";
 import y6Geo04 from "./ks2/Y6-GEO-04.ts";
@@ -158,6 +188,7 @@ export const generators: Generator[] = [
   y1As02,
   y1As03,
   y1As04,
+  y1Md01,
   y1Geo01,
   y1Pos01,
   y2Npv01,
@@ -171,6 +202,10 @@ export const generators: Generator[] = [
   y2As03,
   y2As04,
   y2As05,
+  y2Md01,
+  y2Md02,
+  y2Md03,
+  y2Md04,
   y2Geo01,
   y2Pos02,
   y3Npv01,
@@ -183,6 +218,9 @@ export const generators: Generator[] = [
   y3As02,
   y3As03,
   y3As04,
+  y3Md01,
+  y3Md02,
+  y3Md03,
   y3Geo02,
   y3Geo03,
   y3Geo04,
@@ -198,6 +236,11 @@ export const generators: Generator[] = [
   y4As01,
   y4As02,
   y4As03,
+  y4Md01,
+  y4Md02,
+  y4Md03,
+  y4Md04,
+  y4Md05,
   y4Geo01,
   y4Geo02,
   y4Geo03,
@@ -212,6 +255,15 @@ export const generators: Generator[] = [
   y5As02,
   y5As03,
   y5As04,
+  y5Md01,
+  y5Md02,
+  y5Md03,
+  y5Md04,
+  y5Md05,
+  y5Md06,
+  y5Md07,
+  y5Md08,
+  y5Md09,
   y5Geo02,
   y5Geo03,
   y5Geo04,
@@ -221,6 +273,14 @@ export const generators: Generator[] = [
   y6Npv02,
   y6Npv03,
   y6Npv04,
+  y6Md01,
+  y6Md02,
+  y6Md03,
+  y6Md04,
+  y6Md05,
+  y6Md06,
+  y6Md07,
+  y6Md08,
   y6Geo01,
   y6Geo03,
   y6Geo04,

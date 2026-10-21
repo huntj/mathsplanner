@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -135,12 +135,12 @@
     {
       "code": "NPV.POWERS10.WRONG-WAY",
       "description": "Multiplies when it should divide by 10, 100 or 1000, or the reverse, so the digits move the wrong way.",
-      "remediate": "Y7-NPV-01"
+      "remediate": "Y5-MD-07"
     },
     {
       "code": "NPV.POWERS10.APPEND-ZEROS",
       "description": "Multiplies a decimal by 10, 100 or 1000 by writing zeros on the end, e.g. 3.4 × 10 = 3.40.",
-      "remediate": "Y7-NPV-01"
+      "remediate": "Y5-MD-07"
     },
     {
       "code": "NPV.DECIMAL.LONGER-BIGGER",
@@ -185,7 +185,7 @@
     {
       "code": "NPV.ORDER.LEFT-TO-RIGHT",
       "description": "Works from left to right instead of following the order of operations (brackets, powers, × and ÷, then + and −).",
-      "remediate": "Y7-NPV-05"
+      "remediate": "Y6-MD-06"
     },
     {
       "code": "NPV.INVERSE.WRONG-PAIR",
@@ -296,6 +296,86 @@
       "code": "AS.MULTISTEP.ONE-STEP",
       "description": "Stops after the first step of a problem that needs two or more steps.",
       "remediate": "Y4-AS-03"
+    },
+    {
+      "code": "MD.MULTIPLY.ADDS",
+      "description": "Adds instead of multiplying, e.g. 4 groups of 3, or 3 times as many as 4, gives 7.",
+      "remediate": "Y1-MD-01"
+    },
+    {
+      "code": "MD.TABLES.NEIGHBOUR",
+      "description": "Gives the next or previous multiple when recalling a times-table fact, e.g. 7 × 8 = 48.",
+      "remediate": "Y3-MD-01"
+    },
+    {
+      "code": "MD.DIVIDE.ORDER",
+      "description": "Thinks division can be done in either order, like multiplication, e.g. 3 ÷ 12 = 4.",
+      "remediate": "Y2-MD-03"
+    },
+    {
+      "code": "MD.WRITTEN.NO-CARRY",
+      "description": "Forgets to add the carried digit in a written multiplication.",
+      "remediate": "Y4-MD-04"
+    },
+    {
+      "code": "MD.PARTITION.MISSES-PARTS",
+      "description": "Multiplies only some of the parts after partitioning, e.g. 23 × 45 worked as 20 × 40 + 3 × 5.",
+      "remediate": "Y3-MD-02"
+    },
+    {
+      "code": "MD.LONG.PLACEHOLDER",
+      "description": "Forgets that the tens digit is worth tens in long multiplication, so leaves out the zero placeholder.",
+      "remediate": "Y6-MD-01"
+    },
+    {
+      "code": "MD.SHORT-DIV.DROPS-REMAINDER",
+      "description": "Drops the remainder from one digit instead of carrying it to the next in short division.",
+      "remediate": "Y5-MD-06"
+    },
+    {
+      "code": "MD.REMAINDER.CONTEXT",
+      "description": "Gives the quotient without thinking about the remainder in context, e.g. 4 boxes when 30 cakes go into boxes of 8.",
+      "remediate": "Y5-MD-06"
+    },
+    {
+      "code": "MD.REMAINDER.AS-DECIMAL",
+      "description": "Writes the remainder as the digits after a decimal point, e.g. 17 ÷ 5 = 3 r 2 written as 3.2.",
+      "remediate": "Y6-MD-02"
+    },
+    {
+      "code": "MD.ZERO-ONE.IDENTITY",
+      "description": "Mixes up multiplying by 0 and by 1, e.g. 7 × 0 = 7 or 7 × 1 = 1.",
+      "remediate": "Y4-MD-02"
+    },
+    {
+      "code": "MD.PLACE.ZEROS",
+      "description": "Miscounts the zeros when multiplying or dividing multiples of 10, e.g. 40 × 50 = 200.",
+      "remediate": "Y5-MD-05"
+    },
+    {
+      "code": "MD.FACTOR.MISSES-PAIR",
+      "description": "Misses factors by not working in pairs, e.g. leaves out 1 and the number itself, or one of a pair.",
+      "remediate": "Y5-MD-01"
+    },
+    {
+      "code": "MD.FACTOR.FACTOR-MULTIPLE",
+      "description": "Mixes up factors and multiples.",
+      "remediate": "Y5-MD-01"
+    },
+    {
+      "code": "MD.PRIME.ODD",
+      "description": "Thinks every odd number is prime, e.g. 9, 21 or 51.",
+      "remediate": "Y5-MD-03"
+    },
+    {
+      "code": "MD.PRIME.ONE",
+      "description": "Thinks 1 is a prime number, or that 2 is not.",
+      "remediate": "Y5-MD-03"
+    },
+    {
+      "code": "MD.SQUARE.DOUBLES",
+      "description": "Multiplies by 2 to square a number, or by 3 to cube it, e.g. 6² = 12.",
+      "remediate": "Y5-MD-08"
     },
     {
       "code": "GEO.ANGLES.STRAIGHT-LINE-360",
