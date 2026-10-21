@@ -813,7 +813,7 @@ export function addFractions(
       const sign = p.add ? "+" : "-";
       const [an, ad] = p.a;
       const [bn, bd] = p.b;
-      const latex = `${mixedTex(p.wa, an, ad)} ${sign} ${mixedTex(p.wb, bn, bd)}`;
+      const expr = `${mixedTex(p.wa, an, ad)} ${sign} ${mixedTex(p.wb, bn, bd)}`;
       const tops = p.add ? an + bn : an - bn;
       const slip = p.mode === "mixed" ? undefined : tops > 0 ? frac(tops, ad + bd) : undefined;
       const wrong =
@@ -834,15 +834,17 @@ export function addFractions(
         p.mode === "same"
           ? `Keep the denominator and ${p.add ? "add" : "subtract"} the numerators: ${an} ${p.add ? "+" : "−"} ${bn} = ${tops}, so ${slash(tops, ad)}.`
           : `Use the common denominator ${common}: ${slash(an * (common / ad) + p.wa * common, common)} ${p.add ? "+" : "−"} ${slash(bn * (common / bd) + p.wb * common, common)} = ${v.toString()}.`;
-      const answer = A.exact(v, form);
+      // Mixed-number questions show their answers as mixed numbers.
+      const shape = p.mode === "mixed" ? { form: "mixed" as const } : undefined;
+      const answer = A.exact(v, form, shape);
       switch (depth) {
         case 1:
           return A.standard({
-            question: [A.math(latex)],
+            question: [A.math(expr)],
             ask: form ? "Work it out. Give your answer in its simplest form." : "Work it out.",
             answer,
             wrong,
-            solution: [{ say: steps, math: `${latex} = ${ratTex(v)}` }],
+            solution: [{ say: steps, math: `${expr} = ${toLatex(v, shape)}` }],
           });
         case 2:
           return A.variedForm({
@@ -892,15 +894,15 @@ export function addFractions(
                 ],
             answer,
             wrong,
-            solution: [{ say: steps, math: `${latex} = ${ratTex(v)}` }],
+            solution: [{ say: steps, math: `${expr} = ${toLatex(v, shape)}` }],
           });
         default: {
           if (p.mode === "same" || !slip) {
             const bad = fracTex(Math.abs(tops), ad + bd);
             return A.spotTheMistake({
-              question: ["Sam works out ", A.math(latex), "."],
+              question: ["Sam works out ", A.math(expr), "."],
               lines: [
-                [A.math(`${latex} = \\frac{${an} ${sign} ${bn}}{${ad} + ${bd}}`)],
+                [A.math(`${expr} = \\frac{${an} ${sign} ${bn}}{${ad} + ${bd}}`)],
                 [A.math(`= ${bad}`)],
               ],
               mistake: 0,
@@ -909,7 +911,7 @@ export function addFractions(
             });
           }
           return A.spotTheMistake({
-            question: ["Sam works out ", A.math(latex), "."],
+            question: ["Sam works out ", A.math(expr), "."],
             lines: [
               [
                 A.math(
@@ -933,7 +935,10 @@ export function addFractions(
     verify(p, question) {
       if (question.archetype === "spot-the-mistake") return value(p).sign() > 0;
       const a = question.parts[0]?.answer;
-      return a?.type === "exact" && String(a.value) === ratTex(value(p));
+      return (
+        a?.type === "exact" &&
+        String(a.value) === toLatex(value(p), p.mode === "mixed" ? { form: "mixed" } : {})
+      );
     },
   };
 }
@@ -956,13 +961,13 @@ export function compareFractions(
   dens: Record<Numbers, number[]>,
 ): GeneratorDefinition<CompareParams> {
   const val = ([n, d]: Pair) => frac(n, d);
-  const pickPair = (rng: Rng, numbers: Numbers, base?: number): Pair => {
-    if (mode === "unit-same")
-      return base ? [rng.int(1, base - 1), base] : [1, rng.pick(dens[numbers])];
-    const d = mode === "multiples" && base ? base * rng.int(1, 3) : rng.pick(dens[numbers]);
-    const top = mode === "any" ? Math.floor(d * 1.8) : d - 1;
-    return [rng.int(1, top), d];
-  };
+  // Every simplest-form fraction with these denominators; "any" also allows fractions above 1.
+  const candidates = (ds: number[]): Pair[] =>
+    ds.flatMap((d) =>
+      Array.from({ length: mode === "any" ? Math.floor(d * 1.8) : d - 1 }, (_, i) => i + 1)
+        .filter((n) => gcdOf(n, d) === 1 && n % d !== 0)
+        .map((n): Pair => [n, d]),
+    );
   return {
     id,
     version: "1.0.0",
@@ -970,28 +975,48 @@ export function compareFractions(
     misconceptions: ["FR.UNIT.BIGGER-DENOMINATOR", "FR.COMPARE.NUMERATOR-ONLY"],
 
     params(rng, numbers) {
-      const sameDen = mode === "unit-same" && rng.bool() ? rng.pick(dens[numbers]) : undefined;
-      const base = mode === "multiples" ? rng.pick(dens[numbers]) : sameDen;
-      const three = [
-        pickPair(rng, numbers, base),
-        pickPair(rng, numbers, base),
-        pickPair(rng, numbers, base),
-      ];
-      const vals = three.map(val);
-      if (vals.some((v, i) => vals.some((w, j) => i < j && v.eq(w))))
-        reject("three different values");
-      if (three.some(([n, d]) => gcdOf(n, d) !== 1 && mode !== "unit-same"))
-        reject("simplest form");
-      const [x, y] = [pickPair(rng, numbers), pickPair(rng, numbers)];
+      const ds = dens[numbers];
+      let three: Pair[];
+      if (mode === "unit-same") {
+        // Three unit fractions, or three fractions with the same denominator.
+        const d = rng.pick(ds);
+        three = rng.bool()
+          ? rng
+              .shuffle(ds)
+              .slice(0, 3)
+              .map((x): Pair => [1, x])
+          : rng
+              .shuffle(Array.from({ length: d - 1 }, (_, i) => i + 1))
+              .slice(0, 3)
+              .map((n): Pair => [n, d]);
+      } else {
+        const base = rng.pick(ds);
+        three = rng
+          .shuffle(candidates(mode === "multiples" ? [base, base * 2, base * 3] : ds))
+          .slice(0, 3);
+      }
+      if (three.length < 3) reject("three fractions");
+      const pool = candidates(ds);
+      const traps = pool.flatMap((x) =>
+        pool.filter((y) => x[0] > y[0] && val(x).lt(val(y))).map((y): [Pair, Pair] => [x, y]),
+      );
+      const [u, w] = rng.shuffle(ds);
       const trap: [Pair, Pair] =
         mode === "unit-same"
           ? [
-              [1, Math.max(x[1], y[1])],
-              [1, Math.min(x[1], y[1])],
+              [1, Math.max(u ?? 2, w ?? 3)],
+              [1, Math.min(u ?? 2, w ?? 3)],
             ]
-          : [x, y];
-      if (mode === "unit-same" ? x[1] === y[1] : !(x[0] > y[0] && val(x).lt(val(y))))
-        reject("a real trap");
+          : rng.pick(
+              traps.length
+                ? traps
+                : [
+                    [
+                      [2, 5],
+                      [1, 2],
+                    ],
+                  ],
+            );
       return { three, trap };
     },
 
@@ -1134,11 +1159,14 @@ export function fractionDecimal(
   id: string,
   dens: Record<Numbers, number[]>,
   reduced: boolean,
+  /** Allow fractions bigger than 1, e.g. 7/2 = 3.5. */
+  improper = false,
 ): GeneratorDefinition<DecimalParams> {
   const pick = (rng: Rng, numbers: Numbers): Pair => {
     const d = rng.pick(dens[numbers]);
     const n = reduced ? coprimeNumerator(rng, d) : rng.int(1, d - 1);
-    return [n, d];
+    // Add whole numbers of d for improper fractions; n stays coprime with d.
+    return [improper && rng.bool() ? n + d * rng.int(1, 3) : n, d];
   };
   return {
     id,
@@ -1580,6 +1608,200 @@ export function compareDecimals(
         return vs.every((v, i) => i === 0 || (vs[i - 1] ?? v) < v);
       }
       return Number(p.trapShort) > Number(p.trapLong);
+    },
+  };
+}
+
+// --- percentages ---------------------------------------------------------------------------------------
+
+export interface PercentParams {
+  n: number;
+  d: number;
+  /** Depth 3: three more fractions to match to percentages. */
+  set: Pair[];
+  /** Depth 5: a group of size k × d. */
+  k: number;
+  claimTrue: boolean;
+}
+
+/** Percentages as fractions and decimals, for denominators that divide 100. */
+export function percentages(
+  id: string,
+  dens: Record<Numbers, number[]>,
+  reduced: boolean,
+): GeneratorDefinition<PercentParams> {
+  const pick = (rng: Rng, numbers: Numbers): Pair => {
+    const d = rng.pick(dens[numbers]);
+    return [reduced ? coprimeNumerator(rng, d) : rng.int(1, d - 1), d];
+  };
+  const percent = (n: number, d: number) => (n * 100) / d;
+  return {
+    id,
+    version: "1.0.0",
+    depths: [1, 2, 3, 4, 5],
+    misconceptions: ["FR.PERCENT.DIGITS", "FR.OF-AMOUNT.UNIT-ONLY"],
+
+    params(rng, numbers) {
+      const [n, d] = pick(rng, numbers);
+      const set = [pick(rng, numbers), pick(rng, numbers), pick(rng, numbers)];
+      const all: Pair[] = [[n, d], ...set];
+      if (all.some(([a, b]) => 100 % b !== 0 || a % b === 0))
+        reject("denominators that divide 100");
+      if (new Set(set.map(([a, b]) => percent(a, b))).size < 3)
+        reject("three different percentages");
+      return { n, d, set, k: rng.int(2, numbers === "stretch" ? 12 : 6), claimTrue: rng.bool() };
+    },
+
+    build(p, depth, rng): QuestionDraft {
+      const pc = percent(p.n, p.d);
+      const dec = pc / 100;
+      const copied = Number(`${p.n}${p.d}`);
+      const why =
+        p.d === 100
+          ? `${pc}% means ${pc} out of 100: ${slash(pc, 100)} = ${dec}.`
+          : `${slash(p.n, p.d)} = ${slash(pc, 100)}, which is ${pc}% and ${dec}.`;
+      switch (depth) {
+        case 1:
+          return p.d === 100
+            ? A.standard({
+                question: ["Write ", A.math(`${pc}\\%`), " as a decimal."],
+                answer: A.number(dec),
+                wrong: wrongs(dec, [
+                  pc < 10
+                    ? {
+                        code: "FR.PERCENT.DIGITS",
+                        value: A.number(pc / 10),
+                        feedback: `Per cent means out of 100, so ${pc}% is ${pc} hundredths: ${dec}.`,
+                      }
+                    : undefined,
+                ]),
+                solution: [{ say: why }],
+              })
+            : A.standard({
+                question: ["Write ", A.math(fracTex(p.n, p.d)), " as a percentage."],
+                answer: A.number(pc, { units: "%" }),
+                wrong: wrongs(pc, [
+                  copied < 100 && copied !== pc
+                    ? {
+                        code: "FR.PERCENT.DIGITS",
+                        value: A.number(copied, { units: "%" }),
+                        feedback: `Make the denominator 100: ${slash(p.n, p.d)} = ${slash(pc, 100)} = ${pc}%.`,
+                      }
+                    : undefined,
+                ]),
+                solution: [{ say: why }],
+              });
+        case 2:
+          return A.reverse({
+            question: ["Write ", A.math(`${pc}\\%`), " as a fraction."],
+            answer: A.exact(frac(p.n, p.d)),
+            solution: [
+              {
+                say: `${pc}% = ${slash(pc, 100)}${p.d === 100 ? "" : `, which simplifies to ${slash(p.n, p.d)}`}.`,
+              },
+            ],
+          });
+        case 3:
+          return A.matchRepresentations({
+            rng,
+            question: "Match each fraction to its percentage.",
+            pairs: p.set.map(
+              ([a, b]) =>
+                [A.math(fracTex(a, b)), A.math(`${percent(a, b)}\\%`)] as [
+                  A.RichInput,
+                  A.RichInput,
+                ],
+            ),
+            solution: p.set.map(([a, b]) => ({
+              say: `${slash(a, b)} = ${slash(percent(a, b), 100)} = ${percent(a, b)}%.`,
+            })),
+          });
+        case 4: {
+          const wrongDecimal = pc < 10 ? pc / 10 : pc / 1000;
+          const shown = p.claimTrue ? dec : wrongDecimal;
+          return A.trueOrFalseWhy({
+            rng,
+            statement: [A.math(`${pc}\\% = ${shown}`)],
+            truth: p.claimTrue,
+            reasons: p.claimTrue
+              ? [
+                  { text: `True. ${why}`, correct: true },
+                  {
+                    text: `False. ${pc}% is ${pc / 10}, the digits after the point.`,
+                    code: "FR.PERCENT.DIGITS",
+                  },
+                  { text: "False. Percentages cannot be written as decimals." },
+                ]
+              : [
+                  { text: `False. ${why}`, correct: true },
+                  {
+                    text: "True. Write the digits of the percentage after the point.",
+                    code: "FR.PERCENT.DIGITS",
+                  },
+                  { text: "True. A percentage is always less than 1." },
+                ],
+            solution: [{ say: why }],
+          });
+        }
+        default: {
+          const group = p.k * p.d;
+          const part = p.k * p.n;
+          return A.multiStepContext({
+            context: [
+              "In a club of ",
+              String(group),
+              " children, ",
+              A.math(fracTex(p.n, p.d)),
+              " of them play football.",
+            ],
+            parts: [
+              {
+                ask: "What percentage of the children play football?",
+                answer: A.number(pc, { units: "%" }),
+                wrong: wrongs(pc, [
+                  copied < 100 && copied !== pc
+                    ? {
+                        code: "FR.PERCENT.DIGITS",
+                        value: A.number(copied, { units: "%" }),
+                        feedback: `Make the denominator 100: ${slash(pc, 100)}.`,
+                      }
+                    : undefined,
+                ]),
+              },
+              {
+                ask: "How many children play football?",
+                answer: A.number(part),
+                wrong: wrongs(part, [
+                  p.n > 1
+                    ? {
+                        code: "FR.OF-AMOUNT.UNIT-ONLY",
+                        value: A.number(p.k),
+                        feedback: `That is ${slash(1, p.d)}. Multiply by ${p.n}.`,
+                      }
+                    : undefined,
+                ]),
+              },
+            ],
+            solution: [
+              { say: why },
+              { say: `${group} ÷ ${p.d} = ${p.k}, and ${p.k} × ${p.n} = ${part}.` },
+            ],
+          });
+        }
+      }
+    },
+
+    verify(p, question) {
+      const pc = percent(p.n, p.d);
+      if (question.archetype === "standard")
+        return Math.abs(numberAnswer(question) - (p.d === 100 ? pc / 100 : pc)) < 1e-9;
+      if (question.archetype === "multi-step-context")
+        return numberAnswer(question, 0) === pc && numberAnswer(question, 1) === p.k * p.n;
+      if (question.archetype === "reverse") {
+        const a = question.parts[0]?.answer;
+        return a?.type === "exact" && String(a.value) === ratTex(frac(p.n, p.d));
+      }
+      return true;
     },
   };
 }
