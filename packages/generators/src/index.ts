@@ -167,6 +167,10 @@ import y6Fr08 from "./ks2/Y6-FR-08.ts";
 import y6Fr09 from "./ks2/Y6-FR-09.ts";
 import y6Fr10 from "./ks2/Y6-FR-10.ts";
 import y6Fr11 from "./ks2/Y6-FR-11.ts";
+import y6Rat01 from "./ks2/Y6-RAT-01.ts";
+import y6Rat02 from "./ks2/Y6-RAT-02.ts";
+import y6Rat03 from "./ks2/Y6-RAT-03.ts";
+import y6Rat04 from "./ks2/Y6-RAT-04.ts";
 import y6Geo01 from "./ks2/Y6-GEO-01.ts";
 import y6Geo03 from "./ks2/Y6-GEO-03.ts";
 import y6Geo04 from "./ks2/Y6-GEO-04.ts";
@@ -182,16 +186,29 @@ import y7Npv08 from "./ks3/Y7-NPV-08.ts";
 import y7Npv09 from "./ks3/Y7-NPV-09.ts";
 import y7Npv10 from "./ks3/Y7-NPV-10.ts";
 import y7Fr01 from "./ks3/Y7-FR-01.ts";
+import y7Rat01 from "./ks3/Y7-RAT-01.ts";
+import y7Rat02 from "./ks3/Y7-RAT-02.ts";
+import y7Rat03 from "./ks3/Y7-RAT-03.ts";
+import y7Rat04 from "./ks3/Y7-RAT-04.ts";
+import y7Rat05 from "./ks3/Y7-RAT-05.ts";
 import y7Geo03 from "./ks3/Y7-GEO-03.ts";
 import y7Geo04 from "./ks3/Y7-GEO-04.ts";
 import y7Geo05 from "./ks3/Y7-GEO-05.ts";
 import y7Geo06 from "./ks3/Y7-GEO-06.ts";
 import y8Npv01 from "./ks3/Y8-NPV-01.ts";
 import y8Npv02 from "./ks3/Y8-NPV-02.ts";
+import y8Rat01 from "./ks3/Y8-RAT-01.ts";
+import y8Rat02 from "./ks3/Y8-RAT-02.ts";
+import y8Rat03 from "./ks3/Y8-RAT-03.ts";
+import y8Rat04 from "./ks3/Y8-RAT-04.ts";
+import y8Rat05 from "./ks3/Y8-RAT-05.ts";
 import y8Geo02 from "./ks3/Y8-GEO-02.ts";
 import y8Geo03 from "./ks3/Y8-GEO-03.ts";
 import y8Geo05 from "./ks3/Y8-GEO-05.ts";
 import y9Npv01 from "./ks3/Y9-NPV-01.ts";
+import y9Rat01 from "./ks3/Y9-RAT-01.ts";
+import y9Rat02 from "./ks3/Y9-RAT-02.ts";
+import y9Rat03 from "./ks3/Y9-RAT-03.ts";
 import y9Geo03 from "./ks3/Y9-GEO-03.ts";
 import gfG1 from "./ks4/GF-G1.ts";
 import gfG3 from "./ks4/GF-G3.ts";
@@ -370,6 +387,10 @@ export const generators: Generator[] = [
   y6Fr09,
   y6Fr10,
   y6Fr11,
+  y6Rat01,
+  y6Rat02,
+  y6Rat03,
+  y6Rat04,
   y6Geo01,
   y6Geo03,
   y6Geo04,
@@ -385,16 +406,29 @@ export const generators: Generator[] = [
   y7Npv09,
   y7Npv10,
   y7Fr01,
+  y7Rat01,
+  y7Rat02,
+  y7Rat03,
+  y7Rat04,
+  y7Rat05,
   y7Geo03,
   y7Geo04,
   y7Geo05,
   y7Geo06,
   y8Npv01,
   y8Npv02,
+  y8Rat01,
+  y8Rat02,
+  y8Rat03,
+  y8Rat04,
+  y8Rat05,
   y8Geo02,
   y8Geo03,
   y8Geo05,
   y9Npv01,
+  y9Rat01,
+  y9Rat02,
+  y9Rat03,
   y9Geo03,
   gfG1,
   gfG3,

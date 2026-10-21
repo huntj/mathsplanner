@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -451,6 +451,81 @@
       "code": "FR.PERCENT.DIGITS",
       "description": "Converts between percentages, fractions and decimals by copying digits, e.g. 7% = 0.7 or 1/4 = 4%.",
       "remediate": "Y5-FR-11"
+    },
+    {
+      "code": "RAT.ADDITIVE",
+      "description": "Uses an additive relationship where the relationship is multiplicative, e.g. 3 makes 6 so 5 makes 8.",
+      "remediate": "Y6-RAT-01"
+    },
+    {
+      "code": "RAT.PERCENT.DIVIDE-BY-PERCENT",
+      "description": "Finds a percentage of an amount by dividing by the percentage, e.g. 15% of 360 = 360 ÷ 15.",
+      "remediate": "Y6-RAT-02"
+    },
+    {
+      "code": "RAT.SHARE.WRONG-TOTAL",
+      "description": "Shares in a ratio by dividing by one part or by the number of terms instead of the total number of parts.",
+      "remediate": "Y6-RAT-04"
+    },
+    {
+      "code": "RAT.ORDER",
+      "description": "Writes a ratio in the wrong order.",
+      "remediate": "Y7-RAT-02"
+    },
+    {
+      "code": "RAT.SIMPLIFY.SUBTRACT",
+      "description": "Simplifies a ratio by subtracting the same number from both parts, e.g. 6:9 = 4:7.",
+      "remediate": "Y7-RAT-02"
+    },
+    {
+      "code": "RAT.PART-WHOLE",
+      "description": "Mixes up part:part and part:whole, e.g. reads 2:3 as two thirds of the whole.",
+      "remediate": "Y7-RAT-03"
+    },
+    {
+      "code": "RAT.UNITS.DIRECTION",
+      "description": "Multiplies when it should divide when converting units, or the reverse, or uses the wrong factor.",
+      "remediate": "Y7-RAT-01"
+    },
+    {
+      "code": "RAT.UNITS.AREA-FACTOR",
+      "description": "Uses the length conversion factor for area or volume, e.g. 1 m² = 100 cm².",
+      "remediate": "Y7-RAT-01"
+    },
+    {
+      "code": "RAT.FRACTION.UNITS",
+      "description": "Writes one quantity as a fraction of another without first making the units the same, e.g. 30 cm of 2 m is 30/2.",
+      "remediate": "Y7-RAT-04"
+    },
+    {
+      "code": "RAT.PERCENT.MULTIPLIER",
+      "description": "Uses the percentage alone as the multiplier for a percentage change, e.g. × 0.15 for a 15% increase.",
+      "remediate": "Y7-RAT-05"
+    },
+    {
+      "code": "RAT.PERCENT.REVERSE",
+      "description": "Finds an original value by taking the percentage off the new value, e.g. after a 20% rise to 60, gives 60 − 12 = 48.",
+      "remediate": "Y8-RAT-03"
+    },
+    {
+      "code": "RAT.COMPOUND-UNIT.ARRANGEMENT",
+      "description": "Combines the quantities the wrong way in a compound measure, e.g. speed = distance × time.",
+      "remediate": "Y8-RAT-05"
+    },
+    {
+      "code": "RAT.INVERSE.AS-DIRECT",
+      "description": "Treats inverse proportion as direct, e.g. thinks more workers take more days.",
+      "remediate": "Y9-RAT-01"
+    },
+    {
+      "code": "RAT.SCALE.AREA-LINEAR",
+      "description": "Uses the length scale factor for areas or volumes of similar shapes instead of its square or cube.",
+      "remediate": "Y9-RAT-02"
+    },
+    {
+      "code": "RAT.COMPOUND.SIMPLE",
+      "description": "Treats repeated percentage change as simple, e.g. adds 3 × 5% for three years of 5% compound interest.",
+      "remediate": "Y9-RAT-03"
     },
     {
       "code": "GEO.ANGLES.STRAIGHT-LINE-360",
