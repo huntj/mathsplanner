@@ -31,6 +31,8 @@ import y1As02 from "./ks1/Y1-AS-02.ts";
 import y1As03 from "./ks1/Y1-AS-03.ts";
 import y1As04 from "./ks1/Y1-AS-04.ts";
 import y1Md01 from "./ks1/Y1-MD-01.ts";
+import y1Fr01 from "./ks1/Y1-FR-01.ts";
+import y1Fr02 from "./ks1/Y1-FR-02.ts";
 import y1Geo01 from "./ks1/Y1-GEO-01.ts";
 import y1Pos01 from "./ks1/Y1-POS-01.ts";
 import y2Npv01 from "./ks1/Y2-NPV-01.ts";
@@ -48,6 +50,8 @@ import y2Md01 from "./ks1/Y2-MD-01.ts";
 import y2Md02 from "./ks1/Y2-MD-02.ts";
 import y2Md03 from "./ks1/Y2-MD-03.ts";
 import y2Md04 from "./ks1/Y2-MD-04.ts";
+import y2Fr01 from "./ks1/Y2-FR-01.ts";
+import y2Fr02 from "./ks1/Y2-FR-02.ts";
 import y2Geo01 from "./ks1/Y2-GEO-01.ts";
 import y2Pos02 from "./ks1/Y2-POS-02.ts";
 import y3Npv01 from "./ks2/Y3-NPV-01.ts";
@@ -63,6 +67,13 @@ import y3As04 from "./ks2/Y3-AS-04.ts";
 import y3Md01 from "./ks2/Y3-MD-01.ts";
 import y3Md02 from "./ks2/Y3-MD-02.ts";
 import y3Md03 from "./ks2/Y3-MD-03.ts";
+import y3Fr01 from "./ks2/Y3-FR-01.ts";
+import y3Fr02 from "./ks2/Y3-FR-02.ts";
+import y3Fr03 from "./ks2/Y3-FR-03.ts";
+import y3Fr04 from "./ks2/Y3-FR-04.ts";
+import y3Fr05 from "./ks2/Y3-FR-05.ts";
+import y3Fr06 from "./ks2/Y3-FR-06.ts";
+import y3Fr07 from "./ks2/Y3-FR-07.ts";
 import y3Geo02 from "./ks2/Y3-GEO-02.ts";
 import y3Geo03 from "./ks2/Y3-GEO-03.ts";
 import y3Geo04 from "./ks2/Y3-GEO-04.ts";
@@ -83,6 +94,16 @@ import y4Md02 from "./ks2/Y4-MD-02.ts";
 import y4Md03 from "./ks2/Y4-MD-03.ts";
 import y4Md04 from "./ks2/Y4-MD-04.ts";
 import y4Md05 from "./ks2/Y4-MD-05.ts";
+import y4Fr01 from "./ks2/Y4-FR-01.ts";
+import y4Fr02 from "./ks2/Y4-FR-02.ts";
+import y4Fr03 from "./ks2/Y4-FR-03.ts";
+import y4Fr04 from "./ks2/Y4-FR-04.ts";
+import y4Fr05 from "./ks2/Y4-FR-05.ts";
+import y4Fr06 from "./ks2/Y4-FR-06.ts";
+import y4Fr07 from "./ks2/Y4-FR-07.ts";
+import y4Fr08 from "./ks2/Y4-FR-08.ts";
+import y4Fr09 from "./ks2/Y4-FR-09.ts";
+import y4Fr10 from "./ks2/Y4-FR-10.ts";
 import y4Geo01 from "./ks2/Y4-GEO-01.ts";
 import y4Geo02 from "./ks2/Y4-GEO-02.ts";
 import y4Geo03 from "./ks2/Y4-GEO-03.ts";
@@ -189,6 +210,8 @@ export const generators: Generator[] = [
   y1As03,
   y1As04,
   y1Md01,
+  y1Fr01,
+  y1Fr02,
   y1Geo01,
   y1Pos01,
   y2Npv01,
@@ -206,6 +229,8 @@ export const generators: Generator[] = [
   y2Md02,
   y2Md03,
   y2Md04,
+  y2Fr01,
+  y2Fr02,
   y2Geo01,
   y2Pos02,
   y3Npv01,
@@ -221,6 +246,13 @@ export const generators: Generator[] = [
   y3Md01,
   y3Md02,
   y3Md03,
+  y3Fr01,
+  y3Fr02,
+  y3Fr03,
+  y3Fr04,
+  y3Fr05,
+  y3Fr06,
+  y3Fr07,
   y3Geo02,
   y3Geo03,
   y3Geo04,
@@ -241,6 +273,16 @@ export const generators: Generator[] = [
   y4Md03,
   y4Md04,
   y4Md05,
+  y4Fr01,
+  y4Fr02,
+  y4Fr03,
+  y4Fr04,
+  y4Fr05,
+  y4Fr06,
+  y4Fr07,
+  y4Fr08,
+  y4Fr09,
+  y4Fr10,
   y4Geo01,
   y4Geo02,
   y4Geo03,

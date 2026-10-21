@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -145,7 +145,7 @@
     {
       "code": "NPV.DECIMAL.LONGER-BIGGER",
       "description": "Thinks a decimal with more digits is bigger, e.g. that 0.35 is greater than 0.4.",
-      "remediate": "Y7-NPV-02"
+      "remediate": "Y5-FR-09"
     },
     {
       "code": "NPV.NEGATIVE.SUBTRACT-NEGATIVE",
@@ -160,12 +160,12 @@
     {
       "code": "NPV.DECIMAL.POINT-PLACE",
       "description": "Puts the decimal point in the wrong place after multiplying or dividing decimals.",
-      "remediate": "Y7-NPV-03"
+      "remediate": "Y6-FR-08"
     },
     {
       "code": "FR.ADD.TOPS-AND-BOTTOMS",
       "description": "Adds (or subtracts) the numerators and the denominators separately, e.g. 1/2 + 1/3 = 2/5.",
-      "remediate": "Y6-FR-03"
+      "remediate": "Y3-FR-05"
     },
     {
       "code": "NPV.FACTOR.LCM-PRODUCT",
@@ -376,6 +376,81 @@
       "code": "MD.SQUARE.DOUBLES",
       "description": "Multiplies by 2 to square a number, or by 3 to cube it, e.g. 6² = 12.",
       "remediate": "Y5-MD-08"
+    },
+    {
+      "code": "FR.PARTS.UNEQUAL",
+      "description": "Names parts as halves, thirds or quarters when the parts are not equal.",
+      "remediate": "Y1-FR-01"
+    },
+    {
+      "code": "FR.NAME.SHADED-UNSHADED",
+      "description": "Writes shaded parts over unshaded parts instead of over all the parts, e.g. 1 of 4 shaded as 1/3.",
+      "remediate": "Y2-FR-01"
+    },
+    {
+      "code": "FR.UNIT.BIGGER-DENOMINATOR",
+      "description": "Thinks a bigger denominator means a bigger fraction, e.g. 1/8 > 1/3.",
+      "remediate": "Y3-FR-06"
+    },
+    {
+      "code": "FR.OF-AMOUNT.UNIT-ONLY",
+      "description": "Finds one part of an amount but forgets to multiply by the numerator, e.g. 3/4 of 20 = 5.",
+      "remediate": "Y3-FR-02"
+    },
+    {
+      "code": "FR.OF-AMOUNT.DIVIDES-BY-NUMERATOR",
+      "description": "Divides an amount by the numerator instead of the denominator, e.g. 2/5 of 30 = 15.",
+      "remediate": "Y3-FR-02"
+    },
+    {
+      "code": "FR.EQUIV.ADD-SAME",
+      "description": "Makes an equivalent fraction by adding the same number to the numerator and denominator, e.g. 2/3 = 4/5.",
+      "remediate": "Y3-FR-04"
+    },
+    {
+      "code": "FR.COUNT.POINT-TEN",
+      "description": "Counts on past 0.9 as 0.10, or past 9/10 as 10/10 written 0.10, instead of reaching 1.",
+      "remediate": "Y3-FR-01"
+    },
+    {
+      "code": "FR.DECIMAL.PLACE",
+      "description": "Puts the digits in the wrong decimal place, e.g. 7/100 written as 0.7.",
+      "remediate": "Y4-FR-05"
+    },
+    {
+      "code": "FR.DECIMAL.DIGITS",
+      "description": "Writes a fraction as a decimal using its digits, e.g. 1/4 = 0.4 or 1/5 = 0.15.",
+      "remediate": "Y4-FR-06"
+    },
+    {
+      "code": "FR.COMPARE.NUMERATOR-ONLY",
+      "description": "Compares fractions with different denominators by their numerators only, e.g. 3/8 > 2/3.",
+      "remediate": "Y5-FR-01"
+    },
+    {
+      "code": "FR.MIXED.CONVERT",
+      "description": "Converts between mixed numbers and improper fractions wrongly, e.g. 2 3/4 = 9/4.",
+      "remediate": "Y5-FR-03"
+    },
+    {
+      "code": "FR.MULTIPLY.BOTH",
+      "description": "Multiplies both the numerator and the denominator by a whole number, e.g. 3 × 2/5 = 6/15.",
+      "remediate": "Y5-FR-05"
+    },
+    {
+      "code": "FR.MULTIPLY.ALWAYS-BIGGER",
+      "description": "Thinks multiplying always makes a number bigger, so a product of proper fractions must be bigger than both.",
+      "remediate": "Y6-FR-04"
+    },
+    {
+      "code": "FR.DIVIDE.MULTIPLIES",
+      "description": "Multiplies the numerator instead of dividing when dividing a fraction by a whole number, e.g. 1/3 ÷ 2 = 2/3.",
+      "remediate": "Y6-FR-05"
+    },
+    {
+      "code": "FR.PERCENT.DIGITS",
+      "description": "Converts between percentages, fractions and decimals by copying digits, e.g. 7% = 0.7 or 1/4 = 4%.",
+      "remediate": "Y5-FR-11"
     },
     {
       "code": "GEO.ANGLES.STRAIGHT-LINE-360",
