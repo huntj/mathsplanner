@@ -1,0 +1,999 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GH-A19",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x = 2,\\ y = -10 \\text{ and } x = 4,\\ y = -8",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x = 2,\\ y = -8 \\text{ and } x = 4,\\ y = -10",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x = -2,\\ y = -4 \\text{ and } x = -4,\\ y = -2",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x = 2 \\text{ and } x = 4",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "ALG.SIMULTANEOUS.PAIR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Substitute each x into the linear equation to find its own y.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "ALG.QUADRATIC.ROOT-SIGN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Check the signs when solving the quadratic from its brackets.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "D",
+              "type": "choice",
+            },
+            "code": "ALG.SIMULTANEOUS.PAIR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Each solution needs its y-value too.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x^2 - 6x + 8 = 0",
+        "say": [
+          {
+            "t": "text",
+            "v": "Set the two expressions for y equal: ",
+          },
+        ],
+      },
+      {
+        "math": "(x - 2)(x - 4) = 0",
+        "say": [
+          {
+            "t": "text",
+            "v": "Factorise: ",
+          },
+        ],
+      },
+      {
+        "math": "x = 2,\\ y = -8 \\text{ and } x = 4,\\ y = -10",
+        "say": [
+          {
+            "t": "text",
+            "v": "Substitute each x into the line: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Solve the simultaneous equations ",
+      },
+      {
+        "t": "math",
+        "v": "y = x^2 - 7x + 2",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "y = -x - 6",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GH-A19",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "D",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x = -2 \\text{ and } x = 1",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x = 2,\\ y = 4 \\text{ and } x = -1,\\ y = -2",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x = -2,\\ y = 2 \\text{ and } x = 1,\\ y = -4",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x = -2,\\ y = -4 \\text{ and } x = 1,\\ y = 2",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "ALG.SIMULTANEOUS.PAIR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Each solution needs its y-value too.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "ALG.QUADRATIC.ROOT-SIGN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Check the signs when solving the quadratic from its brackets.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "ALG.SIMULTANEOUS.PAIR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Substitute each x into the linear equation to find its own y.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x^2 + x - 2 = 0",
+        "say": [
+          {
+            "t": "text",
+            "v": "Set the two expressions for y equal: ",
+          },
+        ],
+      },
+      {
+        "math": "(x + 2)(x - 1) = 0",
+        "say": [
+          {
+            "t": "text",
+            "v": "Factorise: ",
+          },
+        ],
+      },
+      {
+        "math": "x = -2,\\ y = -4 \\text{ and } x = 1,\\ y = 2",
+        "say": [
+          {
+            "t": "text",
+            "v": "Substitute each x into the line: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Solve the simultaneous equations ",
+      },
+      {
+        "t": "math",
+        "v": "y = x^2 + 3x - 2",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "y = 2x",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GH-A19",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "D",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x = -4,\\ y = 18 \\text{ and } x = -5,\\ y = 21",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x = 4 \\text{ and } x = 5",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x = 4,\\ y = -9 \\text{ and } x = 5,\\ y = -6",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x = 4,\\ y = -6 \\text{ and } x = 5,\\ y = -9",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "ALG.QUADRATIC.ROOT-SIGN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Check the signs when solving the quadratic from its brackets.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "ALG.SIMULTANEOUS.PAIR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Each solution needs its y-value too.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "ALG.SIMULTANEOUS.PAIR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Substitute each x into the linear equation to find its own y.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x^2 - 9x + 20 = 0",
+        "say": [
+          {
+            "t": "text",
+            "v": "Set the two expressions for y equal: ",
+          },
+        ],
+      },
+      {
+        "math": "(x - 4)(x - 5) = 0",
+        "say": [
+          {
+            "t": "text",
+            "v": "Factorise: ",
+          },
+        ],
+      },
+      {
+        "math": "x = 4,\\ y = -6 \\text{ and } x = 5,\\ y = -9",
+        "say": [
+          {
+            "t": "text",
+            "v": "Substitute each x into the line: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Solve the simultaneous equations ",
+      },
+      {
+        "t": "math",
+        "v": "y = x^2 - 12x + 26",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "y = -3x + 6",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GH-A19",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "x^2 - 6x + 8 = 0",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "x^2 - 8x - 4 = 0",
+              "type": "exact",
+            },
+            "code": "ALG.EXPAND.NEGATIVE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Subtract the whole of the line's expression from both sides.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Show that the x-coordinates satisfy a quadratic equation, written in the form x² + bx + c = 0.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x^2 - 7x + 2 = -x - 6 \\Rightarrow x^2 - 6x + 8 = 0",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The line ",
+      },
+      {
+        "t": "math",
+        "v": "y = -x - 6",
+      },
+      {
+        "t": "text",
+        "v": " meets the curve ",
+      },
+      {
+        "t": "math",
+        "v": "y = x^2 - 7x + 2",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GH-A19",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "x^2 + x - 2 = 0",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "x^2 + 5x - 2 = 0",
+              "type": "exact",
+            },
+            "code": "ALG.EXPAND.NEGATIVE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Subtract the whole of the line's expression from both sides.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Write it in the form x² + bx + c = 0.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x^2 + 3x - 2 = 2x \\Rightarrow x^2 + x - 2 = 0",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Substituting ",
+      },
+      {
+        "t": "math",
+        "v": "y = 2x",
+      },
+      {
+        "t": "text",
+        "v": " into ",
+      },
+      {
+        "t": "math",
+        "v": "y = x^2 + 3x - 2",
+      },
+      {
+        "t": "text",
+        "v": " gives a quadratic equation.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GH-A19",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "x^2 - 9x + 20 = 0",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "x^2 - 15x + 32 = 0",
+              "type": "exact",
+            },
+            "code": "ALG.EXPAND.NEGATIVE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Subtract the whole of the line's expression from both sides.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Show that the x-coordinates satisfy a quadratic equation, written in the form x² + bx + c = 0.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x^2 - 12x + 26 = -3x + 6 \\Rightarrow x^2 - 9x + 20 = 0",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The line ",
+      },
+      {
+        "t": "math",
+        "v": "y = -3x + 6",
+      },
+      {
+        "t": "text",
+        "v": " meets the curve ",
+      },
+      {
+        "t": "math",
+        "v": "y = x^2 - 12x + 26",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GH-A19",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Every quadratic equation has two solutions.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. A parabola has two sides, so a line must cross both.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. A line can miss the curve, touch it once (a tangent), or cross it twice: the quadratic can have 0, 1 or 2 solutions.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The number of meeting points is the number of solutions of the quadratic you get by substituting.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ava says a straight line always meets a parabola at exactly two points.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GH-A19",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. A parabola has two sides, so a line must cross both.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Every quadratic equation has two solutions.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. A line can miss the curve, touch it once (a tangent), or cross it twice: the quadratic can have 0, 1 or 2 solutions.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The number of meeting points is the number of solutions of the quadratic you get by substituting.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ava says a straight line always meets a parabola at exactly two points.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GH-A19",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. A parabola has two sides, so a line must cross both.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Every quadratic equation has two solutions.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. A line can miss the curve, touch it once (a tangent), or cross it twice: the quadratic can have 0, 1 or 2 solutions.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The number of meeting points is the number of solutions of the quadratic you get by substituting.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ava says a straight line always meets a parabola at exactly two points.",
+      },
+    ],
+  },
+]
+`;

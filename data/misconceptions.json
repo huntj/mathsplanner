@@ -608,6 +608,16 @@
       "remediate": "GF-R8"
     },
     {
+      "code": "RAT.PROPORTION.POWER",
+      "description": "Forgets the power or root in a proportion such as y ∝ x² or y ∝ √x, scaling y in step with x.",
+      "remediate": "GH-R13"
+    },
+    {
+      "code": "RAT.RATE.AVERAGE-INSTANT",
+      "description": "Confuses an average rate of change (the gradient of a chord) with the rate at an instant (the gradient of a tangent).",
+      "remediate": "GH-R15"
+    },
+    {
       "code": "ALG.NOTATION.JUXTAPOSE",
       "description": "Reads 3y or ab as addition or as digits side by side, e.g. if y = 4 then 3y = 34 or 7.",
       "remediate": "Y7-ALG-01"
@@ -1451,6 +1461,41 @@
       "code": "GEO.VECTOR.COMPONENTS",
       "description": "Writes a column vector with its components swapped or with the wrong signs, or subtracts vectors the wrong way round.",
       "remediate": "GF-G24"
+    },
+    {
+      "code": "POS.ENLARGE.NEGATIVE",
+      "description": "Draws an enlargement with a negative scale factor on the same side of the centre, ignoring the sign.",
+      "remediate": "GH-G7"
+    },
+    {
+      "code": "POS.COMBINE",
+      "description": "Treats a combination of transformations as one of its parts, or applies the transformations in the wrong order.",
+      "remediate": "GH-G8"
+    },
+    {
+      "code": "GEO.3D.WRONG-TRIANGLE",
+      "description": "Uses an edge instead of a face diagonal, or the wrong right-angled triangle, in a 3D Pythagoras or trigonometry problem.",
+      "remediate": "GH-G20"
+    },
+    {
+      "code": "GEO.COSINE-RULE.ORDER",
+      "description": "Misapplies the cosine rule, e.g. works out (b² + c² − 2bc) × cos A, or forgets the square root.",
+      "remediate": "GH-G22"
+    },
+    {
+      "code": "GEO.SINE-RULE.PAIR",
+      "description": "Pairs a side with an angle that is not opposite it in the sine rule.",
+      "remediate": "GH-G22"
+    },
+    {
+      "code": "GEO.AREA-SINE.INCLUDED",
+      "description": "Uses an angle that is not between the two given sides in Area = ½ab sin C.",
+      "remediate": "GH-G23"
+    },
+    {
+      "code": "GEO.VECTOR.DIRECTION",
+      "description": "Gets the sign of a vector wrong when travelling against its direction, e.g. writes AB = a − b instead of b − a.",
+      "remediate": "GH-G25"
     }
   ]
 }
