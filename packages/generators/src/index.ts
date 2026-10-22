@@ -527,6 +527,11 @@ import alP87 from "./ks5/AL-P8.7.ts";
 import alP88 from "./ks5/AL-P8.8.ts";
 import alP89 from "./ks5/AL-P8.9.ts";
 import alP810 from "./ks5/AL-P8.10.ts";
+import alP91 from "./ks5/AL-P9.1.ts";
+import alP92 from "./ks5/AL-P9.2.ts";
+import alP93 from "./ks5/AL-P9.3.ts";
+import alP94 from "./ks5/AL-P9.4.ts";
+import alP95 from "./ks5/AL-P9.5.ts";
 
 /** Every generator, in the order of data/statements.json. */
 export const generators: Generator[] = [
@@ -1056,6 +1061,11 @@ export const generators: Generator[] = [
   alP88,
   alP89,
   alP810,
+  alP91,
+  alP92,
+  alP93,
+  alP94,
+  alP95,
 ] as Generator[];
 
 /** Unreviewed placeholders that exercise the gallery; real generators replace them. */

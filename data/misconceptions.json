@@ -1033,6 +1033,71 @@
       "remediate": "AL-P8.10"
     },
     {
+      "code": "MECH.UNITS",
+      "description": "Converts between units wrongly, e.g. multiplies by 3.6 to change km/h into m/s, or confuses kilograms and newtons.",
+      "remediate": "AL-M6.1"
+    },
+    {
+      "code": "MECH.DISTANCE-DISPLACEMENT",
+      "description": "Confuses distance with displacement, or speed with velocity, e.g. ignores direction on a return journey.",
+      "remediate": "AL-M7.1"
+    },
+    {
+      "code": "MECH.SUVAT.CHOICE",
+      "description": "Chooses or uses a constant-acceleration formula wrongly, e.g. leaves out u, or forgets the factor ½ or 2.",
+      "remediate": "AL-M7.3a"
+    },
+    {
+      "code": "MECH.SUVAT.VECTOR",
+      "description": "Adds magnitudes instead of vectors in two-dimensional motion, or mixes up the components.",
+      "remediate": "AL-M7.3b"
+    },
+    {
+      "code": "MECH.CALCULUS",
+      "description": "Differentiates where integration is needed (or the reverse) in kinematics, or forgets the initial conditions.",
+      "remediate": "AL-M7.4a"
+    },
+    {
+      "code": "MECH.PROJECTILE",
+      "description": "Applies gravity to the horizontal motion of a projectile, or uses the full speed instead of the vertical component.",
+      "remediate": "AL-M7.5"
+    },
+    {
+      "code": "MECH.EQUILIBRIUM",
+      "description": "Thinks a body moving at constant velocity needs a resultant force, or that a body at rest has no forces on it.",
+      "remediate": "AL-M8.1"
+    },
+    {
+      "code": "MECH.F-MA",
+      "description": "Uses one force instead of the resultant force in F = ma.",
+      "remediate": "AL-M8.2"
+    },
+    {
+      "code": "MECH.WEIGHT-MASS",
+      "description": "Confuses mass with weight, e.g. uses m instead of mg, or thinks heavier objects fall faster without air resistance.",
+      "remediate": "AL-M8.3"
+    },
+    {
+      "code": "MECH.CONNECTED",
+      "description": "Treats connected particles wrongly, e.g. uses only one mass for the system, or takes the tension as the weight of the hanging mass.",
+      "remediate": "AL-M8.4"
+    },
+    {
+      "code": "MECH.RESOLVE",
+      "description": "Resolves a force on a slope with sin and cos the wrong way round, or takes the normal reaction as the full weight.",
+      "remediate": "AL-M8.5"
+    },
+    {
+      "code": "MECH.FRICTION",
+      "description": "Uses F = μR when friction is not limiting, or uses μ × mass instead of μ × normal reaction.",
+      "remediate": "AL-M8.6"
+    },
+    {
+      "code": "MECH.MOMENTS",
+      "description": "Takes moments about the wrong point, uses the wrong distance, or ignores where the forces act.",
+      "remediate": "AL-M9.1"
+    },
+    {
       "code": "STA.KEY-IGNORED",
       "description": "Counts the symbols in a pictogram without using the key, e.g. reads 3 symbols as 3 when each stands for 2.",
       "remediate": "Y2-STA-01"
