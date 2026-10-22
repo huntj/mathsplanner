@@ -1,0 +1,789 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AL-P7.3 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-P7.3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": -13,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 35,
+            },
+            "code": "CALC.POWER-RULE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is the y-coordinate. Differentiate, then substitute x.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{dy}{dx} = 2x - 5 = -13 \\text{ at } x = -4",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find the gradient of the curve ",
+      },
+      {
+        "t": "math",
+        "v": "y = x^2 - 5x - 1",
+      },
+      {
+        "t": "text",
+        "v": " at the point where x = -4.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-P7.3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 3,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": -2,
+            },
+            "code": "CALC.POWER-RULE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is the y-coordinate. Differentiate, then substitute x.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{dy}{dx} = 2x + 5 = 3 \\text{ at } x = -1",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find the gradient of the curve ",
+      },
+      {
+        "t": "math",
+        "v": "y = x^2 + 5x + 2",
+      },
+      {
+        "t": "text",
+        "v": " at the point where x = -1.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-P7.3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": -8,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 15,
+            },
+            "code": "CALC.POWER-RULE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is the y-coordinate. Differentiate, then substitute x.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{dy}{dx} = 2x - 2 = -8 \\text{ at } x = -3",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find the gradient of the curve ",
+      },
+      {
+        "t": "math",
+        "v": "y = x^2 - 2x",
+      },
+      {
+        "t": "text",
+        "v": " at the point where x = -3.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-P7.3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "x - 13y + 459 = 0",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "13x + y + 17 = 0",
+              "type": "exact",
+            },
+            "code": "ALG.PERPENDICULAR.GRADIENT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is the tangent. The normal has gradient −1/-13.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Give it in the form ax + by + c = 0, where a, b and c are integers.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x - 13y + 459 = 0",
+        "say": [
+          {
+            "t": "text",
+            "v": "At x = -4: y = 35, gradient -13, so the normal's gradient is −1/-13.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find the equation of the normal to ",
+      },
+      {
+        "t": "math",
+        "v": "y = x^2 - 5x - 1",
+      },
+      {
+        "t": "text",
+        "v": " at the point where x = -4.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-P7.3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "x + 3y + 7 = 0",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "3x - y + 1 = 0",
+              "type": "exact",
+            },
+            "code": "ALG.PERPENDICULAR.GRADIENT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is the tangent. The normal has gradient −1/3.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Give it in the form ax + by + c = 0, where a, b and c are integers.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x + 3y + 7 = 0",
+        "say": [
+          {
+            "t": "text",
+            "v": "At x = -1: y = -2, gradient 3, so the normal's gradient is −1/3.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find the equation of the normal to ",
+      },
+      {
+        "t": "math",
+        "v": "y = x^2 + 5x + 2",
+      },
+      {
+        "t": "text",
+        "v": " at the point where x = -1.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-P7.3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "x - 8y + 123 = 0",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "8x + y + 9 = 0",
+              "type": "exact",
+            },
+            "code": "ALG.PERPENDICULAR.GRADIENT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is the tangent. The normal has gradient −1/-8.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Give it in the form ax + by + c = 0, where a, b and c are integers.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "x - 8y + 123 = 0",
+        "say": [
+          {
+            "t": "text",
+            "v": "At x = -3: y = 15, gradient -8, so the normal's gradient is −1/-8.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find the equation of the normal to ",
+      },
+      {
+        "t": "math",
+        "v": "y = x^2 - 2x",
+      },
+      {
+        "t": "text",
+        "v": " at the point where x = -3.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-P7.3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The curve is flat where it meets the axis.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Stationary points are where dy/dx = 0: here 2x − 5 = 0, so x = 2.5. The x-axis crossings are where y = 0.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. y = 0 and dy/dx = 0 mean the same thing.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CALC.STATIONARY",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "CALC.STATIONARY",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Set dy/dx = 0 to find stationary points; set y = 0 to find roots.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Eva says the stationary points of ",
+      },
+      {
+        "t": "math",
+        "v": "y = x^2 - 5x - 1",
+      },
+      {
+        "t": "text",
+        "v": " are where the curve crosses the x-axis.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-P7.3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The curve is flat where it meets the axis.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Stationary points are where dy/dx = 0: here 2x + 5 = 0, so x = -2.5. The x-axis crossings are where y = 0.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. y = 0 and dy/dx = 0 mean the same thing.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CALC.STATIONARY",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "CALC.STATIONARY",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Set dy/dx = 0 to find stationary points; set y = 0 to find roots.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Eva says the stationary points of ",
+      },
+      {
+        "t": "math",
+        "v": "y = x^2 + 5x + 2",
+      },
+      {
+        "t": "text",
+        "v": " are where the curve crosses the x-axis.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-P7.3",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Stationary points are where dy/dx = 0: here 2x − 2 = 0, so x = 1. The x-axis crossings are where y = 0.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The curve is flat where it meets the axis.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. y = 0 and dy/dx = 0 mean the same thing.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "CALC.STATIONARY",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "CALC.STATIONARY",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Set dy/dx = 0 to find stationary points; set y = 0 to find roots.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Eva says the stationary points of ",
+      },
+      {
+        "t": "math",
+        "v": "y = x^2 - 2x",
+      },
+      {
+        "t": "text",
+        "v": " are where the curve crosses the x-axis.",
+      },
+    ],
+  },
+]
+`;
