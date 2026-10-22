@@ -1,0 +1,882 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FM-D2-05 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-D2-05",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Row 1",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Row 2",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Row 3",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "DEC.GAMES",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That row has the biggest pay-off, but the play-safe strategy maximises the worst case: the largest row minimum.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "DEC.GAMES",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Find each row's minimum, then choose the largest of these.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which row is A's play-safe strategy?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The row minima are -3, -2, -4. The largest is in Row 2.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The table shows the pay-offs to player A, who chooses a row, in a zero-sum game.",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{array}{|l|c|c|c|}\\hline \\text{} & \\text{Col 1} & \\text{Col 2} & \\text{Col 3} \\\\ \\hline \\text{Row 1} & 4 & 3 & -3 \\\\ \\hline \\text{Row 2} & -1 & -2 & 0 \\\\ \\hline \\text{Row 3} & -4 & 2 & -3 \\\\ \\hline\\end{array}",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-D2-05",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Row 2",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Row 1",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Row 3",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "DEC.GAMES",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Find each row's minimum, then choose the largest of these.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "DEC.GAMES",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That row has the biggest pay-off, but the play-safe strategy maximises the worst case: the largest row minimum.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which row is A's play-safe strategy?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The row minima are -5, -5, -3. The largest is in Row 3.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The table shows the pay-offs to player A, who chooses a row, in a zero-sum game.",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{array}{|l|c|c|c|}\\hline \\text{} & \\text{Col 1} & \\text{Col 2} & \\text{Col 3} \\\\ \\hline \\text{Row 1} & -5 & 4 & -3 \\\\ \\hline \\text{Row 2} & 2 & -5 & -3 \\\\ \\hline \\text{Row 3} & -3 & -2 & 4 \\\\ \\hline\\end{array}",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-D2-05",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Row 2",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Row 3",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Row 1",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "DEC.GAMES",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Find each row's minimum, then choose the largest of these.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "DEC.GAMES",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That row has the biggest pay-off, but the play-safe strategy maximises the worst case: the largest row minimum.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which row is A's play-safe strategy?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The row minima are -3, 0, -3. The largest is in Row 2.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The table shows the pay-offs to player A, who chooses a row, in a zero-sum game.",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{array}{|l|c|c|c|}\\hline \\text{} & \\text{Col 1} & \\text{Col 2} & \\text{Col 3} \\\\ \\hline \\text{Row 1} & 6 & 2 & -3 \\\\ \\hline \\text{Row 2} & 1 & 0 & 4 \\\\ \\hline \\text{Row 3} & -1 & -3 & -2 \\\\ \\hline\\end{array}",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-D2-05",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "\\frac{4}{7}",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{3}{7}",
+              "type": "exact",
+            },
+            "code": "DEC.GAMES",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is 1 − p. Set ap + c(1 − p) = bp + d(1 − p) and solve for p.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "A plays row 1 with probability p to make the expected pay-off the same whatever B does. Find p.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "4p + 5(1 - p) = 7p + 1(1 - p) \\Rightarrow p = \\frac{4}{7}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "In a zero-sum game, player A's pay-offs are given by ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 4 & 7 \\\\ 5 & 1 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ", where A chooses a row. The game has no stable solution.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-D2-05",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "\\frac{2}{3}",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{1}{3}",
+              "type": "exact",
+            },
+            "code": "DEC.GAMES",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is 1 − p. Set ap + c(1 − p) = bp + d(1 − p) and solve for p.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "A plays row 1 with probability p to make the expected pay-off the same whatever B does. Find p.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "-4p + 3(1 - p) = -1p + -3(1 - p) \\Rightarrow p = \\frac{2}{3}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "In a zero-sum game, player A's pay-offs are given by ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} -4 & -1 \\\\ 3 & -3 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ", where A chooses a row. The game has no stable solution.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-D2-05",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "\\frac{3}{8}",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{5}{8}",
+              "type": "exact",
+            },
+            "code": "DEC.GAMES",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is 1 − p. Set ap + c(1 − p) = bp + d(1 − p) and solve for p.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "A plays row 1 with probability p to make the expected pay-off the same whatever B does. Find p.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "8p + -1(1 - p) = -2p + 5(1 - p) \\Rightarrow p = \\frac{3}{8}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "In a zero-sum game, player A's pay-offs are given by ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 8 & -2 \\\\ -1 & 5 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ", where A chooses a row. The game has no stable solution.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-D2-05",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Zero-sum means nobody wins on average.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. A fair game is the same as a zero-sum game.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Zero-sum means that whatever one player wins, the other loses: the pay-offs add to zero in every outcome. The value of the game can still favour one player.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "DEC.GAMES",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "DEC.GAMES",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The value of the game is A's expected pay-off with optimal play.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Vic says that in a zero-sum game each player's expected pay-off is zero.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-D2-05",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Zero-sum means nobody wins on average.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. A fair game is the same as a zero-sum game.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Zero-sum means that whatever one player wins, the other loses: the pay-offs add to zero in every outcome. The value of the game can still favour one player.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "DEC.GAMES",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "DEC.GAMES",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The value of the game is A's expected pay-off with optimal play.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Vic says that in a zero-sum game each player's expected pay-off is zero.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-D2-05",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Zero-sum means that whatever one player wins, the other loses: the pay-offs add to zero in every outcome. The value of the game can still favour one player.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. A fair game is the same as a zero-sum game.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Zero-sum means nobody wins on average.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "DEC.GAMES",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "DEC.GAMES",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The value of the game is A's expected pay-off with optimal play.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Vic says that in a zero-sum game each player's expected pay-off is zero.",
+      },
+    ],
+  },
+]
+`;

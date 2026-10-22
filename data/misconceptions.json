@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.30.0",
+  "version": "0.31.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -1361,6 +1361,76 @@
       "code": "MECH.VARIABLE-FORCE",
       "description": "Treats a variable force as constant, or uses a = dv/dt where a = v dv/dx is needed for a force depending on displacement.",
       "remediate": "FM-FM2-04"
+    },
+    {
+      "code": "DEC.SORT",
+      "description": "Carries out a whole sort when asked for one pass, or misses a swap during a pass of a bubble sort.",
+      "remediate": "FM-D1-01"
+    },
+    {
+      "code": "DEC.BIN-PACKING",
+      "description": "Assumes the lower bound for the number of bins is always achieved, or that first-fit decreasing is always optimal.",
+      "remediate": "FM-D1-01"
+    },
+    {
+      "code": "DEC.MST",
+      "description": "Adds an edge that makes a cycle in Kruskal's algorithm, or only joins from the latest vertex in Prim's algorithm.",
+      "remediate": "FM-D1-02"
+    },
+    {
+      "code": "DEC.SHORTEST-PATH",
+      "description": "Follows the shortest edge from each vertex instead of using Dijkstra's algorithm, or replaces a Floyd entry without comparing.",
+      "remediate": "FM-D1-03"
+    },
+    {
+      "code": "DEC.ROUTE-INSPECTION",
+      "description": "Pairs the odd vertices without checking every pairing for the least extra distance.",
+      "remediate": "FM-D1-04"
+    },
+    {
+      "code": "DEC.TSP",
+      "description": "Adds only one edge from the deleted vertex to a lower bound, or treats the nearest neighbour tour as optimal.",
+      "remediate": "FM-D1-04"
+    },
+    {
+      "code": "DEC.CRITICAL-PATH",
+      "description": "Forgets to subtract the duration when finding a float, or adds every duration to get the project time.",
+      "remediate": "FM-D1-05"
+    },
+    {
+      "code": "DEC.LP",
+      "description": "Writes a constraint the wrong way round or with the coefficients swapped, checks only some vertices, or picks the wrong pivot column in the simplex method.",
+      "remediate": "FM-D1-06"
+    },
+    {
+      "code": "DEC.TRANSPORT",
+      "description": "Ignores earlier allocations in the north-west corner method, or costs a solution without the quantities.",
+      "remediate": "FM-D2-01"
+    },
+    {
+      "code": "DEC.HUNGARIAN",
+      "description": "Allocates greedily instead of using the Hungarian algorithm, or reduces columns before rows.",
+      "remediate": "FM-D2-02"
+    },
+    {
+      "code": "DEC.FLOW",
+      "description": "Counts arcs from the sink side to the source side in the capacity of a cut, or takes the largest cut as the maximum flow.",
+      "remediate": "FM-D2-03"
+    },
+    {
+      "code": "DEC.DYNAMIC",
+      "description": "Chooses the best option at each stage from the start (greedily) instead of working back from the end, or adds where the problem is maximin.",
+      "remediate": "FM-D2-04"
+    },
+    {
+      "code": "DEC.GAMES",
+      "description": "Chooses the row with the biggest pay-off instead of the biggest row minimum for a play-safe strategy, or mixes up p and 1 − p.",
+      "remediate": "FM-D2-05"
+    },
+    {
+      "code": "DEC.DECISION-TREE",
+      "description": "Averages pay-offs without weighting by their probabilities, or always chooses the option with the highest possible pay-off.",
+      "remediate": "FM-D2-06"
     },
     {
       "code": "STA.KEY-IGNORED",
