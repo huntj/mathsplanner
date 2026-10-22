@@ -25,21 +25,23 @@ type Expr = NonNullable<ReturnType<Engine["parse"]>>;
 
 /** Tidies LaTeX from MathLive or a keyboard so the form checks see one spelling. */
 export function normaliseLatex(latex: string): string {
-  return latex
-    .replace(/\\left|\\right/g, "")
-    .replace(/\\[dt]frac/g, "\\frac")
-    .replace(/\\cdot/g, "\\times")
-    .replace(/\\,|\\;|\\!|\\ |~/g, "")
-    // Keep a command apart from a following letter: \times e must not become \timese.
-    .replace(/(\\[a-zA-Z]+)\s+(?=[a-zA-Z])/g, "$1{}")
-    .replace(/\s+/g, "")
-    // 9e-24 means 9e − 24 here, not scientific notation: e is Euler's number.
-    .replace(/(\d)e(?![a-zA-Z])/g, "$1\\times e")
-    .replace(/−/g, "-")
-    .replace(/\{,\}/g, ".")
-    .replace(/\^(\d)/g, "^{$1}")
-    .replace(/\\sqrt(\d)/g, "\\sqrt{$1}")
-    .replace(/\\frac(\d)(\d)/g, "\\frac{$1}{$2}");
+  return (
+    latex
+      .replace(/\\left|\\right/g, "")
+      .replace(/\\[dt]frac/g, "\\frac")
+      .replace(/\\cdot/g, "\\times")
+      .replace(/\\,|\\;|\\!|\\ |~/g, "")
+      // Keep a command apart from a following letter: \times e must not become \timese.
+      .replace(/(\\[a-zA-Z]+)\s+(?=[a-zA-Z])/g, "$1{}")
+      .replace(/\s+/g, "")
+      // 9e-24 means 9e − 24 here, not scientific notation: e is Euler's number.
+      .replace(/(\d)e(?![a-zA-Z])/g, "$1\\times e")
+      .replace(/−/g, "-")
+      .replace(/\{,\}/g, ".")
+      .replace(/\^(\d)/g, "^{$1}")
+      .replace(/\\sqrt(\d)/g, "\\sqrt{$1}")
+      .replace(/\\frac(\d)(\d)/g, "\\frac{$1}{$2}")
+  );
 }
 
 const SAMPLE = [0.37, 1.91, -2.3, 3.7, 0.83];
