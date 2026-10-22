@@ -16,6 +16,13 @@ describe("label text", () => {
     expect(latexToPlain("\\theta")).toBe("θ");
     expect(latexToPlain("\\angle ABC")).toBe("∠ABC");
     expect(latexToPlain("25\\%")).toBe("25%");
+    expect(latexToPlain("\\mathbf{a}")).toBe("a");
+  });
+
+  it("draws \\mathbf letters bold and upright, for vectors", () => {
+    const svg = layoutLabel("\\mathbf{a}").svg(0, 0);
+    expect(svg).toContain('font-weight="bold"');
+    expect(svg).not.toContain('font-style="italic"');
   });
 
   it("measures with KaTeX metrics: wider text is wider, fractions are taller", () => {

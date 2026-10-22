@@ -424,6 +424,8 @@ import gfG4 from "./ks4/GF-G4.ts";
 import gfG5 from "./ks4/GF-G5.ts";
 import gfG6 from "./ks4/GF-G6.ts";
 import gfG7 from "./ks4/GF-G7.ts";
+import ghG7 from "./ks4/GH-G7.ts";
+import ghG8 from "./ks4/GH-G8.ts";
 import gfG9 from "./ks4/GF-G9.ts";
 import ghG10 from "./ks4/GH-G10.ts";
 import gfG11 from "./ks4/GF-G11.ts";
@@ -435,10 +437,15 @@ import gfG16 from "./ks4/GF-G16.ts";
 import gfG17 from "./ks4/GF-G17.ts";
 import gfG18 from "./ks4/GF-G18.ts";
 import gfG19 from "./ks4/GF-G19.ts";
+import ghG19 from "./ks4/GH-G19.ts";
 import gfG20 from "./ks4/GF-G20.ts";
+import ghG20 from "./ks4/GH-G20.ts";
 import gfG21 from "./ks4/GF-G21.ts";
+import ghG22 from "./ks4/GH-G22.ts";
+import ghG23 from "./ks4/GH-G23.ts";
 import gfG24 from "./ks4/GF-G24.ts";
 import gfG25 from "./ks4/GF-G25.ts";
+import ghG25 from "./ks4/GH-G25.ts";
 import gfP1 from "./ks4/GF-P1.ts";
 import gfP2 from "./ks4/GF-P2.ts";
 import gfP3 from "./ks4/GF-P3.ts";
@@ -879,6 +886,8 @@ export const generators: Generator[] = [
   gfG5,
   gfG6,
   gfG7,
+  ghG7,
+  ghG8,
   gfG9,
   ghG10,
   gfG11,
@@ -890,10 +899,15 @@ export const generators: Generator[] = [
   gfG17,
   gfG18,
   gfG19,
+  ghG19,
   gfG20,
+  ghG20,
   gfG21,
+  ghG22,
+  ghG23,
   gfG24,
   gfG25,
+  ghG25,
   gfP1,
   gfP2,
   gfP3,

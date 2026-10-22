@@ -11,7 +11,7 @@ export class LabelError extends Error {
   }
 }
 
-type Font = "math" | "main";
+type Font = "math" | "main" | "bold";
 
 type Node =
   | { kind: "glyphs"; text: string; font: Font; literal?: boolean }
@@ -164,6 +164,11 @@ export function parseLabel(latex: string): Node[] {
           return [{ kind: "sqrt", body: parseArgument() }];
         case "overline":
           return [{ kind: "overline", body: parseArgument() }];
+        case "mathbf":
+          // Bold upright letters, as for vectors.
+          return parseArgument().map((n) =>
+            n.kind === "glyphs" ? { ...n, font: "bold" as const } : n,
+          );
         case "text":
         case "textrm":
         case "mathrm":
@@ -292,10 +297,14 @@ type Metrics = Record<number, [number, number, number, number, number]>;
 const FONTS = fontMetricsData as unknown as Record<string, Metrics>;
 const MAIN = FONTS["Main-Regular"] ?? {};
 const MATH = FONTS["Math-Italic"] ?? {};
+const BOLD = FONTS["Main-Bold"] ?? {};
 
 function glyphMetrics(ch: string, font: Font): { width: number; height: number; depth: number } {
   const code = ch === "\u00a0" ? 32 : (ch.codePointAt(0) ?? 0);
-  const m = (font === "math" ? MATH[code] : undefined) ?? MAIN[code] ?? MATH[code];
+  const m =
+    (font === "math" ? MATH[code] : font === "bold" ? BOLD[code] : undefined) ??
+    MAIN[code] ??
+    MATH[code];
   // Unknown glyphs (rare in labels) get an average width.
   return m ? { depth: m[0], height: m[1], width: m[4] } : { depth: 0, height: 0.7, width: 0.55 };
 }
@@ -461,6 +470,7 @@ export interface TextBox {
 const FONT_FAMILY: Record<Font, string> = {
   math: `font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic"`,
   main: `font-family="KaTeX_Main, 'Times New Roman', serif"`,
+  bold: `font-family="KaTeX_Main, 'Times New Roman', serif" font-weight="bold"`,
 };
 
 /** Lays out a label at `size` px. Throws LabelError for LaTeX outside the subset. */

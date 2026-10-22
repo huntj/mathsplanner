@@ -1,0 +1,1410 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`GH-G25 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "description": "Triangle OAB with OA = a and OB = b.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            6,
+            0,
+          ],
+          "B": [
+            2,
+            4,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "O",
+              "A",
+              "B",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "O",
+            "label": "\\mathbf{a}",
+            "to": "A",
+          },
+          {
+            "from": "O",
+            "label": "\\mathbf{b}",
+            "to": "B",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GH-G25",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{b} - \\mathbf{a}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{a} + \\mathbf{b}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{a} - \\mathbf{b}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Travelling from A to O goes against a, so it is −a.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "From A to B, go back along a (−a) then along b: −a + b.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Write ",
+          },
+          {
+            "t": "math",
+            "v": "\\overrightarrow{AB}",
+          },
+          {
+            "t": "text",
+            "v": " in terms of a and b.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\overrightarrow{AB} = \\overrightarrow{AO} + \\overrightarrow{OB} = -\\mathbf{a} + \\mathbf{b}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "In triangle OAB, ",
+      },
+      {
+        "t": "math",
+        "v": "\\overrightarrow{OA} = \\mathbf{a}",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "\\overrightarrow{OB} = \\mathbf{b}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "description": "Triangle OAB with OA = a and OB = b.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            6,
+            0,
+          ],
+          "B": [
+            2,
+            4,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "O",
+              "A",
+              "B",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "O",
+            "label": "\\mathbf{a}",
+            "to": "A",
+          },
+          {
+            "from": "O",
+            "label": "\\mathbf{b}",
+            "to": "B",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GH-G25",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{a} - \\mathbf{b}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{b} - \\mathbf{a}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{a} + \\mathbf{b}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "From A to B, go back along a (−a) then along b: −a + b.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Travelling from A to O goes against a, so it is −a.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Write ",
+          },
+          {
+            "t": "math",
+            "v": "\\overrightarrow{AB}",
+          },
+          {
+            "t": "text",
+            "v": " in terms of a and b.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\overrightarrow{AB} = \\overrightarrow{AO} + \\overrightarrow{OB} = -\\mathbf{a} + \\mathbf{b}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "In triangle OAB, ",
+      },
+      {
+        "t": "math",
+        "v": "\\overrightarrow{OA} = \\mathbf{a}",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "\\overrightarrow{OB} = \\mathbf{b}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "description": "Triangle OAB with OA = a and OB = b.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            6,
+            0,
+          ],
+          "B": [
+            2,
+            4,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "O",
+              "A",
+              "B",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "O",
+            "label": "\\mathbf{a}",
+            "to": "A",
+          },
+          {
+            "from": "O",
+            "label": "\\mathbf{b}",
+            "to": "B",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GH-G25",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{a} + \\mathbf{b}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{a} - \\mathbf{b}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{b} - \\mathbf{a}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Travelling from A to O goes against a, so it is −a.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "From A to B, go back along a (−a) then along b: −a + b.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Write ",
+          },
+          {
+            "t": "math",
+            "v": "\\overrightarrow{AB}",
+          },
+          {
+            "t": "text",
+            "v": " in terms of a and b.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\overrightarrow{AB} = \\overrightarrow{AO} + \\overrightarrow{OB} = -\\mathbf{a} + \\mathbf{b}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "In triangle OAB, ",
+      },
+      {
+        "t": "math",
+        "v": "\\overrightarrow{OA} = \\mathbf{a}",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "\\overrightarrow{OB} = \\mathbf{b}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [
+      {
+        "description": "Triangle OAB with OA = a and OB = b, and a point P on AB.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            6,
+            0,
+          ],
+          "B": [
+            2,
+            4,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+          "P": [
+            3,
+            3,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "O",
+              "A",
+              "B",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "O",
+            "label": "\\mathbf{a}",
+            "to": "A",
+          },
+          {
+            "from": "O",
+            "label": "\\mathbf{b}",
+            "to": "B",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GH-G25",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{3}{4}\\mathbf{a} + \\frac{1}{4}\\mathbf{b}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{a} + \\frac{3}{4}\\mathbf{b}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{1}{4}\\mathbf{a} + \\frac{3}{4}\\mathbf{b}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "RAT.ORDER",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "P is 3/4 of the way from A to B, so OP = a + 3/4(b − a).",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "AB = b − a, not b.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Write ",
+          },
+          {
+            "t": "math",
+            "v": "\\overrightarrow{OP}",
+          },
+          {
+            "t": "text",
+            "v": " in terms of a and b.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\overrightarrow{OP} = \\mathbf{a} + \\tfrac{3}{4}(\\mathbf{b} - \\mathbf{a}) = \\frac{1}{4}\\mathbf{a} + \\frac{3}{4}\\mathbf{b}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "In triangle OAB, ",
+      },
+      {
+        "t": "math",
+        "v": "\\overrightarrow{OA} = \\mathbf{a}",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "\\overrightarrow{OB} = \\mathbf{b}",
+      },
+      {
+        "t": "text",
+        "v": ". P lies on AB with AP : PB = 3 : 1.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [
+      {
+        "description": "Triangle OAB with OA = a and OB = b, and a point P on AB.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            6,
+            0,
+          ],
+          "B": [
+            2,
+            4,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+          "P": [
+            3.3333333333333335,
+            2.6666666666666665,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "O",
+              "A",
+              "B",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "O",
+            "label": "\\mathbf{a}",
+            "to": "A",
+          },
+          {
+            "from": "O",
+            "label": "\\mathbf{b}",
+            "to": "B",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GH-G25",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{2}{3}\\mathbf{a} + \\frac{1}{3}\\mathbf{b}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{a} + \\frac{2}{3}\\mathbf{b}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{1}{3}\\mathbf{a} + \\frac{2}{3}\\mathbf{b}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "RAT.ORDER",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "P is 2/3 of the way from A to B, so OP = a + 2/3(b − a).",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "AB = b − a, not b.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Write ",
+          },
+          {
+            "t": "math",
+            "v": "\\overrightarrow{OP}",
+          },
+          {
+            "t": "text",
+            "v": " in terms of a and b.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\overrightarrow{OP} = \\mathbf{a} + \\tfrac{2}{3}(\\mathbf{b} - \\mathbf{a}) = \\frac{1}{3}\\mathbf{a} + \\frac{2}{3}\\mathbf{b}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "In triangle OAB, ",
+      },
+      {
+        "t": "math",
+        "v": "\\overrightarrow{OA} = \\mathbf{a}",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "\\overrightarrow{OB} = \\mathbf{b}",
+      },
+      {
+        "t": "text",
+        "v": ". P lies on AB with AP : PB = 2 : 1.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [
+      {
+        "description": "Triangle OAB with OA = a and OB = b, and a point P on AB.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            6,
+            0,
+          ],
+          "B": [
+            2,
+            4,
+          ],
+          "O": [
+            0,
+            0,
+          ],
+          "P": [
+            3.3333333333333335,
+            2.6666666666666665,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "O",
+              "A",
+              "B",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "O",
+            "label": "\\mathbf{a}",
+            "to": "A",
+          },
+          {
+            "from": "O",
+            "label": "\\mathbf{b}",
+            "to": "B",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GH-G25",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{2}{3}\\mathbf{a} + \\frac{1}{3}\\mathbf{b}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{1}{3}\\mathbf{a} + \\frac{2}{3}\\mathbf{b}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{a} + \\frac{2}{3}\\mathbf{b}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "RAT.ORDER",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "P is 2/3 of the way from A to B, so OP = a + 2/3(b − a).",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "AB = b − a, not b.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Write ",
+          },
+          {
+            "t": "math",
+            "v": "\\overrightarrow{OP}",
+          },
+          {
+            "t": "text",
+            "v": " in terms of a and b.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\overrightarrow{OP} = \\mathbf{a} + \\tfrac{2}{3}(\\mathbf{b} - \\mathbf{a}) = \\frac{1}{3}\\mathbf{a} + \\frac{2}{3}\\mathbf{b}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "In triangle OAB, ",
+      },
+      {
+        "t": "math",
+        "v": "\\overrightarrow{OA} = \\mathbf{a}",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "\\overrightarrow{OB} = \\mathbf{b}",
+      },
+      {
+        "t": "text",
+        "v": ". P lies on AB with AP : PB = 2 : 1.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GH-G25",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Parallel vectors must be equal.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The second is 4 times the first, so they point the same way.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The numbers in front are different.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.DIRECTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Two vectors are parallel when one is a scalar multiple of the other.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ben says the vectors ",
+      },
+      {
+        "t": "math",
+        "v": "\\mathbf{a} + 2\\mathbf{b}",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "4\\mathbf{a} + 8\\mathbf{b}",
+      },
+      {
+        "t": "text",
+        "v": " are parallel.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GH-G25",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 2a + b is not a multiple of a + 2b: the ratio of the a and b parts is different.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Both use one a-part and one b-part.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. They have the same length.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.DIRECTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Two vectors are parallel when one is a scalar multiple of the other.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ben says the vectors ",
+      },
+      {
+        "t": "math",
+        "v": "\\mathbf{a} + 2\\mathbf{b}",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "2\\mathbf{a} + \\mathbf{b}",
+      },
+      {
+        "t": "text",
+        "v": " are parallel.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GH-G25",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The second is 2 times the first, so they point the same way.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The numbers in front are different.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Parallel vectors must be equal.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.DIRECTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Two vectors are parallel when one is a scalar multiple of the other.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ben says the vectors ",
+      },
+      {
+        "t": "math",
+        "v": "\\mathbf{a} + 2\\mathbf{b}",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "2\\mathbf{a} + 4\\mathbf{b}",
+      },
+      {
+        "t": "text",
+        "v": " are parallel.",
+      },
+    ],
+  },
+]
+`;
