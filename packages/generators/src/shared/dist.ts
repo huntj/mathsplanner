@@ -71,3 +71,16 @@ export function invPhi(p: number): number {
 }
 
 export const round = (x: number, dp: number) => Math.round(x * 10 ** dp) / 10 ** dp;
+
+const factorial = (k: number): number => (k <= 1 ? 1 : k * factorial(k - 1));
+
+/** P(X = k) for X ~ Po(λ). */
+export const poissonPmf = (lambda: number, k: number) =>
+  (Math.exp(-lambda) * lambda ** k) / factorial(k);
+
+/** P(X ≤ k) for X ~ Po(λ). */
+export function poissonCdf(lambda: number, k: number): number {
+  let s = 0;
+  for (let i = 0; i <= k; i++) s += poissonPmf(lambda, i);
+  return s;
+}

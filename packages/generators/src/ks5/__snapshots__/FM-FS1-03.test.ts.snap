@@ -1,0 +1,810 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FM-FS1-03 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FS1-03",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 4,
+          },
+          "type": "number",
+          "value": 0.128,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 0.1024,
+            },
+            "code": "PRO.GEOMETRIC",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "2 misses then a hit: (1 − p)^2 × p.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find ",
+          },
+          {
+            "t": "math",
+            "v": "P(X = 3)",
+          },
+          {
+            "t": "text",
+            "v": ", to 4 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "0.8^{2} \\times 0.2 = 0.128",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A player has probability 0.2 of hitting a target with each throw, independently. X is the number of throws up to and including the first hit.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FS1-03",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 4,
+          },
+          "type": "number",
+          "value": 0.0531,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 0.0478,
+            },
+            "code": "PRO.GEOMETRIC",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "6 misses then a hit: (1 − p)^6 × p.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find ",
+          },
+          {
+            "t": "math",
+            "v": "P(X = 7)",
+          },
+          {
+            "t": "text",
+            "v": ", to 4 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "0.9^{6} \\times 0.1 = 0.0531",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A player has probability 0.1 of hitting a target with each throw, independently. X is the number of throws up to and including the first hit.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FS1-03",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 4,
+          },
+          "type": "number",
+          "value": 0.1029,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 0.072,
+            },
+            "code": "PRO.GEOMETRIC",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "3 misses then a hit: (1 − p)^3 × p.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find ",
+          },
+          {
+            "t": "math",
+            "v": "P(X = 4)",
+          },
+          {
+            "t": "text",
+            "v": ", to 4 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "0.7^{3} \\times 0.3 = 0.1029",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A player has probability 0.3 of hitting a target with each throw, independently. X is the number of throws up to and including the first hit.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FS1-03",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 4,
+          },
+          "type": "number",
+          "value": 0.512,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 0.64,
+            },
+            "code": "PRO.GEOMETRIC",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is P(X ≥ 3). X > 3 means the first 3 trials all fail.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find ",
+          },
+          {
+            "t": "math",
+            "v": "P(X > 3)",
+          },
+          {
+            "t": "text",
+            "v": ", to 4 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The first 3 trials are all failures: (1 − 0.2)^3 = 0.512.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "X has a geometric distribution with ",
+      },
+      {
+        "t": "math",
+        "v": "p = 0.2",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FS1-03",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 4,
+          },
+          "type": "number",
+          "value": 0.4783,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 0.5314,
+            },
+            "code": "PRO.GEOMETRIC",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is P(X ≥ 7). X > 7 means the first 7 trials all fail.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find ",
+          },
+          {
+            "t": "math",
+            "v": "P(X > 7)",
+          },
+          {
+            "t": "text",
+            "v": ", to 4 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The first 7 trials are all failures: (1 − 0.1)^7 = 0.4783.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "X has a geometric distribution with ",
+      },
+      {
+        "t": "math",
+        "v": "p = 0.1",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FS1-03",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 4,
+          },
+          "type": "number",
+          "value": 0.2401,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 0.343,
+            },
+            "code": "PRO.GEOMETRIC",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is P(X ≥ 4). X > 4 means the first 4 trials all fail.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find ",
+          },
+          {
+            "t": "math",
+            "v": "P(X > 4)",
+          },
+          {
+            "t": "text",
+            "v": ", to 4 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The first 4 trials are all failures: (1 − 0.3)^4 = 0.2401.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "X has a geometric distribution with ",
+      },
+      {
+        "t": "math",
+        "v": "p = 0.3",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FS1-03",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Each success takes 1/p trials on average, so the mean is r/p = 20.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The mean is rp, as for a binomial.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Multiply the number of successes by the probability.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "PRO.GEOMETRIC",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "PRO.GEOMETRIC",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The negative binomial mean is r/p.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Pia says the mean number of trials needed to get 4 successes, with success probability 0.2 each time, is 0.8.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FS1-03",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The mean is rp, as for a binomial.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Multiply the number of successes by the probability.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Each success takes 1/p trials on average, so the mean is r/p = 30.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "PRO.GEOMETRIC",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "PRO.GEOMETRIC",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The negative binomial mean is r/p.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Pia says the mean number of trials needed to get 3 successes, with success probability 0.1 each time, is 0.3.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FS1-03",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Each success takes 1/p trials on average, so the mean is r/p = 10.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The mean is rp, as for a binomial.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Multiply the number of successes by the probability.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "PRO.GEOMETRIC",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "PRO.GEOMETRIC",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The negative binomial mean is r/p.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Pia says the mean number of trials needed to get 3 successes, with success probability 0.3 each time, is 0.9.",
+      },
+    ],
+  },
+]
+`;
