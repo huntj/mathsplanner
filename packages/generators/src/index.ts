@@ -659,6 +659,13 @@ import cmA7 from "./ks5/CM-A7.ts";
 import cmA8 from "./ks5/CM-A8.ts";
 import cmA9 from "./ks5/CM-A9.ts";
 import cmA10 from "./ks5/CM-A10.ts";
+import cmP1 from "./ks5/CM-P1.ts";
+import cmP2 from "./ks5/CM-P2.ts";
+import cmP3 from "./ks5/CM-P3.ts";
+import cmP4 from "./ks5/CM-P4.ts";
+import cmP5 from "./ks5/CM-P5.ts";
+import cmP6 from "./ks5/CM-P6.ts";
+import cmP7 from "./ks5/CM-P7.ts";
 
 /** Every generator, in the order of data/statements.json. */
 export const generators: Generator[] = [
@@ -1320,6 +1327,13 @@ export const generators: Generator[] = [
   cmA8,
   cmA9,
   cmA10,
+  cmP1,
+  cmP2,
+  cmP3,
+  cmP4,
+  cmP5,
+  cmP6,
+  cmP7,
 ] as Generator[];
 
 /** Unreviewed placeholders that exercise the gallery; real generators replace them. */
