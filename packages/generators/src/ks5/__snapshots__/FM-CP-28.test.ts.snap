@@ -1,0 +1,1050 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FM-CP-28 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-CP-28",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "3\\ln x",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x^{3}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "e^{\\frac{3}{x}}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "CALC.INTEGRATING-FACTOR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is ∫P dx; the integrating factor is e to that power.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "CALC.INTEGRATING-FACTOR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The integrating factor is e^(∫P dx): integrate P first.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "e^{\\int \\frac{3}{x}\\,dx} = x^{3}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find an integrating factor for ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dy}{dx} + \\frac{3}{x}y = x^{4}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-CP-28",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x^{5}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "5\\ln x",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "e^{\\frac{5}{x}}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "CALC.INTEGRATING-FACTOR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is ∫P dx; the integrating factor is e to that power.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "CALC.INTEGRATING-FACTOR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The integrating factor is e^(∫P dx): integrate P first.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "e^{\\int \\frac{5}{x}\\,dx} = x^{5}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find an integrating factor for ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dy}{dx} + \\frac{5}{x}y = x^{2}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-CP-28",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{4}{2}x^2",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "e^{4x}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "e^{2x^2}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "CALC.INTEGRATING-FACTOR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is ∫P dx; the integrating factor is e to that power.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "CALC.INTEGRATING-FACTOR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The integrating factor is e^(∫P dx): integrate P first.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "e^{\\int 4x\\,dx} = e^{2x^2}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find an integrating factor for ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dy}{dx} + 4xy = x",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-CP-28",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "y = \\frac{x^{5}}{8} + \\frac{c}{x^{3}}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "y = \\frac{x^{4}}{7} + \\frac{c}{x^{3}}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "y = \\frac{x^{4}}{7} + c",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "CALC.INTEGRATING-FACTOR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "First divide by x to get dy/dx + Py = Q: then Q is x^(m − 1).",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "CALC.INTEGRATING-FACTOR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Divide the constant by the integrating factor x^3 too.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Divide by x: dy/dx + (3/x)y = x^3. The integrating factor is x^3.",
+          },
+        ],
+      },
+      {
+        "math": "\\frac{d}{dx}\\left(x^{3}y\\right) = x^{6} \\Rightarrow x^{3}y = \\frac{x^{7}}{7} + c",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find the general solution of ",
+      },
+      {
+        "t": "math",
+        "v": "x\\frac{dy}{dx} + 3y = x^{4}",
+      },
+      {
+        "t": "text",
+        "v": ", for x > 0.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-CP-28",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "y = \\frac{x^{2}}{7} + \\frac{c}{x^{5}}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "y = \\frac{x^{3}}{8} + \\frac{c}{x^{5}}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "y = \\frac{x^{2}}{7} + c",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "CALC.INTEGRATING-FACTOR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "First divide by x to get dy/dx + Py = Q: then Q is x^(m − 1).",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "CALC.INTEGRATING-FACTOR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Divide the constant by the integrating factor x^5 too.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Divide by x: dy/dx + (5/x)y = x^1. The integrating factor is x^5.",
+          },
+        ],
+      },
+      {
+        "math": "\\frac{d}{dx}\\left(x^{5}y\\right) = x^{6} \\Rightarrow x^{5}y = \\frac{x^{7}}{7} + c",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find the general solution of ",
+      },
+      {
+        "t": "math",
+        "v": "x\\frac{dy}{dx} + 5y = x^{2}",
+      },
+      {
+        "t": "text",
+        "v": ", for x > 0.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-CP-28",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "y = \\frac{x^{2}}{6} + \\frac{c}{x^{4}}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "y = \\frac{x}{5} + c",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "y = \\frac{x}{5} + \\frac{c}{x^{4}}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "CALC.INTEGRATING-FACTOR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "First divide by x to get dy/dx + Py = Q: then Q is x^(m − 1).",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "CALC.INTEGRATING-FACTOR",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Divide the constant by the integrating factor x^4 too.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Divide by x: dy/dx + (4/x)y = 1. The integrating factor is x^4.",
+          },
+        ],
+      },
+      {
+        "math": "\\frac{d}{dx}\\left(x^{4}y\\right) = x^{4} \\Rightarrow x^{4}y = \\frac{x^{5}}{5} + c",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find the general solution of ",
+      },
+      {
+        "t": "math",
+        "v": "x\\frac{dy}{dx} + 4y = x",
+      },
+      {
+        "t": "text",
+        "v": ", for x > 0.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-CP-28",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 3 ln x.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The integrating factor is e^P.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is e^(∫3/x dx) = e^(3 ln x) = x^3.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CALC.INTEGRATING-FACTOR",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "CALC.INTEGRATING-FACTOR",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Check: x^3 × (dy/dx + 3y/x) = d/dx(x^3 y).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Uma says the integrating factor for ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dy}{dx} + \\frac{3y}{x} = x",
+      },
+      {
+        "t": "text",
+        "v": " is ",
+      },
+      {
+        "t": "math",
+        "v": "e^{\\frac{3}{x}}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-CP-28",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 5 ln x.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is e^(∫5/x dx) = e^(5 ln x) = x^5.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The integrating factor is e^P.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CALC.INTEGRATING-FACTOR",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "CALC.INTEGRATING-FACTOR",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Check: x^5 × (dy/dx + 5y/x) = d/dx(x^5 y).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Uma says the integrating factor for ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dy}{dx} + \\frac{5y}{x} = x",
+      },
+      {
+        "t": "text",
+        "v": " is ",
+      },
+      {
+        "t": "math",
+        "v": "e^{\\frac{5}{x}}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-CP-28",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The integrating factor is e^P.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is e^(∫4/x dx) = e^(4 ln x) = x^4.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 4 ln x.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CALC.INTEGRATING-FACTOR",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "CALC.INTEGRATING-FACTOR",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Check: x^4 × (dy/dx + 4y/x) = d/dx(x^4 y).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Uma says the integrating factor for ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dy}{dx} + \\frac{4y}{x} = x",
+      },
+      {
+        "t": "text",
+        "v": " is ",
+      },
+      {
+        "t": "math",
+        "v": "e^{\\frac{4}{x}}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+]
+`;

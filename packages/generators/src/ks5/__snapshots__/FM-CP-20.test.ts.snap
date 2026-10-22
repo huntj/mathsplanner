@@ -1,0 +1,930 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FM-CP-20 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-CP-20",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{Ax + B}{x - 4} + \\frac{C}{x^2 + 3}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{A}{x - 4} + \\frac{B}{x^2 + 3}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{A}{x - 4} + \\frac{Bx + C}{x^2 + 3}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "CALC.PARTIAL-QUADRATIC",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The numerator is one degree lower than its denominator: a constant over the linear factor, Bx + C over the quadratic.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "CALC.PARTIAL-QUADRATIC",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Over an irreducible quadratic factor the numerator is linear, Bx + C.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{A}{x - 4} + \\frac{Bx + C}{x^2 + 3}",
+        "say": [
+          {
+            "t": "text",
+            "v": "A constant over the linear factor and a linear numerator over the quadratic factor: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Which is the correct form for the partial fractions of ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{5x^2 - 7x + 24}{(x - 4)(x^2 + 3)}",
+      },
+      {
+        "t": "text",
+        "v": "?",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-CP-20",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{A}{x - 2} + \\frac{B}{x^2 + 2}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{Ax + B}{x - 2} + \\frac{C}{x^2 + 2}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{A}{x - 2} + \\frac{Bx + C}{x^2 + 2}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "CALC.PARTIAL-QUADRATIC",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Over an irreducible quadratic factor the numerator is linear, Bx + C.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "CALC.PARTIAL-QUADRATIC",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The numerator is one degree lower than its denominator: a constant over the linear factor, Bx + C over the quadratic.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{A}{x - 2} + \\frac{Bx + C}{x^2 + 2}",
+        "say": [
+          {
+            "t": "text",
+            "v": "A constant over the linear factor and a linear numerator over the quadratic factor: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Which is the correct form for the partial fractions of ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{-2x^2 + 6x + 2}{(x - 2)(x^2 + 2)}",
+      },
+      {
+        "t": "text",
+        "v": "?",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-CP-20",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{A}{x - 2} + \\frac{Bx + C}{x^2 + 2}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{A}{x - 2} + \\frac{B}{x^2 + 2}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{Ax + B}{x - 2} + \\frac{C}{x^2 + 2}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "CALC.PARTIAL-QUADRATIC",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Over an irreducible quadratic factor the numerator is linear, Bx + C.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "CALC.PARTIAL-QUADRATIC",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The numerator is one degree lower than its denominator: a constant over the linear factor, Bx + C over the quadratic.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{A}{x - 2} + \\frac{Bx + C}{x^2 + 2}",
+        "say": [
+          {
+            "t": "text",
+            "v": "A constant over the linear factor and a linear numerator over the quadratic factor: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Which is the correct form for the partial fractions of ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{x^2 + 5x + 10}{(x - 2)(x^2 + 2)}",
+      },
+      {
+        "t": "text",
+        "v": "?",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-CP-20",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 4,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 76,
+            },
+            "code": "CALC.PARTIAL-QUADRATIC",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Substituting x = 4 gives 76 = A(19): divide by 19.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "find the value of A.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "76 = A(4^2 + 3) \\Rightarrow A = 4",
+        "say": [
+          {
+            "t": "text",
+            "v": "Multiply through and put x = 4: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Given that ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{5x^2 - 7x + 24}{(x - 4)(x^2 + 3)} \\equiv \\frac{A}{x - 4} + \\frac{Bx + C}{x^2 + 3}",
+      },
+      {
+        "t": "text",
+        "v": ",",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-CP-20",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 1,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 6,
+            },
+            "code": "CALC.PARTIAL-QUADRATIC",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Substituting x = 2 gives 6 = A(6): divide by 6.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "find the value of A.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "6 = A(2^2 + 2) \\Rightarrow A = 1",
+        "say": [
+          {
+            "t": "text",
+            "v": "Multiply through and put x = 2: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Given that ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{-2x^2 + 6x + 2}{(x - 2)(x^2 + 2)} \\equiv \\frac{A}{x - 2} + \\frac{Bx + C}{x^2 + 2}",
+      },
+      {
+        "t": "text",
+        "v": ",",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-CP-20",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 4,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 24,
+            },
+            "code": "CALC.PARTIAL-QUADRATIC",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Substituting x = 2 gives 24 = A(6): divide by 6.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "find the value of A.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "24 = A(2^2 + 2) \\Rightarrow A = 4",
+        "say": [
+          {
+            "t": "text",
+            "v": "Multiply through and put x = 2: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Given that ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{x^2 + 5x + 10}{(x - 2)(x^2 + 2)} \\equiv \\frac{A}{x - 2} + \\frac{Bx + C}{x^2 + 2}",
+      },
+      {
+        "t": "text",
+        "v": ",",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-CP-20",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. With constants only, 1 ≡ A(x² + 3) + Bx forces A = 0 and B = 0, and then 1 = 0. Over x² + 3 the numerator must be Bx + C.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Every partial fraction has a constant numerator.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Two factors give two constants.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "CALC.PARTIAL-QUADRATIC",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "CALC.PARTIAL-QUADRATIC",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "1/(x(x² + 3)) = (1/3)/x − (x/3)/(x² + 3).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Lee says that ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{1}{x(x^2 + 3)} \\equiv \\frac{A}{x} + \\frac{B}{x^2 + 3}",
+      },
+      {
+        "t": "text",
+        "v": " for some constants A and B.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-CP-20",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Two factors give two constants.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Every partial fraction has a constant numerator.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. With constants only, 1 ≡ A(x² + 2) + Bx forces A = 0 and B = 0, and then 1 = 0. Over x² + 2 the numerator must be Bx + C.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CALC.PARTIAL-QUADRATIC",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "CALC.PARTIAL-QUADRATIC",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "1/(x(x² + 2)) = (1/2)/x − (x/2)/(x² + 2).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Lee says that ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{1}{x(x^2 + 2)} \\equiv \\frac{A}{x} + \\frac{B}{x^2 + 2}",
+      },
+      {
+        "t": "text",
+        "v": " for some constants A and B.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-CP-20",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Every partial fraction has a constant numerator.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Two factors give two constants.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. With constants only, 1 ≡ A(x² + 2) + Bx forces A = 0 and B = 0, and then 1 = 0. Over x² + 2 the numerator must be Bx + C.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CALC.PARTIAL-QUADRATIC",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "CALC.PARTIAL-QUADRATIC",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "1/(x(x² + 2)) = (1/2)/x − (x/2)/(x² + 2).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Lee says that ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{1}{x(x^2 + 2)} \\equiv \\frac{A}{x} + \\frac{B}{x^2 + 2}",
+      },
+      {
+        "t": "text",
+        "v": " for some constants A and B.",
+      },
+    ],
+  },
+]
+`;

@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.26.0",
+  "version": "0.27.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -976,6 +976,81 @@
       "code": "CALC.MACLAURIN",
       "description": "Divides by n instead of n! in a Maclaurin series, drops a power of the inner coefficient, or gets the alternating signs wrong.",
       "remediate": "FM-CP-16"
+    },
+    {
+      "code": "CALC.IMPROPER",
+      "description": "Treats ∞ like a number when evaluating an improper integral, or assumes an integral is finite because the integrand tends to 0.",
+      "remediate": "FM-CP-17"
+    },
+    {
+      "code": "CALC.MEAN-VALUE",
+      "description": "Forgets to divide by b − a for the mean value of a function, or averages the values at the end points.",
+      "remediate": "FM-CP-18"
+    },
+    {
+      "code": "CALC.VOLUME",
+      "description": "Uses π∫y dx instead of π∫y² dx for a volume of revolution, or squares the wrong variable when rotating about the y-axis.",
+      "remediate": "FM-CP-19"
+    },
+    {
+      "code": "CALC.PARTIAL-QUADRATIC",
+      "description": "Puts a constant numerator over an irreducible quadratic factor in partial fractions, instead of Bx + C.",
+      "remediate": "FM-CP-20"
+    },
+    {
+      "code": "CALC.INVERSE-TRIG",
+      "description": "Mixes up the derivatives of arcsin and arctan, or forgets the factor 1/a in ∫1/(a² + x²) dx.",
+      "remediate": "FM-CP-21"
+    },
+    {
+      "code": "ALG.HYPERBOLIC",
+      "description": "Swaps the definitions of sinh and cosh, forgets that cosh x ≥ 1, or picks the wrong logarithmic form for an inverse.",
+      "remediate": "FM-CP-26"
+    },
+    {
+      "code": "CALC.HYPERBOLIC",
+      "description": "Copies trig signs into hyperbolic identities and derivatives, e.g. cosh² x + sinh² x = 1 or d/dx cosh x = −sinh x.",
+      "remediate": "FM-CP-27"
+    },
+    {
+      "code": "CALC.INTEGRATING-FACTOR",
+      "description": "Uses e^P instead of e^∫P dx, forgets to put the equation in the form dy/dx + Py = Q first, or forgets to divide the constant by the integrating factor.",
+      "remediate": "FM-CP-28"
+    },
+    {
+      "code": "CALC.AUXILIARY",
+      "description": "Gets the signs of the auxiliary equation's roots wrong, writes Ae^(mx) + Be^(mx) for a repeated root, or swaps the real and imaginary parts for complex roots.",
+      "remediate": "FM-CP-29"
+    },
+    {
+      "code": "CALC.SHM",
+      "description": "Uses ω² where ω is needed in simple harmonic motion (period, maximum speed), or misclassifies damping.",
+      "remediate": "FM-CP-30"
+    },
+    {
+      "code": "CALC.COUPLED",
+      "description": "Makes a sign slip when eliminating a variable from coupled differential equations, e.g. ad + bc for ad − bc.",
+      "remediate": "FM-CP-31"
+    },
+    {
+      "code": "GEO.VECTOR.PLANE",
+      "description": "Confuses a plane's normal with a direction in the plane, gets the sign of d wrong, or forgets to divide by |n| for a distance.",
+      "remediate": "FM-CP-22"
+    },
+    {
+      "code": "GEO.VECTOR.ANGLE",
+      "description": "Gives the obtuse angle between two lines, or the angle with the normal instead of with the plane.",
+      "remediate": "FM-CP-23"
+    },
+    {
+      "code": "GEO.POLAR.CONVERT",
+      "description": "Swaps cos and sin when converting between polar and Cartesian forms, or loses the sign from the quadrant.",
+      "remediate": "FM-CP-24"
+    },
+    {
+      "code": "GEO.POLAR.AREA",
+      "description": "Forgets the ½ in ½∫r² dθ, or integrates over a range that traces the curve twice.",
+      "remediate": "FM-CP-25"
     },
     {
       "code": "ALG.EXP.DERIVATIVE",

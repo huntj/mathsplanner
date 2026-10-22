@@ -23,6 +23,17 @@ export function poly(coeffs: number[], v = "x"): string {
 /** "+ 3" or "- 3", for gluing a constant onto an expression. */
 export const signed = (n: number) => `${n < 0 ? "-" : "+"} ${Math.abs(n)}`;
 
+/** A sum of terms c·s, e.g. [[1, "\ddot{x}"], [-3, "\dot{x}"], [2, "x"]] → \ddot{x} - 3\dot{x} + 2x. */
+export function linear(terms: [number, string][]): string {
+  const out = terms
+    .filter(([c]) => c !== 0)
+    .map(([c, s], i) => {
+      const size = Math.abs(c) === 1 && s !== "" ? "" : String(Math.abs(c));
+      return `${i === 0 ? (c < 0 ? "-" : "") : c < 0 ? "- " : "+ "}${size}${s}`;
+    });
+  return out.length ? out.join(" ") : "0";
+}
+
 /** A bracket (x + a), written (x - a) for negative a. */
 export const bracket = (a: number, v = "x") => (a === 0 ? v : `(${v} ${signed(a)})`);
 
