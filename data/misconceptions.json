@@ -888,6 +888,16 @@
       "remediate": "GF-S6"
     },
     {
+      "code": "STA.HISTOGRAM.HEIGHT",
+      "description": "Reads the height of a histogram bar as its frequency when the class widths are unequal, instead of frequency density × class width.",
+      "remediate": "GH-S3"
+    },
+    {
+      "code": "STA.IQR.RANGE",
+      "description": "Gives the range instead of the interquartile range, or takes the quartiles from the wrong positions.",
+      "remediate": "GH-S4"
+    },
+    {
       "code": "STA.OUTLIER.MEAN",
       "description": "Uses the mean to represent data with an extreme outlier, when the median would be more typical.",
       "remediate": "GF-S4"
@@ -1141,6 +1151,11 @@
       "code": "PRO.TREE.REPLACEMENT",
       "description": "Uses the same probabilities on the second branches when items are not replaced.",
       "remediate": "GF-P8"
+    },
+    {
+      "code": "PRO.CONDITIONAL.TOTAL",
+      "description": "Divides by the whole total instead of the size of the given group when finding a conditional probability.",
+      "remediate": "GH-P9"
     },
     {
       "code": "GEO.ANGLES.STRAIGHT-LINE-360",
