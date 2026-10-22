@@ -538,6 +538,22 @@ import alP102 from "./ks5/AL-P10.2.ts";
 import alP103 from "./ks5/AL-P10.3.ts";
 import alP104 from "./ks5/AL-P10.4.ts";
 import alP105 from "./ks5/AL-P10.5.ts";
+import alS11 from "./ks5/AL-S1.1.ts";
+import alS21 from "./ks5/AL-S2.1.ts";
+import alS22a from "./ks5/AL-S2.2a.ts";
+import alS22b from "./ks5/AL-S2.2b.ts";
+import alS23 from "./ks5/AL-S2.3.ts";
+import alS24 from "./ks5/AL-S2.4.ts";
+import alS31 from "./ks5/AL-S3.1.ts";
+import alS32 from "./ks5/AL-S3.2.ts";
+import alS33 from "./ks5/AL-S3.3.ts";
+import alS41 from "./ks5/AL-S4.1.ts";
+import alS42 from "./ks5/AL-S4.2.ts";
+import alS43 from "./ks5/AL-S4.3.ts";
+import alS51a from "./ks5/AL-S5.1a.ts";
+import alS51b from "./ks5/AL-S5.1b.ts";
+import alS52 from "./ks5/AL-S5.2.ts";
+import alS53 from "./ks5/AL-S5.3.ts";
 
 /** Every generator, in the order of data/statements.json. */
 export const generators: Generator[] = [
@@ -1078,6 +1094,22 @@ export const generators: Generator[] = [
   alP103,
   alP104,
   alP105,
+  alS11,
+  alS21,
+  alS22a,
+  alS22b,
+  alS23,
+  alS24,
+  alS31,
+  alS32,
+  alS33,
+  alS41,
+  alS42,
+  alS43,
+  alS51a,
+  alS51b,
+  alS52,
+  alS53,
 ] as Generator[];
 
 /** Unreviewed placeholders that exercise the gallery; real generators replace them. */
