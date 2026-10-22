@@ -893,6 +893,76 @@
       "remediate": "AL-P4.5"
     },
     {
+      "code": "ALG.EXP.DERIVATIVE",
+      "description": "Thinks the gradient of e^(kx) is e^(kx), forgetting the factor k, or differentiates e^x as xe^(x−1).",
+      "remediate": "AL-P6.2"
+    },
+    {
+      "code": "ALG.LOG.INVERSE",
+      "description": "Confuses logₐb = c with aᵇ = c or with b ÷ a, or treats ln and eˣ as anything other than inverses.",
+      "remediate": "AL-P6.3"
+    },
+    {
+      "code": "ALG.LOG.LAWS",
+      "description": "Misapplies the laws of logarithms, e.g. log(a + b) = log a + log b or n log a = log(na).",
+      "remediate": "AL-P6.5"
+    },
+    {
+      "code": "ALG.LOG.GRAPH",
+      "description": "Reads a parameter straight from a log graph without undoing the log, e.g. takes the intercept log a as a.",
+      "remediate": "AL-P6.7"
+    },
+    {
+      "code": "CALC.FIRST-PRINCIPLES",
+      "description": "Substitutes h = 0 before simplifying (getting 0/0), or keeps terms in h after taking the limit, when differentiating from first principles.",
+      "remediate": "AL-P7.1a"
+    },
+    {
+      "code": "CALC.SECOND-DERIVATIVE",
+      "description": "Uses the first derivative where the second is needed, or reads f''(a) = 0 as proof of a point of inflection.",
+      "remediate": "AL-P7.1b"
+    },
+    {
+      "code": "CALC.POWER-RULE",
+      "description": "Multiplies by the power without reducing it (or reduces without multiplying) when differentiating xⁿ, or treats a constant's derivative as itself.",
+      "remediate": "AL-P7.2a"
+    },
+    {
+      "code": "CALC.STANDARD-DERIV",
+      "description": "Gets a standard derivative wrong, e.g. d/dx cos x = sin x, d/dx ln(kx) = k/x, or forgets the k in sin kx.",
+      "remediate": "AL-P7.2b"
+    },
+    {
+      "code": "CALC.STATIONARY",
+      "description": "Confuses stationary points with roots, or uses the tangent gradient for the normal.",
+      "remediate": "AL-P7.3"
+    },
+    {
+      "code": "CALC.CHAIN",
+      "description": "Forgets to multiply by the derivative of the inside function when using the chain rule.",
+      "remediate": "AL-P7.4"
+    },
+    {
+      "code": "CALC.PRODUCT-RULE",
+      "description": "Differentiates a product as the product of the derivatives instead of using u'v + uv'.",
+      "remediate": "AL-P7.4"
+    },
+    {
+      "code": "CALC.PARAMETRIC",
+      "description": "Divides the wrong way round, (dx/dt)/(dy/dt), when finding dy/dx from parametric equations.",
+      "remediate": "AL-P7.5"
+    },
+    {
+      "code": "CALC.IMPLICIT",
+      "description": "Forgets the dy/dx factor when differentiating a term in y, or rearranges the implicit derivative wrongly.",
+      "remediate": "AL-P7.5"
+    },
+    {
+      "code": "CALC.RATE-EQUATION",
+      "description": "Writes a rate of change as a constant or with the wrong sign, or confuses 'proportional to' with 'increases by'.",
+      "remediate": "AL-P7.6"
+    },
+    {
       "code": "STA.KEY-IGNORED",
       "description": "Counts the symbols in a pictogram without using the key, e.g. reads 3 symbols as 3 when each stands for 2.",
       "remediate": "Y2-STA-01"

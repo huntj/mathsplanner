@@ -1,0 +1,1018 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AL-P3.2 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-P3.2",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "D",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\text{centre } (-2, 4),\\ \\text{radius } 9",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\text{centre } (4, -8),\\ \\text{radius } 3",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\text{centre } (2, -4),\\ \\text{radius } 3",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\text{centre } (-2, 4),\\ \\text{radius } 3",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "ALG.CIRCLE.RADIUS-SQUARED",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The right-hand side is r², so r = √9 = 3.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "ALG.COMPLETE-SQUARE.HALF",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Halve the coefficients of x and y to find the centre.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "ALG.QUADRATIC.ROOT-SIGN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Completing the square gives (x + 2)² + (y - 4)², so the centre is (-2, 4).",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What are its centre and radius?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "(x + 2)^2 + (y - 4)^2 = 9",
+        "say": [
+          {
+            "t": "text",
+            "v": "Complete the square in x and in y: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A circle has equation ",
+      },
+      {
+        "t": "math",
+        "v": "x^2 + y^2 + 4x - 8y + 11 = 0",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-P3.2",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "D",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\text{centre } (2, 12),\\ \\text{radius } 5",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\text{centre } (1, 6),\\ \\text{radius } 5",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\text{centre } (-1, -6),\\ \\text{radius } 25",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\text{centre } (-1, -6),\\ \\text{radius } 5",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "ALG.COMPLETE-SQUARE.HALF",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Halve the coefficients of x and y to find the centre.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "ALG.QUADRATIC.ROOT-SIGN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Completing the square gives (x + 1)² + (y + 6)², so the centre is (-1, -6).",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "ALG.CIRCLE.RADIUS-SQUARED",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The right-hand side is r², so r = √25 = 5.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What are its centre and radius?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "(x + 1)^2 + (y + 6)^2 = 25",
+        "say": [
+          {
+            "t": "text",
+            "v": "Complete the square in x and in y: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A circle has equation ",
+      },
+      {
+        "t": "math",
+        "v": "x^2 + y^2 + 2x + 12y + 12 = 0",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-P3.2",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\text{centre } (4, 6),\\ \\text{radius } 5",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\text{centre } (-4, -6),\\ \\text{radius } 5",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\text{centre } (4, 6),\\ \\text{radius } 25",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\text{centre } (-8, -12),\\ \\text{radius } 5",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "ALG.QUADRATIC.ROOT-SIGN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Completing the square gives (x - 4)² + (y - 6)², so the centre is (4, 6).",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "ALG.CIRCLE.RADIUS-SQUARED",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The right-hand side is r², so r = √25 = 5.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "D",
+              "type": "choice",
+            },
+            "code": "ALG.COMPLETE-SQUARE.HALF",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Halve the coefficients of x and y to find the centre.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What are its centre and radius?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "(x - 4)^2 + (y - 6)^2 = 25",
+        "say": [
+          {
+            "t": "text",
+            "v": "Complete the square in x and in y: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A circle has equation ",
+      },
+      {
+        "t": "math",
+        "v": "x^2 + y^2 - 8x - 12y + 27 = 0",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-P3.2",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "5x + 12y - 207 = 0",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "12x - 5y + 44 = 0",
+              "type": "exact",
+            },
+            "code": "ALG.PERPENDICULAR.GRADIENT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is the line along the radius. The tangent is perpendicular to the radius.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the equation of the tangent at P, in the form ax + by + c = 0 with integers a, b and c with no common factor.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "5x + 12y - 207 = 0",
+        "say": [
+          {
+            "t": "text",
+            "v": "The radius to P has gradient 12/5, so the tangent has gradient -5/12.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The point ",
+      },
+      {
+        "t": "math",
+        "v": "P(3, 16)",
+      },
+      {
+        "t": "text",
+        "v": " lies on the circle ",
+      },
+      {
+        "t": "math",
+        "v": "(x + 2)^2 + (y - 4)^2 = 169",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-P3.2",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "3x + 4y - 23 = 0",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "4x - 3y - 14 = 0",
+              "type": "exact",
+            },
+            "code": "ALG.PERPENDICULAR.GRADIENT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is the line along the radius. The tangent is perpendicular to the radius.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the equation of the tangent at P, in the form ax + by + c = 0 with integers a, b and c with no common factor.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "3x + 4y - 23 = 0",
+        "say": [
+          {
+            "t": "text",
+            "v": "The radius to P has gradient 8/6, so the tangent has gradient -6/8.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The point ",
+      },
+      {
+        "t": "math",
+        "v": "P(5, 2)",
+      },
+      {
+        "t": "text",
+        "v": " lies on the circle ",
+      },
+      {
+        "t": "math",
+        "v": "(x + 1)^2 + (y + 6)^2 = 100",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-P3.2",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "4x + 3y - 59 = 0",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "3x - 4y + 12 = 0",
+              "type": "exact",
+            },
+            "code": "ALG.PERPENDICULAR.GRADIENT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is the line along the radius. The tangent is perpendicular to the radius.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the equation of the tangent at P, in the form ax + by + c = 0 with integers a, b and c with no common factor.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "4x + 3y - 59 = 0",
+        "say": [
+          {
+            "t": "text",
+            "v": "The radius to P has gradient 3/4, so the tangent has gradient -4/3.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The point ",
+      },
+      {
+        "t": "math",
+        "v": "P(8, 9)",
+      },
+      {
+        "t": "text",
+        "v": " lies on the circle ",
+      },
+      {
+        "t": "math",
+        "v": "(x - 4)^2 + (y - 6)^2 = 25",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-P3.2",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. (x − a)² + (y − b)² = r² has centre (a, b) and radius r.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The radius is 9.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The centre is (2, -4).",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "ALG.CIRCLE.RADIUS-SQUARED",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.QUADRATIC.ROOT-SIGN",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The brackets are zero at x = -2 and y = 4: that is the centre.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ruby says the circle ",
+      },
+      {
+        "t": "math",
+        "v": "(x + 2)^2 + (y - 4)^2 = 9",
+      },
+      {
+        "t": "text",
+        "v": " has centre (-2, 4) and radius 3.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-P3.2",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. (x − a)² + (y − b)² = r² has centre (a, b) and radius r.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The centre is (1, 6).",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The radius is 25.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "ALG.QUADRATIC.ROOT-SIGN",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.CIRCLE.RADIUS-SQUARED",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The brackets are zero at x = -1 and y = -6: that is the centre.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ruby says the circle ",
+      },
+      {
+        "t": "math",
+        "v": "(x + 1)^2 + (y + 6)^2 = 25",
+      },
+      {
+        "t": "text",
+        "v": " has centre (-1, -6) and radius 5.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-P3.2",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The centre is always where x and y are zero.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. (x − a)² + (y − b)² = r² has centre (a, b), so here (4, 6).",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Read the numbers in the brackets.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.QUADRATIC.ROOT-SIGN",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The brackets are zero at x = 4 and y = 6: that is the centre.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ruby says the circle ",
+      },
+      {
+        "t": "math",
+        "v": "(x - 4)^2 + (y - 6)^2 = 25",
+      },
+      {
+        "t": "text",
+        "v": " has centre (-4, -6).",
+      },
+    ],
+  },
+]
+`;
