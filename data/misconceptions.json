@@ -963,6 +963,56 @@
       "remediate": "AL-P7.6"
     },
     {
+      "code": "CALC.FTC",
+      "description": "Mixes up integration and differentiation as inverses, e.g. leaves out the constant, or takes ∫ f′(x) dx as f′(x).",
+      "remediate": "AL-P8.1"
+    },
+    {
+      "code": "CALC.INTEGRATE.POWER",
+      "description": "Integrates xⁿ wrongly, e.g. differentiates instead, divides by the old power, or gets the sign of a negative power wrong.",
+      "remediate": "AL-P8.2"
+    },
+    {
+      "code": "CALC.DEFINITE",
+      "description": "Subtracts the limits the wrong way round, or gives a negative definite integral as an area.",
+      "remediate": "AL-P8.3"
+    },
+    {
+      "code": "CALC.STANDARD-INTEGRAL",
+      "description": "Gets a standard integral wrong, e.g. ∫e^(kx) dx = ke^(kx), ∫sin kx dx = (1/k)cos kx, or ∫1/x dx = x⁰/0.",
+      "remediate": "AL-P8.4"
+    },
+    {
+      "code": "CALC.LIMIT-SUM",
+      "description": "Uses the wrong heights for rectangles when approximating an area, or thinks more strips make the estimate worse.",
+      "remediate": "AL-P8.5"
+    },
+    {
+      "code": "CALC.AREA-BETWEEN",
+      "description": "Integrates only one curve, or subtracts the upper curve from the lower, when finding the area between two curves.",
+      "remediate": "AL-P8.6"
+    },
+    {
+      "code": "CALC.SUBSTITUTION",
+      "description": "Forgets to replace dx with du when substituting, or keeps the original limits.",
+      "remediate": "AL-P8.7"
+    },
+    {
+      "code": "CALC.PARTS",
+      "description": "Chooses u and dv/dx badly in integration by parts, or leaves out the second integral.",
+      "remediate": "AL-P8.7"
+    },
+    {
+      "code": "CALC.SEPARABLE",
+      "description": "Solves a differential equation without separating the variables properly, or forgets the constant of integration.",
+      "remediate": "AL-P8.9"
+    },
+    {
+      "code": "CALC.INTERPRET",
+      "description": "Misreads what the solution of a differential equation says in context, e.g. mixes up the starting value with the long-term value.",
+      "remediate": "AL-P8.10"
+    },
+    {
       "code": "STA.KEY-IGNORED",
       "description": "Counts the symbols in a pictogram without using the key, e.g. reads 3 symbols as 3 when each stands for 2.",
       "remediate": "Y2-STA-01"

@@ -1,0 +1,822 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AL-P6.2 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-P6.2",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "-3e^{-3x}",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "e^{-3x}",
+              "type": "exact",
+            },
+            "code": "ALG.EXP.DERIVATIVE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The gradient of e^(kx) is ke^(kx): multiply by k = -3.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{d}{dx}e^{-3x} = -3e^{-3x}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dy}{dx}",
+      },
+      {
+        "t": "text",
+        "v": " for ",
+      },
+      {
+        "t": "math",
+        "v": "y = e^{-3x}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-P6.2",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "4e^{4x}",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "e^{4x}",
+              "type": "exact",
+            },
+            "code": "ALG.EXP.DERIVATIVE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The gradient of e^(kx) is ke^(kx): multiply by k = 4.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{d}{dx}e^{4x} = 4e^{4x}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dy}{dx}",
+      },
+      {
+        "t": "text",
+        "v": " for ",
+      },
+      {
+        "t": "math",
+        "v": "y = e^{4x}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-P6.2",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "-2e^{-2x}",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "e^{-2x}",
+              "type": "exact",
+            },
+            "code": "ALG.EXP.DERIVATIVE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The gradient of e^(kx) is ke^(kx): multiply by k = -2.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{d}{dx}e^{-2x} = -2e^{-2x}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dy}{dx}",
+      },
+      {
+        "t": "text",
+        "v": " for ",
+      },
+      {
+        "t": "math",
+        "v": "y = e^{-2x}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-P6.2",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": -15,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 5,
+            },
+            "code": "ALG.EXP.DERIVATIVE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "dy/dx = 5 × -3e^(-3x); at x = 0 this is -15.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the gradient of the curve at P.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{dy}{dx} = -15e^{-3x};\\ x = 0 \\Rightarrow -15",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The curve ",
+      },
+      {
+        "t": "math",
+        "v": "y = 5e^{-3x}",
+      },
+      {
+        "t": "text",
+        "v": " meets the y-axis at P.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-P6.2",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 16,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 4,
+            },
+            "code": "ALG.EXP.DERIVATIVE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "dy/dx = 4 × 4e^(4x); at x = 0 this is 16.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the gradient of the curve at P.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{dy}{dx} = 16e^{4x};\\ x = 0 \\Rightarrow 16",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The curve ",
+      },
+      {
+        "t": "math",
+        "v": "y = 4e^{4x}",
+      },
+      {
+        "t": "text",
+        "v": " meets the y-axis at P.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-P6.2",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": -4,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 2,
+            },
+            "code": "ALG.EXP.DERIVATIVE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "dy/dx = 2 × -2e^(-2x); at x = 0 this is -4.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the gradient of the curve at P.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{dy}{dx} = -4e^{-2x};\\ x = 0 \\Rightarrow -4",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The curve ",
+      },
+      {
+        "t": "math",
+        "v": "y = 2e^{-2x}",
+      },
+      {
+        "t": "text",
+        "v": " meets the y-axis at P.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-P6.2",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. eˣ is its own gradient, but e^(-3x) has gradient -3e^(-3x): the -3 comes down as a factor.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Every exponential with base e is its own gradient.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is -3x e^(-3x − 1).",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "ALG.EXP.DERIVATIVE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.EXP.DERIVATIVE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "d/dx e^(kx) = ke^(kx).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Mo says the gradient of ",
+      },
+      {
+        "t": "math",
+        "v": "y = e^{-3x}",
+      },
+      {
+        "t": "text",
+        "v": " is ",
+      },
+      {
+        "t": "math",
+        "v": "e^{-3x}",
+      },
+      {
+        "t": "text",
+        "v": ", because eˣ is its own gradient.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-P6.2",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. eˣ is its own gradient, but e^(4x) has gradient 4e^(4x): the 4 comes down as a factor.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Every exponential with base e is its own gradient.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 4x e^(4x − 1).",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "ALG.EXP.DERIVATIVE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.EXP.DERIVATIVE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "d/dx e^(kx) = ke^(kx).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Mo says the gradient of ",
+      },
+      {
+        "t": "math",
+        "v": "y = e^{4x}",
+      },
+      {
+        "t": "text",
+        "v": " is ",
+      },
+      {
+        "t": "math",
+        "v": "e^{4x}",
+      },
+      {
+        "t": "text",
+        "v": ", because eˣ is its own gradient.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-P6.2",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is -2x e^(-2x − 1).",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Every exponential with base e is its own gradient.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. eˣ is its own gradient, but e^(-2x) has gradient -2e^(-2x): the -2 comes down as a factor.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "ALG.EXP.DERIVATIVE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "ALG.EXP.DERIVATIVE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "d/dx e^(kx) = ke^(kx).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Mo says the gradient of ",
+      },
+      {
+        "t": "math",
+        "v": "y = e^{-2x}",
+      },
+      {
+        "t": "text",
+        "v": " is ",
+      },
+      {
+        "t": "math",
+        "v": "e^{-2x}",
+      },
+      {
+        "t": "text",
+        "v": ", because eˣ is its own gradient.",
+      },
+    ],
+  },
+]
+`;
