@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.25.0",
+  "version": "0.26.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -891,6 +891,91 @@
       "code": "ALG.SERIES.CONVERGE",
       "description": "Thinks a geometric series has a sum to infinity when |r| ≥ 1, or uses the wrong formula a/(1 + r).",
       "remediate": "AL-P4.5"
+    },
+    {
+      "code": "ALG.INDUCTION",
+      "description": "Leaves out the base case or the inductive step, assumes the result for all n instead of n = k, or makes an algebra slip linking the k and k + 1 cases.",
+      "remediate": "FM-CP-01"
+    },
+    {
+      "code": "CPLX.ARITHMETIC",
+      "description": "Treats i² as 1 (or forgets it), or adds real and imaginary parts together, when calculating with complex numbers.",
+      "remediate": "FM-CP-02"
+    },
+    {
+      "code": "CPLX.CONJUGATE",
+      "description": "Forgets that non-real roots of a real polynomial come in conjugate pairs, or takes the conjugate of a + bi as −a + bi.",
+      "remediate": "FM-CP-03"
+    },
+    {
+      "code": "CPLX.ARGUMENT",
+      "description": "Finds an argument as tan⁻¹(b/a) without checking the quadrant, or multiplies arguments when multiplying complex numbers.",
+      "remediate": "FM-CP-04"
+    },
+    {
+      "code": "CPLX.LOCUS",
+      "description": "Misreads a locus in the Argand diagram, e.g. takes |z − a| = r as centred at −a, or the half-line arg(z − a) = θ as a full line.",
+      "remediate": "FM-CP-05"
+    },
+    {
+      "code": "CPLX.DE-MOIVRE",
+      "description": "Misapplies de Moivre's theorem, e.g. raises only the modulus to the power or does not multiply the argument.",
+      "remediate": "FM-CP-06"
+    },
+    {
+      "code": "CPLX.ROOTS",
+      "description": "Finds only one nth root of a complex number, or spaces the roots wrongly round the circle.",
+      "remediate": "FM-CP-07"
+    },
+    {
+      "code": "MAT.PRODUCT",
+      "description": "Multiplies matrices entry by entry, or assumes AB = BA.",
+      "remediate": "FM-CP-08"
+    },
+    {
+      "code": "MAT.TRANSFORM",
+      "description": "Writes the images of (1, 0) and (0, 1) as rows instead of columns, mixes up similar transformations, or applies a combined transformation in the wrong order (PQ for 'P then Q').",
+      "remediate": "FM-CP-09"
+    },
+    {
+      "code": "MAT.INVARIANT",
+      "description": "Confuses an invariant line with a line of invariant points, or only checks one point on the line.",
+      "remediate": "FM-CP-10"
+    },
+    {
+      "code": "MAT.DETERMINANT",
+      "description": "Calculates a determinant as ad + bc, misses the alternating signs in a 3 × 3 expansion, or forgets that the area scale factor is |det|.",
+      "remediate": "FM-CP-11"
+    },
+    {
+      "code": "MAT.INVERSE",
+      "description": "Takes (AB)⁻¹ as A⁻¹B⁻¹, or forgets to swap and negate the right entries or divide by the determinant when inverting.",
+      "remediate": "FM-CP-11"
+    },
+    {
+      "code": "MAT.SYSTEM",
+      "description": "Thinks a zero determinant always means no solution, or misidentifies how three planes meet.",
+      "remediate": "FM-CP-12"
+    },
+    {
+      "code": "ALG.ROOTS-COEFF",
+      "description": "Uses b/a instead of −b/a for the sum of roots, forgets to divide by the leading coefficient, or takes α² + β² as (α + β)².",
+      "remediate": "FM-CP-13"
+    },
+    {
+      "code": "ALG.SERIES.STANDARD",
+      "description": "Mixes up the standard results for Σr, Σr² and Σr³, e.g. uses (Σr)² for Σr².",
+      "remediate": "FM-CP-14"
+    },
+    {
+      "code": "ALG.SERIES.DIFFERENCES",
+      "description": "Cancels the wrong terms in the method of differences, or forgets a factor from the partial fractions.",
+      "remediate": "FM-CP-15"
+    },
+    {
+      "code": "CALC.MACLAURIN",
+      "description": "Divides by n instead of n! in a Maclaurin series, drops a power of the inner coefficient, or gets the alternating signs wrong.",
+      "remediate": "FM-CP-16"
     },
     {
       "code": "ALG.EXP.DERIVATIVE",

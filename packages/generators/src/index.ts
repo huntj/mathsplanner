@@ -569,6 +569,22 @@ import alM84 from "./ks5/AL-M8.4.ts";
 import alM85 from "./ks5/AL-M8.5.ts";
 import alM86 from "./ks5/AL-M8.6.ts";
 import alM91 from "./ks5/AL-M9.1.ts";
+import fmCp01 from "./ks5/FM-CP-01.ts";
+import fmCp02 from "./ks5/FM-CP-02.ts";
+import fmCp03 from "./ks5/FM-CP-03.ts";
+import fmCp04 from "./ks5/FM-CP-04.ts";
+import fmCp05 from "./ks5/FM-CP-05.ts";
+import fmCp06 from "./ks5/FM-CP-06.ts";
+import fmCp07 from "./ks5/FM-CP-07.ts";
+import fmCp08 from "./ks5/FM-CP-08.ts";
+import fmCp09 from "./ks5/FM-CP-09.ts";
+import fmCp10 from "./ks5/FM-CP-10.ts";
+import fmCp11 from "./ks5/FM-CP-11.ts";
+import fmCp12 from "./ks5/FM-CP-12.ts";
+import fmCp13 from "./ks5/FM-CP-13.ts";
+import fmCp14 from "./ks5/FM-CP-14.ts";
+import fmCp15 from "./ks5/FM-CP-15.ts";
+import fmCp16 from "./ks5/FM-CP-16.ts";
 
 /** Every generator, in the order of data/statements.json. */
 export const generators: Generator[] = [
@@ -1140,6 +1156,22 @@ export const generators: Generator[] = [
   alM85,
   alM86,
   alM91,
+  fmCp01,
+  fmCp02,
+  fmCp03,
+  fmCp04,
+  fmCp05,
+  fmCp06,
+  fmCp07,
+  fmCp08,
+  fmCp09,
+  fmCp10,
+  fmCp11,
+  fmCp12,
+  fmCp13,
+  fmCp14,
+  fmCp15,
+  fmCp16,
 ] as Generator[];
 
 /** Unreviewed placeholders that exercise the gallery; real generators replace them. */

@@ -192,3 +192,9 @@ export const numberAnswer = (question: Question, part = 0): number => {
   const answer = question.parts[part]?.answer;
   return answer?.type === "number" ? answer.value : Number.NaN;
 };
+
+/** The LaTeX a question's exact-answer part expects, or "". */
+export const exactAnswer = (question: Question, part = 0): string => {
+  const answer = question.parts[part]?.answer;
+  return answer?.type === "exact" ? answer.value : "";
+};
