@@ -1,7 +1,7 @@
 import type { Question } from "@mathsplanner/core";
 import { describe, expect, it } from "vitest";
 import { renderQuestion } from "./render.ts";
-import { renderWorksheet, worksheetSubtitle } from "./worksheet.ts";
+import { renderWorksheet, worksheetStyles, worksheetSubtitle } from "./worksheet.ts";
 
 const key = {
   statementId: "Y5-GEO-04",
@@ -89,6 +89,9 @@ describe("worksheets", () => {
     expect(html).toContain("Subtract from 180°.");
     expect(html).toContain("Y5-GEO-04, Y6-GEO-01 · standard numbers · 2 questions");
     expect(worksheetSubtitle(["Y1-GEO-01"], "friendly", 1)).toMatch(/1 question$/);
+    // The footer sits in the flow at the end of each section, never fixed over later pages.
+    expect(html.match(/class="ws-footer"/g)).toHaveLength(2);
+    expect(worksheetStyles).not.toMatch(/position: fixed/);
   });
 
   it("can leave out the questions or the solutions", () => {

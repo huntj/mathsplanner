@@ -1,6 +1,6 @@
 // A4 worksheets: numbered questions laid out for paper, then (optionally) answer pages with worked
-// solutions. The same HTML prints from a browser or goes to PDF through Playwright, and every
-// page carries the settings and seed that regenerate it.
+// solutions. The same HTML prints from a browser or goes to PDF through Playwright, and the
+// questions and the answers each end with the settings and seed that regenerate them.
 import type { Question } from "@mathsplanner/core";
 import { escapeHtml, renderPartAnswer, renderQuestion, renderSolution } from "./render.ts";
 import { questionStyles } from "./styles.ts";
@@ -16,7 +16,7 @@ export interface WorksheetOptions {
   solutions?: boolean;
   /** Lighter shading and fewer rules, for photocopying. */
   reducedInk?: boolean;
-  /** Printed at the foot of every page: how to regenerate the sheet. */
+  /** Printed at the end of the questions and of the answers: how to regenerate the sheet. */
   footer?: string;
 }
 
@@ -49,6 +49,11 @@ function header(options: WorksheetOptions, answers: boolean): string {
 export function renderWorksheet(questions: readonly Question[], options: WorksheetOptions): string {
   const showQuestions = options.questions ?? true;
   const marks = questions.reduce((sum, q) => sum + q.parts.reduce((s, p) => s + p.marks, 0), 0);
+  // The footer ends each section in the normal flow. A fixed footer would repeat on every printed
+  // page, but Chrome draws it over the questions at the top of later pages.
+  const footer = options.footer
+    ? `<footer class="ws-footer">${escapeHtml(options.footer)}</footer>`
+    : "";
   const sections: string[] = [];
   if (showQuestions) {
     const items = questions.map(
@@ -56,7 +61,7 @@ export function renderWorksheet(questions: readonly Question[], options: Workshe
         `<section class="ws-question"><span class="ws-number">${i + 1}</span>${renderQuestion(q, { print: true })}</section>`,
     );
     sections.push(
-      `<div class="ws-page">${header(options, false)}${items.join("")}<p class="ws-total">Total: <span class="mp-blank mp-short"></span> / ${marks} mark${marks === 1 ? "" : "s"}</p></div>`,
+      `<div class="ws-page">${header(options, false)}${items.join("")}<p class="ws-total">Total: <span class="mp-blank mp-short"></span> / ${marks} mark${marks === 1 ? "" : "s"}</p>${footer}</div>`,
     );
   }
   if (options.answers) {
@@ -74,13 +79,10 @@ export function renderWorksheet(questions: readonly Question[], options: Workshe
       return `<section class="ws-question ws-answer"><span class="ws-number">${i + 1}</span><div class="mp-question"><p class="ws-ref">${escapeHtml(ref)}</p>${parts}${solution}</div></section>`;
     });
     sections.push(
-      `<div class="ws-page ws-answers">${header(options, true)}${items.join("")}</div>`,
+      `<div class="ws-page ws-answers">${header(options, true)}${items.join("")}${footer}</div>`,
     );
   }
-  const footer = options.footer
-    ? `<footer class="ws-footer">${escapeHtml(options.footer)}</footer>`
-    : "";
-  return `<div class="ws${options.reducedInk ? " ws-reduced-ink" : ""}">${sections.join("")}${footer}</div>`;
+  return `<div class="ws${options.reducedInk ? " ws-reduced-ink" : ""}">${sections.join("")}</div>`;
 }
 
 /** A4 layout for worksheets, on screen as a preview and on paper. */
@@ -117,14 +119,13 @@ export const worksheetStyles = `
 .ws .mp-answer { border-left: 3px solid var(--mp-correct); padding: 0.1em 0.6em; margin: 0.2em 0; }
 .ws .mp-solution { border-left: 3px solid var(--ws-rule); padding: 0.1em 0.6em; }
 .ws .mp-misconceptions { font-size: 9.5pt; }
-.ws-footer { color: #666; font-size: 8.5pt; margin-top: 1.5em; }
+.ws-footer { color: #666; font-size: 8.5pt; margin-top: 1.5em; overflow-wrap: anywhere; break-inside: avoid; }
 .ws-reduced-ink { --ws-rule: #ddd; }
 .ws-reduced-ink .ws-header { border-bottom-width: 1px; }
 .ws-reduced-ink svg [fill-opacity] { fill-opacity: 0.06; }
 .ws-reduced-ink .mp-options li { border-color: #ddd; }
 @media print {
   .ws-page + .ws-page { margin-top: 0; }
-  .ws-footer { position: fixed; bottom: -10mm; left: 0; right: 0; margin: 0; }
 }
 `;
 

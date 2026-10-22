@@ -1,8 +1,9 @@
 // A printable A4 worksheet built from the same settings as a session. The preview is the page
 // that prints; the link regenerates exactly this sheet.
-import { renderWorksheet, worksheetStyles, worksheetSubtitle } from "@mathsplanner/render";
+import { renderWorksheet, worksheetStyles } from "@mathsplanner/render";
 import { useMemo, useState } from "react";
 import {
+  describeSpec,
   formatRoute,
   generatorFor,
   sessionItems,
@@ -37,7 +38,7 @@ export function WorksheetView({ spec, sheet, navigate }: Props) {
     () =>
       renderWorksheet(questions, {
         title: sheet.title,
-        subtitle: worksheetSubtitle(spec.statements, spec.numbers, questions.length),
+        subtitle: describeSpec(spec, questions.length),
         answers: sheet.answers,
         solutions: sheet.solutions,
         reducedInk: sheet.reducedInk,
@@ -57,9 +58,10 @@ export function WorksheetView({ spec, sheet, navigate }: Props) {
       <style>{worksheetStyles}</style>
       <div className="no-print">
         <p className="breadcrumb">
-          <a href="#/">Set up</a> / Worksheet
+          <a href={spec.paper ? `#/${spec.paper.kind}` : "#/"}>Set up</a> /{" "}
+          {spec.paper ? "Test paper" : "Worksheet"}
         </p>
-        <h1>Printable worksheet</h1>
+        <h1>{spec.paper ? "Printable test paper" : "Printable worksheet"}</h1>
         <div className="controls">
           <label>
             Title

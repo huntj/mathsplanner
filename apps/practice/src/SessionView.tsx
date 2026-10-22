@@ -7,7 +7,13 @@ import { emptyDraft, isComplete, toResponse, type Draft } from "./answers.ts";
 import { QuestionView } from "./QuestionView.tsx";
 import { ResultsView } from "./ResultsView.tsx";
 import { answerText, type Attempt } from "./results.ts";
-import { generatorFor, sessionItems, statementById, type SessionSpec } from "./session.ts";
+import {
+  generatorFor,
+  paperTitle,
+  sessionItems,
+  statementById,
+  type SessionSpec,
+} from "./session.ts";
 
 interface Loaded {
   question: Question;
@@ -53,7 +59,8 @@ export function SessionView({ spec, restart }: { spec: SessionSpec; restart: () 
         }}
       >
         <h1>
-          Practice: {questions.length} question{questions.length === 1 ? "" : "s"}
+          {paperTitle(spec.paper) ?? "Practice"}: {questions.length} question
+          {questions.length === 1 ? "" : "s"}
         </h1>
         <ul className="statement-summary">
           {statements.map((id) => (

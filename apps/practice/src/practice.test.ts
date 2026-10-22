@@ -1,13 +1,17 @@
 import { markQuestion } from "@mathsplanner/marking";
 import { describe, expect, it } from "vitest";
 import { emptyDraft, isComplete, toResponse } from "./answers.ts";
+import { topicOf, unitPool, yearPool } from "./papers.ts";
 import { answerText, csvField, resultsCsv } from "./results.ts";
 import {
+  describeSpec,
   formatRoute,
   generatorFor,
+  itemMarks,
   parseRoute,
   practisable,
   sessionItems,
+  statements,
   type SessionSpec,
 } from "./session.ts";
 
@@ -66,6 +70,86 @@ describe("session links", () => {
   it("only offers statements that have a generator", () => {
     expect(practisable.length).toBeGreaterThan(0);
     for (const s of practisable) expect(generatorFor(s.id)).toBeDefined();
+  });
+});
+
+describe("year and unit tests", () => {
+  const year: SessionSpec = {
+    statements: yearPool(statements, "Y5"),
+    depths: [1, 2, 3, 4],
+    numbers: "standard",
+    count: 12,
+    seed: 7,
+    feedback: "end",
+    paper: { kind: "year", stage: "Y5", start: 1, end: 4, marks: 0 },
+  };
+  const unit: SessionSpec = {
+    statements: unitPool(statements, "algebra", ["Y7", "Y8"]),
+    depths: [2, 4],
+    numbers: "standard",
+    count: 10,
+    seed: 3,
+    feedback: "end",
+    paper: { kind: "unit", topic: "algebra", stages: ["Y7", "Y8"], marks: 15 },
+  };
+
+  it("round-trips paper links, rebuilding the pool from the year or topic", () => {
+    expect(parseRoute(formatRoute({ page: "session", spec: year }))).toEqual({
+      page: "session",
+      spec: year,
+    });
+    expect(parseRoute(formatRoute({ page: "session", spec: unit }))).toEqual({
+      page: "session",
+      spec: unit,
+    });
+    expect(formatRoute({ page: "session", spec: year })).not.toContain("statements=");
+    expect(parseRoute("#/worksheet?paper=year&stage=Y5&count=5")).toMatchObject({
+      sheet: { title: "Year 5 test" },
+    });
+    expect(parseRoute("#/session?paper=unit&topic=nope&stages=Y7")).toEqual({ page: "unit" });
+  });
+
+  it("ramps the depth from the start to the end of a year test", () => {
+    const items = sessionItems(year);
+    expect(items).toHaveLength(12);
+    expect(items[0]?.depth).toBe(1);
+    expect(items.at(-1)?.depth).toBe(4);
+    const depths = items.map((i) => i.depth);
+    expect(depths).toEqual([...depths].sort());
+    for (const item of items) expect(item.statementId.startsWith("Y5-")).toBe(true);
+    // Spread over the year: no statement twice while others are unused.
+    expect(new Set(items.map((i) => i.statementId)).size).toBeGreaterThanOrEqual(10);
+    const down = sessionItems({
+      ...year,
+      paper: { kind: "year", stage: "Y5", start: 4, end: 1, marks: 0 },
+    });
+    expect(down[0]?.depth).toBe(4);
+    expect(down.at(-1)?.depth).toBe(1);
+  });
+
+  it("aims a paper at its mark total, moving depths at most one step", () => {
+    const marked = {
+      ...year,
+      paper: { kind: "year" as const, stage: "Y5", start: 1 as const, end: 4 as const, marks: 18 },
+    };
+    const items = sessionItems(marked);
+    const total = (xs: typeof items) =>
+      xs.reduce((sum, item) => sum + itemMarks(item, "standard"), 0);
+    expect(items).toHaveLength(12);
+    expect(Math.abs(total(items) - 18)).toBeLessThanOrEqual(1);
+    expect(total(sessionItems(year))).not.toBe(18);
+    const depths = items.map((i) => i.depth);
+    expect(depths).toEqual([...depths].sort());
+    expect(Math.abs(total(sessionItems(unit)) - 15)).toBeLessThanOrEqual(1);
+    for (const item of sessionItems(unit)) expect([2, 4]).toContain(item.depth);
+    expect(describeSpec(unit, 10)).toContain("Algebra · Year 7, Year 8");
+  });
+
+  it("puts every statement in a topic, and a Higher paper includes Foundation", () => {
+    for (const s of statements) expect(topicOf(s), s.id).toBeDefined();
+    const higher = yearPool(statements, "GH");
+    expect(higher.some((id) => id.startsWith("GF-"))).toBe(true);
+    expect(higher.some((id) => id.startsWith("GH-"))).toBe(true);
   });
 });
 
