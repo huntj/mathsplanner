@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.24.0",
+  "version": "0.25.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -833,6 +833,66 @@
       "remediate": "GH-A25"
     },
     {
+      "code": "ALG.PROOF.CONTRADICTION",
+      "description": "Starts a proof by contradiction by assuming the statement to be proved, rather than its negation.",
+      "remediate": "AL-P1.1b"
+    },
+    {
+      "code": "ALG.MODULUS.NEGATIVE",
+      "description": "Forgets that a modulus is never negative, or solves only one of the two cases of a modulus equation.",
+      "remediate": "AL-P2.7b"
+    },
+    {
+      "code": "ALG.FUNCTION.DOMAIN-RANGE",
+      "description": "Mixes up the domain and the range of a function, or gives the wrong domain for an inverse function.",
+      "remediate": "AL-P2.8"
+    },
+    {
+      "code": "ALG.PARTIAL.COVER-UP",
+      "description": "Substitutes the wrong value, or gets the sign wrong, when finding partial fraction coefficients by covering up.",
+      "remediate": "AL-P2.10"
+    },
+    {
+      "code": "ALG.MODEL.LIMITATION",
+      "description": "Accepts a solution that makes no sense in context, such as a negative time, or uses a model beyond the values it is valid for.",
+      "remediate": "AL-P2.11"
+    },
+    {
+      "code": "ALG.PARAMETRIC.SUBSTITUTE",
+      "description": "Substitutes a coordinate value for the parameter t, instead of first finding t from that coordinate.",
+      "remediate": "AL-P3.3"
+    },
+    {
+      "code": "ALG.BINOMIAL.POWER",
+      "description": "Forgets to raise the number with x to the power in a binomial term, e.g. writes 15 × 2x² for the x² term of (1 + 2x)⁶.",
+      "remediate": "AL-P4.1a"
+    },
+    {
+      "code": "ALG.BINOMIAL.VALIDITY",
+      "description": "Gives the wrong range of validity for a binomial expansion, e.g. |x| < b instead of |x| < 1/b for (1 + bx)ⁿ.",
+      "remediate": "AL-P4.1b"
+    },
+    {
+      "code": "ALG.SEQUENCE.PERIODIC",
+      "description": "Picks the wrong term of a periodic sequence by miscounting where in the cycle the term falls.",
+      "remediate": "AL-P4.2"
+    },
+    {
+      "code": "ALG.SIGMA.COUNT",
+      "description": "Miscounts the terms of a sum: adds a constant once instead of once per term, or includes or leaves out an end term.",
+      "remediate": "AL-P4.3"
+    },
+    {
+      "code": "ALG.SERIES.FORMULA",
+      "description": "Uses n instead of n − 1 (or the reverse) in a sequence or series formula, or confuses a term with a sum.",
+      "remediate": "AL-P4.4"
+    },
+    {
+      "code": "ALG.SERIES.CONVERGE",
+      "description": "Thinks a geometric series has a sum to infinity when |r| ≥ 1, or uses the wrong formula a/(1 + r).",
+      "remediate": "AL-P4.5"
+    },
+    {
       "code": "STA.KEY-IGNORED",
       "description": "Counts the symbols in a pictogram without using the key, e.g. reads 3 symbols as 3 when each stands for 2.",
       "remediate": "Y2-STA-01"
@@ -1511,6 +1571,41 @@
       "code": "GEO.VECTOR.DIRECTION",
       "description": "Gets the sign of a vector wrong when travelling against its direction, e.g. writes AB = a − b instead of b − a.",
       "remediate": "GH-G25"
+    },
+    {
+      "code": "GEO.SINE-RULE.AMBIGUOUS",
+      "description": "Gives only the acute angle from sin⁻¹ when the triangle needs the obtuse angle (180° minus it), or misses the second triangle.",
+      "remediate": "AL-P5.1a"
+    },
+    {
+      "code": "GEO.RADIAN.CONVERT",
+      "description": "Multiplies by 180/π instead of π/180 when converting degrees to radians, or uses degrees in a radian formula such as s = rθ.",
+      "remediate": "AL-P5.1b"
+    },
+    {
+      "code": "GEO.SMALL-ANGLE",
+      "description": "Misuses the small angle approximations, e.g. cos θ ≈ 1 − θ² instead of 1 − θ²/2, or applies them in degrees.",
+      "remediate": "AL-P5.2"
+    },
+    {
+      "code": "GEO.RECIPROCAL-TRIG",
+      "description": "Pairs sec, cosec and cot with the wrong function (e.g. sec x = 1/sin x), or confuses cosec x with sin⁻¹ x.",
+      "remediate": "AL-P5.4"
+    },
+    {
+      "code": "GEO.TRIG.IDENTITY",
+      "description": "Misuses sin²θ + cos²θ = 1 or its relatives, e.g. writes sin θ + cos θ = 1 or 1 + tan²θ = cosec²θ, or ignores the sign in the quadrant.",
+      "remediate": "AL-P5.5a"
+    },
+    {
+      "code": "GEO.ADDITION.SIGN",
+      "description": "Uses the wrong sign in an addition formula, e.g. cos(A + B) = cos A cos B + sin A sin B, or writes sin 2θ = 2 sin θ.",
+      "remediate": "AL-P5.6"
+    },
+    {
+      "code": "GEO.TRIG.MULTIPLE-ANGLE",
+      "description": "Solves sin kx = c as if it were sin x = c, forgetting to divide the angles by k or to extend the interval for kx.",
+      "remediate": "AL-P5.7"
     }
   ]
 }

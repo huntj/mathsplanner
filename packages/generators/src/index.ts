@@ -463,6 +463,22 @@ import gfS4 from "./ks4/GF-S4.ts";
 import ghS4 from "./ks4/GH-S4.ts";
 import gfS5 from "./ks4/GF-S5.ts";
 import gfS6 from "./ks4/GF-S6.ts";
+import alP11a from "./ks5/AL-P1.1a.ts";
+import alP11b from "./ks5/AL-P1.1b.ts";
+import alP21 from "./ks5/AL-P2.1.ts";
+import alP22 from "./ks5/AL-P2.2.ts";
+import alP23 from "./ks5/AL-P2.3.ts";
+import alP24 from "./ks5/AL-P2.4.ts";
+import alP25 from "./ks5/AL-P2.5.ts";
+import alP26a from "./ks5/AL-P2.6a.ts";
+import alP26b from "./ks5/AL-P2.6b.ts";
+import alP27a from "./ks5/AL-P2.7a.ts";
+import alP27b from "./ks5/AL-P2.7b.ts";
+import alP28 from "./ks5/AL-P2.8.ts";
+import alP29a from "./ks5/AL-P2.9a.ts";
+import alP29b from "./ks5/AL-P2.9b.ts";
+import alP210 from "./ks5/AL-P2.10.ts";
+import alP211 from "./ks5/AL-P2.11.ts";
 
 /** Every generator, in the order of data/statements.json. */
 export const generators: Generator[] = [
@@ -928,6 +944,22 @@ export const generators: Generator[] = [
   ghS4,
   gfS5,
   gfS6,
+  alP11a,
+  alP11b,
+  alP21,
+  alP22,
+  alP23,
+  alP24,
+  alP25,
+  alP26a,
+  alP26b,
+  alP27a,
+  alP27b,
+  alP28,
+  alP29a,
+  alP29b,
+  alP210,
+  alP211,
 ] as Generator[];
 
 /** Unreviewed placeholders that exercise the gallery; real generators replace them. */
