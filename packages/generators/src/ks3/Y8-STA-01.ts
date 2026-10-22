@@ -149,7 +149,7 @@ export default defineGenerator<Params>({
     if (question.archetype === "varied-form")
       return chosenText(question) === CLASSES[p.grouped.indexOf(Math.max(...p.grouped))];
     return (
-      JSON.stringify((chosenFigure(question) as ChartSpec | undefined)?.values) ===
+      JSON.stringify((chosenFigure(question) as { values?: number[] } | undefined)?.values) ===
       JSON.stringify(p.freqs)
     );
   },

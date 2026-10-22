@@ -6,7 +6,6 @@
 // Y3-STA-01: Interpret and present data using bar charts, pictograms and tables
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
-import type { ChartSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { chosenFigure, numberAnswer } from "../shared/counting.ts";
 import { barChart, distinctValues, pictogram, tableLatex, TOPICS } from "../shared/sta.ts";
@@ -122,7 +121,7 @@ export default defineGenerator<Params>({
   verify(p, question) {
     if (question.archetype === "choose-the-diagram")
       return (
-        JSON.stringify((chosenFigure(question) as ChartSpec | undefined)?.values) ===
+        JSON.stringify((chosenFigure(question) as { values?: number[] } | undefined)?.values) ===
         JSON.stringify(p.values)
       );
     return numberAnswer(question) === (question.key.depth === 1 ? p.values[p.ask] : p.pict[p.ask]);

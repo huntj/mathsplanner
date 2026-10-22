@@ -6,7 +6,6 @@
 // Y2-STA-01: Interpret and construct simple pictograms, tally charts, block diagrams and tables
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
-import type { ChartSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { chosenFigure, numberAnswer, tally } from "../shared/counting.ts";
 import { barChart, distinctValues, pictogram, tableLatex, TOPICS } from "../shared/sta.ts";
@@ -122,7 +121,7 @@ export default defineGenerator<Params>({
 
   verify(p, question) {
     if (question.archetype === "choose-the-diagram") {
-      const chart = chosenFigure(question) as ChartSpec | undefined;
+      const chart = chosenFigure(question) as { values?: number[] } | undefined;
       return JSON.stringify(chart?.values) === JSON.stringify(p.values);
     }
     return numberAnswer(question) === p.values[p.ask];

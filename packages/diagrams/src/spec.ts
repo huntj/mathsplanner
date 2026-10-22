@@ -320,6 +320,13 @@ export type ChartSpec = { type: "chart"; description?: string; title?: Label } &
       /** Write each sector's angle on it as well as its name. */
       showAngles?: boolean;
     }
+  | {
+      kind: "box";
+      /** One or more box plots on a shared scale, each from its five-number summary. */
+      plots: { name?: Label; values: [number, number, number, number, number] }[];
+      /** The horizontal scale runs from min to max, labelled every step. */
+      axis: { min: number; max: number; step: number; label?: Label };
+    }
 );
 
 // --- probability -------------------------------------------------------------------------

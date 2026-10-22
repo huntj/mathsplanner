@@ -926,6 +926,29 @@ export const REFERENCE_DIAGRAMS: ReferenceDiagram[] = [
     },
   },
   {
+    id: "s-box-plot",
+    title: "Box plot",
+    spec: {
+      type: "chart",
+      kind: "box",
+      plots: [{ values: [12, 18, 23, 30, 41] }],
+      axis: { min: 10, max: 45, step: 5, label: "\\text{time (minutes)}" },
+    },
+  },
+  {
+    id: "s-box-plots-compared",
+    title: "Two box plots compared",
+    spec: {
+      type: "chart",
+      kind: "box",
+      plots: [
+        { name: "\\text{Class A}", values: [35, 48, 56, 63, 80] },
+        { name: "\\text{Class B}", values: [30, 52, 61, 70, 88] },
+      ],
+      axis: { min: 30, max: 90, step: 10, label: "\\text{score}" },
+    },
+  },
+  {
     id: "p-venn",
     title: "Venn diagram with counts",
     spec: {

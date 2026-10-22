@@ -11,6 +11,7 @@ import { label, listJoin, numberLabel, numberPlain, plain } from "./shared.ts";
 type Bar = Extract<ChartSpec, { kind: "bar" }>;
 type Pictogram = Extract<ChartSpec, { kind: "pictogram" }>;
 type Pie = Extract<ChartSpec, { kind: "pie" }>;
+type Box = Extract<ChartSpec, { kind: "box" }>;
 
 const PLOT_HEIGHT = 220;
 const BAR_WIDTH = 34;
@@ -22,6 +23,7 @@ const RADIUS = 100;
 const isValue = (v: unknown) => typeof v === "number" && Number.isFinite(v) && v >= 0;
 
 export function checkChart(spec: ChartSpec): string[] {
+  if (spec.kind === "box") return checkBox(spec);
   const problems: string[] = [];
   const { categories, values } = spec;
   if (!Array.isArray(categories) || !Array.isArray(values) || categories.length !== values.length) {
@@ -75,6 +77,7 @@ export const pieAngles = (values: readonly number[]): number[] => {
 
 export function describeChart(spec: ChartSpec): string {
   if (spec.description) return spec.description;
+  if (spec.kind === "box") return describeBox(spec);
   const title = spec.title ? ` of ${plain(spec.title)}` : "";
   const pairs = (f: (v: number, i: number) => string) =>
     listJoin(spec.categories.map((c, i) => `${plain(c)} ${f(spec.values[i] ?? 0, i)}`));
@@ -297,11 +300,13 @@ export function layoutChart(spec: ChartSpec): Scene {
   let bounds: Rect = { x: 0, y: 0, w: 1, h: 1 };
   if (problems.length === 0) {
     bounds =
-      spec.kind === "bar"
-        ? layoutBar(spec, shapes, obstacles, labels)
-        : spec.kind === "pictogram"
-          ? layoutPictogram(spec, shapes, obstacles, labels)
-          : layoutPie(spec, shapes, obstacles, labels);
+      spec.kind === "box"
+        ? layoutBox(spec, shapes, obstacles, labels)
+        : spec.kind === "bar"
+          ? layoutBar(spec, shapes, obstacles, labels)
+          : spec.kind === "pictogram"
+            ? layoutPictogram(spec, shapes, obstacles, labels)
+            : layoutPie(spec, shapes, obstacles, labels);
   }
   if (spec.title) {
     const text = label(spec.title);
@@ -319,4 +324,118 @@ export function layoutChart(spec: ChartSpec): Scene {
     description,
     problems,
   };
+}
+
+const BOX_WIDTH = 360;
+const BOX_ROW = 56;
+const BOX_HEIGHT = 26;
+
+function checkBox(spec: Box): string[] {
+  const problems: string[] = [];
+  const { min, max, step } = spec.axis ?? {};
+  if (!Array.isArray(spec.plots) || spec.plots.length === 0 || spec.plots.length > 3)
+    return ["a box plot chart needs 1 to 3 plots"];
+  if (!(typeof min === "number" && typeof max === "number" && max > min && step > 0))
+    return ["the axis needs min < max and a positive step"];
+  const ticks = (max - min) / step;
+  if (Math.abs(ticks - Math.round(ticks)) > 1e-9)
+    problems.push(`step ${step} does not divide the axis`);
+  if (ticks > 20) problems.push(`${Math.round(ticks)} axis steps is too many to read`);
+  spec.plots.forEach((p, i) => {
+    const v = p.values;
+    if (!Array.isArray(v) || v.length !== 5 || !v.every((x) => Number.isFinite(x)))
+      problems.push(`plot ${i + 1} needs five numbers`);
+    else if (v.some((x, j) => j > 0 && x < (v[j - 1] ?? x)))
+      problems.push(`plot ${i + 1}'s five numbers must be in order`);
+    else if ((v[0] ?? 0) < min || (v[4] ?? 0) > max) problems.push(`plot ${i + 1} is off the axis`);
+  });
+  return problems;
+}
+
+function describeBox(spec: Box): string {
+  const one = (p: Box["plots"][number]) => {
+    const [lo, q1, med, q3, hi] = p.values.map(numberPlain);
+    return `${p.name ? `${plain(p.name)}: ` : ""}minimum ${lo}, lower quartile ${q1}, median ${med}, upper quartile ${q3}, maximum ${hi}`;
+  };
+  return `Box plot${spec.plots.length > 1 ? "s" : ""} on a scale from ${numberPlain(spec.axis.min)} to ${numberPlain(spec.axis.max)}. ${spec.plots.map(one).join("; ")}.`;
+}
+
+function layoutBox(
+  spec: Box,
+  shapes: string[],
+  obstacles: Obstacle[],
+  labels: LabelRequest[],
+): Rect {
+  const { min, max, step } = spec.axis;
+  const x = (v: number) => ((v - min) / (max - min)) * BOX_WIDTH;
+  const axisY = spec.plots.length * BOX_ROW;
+  // Faint vertical grid lines help read the values.
+  for (let t = min; t <= max + 1e-9; t += step) {
+    shapes.push(line([x(t), 0], [x(t), axisY], { width: 0.6, dashed: true }));
+  }
+  spec.plots.forEach((p, i) => {
+    const [lo, q1, med, q3, hi] = p.values;
+    const cy = i * BOX_ROW + BOX_ROW / 2;
+    const top = cy - BOX_HEIGHT / 2;
+    const bottom = cy + BOX_HEIGHT / 2;
+    const parts: [Point, Point][] = [
+      [
+        [x(lo), cy],
+        [x(q1), cy],
+      ],
+      [
+        [x(q3), cy],
+        [x(hi), cy],
+      ],
+      [
+        [x(lo), top + 6],
+        [x(lo), bottom - 6],
+      ],
+      [
+        [x(hi), top + 6],
+        [x(hi), bottom - 6],
+      ],
+      [
+        [x(med), top],
+        [x(med), bottom],
+      ],
+    ];
+    for (const [a, b] of parts) {
+      shapes.push(line(a, b, { width: 1.6 }));
+      obstacles.push({ id: `plot ${i + 1}`, segment: [a, b] });
+    }
+    const box: Point[] = [
+      [x(q1), top],
+      [x(q3), top],
+      [x(q3), bottom],
+      [x(q1), bottom],
+    ];
+    shapes.push(polygon(box, { shaded: true }));
+    for (const segment of polylineSegments(box, true))
+      obstacles.push({ id: `plot ${i + 1}`, segment });
+    if (p.name) {
+      const text = label(p.name);
+      labels.push({ id: `name ${i + 1}`, text, candidates: [[-12 - text.width / 2, cy]] });
+    }
+  });
+  const axis: [Point, Point] = [
+    [0, axisY],
+    [BOX_WIDTH, axisY],
+  ];
+  shapes.push(line(axis[0], axis[1], { width: 1.6 }));
+  obstacles.push({ id: "axis", segment: axis });
+  for (let t = min; t <= max + 1e-9; t += step) {
+    shapes.push(line([x(t), axisY], [x(t), axisY + 4], { width: 1.2 }));
+    const text = label(numberLabel(t));
+    labels.push({ id: `axis ${t}`, text, candidates: [[x(t), axisY + 8 + text.height / 2]] });
+  }
+  if (spec.axis.label) {
+    const text = label(spec.axis.label);
+    labels.push({
+      id: "axis name",
+      text,
+      candidates: [[BOX_WIDTH / 2, axisY + 34 + text.height / 2]],
+    });
+  }
+  return { x: 0, y: 0, w: BOX_WIDTH, h: axisY + 4 };
 }

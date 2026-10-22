@@ -454,10 +454,13 @@ import gfP5 from "./ks4/GF-P5.ts";
 import gfP6 from "./ks4/GF-P6.ts";
 import gfP7 from "./ks4/GF-P7.ts";
 import gfP8 from "./ks4/GF-P8.ts";
+import ghP9 from "./ks4/GH-P9.ts";
 import gfS1 from "./ks4/GF-S1.ts";
 import gfS2 from "./ks4/GF-S2.ts";
 import gfS3 from "./ks4/GF-S3.ts";
+import ghS3 from "./ks4/GH-S3.ts";
 import gfS4 from "./ks4/GF-S4.ts";
+import ghS4 from "./ks4/GH-S4.ts";
 import gfS5 from "./ks4/GF-S5.ts";
 import gfS6 from "./ks4/GF-S6.ts";
 
@@ -916,10 +919,13 @@ export const generators: Generator[] = [
   gfP6,
   gfP7,
   gfP8,
+  ghP9,
   gfS1,
   gfS2,
   gfS3,
+  ghS3,
   gfS4,
+  ghS4,
   gfS5,
   gfS6,
 ] as Generator[];

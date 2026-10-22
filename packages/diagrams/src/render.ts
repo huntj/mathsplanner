@@ -133,9 +133,10 @@ function shapeProblem(spec: SupportedDiagramSpec): string | undefined {
         ? undefined
         : "kind must be venn (with four regions) or tree (with branches)";
     case "chart":
-      return ["bar", "pictogram", "pie"].includes(s.kind as string) && Array.isArray(s.values)
+      return (["bar", "pictogram", "pie"].includes(s.kind as string) && Array.isArray(s.values)) ||
+        (s.kind === "box" && Array.isArray(s.plots))
         ? undefined
-        : "kind must be bar, pictogram or pie, with a list of values";
+        : "kind must be bar, pictogram or pie with a list of values, or box with a list of plots";
     case "counters":
       return COUNTER_LAYOUTS.includes(s.layout as string)
         ? undefined
