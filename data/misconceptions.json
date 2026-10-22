@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.27.0",
+  "version": "0.28.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -698,6 +698,11 @@
       "remediate": "Y9-ALG-09"
     },
     {
+      "code": "ALG.INEQUALITY.MULTIPLY",
+      "description": "Multiplies both sides of an inequality by an expression that could be negative, such as a denominator, without considering its sign.",
+      "remediate": "FM-FP1-03"
+    },
+    {
       "code": "ALG.EXPAND.NEGATIVE",
       "description": "Multiplies out a bracket after a minus sign without changing every sign inside, e.g. −2(x − 4) = −2x − 8.",
       "remediate": "GF-A4"
@@ -898,6 +903,21 @@
       "remediate": "FM-CP-01"
     },
     {
+      "code": "NPV.MODULAR",
+      "description": "Reduces a power modulo p instead of p − 1 when using Fermat's little theorem, multiplies instead of using an inverse to solve a congruence, or uses the digit sum to test for 11.",
+      "remediate": "FM-FP2-01"
+    },
+    {
+      "code": "ALG.GROUP",
+      "description": "Confuses an element with its order, expects subgroups whose order does not divide the group's order, or assumes every small group is cyclic.",
+      "remediate": "FM-FP2-02"
+    },
+    {
+      "code": "ALG.RECURRENCE",
+      "description": "Gets the sign of the particular solution b/(1 − a) wrong, or writes A·rⁿ + B·rⁿ for a repeated root.",
+      "remediate": "FM-FP2-04"
+    },
+    {
       "code": "CPLX.ARITHMETIC",
       "description": "Treats i² as 1 (or forgets it), or adds real and imaginary parts together, when calculating with complex numbers.",
       "remediate": "FM-CP-02"
@@ -928,6 +948,11 @@
       "remediate": "FM-CP-07"
     },
     {
+      "code": "CPLX.TRANSFORM",
+      "description": "Thinks w = 1/z maps |z| = r to |w| = r, or that lines always map to lines.",
+      "remediate": "FM-FP2-03"
+    },
+    {
       "code": "MAT.PRODUCT",
       "description": "Multiplies matrices entry by entry, or assumes AB = BA.",
       "remediate": "FM-CP-08"
@@ -956,6 +981,11 @@
       "code": "MAT.SYSTEM",
       "description": "Thinks a zero determinant always means no solution, or misidentifies how three planes meet.",
       "remediate": "FM-CP-12"
+    },
+    {
+      "code": "MAT.EIGEN",
+      "description": "Makes a sign slip in det(M − λI) = 0, matches an eigenvector to the wrong eigenvalue, or takes the diagonal entries as the eigenvalues.",
+      "remediate": "FM-FP2-05"
     },
     {
       "code": "ALG.ROOTS-COEFF",
@@ -1033,6 +1063,31 @@
       "remediate": "FM-CP-31"
     },
     {
+      "code": "CALC.LIMIT",
+      "description": "Applies L'Hospital's rule when the limit is not 0/0 or ∞/∞, differentiates the quotient instead of top and bottom separately, or drops a constant from a series.",
+      "remediate": "FM-FP1-05"
+    },
+    {
+      "code": "CALC.TAYLOR",
+      "description": "Forgets to divide by n! for the coefficients of a Taylor series solution, or expands about the wrong point.",
+      "remediate": "FM-FP1-06"
+    },
+    {
+      "code": "CALC.NUMERICAL",
+      "description": "Forgets to multiply by the step h in Euler's method, or uses the wrong weights (1, 4, 2, 4, …, 1) in Simpson's rule.",
+      "remediate": "FM-FP1-07"
+    },
+    {
+      "code": "CALC.REDUCTION",
+      "description": "Makes a sign slip in the parts step of a reduction formula, or uses the wrong starting value.",
+      "remediate": "FM-FP2-06"
+    },
+    {
+      "code": "CALC.ARC-LENGTH",
+      "description": "Leaves out the 1 + or the square root in ∫√(1 + (dy/dx)²) dx, or uses y instead of dy/dx.",
+      "remediate": "FM-FP2-06"
+    },
+    {
       "code": "GEO.VECTOR.PLANE",
       "description": "Confuses a plane's normal with a direction in the plane, gets the sign of d wrong, or forgets to divide by |n| for a distance.",
       "remediate": "FM-CP-22"
@@ -1043,6 +1098,11 @@
       "remediate": "FM-CP-23"
     },
     {
+      "code": "GEO.VECTOR.CROSS",
+      "description": "Gets the sign of the middle component of a × b wrong, takes a × b = b × a, or forgets the ½ or ⅙ for triangle areas and tetrahedron volumes.",
+      "remediate": "FM-FP1-01"
+    },
+    {
       "code": "GEO.POLAR.CONVERT",
       "description": "Swaps cos and sin when converting between polar and Cartesian forms, or loses the sign from the quadrant.",
       "remediate": "FM-CP-24"
@@ -1051,6 +1111,16 @@
       "code": "GEO.POLAR.AREA",
       "description": "Forgets the ½ in ½∫r² dθ, or integrates over a range that traces the curve twice.",
       "remediate": "FM-CP-25"
+    },
+    {
+      "code": "GEO.CONIC",
+      "description": "Mixes up a and b in a conic, puts the focus of y² = 4ax at (4a, 0), or gives the asymptotes of a hyperbola upside down.",
+      "remediate": "FM-FP1-02"
+    },
+    {
+      "code": "GEO.TRIG.T-FORMULA",
+      "description": "Mixes up the t-formulae for sin θ, cos θ and tan θ, or forgets the 2 in dθ = 2 dt/(1 + t²).",
+      "remediate": "FM-FP1-04"
     },
     {
       "code": "ALG.EXP.DERIVATIVE",

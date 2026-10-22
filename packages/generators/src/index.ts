@@ -600,6 +600,19 @@ import fmCp28 from "./ks5/FM-CP-28.ts";
 import fmCp29 from "./ks5/FM-CP-29.ts";
 import fmCp30 from "./ks5/FM-CP-30.ts";
 import fmCp31 from "./ks5/FM-CP-31.ts";
+import fmFp101 from "./ks5/FM-FP1-01.ts";
+import fmFp102 from "./ks5/FM-FP1-02.ts";
+import fmFp103 from "./ks5/FM-FP1-03.ts";
+import fmFp104 from "./ks5/FM-FP1-04.ts";
+import fmFp105 from "./ks5/FM-FP1-05.ts";
+import fmFp106 from "./ks5/FM-FP1-06.ts";
+import fmFp107 from "./ks5/FM-FP1-07.ts";
+import fmFp201 from "./ks5/FM-FP2-01.ts";
+import fmFp202 from "./ks5/FM-FP2-02.ts";
+import fmFp203 from "./ks5/FM-FP2-03.ts";
+import fmFp204 from "./ks5/FM-FP2-04.ts";
+import fmFp205 from "./ks5/FM-FP2-05.ts";
+import fmFp206 from "./ks5/FM-FP2-06.ts";
 
 /** Every generator, in the order of data/statements.json. */
 export const generators: Generator[] = [
@@ -1202,6 +1215,19 @@ export const generators: Generator[] = [
   fmCp29,
   fmCp30,
   fmCp31,
+  fmFp101,
+  fmFp102,
+  fmFp103,
+  fmFp104,
+  fmFp105,
+  fmFp106,
+  fmFp107,
+  fmFp201,
+  fmFp202,
+  fmFp203,
+  fmFp204,
+  fmFp205,
+  fmFp206,
 ] as Generator[];
 
 /** Unreviewed placeholders that exercise the gallery; real generators replace them. */

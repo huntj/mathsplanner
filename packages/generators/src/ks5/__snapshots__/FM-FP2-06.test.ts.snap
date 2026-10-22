@@ -1,0 +1,905 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FM-FP2-06 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FP2-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "e - 2",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "5e - 2",
+              "type": "exact",
+            },
+            "code": "CALC.REDUCTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Iₙ = e − nIₙ₋₁: subtract, then expand the brackets carefully.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find ",
+          },
+          {
+            "t": "math",
+            "v": "I_2",
+          },
+          {
+            "t": "text",
+            "v": " in terms of e.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "I_1 = e - 1(e - 1) = 1",
+        "say": [],
+      },
+      {
+        "math": "I_2 = e - 2(1) = e - 2",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Let ",
+      },
+      {
+        "t": "math",
+        "v": "I_n = \\int_0^1 x^n e^x\\,dx",
+      },
+      {
+        "t": "text",
+        "v": ". Integration by parts gives ",
+      },
+      {
+        "t": "math",
+        "v": "I_n = e - nI_{n-1}",
+      },
+      {
+        "t": "text",
+        "v": ", and ",
+      },
+      {
+        "t": "math",
+        "v": "I_0 = e - 1",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FP2-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "-2e + 6",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "16e - 6",
+              "type": "exact",
+            },
+            "code": "CALC.REDUCTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Iₙ = e − nIₙ₋₁: subtract, then expand the brackets carefully.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find ",
+          },
+          {
+            "t": "math",
+            "v": "I_3",
+          },
+          {
+            "t": "text",
+            "v": " in terms of e.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "I_1 = e - 1(e - 1) = 1",
+        "say": [],
+      },
+      {
+        "math": "I_2 = e - 2(1) = e - 2",
+        "say": [],
+      },
+      {
+        "math": "I_3 = e - 3(e - 2) = -2e + 6",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Let ",
+      },
+      {
+        "t": "math",
+        "v": "I_n = \\int_0^1 x^n e^x\\,dx",
+      },
+      {
+        "t": "text",
+        "v": ". Integration by parts gives ",
+      },
+      {
+        "t": "math",
+        "v": "I_n = e - nI_{n-1}",
+      },
+      {
+        "t": "text",
+        "v": ", and ",
+      },
+      {
+        "t": "math",
+        "v": "I_0 = e - 1",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FP2-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "-2e + 6",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "16e - 6",
+              "type": "exact",
+            },
+            "code": "CALC.REDUCTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Iₙ = e − nIₙ₋₁: subtract, then expand the brackets carefully.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find ",
+          },
+          {
+            "t": "math",
+            "v": "I_3",
+          },
+          {
+            "t": "text",
+            "v": " in terms of e.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "I_1 = e - 1(e - 1) = 1",
+        "say": [],
+      },
+      {
+        "math": "I_2 = e - 2(1) = e - 2",
+        "say": [],
+      },
+      {
+        "math": "I_3 = e - 3(e - 2) = -2e + 6",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Let ",
+      },
+      {
+        "t": "math",
+        "v": "I_n = \\int_0^1 x^n e^x\\,dx",
+      },
+      {
+        "t": "text",
+        "v": ". Integration by parts gives ",
+      },
+      {
+        "t": "math",
+        "v": "I_n = e - nI_{n-1}",
+      },
+      {
+        "t": "text",
+        "v": ", and ",
+      },
+      {
+        "t": "math",
+        "v": "I_0 = e - 1",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FP2-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "42",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{255}{2}",
+              "type": "exact",
+            },
+            "code": "CALC.ARC-LENGTH",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The arc length is ∫√(1 + (dy/dx)²) dx: keep the square root.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{dy}{dx} = \\sqrt{x}, \\quad \\int_0^{15} \\sqrt{1 + x}\\,dx = \\frac{2}{3}\\left[(1 + x)^{\\frac{3}{2}}\\right]_0^{15} = \\frac{2}{3}(64 - 1) = 42",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find the exact length of the curve ",
+      },
+      {
+        "t": "math",
+        "v": "y = \\frac{2}{3}x^{\\frac{3}{2}}",
+      },
+      {
+        "t": "text",
+        "v": " from ",
+      },
+      {
+        "t": "math",
+        "v": "x = 0",
+      },
+      {
+        "t": "text",
+        "v": " to ",
+      },
+      {
+        "t": "math",
+        "v": "x = 15",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FP2-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "\\frac{248}{3}",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "312",
+              "type": "exact",
+            },
+            "code": "CALC.ARC-LENGTH",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The arc length is ∫√(1 + (dy/dx)²) dx: keep the square root.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{dy}{dx} = \\sqrt{x}, \\quad \\int_0^{24} \\sqrt{1 + x}\\,dx = \\frac{2}{3}\\left[(1 + x)^{\\frac{3}{2}}\\right]_0^{24} = \\frac{2}{3}(125 - 1) = \\frac{248}{3}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find the exact length of the curve ",
+      },
+      {
+        "t": "math",
+        "v": "y = \\frac{2}{3}x^{\\frac{3}{2}}",
+      },
+      {
+        "t": "text",
+        "v": " from ",
+      },
+      {
+        "t": "math",
+        "v": "x = 0",
+      },
+      {
+        "t": "text",
+        "v": " to ",
+      },
+      {
+        "t": "math",
+        "v": "x = 24",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FP2-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "\\frac{14}{3}",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{15}{2}",
+              "type": "exact",
+            },
+            "code": "CALC.ARC-LENGTH",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The arc length is ∫√(1 + (dy/dx)²) dx: keep the square root.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{dy}{dx} = \\sqrt{x}, \\quad \\int_0^{3} \\sqrt{1 + x}\\,dx = \\frac{2}{3}\\left[(1 + x)^{\\frac{3}{2}}\\right]_0^{3} = \\frac{2}{3}(8 - 1) = \\frac{14}{3}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find the exact length of the curve ",
+      },
+      {
+        "t": "math",
+        "v": "y = \\frac{2}{3}x^{\\frac{3}{2}}",
+      },
+      {
+        "t": "text",
+        "v": " from ",
+      },
+      {
+        "t": "math",
+        "v": "x = 0",
+      },
+      {
+        "t": "text",
+        "v": " to ",
+      },
+      {
+        "t": "math",
+        "v": "x = 3",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FP2-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Arc length uses the height of the curve.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is ∫(1 + y²) dx, with no square root.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. A small piece has length √(δx² + δy²) = √(1 + (dy/dx)²) δx, so the integrand uses the gradient dy/dx, not y.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CALC.ARC-LENGTH",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "CALC.ARC-LENGTH",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "s = ∫√(1 + (dy/dx)²) dx.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Mia says the length of a curve from x = a to x = b is ",
+      },
+      {
+        "t": "math",
+        "v": "\\int_a^b \\sqrt{1 + y^2}\\,dx",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FP2-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. A small piece has length √(δx² + δy²) = √(1 + (dy/dx)²) δx, so the integrand uses the gradient dy/dx, not y.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Arc length uses the height of the curve.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is ∫(1 + y²) dx, with no square root.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "CALC.ARC-LENGTH",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "CALC.ARC-LENGTH",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "s = ∫√(1 + (dy/dx)²) dx.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Mia says the length of a curve from x = a to x = b is ",
+      },
+      {
+        "t": "math",
+        "v": "\\int_a^b \\sqrt{1 + y^2}\\,dx",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FP2-06",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. A small piece has length √(δx² + δy²) = √(1 + (dy/dx)²) δx, so the integrand uses the gradient dy/dx, not y.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Arc length uses the height of the curve.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is ∫(1 + y²) dx, with no square root.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "CALC.ARC-LENGTH",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "CALC.ARC-LENGTH",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "s = ∫√(1 + (dy/dx)²) dx.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Mia says the length of a curve from x = a to x = b is ",
+      },
+      {
+        "t": "math",
+        "v": "\\int_a^b \\sqrt{1 + y^2}\\,dx",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+]
+`;
