@@ -490,6 +490,17 @@ import alP43 from "./ks5/AL-P4.3.ts";
 import alP44 from "./ks5/AL-P4.4.ts";
 import alP45 from "./ks5/AL-P4.5.ts";
 import alP46 from "./ks5/AL-P4.6.ts";
+import alP51a from "./ks5/AL-P5.1a.ts";
+import alP51b from "./ks5/AL-P5.1b.ts";
+import alP52 from "./ks5/AL-P5.2.ts";
+import alP53 from "./ks5/AL-P5.3.ts";
+import alP54 from "./ks5/AL-P5.4.ts";
+import alP55a from "./ks5/AL-P5.5a.ts";
+import alP55b from "./ks5/AL-P5.5b.ts";
+import alP56 from "./ks5/AL-P5.6.ts";
+import alP57 from "./ks5/AL-P5.7.ts";
+import alP58 from "./ks5/AL-P5.8.ts";
+import alP59 from "./ks5/AL-P5.9.ts";
 
 /** Every generator, in the order of data/statements.json. */
 export const generators: Generator[] = [
@@ -982,6 +993,17 @@ export const generators: Generator[] = [
   alP44,
   alP45,
   alP46,
+  alP51a,
+  alP51b,
+  alP52,
+  alP53,
+  alP54,
+  alP55a,
+  alP55b,
+  alP56,
+  alP57,
+  alP58,
+  alP59,
 ] as Generator[];
 
 /** Unreviewed placeholders that exercise the gallery; real generators replace them. */
