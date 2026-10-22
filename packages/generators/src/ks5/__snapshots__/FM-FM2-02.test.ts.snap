@@ -1,0 +1,765 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FM-FM2-02 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FM2-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 2,
+          },
+          "type": "number",
+          "value": 7,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 5,
+            },
+            "code": "MECH.CENTRE-MASS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Weight each position by its mass: x̄ = Σmx/Σm.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the x-coordinate of their centre of mass, to 2 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\bar{x} = \\frac{1 \\times 0 + 4 \\times 5 + 5 \\times 10}{1 + 4 + 5} = 7",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Particles of mass 1 kg, 4 kg and 5 kg are placed on the x-axis at x = 0, x = 5 and x = 10.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FM2-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 2,
+          },
+          "type": "number",
+          "value": 6.25,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 5.33,
+            },
+            "code": "MECH.CENTRE-MASS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Weight each position by its mass: x̄ = Σmx/Σm.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the x-coordinate of their centre of mass, to 2 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\bar{x} = \\frac{2 \\times 3 + 2 \\times 4 + 4 \\times 9}{2 + 2 + 4} = 6.25",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Particles of mass 2 kg, 2 kg and 4 kg are placed on the x-axis at x = 3, x = 4 and x = 9.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FM2-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 2,
+          },
+          "type": "number",
+          "value": 7.29,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 5.67,
+            },
+            "code": "MECH.CENTRE-MASS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Weight each position by its mass: x̄ = Σmx/Σm.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the x-coordinate of their centre of mass, to 2 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\bar{x} = \\frac{2 \\times 1 + 1 \\times 5 + 4 \\times 11}{2 + 1 + 4} = 7.29",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Particles of mass 2 kg, 1 kg and 4 kg are placed on the x-axis at x = 1, x = 5 and x = 11.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FM2-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "4",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{5}{2}",
+              "type": "exact",
+            },
+            "code": "MECH.CENTRE-MASS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The lamina is not symmetrical about x = a/2: more of its area is near x = a. Use x̄ = ∫xy dx / ∫y dx.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the exact x-coordinate of its centre of mass.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\bar{x} = \\frac{\\int_0^{5} x^{4}\\,dx}{\\int_0^{5} x^{3}\\,dx} = \\frac{4}{5} \\times 5 = 4",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A uniform lamina occupies the region between ",
+      },
+      {
+        "t": "math",
+        "v": "y = x^3",
+      },
+      {
+        "t": "text",
+        "v": ", the x-axis and the line ",
+      },
+      {
+        "t": "math",
+        "v": "x = 5",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FM2-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "\\frac{10}{3}",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{5}{2}",
+              "type": "exact",
+            },
+            "code": "MECH.CENTRE-MASS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The lamina is not symmetrical about x = a/2: more of its area is near x = a. Use x̄ = ∫xy dx / ∫y dx.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the exact x-coordinate of its centre of mass.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\bar{x} = \\frac{\\int_0^{5} x^{2}\\,dx}{\\int_0^{5} x^{1}\\,dx} = \\frac{2}{3} \\times 5 = \\frac{10}{3}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A uniform lamina occupies the region between ",
+      },
+      {
+        "t": "math",
+        "v": "y = x",
+      },
+      {
+        "t": "text",
+        "v": ", the x-axis and the line ",
+      },
+      {
+        "t": "math",
+        "v": "x = 5",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FM2-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "2",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{3}{2}",
+              "type": "exact",
+            },
+            "code": "MECH.CENTRE-MASS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The lamina is not symmetrical about x = a/2: more of its area is near x = a. Use x̄ = ∫xy dx / ∫y dx.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the exact x-coordinate of its centre of mass.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\bar{x} = \\frac{\\int_0^{3} x^{2}\\,dx}{\\int_0^{3} x^{1}\\,dx} = \\frac{2}{3} \\times 3 = 2",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A uniform lamina occupies the region between ",
+      },
+      {
+        "t": "math",
+        "v": "y = x",
+      },
+      {
+        "t": "text",
+        "v": ", the x-axis and the line ",
+      },
+      {
+        "t": "math",
+        "v": "x = 3",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FM2-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The mass is all in the object, so its centre must be too.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. It is always at the middle of the material.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The centre of mass of a uniform ring is at its centre, where there is no material at all.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "MECH.CENTRE-MASS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MECH.CENTRE-MASS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The same is true of an L-shaped lamina, whose centre of mass can lie outside it.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Hal says the centre of mass of an object must always be at a point of the object itself.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FM2-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The mass is all in the object, so its centre must be too.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The centre of mass of a uniform ring is at its centre, where there is no material at all.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. It is always at the middle of the material.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "MECH.CENTRE-MASS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "MECH.CENTRE-MASS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The same is true of an L-shaped lamina, whose centre of mass can lie outside it.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Hal says the centre of mass of an object must always be at a point of the object itself.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FM2-02",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The mass is all in the object, so its centre must be too.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The centre of mass of a uniform ring is at its centre, where there is no material at all.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. It is always at the middle of the material.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "MECH.CENTRE-MASS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "MECH.CENTRE-MASS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The same is true of an L-shaped lamina, whose centre of mass can lie outside it.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Hal says the centre of mass of an object must always be at a point of the object itself.",
+      },
+    ],
+  },
+]
+`;

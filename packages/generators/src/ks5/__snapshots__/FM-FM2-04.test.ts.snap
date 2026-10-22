@@ -1,0 +1,732 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FM-FM2-04 > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FM2-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 2,
+          },
+          "type": "number",
+          "units": "m/s",
+          "value": 8,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 16,
+            },
+            "code": "MECH.VARIABLE-FORCE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The force varies, so integrate a = kt/m with respect to t: v = kt²/2m.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find its speed when t = 2, to 2 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "v = \\int_0^{2} \\frac{12t}{3}\\,dt = \\frac{12 \\times 2^2}{2 \\times 3} = 8",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A particle of mass 3 kg starts from rest. At time t seconds, the only force on it is 12t N, in its direction of motion.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FM2-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 2,
+          },
+          "type": "number",
+          "units": "m/s",
+          "value": 12.5,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 25,
+            },
+            "code": "MECH.VARIABLE-FORCE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The force varies, so integrate a = kt/m with respect to t: v = kt²/2m.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find its speed when t = 5, to 2 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "v = \\int_0^{5} \\frac{6t}{6}\\,dt = \\frac{6 \\times 5^2}{2 \\times 6} = 12.5",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A particle of mass 6 kg starts from rest. At time t seconds, the only force on it is 6t N, in its direction of motion.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FM2-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 2,
+          },
+          "type": "number",
+          "units": "m/s",
+          "value": 7.5,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 15,
+            },
+            "code": "MECH.VARIABLE-FORCE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The force varies, so integrate a = kt/m with respect to t: v = kt²/2m.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find its speed when t = 5, to 2 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "v = \\int_0^{5} \\frac{3t}{5}\\,dt = \\frac{3 \\times 5^2}{2 \\times 5} = 7.5",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A particle of mass 5 kg starts from rest. At time t seconds, the only force on it is 3t N, in its direction of motion.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FM2-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 2,
+          },
+          "type": "number",
+          "units": "m/s",
+          "value": 6.71,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 6.4,
+            },
+            "code": "MECH.VARIABLE-FORCE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Integrating v dv/dx = −kx/m gives ½v² − ½u² = −kx²/2m: the halves cancel.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find its speed when x = 1, to 2 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "v\\frac{dv}{dx} = -\\frac{12x}{3} \\Rightarrow v^2 = 7^2 - \\frac{12}{3}x^2 \\Rightarrow v = 6.71",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A particle of mass 3 kg moves along the x-axis under a force of −12x N. It passes through the origin with speed 7 m/s.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FM2-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 2,
+          },
+          "type": "number",
+          "units": "m/s",
+          "value": 14.9,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 14.81,
+            },
+            "code": "MECH.VARIABLE-FORCE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Integrating v dv/dx = −kx/m gives ½v² − ½u² = −kx²/2m: the halves cancel.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find its speed when x = 1.7, to 2 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "v\\frac{dv}{dx} = -\\frac{6x}{6} \\Rightarrow v^2 = 15^2 - \\frac{6}{6}x^2 \\Rightarrow v = 14.9",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A particle of mass 6 kg moves along the x-axis under a force of −6x N. It passes through the origin with speed 15 m/s.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FM2-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 2,
+          },
+          "type": "number",
+          "units": "m/s",
+          "value": 9.93,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 9.86,
+            },
+            "code": "MECH.VARIABLE-FORCE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Integrating v dv/dx = −kx/m gives ½v² − ½u² = −kx²/2m: the halves cancel.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find its speed when x = 1.5, to 2 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "v\\frac{dv}{dx} = -\\frac{3x}{5} \\Rightarrow v^2 = 10^2 - \\frac{3}{5}x^2 \\Rightarrow v = 9.93",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A particle of mass 5 kg moves along the x-axis under a force of −3x N. It passes through the origin with speed 10 m/s.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FM2-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Acceleration is always dv/dt, so integrate with respect to t.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Treat the force as constant and use suvat.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. If F depends on x, write a = v dv/dx, so you can separate the variables and integrate with respect to x.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "MECH.VARIABLE-FORCE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MECH.VARIABLE-FORCE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "dv/dt = (dv/dx)(dx/dt) = v dv/dx by the chain rule.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Jon says that when a force depends on displacement x, you should write a = dv/dt and integrate with respect to t.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FM2-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. If F depends on x, write a = v dv/dx, so you can separate the variables and integrate with respect to x.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Acceleration is always dv/dt, so integrate with respect to t.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Treat the force as constant and use suvat.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MECH.VARIABLE-FORCE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "MECH.VARIABLE-FORCE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "dv/dt = (dv/dx)(dx/dt) = v dv/dx by the chain rule.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Jon says that when a force depends on displacement x, you should write a = dv/dt and integrate with respect to t.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FM2-04",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. If F depends on x, write a = v dv/dx, so you can separate the variables and integrate with respect to x.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Treat the force as constant and use suvat.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Acceleration is always dv/dt, so integrate with respect to t.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MECH.VARIABLE-FORCE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "MECH.VARIABLE-FORCE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "dv/dt = (dv/dx)(dx/dt) = v dv/dx by the chain rule.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Jon says that when a force depends on displacement x, you should write a = dv/dt and integrate with respect to t.",
+      },
+    ],
+  },
+]
+`;

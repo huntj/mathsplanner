@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.29.0",
+  "version": "0.30.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -1326,6 +1326,41 @@
       "code": "MECH.MOMENTS",
       "description": "Takes moments about the wrong point, uses the wrong distance, or ignores where the forces act.",
       "remediate": "AL-M9.1"
+    },
+    {
+      "code": "MECH.MOMENTUM",
+      "description": "Ignores direction when using momentum, e.g. takes the impulse on a rebounding ball as m(u − v) instead of m(u + v).",
+      "remediate": "FM-FM1-01"
+    },
+    {
+      "code": "MECH.ENERGY",
+      "description": "Forgets the ½ in ½mv², uses P = F/v instead of P = Fv, or counts work by a force perpendicular to the motion.",
+      "remediate": "FM-FM1-02"
+    },
+    {
+      "code": "MECH.ELASTIC",
+      "description": "Forgets to divide by the natural length in T = λx/l, leaves out the 2 in λx²/2l, or lets a string push.",
+      "remediate": "FM-FM1-03"
+    },
+    {
+      "code": "MECH.RESTITUTION",
+      "description": "Applies e to the whole velocity instead of the component along the line of impact, or thinks e = 1 means the bodies stick together.",
+      "remediate": "FM-FM1-04"
+    },
+    {
+      "code": "MECH.CIRCULAR",
+      "description": "Thinks motion at constant speed in a circle has no acceleration, or uses v/r or μgr instead of v²/r and √(μgr).",
+      "remediate": "FM-FM2-01"
+    },
+    {
+      "code": "MECH.CENTRE-MASS",
+      "description": "Takes the plain average of positions instead of weighting by mass, uses the midpoint for a non-uniform shape, or mixes up width and height when finding a toppling angle.",
+      "remediate": "FM-FM2-02"
+    },
+    {
+      "code": "MECH.VARIABLE-FORCE",
+      "description": "Treats a variable force as constant, or uses a = dv/dt where a = v dv/dx is needed for a force depending on displacement.",
+      "remediate": "FM-FM2-04"
     },
     {
       "code": "STA.KEY-IGNORED",

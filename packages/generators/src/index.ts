@@ -627,6 +627,16 @@ import fmFs203 from "./ks5/FM-FS2-03.ts";
 import fmFs204 from "./ks5/FM-FS2-04.ts";
 import fmFs205 from "./ks5/FM-FS2-05.ts";
 import fmFs206 from "./ks5/FM-FS2-06.ts";
+import fmFm101 from "./ks5/FM-FM1-01.ts";
+import fmFm102 from "./ks5/FM-FM1-02.ts";
+import fmFm103 from "./ks5/FM-FM1-03.ts";
+import fmFm104 from "./ks5/FM-FM1-04.ts";
+import fmFm105 from "./ks5/FM-FM1-05.ts";
+import fmFm201 from "./ks5/FM-FM2-01.ts";
+import fmFm202 from "./ks5/FM-FM2-02.ts";
+import fmFm203 from "./ks5/FM-FM2-03.ts";
+import fmFm204 from "./ks5/FM-FM2-04.ts";
+import fmFm205 from "./ks5/FM-FM2-05.ts";
 
 /** Every generator, in the order of data/statements.json. */
 export const generators: Generator[] = [
@@ -1256,6 +1266,16 @@ export const generators: Generator[] = [
   fmFs204,
   fmFs205,
   fmFs206,
+  fmFm101,
+  fmFm102,
+  fmFm103,
+  fmFm104,
+  fmFm105,
+  fmFm201,
+  fmFm202,
+  fmFm203,
+  fmFm204,
+  fmFm205,
 ] as Generator[];
 
 /** Unreviewed placeholders that exercise the gallery; real generators replace them. */
