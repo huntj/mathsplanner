@@ -30,7 +30,11 @@ export function normaliseLatex(latex: string): string {
     .replace(/\\[dt]frac/g, "\\frac")
     .replace(/\\cdot/g, "\\times")
     .replace(/\\,|\\;|\\!|\\ |~/g, "")
+    // Keep a command apart from a following letter: \times e must not become \timese.
+    .replace(/(\\[a-zA-Z]+)\s+(?=[a-zA-Z])/g, "$1{}")
     .replace(/\s+/g, "")
+    // 9e-24 means 9e − 24 here, not scientific notation: e is Euler's number.
+    .replace(/(\d)e(?![a-zA-Z])/g, "$1\\times e")
     .replace(/−/g, "-")
     .replace(/\{,\}/g, ".")
     .replace(/\^(\d)/g, "^{$1}")

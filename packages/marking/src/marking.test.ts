@@ -57,6 +57,18 @@ describe("exact answers", () => {
     expect(equivalent("x+", "x")).toBeUndefined();
   });
 
+  it("reads a number before e as a multiple of e, not scientific notation", () => {
+    expect(equivalent("9e - 24", "65e - 24")).toBe(false);
+    expect(equivalent("9e-24", "9e - 24")).toBe(true);
+    expect(equivalent("2e+1", "e+e+1")).toBe(true);
+  });
+
+  it("keeps a command apart from the letter after it", () => {
+    expect(equivalent("e^{2}", "e\\times e")).toBe(true);
+    expect(equivalent("\\pi r^2", "r^2\\pi")).toBe(true);
+    expect(equivalent("\\sin x", "\\sin(x)")).toBe(true);
+  });
+
   it("enforces required forms", () => {
     expect(formProblem("\\frac{3}{4}", "simplest")).toBeUndefined();
     expect(formProblem("\\frac{6}{8}", "simplest")).toMatch(/simplify/i);
