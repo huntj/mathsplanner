@@ -666,6 +666,17 @@ import cmP4 from "./ks5/CM-P4.ts";
 import cmP5 from "./ks5/CM-P5.ts";
 import cmP6 from "./ks5/CM-P6.ts";
 import cmP7 from "./ks5/CM-P7.ts";
+import cmLp1 from "./ks5/CM-LP1.ts";
+import cmLp2 from "./ks5/CM-LP2.ts";
+import cmLp3 from "./ks5/CM-LP3.ts";
+import cmLp4 from "./ks5/CM-LP4.ts";
+import cmLp5 from "./ks5/CM-LP5.ts";
+import cmLp6 from "./ks5/CM-LP6.ts";
+import cmLp7 from "./ks5/CM-LP7.ts";
+import cmLp8 from "./ks5/CM-LP8.ts";
+import cmLp9 from "./ks5/CM-LP9.ts";
+import cmLp10 from "./ks5/CM-LP10.ts";
+import cmLp11 from "./ks5/CM-LP11.ts";
 
 /** Every generator, in the order of data/statements.json. */
 export const generators: Generator[] = [
@@ -1334,6 +1345,17 @@ export const generators: Generator[] = [
   cmP5,
   cmP6,
   cmP7,
+  cmLp1,
+  cmLp2,
+  cmLp3,
+  cmLp4,
+  cmLp5,
+  cmLp6,
+  cmLp7,
+  cmLp8,
+  cmLp9,
+  cmLp10,
+  cmLp11,
 ] as Generator[];
 
 /** Unreviewed placeholders that exercise the gallery; real generators replace them. */
