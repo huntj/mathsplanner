@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.31.0",
+  "version": "0.32.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -1403,6 +1403,11 @@
       "remediate": "FM-D1-06"
     },
     {
+      "code": "DEC.INTEGER",
+      "description": "Rounds a non-integer optimum to the nearest whole numbers without checking that the point is feasible and best.",
+      "remediate": "CM-LP11"
+    },
+    {
       "code": "DEC.TRANSPORT",
       "description": "Ignores earlier allocations in the north-west corner method, or costs a solution without the quantities.",
       "remediate": "FM-D2-01"
@@ -1471,6 +1476,21 @@
       "code": "STA.SAMPLE.BIAS",
       "description": "Trusts a small or biased sample to represent the population, e.g. surveys only one class about the whole school.",
       "remediate": "GF-S1"
+    },
+    {
+      "code": "STA.SAMPLE.SCALE",
+      "description": "Gives the sample count as the estimate for the whole population, instead of scaling the sample proportion up.",
+      "remediate": "CM-A1"
+    },
+    {
+      "code": "STA.MOVING-AVERAGE",
+      "description": "Averages the wrong number of values for a moving average, or thinks moving averages show seasonal variation rather than smoothing it out.",
+      "remediate": "CM-A2"
+    },
+    {
+      "code": "STA.COMPARE",
+      "description": "Compares distributions using only one measure, or the extremes, instead of an average and a measure of spread in context.",
+      "remediate": "CM-A4"
     },
     {
       "code": "STA.GROUPED.MIDPOINT",
@@ -1851,6 +1871,16 @@
       "code": "PRO.MODEL.ASSUMPTION",
       "description": "Accepts a probability model without checking its assumptions, e.g. independence or a constant probability.",
       "remediate": "AL-S3.3"
+    },
+    {
+      "code": "PRO.ENUMERATE",
+      "description": "Misses or double-counts outcomes when listing systematically, e.g. counts ordered arrangements when order does not matter.",
+      "remediate": "CM-P2"
+    },
+    {
+      "code": "PRO.RISK",
+      "description": "Compares risks using only the probabilities or only the costs, instead of expected cost = probability × cost.",
+      "remediate": "CM-P7"
     },
     {
       "code": "PRO.BINOMIAL.CUMULATIVE",

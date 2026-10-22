@@ -649,6 +649,16 @@ import fmD203 from "./ks5/FM-D2-03.ts";
 import fmD204 from "./ks5/FM-D2-04.ts";
 import fmD205 from "./ks5/FM-D2-05.ts";
 import fmD206 from "./ks5/FM-D2-06.ts";
+import cmA1 from "./ks5/CM-A1.ts";
+import cmA2 from "./ks5/CM-A2.ts";
+import cmA3 from "./ks5/CM-A3.ts";
+import cmA4 from "./ks5/CM-A4.ts";
+import cmA5 from "./ks5/CM-A5.ts";
+import cmA6 from "./ks5/CM-A6.ts";
+import cmA7 from "./ks5/CM-A7.ts";
+import cmA8 from "./ks5/CM-A8.ts";
+import cmA9 from "./ks5/CM-A9.ts";
+import cmA10 from "./ks5/CM-A10.ts";
 
 /** Every generator, in the order of data/statements.json. */
 export const generators: Generator[] = [
@@ -1300,6 +1310,16 @@ export const generators: Generator[] = [
   fmD204,
   fmD205,
   fmD206,
+  cmA1,
+  cmA2,
+  cmA3,
+  cmA4,
+  cmA5,
+  cmA6,
+  cmA7,
+  cmA8,
+  cmA9,
+  cmA10,
 ] as Generator[];
 
 /** Unreviewed placeholders that exercise the gallery; real generators replace them. */
