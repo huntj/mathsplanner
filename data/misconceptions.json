@@ -913,6 +913,26 @@
       "remediate": "AL-P6.7"
     },
     {
+      "code": "ALG.CHANGE-OF-SIGN",
+      "description": "Concludes there is no root because there is no change of sign (missing a pair of roots), or that a sign change always means a root (missing a discontinuity such as 1/x).",
+      "remediate": "AL-P9.1"
+    },
+    {
+      "code": "ALG.ITERATION.CONVERGE",
+      "description": "Thinks every rearrangement x = g(x) gives a convergent iteration, or mixes up staircase and cobweb diagrams.",
+      "remediate": "AL-P9.2"
+    },
+    {
+      "code": "ALG.NEWTON-RAPHSON",
+      "description": "Misapplies Newton–Raphson, e.g. adds f/f′, uses f′/f, or forgets that it fails when f′(x₀) = 0.",
+      "remediate": "AL-P9.3"
+    },
+    {
+      "code": "ALG.TRAPEZIUM",
+      "description": "Misapplies the trapezium rule, e.g. forgets to double the middle ordinates or to multiply by h/2, or confuses strips with ordinates.",
+      "remediate": "AL-P9.4"
+    },
+    {
       "code": "CALC.FIRST-PRINCIPLES",
       "description": "Substitutes h = 0 before simplifying (getting 0/0), or keeps terms in h after taking the limit, when differentiating from first principles.",
       "remediate": "AL-P7.1a"
@@ -1076,6 +1096,51 @@
       "code": "STA.IQR.RANGE",
       "description": "Gives the range instead of the interquartile range, or takes the quartiles from the wrong positions.",
       "remediate": "GH-S4"
+    },
+    {
+      "code": "STA.SAMPLING.METHOD",
+      "description": "Mixes up sampling methods, e.g. calls a quota sample random, or takes equal numbers from each stratum instead of proportional ones.",
+      "remediate": "AL-S1.1"
+    },
+    {
+      "code": "STA.CUMFREQ.READ",
+      "description": "Reads a cumulative frequency graph at the wrong height, e.g. uses n/4 for the median, or reads the frequency as a value.",
+      "remediate": "AL-S2.1"
+    },
+    {
+      "code": "STA.REGRESSION.VARIABLES",
+      "description": "Uses a regression line of y on x to predict x, or mixes up the explanatory and response variables.",
+      "remediate": "AL-S2.2a"
+    },
+    {
+      "code": "STA.PMCC.INTERPRET",
+      "description": "Reads the product moment correlation coefficient as the gradient of the line, or as evidence of cause.",
+      "remediate": "AL-S2.2b"
+    },
+    {
+      "code": "STA.VARIANCE.FORMULA",
+      "description": "Misuses the variance formula, e.g. forgets to subtract the squared mean, or gives the variance as the standard deviation.",
+      "remediate": "AL-S2.3"
+    },
+    {
+      "code": "STA.OUTLIER.RULE",
+      "description": "Uses the wrong outlier rule, e.g. measures 1.5 × IQR from the median instead of from the quartiles.",
+      "remediate": "AL-S2.4"
+    },
+    {
+      "code": "STA.HYPOTHESIS.LANGUAGE",
+      "description": "States hypotheses about the sample instead of the population parameter, or mixes up the significance level with a probability of H₀ being true.",
+      "remediate": "AL-S5.1a"
+    },
+    {
+      "code": "STA.HYPOTHESIS.CONCLUSION",
+      "description": "Concludes that H₁ is proved or H₀ is true, compares with the wrong tail, or forgets to halve the level in a two-tailed test.",
+      "remediate": "AL-S5.2"
+    },
+    {
+      "code": "STA.HYPOTHESIS.SAMPLE-MEAN",
+      "description": "Uses σ instead of σ/√n for the standard deviation of a sample mean.",
+      "remediate": "AL-S5.3"
     },
     {
       "code": "STA.OUTLIER.MEAN",
@@ -1336,6 +1401,36 @@
       "code": "PRO.CONDITIONAL.TOTAL",
       "description": "Divides by the whole total instead of the size of the given group when finding a conditional probability.",
       "remediate": "GH-P9"
+    },
+    {
+      "code": "PRO.INDEPENDENT.EXCLUSIVE",
+      "description": "Confuses independent events with mutually exclusive events, e.g. uses P(A ∩ B) = 0 for independent events.",
+      "remediate": "AL-S3.1"
+    },
+    {
+      "code": "PRO.CONDITIONAL.FORMULA",
+      "description": "Divides by the wrong probability in P(A | B) = P(A ∩ B) / P(B), e.g. by P(A).",
+      "remediate": "AL-S3.2"
+    },
+    {
+      "code": "PRO.MODEL.ASSUMPTION",
+      "description": "Accepts a probability model without checking its assumptions, e.g. independence or a constant probability.",
+      "remediate": "AL-S3.3"
+    },
+    {
+      "code": "PRO.BINOMIAL.CUMULATIVE",
+      "description": "Mixes up P(X < k), P(X ≤ k) and P(X ≥ k) for a discrete distribution, or leaves out the ⁿCᵣ factor.",
+      "remediate": "AL-S4.1"
+    },
+    {
+      "code": "PRO.NORMAL.STANDARDISE",
+      "description": "Standardises wrongly, e.g. divides by the variance instead of the standard deviation, or reads the wrong tail.",
+      "remediate": "AL-S4.2"
+    },
+    {
+      "code": "PRO.NORMAL.APPROX",
+      "description": "Leaves out the continuity correction, or uses the wrong mean or variance, when approximating a binomial by a normal distribution.",
+      "remediate": "AL-S4.3"
     },
     {
       "code": "GEO.ANGLES.STRAIGHT-LINE-360",
@@ -1691,6 +1786,16 @@
       "code": "GEO.VECTOR.DIRECTION",
       "description": "Gets the sign of a vector wrong when travelling against its direction, e.g. writes AB = a − b instead of b − a.",
       "remediate": "GH-G25"
+    },
+    {
+      "code": "GEO.VECTOR.MAGNITUDE",
+      "description": "Adds the components to find a vector's magnitude instead of using Pythagoras, or finds its direction from the wrong ratio.",
+      "remediate": "AL-P10.2"
+    },
+    {
+      "code": "GEO.VECTOR.POSITION",
+      "description": "Finds the vector AB as a − b or a + b instead of b − a, or treats position vectors as distances.",
+      "remediate": "AL-P10.4"
     },
     {
       "code": "GEO.SINE-RULE.AMBIGUOUS",
