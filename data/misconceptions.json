@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.23.0",
+  "version": "0.24.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -281,6 +281,36 @@
       "code": "NPV.BOUNDS.DIVIDE",
       "description": "Uses the upper bound of both numbers to find the upper bound of a division, instead of dividing the upper bound by the lower bound.",
       "remediate": "GF-N16"
+    },
+    {
+      "code": "NPV.PRODUCT-RULE.REPEAT",
+      "description": "Counts as if choices can be repeated (n × n × n) when they cannot (n × (n − 1) × (n − 2)), or the other way round.",
+      "remediate": "GH-N5"
+    },
+    {
+      "code": "NPV.INDEX.FRACTIONAL",
+      "description": "Multiplies or divides by a fractional index instead of taking a root, e.g. 8^(1/3) = 8/3 or 16^(1/2) = 8.",
+      "remediate": "GH-N7"
+    },
+    {
+      "code": "NPV.SURD.SIMPLIFY",
+      "description": "Leaves the square factor un-rooted when simplifying a surd, e.g. √12 = 4√3 instead of 2√3.",
+      "remediate": "GH-N8"
+    },
+    {
+      "code": "NPV.SURD.ADD-INSIDE",
+      "description": "Adds or subtracts the numbers under the root signs, e.g. √2 + √8 = √10.",
+      "remediate": "GH-N8"
+    },
+    {
+      "code": "NPV.SURD.RATIONALISE",
+      "description": "Uses the wrong sign when multiplying by the conjugate to rationalise a denominator, or multiplies only the denominator.",
+      "remediate": "GH-N8"
+    },
+    {
+      "code": "NPV.BOUNDS.SUBTRACT",
+      "description": "Subtracts lower bound from lower bound (or upper from upper) to find a bound of a difference, instead of pairing an upper with a lower bound.",
+      "remediate": "GH-N16"
     },
     {
       "code": "RAT.PERCENT.UNDO",
@@ -716,6 +746,81 @@
       "code": "ALG.SEQUENCE.TYPE",
       "description": "Names a sequence type wrongly, e.g. calls 1, 4, 9, 16 arithmetic or 2, 4, 8 linear.",
       "remediate": "GF-A24"
+    },
+    {
+      "code": "ALG.FRACTION.CANCEL-TERMS",
+      "description": "Cancels terms instead of common factors in an algebraic fraction, e.g. (x + 6)/(x + 3) = 2.",
+      "remediate": "GH-A4"
+    },
+    {
+      "code": "ALG.PROOF.EXAMPLES",
+      "description": "Thinks that checking some examples proves a statement for every number.",
+      "remediate": "GH-A6"
+    },
+    {
+      "code": "ALG.INVERSE.RECIPROCAL",
+      "description": "Reads the inverse function f⁻¹(x) as the reciprocal 1/f(x).",
+      "remediate": "GH-A7"
+    },
+    {
+      "code": "ALG.PERPENDICULAR.GRADIENT",
+      "description": "Uses −m or 1/m instead of the negative reciprocal −1/m for the gradient of a perpendicular line.",
+      "remediate": "GH-A9"
+    },
+    {
+      "code": "ALG.COMPLETE-SQUARE.HALF",
+      "description": "Does not halve the x coefficient, or forgets to subtract the square, when completing the square.",
+      "remediate": "GH-A11"
+    },
+    {
+      "code": "ALG.TRIG.SYMMETRY",
+      "description": "Uses the wrong symmetry of a trig graph to find a second solution, e.g. sin x = 0.5 at 30° and 210°.",
+      "remediate": "GH-A12"
+    },
+    {
+      "code": "ALG.TRANSFORM.DIRECTION",
+      "description": "Moves y = f(x + a) right instead of left, or mixes up f(x) + a with f(x + a), or reflects in the wrong axis.",
+      "remediate": "GH-A13"
+    },
+    {
+      "code": "ALG.GRAPH.AREA-GRADIENT",
+      "description": "Uses the gradient of a velocity-time graph for the distance travelled, or the area for the acceleration.",
+      "remediate": "GH-A15"
+    },
+    {
+      "code": "ALG.CIRCLE.RADIUS-SQUARED",
+      "description": "Reads the radius of x² + y² = k as k rather than √k.",
+      "remediate": "GH-A16"
+    },
+    {
+      "code": "ALG.GRAPH.SOLUTION-Y",
+      "description": "Gives the y-coordinate of an intersection as the solution of an equation in x.",
+      "remediate": "GH-A17"
+    },
+    {
+      "code": "ALG.QUADRATIC.FORMULA",
+      "description": "Misapplies the quadratic formula, e.g. uses +b instead of −b or divides only the square root by 2a.",
+      "remediate": "GH-A18"
+    },
+    {
+      "code": "ALG.SIMULTANEOUS.PAIR",
+      "description": "Pairs each x-value with the wrong y-value, or gives the x-values without their y-values.",
+      "remediate": "GH-A19"
+    },
+    {
+      "code": "ALG.ITERATION.SUBSTITUTE",
+      "description": "Substitutes the starting value every time instead of the previous result when iterating.",
+      "remediate": "GH-A20"
+    },
+    {
+      "code": "ALG.INEQUALITY.QUADRATIC-REGION",
+      "description": "Gives the values between the roots of a quadratic inequality when the answer is outside them, or the other way round.",
+      "remediate": "GH-A22"
+    },
+    {
+      "code": "ALG.SEQUENCE.QUADRATIC-HALF",
+      "description": "Uses the second difference as the coefficient of n² instead of half of it.",
+      "remediate": "GH-A25"
     },
     {
       "code": "STA.KEY-IGNORED",
