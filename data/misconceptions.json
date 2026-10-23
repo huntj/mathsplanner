@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.37.0",
+  "version": "0.38.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -2146,6 +2146,11 @@
       "code": "GEO.SYMMETRY.HALF-DISTANCE",
       "description": "Gives the distance from a point to the mirror line when asked how far the point is from its reflection, which is twice as far.",
       "remediate": "Y4-GEO-04"
+    },
+    {
+      "code": "GEO.SYMMETRY.ROTATION-LINES",
+      "description": "Confuses the order of rotational symmetry with the number of lines of symmetry, or gives order 0 instead of 1, e.g. says a parallelogram has no rotational symmetry.",
+      "remediate": "Y7-GEO-04.b"
     },
     {
       "code": "GEO.POLYGON.REGULAR-SIDES-ONLY",

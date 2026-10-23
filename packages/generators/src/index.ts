@@ -262,34 +262,99 @@ import y6Sta01 from "./ks2/Y6-STA-01.ts";
 import y6Sta02 from "./ks2/Y6-STA-02.ts";
 import y7Npv01 from "./ks3/Y7-NPV-01.ts";
 import y7Npv02 from "./ks3/Y7-NPV-02.ts";
+import y7Npv02A from "./ks3/Y7-NPV-02_a.ts";
+import y7Npv02B from "./ks3/Y7-NPV-02_b.ts";
+import y7Npv02C from "./ks3/Y7-NPV-02_c.ts";
 import y7Npv03 from "./ks3/Y7-NPV-03.ts";
+import y7Npv03A from "./ks3/Y7-NPV-03_a.ts";
+import y7Npv03B from "./ks3/Y7-NPV-03_b.ts";
+import y7Npv03C from "./ks3/Y7-NPV-03_c.ts";
+import y7Npv03D from "./ks3/Y7-NPV-03_d.ts";
 import y7Npv04 from "./ks3/Y7-NPV-04.ts";
+import y7Npv04A from "./ks3/Y7-NPV-04_a.ts";
+import y7Npv04B from "./ks3/Y7-NPV-04_b.ts";
+import y7Npv04C from "./ks3/Y7-NPV-04_c.ts";
+import y7Npv04D from "./ks3/Y7-NPV-04_d.ts";
 import y7Npv05 from "./ks3/Y7-NPV-05.ts";
+import y7Npv05A from "./ks3/Y7-NPV-05_a.ts";
+import y7Npv05B from "./ks3/Y7-NPV-05_b.ts";
+import y7Npv05C from "./ks3/Y7-NPV-05_c.ts";
 import y7Npv06 from "./ks3/Y7-NPV-06.ts";
 import y7Npv07 from "./ks3/Y7-NPV-07.ts";
+import y7Npv07A from "./ks3/Y7-NPV-07_a.ts";
+import y7Npv07B from "./ks3/Y7-NPV-07_b.ts";
+import y7Npv07C from "./ks3/Y7-NPV-07_c.ts";
+import y7Npv07D from "./ks3/Y7-NPV-07_d.ts";
 import y7Npv08 from "./ks3/Y7-NPV-08.ts";
+import y7Npv08A from "./ks3/Y7-NPV-08_a.ts";
+import y7Npv08B from "./ks3/Y7-NPV-08_b.ts";
 import y7Npv09 from "./ks3/Y7-NPV-09.ts";
+import y7Npv09A from "./ks3/Y7-NPV-09_a.ts";
+import y7Npv09B from "./ks3/Y7-NPV-09_b.ts";
 import y7Npv10 from "./ks3/Y7-NPV-10.ts";
 import y7Fr01 from "./ks3/Y7-FR-01.ts";
 import y7Alg01 from "./ks3/Y7-ALG-01.ts";
+import y7Alg01A from "./ks3/Y7-ALG-01_a.ts";
+import y7Alg01B from "./ks3/Y7-ALG-01_b.ts";
+import y7Alg01C from "./ks3/Y7-ALG-01_c.ts";
 import y7Alg02 from "./ks3/Y7-ALG-02.ts";
+import y7Alg02A from "./ks3/Y7-ALG-02_a.ts";
+import y7Alg02B from "./ks3/Y7-ALG-02_b.ts";
 import y7Alg03 from "./ks3/Y7-ALG-03.ts";
 import y7Alg04 from "./ks3/Y7-ALG-04.ts";
+import y7Alg04A from "./ks3/Y7-ALG-04_a.ts";
+import y7Alg04B from "./ks3/Y7-ALG-04_b.ts";
 import y7Alg05 from "./ks3/Y7-ALG-05.ts";
+import y7Alg05A from "./ks3/Y7-ALG-05_a.ts";
+import y7Alg05B from "./ks3/Y7-ALG-05_b.ts";
 import y7Alg06 from "./ks3/Y7-ALG-06.ts";
+import y7Alg06A from "./ks3/Y7-ALG-06_a.ts";
+import y7Alg06B from "./ks3/Y7-ALG-06_b.ts";
 import y7Rat01 from "./ks3/Y7-RAT-01.ts";
+import y7Rat01A from "./ks3/Y7-RAT-01_a.ts";
+import y7Rat01B from "./ks3/Y7-RAT-01_b.ts";
+import y7Rat01C from "./ks3/Y7-RAT-01_c.ts";
 import y7Rat02 from "./ks3/Y7-RAT-02.ts";
 import y7Rat03 from "./ks3/Y7-RAT-03.ts";
+import y7Rat03A from "./ks3/Y7-RAT-03_a.ts";
+import y7Rat03B from "./ks3/Y7-RAT-03_b.ts";
+import y7Rat03C from "./ks3/Y7-RAT-03_c.ts";
 import y7Rat04 from "./ks3/Y7-RAT-04.ts";
+import y7Rat04A from "./ks3/Y7-RAT-04_a.ts";
+import y7Rat04B from "./ks3/Y7-RAT-04_b.ts";
 import y7Rat05 from "./ks3/Y7-RAT-05.ts";
+import y7Rat05A from "./ks3/Y7-RAT-05_a.ts";
+import y7Rat05B from "./ks3/Y7-RAT-05_b.ts";
 import y7Geo01 from "./ks3/Y7-GEO-01.ts";
+import y7Geo01A from "./ks3/Y7-GEO-01_a.ts";
+import y7Geo01B from "./ks3/Y7-GEO-01_b.ts";
+import y7Geo01C from "./ks3/Y7-GEO-01_c.ts";
+import y7Geo01D from "./ks3/Y7-GEO-01_d.ts";
 import y7Geo02 from "./ks3/Y7-GEO-02.ts";
+import y7Geo02A from "./ks3/Y7-GEO-02_a.ts";
+import y7Geo02B from "./ks3/Y7-GEO-02_b.ts";
 import y7Geo03 from "./ks3/Y7-GEO-03.ts";
+import y7Geo03A from "./ks3/Y7-GEO-03_a.ts";
+import y7Geo03B from "./ks3/Y7-GEO-03_b.ts";
 import y7Geo04 from "./ks3/Y7-GEO-04.ts";
+import y7Geo04A from "./ks3/Y7-GEO-04_a.ts";
+import y7Geo04B from "./ks3/Y7-GEO-04_b.ts";
 import y7Geo05 from "./ks3/Y7-GEO-05.ts";
+import y7Geo05A from "./ks3/Y7-GEO-05_a.ts";
+import y7Geo05B from "./ks3/Y7-GEO-05_b.ts";
+import y7Geo05C from "./ks3/Y7-GEO-05_c.ts";
 import y7Geo06 from "./ks3/Y7-GEO-06.ts";
+import y7Geo06A from "./ks3/Y7-GEO-06_a.ts";
+import y7Geo06B from "./ks3/Y7-GEO-06_b.ts";
+import y7Geo06C from "./ks3/Y7-GEO-06_c.ts";
 import y7Sta01 from "./ks3/Y7-STA-01.ts";
+import y7Sta01A from "./ks3/Y7-STA-01_a.ts";
+import y7Sta01B from "./ks3/Y7-STA-01_b.ts";
+import y7Sta01C from "./ks3/Y7-STA-01_c.ts";
+import y7Sta01D from "./ks3/Y7-STA-01_d.ts";
 import y7Pro01 from "./ks3/Y7-PRO-01.ts";
+import y7Pro01A from "./ks3/Y7-PRO-01_a.ts";
+import y7Pro01B from "./ks3/Y7-PRO-01_b.ts";
 import y7Pro02 from "./ks3/Y7-PRO-02.ts";
 import y8Npv01 from "./ks3/Y8-NPV-01.ts";
 import y8Npv02 from "./ks3/Y8-NPV-02.ts";
@@ -1122,34 +1187,99 @@ export const generators: Generator[] = [
   y6Sta02,
   y7Npv01,
   y7Npv02,
+  y7Npv02A,
+  y7Npv02B,
+  y7Npv02C,
   y7Npv03,
+  y7Npv03A,
+  y7Npv03B,
+  y7Npv03C,
+  y7Npv03D,
   y7Npv04,
+  y7Npv04A,
+  y7Npv04B,
+  y7Npv04C,
+  y7Npv04D,
   y7Npv05,
+  y7Npv05A,
+  y7Npv05B,
+  y7Npv05C,
   y7Npv06,
   y7Npv07,
+  y7Npv07A,
+  y7Npv07B,
+  y7Npv07C,
+  y7Npv07D,
   y7Npv08,
+  y7Npv08A,
+  y7Npv08B,
   y7Npv09,
+  y7Npv09A,
+  y7Npv09B,
   y7Npv10,
   y7Fr01,
   y7Alg01,
+  y7Alg01A,
+  y7Alg01B,
+  y7Alg01C,
   y7Alg02,
+  y7Alg02A,
+  y7Alg02B,
   y7Alg03,
   y7Alg04,
+  y7Alg04A,
+  y7Alg04B,
   y7Alg05,
+  y7Alg05A,
+  y7Alg05B,
   y7Alg06,
+  y7Alg06A,
+  y7Alg06B,
   y7Rat01,
+  y7Rat01A,
+  y7Rat01B,
+  y7Rat01C,
   y7Rat02,
   y7Rat03,
+  y7Rat03A,
+  y7Rat03B,
+  y7Rat03C,
   y7Rat04,
+  y7Rat04A,
+  y7Rat04B,
   y7Rat05,
+  y7Rat05A,
+  y7Rat05B,
   y7Geo01,
+  y7Geo01A,
+  y7Geo01B,
+  y7Geo01C,
+  y7Geo01D,
   y7Geo02,
+  y7Geo02A,
+  y7Geo02B,
   y7Geo03,
+  y7Geo03A,
+  y7Geo03B,
   y7Geo04,
+  y7Geo04A,
+  y7Geo04B,
   y7Geo05,
+  y7Geo05A,
+  y7Geo05B,
+  y7Geo05C,
   y7Geo06,
+  y7Geo06A,
+  y7Geo06B,
+  y7Geo06C,
   y7Sta01,
+  y7Sta01A,
+  y7Sta01B,
+  y7Sta01C,
+  y7Sta01D,
   y7Pro01,
+  y7Pro01A,
+  y7Pro01B,
   y7Pro02,
   y8Npv01,
   y8Npv02,
