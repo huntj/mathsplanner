@@ -9,7 +9,7 @@ import { ResultsView } from "./ResultsView.tsx";
 import { answerText, type Attempt } from "./results.ts";
 import {
   generatorFor,
-  paperTitle,
+  specTitle,
   sessionItems,
   statementById,
   type SessionSpec,
@@ -59,7 +59,7 @@ export function SessionView({ spec, restart }: { spec: SessionSpec; restart: () 
         }}
       >
         <h1>
-          {paperTitle(spec.paper) ?? "Practice"}: {questions.length} question
+          {specTitle(spec, "Practice")}: {questions.length} question
           {questions.length === 1 ? "" : "s"}
         </h1>
         <ul className="statement-summary">

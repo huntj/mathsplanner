@@ -92,8 +92,9 @@ h2 {
 .site-header {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: 1rem;
+  gap: 0.25rem 1rem;
   padding: 0.75rem 16px;
   border-bottom: 1px solid var(--border);
   background: var(--surface);
@@ -288,7 +289,8 @@ fieldset.depths button span {
 
 .site-nav {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
 }
 
 .site-nav a[aria-current="page"] {
@@ -978,5 +980,394 @@ fieldset.years legend {
   }
   .statement-picker details.steps ul {
     margin-left: 0.75rem;
+  }
+}
+
+/* --- schemes of work ----------------------------------------------------------------------- */
+
+main:has(.scheme) {
+  max-width: 1320px;
+}
+
+.small {
+  font-size: 0.85rem;
+}
+
+.print-only {
+  display: none;
+}
+
+.title-field input {
+  min-width: min(28rem, 85vw);
+}
+
+.file-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.35rem 0.6rem;
+  cursor: pointer;
+}
+
+/* Not the link field's label, which .share stretches. */
+.share label.file-button {
+  flex: none;
+}
+
+/* The hidden file input keeps its 1px size, which .share input would widen. */
+.share .file-button input,
+.file-button input {
+  width: 1px;
+}
+
+.file-button:focus-within {
+  outline: 2px solid var(--accent);
+}
+
+.scheme .share .buttons {
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+.scheme-layout {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+/* On a narrow screen the list comes first, since the plan below it is long. */
+.scheme-picker {
+  order: -1;
+}
+
+@media (min-width: 1000px) {
+  .scheme-layout {
+    grid-template-columns: minmax(0, 1fr) 23rem;
+    align-items: start;
+  }
+  .scheme-picker {
+    grid-column: 2;
+    grid-row: 1;
+    position: sticky;
+    top: 0.75rem;
+    max-height: calc(100vh - 1.5rem);
+    display: flex;
+    flex-direction: column;
+  }
+  .scheme-picker .statement-picker {
+    max-height: none;
+    flex: 1;
+    min-height: 12rem;
+  }
+}
+
+/* The picker is narrow beside the plan, so its rows stack the ID over the wording. */
+.scheme-picker h2 {
+  margin-top: 0;
+}
+
+.scheme-picker .controls {
+  margin: 0.5rem 0;
+}
+
+.scheme-picker .statement-picker label.check {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  column-gap: 0.4rem;
+}
+
+.scheme-picker .statement-picker label.check > span:not(.planned) {
+  grid-column: 2 / -1;
+}
+
+.scheme-picker .statement-picker label.check[draggable="true"] {
+  cursor: grab;
+}
+
+.scheme-picker details.steps > summary {
+  padding-left: 2.1rem;
+}
+
+.scheme-picker details.steps ul {
+  margin-left: 1.6rem;
+}
+
+.statement-picker .planned {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  font-size: 0.75rem;
+  color: var(--cell-on);
+  white-space: nowrap;
+}
+
+.statement-picker .empty {
+  padding: 0.6rem 0.75rem;
+}
+
+.years h2 {
+  margin-top: 0.5rem;
+}
+
+.years section + section h2 {
+  margin-top: 1.75rem;
+}
+
+.half-terms {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: 1rem;
+}
+
+.half-term {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.8rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.half-term.targeted {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.half-term header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.half-term h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.half-term .weeks {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+}
+
+.half-term .weeks input {
+  width: 3.75rem;
+  padding: 0.15rem 0.35rem;
+}
+
+.half-term .count {
+  margin: 0;
+}
+
+.warn-count {
+  color: var(--text);
+}
+
+.half-term .items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+
+.half-term .items > li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.15rem 0.5rem;
+  align-items: start;
+  padding: 0.4rem 0.1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.half-term .items > li[draggable="true"] {
+  cursor: grab;
+}
+
+.half-term .items > li.drop-before {
+  box-shadow: inset 0 3px 0 var(--accent);
+}
+
+.half-term .items code {
+  color: var(--muted);
+}
+
+.half-term .handle {
+  color: var(--muted);
+  letter-spacing: -0.2em;
+  padding-top: 0.05rem;
+}
+
+.half-term .item {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.item-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.25rem 0.5rem;
+}
+
+.item-buttons {
+  display: flex;
+  gap: 0.25rem;
+  margin-left: auto;
+}
+
+/* With a mouse, an item's buttons appear when it is pointed at or focused, to keep the plan calm. */
+@media (hover: hover) {
+  .half-term .items > li:not(:hover, :focus-within) .item-buttons {
+    opacity: 0;
+  }
+}
+
+.item-buttons button,
+.item-buttons select {
+  font-size: 0.8rem;
+  padding: 0.05rem 0.45rem;
+}
+
+.half-term .items > li.placeholder {
+  display: block;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 1rem 0.5rem;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  cursor: default;
+}
+
+.half-term .items > li.placeholder.drop-here {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.half-term > .buttons {
+  margin-top: 0.25rem;
+}
+
+.needs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.need {
+  font-family: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0 0.45rem;
+  background: var(--surface);
+  white-space: nowrap;
+}
+
+.need.ok {
+  color: var(--right);
+}
+
+.need.prior {
+  color: var(--muted);
+  border-style: dashed;
+}
+
+.need.warn {
+  background: var(--warning);
+  color: var(--text);
+}
+
+button.need {
+  cursor: pointer;
+}
+
+button.need:hover {
+  border-color: var(--accent);
+}
+
+.scheme-dialog {
+  width: min(52rem, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  color: var(--text);
+  padding: 1rem 1.25rem 1.5rem;
+}
+
+.scheme-dialog::backdrop {
+  background: rgb(0 0 0 / 0.45);
+}
+
+.scheme-dialog h2 {
+  margin-top: 0.25rem;
+  padding-right: 2.5rem;
+}
+
+.dialog-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+}
+
+.dialog-close button {
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0.3rem 0.55rem;
+}
+
+@media print {
+  .print-only {
+    display: initial;
+  }
+  .scheme h1 {
+    font-size: 1.3rem;
+  }
+  .scheme-layout {
+    display: block;
+    margin: 0;
+  }
+  .half-terms {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+  .half-term {
+    break-inside: avoid;
+    padding: 0.4rem 0.5rem;
+    border-radius: 4px;
+  }
+  .half-term .items > li {
+    display: block;
+    font-size: 0.72rem;
+    padding: 0.15rem 0;
+  }
+  .needs {
+    display: none;
+  }
+  .half-term.targeted {
+    box-shadow: none;
+    border-color: var(--border);
+  }
+  .years section + section h2 {
+    break-before: page;
+    margin-top: 0;
   }
 }

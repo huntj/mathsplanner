@@ -58,8 +58,14 @@ export function WorksheetView({ spec, sheet, navigate }: Props) {
       <style>{worksheetStyles}</style>
       <div className="no-print">
         <p className="breadcrumb">
-          <a href={spec.paper ? `#/${spec.paper.kind}` : "#/"}>Set up</a> /{" "}
-          {spec.paper ? "Test paper" : "Worksheet"}
+          <a
+            href={
+              spec.paper?.kind === "set" ? "#/scheme" : spec.paper ? `#/${spec.paper.kind}` : "#/"
+            }
+          >
+            Set up
+          </a>{" "}
+          / {spec.paper ? "Test paper" : "Worksheet"}
         </p>
         <h1>{spec.paper ? "Printable test paper" : "Printable worksheet"}</h1>
         <div className="controls">

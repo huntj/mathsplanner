@@ -8,11 +8,13 @@ import {
   MAX_QUESTIONS,
   practisable,
   sessionItems,
-  stepsOf,
   type FeedbackMode,
   type Route,
   type SessionSpec,
 } from "./session.ts";
+import { StatementPicker } from "./StatementPicker.tsx";
+
+const topLevel = practisable.filter((s) => !s.parent);
 
 const DEPTH_NAMES = {
   1: "Fluency",
@@ -36,14 +38,6 @@ export function SetupView({ navigate }: { navigate: (route: Route) => void }) {
   const spec: SessionSpec = { statements: chosen, depths, numbers, count, seed, feedback };
   const available = chosen.length > 0 && depths.length > 0 ? sessionItems(spec).length : 0;
   const link = `${window.location.href.split("#")[0]}${formatRoute({ page: "session", spec })}`;
-
-  const q = query.trim().toLowerCase();
-  const hit = (s: { id: string; text: string }) =>
-    !q || s.id.toLowerCase().includes(q) || s.text.toLowerCase().includes(q);
-  // Statements at the top level; a statement also shows when one of its steps matches the search.
-  const visible = practisable.filter(
-    (s) => !s.parent && (hit(s) || (stepsOf.get(s.id) ?? []).some(hit)),
-  );
 
   const toggle = (id: string) =>
     setChosen((c) => (c.includes(id) ? c.filter((x) => x !== id) : [...c, id]));
@@ -85,46 +79,12 @@ export function SetupView({ navigate }: { navigate: (route: Route) => void }) {
           </>
         )}
       </p>
-      <ul className="statement-picker">
-        {visible.map((s) => {
-          const steps = stepsOf.get(s.id) ?? [];
-          const open = steps.some((x) => chosen.includes(x.id)) || (q !== "" && steps.some(hit));
-          return (
-            <li key={s.id}>
-              <label className="check">
-                <input
-                  type="checkbox"
-                  checked={chosen.includes(s.id)}
-                  onChange={() => toggle(s.id)}
-                />
-                <code>{s.id}</code> <span>{s.text}</span>
-              </label>
-              {steps.length > 0 && (
-                <details className="steps" open={open || undefined}>
-                  <summary>
-                    {steps.length} steps{chosen.includes(s.id) ? " (all included)" : ""}
-                  </summary>
-                  <ul>
-                    {steps.map((x) => (
-                      <li key={x.id}>
-                        <label className="check">
-                          <input
-                            type="checkbox"
-                            checked={chosen.includes(s.id) || chosen.includes(x.id)}
-                            disabled={chosen.includes(s.id)}
-                            onChange={() => toggle(x.id)}
-                          />
-                          <code>{x.id}</code> <span>{x.text}</span>
-                        </label>
-                      </li>
-                    ))}
-                  </ul>
-                </details>
-              )}
-            </li>
-          );
-        })}
-      </ul>
+      <StatementPicker
+        statements={topLevel}
+        query={query}
+        isChosen={(id) => chosen.includes(id)}
+        onToggle={toggle}
+      />
 
       <h2>Questions</h2>
       <div className="controls">

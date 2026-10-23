@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { UnitTestView, YearTestView } from "./PaperViews.tsx";
+import { SchemeView } from "./SchemeView.tsx";
 import { formatRoute, parseRoute, type Route } from "./session.ts";
 import { SessionView } from "./SessionView.tsx";
 import { SetupView } from "./SetupView.tsx";
@@ -41,6 +42,9 @@ export function App() {
           <a href="#/unit" aria-current={route.page === "unit" ? "page" : undefined}>
             Unit test
           </a>
+          <a href="#/scheme" aria-current={route.page === "scheme" ? "page" : undefined}>
+            Scheme of work
+          </a>
           <a href="../">Gallery</a>
           <a href="https://github.com/huntj/mathsplanner">GitHub</a>
         </nav>
@@ -52,6 +56,8 @@ export function App() {
           <YearTestView navigate={navigate} />
         ) : route.page === "unit" ? (
           <UnitTestView navigate={navigate} />
+        ) : route.page === "scheme" ? (
+          <SchemeView scheme={route.scheme} navigate={navigate} />
         ) : route.page === "worksheet" ? (
           <WorksheetView spec={route.spec} sheet={route.sheet} navigate={navigate} />
         ) : (

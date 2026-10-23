@@ -1,6 +1,6 @@
 # Proposal: sub-statements, more variety, and schemes of work
 
-Status: **approved on 23 October 2026** (IDs as `GF-A4.a`, GCSE first, half-term schemes). Building has started: the data, the dropdowns and GF-A4's seven steps are done. The full breakdown is listed at the end of this
+Status: **approved on 23 October 2026** (IDs as `GF-A4.a`, GCSE first, half-term schemes). All 841 steps have generators (24 October 2026) and the scheme-of-work page is built (see the design doc's decisions). The full breakdown is listed at the end of this
 file and is also in [sub-statements.json](sub-statements.json) (generated from
 [sub-statements.txt](sub-statements.txt), which is the easiest file to edit).
 

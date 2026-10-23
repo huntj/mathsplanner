@@ -17,7 +17,7 @@ import {
   itemMarks,
   MAX_MARKS,
   MAX_QUESTIONS,
-  paperTitle,
+  specTitle,
   practisable,
   sessionItems,
   statements,
@@ -46,11 +46,13 @@ const clamp = (v: string, lo: number, hi: number, fallback: number) => {
 type Navigate = (route: Route) => void;
 
 /** The settings every paper shares: size, mark total, numbers, feedback and seed. */
-function useCommon() {
-  const [count, setCount] = useState(20);
+export function useCommon(
+  initial: { count: number; feedback: FeedbackMode } = { count: 20, feedback: "end" },
+) {
+  const [count, setCount] = useState(initial.count);
   const [marks, setMarks] = useState(0);
   const [numbers, setNumbers] = useState<Numbers>("standard");
-  const [feedback, setFeedback] = useState<FeedbackMode>("end");
+  const [feedback, setFeedback] = useState<FeedbackMode>(initial.feedback);
   const [seed, setSeed] = useState(randomSeed);
   return {
     count,
@@ -66,7 +68,14 @@ function useCommon() {
   };
 }
 
-function CommonControls({ c }: { c: ReturnType<typeof useCommon> }) {
+export function CommonControls({
+  c,
+  marks = true,
+}: {
+  c: ReturnType<typeof useCommon>;
+  /** Whether to offer a mark total, which only papers use. */
+  marks?: boolean;
+}) {
   return (
     <>
       <label>
@@ -79,17 +88,19 @@ function CommonControls({ c }: { c: ReturnType<typeof useCommon> }) {
           onChange={(e) => c.setCount(clamp(e.target.value, 1, MAX_QUESTIONS, 1))}
         />
       </label>
-      <label>
-        Marks
-        <input
-          type="number"
-          min={0}
-          max={MAX_MARKS}
-          value={c.marks || ""}
-          placeholder="Any"
-          onChange={(e) => c.setMarks(clamp(e.target.value, 0, MAX_MARKS, 0))}
-        />
-      </label>
+      {marks && (
+        <label>
+          Marks
+          <input
+            type="number"
+            min={0}
+            max={MAX_MARKS}
+            value={c.marks || ""}
+            placeholder="Any"
+            onChange={(e) => c.setMarks(clamp(e.target.value, 0, MAX_MARKS, 0))}
+          />
+        </label>
+      )}
       <label>
         Numbers
         <select value={c.numbers} onChange={(e) => c.setNumbers(e.target.value as Numbers)}>
@@ -140,7 +151,15 @@ function CommonControls({ c }: { c: ReturnType<typeof useCommon> }) {
 }
 
 /** The paper that the settings make, with its total marks, its link and what to do with it. */
-function PaperActions({ spec, navigate }: { spec: SessionSpec | undefined; navigate: Navigate }) {
+export function PaperActions({
+  spec,
+  navigate,
+  print = "Print the paper",
+}: {
+  spec: SessionSpec | undefined;
+  navigate: Navigate;
+  print?: string;
+}) {
   const [copied, setCopied] = useState(false);
   const items = useMemo(() => (spec ? sessionItems(spec) : []), [spec]);
   const total = useMemo(
@@ -195,11 +214,11 @@ function PaperActions({ spec, navigate }: { spec: SessionSpec | undefined; navig
               navigate({
                 page: "worksheet",
                 spec,
-                sheet: { ...DEFAULT_SHEET, title: paperTitle(spec.paper) ?? DEFAULT_SHEET.title },
+                sheet: { ...DEFAULT_SHEET, title: specTitle(spec, DEFAULT_SHEET.title) },
               })
             }
           >
-            Print the paper
+            {print}
           </button>
           <button
             type="button"
@@ -214,7 +233,7 @@ function PaperActions({ spec, navigate }: { spec: SessionSpec | undefined; navig
   );
 }
 
-function DepthSelect({
+export function DepthSelect({
   label,
   value,
   onChange,
