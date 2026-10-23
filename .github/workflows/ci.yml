@@ -15,7 +15,8 @@ jobs:
   check:
     name: Lint, typecheck, test and data check
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    # A test file per generator and per sub-statement step, each sweeping 500 seeds.
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v7
 
