@@ -86,6 +86,21 @@ describe("exact answers", () => {
     expect(formProblem("0.75", "decimal")).toBeUndefined();
   });
 
+  it("asks for like terms to be collected and for full factorisation", () => {
+    expect(formProblem("5x - 4y", "collected")).toBeUndefined();
+    expect(formProblem("3x + 2y - x", "collected")).toMatch(/like terms/);
+    expect(formProblem("3ab + 2ba", "collected")).toMatch(/like terms/);
+    expect(formProblem("x^2 + 3x", "collected")).toBeUndefined();
+    expect(formProblem("x^2 + 5x + 3x + 15", "expanded")).toMatch(/like terms/);
+    expect(formProblem("x^2 + 8x + 15", "expanded")).toBeUndefined();
+    expect(formProblem("2(4x + 6)", "factorised")).toMatch(/common factor/);
+    expect(formProblem("4(2x + 3)", "factorised")).toBeUndefined();
+    expect(formProblem("x(3x + 6x^2)", "factorised")).toMatch(/common factor/);
+    expect(formProblem("3x(1 + 2x)", "factorised")).toBeUndefined();
+    expect(formProblem("(x + 2)(x + 3)", "factorised")).toBeUndefined();
+    expect(formProblem("(x - 4)(x + 4)", "factorised")).toBeUndefined();
+  });
+
   it("gives a wrong-form result for a right value in the wrong form", () => {
     const p = part({ type: "exact", value: "\\frac{3}{4}", form: "simplest" });
     expect(markPart(p, { type: "exact", latex: "\\frac{3}{4}" }).status).toBe("correct");

@@ -28,13 +28,29 @@ function DepthCells({ id }: { id: string }) {
   );
 }
 
-export function StatementList({ route, navigate }: Props) {
-  const shown = statements.filter(
-    (s) =>
-      (!route.stage || s.stage === route.stage) &&
-      (!route.generatedOnly || generatorFor(s.id)) &&
-      matches(s, route.query),
+/** Sub-statements under each statement that has them, in order. */
+const subsOf = new Map<string, Statement[]>();
+for (const s of statements)
+  if (s.parent) subsOf.set(s.parent, [...(subsOf.get(s.parent) ?? []), s]);
+const topLevel = statements.filter((s) => !s.parent);
+
+function Row({ s }: { s: Statement }) {
+  return (
+    <a href={formatRoute(statementRoute(s.id))}>
+      <code>{s.id}</code>
+      <span className="text">{s.text}</span>
+      <DepthCells id={s.id} />
+    </a>
   );
+}
+
+export function StatementList({ route, navigate }: Props) {
+  const keep = (s: Statement) =>
+    (!route.stage || s.stage === route.stage) &&
+    (!route.generatedOnly || generatorFor(s.id)) &&
+    matches(s, route.query);
+  // A statement shows if it matches, or if any of its sub-statements does (then opened).
+  const shown = topLevel.filter((s) => keep(s) || (subsOf.get(s.id) ?? []).some(keep));
   const byStage = STAGES.map(
     (stage) => [stage, shown.filter((s) => s.stage === stage)] as const,
   ).filter(([, list]) => list.length > 0);
@@ -81,7 +97,8 @@ export function StatementList({ route, navigate }: Props) {
         </label>
       </form>
       <p className="count" aria-live="polite">
-        {shown.length} of {statements.length} statements
+        {shown.length} of {topLevel.length} statements · {statements.length - topLevel.length}{" "}
+        sub-statements under the ▸ dropdowns
       </p>
       {byStage.map(([stage, list]) => (
         <section key={stage}>
@@ -89,15 +106,29 @@ export function StatementList({ route, navigate }: Props) {
             {STAGE_NAMES[stage]} <span className="muted">({list.length})</span>
           </h2>
           <ul className="statement-list">
-            {list.map((s) => (
-              <li key={s.id}>
-                <a href={formatRoute(statementRoute(s.id))}>
-                  <code>{s.id}</code>
-                  <span className="text">{s.text}</span>
-                  <DepthCells id={s.id} />
-                </a>
-              </li>
-            ))}
+            {list.map((s) => {
+              const subs = subsOf.get(s.id) ?? [];
+              const searching = route.query.trim() !== "" && subs.some(keep);
+              return (
+                <li key={s.id}>
+                  <Row s={s} />
+                  {subs.length > 0 && (
+                    <details className="sub-statements" open={searching || undefined}>
+                      <summary>
+                        {subs.length} steps: {subs.map((x) => x.id.at(-1)).join(", ")}
+                      </summary>
+                      <ul className="statement-list">
+                        {subs.map((x) => (
+                          <li key={x.id}>
+                            <Row s={x} />
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </section>
       ))}

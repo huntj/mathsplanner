@@ -89,6 +89,8 @@ export type AnswerForm =
   | "improper"
   | "factorised"
   | "expanded"
+  /** Like terms collected: no two terms with the same letters and powers. */
+  | "collected"
   | "standard-form"
   | "surd"
   | "decimal";

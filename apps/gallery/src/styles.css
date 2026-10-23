@@ -232,6 +232,30 @@ fieldset.depths button span {
   background: var(--banner);
 }
 
+/* Sub-statements sit in a dropdown under their statement, indented. */
+.sub-statements > summary {
+  cursor: pointer;
+  padding: 0 0.75rem 0.45rem 8.25rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.sub-statements > .statement-list {
+  margin: 0 0.75rem 0.6rem 8.25rem;
+}
+
+.sub-statements .statement-list li + li {
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 40rem) {
+  .sub-statements > summary,
+  .sub-statements > .statement-list {
+    margin-left: 0;
+    padding-left: 0.75rem;
+  }
+}
+
 .depth-cells {
   display: inline-flex;
   gap: 3px;
@@ -425,6 +449,16 @@ fieldset.depths button span {
 .coverage-strands {
   display: grid;
   gap: 0.35rem;
+}
+
+.coverage-strands + .coverage-strands {
+  margin-top: 0.75rem;
+}
+
+.coverage-sub-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
 }
 
 .coverage-strand {

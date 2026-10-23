@@ -110,6 +110,32 @@ describe("checkData", () => {
     ]);
   });
 
+  it("checks sub-statements against their parents, and leaves them out of the counts", () => {
+    const ok = [
+      ...VALID.slice(0, 3),
+      s("GF-A3.a", ["Y6-FR-01"], { parent: "GF-A3" }),
+      s("GF-A3.b", ["GF-A3.a"], { parent: "GF-A3" }),
+      ...VALID.slice(3),
+    ];
+    const good = checkData(input(ok, { expectedCounts: counts(6) }));
+    expect(good.errors).toEqual([]);
+    expect(good.total).toEqual({ expected: 6, actual: 6 });
+
+    const bad = [
+      ...VALID.slice(0, 3),
+      s("GF-A3.b", ["Y6-FR-01"], { parent: "GF-A3" }),
+      s("GF-A3.c", [], { parent: "GF-A4" }),
+      s("Y6-FR-01.a", [], { parent: "Y6-FR-01", statutory: false }),
+      ...VALID.slice(3),
+    ];
+    expect(checkData(input(bad, { expectedCounts: counts(6) })).errors).toEqual([
+      "GF-A3.b: should come straight after GF-A3.a",
+      "GF-A3.c: parent is GF-A4, ID says GF-A3",
+      "Y6-FR-01.a: statutory differs from Y6-FR-01",
+      "Y6-FR-01.a: should come straight after Y6-FR-01",
+    ]);
+  });
+
   it("reports schema errors and stops", () => {
     const bad = { version: "one", statements: [{ id: "Y5-FR-01" }] };
     const result = checkData({ ...input(VALID), statements: bad });

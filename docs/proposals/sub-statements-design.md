@@ -1,6 +1,6 @@
 # Proposal: sub-statements, more variety, and schemes of work
 
-Status: **for review**. Nothing here is built yet. The full breakdown is listed at the end of this
+Status: **approved on 23 October 2026** (IDs as `GF-A4.a`, GCSE first, half-term schemes). Building has started: the data, the dropdowns and GF-A4's seven steps are done. The full breakdown is listed at the end of this
 file and is also in [sub-statements.json](sub-statements.json) (generated from
 [sub-statements.txt](sub-statements.txt), which is the easiest file to edit).
 
@@ -117,14 +117,13 @@ A new **Scheme of work** page in the practice app:
    The browser also remembers the last scheme as a convenience.
 6. **Print** a one-page overview of the scheme for the department.
 
-## Decisions needed
+## Decisions
 
-1. Approve the ID format `GF-A4.a` (or prefer `GF-A4a`, with a different rule for A level IDs that
-   already end in a letter).
-2. Review the breakdown below: anything to split further, merge back, or reword. Edit
-   `sub-statements.txt` or tell me.
-3. Confirm the order of work.
-4. Schemes of work: are half-terms the right unit, or do you want week-by-week planning?
+1. IDs: `GF-A4.a` (approved). Generator files use an underscore, `GF-A4_a.ts`, because a file
+   ending in `.d.ts` is a TypeScript declaration file.
+2. The breakdown below can still be edited: change `sub-statements.txt` or say what to change.
+3. Order of work: GCSE first (approved).
+4. Schemes of work: half-terms (approved).
 
 ## The full breakdown
 

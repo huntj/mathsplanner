@@ -363,6 +363,13 @@ import gfA2 from "./ks4/GF-A2.ts";
 import gfA3 from "./ks4/GF-A3.ts";
 import ghA3 from "./ks4/GH-A3.ts";
 import gfA4 from "./ks4/GF-A4.ts";
+import gfA4A from "./ks4/GF-A4_a.ts";
+import gfA4B from "./ks4/GF-A4_b.ts";
+import gfA4C from "./ks4/GF-A4_c.ts";
+import gfA4D from "./ks4/GF-A4_d.ts";
+import gfA4E from "./ks4/GF-A4_e.ts";
+import gfA4F from "./ks4/GF-A4_f.ts";
+import gfA4G from "./ks4/GF-A4_g.ts";
 import ghA4 from "./ks4/GH-A4.ts";
 import gfA5 from "./ks4/GF-A5.ts";
 import gfA6 from "./ks4/GF-A6.ts";
@@ -1052,6 +1059,13 @@ export const generators: Generator[] = [
   gfA3,
   ghA3,
   gfA4,
+  gfA4A,
+  gfA4B,
+  gfA4C,
+  gfA4D,
+  gfA4E,
+  gfA4F,
+  gfA4G,
   ghA4,
   gfA5,
   gfA6,

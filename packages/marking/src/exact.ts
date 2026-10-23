@@ -108,6 +108,94 @@ function hasBracketProduct(json: Json): boolean {
   return args.some(hasBracketProduct);
 }
 
+/** The terms of a sum or difference in the raw parse, signs dropped. */
+function termsOf(json: Json): Json[] {
+  if (!Array.isArray(json)) return [json];
+  const [op, ...args] = json as [string, ...Json[]];
+  if (op === "Add" || op === "Subtract") return args.flatMap(termsOf);
+  if (op === "Negate" || op === "Delimiter")
+    return args.length === 1 ? termsOf(args[0] as Json) : [json];
+  return [json];
+}
+
+/**
+ * A term as a number times letters with powers, e.g. 3x²y is { coefficient: 3, letters: "x^2 y^1" },
+ * or undefined for anything else (fractions, roots, brackets), which the form checks then ignore.
+ */
+function monomial(json: Json): { coefficient: number; letters: string } | undefined {
+  let coefficient = 1;
+  const powers = new Map<string, number>();
+  const visit = (x: Json): boolean => {
+    if (typeof x === "number") {
+      coefficient *= x;
+      return true;
+    }
+    if (typeof x === "string") {
+      powers.set(x, (powers.get(x) ?? 0) + 1);
+      return true;
+    }
+    if (!Array.isArray(x)) return false;
+    const [op, ...args] = x as [string, ...Json[]];
+    if (op === "Negate") return args.every(visit);
+    if (op === "InvisibleOperator" || op === "Multiply") return args.every(visit);
+    if (op === "Power" && typeof args[0] === "string" && typeof args[1] === "number") {
+      powers.set(args[0], (powers.get(args[0]) ?? 0) + args[1]);
+      return true;
+    }
+    return false;
+  };
+  if (!visit(json)) return undefined;
+  const letters = [...powers]
+    .filter(([, n]) => n !== 0)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([s, n]) => `${s}^${n}`)
+    .join(" ");
+  return { coefficient, letters };
+}
+
+/** Whether two terms of a sum have the same letters and powers, e.g. 3x + 2x or 3ab + 2ba. */
+function hasLikeTerms(json: Json): boolean {
+  const seen = new Set<string>();
+  for (const term of termsOf(json)) {
+    const m = monomial(term);
+    if (!m) continue;
+    if (seen.has(m.letters)) return true;
+    seen.add(m.letters);
+  }
+  return false;
+}
+
+/**
+ * Whether a bracket in a product still has a common factor, e.g. 2(4x + 6) or x(x² + 3x): a
+ * number other than 1 dividing every coefficient, or a letter in every term.
+ */
+function bracketHasCommonFactor(json: Json): boolean {
+  if (!Array.isArray(json)) return false;
+  const [op, ...args] = json as [string, ...Json[]];
+  if (op === "Delimiter" && args.length === 1) {
+    const terms = termsOf(args[0] as Json).map(monomial);
+    if (terms.length > 1 && terms.every((t) => t !== undefined)) {
+      const ms = terms as { coefficient: number; letters: string }[];
+      if (ms.every((t) => Number.isInteger(t.coefficient))) {
+        const g = ms.reduce((acc, t) => gcd(acc, Math.abs(t.coefficient)), 0);
+        if (g > 1) return true;
+      }
+      const letterSets = ms.map(
+        (t) =>
+          new Set(
+            t.letters
+              .split(" ")
+              .filter(Boolean)
+              .map((l) => l.split("^")[0]),
+          ),
+      );
+      const first = letterSets[0] ?? new Set<string>();
+      if ([...first].some((l) => letterSets.every((set) => set.has(l)))) return true;
+    }
+  }
+  return args.some(bracketHasCommonFactor);
+}
+
 /** Why a correct value is not in the required form, or undefined if it is. */
 export function formProblem(response: string, form: AnswerForm): string | undefined {
   const r = normaliseLatex(response);
@@ -160,13 +248,21 @@ export function formProblem(response: string, form: AnswerForm): string | undefi
         ? undefined
         : "Simplify the surd: take out any square factors.";
     }
-    case "factorised":
-      return hasBracketProduct(ce().parse(r, { form: "raw" }).json)
-        ? undefined
-        : "Give your answer fully factorised.";
-    case "expanded":
-      return hasBracketProduct(ce().parse(r, { form: "raw" }).json)
-        ? "Expand the brackets."
+    case "factorised": {
+      const json = ce().parse(r, { form: "raw" }).json;
+      if (!hasBracketProduct(json)) return "Give your answer fully factorised.";
+      return bracketHasCommonFactor(json)
+        ? "Factorise fully: a bracket still has a common factor."
+        : undefined;
+    }
+    case "expanded": {
+      const json = ce().parse(r, { form: "raw" }).json;
+      if (hasBracketProduct(json)) return "Expand the brackets.";
+      return hasLikeTerms(json) ? "Simplify: collect the like terms." : undefined;
+    }
+    case "collected":
+      return hasLikeTerms(ce().parse(r, { form: "raw" }).json)
+        ? "Simplify: collect the like terms."
         : undefined;
   }
 }

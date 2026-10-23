@@ -94,7 +94,8 @@ describe("coverage", () => {
     const report = coverageReport(loadStatements(), findGenerators());
     expect(report.errors).toEqual([]);
     expect(report.warnings).toEqual([]);
-    expect(report.covered.length + report.missing.length).toBe(686);
+    expect(report.covered.length + report.missing.length).toBe(loadStatements().length);
+    expect(loadStatements().filter((s) => !s.parent)).toHaveLength(686);
     // Every generator file is in src/index.ts, so the gallery and registry can find it.
     expect(registered.map((g) => g.id).sort()).toEqual([...report.covered].sort());
   });

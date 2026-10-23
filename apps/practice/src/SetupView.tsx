@@ -1,13 +1,14 @@
 // The teacher's page: choose statements, depths, numbers and how many questions, then share the
 // link. Everyone who opens it gets the same questions.
 import { DEPTHS, NUMBERS, type Depth, type Numbers } from "@mathsplanner/core";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import {
   DEFAULT_SHEET,
   formatRoute,
   MAX_QUESTIONS,
   practisable,
   sessionItems,
+  stepsOf,
   type FeedbackMode,
   type Route,
   type SessionSpec,
@@ -36,12 +37,13 @@ export function SetupView({ navigate }: { navigate: (route: Route) => void }) {
   const available = chosen.length > 0 && depths.length > 0 ? sessionItems(spec).length : 0;
   const link = `${window.location.href.split("#")[0]}${formatRoute({ page: "session", spec })}`;
 
-  const visible = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    return practisable.filter(
-      (s) => !q || s.id.toLowerCase().includes(q) || s.text.toLowerCase().includes(q),
-    );
-  }, [query]);
+  const q = query.trim().toLowerCase();
+  const hit = (s: { id: string; text: string }) =>
+    !q || s.id.toLowerCase().includes(q) || s.text.toLowerCase().includes(q);
+  // Statements at the top level; a statement also shows when one of its steps matches the search.
+  const visible = practisable.filter(
+    (s) => !s.parent && (hit(s) || (stepsOf.get(s.id) ?? []).some(hit)),
+  );
 
   const toggle = (id: string) =>
     setChosen((c) => (c.includes(id) ? c.filter((x) => x !== id) : [...c, id]));
@@ -71,7 +73,8 @@ export function SetupView({ navigate }: { navigate: (route: Route) => void }) {
         />
       </label>
       <p className="count">
-        {chosen.length} chosen · {practisable.length} statements have questions so far
+        {chosen.length} chosen · {practisable.filter((s) => !s.parent).length} statements and{" "}
+        {practisable.filter((s) => s.parent).length} sub-statements have questions
         {chosen.length > 0 && (
           <>
             {" "}
@@ -83,18 +86,44 @@ export function SetupView({ navigate }: { navigate: (route: Route) => void }) {
         )}
       </p>
       <ul className="statement-picker">
-        {visible.map((s) => (
-          <li key={s.id}>
-            <label className="check">
-              <input
-                type="checkbox"
-                checked={chosen.includes(s.id)}
-                onChange={() => toggle(s.id)}
-              />
-              <code>{s.id}</code> <span>{s.text}</span>
-            </label>
-          </li>
-        ))}
+        {visible.map((s) => {
+          const steps = stepsOf.get(s.id) ?? [];
+          const open = steps.some((x) => chosen.includes(x.id)) || (q !== "" && steps.some(hit));
+          return (
+            <li key={s.id}>
+              <label className="check">
+                <input
+                  type="checkbox"
+                  checked={chosen.includes(s.id)}
+                  onChange={() => toggle(s.id)}
+                />
+                <code>{s.id}</code> <span>{s.text}</span>
+              </label>
+              {steps.length > 0 && (
+                <details className="steps" open={open || undefined}>
+                  <summary>
+                    {steps.length} steps{chosen.includes(s.id) ? " (all included)" : ""}
+                  </summary>
+                  <ul>
+                    {steps.map((x) => (
+                      <li key={x.id}>
+                        <label className="check">
+                          <input
+                            type="checkbox"
+                            checked={chosen.includes(s.id) || chosen.includes(x.id)}
+                            disabled={chosen.includes(s.id)}
+                            onChange={() => toggle(x.id)}
+                          />
+                          <code>{x.id}</code> <span>{x.text}</span>
+                        </label>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              )}
+            </li>
+          );
+        })}
       </ul>
 
       <h2>Questions</h2>

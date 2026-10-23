@@ -3,7 +3,7 @@
 // merged by accident. The gallery picks the generator up once it is added to src/index.ts.
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
-import { keyStageFolder, type Statement } from "@mathsplanner/core";
+import { generatorFileName, keyStageFolder, type Statement } from "@mathsplanner/core";
 import { GENERATORS_DIR, loadStatements, ROOT } from "./coverage.ts";
 
 export function generatorTemplate(statement: Statement): string {
@@ -42,7 +42,7 @@ export function testTemplate(statement: Statement): string {
   return `import { NUMBERS } from "@mathsplanner/core";
 import { describe, expect, it } from "vitest";
 import { assertQuality } from "../quality.ts";
-import generator from "./${statement.id}.ts";
+import generator from "./${generatorFileName(statement.id)}.ts";
 
 describe("${statement.id}", () => {
   it("passes the quality checks across 500 seeds", () => {
@@ -65,8 +65,8 @@ export function scaffold(id: string, statements: Statement[], dir = GENERATORS_D
   if (!statement) throw new Error(`${id} is not a statement in data/statements.json.`);
   const folder = join(dir, keyStageFolder(statement.stage));
   const files = [
-    [join(folder, `${id}.ts`), generatorTemplate(statement)],
-    [join(folder, `${id}.test.ts`), testTemplate(statement)],
+    [join(folder, `${generatorFileName(id)}.ts`), generatorTemplate(statement)],
+    [join(folder, `${generatorFileName(id)}.test.ts`), testTemplate(statement)],
   ] as const;
   for (const [path] of files) {
     if (existsSync(path)) throw new Error(`${relative(ROOT, path)} already exists.`);

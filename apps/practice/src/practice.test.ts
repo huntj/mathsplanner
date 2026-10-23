@@ -67,6 +67,13 @@ describe("session links", () => {
     expect(sessionItems({ ...spec, seed: 43 })).not.toEqual(items);
   });
 
+  it("brings in a statement's sub-statements with it", () => {
+    const items = sessionItems({ ...spec, statements: ["GF-A4"], depths: [1, 2, 4], count: 40 });
+    const ids = new Set(items.map((i) => i.statementId));
+    expect(ids.has("GF-A4")).toBe(true);
+    expect([...ids].some((id) => id.startsWith("GF-A4."))).toBe(true);
+  });
+
   it("only offers statements that have a generator", () => {
     expect(practisable.length).toBeGreaterThan(0);
     for (const s of practisable) expect(generatorFor(s.id)).toBeDefined();
@@ -75,7 +82,7 @@ describe("session links", () => {
 
 describe("year and unit tests", () => {
   const year: SessionSpec = {
-    statements: yearPool(statements, "Y5"),
+    statements: yearPool(statements, "Y5").filter((id) => generatorFor(id)),
     depths: [1, 2, 3, 4],
     numbers: "standard",
     count: 12,
@@ -84,7 +91,7 @@ describe("year and unit tests", () => {
     paper: { kind: "year", stage: "Y5", start: 1, end: 4, marks: 0 },
   };
   const unit: SessionSpec = {
-    statements: unitPool(statements, "algebra", ["Y7", "Y8"]),
+    statements: unitPool(statements, "algebra", ["Y7", "Y8"]).filter((id) => generatorFor(id)),
     depths: [2, 4],
     numbers: "standard",
     count: 10,

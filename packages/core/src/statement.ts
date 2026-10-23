@@ -56,8 +56,10 @@ export const FURTHER_MATHS_OPTIONS: readonly FurtherMathsOption[] = [
 export type KS5Year = 12 | 13;
 
 export interface Statement {
-  /** "Y6-FR-03", "GH-A18", "AL-P7.4", "FM-FS1-02" */
+  /** "Y6-FR-03", "GH-A18", "AL-P7.4", "FM-FS1-02", or a sub-statement such as "GF-A4.a" */
   id: string;
+  /** For a sub-statement, the broader statement it is one step of. */
+  parent?: string;
   stage: Stage;
   /** "FR", "ALG", "N", "P7", "CP", "FS1" … derived from the ID. */
   strand: string;

@@ -8,6 +8,7 @@ import {
   PRACTICE_URL,
   STAGE_NAMES,
   statementById,
+  statements,
   type GeneratorInfo,
 } from "./data.ts";
 import { formatRoute, statementRoute, type Route, type StatementRoute } from "./route.ts";
@@ -247,11 +248,19 @@ export function StatementPage({ route, navigate }: Props) {
   }
   const info = generatorFor(statement.id);
   const needs = statement.needs.flatMap((id) => statementById.get(id) ?? []);
+  const parent = statement.parent ? statementById.get(statement.parent) : undefined;
+  const steps = statements.filter((s) => s.parent === statement.id);
 
   return (
     <>
       <p className="breadcrumb">
         <a href="#/">All statements</a> / {STAGE_NAMES[statement.stage]}
+        {parent && (
+          <>
+            {" "}
+            / <a href={formatRoute(statementRoute(parent.id))}>{parent.id}</a>
+          </>
+        )}
       </p>
       <h1>
         <code>{statement.id}</code> {statement.text}
@@ -269,6 +278,8 @@ export function StatementPage({ route, navigate }: Props) {
         </p>
       )}
       <div className="related">
+        {parent && <StatementLinks label="Part of" list={[parent]} />}
+        {steps.length > 0 && <StatementLinks label="Steps" list={steps} />}
         <StatementLinks label="Needs" list={needs} />
         <StatementLinks label="Needed by" list={neededBy.get(statement.id) ?? []} />
       </div>

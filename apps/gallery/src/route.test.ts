@@ -77,7 +77,8 @@ describe("links regenerate questions exactly (the Phase 2 exit check)", () => {
     }
   });
 
-  it("loads every statement", () => {
-    expect(statements).toHaveLength(686);
+  it("loads every statement and sub-statement", () => {
+    expect(statements.filter((s) => !s.parent)).toHaveLength(686);
+    expect(statements.filter((s) => s.parent).length).toBeGreaterThan(0);
   });
 });

@@ -1,4 +1,5 @@
 import {
+  parentId,
   parseId,
   STAGE_RANK,
   STAGE_SOURCE,
@@ -100,8 +101,9 @@ function checkStatementFields(s: Statement, errors: string[]) {
   if (s.source !== STAGE_SOURCE[s.stage]) {
     errors.push(`${s.id}: source is "${s.source}", expected "${STAGE_SOURCE[s.stage]}"`);
   }
-  // Reception statutory status depends on the ELG marker, which may be edited out of the text.
-  if (s.stage !== "R" && s.statutory !== isStatutory(s.stage, s.text)) {
+  // Reception statutory status depends on the ELG marker, which may be edited out of the text, and
+  // a sub-statement takes its parent's status (checked in checkSubStatements).
+  if (s.stage !== "R" && !s.parent && s.statutory !== isStatutory(s.stage, s.text)) {
     errors.push(`${s.id}: statutory should be ${!s.statutory} for stage ${s.stage}`);
   }
 }
@@ -142,6 +144,38 @@ function prerequisiteWarnings(statements: Statement[], byId: Map<string, Stateme
   return warnings;
 }
 
+/** A sub-statement must name its parent in its ID, sit beside it, and share its fields. */
+function checkSubStatements(
+  statements: Statement[],
+  byId: Map<string, Statement>,
+  errors: string[],
+) {
+  statements.forEach((s, i) => {
+    const fromId = parentId(s.id);
+    if (fromId !== s.parent) {
+      errors.push(`${s.id}: parent is ${s.parent ?? "unset"}, ID says ${fromId ?? "none"}`);
+      return;
+    }
+    if (!s.parent) return;
+    const parent = byId.get(s.parent);
+    if (!parent) {
+      errors.push(`${s.id}: parent ${s.parent} does not exist`);
+      return;
+    }
+    if (parent.parent) errors.push(`${s.id}: parent ${s.parent} is itself a sub-statement`);
+    if (s.statutory !== parent.statutory)
+      errors.push(`${s.id}: statutory differs from ${parent.id}`);
+    if (JSON.stringify(s.years) !== JSON.stringify(parent.years))
+      errors.push(`${s.id}: years differ from ${parent.id}`);
+    // Sub-statements follow their parent in order: a, b, c …
+    const prev = statements[i - 1];
+    const letter = s.id.at(-1) ?? "";
+    const expected =
+      letter === "a" ? parent.id : `${parent.id}.${String.fromCharCode(letter.charCodeAt(0) - 1)}`;
+    if (prev?.id !== expected) errors.push(`${s.id}: should come straight after ${expected}`);
+  });
+}
+
 export function checkData(input: CheckInput): CheckResult {
   const errors: string[] = [];
   const warnings: string[] = [];
@@ -167,6 +201,8 @@ export function checkData(input: CheckInput): CheckResult {
     checkStatementFields(s, errors);
   }
 
+  checkSubStatements(statements, byId, errors);
+
   for (const s of statements) {
     for (const need of s.needs) {
       if (need === s.id) errors.push(`${s.id}: needs itself`);
@@ -181,18 +217,19 @@ export function checkData(input: CheckInput): CheckResult {
   const counts = input.expectedCounts.map(({ group, expected }) => ({
     label: group.label,
     expected,
-    actual: statements.filter((s) => inGroup(s, group)).length,
+    actual: statements.filter((s) => !s.parent && inGroup(s, group)).length,
   }));
   for (const c of counts) {
     if (c.actual !== c.expected) {
       errors.push(`${c.label}: ${c.actual} statements, but the map's summary says ${c.expected}`);
     }
   }
-  // Sub-groups such as the Further Maths split are not added into the total.
+  // Sub-groups such as the Further Maths split are not added into the total, and the map's summary
+  // counts statements, not sub-statements.
   const topLevel = input.expectedCounts.filter((c) => !c.group.strands);
   const total = {
     expected: topLevel.reduce((sum, c) => sum + c.expected, 0),
-    actual: statements.length,
+    actual: statements.filter((s) => !s.parent).length,
   };
   if (total.actual !== total.expected) {
     errors.push(

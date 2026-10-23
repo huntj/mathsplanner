@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.32.0",
+  "version": "0.33.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -638,6 +638,16 @@
       "remediate": "Y7-ALG-04"
     },
     {
+      "code": "ALG.LIKE-TERMS.SIGN",
+      "description": "Loses the sign in front of a term when collecting like terms, e.g. 5x + 3y − 2x as 7x + 3y.",
+      "remediate": "GF-A4.a"
+    },
+    {
+      "code": "ALG.FACTORISE.ONE-TERM",
+      "description": "Divides only one term by the common factor when factorising, e.g. 6x + 9 = 3(2x + 9).",
+      "remediate": "GF-A4.c"
+    },
+    {
       "code": "ALG.EXPAND.FIRST-ONLY",
       "description": "Multiplies only the first term in a bracket, e.g. 3(x + 4) = 3x + 4.",
       "remediate": "Y7-ALG-04"
@@ -681,6 +691,16 @@
       "code": "ALG.INDICES.MULTIPLY",
       "description": "Multiplies the powers when multiplying terms with the same base, e.g. a² × a³ = a⁶.",
       "remediate": "Y9-ALG-02"
+    },
+    {
+      "code": "ALG.INDICES.POWER-ADD",
+      "description": "Adds the indices for a power of a power, e.g. (x³)² = x⁵ instead of x⁶.",
+      "remediate": "GF-A4.g"
+    },
+    {
+      "code": "ALG.INDICES.BRACKET-COEFF",
+      "description": "Raises the letters in a bracket to the power but not the number, e.g. (2x³)² = 2x⁶.",
+      "remediate": "GF-A4.g"
     },
     {
       "code": "ALG.SIMULTANEOUS.SIGN",

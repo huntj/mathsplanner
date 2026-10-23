@@ -56,10 +56,34 @@ const PATTERNS: [RegExp, (m: RegExpExecArray) => ParsedId | undefined][] = [
   [/^CM-(A|P|LP|SG)\d{1,2}$/, (m) => ({ stage: "CM", strand: m[1] as string })],
 ];
 
-/** Derives stage, strand, tier and option from a statement ID, or undefined if it is malformed. */
+/**
+ * A sub-statement is one step of a broader statement: its parent's ID, a dot and a letter, e.g.
+ * GF-A4.a or AL-P2.6a.b.
+ */
+const SUB = /^(.+)\.([a-z])$/;
+
+/** The parent of a sub-statement ID, or undefined for a top-level statement. */
+export function parentId(id: string): string | undefined {
+  return SUB.exec(id)?.[1];
+}
+
+/**
+ * A generator's file name for a statement ID. A sub-statement's dot becomes an underscore
+ * (GF-A4.d → GF-A4_d), since a file ending in ".d.ts" would be read as a declaration file.
+ */
+export const generatorFileName = (id: string): string => id.replace(/\.([a-z])$/, "_$1");
+
+/** The statement ID a generator file name stands for: the reverse of generatorFileName. */
+export const idFromFileName = (name: string): string => name.replace(/_([a-z])$/, ".$1");
+
+/**
+ * Derives stage, strand, tier and option from a statement or sub-statement ID, or undefined if it
+ * is malformed. A sub-statement takes its parent's.
+ */
 export function parseId(id: string): ParsedId | undefined {
+  const base = parentId(id) ?? id;
   for (const [pattern, build] of PATTERNS) {
-    const m = pattern.exec(id);
+    const m = pattern.exec(base);
     if (m) return build(m);
   }
   return undefined;

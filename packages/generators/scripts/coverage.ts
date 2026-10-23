@@ -6,7 +6,12 @@
 // a known ID, and its header records any teacher review.
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { basename, join, relative, resolve } from "node:path";
-import { keyStageFolder, type Statement, type StatementsFile } from "@mathsplanner/core";
+import {
+  idFromFileName,
+  keyStageFolder,
+  type Statement,
+  type StatementsFile,
+} from "@mathsplanner/core";
 import { parseHeader, type GeneratorHeader } from "./header.ts";
 
 export const ROOT = resolve(import.meta.dirname, "../../..");
@@ -59,7 +64,7 @@ export function findGenerators(dir = GENERATORS_DIR): GeneratorFile[] {
       files.push({
         path: relative(dir, full).replaceAll("\\", "/"),
         folder,
-        fileId: basename(entry.name, ".ts"),
+        fileId: idFromFileName(basename(entry.name, ".ts")),
         declaredIds: [...source.matchAll(DECLARED_ID)].map((m) => m[1] ?? m[2] ?? ""),
         header: parseHeader(source),
       });
@@ -106,12 +111,15 @@ export function coverageReport(
   };
 }
 
-export function printCoverage(report: CoverageReport, total: number): void {
+export function printCoverage(report: CoverageReport, statements: Statement[]): void {
+  // Statements and their sub-statements are counted separately.
+  const isSub = new Set(statements.filter((s) => s.parent).map((s) => s.id));
+  const count = (ids: string[], sub: boolean) => ids.filter((id) => isSub.has(id) === sub).length;
   console.log(
-    `Generator coverage: ${report.covered.length} of ${total} statements, ${report.reviewed.length} reviewed by a teacher.`,
+    `Generator coverage: ${count(report.covered, false)} of ${statements.length - isSub.size} statements (${count(report.reviewed, false)} reviewed by a teacher) and ${count(report.covered, true)} of ${isSub.size} sub-statements (${count(report.reviewed, true)} reviewed).`,
   );
   if (report.missing.length > 0) {
-    console.log(`\n${report.missing.length} statement(s) without a generator:`);
+    console.log(`\n${report.missing.length} without a generator:`);
     const byStage = new Map<string, string[]>();
     for (const s of report.missing) byStage.set(s.stage, [...(byStage.get(s.stage) ?? []), s.id]);
     for (const [stage, ids] of byStage) {
@@ -125,6 +133,6 @@ export function printCoverage(report: CoverageReport, total: number): void {
 if (import.meta.main) {
   const statements = loadStatements();
   const report = coverageReport(statements, findGenerators());
-  printCoverage(report, statements.length);
+  printCoverage(report, statements);
   if (report.errors.length > 0) process.exitCode = 1;
 }

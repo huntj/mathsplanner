@@ -20,9 +20,9 @@
   },
   "$defs": {
     "id": {
-      "description": "Stage-Strand-Number, e.g. Y6-FR-03, GH-A18, AL-P7.4, FM-FS1-02, CM-LP3.",
+      "description": "Stage-Strand-Number, e.g. Y6-FR-03, GH-A18, AL-P7.4, FM-FS1-02, CM-LP3; a sub-statement adds a dot and a letter, e.g. GF-A4.a.",
       "type": "string",
-      "pattern": "^(?:(?:N|R|Y[1-9])-[A-Z]+-\\d{2}|G[FH]-[NARGPS]\\d{1,2}|AL-[PSM]\\d{1,2}\\.\\d{1,2}[a-z]?|FM-(?:CP|FP1|FP2|FS1|FS2|FM1|FM2|D1|D2)-\\d{2}|CM-(?:A|P|LP|SG)\\d{1,2})$"
+      "pattern": "^(?:(?:N|R|Y[1-9])-[A-Z]+-\\d{2}|G[FH]-[NARGPS]\\d{1,2}|AL-[PSM]\\d{1,2}\\.\\d{1,2}[a-z]?|FM-(?:CP|FP1|FP2|FS1|FS2|FM1|FM2|D1|D2)-\\d{2}|CM-(?:A|P|LP|SG)\\d{1,2})(?:\\.[a-z])?$"
     },
     "statement": {
       "type": "object",
@@ -30,6 +30,10 @@
       "additionalProperties": false,
       "properties": {
         "id": { "$ref": "#/$defs/id" },
+        "parent": {
+          "description": "For a sub-statement, the ID of the broader statement it is one step of.",
+          "$ref": "#/$defs/id"
+        },
         "stage": {
           "enum": [
             "N",

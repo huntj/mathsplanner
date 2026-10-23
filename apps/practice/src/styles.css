@@ -948,3 +948,35 @@ fieldset.years legend {
     overflow: visible;
   }
 }
+
+/* A statement's steps (sub-statements) open in a dropdown under it. */
+.statement-picker details.steps > summary {
+  cursor: pointer;
+  padding: 0 0.75rem 0.4rem 7.75rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.statement-picker details.steps ul {
+  list-style: none;
+  margin: 0 0 0.4rem 7.25rem;
+  padding: 0;
+  border-left: 2px solid var(--border);
+}
+
+.statement-picker details.steps li + li {
+  border-top: 0;
+}
+
+.statement-picker details.steps label.check {
+  padding: 0.25rem 0.75rem;
+}
+
+@media (max-width: 40rem) {
+  .statement-picker details.steps > summary {
+    padding-left: 0.75rem;
+  }
+  .statement-picker details.steps ul {
+    margin-left: 0.75rem;
+  }
+}

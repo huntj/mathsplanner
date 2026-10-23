@@ -8,6 +8,7 @@ import {
   type Depth,
   type Generator,
   type Numbers,
+  type Statement,
   type StatementsFile,
 } from "@mathsplanner/core";
 import {
@@ -31,8 +32,18 @@ export const statements = (statementsFile as StatementsFile).statements;
 export const statementById = new Map(statements.map((s) => [s.id, s]));
 const registry = createRegistry(generators, statements);
 
-/** Statements that have a generator, in curriculum order. */
+/** Statements and sub-statements that have a generator, in curriculum order. */
 export const practisable = statements.filter((s) => registry.get(s.id));
+
+/** Each statement's sub-statements that have a generator. */
+export const stepsOf = new Map<string, Statement[]>();
+for (const s of practisable)
+  if (s.parent) stepsOf.set(s.parent, [...(stepsOf.get(s.parent) ?? []), s]);
+
+/** A chosen statement also brings in its sub-statements, so its questions cover every step. */
+export const withSteps = (ids: readonly string[]): string[] => [
+  ...new Set(ids.flatMap((id) => [id, ...(stepsOf.get(id) ?? []).map((s) => s.id)])),
+];
 
 export const generatorFor = (id: string): Generator | undefined => registry.get(id)?.generator;
 
@@ -195,7 +206,8 @@ export function itemMarks(item: SelectedItem, numbers: Numbers): number {
 /** The questions in a session or paper; see selectQuestions and selectPaper. */
 export function sessionItems(spec: SessionSpec): SessionItem[] {
   const paper = spec.paper;
-  if (!paper) return selectQuestions(generators, spec);
+  if (!paper)
+    return selectQuestions(generators, { ...spec, statements: withSteps(spec.statements) });
   const sorted = [...spec.depths].sort();
   const [start, end] =
     paper.kind === "year" ? [paper.start, paper.end] : [sorted[0] ?? 1, sorted.at(-1) ?? 4];

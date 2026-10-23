@@ -179,6 +179,7 @@ const FORM_TEXT: Record<string, string> = {
   improper: "as an improper fraction",
   factorised: "factorised",
   expanded: "expanded",
+  collected: "with like terms collected",
   "standard-form": "in standard form",
   surd: "in surd form",
   decimal: "as a decimal",
