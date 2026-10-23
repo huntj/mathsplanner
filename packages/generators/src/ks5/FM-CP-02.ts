@@ -11,7 +11,7 @@ import { poly } from "../shared/alg.ts";
 import { chosenText } from "../shared/counting.ts";
 import { cx } from "../shared/cplx.ts";
 
-interface Params {
+export interface Params {
   a: number;
   b: number;
   c: number;

@@ -1,0 +1,987 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FM-FP2-05.a > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FP2-05.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 6,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 1,
+            },
+            "code": "MAT.EIGEN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "det(M − λI) = λ² − (trace)λ + det: check the sign of the λ term.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\lambda^2 - 5\\lambda - 6 = 0 \\Rightarrow \\lambda = -1 \\text{ or } 6",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find the larger eigenvalue of ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 20 & -21 \\\\ 14 & -15 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FP2-05.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 6,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": -3,
+            },
+            "code": "MAT.EIGEN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "det(M − λI) = λ² − (trace)λ + det: check the sign of the λ term.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\lambda^2 - 9\\lambda + 18 = 0 \\Rightarrow \\lambda = 3 \\text{ or } 6",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find the larger eigenvalue of ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} -3 & 9 \\\\ -6 & 12 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FP2-05.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 0,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 2,
+            },
+            "code": "MAT.EIGEN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "det(M − λI) = λ² − (trace)λ + det: check the sign of the λ term.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\lambda^2 + 2\\lambda + 0 = 0 \\Rightarrow \\lambda = -2 \\text{ or } 0",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find the larger eigenvalue of ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} -4 & 4 \\\\ -2 & 2 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FP2-05.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} -3 \\\\ -2 \\end{pmatrix}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} -2 \\\\ -3 \\end{pmatrix}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "MAT.EIGEN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is an eigenvector for -1. Check: M multiplies it by -1.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "MAT.EIGEN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Solve (M − 6I)v = 0 and check the order of the components.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which is an eigenvector for the eigenvalue ",
+          },
+          {
+            "t": "math",
+            "v": "6",
+          },
+          {
+            "t": "text",
+            "v": "?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\mathbf{M}\\begin{pmatrix} -3 \\\\ -2 \\end{pmatrix} = \\begin{pmatrix} -18 \\\\ -12 \\end{pmatrix} = 6\\begin{pmatrix} -3 \\\\ -2 \\end{pmatrix}",
+        "say": [
+          {
+            "t": "text",
+            "v": "Check: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The matrix ",
+      },
+      {
+        "t": "math",
+        "v": "\\mathbf{M} = \\begin{pmatrix} 20 & -21 \\\\ 14 & -15 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": " has eigenvalues ",
+      },
+      {
+        "t": "math",
+        "v": "-1",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "6",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FP2-05.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} -3 \\\\ -2 \\end{pmatrix}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} -2 \\\\ -3 \\end{pmatrix}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "MAT.EIGEN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is an eigenvector for 6. Check: M multiplies it by 6.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "MAT.EIGEN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Solve (M − 3I)v = 0 and check the order of the components.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which is an eigenvector for the eigenvalue ",
+          },
+          {
+            "t": "math",
+            "v": "3",
+          },
+          {
+            "t": "text",
+            "v": "?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\mathbf{M}\\begin{pmatrix} -3 \\\\ -2 \\end{pmatrix} = \\begin{pmatrix} -9 \\\\ -6 \\end{pmatrix} = 3\\begin{pmatrix} -3 \\\\ -2 \\end{pmatrix}",
+        "say": [
+          {
+            "t": "text",
+            "v": "Check: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The matrix ",
+      },
+      {
+        "t": "math",
+        "v": "\\mathbf{M} = \\begin{pmatrix} -3 & 9 \\\\ -6 & 12 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": " has eigenvalues ",
+      },
+      {
+        "t": "math",
+        "v": "6",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "3",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FP2-05.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} -2 \\\\ -1 \\end{pmatrix}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} -1 \\\\ -2 \\end{pmatrix}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "MAT.EIGEN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is an eigenvector for 0. Check: M multiplies it by 0.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "MAT.EIGEN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Solve (M − -2I)v = 0 and check the order of the components.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which is an eigenvector for the eigenvalue ",
+          },
+          {
+            "t": "math",
+            "v": "-2",
+          },
+          {
+            "t": "text",
+            "v": "?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\mathbf{M}\\begin{pmatrix} -2 \\\\ -1 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 2 \\end{pmatrix} = -2\\begin{pmatrix} -2 \\\\ -1 \\end{pmatrix}",
+        "say": [
+          {
+            "t": "text",
+            "v": "Check: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The matrix ",
+      },
+      {
+        "t": "math",
+        "v": "\\mathbf{M} = \\begin{pmatrix} -4 & 4 \\\\ -2 & 2 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": " has eigenvalues ",
+      },
+      {
+        "t": "math",
+        "v": "0",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "-2",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FP2-05.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The eigenvalues are always on the diagonal.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Their sum is the trace.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. That only holds for triangular matrices. Solving det(M − λI) = 0 gives -1 and 6.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "MAT.EIGEN",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MAT.EIGEN",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The eigenvalues sum to the trace 5 and multiply to the determinant -6.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Lou says the eigenvalues of ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 20 & -21 \\\\ 14 & -15 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": " are 20 and -15, the numbers on the leading diagonal.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FP2-05.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Their sum is the trace.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. That only holds for triangular matrices. Solving det(M − λI) = 0 gives 6 and 3.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The eigenvalues are always on the diagonal.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "MAT.EIGEN",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "MAT.EIGEN",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The eigenvalues sum to the trace 9 and multiply to the determinant 18.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Lou says the eigenvalues of ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} -3 & 9 \\\\ -6 & 12 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": " are -3 and 12, the numbers on the leading diagonal.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FP2-05.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The eigenvalues are always on the diagonal.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Their sum is the trace.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. That only holds for triangular matrices. Solving det(M − λI) = 0 gives 0 and -2.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "MAT.EIGEN",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MAT.EIGEN",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The eigenvalues sum to the trace -2 and multiply to the determinant 0.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Lou says the eigenvalues of ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} -4 & 4 \\\\ -2 & 2 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": " are -4 and 2, the numbers on the leading diagonal.",
+      },
+    ],
+  },
+]
+`;

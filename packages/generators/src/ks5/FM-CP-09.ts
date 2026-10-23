@@ -65,7 +65,7 @@ const TRANSFORMS: { name: string; m: number[][]; partner: number }[] = [
 const get = (i: number) => TRANSFORMS[i] ?? (TRANSFORMS[0] as (typeof TRANSFORMS)[number]);
 const same = (a: number[][], b: number[][]) => JSON.stringify(a) === JSON.stringify(b);
 
-interface Params {
+export interface Params {
   t: number;
   other: number;
   k: number;

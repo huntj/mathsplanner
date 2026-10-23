@@ -8,7 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText, exactAnswer } from "../shared/counting.ts";
 
-interface Params {
+export interface Params {
   a: number;
   k: number;
 }

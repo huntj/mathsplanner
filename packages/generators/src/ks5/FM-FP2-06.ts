@@ -9,7 +9,7 @@ import { defineGenerator, frac, toLatex, type QuestionDraft } from "@mathsplanne
 import { linear } from "../shared/alg.ts";
 import { exactAnswer } from "../shared/counting.ts";
 
-interface Params {
+export interface Params {
   n: number;
   m: number;
 }

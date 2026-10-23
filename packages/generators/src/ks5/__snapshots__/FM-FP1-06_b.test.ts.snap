@@ -1,0 +1,1161 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FM-FP1-06.b > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FP1-06.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x\\frac{dv}{dx} = 1 + v",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{dv}{dx} = 1 + v",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "v + x\\frac{dv}{dx} = 1 + v",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Keep the v from the product rule on the left.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "dy/dx = v + x dv/dx by the product rule.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which equation in v does it give?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "math",
+            "v": "\\frac{dy}{dx} = v + x\\frac{dv}{dx}",
+          },
+          {
+            "t": "text",
+            "v": " and ",
+          },
+          {
+            "t": "math",
+            "v": "\\frac{x + vx}{x} = 1 + v",
+          },
+          {
+            "t": "text",
+            "v": ", so ",
+          },
+          {
+            "t": "math",
+            "v": "x\\frac{dv}{dx} = 1",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The substitution ",
+      },
+      {
+        "t": "math",
+        "v": "y = vx",
+      },
+      {
+        "t": "text",
+        "v": " is used in ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dy}{dx} = \\frac{x + y}{x}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FP1-06.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x\\frac{dv}{dx} = 1 + v",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{dv}{dx} = 1 + v",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "v + x\\frac{dv}{dx} = 1 + v",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Keep the v from the product rule on the left.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "dy/dx = v + x dv/dx by the product rule.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which equation in v does it give?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "math",
+            "v": "\\frac{dy}{dx} = v + x\\frac{dv}{dx}",
+          },
+          {
+            "t": "text",
+            "v": " and ",
+          },
+          {
+            "t": "math",
+            "v": "\\frac{x + vx}{x} = 1 + v",
+          },
+          {
+            "t": "text",
+            "v": ", so ",
+          },
+          {
+            "t": "math",
+            "v": "x\\frac{dv}{dx} = 1",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The substitution ",
+      },
+      {
+        "t": "math",
+        "v": "y = vx",
+      },
+      {
+        "t": "text",
+        "v": " is used in ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dy}{dx} = \\frac{x + y}{x}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FP1-06.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x\\frac{dv}{dx} = 1 + v",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{dv}{dx} = 1 + v",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "v + x\\frac{dv}{dx} = 1 + v",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Keep the v from the product rule on the left.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "dy/dx = v + x dv/dx by the product rule.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which equation in v does it give?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "math",
+            "v": "\\frac{dy}{dx} = v + x\\frac{dv}{dx}",
+          },
+          {
+            "t": "text",
+            "v": " and ",
+          },
+          {
+            "t": "math",
+            "v": "\\frac{x + vx}{x} = 1 + v",
+          },
+          {
+            "t": "text",
+            "v": ", so ",
+          },
+          {
+            "t": "math",
+            "v": "x\\frac{dv}{dx} = 1",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The substitution ",
+      },
+      {
+        "t": "math",
+        "v": "y = vx",
+      },
+      {
+        "t": "text",
+        "v": " is used in ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dy}{dx} = \\frac{x + y}{x}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FP1-06.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x\\frac{dv}{dx} = \\frac{2}{v}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x\\frac{dv}{dx} = \\frac{2 + v^2}{v}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{dv}{dx} = \\frac{2 + v^2}{v}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "CALC.SUBSTITUTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Subtract the v from dy/dx = v + x dv/dx as well.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "CALC.SUBSTITUTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "dy/dx is not dv/dx: by the product rule, dy/dx = v + x dv/dx.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "v + x\\frac{dv}{dx} = \\frac{2 + v^2}{v} \\Rightarrow x\\frac{dv}{dx} = \\frac{2}{v}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Use the substitution ",
+      },
+      {
+        "t": "math",
+        "v": "y = vx",
+      },
+      {
+        "t": "text",
+        "v": " to transform ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dy}{dx} = \\frac{2x^2 + y^2}{xy}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FP1-06.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x\\frac{dv}{dx} = \\frac{4 + v^2}{v}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x\\frac{dv}{dx} = \\frac{4}{v}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{dv}{dx} = \\frac{4 + v^2}{v}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "CALC.SUBSTITUTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Subtract the v from dy/dx = v + x dv/dx as well.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "CALC.SUBSTITUTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "dy/dx is not dv/dx: by the product rule, dy/dx = v + x dv/dx.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "v + x\\frac{dv}{dx} = \\frac{4 + v^2}{v} \\Rightarrow x\\frac{dv}{dx} = \\frac{4}{v}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Use the substitution ",
+      },
+      {
+        "t": "math",
+        "v": "y = vx",
+      },
+      {
+        "t": "text",
+        "v": " to transform ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dy}{dx} = \\frac{4x^2 + y^2}{xy}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FP1-06.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x\\frac{dv}{dx} = \\frac{6}{v}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{dv}{dx} = \\frac{6 + v^2}{v}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "x\\frac{dv}{dx} = \\frac{6 + v^2}{v}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "CALC.SUBSTITUTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "dy/dx is not dv/dx: by the product rule, dy/dx = v + x dv/dx.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "CALC.SUBSTITUTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Subtract the v from dy/dx = v + x dv/dx as well.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "v + x\\frac{dv}{dx} = \\frac{6 + v^2}{v} \\Rightarrow x\\frac{dv}{dx} = \\frac{6}{v}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Use the substitution ",
+      },
+      {
+        "t": "math",
+        "v": "y = vx",
+      },
+      {
+        "t": "text",
+        "v": " to transform ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dy}{dx} = \\frac{6x^2 + y^2}{xy}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FP1-06.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. v depends on x, so by the product rule dy/dx = v + x dv/dx.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Differentiating vx with respect to x gives v.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. x differentiates to 1.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "CALC.SUBSTITUTION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "CALC.SUBSTITUTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Only if v were a constant would dy/dx = v.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Fin says that if ",
+      },
+      {
+        "t": "math",
+        "v": "y = vx",
+      },
+      {
+        "t": "text",
+        "v": ", where v is a function of x, then ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dy}{dx} = v",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FP1-06.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. v depends on x, so by the product rule dy/dx = v + x dv/dx.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Differentiating vx with respect to x gives v.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. x differentiates to 1.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "CALC.SUBSTITUTION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "CALC.SUBSTITUTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Only if v were a constant would dy/dx = v.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Fin says that if ",
+      },
+      {
+        "t": "math",
+        "v": "y = vx",
+      },
+      {
+        "t": "text",
+        "v": ", where v is a function of x, then ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dy}{dx} = v",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FP1-06.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Differentiating vx with respect to x gives v.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. x differentiates to 1.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. v depends on x, so by the product rule dy/dx = v + x dv/dx.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CALC.SUBSTITUTION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "CALC.SUBSTITUTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Only if v were a constant would dy/dx = v.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Fin says that if ",
+      },
+      {
+        "t": "math",
+        "v": "y = vx",
+      },
+      {
+        "t": "text",
+        "v": ", where v is a function of x, then ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dy}{dx} = v",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+]
+`;

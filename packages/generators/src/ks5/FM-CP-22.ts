@@ -11,7 +11,7 @@ import { numberAnswer } from "../shared/counting.ts";
 import { deg } from "../shared/trig.ts";
 import { col, mag, type Vec } from "../shared/vec.ts";
 
-interface Params {
+export interface Params {
   n: Vec;
   a: Vec;
   u: Vec;

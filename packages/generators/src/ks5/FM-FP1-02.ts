@@ -21,7 +21,7 @@ const ELLIPSES = [
   [17, 15],
 ] as const;
 
-interface Params {
+export interface Params {
   a: number;
   e: number;
   h: number;

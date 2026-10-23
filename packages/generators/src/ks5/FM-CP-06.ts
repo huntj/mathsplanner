@@ -10,7 +10,7 @@ import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { piLatex } from "../shared/trig.ts";
 
-interface Params {
+export interface Params {
   r: number;
   n: number;
   /** θ in degrees, a multiple of 15. */

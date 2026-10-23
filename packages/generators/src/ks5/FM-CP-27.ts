@@ -17,7 +17,7 @@ const TRIPLES = [
   [20, 21, 29],
 ] as const;
 
-interface Params {
+export interface Params {
   t: number;
   k: number;
 }

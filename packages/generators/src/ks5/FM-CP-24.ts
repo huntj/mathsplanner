@@ -13,7 +13,7 @@ import { piLatex, rad } from "../shared/trig.ts";
 /** Angles whose cosine is ±1/2 or ±1, so x is a whole number. */
 const ANGLES = [60, 120, 180, 240, 300];
 
-interface Params {
+export interface Params {
   r: number;
   t: number;
   k: number;

@@ -1,0 +1,805 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FM-CP-06.b > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-CP-06.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 4,
+        },
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "2^2 = 4.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Given ",
+      },
+      {
+        "t": "math",
+        "v": "z = 2\\left(\\cos \\frac{\\pi}{2} + i\\sin \\frac{\\pi}{2}\\right)",
+      },
+      {
+        "t": "text",
+        "v": ", find ",
+      },
+      {
+        "t": "math",
+        "v": "|z^2|",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-CP-06.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 16,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 8,
+            },
+            "code": "CPLX.DE-MOIVRE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "|zⁿ| = |z|ⁿ = 2^4.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "2^4 = 16.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Given ",
+      },
+      {
+        "t": "math",
+        "v": "z = 2\\left(\\cos \\frac{\\pi}{6} + i\\sin \\frac{\\pi}{6}\\right)",
+      },
+      {
+        "t": "text",
+        "v": ", find ",
+      },
+      {
+        "t": "math",
+        "v": "|z^4|",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-CP-06.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 243,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 15,
+            },
+            "code": "CPLX.DE-MOIVRE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "|zⁿ| = |z|ⁿ = 3^5.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "3^5 = 243.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Given ",
+      },
+      {
+        "t": "math",
+        "v": "z = 3\\left(\\cos \\frac{\\pi}{12} + i\\sin \\frac{\\pi}{12}\\right)",
+      },
+      {
+        "t": "text",
+        "v": ", find ",
+      },
+      {
+        "t": "math",
+        "v": "|z^5|",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-CP-06.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "\\pi",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{\\pi}{2}",
+              "type": "exact",
+            },
+            "code": "CPLX.DE-MOIVRE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "De Moivre: raising to the power 2 multiplies the argument by 2.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\arg(z^2) = 2 \\times \\frac{\\pi}{2} = \\pi",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Given ",
+      },
+      {
+        "t": "math",
+        "v": "z = 2\\left(\\cos \\frac{\\pi}{2} + i\\sin \\frac{\\pi}{2}\\right)",
+      },
+      {
+        "t": "text",
+        "v": ", find ",
+      },
+      {
+        "t": "math",
+        "v": "\\arg(z^2)",
+      },
+      {
+        "t": "text",
+        "v": " in terms of π.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-CP-06.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "\\frac{2\\pi}{3}",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{\\pi}{6}",
+              "type": "exact",
+            },
+            "code": "CPLX.DE-MOIVRE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "De Moivre: raising to the power 4 multiplies the argument by 4.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\arg(z^4) = 4 \\times \\frac{\\pi}{6} = \\frac{2\\pi}{3}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Given ",
+      },
+      {
+        "t": "math",
+        "v": "z = 2\\left(\\cos \\frac{\\pi}{6} + i\\sin \\frac{\\pi}{6}\\right)",
+      },
+      {
+        "t": "text",
+        "v": ", find ",
+      },
+      {
+        "t": "math",
+        "v": "\\arg(z^4)",
+      },
+      {
+        "t": "text",
+        "v": " in terms of π.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-CP-06.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "\\frac{5\\pi}{12}",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{\\pi}{12}",
+              "type": "exact",
+            },
+            "code": "CPLX.DE-MOIVRE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "De Moivre: raising to the power 5 multiplies the argument by 5.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\arg(z^5) = 5 \\times \\frac{\\pi}{12} = \\frac{5\\pi}{12}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Given ",
+      },
+      {
+        "t": "math",
+        "v": "z = 3\\left(\\cos \\frac{\\pi}{12} + i\\sin \\frac{\\pi}{12}\\right)",
+      },
+      {
+        "t": "text",
+        "v": ", find ",
+      },
+      {
+        "t": "math",
+        "v": "\\arg(z^5)",
+      },
+      {
+        "t": "text",
+        "v": " in terms of π.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-CP-06.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Raise each part to the power.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Both sides equal 1 when θ = 0, so they are always equal.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. De Moivre's theorem gives cos 2θ + i sin 2θ: the angle is multiplied, not the functions raised to a power.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CPLX.DE-MOIVRE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "CPLX.DE-MOIVRE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Check with θ = π/4: the left side has modulus 1, but cos^2(π/4) + i sin^2(π/4) has modulus less than 1.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ivy says ",
+      },
+      {
+        "t": "math",
+        "v": "(\\cos\\theta + i\\sin\\theta)^2 = \\cos^2\\theta + i\\sin^2\\theta",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-CP-06.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Both sides equal 1 when θ = 0, so they are always equal.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. De Moivre's theorem gives cos 4θ + i sin 4θ: the angle is multiplied, not the functions raised to a power.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Raise each part to the power.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CPLX.DE-MOIVRE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "CPLX.DE-MOIVRE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Check with θ = π/4: the left side has modulus 1, but cos^4(π/4) + i sin^4(π/4) has modulus less than 1.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ivy says ",
+      },
+      {
+        "t": "math",
+        "v": "(\\cos\\theta + i\\sin\\theta)^4 = \\cos^4\\theta + i\\sin^4\\theta",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-CP-06.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Both sides equal 1 when θ = 0, so they are always equal.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Raise each part to the power.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. De Moivre's theorem gives cos 5θ + i sin 5θ: the angle is multiplied, not the functions raised to a power.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CPLX.DE-MOIVRE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "CPLX.DE-MOIVRE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Check with θ = π/4: the left side has modulus 1, but cos^5(π/4) + i sin^5(π/4) has modulus less than 1.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ivy says ",
+      },
+      {
+        "t": "math",
+        "v": "(\\cos\\theta + i\\sin\\theta)^5 = \\cos^5\\theta + i\\sin^5\\theta",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+]
+`;

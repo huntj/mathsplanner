@@ -1,0 +1,1130 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FM-CP-22.a > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-CP-22.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{x - 3}{2} = \\frac{y - 1}{-1} = \\frac{z - 5}{0}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{x + 2}{3} = \\frac{y - 1}{1} = \\frac{z}{5}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{x - 2}{3} = \\frac{y + 1}{1} = \\frac{z}{5}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.POSITION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The point goes in the numerators and the direction in the denominators.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.COMPONENTS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Use x − 2 and y − (−1) = y + 1.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Each coordinate gives ",
+          },
+          {
+            "t": "math",
+            "v": "t",
+          },
+          {
+            "t": "text",
+            "v": ": ",
+          },
+          {
+            "t": "math",
+            "v": "t = \\frac{x - 2}{3} = \\frac{y + 1}{1} = \\frac{z}{5}",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Which Cartesian equation matches ",
+      },
+      {
+        "t": "math",
+        "v": "\\mathbf{r} = \\begin{pmatrix} 2 \\\\ -1 \\\\ 0 \\end{pmatrix} + t\\begin{pmatrix} 3 \\\\ 1 \\\\ 5 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": "?",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-CP-22.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{r} = \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix} + t\\begin{pmatrix} 4 \\\\ 0 \\\\ -1 \\end{pmatrix}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{r} = \\begin{pmatrix} 4 \\\\ 0 \\\\ -1 \\end{pmatrix} + t\\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{r} = t\\begin{pmatrix} 5 \\\\ 2 \\\\ 2 \\end{pmatrix}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.POSITION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The fixed point comes first and the parameter multiplies the direction.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.POSITION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That line goes through the origin.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "math",
+            "v": "\\mathbf{r} = \\mathbf{a} + t\\mathbf{d}",
+          },
+          {
+            "t": "text",
+            "v": ": position vector of a point plus a multiple of the direction.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Which is a vector equation of the line through ",
+      },
+      {
+        "t": "math",
+        "v": "(1, 2, 3)",
+      },
+      {
+        "t": "text",
+        "v": " in the direction ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 4 \\\\ 0 \\\\ -1 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": "?",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-CP-22.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{r} = \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix} + t\\begin{pmatrix} 4 \\\\ 0 \\\\ -1 \\end{pmatrix}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{r} = t\\begin{pmatrix} 5 \\\\ 2 \\\\ 2 \\end{pmatrix}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{r} = \\begin{pmatrix} 4 \\\\ 0 \\\\ -1 \\end{pmatrix} + t\\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.POSITION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That line goes through the origin.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.POSITION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The fixed point comes first and the parameter multiplies the direction.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "math",
+            "v": "\\mathbf{r} = \\mathbf{a} + t\\mathbf{d}",
+          },
+          {
+            "t": "text",
+            "v": ": position vector of a point plus a multiple of the direction.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Which is a vector equation of the line through ",
+      },
+      {
+        "t": "math",
+        "v": "(1, 2, 3)",
+      },
+      {
+        "t": "text",
+        "v": " in the direction ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 4 \\\\ 0 \\\\ -1 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": "?",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-CP-22.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{x - 2}{3} = \\frac{y + 1}{1} = \\frac{z}{5}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{x - 3}{2} = \\frac{y - 1}{-1} = \\frac{z - 5}{0}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{x + 2}{3} = \\frac{y - 1}{1} = \\frac{z}{5}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.POSITION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The point goes in the numerators and the direction in the denominators.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.COMPONENTS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Use x − 2 and y − (−1) = y + 1.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Each coordinate gives ",
+          },
+          {
+            "t": "math",
+            "v": "t",
+          },
+          {
+            "t": "text",
+            "v": ": ",
+          },
+          {
+            "t": "math",
+            "v": "t = \\frac{x - 2}{3} = \\frac{y + 1}{1} = \\frac{z}{5}",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Which Cartesian equation matches ",
+      },
+      {
+        "t": "math",
+        "v": "\\mathbf{r} = \\begin{pmatrix} 2 \\\\ -1 \\\\ 0 \\end{pmatrix} + t\\begin{pmatrix} 3 \\\\ 1 \\\\ 5 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": "?",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-CP-22.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{r} = t\\begin{pmatrix} 5 \\\\ 2 \\\\ 2 \\end{pmatrix}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{r} = \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix} + t\\begin{pmatrix} 4 \\\\ 0 \\\\ -1 \\end{pmatrix}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{r} = \\begin{pmatrix} 4 \\\\ 0 \\\\ -1 \\end{pmatrix} + t\\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.POSITION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That line goes through the origin.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.POSITION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The fixed point comes first and the parameter multiplies the direction.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "math",
+            "v": "\\mathbf{r} = \\mathbf{a} + t\\mathbf{d}",
+          },
+          {
+            "t": "text",
+            "v": ": position vector of a point plus a multiple of the direction.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Which is a vector equation of the line through ",
+      },
+      {
+        "t": "math",
+        "v": "(1, 2, 3)",
+      },
+      {
+        "t": "text",
+        "v": " in the direction ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 4 \\\\ 0 \\\\ -1 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": "?",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-CP-22.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{r} = t\\begin{pmatrix} 5 \\\\ 2 \\\\ 2 \\end{pmatrix}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{r} = \\begin{pmatrix} 4 \\\\ 0 \\\\ -1 \\end{pmatrix} + t\\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\mathbf{r} = \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix} + t\\begin{pmatrix} 4 \\\\ 0 \\\\ -1 \\end{pmatrix}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.POSITION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That line goes through the origin.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.POSITION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The fixed point comes first and the parameter multiplies the direction.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "math",
+            "v": "\\mathbf{r} = \\mathbf{a} + t\\mathbf{d}",
+          },
+          {
+            "t": "text",
+            "v": ": position vector of a point plus a multiple of the direction.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Which is a vector equation of the line through ",
+      },
+      {
+        "t": "math",
+        "v": "(1, 2, 3)",
+      },
+      {
+        "t": "text",
+        "v": " in the direction ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 4 \\\\ 0 \\\\ -1 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": "?",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-CP-22.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. One direction is −2 times the other, so the lines are parallel.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Parallel lines need identical direction vectors.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The signs are different, so they point different ways.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.DIRECTION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.DIRECTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. One direction is −2 times the other, so the lines are parallel.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Eli says the lines with directions ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 2 \\\\ -4 \\\\ 6 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} -1 \\\\ 2 \\\\ -3 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": " are parallel.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-CP-22.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The signs are different, so they point different ways.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. One direction is −2 times the other, so the lines are parallel.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Parallel lines need identical direction vectors.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.DIRECTION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.DIRECTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. One direction is −2 times the other, so the lines are parallel.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Eli says the lines with directions ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 2 \\\\ -4 \\\\ 6 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} -1 \\\\ 2 \\\\ -3 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": " are parallel.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-CP-22.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. One direction is −2 times the other, so the lines are parallel.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Parallel lines need identical direction vectors.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The signs are different, so they point different ways.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.DIRECTION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.DIRECTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. One direction is −2 times the other, so the lines are parallel.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Eli says the lines with directions ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 2 \\\\ -4 \\\\ 6 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} -1 \\\\ 2 \\\\ -3 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": " are parallel.",
+      },
+    ],
+  },
+]
+`;

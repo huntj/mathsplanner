@@ -10,7 +10,7 @@ import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { gcdOf } from "../shared/fr.ts";
 
-interface Params {
+export interface Params {
   n: number;
   k: number;
   g: number;

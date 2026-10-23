@@ -9,7 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { exactAnswer } from "../shared/counting.ts";
 import { piLatex } from "../shared/trig.ts";
 
-interface Params {
+export interface Params {
   c: number;
   b: number;
   h: number;

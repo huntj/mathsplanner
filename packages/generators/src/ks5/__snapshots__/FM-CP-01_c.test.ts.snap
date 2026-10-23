@@ -1,0 +1,1328 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FM-CP-01.c > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-CP-01.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "n = 1",
+                },
+                {
+                  "t": "text",
+                  "v": ": both sides are ",
+                },
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "n = 0",
+                },
+                {
+                  "t": "text",
+                  "v": ": both sides are the zero matrix",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "n = k",
+                },
+                {
+                  "t": "text",
+                  "v": ": assume it is true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "ALG.INDUCTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "M⁰ is the identity, and the result is stated for n ≥ 1.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "ALG.INDUCTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is the inductive hypothesis, not the base case.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What is the base case?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Check the smallest case, n = 1: ",
+          },
+          {
+            "t": "math",
+            "v": "M^1 = M",
+          },
+          {
+            "t": "text",
+            "v": " and the formula gives the same matrix.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "For ",
+      },
+      {
+        "t": "math",
+        "v": "M = \\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ", the claim is ",
+      },
+      {
+        "t": "math",
+        "v": "M^n = \\begin{pmatrix} 2^n & 0 \\\\ 0 & 3^n \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-CP-01.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "n = 1",
+                },
+                {
+                  "t": "text",
+                  "v": ": both sides are ",
+                },
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "n = k",
+                },
+                {
+                  "t": "text",
+                  "v": ": assume it is true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "n = 0",
+                },
+                {
+                  "t": "text",
+                  "v": ": both sides are the zero matrix",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "ALG.INDUCTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is the inductive hypothesis, not the base case.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "ALG.INDUCTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "M⁰ is the identity, and the result is stated for n ≥ 1.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What is the base case?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Check the smallest case, n = 1: ",
+          },
+          {
+            "t": "math",
+            "v": "M^1 = M",
+          },
+          {
+            "t": "text",
+            "v": " and the formula gives the same matrix.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "For ",
+      },
+      {
+        "t": "math",
+        "v": "M = \\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ", the claim is ",
+      },
+      {
+        "t": "math",
+        "v": "M^n = \\begin{pmatrix} 2^n & 0 \\\\ 0 & 3^n \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-CP-01.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Multiply the assumed result by ",
+                },
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Add ",
+                },
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}",
+                },
+                {
+                  "t": "text",
+                  "v": " to the assumed result",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Replace every ",
+                },
+                {
+                  "t": "math",
+                  "v": "k",
+                },
+                {
+                  "t": "text",
+                  "v": " by ",
+                },
+                {
+                  "t": "math",
+                  "v": "k + 1",
+                },
+                {
+                  "t": "text",
+                  "v": " in the assumed result",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "ALG.INDUCTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Powers multiply: Mᵏ⁺¹ = Mᵏ × M.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "ALG.INDUCTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That writes down what you want to prove; it does not prove it.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "How do you get the power ",
+          },
+          {
+            "t": "math",
+            "v": "k + 1",
+          },
+          {
+            "t": "text",
+            "v": "?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "math",
+            "v": "M^{k+1} = M^k M",
+          },
+          {
+            "t": "text",
+            "v": ", so multiply the assumed matrix by M and simplify.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "To prove ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}^n = \\begin{pmatrix} 1 & n \\\\ 0 & 1 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ", you assume it for ",
+      },
+      {
+        "t": "math",
+        "v": "n = k",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-CP-01.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "n = k",
+                },
+                {
+                  "t": "text",
+                  "v": ": assume it is true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "n = 1",
+                },
+                {
+                  "t": "text",
+                  "v": ": both sides are ",
+                },
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "n = 0",
+                },
+                {
+                  "t": "text",
+                  "v": ": both sides are the zero matrix",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "ALG.INDUCTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is the inductive hypothesis, not the base case.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "ALG.INDUCTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "M⁰ is the identity, and the result is stated for n ≥ 1.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What is the base case?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Check the smallest case, n = 1: ",
+          },
+          {
+            "t": "math",
+            "v": "M^1 = M",
+          },
+          {
+            "t": "text",
+            "v": " and the formula gives the same matrix.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "For ",
+      },
+      {
+        "t": "math",
+        "v": "M = \\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ", the claim is ",
+      },
+      {
+        "t": "math",
+        "v": "M^n = \\begin{pmatrix} 2^n & 0 \\\\ 0 & 3^n \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-CP-01.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "n = 0",
+                },
+                {
+                  "t": "text",
+                  "v": ": both sides are the zero matrix",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "n = 1",
+                },
+                {
+                  "t": "text",
+                  "v": ": both sides are ",
+                },
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "n = k",
+                },
+                {
+                  "t": "text",
+                  "v": ": assume it is true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "ALG.INDUCTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "M⁰ is the identity, and the result is stated for n ≥ 1.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "ALG.INDUCTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is the inductive hypothesis, not the base case.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What is the base case?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Check the smallest case, n = 1: ",
+          },
+          {
+            "t": "math",
+            "v": "M^1 = M",
+          },
+          {
+            "t": "text",
+            "v": " and the formula gives the same matrix.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "For ",
+      },
+      {
+        "t": "math",
+        "v": "M = \\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ", the claim is ",
+      },
+      {
+        "t": "math",
+        "v": "M^n = \\begin{pmatrix} 2^n & 0 \\\\ 0 & 3^n \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-CP-01.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Multiply the assumed result by ",
+                },
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Replace every ",
+                },
+                {
+                  "t": "math",
+                  "v": "k",
+                },
+                {
+                  "t": "text",
+                  "v": " by ",
+                },
+                {
+                  "t": "math",
+                  "v": "k + 1",
+                },
+                {
+                  "t": "text",
+                  "v": " in the assumed result",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Add ",
+                },
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}",
+                },
+                {
+                  "t": "text",
+                  "v": " to the assumed result",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "ALG.INDUCTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That writes down what you want to prove; it does not prove it.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "ALG.INDUCTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Powers multiply: Mᵏ⁺¹ = Mᵏ × M.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "How do you get the power ",
+          },
+          {
+            "t": "math",
+            "v": "k + 1",
+          },
+          {
+            "t": "text",
+            "v": "?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "math",
+            "v": "M^{k+1} = M^k M",
+          },
+          {
+            "t": "text",
+            "v": ", so multiply the assumed matrix by M and simplify.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "To prove ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}^n = \\begin{pmatrix} 1 & n \\\\ 0 & 1 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ", you assume it for ",
+      },
+      {
+        "t": "math",
+        "v": "n = k",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-CP-01.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The base case is always obvious, so it can be left out.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Without the base case the chain never starts: the step from k to k + 1 needs a true first case.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The inductive step is the important part.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "ALG.INDUCTION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.INDUCTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. Without the base case the chain never starts: the step from k to k + 1 needs a true first case.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Jo proves that if ",
+      },
+      {
+        "t": "math",
+        "v": "M^k",
+      },
+      {
+        "t": "text",
+        "v": " has a formula then ",
+      },
+      {
+        "t": "math",
+        "v": "M^{k+1}",
+      },
+      {
+        "t": "text",
+        "v": " does too, but never checks ",
+      },
+      {
+        "t": "math",
+        "v": "n = 1",
+      },
+      {
+        "t": "text",
+        "v": ". She says the result is proved.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-CP-01.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The base case is always obvious, so it can be left out.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The inductive step is the important part.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Without the base case the chain never starts: the step from k to k + 1 needs a true first case.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "ALG.INDUCTION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "ALG.INDUCTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. Without the base case the chain never starts: the step from k to k + 1 needs a true first case.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Jo proves that if ",
+      },
+      {
+        "t": "math",
+        "v": "M^k",
+      },
+      {
+        "t": "text",
+        "v": " has a formula then ",
+      },
+      {
+        "t": "math",
+        "v": "M^{k+1}",
+      },
+      {
+        "t": "text",
+        "v": " does too, but never checks ",
+      },
+      {
+        "t": "math",
+        "v": "n = 1",
+      },
+      {
+        "t": "text",
+        "v": ". She says the result is proved.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-CP-01.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Without the base case the chain never starts: the step from k to k + 1 needs a true first case.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The base case is always obvious, so it can be left out.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The inductive step is the important part.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "ALG.INDUCTION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.INDUCTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. Without the base case the chain never starts: the step from k to k + 1 needs a true first case.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Jo proves that if ",
+      },
+      {
+        "t": "math",
+        "v": "M^k",
+      },
+      {
+        "t": "text",
+        "v": " has a formula then ",
+      },
+      {
+        "t": "math",
+        "v": "M^{k+1}",
+      },
+      {
+        "t": "text",
+        "v": " does too, but never checks ",
+      },
+      {
+        "t": "math",
+        "v": "n = 1",
+      },
+      {
+        "t": "text",
+        "v": ". She says the result is proved.",
+      },
+    ],
+  },
+]
+`;

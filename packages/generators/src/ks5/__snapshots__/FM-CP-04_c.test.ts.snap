@@ -1,0 +1,1224 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FM-CP-04.c > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-CP-04.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "6\\left(\\cos\\frac{\\pi^2}{18} + i\\sin\\frac{\\pi^2}{18}\\right)",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "6\\left(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}\\right)",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "5\\left(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}\\right)",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "CPLX.ARGUMENT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Add the arguments, do not multiply them.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "CPLX.ARGUMENT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Multiply the moduli: 3 × 2 = 6.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find ",
+          },
+          {
+            "t": "math",
+            "v": "zw",
+          },
+          {
+            "t": "text",
+            "v": " in modulus-argument form.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Multiply the moduli and add the arguments: ",
+          },
+          {
+            "t": "math",
+            "v": "3 \\times 2 = 6",
+          },
+          {
+            "t": "text",
+            "v": " and ",
+          },
+          {
+            "t": "math",
+            "v": "\\frac{\\pi}{3} + \\frac{\\pi}{6} = \\frac{\\pi}{2}",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "math",
+        "v": "z = 3\\left(\\cos\\frac{\\pi}{3} + i\\sin\\frac{\\pi}{3}\\right)",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "w = 2\\left(\\cos\\frac{\\pi}{6} + i\\sin\\frac{\\pi}{6}\\right)",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-CP-04.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "4\\left(\\cos\\pi + i\\sin\\pi\\right)",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "6\\left(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}\\right)",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "4\\left(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}\\right)",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "CPLX.ARGUMENT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Dividing subtracts the arguments: 3π/4 − π/4.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "CPLX.ARGUMENT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Divide the moduli: 8 ÷ 2 = 4.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find ",
+          },
+          {
+            "t": "math",
+            "v": "\\frac{z}{w}",
+          },
+          {
+            "t": "text",
+            "v": " in modulus-argument form.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Divide the moduli and subtract the arguments: ",
+          },
+          {
+            "t": "math",
+            "v": "8 \\div 2 = 4",
+          },
+          {
+            "t": "text",
+            "v": " and ",
+          },
+          {
+            "t": "math",
+            "v": "\\frac{3\\pi}{4} - \\frac{\\pi}{4} = \\frac{\\pi}{2}",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "math",
+        "v": "z = 8\\left(\\cos\\frac{3\\pi}{4} + i\\sin\\frac{3\\pi}{4}\\right)",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "w = 2\\left(\\cos\\frac{\\pi}{4} + i\\sin\\frac{\\pi}{4}\\right)",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-CP-04.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "6\\left(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}\\right)",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "5\\left(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}\\right)",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "6\\left(\\cos\\frac{\\pi^2}{18} + i\\sin\\frac{\\pi^2}{18}\\right)",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "CPLX.ARGUMENT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Multiply the moduli: 3 × 2 = 6.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "CPLX.ARGUMENT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Add the arguments, do not multiply them.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find ",
+          },
+          {
+            "t": "math",
+            "v": "zw",
+          },
+          {
+            "t": "text",
+            "v": " in modulus-argument form.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Multiply the moduli and add the arguments: ",
+          },
+          {
+            "t": "math",
+            "v": "3 \\times 2 = 6",
+          },
+          {
+            "t": "text",
+            "v": " and ",
+          },
+          {
+            "t": "math",
+            "v": "\\frac{\\pi}{3} + \\frac{\\pi}{6} = \\frac{\\pi}{2}",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "math",
+        "v": "z = 3\\left(\\cos\\frac{\\pi}{3} + i\\sin\\frac{\\pi}{3}\\right)",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "w = 2\\left(\\cos\\frac{\\pi}{6} + i\\sin\\frac{\\pi}{6}\\right)",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-CP-04.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "5\\left(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}\\right)",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "6\\left(\\cos\\frac{\\pi^2}{18} + i\\sin\\frac{\\pi^2}{18}\\right)",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "6\\left(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}\\right)",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "CPLX.ARGUMENT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Multiply the moduli: 3 × 2 = 6.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "CPLX.ARGUMENT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Add the arguments, do not multiply them.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find ",
+          },
+          {
+            "t": "math",
+            "v": "zw",
+          },
+          {
+            "t": "text",
+            "v": " in modulus-argument form.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Multiply the moduli and add the arguments: ",
+          },
+          {
+            "t": "math",
+            "v": "3 \\times 2 = 6",
+          },
+          {
+            "t": "text",
+            "v": " and ",
+          },
+          {
+            "t": "math",
+            "v": "\\frac{\\pi}{3} + \\frac{\\pi}{6} = \\frac{\\pi}{2}",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "math",
+        "v": "z = 3\\left(\\cos\\frac{\\pi}{3} + i\\sin\\frac{\\pi}{3}\\right)",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "w = 2\\left(\\cos\\frac{\\pi}{6} + i\\sin\\frac{\\pi}{6}\\right)",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-CP-04.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "4\\left(\\cos\\pi + i\\sin\\pi\\right)",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "4\\left(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}\\right)",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "6\\left(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}\\right)",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "CPLX.ARGUMENT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Dividing subtracts the arguments: 3π/4 − π/4.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "CPLX.ARGUMENT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Divide the moduli: 8 ÷ 2 = 4.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find ",
+          },
+          {
+            "t": "math",
+            "v": "\\frac{z}{w}",
+          },
+          {
+            "t": "text",
+            "v": " in modulus-argument form.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Divide the moduli and subtract the arguments: ",
+          },
+          {
+            "t": "math",
+            "v": "8 \\div 2 = 4",
+          },
+          {
+            "t": "text",
+            "v": " and ",
+          },
+          {
+            "t": "math",
+            "v": "\\frac{3\\pi}{4} - \\frac{\\pi}{4} = \\frac{\\pi}{2}",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "math",
+        "v": "z = 8\\left(\\cos\\frac{3\\pi}{4} + i\\sin\\frac{3\\pi}{4}\\right)",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "w = 2\\left(\\cos\\frac{\\pi}{4} + i\\sin\\frac{\\pi}{4}\\right)",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-CP-04.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "6\\left(\\cos\\frac{\\pi^2}{18} + i\\sin\\frac{\\pi^2}{18}\\right)",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "5\\left(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}\\right)",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "6\\left(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}\\right)",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "CPLX.ARGUMENT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Add the arguments, do not multiply them.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "CPLX.ARGUMENT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Multiply the moduli: 3 × 2 = 6.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find ",
+          },
+          {
+            "t": "math",
+            "v": "zw",
+          },
+          {
+            "t": "text",
+            "v": " in modulus-argument form.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Multiply the moduli and add the arguments: ",
+          },
+          {
+            "t": "math",
+            "v": "3 \\times 2 = 6",
+          },
+          {
+            "t": "text",
+            "v": " and ",
+          },
+          {
+            "t": "math",
+            "v": "\\frac{\\pi}{3} + \\frac{\\pi}{6} = \\frac{\\pi}{2}",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "math",
+        "v": "z = 3\\left(\\cos\\frac{\\pi}{3} + i\\sin\\frac{\\pi}{3}\\right)",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "w = 2\\left(\\cos\\frac{\\pi}{6} + i\\sin\\frac{\\pi}{6}\\right)",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-CP-04.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Multiplying complex numbers multiplies their moduli and adds their arguments: arg(zw) = arg z + arg w (up to a multiple of 2π).",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. arg(zw) = arg z − arg w.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Everything multiplies when you multiply.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "CPLX.ARGUMENT",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "CPLX.ARGUMENT",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "r₁e^(iθ₁) × r₂e^(iθ₂) = r₁r₂e^(i(θ₁ + θ₂)).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Jay says that for complex numbers z and w, ",
+      },
+      {
+        "t": "math",
+        "v": "\\arg(zw) = \\arg z \\times \\arg w",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-CP-04.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. arg(zw) = arg z − arg w.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Multiplying complex numbers multiplies their moduli and adds their arguments: arg(zw) = arg z + arg w (up to a multiple of 2π).",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Everything multiplies when you multiply.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CPLX.ARGUMENT",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "CPLX.ARGUMENT",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "r₁e^(iθ₁) × r₂e^(iθ₂) = r₁r₂e^(i(θ₁ + θ₂)).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Jay says that for complex numbers z and w, ",
+      },
+      {
+        "t": "math",
+        "v": "\\arg(zw) = \\arg z \\times \\arg w",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-CP-04.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. arg(zw) = arg z − arg w.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Multiplying complex numbers multiplies their moduli and adds their arguments: arg(zw) = arg z + arg w (up to a multiple of 2π).",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Everything multiplies when you multiply.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CPLX.ARGUMENT",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "CPLX.ARGUMENT",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "r₁e^(iθ₁) × r₂e^(iθ₂) = r₁r₂e^(i(θ₁ + θ₂)).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Jay says that for complex numbers z and w, ",
+      },
+      {
+        "t": "math",
+        "v": "\\arg(zw) = \\arg z \\times \\arg w",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+]
+`;

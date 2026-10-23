@@ -11,7 +11,7 @@ import { signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { det2, det3, mat } from "../shared/mat.ts";
 
-interface Params {
+export interface Params {
   m: number[][];
   n: number[][];
 }

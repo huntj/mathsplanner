@@ -1228,49 +1228,129 @@ import alM91 from "./ks5/AL-M9.1.ts";
 import alM91A from "./ks5/AL-M9.1_a.ts";
 import alM91B from "./ks5/AL-M9.1_b.ts";
 import fmCp01 from "./ks5/FM-CP-01.ts";
+import fmCp01A from "./ks5/FM-CP-01_a.ts";
+import fmCp01B from "./ks5/FM-CP-01_b.ts";
+import fmCp01C from "./ks5/FM-CP-01_c.ts";
 import fmCp02 from "./ks5/FM-CP-02.ts";
+import fmCp02A from "./ks5/FM-CP-02_a.ts";
+import fmCp02B from "./ks5/FM-CP-02_b.ts";
+import fmCp02C from "./ks5/FM-CP-02_c.ts";
 import fmCp03 from "./ks5/FM-CP-03.ts";
 import fmCp04 from "./ks5/FM-CP-04.ts";
+import fmCp04A from "./ks5/FM-CP-04_a.ts";
+import fmCp04B from "./ks5/FM-CP-04_b.ts";
+import fmCp04C from "./ks5/FM-CP-04_c.ts";
 import fmCp05 from "./ks5/FM-CP-05.ts";
+import fmCp05A from "./ks5/FM-CP-05_a.ts";
+import fmCp05B from "./ks5/FM-CP-05_b.ts";
+import fmCp05C from "./ks5/FM-CP-05_c.ts";
 import fmCp06 from "./ks5/FM-CP-06.ts";
+import fmCp06A from "./ks5/FM-CP-06_a.ts";
+import fmCp06B from "./ks5/FM-CP-06_b.ts";
+import fmCp06C from "./ks5/FM-CP-06_c.ts";
 import fmCp07 from "./ks5/FM-CP-07.ts";
 import fmCp08 from "./ks5/FM-CP-08.ts";
+import fmCp08A from "./ks5/FM-CP-08_a.ts";
+import fmCp08B from "./ks5/FM-CP-08_b.ts";
+import fmCp08C from "./ks5/FM-CP-08_c.ts";
 import fmCp09 from "./ks5/FM-CP-09.ts";
+import fmCp09A from "./ks5/FM-CP-09_a.ts";
+import fmCp09B from "./ks5/FM-CP-09_b.ts";
+import fmCp09C from "./ks5/FM-CP-09_c.ts";
 import fmCp10 from "./ks5/FM-CP-10.ts";
 import fmCp11 from "./ks5/FM-CP-11.ts";
+import fmCp11A from "./ks5/FM-CP-11_a.ts";
+import fmCp11B from "./ks5/FM-CP-11_b.ts";
+import fmCp11C from "./ks5/FM-CP-11_c.ts";
 import fmCp12 from "./ks5/FM-CP-12.ts";
 import fmCp13 from "./ks5/FM-CP-13.ts";
+import fmCp13A from "./ks5/FM-CP-13_a.ts";
+import fmCp13B from "./ks5/FM-CP-13_b.ts";
 import fmCp14 from "./ks5/FM-CP-14.ts";
 import fmCp15 from "./ks5/FM-CP-15.ts";
 import fmCp16 from "./ks5/FM-CP-16.ts";
+import fmCp16A from "./ks5/FM-CP-16_a.ts";
+import fmCp16B from "./ks5/FM-CP-16_b.ts";
 import fmCp17 from "./ks5/FM-CP-17.ts";
 import fmCp18 from "./ks5/FM-CP-18.ts";
 import fmCp19 from "./ks5/FM-CP-19.ts";
+import fmCp19A from "./ks5/FM-CP-19_a.ts";
+import fmCp19B from "./ks5/FM-CP-19_b.ts";
 import fmCp20 from "./ks5/FM-CP-20.ts";
 import fmCp21 from "./ks5/FM-CP-21.ts";
+import fmCp21A from "./ks5/FM-CP-21_a.ts";
+import fmCp21B from "./ks5/FM-CP-21_b.ts";
 import fmCp22 from "./ks5/FM-CP-22.ts";
+import fmCp22A from "./ks5/FM-CP-22_a.ts";
+import fmCp22B from "./ks5/FM-CP-22_b.ts";
+import fmCp22C from "./ks5/FM-CP-22_c.ts";
 import fmCp23 from "./ks5/FM-CP-23.ts";
+import fmCp23A from "./ks5/FM-CP-23_a.ts";
+import fmCp23B from "./ks5/FM-CP-23_b.ts";
+import fmCp23C from "./ks5/FM-CP-23_c.ts";
 import fmCp24 from "./ks5/FM-CP-24.ts";
+import fmCp24A from "./ks5/FM-CP-24_a.ts";
+import fmCp24B from "./ks5/FM-CP-24_b.ts";
 import fmCp25 from "./ks5/FM-CP-25.ts";
 import fmCp26 from "./ks5/FM-CP-26.ts";
+import fmCp26A from "./ks5/FM-CP-26_a.ts";
+import fmCp26B from "./ks5/FM-CP-26_b.ts";
 import fmCp27 from "./ks5/FM-CP-27.ts";
+import fmCp27A from "./ks5/FM-CP-27_a.ts";
+import fmCp27B from "./ks5/FM-CP-27_b.ts";
+import fmCp27C from "./ks5/FM-CP-27_c.ts";
 import fmCp28 from "./ks5/FM-CP-28.ts";
 import fmCp29 from "./ks5/FM-CP-29.ts";
+import fmCp29A from "./ks5/FM-CP-29_a.ts";
+import fmCp29B from "./ks5/FM-CP-29_b.ts";
 import fmCp30 from "./ks5/FM-CP-30.ts";
+import fmCp30A from "./ks5/FM-CP-30_a.ts";
+import fmCp30B from "./ks5/FM-CP-30_b.ts";
 import fmCp31 from "./ks5/FM-CP-31.ts";
 import fmFp101 from "./ks5/FM-FP1-01.ts";
+import fmFp101A from "./ks5/FM-FP1-01_a.ts";
+import fmFp101B from "./ks5/FM-FP1-01_b.ts";
 import fmFp102 from "./ks5/FM-FP1-02.ts";
+import fmFp102A from "./ks5/FM-FP1-02_a.ts";
+import fmFp102B from "./ks5/FM-FP1-02_b.ts";
+import fmFp102C from "./ks5/FM-FP1-02_c.ts";
+import fmFp102D from "./ks5/FM-FP1-02_d.ts";
 import fmFp103 from "./ks5/FM-FP1-03.ts";
+import fmFp103A from "./ks5/FM-FP1-03_a.ts";
+import fmFp103B from "./ks5/FM-FP1-03_b.ts";
 import fmFp104 from "./ks5/FM-FP1-04.ts";
 import fmFp105 from "./ks5/FM-FP1-05.ts";
+import fmFp105A from "./ks5/FM-FP1-05_a.ts";
+import fmFp105B from "./ks5/FM-FP1-05_b.ts";
 import fmFp106 from "./ks5/FM-FP1-06.ts";
+import fmFp106A from "./ks5/FM-FP1-06_a.ts";
+import fmFp106B from "./ks5/FM-FP1-06_b.ts";
 import fmFp107 from "./ks5/FM-FP1-07.ts";
+import fmFp107A from "./ks5/FM-FP1-07_a.ts";
+import fmFp107B from "./ks5/FM-FP1-07_b.ts";
+import fmFp107C from "./ks5/FM-FP1-07_c.ts";
 import fmFp201 from "./ks5/FM-FP2-01.ts";
+import fmFp201A from "./ks5/FM-FP2-01_a.ts";
+import fmFp201B from "./ks5/FM-FP2-01_b.ts";
+import fmFp201C from "./ks5/FM-FP2-01_c.ts";
+import fmFp201D from "./ks5/FM-FP2-01_d.ts";
 import fmFp202 from "./ks5/FM-FP2-02.ts";
+import fmFp202A from "./ks5/FM-FP2-02_a.ts";
+import fmFp202B from "./ks5/FM-FP2-02_b.ts";
+import fmFp202C from "./ks5/FM-FP2-02_c.ts";
+import fmFp202D from "./ks5/FM-FP2-02_d.ts";
 import fmFp203 from "./ks5/FM-FP2-03.ts";
 import fmFp204 from "./ks5/FM-FP2-04.ts";
+import fmFp204A from "./ks5/FM-FP2-04_a.ts";
+import fmFp204B from "./ks5/FM-FP2-04_b.ts";
 import fmFp205 from "./ks5/FM-FP2-05.ts";
+import fmFp205A from "./ks5/FM-FP2-05_a.ts";
+import fmFp205B from "./ks5/FM-FP2-05_b.ts";
+import fmFp205C from "./ks5/FM-FP2-05_c.ts";
 import fmFp206 from "./ks5/FM-FP2-06.ts";
+import fmFp206A from "./ks5/FM-FP2-06_a.ts";
+import fmFp206B from "./ks5/FM-FP2-06_b.ts";
+import fmFp206C from "./ks5/FM-FP2-06_c.ts";
 import fmFs101 from "./ks5/FM-FS1-01.ts";
 import fmFs102 from "./ks5/FM-FS1-02.ts";
 import fmFs103 from "./ks5/FM-FS1-03.ts";
@@ -2616,49 +2696,129 @@ export const generators: Generator[] = [
   alM91A,
   alM91B,
   fmCp01,
+  fmCp01A,
+  fmCp01B,
+  fmCp01C,
   fmCp02,
+  fmCp02A,
+  fmCp02B,
+  fmCp02C,
   fmCp03,
   fmCp04,
+  fmCp04A,
+  fmCp04B,
+  fmCp04C,
   fmCp05,
+  fmCp05A,
+  fmCp05B,
+  fmCp05C,
   fmCp06,
+  fmCp06A,
+  fmCp06B,
+  fmCp06C,
   fmCp07,
   fmCp08,
+  fmCp08A,
+  fmCp08B,
+  fmCp08C,
   fmCp09,
+  fmCp09A,
+  fmCp09B,
+  fmCp09C,
   fmCp10,
   fmCp11,
+  fmCp11A,
+  fmCp11B,
+  fmCp11C,
   fmCp12,
   fmCp13,
+  fmCp13A,
+  fmCp13B,
   fmCp14,
   fmCp15,
   fmCp16,
+  fmCp16A,
+  fmCp16B,
   fmCp17,
   fmCp18,
   fmCp19,
+  fmCp19A,
+  fmCp19B,
   fmCp20,
   fmCp21,
+  fmCp21A,
+  fmCp21B,
   fmCp22,
+  fmCp22A,
+  fmCp22B,
+  fmCp22C,
   fmCp23,
+  fmCp23A,
+  fmCp23B,
+  fmCp23C,
   fmCp24,
+  fmCp24A,
+  fmCp24B,
   fmCp25,
   fmCp26,
+  fmCp26A,
+  fmCp26B,
   fmCp27,
+  fmCp27A,
+  fmCp27B,
+  fmCp27C,
   fmCp28,
   fmCp29,
+  fmCp29A,
+  fmCp29B,
   fmCp30,
+  fmCp30A,
+  fmCp30B,
   fmCp31,
   fmFp101,
+  fmFp101A,
+  fmFp101B,
   fmFp102,
+  fmFp102A,
+  fmFp102B,
+  fmFp102C,
+  fmFp102D,
   fmFp103,
+  fmFp103A,
+  fmFp103B,
   fmFp104,
   fmFp105,
+  fmFp105A,
+  fmFp105B,
   fmFp106,
+  fmFp106A,
+  fmFp106B,
   fmFp107,
+  fmFp107A,
+  fmFp107B,
+  fmFp107C,
   fmFp201,
+  fmFp201A,
+  fmFp201B,
+  fmFp201C,
+  fmFp201D,
   fmFp202,
+  fmFp202A,
+  fmFp202B,
+  fmFp202C,
+  fmFp202D,
   fmFp203,
   fmFp204,
+  fmFp204A,
+  fmFp204B,
   fmFp205,
+  fmFp205A,
+  fmFp205B,
+  fmFp205C,
   fmFp206,
+  fmFp206A,
+  fmFp206B,
+  fmFp206C,
   fmFs101,
   fmFs102,
   fmFs103,

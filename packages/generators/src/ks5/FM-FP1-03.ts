@@ -9,7 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { bracket } from "../shared/alg.ts";
 import { chosenText } from "../shared/counting.ts";
 
-interface Params {
+export interface Params {
   p: number;
   q: number;
   a: number;

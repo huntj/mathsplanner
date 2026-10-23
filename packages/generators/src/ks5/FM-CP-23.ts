@@ -22,7 +22,7 @@ const NORMALS: Vec[] = [
   [6, -2, 3],
 ];
 
-interface Params {
+export interface Params {
   ni: number;
   p: Vec;
   k: number;

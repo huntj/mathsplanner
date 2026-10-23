@@ -11,7 +11,7 @@ import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { mat, mul } from "../shared/mat.ts";
 import { col } from "../shared/vec.ts";
 
-interface Params {
+export interface Params {
   l1: number;
   l2: number;
   s: number;

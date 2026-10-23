@@ -8,7 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { exactAnswer } from "../shared/counting.ts";
 
-interface Params {
+export interface Params {
   a: number;
   b: number;
   k: number;

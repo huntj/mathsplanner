@@ -11,7 +11,7 @@ import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { det3 } from "../shared/mat.ts";
 import { col, type Vec } from "../shared/vec.ts";
 
-interface Params {
+export interface Params {
   a: Vec;
   b: Vec;
   c: Vec;

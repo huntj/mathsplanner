@@ -11,7 +11,7 @@ import { numberAnswer } from "../shared/counting.ts";
 import { distinctFrom } from "../shared/pos.ts";
 import { mat, mul, type M2 } from "../shared/mat.ts";
 
-interface Params {
+export interface Params {
   A: M2;
   B: M2;
 }

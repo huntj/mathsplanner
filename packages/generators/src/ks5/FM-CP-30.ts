@@ -10,7 +10,7 @@ import { wrongs } from "../shared/angles.ts";
 import { exactAnswer, numberAnswer } from "../shared/counting.ts";
 import { piLatex } from "../shared/trig.ts";
 
-interface Params {
+export interface Params {
   w: number;
   a: number;
   k: number;
