@@ -1,0 +1,732 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`GF-P6.a > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-P6.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 40,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 13,
+            },
+            "code": "PRO.ENUMERATE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Each of the 8 dice scores goes with each of the 5 spinner results: multiply.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "How many outcomes are in the grid?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "8 \\times 5 = 40",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A fair 8-sided dice is rolled and a fair spinner with 5 equal sections is spun. The results are shown in a sample space grid.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-P6.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 24,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 10,
+            },
+            "code": "PRO.ENUMERATE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Each of the 4 dice scores goes with each of the 6 spinner results: multiply.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "How many outcomes are in the grid?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "4 \\times 6 = 24",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A fair 4-sided dice is rolled and a fair spinner with 6 equal sections is spun. The results are shown in a sample space grid.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-P6.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 30,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 13,
+            },
+            "code": "PRO.ENUMERATE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Each of the 10 dice scores goes with each of the 3 spinner results: multiply.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "How many outcomes are in the grid?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "10 \\times 3 = 30",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A fair 10-sided dice is rolled and a fair spinner with 3 equal sections is spun. The results are shown in a sample space grid.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-P6.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "\\frac{1}{9}",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{1}{11}",
+              "type": "exact",
+            },
+            "code": "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The 11 totals are not equally likely. Count the cells in the 6 by 6 grid.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What is the probability of a total of 5?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{1}{9}",
+        "say": [
+          {
+            "t": "text",
+            "v": "4 of the 36 cells give 5: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Zak rolls two ordinary dice and adds the scores. He draws a sample space grid.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-P6.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "\\frac{1}{12}",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{1}{11}",
+              "type": "exact",
+            },
+            "code": "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The 11 totals are not equally likely. Count the cells in the 6 by 6 grid.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What is the probability of a total of 10?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{1}{12}",
+        "say": [
+          {
+            "t": "text",
+            "v": "3 of the 36 cells give 10: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Zak rolls two ordinary dice and adds the scores. He draws a sample space grid.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-P6.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "\\frac{1}{12}",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{1}{11}",
+              "type": "exact",
+            },
+            "code": "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The 11 totals are not equally likely. Count the cells in the 6 by 6 grid.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What is the probability of a total of 4?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{1}{12}",
+        "say": [
+          {
+            "t": "text",
+            "v": "3 of the 36 cells give 4: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Zak rolls two ordinary dice and adds the scores. He draws a sample space grid.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GF-P6.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Dice are fair, so every total is equally likely.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Each total is one of the 11 possible outcomes.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Only 1 + 1 makes 2, but six pairs make 7, so P(7) = 6/36 and P(2) = 1/36.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "A sample space grid shows all 36 equally likely outcomes.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Mia says a total of 2 and a total of 7 are equally likely when two dice are rolled.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-P6.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Only 1 + 1 makes 2, but six pairs make 7, so P(7) = 6/36 and P(2) = 1/36.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Each total is one of the 11 possible outcomes.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Dice are fair, so every total is equally likely.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "A sample space grid shows all 36 equally likely outcomes.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Mia says a total of 2 and a total of 7 are equally likely when two dice are rolled.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-P6.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Dice are fair, so every total is equally likely.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Only 1 + 1 makes 2, but six pairs make 7, so P(7) = 6/36 and P(2) = 1/36.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Each total is one of the 11 possible outcomes.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "A sample space grid shows all 36 equally likely outcomes.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Mia says a total of 2 and a total of 7 are equally likely when two dice are rolled.",
+      },
+    ],
+  },
+]
+`;
