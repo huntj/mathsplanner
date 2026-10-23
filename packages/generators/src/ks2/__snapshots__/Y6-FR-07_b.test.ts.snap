@@ -1,0 +1,552 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Y6-FR-07.b > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y6-FR-07.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 2.05,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 20500,
+            },
+            "code": "NPV.POWERS10.WRONG-WAY",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Dividing by 10, 100 or 1000 makes the number smaller.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work it out.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "÷ 100 moves every digit 2 places to the right: 2.05.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "math",
+        "v": "205 \\div 100",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y6-FR-07.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 2960,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 0.00296,
+            },
+            "code": "NPV.POWERS10.WRONG-WAY",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Multiplying by 10, 100 or 1000 makes the number bigger.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work it out.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "× 1000 moves every digit 3 places to the left: 2960.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "math",
+        "v": "2.96 \\times 1000",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y6-FR-07.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 0.644,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 64.4,
+            },
+            "code": "NPV.POWERS10.WRONG-WAY",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Dividing by 10, 100 or 1000 makes the number smaller.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work it out.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "÷ 10 moves every digit 1 place to the right: 0.644.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "math",
+        "v": "6.44 \\div 10",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y6-FR-07.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The answer has more digits, so it is bigger.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 5.21400 is the same as 5.214. Multiplying by 100 moves the digits 2 places left: 521.4.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Multiplying by 100 puts 2 zeros on the end.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.POWERS10.APPEND-ZEROS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "5.214 × 100 = 521.4.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Zara says ",
+      },
+      {
+        "t": "math",
+        "v": "5.214 \\times 100 = 5.21400",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y6-FR-07.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The answer has more digits, so it is bigger.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Multiplying by 1000 puts 3 zeros on the end.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 2.432000 is the same as 2.432. Multiplying by 1000 moves the digits 3 places left: 2432.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.POWERS10.APPEND-ZEROS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "2.432 × 1000 = 2432.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Zara says ",
+      },
+      {
+        "t": "math",
+        "v": "2.432 \\times 1000 = 2.432000",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y6-FR-07.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 36.3160 is the same as 36.316. Multiplying by 10 moves the digits 1 place left: 363.16.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Multiplying by 10 puts a zero on the end.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The answer has more digits, so it is bigger.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.POWERS10.APPEND-ZEROS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "36.316 × 10 = 363.16.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Zara says ",
+      },
+      {
+        "t": "math",
+        "v": "36.316 \\times 10 = 36.3160",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+]
+`;

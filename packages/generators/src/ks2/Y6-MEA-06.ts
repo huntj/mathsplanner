@@ -11,7 +11,7 @@ import { wrongs } from "../shared/angles.ts";
 import { chosenFigure, numberAnswer } from "../shared/counting.ts";
 import { parallelogram, SLANTS, triangle } from "../shared/mea.ts";
 
-interface Params {
+export interface Params {
   base: number;
   slant: number;
   base2: number;

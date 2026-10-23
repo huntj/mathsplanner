@@ -448,30 +448,51 @@ import y5Sta02 from "./ks2/Y5-STA-02.ts";
 import y5Sta02A from "./ks2/Y5-STA-02_a.ts";
 import y5Sta02B from "./ks2/Y5-STA-02_b.ts";
 import y6Npv01 from "./ks2/Y6-NPV-01.ts";
+import y6Npv01A from "./ks2/Y6-NPV-01_a.ts";
+import y6Npv01B from "./ks2/Y6-NPV-01_b.ts";
+import y6Npv01C from "./ks2/Y6-NPV-01_c.ts";
 import y6Npv02 from "./ks2/Y6-NPV-02.ts";
 import y6Npv03 from "./ks2/Y6-NPV-03.ts";
+import y6Npv03A from "./ks2/Y6-NPV-03_a.ts";
+import y6Npv03B from "./ks2/Y6-NPV-03_b.ts";
 import y6Npv04 from "./ks2/Y6-NPV-04.ts";
 import y6Md01 from "./ks2/Y6-MD-01.ts";
 import y6Md02 from "./ks2/Y6-MD-02.ts";
+import y6Md02A from "./ks2/Y6-MD-02_a.ts";
+import y6Md02B from "./ks2/Y6-MD-02_b.ts";
+import y6Md02C from "./ks2/Y6-MD-02_c.ts";
 import y6Md03 from "./ks2/Y6-MD-03.ts";
 import y6Md04 from "./ks2/Y6-MD-04.ts";
 import y6Md05 from "./ks2/Y6-MD-05.ts";
+import y6Md05A from "./ks2/Y6-MD-05_a.ts";
+import y6Md05B from "./ks2/Y6-MD-05_b.ts";
+import y6Md05C from "./ks2/Y6-MD-05_c.ts";
 import y6Md06 from "./ks2/Y6-MD-06.ts";
 import y6Md07 from "./ks2/Y6-MD-07.ts";
 import y6Md08 from "./ks2/Y6-MD-08.ts";
 import y6Fr01 from "./ks2/Y6-FR-01.ts";
+import y6Fr01A from "./ks2/Y6-FR-01_a.ts";
+import y6Fr01B from "./ks2/Y6-FR-01_b.ts";
 import y6Fr02 from "./ks2/Y6-FR-02.ts";
 import y6Fr03 from "./ks2/Y6-FR-03.ts";
+import y6Fr03A from "./ks2/Y6-FR-03_a.ts";
+import y6Fr03B from "./ks2/Y6-FR-03_b.ts";
 import y6Fr04 from "./ks2/Y6-FR-04.ts";
 import y6Fr05 from "./ks2/Y6-FR-05.ts";
 import y6Fr06 from "./ks2/Y6-FR-06.ts";
+import y6Fr06A from "./ks2/Y6-FR-06_a.ts";
+import y6Fr06B from "./ks2/Y6-FR-06_b.ts";
 import y6Fr07 from "./ks2/Y6-FR-07.ts";
+import y6Fr07A from "./ks2/Y6-FR-07_a.ts";
+import y6Fr07B from "./ks2/Y6-FR-07_b.ts";
 import y6Fr08 from "./ks2/Y6-FR-08.ts";
 import y6Fr09 from "./ks2/Y6-FR-09.ts";
 import y6Fr10 from "./ks2/Y6-FR-10.ts";
 import y6Fr11 from "./ks2/Y6-FR-11.ts";
 import y6Rat01 from "./ks2/Y6-RAT-01.ts";
 import y6Rat02 from "./ks2/Y6-RAT-02.ts";
+import y6Rat02A from "./ks2/Y6-RAT-02_a.ts";
+import y6Rat02B from "./ks2/Y6-RAT-02_b.ts";
 import y6Rat03 from "./ks2/Y6-RAT-03.ts";
 import y6Rat04 from "./ks2/Y6-RAT-04.ts";
 import y6Alg01 from "./ks2/Y6-ALG-01.ts";
@@ -481,19 +502,39 @@ import y6Alg04 from "./ks2/Y6-ALG-04.ts";
 import y6Alg05 from "./ks2/Y6-ALG-05.ts";
 import y6Mea01 from "./ks2/Y6-MEA-01.ts";
 import y6Mea02 from "./ks2/Y6-MEA-02.ts";
+import y6Mea02A from "./ks2/Y6-MEA-02_a.ts";
+import y6Mea02B from "./ks2/Y6-MEA-02_b.ts";
+import y6Mea02C from "./ks2/Y6-MEA-02_c.ts";
 import y6Mea03 from "./ks2/Y6-MEA-03.ts";
 import y6Mea04 from "./ks2/Y6-MEA-04.ts";
 import y6Mea05 from "./ks2/Y6-MEA-05.ts";
 import y6Mea06 from "./ks2/Y6-MEA-06.ts";
+import y6Mea06A from "./ks2/Y6-MEA-06_a.ts";
+import y6Mea06B from "./ks2/Y6-MEA-06_b.ts";
 import y6Mea07 from "./ks2/Y6-MEA-07.ts";
+import y6Mea07A from "./ks2/Y6-MEA-07_a.ts";
+import y6Mea07B from "./ks2/Y6-MEA-07_b.ts";
 import y6Geo01 from "./ks2/Y6-GEO-01.ts";
 import y6Geo02 from "./ks2/Y6-GEO-02.ts";
 import y6Geo03 from "./ks2/Y6-GEO-03.ts";
+import y6Geo03A from "./ks2/Y6-GEO-03_a.ts";
+import y6Geo03B from "./ks2/Y6-GEO-03_b.ts";
+import y6Geo03C from "./ks2/Y6-GEO-03_c.ts";
+import y6Geo03D from "./ks2/Y6-GEO-03_d.ts";
 import y6Geo04 from "./ks2/Y6-GEO-04.ts";
+import y6Geo04A from "./ks2/Y6-GEO-04_a.ts";
+import y6Geo04B from "./ks2/Y6-GEO-04_b.ts";
 import y6Geo05 from "./ks2/Y6-GEO-05.ts";
+import y6Geo05A from "./ks2/Y6-GEO-05_a.ts";
+import y6Geo05B from "./ks2/Y6-GEO-05_b.ts";
+import y6Geo05C from "./ks2/Y6-GEO-05_c.ts";
 import y6Pos01 from "./ks2/Y6-POS-01.ts";
 import y6Pos02 from "./ks2/Y6-POS-02.ts";
+import y6Pos02A from "./ks2/Y6-POS-02_a.ts";
+import y6Pos02B from "./ks2/Y6-POS-02_b.ts";
 import y6Sta01 from "./ks2/Y6-STA-01.ts";
+import y6Sta01A from "./ks2/Y6-STA-01_a.ts";
+import y6Sta01B from "./ks2/Y6-STA-01_b.ts";
 import y6Sta02 from "./ks2/Y6-STA-02.ts";
 import y7Npv01 from "./ks3/Y7-NPV-01.ts";
 import y7Npv02 from "./ks3/Y7-NPV-02.ts";
@@ -1678,30 +1719,51 @@ export const generators: Generator[] = [
   y5Sta02A,
   y5Sta02B,
   y6Npv01,
+  y6Npv01A,
+  y6Npv01B,
+  y6Npv01C,
   y6Npv02,
   y6Npv03,
+  y6Npv03A,
+  y6Npv03B,
   y6Npv04,
   y6Md01,
   y6Md02,
+  y6Md02A,
+  y6Md02B,
+  y6Md02C,
   y6Md03,
   y6Md04,
   y6Md05,
+  y6Md05A,
+  y6Md05B,
+  y6Md05C,
   y6Md06,
   y6Md07,
   y6Md08,
   y6Fr01,
+  y6Fr01A,
+  y6Fr01B,
   y6Fr02,
   y6Fr03,
+  y6Fr03A,
+  y6Fr03B,
   y6Fr04,
   y6Fr05,
   y6Fr06,
+  y6Fr06A,
+  y6Fr06B,
   y6Fr07,
+  y6Fr07A,
+  y6Fr07B,
   y6Fr08,
   y6Fr09,
   y6Fr10,
   y6Fr11,
   y6Rat01,
   y6Rat02,
+  y6Rat02A,
+  y6Rat02B,
   y6Rat03,
   y6Rat04,
   y6Alg01,
@@ -1711,19 +1773,39 @@ export const generators: Generator[] = [
   y6Alg05,
   y6Mea01,
   y6Mea02,
+  y6Mea02A,
+  y6Mea02B,
+  y6Mea02C,
   y6Mea03,
   y6Mea04,
   y6Mea05,
   y6Mea06,
+  y6Mea06A,
+  y6Mea06B,
   y6Mea07,
+  y6Mea07A,
+  y6Mea07B,
   y6Geo01,
   y6Geo02,
   y6Geo03,
+  y6Geo03A,
+  y6Geo03B,
+  y6Geo03C,
+  y6Geo03D,
   y6Geo04,
+  y6Geo04A,
+  y6Geo04B,
   y6Geo05,
+  y6Geo05A,
+  y6Geo05B,
+  y6Geo05C,
   y6Pos01,
   y6Pos02,
+  y6Pos02A,
+  y6Pos02B,
   y6Sta01,
+  y6Sta01A,
+  y6Sta01B,
   y6Sta02,
   y7Npv01,
   y7Npv02,

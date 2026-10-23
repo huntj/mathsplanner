@@ -13,7 +13,7 @@ import { circle, onCircle, RADIUS } from "../shared/circles.ts";
 
 type Part = "radius" | "diameter" | "centre" | "circumference";
 
-interface Params {
+export interface Params {
   given: "radius" | "diameter";
   /** The length given, in cm. */
   length: number;

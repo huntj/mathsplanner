@@ -11,7 +11,7 @@ import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { fracTex, gcdOf, slash } from "../shared/fr.ts";
 
-interface Params {
+export interface Params {
   n: number;
   d: number;
   g: number;

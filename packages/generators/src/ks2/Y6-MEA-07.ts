@@ -12,7 +12,7 @@ import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { cuboid } from "../shared/mea.ts";
 
-interface Params {
+export interface Params {
   l: number;
   w: number;
   h: number;

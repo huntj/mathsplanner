@@ -11,7 +11,7 @@ import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { fmt, tex } from "../shared/npv.ts";
 
-interface Params {
+export interface Params {
   /** A temperature below zero and one above it. */
   low: number;
   high: number;

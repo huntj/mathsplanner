@@ -11,7 +11,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { crossingLines, type GeoAngle } from "@mathsplanner/diagrams";
 import { deg, pickAngle, wrongs } from "../shared/angles.ts";
 
-interface Params {
+export interface Params {
   /** ∠AOC, one of the angles between the two lines; never 90°. */
   angle: number;
   /** Which angle is asked for: the one opposite the given angle, or one next to it. */

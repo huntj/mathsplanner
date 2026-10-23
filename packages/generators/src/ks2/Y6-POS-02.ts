@@ -21,7 +21,7 @@ import {
   translate,
 } from "../shared/pos.ts";
 
-interface Params {
+export interface Params {
   shape: number;
   x: number;
   y: number;

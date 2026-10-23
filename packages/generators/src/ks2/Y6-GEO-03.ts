@@ -11,7 +11,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { quadrilateralFromAngles, triangleASA, type GeometrySpec } from "@mathsplanner/diagrams";
 import { deg, pickAngle, splitAngles, sum, TOTALS, wrongs } from "../shared/angles.ts";
 
-interface Params {
+export interface Params {
   /** Angles of a triangle (3) or quadrilateral (4), in order round the shape; the last is unknown. */
   angles: number[];
   /** Apex of an isosceles triangle (even, so the base angles are whole numbers). */

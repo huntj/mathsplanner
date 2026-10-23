@@ -10,7 +10,7 @@ import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { pieChart, TOPICS } from "../shared/sta.ts";
 
-interface Params {
+export interface Params {
   topic: number;
   /** Total surveyed, a factor of 360, and the frequencies, which sum to it. */
   total: number;

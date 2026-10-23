@@ -1,0 +1,21 @@
+/**
+ * @statement Y6-MEA-02.b
+ * @author @huntj
+ * @ai-assisted yes: Claude wrote this generator for the primary sub-statements
+ */
+// Y6-MEA-02.b: Convert between units of volume and capacity
+import { defineGenerator, reject } from "@mathsplanner/core";
+import parent from "./Y6-MEA-02.ts";
+
+const def = parent.definition;
+
+export default defineGenerator({
+  ...def,
+  id: "Y6-MEA-02.b",
+  depths: [1, 2, 4],
+  params(rng, numbers) {
+    const p = def.params(rng, numbers);
+    if (p.kind !== 0) reject("a question for this step");
+    return p;
+  },
+});
