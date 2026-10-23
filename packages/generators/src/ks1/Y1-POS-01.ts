@@ -17,7 +17,7 @@ import {
   type Heading,
 } from "../shared/turns.ts";
 
-interface Params {
+export interface Params {
   start: Heading;
   /** Quarter turns: 1, 2 or 3 (a whole turn only appears in words). */
   quarters: 1 | 2 | 3;

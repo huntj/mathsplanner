@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.38.0",
+  "version": "0.39.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -381,6 +381,11 @@
       "code": "MD.MULTIPLY.ADDS",
       "description": "Adds instead of multiplying, e.g. 4 groups of 3, or 3 times as many as 4, gives 7.",
       "remediate": "Y1-MD-01"
+    },
+    {
+      "code": "MD.SHARE.GROUPS",
+      "description": "Gives the number of groups instead of the number in each group when sharing, or shares unequally, e.g. says 10 shared between 2 is 2.",
+      "remediate": "R-PAT-01.c"
     },
     {
       "code": "MD.TABLES.NEIGHBOUR",

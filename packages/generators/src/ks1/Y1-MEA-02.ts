@@ -11,7 +11,7 @@ import { wrongs } from "../shared/angles.ts";
 import { chosenFigure, numberAnswer } from "../shared/counting.ts";
 import { ruler } from "../shared/mea.ts";
 
-interface Params {
+export interface Params {
   start: number;
   length: number;
 }

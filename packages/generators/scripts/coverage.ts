@@ -23,7 +23,7 @@ export const KEY_STAGE_FOLDERS = ["eyfs", "ks1", "ks2", "ks3", "ks4", "ks5"] as 
  * `id: "Y3-NPV-02"`, or a statement ID passed first to a shared family, as in
  * `digitValue("Y3-NPV-02", …)`. Statement IDs have a dash after their stage; codes have dots.
  */
-const DECLARED_ID = /\bid:\s*["']([^"']+)["']|\w\(\s*["']([A-Z][A-Z0-9]*-[A-Z0-9.-]+)["']/g;
+const DECLARED_ID = /\bid:\s*["']([^"']+)["']|\w\(\s*["']([A-Z][A-Z0-9]*-[A-Za-z0-9.-]+)["']/g;
 
 export interface GeneratorFile {
   /** Path relative to the generators src folder, with forward slashes. */
