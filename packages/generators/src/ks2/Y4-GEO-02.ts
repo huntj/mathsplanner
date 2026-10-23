@@ -11,7 +11,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { angle } from "@mathsplanner/diagrams";
 import { pickAngle } from "../shared/angles.ts";
 
-interface Params {
+export interface Params {
   /** An angle to classify (may be a right angle). */
   single: number;
   /** Three different angles to compare, smallest first. */

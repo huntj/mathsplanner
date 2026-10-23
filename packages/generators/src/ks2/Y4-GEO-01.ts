@@ -19,14 +19,14 @@ import {
   wrongNames,
 } from "../shared/shapes.ts";
 
-interface Params {
+export interface Params {
   kind: ShapeKind;
   rotation: number;
   riddle: number;
   claim: number;
 }
 
-const RIDDLES: { clue: string; kind: ShapeKind }[] = [
+export const RIDDLES: { clue: string; kind: ShapeKind }[] = [
   { clue: "I have exactly one pair of parallel sides.", kind: "trapezium" },
   { clue: "I have four equal sides but no right angles.", kind: "rhombus" },
   {
@@ -41,7 +41,7 @@ const RIDDLES: { clue: string; kind: ShapeKind }[] = [
   },
 ];
 
-const CLAIMS = [
+export const CLAIMS = [
   {
     claim: "A square is a rectangle.",
     truth: "always" as const,

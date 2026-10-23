@@ -11,7 +11,7 @@ import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { lineGraph } from "../shared/sta.ts";
 
-interface Params {
+export interface Params {
   /** Temperatures at 8, 10, 12, 14, 16 o'clock, in °C (multiples of 4). */
   temps: number[];
   ask: number;

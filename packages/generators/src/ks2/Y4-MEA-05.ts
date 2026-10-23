@@ -10,7 +10,7 @@ import type { ClockSpec } from "@mathsplanner/diagrams";
 import { chosenFigure, chosenText } from "../shared/counting.ts";
 import { ampm, clock, h12, time24 } from "../shared/mea.ts";
 
-interface Params {
+export interface Params {
   /** 0 to 23. */
   hour: number;
   minutes: number;
