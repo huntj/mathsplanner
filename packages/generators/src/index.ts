@@ -360,6 +360,8 @@ import gfN16 from "./ks4/GF-N16.ts";
 import ghN16 from "./ks4/GH-N16.ts";
 import gfA1 from "./ks4/GF-A1.ts";
 import gfA2 from "./ks4/GF-A2.ts";
+import gfA2A from "./ks4/GF-A2_a.ts";
+import gfA2B from "./ks4/GF-A2_b.ts";
 import gfA3 from "./ks4/GF-A3.ts";
 import ghA3 from "./ks4/GH-A3.ts";
 import gfA4 from "./ks4/GF-A4.ts";
@@ -371,36 +373,86 @@ import gfA4E from "./ks4/GF-A4_e.ts";
 import gfA4F from "./ks4/GF-A4_f.ts";
 import gfA4G from "./ks4/GF-A4_g.ts";
 import ghA4 from "./ks4/GH-A4.ts";
+import ghA4A from "./ks4/GH-A4_a.ts";
+import ghA4B from "./ks4/GH-A4_b.ts";
+import ghA4C from "./ks4/GH-A4_c.ts";
+import ghA4D from "./ks4/GH-A4_d.ts";
 import gfA5 from "./ks4/GF-A5.ts";
+import gfA5A from "./ks4/GF-A5_a.ts";
+import gfA5B from "./ks4/GF-A5_b.ts";
 import gfA6 from "./ks4/GF-A6.ts";
+import gfA6A from "./ks4/GF-A6_a.ts";
+import gfA6B from "./ks4/GF-A6_b.ts";
+import gfA6C from "./ks4/GF-A6_c.ts";
 import ghA6 from "./ks4/GH-A6.ts";
 import gfA7 from "./ks4/GF-A7.ts";
 import ghA7 from "./ks4/GH-A7.ts";
 import gfA8 from "./ks4/GF-A8.ts";
 import gfA9 from "./ks4/GF-A9.ts";
+import gfA9A from "./ks4/GF-A9_a.ts";
+import gfA9B from "./ks4/GF-A9_b.ts";
+import gfA9C from "./ks4/GF-A9_c.ts";
+import gfA9D from "./ks4/GF-A9_d.ts";
 import ghA9 from "./ks4/GH-A9.ts";
 import gfA10 from "./ks4/GF-A10.ts";
+import gfA10A from "./ks4/GF-A10_a.ts";
+import gfA10B from "./ks4/GF-A10_b.ts";
 import gfA11 from "./ks4/GF-A11.ts";
+import gfA11A from "./ks4/GF-A11_a.ts";
+import gfA11B from "./ks4/GF-A11_b.ts";
+import gfA11C from "./ks4/GF-A11_c.ts";
 import ghA11 from "./ks4/GH-A11.ts";
 import gfA12 from "./ks4/GF-A12.ts";
+import gfA12A from "./ks4/GF-A12_a.ts";
+import gfA12B from "./ks4/GF-A12_b.ts";
+import gfA12C from "./ks4/GF-A12_c.ts";
 import ghA12 from "./ks4/GH-A12.ts";
+import ghA12A from "./ks4/GH-A12_a.ts";
+import ghA12B from "./ks4/GH-A12_b.ts";
 import ghA13 from "./ks4/GH-A13.ts";
 import gfA14 from "./ks4/GF-A14.ts";
+import gfA14A from "./ks4/GF-A14_a.ts";
+import gfA14B from "./ks4/GF-A14_b.ts";
 import ghA14 from "./ks4/GH-A14.ts";
 import ghA15 from "./ks4/GH-A15.ts";
+import ghA15A from "./ks4/GH-A15_a.ts";
+import ghA15B from "./ks4/GH-A15_b.ts";
+import ghA15C from "./ks4/GH-A15_c.ts";
 import ghA16 from "./ks4/GH-A16.ts";
+import ghA16A from "./ks4/GH-A16_a.ts";
+import ghA16B from "./ks4/GH-A16_b.ts";
 import gfA17 from "./ks4/GF-A17.ts";
+import gfA17A from "./ks4/GF-A17_a.ts";
+import gfA17B from "./ks4/GF-A17_b.ts";
+import gfA17C from "./ks4/GF-A17_c.ts";
 import ghA17 from "./ks4/GH-A17.ts";
 import gfA18 from "./ks4/GF-A18.ts";
+import gfA18A from "./ks4/GF-A18_a.ts";
+import gfA18B from "./ks4/GF-A18_b.ts";
 import ghA18 from "./ks4/GH-A18.ts";
+import ghA18A from "./ks4/GH-A18_a.ts";
+import ghA18B from "./ks4/GH-A18_b.ts";
+import ghA18C from "./ks4/GH-A18_c.ts";
 import gfA19 from "./ks4/GF-A19.ts";
+import gfA19A from "./ks4/GF-A19_a.ts";
+import gfA19B from "./ks4/GF-A19_b.ts";
+import gfA19C from "./ks4/GF-A19_c.ts";
 import ghA19 from "./ks4/GH-A19.ts";
 import ghA20 from "./ks4/GH-A20.ts";
 import gfA21 from "./ks4/GF-A21.ts";
 import gfA22 from "./ks4/GF-A22.ts";
 import ghA22 from "./ks4/GH-A22.ts";
+import ghA22A from "./ks4/GH-A22_a.ts";
+import ghA22B from "./ks4/GH-A22_b.ts";
+import ghA22C from "./ks4/GH-A22_c.ts";
 import gfA23 from "./ks4/GF-A23.ts";
+import gfA23A from "./ks4/GF-A23_a.ts";
+import gfA23B from "./ks4/GF-A23_b.ts";
 import gfA24 from "./ks4/GF-A24.ts";
+import gfA24A from "./ks4/GF-A24_a.ts";
+import gfA24B from "./ks4/GF-A24_b.ts";
+import gfA24C from "./ks4/GF-A24_c.ts";
+import gfA24D from "./ks4/GF-A24_d.ts";
 import ghA24 from "./ks4/GH-A24.ts";
 import gfA25 from "./ks4/GF-A25.ts";
 import ghA25 from "./ks4/GH-A25.ts";
@@ -1056,6 +1108,8 @@ export const generators: Generator[] = [
   ghN16,
   gfA1,
   gfA2,
+  gfA2A,
+  gfA2B,
   gfA3,
   ghA3,
   gfA4,
@@ -1067,36 +1121,86 @@ export const generators: Generator[] = [
   gfA4F,
   gfA4G,
   ghA4,
+  ghA4A,
+  ghA4B,
+  ghA4C,
+  ghA4D,
   gfA5,
+  gfA5A,
+  gfA5B,
   gfA6,
+  gfA6A,
+  gfA6B,
+  gfA6C,
   ghA6,
   gfA7,
   ghA7,
   gfA8,
   gfA9,
+  gfA9A,
+  gfA9B,
+  gfA9C,
+  gfA9D,
   ghA9,
   gfA10,
+  gfA10A,
+  gfA10B,
   gfA11,
+  gfA11A,
+  gfA11B,
+  gfA11C,
   ghA11,
   gfA12,
+  gfA12A,
+  gfA12B,
+  gfA12C,
   ghA12,
+  ghA12A,
+  ghA12B,
   ghA13,
   gfA14,
+  gfA14A,
+  gfA14B,
   ghA14,
   ghA15,
+  ghA15A,
+  ghA15B,
+  ghA15C,
   ghA16,
+  ghA16A,
+  ghA16B,
   gfA17,
+  gfA17A,
+  gfA17B,
+  gfA17C,
   ghA17,
   gfA18,
+  gfA18A,
+  gfA18B,
   ghA18,
+  ghA18A,
+  ghA18B,
+  ghA18C,
   gfA19,
+  gfA19A,
+  gfA19B,
+  gfA19C,
   ghA19,
   ghA20,
   gfA21,
   gfA22,
   ghA22,
+  ghA22A,
+  ghA22B,
+  ghA22C,
   gfA23,
+  gfA23A,
+  gfA23B,
   gfA24,
+  gfA24A,
+  gfA24B,
+  gfA24C,
+  gfA24D,
   ghA24,
   gfA25,
   ghA25,

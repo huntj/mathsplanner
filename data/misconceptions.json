@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.33.0",
+  "version": "0.34.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -628,6 +628,11 @@
       "remediate": "Y7-ALG-02"
     },
     {
+      "code": "ALG.SUBSTITUTE.ORDER",
+      "description": "Applies operations in the wrong order when substituting, e.g. works out ½at² as (½at)² or adds before multiplying.",
+      "remediate": "GF-A2.b"
+    },
+    {
       "code": "ALG.VOCAB",
       "description": "Mixes up expression, equation, formula, inequality and identity.",
       "remediate": "Y7-ALG-03"
@@ -663,6 +668,11 @@
       "remediate": "Y7-ALG-06"
     },
     {
+      "code": "ALG.SOLVE.BOTH-SIDES",
+      "description": "Moves a term across the equals sign without changing its sign, or subtracts the wrong x term, when the unknown is on both sides.",
+      "remediate": "GF-A17.b"
+    },
+    {
       "code": "ALG.EXPAND.BINOMIAL-TWO-TERMS",
       "description": "Multiplies only the first terms and the last terms when expanding two brackets, e.g. (x + 2)(x + 3) = x² + 6.",
       "remediate": "Y8-ALG-01"
@@ -676,6 +686,11 @@
       "code": "ALG.GRADIENT.RUN-RISE",
       "description": "Works out a gradient as horizontal change over vertical change, or ignores its sign.",
       "remediate": "Y9-ALG-04"
+    },
+    {
+      "code": "ALG.GRADIENT.STEEPNESS",
+      "description": "Judges how steep a line is by the signed gradient instead of its size, e.g. thinks a gradient of −3 is less steep than 2.",
+      "remediate": "GF-A10.a"
     },
     {
       "code": "ALG.LINE.M-C",
@@ -761,6 +776,16 @@
       "code": "ALG.GRAPH.DISTANCE-TIME",
       "description": "Misreads a distance–time graph, e.g. thinks a horizontal section means moving at a steady speed or a steeper line means slower.",
       "remediate": "GF-A14"
+    },
+    {
+      "code": "ALG.GRAPH.READ",
+      "description": "Reads a real-life graph from the wrong axis, or uses a total instead of a change when finding a rate from a graph.",
+      "remediate": "GF-A14.b"
+    },
+    {
+      "code": "ALG.GRAPH.TRIG-VALUES",
+      "description": "Confuses angles and values on a trig graph, e.g. thinks the largest value of sin x is 90 or that cos 0° = 0.",
+      "remediate": "GH-A12.b"
     },
     {
       "code": "ALG.QUADRATIC.ROOT-SIGN",
