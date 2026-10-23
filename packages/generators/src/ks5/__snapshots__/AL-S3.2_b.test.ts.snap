@@ -1,0 +1,732 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AL-S3.2.b > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-S3.2.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 4,
+          },
+          "type": "number",
+          "value": 0.26,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 0.7,
+            },
+            "code": "PRO.TREE.ADD-ALONG",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Multiply along each branch, then add the branches that end in 'late'.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the probability that Tom is late, to 4 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "0.2 \\times 0.5 + 0.8 \\times 0.2 = 0.26",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The probability that it rains on a school day is 0.2. If it rains, the probability that Tom is late is 0.5; if it is dry, the probability is 0.2.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-S3.2.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 4,
+          },
+          "type": "number",
+          "value": 0.38,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 1.2,
+            },
+            "code": "PRO.TREE.ADD-ALONG",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Multiply along each branch, then add the branches that end in 'late'.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the probability that Tom is late, to 4 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "0.4 \\times 0.8 + 0.6 \\times 0.1 = 0.38",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The probability that it rains on a school day is 0.4. If it rains, the probability that Tom is late is 0.8; if it is dry, the probability is 0.1.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-S3.2.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 4,
+          },
+          "type": "number",
+          "value": 0.56,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 1.4,
+            },
+            "code": "PRO.TREE.ADD-ALONG",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Multiply along each branch, then add the branches that end in 'late'.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the probability that Tom is late, to 4 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "0.6 \\times 0.8 + 0.4 \\times 0.2 = 0.56",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The probability that it rains on a school day is 0.6. If it rains, the probability that Tom is late is 0.8; if it is dry, the probability is 0.2.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-S3.2.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "\\frac{22}{45}",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{22}{85}",
+              "type": "exact",
+            },
+            "code": "PRO.CONDITIONAL.TOTAL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "We know the adult is under 30, so divide by the 45 under-30s.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "An adult who is under 30 is chosen at random. Find the probability that they drive.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "22 of the 45 under-30s drive.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The table shows some adults by age group.",
+      },
+      {
+        "display": true,
+        "t": "math",
+        "v": "\\begin{array}{|l|c|c|c|}\\hline \\text{} & \\text{under 30} & \\text{30 or over} & \\text{total} \\\\ \\hline \\text{drives} & 22 & 18 & 40 \\\\ \\hline \\text{does not drive} & 23 & 22 & 45 \\\\ \\hline \\text{total} & 45 & 40 & 85 \\\\ \\hline\\end{array}",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-S3.2.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "\\frac{11}{25}",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{11}{41}",
+              "type": "exact",
+            },
+            "code": "PRO.CONDITIONAL.TOTAL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "We know the adult is under 30, so divide by the 50 under-30s.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "An adult who is under 30 is chosen at random. Find the probability that they drive.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "22 of the 50 under-30s drive.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The table shows some adults by age group.",
+      },
+      {
+        "display": true,
+        "t": "math",
+        "v": "\\begin{array}{|l|c|c|c|}\\hline \\text{} & \\text{under 30} & \\text{30 or over} & \\text{total} \\\\ \\hline \\text{drives} & 22 & 15 & 37 \\\\ \\hline \\text{does not drive} & 28 & 17 & 45 \\\\ \\hline \\text{total} & 50 & 32 & 82 \\\\ \\hline\\end{array}",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-S3.2.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "\\frac{25}{34}",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{25}{46}",
+              "type": "exact",
+            },
+            "code": "PRO.CONDITIONAL.TOTAL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "We know the adult is under 30, so divide by the 34 under-30s.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "An adult who is under 30 is chosen at random. Find the probability that they drive.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "25 of the 34 under-30s drive.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The table shows some adults by age group.",
+      },
+      {
+        "display": true,
+        "t": "math",
+        "v": "\\begin{array}{|l|c|c|c|}\\hline \\text{} & \\text{under 30} & \\text{30 or over} & \\text{total} \\\\ \\hline \\text{drives} & 25 & 5 & 30 \\\\ \\hline \\text{does not drive} & 9 & 7 & 16 \\\\ \\hline \\text{total} & 34 & 12 & 46 \\\\ \\hline\\end{array}",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-S3.2.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The branch probability answers every question about that branch.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 0.5 is P(late | rain). P(rain | late) = P(rain and late)/P(late) = 0.1/0.26 ≈ 0.3846.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. P(rain | late) is the same as P(late | rain).",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "PRO.CONDITIONAL.FORMULA",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "PRO.CONDITIONAL.FORMULA",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "P(R \\mid L) = \\frac{P(R \\cap L)}{P(L)}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The probability that it rains on a school day is 0.2. If it rains, the probability that Tom is late is 0.5; if it is dry, the probability is 0.2. Tom is late. Eli says the probability that it rained is 0.5.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-S3.2.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. P(rain | late) is the same as P(late | rain).",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 0.8 is P(late | rain). P(rain | late) = P(rain and late)/P(late) = 0.32/0.38 ≈ 0.8421.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The branch probability answers every question about that branch.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "PRO.CONDITIONAL.FORMULA",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "PRO.CONDITIONAL.FORMULA",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "P(R \\mid L) = \\frac{P(R \\cap L)}{P(L)}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The probability that it rains on a school day is 0.4. If it rains, the probability that Tom is late is 0.8; if it is dry, the probability is 0.1. Tom is late. Eli says the probability that it rained is 0.8.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-S3.2.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The branch probability answers every question about that branch.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 0.8 is P(late | rain). P(rain | late) = P(rain and late)/P(late) = 0.48/0.56 ≈ 0.8571.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. P(rain | late) is the same as P(late | rain).",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "PRO.CONDITIONAL.FORMULA",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "PRO.CONDITIONAL.FORMULA",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "P(R \\mid L) = \\frac{P(R \\cap L)}{P(L)}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The probability that it rains on a school day is 0.6. If it rains, the probability that Tom is late is 0.8; if it is dry, the probability is 0.2. Tom is late. Eli says the probability that it rained is 0.8.",
+      },
+    ],
+  },
+]
+`;

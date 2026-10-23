@@ -18,7 +18,7 @@ const CASES = [
   { fn: "cot", angle: 30, value: "\\sqrt{3}", swap: "\\frac{\\sqrt{3}}{3}" },
 ] as const;
 
-interface Params {
+export interface Params {
   c: number;
   inverse: "arcsin" | "arccos";
 }

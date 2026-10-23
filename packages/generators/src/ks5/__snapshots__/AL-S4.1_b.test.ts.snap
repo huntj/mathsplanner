@@ -1,0 +1,764 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AL-S4.1.b > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-S4.1.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 4,
+          },
+          "type": "number",
+          "value": 0.1649,
+        },
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\binom{16}{6}(0.3)^{6}(0.7)^{10} = 0.1649",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Given ",
+      },
+      {
+        "t": "math",
+        "v": "X \\sim \\mathrm{B}(16, 0.3)",
+      },
+      {
+        "t": "text",
+        "v": ", find ",
+      },
+      {
+        "t": "math",
+        "v": "P(X = 6)",
+      },
+      {
+        "t": "text",
+        "v": " to 4 decimal places.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-S4.1.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 4,
+          },
+          "type": "number",
+          "value": 0.1597,
+        },
+        "marks": 1,
+        "misconceptions": [],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\binom{20}{9}(0.4)^{9}(0.6)^{11} = 0.1597",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Given ",
+      },
+      {
+        "t": "math",
+        "v": "X \\sim \\mathrm{B}(20, 0.4)",
+      },
+      {
+        "t": "text",
+        "v": ", find ",
+      },
+      {
+        "t": "math",
+        "v": "P(X = 9)",
+      },
+      {
+        "t": "text",
+        "v": " to 4 decimal places.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-S4.1.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 4,
+          },
+          "type": "number",
+          "value": 0.0803,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 0.0002,
+            },
+            "code": "PRO.BINOMIAL.CUMULATIVE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Multiply by ⁿCᵣ = 11C5: the 5 successes can come in any order.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\binom{11}{5}(0.25)^{5}(0.75)^{6} = 0.0803",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Given ",
+      },
+      {
+        "t": "math",
+        "v": "X \\sim \\mathrm{B}(11, 0.25)",
+      },
+      {
+        "t": "text",
+        "v": ", find ",
+      },
+      {
+        "t": "math",
+        "v": "P(X = 5)",
+      },
+      {
+        "t": "text",
+        "v": " to 4 decimal places.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-S4.1.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 4,
+          },
+          "type": "number",
+          "value": 0.6598,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 0.8247,
+            },
+            "code": "PRO.BINOMIAL.CUMULATIVE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "X < 6 means X ≤ 5.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "P(X < 6) = P(X \\le 5) = 0.6598",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Given ",
+      },
+      {
+        "t": "math",
+        "v": "X \\sim \\mathrm{B}(16, 0.3)",
+      },
+      {
+        "t": "text",
+        "v": ", find ",
+      },
+      {
+        "t": "math",
+        "v": "P(X < 6)",
+      },
+      {
+        "t": "text",
+        "v": " to 4 decimal places.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-S4.1.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 4,
+          },
+          "type": "number",
+          "value": 0.7553,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 0.5956,
+            },
+            "code": "PRO.BINOMIAL.CUMULATIVE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "X ≤ 9 includes 9.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "P(X \\le 9) = P(X \\le 9) = 0.7553",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Given ",
+      },
+      {
+        "t": "math",
+        "v": "X \\sim \\mathrm{B}(20, 0.4)",
+      },
+      {
+        "t": "text",
+        "v": ", find ",
+      },
+      {
+        "t": "math",
+        "v": "P(X \\le 9)",
+      },
+      {
+        "t": "text",
+        "v": " to 4 decimal places.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-S4.1.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 4,
+          },
+          "type": "number",
+          "value": 0.8854,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 0.9657,
+            },
+            "code": "PRO.BINOMIAL.CUMULATIVE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "X < 5 means X ≤ 4.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "P(X < 5) = P(X \\le 4) = 0.8854",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Given ",
+      },
+      {
+        "t": "math",
+        "v": "X \\sim \\mathrm{B}(11, 0.25)",
+      },
+      {
+        "t": "text",
+        "v": ", find ",
+      },
+      {
+        "t": "math",
+        "v": "P(X < 5)",
+      },
+      {
+        "t": "text",
+        "v": " to 4 decimal places.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-S4.1.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Without replacement the probability of a heart changes after each card, so the trials are not independent with constant probability.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Any count of successes is binomial.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. A quarter of the cards are hearts, so each card has P = ¼.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "PRO.MODEL.ASSUMPTION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "PRO.MODEL.ASSUMPTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Binomial conditions: fixed n, independent trials, two outcomes, constant probability.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Five cards are dealt from a normal pack without replacement. Ella models the number of hearts with B(5, ¼).",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-S4.1.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Without replacement the probability of a heart changes after each card, so the trials are not independent with constant probability.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. A quarter of the cards are hearts, so each card has P = ¼.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Any count of successes is binomial.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "PRO.MODEL.ASSUMPTION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "PRO.MODEL.ASSUMPTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Binomial conditions: fixed n, independent trials, two outcomes, constant probability.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Five cards are dealt from a normal pack without replacement. Ella models the number of hearts with B(5, ¼).",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-S4.1.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Without replacement the probability of a heart changes after each card, so the trials are not independent with constant probability.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Any count of successes is binomial.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. A quarter of the cards are hearts, so each card has P = ¼.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "PRO.MODEL.ASSUMPTION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "PRO.MODEL.ASSUMPTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Binomial conditions: fixed n, independent trials, two outcomes, constant probability.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Five cards are dealt from a normal pack without replacement. Ella models the number of hearts with B(5, ¼).",
+      },
+    ],
+  },
+]
+`;

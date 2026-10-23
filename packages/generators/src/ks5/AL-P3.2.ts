@@ -22,7 +22,7 @@ const OFFSETS: [number, number, number][] = [
   [-8, 6, 10],
 ];
 
-interface Params {
+export interface Params {
   a: number;
   b: number;
   r: number;

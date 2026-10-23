@@ -1050,19 +1050,36 @@ import alP11b from "./ks5/AL-P1.1b.ts";
 import alP21 from "./ks5/AL-P2.1.ts";
 import alP22 from "./ks5/AL-P2.2.ts";
 import alP23 from "./ks5/AL-P2.3.ts";
+import alP23A from "./ks5/AL-P2.3_a.ts";
+import alP23B from "./ks5/AL-P2.3_b.ts";
+import alP23C from "./ks5/AL-P2.3_c.ts";
 import alP24 from "./ks5/AL-P2.4.ts";
+import alP24A from "./ks5/AL-P2.4_a.ts";
+import alP24B from "./ks5/AL-P2.4_b.ts";
 import alP25 from "./ks5/AL-P2.5.ts";
+import alP25A from "./ks5/AL-P2.5_a.ts";
+import alP25B from "./ks5/AL-P2.5_b.ts";
 import alP26a from "./ks5/AL-P2.6a.ts";
+import alP26aA from "./ks5/AL-P2.6a_a.ts";
+import alP26aB from "./ks5/AL-P2.6a_b.ts";
+import alP26aC from "./ks5/AL-P2.6a_c.ts";
 import alP26b from "./ks5/AL-P2.6b.ts";
 import alP27a from "./ks5/AL-P2.7a.ts";
 import alP27b from "./ks5/AL-P2.7b.ts";
 import alP28 from "./ks5/AL-P2.8.ts";
+import alP28A from "./ks5/AL-P2.8_a.ts";
+import alP28B from "./ks5/AL-P2.8_b.ts";
+import alP28C from "./ks5/AL-P2.8_c.ts";
 import alP29a from "./ks5/AL-P2.9a.ts";
 import alP29b from "./ks5/AL-P2.9b.ts";
 import alP210 from "./ks5/AL-P2.10.ts";
 import alP211 from "./ks5/AL-P2.11.ts";
 import alP31 from "./ks5/AL-P3.1.ts";
+import alP31A from "./ks5/AL-P3.1_a.ts";
+import alP31B from "./ks5/AL-P3.1_b.ts";
 import alP32 from "./ks5/AL-P3.2.ts";
+import alP32A from "./ks5/AL-P3.2_a.ts";
+import alP32B from "./ks5/AL-P3.2_b.ts";
 import alP33 from "./ks5/AL-P3.3.ts";
 import alP34 from "./ks5/AL-P3.4.ts";
 import alP41a from "./ks5/AL-P4.1a.ts";
@@ -1070,17 +1087,37 @@ import alP41b from "./ks5/AL-P4.1b.ts";
 import alP42 from "./ks5/AL-P4.2.ts";
 import alP43 from "./ks5/AL-P4.3.ts";
 import alP44 from "./ks5/AL-P4.4.ts";
+import alP44A from "./ks5/AL-P4.4_a.ts";
+import alP44B from "./ks5/AL-P4.4_b.ts";
 import alP45 from "./ks5/AL-P4.5.ts";
+import alP45A from "./ks5/AL-P4.5_a.ts";
+import alP45B from "./ks5/AL-P4.5_b.ts";
+import alP45C from "./ks5/AL-P4.5_c.ts";
 import alP46 from "./ks5/AL-P4.6.ts";
 import alP51a from "./ks5/AL-P5.1a.ts";
+import alP51aA from "./ks5/AL-P5.1a_a.ts";
+import alP51aB from "./ks5/AL-P5.1a_b.ts";
+import alP51aC from "./ks5/AL-P5.1a_c.ts";
+import alP51aD from "./ks5/AL-P5.1a_d.ts";
 import alP51b from "./ks5/AL-P5.1b.ts";
+import alP51bA from "./ks5/AL-P5.1b_a.ts";
+import alP51bB from "./ks5/AL-P5.1b_b.ts";
+import alP51bC from "./ks5/AL-P5.1b_c.ts";
 import alP52 from "./ks5/AL-P5.2.ts";
 import alP53 from "./ks5/AL-P5.3.ts";
 import alP54 from "./ks5/AL-P5.4.ts";
+import alP54A from "./ks5/AL-P5.4_a.ts";
+import alP54B from "./ks5/AL-P5.4_b.ts";
 import alP55a from "./ks5/AL-P5.5a.ts";
 import alP55b from "./ks5/AL-P5.5b.ts";
 import alP56 from "./ks5/AL-P5.6.ts";
+import alP56A from "./ks5/AL-P5.6_a.ts";
+import alP56B from "./ks5/AL-P5.6_b.ts";
+import alP56C from "./ks5/AL-P5.6_c.ts";
 import alP57 from "./ks5/AL-P5.7.ts";
+import alP57A from "./ks5/AL-P5.7_a.ts";
+import alP57B from "./ks5/AL-P5.7_b.ts";
+import alP57C from "./ks5/AL-P5.7_c.ts";
 import alP58 from "./ks5/AL-P5.8.ts";
 import alP59 from "./ks5/AL-P5.9.ts";
 import alP61 from "./ks5/AL-P6.1.ts";
@@ -1096,16 +1133,29 @@ import alP71b from "./ks5/AL-P7.1b.ts";
 import alP72a from "./ks5/AL-P7.2a.ts";
 import alP72b from "./ks5/AL-P7.2b.ts";
 import alP73 from "./ks5/AL-P7.3.ts";
+import alP73A from "./ks5/AL-P7.3_a.ts";
+import alP73B from "./ks5/AL-P7.3_b.ts";
+import alP73C from "./ks5/AL-P7.3_c.ts";
 import alP74 from "./ks5/AL-P7.4.ts";
+import alP74A from "./ks5/AL-P7.4_a.ts";
+import alP74B from "./ks5/AL-P7.4_b.ts";
+import alP74C from "./ks5/AL-P7.4_c.ts";
 import alP75 from "./ks5/AL-P7.5.ts";
+import alP75A from "./ks5/AL-P7.5_a.ts";
+import alP75B from "./ks5/AL-P7.5_b.ts";
 import alP76 from "./ks5/AL-P7.6.ts";
 import alP81 from "./ks5/AL-P8.1.ts";
 import alP82 from "./ks5/AL-P8.2.ts";
 import alP83 from "./ks5/AL-P8.3.ts";
 import alP84 from "./ks5/AL-P8.4.ts";
+import alP84A from "./ks5/AL-P8.4_a.ts";
+import alP84B from "./ks5/AL-P8.4_b.ts";
+import alP84C from "./ks5/AL-P8.4_c.ts";
 import alP85 from "./ks5/AL-P8.5.ts";
 import alP86 from "./ks5/AL-P8.6.ts";
 import alP87 from "./ks5/AL-P8.7.ts";
+import alP87A from "./ks5/AL-P8.7_a.ts";
+import alP87B from "./ks5/AL-P8.7_b.ts";
 import alP88 from "./ks5/AL-P8.8.ts";
 import alP89 from "./ks5/AL-P8.9.ts";
 import alP810 from "./ks5/AL-P8.10.ts";
@@ -1121,24 +1171,44 @@ import alP103 from "./ks5/AL-P10.3.ts";
 import alP104 from "./ks5/AL-P10.4.ts";
 import alP105 from "./ks5/AL-P10.5.ts";
 import alS11 from "./ks5/AL-S1.1.ts";
+import alS11A from "./ks5/AL-S1.1_a.ts";
+import alS11B from "./ks5/AL-S1.1_b.ts";
 import alS21 from "./ks5/AL-S2.1.ts";
+import alS21A from "./ks5/AL-S2.1_a.ts";
+import alS21B from "./ks5/AL-S2.1_b.ts";
+import alS21C from "./ks5/AL-S2.1_c.ts";
 import alS22a from "./ks5/AL-S2.2a.ts";
 import alS22b from "./ks5/AL-S2.2b.ts";
 import alS23 from "./ks5/AL-S2.3.ts";
+import alS23A from "./ks5/AL-S2.3_a.ts";
+import alS23B from "./ks5/AL-S2.3_b.ts";
 import alS24 from "./ks5/AL-S2.4.ts";
 import alS31 from "./ks5/AL-S3.1.ts";
 import alS32 from "./ks5/AL-S3.2.ts";
+import alS32A from "./ks5/AL-S3.2_a.ts";
+import alS32B from "./ks5/AL-S3.2_b.ts";
+import alS32C from "./ks5/AL-S3.2_c.ts";
 import alS33 from "./ks5/AL-S3.3.ts";
 import alS41 from "./ks5/AL-S4.1.ts";
+import alS41A from "./ks5/AL-S4.1_a.ts";
+import alS41B from "./ks5/AL-S4.1_b.ts";
 import alS42 from "./ks5/AL-S4.2.ts";
+import alS42A from "./ks5/AL-S4.2_a.ts";
+import alS42B from "./ks5/AL-S4.2_b.ts";
+import alS42C from "./ks5/AL-S4.2_c.ts";
 import alS43 from "./ks5/AL-S4.3.ts";
 import alS51a from "./ks5/AL-S5.1a.ts";
+import alS51aA from "./ks5/AL-S5.1a_a.ts";
+import alS51aB from "./ks5/AL-S5.1a_b.ts";
+import alS51aC from "./ks5/AL-S5.1a_c.ts";
 import alS51b from "./ks5/AL-S5.1b.ts";
 import alS52 from "./ks5/AL-S5.2.ts";
 import alS53 from "./ks5/AL-S5.3.ts";
 import alM61 from "./ks5/AL-M6.1.ts";
 import alM71 from "./ks5/AL-M7.1.ts";
 import alM72 from "./ks5/AL-M7.2.ts";
+import alM72A from "./ks5/AL-M7.2_a.ts";
+import alM72B from "./ks5/AL-M7.2_b.ts";
 import alM73a from "./ks5/AL-M7.3a.ts";
 import alM73b from "./ks5/AL-M7.3b.ts";
 import alM74a from "./ks5/AL-M7.4a.ts";
@@ -1148,9 +1218,15 @@ import alM81 from "./ks5/AL-M8.1.ts";
 import alM82 from "./ks5/AL-M8.2.ts";
 import alM83 from "./ks5/AL-M8.3.ts";
 import alM84 from "./ks5/AL-M8.4.ts";
+import alM84A from "./ks5/AL-M8.4_a.ts";
+import alM84B from "./ks5/AL-M8.4_b.ts";
 import alM85 from "./ks5/AL-M8.5.ts";
 import alM86 from "./ks5/AL-M8.6.ts";
+import alM86A from "./ks5/AL-M8.6_a.ts";
+import alM86B from "./ks5/AL-M8.6_b.ts";
 import alM91 from "./ks5/AL-M9.1.ts";
+import alM91A from "./ks5/AL-M9.1_a.ts";
+import alM91B from "./ks5/AL-M9.1_b.ts";
 import fmCp01 from "./ks5/FM-CP-01.ts";
 import fmCp02 from "./ks5/FM-CP-02.ts";
 import fmCp03 from "./ks5/FM-CP-03.ts";
@@ -2321,19 +2397,36 @@ export const generators: Generator[] = [
   alP21,
   alP22,
   alP23,
+  alP23A,
+  alP23B,
+  alP23C,
   alP24,
+  alP24A,
+  alP24B,
   alP25,
+  alP25A,
+  alP25B,
   alP26a,
+  alP26aA,
+  alP26aB,
+  alP26aC,
   alP26b,
   alP27a,
   alP27b,
   alP28,
+  alP28A,
+  alP28B,
+  alP28C,
   alP29a,
   alP29b,
   alP210,
   alP211,
   alP31,
+  alP31A,
+  alP31B,
   alP32,
+  alP32A,
+  alP32B,
   alP33,
   alP34,
   alP41a,
@@ -2341,17 +2434,37 @@ export const generators: Generator[] = [
   alP42,
   alP43,
   alP44,
+  alP44A,
+  alP44B,
   alP45,
+  alP45A,
+  alP45B,
+  alP45C,
   alP46,
   alP51a,
+  alP51aA,
+  alP51aB,
+  alP51aC,
+  alP51aD,
   alP51b,
+  alP51bA,
+  alP51bB,
+  alP51bC,
   alP52,
   alP53,
   alP54,
+  alP54A,
+  alP54B,
   alP55a,
   alP55b,
   alP56,
+  alP56A,
+  alP56B,
+  alP56C,
   alP57,
+  alP57A,
+  alP57B,
+  alP57C,
   alP58,
   alP59,
   alP61,
@@ -2367,16 +2480,29 @@ export const generators: Generator[] = [
   alP72a,
   alP72b,
   alP73,
+  alP73A,
+  alP73B,
+  alP73C,
   alP74,
+  alP74A,
+  alP74B,
+  alP74C,
   alP75,
+  alP75A,
+  alP75B,
   alP76,
   alP81,
   alP82,
   alP83,
   alP84,
+  alP84A,
+  alP84B,
+  alP84C,
   alP85,
   alP86,
   alP87,
+  alP87A,
+  alP87B,
   alP88,
   alP89,
   alP810,
@@ -2392,24 +2518,44 @@ export const generators: Generator[] = [
   alP104,
   alP105,
   alS11,
+  alS11A,
+  alS11B,
   alS21,
+  alS21A,
+  alS21B,
+  alS21C,
   alS22a,
   alS22b,
   alS23,
+  alS23A,
+  alS23B,
   alS24,
   alS31,
   alS32,
+  alS32A,
+  alS32B,
+  alS32C,
   alS33,
   alS41,
+  alS41A,
+  alS41B,
   alS42,
+  alS42A,
+  alS42B,
+  alS42C,
   alS43,
   alS51a,
+  alS51aA,
+  alS51aB,
+  alS51aC,
   alS51b,
   alS52,
   alS53,
   alM61,
   alM71,
   alM72,
+  alM72A,
+  alM72B,
   alM73a,
   alM73b,
   alM74a,
@@ -2419,9 +2565,15 @@ export const generators: Generator[] = [
   alM82,
   alM83,
   alM84,
+  alM84A,
+  alM84B,
   alM85,
   alM86,
+  alM86A,
+  alM86B,
   alM91,
+  alM91A,
+  alM91B,
   fmCp01,
   fmCp02,
   fmCp03,

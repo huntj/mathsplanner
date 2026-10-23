@@ -18,7 +18,7 @@ const POINTS: [number, number, number][] = [
   [8, 6, 100],
 ];
 
-interface Params {
+export interface Params {
   k: number;
   t: number;
   pt: number;

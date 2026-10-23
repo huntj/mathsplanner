@@ -8,7 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { signed } from "../shared/alg.ts";
 
-interface Params {
+export interface Params {
   a: number;
   b: number;
   n: number;

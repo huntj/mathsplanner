@@ -11,7 +11,7 @@ import { bracket, poly } from "../shared/alg.ts";
 import { signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
 
-interface Params {
+export interface Params {
   r1: number;
   r2: number;
   r3: number;

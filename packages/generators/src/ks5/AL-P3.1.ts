@@ -9,7 +9,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { lineLatex, poly } from "../shared/alg.ts";
 
-interface Params {
+export interface Params {
   x1: number;
   y1: number;
   x2: number;

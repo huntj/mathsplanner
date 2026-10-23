@@ -7,7 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 
-interface Params {
+export interface Params {
   k: number;
   fn: "sin" | "cos";
 }

@@ -11,7 +11,7 @@ import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { binomialCdf } from "../shared/dist.ts";
 
-interface Params {
+export interface Params {
   n: number;
   p0: number;
   alpha: 0.05 | 0.1;

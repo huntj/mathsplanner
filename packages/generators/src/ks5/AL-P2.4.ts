@@ -93,7 +93,7 @@ const CASES: Case[] = [
   },
 ];
 
-interface Params {
+export interface Params {
   c: number;
 }
 

@@ -10,7 +10,7 @@ import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mat
 import { poly } from "../shared/alg.ts";
 import { chosenText } from "../shared/counting.ts";
 
-interface Params {
+export interface Params {
   /** Depth 1: (x − p)(2x − s) ≤ 0, roots p and s/2. */
   p: number;
   s: number;

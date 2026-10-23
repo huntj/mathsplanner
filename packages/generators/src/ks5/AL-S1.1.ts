@@ -29,7 +29,7 @@ const METHODS = [
   { name: "opportunity sampling", text: () => "asking the first people who happen to walk past" },
 ] as const;
 
-interface Params {
+export interface Params {
   groups: [number, number, number];
   n: number;
   method: number;

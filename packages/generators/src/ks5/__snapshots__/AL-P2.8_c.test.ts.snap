@@ -1,0 +1,807 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AL-P2.8.c > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-P2.8.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "f^{-1}(x) = x^2 - 2,\\ x \\ge 0",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "f^{-1}(x) = x^2 + 2,\\ x \\ge 0",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "f^{-1}(x) = \\frac{1}{\\sqrt{x - 2}}",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "f^{-1}(x) = x^2 + 2,\\ x \\ge 2",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "ALG.FUNCTION.ORDER",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Undo the steps in reverse: square, then add 2.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "ALG.INVERSE.RECIPROCAL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The inverse undoes f; it is not its reciprocal.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "D",
+              "type": "choice",
+            },
+            "code": "ALG.FUNCTION.DOMAIN-RANGE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The domain of the inverse is the range of f: √ is never negative, so x ≥ 0.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which describes the inverse function?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "y = √(x − 2) ⇒ x = y² + 2. The range of f is f(x) ≥ 0, which becomes the domain of the inverse.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The function f is defined by ",
+      },
+      {
+        "t": "math",
+        "v": "f(x) = \\sqrt{x - 2},\\ x \\ge 2",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-P2.8.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "f^{-1}(x) = \\frac{1}{\\sqrt{x - 5}}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "f^{-1}(x) = x^2 - 5,\\ x \\ge 0",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "f^{-1}(x) = x^2 + 5,\\ x \\ge 0",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "f^{-1}(x) = x^2 + 5,\\ x \\ge 5",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "ALG.INVERSE.RECIPROCAL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The inverse undoes f; it is not its reciprocal.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "ALG.FUNCTION.ORDER",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Undo the steps in reverse: square, then add 5.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "D",
+              "type": "choice",
+            },
+            "code": "ALG.FUNCTION.DOMAIN-RANGE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The domain of the inverse is the range of f: √ is never negative, so x ≥ 0.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which describes the inverse function?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "y = √(x − 5) ⇒ x = y² + 5. The range of f is f(x) ≥ 0, which becomes the domain of the inverse.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The function f is defined by ",
+      },
+      {
+        "t": "math",
+        "v": "f(x) = \\sqrt{x - 5},\\ x \\ge 5",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-P2.8.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "f^{-1}(x) = x^2 - 3,\\ x \\ge 0",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "f^{-1}(x) = \\frac{1}{\\sqrt{x - 3}}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "f^{-1}(x) = x^2 + 3,\\ x \\ge 0",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "f^{-1}(x) = x^2 + 3,\\ x \\ge 3",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "ALG.FUNCTION.ORDER",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Undo the steps in reverse: square, then add 3.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "ALG.INVERSE.RECIPROCAL",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The inverse undoes f; it is not its reciprocal.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "D",
+              "type": "choice",
+            },
+            "code": "ALG.FUNCTION.DOMAIN-RANGE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The domain of the inverse is the range of f: √ is never negative, so x ≥ 0.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which describes the inverse function?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "y = √(x − 3) ⇒ x = y² + 3. The range of f is f(x) ≥ 0, which becomes the domain of the inverse.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The function f is defined by ",
+      },
+      {
+        "t": "math",
+        "v": "f(x) = \\sqrt{x - 3},\\ x \\ge 3",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-P2.8.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The inverse swaps x and y, which reflects the graph in the line y = x.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The inverse makes every output negative.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is the reflection in the y-axis.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "ALG.TRANSFORM.DIRECTION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.TRANSFORM.DIRECTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "If (a, b) is on y = f(x), then (b, a) is on y = f⁻¹(x): a reflection in y = x.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Dan says the graph of ",
+      },
+      {
+        "t": "math",
+        "v": "y = f^{-1}(x)",
+      },
+      {
+        "t": "text",
+        "v": " is the reflection of the graph of ",
+      },
+      {
+        "t": "math",
+        "v": "y = f(x)",
+      },
+      {
+        "t": "text",
+        "v": " in the x-axis.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-P2.8.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The inverse swaps x and y, which reflects the graph in the line y = x.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is the reflection in the y-axis.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The inverse makes every output negative.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "ALG.TRANSFORM.DIRECTION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.TRANSFORM.DIRECTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "If (a, b) is on y = f(x), then (b, a) is on y = f⁻¹(x): a reflection in y = x.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Dan says the graph of ",
+      },
+      {
+        "t": "math",
+        "v": "y = f^{-1}(x)",
+      },
+      {
+        "t": "text",
+        "v": " is the reflection of the graph of ",
+      },
+      {
+        "t": "math",
+        "v": "y = f(x)",
+      },
+      {
+        "t": "text",
+        "v": " in the x-axis.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-P2.8.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The inverse makes every output negative.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The inverse swaps x and y, which reflects the graph in the line y = x.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is the reflection in the y-axis.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "ALG.TRANSFORM.DIRECTION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.TRANSFORM.DIRECTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "If (a, b) is on y = f(x), then (b, a) is on y = f⁻¹(x): a reflection in y = x.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Dan says the graph of ",
+      },
+      {
+        "t": "math",
+        "v": "y = f^{-1}(x)",
+      },
+      {
+        "t": "text",
+        "v": " is the reflection of the graph of ",
+      },
+      {
+        "t": "math",
+        "v": "y = f(x)",
+      },
+      {
+        "t": "text",
+        "v": " in the x-axis.",
+      },
+    ],
+  },
+]
+`;

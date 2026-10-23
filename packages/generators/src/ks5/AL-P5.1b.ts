@@ -8,7 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { piLatex } from "../shared/trig.ts";
 
-interface Params {
+export interface Params {
   degrees: number;
   r: number;
   /** Depth 2: a sector angle as a multiple of π. */

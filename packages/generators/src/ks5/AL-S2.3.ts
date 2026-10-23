@@ -10,7 +10,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 
-interface Params {
+export interface Params {
   data: number[];
   shift: number;
   k: number;

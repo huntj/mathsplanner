@@ -10,7 +10,7 @@ import type { CartesianSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 
-interface Params {
+export interface Params {
   v: number;
   t1: number;
   t2: number;

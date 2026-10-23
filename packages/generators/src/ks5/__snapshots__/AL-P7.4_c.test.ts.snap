@@ -1,0 +1,900 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AL-P7.4.c > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-P7.4.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{8}{(x + 4)^2}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "1",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{-8}{(x + 4)^2}",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{8}{x + 4}",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "You cannot differentiate the top and bottom separately.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The quotient rule is (v du/dx − u dv/dx)/v²: v du/dx comes first.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{dy}{dx} = \\frac{(x + 4) \\times 1 - (x - 4) \\times 1}{(x + 4)^2} = \\frac{8}{(x + 4)^2}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Differentiate ",
+      },
+      {
+        "t": "math",
+        "v": "y = \\frac{x - 4}{x + 4}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-P7.4.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{-4}{(x + 2)^2}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{4}{(x + 2)^2}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "1",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{-4}{x + 2}",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The quotient rule is (v du/dx − u dv/dx)/v²: v du/dx comes first.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "You cannot differentiate the top and bottom separately.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{dy}{dx} = \\frac{(x + 2) \\times 1 - (x + 6) \\times 1}{(x + 2)^2} = \\frac{-4}{(x + 2)^2}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Differentiate ",
+      },
+      {
+        "t": "math",
+        "v": "y = \\frac{x + 6}{x + 2}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-P7.4.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{6}{x + 1}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "1",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{6}{(x + 1)^2}",
+                },
+              ],
+              "id": "C",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{-6}{(x + 1)^2}",
+                },
+              ],
+              "id": "D",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "You cannot differentiate the top and bottom separately.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "D",
+              "type": "choice",
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The quotient rule is (v du/dx − u dv/dx)/v²: v du/dx comes first.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{dy}{dx} = \\frac{(x + 1) \\times 1 - (x - 5) \\times 1}{(x + 1)^2} = \\frac{6}{(x + 1)^2}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Differentiate ",
+      },
+      {
+        "t": "math",
+        "v": "y = \\frac{x - 5}{x + 1}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-P7.4.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 8,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": -8,
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Check the order in the numerator: v du/dx − u dv/dx.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{dy}{dx} = \\frac{8}{(x + 4)^2} = \\frac{8}{1} = 8",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find the gradient of ",
+      },
+      {
+        "t": "math",
+        "v": "y = \\frac{x - 4}{x + 4}",
+      },
+      {
+        "t": "text",
+        "v": " at the point where x = -3.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-P7.4.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": -1,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 1,
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Check the order in the numerator: v du/dx − u dv/dx.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{dy}{dx} = \\frac{-4}{(x + 2)^2} = \\frac{-4}{4} = -1",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find the gradient of ",
+      },
+      {
+        "t": "math",
+        "v": "y = \\frac{x + 6}{x + 2}",
+      },
+      {
+        "t": "text",
+        "v": " at the point where x = 0.",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-P7.4.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 6,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": -6,
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Check the order in the numerator: v du/dx − u dv/dx.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{dy}{dx} = \\frac{6}{(x + 1)^2} = \\frac{6}{1} = 6",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Find the gradient of ",
+      },
+      {
+        "t": "math",
+        "v": "y = \\frac{x - 5}{x + 1}",
+      },
+      {
+        "t": "text",
+        "v": " at the point where x = 0.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-P7.4.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Both have derivative 1, so they cancel.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The derivative of a fraction is the derivative of the top over the derivative of the bottom.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. A quotient needs the quotient rule: dy/dx = (v u' − u v')/v² = 8/(x + 4)².",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{dy}{dx} = \\frac{8}{(x + 4)^2}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Lena differentiates ",
+      },
+      {
+        "t": "math",
+        "v": "y = \\frac{x - 4}{x + 4}",
+      },
+      {
+        "t": "text",
+        "v": " by differentiating the top and the bottom separately, and gets 1/1 = 1.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-P7.4.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The derivative of a fraction is the derivative of the top over the derivative of the bottom.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Both have derivative 1, so they cancel.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. A quotient needs the quotient rule: dy/dx = (v u' − u v')/v² = -4/(x + 2)².",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{dy}{dx} = \\frac{-4}{(x + 2)^2}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Lena differentiates ",
+      },
+      {
+        "t": "math",
+        "v": "y = \\frac{x + 6}{x + 2}",
+      },
+      {
+        "t": "text",
+        "v": " by differentiating the top and the bottom separately, and gets 1/1 = 1.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-P7.4.c",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Both have derivative 1, so they cancel.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The derivative of a fraction is the derivative of the top over the derivative of the bottom.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. A quotient needs the quotient rule: dy/dx = (v u' − u v')/v² = 6/(x + 1)².",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "CALC.PRODUCT-RULE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{dy}{dx} = \\frac{6}{(x + 1)^2}",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Lena differentiates ",
+      },
+      {
+        "t": "math",
+        "v": "y = \\frac{x - 5}{x + 1}",
+      },
+      {
+        "t": "text",
+        "v": " by differentiating the top and the bottom separately, and gets 1/1 = 1.",
+      },
+    ],
+  },
+]
+`;

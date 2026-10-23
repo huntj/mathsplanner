@@ -1,0 +1,627 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AL-P8.7.b > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-P8.7.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "\\frac{x}{4}e^{4x} - \\frac{1}{16}e^{4x} + c",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{x}{4}e^{4x} + c",
+              "type": "exact",
+            },
+            "code": "CALC.PARTS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "∫ u dv = uv − ∫ v du: you still need to subtract ∫ (1/k)e^(kx) dx.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{x}{4}e^{4x} - \\int \\frac{1}{4}e^{4x}\\,dx = \\frac{x}{4}e^{4x} - \\frac{1}{16}e^{4x} + c",
+        "say": [
+          {
+            "t": "text",
+            "v": "u = x, dv/dx = e^(4x): ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Use integration by parts to find ",
+      },
+      {
+        "t": "math",
+        "v": "\\int xe^{4x}\\,dx",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-P8.7.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "\\frac{x}{2}e^{2x} - \\frac{1}{4}e^{2x} + c",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{x}{2}e^{2x} + c",
+              "type": "exact",
+            },
+            "code": "CALC.PARTS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "∫ u dv = uv − ∫ v du: you still need to subtract ∫ (1/k)e^(kx) dx.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{x}{2}e^{2x} - \\int \\frac{1}{2}e^{2x}\\,dx = \\frac{x}{2}e^{2x} - \\frac{1}{4}e^{2x} + c",
+        "say": [
+          {
+            "t": "text",
+            "v": "u = x, dv/dx = e^(2x): ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Use integration by parts to find ",
+      },
+      {
+        "t": "math",
+        "v": "\\int xe^{2x}\\,dx",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-P8.7.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "type": "exact",
+          "value": "\\frac{x}{2}e^{2x} - \\frac{1}{4}e^{2x} + c",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "latex": "\\frac{x}{2}e^{2x} + c",
+              "type": "exact",
+            },
+            "code": "CALC.PARTS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "∫ u dv = uv − ∫ v du: you still need to subtract ∫ (1/k)e^(kx) dx.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\frac{x}{2}e^{2x} - \\int \\frac{1}{2}e^{2x}\\,dx = \\frac{x}{2}e^{2x} - \\frac{1}{4}e^{2x} + c",
+        "say": [
+          {
+            "t": "text",
+            "v": "u = x, dv/dx = e^(2x): ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Use integration by parts to find ",
+      },
+      {
+        "t": "math",
+        "v": "\\int xe^{2x}\\,dx",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "AL-P8.7.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Always choose u = x.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. ln x is hard to integrate but easy to differentiate, so choose u = ln x and dv/dx = x.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Either choice works equally well.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CALC.PARTS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "CALC.PARTS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Pick u so that du/dx is simpler and dv/dx so that v is easy to find.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "To find ",
+      },
+      {
+        "t": "math",
+        "v": "\\int x\\ln x\\,dx",
+      },
+      {
+        "t": "text",
+        "v": " by parts, Kim chooses ",
+      },
+      {
+        "t": "math",
+        "v": "u = x",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dv}{dx} = \\ln x",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "AL-P8.7.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Either choice works equally well.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Always choose u = x.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. ln x is hard to integrate but easy to differentiate, so choose u = ln x and dv/dx = x.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CALC.PARTS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "CALC.PARTS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Pick u so that du/dx is simpler and dv/dx so that v is easy to find.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "To find ",
+      },
+      {
+        "t": "math",
+        "v": "\\int x\\ln x\\,dx",
+      },
+      {
+        "t": "text",
+        "v": " by parts, Kim chooses ",
+      },
+      {
+        "t": "math",
+        "v": "u = x",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dv}{dx} = \\ln x",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "AL-P8.7.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Either choice works equally well.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Always choose u = x.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. ln x is hard to integrate but easy to differentiate, so choose u = ln x and dv/dx = x.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "CALC.PARTS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "CALC.PARTS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Pick u so that du/dx is simpler and dv/dx so that v is easy to find.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "To find ",
+      },
+      {
+        "t": "math",
+        "v": "\\int x\\ln x\\,dx",
+      },
+      {
+        "t": "text",
+        "v": " by parts, Kim chooses ",
+      },
+      {
+        "t": "math",
+        "v": "u = x",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{dv}{dx} = \\ln x",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+]
+`;

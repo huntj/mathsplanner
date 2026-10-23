@@ -22,7 +22,7 @@ const CASES: { fn: TrigFn; value: string; p: number }[] = [
   { fn: "tan", value: "\\sqrt{3}", p: 60 },
 ];
 
-interface Params {
+export interface Params {
   c: number;
   k: 2 | 3;
 }

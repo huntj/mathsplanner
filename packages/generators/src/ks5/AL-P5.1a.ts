@@ -11,7 +11,7 @@ import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { deg, r1, rad } from "../shared/trig.ts";
 
-interface Params {
+export interface Params {
   /** Three sides of a triangle; angle A is opposite a. */
   a: number;
   b: number;
