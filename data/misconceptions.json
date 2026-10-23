@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.36.0",
+  "version": "0.37.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -2336,6 +2336,11 @@
       "code": "GEO.VECTOR.COMPONENTS",
       "description": "Writes a column vector with its components swapped or with the wrong signs, or subtracts vectors the wrong way round.",
       "remediate": "GF-G24"
+    },
+    {
+      "code": "GEO.VECTOR.SCALAR-ONE",
+      "description": "Multiplies only one component of a column vector by a scalar, or adds the scalar instead of multiplying, e.g. 3 × (2, 5) = (6, 5).",
+      "remediate": "GF-G25.b"
     },
     {
       "code": "POS.ENLARGE.NEGATIVE",

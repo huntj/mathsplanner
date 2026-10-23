@@ -528,11 +528,22 @@ import gfR16C from "./ks4/GF-R16_c.ts";
 import ghR16 from "./ks4/GH-R16.ts";
 import gfG1 from "./ks4/GF-G1.ts";
 import gfG2 from "./ks4/GF-G2.ts";
+import gfG2A from "./ks4/GF-G2_a.ts";
+import gfG2B from "./ks4/GF-G2_b.ts";
 import gfG3 from "./ks4/GF-G3.ts";
+import gfG3A from "./ks4/GF-G3_a.ts";
+import gfG3B from "./ks4/GF-G3_b.ts";
+import gfG3C from "./ks4/GF-G3_c.ts";
 import gfG4 from "./ks4/GF-G4.ts";
+import gfG4A from "./ks4/GF-G4_a.ts";
+import gfG4B from "./ks4/GF-G4_b.ts";
 import gfG5 from "./ks4/GF-G5.ts";
 import gfG6 from "./ks4/GF-G6.ts";
 import gfG7 from "./ks4/GF-G7.ts";
+import gfG7A from "./ks4/GF-G7_a.ts";
+import gfG7B from "./ks4/GF-G7_b.ts";
+import gfG7C from "./ks4/GF-G7_c.ts";
+import gfG7D from "./ks4/GF-G7_d.ts";
 import ghG7 from "./ks4/GH-G7.ts";
 import ghG8 from "./ks4/GH-G8.ts";
 import gfG9 from "./ks4/GF-G9.ts";
@@ -540,20 +551,48 @@ import ghG10 from "./ks4/GH-G10.ts";
 import gfG11 from "./ks4/GF-G11.ts";
 import gfG12 from "./ks4/GF-G12.ts";
 import gfG13 from "./ks4/GF-G13.ts";
+import gfG13A from "./ks4/GF-G13_a.ts";
+import gfG13B from "./ks4/GF-G13_b.ts";
 import gfG14 from "./ks4/GF-G14.ts";
 import gfG15 from "./ks4/GF-G15.ts";
+import gfG15A from "./ks4/GF-G15_a.ts";
+import gfG15B from "./ks4/GF-G15_b.ts";
+import gfG15C from "./ks4/GF-G15_c.ts";
 import gfG16 from "./ks4/GF-G16.ts";
+import gfG16A from "./ks4/GF-G16_a.ts";
+import gfG16B from "./ks4/GF-G16_b.ts";
+import gfG16C from "./ks4/GF-G16_c.ts";
 import gfG17 from "./ks4/GF-G17.ts";
+import gfG17A from "./ks4/GF-G17_a.ts";
+import gfG17B from "./ks4/GF-G17_b.ts";
+import gfG17C from "./ks4/GF-G17_c.ts";
+import gfG17D from "./ks4/GF-G17_d.ts";
 import gfG18 from "./ks4/GF-G18.ts";
+import gfG18A from "./ks4/GF-G18_a.ts";
+import gfG18B from "./ks4/GF-G18_b.ts";
+import gfG18C from "./ks4/GF-G18_c.ts";
 import gfG19 from "./ks4/GF-G19.ts";
 import ghG19 from "./ks4/GH-G19.ts";
 import gfG20 from "./ks4/GF-G20.ts";
+import gfG20A from "./ks4/GF-G20_a.ts";
+import gfG20B from "./ks4/GF-G20_b.ts";
+import gfG20C from "./ks4/GF-G20_c.ts";
 import ghG20 from "./ks4/GH-G20.ts";
+import ghG20A from "./ks4/GH-G20_a.ts";
+import ghG20B from "./ks4/GH-G20_b.ts";
+import ghG20C from "./ks4/GH-G20_c.ts";
 import gfG21 from "./ks4/GF-G21.ts";
+import gfG21A from "./ks4/GF-G21_a.ts";
+import gfG21B from "./ks4/GF-G21_b.ts";
 import ghG22 from "./ks4/GH-G22.ts";
+import ghG22A from "./ks4/GH-G22_a.ts";
+import ghG22B from "./ks4/GH-G22_b.ts";
 import ghG23 from "./ks4/GH-G23.ts";
 import gfG24 from "./ks4/GF-G24.ts";
 import gfG25 from "./ks4/GF-G25.ts";
+import gfG25A from "./ks4/GF-G25_a.ts";
+import gfG25B from "./ks4/GF-G25_b.ts";
+import gfG25C from "./ks4/GF-G25_c.ts";
 import ghG25 from "./ks4/GH-G25.ts";
 import gfP1 from "./ks4/GF-P1.ts";
 import gfP2 from "./ks4/GF-P2.ts";
@@ -1326,11 +1365,22 @@ export const generators: Generator[] = [
   ghR16,
   gfG1,
   gfG2,
+  gfG2A,
+  gfG2B,
   gfG3,
+  gfG3A,
+  gfG3B,
+  gfG3C,
   gfG4,
+  gfG4A,
+  gfG4B,
   gfG5,
   gfG6,
   gfG7,
+  gfG7A,
+  gfG7B,
+  gfG7C,
+  gfG7D,
   ghG7,
   ghG8,
   gfG9,
@@ -1338,20 +1388,48 @@ export const generators: Generator[] = [
   gfG11,
   gfG12,
   gfG13,
+  gfG13A,
+  gfG13B,
   gfG14,
   gfG15,
+  gfG15A,
+  gfG15B,
+  gfG15C,
   gfG16,
+  gfG16A,
+  gfG16B,
+  gfG16C,
   gfG17,
+  gfG17A,
+  gfG17B,
+  gfG17C,
+  gfG17D,
   gfG18,
+  gfG18A,
+  gfG18B,
+  gfG18C,
   gfG19,
   ghG19,
   gfG20,
+  gfG20A,
+  gfG20B,
+  gfG20C,
   ghG20,
+  ghG20A,
+  ghG20B,
+  ghG20C,
   gfG21,
+  gfG21A,
+  gfG21B,
   ghG22,
+  ghG22A,
+  ghG22B,
   ghG23,
   gfG24,
   gfG25,
+  gfG25A,
+  gfG25B,
+  gfG25C,
   ghG25,
   gfP1,
   gfP2,

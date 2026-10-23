@@ -1,0 +1,1029 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`GH-G20.b > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "description": "A cuboid 8 cm long, 7 cm deep and 6 cm high.",
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            8,
+            0,
+          ],
+          "C": [
+            8,
+            6,
+          ],
+          "D": [
+            0,
+            6,
+          ],
+          "E": [
+            2.831559480312316,
+            2.057248383023656,
+          ],
+          "F": [
+            10.831559480312317,
+            2.057248383023656,
+          ],
+          "G": [
+            10.831559480312317,
+            8.057248383023655,
+          ],
+          "H": [
+            2.831559480312316,
+            8.057248383023655,
+          ],
+        },
+        "segments": [
+          {
+            "from": "A",
+            "label": "8\\text{ cm}",
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "to": "C",
+          },
+          {
+            "from": "C",
+            "to": "D",
+          },
+          {
+            "from": "D",
+            "label": "6\\text{ cm}",
+            "to": "A",
+          },
+          {
+            "from": "B",
+            "label": "7\\text{ cm}",
+            "to": "F",
+          },
+          {
+            "from": "F",
+            "to": "G",
+          },
+          {
+            "from": "G",
+            "to": "H",
+          },
+          {
+            "from": "C",
+            "to": "G",
+          },
+          {
+            "from": "D",
+            "to": "H",
+          },
+          {
+            "dashed": true,
+            "from": "A",
+            "to": "E",
+          },
+          {
+            "dashed": true,
+            "from": "E",
+            "to": "F",
+          },
+          {
+            "dashed": true,
+            "from": "E",
+            "to": "H",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GH-G20.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 1,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 29.4,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 36.9,
+            },
+            "code": "GEO.3D.WRONG-TRIANGLE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angle with the base is in the triangle made by the height and the base diagonal, not a base edge.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the angle between a space diagonal (corner to opposite corner) and the base, to 1 decimal place.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\tan\\theta = \\frac{6}{\\sqrt{8^2 + 7^2}} \\Rightarrow \\theta = 29.4^\\circ",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The diagram shows a cuboid.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "description": "A cuboid 5 cm long, 4 cm deep and 6 cm high.",
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            5,
+            0,
+          ],
+          "C": [
+            5,
+            6,
+          ],
+          "D": [
+            0,
+            6,
+          ],
+          "E": [
+            1.618033988749895,
+            1.1755705045849463,
+          ],
+          "F": [
+            6.618033988749895,
+            1.1755705045849463,
+          ],
+          "G": [
+            6.618033988749895,
+            7.175570504584947,
+          ],
+          "H": [
+            1.618033988749895,
+            7.175570504584947,
+          ],
+        },
+        "segments": [
+          {
+            "from": "A",
+            "label": "5\\text{ cm}",
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "to": "C",
+          },
+          {
+            "from": "C",
+            "to": "D",
+          },
+          {
+            "from": "D",
+            "label": "6\\text{ cm}",
+            "to": "A",
+          },
+          {
+            "from": "B",
+            "label": "4\\text{ cm}",
+            "to": "F",
+          },
+          {
+            "from": "F",
+            "to": "G",
+          },
+          {
+            "from": "G",
+            "to": "H",
+          },
+          {
+            "from": "C",
+            "to": "G",
+          },
+          {
+            "from": "D",
+            "to": "H",
+          },
+          {
+            "dashed": true,
+            "from": "A",
+            "to": "E",
+          },
+          {
+            "dashed": true,
+            "from": "E",
+            "to": "F",
+          },
+          {
+            "dashed": true,
+            "from": "E",
+            "to": "H",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GH-G20.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 1,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 43.1,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 50.2,
+            },
+            "code": "GEO.3D.WRONG-TRIANGLE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angle with the base is in the triangle made by the height and the base diagonal, not a base edge.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the angle between a space diagonal (corner to opposite corner) and the base, to 1 decimal place.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\tan\\theta = \\frac{6}{\\sqrt{5^2 + 4^2}} \\Rightarrow \\theta = 43.1^\\circ",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The diagram shows a cuboid.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "description": "A cuboid 12 cm long, 8 cm deep and 3 cm high.",
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            12,
+            0,
+          ],
+          "C": [
+            12,
+            3,
+          ],
+          "D": [
+            0,
+            3,
+          ],
+          "E": [
+            3.23606797749979,
+            2.3511410091698925,
+          ],
+          "F": [
+            15.23606797749979,
+            2.3511410091698925,
+          ],
+          "G": [
+            15.23606797749979,
+            5.3511410091698925,
+          ],
+          "H": [
+            3.23606797749979,
+            5.3511410091698925,
+          ],
+        },
+        "segments": [
+          {
+            "from": "A",
+            "label": "12\\text{ cm}",
+            "to": "B",
+          },
+          {
+            "from": "B",
+            "to": "C",
+          },
+          {
+            "from": "C",
+            "to": "D",
+          },
+          {
+            "from": "D",
+            "label": "3\\text{ cm}",
+            "to": "A",
+          },
+          {
+            "from": "B",
+            "label": "8\\text{ cm}",
+            "to": "F",
+          },
+          {
+            "from": "F",
+            "to": "G",
+          },
+          {
+            "from": "G",
+            "to": "H",
+          },
+          {
+            "from": "C",
+            "to": "G",
+          },
+          {
+            "from": "D",
+            "to": "H",
+          },
+          {
+            "dashed": true,
+            "from": "A",
+            "to": "E",
+          },
+          {
+            "dashed": true,
+            "from": "E",
+            "to": "F",
+          },
+          {
+            "dashed": true,
+            "from": "E",
+            "to": "H",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GH-G20.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 1,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 11.8,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 14,
+            },
+            "code": "GEO.3D.WRONG-TRIANGLE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The angle with the base is in the triangle made by the height and the base diagonal, not a base edge.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the angle between a space diagonal (corner to opposite corner) and the base, to 1 decimal place.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\tan\\theta = \\frac{3}{\\sqrt{12^2 + 8^2}} \\Rightarrow \\theta = 11.8^\\circ",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The diagram shows a cuboid.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GH-G20.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 1,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 36.9,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 53.1,
+            },
+            "code": "GEO.TRIG.RATIO",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The height, 6 cm, is opposite the angle; the 8 cm edge is adjacent.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the angle this diagonal makes with the bottom edge of the face, to 1 decimal place.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\tan\\theta = \\frac{6}{8} \\Rightarrow \\theta = 36.9^\\circ",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A cuboid is 8 cm long, 7 cm deep and 6 cm high. A diagonal is drawn across its 8 cm by 6 cm front face.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GH-G20.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 1,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 50.2,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 39.8,
+            },
+            "code": "GEO.TRIG.RATIO",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The height, 6 cm, is opposite the angle; the 5 cm edge is adjacent.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the angle this diagonal makes with the bottom edge of the face, to 1 decimal place.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\tan\\theta = \\frac{6}{5} \\Rightarrow \\theta = 50.2^\\circ",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A cuboid is 5 cm long, 4 cm deep and 6 cm high. A diagonal is drawn across its 5 cm by 6 cm front face.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GH-G20.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 1,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 14,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 76,
+            },
+            "code": "GEO.TRIG.RATIO",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The height, 3 cm, is opposite the angle; the 12 cm edge is adjacent.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the angle this diagonal makes with the bottom edge of the face, to 1 decimal place.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\tan\\theta = \\frac{3}{12} \\Rightarrow \\theta = 14^\\circ",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A cuboid is 12 cm long, 8 cm deep and 3 cm high. A diagonal is drawn across its 12 cm by 3 cm front face.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "GH-G20.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. All angles with the base are equal.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The base edges are in the base.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The angle with a plane is measured to the line in the plane directly below the diagonal: the base diagonal, not an edge.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "GEO.3D.WRONG-TRIANGLE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "GEO.3D.WRONG-TRIANGLE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Drop a perpendicular from the top of the diagonal to find the right triangle.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Bea says the angle between a cuboid's space diagonal and its base is the same as the angle between the space diagonal and one of the base edges.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GH-G20.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The angle with a plane is measured to the line in the plane directly below the diagonal: the base diagonal, not an edge.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The base edges are in the base.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. All angles with the base are equal.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "GEO.3D.WRONG-TRIANGLE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "GEO.3D.WRONG-TRIANGLE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Drop a perpendicular from the top of the diagonal to find the right triangle.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Bea says the angle between a cuboid's space diagonal and its base is the same as the angle between the space diagonal and one of the base edges.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GH-G20.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The angle with a plane is measured to the line in the plane directly below the diagonal: the base diagonal, not an edge.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. All angles with the base are equal.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The base edges are in the base.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "GEO.3D.WRONG-TRIANGLE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "GEO.3D.WRONG-TRIANGLE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Drop a perpendicular from the top of the diagonal to find the right triangle.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Bea says the angle between a cuboid's space diagonal and its base is the same as the angle between the space diagonal and one of the base edges.",
+      },
+    ],
+  },
+]
+`;
