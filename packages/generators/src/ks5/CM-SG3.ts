@@ -20,7 +20,7 @@ const SHAPES = [
   },
 ];
 
-interface Params {
+export interface Params {
   s: number;
   a: number;
   k: number;

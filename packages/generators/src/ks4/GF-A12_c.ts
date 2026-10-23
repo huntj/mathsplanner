@@ -10,7 +10,7 @@ import { grid } from "../shared/alg.ts";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 
-interface Params {
+export interface Params {
   a: number;
   k: number;
 }

@@ -10,7 +10,7 @@ import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { round } from "../shared/dist.ts";
 
-interface Params {
+export interface Params {
   xs: number[];
   m1: number;
   s1: number;

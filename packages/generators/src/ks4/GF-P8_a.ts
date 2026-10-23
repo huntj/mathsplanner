@@ -11,7 +11,7 @@ import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { txt } from "../shared/sta.ts";
 
-interface Params {
+export interface Params {
   a: number;
   b: number;
 }

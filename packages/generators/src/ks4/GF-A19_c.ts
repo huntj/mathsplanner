@@ -10,7 +10,7 @@ import { clearOfOrigin, grid, lineLatex, poly } from "../shared/alg.ts";
 import { chosenText } from "../shared/counting.ts";
 import { coord, distinctFrom } from "../shared/pos.ts";
 
-interface Params {
+export interface Params {
   m1: number;
   m2: number;
   x: number;

@@ -9,7 +9,7 @@ import { defineGenerator, frac, toLatex, type QuestionDraft } from "@mathsplanne
 import type { VennSpec } from "@mathsplanner/diagrams";
 import { exactAnswer } from "../shared/counting.ts";
 
-interface Params {
+export interface Params {
   onlyA: number;
   both: number;
   onlyB: number;

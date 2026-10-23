@@ -11,7 +11,7 @@ import { numberAnswer } from "../shared/counting.ts";
 import { round } from "../shared/dist.ts";
 import { tableLatex } from "../shared/sta.ts";
 
-interface Params {
+export interface Params {
   sales: number[];
 }
 

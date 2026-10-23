@@ -12,7 +12,7 @@ import { numberAnswer } from "../shared/counting.ts";
 
 const EDGES = [0, 10, 15, 20, 30, 50];
 
-interface Params {
+export interface Params {
   fd: number[];
   cls: number;
   w: number;

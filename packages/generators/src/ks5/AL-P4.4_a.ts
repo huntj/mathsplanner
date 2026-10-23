@@ -16,7 +16,7 @@ import { numberAnswer } from "../shared/counting.ts";
 import { mixFamilies } from "../shared/npv.ts";
 import parent from "./AL-P4.4.ts";
 
-interface Params {
+export interface Params {
   a: number;
   d: number;
   /** Depth 2: two known terms, the uth and vth. */

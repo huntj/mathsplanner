@@ -10,7 +10,7 @@ import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { lineGraph } from "../shared/sta.ts";
 
-interface Params {
+export interface Params {
   sales: number[];
   day: number;
   from: number;

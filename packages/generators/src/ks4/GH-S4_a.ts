@@ -10,7 +10,7 @@ import type { ChartSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 
-interface Params {
+export interface Params {
   list: number[];
   five: [number, number, number, number, number];
 }

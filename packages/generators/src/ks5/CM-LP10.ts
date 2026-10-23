@@ -10,7 +10,7 @@ import { signedWrongs } from "../shared/alg.ts";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 
-interface Params {
+export interface Params {
   x: number;
   y: number;
   vertices: [number, number][];

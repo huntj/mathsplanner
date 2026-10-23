@@ -9,7 +9,7 @@ import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mat
 import { signedWrongs } from "../shared/alg.ts";
 import { exactAnswer, numberAnswer } from "../shared/counting.ts";
 
-interface Params {
+export interface Params {
   a: number;
   n: number;
   m: number;

@@ -11,7 +11,7 @@ import { exactAnswer } from "../shared/counting.ts";
 import { fracTex } from "../shared/fr.ts";
 import { txt } from "../shared/sta.ts";
 
-interface Params {
+export interface Params {
   r: number;
   b: number;
 }

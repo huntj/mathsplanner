@@ -1309,42 +1309,83 @@ import fmD205 from "./ks5/FM-D2-05.ts";
 import fmD206 from "./ks5/FM-D2-06.ts";
 import cmA1 from "./ks5/CM-A1.ts";
 import cmA2 from "./ks5/CM-A2.ts";
+import cmA2A from "./ks5/CM-A2_a.ts";
+import cmA2B from "./ks5/CM-A2_b.ts";
 import cmA3 from "./ks5/CM-A3.ts";
+import cmA3A from "./ks5/CM-A3_a.ts";
+import cmA3B from "./ks5/CM-A3_b.ts";
 import cmA4 from "./ks5/CM-A4.ts";
 import cmA5 from "./ks5/CM-A5.ts";
+import cmA5A from "./ks5/CM-A5_a.ts";
+import cmA5B from "./ks5/CM-A5_b.ts";
+import cmA5C from "./ks5/CM-A5_c.ts";
 import cmA6 from "./ks5/CM-A6.ts";
 import cmA7 from "./ks5/CM-A7.ts";
 import cmA8 from "./ks5/CM-A8.ts";
+import cmA8A from "./ks5/CM-A8_a.ts";
+import cmA8B from "./ks5/CM-A8_b.ts";
 import cmA9 from "./ks5/CM-A9.ts";
 import cmA10 from "./ks5/CM-A10.ts";
+import cmA10A from "./ks5/CM-A10_a.ts";
+import cmA10B from "./ks5/CM-A10_b.ts";
 import cmP1 from "./ks5/CM-P1.ts";
 import cmP2 from "./ks5/CM-P2.ts";
 import cmP3 from "./ks5/CM-P3.ts";
+import cmP3A from "./ks5/CM-P3_a.ts";
+import cmP3B from "./ks5/CM-P3_b.ts";
 import cmP4 from "./ks5/CM-P4.ts";
+import cmP4A from "./ks5/CM-P4_a.ts";
+import cmP4B from "./ks5/CM-P4_b.ts";
+import cmP4C from "./ks5/CM-P4_c.ts";
 import cmP5 from "./ks5/CM-P5.ts";
 import cmP6 from "./ks5/CM-P6.ts";
+import cmP6A from "./ks5/CM-P6_a.ts";
+import cmP6B from "./ks5/CM-P6_b.ts";
+import cmP6C from "./ks5/CM-P6_c.ts";
 import cmP7 from "./ks5/CM-P7.ts";
 import cmLp1 from "./ks5/CM-LP1.ts";
 import cmLp2 from "./ks5/CM-LP2.ts";
 import cmLp3 from "./ks5/CM-LP3.ts";
 import cmLp4 from "./ks5/CM-LP4.ts";
 import cmLp5 from "./ks5/CM-LP5.ts";
+import cmLp5A from "./ks5/CM-LP5_a.ts";
+import cmLp5B from "./ks5/CM-LP5_b.ts";
 import cmLp6 from "./ks5/CM-LP6.ts";
 import cmLp7 from "./ks5/CM-LP7.ts";
 import cmLp8 from "./ks5/CM-LP8.ts";
 import cmLp9 from "./ks5/CM-LP9.ts";
 import cmLp10 from "./ks5/CM-LP10.ts";
+import cmLp10A from "./ks5/CM-LP10_a.ts";
+import cmLp10B from "./ks5/CM-LP10_b.ts";
 import cmLp11 from "./ks5/CM-LP11.ts";
 import cmSg1 from "./ks5/CM-SG1.ts";
 import cmSg2 from "./ks5/CM-SG2.ts";
+import cmSg2A from "./ks5/CM-SG2_a.ts";
+import cmSg2B from "./ks5/CM-SG2_b.ts";
 import cmSg3 from "./ks5/CM-SG3.ts";
+import cmSg3A from "./ks5/CM-SG3_a.ts";
+import cmSg3B from "./ks5/CM-SG3_b.ts";
+import cmSg3C from "./ks5/CM-SG3_c.ts";
+import cmSg3D from "./ks5/CM-SG3_d.ts";
 import cmSg4 from "./ks5/CM-SG4.ts";
 import cmSg5 from "./ks5/CM-SG5.ts";
+import cmSg5A from "./ks5/CM-SG5_a.ts";
+import cmSg5B from "./ks5/CM-SG5_b.ts";
+import cmSg5C from "./ks5/CM-SG5_c.ts";
 import cmSg6 from "./ks5/CM-SG6.ts";
+import cmSg6A from "./ks5/CM-SG6_a.ts";
+import cmSg6B from "./ks5/CM-SG6_b.ts";
 import cmSg7 from "./ks5/CM-SG7.ts";
+import cmSg7A from "./ks5/CM-SG7_a.ts";
+import cmSg7B from "./ks5/CM-SG7_b.ts";
+import cmSg7C from "./ks5/CM-SG7_c.ts";
 import cmSg8 from "./ks5/CM-SG8.ts";
 import cmSg9 from "./ks5/CM-SG9.ts";
+import cmSg9A from "./ks5/CM-SG9_a.ts";
+import cmSg9B from "./ks5/CM-SG9_b.ts";
 import cmSg10 from "./ks5/CM-SG10.ts";
+import cmSg10A from "./ks5/CM-SG10_a.ts";
+import cmSg10B from "./ks5/CM-SG10_b.ts";
 
 /** Every generator, in the order of data/statements.json. */
 export const generators: Generator[] = [
@@ -2656,42 +2697,83 @@ export const generators: Generator[] = [
   fmD206,
   cmA1,
   cmA2,
+  cmA2A,
+  cmA2B,
   cmA3,
+  cmA3A,
+  cmA3B,
   cmA4,
   cmA5,
+  cmA5A,
+  cmA5B,
+  cmA5C,
   cmA6,
   cmA7,
   cmA8,
+  cmA8A,
+  cmA8B,
   cmA9,
   cmA10,
+  cmA10A,
+  cmA10B,
   cmP1,
   cmP2,
   cmP3,
+  cmP3A,
+  cmP3B,
   cmP4,
+  cmP4A,
+  cmP4B,
+  cmP4C,
   cmP5,
   cmP6,
+  cmP6A,
+  cmP6B,
+  cmP6C,
   cmP7,
   cmLp1,
   cmLp2,
   cmLp3,
   cmLp4,
   cmLp5,
+  cmLp5A,
+  cmLp5B,
   cmLp6,
   cmLp7,
   cmLp8,
   cmLp9,
   cmLp10,
+  cmLp10A,
+  cmLp10B,
   cmLp11,
   cmSg1,
   cmSg2,
+  cmSg2A,
+  cmSg2B,
   cmSg3,
+  cmSg3A,
+  cmSg3B,
+  cmSg3C,
+  cmSg3D,
   cmSg4,
   cmSg5,
+  cmSg5A,
+  cmSg5B,
+  cmSg5C,
   cmSg6,
+  cmSg6A,
+  cmSg6B,
   cmSg7,
+  cmSg7A,
+  cmSg7B,
+  cmSg7C,
   cmSg8,
   cmSg9,
+  cmSg9A,
+  cmSg9B,
   cmSg10,
+  cmSg10A,
+  cmSg10B,
 ] as Generator[];
 
 /** Unreviewed placeholders that exercise the gallery; real generators replace them. */

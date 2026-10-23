@@ -10,7 +10,7 @@ import { signedWrongs } from "../shared/alg.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { round } from "../shared/dist.ts";
 
-interface Params {
+export interface Params {
   m: number;
   c: number;
   x: number;

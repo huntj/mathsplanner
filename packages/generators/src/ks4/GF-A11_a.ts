@@ -10,7 +10,7 @@ import { curveClearOfOrigin, grid, poly, signedWrongs } from "../shared/alg.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { distinctFrom } from "../shared/pos.ts";
 
-interface Params {
+export interface Params {
   a: number;
   b: number;
 }

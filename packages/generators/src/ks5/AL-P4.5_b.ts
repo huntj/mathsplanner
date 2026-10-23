@@ -11,7 +11,7 @@ import { numberAnswer } from "../shared/counting.ts";
 import { mixFamilies } from "../shared/npv.ts";
 import parent from "./AL-P4.5.ts";
 
-interface Params {
+export interface Params {
   a: number;
   r: number;
   n: number;

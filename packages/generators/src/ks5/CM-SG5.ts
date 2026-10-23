@@ -21,7 +21,7 @@ const ROOTS = [
   [4, 2],
 ] as const;
 
-interface Params {
+export interface Params {
   r: number;
   m: number;
   a: number;

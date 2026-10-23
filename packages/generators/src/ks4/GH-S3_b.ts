@@ -12,7 +12,7 @@ import { groupedTable, lineGraph } from "../shared/sta.ts";
 
 const LOWS = [0, 10, 20, 30, 40];
 
-interface Params {
+export interface Params {
   f: number[];
   k: number;
 }
