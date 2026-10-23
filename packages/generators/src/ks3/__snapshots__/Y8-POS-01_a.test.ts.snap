@@ -1,0 +1,1206 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "description": "Shape A and its image B on a grid.",
+        "grid": true,
+        "polygons": [
+          {
+            "label": "A",
+            "shaded": true,
+            "vertices": [
+              [
+                3,
+                3,
+              ],
+              [
+                5,
+                3,
+              ],
+              [
+                6,
+                5,
+              ],
+              [
+                3,
+                5,
+              ],
+            ],
+          },
+          {
+            "label": "B",
+            "vertices": [
+              [
+                6,
+                4,
+              ],
+              [
+                8,
+                4,
+              ],
+              [
+                9,
+                6,
+              ],
+              [
+                6,
+                6,
+              ],
+            ],
+          },
+        ],
+        "type": "cartesian",
+        "x": {
+          "max": 10,
+          "min": 0,
+          "step": 1,
+        },
+        "y": {
+          "max": 10,
+          "min": 0,
+          "step": 1,
+        },
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y8-POS-01.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} -3 \\\\ -1 \\end{pmatrix}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The top number is the move across; the bottom is the move up or down.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That moves B back to A. Describe the move from A to B.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which column vector describes the translation?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix}",
+        "say": [
+          {
+            "t": "text",
+            "v": "Follow one corner from A to B: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Shape A is translated to shape B.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "description": "Shape A and its image B on a grid.",
+        "grid": true,
+        "polygons": [
+          {
+            "label": "A",
+            "shaded": true,
+            "vertices": [
+              [
+                4,
+                2,
+              ],
+              [
+                6,
+                2,
+              ],
+              [
+                7,
+                4,
+              ],
+              [
+                4,
+                4,
+              ],
+            ],
+          },
+          {
+            "label": "B",
+            "vertices": [
+              [
+                2,
+                3,
+              ],
+              [
+                4,
+                3,
+              ],
+              [
+                5,
+                5,
+              ],
+              [
+                2,
+                5,
+              ],
+            ],
+          },
+        ],
+        "type": "cartesian",
+        "x": {
+          "max": 10,
+          "min": 0,
+          "step": 1,
+        },
+        "y": {
+          "max": 10,
+          "min": 0,
+          "step": 1,
+        },
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y8-POS-01.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 1 \\\\ -2 \\end{pmatrix}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} -2 \\\\ 1 \\end{pmatrix}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That moves B back to A. Describe the move from A to B.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The top number is the move across; the bottom is the move up or down.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which column vector describes the translation?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\begin{pmatrix} -2 \\\\ 1 \\end{pmatrix}",
+        "say": [
+          {
+            "t": "text",
+            "v": "Follow one corner from A to B: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Shape A is translated to shape B.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "description": "Shape A and its image B on a grid.",
+        "grid": true,
+        "polygons": [
+          {
+            "label": "A",
+            "shaded": true,
+            "vertices": [
+              [
+                2,
+                2,
+              ],
+              [
+                4,
+                2,
+              ],
+              [
+                5,
+                4,
+              ],
+              [
+                2,
+                4,
+              ],
+            ],
+          },
+          {
+            "label": "B",
+            "vertices": [
+              [
+                5,
+                7,
+              ],
+              [
+                7,
+                7,
+              ],
+              [
+                8,
+                9,
+              ],
+              [
+                5,
+                9,
+              ],
+            ],
+          },
+        ],
+        "type": "cartesian",
+        "x": {
+          "max": 10,
+          "min": 0,
+          "step": 1,
+        },
+        "y": {
+          "max": 10,
+          "min": 0,
+          "step": 1,
+        },
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y8-POS-01.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 5 \\\\ 3 \\end{pmatrix}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} 3 \\\\ 5 \\end{pmatrix}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\begin{pmatrix} -3 \\\\ -5 \\end{pmatrix}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The top number is the move across; the bottom is the move up or down.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That moves B back to A. Describe the move from A to B.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which column vector describes the translation?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "\\begin{pmatrix} 3 \\\\ 5 \\end{pmatrix}",
+        "say": [
+          {
+            "t": "text",
+            "v": "Follow one corner from A to B: ",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Shape A is translated to shape B.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y8-POS-01.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "3 squares left and 1 square down",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "1 square right and 3 squares up",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "3 squares right and 1 square up",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "A positive top number means right; a positive bottom number means up.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The top number is the movement left or right.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which describes the movement in words?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "3 squares right and 1 square up.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A shape is translated by ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y8-POS-01.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "1 square right and 2 squares down",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "2 squares right and 1 square down",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "2 squares left and 1 square up",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The top number is the movement left or right.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "A positive top number means right; a positive bottom number means up.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which describes the movement in words?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "2 squares left and 1 square up.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A shape is translated by ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} -2 \\\\ 1 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y8-POS-01.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "3 squares right and 5 squares up",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "5 squares right and 3 squares up",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "3 squares left and 5 squares down",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The top number is the movement left or right.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.DIRECTION",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "A positive top number means right; a positive bottom number means up.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which describes the movement in words?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "3 squares right and 5 squares up.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A shape is translated by ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 3 \\\\ 5 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y8-POS-01.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The gap and the move are always the same.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Measure how far one corner moves to the matching corner. The gap between the shapes is less than that.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Count the empty squares between them.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.COUNT-GAP",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.COUNT-GAP",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Track a single vertex from A to its image.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Kim says the gap between shape A and its image B shows how far the shape moved.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y8-POS-01.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Measure how far one corner moves to the matching corner. The gap between the shapes is less than that.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The gap and the move are always the same.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Count the empty squares between them.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.COUNT-GAP",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.COUNT-GAP",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Track a single vertex from A to its image.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Kim says the gap between shape A and its image B shows how far the shape moved.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y8-POS-01.a",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The gap and the move are always the same.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Count the empty squares between them.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Measure how far one corner moves to the matching corner. The gap between the shapes is less than that.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.COUNT-GAP",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "POS.TRANSLATE.COUNT-GAP",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Track a single vertex from A to its image.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Kim says the gap between shape A and its image B shows how far the shape moved.",
+      },
+    ],
+  },
+]
+`;

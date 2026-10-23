@@ -357,30 +357,71 @@ import y7Pro01A from "./ks3/Y7-PRO-01_a.ts";
 import y7Pro01B from "./ks3/Y7-PRO-01_b.ts";
 import y7Pro02 from "./ks3/Y7-PRO-02.ts";
 import y8Npv01 from "./ks3/Y8-NPV-01.ts";
+import y8Npv01A from "./ks3/Y8-NPV-01_a.ts";
+import y8Npv01B from "./ks3/Y8-NPV-01_b.ts";
 import y8Npv02 from "./ks3/Y8-NPV-02.ts";
 import y8Alg01 from "./ks3/Y8-ALG-01.ts";
+import y8Alg01A from "./ks3/Y8-ALG-01_a.ts";
+import y8Alg01B from "./ks3/Y8-ALG-01_b.ts";
 import y8Alg02 from "./ks3/Y8-ALG-02.ts";
+import y8Alg02A from "./ks3/Y8-ALG-02_a.ts";
+import y8Alg02B from "./ks3/Y8-ALG-02_b.ts";
 import y8Alg03 from "./ks3/Y8-ALG-03.ts";
 import y8Alg04 from "./ks3/Y8-ALG-04.ts";
+import y8Alg04A from "./ks3/Y8-ALG-04_a.ts";
+import y8Alg04B from "./ks3/Y8-ALG-04_b.ts";
+import y8Alg04C from "./ks3/Y8-ALG-04_c.ts";
 import y8Alg05 from "./ks3/Y8-ALG-05.ts";
 import y8Alg06 from "./ks3/Y8-ALG-06.ts";
+import y8Alg06A from "./ks3/Y8-ALG-06_a.ts";
+import y8Alg06B from "./ks3/Y8-ALG-06_b.ts";
 import y8Alg07 from "./ks3/Y8-ALG-07.ts";
 import y8Alg08 from "./ks3/Y8-ALG-08.ts";
+import y8Alg08A from "./ks3/Y8-ALG-08_a.ts";
+import y8Alg08B from "./ks3/Y8-ALG-08_b.ts";
 import y8Alg09 from "./ks3/Y8-ALG-09.ts";
 import y8Rat01 from "./ks3/Y8-RAT-01.ts";
 import y8Rat02 from "./ks3/Y8-RAT-02.ts";
 import y8Rat03 from "./ks3/Y8-RAT-03.ts";
+import y8Rat03A from "./ks3/Y8-RAT-03_a.ts";
+import y8Rat03B from "./ks3/Y8-RAT-03_b.ts";
+import y8Rat03C from "./ks3/Y8-RAT-03_c.ts";
+import y8Rat03D from "./ks3/Y8-RAT-03_d.ts";
 import y8Rat04 from "./ks3/Y8-RAT-04.ts";
+import y8Rat04A from "./ks3/Y8-RAT-04_a.ts";
+import y8Rat04B from "./ks3/Y8-RAT-04_b.ts";
 import y8Rat05 from "./ks3/Y8-RAT-05.ts";
+import y8Rat05A from "./ks3/Y8-RAT-05_a.ts";
+import y8Rat05B from "./ks3/Y8-RAT-05_b.ts";
+import y8Rat05C from "./ks3/Y8-RAT-05_c.ts";
 import y8Geo01 from "./ks3/Y8-GEO-01.ts";
+import y8Geo01A from "./ks3/Y8-GEO-01_a.ts";
+import y8Geo01B from "./ks3/Y8-GEO-01_b.ts";
+import y8Geo01C from "./ks3/Y8-GEO-01_c.ts";
 import y8Geo02 from "./ks3/Y8-GEO-02.ts";
+import y8Geo02A from "./ks3/Y8-GEO-02_a.ts";
+import y8Geo02B from "./ks3/Y8-GEO-02_b.ts";
 import y8Geo03 from "./ks3/Y8-GEO-03.ts";
 import y8Geo04 from "./ks3/Y8-GEO-04.ts";
+import y8Geo04A from "./ks3/Y8-GEO-04_a.ts";
+import y8Geo04B from "./ks3/Y8-GEO-04_b.ts";
+import y8Geo04C from "./ks3/Y8-GEO-04_c.ts";
+import y8Geo04D from "./ks3/Y8-GEO-04_d.ts";
 import y8Geo05 from "./ks3/Y8-GEO-05.ts";
+import y8Geo05A from "./ks3/Y8-GEO-05_a.ts";
+import y8Geo05B from "./ks3/Y8-GEO-05_b.ts";
 import y8Pos01 from "./ks3/Y8-POS-01.ts";
+import y8Pos01A from "./ks3/Y8-POS-01_a.ts";
+import y8Pos01B from "./ks3/Y8-POS-01_b.ts";
+import y8Pos01C from "./ks3/Y8-POS-01_c.ts";
 import y8Geo06 from "./ks3/Y8-GEO-06.ts";
 import y8Sta01 from "./ks3/Y8-STA-01.ts";
+import y8Sta01A from "./ks3/Y8-STA-01_a.ts";
+import y8Sta01B from "./ks3/Y8-STA-01_b.ts";
+import y8Sta01C from "./ks3/Y8-STA-01_c.ts";
 import y8Sta02 from "./ks3/Y8-STA-02.ts";
+import y8Sta02A from "./ks3/Y8-STA-02_a.ts";
+import y8Sta02B from "./ks3/Y8-STA-02_b.ts";
 import y8Pro01 from "./ks3/Y8-PRO-01.ts";
 import y9Npv01 from "./ks3/Y9-NPV-01.ts";
 import y9Alg01 from "./ks3/Y9-ALG-01.ts";
@@ -1282,30 +1323,71 @@ export const generators: Generator[] = [
   y7Pro01B,
   y7Pro02,
   y8Npv01,
+  y8Npv01A,
+  y8Npv01B,
   y8Npv02,
   y8Alg01,
+  y8Alg01A,
+  y8Alg01B,
   y8Alg02,
+  y8Alg02A,
+  y8Alg02B,
   y8Alg03,
   y8Alg04,
+  y8Alg04A,
+  y8Alg04B,
+  y8Alg04C,
   y8Alg05,
   y8Alg06,
+  y8Alg06A,
+  y8Alg06B,
   y8Alg07,
   y8Alg08,
+  y8Alg08A,
+  y8Alg08B,
   y8Alg09,
   y8Rat01,
   y8Rat02,
   y8Rat03,
+  y8Rat03A,
+  y8Rat03B,
+  y8Rat03C,
+  y8Rat03D,
   y8Rat04,
+  y8Rat04A,
+  y8Rat04B,
   y8Rat05,
+  y8Rat05A,
+  y8Rat05B,
+  y8Rat05C,
   y8Geo01,
+  y8Geo01A,
+  y8Geo01B,
+  y8Geo01C,
   y8Geo02,
+  y8Geo02A,
+  y8Geo02B,
   y8Geo03,
   y8Geo04,
+  y8Geo04A,
+  y8Geo04B,
+  y8Geo04C,
+  y8Geo04D,
   y8Geo05,
+  y8Geo05A,
+  y8Geo05B,
   y8Pos01,
+  y8Pos01A,
+  y8Pos01B,
+  y8Pos01C,
   y8Geo06,
   y8Sta01,
+  y8Sta01A,
+  y8Sta01B,
+  y8Sta01C,
   y8Sta02,
+  y8Sta02A,
+  y8Sta02B,
   y8Pro01,
   y9Npv01,
   y9Alg01,
