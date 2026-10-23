@@ -424,24 +424,53 @@ import y8Sta02A from "./ks3/Y8-STA-02_a.ts";
 import y8Sta02B from "./ks3/Y8-STA-02_b.ts";
 import y8Pro01 from "./ks3/Y8-PRO-01.ts";
 import y9Npv01 from "./ks3/Y9-NPV-01.ts";
+import y9Npv01A from "./ks3/Y9-NPV-01_a.ts";
+import y9Npv01B from "./ks3/Y9-NPV-01_b.ts";
 import y9Alg01 from "./ks3/Y9-ALG-01.ts";
+import y9Alg01A from "./ks3/Y9-ALG-01_a.ts";
+import y9Alg01B from "./ks3/Y9-ALG-01_b.ts";
 import y9Alg02 from "./ks3/Y9-ALG-02.ts";
+import y9Alg02A from "./ks3/Y9-ALG-02_a.ts";
+import y9Alg02B from "./ks3/Y9-ALG-02_b.ts";
+import y9Alg02C from "./ks3/Y9-ALG-02_c.ts";
 import y9Alg03 from "./ks3/Y9-ALG-03.ts";
 import y9Alg04 from "./ks3/Y9-ALG-04.ts";
+import y9Alg04A from "./ks3/Y9-ALG-04_a.ts";
+import y9Alg04B from "./ks3/Y9-ALG-04_b.ts";
+import y9Alg04C from "./ks3/Y9-ALG-04_c.ts";
 import y9Alg05 from "./ks3/Y9-ALG-05.ts";
+import y9Alg05A from "./ks3/Y9-ALG-05_a.ts";
+import y9Alg05B from "./ks3/Y9-ALG-05_b.ts";
 import y9Alg06 from "./ks3/Y9-ALG-06.ts";
+import y9Alg06A from "./ks3/Y9-ALG-06_a.ts";
+import y9Alg06B from "./ks3/Y9-ALG-06_b.ts";
 import y9Alg07 from "./ks3/Y9-ALG-07.ts";
+import y9Alg07A from "./ks3/Y9-ALG-07_a.ts";
+import y9Alg07B from "./ks3/Y9-ALG-07_b.ts";
 import y9Alg08 from "./ks3/Y9-ALG-08.ts";
+import y9Alg08A from "./ks3/Y9-ALG-08_a.ts";
+import y9Alg08B from "./ks3/Y9-ALG-08_b.ts";
 import y9Alg09 from "./ks3/Y9-ALG-09.ts";
 import y9Rat01 from "./ks3/Y9-RAT-01.ts";
 import y9Rat02 from "./ks3/Y9-RAT-02.ts";
 import y9Rat03 from "./ks3/Y9-RAT-03.ts";
+import y9Rat03A from "./ks3/Y9-RAT-03_a.ts";
+import y9Rat03B from "./ks3/Y9-RAT-03_b.ts";
 import y9Geo01 from "./ks3/Y9-GEO-01.ts";
+import y9Geo01A from "./ks3/Y9-GEO-01_a.ts";
+import y9Geo01B from "./ks3/Y9-GEO-01_b.ts";
+import y9Geo01C from "./ks3/Y9-GEO-01_c.ts";
 import y9Geo02 from "./ks3/Y9-GEO-02.ts";
+import y9Geo02A from "./ks3/Y9-GEO-02_a.ts";
+import y9Geo02B from "./ks3/Y9-GEO-02_b.ts";
 import y9Geo03 from "./ks3/Y9-GEO-03.ts";
 import y9Pos01 from "./ks3/Y9-POS-01.ts";
 import y9Pro01 from "./ks3/Y9-PRO-01.ts";
+import y9Pro01A from "./ks3/Y9-PRO-01_a.ts";
+import y9Pro01B from "./ks3/Y9-PRO-01_b.ts";
 import y9Pro02 from "./ks3/Y9-PRO-02.ts";
+import y9Pro02A from "./ks3/Y9-PRO-02_a.ts";
+import y9Pro02B from "./ks3/Y9-PRO-02_b.ts";
 import gfN1 from "./ks4/GF-N1.ts";
 import gfN1A from "./ks4/GF-N1_a.ts";
 import gfN1B from "./ks4/GF-N1_b.ts";
@@ -1390,24 +1419,53 @@ export const generators: Generator[] = [
   y8Sta02B,
   y8Pro01,
   y9Npv01,
+  y9Npv01A,
+  y9Npv01B,
   y9Alg01,
+  y9Alg01A,
+  y9Alg01B,
   y9Alg02,
+  y9Alg02A,
+  y9Alg02B,
+  y9Alg02C,
   y9Alg03,
   y9Alg04,
+  y9Alg04A,
+  y9Alg04B,
+  y9Alg04C,
   y9Alg05,
+  y9Alg05A,
+  y9Alg05B,
   y9Alg06,
+  y9Alg06A,
+  y9Alg06B,
   y9Alg07,
+  y9Alg07A,
+  y9Alg07B,
   y9Alg08,
+  y9Alg08A,
+  y9Alg08B,
   y9Alg09,
   y9Rat01,
   y9Rat02,
   y9Rat03,
+  y9Rat03A,
+  y9Rat03B,
   y9Geo01,
+  y9Geo01A,
+  y9Geo01B,
+  y9Geo01C,
   y9Geo02,
+  y9Geo02A,
+  y9Geo02B,
   y9Geo03,
   y9Pos01,
   y9Pro01,
+  y9Pro01A,
+  y9Pro01B,
   y9Pro02,
+  y9Pro02A,
+  y9Pro02B,
   gfN1,
   gfN1A,
   gfN1B,
