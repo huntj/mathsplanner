@@ -9,7 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 
-interface Params {
+export interface Params {
   total: number;
   /** Shortest distances AB, CD, AC, BD, AD, BC between the odd vertices. */
   d: number[];

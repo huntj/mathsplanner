@@ -9,7 +9,7 @@ import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mat
 import { chosenText, exactAnswer } from "../shared/counting.ts";
 import { tableLatex } from "../shared/sta.ts";
 
-interface Params {
+export interface Params {
   m: number[][];
   g: number[];
 }

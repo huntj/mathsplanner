@@ -1352,41 +1352,103 @@ import fmFp206A from "./ks5/FM-FP2-06_a.ts";
 import fmFp206B from "./ks5/FM-FP2-06_b.ts";
 import fmFp206C from "./ks5/FM-FP2-06_c.ts";
 import fmFs101 from "./ks5/FM-FS1-01.ts";
+import fmFs101A from "./ks5/FM-FS1-01_a.ts";
+import fmFs101B from "./ks5/FM-FS1-01_b.ts";
 import fmFs102 from "./ks5/FM-FS1-02.ts";
+import fmFs102A from "./ks5/FM-FS1-02_a.ts";
+import fmFs102B from "./ks5/FM-FS1-02_b.ts";
+import fmFs102C from "./ks5/FM-FS1-02_c.ts";
 import fmFs103 from "./ks5/FM-FS1-03.ts";
+import fmFs103A from "./ks5/FM-FS1-03_a.ts";
+import fmFs103B from "./ks5/FM-FS1-03_b.ts";
 import fmFs104 from "./ks5/FM-FS1-04.ts";
+import fmFs104A from "./ks5/FM-FS1-04_a.ts";
+import fmFs104B from "./ks5/FM-FS1-04_b.ts";
 import fmFs105 from "./ks5/FM-FS1-05.ts";
 import fmFs106 from "./ks5/FM-FS1-06.ts";
+import fmFs106A from "./ks5/FM-FS1-06_a.ts";
+import fmFs106B from "./ks5/FM-FS1-06_b.ts";
 import fmFs107 from "./ks5/FM-FS1-07.ts";
 import fmFs108 from "./ks5/FM-FS1-08.ts";
+import fmFs108A from "./ks5/FM-FS1-08_a.ts";
+import fmFs108B from "./ks5/FM-FS1-08_b.ts";
 import fmFs201 from "./ks5/FM-FS2-01.ts";
+import fmFs201A from "./ks5/FM-FS2-01_a.ts";
+import fmFs201B from "./ks5/FM-FS2-01_b.ts";
 import fmFs202 from "./ks5/FM-FS2-02.ts";
+import fmFs202A from "./ks5/FM-FS2-02_a.ts";
+import fmFs202B from "./ks5/FM-FS2-02_b.ts";
+import fmFs202C from "./ks5/FM-FS2-02_c.ts";
 import fmFs203 from "./ks5/FM-FS2-03.ts";
+import fmFs203A from "./ks5/FM-FS2-03_a.ts";
+import fmFs203B from "./ks5/FM-FS2-03_b.ts";
+import fmFs203C from "./ks5/FM-FS2-03_c.ts";
 import fmFs204 from "./ks5/FM-FS2-04.ts";
 import fmFs205 from "./ks5/FM-FS2-05.ts";
+import fmFs205A from "./ks5/FM-FS2-05_a.ts";
+import fmFs205B from "./ks5/FM-FS2-05_b.ts";
 import fmFs206 from "./ks5/FM-FS2-06.ts";
+import fmFs206A from "./ks5/FM-FS2-06_a.ts";
+import fmFs206B from "./ks5/FM-FS2-06_b.ts";
+import fmFs206C from "./ks5/FM-FS2-06_c.ts";
 import fmFm101 from "./ks5/FM-FM1-01.ts";
 import fmFm102 from "./ks5/FM-FM1-02.ts";
+import fmFm102A from "./ks5/FM-FM1-02_a.ts";
+import fmFm102B from "./ks5/FM-FM1-02_b.ts";
 import fmFm103 from "./ks5/FM-FM1-03.ts";
+import fmFm103A from "./ks5/FM-FM1-03_a.ts";
+import fmFm103B from "./ks5/FM-FM1-03_b.ts";
 import fmFm104 from "./ks5/FM-FM1-04.ts";
 import fmFm105 from "./ks5/FM-FM1-05.ts";
 import fmFm201 from "./ks5/FM-FM2-01.ts";
+import fmFm201A from "./ks5/FM-FM2-01_a.ts";
+import fmFm201B from "./ks5/FM-FM2-01_b.ts";
 import fmFm202 from "./ks5/FM-FM2-02.ts";
+import fmFm202A from "./ks5/FM-FM2-02_a.ts";
+import fmFm202B from "./ks5/FM-FM2-02_b.ts";
 import fmFm203 from "./ks5/FM-FM2-03.ts";
+import fmFm203A from "./ks5/FM-FM2-03_a.ts";
+import fmFm203B from "./ks5/FM-FM2-03_b.ts";
+import fmFm203C from "./ks5/FM-FM2-03_c.ts";
 import fmFm204 from "./ks5/FM-FM2-04.ts";
+import fmFm204A from "./ks5/FM-FM2-04_a.ts";
+import fmFm204B from "./ks5/FM-FM2-04_b.ts";
+import fmFm204C from "./ks5/FM-FM2-04_c.ts";
 import fmFm205 from "./ks5/FM-FM2-05.ts";
 import fmD101 from "./ks5/FM-D1-01.ts";
+import fmD101A from "./ks5/FM-D1-01_a.ts";
+import fmD101B from "./ks5/FM-D1-01_b.ts";
+import fmD101C from "./ks5/FM-D1-01_c.ts";
 import fmD102 from "./ks5/FM-D1-02.ts";
+import fmD102A from "./ks5/FM-D1-02_a.ts";
+import fmD102B from "./ks5/FM-D1-02_b.ts";
+import fmD102C from "./ks5/FM-D1-02_c.ts";
 import fmD103 from "./ks5/FM-D1-03.ts";
+import fmD103A from "./ks5/FM-D1-03_a.ts";
+import fmD103B from "./ks5/FM-D1-03_b.ts";
 import fmD104 from "./ks5/FM-D1-04.ts";
+import fmD104A from "./ks5/FM-D1-04_a.ts";
+import fmD104B from "./ks5/FM-D1-04_b.ts";
 import fmD105 from "./ks5/FM-D1-05.ts";
+import fmD105A from "./ks5/FM-D1-05_a.ts";
+import fmD105B from "./ks5/FM-D1-05_b.ts";
+import fmD105C from "./ks5/FM-D1-05_c.ts";
 import fmD106 from "./ks5/FM-D1-06.ts";
+import fmD106A from "./ks5/FM-D1-06_a.ts";
+import fmD106B from "./ks5/FM-D1-06_b.ts";
+import fmD106C from "./ks5/FM-D1-06_c.ts";
 import fmD201 from "./ks5/FM-D2-01.ts";
+import fmD201A from "./ks5/FM-D2-01_a.ts";
+import fmD201B from "./ks5/FM-D2-01_b.ts";
 import fmD202 from "./ks5/FM-D2-02.ts";
 import fmD203 from "./ks5/FM-D2-03.ts";
 import fmD204 from "./ks5/FM-D2-04.ts";
 import fmD205 from "./ks5/FM-D2-05.ts";
+import fmD205A from "./ks5/FM-D2-05_a.ts";
+import fmD205B from "./ks5/FM-D2-05_b.ts";
 import fmD206 from "./ks5/FM-D2-06.ts";
+import fmD206A from "./ks5/FM-D2-06_a.ts";
+import fmD206B from "./ks5/FM-D2-06_b.ts";
 import cmA1 from "./ks5/CM-A1.ts";
 import cmA2 from "./ks5/CM-A2.ts";
 import cmA2A from "./ks5/CM-A2_a.ts";
@@ -2820,41 +2882,103 @@ export const generators: Generator[] = [
   fmFp206B,
   fmFp206C,
   fmFs101,
+  fmFs101A,
+  fmFs101B,
   fmFs102,
+  fmFs102A,
+  fmFs102B,
+  fmFs102C,
   fmFs103,
+  fmFs103A,
+  fmFs103B,
   fmFs104,
+  fmFs104A,
+  fmFs104B,
   fmFs105,
   fmFs106,
+  fmFs106A,
+  fmFs106B,
   fmFs107,
   fmFs108,
+  fmFs108A,
+  fmFs108B,
   fmFs201,
+  fmFs201A,
+  fmFs201B,
   fmFs202,
+  fmFs202A,
+  fmFs202B,
+  fmFs202C,
   fmFs203,
+  fmFs203A,
+  fmFs203B,
+  fmFs203C,
   fmFs204,
   fmFs205,
+  fmFs205A,
+  fmFs205B,
   fmFs206,
+  fmFs206A,
+  fmFs206B,
+  fmFs206C,
   fmFm101,
   fmFm102,
+  fmFm102A,
+  fmFm102B,
   fmFm103,
+  fmFm103A,
+  fmFm103B,
   fmFm104,
   fmFm105,
   fmFm201,
+  fmFm201A,
+  fmFm201B,
   fmFm202,
+  fmFm202A,
+  fmFm202B,
   fmFm203,
+  fmFm203A,
+  fmFm203B,
+  fmFm203C,
   fmFm204,
+  fmFm204A,
+  fmFm204B,
+  fmFm204C,
   fmFm205,
   fmD101,
+  fmD101A,
+  fmD101B,
+  fmD101C,
   fmD102,
+  fmD102A,
+  fmD102B,
+  fmD102C,
   fmD103,
+  fmD103A,
+  fmD103B,
   fmD104,
+  fmD104A,
+  fmD104B,
   fmD105,
+  fmD105A,
+  fmD105B,
+  fmD105C,
   fmD106,
+  fmD106A,
+  fmD106B,
+  fmD106C,
   fmD201,
+  fmD201A,
+  fmD201B,
   fmD202,
   fmD203,
   fmD204,
   fmD205,
+  fmD205A,
+  fmD205B,
   fmD206,
+  fmD206A,
+  fmD206B,
   cmA1,
   cmA2,
   cmA2A,

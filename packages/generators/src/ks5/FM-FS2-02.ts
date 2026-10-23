@@ -13,7 +13,7 @@ import { round } from "../shared/dist.ts";
 /** One-tailed 5% critical values of Spearman's rank correlation coefficient. */
 const CRITICAL: Record<number, number> = { 6: 0.8286, 7: 0.7143, 8: 0.6429, 9: 0.6, 10: 0.5636 };
 
-interface Params {
+export interface Params {
   n: number;
   d2: number;
 }

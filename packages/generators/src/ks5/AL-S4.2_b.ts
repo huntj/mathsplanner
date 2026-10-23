@@ -76,11 +76,11 @@ export default defineGenerator<Params>({
             ".",
           ],
           ask: "Find the z-value that a corresponds to, to 4 decimal places.",
-          answer: A.number(z, { accuracy: { dp: 3 } }),
+          answer: A.number(z, { accuracy: { dp: 4 } }),
           wrong: wrongs(z, [
             {
               code: "PRO.NORMAL.STANDARDISE",
-              value: A.number(-z, { accuracy: { dp: 3 } }),
+              value: A.number(-z, { accuracy: { dp: 4 } }),
               feedback: `Check the tail: a is ${below > 0.5 ? "above" : "below"} the mean, so z is ${below > 0.5 ? "positive" : "negative"}.`,
             },
           ]),

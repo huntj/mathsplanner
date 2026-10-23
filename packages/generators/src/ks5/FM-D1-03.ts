@@ -10,7 +10,7 @@ import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { type Edge, dijkstra, edgeList, greedyWalk, name, network } from "../shared/dec.ts";
 
-interface Params {
+export interface Params {
   n: number;
   edges: Edge[];
   bc: number;

@@ -11,7 +11,7 @@ import { exactAnswer, numberAnswer } from "../shared/counting.ts";
 import { round } from "../shared/dist.ts";
 import { deg } from "../shared/trig.ts";
 
-interface Params {
+export interface Params {
   r: number;
   w: number;
   h: number;

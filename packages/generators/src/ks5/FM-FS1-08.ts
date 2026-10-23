@@ -16,7 +16,7 @@ const ERRORS = [
   "Rejecting H₀ when H₀ is false",
 ];
 
-interface Params {
+export interface Params {
   type: number;
   n: number;
   p0: number;

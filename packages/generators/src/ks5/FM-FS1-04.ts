@@ -10,7 +10,7 @@ import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { poissonCdf, poissonPmf, round } from "../shared/dist.ts";
 
-interface Params {
+export interface Params {
   lambda: number;
   x: number;
 }

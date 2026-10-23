@@ -1,0 +1,876 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FM-FS2-05.b > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FS2-05.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{\\sigma}{\\sqrt{n}}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\sigma",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{\\sigma}{n}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "PRO.CLT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The sample mean varies less than single values: use σ/√n.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "PRO.CLT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Divide by √n, not n.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "math",
+            "v": "\\bar{X} \\sim N\\left(\\mu, \\frac{\\sigma^2}{n}\\right)",
+          },
+          {
+            "t": "text",
+            "v": ", so the standard error is ",
+          },
+          {
+            "t": "math",
+            "v": "\\frac{\\sigma}{\\sqrt{n}}",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A 95% confidence interval for μ from a normal population with known σ uses which standard error?",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FS2-05.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{\\sigma}{n}",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{\\sigma}{\\sqrt{n}}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\sigma",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "PRO.CLT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Divide by √n, not n.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "C",
+              "type": "choice",
+            },
+            "code": "PRO.CLT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The sample mean varies less than single values: use σ/√n.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "math",
+            "v": "\\bar{X} \\sim N\\left(\\mu, \\frac{\\sigma^2}{n}\\right)",
+          },
+          {
+            "t": "text",
+            "v": ", so the standard error is ",
+          },
+          {
+            "t": "math",
+            "v": "\\frac{\\sigma}{\\sqrt{n}}",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A 95% confidence interval for μ from a normal population with known σ uses which standard error?",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FS2-05.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\sigma",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{\\sigma}{n}",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "math",
+                  "v": "\\frac{\\sigma}{\\sqrt{n}}",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "type": "choice",
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "A",
+              "type": "choice",
+            },
+            "code": "PRO.CLT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The sample mean varies less than single values: use σ/√n.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "id": "B",
+              "type": "choice",
+            },
+            "code": "PRO.CLT",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Divide by √n, not n.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "math",
+            "v": "\\bar{X} \\sim N\\left(\\mu, \\frac{\\sigma^2}{n}\\right)",
+          },
+          {
+            "t": "text",
+            "v": ", so the standard error is ",
+          },
+          {
+            "t": "math",
+            "v": "\\frac{\\sigma}{\\sqrt{n}}",
+          },
+          {
+            "t": "text",
+            "v": ".",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A 95% confidence interval for μ from a normal population with known σ uses which standard error?",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FS2-05.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 2,
+          },
+          "type": "number",
+          "value": 39.29,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 44.58,
+            },
+            "code": "STA.CONFIDENCE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Use the standard error σ/√n = 3/√100.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the upper limit of a 95% confidence interval for the population mean, to 2 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "38.7 + 1.96 \\times \\frac{3}{\\sqrt{100}} = 39.29",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A random sample of 100 values from a normal population with standard deviation 3 has mean 38.7.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FS2-05.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 2,
+          },
+          "type": "number",
+          "value": 77.81,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 90.88,
+            },
+            "code": "STA.CONFIDENCE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Use the standard error σ/√n = 8/√36.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the upper limit of a 95% confidence interval for the population mean, to 2 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "75.2 + 1.96 \\times \\frac{8}{\\sqrt{36}} = 77.81",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A random sample of 36 values from a normal population with standard deviation 8 has mean 75.2.",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FS2-05.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "dp": 2,
+          },
+          "type": "number",
+          "value": 85.95,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 95.36,
+            },
+            "code": "STA.CONFIDENCE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Use the standard error σ/√n = 6/√25.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Find the upper limit of a 95% confidence interval for the population mean, to 2 decimal places.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "math": "83.6 + 1.96 \\times \\frac{6}{\\sqrt{25}} = 85.95",
+        "say": [],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A random sample of 25 values from a normal population with standard deviation 6 has mean 83.6.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "FM-FS2-05.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 95% of the data lie in the interval.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. That is the definition of a 95% confidence interval.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. μ is fixed, so this particular interval either contains it or not. 95% of intervals made this way would contain μ.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "STA.CONFIDENCE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "STA.CONFIDENCE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The probability is about the method, before the sample is taken.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Zak works out a 95% confidence interval (37.7, 39.7) and says there is a 95% probability that μ lies in this interval.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "FM-FS2-05.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. That is the definition of a 95% confidence interval.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. μ is fixed, so this particular interval either contains it or not. 95% of intervals made this way would contain μ.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 95% of the data lie in the interval.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "STA.CONFIDENCE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "STA.CONFIDENCE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The probability is about the method, before the sample is taken.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Zak works out a 95% confidence interval (74.2, 76.2) and says there is a 95% probability that μ lies in this interval.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "FM-FS2-05.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. That is the definition of a 95% confidence interval.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 95% of the data lie in the interval.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. μ is fixed, so this particular interval either contains it or not. 95% of intervals made this way would contain μ.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "STA.CONFIDENCE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "STA.CONFIDENCE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The probability is about the method, before the sample is taken.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Zak works out a 95% confidence interval (82.6, 84.6) and says there is a 95% probability that μ lies in this interval.",
+      },
+    ],
+  },
+]
+`;

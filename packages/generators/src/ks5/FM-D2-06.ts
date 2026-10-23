@@ -10,7 +10,7 @@ import { linear, signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { round } from "../shared/dist.ts";
 
-interface Params {
+export interface Params {
   pay: number[];
   prob: number[];
   a: number;
