@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.35.0",
+  "version": "0.36.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -603,6 +603,11 @@
       "remediate": "Y8-RAT-05"
     },
     {
+      "code": "RAT.SPEED.MEAN",
+      "description": "Finds an average speed by taking the mean of the speeds for each part of a journey, instead of total distance ÷ total time.",
+      "remediate": "GF-R11.a"
+    },
+    {
       "code": "RAT.INVERSE.AS-DIRECT",
       "description": "Treats inverse proportion as direct, e.g. thinks more workers take more days.",
       "remediate": "Y9-RAT-01"
@@ -621,6 +626,11 @@
       "code": "RAT.PERCENT.CHANGE-BASE",
       "description": "Works out a percentage change by dividing by the new value instead of the original value.",
       "remediate": "GF-R9"
+    },
+    {
+      "code": "RAT.INTEREST.ONE-YEAR",
+      "description": "Works out one year's simple interest and stops, instead of multiplying by the number of years.",
+      "remediate": "GF-R9.d"
     },
     {
       "code": "RAT.RATE.VALUE",

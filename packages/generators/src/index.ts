@@ -495,12 +495,26 @@ import gfR2 from "./ks4/GF-R2.ts";
 import gfR3 from "./ks4/GF-R3.ts";
 import gfR4 from "./ks4/GF-R4.ts";
 import gfR5 from "./ks4/GF-R5.ts";
+import gfR5A from "./ks4/GF-R5_a.ts";
+import gfR5B from "./ks4/GF-R5_b.ts";
+import gfR5C from "./ks4/GF-R5_c.ts";
 import gfR6 from "./ks4/GF-R6.ts";
 import gfR7 from "./ks4/GF-R7.ts";
 import gfR8 from "./ks4/GF-R8.ts";
 import gfR9 from "./ks4/GF-R9.ts";
+import gfR9A from "./ks4/GF-R9_a.ts";
+import gfR9B from "./ks4/GF-R9_b.ts";
+import gfR9C from "./ks4/GF-R9_c.ts";
+import gfR9D from "./ks4/GF-R9_d.ts";
 import gfR10 from "./ks4/GF-R10.ts";
+import gfR10A from "./ks4/GF-R10_a.ts";
+import gfR10B from "./ks4/GF-R10_b.ts";
+import gfR10C from "./ks4/GF-R10_c.ts";
 import gfR11 from "./ks4/GF-R11.ts";
+import gfR11A from "./ks4/GF-R11_a.ts";
+import gfR11B from "./ks4/GF-R11_b.ts";
+import gfR11C from "./ks4/GF-R11_c.ts";
+import gfR11D from "./ks4/GF-R11_d.ts";
 import gfR12 from "./ks4/GF-R12.ts";
 import gfR13 from "./ks4/GF-R13.ts";
 import ghR13 from "./ks4/GH-R13.ts";
@@ -508,6 +522,9 @@ import gfR14 from "./ks4/GF-R14.ts";
 import ghR14 from "./ks4/GH-R14.ts";
 import ghR15 from "./ks4/GH-R15.ts";
 import gfR16 from "./ks4/GF-R16.ts";
+import gfR16A from "./ks4/GF-R16_a.ts";
+import gfR16B from "./ks4/GF-R16_b.ts";
+import gfR16C from "./ks4/GF-R16_c.ts";
 import ghR16 from "./ks4/GH-R16.ts";
 import gfG1 from "./ks4/GF-G1.ts";
 import gfG2 from "./ks4/GF-G2.ts";
@@ -1276,12 +1293,26 @@ export const generators: Generator[] = [
   gfR3,
   gfR4,
   gfR5,
+  gfR5A,
+  gfR5B,
+  gfR5C,
   gfR6,
   gfR7,
   gfR8,
   gfR9,
+  gfR9A,
+  gfR9B,
+  gfR9C,
+  gfR9D,
   gfR10,
+  gfR10A,
+  gfR10B,
+  gfR10C,
   gfR11,
+  gfR11A,
+  gfR11B,
+  gfR11C,
+  gfR11D,
   gfR12,
   gfR13,
   ghR13,
@@ -1289,6 +1320,9 @@ export const generators: Generator[] = [
   ghR14,
   ghR15,
   gfR16,
+  gfR16A,
+  gfR16B,
+  gfR16C,
   ghR16,
   gfG1,
   gfG2,
