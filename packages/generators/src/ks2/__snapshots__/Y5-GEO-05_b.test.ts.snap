@@ -1,0 +1,898 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Y5-GEO-05.b > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "C",
+            "right": true,
+            "to": "A",
+            "vertex": "B",
+          },
+          {
+            "from": "D",
+            "right": true,
+            "to": "B",
+            "vertex": "C",
+          },
+          {
+            "from": "A",
+            "right": true,
+            "to": "C",
+            "vertex": "D",
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value": 60,
+            "vertex": "A",
+          },
+          {
+            "from": "C",
+            "label": "x",
+            "to": "D",
+            "value": 30,
+            "vertex": "A",
+          },
+        ],
+        "description": "Rectangle ABCD with diagonal AC. Angle BAC is 60° and angle CAD is marked x.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            2.5,
+            0,
+          ],
+          "C": [
+            2.5,
+            4.330127019,
+          ],
+          "D": [
+            0,
+            4.330127019,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y5-GEO-05.b",
+      "version": "1.0.1",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 30,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 60,
+            },
+            "code": "GEO.RECTANGLE.DIAGONAL-BISECTS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The diagonal does not cut the corner in half unless the rectangle is a square. Use the right angle at A.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 150,
+            },
+            "code": "GEO.ANGLES.ADDS-KNOWN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The two angles at A make the right angle, so subtract: 90° − 60°.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle x.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Every corner of a rectangle is a right angle, so the two angles at A add up to 90°.",
+          },
+        ],
+      },
+      {
+        "math": "x = 90^\\circ - 60^\\circ = 30^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "So",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "ABCD is a rectangle.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "C",
+            "right": true,
+            "to": "A",
+            "vertex": "B",
+          },
+          {
+            "from": "D",
+            "right": true,
+            "to": "B",
+            "vertex": "C",
+          },
+          {
+            "from": "A",
+            "right": true,
+            "to": "C",
+            "vertex": "D",
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value": 65,
+            "vertex": "A",
+          },
+          {
+            "from": "C",
+            "label": "x",
+            "to": "D",
+            "value": 25,
+            "vertex": "A",
+          },
+        ],
+        "description": "Rectangle ABCD with diagonal AC. Angle BAC is 65° and angle CAD is marked x.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            2.113091309,
+            0,
+          ],
+          "C": [
+            2.113091309,
+            4.531538935,
+          ],
+          "D": [
+            0,
+            4.531538935,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y5-GEO-05.b",
+      "version": "1.0.1",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 25,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 65,
+            },
+            "code": "GEO.RECTANGLE.DIAGONAL-BISECTS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The diagonal does not cut the corner in half unless the rectangle is a square. Use the right angle at A.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 155,
+            },
+            "code": "GEO.ANGLES.ADDS-KNOWN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The two angles at A make the right angle, so subtract: 90° − 65°.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle x.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Every corner of a rectangle is a right angle, so the two angles at A add up to 90°.",
+          },
+        ],
+      },
+      {
+        "math": "x = 90^\\circ - 65^\\circ = 25^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "So",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "ABCD is a rectangle.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "C",
+            "right": true,
+            "to": "A",
+            "vertex": "B",
+          },
+          {
+            "from": "D",
+            "right": true,
+            "to": "B",
+            "vertex": "C",
+          },
+          {
+            "from": "A",
+            "right": true,
+            "to": "C",
+            "vertex": "D",
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value": 54,
+            "vertex": "A",
+          },
+          {
+            "from": "C",
+            "label": "x",
+            "to": "D",
+            "value": 36,
+            "vertex": "A",
+          },
+        ],
+        "description": "Rectangle ABCD with diagonal AC. Angle BAC is 54° and angle CAD is marked x.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            2.938926261,
+            0,
+          ],
+          "C": [
+            2.938926261,
+            4.045084972,
+          ],
+          "D": [
+            0,
+            4.045084972,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y5-GEO-05.b",
+      "version": "1.0.1",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "units": "°",
+          "value": 36,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 54,
+            },
+            "code": "GEO.RECTANGLE.DIAGONAL-BISECTS",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The diagonal does not cut the corner in half unless the rectangle is a square. Use the right angle at A.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 144,
+            },
+            "code": "GEO.ANGLES.ADDS-KNOWN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "The two angles at A make the right angle, so subtract: 90° − 54°.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Work out the size of angle x.",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Every corner of a rectangle is a right angle, so the two angles at A add up to 90°.",
+          },
+        ],
+      },
+      {
+        "math": "x = 90^\\circ - 54^\\circ = 36^\\circ",
+        "say": [
+          {
+            "t": "text",
+            "v": "So",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "ABCD is a rectangle.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [
+      {
+        "angles": [
+          {
+            "from": "C",
+            "right": true,
+            "to": "A",
+            "vertex": "B",
+          },
+          {
+            "from": "D",
+            "right": true,
+            "to": "B",
+            "vertex": "C",
+          },
+          {
+            "from": "A",
+            "right": true,
+            "to": "C",
+            "vertex": "D",
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value": 60,
+            "vertex": "A",
+          },
+        ],
+        "description": "Rectangle ABCD with diagonal AC. Angle BAC is 60° and angle CAD is marked x.",
+        "pointLabels": true,
+        "points": {
+          "A": [
+            0,
+            0,
+          ],
+          "B": [
+            2.5,
+            0,
+          ],
+          "C": [
+            2.5,
+            4.330127019,
+          ],
+          "D": [
+            0,
+            4.330127019,
+          ],
+        },
+        "polygons": [
+          {
+            "vertices": [
+              "A",
+              "B",
+              "C",
+              "D",
+            ],
+          },
+        ],
+        "segments": [
+          {
+            "from": "A",
+            "to": "C",
+          },
+        ],
+        "type": "geometry",
+      },
+    ],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y5-GEO-05.b",
+      "version": "1.0.1",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Angle BAC is 60°, so angle CAD is 30°. The two parts are not equal.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "You cannot tell without measuring with a protractor.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "A diagonal always cuts the corner of a rectangle in half.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "GEO.RECTANGLE.DIAGONAL-BISECTS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "The angles at A add to 90°, so angle CAD = 90° − 60° = 30°. A diagonal halves the corner only in a square.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "ABCD is a rectangle. Cara says the diagonal AC cuts angle DAB exactly in half.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y5-GEO-05.b",
+      "version": "1.0.1",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "All the angles in a rectangle are right angles, so the diagonals must cross at right angles too.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "They cross at right angles only when the rectangle is a square.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "The diagonals of a rectangle are parallel, so they never cross.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "GEO.RECTANGLE.DIAGONALS-PERPENDICULAR",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "They cross at right angles only when the rectangle is a square.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ali says the diagonals of every rectangle cross at right angles.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y5-GEO-05.b",
+      "version": "1.0.1",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "The diagonals of a rectangle are parallel, so they never cross.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "All the angles in a rectangle are right angles, so the diagonals must cross at right angles too.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "They cross at right angles only when the rectangle is a square.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "GEO.RECTANGLE.DIAGONALS-PERPENDICULAR",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "They cross at right angles only when the rectangle is a square.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ali says the diagonals of every rectangle cross at right angles.",
+      },
+    ],
+  },
+]
+`;

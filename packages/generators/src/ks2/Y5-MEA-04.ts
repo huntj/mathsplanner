@@ -13,7 +13,7 @@ import { wrongs } from "../shared/angles.ts";
 import { chosenFigure, numberAnswer } from "../shared/counting.ts";
 import { rectangle } from "../shared/mea.ts";
 
-interface Params {
+export interface Params {
   l: number;
   w: number;
   unit: "cm" | "m";

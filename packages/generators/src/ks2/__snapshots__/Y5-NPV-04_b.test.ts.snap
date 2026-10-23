@@ -1,0 +1,948 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Y5-NPV-04.b > keeps fixed seeds unchanged 1`] = `
+[
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y5-NPV-04.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 20000,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 10000,
+            },
+            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Look at the next digit: 18,144 is nearer 20,000.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 18000,
+            },
+            "code": "NPV.ROUND.WRONG-PLACE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is to the nearest 1,000. Round to the nearest 10,000.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "18,144 is between 10,000 and 20,000; it is nearer 20,000.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Round ",
+      },
+      {
+        "t": "math",
+        "v": "18{,}144",
+      },
+      {
+        "t": "text",
+        "v": " to the nearest ",
+      },
+      {
+        "t": "math",
+        "v": "10{,}000",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y5-NPV-04.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 220000,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 223000,
+            },
+            "code": "NPV.ROUND.WRONG-PLACE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is to the nearest 1,000. Round to the nearest 10,000.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "223,237 is between 220,000 and 230,000; it is nearer 220,000.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Round ",
+      },
+      {
+        "t": "math",
+        "v": "223{,}237",
+      },
+      {
+        "t": "text",
+        "v": " to the nearest ",
+      },
+      {
+        "t": "math",
+        "v": "10{,}000",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "standard",
+    "diagrams": [],
+    "key": {
+      "depth": 1,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y5-NPV-04.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 920000,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 921000,
+            },
+            "code": "NPV.ROUND.WRONG-PLACE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is to the nearest 1,000. Round to the nearest 10,000.",
+              },
+            ],
+          },
+        ],
+        "prompt": [],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "920,947 is between 920,000 and 930,000; it is nearer 920,000.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Round ",
+      },
+      {
+        "t": "math",
+        "v": "920{,}947",
+      },
+      {
+        "t": "text",
+        "v": " to the nearest ",
+      },
+      {
+        "t": "math",
+        "v": "10{,}000",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [
+      {
+        "labels": "ends",
+        "max": 20000,
+        "min": 10000,
+        "points": [
+          {
+            "label": "18{,}144",
+            "style": "arrow",
+            "value": 18144,
+          },
+        ],
+        "step": 1000,
+        "type": "number-line",
+      },
+    ],
+    "key": {
+      "depth": 2,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y5-NPV-04.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 20000,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 10000,
+            },
+            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "Look at the next digit: 18,144 is nearer 20,000.",
+              },
+            ],
+          },
+          {
+            "answer": {
+              "type": "number",
+              "value": 18000,
+            },
+            "code": "NPV.ROUND.WRONG-PLACE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is to the nearest 1,000. Round to the nearest 10,000.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Which multiple of ",
+          },
+          {
+            "t": "math",
+            "v": "10{,}000",
+          },
+          {
+            "t": "text",
+            "v": " is it nearest to?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Halfway between 10,000 and 20,000 is 15,000; 18,144 is above it, so it rounds to 20,000.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The arrow shows ",
+      },
+      {
+        "t": "math",
+        "v": "18{,}144",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y5-NPV-04.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 220000,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 223000,
+            },
+            "code": "NPV.ROUND.WRONG-PLACE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is to the nearest 1,000. Round to the nearest 10,000.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What number is given?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Halfway between 220,000 and 230,000 is 225,000; 223,237 is below it, so it rounds to 220,000.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A crowd of ",
+      },
+      {
+        "t": "math",
+        "v": "223{,}237",
+      },
+      {
+        "t": "text",
+        "v": " people is given to the nearest ",
+      },
+      {
+        "t": "math",
+        "v": "10{,}000",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "varied-form",
+    "diagrams": [],
+    "key": {
+      "depth": 2,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y5-NPV-04.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 1,
+      "minutes": 1,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "accuracy": {
+            "exact": true,
+          },
+          "type": "number",
+          "value": 920000,
+        },
+        "marks": 1,
+        "misconceptions": [
+          {
+            "answer": {
+              "type": "number",
+              "value": 921000,
+            },
+            "code": "NPV.ROUND.WRONG-PLACE",
+            "feedback": [
+              {
+                "t": "text",
+                "v": "That is to the nearest 1,000. Round to the nearest 10,000.",
+              },
+            ],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "What number is given?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Halfway between 920,000 and 930,000 is 925,000; 920,947 is below it, so it rounds to 920,000.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A crowd of ",
+      },
+      {
+        "t": "math",
+        "v": "920{,}947",
+      },
+      {
+        "t": "text",
+        "v": " people is given to the nearest ",
+      },
+      {
+        "t": "math",
+        "v": "10{,}000",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "friendly",
+      "seed": 1,
+      "statementId": "Y5-NPV-04.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "A number exactly halfway rounds up: 85,000 rounds to 90,000.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Halfway numbers round down.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "You always round down by cutting off digits.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.HALFWAY",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "By convention, halfway rounds up: 85,000 → 90,000.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ben says ",
+      },
+      {
+        "t": "math",
+        "v": "85{,}000",
+      },
+      {
+        "t": "text",
+        "v": " to the nearest ",
+      },
+      {
+        "t": "math",
+        "v": "10{,}000",
+      },
+      {
+        "t": "text",
+        "v": " is ",
+      },
+      {
+        "t": "math",
+        "v": "80{,}000",
+      },
+      {
+        "t": "text",
+        "v": ", because it is exactly in the middle.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y5-NPV-04.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Halfway numbers round down.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "A number exactly halfway rounds up: 965,000 rounds to 970,000.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "You always round down by cutting off digits.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.HALFWAY",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "By convention, halfway rounds up: 965,000 → 970,000.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ben says ",
+      },
+      {
+        "t": "math",
+        "v": "965{,}000",
+      },
+      {
+        "t": "text",
+        "v": " to the nearest ",
+      },
+      {
+        "t": "math",
+        "v": "10{,}000",
+      },
+      {
+        "t": "text",
+        "v": " is ",
+      },
+      {
+        "t": "math",
+        "v": "960{,}000",
+      },
+      {
+        "t": "text",
+        "v": ", because it is exactly in the middle.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y5-NPV-04.b",
+      "version": "1.0.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "You always round down by cutting off digits.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "A number exactly halfway rounds up: 215,000 rounds to 220,000.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Halfway numbers round down.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.HALFWAY",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "By convention, halfway rounds up: 215,000 → 220,000.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ben says ",
+      },
+      {
+        "t": "math",
+        "v": "215{,}000",
+      },
+      {
+        "t": "text",
+        "v": " to the nearest ",
+      },
+      {
+        "t": "math",
+        "v": "10{,}000",
+      },
+      {
+        "t": "text",
+        "v": " is ",
+      },
+      {
+        "t": "math",
+        "v": "210{,}000",
+      },
+      {
+        "t": "text",
+        "v": ", because it is exactly in the middle.",
+      },
+    ],
+  },
+]
+`;

@@ -11,7 +11,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { anglesAtPoint, anglesOnLine } from "@mathsplanner/diagrams";
 import { deg, listOf, numbersOf, splitAngles, sum, TOTALS, wrongs } from "../shared/angles.ts";
 
-interface Params {
+export interface Params {
   kind: "line" | "point";
   /** The known angles; the unknown x is what is left of the total. */
   known: number[];

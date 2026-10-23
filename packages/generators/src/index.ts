@@ -342,52 +342,111 @@ import y4Sta01A from "./ks2/Y4-STA-01_a.ts";
 import y4Sta01B from "./ks2/Y4-STA-01_b.ts";
 import y4Sta02 from "./ks2/Y4-STA-02.ts";
 import y5Npv01 from "./ks2/Y5-NPV-01.ts";
+import y5Npv01A from "./ks2/Y5-NPV-01_a.ts";
+import y5Npv01B from "./ks2/Y5-NPV-01_b.ts";
+import y5Npv01C from "./ks2/Y5-NPV-01_c.ts";
 import y5Npv02 from "./ks2/Y5-NPV-02.ts";
 import y5Npv03 from "./ks2/Y5-NPV-03.ts";
+import y5Npv03A from "./ks2/Y5-NPV-03_a.ts";
+import y5Npv03B from "./ks2/Y5-NPV-03_b.ts";
 import y5Npv04 from "./ks2/Y5-NPV-04.ts";
+import y5Npv04A from "./ks2/Y5-NPV-04_a.ts";
+import y5Npv04B from "./ks2/Y5-NPV-04_b.ts";
 import y5Npv05 from "./ks2/Y5-NPV-05.ts";
 import y5Npv06 from "./ks2/Y5-NPV-06.ts";
 import y5As01 from "./ks2/Y5-AS-01.ts";
+import y5As01A from "./ks2/Y5-AS-01_a.ts";
+import y5As01B from "./ks2/Y5-AS-01_b.ts";
 import y5As02 from "./ks2/Y5-AS-02.ts";
 import y5As03 from "./ks2/Y5-AS-03.ts";
 import y5As04 from "./ks2/Y5-AS-04.ts";
 import y5Md01 from "./ks2/Y5-MD-01.ts";
+import y5Md01A from "./ks2/Y5-MD-01_a.ts";
+import y5Md01B from "./ks2/Y5-MD-01_b.ts";
+import y5Md01C from "./ks2/Y5-MD-01_c.ts";
 import y5Md02 from "./ks2/Y5-MD-02.ts";
+import y5Md02A from "./ks2/Y5-MD-02_a.ts";
+import y5Md02B from "./ks2/Y5-MD-02_b.ts";
 import y5Md03 from "./ks2/Y5-MD-03.ts";
 import y5Md04 from "./ks2/Y5-MD-04.ts";
+import y5Md04A from "./ks2/Y5-MD-04_a.ts";
+import y5Md04B from "./ks2/Y5-MD-04_b.ts";
 import y5Md05 from "./ks2/Y5-MD-05.ts";
 import y5Md06 from "./ks2/Y5-MD-06.ts";
+import y5Md06A from "./ks2/Y5-MD-06_a.ts";
+import y5Md06B from "./ks2/Y5-MD-06_b.ts";
 import y5Md07 from "./ks2/Y5-MD-07.ts";
+import y5Md07A from "./ks2/Y5-MD-07_a.ts";
+import y5Md07B from "./ks2/Y5-MD-07_b.ts";
 import y5Md08 from "./ks2/Y5-MD-08.ts";
+import y5Md08A from "./ks2/Y5-MD-08_a.ts";
+import y5Md08B from "./ks2/Y5-MD-08_b.ts";
 import y5Md09 from "./ks2/Y5-MD-09.ts";
 import y5Fr01 from "./ks2/Y5-FR-01.ts";
 import y5Fr02 from "./ks2/Y5-FR-02.ts";
+import y5Fr02A from "./ks2/Y5-FR-02_a.ts";
+import y5Fr02B from "./ks2/Y5-FR-02_b.ts";
 import y5Fr03 from "./ks2/Y5-FR-03.ts";
+import y5Fr03A from "./ks2/Y5-FR-03_a.ts";
+import y5Fr03B from "./ks2/Y5-FR-03_b.ts";
+import y5Fr03C from "./ks2/Y5-FR-03_c.ts";
 import y5Fr04 from "./ks2/Y5-FR-04.ts";
+import y5Fr04A from "./ks2/Y5-FR-04_a.ts";
+import y5Fr04B from "./ks2/Y5-FR-04_b.ts";
 import y5Fr05 from "./ks2/Y5-FR-05.ts";
+import y5Fr05A from "./ks2/Y5-FR-05_a.ts";
+import y5Fr05B from "./ks2/Y5-FR-05_b.ts";
 import y5Fr06 from "./ks2/Y5-FR-06.ts";
 import y5Fr07 from "./ks2/Y5-FR-07.ts";
 import y5Fr08 from "./ks2/Y5-FR-08.ts";
+import y5Fr08A from "./ks2/Y5-FR-08_a.ts";
+import y5Fr08B from "./ks2/Y5-FR-08_b.ts";
 import y5Fr09 from "./ks2/Y5-FR-09.ts";
+import y5Fr09A from "./ks2/Y5-FR-09_a.ts";
+import y5Fr09B from "./ks2/Y5-FR-09_b.ts";
 import y5Fr10 from "./ks2/Y5-FR-10.ts";
 import y5Fr11 from "./ks2/Y5-FR-11.ts";
+import y5Fr11A from "./ks2/Y5-FR-11_a.ts";
+import y5Fr11B from "./ks2/Y5-FR-11_b.ts";
+import y5Fr11C from "./ks2/Y5-FR-11_c.ts";
 import y5Fr12 from "./ks2/Y5-FR-12.ts";
 import y5Mea01 from "./ks2/Y5-MEA-01.ts";
+import y5Mea01A from "./ks2/Y5-MEA-01_a.ts";
+import y5Mea01B from "./ks2/Y5-MEA-01_b.ts";
+import y5Mea01C from "./ks2/Y5-MEA-01_c.ts";
 import y5Mea02 from "./ks2/Y5-MEA-02.ts";
 import y5Mea03 from "./ks2/Y5-MEA-03.ts";
 import y5Mea04 from "./ks2/Y5-MEA-04.ts";
+import y5Mea04A from "./ks2/Y5-MEA-04_a.ts";
+import y5Mea04B from "./ks2/Y5-MEA-04_b.ts";
+import y5Mea04C from "./ks2/Y5-MEA-04_c.ts";
 import y5Mea05 from "./ks2/Y5-MEA-05.ts";
+import y5Mea05A from "./ks2/Y5-MEA-05_a.ts";
+import y5Mea05B from "./ks2/Y5-MEA-05_b.ts";
 import y5Mea06 from "./ks2/Y5-MEA-06.ts";
 import y5Mea07 from "./ks2/Y5-MEA-07.ts";
 import y5Geo01 from "./ks2/Y5-GEO-01.ts";
 import y5Geo02 from "./ks2/Y5-GEO-02.ts";
+import y5Geo02A from "./ks2/Y5-GEO-02_a.ts";
+import y5Geo02B from "./ks2/Y5-GEO-02_b.ts";
 import y5Geo03 from "./ks2/Y5-GEO-03.ts";
+import y5Geo03A from "./ks2/Y5-GEO-03_a.ts";
+import y5Geo03B from "./ks2/Y5-GEO-03_b.ts";
 import y5Geo04 from "./ks2/Y5-GEO-04.ts";
+import y5Geo04A from "./ks2/Y5-GEO-04_a.ts";
+import y5Geo04B from "./ks2/Y5-GEO-04_b.ts";
+import y5Geo04C from "./ks2/Y5-GEO-04_c.ts";
 import y5Geo05 from "./ks2/Y5-GEO-05.ts";
+import y5Geo05A from "./ks2/Y5-GEO-05_a.ts";
+import y5Geo05B from "./ks2/Y5-GEO-05_b.ts";
 import y5Geo06 from "./ks2/Y5-GEO-06.ts";
 import y5Pos01 from "./ks2/Y5-POS-01.ts";
+import y5Pos01A from "./ks2/Y5-POS-01_a.ts";
+import y5Pos01B from "./ks2/Y5-POS-01_b.ts";
 import y5Sta01 from "./ks2/Y5-STA-01.ts";
 import y5Sta02 from "./ks2/Y5-STA-02.ts";
+import y5Sta02A from "./ks2/Y5-STA-02_a.ts";
+import y5Sta02B from "./ks2/Y5-STA-02_b.ts";
 import y6Npv01 from "./ks2/Y6-NPV-01.ts";
 import y6Npv02 from "./ks2/Y6-NPV-02.ts";
 import y6Npv03 from "./ks2/Y6-NPV-03.ts";
@@ -1513,52 +1572,111 @@ export const generators: Generator[] = [
   y4Sta01B,
   y4Sta02,
   y5Npv01,
+  y5Npv01A,
+  y5Npv01B,
+  y5Npv01C,
   y5Npv02,
   y5Npv03,
+  y5Npv03A,
+  y5Npv03B,
   y5Npv04,
+  y5Npv04A,
+  y5Npv04B,
   y5Npv05,
   y5Npv06,
   y5As01,
+  y5As01A,
+  y5As01B,
   y5As02,
   y5As03,
   y5As04,
   y5Md01,
+  y5Md01A,
+  y5Md01B,
+  y5Md01C,
   y5Md02,
+  y5Md02A,
+  y5Md02B,
   y5Md03,
   y5Md04,
+  y5Md04A,
+  y5Md04B,
   y5Md05,
   y5Md06,
+  y5Md06A,
+  y5Md06B,
   y5Md07,
+  y5Md07A,
+  y5Md07B,
   y5Md08,
+  y5Md08A,
+  y5Md08B,
   y5Md09,
   y5Fr01,
   y5Fr02,
+  y5Fr02A,
+  y5Fr02B,
   y5Fr03,
+  y5Fr03A,
+  y5Fr03B,
+  y5Fr03C,
   y5Fr04,
+  y5Fr04A,
+  y5Fr04B,
   y5Fr05,
+  y5Fr05A,
+  y5Fr05B,
   y5Fr06,
   y5Fr07,
   y5Fr08,
+  y5Fr08A,
+  y5Fr08B,
   y5Fr09,
+  y5Fr09A,
+  y5Fr09B,
   y5Fr10,
   y5Fr11,
+  y5Fr11A,
+  y5Fr11B,
+  y5Fr11C,
   y5Fr12,
   y5Mea01,
+  y5Mea01A,
+  y5Mea01B,
+  y5Mea01C,
   y5Mea02,
   y5Mea03,
   y5Mea04,
+  y5Mea04A,
+  y5Mea04B,
+  y5Mea04C,
   y5Mea05,
+  y5Mea05A,
+  y5Mea05B,
   y5Mea06,
   y5Mea07,
   y5Geo01,
   y5Geo02,
+  y5Geo02A,
+  y5Geo02B,
   y5Geo03,
+  y5Geo03A,
+  y5Geo03B,
   y5Geo04,
+  y5Geo04A,
+  y5Geo04B,
+  y5Geo04C,
   y5Geo05,
+  y5Geo05A,
+  y5Geo05B,
   y5Geo06,
   y5Pos01,
+  y5Pos01A,
+  y5Pos01B,
   y5Sta01,
   y5Sta02,
+  y5Sta02A,
+  y5Sta02B,
   y6Npv01,
   y6Npv02,
   y6Npv03,

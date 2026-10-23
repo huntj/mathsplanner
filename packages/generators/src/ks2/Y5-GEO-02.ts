@@ -11,7 +11,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { angle } from "@mathsplanner/diagrams";
 import { pickAngle } from "../shared/angles.ts";
 
-interface Params {
+export interface Params {
   /** An angle to classify or estimate, from 10° to 350°, never a multiple of 90°. */
   size: number;
   rotation: number;

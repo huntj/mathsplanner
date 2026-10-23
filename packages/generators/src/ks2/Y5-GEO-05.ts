@@ -11,7 +11,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import type { Coord, GeometrySpec } from "@mathsplanner/diagrams";
 import { deg, pickAngle, wrongs } from "../shared/angles.ts";
 
-interface Params {
+export interface Params {
   /** Angle between the diagonal AC and the side AB; never 45°, which would make a square. */
   a: number;
   length: number;

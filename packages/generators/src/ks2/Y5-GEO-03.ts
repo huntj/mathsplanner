@@ -10,7 +10,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import type { ProtractorSpec } from "@mathsplanner/diagrams";
 import { deg, pickAngle, wrongs } from "../shared/angles.ts";
 
-interface Params {
+export interface Params {
   angle: number;
   /** Which way the first arm points: right is read on the inner scale, left on the outer. */
   baseline: "right" | "left";

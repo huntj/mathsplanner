@@ -10,7 +10,7 @@ import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { isPrime } from "../shared/md.ts";
 
-interface Params {
+export interface Params {
   n: number;
   power: 2 | 3;
   /** Depth 2: a square number to find among non-squares. */
