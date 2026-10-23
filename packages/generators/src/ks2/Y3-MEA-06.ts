@@ -11,7 +11,7 @@ import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { MONTHS, MONTH_DAYS } from "../shared/mea.ts";
 
-interface Params {
+export interface Params {
   minutes: number;
   seconds: number;
   month: number;

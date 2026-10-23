@@ -18,7 +18,7 @@ import {
   type Heading,
 } from "../shared/turns.ts";
 
-interface Params {
+export interface Params {
   start: Heading;
   /** 1 or 3 quarters: a half turn looks the same both ways, so direction questions avoid it. */
   quarters: 1 | 3;

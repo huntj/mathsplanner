@@ -10,7 +10,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { chosenText } from "../shared/counting.ts";
 import { ampm, clock, h12, time24, timeWords } from "../shared/mea.ts";
 
-interface Params {
+export interface Params {
   hour: number;
   minutes: number;
   /** Depths 2–4: a time of day, 0 to 23. */

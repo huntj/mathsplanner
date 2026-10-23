@@ -11,7 +11,7 @@ import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { coinName, coinsMaking, fewestCoins, pounds } from "../shared/mea.ts";
 
-interface Params {
+export interface Params {
   coins: number[];
   whole: number;
   pence: number;

@@ -11,7 +11,7 @@ import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { FACTS, POLYHEDRA, sketch, type Solid } from "../shared/solids.ts";
 
-interface Params {
+export interface Params {
   solid: number;
   ask: "faces" | "edges" | "vertices";
   pairs: number[];

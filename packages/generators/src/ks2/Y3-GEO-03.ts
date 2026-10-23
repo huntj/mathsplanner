@@ -12,7 +12,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { angle, shape, type ShapeKind } from "@mathsplanner/diagrams";
 import { pickAngle, wrongs } from "../shared/angles.ts";
 
-interface Params {
+export interface Params {
   /** Turn asked about, in right angles: 2 (half), 3 (three-quarter) or 4 (whole). */
   rights: 2 | 3 | 4;
   kind: ShapeKind;

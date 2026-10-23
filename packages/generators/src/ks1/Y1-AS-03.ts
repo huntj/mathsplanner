@@ -10,7 +10,7 @@ import type { NumberLineSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 
-interface Params {
+export interface Params {
   a: number;
   b: number;
   add: boolean;

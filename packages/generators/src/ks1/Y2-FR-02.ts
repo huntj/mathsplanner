@@ -10,7 +10,7 @@ import { wrongs } from "../shared/angles.ts";
 import { chosenFigure, numberAnswer } from "../shared/counting.ts";
 import { fracTex, fractionBar, readBar, slash, type Pair } from "../shared/fr.ts";
 
-interface Params {
+export interface Params {
   f: Pair;
   amount: number;
 }

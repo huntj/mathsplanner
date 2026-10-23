@@ -15,7 +15,7 @@ import { countMarksReading, pickScale, ruler, scaleSpec, type Scale } from "../s
 
 type Kind = "jug" | "thermometer" | "scales";
 
-interface Params {
+export interface Params {
   kind: Kind;
   scale: Scale;
   start: number;

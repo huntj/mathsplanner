@@ -11,7 +11,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { chosenText } from "../shared/counting.ts";
 import { ampm, clock, digital, h12 } from "../shared/mea.ts";
 
-interface Params {
+export interface Params {
   hour: number;
   minutes: number;
   /** Depth 2: a time just before noon or midnight, and minutes added. */

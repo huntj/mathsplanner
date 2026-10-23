@@ -11,7 +11,7 @@ import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { barChart, distinctValues, TOPICS } from "../shared/sta.ts";
 
-interface Params {
+export interface Params {
   topic: number;
   values: number[];
   step: number;

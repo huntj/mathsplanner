@@ -10,7 +10,7 @@ import { wrongs } from "../shared/angles.ts";
 import { chosenFigure, numberAnswer } from "../shared/counting.ts";
 import { barChart, distinctValues, pictogram, tableLatex, TOPICS } from "../shared/sta.ts";
 
-interface Params {
+export interface Params {
   topic: number;
   /** Bar chart values, multiples of step. */
   values: number[];

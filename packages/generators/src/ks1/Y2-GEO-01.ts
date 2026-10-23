@@ -12,7 +12,7 @@ import { regularPolygon, type GeometrySpec, type ShapeKind } from "@mathsplanner
 import { wrongs } from "../shared/angles.ts";
 import { capital, shape } from "../shared/shapes.ts";
 
-interface Params {
+export interface Params {
   /** A named shape, or a regular polygon with this many sides. */
   kind: ShapeKind | number;
   rotation: number;

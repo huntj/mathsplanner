@@ -10,7 +10,7 @@ import type { NumberLineSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { chosenFigure, numberAnswer } from "../shared/counting.ts";
 
-interface Params {
+export interface Params {
   step: 2 | 3 | 5;
   k: number;
   /** Counting back in tens from this number. */

@@ -11,7 +11,7 @@ import type { ClockSpec } from "@mathsplanner/diagrams";
 import { chosenFigure, chosenText } from "../shared/counting.ts";
 import { clock, h12, timeWords } from "../shared/mea.ts";
 
-interface Params {
+export interface Params {
   hour: number;
   half: boolean;
 }

@@ -11,7 +11,7 @@ import { pointAt, type GeometrySpec } from "@mathsplanner/diagrams";
 
 type Relation = "parallel" | "perpendicular" | "neither";
 
-interface Params {
+export interface Params {
   relation: Relation;
   /** Direction of the first line, in degrees. */
   heading: number;

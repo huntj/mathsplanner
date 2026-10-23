@@ -8,7 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
 
-interface Params {
+export interface Params {
   a: number;
   b: number;
   /** Four numbers to order: their tens digits differ, and ordering by ones digits gives another order. */
