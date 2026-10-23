@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/misconceptions.schema.json",
-  "version": "0.34.0",
+  "version": "0.35.0",
   "misconceptions": [
     {
       "code": "NPV.COUNT.SKIP-OR-DOUBLE",
@@ -183,6 +183,11 @@
       "remediate": "Y7-NPV-04"
     },
     {
+      "code": "NPV.FACTOR.MULTIPLE-MIXUP",
+      "description": "Mixes up factors and multiples, e.g. gives 24 as a factor of 6 or 3 as a multiple of 12.",
+      "remediate": "GF-N4.a"
+    },
+    {
       "code": "NPV.ORDER.LEFT-TO-RIGHT",
       "description": "Works from left to right instead of following the order of operations (brackets, powers, × and ÷, then + and −).",
       "remediate": "Y6-MD-06"
@@ -221,6 +226,11 @@
       "code": "NPV.BOUNDS.ENDS",
       "description": "Gets the ends of an error interval wrong, e.g. includes the upper bound or uses the wrong half-unit.",
       "remediate": "Y7-NPV-09"
+    },
+    {
+      "code": "NPV.BOUNDS.TRUNCATE",
+      "description": "Treats truncation like rounding, giving an error interval either side of the value, e.g. truncated to 4.3 gives 4.25 ≤ x < 4.35.",
+      "remediate": "GF-N15.d"
     },
     {
       "code": "NPV.CALC.MONEY",
@@ -276,6 +286,11 @@
       "code": "FR.RECURRING.TRUNCATE",
       "description": "Writes a recurring decimal as if it stopped, e.g. 1/3 = 0.3, or thinks every fraction gives a terminating decimal.",
       "remediate": "GF-N10"
+    },
+    {
+      "code": "FR.RECURRING.OVER-TEN",
+      "description": "Puts a recurring decimal over 10 or 100 instead of 9 or 99, e.g. writes 0.444… as 4/10.",
+      "remediate": "GH-N10.a"
     },
     {
       "code": "NPV.BOUNDS.DIVIDE",
@@ -468,6 +483,11 @@
       "remediate": "Y3-FR-02"
     },
     {
+      "code": "FR.OF-AMOUNT.REVERSE",
+      "description": "Applies the fraction again instead of undoing it when finding the whole from a part, e.g. 3/4 of a number is 12, so the number is 9.",
+      "remediate": "GF-N12.a"
+    },
+    {
       "code": "FR.EQUIV.ADD-SAME",
       "description": "Makes an equivalent fraction by adding the same number to the numerator and denominator, e.g. 2/3 = 4/5.",
       "remediate": "Y3-FR-04"
@@ -511,6 +531,11 @@
       "code": "FR.DIVIDE.MULTIPLIES",
       "description": "Multiplies the numerator instead of dividing when dividing a fraction by a whole number, e.g. 1/3 ÷ 2 = 2/3.",
       "remediate": "Y6-FR-05"
+    },
+    {
+      "code": "FR.DIVIDE.NO-FLIP",
+      "description": "Multiplies by the second fraction instead of its reciprocal when dividing fractions, e.g. 2/3 ÷ 4/5 = 8/15.",
+      "remediate": "GF-N8.a"
     },
     {
       "code": "FR.PERCENT.DIGITS",

@@ -93,6 +93,8 @@ export type AnswerForm =
   | "collected"
   | "standard-form"
   | "surd"
+  /** No surd left in a denominator, e.g. 5√3/3 rather than 5/√3. */
+  | "rationalised"
   | "decimal";
 
 export type Accuracy = { exact: true } | { tolerance: number } | { dp: number } | { sf: number };

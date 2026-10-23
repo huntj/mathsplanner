@@ -82,13 +82,17 @@ export function grid(
   };
 }
 
-/** Wrong answers that differ from the answer and each other; unlike wrongs(), negatives are kept. */
+/**
+ * Wrong answers that differ from the answer and each other; unlike wrongs(), negatives are kept.
+ * Missing entries (undefined) are skipped, so a wrong answer can be included conditionally.
+ */
 export function signedWrongs<W extends { value: { kind: string; value?: unknown } }>(
   answer: number,
-  list: W[],
+  list: (W | undefined)[],
 ): W[] {
   const seen = new Set<unknown>([answer]);
-  return list.filter((w) => {
+  return list.filter((w): w is W => {
+    if (!w) return false;
     const v = w.value.value;
     if (seen.has(v)) return false;
     seen.add(v);

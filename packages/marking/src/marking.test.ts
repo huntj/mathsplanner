@@ -91,6 +91,12 @@ describe("exact answers", () => {
     expect(formProblem("3x + 2y - x", "collected")).toMatch(/like terms/);
     expect(formProblem("3ab + 2ba", "collected")).toMatch(/like terms/);
     expect(formProblem("x^2 + 3x", "collected")).toBeUndefined();
+    expect(formProblem("\\frac{5\\sqrt{3}}{3}", "rationalised")).toBeUndefined();
+    expect(formProblem("\\frac{4 - \\sqrt{2}}{7}", "rationalised")).toBeUndefined();
+    expect(formProblem("2\\sqrt{5}", "rationalised")).toBeUndefined();
+    expect(formProblem("\\frac{5}{\\sqrt{3}}", "rationalised")).toMatch(/denominator/);
+    expect(formProblem("\\frac{1}{2 + \\sqrt{3}}", "rationalised")).toMatch(/denominator/);
+    expect(formProblem("5/\\sqrt{3}", "rationalised")).toMatch(/denominator/);
     expect(formProblem("x^2 + 5x + 3x + 15", "expanded")).toMatch(/like terms/);
     expect(formProblem("x^2 + 8x + 15", "expanded")).toBeUndefined();
     expect(formProblem("2(4x + 6)", "factorised")).toMatch(/common factor/);

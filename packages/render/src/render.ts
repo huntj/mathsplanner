@@ -182,6 +182,7 @@ const FORM_TEXT: Record<string, string> = {
   collected: "with like terms collected",
   "standard-form": "in standard form",
   surd: "in surd form",
+  rationalised: "with a rational denominator",
   decimal: "as a decimal",
 };
 

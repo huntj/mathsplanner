@@ -264,5 +264,30 @@ export function formProblem(response: string, form: AnswerForm): string | undefi
       return hasLikeTerms(ce().parse(r, { form: "raw" }).json)
         ? "Simplify: collect the like terms."
         : undefined;
+    case "rationalised":
+      return /(\/|\\div)\s*\(?\s*[\d\s+-]*\\sqrt/.test(r) ||
+        denominators(r).some((d) => d.includes("\\sqrt"))
+        ? "Rationalise the denominator: there should be no surd on the bottom."
+        : undefined;
   }
+}
+
+/** The denominators of every \frac{…}{…} in some LaTeX, nested ones included. */
+function denominators(latex: string): string[] {
+  const out: string[] = [];
+  const group = (from: number): [string, number] | undefined => {
+    if (latex[from] !== "{") return undefined;
+    let depth = 0;
+    for (let i = from; i < latex.length; i++) {
+      if (latex[i] === "{") depth++;
+      else if (latex[i] === "}" && --depth === 0) return [latex.slice(from + 1, i), i + 1];
+    }
+    return undefined;
+  };
+  for (let at = latex.indexOf("\\frac"); at >= 0; at = latex.indexOf("\\frac", at + 1)) {
+    const top = group(at + 5);
+    const bottom = top && group(top[1]);
+    if (bottom) out.push(bottom[0]);
+  }
+  return out;
 }

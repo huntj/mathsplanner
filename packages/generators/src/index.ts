@@ -337,25 +337,58 @@ import y9Pos01 from "./ks3/Y9-POS-01.ts";
 import y9Pro01 from "./ks3/Y9-PRO-01.ts";
 import y9Pro02 from "./ks3/Y9-PRO-02.ts";
 import gfN1 from "./ks4/GF-N1.ts";
+import gfN1A from "./ks4/GF-N1_a.ts";
+import gfN1B from "./ks4/GF-N1_b.ts";
 import gfN2 from "./ks4/GF-N2.ts";
+import gfN2A from "./ks4/GF-N2_a.ts";
+import gfN2B from "./ks4/GF-N2_b.ts";
+import gfN2C from "./ks4/GF-N2_c.ts";
+import gfN2D from "./ks4/GF-N2_d.ts";
 import gfN3 from "./ks4/GF-N3.ts";
+import gfN3A from "./ks4/GF-N3_a.ts";
+import gfN3B from "./ks4/GF-N3_b.ts";
 import gfN4 from "./ks4/GF-N4.ts";
+import gfN4A from "./ks4/GF-N4_a.ts";
+import gfN4B from "./ks4/GF-N4_b.ts";
+import gfN4C from "./ks4/GF-N4_c.ts";
 import gfN5 from "./ks4/GF-N5.ts";
 import ghN5 from "./ks4/GH-N5.ts";
 import gfN6 from "./ks4/GF-N6.ts";
+import gfN6A from "./ks4/GF-N6_a.ts";
+import gfN6B from "./ks4/GF-N6_b.ts";
+import gfN6C from "./ks4/GF-N6_c.ts";
 import ghN6 from "./ks4/GH-N6.ts";
 import gfN7 from "./ks4/GF-N7.ts";
+import gfN7A from "./ks4/GF-N7_a.ts";
+import gfN7B from "./ks4/GF-N7_b.ts";
 import ghN7 from "./ks4/GH-N7.ts";
 import gfN8 from "./ks4/GF-N8.ts";
+import gfN8A from "./ks4/GF-N8_a.ts";
+import gfN8B from "./ks4/GF-N8_b.ts";
 import ghN8 from "./ks4/GH-N8.ts";
+import ghN8A from "./ks4/GH-N8_a.ts";
+import ghN8B from "./ks4/GH-N8_b.ts";
+import ghN8C from "./ks4/GH-N8_c.ts";
 import gfN9 from "./ks4/GF-N9.ts";
+import gfN9A from "./ks4/GF-N9_a.ts";
+import gfN9B from "./ks4/GF-N9_b.ts";
 import gfN10 from "./ks4/GF-N10.ts";
 import ghN10 from "./ks4/GH-N10.ts";
+import ghN10A from "./ks4/GH-N10_a.ts";
+import ghN10B from "./ks4/GH-N10_b.ts";
 import gfN11 from "./ks4/GF-N11.ts";
 import gfN12 from "./ks4/GF-N12.ts";
+import gfN12A from "./ks4/GF-N12_a.ts";
+import gfN12B from "./ks4/GF-N12_b.ts";
 import gfN13 from "./ks4/GF-N13.ts";
+import gfN13A from "./ks4/GF-N13_a.ts";
+import gfN13B from "./ks4/GF-N13_b.ts";
 import gfN14 from "./ks4/GF-N14.ts";
 import gfN15 from "./ks4/GF-N15.ts";
+import gfN15A from "./ks4/GF-N15_a.ts";
+import gfN15B from "./ks4/GF-N15_b.ts";
+import gfN15C from "./ks4/GF-N15_c.ts";
+import gfN15D from "./ks4/GF-N15_d.ts";
 import gfN16 from "./ks4/GF-N16.ts";
 import ghN16 from "./ks4/GH-N16.ts";
 import gfA1 from "./ks4/GF-A1.ts";
@@ -1085,25 +1118,58 @@ export const generators: Generator[] = [
   y9Pro01,
   y9Pro02,
   gfN1,
+  gfN1A,
+  gfN1B,
   gfN2,
+  gfN2A,
+  gfN2B,
+  gfN2C,
+  gfN2D,
   gfN3,
+  gfN3A,
+  gfN3B,
   gfN4,
+  gfN4A,
+  gfN4B,
+  gfN4C,
   gfN5,
   ghN5,
   gfN6,
+  gfN6A,
+  gfN6B,
+  gfN6C,
   ghN6,
   gfN7,
+  gfN7A,
+  gfN7B,
   ghN7,
   gfN8,
+  gfN8A,
+  gfN8B,
   ghN8,
+  ghN8A,
+  ghN8B,
+  ghN8C,
   gfN9,
+  gfN9A,
+  gfN9B,
   gfN10,
   ghN10,
+  ghN10A,
+  ghN10B,
   gfN11,
   gfN12,
+  gfN12A,
+  gfN12B,
   gfN13,
+  gfN13A,
+  gfN13B,
   gfN14,
   gfN15,
+  gfN15A,
+  gfN15B,
+  gfN15C,
+  gfN15D,
   gfN16,
   ghN16,
   gfA1,
