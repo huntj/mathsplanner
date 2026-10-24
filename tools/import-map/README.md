@@ -1,3 +1,5 @@
 # @mathsplanner/import-map
 
 Turns `docs/progression-map.md` into `data/statements.json` and keeps the data files honest. `pnpm data:import` reads every statement table in the map, derives stage, strand, GCSE tier and Further Maths option from each ID, takes the source from the section, sets `statutory` (national curriculum and Reception ELGs only), formats the file with Prettier and then runs the checks. `pnpm data:check` validates `data/statements.json` and `data/misconceptions.json` against their JSON Schemas, checks that IDs are unique, every Needs ID exists, the prerequisite graph has no cycles and the counts match the map's summary table, and prints warnings (forward-pointing prerequisites, cross-tier needs, identical wording) without failing. Once statements are edited by pull request the JSON is the source of truth, so re-run the import only on purpose: it overwrites those edits.
+
+`pnpm data:topics` checks `data/topics.txt` (every statement in exactly one main topic, every ID known), refills each statement's wording from `statements.json`, sorts each topic into curriculum order and writes `data/topics.json`, which the scheme-of-work planner reads.

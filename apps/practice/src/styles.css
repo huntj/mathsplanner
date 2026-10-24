@@ -1371,3 +1371,275 @@ button.need:hover {
     margin-top: 0;
   }
 }
+
+/* --- guided scheme set-up ------------------------------------------------------------------ */
+
+.start-step {
+  margin: 1.5rem 0;
+}
+
+.step-number {
+  display: inline-grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-right: 0.4rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-size: 0.9rem;
+}
+
+.year-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+  gap: 0.4rem;
+}
+
+.year-grid button,
+.course-choice button {
+  padding: 0.55rem 0.6rem;
+}
+
+.course-choice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.start-more {
+  margin-top: 2rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+}
+
+.start-more summary,
+.coverage summary {
+  cursor: pointer;
+}
+
+.term-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.75rem 0;
+}
+
+.term-steps button[aria-current="step"] {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+  font-weight: 600;
+}
+
+.weeks.inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--muted);
+}
+
+.weeks.inline input {
+  width: 3.75rem;
+  padding: 0.1rem 0.35rem;
+}
+
+.lesson-bar {
+  width: 100%;
+  max-width: 40rem;
+  height: 0.6rem;
+  accent-color: var(--cell-on);
+}
+
+.topic-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.topic-chips button {
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+}
+
+.topic-chips button[aria-pressed="true"] {
+  cursor: default;
+}
+
+.chip-note {
+  font-size: 0.8em;
+  opacity: 0.8;
+}
+
+.topic-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.8rem 0.9rem;
+  margin: 1rem 0;
+}
+
+.topic-card header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.75rem;
+}
+
+.topic-card h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.topic-card header .buttons {
+  margin-left: auto;
+}
+
+.topic-group h4 {
+  margin: 0.9rem 0 0.35rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.topic-group .statement-picker {
+  max-height: none;
+}
+
+.topic-group.this .statement-picker {
+  border-color: var(--cell-on);
+}
+
+.guide-order ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.guide-order li {
+  padding: 0.2rem 0;
+}
+
+.guide-order code {
+  color: var(--muted);
+}
+
+.week-tag {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.guide-nav {
+  margin-top: 1.5rem;
+}
+
+/* --- weeks, coverage and homework on the plan ------------------------------------------------ */
+
+.half-term .items > li.week-label {
+  display: block;
+  border-top: 0;
+  padding: 0.5rem 0 0.1rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  cursor: default;
+}
+
+.coverage {
+  margin-top: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 0.8rem;
+}
+
+.coverage-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  max-height: 18rem;
+  overflow: auto;
+}
+
+.coverage-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.3rem 0;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.coverage-list code,
+.check-list code {
+  color: var(--muted);
+}
+
+.coverage-list button {
+  flex: none;
+  font-size: 0.8rem;
+  padding: 0.1rem 0.5rem;
+}
+
+.badge {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0 0.4rem;
+  border-radius: 999px;
+  background: var(--warning);
+  font-size: 0.72rem;
+}
+
+.homework-weeks {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.homework-weeks li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding: 0.55rem 0.75rem;
+}
+
+.homework-weeks li + li {
+  border-top: 1px solid var(--border);
+}
+
+.homework-weeks li > div:first-child {
+  flex: 1 1 18rem;
+}
+
+.homework-weeks .small {
+  color: var(--muted);
+}
+
+.check-list {
+  padding-left: 1.1rem;
+  max-height: 12rem;
+  overflow: auto;
+}
+
+/* Notes in the guided lists are longer ("Year 5 · needed first"), so they wrap under the wording. */
+.topic-group .statement-picker label.check {
+  flex-wrap: wrap;
+}
+
+.topic-group .statement-picker .planned {
+  white-space: normal;
+  margin-left: auto;
+}

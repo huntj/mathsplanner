@@ -141,7 +141,7 @@ describe("prerequisites", () => {
 
 describe("drafts", () => {
   it("places every statement in a course once, split into steps, before its prerequisites' dependants", () => {
-    for (const c of COURSES) {
+    for (const c of COURSES.filter((x) => x.part === undefined)) {
       const scheme = draftScheme(c);
       const items = scheme.halfTerms.flatMap((h) => h.items);
       expect(new Set(items).size, c.id).toBe(items.length);
@@ -180,6 +180,22 @@ describe("drafts", () => {
     for (const h of gcse.halfTerms) expect(h.items.length).toBeGreaterThan(0);
   });
 
+  it("shares a two-year qualification between its two one-year courses", () => {
+    for (const q of ["GF", "GH", "AL", "FM", "CM"]) {
+      const first = course(`${q}${q === "GF" || q === "GH" ? 10 : 12}`);
+      const second = course(`${q}${q === "GF" || q === "GH" ? 11 : 13}`);
+      const a = draftScheme(first).halfTerms.flatMap((h) => h.items);
+      const b = draftScheme(second).halfTerms.flatMap((h) => h.items);
+      const whole = draftScheme(course(q)).halfTerms.flatMap((h) => h.items);
+      expect(a.length, q).toBeGreaterThan(0);
+      expect(b.length, q).toBeGreaterThan(0);
+      expect([...a, ...b].sort(), q).toEqual([...whole].sort());
+    }
+    // A level statements recommended for Year 13 are not in a Year 12 draft.
+    const al12 = draftScheme(course("AL12")).halfTerms.flatMap((h) => h.items);
+    expect(al12).not.toContain("AL-P2.10");
+  });
+
   it("makes a link a browser can open", () => {
     // Long links are fine in browsers up to tens of thousands of characters.
     for (const c of COURSES) expect(formatScheme(draftScheme(c)).length, c.id).toBeLessThan(16_000);
@@ -195,7 +211,7 @@ describe("half-term homework and tests", () => {
     seed: 5,
     feedback: "each",
     title: "Autumn 1 homework",
-    review: { statements: ["Y9-ALG-01", "GF-N1"], count: 3 },
+    review: { groups: [{ statements: ["Y9-ALG-01", "GF-N1"], count: 3 }] },
   };
 
   it("round-trips homework with retrieval questions, and a set paper", () => {

@@ -21,6 +21,7 @@
     "typecheck": "tsc -p tsconfig.json && pnpm -r --if-present typecheck",
     "data:import": "node --conditions=@mathsplanner/source tools/import-map/src/import-cli.ts",
     "data:check": "node --conditions=@mathsplanner/source tools/import-map/src/check-cli.ts",
+    "data:topics": "node --conditions=@mathsplanner/source tools/import-map/src/topics-cli.ts",
     "coverage": "node --conditions=@mathsplanner/source packages/generators/scripts/coverage.ts",
     "gallery": "pnpm --filter @mathsplanner/gallery dev",
     "practice": "pnpm --filter @mathsplanner/practice dev",

@@ -63,6 +63,18 @@ export type Paper =
 
 export const MAX_MARKS = 200;
 
+/**
+ * Retrieval practice in a set: each group of earlier statements gives this many of the questions,
+ * at the review's depths (the set's own depths if none are given).
+ */
+export interface Review {
+  groups: { statements: string[]; count: number }[];
+  depths?: Depth[];
+}
+
+export const reviewCount = (review: Review | undefined) =>
+  review?.groups.reduce((sum, g) => sum + g.count, 0) ?? 0;
+
 export interface SessionSpec {
   statements: string[];
   depths: Depth[];
@@ -76,7 +88,7 @@ export interface SessionSpec {
   /** A name for the set, e.g. "Autumn 1 homework", shown to students and on the worksheet. */
   title?: string;
   /** Retrieval practice: this many of the questions come from these (earlier) statements. */
-  review?: { statements: string[]; count: number };
+  review?: Review;
 }
 
 /** How a printed worksheet looks; its questions come from a SessionSpec like a session's. */
@@ -100,14 +112,19 @@ export type Route =
   | { page: "unit" }
   | { page: "session"; spec: SessionSpec }
   | { page: "worksheet"; spec: SessionSpec; sheet: SheetOptions }
-  | { page: "scheme"; scheme: Scheme | undefined };
+  /** `guide` is the half-term open in the guided set-up, if it is open. */
+  | { page: "scheme"; scheme: Scheme | undefined; guide?: number };
 
 export const MAX_QUESTIONS = 40;
 
 export function formatRoute(route: Route): string {
   if (route.page === "setup") return "#/";
   if (route.page === "year" || route.page === "unit") return `#/${route.page}`;
-  if (route.page === "scheme") return route.scheme ? formatScheme(route.scheme) : "#/scheme";
+  if (route.page === "scheme") {
+    if (!route.scheme) return "#/scheme";
+    const guide = route.guide === undefined ? {} : { guide: String(route.guide + 1) };
+    return formatScheme(route.scheme, guide);
+  }
   const s = route.spec;
   const params = new URLSearchParams();
   const p = s.paper;
@@ -133,8 +150,10 @@ export function formatRoute(route: Route): string {
   if (p && p.marks > 0) params.set("marks", String(p.marks));
   if (s.title) params.set("name", s.title);
   if (s.review && !p) {
-    params.set("review", s.review.statements.join(","));
-    params.set("recall", String(s.review.count));
+    // Groups are separated by "~": review=A,B~C&recall=2,1.
+    params.set("review", s.review.groups.map((g) => g.statements.join(",")).join("~"));
+    params.set("recall", s.review.groups.map((g) => g.count).join(","));
+    if (s.review.depths) params.set("rdepths", s.review.depths.join(","));
   }
   params.set("numbers", s.numbers);
   params.set("count", String(s.count));
@@ -154,17 +173,28 @@ export function parseRoute(hash: string): Route {
   const [path = "", query = ""] = hash.replace(/^#/, "").split("?");
   if (path === "/year") return { page: "year" };
   if (path === "/unit") return { page: "unit" };
-  if (path === "/scheme") return { page: "scheme", scheme: parseScheme(query) };
+  if (path === "/scheme") {
+    const scheme = parseScheme(query);
+    const guide = Math.round(Number(new URLSearchParams(query).get("guide"))) - 1;
+    return scheme && guide >= 0 && guide < scheme.halfTerms.length
+      ? { page: "scheme", scheme, guide }
+      : { page: "scheme", scheme };
+  }
   if (path !== "/session" && path !== "/worksheet") return { page: "setup" };
   const q = new URLSearchParams(query);
   const toDepth = (v: string | null) => {
     const d = Number(v);
     return (DEPTHS as readonly number[]).includes(d) ? (d as Depth) : undefined;
   };
-  let depths = (q.get("depths") ?? "")
-    .split(",")
-    .map(Number)
-    .filter((d): d is Depth => (DEPTHS as readonly number[]).includes(d));
+  const toDepths = (v: string | null) => [
+    ...new Set(
+      (v ?? "")
+        .split(",")
+        .map(Number)
+        .filter((d): d is Depth => (DEPTHS as readonly number[]).includes(d)),
+    ),
+  ];
+  let depths = toDepths(q.get("depths"));
   const marks = Math.round(Number(q.get("marks")));
   const target = marks >= 1 && marks <= MAX_MARKS ? marks : 0;
   let paper: Paper | undefined;
@@ -199,8 +229,19 @@ export function parseRoute(hash: string): Route {
   if (ids.length === 0) return { page: kind === "year" || kind === "unit" ? kind : "setup" };
   const size = count >= 1 && count <= MAX_QUESTIONS ? count : 10;
   const title = (q.get("name") ?? "").trim().slice(0, 120);
-  const review = (q.get("review") ?? "").split(",").filter((id) => generatorFor(id));
-  const recall = Math.min(size - 1, Math.round(Number(q.get("recall"))));
+  const recalls = (q.get("recall") ?? "").split(",");
+  const groups = (q.get("review") ?? "")
+    .split("~")
+    .map((list, i) => ({
+      statements: [...new Set(list.split(",").filter((id) => generatorFor(id)))],
+      count: Math.round(Number(recalls[i])),
+    }))
+    .filter((g) => g.statements.length > 0 && g.count >= 1 && g.count <= MAX_QUESTIONS);
+  const reviewDepths = toDepths(q.get("rdepths"));
+  const review: Review | undefined =
+    groups.length && reviewCount({ groups }) <= size
+      ? { groups, ...(reviewDepths.length ? { depths: reviewDepths } : {}) }
+      : undefined;
   const spec: SessionSpec = {
     statements: [...new Set(ids)],
     depths: depths.length ? [...new Set(depths)].sort() : [...DEPTHS],
@@ -210,9 +251,7 @@ export function parseRoute(hash: string): Route {
     feedback: q.get("feedback") === "end" ? "end" : "each",
     ...(paper ? { paper } : {}),
     ...(title ? { title } : {}),
-    ...(!paper && review.length > 0 && recall >= 1
-      ? { review: { statements: [...new Set(review)], count: recall } }
-      : {}),
+    ...(!paper && review ? { review } : {}),
   };
   if (path === "/session") return { page: "session", spec };
   return {
@@ -243,19 +282,29 @@ export function itemMarks(item: SelectedItem, numbers: Numbers): number {
 export function sessionItems(spec: SessionSpec): SessionItem[] {
   const paper = spec.paper;
   if (!paper) {
-    const recall = spec.review ? Math.min(spec.review.count, spec.count - 1) : 0;
-    const main = selectQuestions(generators, {
-      ...spec,
-      statements: withSteps(spec.statements),
-      count: spec.count - recall,
-    });
-    if (!spec.review || recall < 1) return main;
-    const review = selectQuestions(generators, {
-      ...spec,
-      statements: withSteps(spec.review.statements),
-      count: recall,
-      seed: spec.seed + 1_000_003,
-    });
+    // A group whose statements have no questions at the depths asked for uses any depth.
+    const pick = (statements: string[], depths: readonly Depth[], count: number, seed: number) => {
+      const selection = { statements: withSteps(statements), count, seed };
+      const items = selectQuestions(generators, { ...selection, depths });
+      return items.length || count < 1
+        ? items
+        : selectQuestions(generators, { ...selection, depths: DEPTHS });
+    };
+    const groups = spec.review?.groups ?? [];
+    const main = pick(
+      spec.statements,
+      spec.depths,
+      spec.count - reviewCount(spec.review),
+      spec.seed,
+    );
+    const review = groups.flatMap((g, i) =>
+      pick(
+        g.statements,
+        spec.review?.depths ?? spec.depths,
+        g.count,
+        spec.seed + 1_000_003 * (i + 1),
+      ),
+    );
     return [...main, ...review].sort((a, b) => a.depth - b.depth);
   }
   const sorted = [...spec.depths].sort();
@@ -303,6 +352,7 @@ export function describeSpec(spec: SessionSpec, questions: number): string {
       : spec.statements.join(", ");
   if (p?.kind === "set")
     return `${covers} · depths ${p.start} to ${p.end} · ${spec.numbers} numbers · ${size}`;
-  const review = spec.review ? ` (${spec.review.count} from earlier topics)` : "";
+  const recall = reviewCount(spec.review);
+  const review = recall ? ` (${recall} from earlier topics)` : "";
   return `${covers} · ${spec.numbers} numbers · ${size}${review}`;
 }

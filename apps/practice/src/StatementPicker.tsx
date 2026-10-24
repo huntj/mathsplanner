@@ -15,6 +15,10 @@ interface Props {
   note?: (id: string) => ReactNode;
   /** Rows can be dragged out by ID, e.g. into a half-term. */
   onDragStart?: (id: string, e: DragEvent) => void;
+  /** Rows that cannot be ticked, e.g. statements planned in another half-term. */
+  isDisabled?: (id: string) => boolean;
+  /** Shown when nothing is listed. */
+  empty?: string;
 }
 
 export function StatementPicker({
@@ -24,6 +28,8 @@ export function StatementPicker({
   onToggle,
   note,
   onDragStart,
+  isDisabled,
+  empty = "Nothing matches the search.",
 }: Props) {
   const q = query.trim().toLowerCase();
   const hit = (s: { id: string; text: string }) =>
@@ -41,7 +47,7 @@ export function StatementPicker({
       <input
         type="checkbox"
         checked={checked}
-        disabled={disabled}
+        disabled={disabled || isDisabled?.(s.id)}
         onChange={() => onToggle(s.id)}
       />
       <code>{s.id}</code> <span>{s.text}</span>
@@ -73,7 +79,7 @@ export function StatementPicker({
           </li>
         );
       })}
-      {visible.length === 0 && <li className="muted empty">Nothing matches the search.</li>}
+      {visible.length === 0 && <li className="muted empty">{empty}</li>}
     </ul>
   );
 }

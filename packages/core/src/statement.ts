@@ -86,6 +86,26 @@ export interface StatementsFile {
   statements: Statement[];
 }
 
+/**
+ * A teacher-friendly group of statements across the years, such as "Factors, multiples and
+ * primes", used to plan schemes of work. Built from data/topics.txt by `pnpm data:topics`.
+ */
+export interface Topic {
+  /** "factors" */
+  id: string;
+  name: string;
+  /** Statements whose main topic this is, in curriculum order. A sub-statement not listed in any topic takes its parent's. */
+  statements: string[];
+  /** Statements whose second topic this is. */
+  also: string[];
+}
+
+/** The shape of data/topics.json. */
+export interface TopicsFile {
+  version: string;
+  topics: Topic[];
+}
+
 export interface MisconceptionEntry {
   /** "FR.ADD.TOPS-AND-BOTTOMS" */
   code: string;

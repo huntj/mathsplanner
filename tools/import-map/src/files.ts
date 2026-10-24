@@ -9,6 +9,8 @@ export const PATHS = {
   map: resolve(ROOT, "docs/progression-map.md"),
   statements: resolve(ROOT, "data/statements.json"),
   misconceptions: resolve(ROOT, "data/misconceptions.json"),
+  topics: resolve(ROOT, "data/topics.json"),
+  topicsText: resolve(ROOT, "data/topics.txt"),
   statementsSchema: resolve(ROOT, "data/schema/statements.schema.json"),
   misconceptionsSchema: resolve(ROOT, "data/schema/misconceptions.schema.json"),
 };

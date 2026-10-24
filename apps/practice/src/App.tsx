@@ -57,7 +57,7 @@ export function App() {
         ) : route.page === "unit" ? (
           <UnitTestView navigate={navigate} />
         ) : route.page === "scheme" ? (
-          <SchemeView scheme={route.scheme} navigate={navigate} />
+          <SchemeView scheme={route.scheme} guide={route.guide} navigate={navigate} />
         ) : route.page === "worksheet" ? (
           <WorksheetView spec={route.spec} sheet={route.sheet} navigate={navigate} />
         ) : (
