@@ -158,6 +158,12 @@ export interface Scheme {
   /** Seeds every homework and check made from the scheme, so their links stay the same. */
   seed: number;
   halfTerms: HalfTerm[];
+  /**
+   * The class's lessons in each week of each half-term, when its timetable is known (see
+   * workspace.ts); otherwise every week has lessonsPerWeek. Links and files leave it out, since the
+   * timetable gives it again.
+   */
+  weekLessons?: number[][];
 }
 
 /** A half-term's name, with its year when the course runs over more than one. */
@@ -333,6 +339,11 @@ export function readSchemeFile(contents: string): Scheme {
   } catch {
     throw new Error("This file is not a MathsPlanner scheme of work (it is not JSON).");
   }
+  return schemeFromData(data);
+}
+
+/** Reads a scheme from a file's parsed JSON, such as one inside a workspace backup, or throws. */
+export function schemeFromData(data: unknown): Scheme {
   const file = data as Omit<SchemeParts, "halfTerms"> & { format?: unknown; halfTerms?: unknown };
   if (file?.format !== FILE_FORMAT || !Array.isArray(file.halfTerms))
     throw new Error("This file is not a MathsPlanner scheme of work.");
@@ -458,11 +469,25 @@ export interface WeekPlan {
   capacity: number;
 }
 
+/** The lessons in each week of a half-term: the class's timetable if known, else lessonsPerWeek. */
+export function weekLessonsOf(scheme: Scheme, term: number): number[] {
+  const given = scheme.weekLessons?.[term];
+  if (given?.length) return given;
+  const weeks = Math.max(1, scheme.halfTerms[term]?.weeks ?? 1);
+  return Array.from({ length: weeks }, () => Math.max(1, scheme.lessonsPerWeek));
+}
+
 export function weekPlan(scheme: Scheme, term: number): WeekPlan {
   const h = scheme.halfTerms[term] ?? { weeks: 1, items: [] };
-  const per = Math.max(1, scheme.lessonsPerWeek);
-  const weeks: string[][] = Array.from({ length: h.weeks }, () => []);
-  const weekAt = (lesson: number) => Math.min(h.weeks - 1, Math.floor(lesson / per));
+  const pattern = weekLessonsOf(scheme, term);
+  const weeks: string[][] = pattern.map(() => []);
+  // The lesson each week ends before; a lesson past the last falls in the last week.
+  let total = 0;
+  const ends = pattern.map((n) => (total += n));
+  const weekAt = (lesson: number) => {
+    const week = ends.findIndex((end) => lesson < end);
+    return week < 0 ? pattern.length - 1 : week;
+  };
   let lesson = 0;
   const starts = h.items.map((id) => {
     const start = weekAt(lesson);
@@ -475,7 +500,20 @@ export function weekPlan(scheme: Scheme, term: number): WeekPlan {
     lesson += lessonsOf(scheme, id);
     return start;
   });
-  return { starts, weeks, lessons: lesson, capacity: h.weeks * per };
+  return { starts, weeks, lessons: lesson, capacity: total };
+}
+
+/**
+ * What each lesson of a half-term teaches, in order: an item taking n lessons fills n of them, and
+ * a statement with steps and its default lessons teaches a step a lesson. The list runs past the
+ * half-term's lessons when too much is planned, and stops short when too little is.
+ */
+export function lessonPlan(scheme: Scheme, term: number): string[] {
+  return (scheme.halfTerms[term]?.items ?? []).flatMap((id) => {
+    const steps = stepsOf.get(id) ?? [];
+    if (steps.length && scheme.lessons[id] === undefined) return steps.map((s) => s.id);
+    return Array.from({ length: lessonsOf(scheme, id) }, () => id);
+  });
 }
 
 // --- editing --------------------------------------------------------------------------------
