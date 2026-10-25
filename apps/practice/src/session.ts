@@ -113,8 +113,11 @@ export type Route =
   | { page: "welcome"; step: number }
   | { page: "timetable" }
   | { page: "homework" }
-  /** A class's scheme of work in the planner, saved with the class; `guide` as for a scheme. */
-  | { page: "class"; id: string; guide?: number }
+  /**
+   * A class's scheme of work, saved with the class: the year, or one half-term (`term`), its
+   * guided set-up (`guide`, as for a scheme) or the full editor (`edit`).
+   */
+  | { page: "class"; id: string; guide?: number; term?: number; edit?: boolean }
   /** Choosing questions for a practice session. */
   | { page: "setup" }
   | { page: "year" }
@@ -135,6 +138,8 @@ export function formatRoute(route: Route): string {
   if (route.page === "class") {
     const params = new URLSearchParams({ id: route.id });
     if (route.guide !== undefined) params.set("guide", String(route.guide + 1));
+    else if (route.term !== undefined) params.set("term", String(route.term + 1));
+    else if (route.edit) params.set("edit", "1");
     return `#/class?${params.toString()}`;
   }
   if (route.page === "scheme") {
@@ -195,9 +200,16 @@ export function parseRoute(hash: string): Route {
   if (path === "/homework") return { page: "homework" };
   if (path === "/class") {
     const q = new URLSearchParams(query);
-    const guide = Math.round(Number(q.get("guide"))) - 1;
+    const half = (key: string) => {
+      const n = Math.round(Number(q.get(key))) - 1;
+      return n >= 0 && n < 6 ? n : undefined;
+    };
     const id = (q.get("id") ?? "").slice(0, 20);
-    return guide >= 0 && guide < 6 ? { page: "class", id, guide } : { page: "class", id };
+    const guide = half("guide");
+    const term = half("term");
+    if (guide !== undefined) return { page: "class", id, guide };
+    if (term !== undefined) return { page: "class", id, term };
+    return q.get("edit") === "1" ? { page: "class", id, edit: true } : { page: "class", id };
   }
   if (path === "/welcome") {
     const step = Math.round(Number(new URLSearchParams(query).get("step")));

@@ -9,9 +9,7 @@ import { className, Swatch } from "./TimetableGrid.tsx";
 import {
   readWorkspaceFile,
   setupProgress,
-  teachingWeeks,
   today,
-  weekFor,
   whereWeAre,
   workspaceFile,
   type Workspace,
@@ -31,9 +29,6 @@ export function HomeView({
   const progress = setupProgress(ws);
   const [error, setError] = useState("");
   const current = !progress.classes ? "classes" : !progress.homework ? "homework" : "schemes";
-  // Planning starts from the half-term the year is in, for a teacher setting up mid-year.
-  const weeks = teachingWeeks(ws);
-  const termNow = weeks[weekFor(weeks, today()) ?? 0]?.term ?? 0;
 
   const download = () => {
     const url = URL.createObjectURL(new Blob([workspaceFile(ws)], { type: "application/json" }));
@@ -94,13 +89,7 @@ export function HomeView({
                   <button
                     type="button"
                     className={planned === 0 ? "primary" : undefined}
-                    onClick={() =>
-                      navigate(
-                        planned === 0
-                          ? { page: "class", id: c.id, guide: termNow }
-                          : { page: "class", id: c.id },
-                      )
-                    }
+                    onClick={() => navigate({ page: "class", id: c.id })}
                   >
                     {planned === 0 ? "Start planning" : "Open the plan"}
                   </button>

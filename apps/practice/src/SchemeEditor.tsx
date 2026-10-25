@@ -118,9 +118,9 @@ export function SchemeEditor({
             className="link"
             onClick={() => navigate({ page: "scheme", scheme: undefined })}
           >
-            {inClass ? "Home" : "Schemes of work"}
+            {inClass ? `${scheme.className || course.name}: the whole year` : "Schemes of work"}
           </button>{" "}
-          / {course.name}
+          / {inClass ? "Full editor" : course.name}
         </p>
         <h1>{scheme.title}</h1>
         <div className="controls no-print">

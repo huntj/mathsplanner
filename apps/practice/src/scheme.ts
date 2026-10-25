@@ -503,18 +503,41 @@ export function weekPlan(scheme: Scheme, term: number): WeekPlan {
   return { starts, weeks, lessons: lesson, capacity: total };
 }
 
+export interface LessonSlot {
+  /** The item in the half-term this lesson is part of. */
+  item: string;
+  /** What the lesson teaches: the item, or for a statement taught a step a lesson, its step. */
+  objective: string;
+  /** Which of the item's lessons this is (0, 1, …) and how many it has. */
+  part: number;
+  parts: number;
+  /** Whether the item is taught a step a lesson, so its lessons follow its steps. */
+  stepped: boolean;
+}
+
 /**
  * What each lesson of a half-term teaches, in order: an item taking n lessons fills n of them, and
  * a statement with steps and its default lessons teaches a step a lesson. The list runs past the
  * half-term's lessons when too much is planned, and stops short when too little is.
  */
-export function lessonPlan(scheme: Scheme, term: number): string[] {
-  return (scheme.halfTerms[term]?.items ?? []).flatMap((id) => {
-    const steps = stepsOf.get(id) ?? [];
-    if (steps.length && scheme.lessons[id] === undefined) return steps.map((s) => s.id);
-    return Array.from({ length: lessonsOf(scheme, id) }, () => id);
+export function lessonSlots(scheme: Scheme, term: number): LessonSlot[] {
+  return (scheme.halfTerms[term]?.items ?? []).flatMap((item) => {
+    const steps = stepsOf.get(item) ?? [];
+    const stepped = steps.length > 0 && scheme.lessons[item] === undefined;
+    const parts = stepped ? steps.length : lessonsOf(scheme, item);
+    return Array.from({ length: parts }, (_, part) => ({
+      item,
+      objective: stepped ? (steps[part]?.id ?? item) : item,
+      part,
+      parts,
+      stepped,
+    }));
   });
 }
+
+/** The objective of each lesson of a half-term, in order; see lessonSlots. */
+export const lessonPlan = (scheme: Scheme, term: number): string[] =>
+  lessonSlots(scheme, term).map((l) => l.objective);
 
 // --- editing --------------------------------------------------------------------------------
 
@@ -583,7 +606,13 @@ function yearOf(course: Course, s: Statement, half: Set<string>): number | undef
  * steps where it has them, put in prerequisite order (otherwise curriculum order, so strands stay
  * together) and shared across the half-terms in proportion to their weeks.
  */
-export function draftScheme(course: Course, title?: string, className = ""): Scheme {
+export function draftScheme(
+  course: Course,
+  title?: string,
+  className = "",
+  /** How to share the statements over the half-terms, such as each one's lessons; else weeks. */
+  weights?: readonly number[],
+): Scheme {
   const scheme = emptyScheme(course, title, className);
   const items = coursePool(course).flatMap((s) => {
     const steps = stepsOf.get(s.id) ?? [];
@@ -618,12 +647,15 @@ export function draftScheme(course: Course, title?: string, className = ""): Sch
     list.slice(0, Math.ceil(list.length / 2)).forEach((s) => half.add(s.id));
   }
   const year = (s: Statement) => yearOf(course, s, half);
+  const weighted = weights?.some((w) => w > 0);
+  const weight = (h: HalfTerm) =>
+    weighted ? (weights?.[scheme.halfTerms.indexOf(h)] ?? 0) : h.weeks;
   const share = (list: Statement[], terms: HalfTerm[]) => {
-    const total = terms.reduce((sum, h) => sum + h.weeks, 0);
+    const total = terms.reduce((sum, h) => sum + weight(h), 0) || 1;
     let weeks = 0;
     let start = 0;
     for (const h of terms) {
-      weeks += h.weeks;
+      weeks += weight(h);
       const end = Math.round((list.length * weeks) / total);
       h.items.push(...list.slice(start, end).map((s) => s.id));
       start = end;

@@ -119,13 +119,7 @@ export function App() {
         ) : route.page === "homework" && ws ? (
           <HomeworkView ws={ws} save={save} navigate={navigate} />
         ) : route.page === "class" && ws ? (
-          <ClassPlanView
-            ws={ws}
-            id={route.id}
-            guide={route.guide}
-            save={save}
-            navigate={navigate}
-          />
+          <ClassPlanView ws={ws} route={route} save={save} navigate={navigate} />
         ) : route.page === "setup" ? (
           <SetupView navigate={navigate} />
         ) : route.page === "year" ? (

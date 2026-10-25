@@ -1,12 +1,22 @@
 import { describe, expect, it } from "vitest";
-import { lessonPlan, setLessons, TERMS, weekPlan, placeItem, type Scheme } from "./scheme.ts";
+import {
+  lessonPlan,
+  lessonSlots,
+  placeItem,
+  setLessons,
+  TERMS,
+  weekPlan,
+  type Scheme,
+} from "./scheme.ts";
 import { stepsOf } from "./session.ts";
 import {
   addClass,
   classAt,
   classLessons,
   cleanWorkspace,
+  copyPlan,
   defaultDue,
+  draftFor,
   dateOf,
   dayNumber,
   homeworkDates,
@@ -19,6 +29,7 @@ import {
   startWeekFor,
   suggestedTerms,
   teachingWeeks,
+  termLessons,
   termProblems,
   testLessons,
   toggleSlot,
@@ -381,5 +392,53 @@ describe("words for the set-up", () => {
       scheme: placeItem(c.scheme, "Y7-ALG-01", 0),
     }));
     expect(setupProgress(ws).schemes).toBe(true);
+  });
+});
+
+describe("planning a class", () => {
+  it("says which item and part of it each lesson is", () => {
+    const ws = addClass(workspace(), "GF10", "10Y1");
+    let scheme = placeItem(placeItem(first(ws).scheme, "GF-A4", 0), "GF-N1", 0);
+    const steps = stepsOf.get("GF-A4") ?? [];
+    scheme = setLessons(scheme, "GF-N1", 4);
+    const slots = lessonSlots(scheme, 0);
+    expect(slots).toHaveLength(steps.length + 4);
+    expect(slots[0]).toMatchObject({ item: "GF-A4", part: 0, parts: steps.length, stepped: true });
+    expect(slots[1]?.objective).toBe(steps[1]?.id);
+    expect(slots.at(-1)).toMatchObject({ item: "GF-N1", objective: "GF-N1", part: 3, parts: 4 });
+    expect(lessonPlan(scheme, 0)).toEqual(slots.map((l) => l.objective));
+  });
+
+  it("drafts a class's year shared by its lessons, keeping its name and seed", () => {
+    let ws = withClass();
+    // Only Autumn 1 and Summer 2 have lessons: take the class out of the rest by moving the dates.
+    ws = settle({
+      ...ws,
+      classes: ws.classes,
+      terms: ws.terms.map((t, i) => (i === 0 || i === 5 ? t : { start: "", end: "" })),
+    });
+    const scheme = first(ws).scheme;
+    expect(termLessons(scheme)).toEqual([22, 0, 0, 0, 0, 21]);
+    const draft = draftFor(scheme);
+    expect(draft.className).toBe("7X2");
+    expect(draft.seed).toBe(scheme.seed);
+    expect(draft.weekLessons).toEqual(scheme.weekLessons);
+    const counts = draft.halfTerms.map((h) => h.items.length);
+    expect(counts.slice(1, 5)).toEqual([0, 0, 0, 0]);
+    expect((counts[0] ?? 0) + (counts[5] ?? 0)).toBeGreaterThan(10);
+  });
+
+  it("copies another class's plan into a class", () => {
+    let ws = addClass(addClass(workspace(), "Y7", "7X1"), "Y7", "7X2");
+    const [a, b] = ws.classes;
+    ws = updateClass(ws, a?.id ?? "", (c) => ({
+      ...c,
+      scheme: setLessons(placeItem(c.scheme, "Y7-ALG-01", 1), "Y7-ALG-01", 5),
+    }));
+    const copied = copyPlan(b?.scheme as Scheme, first(ws).scheme);
+    expect(copied.className).toBe("7X2");
+    expect(copied.halfTerms[1]?.items).toEqual(["Y7-ALG-01"]);
+    expect(copied.lessons).toEqual({ "Y7-ALG-01": 5 });
+    expect(copied.seed).toBe(b?.scheme.seed);
   });
 });
