@@ -6,12 +6,17 @@ import {
   classAt,
   classLessons,
   cleanWorkspace,
+  defaultDue,
   dateOf,
   dayNumber,
   homeworkDates,
+  longDate,
   readWorkspaceFile,
   removeClass,
   settle,
+  setupProgress,
+  slotName,
+  startWeekFor,
   suggestedTerms,
   teachingWeeks,
   termProblems,
@@ -20,6 +25,7 @@ import {
   updateClass,
   weekday,
   weekFor,
+  whereWeAre,
   workspaceFile,
   type HalfTermDates,
   type Slot,
@@ -308,5 +314,72 @@ describe("backups", () => {
     expect(ws?.classes[0]?.slots).toEqual([slot(0, 0)]);
     expect(ws?.classes[0]?.tests).toEqual([null, 2, null, null, null, null]);
     expect(cleanWorkspace({ format: "other" })).toBeUndefined();
+  });
+});
+
+describe("words for the set-up", () => {
+  it("names dates and periods", () => {
+    expect(longDate("2026-11-02")).toBe("Monday 2 November");
+    expect(longDate("2026-11-02", true)).toBe("Monday 2 November 2026");
+    expect(longDate("")).toBe("");
+    const one = workspace().timetable;
+    const two = workspace(2).timetable;
+    expect(slotName(one, slot(2, 0))).toBe("Wednesday period 1");
+    expect(slotName(two, slot(2, 0, 1))).toBe("Week B, Wednesday period 1");
+    expect(slotName(two, slot(4, 3), true)).toBe("A Fri P4");
+    expect(slotName(one, slot(4, 3), true)).toBe("Fri P4");
+  });
+
+  it("says where the year is", () => {
+    const ws = workspace(2);
+    expect(whereWeAre(ws, "2026-10-21")).toBe("This is week 8 of Autumn 1 (Week B).");
+    expect(whereWeAre(ws, "2026-10-17")).toBe("Next week is week 8 of Autumn 1 (Week B).");
+    expect(whereWeAre(ws, "2026-10-25")).toBe("Autumn 2 starts on Monday 2 November (Week A).");
+    expect(whereWeAre(workspace(), "2026-08-31")).toBe("Autumn 1 starts on Wednesday 2 September.");
+    expect(whereWeAre(ws, "2027-08-01")).toBe("The school year in your half-term dates is over.");
+  });
+
+  it("finds the start week from which week a date is in", () => {
+    const ws = workspace(2);
+    const weeks = teachingWeeks(ws);
+    const i = weekFor(weeks, "2026-11-04") ?? 0;
+    expect(weeks[i]?.label).toBe(0);
+    const first = startWeekFor(ws, i, 1);
+    expect(first).toBe(1);
+    const moved = { ...ws, timetable: { ...ws.timetable, firstWeek: first } };
+    expect(teachingWeeks(moved)[i]?.label).toBe(1);
+    expect(startWeekFor(ws, i, 0)).toBe(0);
+  });
+
+  it("suggests handing homework in about a week after it is set", () => {
+    const ws = withClass();
+    const tt = ws.timetable;
+    expect(defaultDue(tt, first(ws), slot(0, 1))).toEqual(slot(0, 1));
+    expect(defaultDue(tt, first(ws), slot(2, 2))).toEqual(slot(2, 2));
+    let two = addClass(workspace(2), "Y7", "7X2");
+    for (const s of [slot(0, 0, 0), slot(3, 0, 0), slot(0, 0, 1)])
+      two = toggleSlot(two, first(two).id, s);
+    expect(defaultDue(two.timetable, first(two), slot(0, 0, 0))).toEqual(slot(0, 0, 1));
+    // From Thursday of Week A, Monday of the next Week A is nearer a week than Week B's Monday.
+    expect(defaultDue(two.timetable, first(two), slot(3, 0, 0))).toEqual(slot(0, 0, 0));
+  });
+
+  it("tracks how far the set-up has got", () => {
+    let ws = addClass(workspace(), "Y7", "7X2");
+    expect(setupProgress(ws)).toEqual({ classes: false, homework: false, schemes: false });
+    ws = toggleSlot(ws, first(ws).id, slot(0, 0));
+    expect(setupProgress(ws)).toEqual({ classes: true, homework: false, schemes: false });
+    ws = updateClass(ws, first(ws).id, (c) => ({
+      ...c,
+      noHomework: true,
+      homework: [{ set: slot(0, 0), due: slot(0, 0) }],
+    }));
+    expect(first(ws).homework).toEqual([]);
+    expect(setupProgress(ws).homework).toBe(true);
+    ws = updateClass(ws, first(ws).id, (c) => ({
+      ...c,
+      scheme: placeItem(c.scheme, "Y7-ALG-01", 0),
+    }));
+    expect(setupProgress(ws).schemes).toBe(true);
   });
 });

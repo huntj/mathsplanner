@@ -48,7 +48,16 @@ interface Action {
 const clampInt = (v: string, lo: number, hi: number) =>
   Math.min(hi, Math.max(lo, Math.round(Number(v)) || lo));
 
-export function SchemeEditor({ scheme, navigate }: { scheme: Scheme; navigate: Navigate }) {
+export function SchemeEditor({
+  scheme,
+  navigate,
+  inClass = false,
+}: {
+  scheme: Scheme;
+  navigate: Navigate;
+  /** A class's scheme, saved with the class: its weeks come from the timetable. */
+  inClass?: boolean;
+}) {
   const course = courseById.get(scheme.course) ?? (COURSES[0] as Course);
   const update = (next: Scheme) => navigate({ page: "scheme", scheme: next }, true);
   const places = useMemo(() => placesOf(scheme), [scheme]);
@@ -109,7 +118,7 @@ export function SchemeEditor({ scheme, navigate }: { scheme: Scheme; navigate: N
             className="link"
             onClick={() => navigate({ page: "scheme", scheme: undefined })}
           >
-            Schemes of work
+            {inClass ? "Home" : "Schemes of work"}
           </button>{" "}
           / {course.name}
         </p>
@@ -139,24 +148,28 @@ export function SchemeEditor({ scheme, navigate }: { scheme: Scheme; navigate: N
               onBlur={() => update({ ...scheme, className: scheme.className.trim() })}
             />
           </label>
-          <label>
-            Lessons a week
-            <input
-              type="number"
-              min={1}
-              max={MAX_LESSONS}
-              value={scheme.lessonsPerWeek}
-              onChange={(e) =>
-                update({ ...scheme, lessonsPerWeek: clampInt(e.target.value, 1, MAX_LESSONS) })
-              }
-            />
-          </label>
+          {!inClass && (
+            <label>
+              Lessons a week
+              <input
+                type="number"
+                min={1}
+                max={MAX_LESSONS}
+                value={scheme.lessonsPerWeek}
+                onChange={(e) =>
+                  update({ ...scheme, lessonsPerWeek: clampInt(e.target.value, 1, MAX_LESSONS) })
+                }
+              />
+            </label>
+          )}
         </div>
         <p className="count">
           {course.name}
           {scheme.className && ` · ${scheme.className}`} · {planned} item{planned === 1 ? "" : "s"}{" "}
-          planned · {scheme.halfTerms.reduce((sum, h) => sum + h.weeks, 0)} weeks of{" "}
-          {scheme.lessonsPerWeek} lessons
+          planned · {scheme.halfTerms.reduce((sum, h) => sum + h.weeks, 0)} weeks
+          {scheme.weekLessons
+            ? `, ${scheme.weekLessons.flat().reduce((a, b) => a + b, 0)} lessons from your timetable`
+            : ` of ${scheme.lessonsPerWeek} lessons`}
         </p>
         <div className="share no-print">
           <label>
@@ -170,13 +183,15 @@ export function SchemeEditor({ scheme, navigate }: { scheme: Scheme; navigate: N
             <button type="button" onClick={download}>
               Download file
             </button>
-            <OpenFile
-              onOpen={(s) => {
-                setError("");
-                navigate({ page: "scheme", scheme: s });
-              }}
-              onError={setError}
-            />
+            {!inClass && (
+              <OpenFile
+                onOpen={(s) => {
+                  setError("");
+                  navigate({ page: "scheme", scheme: s });
+                }}
+                onError={setError}
+              />
+            )}
             <button type="button" onClick={() => window.print()}>
               Print overview
             </button>
@@ -389,18 +404,24 @@ function HalfTermCard(p: CardProps) {
     >
       <header>
         <h3>{halfTermName(course, term)}</h3>
-        <label className="weeks no-print">
-          <input
-            type="number"
-            min={1}
-            max={MAX_WEEKS}
-            value={h.weeks}
-            aria-label={`Weeks in ${halfTermName(course, term)}`}
-            onChange={(e) => setWeeks(clampInt(e.target.value, 1, MAX_WEEKS))}
-          />
-          weeks
-        </label>
-        <span className="print-only muted">{h.weeks} weeks</span>
+        {scheme.weekLessons?.[term]?.length ? (
+          <span className="muted">{h.weeks} weeks</span>
+        ) : (
+          <label className="weeks no-print">
+            <input
+              type="number"
+              min={1}
+              max={MAX_WEEKS}
+              value={h.weeks}
+              aria-label={`Weeks in ${halfTermName(course, term)}`}
+              onChange={(e) => setWeeks(clampInt(e.target.value, 1, MAX_WEEKS))}
+            />
+            weeks
+          </label>
+        )}
+        {!scheme.weekLessons?.[term]?.length && (
+          <span className="print-only muted">{h.weeks} weeks</span>
+        )}
       </header>
       <p className="count small">
         {h.items.length} item{h.items.length === 1 ? "" : "s"} · {plan.lessons} of {plan.capacity}{" "}

@@ -230,8 +230,10 @@ export function WeeklyHomework({
         </button>
       </div>
       <p className="muted small">
-        Weeks come from each item&apos;s lessons and the {scheme.lessonsPerWeek} lessons a week set
-        for this scheme; change them in the plan. Paste the links into Google Classroom or Teams.
+        {scheme.weekLessons
+          ? "Weeks come from each item's lessons and the class's lessons in your timetable. "
+          : `Weeks come from each item's lessons and the ${scheme.lessonsPerWeek} lessons a week set for this scheme; change them in the plan. `}
+        Paste the links into Google Classroom or Teams.
       </p>
     </>
   );

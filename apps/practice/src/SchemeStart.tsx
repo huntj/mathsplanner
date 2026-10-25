@@ -73,7 +73,7 @@ export function OpenFile({
 }
 
 /** The year groups to choose from; from Year 10 a year has more than one course. */
-const YEARS: { label: string; courses: string[] }[] = [
+export const YEARS: { label: string; courses: string[] }[] = [
   { label: "Nursery", courses: ["N"] },
   { label: "Reception", courses: ["R"] },
   ...Array.from({ length: 9 }, (_, i) => ({ label: `Year ${i + 1}`, courses: [`Y${i + 1}`] })),
@@ -87,7 +87,7 @@ const YEARS: { label: string; courses: string[] }[] = [
 
 const courseOf = (id: string) => courseById.get(id) ?? (COURSES[0] as Course);
 /** "Year 10 GCSE Higher" → "GCSE Higher". */
-const shortName = (course: Course) => course.name.replace(/^Year \d+ /, "");
+export const shortName = (course: Course) => course.name.replace(/^Year \d+ /, "");
 
 export function SchemeStart({ navigate }: { navigate: Navigate }) {
   const [year, setYear] = useState<number>();

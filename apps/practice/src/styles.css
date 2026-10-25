@@ -1643,3 +1643,482 @@ button.need:hover {
   white-space: normal;
   margin-left: auto;
 }
+
+/* --- teacher set-up ------------------------------------------------------------------------- */
+
+/* Class colours: a soft fill with dark text in light mode, a deep fill with light text in dark. */
+:root {
+  --class-0: #cfe0ff;
+  --class-1: #d4f0d9;
+  --class-2: #ffe1c2;
+  --class-3: #f3d4f5;
+  --class-4: #fff0b3;
+  --class-5: #c9eef0;
+  --class-6: #ffd3d3;
+  --class-7: #e0dcf7;
+  --class-text: #1d1f23;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --class-0: #24426f;
+    --class-1: #245236;
+    --class-2: #66431c;
+    --class-3: #5b2c5e;
+    --class-4: #5c4f12;
+    --class-5: #1f5357;
+    --class-6: #6a2a2a;
+    --class-7: #3f3970;
+    --class-text: #f1f2f4;
+  }
+}
+
+.class-c0 {
+  --class: var(--class-0);
+}
+.class-c1 {
+  --class: var(--class-1);
+}
+.class-c2 {
+  --class: var(--class-2);
+}
+.class-c3 {
+  --class: var(--class-3);
+}
+.class-c4 {
+  --class: var(--class-4);
+}
+.class-c5 {
+  --class: var(--class-5);
+}
+.class-c6 {
+  --class: var(--class-6);
+}
+.class-c7 {
+  --class: var(--class-7);
+}
+
+.swatch {
+  display: inline-block;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 3px;
+  background: var(--class);
+  border: 1px solid var(--border);
+  vertical-align: -0.1em;
+  flex: none;
+}
+
+button.big {
+  font-size: 1.05rem;
+  padding: 0.6rem 1.1rem;
+}
+
+fieldset.plain {
+  border: 0;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+fieldset.plain legend {
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+}
+
+.welcome,
+.setup-page {
+  max-width: 760px;
+}
+
+.welcome h1 {
+  font-size: 1.7rem;
+  margin-top: 0.75rem;
+}
+
+.welcome .lede {
+  font-size: 1.05rem;
+}
+
+.welcome-count {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.welcome-list li {
+  margin: 0.3rem 0;
+}
+
+.welcome-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  margin: 1.75rem 0 1rem;
+}
+
+.choice-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.choice-card {
+  display: grid;
+  gap: 0.25rem;
+  text-align: left;
+  padding: 1rem 1.1rem;
+  border-width: 2px;
+  border-radius: 10px;
+}
+
+.choice-card span {
+  font-size: 0.95rem;
+}
+
+.choice-card[aria-pressed="true"] span {
+  color: inherit;
+}
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+}
+
+.stepper button {
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  border-radius: 50%;
+}
+
+.stepper output {
+  min-width: 2.5rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.day-preview {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.day-preview li {
+  padding: 0.4rem 0.7rem;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  font-size: 0.9rem;
+}
+
+.minute-choices,
+.lesson-choices,
+.class-list,
+.week-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.minute-choices button,
+.lesson-choices button {
+  padding: 0.5rem 0.8rem;
+}
+
+.inline-field {
+  margin-top: 1rem;
+}
+
+.inline-field input {
+  width: 6rem;
+}
+
+.term-dates {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0 0.5rem;
+}
+
+.term-dates th,
+.term-dates td {
+  text-align: left;
+  padding: 0.35rem 0.5rem 0.35rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.term-dates thead th {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.term-dates input {
+  font: inherit;
+  max-width: 100%;
+}
+
+@media (max-width: 560px) {
+  .term-dates thead {
+    display: none;
+  }
+  .term-dates tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.25rem 0.5rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .term-dates th,
+  .term-dates td {
+    border: 0;
+    padding: 0;
+  }
+  .term-dates th {
+    grid-column: 1 / -1;
+  }
+  .term-dates td:last-child::after {
+    content: " weeks";
+  }
+}
+
+.problems {
+  padding-left: 2rem;
+}
+
+.summary {
+  margin: 1.25rem 0;
+}
+
+.summary > div {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 0.5rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.summary dt {
+  font-weight: 600;
+}
+
+.summary dd {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.term-summary {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  .summary > div {
+    grid-template-columns: 1fr;
+  }
+}
+
+.setup-progress ol {
+  list-style: none;
+  padding: 0;
+  margin: 0.25rem 0 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+  font-size: 0.9rem;
+}
+
+.setup-progress a {
+  display: inline-flex;
+  align-items: center;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.setup-progress a[href]:hover {
+  color: var(--text);
+}
+
+.setup-progress .step-number {
+  width: 1.4rem;
+  height: 1.4rem;
+  font-size: 0.8rem;
+  background: var(--cell);
+  color: var(--text);
+}
+
+.setup-progress .done .step-number {
+  background: var(--cell-on);
+  color: #fff;
+}
+
+.setup-progress a[aria-current="step"] {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.setup-progress a[aria-current="step"] .step-number {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+/* The timetable grid: a lesson's height follows the lesson length. */
+.timetable {
+  overflow-x: auto;
+  margin: 0.75rem 0;
+}
+
+.timetable table {
+  width: 100%;
+  min-width: 20rem;
+  border-collapse: separate;
+  border-spacing: 4px;
+  table-layout: fixed;
+}
+
+.timetable th {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.timetable thead th:first-child,
+.timetable tbody th {
+  width: 2.25rem;
+}
+
+.timetable td {
+  height: var(--lesson-height, 56px);
+  padding: 0;
+}
+
+.day-short {
+  display: none;
+}
+
+@media (max-width: 560px) {
+  .day-long {
+    display: none;
+  }
+  .day-short {
+    display: inline;
+  }
+}
+
+.slot {
+  width: 100%;
+  height: 100%;
+  padding: 0.2rem;
+  border-style: dashed;
+  color: var(--muted);
+  font-size: 0.85rem;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+.slot.taken {
+  border-style: solid;
+  background: var(--class);
+  color: var(--class-text);
+  font-weight: 600;
+}
+
+.slot[aria-pressed="true"] {
+  background: var(--class);
+  border-color: var(--text);
+  color: var(--class-text);
+  box-shadow: inset 0 0 0 2px var(--text);
+}
+
+.slot:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+.class-list {
+  margin: 1rem 0;
+}
+
+.class-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: left;
+  padding: 0.45rem 0.75rem;
+}
+
+.class-chip > span:last-child {
+  display: grid;
+  line-height: 1.25;
+}
+
+.class-chip.add {
+  border-style: dashed;
+}
+
+.class-chip[aria-pressed="true"] .small {
+  color: inherit;
+}
+
+.add-class,
+.homework-class,
+.next-step {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  margin: 1rem 0;
+}
+
+.add-class h2,
+.homework-class h2,
+.next-step h2 {
+  margin-top: 0;
+}
+
+.add-class input {
+  font-size: 1.05rem;
+  max-width: 14rem;
+}
+
+.class-panel .controls {
+  align-items: center;
+}
+
+.week-switch {
+  margin: 1rem 0 0;
+}
+
+.homework-week {
+  margin: 0.5rem 0 1rem;
+}
+
+.class-plans {
+  list-style: none;
+  padding: 0;
+}
+
+.class-plans li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.class-plans li > span:nth-child(2) {
+  flex: 1;
+}
+
+.backup {
+  margin-top: 2.5rem;
+}

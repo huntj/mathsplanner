@@ -107,6 +107,15 @@ export const DEFAULT_SHEET: SheetOptions = {
 };
 
 export type Route =
+  /** The dashboard, or with nothing set up yet, the welcome. */
+  | { page: "home" }
+  /** The first-visit questions about the timetable, one a step. */
+  | { page: "welcome"; step: number }
+  | { page: "timetable" }
+  | { page: "homework" }
+  /** A class's scheme of work in the planner, saved with the class; `guide` as for a scheme. */
+  | { page: "class"; id: string; guide?: number }
+  /** Choosing questions for a practice session. */
   | { page: "setup" }
   | { page: "year" }
   | { page: "unit" }
@@ -118,8 +127,16 @@ export type Route =
 export const MAX_QUESTIONS = 40;
 
 export function formatRoute(route: Route): string {
-  if (route.page === "setup") return "#/";
+  if (route.page === "home") return "#/";
+  if (route.page === "setup") return "#/practice";
+  if (route.page === "welcome") return route.step ? `#/welcome?step=${route.step}` : "#/welcome";
   if (route.page === "year" || route.page === "unit") return `#/${route.page}`;
+  if (route.page === "timetable" || route.page === "homework") return `#/${route.page}`;
+  if (route.page === "class") {
+    const params = new URLSearchParams({ id: route.id });
+    if (route.guide !== undefined) params.set("guide", String(route.guide + 1));
+    return `#/class?${params.toString()}`;
+  }
   if (route.page === "scheme") {
     if (!route.scheme) return "#/scheme";
     const guide = route.guide === undefined ? {} : { guide: String(route.guide + 1) };
@@ -173,6 +190,19 @@ export function parseRoute(hash: string): Route {
   const [path = "", query = ""] = hash.replace(/^#/, "").split("?");
   if (path === "/year") return { page: "year" };
   if (path === "/unit") return { page: "unit" };
+  if (path === "/practice") return { page: "setup" };
+  if (path === "/timetable") return { page: "timetable" };
+  if (path === "/homework") return { page: "homework" };
+  if (path === "/class") {
+    const q = new URLSearchParams(query);
+    const guide = Math.round(Number(q.get("guide"))) - 1;
+    const id = (q.get("id") ?? "").slice(0, 20);
+    return guide >= 0 && guide < 6 ? { page: "class", id, guide } : { page: "class", id };
+  }
+  if (path === "/welcome") {
+    const step = Math.round(Number(new URLSearchParams(query).get("step")));
+    return { page: "welcome", step: step > 0 && step < 20 ? step : 0 };
+  }
   if (path === "/scheme") {
     const scheme = parseScheme(query);
     const guide = Math.round(Number(new URLSearchParams(query).get("guide"))) - 1;
@@ -180,7 +210,7 @@ export function parseRoute(hash: string): Route {
       ? { page: "scheme", scheme, guide }
       : { page: "scheme", scheme };
   }
-  if (path !== "/session" && path !== "/worksheet") return { page: "setup" };
+  if (path !== "/session" && path !== "/worksheet") return { page: "home" };
   const q = new URLSearchParams(query);
   const toDepth = (v: string | null) => {
     const d = Number(v);
