@@ -60,7 +60,11 @@ export function WorksheetView({ spec, sheet, navigate }: Props) {
         <p className="breadcrumb">
           <a
             href={
-              spec.paper?.kind === "set" ? "#/scheme" : spec.paper ? `#/${spec.paper.kind}` : "#/"
+              spec.paper?.kind === "set"
+                ? "#/scheme"
+                : spec.paper
+                  ? `#/${spec.paper.kind}`
+                  : "#/practice"
             }
           >
             Set up

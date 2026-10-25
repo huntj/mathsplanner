@@ -27,7 +27,19 @@ const spec: SessionSpec = {
 describe("session links", () => {
   it("round-trips a session and drops anything invalid", () => {
     expect(parseRoute(formatRoute({ page: "session", spec }))).toEqual({ page: "session", spec });
-    expect(parseRoute("#/")).toEqual({ page: "setup" });
+    expect(parseRoute("#/")).toEqual({ page: "home" });
+    expect(parseRoute("#/practice")).toEqual({ page: "setup" });
+    expect(formatRoute({ page: "setup" })).toBe("#/practice");
+    expect(parseRoute("#/welcome?step=3")).toEqual({ page: "welcome", step: 3 });
+    expect(parseRoute("#/welcome?step=x")).toEqual({ page: "welcome", step: 0 });
+    expect(parseRoute(formatRoute({ page: "timetable" }))).toEqual({ page: "timetable" });
+    expect(parseRoute("#/nowhere")).toEqual({ page: "home" });
+    expect(parseRoute(formatRoute({ page: "class", id: "ab12", guide: 2 }))).toEqual({
+      page: "class",
+      id: "ab12",
+      guide: 2,
+    });
+    expect(parseRoute("#/class?id=ab12&guide=9")).toEqual({ page: "class", id: "ab12" });
     expect(parseRoute("#/session?statements=NOPE")).toEqual({ page: "setup" });
     const route = parseRoute(
       "#/session?statements=Y5-GEO-04,NOPE&depths=9,2&numbers=huge&count=500&seed=-1&feedback=x",

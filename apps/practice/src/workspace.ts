@@ -12,6 +12,7 @@ import {
   MAX_WEEKS,
   schemeFile,
   schemeFromData,
+  TERMS,
   type Course,
   type Scheme,
 } from "./scheme.ts";
@@ -65,6 +66,8 @@ export interface SchoolClass {
   slots: Slot[];
   /** One a week: with a two-week timetable, one in each week. */
   homework: HomeworkSlots[];
+  /** The teacher said the class has no homework, so the set-up does not ask again. */
+  noHomework: boolean;
   /**
    * For each half-term, the lesson (0, 1, …) its test is in, or null for the last lesson of the
    * half-term.
@@ -217,6 +220,16 @@ export function weekFor(weeks: readonly TeachingWeek[], date: string): number | 
   return i < 0 ? undefined : i;
 }
 
+/**
+ * The week the year must start on (0 for A, 1 for B) for a teaching week to be Week A or B, so a
+ * teacher setting up mid-year only says which week this one is.
+ */
+export function startWeekFor(ws: Workspace, index: number, label: 0 | 1): 0 | 1 {
+  const timetable = { ...ws.timetable, firstWeek: 0 as const };
+  const base = teachingWeeks({ ...ws, timetable })[index]?.label ?? 0;
+  return ((label + base) % 2) as 0 | 1;
+}
+
 export interface Lesson {
   term: number;
   week: number;
@@ -313,6 +326,97 @@ export function withCalendar(
   };
 }
 
+// --- words ---------------------------------------------------------------------------------
+
+export const WEEK_NAMES = ["Week A", "Week B"];
+
+const MONTHS = [
+  ..."January February March April May June July August September October November December".split(
+    " ",
+  ),
+];
+const WEEKDAYS = [...DAYS, "Saturday", "Sunday"];
+
+/** "Monday 2 November", or with the year "Monday 2 November 2026". */
+export function longDate(date: string, year = false): string {
+  const day = dayNumber(date);
+  if (day === undefined) return "";
+  const [y, m, d] = date.split("-").map(Number);
+  const name = `${WEEKDAYS[weekday(day)]} ${d} ${MONTHS[(m ?? 1) - 1]}`;
+  return year ? `${name} ${y}` : name;
+}
+
+/** "Monday period 1" ("Week A, Monday period 1" with two weeks), or short: "Mon P1" ("A Mon P1"). */
+export function slotName(tt: Timetable, slot: Slot, short = false): string {
+  const day = DAYS[slot.day] ?? "";
+  const week = WEEK_NAMES[slot.week] ?? "";
+  if (short)
+    return `${tt.weeks === 2 ? `${week.slice(-1)} ` : ""}${day.slice(0, 3)} P${slot.period + 1}`;
+  return `${tt.weeks === 2 ? `${week}, ` : ""}${day} period ${slot.period + 1}`;
+}
+
+/** A class's lessons in one week of the timetable. */
+export const lessonsInWeek = (cls: SchoolClass, week: number) =>
+  cls.slots.filter((s) => s.week === week).length;
+
+/**
+ * The lesson homework set in a period is most likely handed in at: the class's next lesson about a
+ * week later (so the same lesson next week, on a one-week timetable).
+ */
+export function defaultDue(tt: Timetable, cls: SchoolClass, set: Slot): Slot {
+  const cycle = tt.weeks * DAYS.length;
+  const at = (s: Slot) => s.week * DAYS.length + s.day;
+  const after = (s: Slot) => {
+    const days = (at(s) - at(set) + cycle) % cycle;
+    return days === 0 && s.period <= set.period ? cycle : days;
+  };
+  const score = (s: Slot) => Math.abs(after(s) - DAYS.length);
+  const own = (s: Slot) => (sameSlot(s, set) ? 1 : 0);
+  return (
+    [...cls.slots].sort(
+      (a, b) => score(a) - score(b) || own(b) - own(a) || after(b) - after(a),
+    )[0] ?? set
+  );
+}
+
+/**
+ * Where the school year is on a date, in a sentence: "This is week 3 of Autumn 2 (Week A).",
+ * "Next week is week 4 of Autumn 2.", or in a holiday, when the next half-term starts.
+ */
+export function whereWeAre(ws: Workspace, date: string): string {
+  const weeks = teachingWeeks(ws);
+  const i = weekFor(weeks, date);
+  const w = i === undefined ? undefined : weeks[i];
+  if (!w) return "The school year in your half-term dates is over.";
+  const label = ws.timetable.weeks === 2 ? ` (${WEEK_NAMES[w.label]})` : "";
+  const term = TERMS[w.term] ?? "";
+  const day = dayNumber(date) ?? 0;
+  const monday = dayNumber(w.monday) ?? 0;
+  const first = monday + Math.max(0, w.days.indexOf(true));
+  if (day >= first) return `This is week ${w.week + 1} of ${term}${label}.`;
+  if (w.week > 0 && day >= monday - 2) return `Next week is week ${w.week + 1} of ${term}${label}.`;
+  return `${term} starts on ${longDate(dateOf(first))}${label}.`;
+}
+
+export interface Progress {
+  /** Some class has periods in the timetable. */
+  classes: boolean;
+  /** Every class with periods has its homework lessons, or has none. */
+  homework: boolean;
+  /** Every class has something in its scheme of work. */
+  schemes: boolean;
+}
+
+export function setupProgress(ws: Workspace): Progress {
+  const taught = ws.classes.filter((c) => c.slots.length > 0);
+  return {
+    classes: taught.length > 0,
+    homework: taught.length > 0 && taught.every((c) => c.noHomework || c.homework.length > 0),
+    schemes:
+      taught.length > 0 && taught.every((c) => c.scheme.halfTerms.some((h) => h.items.length)),
+  };
+}
+
 // --- editing --------------------------------------------------------------------------------
 
 const TERM_COUNT = 6;
@@ -336,9 +440,11 @@ export function settle(ws: Workspace): Workspace {
       taken.push(s);
     }
     const own = (s: Slot) => slots.some((x) => sameSlot(x, s));
-    const homework = cls.homework
-      .filter((h) => own(h.set) && own(h.due))
-      .filter((h, i, all) => all.findIndex((x) => sameSlot(x.set, h.set)) === i);
+    const homework = cls.noHomework
+      ? []
+      : cls.homework
+          .filter((h) => own(h.set) && own(h.due))
+          .filter((h, i, all) => all.findIndex((x) => sameSlot(x.set, h.set)) === i);
     const tests = Array.from({ length: TERM_COUNT }, (_, t) => cls.tests[t] ?? null);
     return { ...cls, slots, homework, tests };
   });
@@ -375,6 +481,7 @@ export function addClass(ws: Workspace, courseId: string, name: string): Workspa
     colour: colour ?? ws.classes.length % COLOURS,
     slots: [],
     homework: [],
+    noHomework: false,
     tests: [],
     scheme: emptyScheme(course, undefined, name.trim().slice(0, MAX_CLASS)),
   };
@@ -447,6 +554,7 @@ function cleanClass(v: unknown): SchoolClass | undefined {
     colour: int(r.colour, 0, COLOURS - 1, 0),
     slots: list(r.slots).flatMap((s) => cleanSlot(s) ?? []),
     homework,
+    noHomework: r.noHomework === true,
     tests: list(r.tests).map((t) => {
       const lesson = int(t, 0, 999, -1);
       return lesson < 0 ? null : lesson;
@@ -497,6 +605,7 @@ export function workspaceFile(ws: Workspace): string {
         colour: c.colour,
         slots: c.slots,
         homework: c.homework,
+        noHomework: c.noHomework,
         tests: c.tests,
         scheme: JSON.parse(schemeFile(c.scheme)) as unknown,
       })),
@@ -538,3 +647,15 @@ export function saveWorkspace(ws: Workspace): boolean {
     return false;
   }
 }
+
+/** Forgets the workspace in this browser, for starting again. */
+export function clearWorkspace() {
+  try {
+    window.localStorage.removeItem(STORE);
+  } catch {
+    // Nothing was kept.
+  }
+}
+
+/** Whether a storage event from another tab changed the workspace. */
+export const isWorkspaceKey = (key: string | null) => key === STORE || key === null;

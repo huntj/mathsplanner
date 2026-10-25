@@ -124,34 +124,42 @@ export function SchemeGuide({
         ))}
       </nav>
       <p className="count">
-        <label className="weeks inline">
-          <input
-            type="number"
-            min={1}
-            max={MAX_WEEKS}
-            value={h.weeks}
-            aria-label={`Weeks in ${name}`}
-            onChange={(e) =>
-              update({
-                ...scheme,
-                halfTerms: scheme.halfTerms.map((x, i) =>
-                  i === term
-                    ? {
-                        ...x,
-                        weeks: Math.min(
-                          MAX_WEEKS,
-                          Math.max(1, Math.round(Number(e.target.value)) || 1),
-                        ),
-                      }
-                    : x,
-                ),
-              })
-            }
-          />
-          weeks
-        </label>{" "}
-        × {scheme.lessonsPerWeek} lessons = {plan.capacity} lessons ·{" "}
-        <strong>{plan.lessons} planned</strong>
+        {scheme.weekLessons?.[term]?.length ? (
+          <>
+            {h.weeks} weeks, {plan.capacity} lessons in your timetable
+          </>
+        ) : (
+          <>
+            <label className="weeks inline">
+              <input
+                type="number"
+                min={1}
+                max={MAX_WEEKS}
+                value={h.weeks}
+                aria-label={`Weeks in ${name}`}
+                onChange={(e) =>
+                  update({
+                    ...scheme,
+                    halfTerms: scheme.halfTerms.map((x, i) =>
+                      i === term
+                        ? {
+                            ...x,
+                            weeks: Math.min(
+                              MAX_WEEKS,
+                              Math.max(1, Math.round(Number(e.target.value)) || 1),
+                            ),
+                          }
+                        : x,
+                    ),
+                  })
+                }
+              />
+              weeks
+            </label>{" "}
+            × {scheme.lessonsPerWeek} lessons = {plan.capacity} lessons
+          </>
+        )}{" "}
+        · <strong>{plan.lessons} planned</strong>
         {plan.lessons > plan.capacity && (
           <span className="warn-count"> · ⚠ {plan.lessons - plan.capacity} too many</span>
         )}
