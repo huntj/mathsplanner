@@ -40,6 +40,12 @@ describe("session links", () => {
       guide: 2,
     });
     expect(parseRoute("#/class?id=ab12&guide=9")).toEqual({ page: "class", id: "ab12" });
+    for (const route of [
+      { page: "class", id: "ab12", term: 5 },
+      { page: "class", id: "ab12", edit: true },
+      { page: "class", id: "ab12" },
+    ] as const)
+      expect(parseRoute(formatRoute(route))).toEqual(route);
     expect(parseRoute("#/session?statements=NOPE")).toEqual({ page: "setup" });
     const route = parseRoute(
       "#/session?statements=Y5-GEO-04,NOPE&depths=9,2&numbers=huge&count=500&seed=-1&feedback=x",

@@ -6,6 +6,7 @@
 // teacher downloads. No student names or results are kept.
 import {
   courseById,
+  draftScheme,
   emptyScheme,
   MAX_CLASS,
   MAX_LESSONS,
@@ -346,6 +347,15 @@ export function longDate(date: string, year = false): string {
   return year ? `${name} ${y}` : name;
 }
 
+/** "2 Nov", or with the day "Mon 2 Nov". */
+export function shortDate(date: string, day = false): string {
+  const n = dayNumber(date);
+  if (n === undefined) return "";
+  const [, m, d] = date.split("-").map(Number);
+  const name = `${d} ${(MONTHS[(m ?? 1) - 1] ?? "").slice(0, 3)}`;
+  return day ? `${(WEEKDAYS[weekday(n)] ?? "").slice(0, 3)} ${name}` : name;
+}
+
 /** "Monday period 1" ("Week A, Monday period 1" with two weeks), or short: "Mon P1" ("A Mon P1"). */
 export function slotName(tt: Timetable, slot: Slot, short = false): string {
   const day = DAYS[slot.day] ?? "";
@@ -416,6 +426,30 @@ export function setupProgress(ws: Workspace): Progress {
       taught.length > 0 && taught.every((c) => c.scheme.halfTerms.some((h) => h.items.length)),
   };
 }
+
+// --- planning a class ------------------------------------------------------------------------
+
+/** The class's lessons in each half-term, from its timetable. */
+export const termLessons = (scheme: Scheme): number[] =>
+  scheme.halfTerms.map((_, t) => (scheme.weekLessons?.[t] ?? []).reduce((a, b) => a + b, 0));
+
+/**
+ * A first draft of a class's year from the curriculum, shared over the half-terms by their lessons,
+ * keeping the class's name, title and seed.
+ */
+export function draftFor(scheme: Scheme): Scheme {
+  const course = classCourse(scheme.course);
+  if (!course) return scheme;
+  const draft = draftScheme(course, scheme.title, scheme.className, termLessons(scheme));
+  return copyPlan(scheme, draft);
+}
+
+/** A class's scheme with another's plan: its items and their lessons, half-term by half-term. */
+export const copyPlan = (to: Scheme, from: Scheme): Scheme => ({
+  ...to,
+  lessons: { ...from.lessons },
+  halfTerms: to.halfTerms.map((h, i) => ({ ...h, items: [...(from.halfTerms[i]?.items ?? [])] })),
+});
 
 // --- editing --------------------------------------------------------------------------------
 

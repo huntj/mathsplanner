@@ -1,8 +1,8 @@
 # Proposal: a set-up and dashboard for teachers
 
-Status: **agreed on 25 October 2026.** Steps 0 to 3 are built (`apps/practice/src/workspace.ts`
-and the `Welcome`, `Timetable`, `Homework`, `Home` and `ClassPlan` views), with each class's scheme
-opening in the existing planner; steps 4 to 7 are to do.
+Status: **agreed on 25 October 2026.** Steps 0 to 4 are built (`apps/practice/src/workspace.ts`
+and the `Welcome`, `Timetable`, `Homework`, `Home`, `ClassPlan` and `ClassPlanView` views); steps
+5 to 7 are to do.
 
 ## Why
 
