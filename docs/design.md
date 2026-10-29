@@ -314,7 +314,8 @@ mathsplanner/
 │  └─ generators/              # one file per statement, by stage: eyfs/, ks1/ … ks5/; coverage and `new` scripts
 ├─ apps/
 │  ├─ gallery/                 # browse every statement × depth × numbers × seed; review checklist
-│  └─ practice/                # student-facing web app with input widgets and marking; stateless
+│  ├─ practice/                # student-facing web app with input widgets and marking; stateless
+│  └─ learn/                   # Learn Maths: a pupil's path through the years, progress kept on the device
 ├─ tools/
 │  ├─ import-map/              # progression map → statements.json; data:check
 │  └─ print/                   # worksheet builder → PDF via headless Chromium

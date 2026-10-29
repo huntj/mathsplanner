@@ -1,8 +1,9 @@
 # Proposal: Learn Maths, a Duolingo-style practice app for pupils
 
-Status: **agreed on 29 October 2026.** Steps 1 and 2 are built: the course data with Year 7 as
-the pilot section (`data/course.txt`, `pnpm data:course`) and the shared answer widgets
-(`@mathsplanner/ui`); steps 3 to 10 are to do.
+Status: **agreed on 29 October 2026.** Steps 1 to 3 are built: the course data with Year 7 as
+the pilot section (`data/course.txt`, `pnpm data:course`), the shared answer widgets
+(`@mathsplanner/ui`) and the app with its path, progress and first visit (`apps/learn`,
+`pnpm learn`); steps 4 to 10 are to do.
 
 ## Why
 
@@ -125,16 +126,19 @@ geometry, number…) rather than six number units in a row, and small topics wer
 generator supports, so the levels come from the generators when the app runs rather than from
 `course.json` (a skill with fewer depths has fewer levels):
 
-| Level | Name      | Questions                                        |
-| ----: | --------- | ------------------------------------------------ |
-|     1 | Learn     | Depth 1, friendly numbers, worked example first  |
-|     2 | Practise  | Depths 1 and 2, standard numbers                 |
-|     3 | Picture   | Depths 2 and 3, standard numbers                 |
-|     4 | Reason    | Depth 4, standard numbers: the skill is mastered |
-|     5 | Legendary | Depth 5 and stretch numbers: an optional extra   |
+| Level     | Questions                                                    | When                         |
+| --------- | ------------------------------------------------------------ | ---------------------------- |
+| Learn     | Depth 1, friendly numbers, worked example first              | Always                       |
+| Practise  | Depths 1 and 2, standard numbers                             | The generator has depth 2    |
+| Picture   | Depth 3, standard numbers                                    | The generator has depth 3    |
+| Reason    | Depth 4, standard numbers: the skill is mastered             | The generator has depth 4    |
+| Legendary | Depth 5, or the deepest depth there is, with stretch numbers | Always, as an optional extra |
 
-Levels 1 to 3 move a pupil along the path; level 4 is the gold "mastered" mark; level 5 is for
-pupils who want more.
+The levels before Reason move a pupil along the path; Reason is the gold "mastered" mark;
+Legendary is for pupils who want more. Most Year 7 skills (69 of 72) have generators for depths
+1, 2 and 4 only, so they climb Learn, Practise, Reason and Legendary, and two lessons finish a
+skill on the path. Adding depth 3 and 5 questions to the sub-statement generators would give
+them the Picture level and a true depth 5 Legendary, without any change to the app.
 
 **Topics across the years.** Every topic has a colour and an icon, used on its units in the path,
 so a pupil sees "fractions again" at a glance. A **Topics** tab shows each topic as its own
@@ -282,7 +286,9 @@ are less likely than a teacher to notice a bad question. So:
    its tests still passing. **Done**: the widgets, plot canvas and drafts are in
    `packages/ui`, with their layout in `widgets.css`, which takes each app's colours.
 3. **The app shell and path**: `apps/learn`, the section and unit path, the progress store with
-   its tests, the first visit and settings.
+   its tests, the first visit and settings. **Done**: Dot's welcome (year and daily goal), the
+   path with units in their topic colours and each skill's levels as a ring, a sheet for each
+   skill, the pupil's page with preferences, and example progress for a look around.
 4. **The lesson**: building a lesson from a skill and level, check and banner, re-asking mistakes,
    worked examples and the end screen.
 5. **Practice and repetition**: the review schedule, fading nodes, the practice hub, mistakes,

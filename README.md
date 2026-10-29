@@ -52,6 +52,7 @@ pnpm test
 | `pnpm coverage`    | Lists statements without a generator; fails if a generator names an unknown statement          |
 | `pnpm gallery`     | Runs the gallery locally at http://localhost:5173                                              |
 | `pnpm practice`    | Runs the practice app locally at http://localhost:5174                                         |
+| `pnpm learn`       | Runs Learn Maths, the pupils' app, locally at http://localhost:5175                            |
 | `pnpm print`       | Prints a worksheet to PDF with an installed Chrome or Edge (`pnpm print --help` for options)   |
 | `pnpm new <ID>`    | Scaffolds a generator and its test for a statement                                             |
 
@@ -61,7 +62,7 @@ pnpm test
 data/          statements.json, misconceptions.json, topics, the Learn Maths course and schemas
 docs/          design document, progression map and data report
 packages/      core, diagrams, archetypes, marking, render, generators, ui (answer widgets)
-apps/          gallery (browse and review) and practice (student-facing, stateless)
+apps/          gallery (browse and review), practice (student-facing, stateless) and learn (pupils' path)
 tools/         import-map (statement import and checks) and print (worksheets to PDF)
 ```
 
