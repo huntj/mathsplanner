@@ -1,0 +1,115 @@
+# The Learn Maths course: the path pupils follow in apps/learn, one section per year.
+# "=== Name {stage}" starts a section, holding every skill of that stage. "## Name {unit-id} [topic]"
+# starts a unit of 3 to 8 skills, coloured by its topic from topics.txt. Each line under it is a
+# skill (a sub-statement, or a statement with none), then its wording, which is only there to
+# read: `pnpm data:course` refills it from statements.json and writes data/course.json.
+# Skills are learnt in the order listed, so a skill must come after any it needs in the same
+# section. `pnpm data:course --draft Y8 "Year 8"` prints a first draft of a new section.
+
+=== Year 7 {Y7}
+
+## Place value and ordering {y7-place-value} [place-value]
+Y7-NPV-01  Understand and use place value for decimals, measures and integers of any size
+Y7-NPV-02.a  Order positive and negative integers
+Y7-NPV-02.b  Order decimals and fractions, including negatives
+Y7-NPV-02.c  Use =, ≠, <, >, ≤ and ≥
+
+## Algebra notation {y7-notation} [expressions]
+Y7-ALG-01.a  Use notation for products, e.g. ab and 3y
+Y7-ALG-01.b  Use notation for powers, e.g. a² and a²b
+Y7-ALG-01.c  Use notation for fractions and brackets
+Y7-ALG-03  Understand and use the concepts and vocabulary of expressions, equations, inequalities, terms and factors
+
+## Calculating {y7-calculating} [calculation]
+Y7-NPV-03.a  Calculate with positive and negative integers
+Y7-NPV-03.b  Calculate with decimals
+Y7-NPV-03.c  Calculate with proper and improper fractions
+Y7-NPV-03.d  Calculate with mixed numbers
+Y7-NPV-06  Recognise and use relationships between operations, including inverse operations
+
+## Lines, symmetry and measuring {y7-lines} [shapes]
+Y7-GEO-04.a  Use conventional terms and notation for lines and angles
+Y7-GEO-04.b  Recognise reflective and rotational symmetry in polygons
+Y7-GEO-03.a  Measure line segments and angles
+Y7-GEO-03.b  Interpret scale drawings
+
+## Order of operations {y7-order-of-operations} [calculation]
+Y7-NPV-05.a  Use priority of operations with brackets
+Y7-NPV-05.b  Include powers and roots in the order of operations
+Y7-NPV-05.c  Use reciprocals
+Y7-NPV-10  Use a calculator and other technologies to calculate results accurately and then interpret them appropriately
+
+## Simplifying and substituting {y7-simplifying} [expressions]
+Y7-ALG-04.a  Collect like terms
+Y7-ALG-04.b  Multiply a single term over a bracket
+Y7-ALG-02.a  Substitute values into expressions
+Y7-ALG-02.b  Substitute values into formulae, including scientific formulae
+
+## Factors, multiples and primes {y7-factors} [factors]
+Y7-NPV-04.a  Use primes, factors and multiples
+Y7-NPV-04.b  Write a number as a product of prime factors
+Y7-NPV-04.c  Find the HCF
+Y7-NPV-04.d  Find the LCM
+
+## Angle facts {y7-angles} [angles]
+Y7-GEO-05.a  Use angles at a point
+Y7-GEO-05.b  Use angles on a straight line
+Y7-GEO-05.c  Use vertically opposite angles
+Y7-GEO-06.a  Use the angle sum of a triangle
+Y7-GEO-06.b  Find the angle sum of any polygon
+Y7-GEO-06.c  Find interior and exterior angles of regular polygons
+
+## Fractions, decimals and percentages {y7-fdp} [fdp]
+Y7-FR-01  Work interchangeably with terminating decimals and their corresponding fractions, e.g. 3.5 and 7/2 or 0.375 and 3/8
+Y7-RAT-05.a  Write percentages as fractions and decimals
+Y7-RAT-05.b  Interpret percentage changes as fractions or decimals
+
+## Sequences and equations {y7-equations} [equations]
+Y7-ALG-05.a  Generate terms from a term-to-term rule
+Y7-ALG-05.b  Generate terms from a position-to-term rule
+Y7-ALG-06.a  Solve one-step linear equations
+Y7-ALG-06.b  Solve two-step linear equations
+
+## Powers and roots {y7-powers} [powers]
+Y7-NPV-07.a  Use squares and square roots
+Y7-NPV-07.b  Use cubes and cube roots
+Y7-NPV-07.c  Recognise powers of 2, 3, 4 and 5 and higher roots
+Y7-NPV-07.d  Distinguish exact roots from decimal approximations
+
+## Ratio {y7-ratio} [ratio]
+Y7-RAT-02  Use ratio notation, including reduction to simplest form
+Y7-RAT-03.a  Divide a quantity in a part:part ratio
+Y7-RAT-03.b  Divide a quantity in a part:whole ratio
+Y7-RAT-03.c  Express a division as a ratio
+Y7-RAT-04.a  Express one quantity as a fraction of another, less than 1
+Y7-RAT-04.b  Express one quantity as a fraction of another, greater than 1
+
+## Units and measures {y7-measures} [measures]
+Y7-RAT-01.a  Convert units of length, mass and capacity
+Y7-RAT-01.b  Convert units of area and volume
+Y7-RAT-01.c  Convert units of time
+
+## Perimeter, area and volume {y7-area} [area]
+Y7-GEO-01.a  Find the perimeter of triangles, parallelograms and trapezia
+Y7-GEO-01.b  Find the area of triangles
+Y7-GEO-01.c  Find the area of parallelograms
+Y7-GEO-01.d  Find the area of trapezia
+Y7-GEO-02.a  Find the volume of cuboids and cubes
+Y7-GEO-02.b  Find the volume of other prisms
+
+## Rounding and estimating {y7-rounding} [rounding]
+Y7-NPV-08.a  Round to a given number of decimal places
+Y7-NPV-08.b  Round to a given number of significant figures
+Y7-NPV-09.a  Estimate answers by rounding
+Y7-NPV-09.b  Write error intervals using inequality notation
+
+## Averages and range {y7-averages} [averages]
+Y7-STA-01.a  Find the mean
+Y7-STA-01.b  Find the median and mode
+Y7-STA-01.c  Find the range
+Y7-STA-01.d  Compare distributions using averages and range
+
+## Probability {y7-probability} [probability]
+Y7-PRO-01.a  Use the language of probability and the 0 to 1 scale
+Y7-PRO-01.b  Record and analyse the outcomes of probability experiments
+Y7-PRO-02  Understand that the probabilities of all possible outcomes sum to 1

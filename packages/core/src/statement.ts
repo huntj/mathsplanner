@@ -121,3 +121,26 @@ export interface MisconceptionsFile {
   version: string;
   misconceptions: MisconceptionEntry[];
 }
+
+/** A unit of the Learn Maths path: a few skills from one year, mostly in one topic. */
+export interface CourseUnit {
+  /** "y7-place-value" */
+  id: string;
+  name: string;
+  /** The topic whose colour and icon the unit takes. */
+  topic: string;
+  /** Skills in path order: sub-statements, or statements that have none. */
+  skills: string[];
+}
+
+/** One year (or GCSE tier) of the path. */
+export interface CourseSection {
+  stage: Stage;
+  name: string;
+  units: CourseUnit[];
+}
+
+export interface CourseFile {
+  version: string;
+  sections: CourseSection[];
+}

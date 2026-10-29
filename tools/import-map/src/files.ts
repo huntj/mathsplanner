@@ -11,6 +11,8 @@ export const PATHS = {
   misconceptions: resolve(ROOT, "data/misconceptions.json"),
   topics: resolve(ROOT, "data/topics.json"),
   topicsText: resolve(ROOT, "data/topics.txt"),
+  course: resolve(ROOT, "data/course.json"),
+  courseText: resolve(ROOT, "data/course.txt"),
   statementsSchema: resolve(ROOT, "data/schema/statements.schema.json"),
   misconceptionsSchema: resolve(ROOT, "data/schema/misconceptions.schema.json"),
 };

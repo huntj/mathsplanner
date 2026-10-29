@@ -1,8 +1,8 @@
-# Proposal: a Duolingo-style practice app for pupils
+# Proposal: Learn Maths, a Duolingo-style practice app for pupils
 
-Status: **draft, 29 October 2026.** Decisions 1 to 4 were agreed on 29 October 2026; the rest are
-proposed, and the [open questions](#open-questions) need answers before step 1 starts. Nothing is
-built yet.
+Status: **agreed on 29 October 2026**, except the mascot (see [open questions](#open-questions)).
+Step 1, the course data with Year 7 as the pilot section, is built (`data/course.txt`,
+`pnpm data:course`); steps 2 to 10 are to do.
 
 ## Why
 
@@ -19,8 +19,7 @@ questions at five depths, prerequisites linking them, 75 topics grouping them, m
 the misconception behind a wrong answer, and an input widget for every answer type. This
 proposal is a new app on top of those, aimed at pupils.
 
-Working name: **MathsPlanner Learn** (`apps/learn`), at `learn.jedhunt.co.uk` until the name and
-subdomain are chosen.
+The app is **Learn Maths** (`apps/learn`), at **learnmaths.jedhunt.co.uk**.
 
 ## Decisions
 
@@ -32,33 +31,39 @@ subdomain are chosen.
    browser. There are no accounts, no server and nothing about a pupil sent anywhere, so no
    children's personal data is held. A transfer code or file moves progress to another device.
    There are no leagues or friends, since these need a server.
-3. **A subdomain of its own**, with its own look and name, built from this repository and
-   deployed beside the planner.
+3. **Its own subdomain**, learnmaths.jedhunt.co.uk, with its own look, built from this repository
+   and published through a second GitHub repository (see [hosting](#hosting)).
 4. **Teachers connect by link.** A teacher can send a link that sets a starting year, opens a
    unit or sets a mixed practice of chosen skills. A pupil can show or download a summary of
    their progress. There is no class dashboard.
-5. **Practice over punishment.** There are no hearts or lives: a wrong answer gives the
+5. **Practice over punishment.** There are no hearts or lives by default: a wrong answer gives the
    misconception feedback and the worked solution, and a fresh question on the same skill comes
-   back later in the lesson. Rewards are for practising (XP, streaks, badges), never for speed
+   back later in the lesson. Pupils who like a challenge can turn on an optional **challenge
+   mode** with hearts (below). Rewards are for practising (XP, streaks, badges), never for speed
    alone.
-6. **The original look is our own.** The app borrows Duolingo's mechanics, not its branding: its
-   own mascot, colours, sounds and name.
+6. **The look is our own.** The app borrows Duolingo's mechanics, not its branding: its own
+   mascot, colours, sounds and name.
 7. **Mastery means depth 4 or 5.** As in the design document, a skill is only shown as mastered
    when a pupil succeeds at depth 4 or 5 with standard numbers.
+8. **Year 7 is the pilot.** It is built, reviewed and tried with a class first; the other years
+   follow as their generators are reviewed.
+9. **Problems are reported through a simple form**, opened from any question with its key filled
+   in (see [content quality](#content-quality)).
+10. **No analytics.** No tracking, cookies or page counters of any kind.
 
 ## How the course is built
 
-| Duolingo     | Learn                                                                                                                                          |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| Course       | Maths, Year 1 to GCSE                                                                                                                          |
-| Section      | A year: Year 1 to Year 9, then GCSE Foundation and GCSE Higher (11 sections)                                                                   |
-| Unit         | A topic within that year, e.g. _Year 7 · Fractions_; a large topic is split into units of 4 to 8 skills, and small topics in a year are merged |
-| Path node    | A skill: a sub-statement, or a statement that has none                                                                                         |
-| Skill levels | Five levels per skill, climbing through the depths and numbers settings (below)                                                                |
-| Lesson       | About 8 questions, roughly 5 minutes                                                                                                           |
-| Unit review  | A mixed lesson at the end of each unit (the chest on the path)                                                                                 |
-| Jump ahead   | A short test that unlocks a later unit or year                                                                                                 |
-| Guidebook    | Each unit's worked examples, one per skill, from the generators' solutions                                                                     |
+| Duolingo     | Learn Maths                                                                           |
+| ------------ | ------------------------------------------------------------------------------------- |
+| Course       | Maths, Year 1 to GCSE                                                                 |
+| Section      | A year: Year 1 to Year 9, then GCSE Foundation and GCSE Higher (11 sections)          |
+| Unit         | 3 to 8 skills from one year, mostly one topic, e.g. _Year 7 · Angle facts_            |
+| Path node    | A skill: a sub-statement, or a statement that has none                                |
+| Skill levels | Up to five levels per skill, climbing through the depths and numbers settings (below) |
+| Lesson       | About 8 questions, roughly 5 minutes                                                  |
+| Unit review  | A mixed lesson at the end of each unit (the chest on the path)                        |
+| Jump ahead   | A short test that unlocks a later unit or year                                        |
+| Guidebook    | Each unit's worked examples, one per skill, from the generators' solutions            |
 
 Sizes per section, from the current data:
 
@@ -76,14 +81,45 @@ Sizes per section, from the current data:
 | GCSE Foundation |         87 |    176 |     41 |
 | GCSE Higher     |         40 |     61 |     27 |
 
-**Order.** Within a section, units follow the prerequisite graph: a unit comes after the units
-holding its skills' `needs`, ties broken by curriculum order. Within a unit, skills keep their
-sub-statement order (`ordered` splits are a sequence). A hand-edited `data/course.txt`, in the
-same style as `topics.txt`, can override the order, split or merge units and rename them, so a
-teacher can tidy the path without code.
+**The path is a text file.** `data/course.txt`, in the same style as `topics.txt`, lists each
+section, its units (each with a name and a topic) and their skills in the order they are learnt,
+so a teacher can reorder, split, merge and rename units without code. `pnpm data:course` checks it
+and writes `data/course.json` for the app. The checks: every skill of a section's year appears
+exactly once, every unit holds 3 to 8 skills and has a known topic, and a skill comes after any
+skill it needs in the same section (a prerequisite with sub-statements stands for all of them).
 
-**Skill levels.** Each skill climbs through five levels, using only the depths its generator
-supports (a skill with fewer depths has fewer levels):
+**New sections start from a draft.** `pnpm data:course --draft Y8 "Year 8"` prints a first draft:
+a unit for each topic, topics ordered so that each comes after the topics it needs, any skill
+moved after the skills it needs where topics depend on each other, large topics split, and small
+units marked for merging. The draft is then tidied by hand.
+
+**Year 7** has 17 units. It was drafted, then tidied so the strands alternate (number, algebra,
+geometry, number…) rather than six number units in a row, and small topics were merged
+(sequences with equations, volume with area, percentages with fractions and decimals):
+
+| #   | Unit                                | Skills |
+| --- | ----------------------------------- | -----: |
+| 1   | Place value and ordering            |      4 |
+| 2   | Algebra notation                    |      4 |
+| 3   | Calculating                         |      5 |
+| 4   | Lines, symmetry and measuring       |      4 |
+| 5   | Order of operations                 |      4 |
+| 6   | Simplifying and substituting        |      4 |
+| 7   | Factors, multiples and primes       |      4 |
+| 8   | Angle facts                         |      6 |
+| 9   | Fractions, decimals and percentages |      3 |
+| 10  | Sequences and equations             |      4 |
+| 11  | Powers and roots                    |      4 |
+| 12  | Ratio                               |      6 |
+| 13  | Units and measures                  |      3 |
+| 14  | Perimeter, area and volume          |      6 |
+| 15  | Rounding and estimating             |      4 |
+| 16  | Averages and range                  |      4 |
+| 17  | Probability                         |      3 |
+
+**Skill levels.** Each skill climbs through up to five levels, using only the depths its
+generator supports, so the levels come from the generators when the app runs rather than from
+`course.json` (a skill with fewer depths has fewer levels):
 
 | Level | Name      | Questions                                        |
 | ----: | --------- | ------------------------------------------------ |
@@ -118,7 +154,7 @@ skills in that topic.
    path.
 
 Every question is made from a generator key (statement, depth, numbers, seed), so lessons are
-deterministic, need no server, and a "report a problem" button can name the exact question.
+deterministic, need no server, and a problem report can name the exact question.
 
 ## Practice and repetition
 
@@ -145,13 +181,17 @@ Practice is the heart of the app, so it has its own tab as well as being mixed i
   wipe it out.
 - **Badges** for milestones: first lesson, first mastered skill, a unit, a year, streaks of 7, 30
   and 100 days, a misconception fixed, a topic followed through every year.
+- **Challenge mode**, off by default and switched on in settings: a lesson starts with 3 hearts,
+  each wrong answer loses one, and losing all three ends the lesson early (the pupil can retry
+  at once, never wait or pay). Finishing with hearts left earns double XP and counts towards a
+  challenge badge. Hearts never affect progress through the path or the review schedule.
 - **A mascot** who greets, cheers and nudges, with a few short animations; sounds on by default
   with a mute switch, and all motion turned down for `prefers-reduced-motion`.
 - **No ads, no purchases, no gems, no leagues.**
 
 ## First visit and moving around
 
-1. Pick a mascot greeting, a daily goal and **your year**.
+1. A greeting from the mascot, then a daily goal and **your year**.
 2. Optionally take a **placement test** (about 15 questions, drawn like a year test from the
    previous year and this one) to start further along the path. Earlier sections are then marked
    "tested out", and are still open to practise.
@@ -161,10 +201,10 @@ Practice is the heart of the app, so it has its own tab as well as being mixed i
 
 ## Teacher links and sharing progress
 
-- **Links** that a teacher makes in the planner (a "share to Learn" button next to a scheme's
-  week or a homework) or by hand:
+- **Links** that a teacher makes in the planner (a "share to Learn Maths" button next to a
+  scheme's week or a homework) or by hand:
   - `#/start?year=Y7`: start a new pupil in a year;
-  - `#/unit/Y7-fractions-1`: open a unit;
+  - `#/unit/y7-angles`: open a unit;
   - `#/set?skills=GF-A4.b,GF-A4.d&depths=1,2,4&count=10&title=Expanding`: a set practice, shown
     as a card at the top of the path ("From your teacher: Expanding") until it is done.
 - **Progress summary**: a page a pupil can show, print or download as CSV, with skills started
@@ -177,53 +217,62 @@ Practice is the heart of the app, so it has its own tab as well as being mixed i
   first and then tablets and laptops.
 - **Shared answer widgets.** The widgets, plot canvas and answer drafts move from
   `apps/practice` into a new package, `@mathsplanner/ui`, used by both apps, so a widget fix
-  helps both. The bottom Check button and banner are Learn's own.
-- **The course data.** `pnpm learn:course` builds `data/course.json` (sections, units, skills,
-  levels) from `statements.json`, `topics.json`, the prerequisite graph and `data/course.txt`.
-  Tests check that every Year 1 to GCSE skill appears exactly once, every unit holds 4 to 8
-  skills, and a skill's prerequisites in the same section come before it.
+  helps both. The bottom Check button and banner are Learn Maths' own.
+- **The course data** is `data/course.json`, built by `pnpm data:course` (above), with its types
+  (`CourseFile`, `CourseSection`, `CourseUnit`) in `@mathsplanner/core`.
 - **Progress** is one versioned JSON object in local storage, changed only by pure, tested
   functions (start lesson, answer, finish lesson, review due), with a migration for each version
   so progress survives updates. Export and import as a file and as a short copyable code. The
   design keeps the door open for an optional sync later without changing the format.
 - **Works offline and installs to the home screen** as a progressive web app: the generators run
   in the browser, so once loaded the app needs no connection. The generators are split by key
-  stage and loaded when a section needs them, so a Year 3 pupil does not download GCSE.
-- **Quality guard in CI**: every skill makes a lesson at every level across 50 seeds with no
-  errors, and an end-to-end test plays a lesson at phone size with Playwright.
+  stage and loaded when a section needs them, so a Year 7 pupil does not download GCSE.
+- **Quality guard in CI**: every skill in the course has a generator and makes a lesson at every
+  level across 50 seeds with no errors, and an end-to-end test plays a lesson at phone size with
+  Playwright.
 - **Accessibility**: large tap targets, keyboard use, screen-reader text for diagrams (already
   produced), good contrast in light and dark themes, and an optional dyslexia-friendly font.
 
-## Hosting the subdomain
+## Hosting
 
 GitHub Pages allows one custom domain per repository, and this one already serves
-`mathsplanner.jedhunt.co.uk`. Learn needs one of:
+mathsplanner.jedhunt.co.uk, so Learn Maths is published through a second repository,
+`huntj/learnmaths`, which holds only the built site. A workflow here (`learn.yml`) builds
+`apps/learn` on every push to `main` and pushes the result to that repository, whose Pages then
+serves it. The one-off set-up, done at step 9:
 
-1. **A second repository** (for example `huntj/mathsplanner-learn`) that a workflow in this
-   repository pushes each build to, with Pages and a `CNAME` of its own. Everything stays on
-   GitHub; it needs a deploy key stored as a secret.
-2. **Cloudflare Pages or Netlify** building `apps/learn` from this repository. Free, quick to set
-   up, and gives a preview link for every pull request.
-
-Either way, the DNS for jedhunt.co.uk gets one `CNAME` record for the subdomain. Option 2 is
-recommended for its pull request previews, which make teacher review of changes much easier.
+1. **Create the repository** `huntj/learnmaths`, public (free GitHub Pages needs a public
+   repository) and empty.
+2. **Give this repository permission to push to it.** Make an SSH key pair; add the public key to
+   `learnmaths` under Settings → Deploy keys, with write access; add the private key to
+   `mathsplanner` under Settings → Secrets and variables → Actions, as `LEARN_DEPLOY_KEY`.
+3. **Turn on Pages** in `learnmaths` (Settings → Pages: deploy from the `main` branch), set the
+   custom domain to `learnmaths.jedhunt.co.uk`, and tick "Enforce HTTPS" once the certificate is
+   issued. The workflow also writes a `CNAME` file so the domain survives each deploy.
+4. **Add the DNS record at Fasthosts**: in the jedhunt.co.uk DNS settings, a `CNAME` record with
+   host `learnmaths` pointing to `huntj.github.io`. Changes can take a few hours to spread.
+5. **Verify the domain with GitHub** (recommended): GitHub account Settings → Pages → Add a domain
+   gives a `TXT` record to add at Fasthosts, which stops anyone else's repository claiming a
+   jedhunt.co.uk subdomain.
 
 ## Content quality
 
 All 686 statements have generators, but only 36 have a teacher review, and pupils working alone
 are less likely than a teacher to notice a bad question. So:
 
-- every question has a **report a problem** button that records its key and opens a prefilled
-  report;
-- sections are released as they are reviewed, starting with the pilot year, and marked "beta"
-  until then;
-- the teacher review of the pilot year's generators is planned into the steps below.
+- every question has a **report a problem** button that opens a simple form (a Google Form or
+  similar) in a new tab, with the question's key and the app's version already filled in; the
+  pupil picks what is wrong (the answer, the wording, the diagram, too hard, something else) and
+  can add a comment. The form asks for no name or email, and nothing is sent from the app
+  itself;
+- sections are released as they are reviewed, starting with Year 7, and marked "beta" until then;
+- the teacher review of Year 7's generators is planned into the steps below.
 
 ## Steps
 
-0. **Agree this proposal**, the name, the mascot and the hosting (the open questions).
-1. **The course data**: `data/course.txt`, `pnpm learn:course`, `data/course.json` and its
-   checks, with the pilot year's units tidied by hand.
+0. **Agree this proposal.** Done, apart from the mascot.
+1. **The course data**: `data/course.txt`, `pnpm data:course`, `data/course.json` and its checks,
+   with Year 7's units tidied by hand. **Done.**
 2. **Shared widgets**: move them into `@mathsplanner/ui` and switch the practice app over, with
    its tests still passing.
 3. **The app shell and path**: `apps/learn`, the section and unit path, the progress store with
@@ -232,33 +281,30 @@ are less likely than a teacher to notice a bad question. So:
    worked examples and the end screen.
 5. **Practice and repetition**: the review schedule, fading nodes, the practice hub, mistakes,
    unit and section reviews.
-6. **Motivation**: XP, daily goal, streaks and freezes, badges, mascot moments and sounds.
+6. **Motivation**: XP, daily goal, streaks and freezes, badges, challenge mode, the mascot's
+   artwork and moments, and sounds.
 7. **Topics and placement**: the Topics tab, topic colours on the path, the placement and
    jump-ahead tests.
 8. **Teacher links and sharing**: the link routes, the "From your teacher" card, the progress
-   summary and transfer code, and a "share to Learn" button in the planner.
+   summary and transfer code, the problem-report form, and a "share to Learn Maths" button in
+   the planner.
 9. **Offline and hosting**: the progressive web app, generators split by key stage, the deploy
-   workflow and the subdomain.
-10. **Pilot** with one year group in a class, then tune lesson length, levels and the review
-    schedule from what pupils and the teacher say, and release the other sections as they are
-    reviewed.
+   workflow, the second repository and the subdomain.
+10. **Pilot** Year 7 with a class, alongside a teacher review of its 72 skills' generators, then
+    tune lesson length, levels and the review schedule from what pupils and the teacher say,
+    and release the other sections as they are reviewed.
 
-Steps 1 to 4 make a playable pilot section; it is worth trying with pupils before steps 5 to 9
-are polished.
+Steps 2 to 4 make Year 7 playable; it is worth trying with pupils before steps 5 to 9 are
+polished.
 
 ## Open questions
 
-1. **Name and mascot.** What should the app be called, and what should the mascot be (an animal,
-   a shape character, something tied to jedhunt.co.uk)? Is there an existing logo or colour
-   scheme to match?
-2. **Subdomain.** `learn.jedhunt.co.uk`, `maths.jedhunt.co.uk` or another?
-3. **Hosting.** A second GitHub repository, or Cloudflare Pages or Netlify (recommended)? Who
-   manages the jedhunt.co.uk DNS?
-4. **Pilot year.** Which section should be built and reviewed first? Year 7 suits a secondary
-   class trying it; Year 4 or 5 suits primary.
-5. **Problem reports.** Where should "report a problem" go? Pupils will not have GitHub accounts,
-   so an email address or a simple form is likelier than a GitHub issue.
-6. **Hearts.** Agreed to leave them out (decision 5)? Some pupils like the challenge; they could
-   come back as an optional "challenge mode".
-7. **Analytics.** None at all (simplest for children's privacy), or a cookieless, privacy-friendly
-   page counter so we can see whether it is used?
+1. **The mascot.** There is no logo or mascot yet. Three ideas, all easy to draw as SVG and to
+   animate simply:
+   - **Dot**, a round little character (a decimal point come to life) who changes into the shape
+     of each topic's icon: a triangle for angles, a pie for fractions. Ties the mascot to the
+     topic colours. _Recommended._
+   - **A hedgehog** with a calculator-button nose: friendly, British, and nothing like an owl.
+   - **A friendly cube**, whose faces show the pupil's streak, level or mood.
+
+   Once one is chosen, step 6 makes its artwork, a logo and the colour scheme.

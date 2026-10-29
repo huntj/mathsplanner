@@ -47,6 +47,7 @@ pnpm test
 | `pnpm typecheck`   | Strict TypeScript across every package                                                         |
 | `pnpm build`       | Builds each package to `dist/`                                                                 |
 | `pnpm data:check`  | Validates `data/` and the prerequisite graph                                                   |
+| `pnpm data:course` | Checks `data/course.txt`, the Learn Maths path, and writes `data/course.json`                  |
 | `pnpm data:import` | Re-imports `docs/progression-map.md` into `data/statements.json` (overwrites edits made since) |
 | `pnpm coverage`    | Lists statements without a generator; fails if a generator names an unknown statement          |
 | `pnpm gallery`     | Runs the gallery locally at http://localhost:5173                                              |
@@ -57,7 +58,7 @@ pnpm test
 ## Repository layout
 
 ```text
-data/          statements.json, misconceptions.json and their JSON Schemas
+data/          statements.json, misconceptions.json, topics, the Learn Maths course and schemas
 docs/          design document, progression map and data report
 packages/      core, diagrams, archetypes, marking, render, generators
 apps/          gallery (browse and review) and practice (student-facing, stateless)
