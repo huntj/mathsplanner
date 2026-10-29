@@ -1,8 +1,8 @@
 # Proposal: Learn Maths, a Duolingo-style practice app for pupils
 
-Status: **agreed on 29 October 2026**, except the mascot (see [open questions](#open-questions)).
-Step 1, the course data with Year 7 as the pilot section, is built (`data/course.txt`,
-`pnpm data:course`); steps 2 to 10 are to do.
+Status: **agreed on 29 October 2026.** Steps 1 and 2 are built: the course data with Year 7 as
+the pilot section (`data/course.txt`, `pnpm data:course`) and the shared answer widgets
+(`@mathsplanner/ui`); steps 3 to 10 are to do.
 
 ## Why
 
@@ -50,6 +50,10 @@ The app is **Learn Maths** (`apps/learn`), at **learnmaths.jedhunt.co.uk**.
 9. **Problems are reported through a simple form**, opened from any question with its key filled
    in (see [content quality](#content-quality)).
 10. **No analytics.** No tracking, cookies or page counters of any kind.
+11. **Dot is the mascot**: a round little character, a decimal point come to life, who changes
+    into the shape of each topic's icon (a triangle for angles, a pie for fractions), so the
+    mascot and the topic colours tell the same story. Dot's artwork, the logo and the colour
+    scheme come from Dot, in step 6.
 
 ## How the course is built
 
@@ -185,13 +189,14 @@ Practice is the heart of the app, so it has its own tab as well as being mixed i
   each wrong answer loses one, and losing all three ends the lesson early (the pupil can retry
   at once, never wait or pay). Finishing with hearts left earns double XP and counts towards a
   challenge badge. Hearts never affect progress through the path or the review schedule.
-- **A mascot** who greets, cheers and nudges, with a few short animations; sounds on by default
+- **Dot** greets, cheers and nudges, taking the shape of the topic being practised, with a few
+  short animations; sounds on by default
   with a mute switch, and all motion turned down for `prefers-reduced-motion`.
 - **No ads, no purchases, no gems, no leagues.**
 
 ## First visit and moving around
 
-1. A greeting from the mascot, then a daily goal and **your year**.
+1. A greeting from Dot, then a daily goal and **your year**.
 2. Optionally take a **placement test** (about 15 questions, drawn like a year test from the
    previous year and this one) to start further along the path. Earlier sections are then marked
    "tested out", and are still open to practise.
@@ -270,19 +275,20 @@ are less likely than a teacher to notice a bad question. So:
 
 ## Steps
 
-0. **Agree this proposal.** Done, apart from the mascot.
+0. **Agree this proposal.** **Done.**
 1. **The course data**: `data/course.txt`, `pnpm data:course`, `data/course.json` and its checks,
    with Year 7's units tidied by hand. **Done.**
 2. **Shared widgets**: move them into `@mathsplanner/ui` and switch the practice app over, with
-   its tests still passing.
+   its tests still passing. **Done**: the widgets, plot canvas and drafts are in
+   `packages/ui`, with their layout in `widgets.css`, which takes each app's colours.
 3. **The app shell and path**: `apps/learn`, the section and unit path, the progress store with
    its tests, the first visit and settings.
 4. **The lesson**: building a lesson from a skill and level, check and banner, re-asking mistakes,
    worked examples and the end screen.
 5. **Practice and repetition**: the review schedule, fading nodes, the practice hub, mistakes,
    unit and section reviews.
-6. **Motivation**: XP, daily goal, streaks and freezes, badges, challenge mode, the mascot's
-   artwork and moments, and sounds.
+6. **Motivation**: XP, daily goal, streaks and freezes, badges, challenge mode, Dot's artwork
+   and moments, the logo and colour scheme, and sounds.
 7. **Topics and placement**: the Topics tab, topic colours on the path, the placement and
    jump-ahead tests.
 8. **Teacher links and sharing**: the link routes, the "From your teacher" card, the progress
@@ -296,15 +302,3 @@ are less likely than a teacher to notice a bad question. So:
 
 Steps 2 to 4 make Year 7 playable; it is worth trying with pupils before steps 5 to 9 are
 polished.
-
-## Open questions
-
-1. **The mascot.** There is no logo or mascot yet. Three ideas, all easy to draw as SVG and to
-   animate simply:
-   - **Dot**, a round little character (a decimal point come to life) who changes into the shape
-     of each topic's icon: a triangle for angles, a pie for fractions. Ties the mascot to the
-     topic colours. _Recommended._
-   - **A hedgehog** with a calculator-button nose: friendly, British, and nothing like an owl.
-   - **A friendly cube**, whose faces show the pupil's streak, level or mood.
-
-   Once one is chosen, step 6 makes its artwork, a logo and the colour scheme.

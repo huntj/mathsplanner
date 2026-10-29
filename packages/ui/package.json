@@ -1,0 +1,42 @@
+{
+  "name": "@mathsplanner/ui",
+  "version": "0.0.0",
+  "description": "Answer input widgets shared by the practice and Learn Maths apps.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huntj/mathsplanner.git",
+    "directory": "packages/ui"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "@mathsplanner/source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./widgets.css": "./src/widgets.css"
+  },
+  "files": [
+    "dist",
+    "src/widgets.css"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@mathsplanner/core": "workspace:*",
+    "@mathsplanner/diagrams": "workspace:*",
+    "@mathsplanner/marking": "workspace:*",
+    "@mathsplanner/render": "workspace:*",
+    "mathlive": "0.111.0"
+  },
+  "peerDependencies": {
+    "react": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "react": "^19.3.1"
+  }
+}

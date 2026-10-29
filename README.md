@@ -60,7 +60,7 @@ pnpm test
 ```text
 data/          statements.json, misconceptions.json, topics, the Learn Maths course and schemas
 docs/          design document, progression map and data report
-packages/      core, diagrams, archetypes, marking, render, generators
+packages/      core, diagrams, archetypes, marking, render, generators, ui (answer widgets)
 apps/          gallery (browse and review) and practice (student-facing, stateless)
 tools/         import-map (statement import and checks) and print (worksheets to PDF)
 ```

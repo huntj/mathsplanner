@@ -1,0 +1,5 @@
+# @mathsplanner/ui
+
+The answer input widgets, shared by the practice app and the Learn Maths app. `PartInput` shows the right widget for a part's answer type: a number box with its units, the MathLive maths keyboard for exact answers (loaded only when needed), coordinates, option buttons for choice, multi-select and choice-with-reason answers, ordering and matching (by dragging or with buttons and menus), drawing on a diagram for plot answers, and boxes for condition and free-text answers. A widget holds nothing itself: the app keeps a `Draft` for each part, starting from `emptyDraft`, checks it with `isComplete` before Check can be pressed, and turns it into the response marking takes with `toResponse`.
+
+Import `@mathsplanner/ui/widgets.css` for the widgets' layout. It takes its colours from the app's CSS variables (`--text`, `--muted`, `--surface`, `--border`, `--accent`, and `--right`, `--right-bg`, `--wrong` and `--wrong-bg` for marked options), and buttons, inputs and selects keep the app's own base styles, so each app gives the widgets its own look.

@@ -1,4 +1,5 @@
 import "katex/dist/katex.min.css";
+import "@mathsplanner/ui/widgets.css";
 import "./styles.css";
 import { questionStyles } from "@mathsplanner/render";
 import { StrictMode } from "react";

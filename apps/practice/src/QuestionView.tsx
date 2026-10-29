@@ -2,11 +2,10 @@
 import type { DiagramSpec, Part, Question, Rich } from "@mathsplanner/core";
 import type { MarkResult, QuestionMark } from "@mathsplanner/marking";
 import { renderAnswer, renderRich, renderSolution } from "@mathsplanner/render";
+import { PartInput, type Draft } from "@mathsplanner/ui";
 import { useState } from "react";
-import type { Draft } from "./answers.ts";
 import { misconceptionText, STATUS_WORDS } from "./results.ts";
 import { statementById } from "./session.ts";
-import { PartInput } from "./widgets.tsx";
 
 interface Props {
   question: Question;

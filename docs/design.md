@@ -302,6 +302,7 @@ mathsplanner/
 │  ├─ statements.json          # from the progression map
 │  ├─ misconceptions.json      # shared misconception catalogue
 │  ├─ topics.txt, topics.json  # statements grouped into topics for planning
+│  ├─ course.txt, course.json  # the Learn Maths path: years, units and skills in order
 │  └─ schema/                  # JSON Schemas for both files
 ├─ packages/
 │  ├─ core/                    # schema types, seeded RNG, exact maths, LaTeX helpers, defineGenerator
@@ -309,6 +310,7 @@ mathsplanner/
 │  ├─ archetypes/              # the 15 question patterns and solution-step builders
 │  ├─ marking/                 # AnswerSpec checking, equivalence, form rules
 │  ├─ render/                  # Question → HTML (KaTeX + SVG), used by web and print
+│  ├─ ui/                      # answer input widgets shared by the apps
 │  └─ generators/              # one file per statement, by stage: eyfs/, ks1/ … ks5/; coverage and `new` scripts
 ├─ apps/
 │  ├─ gallery/                 # browse every statement × depth × numbers × seed; review checklist

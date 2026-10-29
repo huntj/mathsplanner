@@ -4,6 +4,8 @@ import type { DiagramSpec, Option, Part } from "@mathsplanner/core";
 import { renderRich } from "@mathsplanner/render";
 import { useEffect, useRef, useState, type DragEvent } from "react";
 import type { Draft } from "./answers.ts";
+// MathLive's <math-field> element, typed for JSX.
+import type {} from "./mathfield.ts";
 import { PlotCanvas } from "./PlotCanvas.tsx";
 
 const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
