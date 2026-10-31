@@ -1,13 +1,14 @@
-// A pupil's progress, kept only in this browser: their settings, each skill's level, XP and the
-// lessons done each day (for the daily goal and streak). It is one versioned object, changed only by
+// A pupil's progress, kept only in this browser: their settings, each skill's level, XP, the
+// lessons done each day (for the daily goal and streak) and the misconceptions they have shown. It is one versioned object, changed only by
 // the pure functions here; whatever is read back is checked, and anything unreadable starts afresh
 // rather than breaking the app.
 import { STAGES, type Stage } from "@mathsplanner/core";
 
 export const PROGRESS_VERSION = 1;
 export const STORAGE_KEY = "learnmaths.progress";
-/** XP for finishing a lesson. */
+/** XP for finishing a lesson, and the bonus for getting every question right first time. */
 export const LESSON_XP = 10;
+export const PERFECT_XP = 5;
 
 export const DAILY_GOALS = [1, 2, 3, 5] as const;
 export type DailyGoal = (typeof DAILY_GOALS)[number];
@@ -40,6 +41,8 @@ export interface Progress {
   xp: number;
   /** Lessons finished each day, by YYYY-MM-DD. */
   days: Record<string, number>;
+  /** Misconception codes the pupil's wrong answers matched, and how often. */
+  mistakes: Record<string, number>;
   /** Set on the example progress, so the app can say it is an example. */
   example?: true;
 }
@@ -57,6 +60,7 @@ export const emptyProgress = (): Progress => ({
   skills: {},
   xp: 0,
   days: {},
+  mistakes: {},
 });
 
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
@@ -87,6 +91,9 @@ export function readProgress(raw: unknown): Progress {
   if (isRecord(raw.days))
     for (const [day, n] of Object.entries(raw.days))
       if (DAY.test(day) && count(n)) progress.days[day] = count(n);
+  if (isRecord(raw.mistakes))
+    for (const [code, n] of Object.entries(raw.mistakes))
+      if (count(n)) progress.mistakes[code] = count(n);
   if (raw.example === true) progress.example = true;
   return progress;
 }
@@ -155,22 +162,35 @@ export function streak(progress: Progress, today: string): number {
   return n;
 }
 
-/** A lesson finished on a skill: up a level (to at most `levels`), XP and today's count. */
+/** What a finished lesson changes. */
+export interface LessonOutcome {
+  skill: string;
+  /** The skill's number of levels, the most it can reach. */
+  levels: number;
+  xp: number;
+  /** Misconception codes of the wrong answers. */
+  mistakes: readonly string[];
+}
+
+/** A lesson finished: the skill up a level, XP, today's count and the mistakes made. */
 export function completeLesson(
   progress: Progress,
-  skill: string,
-  levels: number,
+  outcome: LessonOutcome,
   today: string,
 ): Progress {
+  const { skill, levels } = outcome;
   const was = progress.skills[skill] ?? { level: 0, lessons: 0, last: today };
+  const mistakes = { ...progress.mistakes };
+  for (const code of outcome.mistakes) mistakes[code] = (mistakes[code] ?? 0) + 1;
   return {
     ...progress,
     skills: {
       ...progress.skills,
       [skill]: { level: Math.min(was.level + 1, levels), lessons: was.lessons + 1, last: today },
     },
-    xp: progress.xp + LESSON_XP,
+    xp: progress.xp + outcome.xp,
     days: { ...progress.days, [today]: lessonsOn(progress, today) + 1 },
+    mistakes,
   };
 }
 

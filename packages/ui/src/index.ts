@@ -3,4 +3,4 @@
 // colours from the app's CSS variables (see README.md).
 export * from "./answers.ts";
 export { PlotCanvas } from "./PlotCanvas.tsx";
-export { PartInput, type WidgetProps } from "./widgets.tsx";
+export { canvasIndex, PartInput, type WidgetProps } from "./widgets.tsx";

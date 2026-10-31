@@ -19,6 +19,16 @@
   --locked-ink: #7f8a9d;
   --on-colour: #ffffff;
   --scrim: rgb(16 22 32 / 45%);
+  --right: #1d8a4a;
+  --right-bg: #e2f5e8;
+  --wrong: #c8352b;
+  --wrong-bg: #fde7e4;
+  --nearly-bg: #fff3d1;
+  /* The names the shared answer widgets (@mathsplanner/ui) take their colours from. */
+  --text: var(--ink);
+  --muted: var(--ink-soft);
+  --border: var(--line);
+  --accent: var(--biro);
 
   --number: #2b6be0;
   --calculation: #0b8b7f;
@@ -31,7 +41,7 @@
   --probability: #66870f;
 
   --display: "Fredoka", "Baloo 2", ui-rounded, system-ui, sans-serif;
-  --body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body: "Andika", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
 
   --step--1: 0.84rem;
@@ -63,6 +73,11 @@
     --locked-ink: #6d7890;
     --on-colour: #0f1420;
     --scrim: rgb(0 0 0 / 60%);
+    --right: #5fd18b;
+    --right-bg: #15301f;
+    --wrong: #ff8a80;
+    --wrong-bg: #3a1c1b;
+    --nearly-bg: #3a3014;
     --number: #72a0f5;
     --calculation: #3fc5b7;
     --fractions: #f5944c;
@@ -96,6 +111,11 @@
   --locked-ink: #6d7890;
   --on-colour: #0f1420;
   --scrim: rgb(0 0 0 / 60%);
+  --right: #5fd18b;
+  --right-bg: #15301f;
+  --wrong: #ff8a80;
+  --wrong-bg: #3a1c1b;
+  --nearly-bg: #3a3014;
   --number: #72a0f5;
   --calculation: #3fc5b7;
   --fractions: #f5944c;
@@ -1080,6 +1100,372 @@ body::before {
 .confirm {
   display: grid;
   gap: 0.75rem;
+}
+
+/* A lesson: a bar with the way out and progress, the question, and a footer for Check and
+   feedback. */
+.lesson {
+  max-width: 40rem;
+  margin: 0 auto;
+  min-height: 100vh;
+  min-height: calc(100dvh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+  display: flex;
+  flex-direction: column;
+}
+
+.lesson-form {
+  display: contents;
+}
+
+.lesson-bar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 0.9rem;
+  background: var(--paper);
+}
+
+.icon-button {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--ink-soft);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.lesson-progress {
+  flex: 1;
+  height: 1rem;
+  border-radius: 999px;
+  background: var(--locked);
+  overflow: hidden;
+}
+
+.lesson-progress span {
+  display: block;
+  height: 100%;
+  min-width: 1rem;
+  border-radius: inherit;
+  background: var(--biro);
+  transition: width 300ms ease-out;
+}
+
+.lesson-main {
+  flex: 1;
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  min-width: 0;
+  padding-block: 0.5rem 2rem;
+}
+
+.lesson-intro {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.lesson-intro .dot,
+.verdict-head .dot {
+  flex: none;
+}
+
+.lesson-skill {
+  font-size: var(--step-2);
+}
+
+.lesson-lead {
+  font-size: var(--step-1);
+}
+
+.lesson-card {
+  padding: 1.1rem 1.2rem;
+  border: 2px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  font-size: 1.1rem;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.lesson-card svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.lesson-card .parts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.lesson-card .part .prompt {
+  margin-bottom: 0.6rem;
+}
+
+.example-part {
+  margin-top: 0.5rem;
+}
+
+.example-solution,
+.solution-card {
+  font-size: 1rem;
+}
+
+.example-answer {
+  margin-top: 0.75rem;
+}
+
+.review-tag,
+.retry-tag {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+
+.review-tag span {
+  margin-right: 0.4rem;
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--biro) 14%, var(--surface));
+  color: var(--biro);
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* The answer widgets, in the app's own key-like style. */
+.lesson .option {
+  border: 2px solid var(--line);
+  background: var(--surface);
+  box-shadow: 0 3px 0 var(--line);
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+.lesson .option.chosen {
+  border-color: var(--biro);
+  background: color-mix(in srgb, var(--biro) 10%, var(--surface));
+  box-shadow: 0 3px 0 var(--biro);
+}
+
+.lesson .option.right {
+  border-color: var(--right);
+  background: var(--right-bg);
+  box-shadow: 0 3px 0 var(--right);
+}
+
+.lesson .option.wrong {
+  border-color: var(--wrong);
+  background: var(--wrong-bg);
+  box-shadow: 0 3px 0 var(--wrong);
+}
+
+.lesson input[type="text"],
+.lesson select,
+.lesson textarea,
+.lesson .math-field {
+  min-height: 2.9rem;
+  padding: 0.5rem 0.8rem;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.2rem;
+}
+
+.lesson .answer-field input {
+  width: 11rem;
+}
+
+.lesson .order button {
+  min-width: 2.4rem;
+  min-height: 2.4rem;
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.lesson-foot {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  padding: 0.9rem max(16px, env(safe-area-inset-right, 0px))
+    calc(0.9rem + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  border-top: 2px solid var(--line);
+  background: var(--surface);
+}
+
+.lesson-foot.right {
+  background: var(--right-bg);
+  border-color: var(--right);
+}
+
+.lesson-foot.wrong {
+  background: var(--wrong-bg);
+  border-color: var(--wrong);
+}
+
+.lesson-foot.nearly {
+  background: var(--nearly-bg);
+  border-color: var(--gold-deep);
+}
+
+.lesson-foot-inner {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.check-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.check-row .big {
+  flex: 1;
+}
+
+.verdict {
+  display: grid;
+  gap: 0.7rem;
+  max-height: 55vh;
+  overflow-y: auto;
+  animation: rise 220ms ease-out;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(1rem);
+    opacity: 0.4;
+  }
+}
+
+.verdict-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.verdict-head h2 {
+  font-size: var(--step-2);
+}
+
+.right .verdict-head h2 {
+  color: var(--right);
+}
+
+.wrong .verdict-head h2 {
+  color: var(--wrong);
+}
+
+.part-feedback {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.verdict-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.verdict-actions .big {
+  flex: 1 1 12rem;
+}
+
+.lesson-end {
+  justify-items: center;
+  align-content: center;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.lesson-end h1 {
+  font-size: var(--step-3);
+}
+
+.end-message {
+  max-width: 26rem;
+  font-family: var(--display);
+  font-size: var(--step-1);
+  color: var(--biro);
+}
+
+.end-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+  width: 100%;
+  max-width: 26rem;
+  margin: 0.5rem 0 0;
+}
+
+.end-stats div {
+  padding: 0.7rem 0.5rem;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.end-stats dt {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+
+.end-stats dd {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  margin: 0;
+  font-family: var(--display);
+  font-size: var(--step-2);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.goal-met {
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--dot) 16%, var(--surface));
+  color: var(--dot-deep);
+  font-family: var(--display);
+  font-weight: 600;
+}
+
+.leave {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: end center;
+  padding: 1rem max(16px, env(safe-area-inset-right, 0px))
+    calc(1rem + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  background: var(--scrim);
+}
+
+.leave-card {
+  display: grid;
+  justify-items: center;
+  gap: 0.6rem;
+  width: min(28rem, 100%);
+  padding: 1.4rem;
+  border-radius: 24px;
+  background: var(--surface);
+  text-align: center;
 }
 
 @media (prefers-reduced-motion: reduce) {

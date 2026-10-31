@@ -1,9 +1,9 @@
 # Proposal: Learn Maths, a Duolingo-style practice app for pupils
 
-Status: **agreed on 29 October 2026.** Steps 1 to 3 are built: the course data with Year 7 as
+Status: **agreed on 29 October 2026.** Steps 1 to 4 are built: the course data with Year 7 as
 the pilot section (`data/course.txt`, `pnpm data:course`), the shared answer widgets
-(`@mathsplanner/ui`) and the app with its path, progress and first visit (`apps/learn`,
-`pnpm learn`); steps 4 to 10 are to do.
+(`@mathsplanner/ui`), and the app with its path, progress, first visit and lessons
+(`apps/learn`, `pnpm learn`); steps 5 to 10 are to do.
 
 ## Why
 
@@ -290,7 +290,10 @@ are less likely than a teacher to notice a bad question. So:
    path with units in their topic colours and each skill's levels as a ring, a sheet for each
    skill, the pupil's page with preferences, and example progress for a look around.
 4. **The lesson**: building a lesson from a skill and level, check and banner, re-asking mistakes,
-   worked examples and the end screen.
+   worked examples and the end screen. **Done**: eight questions with two reviews mixed in, a
+   "Show me" for a pupil who is stuck, and the misconceptions shown kept for step 5. The body
+   font is Andika, chosen for young readers, whose zero has no slash to be mistaken for the empty
+   set.
 5. **Practice and repetition**: the review schedule, fading nodes, the practice hub, mistakes,
    unit and section reviews.
 6. **Motivation**: XP, daily goal, streaks and freezes, badges, challenge mode, Dot's artwork

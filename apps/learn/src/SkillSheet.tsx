@@ -1,5 +1,5 @@
-// The sheet that opens from a node: the skill, its levels and what each asks, and the way in. Lessons
-// arrive in the next step, so for now the sheet says so instead of starting one.
+// The sheet that opens from a node: the skill, its levels and what each asks, and the way into its
+// next lesson.
 import { useEffect, useRef } from "react";
 import { skillText, topicName, type Level } from "./course.ts";
 import { familyOf } from "./families.ts";
@@ -23,9 +23,11 @@ const LEVEL_WORDS: Record<Level["name"], string> = {
 export function SkillSheet({
   selection,
   onClose,
+  onStart,
 }: {
   selection: Selection | undefined;
   onClose: () => void;
+  onStart: (skill: string) => void;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -43,12 +45,20 @@ export function SkillSheet({
       onClick={(e) => e.target === ref.current && onClose()}
       aria-labelledby="sheet-title"
     >
-      {selection && <SheetBody selection={selection} onClose={onClose} />}
+      {selection && <SheetBody selection={selection} onClose={onClose} onStart={onStart} />}
     </dialog>
   );
 }
 
-function SheetBody({ selection, onClose }: { selection: Selection; onClose: () => void }) {
+function SheetBody({
+  selection,
+  onClose,
+  onStart,
+}: {
+  selection: Selection;
+  onClose: () => void;
+  onStart: (skill: string) => void;
+}) {
   const { unit } = selection;
   const family = familyOf(unit.unit.topic);
   if (selection.kind === "review") {
@@ -127,10 +137,18 @@ function SheetBody({ selection, onClose }: { selection: Selection; onClose: () =
       </ol>
 
       <div className="sheet-actions">
-        <button type="button" className="button primary" disabled>
-          {node.level === 0 ? "Start lesson" : "Next lesson"}
+        <button
+          type="button"
+          className="button primary big"
+          disabled={locked}
+          onClick={() => onStart(node.skill)}
+        >
+          {node.level === 0
+            ? "Start lesson"
+            : node.level >= node.info.levels.length
+              ? "Practise again"
+              : `Start ${node.info.levels[node.level]?.name ?? "the next level"}`}
         </button>
-        <p className="muted">Lessons open in the next update.</p>
         <button type="button" className="button" onClick={onClose}>
           Close
         </button>

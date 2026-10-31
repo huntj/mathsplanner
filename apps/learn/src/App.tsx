@@ -1,14 +1,18 @@
-// Learn Maths: the first visit, the path and the pupil's page. Progress is kept in this browser and
+// Learn Maths: the first visit, the path, lessons and the pupil's page. Progress is kept in this browser and
 // saved after every change. Views are named in the address (#welcome, #you), so the back button
 // works; the path is the start view.
 import type { Stage } from "@mathsplanner/core";
 import { useEffect, useState } from "react";
 import { course, sectionFor } from "./course.ts";
 import { exampleProgress } from "./example.ts";
+import { levelMessage, planLesson, type LessonPlan, type LessonSummary } from "./lesson.ts";
+import { LessonView, type LessonEnding } from "./LessonView.tsx";
 import { PathIcon, PersonIcon, StarIcon, StreakIcon } from "./Icons.tsx";
 import { PathView, type Selection } from "./PathView.tsx";
 import {
+  completeLesson,
   dayKey,
+  levelOf,
   emptyProgress,
   lessonsOn,
   loadProgress,
@@ -57,6 +61,7 @@ export function App() {
   const [progress, setProgress] = useState<Progress>(() => loadProgress());
   const [view, setView] = useState<View>(viewFromHash);
   const [selection, setSelection] = useState<Selection>();
+  const [lesson, setLesson] = useState<{ plan: LessonPlan; ending?: LessonEnding }>();
   const today = dayKey(new Date());
 
   useEffect(() => {
@@ -91,6 +96,57 @@ export function App() {
     setProgress(withSettings(exampleProgress(pilot, levelsOf, today), { theme }));
     go("path");
   };
+
+  const startSkill = (skill: string) => {
+    if (!section) return;
+    // Review questions come from the skills already finished in this year.
+    const reviewFrom = section.units
+      .flatMap((u) => u.skills)
+      .filter((s) => s !== skill && levelOf(progress, s) >= levelsOf(s).pathLevels)
+      .map((s) => ({ skill: s, info: levelsOf(s) }));
+    const seed = 1 + Math.floor(Math.random() * 2_147_483_000);
+    setSelection(undefined);
+    setLesson({
+      plan: planLesson(skill, levelsOf(skill), levelOf(progress, skill), reviewFrom, seed),
+    });
+    scrollTo({ top: 0 });
+  };
+
+  const finishLesson = (summary: LessonSummary) => {
+    if (!lesson) return;
+    const { skill } = lesson.plan;
+    const info = levelsOf(skill);
+    const before = levelOf(progress, skill);
+    const outcome = {
+      skill,
+      levels: info.levels.length,
+      xp: summary.xp,
+      mistakes: summary.mistakes,
+    };
+    const next = completeLesson(progress, outcome, today);
+    setProgress(next);
+    setLesson({
+      ...lesson,
+      ending: {
+        summary,
+        message: levelMessage(info, before, levelOf(next, skill)),
+        streak: streak(next, today),
+        today: lessonsOn(next, today),
+        goal: next.settings.dailyGoal,
+      },
+    });
+  };
+
+  if (lesson && section) {
+    return (
+      <LessonView
+        plan={lesson.plan}
+        ending={lesson.ending}
+        onComplete={finishLesson}
+        onClose={() => setLesson(undefined)}
+      />
+    );
+  }
 
   if (!section || view === "welcome") {
     return (
@@ -190,7 +246,11 @@ export function App() {
         </button>
       </nav>
 
-      <SkillSheet selection={selection} onClose={() => setSelection(undefined)} />
+      <SkillSheet
+        selection={selection}
+        onClose={() => setSelection(undefined)}
+        onStart={startSkill}
+      />
     </div>
   );
 }

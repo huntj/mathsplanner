@@ -2,7 +2,7 @@
 import type { DiagramSpec, Part, Question, Rich } from "@mathsplanner/core";
 import type { MarkResult, QuestionMark } from "@mathsplanner/marking";
 import { renderAnswer, renderRich, renderSolution } from "@mathsplanner/render";
-import { PartInput, type Draft } from "@mathsplanner/ui";
+import { canvasIndex, PartInput, type Draft } from "@mathsplanner/ui";
 import { useState } from "react";
 import { misconceptionText, STATUS_WORDS } from "./results.ts";
 import { statementById } from "./session.ts";
@@ -14,13 +14,6 @@ interface Props {
   /** The marks once checked; feedback shows only when `showFeedback` is on. */
   mark?: QuestionMark;
   showFeedback: boolean;
-}
-
-/** The diagram a plot part draws on: the last one in the stem. It becomes the drawing area. */
-function canvasIndex(question: Question): number | undefined {
-  if (!question.parts.some((p) => p.answer.type === "plot")) return undefined;
-  const indices = question.stem.flatMap((n) => (n.t === "diagram" ? [n.i] : []));
-  return indices.at(-1);
 }
 
 const html = (rich: Rich, diagrams: readonly DiagramSpec[]) => ({

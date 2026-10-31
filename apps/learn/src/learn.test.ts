@@ -120,13 +120,14 @@ describe("progress", () => {
 
   it("finishes a lesson: up a level, XP and today's count", () => {
     let p = emptyProgress();
-    p = completeLesson(p, "Y7-NPV-01", 4, today);
-    p = completeLesson(p, "Y7-NPV-01", 4, today);
+    p = completeLesson(p, { skill: "Y7-NPV-01", levels: 4, xp: 10, mistakes: [] }, today);
+    p = completeLesson(p, { skill: "Y7-NPV-01", levels: 4, xp: 10, mistakes: [] }, today);
     expect(levelOf(p, "Y7-NPV-01")).toBe(2);
     expect(p.skills["Y7-NPV-01"]).toEqual({ level: 2, lessons: 2, last: today });
     expect(p.xp).toBe(20);
     expect(p.days[today]).toBe(2);
-    for (let i = 0; i < 5; i++) p = completeLesson(p, "Y7-NPV-01", 4, today);
+    for (let i = 0; i < 5; i++)
+      p = completeLesson(p, { skill: "Y7-NPV-01", levels: 4, xp: 10, mistakes: [] }, today);
     expect(levelOf(p, "Y7-NPV-01")).toBe(4);
   });
 
@@ -153,7 +154,11 @@ describe("progress", () => {
       getItem: (k: string) => store.get(k) ?? null,
       setItem: (k: string, v: string) => void store.set(k, v),
     };
-    const p = completeLesson(emptyProgress(), "Y7-ALG-04.a", 4, today);
+    const p = completeLesson(
+      emptyProgress(),
+      { skill: "Y7-ALG-04.a", levels: 4, xp: 15, mistakes: ["ALG.LIKE"] },
+      today,
+    );
     p.settings.stage = "Y7";
     expect(saveProgress(p, storage)).toBe(true);
     expect(loadProgress(storage)).toEqual(p);

@@ -1,6 +1,6 @@
 // One input widget per answer type. Each shows the part's options or fields, holds nothing itself
 // (the draft lives in the session), and is locked once the part has been checked.
-import type { DiagramSpec, Option, Part } from "@mathsplanner/core";
+import type { DiagramSpec, Option, Part, Question } from "@mathsplanner/core";
 import { renderRich } from "@mathsplanner/render";
 import { useEffect, useRef, useState, type DragEvent } from "react";
 import type { Draft } from "./answers.ts";
@@ -314,6 +314,13 @@ function FreeText({ draft, setDraft, locked }: WidgetProps) {
       />
     </label>
   );
+}
+
+/** The diagram a plot part draws on: the last one in the stem. It becomes the drawing area. */
+export function canvasIndex(question: Question): number | undefined {
+  if (!question.parts.some((p) => p.answer.type === "plot")) return undefined;
+  const indices = question.stem.flatMap((n) => (n.t === "diagram" ? [n.i] : []));
+  return indices.at(-1);
 }
 
 /** The right widget for a part's answer type. */
