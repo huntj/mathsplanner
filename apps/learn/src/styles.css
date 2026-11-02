@@ -1111,6 +1111,7 @@ body::before {
   min-height: calc(100dvh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
   display: flex;
   flex-direction: column;
+  padding-bottom: var(--math-keyboard-height, 0px);
 }
 
 .lesson-form {
@@ -1300,7 +1301,8 @@ body::before {
 
 .lesson-foot {
   position: sticky;
-  bottom: 0;
+  /* Above the on-screen maths keyboard when it is open (see @mathsplanner/ui). */
+  bottom: var(--math-keyboard-height, 0px);
   z-index: 5;
   margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
   padding: 0.9rem max(16px, env(safe-area-inset-right, 0px))

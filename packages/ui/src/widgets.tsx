@@ -87,24 +87,137 @@ function OptionButtons({
   );
 }
 
+/** A key for something a phone keyboard may lack: what it types, and what it is called. */
+interface Key {
+  label: string;
+  name: string;
+  text: string;
+}
+
+const MINUS: Key = { label: "−", name: "Minus sign", text: "-" };
+const SLASH: Key = { label: "/", name: "Fraction bar", text: "/" };
+const NUMBER_KEYS = [MINUS, SLASH];
+const POINT_KEYS = [
+  MINUS,
+  SLASH,
+  { label: "(", name: "Open bracket", text: "(" },
+  { label: ",", name: "Comma", text: "," },
+  { label: ")", name: "Close bracket", text: ")" },
+];
+/** For the maths keyboard: LaTeX to insert, with #? for a box to type into. */
+const MATH_KEYS: Key[] = [
+  MINUS,
+  { label: "a/b", name: "Fraction", text: "\\frac{#@}{#?}" },
+  { label: "xⁿ", name: "Power", text: "^{#?}" },
+  { label: "√", name: "Square root", text: "\\sqrt{#?}" },
+  { label: "(", name: "Open bracket", text: "(" },
+  { label: ")", name: "Close bracket", text: ")" },
+];
+
+/**
+ * A row of keys under an answer box, for the minus sign, fraction bar and the like, which a phone's
+ * number keyboard does not always have. A key types at the cursor without taking the focus.
+ */
+function AnswerKeys({ keys, onKey }: { keys: readonly Key[]; onKey: (text: string) => void }) {
+  return (
+    <div className="answer-keys" role="group" aria-label="Maths keys">
+      {keys.map((k) => (
+        <button
+          key={k.name}
+          type="button"
+          aria-label={k.name}
+          title={k.name}
+          onPointerDown={(e) => e.preventDefault()}
+          onClick={() => onKey(k.text)}
+        >
+          {k.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/**
+ * Types `text` into a text box at its cursor (at the end if the box does not have the focus), and
+ * puts the cursor after it.
+ */
+function typeInto(
+  input: HTMLInputElement | null,
+  value: string,
+  text: string,
+  set: (v: string) => void,
+) {
+  const focused = input !== null && document.activeElement === input;
+  const start = focused ? (input.selectionStart ?? value.length) : value.length;
+  const end = focused ? (input.selectionEnd ?? start) : value.length;
+  const next = value.slice(0, start) + text + value.slice(end);
+  set(next);
+  const caret = start + text.length;
+  // The new value leaves the cursor at the end, so it only needs moving after typing in the middle
+  // or into a box that did not have the focus.
+  if (focused && caret === next.length) return;
+  requestAnimationFrame(() => {
+    input?.focus();
+    input?.setSelectionRange(caret, caret);
+  });
+}
+
 function NumberInput({ part, draft, setDraft, locked }: WidgetProps) {
+  const ref = useRef<HTMLInputElement>(null);
   if (draft.type !== "text" || part.answer.type !== "number") return null;
   const units = part.answer.units;
   return (
-    <label className="answer-field">
-      <span className="visually-hidden">Your answer</span>
-      <input
-        type="text"
-        inputMode="decimal"
-        autoComplete="off"
-        value={draft.text}
-        disabled={locked}
-        placeholder="Your answer"
-        onChange={(e) => setDraft({ type: "text", text: e.target.value })}
-      />
-      {units && <span className="units">{units === "°" || units === "degrees" ? "°" : units}</span>}
-    </label>
+    <div className="keyed">
+      <label className="answer-field">
+        <span className="visually-hidden">Your answer</span>
+        <input
+          ref={ref}
+          type="text"
+          inputMode="decimal"
+          autoComplete="off"
+          value={draft.text}
+          disabled={locked}
+          placeholder="Your answer"
+          onChange={(e) => setDraft({ type: "text", text: e.target.value })}
+        />
+        {units && (
+          <span className="units">{units === "°" || units === "degrees" ? "°" : units}</span>
+        )}
+      </label>
+      {!locked && (
+        <AnswerKeys
+          keys={NUMBER_KEYS}
+          onKey={(t) =>
+            typeInto(ref.current, draft.text, t, (text) => setDraft({ type: "text", text }))
+          }
+        />
+      )}
+    </div>
   );
+}
+
+type MathField = HTMLElement & {
+  value: string;
+  executeCommand: (command: [string, ...unknown[]]) => boolean;
+};
+
+/**
+ * Keeps `--math-keyboard-height` on the page root at the height of MathLive's on-screen keyboard
+ * (0px when it is hidden), so an app can keep its buttons above it. Watches once per page.
+ */
+let watching = false;
+function watchMathKeyboard() {
+  const keyboard = (
+    window as {
+      mathVirtualKeyboard?: EventTarget & { boundingRect: DOMRect; visible: boolean };
+    }
+  ).mathVirtualKeyboard;
+  if (watching || !keyboard) return;
+  watching = true;
+  keyboard.addEventListener("geometrychange", () => {
+    const height = keyboard.visible ? keyboard.boundingRect.height : 0;
+    document.documentElement.style.setProperty("--math-keyboard-height", `${height}px`);
+  });
 }
 
 /** The MathLive maths keyboard, loaded only when an exact answer is needed. */
@@ -113,13 +226,16 @@ function ExactInput({ draft, setDraft, locked }: WidgetProps) {
   const [ready, setReady] = useState(false);
   useEffect(() => {
     let live = true;
-    void import("mathlive").then(() => live && setReady(true));
+    void import("mathlive").then(() => {
+      watchMathKeyboard();
+      if (live) setReady(true);
+    });
     return () => {
       live = false;
     };
   }, []);
   useEffect(() => {
-    const field = ref.current as (HTMLElement & { value: string }) | null;
+    const field = ref.current as MathField | null;
     if (!field) return;
     const onInput = () => setDraft({ type: "exact", latex: field.value });
     field.addEventListener("input", onInput);
@@ -127,40 +243,58 @@ function ExactInput({ draft, setDraft, locked }: WidgetProps) {
   });
   if (draft.type !== "exact") return null;
   if (!ready) return <p className="muted">Loading the maths keyboard…</p>;
+  const insert = (latex: string) => {
+    const field = ref.current as MathField | null;
+    if (!field) return;
+    field.focus();
+    field.executeCommand(["insert", latex, { selectionMode: "placeholder" }]);
+    setDraft({ type: "exact", latex: field.value });
+  };
   return (
-    <math-field
-      ref={ref}
-      class="math-field"
-      aria-label="Your answer"
-      read-only={locked ? "" : undefined}
-    >
-      {draft.latex}
-    </math-field>
+    <div className="keyed">
+      <math-field
+        ref={ref}
+        class="math-field"
+        aria-label="Your answer"
+        read-only={locked ? "" : undefined}
+      >
+        {draft.latex}
+      </math-field>
+      {!locked && <AnswerKeys keys={MATH_KEYS} onKey={insert} />}
+    </div>
   );
 }
 
 function CoordinateInput({ draft, setDraft, locked }: WidgetProps) {
+  const refs = { x: useRef<HTMLInputElement>(null), y: useRef<HTMLInputElement>(null) };
+  const last = useRef<"x" | "y">("x");
   if (draft.type !== "coordinate") return null;
+  const box = (axis: "x" | "y") => (
+    <input
+      ref={refs[axis]}
+      aria-label={axis}
+      inputMode="decimal"
+      value={draft[axis]}
+      disabled={locked}
+      onFocus={() => (last.current = axis)}
+      onChange={(e) => setDraft({ ...draft, [axis]: e.target.value })}
+    />
+  );
   return (
-    <span className="coordinate">
-      (
-      <input
-        aria-label="x"
-        inputMode="decimal"
-        value={draft.x}
-        disabled={locked}
-        onChange={(e) => setDraft({ ...draft, x: e.target.value })}
-      />
-      ,
-      <input
-        aria-label="y"
-        inputMode="decimal"
-        value={draft.y}
-        disabled={locked}
-        onChange={(e) => setDraft({ ...draft, y: e.target.value })}
-      />
-      )
-    </span>
+    <div className="keyed">
+      <span className="coordinate">
+        ({box("x")},{box("y")})
+      </span>
+      {!locked && (
+        <AnswerKeys
+          keys={NUMBER_KEYS}
+          onKey={(t) => {
+            const axis = last.current;
+            typeInto(refs[axis].current, draft[axis], t, (v) => setDraft({ ...draft, [axis]: v }));
+          }}
+        />
+      )}
+    </div>
   );
 }
 
@@ -278,25 +412,44 @@ function MatchInput({ part, diagrams, draft, setDraft, locked, reveal }: WidgetP
 }
 
 function ConditionInputs({ part, draft, setDraft, locked }: WidgetProps) {
+  const boxes = useRef<(HTMLInputElement | null)[]>([]);
+  const last = useRef(0);
   if (draft.type !== "values" || part.answer.type !== "condition") return null;
+  const set = (i: number, value: string) => {
+    const texts = [...draft.texts];
+    texts[i] = value;
+    setDraft({ type: "values", texts });
+  };
+  const points = part.answer.inputs.includes("coordinate");
   return (
-    <div className="condition">
-      {part.answer.inputs.map((input, i) => (
-        <label key={i}>
-          {input === "coordinate" ? `Point ${i + 1}` : `Answer ${i + 1}`}
-          <input
-            type="text"
-            inputMode={input === "number" ? "decimal" : "text"}
-            value={draft.texts[i] ?? ""}
-            disabled={locked}
-            onChange={(e) => {
-              const texts = [...draft.texts];
-              texts[i] = e.target.value;
-              setDraft({ type: "values", texts });
-            }}
-          />
-        </label>
-      ))}
+    <div className="keyed">
+      <div className="condition">
+        {part.answer.inputs.map((input, i) => (
+          <label key={i}>
+            {input === "coordinate" ? `Point ${i + 1}` : `Answer ${i + 1}`}
+            <input
+              ref={(el) => {
+                boxes.current[i] = el;
+              }}
+              type="text"
+              inputMode={input === "number" ? "decimal" : "text"}
+              value={draft.texts[i] ?? ""}
+              disabled={locked}
+              onFocus={() => (last.current = i)}
+              onChange={(e) => set(i, e.target.value)}
+            />
+          </label>
+        ))}
+      </div>
+      {!locked && (
+        <AnswerKeys
+          keys={points ? POINT_KEYS : NUMBER_KEYS}
+          onKey={(t) => {
+            const i = last.current;
+            typeInto(boxes.current[i] ?? null, draft.texts[i] ?? "", t, (v) => set(i, v));
+          }}
+        />
+      )}
     </div>
   );
 }

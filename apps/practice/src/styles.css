@@ -43,6 +43,8 @@
 
 body {
   margin: 0;
+  /* Room for the on-screen maths keyboard when it is open (see @mathsplanner/ui). */
+  padding-bottom: var(--math-keyboard-height, 0px);
   background: var(--bg);
   color: var(--text);
   line-height: 1.5;

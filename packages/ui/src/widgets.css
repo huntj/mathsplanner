@@ -1,6 +1,8 @@
 /* @mathsplanner/ui: styles for the answer widgets. The app defines the colours as CSS variables:
    --text, --muted, --surface, --border and --accent, and --right, --right-bg, --wrong and
-   --wrong-bg for marked options. Buttons, inputs and selects take the app's own base styles. */
+   --wrong-bg for marked options. Buttons, inputs and selects take the app's own base styles.
+   While MathLive's on-screen keyboard is open, --math-keyboard-height on the page root holds its
+   height, so an app can keep its own buttons above it. */
 
 .visually-hidden {
   position: absolute;
@@ -289,4 +291,30 @@
 .plot-key {
   font-size: 0.9rem;
   text-align: center;
+}
+
+.keyed {
+  display: grid;
+  gap: 0.5rem;
+  justify-items: start;
+}
+
+.answer-keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.answer-keys button {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.2rem 0.6rem;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
 }
