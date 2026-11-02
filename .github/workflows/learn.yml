@@ -1,0 +1,65 @@
+name: Deploy Learn Maths
+
+# Builds apps/learn and publishes it to the gh-pages branch of huntj/learnmaths, which GitHub Pages
+# serves at https://learnmaths.jedhunt.co.uk. A repository can have only one custom domain, so
+# Learn Maths lives in its own repository; this one keeps the code. One-off setup is in
+# docs/deploy-learn-maths.md: the LEARN_DEPLOY_KEY secret (a deploy key with write access to
+# huntj/learnmaths) and, optionally, the LEARN_FEEDBACK_URL variable for the feedback link.
+on:
+  push:
+    branches: [main]
+    paths:
+      - apps/learn/**
+      - packages/**
+      - data/**
+      - pnpm-lock.yaml
+      - .github/workflows/learn.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: learn-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build and publish Learn Maths
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @mathsplanner/learn build
+        env:
+          VITE_FEEDBACK_URL: ${{ vars.LEARN_FEEDBACK_URL }}
+      - name: Publish to huntj/learnmaths
+        env:
+          DEPLOY_KEY: ${{ secrets.LEARN_DEPLOY_KEY }}
+        run: |
+          if [ -z "$DEPLOY_KEY" ]; then
+            echo "::error::The LEARN_DEPLOY_KEY secret is not set. See docs/deploy-learn-maths.md."
+            exit 1
+          fi
+          mkdir -p ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/learnmaths
+          chmod 600 ~/.ssh/learnmaths
+          # GitHub's published SSH host key (docs.github.com, "GitHub's SSH key fingerprints").
+          echo "github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl" >> ~/.ssh/known_hosts
+          export GIT_SSH_COMMAND="ssh -i ~/.ssh/learnmaths -o IdentitiesOnly=yes"
+
+          cd apps/learn/dist
+          echo "learnmaths.jedhunt.co.uk" > CNAME
+          touch .nojekyll
+          git init -q -b gh-pages
+          git add -A
+          git -c user.name="github-actions[bot]" \
+              -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit -q -m "Deploy Learn Maths from huntj/mathsplanner@${GITHUB_SHA::7}"
+          git push --force git@github.com:huntj/learnmaths.git gh-pages

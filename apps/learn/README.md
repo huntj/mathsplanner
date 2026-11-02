@@ -15,3 +15,5 @@ Progress is kept only in the browser's local storage (`src/progress.ts`): one ve
 Variety: when it makes a question, the app tries a few and prefers a form (`formOf` in `src/skills.ts`: the kind of question and its wording, without the numbers) that the pupil has not seen in this lesson or the last few on that skill, which progress remembers. A question answered wrongly comes back in the same form, so the pupil can put right what they just learnt. The generators supply the forms: every skill on the path has several reasoning questions with different right answers (see `packages/generators/src/shared/variety.ts`).
 
 Run it locally with `pnpm learn` (http://localhost:5175). `vite build --mode single` inlines the fonts, for hosts that serve only the page and its scripts.
+
+It is online at https://learnmaths.jedhunt.co.uk: `.github/workflows/learn.yml` builds it on every push to `main` and publishes it through the `huntj/learnmaths` repository. The one-off set-up is in [docs/deploy-learn-maths.md](../../docs/deploy-learn-maths.md).

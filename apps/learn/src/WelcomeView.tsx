@@ -46,6 +46,7 @@ export function WelcomeView({
           <p className="muted small">
             Your progress stays on this device. Nothing about you is sent anywhere.
           </p>
+          <p className="test-note small">Test version · Year 7 is ready so far</p>
         </section>
       )}
 

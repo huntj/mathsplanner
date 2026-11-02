@@ -254,6 +254,11 @@ button {
   cursor: pointer;
 }
 
+a.button {
+  color: inherit;
+  text-decoration: none;
+}
+
 .button:active:not(:disabled) {
   transform: translateY(2px);
   box-shadow: 0 1px 0 var(--line);
@@ -923,6 +928,19 @@ body::before {
   font-weight: 400;
   font-size: var(--step--1);
   color: var(--ink-soft);
+}
+
+/* The test version's notes. */
+.test-note {
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  color: var(--ink-soft);
+}
+
+.test-version .button {
+  justify-self: start;
 }
 
 /* The pupil's page. */

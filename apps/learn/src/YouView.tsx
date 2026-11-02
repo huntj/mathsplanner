@@ -4,6 +4,7 @@ import type { CourseSection } from "@mathsplanner/core";
 import { useState } from "react";
 import { BadgeMark } from "./BadgeMark.tsx";
 import { Dot } from "./Dot.tsx";
+import { FEEDBACK_URL } from "./feedback.ts";
 import { BADGES, FREEZE_EVERY } from "./rewards.ts";
 import { pathFor } from "./path.ts";
 import { SnowflakeIcon, StarIcon, StreakIcon } from "./Icons.tsx";
@@ -201,6 +202,20 @@ export function YouView({
           checked={settings.challenge}
           onChange={(challenge) => onSettings({ challenge })}
         />
+      </section>
+
+      <section className="card test-version" aria-labelledby="test-version">
+        <h2 id="test-version">About this test version</h2>
+        <p className="muted">
+          Learn Maths is new. Only Year 7 is ready so far, and other years will follow. Your
+          progress is kept in this browser on this device, so it will not follow you to another
+          device, and clearing your browsing data clears it.
+        </p>
+        {FEEDBACK_URL && (
+          <a className="button" href={FEEDBACK_URL} target="_blank" rel="noreferrer">
+            Tell us what you think
+          </a>
+        )}
       </section>
 
       <section className="danger" aria-labelledby="start-again">

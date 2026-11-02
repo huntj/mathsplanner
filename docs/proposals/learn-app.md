@@ -254,22 +254,24 @@ Practice is the heart of the app, so it has its own tab as well as being mixed i
 GitHub Pages allows one custom domain per repository, and this one already serves
 mathsplanner.jedhunt.co.uk, so Learn Maths is published through a second repository,
 `huntj/learnmaths`, which holds only the built site. A workflow here (`learn.yml`) builds
-`apps/learn` on every push to `main` and pushes the result to that repository, whose Pages then
-serves it. The one-off set-up, done at step 9:
+`apps/learn` on every push to `main` and pushes the result to the `gh-pages` branch of that
+repository, whose Pages then serves it. It was brought forward from step 9 so pupils could
+play-test Year 7 early; the one-off set-up is in [deploy-learn-maths.md](../deploy-learn-maths.md):
 
 1. **Create the repository** `huntj/learnmaths`, public (free GitHub Pages needs a public
    repository) and empty.
-2. **Give this repository permission to push to it.** Make an SSH key pair; add the public key to
-   `learnmaths` under Settings → Deploy keys, with write access; add the private key to
-   `mathsplanner` under Settings → Secrets and variables → Actions, as `LEARN_DEPLOY_KEY`.
-3. **Turn on Pages** in `learnmaths` (Settings → Pages: deploy from the `main` branch), set the
-   custom domain to `learnmaths.jedhunt.co.uk`, and tick "Enforce HTTPS" once the certificate is
-   issued. The workflow also writes a `CNAME` file so the domain survives each deploy.
-4. **Add the DNS record at Fasthosts**: in the jedhunt.co.uk DNS settings, a `CNAME` record with
-   host `learnmaths` pointing to `huntj.github.io`. Changes can take a few hours to spread.
-5. **Verify the domain with GitHub** (recommended): GitHub account Settings → Pages → Add a domain
-   gives a `TXT` record to add at Fasthosts, which stops anyone else's repository claiming a
-   jedhunt.co.uk subdomain.
+2. **Give this repository permission to push to it**: a deploy key with write access on
+   `learnmaths`, and its private half as the `LEARN_DEPLOY_KEY` Actions secret here.
+3. **Merge to `main`** and run the workflow once, so the `gh-pages` branch exists.
+4. **Turn on Pages** in `learnmaths` from the `gh-pages` branch, with the custom domain
+   `learnmaths.jedhunt.co.uk` and "Enforce HTTPS". The workflow writes a `CNAME` file so the
+   domain survives each deploy.
+5. **Add the DNS record at Fasthosts**: a `CNAME` record with host `learnmaths` pointing to
+   `huntj.github.io`.
+6. **Verify the domain with GitHub** (recommended), with a `TXT` record at Fasthosts.
+
+Until the report-a-problem form (step 8), the You page has an "About this test version" card,
+with a feedback link when the `LEARN_FEEDBACK_URL` repository variable is set.
 
 ## Content quality
 
