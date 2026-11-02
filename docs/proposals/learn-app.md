@@ -161,6 +161,13 @@ skills in that topic.
 5. The end screen shows XP, accuracy, the streak and any badge, then the skill's progress on the
    path.
 
+**Variety.** A skill practised again should not mean the same question with new numbers. Each
+skill's reasoning questions (depth 4) come from a bank of claims with different right answers, in
+true-or-false and always-sometimes-never forms, and the app prefers a form of question the pupil
+has not seen in the lesson or lately on that skill. Before this, 69 of the 72 Year 7 skills asked
+one claim at depth 4, with the same right answer every time. A test now keeps every skill on the
+path to at least three forms, with no answer right more than 70% of the time.
+
 Every question is made from a generator key (statement, depth, numbers, seed), so lessons are
 deterministic, need no server, and a problem report can name the exact question.
 

@@ -12,6 +12,9 @@ export const STORAGE_KEY = "learnmaths.progress";
 export const LESSON_XP = 10;
 export const PERFECT_XP = 5;
 
+/** Forms of question remembered for each skill, so the next lessons can show others. */
+export const RECENT_FORMS = 6;
+
 /** The most streak freezes a pupil can hold. */
 export const MAX_FREEZES = 2;
 
@@ -61,6 +64,8 @@ export interface Progress {
   badges: Record<string, string>;
   /** The most questions right in a speed round. */
   speedBest: number;
+  /** The forms of question each skill showed lately (see formOf in skills.ts), newest first. */
+  recent: Record<string, string[]>;
   /** Set on the example progress, so the app can say it is an example. */
   example?: true;
 }
@@ -84,6 +89,7 @@ export const emptyProgress = (): Progress => ({
   frozen: [],
   badges: {},
   speedBest: 0,
+  recent: {},
 });
 
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
@@ -133,6 +139,12 @@ export function readProgress(raw: unknown): Progress {
     for (const [id, day] of Object.entries(raw.badges))
       if (typeof day === "string" && DAY.test(day)) progress.badges[id] = day;
   progress.speedBest = count(raw.speedBest);
+  if (isRecord(raw.recent))
+    for (const [skill, forms] of Object.entries(raw.recent))
+      if (Array.isArray(forms))
+        progress.recent[skill] = forms
+          .filter((f): f is string => typeof f === "string")
+          .slice(0, RECENT_FORMS);
   if (raw.example === true) progress.example = true;
   return progress;
 }
@@ -206,3 +218,14 @@ export const withSettings = (progress: Progress, settings: Partial<Settings>): P
   ...progress,
   settings: { ...progress.settings, ...settings },
 });
+
+/** The forms of question a lesson showed for each skill, remembered newest first. */
+export function rememberForms(progress: Progress, shown: Record<string, string[]>): Progress {
+  const recent = { ...progress.recent };
+  for (const [skill, forms] of Object.entries(shown))
+    recent[skill] = [...new Set([...[...forms].reverse(), ...(recent[skill] ?? [])])].slice(
+      0,
+      RECENT_FORMS,
+    );
+  return { ...progress, recent };
+}

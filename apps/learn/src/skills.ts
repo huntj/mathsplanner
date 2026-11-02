@@ -1,6 +1,6 @@
 // Each skill's levels, from the depths its generator supports, the misconceptions it can show, and
 // the questions for a lesson.
-import type { Question, Validator } from "@mathsplanner/core";
+import type { Question, Rich, Validator } from "@mathsplanner/core";
 import { generators } from "@mathsplanner/generators";
 import { skillLevels, type SkillLevels } from "./course.ts";
 import type { LessonItem } from "./lesson.ts";
@@ -36,16 +36,41 @@ export interface LessonQuestion {
 const TRIES = 5;
 /** Seeds to try at each depth for a question that offers the misconception being aimed at. */
 const TARGET_TRIES = 12;
+/** Seeds to try for a question in the form the pupil saw longest ago. */
+const FRESH_TRIES = 20;
 
 const offers = (lq: LessonQuestion, code: string) =>
   lq.question.parts.some((p) => p.misconceptions.some((m) => m.code === code));
+
+const text = (rich: Rich) =>
+  rich.map((n) => (n.t === "text" ? n.v : n.t === "math" ? "M" : "")).join("");
+
+/**
+ * A question's form, as a short code: its archetype and wording with the numbers taken out. Two
+ * questions with the same form differ only in their numbers.
+ */
+export function formOf(question: Question): string {
+  const wording = [question.stem, ...question.parts.map((p) => p.prompt)]
+    .map(text)
+    .join("/")
+    .replace(/-?\d+(\.\d+)?/g, "#");
+  let hash = 5381;
+  for (const ch of `${question.archetype}|${wording}`) hash = (hash * 33 + ch.charCodeAt(0)) >>> 0;
+  return hash.toString(36);
+}
 
 /**
  * The question for a lesson item, trying the next seeds if a generator cannot make one. For an
  * item aimed at a misconception, it looks for a question offering that wrong answer, at the
  * item's depth first and then the skill's other depths, and settles for any question if none does.
+ * Otherwise it prefers the form the pupil saw longest ago: `lastSeen` gives each form seen a number,
+ * higher for more recent, and a form not in it has not been seen at all. So a skill with several
+ * kinds of question rotates through them rather than repeating one.
  */
-export function questionFor(item: LessonItem): LessonQuestion | undefined {
+export function questionFor(
+  item: LessonItem,
+  lastSeen: ReadonlyMap<string, number> = new Map(),
+): LessonQuestion | undefined {
   const generator = byId.get(item.skill);
   if (!generator) return undefined;
   const make = (depth: typeof item.depth, seed: number) => {
@@ -64,9 +89,13 @@ export function questionFor(item: LessonItem): LessonQuestion | undefined {
         if (lq && offers(lq, target)) return lq;
       }
   }
-  for (let i = 0; i < TRIES; i++) {
+  let best: { lq: LessonQuestion; seen: number } | undefined;
+  for (let i = 0; i < (lastSeen.size ? FRESH_TRIES : TRIES); i++) {
     const lq = make(item.depth, item.seed + i);
-    if (lq) return lq;
+    if (!lq) continue;
+    const seen = lastSeen.get(formOf(lq.question));
+    if (seen === undefined) return lq;
+    if (!best || seen < best.seen) best = { lq, seen };
   }
-  return undefined;
+  return best?.lq;
 }

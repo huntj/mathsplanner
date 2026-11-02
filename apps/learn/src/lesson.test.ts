@@ -11,8 +11,8 @@ import {
   startLesson,
   summarise,
 } from "./lesson.ts";
-import { LESSON_XP, PERFECT_XP } from "./progress.ts";
-import { levelsOf, questionFor } from "./skills.ts";
+import { emptyProgress, LESSON_XP, PERFECT_XP, RECENT_FORMS, rememberForms } from "./progress.ts";
+import { formOf, levelsOf, questionFor } from "./skills.ts";
 
 const INFO = skillLevels([1, 2, 4]);
 const REVIEW = [
@@ -148,5 +148,71 @@ describe("Year 7 lessons", () => {
       }
     }
     expect(missing).toEqual([]);
+  });
+});
+
+describe("variety in a lesson", () => {
+  const legendary = (skill: string) => {
+    const info = levelsOf(skill);
+    return planLesson(skill, info, info.levels.length - 1, [], 314);
+  };
+
+  it("names a question's form by its wording, not its numbers", () => {
+    const item = legendary("Y7-GEO-05.c").items[0];
+    if (!item) throw new Error("no item");
+    const a = questionFor(item)?.question;
+    const b = questionFor({ ...item, seed: item.seed + 1 })?.question;
+    if (!a || !b) throw new Error("no question");
+    expect(formOf(a)).toMatch(/^[0-9a-z]+$/);
+    // Two seeds may pick the same claim or different ones; the same seed always gives the same form.
+    expect(formOf(questionFor(item)?.question ?? a)).toBe(formOf(a));
+  });
+
+  it("prefers a form the pupil has not just seen", () => {
+    const item = legendary("Y7-ALG-04.a").items[0];
+    if (!item) throw new Error("no item");
+    const first = questionFor(item);
+    if (!first) throw new Error("no question");
+    const next = questionFor(item, new Map([[formOf(first.question), 1]]));
+    expect(next && formOf(next.question)).not.toBe(formOf(first.question));
+  });
+
+  it("shows each kind of reasoning question in a lesson before repeating one", () => {
+    for (const skill of ["Y7-ALG-04.a", "Y7-GEO-05.a", "Y7-STA-01.b", "Y7-RAT-03.b"]) {
+      const seen = new Map<string, number>();
+      for (const item of legendary(skill).items.slice(0, 4)) {
+        const lq = questionFor(item, seen);
+        if (lq) seen.set(formOf(lq.question), seen.size + 1);
+      }
+      expect(seen.size, skill).toBe(4);
+    }
+  });
+
+  it("goes back to the form seen longest ago once every form has been seen", () => {
+    const items = legendary("Y7-GEO-05.a").items;
+    const seen = new Map<string, number>();
+    let tick = 0;
+    const order: string[] = [];
+    for (const item of [...items, ...items].slice(0, 12)) {
+      const lq = questionFor(item, seen);
+      if (!lq) continue;
+      const form = formOf(lq.question);
+      order.push(form);
+      seen.set(form, ++tick);
+    }
+    // Four forms, each shown once before any comes round again, and never twice in a row.
+    expect(new Set(order.slice(0, 4)).size).toBe(4);
+    expect(order.slice(4, 8)).toEqual(order.slice(0, 4));
+    expect(order.some((f, i) => f === order[i - 1])).toBe(false);
+  });
+
+  it("remembers the forms a skill showed lately, newest first and without repeats", () => {
+    let p = emptyProgress();
+    p = rememberForms(p, { s: ["a", "b"] });
+    p = rememberForms(p, { s: ["c", "a"] });
+    expect(p.recent.s).toEqual(["a", "c", "b"]);
+    p = rememberForms(p, { s: ["d", "e", "f", "g", "h"] });
+    expect(p.recent.s).toHaveLength(RECENT_FORMS);
+    expect(p.recent.s?.[0]).toBe("h");
   });
 });

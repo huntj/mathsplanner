@@ -33,6 +33,7 @@ import {
   emptyProgress,
   lessonsOn,
   loadProgress,
+  rememberForms,
   saveProgress,
   streak,
   withSettings,
@@ -172,14 +173,11 @@ export function App() {
       );
   };
 
-  const finishLesson = (summary: LessonSummary) => {
+  const finishLesson = (summary: LessonSummary, shown: Record<string, string[]>) => {
     if (!lesson) return;
-    const {
-      progress: next,
-      message,
-      badges,
-      freeze,
-    } = recordLesson(progress, lesson.plan, summary, levelsOf, today);
+    const recorded = recordLesson(progress, lesson.plan, summary, levelsOf, today);
+    const { message, badges, freeze } = recorded;
+    const next = rememberForms(recorded.progress, shown);
     setProgress(next);
     setLesson({
       ...lesson,
@@ -202,6 +200,7 @@ export function App() {
         plan={lesson.plan}
         ending={lesson.ending}
         challenge={progress.settings.challenge}
+        recent={[...new Set(lesson.plan.items.flatMap((i) => progress.recent[i.skill] ?? []))]}
         sound={progress.settings.sound}
         onComplete={finishLesson}
         onRetry={() => begin(lesson.make)}

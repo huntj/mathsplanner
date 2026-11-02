@@ -43,7 +43,7 @@ import {
 import { describeMisconception } from "./misconceptions.ts";
 import type { Badge } from "./rewards.ts";
 import { BadgeMark } from "./BadgeMark.tsx";
-import { questionFor, type LessonQuestion } from "./skills.ts";
+import { formOf, questionFor, type LessonQuestion } from "./skills.ts";
 import { play } from "./sounds.ts";
 
 /** The family of a skill's unit, for Dot's shape. */
@@ -72,16 +72,20 @@ export function LessonView({
   ending,
   challenge,
   sound,
+  recent,
   onComplete,
   onRetry,
   onClose,
 }: {
   plan: LessonPlan;
   ending: LessonEnding | undefined;
+  /** Forms of question the pupil saw lately for these skills, newest first. */
+  recent: readonly string[];
   /** Hearts, for pupils who chose challenge mode; never in a speed round. */
   challenge: boolean;
   sound: boolean;
-  onComplete: (summary: LessonSummary) => void;
+  /** With the forms of question shown for each skill. */
+  onComplete: (summary: LessonSummary, shown: Record<string, string[]>) => void;
   /** The same kind of lesson again, after running out of hearts. */
   onRetry: () => void;
   onClose: () => void;
@@ -97,11 +101,24 @@ export function LessonView({
   const out = hearts && heartsLeft(state) === 0 && !done;
   // Effects can run twice (React's strict mode does so on purpose); the lesson is saved once.
   const reported = useRef(false);
+  // When each form of question was last seen (higher is more recent: earlier lessons below 0,
+  // this one counting up), and the forms this lesson showed, by skill.
+  const lastSeen = useRef(new Map(recent.map((form, i) => [form, -1 - i] as const)));
+  const shown = useRef<Record<string, string[]>>({});
+  const shownCount = useRef(0);
+  const onShown = (skill: string, form: string) => {
+    lastSeen.current.set(form, ++shownCount.current);
+    // Kept in the order each form was last shown, as progress remembers them newest first.
+    const forms = (shown.current[skill] ??= []);
+    const at = forms.indexOf(form);
+    if (at >= 0) forms.splice(at, 1);
+    forms.push(form);
+  };
 
   useEffect(() => {
     if (done && !reported.current) {
       reported.current = true;
-      onComplete(summarise(state, hearts));
+      onComplete(summarise(state, hearts), shown.current);
     }
   }, [done, onComplete, state, hearts]);
 
@@ -169,6 +186,9 @@ export function LessonView({
           item={item}
           quick={speed}
           sound={sound}
+          // A question put wrong comes back in the same form; a new one in a fresh form.
+          lastSeen={item.attempt > 0 ? NONE : lastSeen.current}
+          onShown={onShown}
           onAnswered={(correct, misconception) =>
             setState((s) => answer(s, correct, misconception))
           }
@@ -269,10 +289,14 @@ function ExampleStep({ item, onDone }: { item: LessonItem; onDone: () => void })
   );
 }
 
+const NONE: ReadonlyMap<string, number> = new Map();
+
 function QuestionStep({
   item,
   quick,
   sound,
+  lastSeen,
+  onShown,
   onAnswered,
   onUnavailable,
 }: {
@@ -280,10 +304,20 @@ function QuestionStep({
   /** A speed round: move on by itself soon after checking. */
   quick: boolean;
   sound: boolean;
+  /** When each form of question was last seen, and where to say which form was shown. */
+  lastSeen: ReadonlyMap<string, number>;
+  onShown: (skill: string, form: string) => void;
   onAnswered: (correct: boolean, misconception?: string) => void;
   onUnavailable: () => void;
 }) {
-  const lq = useMemo<LessonQuestion | undefined>(() => questionFor(item), [item]);
+  const lq = useMemo<LessonQuestion | undefined>(
+    () => questionFor(item, lastSeen),
+    [item, lastSeen],
+  );
+  // A retry repeats a form on purpose, so only first attempts count as showing one.
+  useEffect(() => {
+    if (lq && item.attempt === 0) onShown(item.skill, formOf(lq.question));
+  }, [lq, item.skill, item.attempt, onShown]);
   const [drafts, setDrafts] = useState<Draft[]>(
     () => lq?.question.parts.map((p) => emptyDraft(p.answer)) ?? [],
   );
