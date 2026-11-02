@@ -1,10 +1,17 @@
 // The sheet that opens from a node: the skill, its levels and what each asks, and the way into its
-// next lesson.
+// next lesson (or a refresh, when its review is due); or a unit or year review and the way in.
 import { useEffect, useRef } from "react";
-import { skillText, topicName, type Level } from "./course.ts";
+import { skillText, topicName, type Level, type PathUnit } from "./course.ts";
 import { familyOf } from "./families.ts";
-import { CheckIcon, FamilyIcon, LockIcon, ReviewIcon } from "./Icons.tsx";
+import { CheckIcon, FamilyIcon, LockIcon, RefreshIcon, ReviewIcon, StarIcon } from "./Icons.tsx";
 import type { Selection } from "./PathView.tsx";
+
+/** What a sheet can start. */
+export type Start =
+  | { kind: "skill"; skill: string }
+  | { kind: "refresh"; skill: string }
+  | { kind: "unit"; unit: PathUnit["unit"] }
+  | { kind: "year" };
 
 const NUMBERS_WORDS = {
   friendly: "friendly numbers",
@@ -27,13 +34,18 @@ export function SkillSheet({
 }: {
   selection: Selection | undefined;
   onClose: () => void;
-  onStart: (skill: string) => void;
+  onStart: (start: Start) => void;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     const dialog = ref.current;
     if (!dialog) return;
-    if (selection && !dialog.open) dialog.showModal();
+    if (selection && !dialog.open) {
+      dialog.showModal();
+      // Open at the top, on the title, rather than scrolled down to the first button.
+      dialog.querySelector<HTMLElement>("#sheet-title")?.focus();
+      dialog.scrollTop = 0;
+    }
     if (!selection && dialog.open) dialog.close();
   }, [selection]);
 
@@ -57,8 +69,44 @@ function SheetBody({
 }: {
   selection: Selection;
   onClose: () => void;
-  onStart: (skill: string) => void;
+  onStart: (start: Start) => void;
 }) {
+  if (selection.kind === "year") {
+    const { state } = selection;
+    return (
+      <div className="sheet-body fam-number">
+        <p className="eyebrow">The end of the path</p>
+        <h2 id="sheet-title" className="sheet-title" tabIndex={-1}>
+          <span className="sheet-icon">
+            <StarIcon size={26} />
+          </span>
+          {selection.section.name} review
+        </h2>
+        <p>
+          Twelve questions from across the whole year.{" "}
+          {state === "locked"
+            ? "It opens when you have finished every unit."
+            : state === "done"
+              ? "You have done it once. Do it again any time to keep the year fresh."
+              : "Finish it for a bonus."}
+        </p>
+        <div className="sheet-actions">
+          <button
+            type="button"
+            className="button primary big"
+            disabled={state === "locked"}
+            onClick={() => onStart({ kind: "year" })}
+          >
+            {state === "done" ? "Do it again" : "Start the year review"}
+          </button>
+          <button type="button" className="button" onClick={onClose}>
+            Close
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   const { unit } = selection;
   const family = familyOf(unit.unit.topic);
   if (selection.kind === "review") {
@@ -67,21 +115,33 @@ function SheetBody({
         <p className="eyebrow">
           Unit {unit.number} · {unit.unit.name}
         </p>
-        <h2 id="sheet-title" className="sheet-title">
+        <h2 id="sheet-title" className="sheet-title" tabIndex={-1}>
           <span className="sheet-icon">
-            <ReviewIcon size={26} />
+            {unit.review === "done" ? <CheckIcon size={26} /> : <ReviewIcon size={26} />}
           </span>
           Unit review
         </h2>
         <p>
           A mixed lesson on every skill in this unit, to check it has stuck.{" "}
-          {unit.review === "open"
-            ? "Reviews open in a later update."
-            : "It opens when you have finished every skill in the unit."}
+          {unit.review === "locked"
+            ? "It opens when you have finished every skill in the unit."
+            : unit.review === "done"
+              ? "You have done it. Do it again any time."
+              : "Finish it for a bonus."}
         </p>
-        <button type="button" className="button" onClick={onClose}>
-          Close
-        </button>
+        <div className="sheet-actions">
+          <button
+            type="button"
+            className="button primary big"
+            disabled={unit.review === "locked"}
+            onClick={() => onStart({ kind: "unit", unit: unit.unit })}
+          >
+            {unit.review === "done" ? "Do it again" : "Start the unit review"}
+          </button>
+          <button type="button" className="button" onClick={onClose}>
+            Close
+          </button>
+        </div>
       </div>
     );
   }
@@ -93,13 +153,19 @@ function SheetBody({
       <p className="eyebrow">
         Unit {unit.number} · {topicName(unit.unit.topic)}
       </p>
-      <h2 id="sheet-title" className="sheet-title">
+      <h2 id="sheet-title" className="sheet-title" tabIndex={-1}>
         <span className="sheet-icon">
           <FamilyIcon family={family} size={26} />
         </span>
         {skillText(node.skill)}
       </h2>
       <p className="skill-id">{node.skill}</p>
+
+      {node.due && (
+        <p className="due-note">
+          <RefreshIcon size={18} /> Due for a refresh. A quick review keeps it in your memory.
+        </p>
+      )}
 
       {locked && before ? (
         <p className="locked-note">
@@ -137,11 +203,20 @@ function SheetBody({
       </ol>
 
       <div className="sheet-actions">
+        {node.due && (
+          <button
+            type="button"
+            className="button primary big"
+            onClick={() => onStart({ kind: "refresh", skill: node.skill })}
+          >
+            Refresh this skill
+          </button>
+        )}
         <button
           type="button"
-          className="button primary big"
+          className={`button big${node.due ? "" : " primary"}`}
           disabled={locked}
-          onClick={() => onStart(node.skill)}
+          onClick={() => onStart({ kind: "skill", skill: node.skill })}
         >
           {node.level === 0
             ? "Start lesson"

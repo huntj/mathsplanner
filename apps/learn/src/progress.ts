@@ -1,5 +1,6 @@
-// A pupil's progress, kept only in this browser: their settings, each skill's level, XP, the
-// lessons done each day (for the daily goal and streak) and the misconceptions they have shown. It is one versioned object, changed only by
+// A pupil's progress, kept only in this browser: their settings, each skill's level and place in
+// the review schedule, XP, the lessons done each day (for the daily goal and streak), the
+// misconceptions they have shown and the unit reviews they have done. It is one versioned object, changed only by
 // the pure functions here; whatever is read back is checked, and anything unreadable starts afresh
 // rather than breaking the app.
 import { STAGES, type Stage } from "@mathsplanner/core";
@@ -32,6 +33,10 @@ export interface SkillProgress {
   lessons: number;
   /** The day of the last lesson, as YYYY-MM-DD. */
   last: string;
+  /** Its box in the review schedule (see memory.ts): 1 to 6, or 0 before the skill is finished. */
+  box: number;
+  /** The day its next review is due, as YYYY-MM-DD, or "" when it has no box yet. */
+  due: string;
 }
 
 export interface Progress {
@@ -43,6 +48,8 @@ export interface Progress {
   days: Record<string, number>;
   /** Misconception codes the pupil's wrong answers matched, and how often. */
   mistakes: Record<string, number>;
+  /** Reviews done: a unit's id, or "year:" and the stage, and the day it was last done. */
+  reviews: Record<string, string>;
   /** Set on the example progress, so the app can say it is an example. */
   example?: true;
 }
@@ -61,6 +68,7 @@ export const emptyProgress = (): Progress => ({
   xp: 0,
   days: {},
   mistakes: {},
+  reviews: {},
 });
 
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
@@ -84,8 +92,14 @@ export function readProgress(raw: unknown): Progress {
   if (isRecord(raw.skills))
     for (const [id, value] of Object.entries(raw.skills)) {
       if (!isRecord(value)) continue;
-      const last = typeof value.last === "string" && DAY.test(value.last) ? value.last : "";
-      progress.skills[id] = { level: count(value.level), lessons: count(value.lessons), last };
+      const day = (x: unknown) => (typeof x === "string" && DAY.test(x) ? x : "");
+      progress.skills[id] = {
+        level: count(value.level),
+        lessons: count(value.lessons),
+        last: day(value.last),
+        box: Math.min(count(value.box), 6),
+        due: day(value.due),
+      };
     }
   progress.xp = count(raw.xp);
   if (isRecord(raw.days))
@@ -94,6 +108,9 @@ export function readProgress(raw: unknown): Progress {
   if (isRecord(raw.mistakes))
     for (const [code, n] of Object.entries(raw.mistakes))
       if (count(n)) progress.mistakes[code] = count(n);
+  if (isRecord(raw.reviews))
+    for (const [id, day] of Object.entries(raw.reviews))
+      if (typeof day === "string" && DAY.test(day)) progress.reviews[id] = day;
   if (raw.example === true) progress.example = true;
   return progress;
 }
@@ -160,38 +177,6 @@ export function streak(progress: Progress, today: string): number {
     day = addDays(day, -1);
   }
   return n;
-}
-
-/** What a finished lesson changes. */
-export interface LessonOutcome {
-  skill: string;
-  /** The skill's number of levels, the most it can reach. */
-  levels: number;
-  xp: number;
-  /** Misconception codes of the wrong answers. */
-  mistakes: readonly string[];
-}
-
-/** A lesson finished: the skill up a level, XP, today's count and the mistakes made. */
-export function completeLesson(
-  progress: Progress,
-  outcome: LessonOutcome,
-  today: string,
-): Progress {
-  const { skill, levels } = outcome;
-  const was = progress.skills[skill] ?? { level: 0, lessons: 0, last: today };
-  const mistakes = { ...progress.mistakes };
-  for (const code of outcome.mistakes) mistakes[code] = (mistakes[code] ?? 0) + 1;
-  return {
-    ...progress,
-    skills: {
-      ...progress.skills,
-      [skill]: { level: Math.min(was.level + 1, levels), lessons: was.lessons + 1, last: today },
-    },
-    xp: progress.xp + outcome.xp,
-    days: { ...progress.days, [today]: lessonsOn(progress, today) + 1 },
-    mistakes,
-  };
 }
 
 export const withSettings = (progress: Progress, settings: Partial<Settings>): Progress => ({

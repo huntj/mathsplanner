@@ -5,16 +5,15 @@ import { exampleProgress } from "./example.ts";
 import { familyOf } from "./families.ts";
 import {
   addDays,
-  completeLesson,
   emptyProgress,
-  levelOf,
   loadProgress,
   readProgress,
   saveProgress,
   STORAGE_KEY,
   streak,
 } from "./progress.ts";
-import { hasGenerator, levelsOf } from "./skills.ts";
+import { hasGenerator, levelsOf, misconceptionsOf } from "./skills.ts";
+import { pathFor } from "./path.ts";
 import topicsFile from "../../../data/topics.json" with { type: "json" };
 
 const names = (info: SkillLevels) => info.levels.map((l) => l.name);
@@ -118,19 +117,6 @@ const NUMBER_TOPICS = new Set([
 describe("progress", () => {
   const today = "2026-10-29";
 
-  it("finishes a lesson: up a level, XP and today's count", () => {
-    let p = emptyProgress();
-    p = completeLesson(p, { skill: "Y7-NPV-01", levels: 4, xp: 10, mistakes: [] }, today);
-    p = completeLesson(p, { skill: "Y7-NPV-01", levels: 4, xp: 10, mistakes: [] }, today);
-    expect(levelOf(p, "Y7-NPV-01")).toBe(2);
-    expect(p.skills["Y7-NPV-01"]).toEqual({ level: 2, lessons: 2, last: today });
-    expect(p.xp).toBe(20);
-    expect(p.days[today]).toBe(2);
-    for (let i = 0; i < 5; i++)
-      p = completeLesson(p, { skill: "Y7-NPV-01", levels: 4, xp: 10, mistakes: [] }, today);
-    expect(levelOf(p, "Y7-NPV-01")).toBe(4);
-  });
-
   it("counts a streak of days that met the goal, carrying on from yesterday until today ends", () => {
     const p = emptyProgress();
     p.settings.dailyGoal = 2;
@@ -154,12 +140,13 @@ describe("progress", () => {
       getItem: (k: string) => store.get(k) ?? null,
       setItem: (k: string, v: string) => void store.set(k, v),
     };
-    const p = completeLesson(
-      emptyProgress(),
-      { skill: "Y7-ALG-04.a", levels: 4, xp: 15, mistakes: ["ALG.LIKE"] },
-      today,
-    );
+    const p = emptyProgress();
     p.settings.stage = "Y7";
+    p.skills["Y7-ALG-04.a"] = { level: 2, lessons: 2, last: today, box: 3, due: "2026-11-05" };
+    p.xp = 25;
+    p.days[today] = 2;
+    p.mistakes["ALG.LIKE"] = 1;
+    p.reviews["y7-notation"] = today;
     expect(saveProgress(p, storage)).toBe(true);
     expect(loadProgress(storage)).toEqual(p);
 
@@ -170,15 +157,24 @@ describe("progress", () => {
       readProgress({
         version: 1,
         settings: { stage: "Y99", dailyGoal: 4, sound: "yes", theme: "dark" },
-        skills: { a: { level: -1, lessons: 2.5, last: "today" }, b: "x" },
+        skills: {
+          a: { level: -1, lessons: 2.5, last: "today" },
+          b: "x",
+          c: { level: 2, lessons: 2, last: today, box: 9, due: today },
+        },
         xp: "lots",
         days: { "2026-10-29": 2, tomorrow: 1 },
+        reviews: { u1: today, u2: "soon" },
       }),
     ).toEqual({
       ...emptyProgress(),
       settings: { ...emptyProgress().settings, theme: "dark" },
-      skills: { a: { level: 0, lessons: 0, last: "" } },
+      skills: {
+        a: { level: 0, lessons: 0, last: "", box: 0, due: "" },
+        c: { level: 2, lessons: 2, last: today, box: 6, due: today },
+      },
       days: { "2026-10-29": 2 },
+      reviews: { u1: today },
     });
   });
 
@@ -197,16 +193,21 @@ describe("progress", () => {
 });
 
 describe("example progress", () => {
-  it("finishes about half of Year 7, puts the next unit under way and keeps a streak", () => {
+  it("finishes about half of Year 7, with reviews and mistakes to do and a streak", () => {
     const section = course.sections.find((s) => s.stage === "Y7");
     if (!section) throw new Error("no Year 7");
     const today = "2026-10-29";
-    const p = exampleProgress(section, levelsOf, today);
+    const p = exampleProgress(section, levelsOf, today, misconceptionsOf);
     expect(p.example).toBe(true);
     expect(p.settings.stage).toBe("Y7");
-    const units = buildPath(section, (s) => levelOf(p, s), levelsOf);
+    const units = pathFor(section, p, today);
     const half = Math.ceil(units.length / 2);
-    expect(units.slice(0, half).every((u) => u.review === "open")).toBe(true);
+    expect(units.slice(0, half - 2).every((u) => u.review === "done")).toBe(true);
+    expect(units.slice(half - 2, half).every((u) => u.review === "open")).toBe(true);
+    const due = units.flatMap((u) => u.nodes.filter((n) => n.due));
+    expect(due.length).toBeGreaterThan(3);
+    expect(due.length).toBeLessThan(units.slice(0, half).flatMap((u) => u.nodes).length);
+    expect(Object.keys(p.mistakes)).toHaveLength(3);
     const states = units.flatMap((u) => u.nodes.map((n) => n.state));
     expect(states.filter((s) => s === "current")).toHaveLength(1);
     expect(states).toContain("mastered");

@@ -19,9 +19,9 @@ import {
   type Draft,
 } from "@mathsplanner/ui";
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
-import catalogueFile from "../../../data/misconceptions.json" with { type: "json" };
 import { skillText } from "./course.ts";
 import { Dot } from "./Dot.tsx";
+import { describeMisconception } from "./misconceptions.ts";
 import { StarIcon, StreakIcon } from "./Icons.tsx";
 import {
   answer,
@@ -35,12 +35,6 @@ import {
   type LessonSummary,
 } from "./lesson.ts";
 import { questionFor, type LessonQuestion } from "./skills.ts";
-
-const catalogue = new Map(
-  (catalogueFile as { misconceptions: { code: string; description: string }[] }).misconceptions.map(
-    (m) => [m.code, m.description],
-  ),
-);
 
 const CHEERS = ["Brilliant!", "Nice one!", "Spot on!", "Great work!", "You got it!", "Yes!"];
 
@@ -84,7 +78,7 @@ export function LessonView({
     }
   }, [done, onComplete, state]);
 
-  if (ending) return <EndStep ending={ending} skill={plan.skill} onClose={onClose} />;
+  if (ending) return <EndStep ending={ending} plan={plan} onClose={onClose} />;
 
   return (
     <div className="lesson">
@@ -277,9 +271,9 @@ function QuestionStep({
   return (
     <form className="lesson-form" onSubmit={check}>
       <main className="lesson-main">
-        {item.review && (
+        {(item.review || item.target) && (
           <p className="review-tag">
-            <span>Review</span> {skillText(item.skill)}
+            <span>{item.target ? "Fix a mistake" : "Review"}</span> {skillText(item.skill)}
           </p>
         )}
         {item.attempt > 0 && (
@@ -400,7 +394,11 @@ function PartFeedback({
       {result.message && <p>{result.message}</p>}
       {m && (
         <p>
-          {why ? <span dangerouslySetInnerHTML={html(why, diagrams)} /> : catalogue.get(m.code)}
+          {why ? (
+            <span dangerouslySetInnerHTML={html(why, diagrams)} />
+          ) : (
+            describeMisconception(m.code)
+          )}
         </p>
       )}
       {m?.remediate && (
@@ -416,13 +414,21 @@ function PartFeedback({
   );
 }
 
+const DONE_WORDS = {
+  skill: "Lesson complete!",
+  review: "Review complete!",
+  unit: "Unit review complete!",
+  year: "Year review complete!",
+  mistakes: "Mistakes worked on!",
+};
+
 function EndStep({
   ending,
-  skill,
+  plan,
   onClose,
 }: {
   ending: LessonEnding;
-  skill: string;
+  plan: LessonPlan;
   onClose: () => void;
 }) {
   const { summary, message, streak, today, goal } = ending;
@@ -431,8 +437,8 @@ function EndStep({
     <div className="lesson">
       <main className="lesson-main lesson-end">
         <Dot size={140} mood="cheer" />
-        <h1>{summary.perfect ? "A perfect lesson!" : "Lesson complete!"}</h1>
-        <p className="lesson-lead">{skillText(skill)}</p>
+        <h1>{summary.perfect ? "A perfect lesson!" : DONE_WORDS[plan.kind]}</h1>
+        <p className="lesson-lead">{plan.title}</p>
         <p className="end-message">{message}</p>
         <dl className="end-stats">
           <div>

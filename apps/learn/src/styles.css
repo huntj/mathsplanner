@@ -739,6 +739,10 @@ body::before {
   border-radius: inherit;
 }
 
+.sheet-title:focus {
+  outline: none;
+}
+
 .sheet-title {
   display: flex;
   align-items: flex-start;
@@ -1100,6 +1104,211 @@ body::before {
 .confirm {
   display: grid;
   gap: 0.75rem;
+}
+
+/* A finished skill due for review fades, with a badge, until it is refreshed. */
+.node-due {
+  filter: saturate(0.35);
+  opacity: 0.75;
+}
+
+.due-badge {
+  position: absolute;
+  top: -0.3rem;
+  right: -0.3rem;
+  display: grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border: 2px solid var(--surface);
+  border-radius: 50%;
+  background: var(--dot);
+  color: var(--on-colour);
+}
+
+.due-note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--dot) 14%, var(--surface));
+  color: var(--dot-deep);
+}
+
+.review-done {
+  border: 0;
+  background: var(--gold);
+  color: var(--on-colour);
+  box-shadow: 0 0.42rem 0 var(--gold-deep);
+}
+
+.year-review {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 24px;
+}
+
+.year-review.review-open {
+  --c: var(--biro);
+  --c-deep: var(--biro-deep);
+}
+
+.path-end .node-label {
+  margin-top: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+/* The Practise tab. */
+.practise {
+  display: grid;
+  gap: 1rem;
+  padding-top: 1.5rem;
+}
+
+.practise-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.practise-head h1 {
+  font-size: var(--step-3);
+}
+
+.card {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1.1rem;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.card h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--step-1);
+}
+
+.skill-list,
+.mistake-list,
+.unit-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.skill-list li {
+  padding-left: 1rem;
+  position: relative;
+}
+
+.skill-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--dot);
+}
+
+.mistake-list li {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--wrong) 9%, var(--surface));
+}
+
+.unit-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.unit-chip {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+  background: var(--c);
+  color: var(--on-colour);
+}
+
+.unit-list-name {
+  flex: 1;
+  display: grid;
+  min-width: 0;
+  font-family: var(--display);
+  font-weight: 600;
+}
+
+.unit-list-name .small {
+  font-family: var(--body);
+  font-weight: 400;
+}
+
+.memory-bar {
+  display: flex;
+  gap: 3px;
+  height: 1.1rem;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.memory-bar span {
+  flex-basis: 0;
+}
+
+.memory-due {
+  background: var(--dot);
+}
+
+.memory-fresh {
+  background: color-mix(in srgb, var(--biro) 40%, var(--surface));
+}
+
+.memory-strong {
+  background: var(--biro);
+}
+
+.memory-solid {
+  background: var(--gold);
+}
+
+.memory-key {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem 1rem;
+  margin: 0;
+}
+
+.memory-key dt {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--display);
+  font-weight: 600;
+}
+
+.memory-key dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.swatch {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 4px;
 }
 
 /* A lesson: a bar with the way out and progress, the question, and a footer for Check and

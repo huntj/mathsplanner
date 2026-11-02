@@ -2,19 +2,17 @@
 // way to start again.
 import type { CourseSection } from "@mathsplanner/core";
 import { useState } from "react";
-import { buildPath } from "./course.ts";
 import { Dot } from "./Dot.tsx";
+import { pathFor } from "./path.ts";
 import { StarIcon, StreakIcon } from "./Icons.tsx";
 import {
   DAILY_GOALS,
-  levelOf,
   streak,
   THEMES,
   type Progress,
   type Settings,
   type Theme,
 } from "./progress.ts";
-import { levelsOf } from "./skills.ts";
 import { GOAL_WORDS } from "./WelcomeView.tsx";
 
 const THEME_WORDS: Record<Theme, string> = { system: "Match device", light: "Light", dark: "Dark" };
@@ -66,7 +64,7 @@ export function YouView({
   onReset: () => void;
 }) {
   const [confirm, setConfirm] = useState<"reset" | "example">();
-  const nodes = buildPath(section, (s) => levelOf(progress, s), levelsOf).flatMap((u) => u.nodes);
+  const nodes = pathFor(section, progress, today).flatMap((u) => u.nodes);
   const finished = nodes.filter((n) => n.level >= n.info.pathLevels).length;
   const mastered = nodes.filter((n) => n.state === "mastered" || n.state === "legendary").length;
   const settings = progress.settings;

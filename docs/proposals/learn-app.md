@@ -1,9 +1,9 @@
 # Proposal: Learn Maths, a Duolingo-style practice app for pupils
 
-Status: **agreed on 29 October 2026.** Steps 1 to 4 are built: the course data with Year 7 as
+Status: **agreed on 29 October 2026.** Steps 1 to 5 are built: the course data with Year 7 as
 the pilot section (`data/course.txt`, `pnpm data:course`), the shared answer widgets
-(`@mathsplanner/ui`), and the app with its path, progress, first visit and lessons
-(`apps/learn`, `pnpm learn`); steps 5 to 10 are to do.
+(`@mathsplanner/ui`), and the app with its path, progress, first visit, lessons and practice
+(`apps/learn`, `pnpm learn`); steps 6 to 10 are to do.
 
 ## Why
 
@@ -295,11 +295,18 @@ are less likely than a teacher to notice a bad question. So:
    font is Andika, chosen for young readers, whose zero has no slash to be mistaken for the empty
    set.
 5. **Practice and repetition**: the review schedule, fading nodes, the practice hub, mistakes,
-   unit and section reviews.
-6. **Motivation**: XP, daily goal, streaks and freezes, badges, challenge mode, Dot's artwork
-   and moments, the logo and colour scheme, and sounds.
-7. **Topics and placement**: the Topics tab, topic colours on the path, the placement and
-   jump-ahead tests.
+   unit and section reviews. **Done**: the Leitner schedule (`memory.ts`), due skills fading on
+   the path with a "Refresh this skill" on their sheet, the Practise tab (a review of what is
+   due, or extra practice; "Fix my mistakes", whose questions are chosen because they offer the
+   pupil's own misconceptions as wrong answers; the open unit reviews; and how well the
+   finished skills are remembered), unit reviews and a year review at the end of the path,
+   with bonus XP the first time. Answer boxes gained keys for the minus sign, fraction bar,
+   powers and roots, since phone number keyboards often lack a minus.
+6. **Motivation**: XP, daily goal, streaks and freezes, badges, challenge mode, the timed
+   challenge on mastered skills (moved here from the practice hub, as it is a challenge too),
+   Dot's artwork and moments, the logo and colour scheme, and sounds.
+7. **Topics and placement**: the Topics tab with topic practice, topic colours on the path, the
+   placement and jump-ahead tests.
 8. **Teacher links and sharing**: the link routes, the "From your teacher" card, the progress
    summary and transfer code, the problem-report form, and a "share to Learn Maths" button in
    the planner.

@@ -85,6 +85,8 @@ describe("playing a lesson", () => {
       perfect: false,
       xp: LESSON_XP,
       mistakes: ["MIS.CODE"],
+      skills: { s: false },
+      fixed: [],
     });
   });
 
@@ -113,6 +115,25 @@ describe("level messages", () => {
 });
 
 describe("Year 7 lessons", () => {
+  it("finds a question offering the mistake a pupil is fixing, at another depth if need be", () => {
+    // Y7-ALG-04.a offers the sign slip only at depth 2.
+    const item = {
+      skill: "Y7-ALG-04.a",
+      depth: 1 as const,
+      numbers: "standard" as const,
+      seed: 77,
+      review: false,
+      slot: 0,
+      attempt: 0,
+      target: "ALG.LIKE-TERMS.SIGN",
+    };
+    const lq = questionFor(item);
+    expect(lq?.question.key.depth).toBe(2);
+    expect(
+      lq?.question.parts.some((p) => p.misconceptions.some((m) => m.code === item.target)),
+    ).toBe(true);
+  });
+
   it("makes every question of every level's lesson for every Year 7 skill", () => {
     const section = course.sections.find((s) => s.stage === "Y7");
     const skills = section?.units.flatMap((u) => u.skills) ?? [];

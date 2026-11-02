@@ -1,16 +1,25 @@
-// Learn Maths: the first visit, the path, lessons and the pupil's page. Progress is kept in this browser and
-// saved after every change. Views are named in the address (#welcome, #you), so the back button
-// works; the path is the start view.
+// Learn Maths: the first visit, the path, lessons, practice and the pupil's page. Progress is kept
+// in this browser and saved after every change. Views are named in the address (#welcome,
+// #practise, #you), so the back button works; the path is the start view.
 import type { Stage } from "@mathsplanner/core";
 import { useEffect, useState } from "react";
-import { course, sectionFor } from "./course.ts";
+import { course, sectionFor, skillText } from "./course.ts";
 import { exampleProgress } from "./example.ts";
-import { levelMessage, planLesson, type LessonPlan, type LessonSummary } from "./lesson.ts";
+import { planLesson, type LessonPlan, type LessonSummary } from "./lesson.ts";
 import { LessonView, type LessonEnding } from "./LessonView.tsx";
-import { PathIcon, PersonIcon, StarIcon, StreakIcon } from "./Icons.tsx";
+import { PathIcon, PersonIcon, RefreshIcon, StarIcon, StreakIcon } from "./Icons.tsx";
 import { PathView, type Selection } from "./PathView.tsx";
 import {
-  completeLesson,
+  finishLesson as recordLesson,
+  mistakesPlan,
+  mistakesToFix,
+  refreshPlan,
+  reviewPlan,
+  unitPlan,
+  yearPlan,
+} from "./practice.ts";
+import { PractiseView, type PracticeStart } from "./PractiseView.tsx";
+import {
   dayKey,
   levelOf,
   emptyProgress,
@@ -23,17 +32,19 @@ import {
   type Progress,
   type Settings,
 } from "./progress.ts";
-import { SkillSheet } from "./SkillSheet.tsx";
-import { levelsOf } from "./skills.ts";
+import { SkillSheet, type Start } from "./SkillSheet.tsx";
+import { levelsOf, misconceptionsOf, skillsShowing } from "./skills.ts";
 import { WelcomeView } from "./WelcomeView.tsx";
 import { YouView } from "./YouView.tsx";
 
-type View = "path" | "welcome" | "you";
+type View = "path" | "welcome" | "practise" | "you";
 
 const viewFromHash = (): View => {
   const name = location.hash.replace(/^#\/?/, "");
-  return name === "welcome" || name === "you" ? name : "path";
+  return name === "welcome" || name === "practise" || name === "you" ? name : "path";
 };
+
+const newSeed = () => 1 + Math.floor(Math.random() * 2_147_483_000);
 
 /** The theme the page was opened with (a host page may set one), kept when "Match device" is chosen. */
 const initialTheme = document.documentElement.getAttribute("data-theme");
@@ -93,43 +104,59 @@ export function App() {
     // The example is of the pilot year, whichever year the pupil chose.
     const pilot = sectionFor("Y7") ?? course.sections[0];
     if (!pilot) return;
-    setProgress(withSettings(exampleProgress(pilot, levelsOf, today), { theme }));
+    setProgress(withSettings(exampleProgress(pilot, levelsOf, today, misconceptionsOf), { theme }));
     go("path");
   };
 
-  const startSkill = (skill: string) => {
-    if (!section) return;
-    // Review questions come from the skills already finished in this year.
-    const reviewFrom = section.units
-      .flatMap((u) => u.skills)
-      .filter((s) => s !== skill && levelOf(progress, s) >= levelsOf(s).pathLevels)
-      .map((s) => ({ skill: s, info: levelsOf(s) }));
-    const seed = 1 + Math.floor(Math.random() * 2_147_483_000);
+  const begin = (plan: LessonPlan | undefined) => {
+    if (!plan || plan.items.length === 0) return;
     setSelection(undefined);
-    setLesson({
-      plan: planLesson(skill, levelsOf(skill), levelOf(progress, skill), reviewFrom, seed),
-    });
+    setLesson({ plan });
     scrollTo({ top: 0 });
+  };
+
+  /** A lesson from a sheet on the path. */
+  const startFromPath = (start: Start) => {
+    if (!section) return;
+    const seed = newSeed();
+    if (start.kind === "skill") {
+      // Review questions come from the skills already finished in this year.
+      const reviewFrom = section.units
+        .flatMap((u) => u.skills)
+        .filter((s) => s !== start.skill && levelOf(progress, s) >= levelsOf(s).pathLevels)
+        .map((s) => ({ skill: s, info: levelsOf(s) }));
+      const info = levelsOf(start.skill);
+      begin(planLesson(start.skill, info, levelOf(progress, start.skill), reviewFrom, seed));
+    } else if (start.kind === "refresh")
+      begin(refreshPlan(start.skill, skillText(start.skill), levelsOf, seed));
+    else if (start.kind === "unit") begin(unitPlan(start.unit, levelsOf, seed));
+    else begin(yearPlan(progress, section, levelsOf, seed));
+  };
+
+  /** A lesson from the Practise tab. */
+  const startPractice = (start: PracticeStart) => {
+    if (!section) return;
+    const seed = newSeed();
+    if (start.kind === "review") begin(reviewPlan(progress, section, levelsOf, today, seed));
+    else if (start.kind === "unit") begin(unitPlan(start.unit, levelsOf, seed));
+    else begin(mistakesPlan(mistakesToFix(progress, section, skillsShowing), levelsOf, seed));
   };
 
   const finishLesson = (summary: LessonSummary) => {
     if (!lesson) return;
-    const { skill } = lesson.plan;
-    const info = levelsOf(skill);
-    const before = levelOf(progress, skill);
-    const outcome = {
-      skill,
-      levels: info.levels.length,
-      xp: summary.xp,
-      mistakes: summary.mistakes,
-    };
-    const next = completeLesson(progress, outcome, today);
+    const { progress: next, message } = recordLesson(
+      progress,
+      lesson.plan,
+      summary,
+      levelsOf,
+      today,
+    );
     setProgress(next);
     setLesson({
       ...lesson,
       ending: {
         summary,
-        message: levelMessage(info, before, levelOf(next, skill)),
+        message,
         streak: streak(next, today),
         today: lessonsOn(next, today),
         goal: next.settings.dailyGoal,
@@ -207,7 +234,9 @@ export function App() {
         </div>
       )}
 
-      {view === "you" ? (
+      {view === "practise" ? (
+        <PractiseView section={section} progress={progress} today={today} onStart={startPractice} />
+      ) : view === "you" ? (
         <YouView
           section={section}
           progress={progress}
@@ -221,7 +250,7 @@ export function App() {
         />
       ) : (
         <main>
-          <PathView section={section} progress={progress} onSelect={setSelection} />
+          <PathView section={section} progress={progress} today={today} onSelect={setSelection} />
         </main>
       )}
 
@@ -237,6 +266,15 @@ export function App() {
         </button>
         <button
           type="button"
+          className={view === "practise" ? "on" : undefined}
+          aria-current={view === "practise" ? "page" : undefined}
+          onClick={() => go("practise")}
+        >
+          <RefreshIcon />
+          Practise
+        </button>
+        <button
+          type="button"
           className={view === "you" ? "on" : undefined}
           aria-current={view === "you" ? "page" : undefined}
           onClick={() => go("you")}
@@ -249,7 +287,7 @@ export function App() {
       <SkillSheet
         selection={selection}
         onClose={() => setSelection(undefined)}
-        onStart={startSkill}
+        onStart={startFromPath}
       />
     </div>
   );

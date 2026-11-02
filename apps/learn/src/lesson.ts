@@ -1,10 +1,11 @@
-// A lesson: about eight questions on one skill at the level being worked on, with two review
-// questions from skills finished earlier mixed in. A brand-new skill opens on a worked example. A
-// question answered wrongly comes back at the end with new numbers (at most twice), so the lesson
-// ends with every question put right or tried three times. Everything here is pure, so a lesson
-// can be planned and played through in tests.
+// A lesson. A skill lesson is about eight questions on one skill at the level being worked on, with
+// two review questions from skills finished earlier mixed in; a brand-new skill opens on a worked
+// example. A mixed lesson (a review of what is due, a unit or year review, or fixing mistakes) takes
+// its questions in turn from several skills. A question answered wrongly comes back at the end with
+// new numbers (at most twice), so the lesson ends with every question put right or tried three
+// times. Everything here is pure, so a lesson can be planned and played through in tests.
 import type { Depth, Numbers } from "@mathsplanner/core";
-import type { SkillLevels } from "./course.ts";
+import { skillText, type SkillLevels } from "./course.ts";
 import { LESSON_XP, PERFECT_XP } from "./progress.ts";
 
 /** Questions on the skill itself, and from earlier skills. */
@@ -24,12 +25,21 @@ export interface LessonItem {
   slot: number;
   /** 0 the first time, then 1 and 2 for retries. */
   attempt: number;
+  /** A misconception the pupil has shown, which this question should offer as a wrong answer. */
+  target?: string;
 }
 
+export type LessonKind = "skill" | "review" | "unit" | "year" | "mistakes";
+
 export interface LessonPlan {
-  skill: string;
-  /** The level being worked on, counting from 1. */
-  level: number;
+  kind: LessonKind;
+  /** What the lesson is on, for the pupil: the skill, or the review's name. */
+  title: string;
+  /** For a skill lesson: the skill and the level being worked on, counting from 1. */
+  skill?: string;
+  level?: number;
+  /** For a unit or year review: what it records as done, as in Progress.reviews. */
+  reviewId?: string;
   items: LessonItem[];
   /** A worked example first, for a skill not started yet. */
   example?: LessonItem;
@@ -85,11 +95,10 @@ export function planLesson(
   items.forEach((item, i) => (item.slot = i));
 
   const first = info.levels[0];
+  const base = { kind: "skill" as const, title: skillText(skill), skill, level, items };
   return levelDone === 0 && first
     ? {
-        skill,
-        level,
-        items,
+        ...base,
         example: {
           skill,
           depth: first.depths[0] ?? 1,
@@ -100,20 +109,67 @@ export function planLesson(
           attempt: 0,
         },
       }
-    : { skill, level, items };
+    : base;
+}
+
+/** A skill to draw questions from in a mixed lesson, and a misconception to aim at, if any. */
+export interface Source {
+  skill: string;
+  info: SkillLevels;
+  target?: string;
+}
+
+/**
+ * Plans a mixed lesson of `count` questions, taking the sources in turn (in an order set by the
+ * seed). Each skill's first question is at the deepest level that moves a pupil along the path,
+ * and later ones step down through its earlier levels.
+ */
+export function planMixed(
+  kind: Exclude<LessonKind, "skill">,
+  title: string,
+  sources: readonly Source[],
+  count: number,
+  seed: number,
+  reviewId?: string,
+): LessonPlan {
+  const order = shuffle(sources, seed);
+  const items: LessonItem[] = [];
+  for (let i = 0; i < count && order.length > 0; i++) {
+    const source = order[i % order.length];
+    if (!source) break;
+    const depths = [
+      ...new Set(source.info.levels.slice(0, source.info.pathLevels).flatMap((l) => l.depths)),
+    ].sort((a, b) => b - a);
+    const turn = Math.floor(i / order.length);
+    items.push({
+      skill: source.skill,
+      depth: depths[turn % depths.length] ?? 1,
+      numbers: "standard",
+      seed: seedFor(seed, i + 1),
+      review: kind !== "mistakes",
+      slot: i,
+      attempt: 0,
+      ...(source.target ? { target: source.target } : {}),
+    });
+  }
+  return { kind, title, items, ...(reviewId ? { reviewId } : {}) };
+}
+
+/** The items in an order set by the seed. */
+function shuffle<T>(from: readonly T[], seed: number): T[] {
+  const pool = [...from];
+  const out: T[] = [];
+  let n = seed;
+  while (pool.length > 0) {
+    n = (n * 1_103_515_245 + 12_345) % 2_147_483_648;
+    out.push(...pool.splice(n % pool.length, 1));
+  }
+  return out;
 }
 
 /** Up to REVIEW_QUESTIONS different skills, picked by the seed. */
-function pickReviews<T>(from: readonly T[], seed: number): T[] {
-  const pool = [...from];
-  const picked: T[] = [];
-  let n = seed;
-  while (picked.length < REVIEW_QUESTIONS && pool.length > 0) {
-    n = (n * 1_103_515_245 + 12_345) % 2_147_483_648;
-    picked.push(...pool.splice(n % pool.length, 1));
-  }
-  return picked;
-}
+const pickReviews = <T>(from: readonly T[], seed: number): T[] =>
+  shuffle(from, seed).slice(0, REVIEW_QUESTIONS);
 
 export interface Answered {
   item: LessonItem;
@@ -174,18 +230,27 @@ export interface LessonSummary {
   perfect: boolean;
   xp: number;
   mistakes: string[];
+  /** Each skill asked about, and whether every question on it was right first time. */
+  skills: Record<string, boolean>;
+  /** Misconceptions aimed at whose questions were answered right first time. */
+  fixed: string[];
 }
 
 export function summarise(state: LessonState): LessonSummary {
   const total = state.plan.items.length;
   const firstTime = state.answered.filter((a) => a.correct && a.item.attempt === 0).length;
   const perfect = firstTime === total;
+  const firstTries = state.answered.filter((a) => a.item.attempt === 0);
+  const skills: Record<string, boolean> = {};
+  for (const a of firstTries) skills[a.item.skill] = (skills[a.item.skill] ?? true) && a.correct;
   return {
     firstTime,
     total,
     perfect,
     xp: LESSON_XP + (perfect ? PERFECT_XP : 0),
     mistakes: state.answered.flatMap((a) => (a.misconception ? [a.misconception] : [])),
+    skills,
+    fixed: firstTries.flatMap((a) => (a.correct && a.item.target ? [a.item.target] : [])),
   };
 }
 

@@ -1,20 +1,29 @@
 // The path through a year: a banner for each unit in its topic's colour, then its skills as a
-// winding line of nodes, ending in the unit review. Dot waits beside the current skill.
+// winding line of nodes, ending in the unit review, and the year review at the very end. Dot waits
+// beside the current skill; a finished skill due for review fades until it is refreshed.
 import type { CourseSection } from "@mathsplanner/core";
 import { useEffect, useRef, type CSSProperties } from "react";
-import { buildPath, skillText, topicName, type PathNode, type PathUnit } from "./course.ts";
+import { skillText, topicName, type PathNode, type PathUnit, type ReviewState } from "./course.ts";
 import { Dot } from "./Dot.tsx";
 import { familyOf } from "./families.ts";
-import { CheckIcon, FamilyIcon, LockIcon, ReviewIcon, StarIcon } from "./Icons.tsx";
-import { levelOf, type Progress } from "./progress.ts";
-import { levelsOf } from "./skills.ts";
+import { CheckIcon, FamilyIcon, LockIcon, RefreshIcon, ReviewIcon, StarIcon } from "./Icons.tsx";
+import { yearReviewId } from "./practice.ts";
+import { pathFor } from "./path.ts";
+import type { Progress } from "./progress.ts";
 
 /** How far each node sits from the middle, in rem, repeating down the path. */
 const SWAY = [0, 2.6, 4, 2.6, 0, -2.6, -4, -2.6];
 
 export type Selection =
   | { kind: "skill"; unit: PathUnit; node: PathNode; before?: string }
-  | { kind: "review"; unit: PathUnit };
+  | { kind: "review"; unit: PathUnit }
+  | { kind: "year"; section: CourseSection; state: ReviewState };
+
+const REVIEW_WORDS: Record<ReviewState, string> = {
+  locked: "locked",
+  open: "open",
+  done: "done",
+};
 
 /** The levels done, as segments around the node. */
 function Ring({ done, total }: { done: number; total: number }) {
@@ -58,13 +67,20 @@ function NodeFace({ node, family }: { node: PathNode; family: ReturnType<typeof 
 export function PathView({
   section,
   progress,
+  today,
   onSelect,
 }: {
   section: CourseSection;
   progress: Progress;
+  today: string;
   onSelect: (selection: Selection) => void;
 }) {
-  const units = buildPath(section, (s) => levelOf(progress, s), levelsOf);
+  const units = pathFor(section, progress, today);
+  const yearState: ReviewState = units.some((u) => u.review === "locked")
+    ? "locked"
+    : yearReviewId(section) in progress.reviews
+      ? "done"
+      : "open";
   const currentRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     currentRef.current?.scrollIntoView({ block: "center" });
@@ -111,7 +127,7 @@ export function PathView({
                       )}
                       <button
                         type="button"
-                        className={`node node-${node.state}`}
+                        className={`node node-${node.state}${node.due ? " node-due" : ""}`}
                         onClick={() =>
                           onSelect({ kind: "skill", unit: u, node, ...(before ? { before } : {}) })
                         }
@@ -122,9 +138,15 @@ export function PathView({
                         <span className="node-face">
                           <NodeFace node={node} family={family} />
                         </span>
+                        {node.due && (
+                          <span className="due-badge" aria-hidden="true">
+                            <RefreshIcon size={16} />
+                          </span>
+                        )}
                         <span className="visually-hidden">
                           {skillText(node.skill)}, {STATE_WORDS[node.state]}, level {node.level} of{" "}
                           {node.info.levels.length}
+                          {node.due ? ", due for review" : ""}
                         </span>
                       </button>
                       <span className="node-label" aria-hidden="true">
@@ -141,9 +163,9 @@ export function PathView({
                     className={`review review-${u.review}`}
                     onClick={() => onSelect({ kind: "review", unit: u })}
                   >
-                    <ReviewIcon size={28} />
+                    {u.review === "done" ? <CheckIcon size={30} /> : <ReviewIcon size={28} />}
                     <span className="visually-hidden">
-                      Unit {u.number} review, {u.review === "open" ? "open" : "locked"}
+                      Unit {u.number} review, {REVIEW_WORDS[u.review]}
                     </span>
                   </button>
                   <span className="node-label" aria-hidden="true">
@@ -156,6 +178,19 @@ export function PathView({
         );
       })}
       <footer className="path-end">
+        <button
+          type="button"
+          className={`review year-review review-${yearState}`}
+          onClick={() => onSelect({ kind: "year", section, state: yearState })}
+        >
+          {yearState === "done" ? <StarIcon size={34} /> : <ReviewIcon size={34} />}
+          <span className="visually-hidden">
+            {section.name} review, {REVIEW_WORDS[yearState]}
+          </span>
+        </button>
+        <span className="node-label" aria-hidden="true">
+          {section.name} review
+        </span>
         <Dot size={72} mood="cheer" />
         <p>That is the end of {section.name}.</p>
       </footer>

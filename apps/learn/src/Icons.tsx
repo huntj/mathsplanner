@@ -129,6 +129,14 @@ export const CheckIcon = ({ size }: { size?: number }) => (
   </Icon>
 );
 
+/** Due for review: a circular arrow. */
+export const RefreshIcon = ({ size }: { size?: number }) => (
+  <Icon {...(size ? { size } : {})}>
+    <path d="M20 11a8 8 0 1 0-2.3 5.7" />
+    <path d="M20 4v7h-7" />
+  </Icon>
+);
+
 /** A unit review: a stack of cards. */
 export const ReviewIcon = ({ size }: { size?: number }) => (
   <Icon {...(size ? { size } : {})}>

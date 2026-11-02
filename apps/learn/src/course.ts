@@ -87,7 +87,11 @@ export interface PathNode {
   level: number;
   info: SkillLevels;
   state: NodeState;
+  /** A finished skill whose review is due: it fades on the path until it is refreshed. */
+  due: boolean;
 }
+
+export type ReviewState = "locked" | "open" | "done";
 
 export interface PathUnit {
   unit: CourseUnit;
@@ -95,7 +99,13 @@ export interface PathUnit {
   number: number;
   nodes: PathNode[];
   /** The unit review opens once every skill in the unit has been finished. */
-  review: "locked" | "open";
+  review: ReviewState;
+}
+
+/** What the path shows beyond levels: skills due for review, and reviews done. */
+export interface PathExtras {
+  dueOf?: (skill: string) => boolean;
+  reviewed?: (id: string) => boolean;
 }
 
 /** A finished skill's state: legendary at the top, mastered from its mastery level, else done. */
@@ -113,6 +123,7 @@ export function buildPath(
   section: CourseSection,
   levelOf: (skill: string) => number,
   infoOf: (skill: string) => SkillLevels,
+  { dueOf = () => false, reviewed = () => false }: PathExtras = {},
 ): PathUnit[] {
   let current = false;
   return section.units.map((unit, i) => {
@@ -125,9 +136,10 @@ export function buildPath(
         state = "current";
         current = true;
       } else state = level > 0 ? "started" : "locked";
-      return { skill, level, info, state };
+      return { skill, level, info, state, due: level >= info.pathLevels && dueOf(skill) };
     });
     const finished = nodes.every((n) => n.level >= n.info.pathLevels);
-    return { unit, number: i + 1, nodes, review: finished ? "open" : "locked" };
+    const review = !finished ? "locked" : reviewed(unit.id) ? "done" : "open";
+    return { unit, number: i + 1, nodes, review };
   });
 }
