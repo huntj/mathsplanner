@@ -18,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-ALG-04.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.LIKE-TERMS.UNLIKE", "ALG.LIKE-TERMS.SIGN"],
 
@@ -75,21 +75,29 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        // Asked as "does it simplify to", not "is it always equal": the two sides are equal for
+        // some values (a = b = 1, for one), so "never equal" would be untrue.
+        return A.trueOrFalseWhy({
           rng,
-          claim: [A.math(`${p.a}a + ${p.b}b = ${p.a + p.b}ab`)],
-          truth: "never",
+          statement: [
+            "Sam says ",
+            A.math(`${p.a}a + ${p.b}b`),
+            " simplifies to ",
+            A.math(`${p.a + p.b}ab`),
+            ".",
+          ],
+          truth: false,
           reasons: [
             {
-              text: `Never true as a rule. a and b are unlike terms, so ${p.a}a + ${p.b}b cannot be simplified. Try a = 1, b = 2: ${p.a + 2 * p.b} is not ${2 * (p.a + p.b)}.`,
+              text: `False. a and b are unlike terms, so ${p.a}a + ${p.b}b cannot be simplified. Try a = 1, b = 2: ${p.a}a + ${p.b}b = ${p.a + 2 * p.b}, but ${p.a + p.b}ab = ${2 * (p.a + p.b)}.`,
               correct: true,
             },
             {
-              text: "Always. Add the numbers and put the letters together.",
+              text: "True. Add the numbers and put the letters together.",
               code: "ALG.LIKE-TERMS.UNLIKE",
             },
             {
-              text: "Sometimes. Only when a and b are both positive.",
+              text: "True, but only when a and b are both positive.",
               code: "ALG.LIKE-TERMS.UNLIKE",
             },
           ],

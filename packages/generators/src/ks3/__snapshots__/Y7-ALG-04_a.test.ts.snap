@@ -10,7 +10,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -73,7 +73,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -136,7 +136,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -199,7 +199,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -262,7 +262,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -325,7 +325,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -381,14 +381,14 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -399,14 +399,14 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
+          "correct": "B",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -415,19 +415,10 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -435,7 +426,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Add the numbers and put the letters together.",
+                  "v": "True. Add the numbers and put the letters together.",
                 },
               ],
               "id": "RA",
@@ -444,7 +435,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never true as a rule. a and b are unlike terms, so 4a + 4b cannot be simplified. Try a = 1, b = 2: 12 is not 16.",
+                  "v": "False. a and b are unlike terms, so 4a + 4b cannot be simplified. Try a = 1, b = 2: 4a + 4b = 12, but 8ab = 16.",
                 },
               ],
               "id": "RB",
@@ -453,7 +444,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when a and b are both positive.",
+                  "v": "True, but only when a and b are both positive.",
                 },
               ],
               "id": "RC",
@@ -483,7 +474,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -500,20 +491,36 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
     ],
     "stem": [
       {
+        "t": "text",
+        "v": "Sam says ",
+      },
+      {
         "t": "math",
-        "v": "4a + 4b = 8ab",
+        "v": "4a + 4b",
+      },
+      {
+        "t": "text",
+        "v": " simplifies to ",
+      },
+      {
+        "t": "math",
+        "v": "8ab",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -524,14 +531,14 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
+          "correct": "B",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -540,19 +547,10 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -560,7 +558,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never true as a rule. a and b are unlike terms, so 5a + 2b cannot be simplified. Try a = 1, b = 2: 9 is not 14.",
+                  "v": "False. a and b are unlike terms, so 5a + 2b cannot be simplified. Try a = 1, b = 2: 5a + 2b = 9, but 7ab = 14.",
                 },
               ],
               "id": "RA",
@@ -569,7 +567,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Add the numbers and put the letters together.",
+                  "v": "True. Add the numbers and put the letters together.",
                 },
               ],
               "id": "RB",
@@ -578,7 +576,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when a and b are both positive.",
+                  "v": "True, but only when a and b are both positive.",
                 },
               ],
               "id": "RC",
@@ -608,7 +606,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -625,20 +623,36 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
     ],
     "stem": [
       {
+        "t": "text",
+        "v": "Sam says ",
+      },
+      {
         "t": "math",
-        "v": "5a + 2b = 7ab",
+        "v": "5a + 2b",
+      },
+      {
+        "t": "text",
+        "v": " simplifies to ",
+      },
+      {
+        "t": "math",
+        "v": "7ab",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -649,14 +663,14 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
+          "correct": "B",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -665,19 +679,10 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -685,7 +690,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never true as a rule. a and b are unlike terms, so 8a + 9b cannot be simplified. Try a = 1, b = 2: 26 is not 34.",
+                  "v": "False. a and b are unlike terms, so 8a + 9b cannot be simplified. Try a = 1, b = 2: 8a + 9b = 26, but 17ab = 34.",
                 },
               ],
               "id": "RA",
@@ -694,7 +699,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when a and b are both positive.",
+                  "v": "True, but only when a and b are both positive.",
                 },
               ],
               "id": "RB",
@@ -703,7 +708,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Add the numbers and put the letters together.",
+                  "v": "True. Add the numbers and put the letters together.",
                 },
               ],
               "id": "RC",
@@ -733,7 +738,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -750,8 +755,24 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
     ],
     "stem": [
       {
+        "t": "text",
+        "v": "Sam says ",
+      },
+      {
         "t": "math",
-        "v": "8a + 9b = 17ab",
+        "v": "8a + 9b",
+      },
+      {
+        "t": "text",
+        "v": " simplifies to ",
+      },
+      {
+        "t": "math",
+        "v": "17ab",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
