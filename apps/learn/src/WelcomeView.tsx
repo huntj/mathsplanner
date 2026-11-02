@@ -3,7 +3,7 @@
 import type { Stage } from "@mathsplanner/core";
 import { useState } from "react";
 import { sectionFor, YEARS } from "./course.ts";
-import { Dot } from "./Dot.tsx";
+import { Dot, Logo } from "./Dot.tsx";
 import { DAILY_GOALS, type DailyGoal } from "./progress.ts";
 
 const GOAL_WORDS: Record<DailyGoal, string> = {
@@ -28,6 +28,7 @@ export function WelcomeView({
     <main className="welcome">
       {step === 0 && (
         <section className="welcome-step" aria-labelledby="hello">
+          <Logo size={30} />
           <Dot size={140} mood="cheer" />
           <h1 id="hello">Hi, I’m Dot!</h1>
           <p className="lead">

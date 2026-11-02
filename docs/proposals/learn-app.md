@@ -1,9 +1,9 @@
 # Proposal: Learn Maths, a Duolingo-style practice app for pupils
 
-Status: **agreed on 29 October 2026.** Steps 1 to 5 are built: the course data with Year 7 as
+Status: **agreed on 29 October 2026.** Steps 1 to 6 are built: the course data with Year 7 as
 the pilot section (`data/course.txt`, `pnpm data:course`), the shared answer widgets
-(`@mathsplanner/ui`), and the app with its path, progress, first visit, lessons and practice
-(`apps/learn`, `pnpm learn`); steps 6 to 10 are to do.
+(`@mathsplanner/ui`), and the app with its path, progress, first visit, lessons, practice and
+rewards (`apps/learn`, `pnpm learn`); steps 7 to 10 are to do.
 
 ## Why
 
@@ -304,7 +304,13 @@ are less likely than a teacher to notice a bad question. So:
    powers and roots, since phone number keyboards often lack a minus.
 6. **Motivation**: XP, daily goal, streaks and freezes, badges, challenge mode, the timed
    challenge on mastered skills (moved here from the practice hub, as it is a challenge too),
-   Dot's artwork and moments, the logo and colour scheme, and sounds.
+   Dot's artwork and moments, the logo and colour scheme, and sounds. **Done**: streak freezes
+   (one for every seven days of streak, two at most, spent on a missed day when the app next
+   opens), sixteen badges, challenge mode (a heart lost for each wrong answer, double XP for
+   finishing with one left, nothing lost for running out), a 90-second speed round on finished
+   skills (which counts towards the daily goal with five right), sounds made in the browser, Dot
+   in each topic family's shape, and the logo. The badge for following a topic through every
+   year waits for more years in the course.
 7. **Topics and placement**: the Topics tab with topic practice, topic colours on the path, the
    placement and jump-ahead tests.
 8. **Teacher links and sharing**: the link routes, the "From your teacher" card, the progress

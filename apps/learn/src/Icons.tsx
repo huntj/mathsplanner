@@ -160,3 +160,26 @@ export const PersonIcon = () => (
     <path d="M4 21a8 8 0 0 1 16 0" />
   </Icon>
 );
+
+export const HeartIcon = ({ size, full }: { size?: number; full: boolean }) => (
+  <Icon {...(size ? { size } : {})}>
+    <path
+      d="M12 20s-7.5-4.6-9.2-9.3C1.7 7.6 3.6 4.5 6.9 4.5c2 0 3.5 1.1 5.1 3 1.6-1.9 3.1-3 5.1-3 3.3 0 5.2 3.1 4.1 6.2C19.5 15.4 12 20 12 20z"
+      fill={full ? "currentColor" : "none"}
+    />
+  </Icon>
+);
+
+/** A streak freeze. */
+export const SnowflakeIcon = ({ size }: { size?: number }) => (
+  <Icon {...(size ? { size } : {})}>
+    <path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7M9 4l3 2 3-2M9 20l3-2 3 2" />
+  </Icon>
+);
+
+export const ClockIcon = ({ size }: { size?: number }) => (
+  <Icon {...(size ? { size } : {})}>
+    <circle cx="12" cy="13" r="8" />
+    <path d="M12 9v4l2.5 2.5M10 2h4" />
+  </Icon>
+);

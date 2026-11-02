@@ -3,7 +3,9 @@
 // example. A mixed lesson (a review of what is due, a unit or year review, or fixing mistakes) takes
 // its questions in turn from several skills. A question answered wrongly comes back at the end with
 // new numbers (at most twice), so the lesson ends with every question put right or tried three
-// times. Everything here is pure, so a lesson can be planned and played through in tests.
+// times. In challenge mode a lesson has HEARTS hearts, and each wrong answer costs one. A speed
+// round asks quick questions until the time runs out, each once. Everything here is pure, so a
+// lesson can be planned and played through in tests.
 import type { Depth, Numbers } from "@mathsplanner/core";
 import { skillText, type SkillLevels } from "./course.ts";
 import { LESSON_XP, PERFECT_XP } from "./progress.ts";
@@ -29,7 +31,15 @@ export interface LessonItem {
   target?: string;
 }
 
-export type LessonKind = "skill" | "review" | "unit" | "year" | "mistakes";
+export type LessonKind = "skill" | "review" | "unit" | "year" | "mistakes" | "speed";
+
+/** Hearts at the start of a lesson in challenge mode. */
+export const HEARTS = 3;
+/** A speed round's length in seconds, and the most questions it can ask. */
+export const SPEED_SECONDS = 90;
+export const SPEED_QUESTIONS = 60;
+/** Right answers a speed round needs to count towards the daily goal. */
+export const SPEED_COUNTS = 5;
 
 export interface LessonPlan {
   kind: LessonKind;
@@ -110,6 +120,29 @@ export function planLesson(
         },
       }
     : base;
+}
+
+/**
+ * A speed round on finished skills: their first level's questions with standard numbers, taken in
+ * turn, more than anyone could answer in the time.
+ */
+export function planSpeed(sources: readonly Source[], seed: number): LessonPlan {
+  const order = shuffle(sources, seed);
+  const items: LessonItem[] = [];
+  for (let i = 0; i < SPEED_QUESTIONS && order.length > 0; i++) {
+    const source = order[i % order.length];
+    if (!source) break;
+    items.push({
+      skill: source.skill,
+      depth: source.info.levels[0]?.depths[0] ?? 1,
+      numbers: "standard",
+      seed: seedFor(seed, i + 1),
+      review: false,
+      slot: i,
+      attempt: 0,
+    });
+  }
+  return { kind: "speed", title: "Speed round", items };
 }
 
 /** A skill to draw questions from in a mixed lesson, and a misconception to aim at, if any. */
@@ -196,7 +229,7 @@ export function answer(state: LessonState, correct: boolean, misconception?: str
   const [item, ...rest] = state.queue;
   if (!item) return state;
   const queue =
-    !correct && item.attempt < RETRIES
+    !correct && item.attempt < RETRIES && state.plan.kind !== "speed"
       ? [
           ...rest,
           { ...item, attempt: item.attempt + 1, seed: seedFor(item.seed, 31 + item.attempt) },
@@ -214,7 +247,14 @@ export function drop(state: LessonState): LessonState {
   return { ...state, plan: { ...state.plan, items }, queue };
 }
 
+/** The time is up in a speed round: no more questions. */
+export const timeUp = (state: LessonState): LessonState => ({ ...state, queue: [] });
+
 export const finished = (state: LessonState) => state.queue.length === 0;
+
+/** Hearts left in challenge mode: one lost for each wrong answer. */
+export const heartsLeft = (state: LessonState) =>
+  Math.max(0, HEARTS - state.answered.filter((a) => !a.correct).length);
 
 /** How far through the lesson: questions put right or out of tries, out of those planned. */
 export function lessonProgress(state: LessonState): number {
@@ -224,7 +264,7 @@ export function lessonProgress(state: LessonState): number {
 }
 
 export interface LessonSummary {
-  /** Questions right first time, out of those planned. */
+  /** Questions right first time, out of those planned (or answered, in a speed round). */
   firstTime: number;
   total: number;
   perfect: boolean;
@@ -234,12 +274,22 @@ export interface LessonSummary {
   skills: Record<string, boolean>;
   /** Misconceptions aimed at whose questions were answered right first time. */
   fixed: string[];
+  /** In challenge mode, the hearts left at the end. */
+  hearts?: number;
 }
 
-export function summarise(state: LessonState): LessonSummary {
-  const total = state.plan.items.length;
+/**
+ * What a finished lesson came to. XP is LESSON_XP, plus PERFECT_XP for a perfect lesson, doubled
+ * for finishing in challenge mode with a heart left; a speed round gives one XP for each right
+ * answer, and is never "perfect", as it has no end but the clock.
+ */
+export function summarise(state: LessonState, challenge = false): LessonSummary {
+  const speed = state.plan.kind === "speed";
+  const total = speed ? state.answered.length : state.plan.items.length;
   const firstTime = state.answered.filter((a) => a.correct && a.item.attempt === 0).length;
-  const perfect = firstTime === total;
+  const perfect = !speed && firstTime === total;
+  const hearts = challenge && !speed ? heartsLeft(state) : undefined;
+  const base = speed ? firstTime : LESSON_XP + (perfect ? PERFECT_XP : 0);
   const firstTries = state.answered.filter((a) => a.item.attempt === 0);
   const skills: Record<string, boolean> = {};
   for (const a of firstTries) skills[a.item.skill] = (skills[a.item.skill] ?? true) && a.correct;
@@ -247,10 +297,11 @@ export function summarise(state: LessonState): LessonSummary {
     firstTime,
     total,
     perfect,
-    xp: LESSON_XP + (perfect ? PERFECT_XP : 0),
+    xp: hearts ? base * 2 : base,
     mistakes: state.answered.flatMap((a) => (a.misconception ? [a.misconception] : [])),
     skills,
     fixed: firstTries.flatMap((a) => (a.correct && a.item.target ? [a.item.target] : [])),
+    ...(hearts === undefined ? {} : { hearts }),
   };
 }
 

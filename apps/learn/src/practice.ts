@@ -3,9 +3,17 @@
 // review schedule, mistakes shown and put right, reviews done, XP and today's count. All pure.
 import type { CourseSection, CourseUnit } from "@mathsplanner/core";
 import type { SkillLevels } from "./course.ts";
-import { levelMessage, planMixed, type LessonPlan, type LessonSummary } from "./lesson.ts";
+import {
+  levelMessage,
+  planMixed,
+  planSpeed,
+  SPEED_COUNTS,
+  type LessonPlan,
+  type LessonSummary,
+} from "./lesson.ts";
 import { dueSkills, firstMemory, isDue, memoryOf, remember } from "./memory.ts";
 import { lessonsOn, levelOf, type Progress, type SkillProgress } from "./progress.ts";
+import { awardBadges, earnFreeze, type Badge, type LessonEvent } from "./rewards.ts";
 
 type InfoOf = (skill: string) => SkillLevels;
 
@@ -60,6 +68,22 @@ export function reviewPlan(
 export const REFRESH_LENGTH = 6;
 
 /** A refresh of one finished skill, from its sheet on the path. */
+/** A speed round on the finished skills of the year, or undefined before any is finished. */
+export function speedPlan(
+  progress: Progress,
+  section: CourseSection,
+  infoOf: InfoOf,
+  seed: number,
+) {
+  const skills = finishedSkills(progress, section, infoOf);
+  return skills.length
+    ? planSpeed(
+        skills.map((skill) => ({ skill, info: infoOf(skill) })),
+        seed,
+      )
+    : undefined;
+}
+
 export const refreshPlan = (skill: string, title: string, infoOf: InfoOf, seed: number) =>
   planMixed("review", `Refresh: ${title}`, [{ skill, info: infoOf(skill) }], REFRESH_LENGTH, seed);
 
@@ -142,17 +166,29 @@ const fresh = (today: string): SkillProgress => ({
 });
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
 
-/** A finished lesson recorded in progress, with a line for the end screen on what it did. */
+/** A lesson recorded in progress, with what to celebrate on the end screen. */
+export interface Finished {
+  progress: Progress;
+  /** What the lesson did, in a line or two. */
+  message: string;
+  /** Badges earned by it. */
+  badges: Badge[];
+  /** Whether it earned a streak freeze. */
+  freeze: boolean;
+}
+
+/** A finished lesson recorded in progress, with what it did for the end screen. */
 export function finishLesson(
   progress: Progress,
   plan: LessonPlan,
   summary: LessonSummary,
   infoOf: InfoOf,
   today: string,
-): { progress: Progress; message: string } {
+): Finished {
   const skills = { ...progress.skills };
   const messages: string[] = [];
   let justFinished: string | undefined;
+  let reached: LessonEvent["reached"];
 
   if (plan.kind === "skill" && plan.skill) {
     const skill = plan.skill;
@@ -163,7 +199,15 @@ export function finishLesson(
     if (was.level < info.pathLevels && level >= info.pathLevels) {
       Object.assign(now, firstMemory(today));
       justFinished = skill;
+      reached = "finished";
     }
+    if (level > was.level && level === info.mastery) reached = "mastered";
+    if (
+      level > was.level &&
+      level === info.levels.length &&
+      info.levels.at(-1)?.name === "Legendary"
+    )
+      reached = "legendary";
     skills[skill] = now;
     messages.push(levelMessage(info, was.level, level));
   }
@@ -172,7 +216,8 @@ export function finishLesson(
   let stronger = 0;
   let again = 0;
   for (const [skill, right] of Object.entries(summary.skills)) {
-    if (skill === justFinished) continue;
+    // A speed round is against the clock, which is no fair test of memory.
+    if (skill === justFinished || plan.kind === "speed") continue;
     const now = skills[skill];
     const memory = memoryOf(now, infoOf(skill).pathLevels);
     if (!now || !memory) continue;
@@ -204,22 +249,51 @@ export function finishLesson(
         : "Those mistakes will come back until you have put them right.",
     );
   }
-  if (plan.kind !== "skill") {
+  let speedBest = progress.speedBest;
+  if (plan.kind === "speed") {
+    const right = summary.firstTime;
+    messages.push(
+      right > speedBest && speedBest > 0
+        ? `${plural(right, "right answer", "right answers")}: a new best!`
+        : `${plural(right, "right answer", "right answers")}.${speedBest > right ? ` Your best is ${speedBest}.` : ""}`,
+    );
+    speedBest = Math.max(speedBest, right);
+  }
+  if (summary.hearts) messages.push("You kept a heart, so the XP is doubled.");
+  if (plan.kind !== "skill" && plan.kind !== "speed") {
     if (stronger)
       messages.push(`${plural(stronger, "skill is", "skills are")} stronger in your memory.`);
     if (again)
       messages.push(`${plural(again, "skill", "skills")} will come back tomorrow for another go.`);
   }
 
+  const recorded: Progress = {
+    ...progress,
+    skills,
+    mistakes,
+    reviews,
+    speedBest,
+    xp: progress.xp + summary.xp + bonus,
+    // A speed round counts towards the daily goal only with a few right answers.
+    days:
+      plan.kind === "speed" && summary.firstTime < SPEED_COUNTS
+        ? progress.days
+        : { ...progress.days, [today]: lessonsOn(progress, today) + 1 },
+  };
+  const freeze = earnFreeze(progress, recorded, today);
+  const event: LessonEvent = {
+    perfect: summary.perfect,
+    challenge: (summary.hearts ?? 0) > 0,
+    fixed: summary.fixed.length,
+    ...(plan.kind === "speed" ? { speed: summary.firstTime } : {}),
+    ...(plan.kind === "unit" || plan.kind === "year" ? { review: plan.kind } : {}),
+    ...(reached ? { reached } : {}),
+  };
+  const awarded = awardBadges(freeze.progress, today, event);
   return {
-    progress: {
-      ...progress,
-      skills,
-      mistakes,
-      reviews,
-      xp: progress.xp + summary.xp + bonus,
-      days: { ...progress.days, [today]: lessonsOn(progress, today) + 1 },
-    },
+    progress: awarded.progress,
     message: messages.join(" ") || "Practice done.",
+    badges: awarded.earned,
+    freeze: freeze.earned,
   };
 }

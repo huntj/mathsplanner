@@ -39,6 +39,14 @@ export const sectionFor = (stage: Stage | undefined): CourseSection | undefined 
   course.sections.find((s) => s.stage === stage);
 
 export const skillText = (id: string) => statementText.get(id) ?? id;
+
+const unitBySkill = new Map(
+  course.sections.flatMap((s) =>
+    s.units.flatMap((u) => u.skills.map((skill) => [skill, u] as const)),
+  ),
+);
+/** The course unit a skill is in. */
+export const unitOf = (skill: string): CourseUnit | undefined => unitBySkill.get(skill);
 export const topicName = (id: string) => topicNames.get(id) ?? id;
 
 export const LEVEL_NAMES = ["Learn", "Practise", "Picture", "Reason", "Legendary"] as const;

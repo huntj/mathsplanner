@@ -7,7 +7,14 @@ import { course, sectionFor, skillText } from "./course.ts";
 import { exampleProgress } from "./example.ts";
 import { planLesson, type LessonPlan, type LessonSummary } from "./lesson.ts";
 import { LessonView, type LessonEnding } from "./LessonView.tsx";
-import { PathIcon, PersonIcon, RefreshIcon, StarIcon, StreakIcon } from "./Icons.tsx";
+import {
+  PathIcon,
+  PersonIcon,
+  RefreshIcon,
+  SnowflakeIcon,
+  StarIcon,
+  StreakIcon,
+} from "./Icons.tsx";
 import { PathView, type Selection } from "./PathView.tsx";
 import {
   finishLesson as recordLesson,
@@ -15,6 +22,7 @@ import {
   mistakesToFix,
   refreshPlan,
   reviewPlan,
+  speedPlan,
   unitPlan,
   yearPlan,
 } from "./practice.ts";
@@ -32,6 +40,7 @@ import {
   type Progress,
   type Settings,
 } from "./progress.ts";
+import { settleStreak } from "./rewards.ts";
 import { SkillSheet, type Start } from "./SkillSheet.tsx";
 import { levelsOf, misconceptionsOf, skillsShowing } from "./skills.ts";
 import { WelcomeView } from "./WelcomeView.tsx";
@@ -45,6 +54,9 @@ const viewFromHash = (): View => {
 };
 
 const newSeed = () => 1 + Math.floor(Math.random() * 2_147_483_000);
+
+/** Makes a lesson from a seed; undefined when there is nothing to practise. */
+type Make = (seed: number) => LessonPlan | undefined;
 
 /** The theme the page was opened with (a host page may set one), kept when "Match device" is chosen. */
 const initialTheme = document.documentElement.getAttribute("data-theme");
@@ -72,8 +84,20 @@ export function App() {
   const [progress, setProgress] = useState<Progress>(() => loadProgress());
   const [view, setView] = useState<View>(viewFromHash);
   const [selection, setSelection] = useState<Selection>();
-  const [lesson, setLesson] = useState<{ plan: LessonPlan; ending?: LessonEnding }>();
+  /** The lesson being played, how to make another like it (for "Try again"), and its ending. */
+  const [lesson, setLesson] = useState<{ plan: LessonPlan; make: Make; ending?: LessonEnding }>();
   const today = dayKey(new Date());
+  // Freezes spent on missed days when the app opened, to say so once.
+  const [frozeDays, setFrozeDays] = useState(0);
+
+  // On opening, and when the day changes: spend freezes on missed days to keep the streak going.
+  useEffect(() => {
+    setProgress((p) => {
+      const settled = settleStreak(p, today);
+      if (settled.used) setFrozeDays(settled.used);
+      return settled.progress;
+    });
+  }, [today]);
 
   useEffect(() => {
     const onHash = () => setView(viewFromHash());
@@ -108,17 +132,18 @@ export function App() {
     go("path");
   };
 
-  const begin = (plan: LessonPlan | undefined) => {
+  /** Starts a lesson made with a fresh seed, keeping the recipe for "Try again". */
+  const begin = (make: Make) => {
+    const plan = make(newSeed());
     if (!plan || plan.items.length === 0) return;
     setSelection(undefined);
-    setLesson({ plan });
+    setLesson({ plan, make });
     scrollTo({ top: 0 });
   };
 
   /** A lesson from a sheet on the path. */
   const startFromPath = (start: Start) => {
     if (!section) return;
-    const seed = newSeed();
     if (start.kind === "skill") {
       // Review questions come from the skills already finished in this year.
       const reviewFrom = section.units
@@ -126,31 +151,35 @@ export function App() {
         .filter((s) => s !== start.skill && levelOf(progress, s) >= levelsOf(s).pathLevels)
         .map((s) => ({ skill: s, info: levelsOf(s) }));
       const info = levelsOf(start.skill);
-      begin(planLesson(start.skill, info, levelOf(progress, start.skill), reviewFrom, seed));
+      const done = levelOf(progress, start.skill);
+      begin((seed) => planLesson(start.skill, info, done, reviewFrom, seed));
     } else if (start.kind === "refresh")
-      begin(refreshPlan(start.skill, skillText(start.skill), levelsOf, seed));
-    else if (start.kind === "unit") begin(unitPlan(start.unit, levelsOf, seed));
-    else begin(yearPlan(progress, section, levelsOf, seed));
+      begin((seed) => refreshPlan(start.skill, skillText(start.skill), levelsOf, seed));
+    else if (start.kind === "unit") begin((seed) => unitPlan(start.unit, levelsOf, seed));
+    else begin((seed) => yearPlan(progress, section, levelsOf, seed));
   };
 
   /** A lesson from the Practise tab. */
   const startPractice = (start: PracticeStart) => {
     if (!section) return;
-    const seed = newSeed();
-    if (start.kind === "review") begin(reviewPlan(progress, section, levelsOf, today, seed));
-    else if (start.kind === "unit") begin(unitPlan(start.unit, levelsOf, seed));
-    else begin(mistakesPlan(mistakesToFix(progress, section, skillsShowing), levelsOf, seed));
+    if (start.kind === "review")
+      begin((seed) => reviewPlan(progress, section, levelsOf, today, seed));
+    else if (start.kind === "unit") begin((seed) => unitPlan(start.unit, levelsOf, seed));
+    else if (start.kind === "speed") begin((seed) => speedPlan(progress, section, levelsOf, seed));
+    else
+      begin((seed) =>
+        mistakesPlan(mistakesToFix(progress, section, skillsShowing), levelsOf, seed),
+      );
   };
 
   const finishLesson = (summary: LessonSummary) => {
     if (!lesson) return;
-    const { progress: next, message } = recordLesson(
-      progress,
-      lesson.plan,
-      summary,
-      levelsOf,
-      today,
-    );
+    const {
+      progress: next,
+      message,
+      badges,
+      freeze,
+    } = recordLesson(progress, lesson.plan, summary, levelsOf, today);
     setProgress(next);
     setLesson({
       ...lesson,
@@ -160,6 +189,8 @@ export function App() {
         streak: streak(next, today),
         today: lessonsOn(next, today),
         goal: next.settings.dailyGoal,
+        badges,
+        freeze,
       },
     });
   };
@@ -167,9 +198,13 @@ export function App() {
   if (lesson && section) {
     return (
       <LessonView
+        key={lesson.plan.items[0]?.seed}
         plan={lesson.plan}
         ending={lesson.ending}
+        challenge={progress.settings.challenge}
+        sound={progress.settings.sound}
         onComplete={finishLesson}
+        onRetry={() => begin(lesson.make)}
         onClose={() => setLesson(undefined)}
       />
     );
@@ -215,6 +250,19 @@ export function App() {
           </span>
         </div>
       </header>
+
+      {frozeDays > 0 && (
+        <div className="freeze-banner" role="status">
+          <SnowflakeIcon size={22} />
+          <p>
+            Dot used {frozeDays === 1 ? "a streak freeze" : `${frozeDays} streak freezes`} to keep
+            your streak going.
+          </p>
+          <button type="button" className="button small-button" onClick={() => setFrozeDays(0)}>
+            OK
+          </button>
+        </div>
+      )}
 
       {progress.example && view === "path" && (
         <div className="example-banner" role="note">

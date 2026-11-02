@@ -5,7 +5,8 @@ import type { CourseSection, CourseUnit } from "@mathsplanner/core";
 import { skillText } from "./course.ts";
 import { Dot } from "./Dot.tsx";
 import { familyOf } from "./families.ts";
-import { FamilyIcon, RefreshIcon, ReviewIcon } from "./Icons.tsx";
+import { ClockIcon, FamilyIcon, RefreshIcon, ReviewIcon } from "./Icons.tsx";
+import { SPEED_SECONDS } from "./lesson.ts";
 import { memoryOf, strengthOf, type Strength } from "./memory.ts";
 import { describeMisconception } from "./misconceptions.ts";
 import { pathFor } from "./path.ts";
@@ -14,7 +15,10 @@ import type { Progress } from "./progress.ts";
 import { levelsOf, skillsShowing } from "./skills.ts";
 
 export type PracticeStart =
-  { kind: "review" } | { kind: "mistakes" } | { kind: "unit"; unit: CourseUnit };
+  | { kind: "review" }
+  | { kind: "mistakes" }
+  | { kind: "speed" }
+  | { kind: "unit"; unit: CourseUnit };
 
 const STRENGTHS: { key: Strength; name: string; detail: string }[] = [
   { key: "due", name: "Due", detail: "ready for review" },
@@ -97,6 +101,26 @@ export function PractiseView({
           <p className="muted">
             Finish your first skill on the path, and it will come back here to keep it fresh.
           </p>
+        )}
+      </section>
+
+      <section className="card" aria-labelledby="speed-title">
+        <h2 id="speed-title">
+          <ClockIcon size={22} /> Speed round
+        </h2>
+        {finished.length > 0 ? (
+          <>
+            <p>
+              As many quick questions as you can in {SPEED_SECONDS} seconds, from the skills you
+              have finished.{" "}
+              {progress.speedBest > 0 && <strong>Your best: {progress.speedBest} right.</strong>}
+            </p>
+            <button type="button" className="button big" onClick={() => onStart({ kind: "speed" })}>
+              Start a speed round
+            </button>
+          </>
+        ) : (
+          <p className="muted">Finish a skill to race the clock on it.</p>
         )}
       </section>
 

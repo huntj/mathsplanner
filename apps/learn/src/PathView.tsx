@@ -119,7 +119,7 @@ export function PathView({
                     <div className="node-wrap" ref={current ? currentRef : undefined}>
                       {current && (
                         <div className={`dot-beside ${sway > 0 ? "left" : "right"}`}>
-                          <Dot size={58} />
+                          <Dot size={58} family={family} />
                           <span className="bubble">
                             {node.level > 0 ? "Keep going" : "Start here"}
                           </span>

@@ -1679,6 +1679,189 @@ body::before {
   text-align: center;
 }
 
+/* Rewards: hearts, the speed clock, streak freezes and badges. */
+.hearts {
+  display: flex;
+  gap: 0.15rem;
+  color: var(--wrong);
+}
+
+.clock {
+  min-width: 3rem;
+  font-family: var(--display);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  color: var(--biro);
+}
+
+.freeze-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--biro);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--biro) 10%, var(--surface));
+  color: var(--biro);
+}
+
+.freeze-banner p {
+  flex: 1;
+  min-width: 0;
+  color: var(--ink);
+}
+
+.freeze-help {
+  margin-top: -0.75rem;
+}
+
+.reward {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 26rem;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--biro) 10%, var(--surface));
+  color: var(--biro);
+  text-align: left;
+}
+
+.new-badges {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 26rem;
+}
+
+.new-badges li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.9rem;
+  border: 2px solid var(--gold);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--gold) 14%, var(--surface));
+  text-align: left;
+  animation: badge-in 500ms ease-out both;
+}
+
+.new-badges li > span {
+  display: grid;
+  min-width: 0;
+}
+
+@keyframes badge-in {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+}
+
+.badge-mark {
+  flex: none;
+}
+
+.badge-body {
+  fill: none;
+  stroke: var(--locked-deep);
+  stroke-width: 2.5;
+  stroke-dasharray: 4 3;
+}
+
+.badge-star {
+  fill: var(--locked);
+}
+
+.badge-mark.earned .badge-body {
+  fill: var(--gold);
+  stroke: var(--gold-deep);
+  stroke-dasharray: none;
+}
+
+.badge-mark.earned .badge-star {
+  fill: var(--on-colour);
+}
+
+.badges {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.badges li {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 0.2rem;
+  padding: 0.6rem 0.4rem;
+  text-align: center;
+}
+
+.badges li strong {
+  font-family: var(--display);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.badges li:not(.earned) strong {
+  color: var(--ink-soft);
+}
+
+.end-actions {
+  display: grid;
+  gap: 0.6rem;
+}
+
+/* The logo: Dot and the name. */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--display);
+  font-size: var(--step-1);
+  font-weight: 600;
+}
+
+.logo-name span {
+  color: var(--dot-deep);
+}
+
+/* Dot pops into a new shape. */
+.dot-body {
+  animation:
+    pop 360ms ease-out,
+    bob 3s ease-in-out 360ms infinite;
+}
+
+.dot-cheer .dot-body {
+  animation:
+    pop 360ms ease-out,
+    hop 1.6s ease-in-out 360ms infinite;
+}
+
+.dot-pip {
+  fill: var(--dot-ink);
+  opacity: 0.55;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.6);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -1,8 +1,9 @@
 // A pupil's progress, kept only in this browser: their settings, each skill's level and place in
-// the review schedule, XP, the lessons done each day (for the daily goal and streak), the
-// misconceptions they have shown and the unit reviews they have done. It is one versioned object, changed only by
-// the pure functions here; whatever is read back is checked, and anything unreadable starts afresh
-// rather than breaking the app.
+// the review schedule, XP, the lessons done each day (for the daily goal and streak), streak
+// freezes, the misconceptions they have shown, the reviews and badges they have done and earned,
+// and their best speed round. It is one versioned object, changed only by pure functions;
+// whatever is read back is checked, and anything unreadable starts afresh rather than breaking
+// the app.
 import { STAGES, type Stage } from "@mathsplanner/core";
 
 export const PROGRESS_VERSION = 1;
@@ -10,6 +11,9 @@ export const STORAGE_KEY = "learnmaths.progress";
 /** XP for finishing a lesson, and the bonus for getting every question right first time. */
 export const LESSON_XP = 10;
 export const PERFECT_XP = 5;
+
+/** The most streak freezes a pupil can hold. */
+export const MAX_FREEZES = 2;
 
 export const DAILY_GOALS = [1, 2, 3, 5] as const;
 export type DailyGoal = (typeof DAILY_GOALS)[number];
@@ -50,6 +54,13 @@ export interface Progress {
   mistakes: Record<string, number>;
   /** Reviews done: a unit's id, or "year:" and the stage, and the day it was last done. */
   reviews: Record<string, string>;
+  /** Streak freezes held (see rewards.ts), and the days they covered. */
+  freezes: number;
+  frozen: string[];
+  /** Badges earned (see rewards.ts), and the day each was earned. */
+  badges: Record<string, string>;
+  /** The most questions right in a speed round. */
+  speedBest: number;
   /** Set on the example progress, so the app can say it is an example. */
   example?: true;
 }
@@ -69,6 +80,10 @@ export const emptyProgress = (): Progress => ({
   days: {},
   mistakes: {},
   reviews: {},
+  freezes: 0,
+  frozen: [],
+  badges: {},
+  speedBest: 0,
 });
 
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
@@ -111,6 +126,13 @@ export function readProgress(raw: unknown): Progress {
   if (isRecord(raw.reviews))
     for (const [id, day] of Object.entries(raw.reviews))
       if (typeof day === "string" && DAY.test(day)) progress.reviews[id] = day;
+  progress.freezes = Math.min(count(raw.freezes), MAX_FREEZES);
+  if (Array.isArray(raw.frozen))
+    progress.frozen = raw.frozen.filter((d): d is string => typeof d === "string" && DAY.test(d));
+  if (isRecord(raw.badges))
+    for (const [id, day] of Object.entries(raw.badges))
+      if (typeof day === "string" && DAY.test(day)) progress.badges[id] = day;
+  progress.speedBest = count(raw.speedBest);
   if (raw.example === true) progress.example = true;
   return progress;
 }
@@ -165,11 +187,12 @@ export const levelOf = (progress: Progress, skill: string) => progress.skills[sk
 export const lessonsOn = (progress: Progress, day: string) => progress.days[day] ?? 0;
 
 /**
- * Days in a row the daily goal was met, up to today; today still counts towards it until it ends,
- * so the streak carries on from yesterday until then.
+ * Days in a row the daily goal was met (or a streak freeze covered), up to today; today still
+ * counts towards it until it ends, so the streak carries on from yesterday until then.
  */
 export function streak(progress: Progress, today: string): number {
-  const met = (day: string) => lessonsOn(progress, day) >= progress.settings.dailyGoal;
+  const met = (day: string) =>
+    lessonsOn(progress, day) >= progress.settings.dailyGoal || progress.frozen.includes(day);
   let day = met(today) ? today : addDays(today, -1);
   let n = 0;
   while (met(day)) {

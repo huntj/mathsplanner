@@ -1,7 +1,9 @@
 // A lesson, full screen: a worked example for a new skill, then each question with its answer
 // widgets and a Check button. Checking marks the answer and slides up a panel: a cheer, or what went
-// wrong (the misconception, the right answer and the worked solution on request). The lesson ends
-// on a summary of XP, accuracy, the streak and any new level.
+// wrong (the misconception, the right answer and the worked solution on request). In challenge mode
+// the bar shows hearts, and running out ends the lesson with nothing lost; a speed round shows a
+// countdown and moves straight on. The lesson ends on a summary of XP, accuracy, the streak, any new
+// level and any badge or streak freeze earned. Dot takes the shape of the topic.
 import type { DiagramSpec, Question, Rich } from "@mathsplanner/core";
 import {
   markQuestion,
@@ -19,22 +21,33 @@ import {
   type Draft,
 } from "@mathsplanner/ui";
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
-import { skillText } from "./course.ts";
+import { skillText, unitOf } from "./course.ts";
 import { Dot } from "./Dot.tsx";
-import { describeMisconception } from "./misconceptions.ts";
-import { StarIcon, StreakIcon } from "./Icons.tsx";
+import { familyOf, type Family } from "./families.ts";
+import { HeartIcon, SnowflakeIcon, StarIcon, StreakIcon } from "./Icons.tsx";
 import {
   answer,
   drop,
   finished,
+  HEARTS,
+  heartsLeft,
   lessonProgress,
+  SPEED_SECONDS,
   startLesson,
   summarise,
+  timeUp,
   type LessonItem,
   type LessonPlan,
   type LessonSummary,
 } from "./lesson.ts";
+import { describeMisconception } from "./misconceptions.ts";
+import type { Badge } from "./rewards.ts";
+import { BadgeMark } from "./BadgeMark.tsx";
 import { questionFor, type LessonQuestion } from "./skills.ts";
+import { play } from "./sounds.ts";
+
+/** The family of a skill's unit, for Dot's shape. */
+const familyOfSkill = (skill: string): Family => familyOf(unitOf(skill)?.topic ?? "");
 
 const CHEERS = ["Brilliant!", "Nice one!", "Spot on!", "Great work!", "You got it!", "Yes!"];
 
@@ -50,35 +63,64 @@ export interface LessonEnding {
   /** Lessons done today, and the daily goal. */
   today: number;
   goal: number;
+  badges: Badge[];
+  freeze: boolean;
 }
 
 export function LessonView({
   plan,
   ending,
+  challenge,
+  sound,
   onComplete,
+  onRetry,
   onClose,
 }: {
   plan: LessonPlan;
   ending: LessonEnding | undefined;
+  /** Hearts, for pupils who chose challenge mode; never in a speed round. */
+  challenge: boolean;
+  sound: boolean;
   onComplete: (summary: LessonSummary) => void;
+  /** The same kind of lesson again, after running out of hearts. */
+  onRetry: () => void;
   onClose: () => void;
 }) {
   const [state, setState] = useState(() => startLesson(plan));
   const [example, setExample] = useState(plan.example);
   const [leaving, setLeaving] = useState(false);
+  const speed = plan.kind === "speed";
+  const hearts = challenge && !speed;
+  const [seconds, setSeconds] = useState(SPEED_SECONDS);
   const item = state.queue[0];
   const done = finished(state);
+  const out = hearts && heartsLeft(state) === 0 && !done;
   // Effects can run twice (React's strict mode does so on purpose); the lesson is saved once.
   const reported = useRef(false);
 
   useEffect(() => {
     if (done && !reported.current) {
       reported.current = true;
-      onComplete(summarise(state));
+      onComplete(summarise(state, hearts));
     }
-  }, [done, onComplete, state]);
+  }, [done, onComplete, state, hearts]);
 
-  if (ending) return <EndStep ending={ending} plan={plan} onClose={onClose} />;
+  // The speed round's clock: a tick a second, and the round ends at zero.
+  useEffect(() => {
+    if (!speed || done) return;
+    const tick = setInterval(() => setSeconds((s) => Math.max(0, s - 1)), 1000);
+    return () => clearInterval(tick);
+  }, [speed, done]);
+  useEffect(() => {
+    if (speed && seconds === 0) setState((s) => timeUp(s));
+  }, [speed, seconds]);
+
+  useEffect(() => {
+    if (out) play("out", sound);
+  }, [out, sound]);
+
+  if (ending) return <EndStep ending={ending} plan={plan} sound={sound} onClose={onClose} />;
+  if (out) return <OutOfHearts onRetry={onRetry} onClose={onClose} />;
 
   return (
     <div className="lesson">
@@ -99,8 +141,24 @@ export function LessonView({
           aria-valuemax={100}
           aria-valuenow={Math.round(lessonProgress(state) * 100)}
         >
-          <span style={{ width: `${lessonProgress(state) * 100}%` }} />
+          <span
+            style={{
+              width: `${(speed ? seconds / SPEED_SECONDS : lessonProgress(state)) * 100}%`,
+            }}
+          />
         </div>
+        {speed && (
+          <span className="clock" aria-live="off">
+            {seconds}s<span className="visually-hidden"> left</span>
+          </span>
+        )}
+        {hearts && (
+          <span className="hearts" aria-label={`${heartsLeft(state)} of ${HEARTS} hearts left`}>
+            {Array.from({ length: HEARTS }, (_, i) => (
+              <HeartIcon key={i} size={22} full={i < heartsLeft(state)} />
+            ))}
+          </span>
+        )}
       </header>
 
       {example ? (
@@ -109,6 +167,8 @@ export function LessonView({
         <QuestionStep
           key={`${item.slot}/${item.attempt}`}
           item={item}
+          quick={speed}
+          sound={sound}
           onAnswered={(correct, misconception) =>
             setState((s) => answer(s, correct, misconception))
           }
@@ -160,7 +220,7 @@ function ExampleStep({ item, onDone }: { item: LessonItem; onDone: () => void })
     <>
       <main className="lesson-main">
         <div className="lesson-intro">
-          <Dot size={56} />
+          <Dot size={56} family={familyOfSkill(item.skill)} />
           <div>
             <p className="eyebrow">New skill</p>
             <h1 className="lesson-skill">{skillText(item.skill)}</h1>
@@ -211,10 +271,15 @@ function ExampleStep({ item, onDone }: { item: LessonItem; onDone: () => void })
 
 function QuestionStep({
   item,
+  quick,
+  sound,
   onAnswered,
   onUnavailable,
 }: {
   item: LessonItem;
+  /** A speed round: move on by itself soon after checking. */
+  quick: boolean;
+  sound: boolean;
   onAnswered: (correct: boolean, misconception?: string) => void;
   onUnavailable: () => void;
 }) {
@@ -235,8 +300,21 @@ function QuestionStep({
     }
   }, [lq, onUnavailable]);
   useEffect(() => {
-    if (mark) continueRef.current?.focus();
-  }, [mark]);
+    if (!mark) return;
+    continueRef.current?.focus();
+    play(mark.parts.every((p) => p.status === "correct") ? "right" : "wrong", sound);
+  }, [mark, sound]);
+  // In a speed round the next question comes by itself. The callback is held in a ref, as the
+  // clock re-renders the lesson every second and would otherwise restart the wait.
+  const answered = useRef(onAnswered);
+  answered.current = onAnswered;
+  useEffect(() => {
+    if (!quick || !mark) return;
+    const right = mark.parts.every((p) => p.status === "correct");
+    const code = mark.parts.find((p) => p.misconception)?.misconception?.code;
+    const wait = setTimeout(() => answered.current(right, code), right ? 600 : 1400);
+    return () => clearTimeout(wait);
+  }, [mark, quick]);
   if (!lq) return null;
   const { question, validators } = lq;
   const { diagrams } = question;
@@ -327,7 +405,11 @@ function QuestionStep({
           {mark ? (
             <div className="verdict" role="status">
               <div className="verdict-head">
-                <Dot size={44} mood={correct ? "cheer" : "happy"} />
+                <Dot
+                  size={44}
+                  mood={correct ? "cheer" : "oops"}
+                  family={familyOfSkill(item.skill)}
+                />
                 <h2>
                   {correct
                     ? CHEERS[item.seed % CHEERS.length]
@@ -420,23 +502,51 @@ const DONE_WORDS = {
   unit: "Unit review complete!",
   year: "Year review complete!",
   mistakes: "Mistakes worked on!",
+  speed: "Time’s up!",
 };
+
+function OutOfHearts({ onRetry, onClose }: { onRetry: () => void; onClose: () => void }) {
+  return (
+    <div className="lesson">
+      <main className="lesson-main lesson-end">
+        <Dot size={120} mood="oops" />
+        <h1>Out of hearts</h1>
+        <p className="end-message">
+          That one was tricky. Nothing is lost: your levels and streak are just as they were.
+        </p>
+      </main>
+      <footer className="lesson-foot">
+        <div className="lesson-foot-inner end-actions">
+          <button type="button" className="button primary big" onClick={onRetry} autoFocus>
+            Try again
+          </button>
+          <button type="button" className="button big" onClick={onClose}>
+            Back to the path
+          </button>
+        </div>
+      </footer>
+    </div>
+  );
+}
 
 function EndStep({
   ending,
   plan,
+  sound,
   onClose,
 }: {
   ending: LessonEnding;
   plan: LessonPlan;
+  sound: boolean;
   onClose: () => void;
 }) {
-  const { summary, message, streak, today, goal } = ending;
+  const { summary, message, streak, today, goal, badges, freeze } = ending;
   const goalMet = today >= goal;
+  useEffect(() => play("done", sound), [sound]);
   return (
     <div className="lesson">
       <main className="lesson-main lesson-end">
-        <Dot size={140} mood="cheer" />
+        <Dot size={140} mood="cheer" family={plan.skill ? familyOfSkill(plan.skill) : "number"} />
         <h1>{summary.perfect ? "A perfect lesson!" : DONE_WORDS[plan.kind]}</h1>
         <p className="lesson-lead">{plan.title}</p>
         <p className="end-message">{message}</p>
@@ -448,7 +558,7 @@ function EndStep({
             </dd>
           </div>
           <div>
-            <dt>Right first time</dt>
+            <dt>{plan.kind === "speed" ? "Right" : "Right first time"}</dt>
             <dd>
               {summary.firstTime}/{summary.total}
             </dd>
@@ -470,6 +580,25 @@ function EndStep({
           )}
         </dl>
         {today === goal && <p className="goal-met">Daily goal met. See you tomorrow!</p>}
+        {freeze && (
+          <p className="reward">
+            <SnowflakeIcon size={22} /> You earned a streak freeze. It keeps your streak going if
+            you miss a day.
+          </p>
+        )}
+        {badges.length > 0 && (
+          <ul className="new-badges" aria-label="New badges">
+            {badges.map((b) => (
+              <li key={b.id}>
+                <BadgeMark badge={b} earned />
+                <span>
+                  <strong>New badge: {b.name}</strong>
+                  <span className="muted small">{b.how}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
       </main>
       <footer className="lesson-foot">
         <div className="lesson-foot-inner">

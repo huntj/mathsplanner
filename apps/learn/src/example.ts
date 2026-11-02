@@ -1,6 +1,7 @@
 // Example progress, to see the app part-way through a year: the first half of the units finished,
 // some skills mastered or legendary and some due for review, the next unit under way, a few
-// mistakes to fix, all but the last two unit reviews done, and a two-week streak.
+// mistakes to fix, all but the last two unit reviews done, a two-week streak with a freeze in
+// hand, a speed round best and the badges all that would have earned.
 import type { CourseSection } from "@mathsplanner/core";
 import type { SkillLevels } from "./course.ts";
 import { GAPS, TOP_BOX } from "./memory.ts";
@@ -63,5 +64,10 @@ export function exampleProgress(
   // Two lessons a day for the last two weeks, and one so far today.
   for (let d = 1; d <= 14; d++) progress.days[addDays(today, -d)] = 2;
   progress.days[today] = 1;
+  progress.freezes = 1;
+  progress.speedBest = 9;
+  const badges = ["first-lesson", "first-skill", "perfect", "unit", "mastered", "legendary"];
+  badges.push("skills-10", "streak-7", ...(progress.xp >= 1000 ? ["xp-1000"] : []));
+  badges.forEach((id, n) => (progress.badges[id] = addDays(today, -13 + n)));
   return progress;
 }
