@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const NUMBERS = [12, 16, 18, 20, 24, 28, 30, 32, 36, 40, 42, 45, 48];
 const factorCount = (n: number) =>
@@ -21,7 +22,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-04.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.FACTOR.MULTIPLE-MIXUP", "NPV.LISTING.INCOMPLETE", "NPV.FACTOR.NOT-PRIME"],
 
@@ -86,20 +87,57 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["An odd number is prime."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["An odd number is prime."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: "Sometimes. 7 and 13 are prime, but 9 = 3 × 3 and 15 = 3 × 5 are odd and not prime.",
+                  correct: true,
+                },
+                { text: "Always. Only even numbers can be divided.", code: "NPV.FACTOR.NOT-PRIME" },
+                { text: "Never. 2 is the only prime." },
+              ],
+              solution: [{ say: "A prime has exactly two factors: 1 and itself." }],
+            }),
+          [
             {
-              text: "Sometimes. 7 and 13 are prime, but 9 = 3 × 3 and 15 = 3 × 5 are odd and not prime.",
-              correct: true,
+              statement: `Eve says ${p.k * p.m} is a factor of ${p.m}.`,
+              truth: false,
+              right: `False. ${p.k * p.m} is a multiple of ${p.m}, because ${p.m} × ${p.k} = ${p.k * p.m}. A factor of ${p.m} divides into it, so it cannot be bigger than ${p.m}.`,
+              wrong: [
+                ["True. Factors and multiples are the same thing.", "NPV.FACTOR.MULTIPLE-MIXUP"],
+                [`True. ${p.m} goes into it exactly.`, "NPV.FACTOR.MULTIPLE-MIXUP"],
+              ],
             },
-            { text: "Always. Only even numbers can be divided.", code: "NPV.FACTOR.NOT-PRIME" },
-            { text: "Never. 2 is the only prime." },
+            {
+              statement: "Fin says 1 is not a prime number.",
+              truth: true,
+              right: "True. A prime has exactly two factors, 1 and itself; 1 has only one factor.",
+              wrong: [
+                [
+                  "False. 1 can only be divided by 1 and itself, so it is prime.",
+                  "NPV.FACTOR.NOT-PRIME",
+                ],
+                ["False. 1 is the smallest prime."],
+              ],
+            },
+            {
+              claim: "An even number bigger than 2 is prime.",
+              truth: "never",
+              right:
+                "Never. Every even number bigger than 2 has 2 as a factor, as well as 1 and itself.",
+              wrong: [
+                ["Sometimes. 2 is even and prime.", "NPV.FACTOR.NOT-PRIME"],
+                ["Always. Even numbers share equally, so they are prime.", "NPV.FACTOR.NOT-PRIME"],
+              ],
+            },
           ],
-          solution: [{ say: "A prime has exactly two factors: 1 and itself." }],
-        });
+        );
     }
   },
 

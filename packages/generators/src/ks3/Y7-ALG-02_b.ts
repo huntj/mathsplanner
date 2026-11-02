@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   u: number;
@@ -21,7 +22,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-ALG-02.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SUBSTITUTE.ORDER", "ALG.EXPAND.FIRST-ONLY"],
 
@@ -89,24 +90,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "The perimeter of a rectangle is ",
-            A.math("P = 2(l + w)"),
-            `. Sam says when l = ${p.l} and w = ${p.w}, P = ${2 * p.l + p.w}.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "The perimeter of a rectangle is ",
+                A.math("P = 2(l + w)"),
+                `. Sam says when l = ${p.l} and w = ${p.w}, P = ${2 * p.l + p.w}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. 2(l + w) doubles the whole bracket: 2 × ${p.l + p.w} = ${2 * (p.l + p.w)}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Double the length, then add the width.",
+                  code: "ALG.EXPAND.FIRST-ONLY",
+                },
+                { text: "True. The 2 only goes with l.", code: "ALG.EXPAND.FIRST-ONLY" },
+              ],
+              solution: [{ say: "", math: `P = 2(${p.l} + ${p.w}) = ${2 * (p.l + p.w)}` }],
+            }),
+          [
             {
-              text: `False. 2(l + w) doubles the whole bracket: 2 × ${p.l + p.w} = ${2 * (p.l + p.w)}.`,
-              correct: true,
+              statement: `Using $v = u + at$ with $u = ${p.u}$, $a = ${p.a}$ and $t = ${p.t}$, Kim says $v = ${p.u + p.a * p.t}$.`,
+              truth: true,
+              right: `True. at = ${p.a} × ${p.t} = ${p.a * p.t}, then add u: ${p.u} + ${p.a * p.t} = ${p.u + p.a * p.t}.`,
+              wrong: [
+                [
+                  `False. Work from left to right: (${p.u} + ${p.a}) × ${p.t} = ${(p.u + p.a) * p.t}.`,
+                  "ALG.SUBSTITUTE.ORDER",
+                ],
+                ["False. A formula with three letters cannot be worked out."],
+              ],
             },
-            { text: "True. Double the length, then add the width.", code: "ALG.EXPAND.FIRST-ONLY" },
-            { text: "True. The 2 only goes with l.", code: "ALG.EXPAND.FIRST-ONLY" },
+            {
+              statement: `Using $A = lw$ with $l = ${p.l}$ and $w = ${p.w}$, Max says $A = ${p.l + p.w}$.`,
+              truth: false,
+              right: `False. lw means l × w: ${p.l} × ${p.w} = ${p.l * p.w}.`,
+              wrong: [
+                ["True. Letters written together are added."],
+                ["True. The area is the length plus the width."],
+              ],
+            },
+            {
+              claim: "In $P = 2(l + w)$, with positive lengths, doubling $l$ doubles $P$.",
+              truth: "never",
+              right: "Never. Doubling l adds 2l to P, but doubling P would need 2l + 2w more.",
+              wrong: [
+                ["Always. Doubling a letter doubles the answer.", "ALG.EXPAND.FIRST-ONLY"],
+                ["Sometimes. When l and w are equal."],
+              ],
+            },
           ],
-          solution: [{ say: "", math: `P = 2(${p.l} + ${p.w}) = ${2 * (p.l + p.w)}` }],
-        });
+        );
     }
   },
 

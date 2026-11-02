@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { triangle } from "../shared/geo.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-GEO-06.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["AS.MULTISTEP.ONE-STEP", "GEO.ANGLES.TRIANGLE-360"],
 
@@ -84,23 +85,61 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["A triangle can have two obtuse angles."],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["A triangle can have two obtuse angles."],
+              truth: "never",
+              reasons: [
+                {
+                  text: "Never. Two obtuse angles already add up to more than 180°, leaving nothing for the third angle.",
+                  correct: true,
+                },
+                {
+                  text: "Sometimes. If the triangle is big enough.",
+                  code: "GEO.ANGLES.TRIANGLE-360",
+                },
+                {
+                  text: "Always. The angles add up to 360°, so there is room.",
+                  code: "GEO.ANGLES.TRIANGLE-360",
+                },
+              ],
+              solution: [{ say: "The three angles of any triangle add up to 180°." }],
+            }),
+          [
             {
-              text: "Never. Two obtuse angles already add up to more than 180°, leaving nothing for the third angle.",
-              correct: true,
+              statement: `A triangle has angles of ${p.a}° and ${p.base}°. Ola says the third angle is ${180 - p.a - p.base}°.`,
+              truth: true,
+              right: `True. The angles of a triangle add up to 180°: 180 − ${p.a} − ${p.base} = ${180 - p.a - p.base}.`,
+              wrong: [
+                [`False. It is ${360 - p.a - p.base}°.`, "GEO.ANGLES.TRIANGLE-360"],
+                [`False. It is ${180 - p.a}°.`, "AS.MULTISTEP.ONE-STEP"],
+              ],
             },
-            { text: "Sometimes. If the triangle is big enough.", code: "GEO.ANGLES.TRIANGLE-360" },
             {
-              text: "Always. The angles add up to 360°, so there is room.",
-              code: "GEO.ANGLES.TRIANGLE-360",
+              claim: "A triangle has a right angle.",
+              truth: "sometimes",
+              right:
+                "Sometimes. A right-angled triangle has one, but an equilateral triangle has three angles of 60°.",
+              wrong: [
+                ["Always. Every triangle has a square corner."],
+                ["Never. The angles of a triangle are all acute."],
+              ],
+            },
+            {
+              statement: "Zak says a triangle can have angles of 50°, 60° and 80°.",
+              truth: false,
+              right:
+                "False. They add up to 190°, but the angles of a triangle always add up to 180°.",
+              wrong: [
+                ["True. They are all acute, so they fit."],
+                ["True. Any three angles under 90° make a triangle."],
+              ],
             },
           ],
-          solution: [{ say: "The three angles of any triangle add up to 180°." }],
-        });
+        );
     }
   },
 

@@ -10,7 +10,7 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-RAT-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -67,7 +67,7 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-RAT-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -124,7 +124,7 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-RAT-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -181,7 +181,7 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-RAT-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -243,7 +243,7 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-RAT-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -305,7 +305,7 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-RAT-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -367,7 +367,7 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-RAT-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -378,8 +378,8 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -414,7 +414,7 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. A 1 cm cube is 10 mm by 10 mm by 10 mm, so 1 cm³ = 1000 mm³.",
+                  "v": "Sometimes. It depends on the shape.",
                 },
               ],
               "id": "RA",
@@ -423,7 +423,7 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends on the shape.",
+                  "v": "Never. 1 cm² = 10 mm².",
                 },
               ],
               "id": "RB",
@@ -432,7 +432,7 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. 1 cm = 10 mm.",
+                  "v": "Always. A 1 cm square is 10 mm by 10 mm, which is 100 mm².",
                 },
               ],
               "id": "RC",
@@ -444,7 +444,7 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "RAT.UNITS.AREA-FACTOR",
@@ -452,7 +452,7 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "RAT.UNITS.AREA-FACTOR",
@@ -472,7 +472,7 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Cube the length factor for volume.",
+            "v": "Always. A 1 cm square is 10 mm by 10 mm, which is 100 mm².",
           },
         ],
       },
@@ -480,19 +480,19 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "1 cm³ = 10 mm³.",
+        "v": "1 cm² = 100 mm².",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-RAT-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -503,139 +503,14 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Always true",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Sometimes true",
-                },
-              ],
-              "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Always. 1 cm = 10 mm.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never. A 1 cm cube is 10 mm by 10 mm by 10 mm, so 1 cm³ = 1000 mm³.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Sometimes. It depends on the shape.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "RAT.UNITS.AREA-FACTOR",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "RAT.UNITS.AREA-FACTOR",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this always, sometimes or never true?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Cube the length factor for volume.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "1 cm³ = 10 mm³.",
-      },
-    ],
-  },
-  {
-    "archetype": "always-sometimes-never",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y7-RAT-01.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "C",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -644,19 +519,10 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -664,7 +530,7 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. A 1 cm cube is 10 mm by 10 mm by 10 mm, so 1 cm³ = 1000 mm³.",
+                  "v": "True. 1 litre = 1000 ml, and 1 ml = 1 cm³.",
                 },
               ],
               "id": "RA",
@@ -673,7 +539,7 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends on the shape.",
+                  "v": "False. 1 litre = 100 cm³.",
                 },
               ],
               "id": "RB",
@@ -682,7 +548,7 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. 1 cm = 10 mm.",
+                  "v": "False. Litres and cubic centimetres cannot be compared.",
                 },
               ],
               "id": "RC",
@@ -697,22 +563,14 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "RAT.UNITS.AREA-FACTOR",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "RAT.UNITS.AREA-FACTOR",
+            "code": "RAT.UNITS.DIRECTION",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -722,7 +580,7 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Cube the length factor for volume.",
+            "v": "True. 1 litre = 1000 ml, and 1 ml = 1 cm³.",
           },
         ],
       },
@@ -730,7 +588,115 @@ exports[`Y7-RAT-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "1 cm³ = 10 mm³.",
+        "v": "Tia says 1 litre = 1000 cm³.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y7-RAT-01.b",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 1 litre = 100 cm³.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 1 litre = 1000 ml, and 1 ml = 1 cm³.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Litres and cubic centimetres cannot be compared.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "RAT.UNITS.DIRECTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. 1 litre = 1000 ml, and 1 ml = 1 cm³.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Tia says 1 litre = 1000 cm³.",
       },
     ],
   },

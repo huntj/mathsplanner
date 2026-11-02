@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   meanA: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-STA-01.d",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.RANGE.HIGHER-BETTER", "STA.COMPARE"],
 
@@ -76,25 +77,62 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Team Red's best score was higher than Team Blue's best. Sid says this proves Team Red did better overall.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Team Red's best score was higher than Team Blue's best. Sid says this proves Team Red did better overall.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. One high score says little; compare an average, where Blue's mean of ${p.meanB} beats Red's ${p.meanA}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The team with the highest score always did better.",
+                  code: "STA.COMPARE",
+                },
+                {
+                  text: "True. A bigger range means better scores.",
+                  code: "STA.RANGE.HIGHER-BETTER",
+                },
+              ],
+              solution: [{ say: "Compare an average and a measure of spread, not single values." }],
+            }),
+          [
             {
-              text: `False. One high score says little; compare an average, where Blue's mean of ${p.meanB} beats Red's ${p.meanA}.`,
-              correct: true,
+              statement: `Class A's test marks have a mean of ${p.meanA} and a range of ${p.rangeA}; class B's have a mean of ${p.meanB} and a range of ${p.rangeB}. Ali says class A's marks are more consistent.`,
+              truth: true,
+              right: `True. Class A's smaller range, ${p.rangeA} against ${p.rangeB}, means its marks are closer together.`,
+              wrong: [
+                ["False. The bigger range is more consistent.", "STA.RANGE.HIGHER-BETTER"],
+                ["False. Consistency is decided by the mean.", "STA.COMPARE"],
+              ],
             },
             {
-              text: "True. The team with the highest score always did better.",
-              code: "STA.COMPARE",
+              statement: `Class A's test marks have a mean of ${p.meanA} and a range of ${p.rangeA}; class B's have a mean of ${p.meanB} and a range of ${p.rangeB}. Bea says class A did better on average.`,
+              truth: false,
+              right: `False. Class B's mean, ${p.meanB}, is higher than class A's, ${p.meanA}.`,
+              wrong: [
+                ["True. Class A has the smaller range, so it did better.", "STA.COMPARE"],
+                ["True. Averages are compared using the range.", "STA.COMPARE"],
+              ],
             },
-            { text: "True. A bigger range means better scores.", code: "STA.RANGE.HIGHER-BETTER" },
+            {
+              claim: "The group with the higher mean also has the bigger range.",
+              truth: "sometimes",
+              right:
+                "Sometimes. The mean measures a typical value and the range measures spread, so they can go either way.",
+              wrong: [
+                ["Always. A higher average means more spread.", "STA.COMPARE"],
+                ["Never. A higher mean always goes with a smaller range.", "STA.COMPARE"],
+              ],
+            },
           ],
-          solution: [{ say: "Compare an average and a measure of spread, not single values." }],
-        });
+        );
     }
   },
 

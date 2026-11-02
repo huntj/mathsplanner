@@ -10,7 +10,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-04.a",
-      "version": "1.1.0",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -73,7 +73,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-04.a",
-      "version": "1.1.0",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -136,7 +136,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-04.a",
-      "version": "1.1.0",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -199,7 +199,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-04.a",
-      "version": "1.1.0",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -262,7 +262,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-04.a",
-      "version": "1.1.0",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -325,7 +325,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-04.a",
-      "version": "1.1.0",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -381,14 +381,14 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-04.a",
-      "version": "1.1.0",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -399,14 +399,14 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -415,10 +415,19 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -426,7 +435,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Add the numbers and put the letters together.",
+                  "v": "Always. Three lots of x is 3x, whatever x is.",
                 },
               ],
               "id": "RA",
@@ -435,7 +444,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. a and b are unlike terms, so 4a + 4b cannot be simplified. Try a = 1, b = 2: 4a + 4b = 12, but 8ab = 16.",
+                  "v": "Never. x + x + x = x³.",
                 },
               ],
               "id": "RB",
@@ -444,7 +453,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True, but only when a and b are both positive.",
+                  "v": "Sometimes. Only when x is 3.",
                 },
               ],
               "id": "RC",
@@ -453,28 +462,11 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.LIKE-TERMS.UNLIKE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.LIKE-TERMS.UNLIKE",
-            "feedback": [],
-          },
-        ],
+        "misconceptions": [],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -484,43 +476,27 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Only like terms, with exactly the same letters, can be collected.",
+            "v": "Always. Three lots of x is 3x, whatever x is.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "t": "text",
-        "v": "Sam says ",
-      },
-      {
         "t": "math",
-        "v": "4a + 4b",
-      },
-      {
-        "t": "text",
-        "v": " simplifies to ",
-      },
-      {
-        "t": "math",
-        "v": "8ab",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "x + x + x = 3x",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-04.a",
-      "version": "1.1.0",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -531,14 +507,14 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -547,10 +523,19 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -558,7 +543,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. a and b are unlike terms, so 5a + 2b cannot be simplified. Try a = 1, b = 2: 5a + 2b = 9, but 7ab = 14.",
+                  "v": "Never. x + x + x = x³.",
                 },
               ],
               "id": "RA",
@@ -567,7 +552,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Add the numbers and put the letters together.",
+                  "v": "Sometimes. Only when x is 3.",
                 },
               ],
               "id": "RB",
@@ -576,7 +561,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True, but only when a and b are both positive.",
+                  "v": "Always. Three lots of x is 3x, whatever x is.",
                 },
               ],
               "id": "RC",
@@ -585,28 +570,11 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.LIKE-TERMS.UNLIKE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.LIKE-TERMS.UNLIKE",
-            "feedback": [],
-          },
-        ],
+        "misconceptions": [],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -616,43 +584,27 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Only like terms, with exactly the same letters, can be collected.",
+            "v": "Always. Three lots of x is 3x, whatever x is.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "t": "text",
-        "v": "Sam says ",
-      },
-      {
         "t": "math",
-        "v": "5a + 2b",
-      },
-      {
-        "t": "text",
-        "v": " simplifies to ",
-      },
-      {
-        "t": "math",
-        "v": "7ab",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "x + x + x = 3x",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-04.a",
-      "version": "1.1.0",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -663,14 +615,14 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -679,10 +631,19 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -690,7 +651,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. a and b are unlike terms, so 8a + 9b cannot be simplified. Try a = 1, b = 2: 8a + 9b = 26, but 17ab = 34.",
+                  "v": "Always. Three lots of x is 3x, whatever x is.",
                 },
               ],
               "id": "RA",
@@ -699,7 +660,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True, but only when a and b are both positive.",
+                  "v": "Never. x + x + x = x³.",
                 },
               ],
               "id": "RB",
@@ -708,7 +669,7 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Add the numbers and put the letters together.",
+                  "v": "Sometimes. Only when x is 3.",
                 },
               ],
               "id": "RC",
@@ -717,28 +678,11 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.LIKE-TERMS.UNLIKE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.LIKE-TERMS.UNLIKE",
-            "feedback": [],
-          },
-        ],
+        "misconceptions": [],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -748,31 +692,15 @@ exports[`Y7-ALG-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Only like terms, with exactly the same letters, can be collected.",
+            "v": "Always. Three lots of x is 3x, whatever x is.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "t": "text",
-        "v": "Sam says ",
-      },
-      {
         "t": "math",
-        "v": "8a + 9b",
-      },
-      {
-        "t": "text",
-        "v": " simplifies to ",
-      },
-      {
-        "t": "math",
-        "v": "17ab",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "x + x + x = 3x",
       },
     ],
   },

@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { gcdOf } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   g: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-04.d",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.FACTOR.LCM-PRODUCT", "NPV.FACTOR.HCF-LCM"],
 
@@ -83,23 +84,61 @@ export default defineGenerator<Params>({
           solution: [{ say: "", math: `\\text{LCM}(${a}, ${b}) = ${lcm}` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [`Max says the lowest common multiple of ${a} and ${b} is ${p.g}.`],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [`Max says the lowest common multiple of ${a} and ${b} is ${p.g}.`],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${p.g} is the highest common factor. A common multiple must be at least as big as both numbers: the LCM is ${lcm}.`,
+                  correct: true,
+                },
+                { text: `True. ${p.g} goes into both numbers.`, code: "NPV.FACTOR.HCF-LCM" },
+                {
+                  text: "True. The lowest common multiple is the smallest number in common.",
+                  code: "NPV.FACTOR.HCF-LCM",
+                },
+              ],
+              solution: [{ say: "Factors go into a number; multiples are in its times table." }],
+            }),
+          [
             {
-              text: `False. ${p.g} is the highest common factor. A common multiple must be at least as big as both numbers: the LCM is ${lcm}.`,
-              correct: true,
+              statement: `Lou says the LCM of ${p.g * p.x} and ${p.g * p.y} is ${p.g * p.x * p.y}.`,
+              truth: true,
+              right: `True. ${p.g * p.x * p.y} is in both times tables (${p.g * p.x} × ${p.y} and ${p.g * p.y} × ${p.x}), and no smaller number is.`,
+              wrong: [
+                [
+                  `False. It is ${p.g * p.x * p.g * p.y}, the two numbers multiplied.`,
+                  "NPV.FACTOR.LCM-PRODUCT",
+                ],
+                [`False. It is ${p.g}.`, "NPV.FACTOR.HCF-LCM"],
+              ],
             },
-            { text: `True. ${p.g} goes into both numbers.`, code: "NPV.FACTOR.HCF-LCM" },
             {
-              text: "True. The lowest common multiple is the smallest number in common.",
-              code: "NPV.FACTOR.HCF-LCM",
+              claim: "The LCM of two numbers is the two numbers multiplied together.",
+              truth: "sometimes",
+              right:
+                "Sometimes. The LCM of 3 and 4 is 12 = 3 × 4, but the LCM of 4 and 6 is 12, not 24.",
+              wrong: [
+                ["Always. Multiply the numbers to find the LCM.", "NPV.FACTOR.LCM-PRODUCT"],
+                ["Never. The LCM is always smaller than both numbers.", "NPV.FACTOR.HCF-LCM"],
+              ],
+            },
+            {
+              claim: "The LCM of two whole numbers is smaller than both of them.",
+              truth: "never",
+              right:
+                "Never. A common multiple is in both times tables, so it is at least as big as the larger number.",
+              wrong: [
+                ["Always. Lowest means smallest.", "NPV.FACTOR.HCF-LCM"],
+                ["Sometimes. When the numbers share a factor.", "NPV.FACTOR.HCF-LCM"],
+              ],
             },
           ],
-          solution: [{ say: "Factors go into a number; multiples are in its times table." }],
-        });
+        );
     }
   },
 

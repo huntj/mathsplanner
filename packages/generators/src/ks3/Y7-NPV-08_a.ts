@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   i: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-08.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.ROUND.ALWAYS-DOWN", "NPV.ROUND.WRONG-PLACE"],
 
@@ -68,27 +69,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Mia says ",
-            A.math(`${p.i}.9${p.d2}`),
-            ` rounded to 1 decimal place is ${p.i}.10.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Mia says ",
+                A.math(`${p.i}.9${p.d2}`),
+                ` rounded to 1 decimal place is ${p.i}.10.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. 9 tenths rounds up to 10 tenths, which is 1 whole: the answer is ${p.i + 1}.0.`,
+                  correct: true,
+                },
+                { text: "True. The 9 becomes 10.", code: "NPV.ROUND.WRONG-PLACE" },
+                {
+                  text: `False. It is ${p.i}.9, since you always round down.`,
+                  code: "NPV.ROUND.ALWAYS-DOWN",
+                },
+              ],
+              solution: [{ say: "", math: `${p.i}.9${p.d2} \\approx ${p.i + 1}.0` }],
+            }),
+          [
             {
-              text: `False. 9 tenths rounds up to 10 tenths, which is 1 whole: the answer is ${p.i + 1}.0.`,
-              correct: true,
+              statement: `Ana says ${p.i}.${p.d1}${p.d2} rounded to 1 decimal place is ${p.i}.${p.d1 + 1}.`,
+              truth: true,
+              right: `True. The hundredths digit is ${p.d2}, which is 5 or more, so the tenths digit goes up.`,
+              wrong: [
+                [`False. It is ${p.i}.${p.d1}, as you always round down.`, "NPV.ROUND.ALWAYS-DOWN"],
+                ["False. Look at the whole-number digit to decide.", "NPV.ROUND.WRONG-PLACE"],
+              ],
             },
-            { text: "True. The 9 becomes 10.", code: "NPV.ROUND.WRONG-PLACE" },
             {
-              text: `False. It is ${p.i}.9, since you always round down.`,
-              code: "NPV.ROUND.ALWAYS-DOWN",
+              statement: `Ben says ${p.i}.${p.d1}2 rounded to 1 decimal place is ${p.i}.${p.d1 + 1}.`,
+              truth: false,
+              right: `False. The hundredths digit is 2, less than 5, so it rounds down to ${p.i}.${p.d1}.`,
+              wrong: [
+                ["True. Rounding always goes up.", "NPV.ROUND.ALWAYS-DOWN"],
+                ["True. Any digit after the point makes it round up."],
+              ],
+            },
+            {
+              claim: "Rounding a number to 1 decimal place makes it bigger.",
+              truth: "sometimes",
+              right: "Sometimes. 3.47 rounds up to 3.5, but 3.42 rounds down to 3.4.",
+              wrong: [
+                ["Always. Rounding goes up.", "NPV.ROUND.ALWAYS-DOWN"],
+                ["Never. Rounding always goes down.", "NPV.ROUND.ALWAYS-DOWN"],
+              ],
             },
           ],
-          solution: [{ say: "", math: `${p.i}.9${p.d2} \\approx ${p.i + 1}.0` }],
-        });
+        );
     }
   },
 

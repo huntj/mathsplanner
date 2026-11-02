@@ -10,7 +10,7 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -75,7 +75,7 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -140,7 +140,7 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -205,7 +205,7 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -270,7 +270,7 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -335,7 +335,7 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -393,14 +393,14 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -411,131 +411,14 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Always true",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Sometimes true",
-                },
-              ],
-              "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Always. You can square each part separately.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Sometimes. It works only if a or b is 0. With a = 3 and b = 4: 25 is not 49.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never. The two sides can never be equal.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.ORDER.LEFT-TO-RIGHT",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this always, sometimes or never true?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Brackets first: (a + b)² squares the whole sum.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "math",
-        "v": "a^2 + b^2 = (a + b)^2",
-      },
-    ],
-  },
-  {
-    "archetype": "always-sometimes-never",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y7-NPV-05.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -544,19 +427,10 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -564,7 +438,7 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. You can square each part separately.",
+                  "v": "False. 2² is 4, so it is 10.",
                 },
               ],
               "id": "RA",
@@ -573,7 +447,7 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The two sides can never be equal.",
+                  "v": "False. Add first: (6 + 2)² = 64.",
                 },
               ],
               "id": "RB",
@@ -582,7 +456,123 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It works only if a or b is 0. With a = 5 and b = 4: 41 is not 81.",
+                  "v": "True. Powers come before adding: 2² = 4, then add 6.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.ORDER.LEFT-TO-RIGHT",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. Powers come before adding: 2² = 4, then add 6.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Lou says ",
+      },
+      {
+        "t": "math",
+        "v": "6 + 2^2 = 10",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y7-NPV-05.b",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Add first: (3 + 3)² = 36.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 3² is 6, so it is 9.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Powers come before adding: 3² = 9, then add 3.",
                 },
               ],
               "id": "RC",
@@ -604,7 +594,7 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -614,15 +604,23 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Brackets first: (a + b)² squares the whole sum.",
+            "v": "True. Powers come before adding: 3² = 9, then add 3.",
           },
         ],
       },
     ],
     "stem": [
       {
+        "t": "text",
+        "v": "Lou says ",
+      },
+      {
         "t": "math",
-        "v": "a^2 + b^2 = (a + b)^2",
+        "v": "3 + 3^2 = 12",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
@@ -634,7 +632,7 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -645,8 +643,8 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -681,7 +679,7 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The two sides can never be equal.",
+                  "v": "Always. For a positive number, squaring and then square-rooting gets you back where you started.",
                 },
               ],
               "id": "RA",
@@ -690,7 +688,7 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It works only if a or b is 0. With a = 5 and b = 6: 61 is not 121.",
+                  "v": "Sometimes. Only when a is a square number.",
                 },
               ],
               "id": "RB",
@@ -699,7 +697,7 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. You can square each part separately.",
+                  "v": "Never. A square root halves the number.",
                 },
               ],
               "id": "RC",
@@ -708,16 +706,7 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.ORDER.LEFT-TO-RIGHT",
-            "feedback": [],
-          },
-        ],
+        "misconceptions": [],
         "prompt": [
           {
             "t": "text",
@@ -731,7 +720,7 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Brackets first: (a + b)² squares the whole sum.",
+            "v": "Always. For a positive number, squaring and then square-rooting gets you back where you started.",
           },
         ],
       },
@@ -739,7 +728,19 @@ exports[`Y7-NPV-05.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "math",
-        "v": "a^2 + b^2 = (a + b)^2",
+        "v": "\\sqrt{a^2} = a",
+      },
+      {
+        "t": "text",
+        "v": ", for any positive number ",
+      },
+      {
+        "t": "math",
+        "v": "a",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },

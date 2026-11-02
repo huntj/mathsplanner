@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   temps: number[];
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-STA-01.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.NEGATIVE.SUBTRACT-NEGATIVE", "STA.MEDIAN.UNORDERED"],
 
@@ -75,23 +76,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["The range of a set of data can be negative."],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["The range of a set of data can be negative."],
+              truth: "never",
+              reasons: [
+                {
+                  text: "Never. The range is the largest value minus the smallest, which is never less than 0, even when the values are negative.",
+                  correct: true,
+                },
+                {
+                  text: "Sometimes. When the data has negative numbers.",
+                  code: "NPV.NEGATIVE.SUBTRACT-NEGATIVE",
+                },
+                { text: "Always. Subtracting gives a negative.", code: "STA.MEDIAN.UNORDERED" },
+              ],
+              solution: [{ say: "The range measures spread, a distance, so it is 0 or more." }],
+            }),
+          [
             {
-              text: "Never. The range is the largest value minus the smallest, which is never less than 0, even when the values are negative.",
-              correct: true,
+              statement: `The temperatures were ${p.temps.join(", ")} °C. Nia says the range is ${Math.max(...p.temps) - Math.min(...p.temps)} degrees.`,
+              truth: true,
+              right: `True. ${Math.max(...p.temps)} − (${Math.min(...p.temps)}) = ${Math.max(...p.temps) - Math.min(...p.temps)}: subtracting a negative adds.`,
+              wrong: [
+                [
+                  `False. It is ${Math.max(...p.temps) + Math.min(...p.temps)}.`,
+                  "NPV.NEGATIVE.SUBTRACT-NEGATIVE",
+                ],
+                ["False. The range is the last value minus the first.", "STA.MEDIAN.UNORDERED"],
+              ],
             },
             {
-              text: "Sometimes. When the data has negative numbers.",
-              code: "NPV.NEGATIVE.SUBTRACT-NEGATIVE",
+              statement: `Ola says the range of ${p.list.join(", ")} is ${(p.list[5] ?? 0) - (p.list[0] ?? 0)}, the last value minus the first.`,
+              truth: false,
+              right: `False. Use the largest and smallest values: ${Math.max(...p.list)} − ${Math.min(...p.list)} = ${Math.max(...p.list) - Math.min(...p.list)}.`,
+              wrong: [
+                ["True. The range is the last value minus the first.", "STA.MEDIAN.UNORDERED"],
+                ["True. Data is always given in order."],
+              ],
             },
-            { text: "Always. Subtracting gives a negative.", code: "STA.MEDIAN.UNORDERED" },
+            {
+              claim: "Adding a new value to a set of data changes its range.",
+              truth: "sometimes",
+              right:
+                "Sometimes. A value bigger than the largest or smaller than the smallest changes it; one in between does not.",
+              wrong: [
+                ["Always. More data means a bigger range."],
+                [
+                  "Never. The range only depends on the first and last values.",
+                  "STA.MEDIAN.UNORDERED",
+                ],
+              ],
+            },
           ],
-          solution: [{ say: "The range measures spread, a distance, so it is 0 or more." }],
-        });
+        );
     }
   },
 

@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   p: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-02.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.COMPARE.SIGN-DIRECTION", "NPV.DECIMAL.LONGER-BIGGER", "NPV.NEGATIVE.ORDER"],
 
@@ -70,26 +71,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["If ", A.math("a < b"), ", then ", A.math("b > a"), "."],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["If ", A.math("a < b"), ", then ", A.math("b > a"), "."],
+              truth: "always",
+              reasons: [
+                {
+                  text: `Always. Both say the same thing: a is the smaller number. For example ${p.y} < ${p.x} and ${p.x} > ${p.y}.`,
+                  correct: true,
+                },
+                {
+                  text: "Never. Swapping the numbers means swapping to the other answer.",
+                  code: "NPV.COMPARE.SIGN-DIRECTION",
+                },
+                {
+                  text: "Sometimes. Only when both numbers are positive.",
+                  code: "NPV.COMPARE.SIGN-DIRECTION",
+                },
+              ],
+              solution: [{ say: "The sign always opens towards the larger number." }],
+            }),
+          [
             {
-              text: `Always. Both say the same thing: a is the smaller number. For example ${p.y} < ${p.x} and ${p.x} > ${p.y}.`,
-              correct: true,
+              statement: `Raj says $-${p.x} > -${p.y}$.`,
+              truth: false,
+              right: `False. −${p.x} is further below zero than −${p.y}, so −${p.x} < −${p.y}.`,
+              wrong: [
+                [`True. ${p.x} > ${p.y}, so the negatives go the same way.`, "NPV.NEGATIVE.ORDER"],
+                [
+                  "True. Bigger digits make bigger numbers, whatever the sign.",
+                  "NPV.NEGATIVE.ORDER",
+                ],
+              ],
             },
             {
-              text: "Never. Swapping the numbers means swapping to the other answer.",
-              code: "NPV.COMPARE.SIGN-DIRECTION",
+              statement: `Mo says $${p.y} \\le ${p.y}$ is true.`,
+              truth: true,
+              right: `True. ≤ means less than or equal to, and ${p.y} is equal to ${p.y}.`,
+              wrong: [
+                ["False. A number cannot be less than itself.", "NPV.COMPARE.SIGN-DIRECTION"],
+                ["False. ≤ only compares two different numbers.", "NPV.COMPARE.SIGN-DIRECTION"],
+              ],
             },
             {
-              text: "Sometimes. Only when both numbers are positive.",
-              code: "NPV.COMPARE.SIGN-DIRECTION",
+              claim: "If $a \\ne b$, then $a > b$.",
+              truth: "sometimes",
+              right:
+                "Sometimes. a ≠ b only says the numbers are different: 5 ≠ 3 with 5 > 3, but 3 ≠ 5 with 3 < 5.",
+              wrong: [
+                ["Always. ≠ means greater than.", "NPV.COMPARE.SIGN-DIRECTION"],
+                ["Never. ≠ means less than.", "NPV.COMPARE.SIGN-DIRECTION"],
+              ],
             },
           ],
-          solution: [{ say: "The sign always opens towards the larger number." }],
-        });
+        );
     }
   },
 

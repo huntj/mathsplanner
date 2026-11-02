@@ -10,7 +10,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-RAT-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -69,7 +69,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-RAT-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -128,7 +128,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-RAT-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -187,7 +187,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-RAT-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -246,7 +246,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-RAT-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -300,7 +300,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-RAT-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -352,14 +352,14 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-RAT-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -370,14 +370,14 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -386,10 +386,19 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -397,7 +406,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Put the first amount over the second.",
+                  "v": "Always. Otherwise you compare different-sized units, like pence with pounds.",
                 },
               ],
               "id": "RA",
@@ -406,7 +415,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. £5 is 500p, so it is 40/500 = 2/25.",
+                  "v": "Never. Fractions do not have units.",
                 },
               ],
               "id": "RB",
@@ -415,7 +424,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Pence and pounds can be mixed in a fraction.",
+                  "v": "Sometimes. Only for lengths.",
                 },
               ],
               "id": "RC",
@@ -427,7 +436,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "RAT.FRACTION.UNITS",
@@ -445,7 +454,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -455,7 +464,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Use the same units on the top and the bottom.",
+            "v": "Always. Otherwise you compare different-sized units, like pence with pounds.",
           },
         ],
       },
@@ -463,15 +472,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Fay says 40p as a fraction of £5 is ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{40}{5}",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "To write one quantity as a fraction of another, both must be in the same units.",
       },
     ],
   },
@@ -483,7 +484,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-RAT-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -494,7 +495,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -521,7 +522,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Put the first amount over the second.",
+                  "v": "False. It is 50/1.",
                 },
               ],
               "id": "RA",
@@ -530,7 +531,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. £5 is 500p, so it is 60/500 = 3/25.",
+                  "v": "True. 1 m = 100 cm, so it is 50 out of 100.",
                 },
               ],
               "id": "RB",
@@ -539,7 +540,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Pence and pounds can be mixed in a fraction.",
+                  "v": "False. It is 50/10.",
                 },
               ],
               "id": "RC",
@@ -579,7 +580,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Use the same units on the top and the bottom.",
+            "v": "True. 1 m = 100 cm, so it is 50 out of 100.",
           },
         ],
       },
@@ -587,11 +588,11 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Fay says 60p as a fraction of £5 is ",
+        "v": "Jas says 50 cm as a fraction of 1 m is ",
       },
       {
         "t": "math",
-        "v": "\\frac{60}{5}",
+        "v": "\\frac{50}{100}",
       },
       {
         "t": "text",
@@ -600,14 +601,14 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-RAT-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -618,14 +619,14 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -634,10 +635,19 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -645,7 +655,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Put the first amount over the second.",
+                  "v": "Never. Fractions do not have units.",
                 },
               ],
               "id": "RA",
@@ -654,7 +664,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Pence and pounds can be mixed in a fraction.",
+                  "v": "Always. Otherwise you compare different-sized units, like pence with pounds.",
                 },
               ],
               "id": "RB",
@@ -663,7 +673,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. £2 is 200p, so it is 40/200 = 1/5.",
+                  "v": "Sometimes. Only for lengths.",
                 },
               ],
               "id": "RC",
@@ -683,7 +693,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "RAT.FRACTION.UNITS",
@@ -693,7 +703,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -703,7 +713,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Use the same units on the top and the bottom.",
+            "v": "Always. Otherwise you compare different-sized units, like pence with pounds.",
           },
         ],
       },
@@ -711,15 +721,7 @@ exports[`Y7-RAT-04.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Fay says 40p as a fraction of £2 is ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{40}{2}",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "To write one quantity as a fraction of another, both must be in the same units.",
       },
     ],
   },

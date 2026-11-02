@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { exactAnswer } from "../shared/counting.ts";
 import { gcdOf } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   d: number;
@@ -21,7 +22,7 @@ const mixed = (m: number, n: number, d: number) => `${m}\\frac{${n}}{${d}}`;
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-03.d",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["FR.ADD.TOPS-AND-BOTTOMS", "FR.MIXED.CONVERT"],
 
@@ -106,32 +107,74 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Tom says ",
-            A.math(`${mixed(p.m2, p.n2, p.d)} \\times 2 = ${mixed(2 * p.m2, p.n2, p.d)}`),
-            ".",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Tom says ",
+                A.math(`${mixed(p.m2, p.n2, p.d)} \\times 2 = ${mixed(2 * p.m2, p.n2, p.d)}`),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The fraction part must be doubled too: ${2 * p.m2} wholes and ${2 * p.n2}/${p.d}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Double the whole number and keep the fraction.",
+                  code: "FR.MIXED.CONVERT",
+                },
+                {
+                  text: "True. Fractions do not change when you multiply.",
+                  code: "FR.MIXED.CONVERT",
+                },
+              ],
+              solution: [
+                {
+                  say: "",
+                  math: `\\frac{${p.m2 * p.d + p.n2}}{${p.d}} \\times 2 = ${toLatex(frac(2 * (p.m2 * p.d + p.n2), p.d))}`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. The fraction part must be doubled too: ${2 * p.m2} wholes and ${2 * p.n2}/${p.d}.`,
-              correct: true,
+              statement: `Lily says $${mixed(p.m1, p.n1, p.d)} = \\frac{${p.m1 * p.d + p.n1}}{${p.d}}$.`,
+              truth: true,
+              right: `True. ${p.m1} wholes make ${p.m1 * p.d} parts of size 1/${p.d}; with ${p.n1} more, that is ${p.m1 * p.d + p.n1}/${p.d}.`,
+              wrong: [
+                [`False. It is ${p.m1 + p.n1}/${p.d}.`, "FR.MIXED.CONVERT"],
+                [
+                  `False. The whole number goes on the bottom: ${p.n1}/${p.m1 + p.d}.`,
+                  "FR.MIXED.CONVERT",
+                ],
+              ],
             },
             {
-              text: "True. Double the whole number and keep the fraction.",
-              code: "FR.MIXED.CONVERT",
+              claim: "A mixed number is bigger than 1.",
+              truth: "always",
+              right: "Always. A mixed number is at least one whole, plus a fraction on top.",
+              wrong: [
+                ["Sometimes. Only when the fraction part is more than a half.", "FR.MIXED.CONVERT"],
+                ["Never. Anything with a fraction in it is less than 1."],
+              ],
             },
-            { text: "True. Fractions do not change when you multiply.", code: "FR.MIXED.CONVERT" },
-          ],
-          solution: [
             {
-              say: "",
-              math: `\\frac{${p.m2 * p.d + p.n2}}{${p.d}} \\times 2 = ${toLatex(frac(2 * (p.m2 * p.d + p.n2), p.d))}`,
+              statement: `Raj says $${mixed(p.m1, p.n1, p.d)} + ${mixed(p.m2, p.n2, p.d)} = ${mixed(p.m1 + p.m2, p.n1 + p.n2, 2 * p.d)}$.`,
+              truth: false,
+              right: `False. Keep the denominator: ${p.n1}/${p.d} + ${p.n2}/${p.d} = ${p.n1 + p.n2}/${p.d}, which is more than 1, so the total is ${p.m1 + p.m2 + 1} and ${p.n1 + p.n2 - p.d}/${p.d}.`,
+              wrong: [
+                [
+                  "True. Add the wholes, add the tops and add the bottoms.",
+                  "FR.ADD.TOPS-AND-BOTTOMS",
+                ],
+                ["True. Fractions are added the same way as whole numbers."],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

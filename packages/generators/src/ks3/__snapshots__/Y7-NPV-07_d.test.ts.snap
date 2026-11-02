@@ -10,7 +10,7 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-07.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -106,7 +106,7 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-07.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -202,7 +202,7 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-07.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -298,7 +298,7 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-07.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -363,7 +363,7 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-07.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -428,7 +428,7 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-07.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -493,7 +493,7 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-07.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -505,7 +505,7 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -536,6 +536,15 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
             },
           ],
           "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. Square roots are always decimals.",
+                },
+              ],
+              "id": "RA",
+            },
             {
               "content": [
                 {
@@ -543,15 +552,6 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
                   "v": "Sometimes. √16 = 4, but √22 is about 4.69, which never ends or repeats.",
                 },
               ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never. Square roots are always decimals.",
-                },
-              ],
               "id": "RB",
             },
             {
@@ -603,14 +603,14 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-07.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -621,14 +621,14 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -637,19 +637,10 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -657,7 +648,7 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. √9 = 3, but √13 is about 3.606, which never ends or repeats.",
+                  "v": "True. 3² = 9 and 4² = 16, and 13 is between them.",
                 },
               ],
               "id": "RA",
@@ -666,7 +657,7 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Calculators show a whole number when you round.",
+                  "v": "False. The square root of a whole number is always whole.",
                 },
               ],
               "id": "RB",
@@ -675,7 +666,7 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Square roots are always decimals.",
+                  "v": "False. It is 13 ÷ 2.",
                 },
               ],
               "id": "RC",
@@ -697,7 +688,7 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -707,7 +698,7 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Only square numbers have whole-number square roots.",
+            "v": "True. 3² = 9 and 4² = 16, and 13 is between them.",
           },
         ],
       },
@@ -715,19 +706,27 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The square root of a whole number is a whole number.",
+        "v": "Ivy says ",
+      },
+      {
+        "t": "math",
+        "v": "\\sqrt{13}",
+      },
+      {
+        "t": "text",
+        "v": " is between 3 and 4.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-07.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -745,7 +744,7 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -754,19 +753,10 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -774,7 +764,7 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. √1 = 1, but √3 is about 1.732, which never ends or repeats.",
+                  "v": "False. 1.732 is rounded: 1.732 × 1.732 is close to 3 but not exactly 3. √3 is a decimal that never ends or repeats.",
                 },
               ],
               "id": "RA",
@@ -783,7 +773,7 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Calculators show a whole number when you round.",
+                  "v": "True. The calculator shows it, so it is exact.",
                 },
               ],
               "id": "RB",
@@ -792,7 +782,7 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Square roots are always decimals.",
+                  "v": "True. A square root always stops after three decimal places.",
                 },
               ],
               "id": "RC",
@@ -810,11 +800,19 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
             "code": "NPV.ROOT.EXACT-DECIMAL",
             "feedback": [],
           },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.ROOT.EXACT-DECIMAL",
+            "feedback": [],
+          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -824,7 +822,7 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Only square numbers have whole-number square roots.",
+            "v": "False. 1.732 is rounded: 1.732 × 1.732 is close to 3 but not exactly 3. √3 is a decimal that never ends or repeats.",
           },
         ],
       },
@@ -832,7 +830,15 @@ exports[`Y7-NPV-07.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The square root of a whole number is a whole number.",
+        "v": "Hal says ",
+      },
+      {
+        "t": "math",
+        "v": "\\sqrt{3}",
+      },
+      {
+        "t": "text",
+        "v": " is exactly 1.732.",
       },
     ],
   },

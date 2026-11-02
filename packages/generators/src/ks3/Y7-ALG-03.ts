@@ -8,6 +8,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 type Kind = "expression" | "equation" | "inequality" | "formula";
 
@@ -35,7 +36,7 @@ const NAMES: Record<Kind, string> = {
 
 export default defineGenerator<Params>({
   id: "Y7-ALG-03",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.VOCAB"],
 
@@ -94,20 +95,57 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Ana says ", A.math(ex.expression), " is an equation."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Ana says ", A.math(ex.expression), " is an equation."],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. It has no = sign, so it is an expression. It cannot be solved, only simplified or evaluated.",
+                  correct: true,
+                },
+                { text: "True. Anything with a letter in it is an equation.", code: "ALG.VOCAB" },
+                { text: "True. It has a number and a letter." },
+              ],
+              solution: [
+                { say: `${ex.expression} is an expression; ${ex.equation} is an equation.` },
+              ],
+            }),
+          [
             {
-              text: "False. It has no = sign, so it is an expression. It cannot be solved, only simplified or evaluated.",
-              correct: true,
+              statement: "Ana says $3x + 5 = 20$ is an equation.",
+              truth: true,
+              right: "True. It has an = sign, and it can be solved to find x.",
+              wrong: [
+                ["False. It has a letter in it, so it is a formula.", "ALG.VOCAB"],
+                ["False. An equation has no numbers in it.", "ALG.VOCAB"],
+              ],
             },
-            { text: "True. Anything with a letter in it is an equation.", code: "ALG.VOCAB" },
-            { text: "True. It has a number and a letter." },
+            {
+              claim: "An expression has an = sign.",
+              truth: "never",
+              right:
+                "Never. An expression such as 3x + 5 has no = sign; put one in and it becomes an equation.",
+              wrong: [
+                ["Always. All algebra has an = sign.", "ALG.VOCAB"],
+                ["Sometimes. When it has more than one term.", "ALG.VOCAB"],
+              ],
+            },
+            {
+              statement: "Tim says $3x + 5$ has three terms: 3, x and 5.",
+              truth: false,
+              right:
+                "False. It has two terms, 3x and 5. The 3 is the coefficient of x, part of the term 3x.",
+              wrong: [
+                ["True. Every number and every letter is a term.", "ALG.VOCAB"],
+                ["True. Count the symbols to find the terms.", "ALG.VOCAB"],
+              ],
+            },
           ],
-          solution: [{ say: `${ex.expression} is an expression; ${ex.equation} is an equation.` }],
-        });
+        );
     }
   },
 

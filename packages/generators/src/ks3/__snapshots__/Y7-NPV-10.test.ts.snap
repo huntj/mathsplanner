@@ -10,7 +10,7 @@ exports[`Y7-NPV-10 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-10",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": true,
@@ -93,7 +93,7 @@ exports[`Y7-NPV-10 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-10",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": true,
@@ -176,7 +176,7 @@ exports[`Y7-NPV-10 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-10",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": true,
@@ -259,7 +259,7 @@ exports[`Y7-NPV-10 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-10",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": true,
@@ -368,7 +368,7 @@ exports[`Y7-NPV-10 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-10",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": true,
@@ -477,7 +477,7 @@ exports[`Y7-NPV-10 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-10",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": true,
@@ -586,7 +586,7 @@ exports[`Y7-NPV-10 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-10",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": true,
@@ -702,126 +702,10 @@ exports[`Y7-NPV-10 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-10",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
-      "calculator": true,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False: write the full answer, 9.75.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Only 9 boxes can be filled; there are not enough eggs for another.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True: round to the nearest whole number.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.CALC.ROUND-CONTEXT",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "234 ÷ 24 = 9.75. Only full boxes count, so round down: 9 full boxes.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "A farm has 234 eggs to pack into boxes of 24. For 234 ÷ 24 the calculator shows ",
-      },
-      {
-        "t": "math",
-        "v": "9.75",
-      },
-      {
-        "t": "text",
-        "v": ". Jo says the answer is 10 full boxes.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y7-NPV-10",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": true,
+      "calculator": false,
       "marks": 2,
       "minutes": 2,
       "tags": [],
@@ -856,7 +740,7 @@ exports[`Y7-NPV-10 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False: you must always round to the nearest whole number.",
+                  "v": "False. It means £425.",
                 },
               ],
               "id": "RA",
@@ -865,7 +749,7 @@ exports[`Y7-NPV-10 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False: write the full answer, 57.5625.",
+                  "v": "False. It means £4 and 2.5p.",
                 },
               ],
               "id": "RB",
@@ -874,7 +758,124 @@ exports[`Y7-NPV-10 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 57 coaches would leave people behind, so round up.",
+                  "v": "True. The two digits after the point are pence: 4 pounds and 25 pence.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.CALC.MONEY",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. The two digits after the point are pence: 4 pounds and 25 pence.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A calculator shows 4.25 for an amount in pounds. Lia says it means £4.25.",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y7-NPV-10",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. Answers in real life are whole numbers.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. 31.2 coaches means 32 coaches, rounded up; 7.8 full boxes means 7, rounded down; and £3.75 is not rounded at all.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. Always write every digit the calculator shows.",
                 },
               ],
               "id": "RC",
@@ -896,7 +897,7 @@ exports[`Y7-NPV-10 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -906,7 +907,7 @@ exports[`Y7-NPV-10 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "921 ÷ 16 = 57.5625. Everyone needs a seat, so round up: 58 coaches.",
+            "v": "Sometimes. 31.2 coaches means 32 coaches, rounded up; 7.8 full boxes means 7, rounded down; and £3.75 is not rounded at all.",
           },
         ],
       },
@@ -914,15 +915,7 @@ exports[`Y7-NPV-10 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "921 people are going on a trip. Each coach holds 16 people. For 921 ÷ 16 the calculator shows ",
-      },
-      {
-        "t": "math",
-        "v": "57.5625",
-      },
-      {
-        "t": "text",
-        "v": ". Jo says the answer is 58 coaches.",
+        "v": "When a calculator answer is a decimal, you round it to the nearest whole number.",
       },
     ],
   },
@@ -934,7 +927,7 @@ exports[`Y7-NPV-10 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-10",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": true,
@@ -1035,7 +1028,7 @@ exports[`Y7-NPV-10 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-10",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": true,
@@ -1136,7 +1129,7 @@ exports[`Y7-NPV-10 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-10",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": true,

@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const FRACTIONS: [number, number][] = [
   [1, 4],
@@ -31,7 +32,7 @@ const r = (v: number) => Number(v.toFixed(6));
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-02.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.DECIMAL.LONGER-BIGGER", "FR.DECIMAL.DIGITS"],
 
@@ -102,26 +103,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Rob says ",
-            A.math("-\\frac{1}{2}"),
-            " is less than ",
-            A.math("-\\frac{1}{4}"),
-            ".",
-          ],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Rob says ",
+                A.math("-\\frac{1}{2}"),
+                " is less than ",
+                A.math("-\\frac{1}{4}"),
+                ".",
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. −½ = −0.5 is further below zero than −¼ = −0.25, so it is smaller.",
+                  correct: true,
+                },
+                {
+                  text: "False. A half is bigger than a quarter.",
+                  code: "NPV.DECIMAL.LONGER-BIGGER",
+                },
+                { text: "False. They are the same distance from zero." },
+              ],
+              solution: [{ say: "For negative numbers, the one further from zero is smaller." }],
+            }),
+          [
             {
-              text: "True. −½ = −0.5 is further below zero than −¼ = −0.25, so it is smaller.",
-              correct: true,
+              statement: "Ben says $0.35$ is bigger than $0.4$ because it has more digits.",
+              truth: false,
+              right: "False. 0.4 = 0.40, and 40 hundredths is more than 35 hundredths.",
+              wrong: [
+                ["True. More digits make a bigger number.", "NPV.DECIMAL.LONGER-BIGGER"],
+                ["True. 35 is bigger than 4.", "FR.DECIMAL.DIGITS"],
+              ],
             },
-            { text: "False. A half is bigger than a quarter.", code: "NPV.DECIMAL.LONGER-BIGGER" },
-            { text: "False. They are the same distance from zero." },
+            {
+              claim: "A decimal with more decimal places is smaller.",
+              truth: "sometimes",
+              right:
+                "Sometimes. 0.25 is smaller than 0.3, but 0.75 is bigger than 0.5. Compare the tenths first, then the hundredths.",
+              wrong: [
+                ["Always. More decimal places means smaller parts.", "FR.DECIMAL.DIGITS"],
+                ["Never. More digits always make a bigger number.", "NPV.DECIMAL.LONGER-BIGGER"],
+              ],
+            },
+            {
+              statement: "Cara says $\\frac{3}{4}$ is bigger than $0.7$.",
+              truth: true,
+              right: "True. ¾ = 0.75, and 0.75 is bigger than 0.70.",
+              wrong: [
+                ["False. 0.7 has a 7, which is bigger than 3 and 4.", "FR.DECIMAL.DIGITS"],
+                ["False. A fraction is always smaller than a decimal."],
+              ],
+            },
           ],
-          solution: [{ say: "For negative numbers, the one further from zero is smaller." }],
-        });
+        );
     }
   },
 

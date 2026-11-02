@@ -10,7 +10,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -75,7 +75,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -140,7 +140,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -205,7 +205,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -283,7 +283,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -361,7 +361,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -439,7 +439,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -477,7 +477,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You always add before you subtract.",
+                  "v": "True. Brackets do not change additions and subtractions.",
                 },
               ],
               "id": "RA",
@@ -495,7 +495,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Brackets do not change additions and subtractions.",
+                  "v": "True. You always add before you subtract.",
                 },
               ],
               "id": "RC",
@@ -571,7 +571,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -582,8 +582,8 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -609,7 +609,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You always add before you subtract.",
+                  "v": "True. Multiply before adding: 3 × 7 = 21, then 4 + 21 = 25.",
                 },
               ],
               "id": "RA",
@@ -618,7 +618,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Brackets do not change additions and subtractions.",
+                  "v": "False. Adding always comes before multiplying.",
                 },
               ],
               "id": "RB",
@@ -627,7 +627,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Without brackets you subtract 3 then add 7, giving 74. With brackets you subtract both, giving 60.",
+                  "v": "False. Work from left to right: 7 × 7 = 49.",
                 },
               ],
               "id": "RC",
@@ -639,7 +639,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.ORDER.LEFT-TO-RIGHT",
@@ -647,7 +647,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.ORDER.LEFT-TO-RIGHT",
@@ -667,7 +667,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Adding and subtracting go left to right; brackets change that order.",
+            "v": "True. Multiply before adding: 3 × 7 = 21, then 4 + 21 = 25.",
           },
         ],
       },
@@ -675,19 +675,11 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jo says ",
+        "v": "Ivy says ",
       },
       {
         "t": "math",
-        "v": "70 - 3 + 7",
-      },
-      {
-        "t": "text",
-        "v": " has the same value as ",
-      },
-      {
-        "t": "math",
-        "v": "70 - (3 + 7)",
+        "v": "4 + 3 \\times 7 = 25",
       },
       {
         "t": "text",
@@ -703,7 +695,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -714,8 +706,8 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -741,7 +733,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You always add before you subtract.",
+                  "v": "True. Multiply before adding: 6 × 9 = 54, then 3 + 54 = 57.",
                 },
               ],
               "id": "RA",
@@ -750,7 +742,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Brackets do not change additions and subtractions.",
+                  "v": "False. Adding always comes before multiplying.",
                 },
               ],
               "id": "RB",
@@ -759,7 +751,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Without brackets you subtract 6 then add 9, giving 13. With brackets you subtract both, giving -5.",
+                  "v": "False. Work from left to right: 9 × 9 = 81.",
                 },
               ],
               "id": "RC",
@@ -771,7 +763,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.ORDER.LEFT-TO-RIGHT",
@@ -779,7 +771,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.ORDER.LEFT-TO-RIGHT",
@@ -799,7 +791,7 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Adding and subtracting go left to right; brackets change that order.",
+            "v": "True. Multiply before adding: 6 × 9 = 54, then 3 + 54 = 57.",
           },
         ],
       },
@@ -807,19 +799,11 @@ exports[`Y7-NPV-05.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jo says ",
+        "v": "Ivy says ",
       },
       {
         "t": "math",
-        "v": "10 - 6 + 9",
-      },
-      {
-        "t": "text",
-        "v": " has the same value as ",
-      },
-      {
-        "t": "math",
-        "v": "10 - (6 + 9)",
+        "v": "3 + 6 \\times 9 = 57",
       },
       {
         "t": "text",

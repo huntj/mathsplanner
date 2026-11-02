@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { parallelogram, SLANTS } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   s: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-GEO-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.PERIMETER.AREA", "MEA.PERIMETER.MISSING-SIDES", "MEA.AREA.SAME-PERIMETER"],
 
@@ -88,23 +89,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["A shape with a bigger area also has a bigger perimeter."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["A shape with a bigger area also has a bigger perimeter."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: "Sometimes. A 1 by 10 rectangle has area 10 and perimeter 22, but a 4 by 4 square has a bigger area, 16, and a smaller perimeter, 16.",
+                  correct: true,
+                },
+                {
+                  text: "Always. Bigger shapes go further round.",
+                  code: "MEA.AREA.SAME-PERIMETER",
+                },
+                {
+                  text: "Never. Area and perimeter go in opposite directions.",
+                  code: "MEA.AREA.SAME-PERIMETER",
+                },
+              ],
+              solution: [{ say: "Area and perimeter measure different things." }],
+            }),
+          [
             {
-              text: "Sometimes. A 1 by 10 rectangle has area 10 and perimeter 22, but a 4 by 4 square has a bigger area, 16, and a smaller perimeter, 16.",
-              correct: true,
+              statement: `Ivy says a ${p.a} cm by ${p.b} cm rectangle has a perimeter of ${2 * (p.a + p.b)} cm.`,
+              truth: true,
+              right: `True. ${p.a} + ${p.b} + ${p.a} + ${p.b} = ${2 * (p.a + p.b)} cm.`,
+              wrong: [
+                [`False. It is ${p.a + p.b} cm.`, "MEA.PERIMETER.MISSING-SIDES"],
+                [`False. It is ${p.a * p.b} cm.`, "MEA.PERIMETER.AREA"],
+              ],
             },
-            { text: "Always. Bigger shapes go further round.", code: "MEA.AREA.SAME-PERIMETER" },
             {
-              text: "Never. Area and perimeter go in opposite directions.",
-              code: "MEA.AREA.SAME-PERIMETER",
+              statement: `Jon says a ${p.a} cm by ${p.b} cm rectangle has a perimeter of ${p.a * p.b} cm.`,
+              truth: false,
+              right: `False. ${p.a * p.b} is the area. The perimeter adds the four sides: ${2 * (p.a + p.b)} cm.`,
+              wrong: [
+                ["True. Multiply the length by the width.", "MEA.PERIMETER.AREA"],
+                ["True. Perimeter and area are the same for a rectangle.", "MEA.PERIMETER.AREA"],
+              ],
+            },
+            {
+              claim: "Two rectangles with the same perimeter have the same area.",
+              truth: "sometimes",
+              right:
+                "Sometimes. 1 by 5 and 2 by 4 rectangles both have perimeter 12, but their areas are 5 and 8.",
+              wrong: [
+                ["Always. The same perimeter means the same size.", "MEA.AREA.SAME-PERIMETER"],
+                ["Never. Two different rectangles can never match."],
+              ],
             },
           ],
-          solution: [{ say: "Area and perimeter measure different things." }],
-        });
+        );
     }
   },
 

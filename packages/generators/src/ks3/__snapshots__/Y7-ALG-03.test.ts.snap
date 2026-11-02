@@ -10,7 +10,7 @@ exports[`Y7-ALG-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -140,7 +140,7 @@ exports[`Y7-ALG-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -270,7 +270,7 @@ exports[`Y7-ALG-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -400,7 +400,7 @@ exports[`Y7-ALG-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -469,7 +469,7 @@ exports[`Y7-ALG-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -538,7 +538,7 @@ exports[`Y7-ALG-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -600,14 +600,139 @@ exports[`Y7-ALG-03 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. When it has more than one term.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. An expression such as 3x + 5 has no = sign; put one in and it becomes an equation.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. All algebra has an = sign.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "ALG.VOCAB",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.VOCAB",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Never. An expression such as 3x + 5 has no = sign; put one in and it becomes an equation.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "An expression has an = sign.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y7-ALG-03",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -645,7 +770,7 @@ exports[`Y7-ALG-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Anything with a letter in it is an equation.",
+                  "v": "True. Count the symbols to find the terms.",
                 },
               ],
               "id": "RA",
@@ -654,7 +779,7 @@ exports[`Y7-ALG-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It has no = sign, so it is an expression. It cannot be solved, only simplified or evaluated.",
+                  "v": "False. It has two terms, 3x and 5. The 3 is the coefficient of x, part of the term 3x.",
                 },
               ],
               "id": "RB",
@@ -663,7 +788,7 @@ exports[`Y7-ALG-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It has a number and a letter.",
+                  "v": "True. Every number and every letter is a term.",
                 },
               ],
               "id": "RC",
@@ -676,6 +801,14 @@ exports[`Y7-ALG-03 > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
+              "type": "choice",
+            },
+            "code": "ALG.VOCAB",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.VOCAB",
@@ -695,7 +828,7 @@ exports[`Y7-ALG-03 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "3x + 2 is an expression; 3x + 2 = 25 is an equation.",
+            "v": "False. It has two terms, 3x and 5. The 3 is the coefficient of x, part of the term 3x.",
           },
         ],
       },
@@ -703,131 +836,15 @@ exports[`Y7-ALG-03 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ana says ",
+        "v": "Tim says ",
       },
       {
         "t": "math",
-        "v": "3x + 2",
+        "v": "3x + 5",
       },
       {
         "t": "text",
-        "v": " is an equation.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y7-ALG-03",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. It has a number and a letter.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Anything with a letter in it is an equation.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. It has no = sign, so it is an expression. It cannot be solved, only simplified or evaluated.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.VOCAB",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "7x + 2 is an expression; 7x + 2 = 15 is an equation.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Ana says ",
-      },
-      {
-        "t": "math",
-        "v": "7x + 2",
-      },
-      {
-        "t": "text",
-        "v": " is an equation.",
+        "v": " has three terms: 3, x and 5.",
       },
     ],
   },
@@ -839,7 +856,7 @@ exports[`Y7-ALG-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

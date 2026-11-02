@@ -14,6 +14,7 @@ import {
 } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Digits of a decimal d.dd(d), all different and non-zero. */
@@ -33,7 +34,7 @@ const decimalOf = (ds: number[]) => frac(`${ds[0]}.${ds.slice(1).join("")}`);
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-01",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 3, 4],
   misconceptions: [
     "NPV.PLACE.FACE-VALUE",
@@ -183,13 +184,62 @@ export default defineGenerator<Params>({
         ];
         const c = claims[p.claim] ?? claims[0];
         if (!c) return reject("no claim");
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: c.claim,
-          truth: c.truth,
-          reasons: c.reasons,
-          solution: [{ say: c.reasons[0]?.text ?? "" }],
-        });
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: c.claim,
+              truth: c.truth,
+              reasons: c.reasons,
+              solution: [{ say: c.reasons[0]?.text ?? "" }],
+            }),
+          [
+            {
+              statement: `Lia says $${p.digits[0]}.${p.digits[1]} \\times 100 = ${p.digits[0]}${p.digits[1]}0$.`,
+              truth: true,
+              right: `True. Each digit moves two places to the left: ${p.digits[0]} ones become ${p.digits[0]} hundreds and ${p.digits[1]} tenths become ${p.digits[1]} tens.`,
+              wrong: [
+                [
+                  `False. Multiplying by 100 puts two zeros on the end: ${p.digits[0]}.${p.digits[1]}00.`,
+                  "NPV.POWERS10.APPEND-ZEROS",
+                ],
+                [
+                  `False. Multiplying by 100 moves the digits right: 0.0${p.digits[0]}${p.digits[1]}.`,
+                  "NPV.POWERS10.WRONG-WAY",
+                ],
+              ],
+            },
+            {
+              statement: `Tom says $${p.digits[0]}.${p.digits[1]} \\div 10 = ${p.digits[0]}.0${p.digits[1]}$.`,
+              truth: false,
+              right: `False. Dividing by 10 moves each digit one place to the right: ${p.digits[0]}.${p.digits[1]} ÷ 10 = 0.${p.digits[0]}${p.digits[1]}.`,
+              wrong: [
+                [
+                  "True. To divide by 10, put a 0 after the decimal point.",
+                  "NPV.POWERS10.APPEND-ZEROS",
+                ],
+                ["True. Only the digits after the point change.", "NPV.PLACE.COLUMN-SHIFT"],
+              ],
+            },
+            {
+              claim: "Multiplying a positive number by 10 makes it smaller.",
+              truth: "never",
+              right:
+                "Never. Each digit moves one place to the left, so the number becomes ten times as big.",
+              wrong: [
+                [
+                  "Sometimes. Decimals get smaller when you multiply them by 10.",
+                  "NPV.POWERS10.WRONG-WAY",
+                ],
+                [
+                  "Always. Moving the decimal point makes a number smaller.",
+                  "NPV.POWERS10.WRONG-WAY",
+                ],
+              ],
+            },
+          ],
+        );
       }
     }
   },

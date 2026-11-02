@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-03.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: [
     "NPV.NEGATIVE.SIGN-RULE",
@@ -77,24 +78,69 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Kim says ",
-            A.math(`-${p.a} + (-${p.b}) = ${p.a + p.b}`),
-            " because two negatives make a positive.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Kim says ",
+                A.math(`-${p.a} + (-${p.b}) = ${p.a + p.b}`),
+                " because two negatives make a positive.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Adding a negative moves down: −${p.a} − ${p.b} = −${p.a + p.b}. "Two negatives make a positive" is about multiplying and dividing.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Two negatives always make a positive.",
+                  code: "NPV.NEGATIVE.SIGN-RULE",
+                },
+                { text: "True. The minus signs cancel out.", code: "NPV.NEGATIVE.SIGN-RULE" },
+              ],
+              solution: [{ say: "Use a number line for adding and subtracting negatives." }],
+            }),
+          [
             {
-              text: `False. Adding a negative moves down: −${p.a} − ${p.b} = −${p.a + p.b}. "Two negatives make a positive" is about multiplying and dividing.`,
-              correct: true,
+              statement: `Ola says $${p.a} - (-${p.b}) = ${p.a + p.b}$.`,
+              truth: true,
+              right: `True. Subtracting a negative is the same as adding: ${p.a} + ${p.b} = ${p.a + p.b}.`,
+              wrong: [
+                [
+                  `False. It is ${p.a - p.b}, because you take ${p.b} away.`,
+                  "NPV.NEGATIVE.SUBTRACT-NEGATIVE",
+                ],
+                ["False. Two minus signs make the answer negative.", "NPV.NEGATIVE.SIGN-RULE"],
+              ],
             },
-            { text: "True. Two negatives always make a positive.", code: "NPV.NEGATIVE.SIGN-RULE" },
-            { text: "True. The minus signs cancel out.", code: "NPV.NEGATIVE.SIGN-RULE" },
+            {
+              statement: `Ed says $-${p.a} \\times -${p.b} = ${p.a * p.b}$.`,
+              truth: true,
+              right: "True. A negative times a negative is positive.",
+              wrong: [
+                [
+                  `False. It is −${p.a * p.b}: negative numbers give a negative answer.`,
+                  "NPV.NEGATIVE.SIGN-RULE",
+                ],
+                [`False. Add them: −${p.a + p.b}.`, "NPV.NEGATIVE.SIGN-RULE"],
+              ],
+            },
+            {
+              claim: "Adding a negative number to a positive number gives a negative answer.",
+              truth: "sometimes",
+              right: `Sometimes. ${Math.max(p.a, p.b)} + (−${Math.min(p.a, p.b)}) = ${Math.max(p.a, p.b) - Math.min(p.a, p.b)} is positive, but ${Math.min(p.a, p.b)} + (−${Math.max(p.a, p.b)}) = −${Math.max(p.a, p.b) - Math.min(p.a, p.b)} is negative.`,
+              wrong: [
+                [
+                  "Always. A negative in a sum makes the answer negative.",
+                  "NPV.NEGATIVE.SIGN-RULE",
+                ],
+                ["Never. Adding always makes a number bigger."],
+              ],
+            },
           ],
-          solution: [{ say: "Use a number line for adding and subtracting negatives." }],
-        });
+        );
     }
   },
 

@@ -10,7 +10,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-PRO-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -70,7 +70,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-PRO-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -144,7 +144,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-PRO-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -218,7 +218,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-PRO-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -300,7 +300,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-PRO-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -368,7 +368,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-PRO-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -450,7 +450,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-PRO-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -461,7 +461,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -488,7 +488,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Spinners can have any probabilities.",
+                  "v": "False. It is 0.6 as well.",
                 },
               ],
               "id": "RA",
@@ -497,7 +497,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any probabilities between 0 and 1 are possible.",
+                  "v": "False. It cannot be worked out without more information.",
                 },
               ],
               "id": "RB",
@@ -506,7 +506,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. They add up to 1.1, but the probabilities of all the outcomes must add up to 1.",
+                  "v": "True. Late and not late cover everything, so 1 − 0.6 = 0.4.",
                 },
               ],
               "id": "RC",
@@ -518,7 +518,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "PRO.COMPLEMENT",
@@ -538,7 +538,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The outcomes cover everything that can happen, so their probabilities add up to 1.",
+            "v": "True. Late and not late cover everything, so 1 − 0.6 = 0.4.",
           },
         ],
       },
@@ -546,27 +546,19 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A spinner lands on red, blue or green. Ali says the probabilities are ",
-      },
-      {
-        "t": "math",
-        "v": "0.5,\\ 0.4\\text{ and }0.2",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "The probability that Ben's bus is late is 0.6. He says the probability that it is not late is 0.4.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-PRO-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -584,7 +576,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -593,10 +585,19 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -604,7 +605,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. They should add up to 100.",
+                  "v": "Never. They add up to 100.",
                 },
               ],
               "id": "RA",
@@ -613,7 +614,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. They add up to 0.4 + 0.1 + 0.5 = 1, as the probabilities of all the outcomes must.",
+                  "v": "Always. It either happens or it does not, and those two cover every outcome.",
                 },
               ],
               "id": "RB",
@@ -622,7 +623,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Probabilities of different colours must be equal.",
+                  "v": "Sometimes. Only for a fair coin.",
                 },
               ],
               "id": "RC",
@@ -640,11 +641,19 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
             "code": "PRO.COMPLEMENT",
             "feedback": [],
           },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "PRO.COMPLEMENT",
+            "feedback": [],
+          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -654,7 +663,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The outcomes cover everything that can happen, so their probabilities add up to 1.",
+            "v": "Always. It either happens or it does not, and those two cover every outcome.",
           },
         ],
       },
@@ -662,15 +671,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A spinner lands on red, blue or green. Ali says the probabilities are ",
-      },
-      {
-        "t": "math",
-        "v": "0.4,\\ 0.1\\text{ and }0.5",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "The probability that something happens, plus the probability that it does not happen, is 1.",
       },
     ],
   },
@@ -682,7 +683,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-PRO-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -720,7 +721,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. They should add up to 100.",
+                  "v": "False. It is 0.54 as well.",
                 },
               ],
               "id": "RA",
@@ -729,7 +730,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Probabilities of different colours must be equal.",
+                  "v": "False. It cannot be worked out without more information.",
                 },
               ],
               "id": "RB",
@@ -738,7 +739,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. They add up to 0.34 + 0.3 + 0.36 = 1, as the probabilities of all the outcomes must.",
+                  "v": "True. Late and not late cover everything, so 1 − 0.54 = 0.46.",
                 },
               ],
               "id": "RC",
@@ -770,7 +771,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The outcomes cover everything that can happen, so their probabilities add up to 1.",
+            "v": "True. Late and not late cover everything, so 1 − 0.54 = 0.46.",
           },
         ],
       },
@@ -778,15 +779,7 @@ exports[`Y7-PRO-02 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A spinner lands on red, blue or green. Ali says the probabilities are ",
-      },
-      {
-        "t": "math",
-        "v": "0.34,\\ 0.3\\text{ and }0.36",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "The probability that Ben's bus is late is 0.54. He says the probability that it is not late is 0.46.",
       },
     ],
   },

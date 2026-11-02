@@ -10,7 +10,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-STA-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-STA-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-STA-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-STA-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -253,7 +253,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-STA-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -310,7 +310,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-STA-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -360,14 +360,14 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-STA-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -378,14 +378,14 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RC",
+          "correct": "B",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -394,19 +394,10 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -414,7 +405,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. When the data has negative numbers.",
+                  "v": "False. Use the largest and smallest values: 36 − 10 = 26.",
                 },
               ],
               "id": "RA",
@@ -423,7 +414,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Subtracting gives a negative.",
+                  "v": "True. Data is always given in order.",
                 },
               ],
               "id": "RB",
@@ -432,7 +423,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The range is the largest value minus the smallest, which is never less than 0, even when the values are negative.",
+                  "v": "True. The range is the last value minus the first.",
                 },
               ],
               "id": "RC",
@@ -444,15 +435,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.NEGATIVE.SUBTRACT-NEGATIVE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "STA.MEDIAN.UNORDERED",
@@ -462,7 +445,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -472,7 +455,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The range measures spread, a distance, so it is 0 or more.",
+            "v": "False. Use the largest and smallest values: 36 − 10 = 26.",
           },
         ],
       },
@@ -480,19 +463,19 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The range of a set of data can be negative.",
+        "v": "Ola says the range of 20, 25, 10, 36, 19, 34 is 14, the last value minus the first.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-STA-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -503,14 +486,14 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
+          "correct": "B",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -519,19 +502,10 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -539,7 +513,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. When the data has negative numbers.",
+                  "v": "True. Data is always given in order.",
                 },
               ],
               "id": "RA",
@@ -548,7 +522,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The range is the largest value minus the smallest, which is never less than 0, even when the values are negative.",
+                  "v": "False. Use the largest and smallest values: 39 − 6 = 33.",
                 },
               ],
               "id": "RB",
@@ -557,7 +531,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Subtracting gives a negative.",
+                  "v": "True. The range is the last value minus the first.",
                 },
               ],
               "id": "RC",
@@ -567,14 +541,6 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.NEGATIVE.SUBTRACT-NEGATIVE",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -587,7 +553,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -597,7 +563,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The range measures spread, a distance, so it is 0 or more.",
+            "v": "False. Use the largest and smallest values: 39 − 6 = 33.",
           },
         ],
       },
@@ -605,7 +571,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The range of a set of data can be negative.",
+        "v": "Ola says the range of 30, 27, 6, 11, 9, 39 is 9, the last value minus the first.",
       },
     ],
   },
@@ -617,7 +583,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-STA-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -628,8 +594,8 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RB",
+          "correct": "B",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -664,7 +630,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Subtracting gives a negative.",
+                  "v": "Sometimes. A value bigger than the largest or smaller than the smallest changes it; one in between does not.",
                 },
               ],
               "id": "RA",
@@ -673,7 +639,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The range is the largest value minus the smallest, which is never less than 0, even when the values are negative.",
+                  "v": "Never. The range only depends on the first and last values.",
                 },
               ],
               "id": "RB",
@@ -682,7 +648,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. When the data has negative numbers.",
+                  "v": "Always. More data means a bigger range.",
                 },
               ],
               "id": "RC",
@@ -694,18 +660,10 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "STA.MEDIAN.UNORDERED",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.NEGATIVE.SUBTRACT-NEGATIVE",
             "feedback": [],
           },
         ],
@@ -722,7 +680,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The range measures spread, a distance, so it is 0 or more.",
+            "v": "Sometimes. A value bigger than the largest or smaller than the smallest changes it; one in between does not.",
           },
         ],
       },
@@ -730,7 +688,7 @@ exports[`Y7-STA-01.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The range of a set of data can be negative.",
+        "v": "Adding a new value to a set of data changes its range.",
       },
     ],
   },

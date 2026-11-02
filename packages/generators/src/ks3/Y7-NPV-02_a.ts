@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
 import { distinctFrom } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number[];
@@ -17,7 +18,7 @@ const show = (xs: number[]) => xs.join(", ");
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-02.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.NEGATIVE.ORDER"],
 
@@ -69,28 +70,73 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["A negative number is smaller than a positive number."],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["A negative number is smaller than a positive number."],
+              truth: "always",
+              reasons: [
+                {
+                  text: "Always. Every negative number is to the left of 0 on the number line, and every positive number is to the right.",
+                  correct: true,
+                },
+                {
+                  text: `Sometimes. ${Math.min(...negs)} is bigger than ${p.n[3]} because ${Math.abs(Math.min(...negs))} is bigger.`,
+                  code: "NPV.NEGATIVE.ORDER",
+                },
+                {
+                  text: "Never. The minus sign does not change the size of a number.",
+                  code: "NPV.NEGATIVE.ORDER",
+                },
+              ],
+              solution: [
+                {
+                  say: "Negative numbers are less than zero; positive numbers are more than zero.",
+                },
+              ],
+            }),
+          [
             {
-              text: "Always. Every negative number is to the left of 0 on the number line, and every positive number is to the right.",
-              correct: true,
+              statement: `Leo says $-${Math.max(Math.abs(p.n[0] ?? 0), Math.abs(p.n[1] ?? 0))}$ is greater than $-${Math.min(Math.abs(p.n[0] ?? 0), Math.abs(p.n[1] ?? 0))}$.`,
+              truth: false,
+              right: `False. −${Math.max(Math.abs(p.n[0] ?? 0), Math.abs(p.n[1] ?? 0))} is further below zero than −${Math.min(Math.abs(p.n[0] ?? 0), Math.abs(p.n[1] ?? 0))}, so it is smaller.`,
+              wrong: [
+                [
+                  `True. ${Math.max(Math.abs(p.n[0] ?? 0), Math.abs(p.n[1] ?? 0))} is bigger, so the negative is bigger too.`,
+                  "NPV.NEGATIVE.ORDER",
+                ],
+                [
+                  "True. Negative numbers get bigger the further they are from zero.",
+                  "NPV.NEGATIVE.ORDER",
+                ],
+              ],
             },
             {
-              text: `Sometimes. ${Math.min(...negs)} is bigger than ${p.n[3]} because ${Math.abs(Math.min(...negs))} is bigger.`,
-              code: "NPV.NEGATIVE.ORDER",
+              statement: `Ana says $-${Math.max(Math.abs(p.n[1] ?? 0), Math.abs(p.n[2] ?? 0))} < -${Math.min(Math.abs(p.n[1] ?? 0), Math.abs(p.n[2] ?? 0))}$.`,
+              truth: true,
+              right: `True. On a number line −${Math.max(Math.abs(p.n[1] ?? 0), Math.abs(p.n[2] ?? 0))} is to the left of −${Math.min(Math.abs(p.n[1] ?? 0), Math.abs(p.n[2] ?? 0))}, so it is less.`,
+              wrong: [
+                [
+                  `False. ${Math.max(Math.abs(p.n[1] ?? 0), Math.abs(p.n[2] ?? 0))} is bigger, so −${Math.max(Math.abs(p.n[1] ?? 0), Math.abs(p.n[2] ?? 0))} is bigger.`,
+                  "NPV.NEGATIVE.ORDER",
+                ],
+                ["False. Negative numbers cannot be compared."],
+              ],
             },
             {
-              text: "Never. The minus sign does not change the size of a number.",
-              code: "NPV.NEGATIVE.ORDER",
+              claim: "The number further from zero is the bigger number.",
+              truth: "sometimes",
+              right:
+                "Sometimes. 8 is further from zero than 3 and is bigger, but −8 is further from zero than −3 and is smaller.",
+              wrong: [
+                ["Always. Further from zero means bigger.", "NPV.NEGATIVE.ORDER"],
+                ["Never. Distance from zero has nothing to do with size."],
+              ],
             },
           ],
-          solution: [
-            { say: "Negative numbers are less than zero; positive numbers are more than zero." },
-          ],
-        });
+        );
     }
   },
 

@@ -10,7 +10,7 @@ exports[`Y7-NPV-05.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-05.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -64,7 +64,7 @@ exports[`Y7-NPV-05.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-05.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -118,7 +118,7 @@ exports[`Y7-NPV-05.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-05.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -172,7 +172,7 @@ exports[`Y7-NPV-05.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-05.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -229,7 +229,7 @@ exports[`Y7-NPV-05.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-05.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -286,7 +286,7 @@ exports[`Y7-NPV-05.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-05.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -336,14 +336,14 @@ exports[`Y7-NPV-05.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-05.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -354,14 +354,14 @@ exports[`Y7-NPV-05.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RC",
+          "correct": "B",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -370,10 +370,19 @@ exports[`Y7-NPV-05.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -381,7 +390,7 @@ exports[`Y7-NPV-05.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 8 × (−8) is negative.",
+                  "v": "Sometimes. 1/8 is smaller than 8, but the reciprocal of ½ is 2, which is bigger.",
                 },
               ],
               "id": "RA",
@@ -390,7 +399,7 @@ exports[`Y7-NPV-05.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It gives 0.",
+                  "v": "Never. Reciprocals are always bigger than the number.",
                 },
               ],
               "id": "RB",
@@ -399,7 +408,7 @@ exports[`Y7-NPV-05.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 8 × 1/8 = 8/8 = 1. Any non-zero number times its reciprocal is 1.",
+                  "v": "Always. A reciprocal is a fraction, so it is small.",
                 },
               ],
               "id": "RC",
@@ -408,28 +417,11 @@ exports[`Y7-NPV-05.c > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.RECIPROCAL.NEGATIVE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.RECIPROCAL.NEGATIVE",
-            "feedback": [],
-          },
-        ],
+        "misconceptions": [],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -439,7 +431,7 @@ exports[`Y7-NPV-05.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "That is what makes it the reciprocal.",
+            "v": "Sometimes. 1/8 is smaller than 8, but the reciprocal of ½ is 2, which is bigger.",
           },
         ],
       },
@@ -447,7 +439,115 @@ exports[`Y7-NPV-05.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says that 8 multiplied by its reciprocal always gives 1.",
+        "v": "The reciprocal of a positive number is smaller than the number.",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y7-NPV-05.c",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. Reciprocals are always bigger than the number.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. 1/12 is smaller than 12, but the reciprocal of ½ is 2, which is bigger.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. A reciprocal is a fraction, so it is small.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Sometimes. 1/12 is smaller than 12, but the reciprocal of ½ is 2, which is bigger.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The reciprocal of a positive number is smaller than the number.",
       },
     ],
   },
@@ -456,10 +556,10 @@ exports[`Y7-NPV-05.c > keeps fixed seeds unchanged 1`] = `
     "diagrams": [],
     "key": {
       "depth": 4,
-      "numbers": "standard",
+      "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-05.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -506,117 +606,10 @@ exports[`Y7-NPV-05.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 12 × 1/12 = 12/12 = 1. Any non-zero number times its reciprocal is 1.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. 12 × (−12) is negative.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.RECIPROCAL.NEGATIVE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.RECIPROCAL.NEGATIVE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "That is what makes it the reciprocal.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Ivy says that 12 multiplied by its reciprocal always gives 1.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y7-NPV-05.c",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
                   "v": "True. 4 × 1/4 = 4/4 = 1. Any non-zero number times its reciprocal is 1.",
                 },
               ],
-              "id": "RA",
+              "id": "RB",
             },
             {
               "content": [
@@ -625,15 +618,6 @@ exports[`Y7-NPV-05.c > keeps fixed seeds unchanged 1`] = `
                   "v": "False. 4 × (−4) is negative.",
                 },
               ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. It gives 0.",
-                },
-              ],
               "id": "RC",
             },
           ],
@@ -643,7 +627,7 @@ exports[`Y7-NPV-05.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.RECIPROCAL.NEGATIVE",

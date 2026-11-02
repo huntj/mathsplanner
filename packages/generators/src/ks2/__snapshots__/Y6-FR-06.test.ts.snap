@@ -10,7 +10,7 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -79,7 +79,7 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -148,7 +148,7 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -217,7 +217,7 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -283,7 +283,7 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -349,7 +349,7 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -415,7 +415,7 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -546,7 +546,7 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -677,7 +677,7 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -801,14 +801,14 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -819,14 +819,14 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -835,10 +835,19 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -846,7 +855,7 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Write the numerator and denominator after the point.",
+                  "v": "Never. Decimals cannot be written as fractions.",
                 },
               ],
               "id": "RA",
@@ -855,7 +864,7 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 3/4 = 3 ÷ 4 = 0.75 (750/1000).",
+                  "v": "Always. One decimal place means tenths: 0.7 = 7/10 and 2.3 = 23/10.",
                 },
               ],
               "id": "RB",
@@ -864,7 +873,7 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Fractions and decimals always use the same digits.",
+                  "v": "Sometimes. Only when the digit is a 5.",
                 },
               ],
               "id": "RC",
@@ -876,17 +885,17 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "FR.DECIMAL.DIGITS",
+            "code": "FR.DECIMAL.PLACE",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -896,27 +905,27 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "3/4 = 3 ÷ 4 = 0.75 (750/1000).",
+            "v": "Always. One decimal place means tenths: 0.7 = 7/10 and 2.3 = 23/10.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "t": "math",
-        "v": "\\frac{3}{4} = 0.34",
+        "t": "text",
+        "v": "A decimal with one decimal place can be written as a fraction with denominator 10.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -927,14 +936,14 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -943,10 +952,19 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -954,7 +972,7 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Write the numerator and denominator after the point.",
+                  "v": "Sometimes. Only when the digit is a 5.",
                 },
               ],
               "id": "RA",
@@ -963,7 +981,7 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 1/4 = 1 ÷ 4 = 0.25 (250/1000).",
+                  "v": "Always. One decimal place means tenths: 0.7 = 7/10 and 2.3 = 23/10.",
                 },
               ],
               "id": "RB",
@@ -972,7 +990,7 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Fractions and decimals always use the same digits.",
+                  "v": "Never. Decimals cannot be written as fractions.",
                 },
               ],
               "id": "RC",
@@ -987,14 +1005,14 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "FR.DECIMAL.DIGITS",
+            "code": "FR.DECIMAL.PLACE",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1004,27 +1022,27 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "1/4 = 1 ÷ 4 = 0.25 (250/1000).",
+            "v": "Always. One decimal place means tenths: 0.7 = 7/10 and 2.3 = 23/10.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "t": "math",
-        "v": "\\frac{1}{4} = 0.14",
+        "t": "text",
+        "v": "A decimal with one decimal place can be written as a fraction with denominator 10.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1035,14 +1053,14 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1051,10 +1069,19 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1062,7 +1089,7 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Write the numerator and denominator after the point.",
+                  "v": "Never. Decimals cannot be written as fractions.",
                 },
               ],
               "id": "RA",
@@ -1071,7 +1098,7 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 3/25 = 3 ÷ 25 = 0.12 (120/1000).",
+                  "v": "Always. One decimal place means tenths: 0.7 = 7/10 and 2.3 = 23/10.",
                 },
               ],
               "id": "RB",
@@ -1080,7 +1107,7 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Fractions and decimals always use the same digits.",
+                  "v": "Sometimes. Only when the digit is a 5.",
                 },
               ],
               "id": "RC",
@@ -1092,17 +1119,17 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "FR.DECIMAL.DIGITS",
+            "code": "FR.DECIMAL.PLACE",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1112,15 +1139,15 @@ exports[`Y6-FR-06 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "3/25 = 3 ÷ 25 = 0.12 (120/1000).",
+            "v": "Always. One decimal place means tenths: 0.7 = 7/10 and 2.3 = 23/10.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "t": "math",
-        "v": "\\frac{3}{25} = 0.325",
+        "t": "text",
+        "v": "A decimal with one decimal place can be written as a fraction with denominator 10.",
       },
     ],
   },

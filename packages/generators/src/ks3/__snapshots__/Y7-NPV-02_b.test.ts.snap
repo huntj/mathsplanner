@@ -10,7 +10,7 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -113,7 +113,7 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -216,7 +216,7 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -319,7 +319,7 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -418,7 +418,7 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -517,7 +517,7 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -616,7 +616,7 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -628,7 +628,7 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -654,7 +654,7 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A half is bigger than a quarter.",
+                  "v": "False. They are the same distance from zero.",
                 },
               ],
               "id": "RA",
@@ -663,7 +663,7 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. They are the same distance from zero.",
+                  "v": "True. −½ = −0.5 is further below zero than −¼ = −0.25, so it is smaller.",
                 },
               ],
               "id": "RB",
@@ -672,7 +672,7 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. −½ = −0.5 is further below zero than −¼ = −0.25, so it is smaller.",
+                  "v": "False. A half is bigger than a quarter.",
                 },
               ],
               "id": "RC",
@@ -684,7 +684,7 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.DECIMAL.LONGER-BIGGER",
@@ -740,7 +740,7 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -752,7 +752,7 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -778,7 +778,7 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A half is bigger than a quarter.",
+                  "v": "True. ¾ = 0.75, and 0.75 is bigger than 0.70.",
                 },
               ],
               "id": "RA",
@@ -787,7 +787,7 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. They are the same distance from zero.",
+                  "v": "False. A fraction is always smaller than a decimal.",
                 },
               ],
               "id": "RB",
@@ -796,7 +796,7 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. −½ = −0.5 is further below zero than −¼ = −0.25, so it is smaller.",
+                  "v": "False. 0.7 has a 7, which is bigger than 3 and 4.",
                 },
               ],
               "id": "RC",
@@ -808,10 +808,10 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.DECIMAL.LONGER-BIGGER",
+            "code": "FR.DECIMAL.DIGITS",
             "feedback": [],
           },
         ],
@@ -828,7 +828,7 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "For negative numbers, the one further from zero is smaller.",
+            "v": "True. ¾ = 0.75, and 0.75 is bigger than 0.70.",
           },
         ],
       },
@@ -836,19 +836,19 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Rob says ",
+        "v": "Cara says ",
       },
       {
         "t": "math",
-        "v": "-\\frac{1}{2}",
+        "v": "\\frac{3}{4}",
       },
       {
         "t": "text",
-        "v": " is less than ",
+        "v": " is bigger than ",
       },
       {
         "t": "math",
-        "v": "-\\frac{1}{4}",
+        "v": "0.7",
       },
       {
         "t": "text",
@@ -864,7 +864,7 @@ exports[`Y7-NPV-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

@@ -10,7 +10,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-PRO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -110,7 +110,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-PRO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -210,7 +210,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-PRO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -288,7 +288,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-PRO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -347,7 +347,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-PRO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -406,7 +406,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-PRO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -458,14 +458,14 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-PRO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -476,14 +476,14 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -492,19 +492,10 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -512,7 +503,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Probabilities are any positive number.",
+                  "v": "False. 0 means unlikely, but it could still happen.",
                 },
               ],
               "id": "RA",
@@ -521,7 +512,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. When there are lots of good outcomes.",
+                  "v": "False. 0 means an even chance.",
                 },
               ],
               "id": "RB",
@@ -530,7 +521,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. A probability of 1 means certain; nothing can be more likely than certain.",
+                  "v": "True. 0 is the impossible end of the probability scale.",
                 },
               ],
               "id": "RC",
@@ -553,14 +544,14 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "PRO.ODDS",
+            "code": "PRO.SCALE.WORDS",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -570,7 +561,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Every probability is between 0 and 1.",
+            "v": "True. 0 is the impossible end of the probability scale.",
           },
         ],
       },
@@ -578,19 +569,19 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A probability can be greater than 1.",
+        "v": "Una says an event with a probability of 0 is impossible.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-PRO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -601,14 +592,14 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -617,19 +608,10 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -637,7 +619,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Probabilities are any positive number.",
+                  "v": "True. 0 is the impossible end of the probability scale.",
                 },
               ],
               "id": "RA",
@@ -646,7 +628,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. When there are lots of good outcomes.",
+                  "v": "False. 0 means an even chance.",
                 },
               ],
               "id": "RB",
@@ -655,7 +637,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. A probability of 1 means certain; nothing can be more likely than certain.",
+                  "v": "False. 0 means unlikely, but it could still happen.",
                 },
               ],
               "id": "RC",
@@ -667,7 +649,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "PRO.SCALE.WORDS",
@@ -675,17 +657,17 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "PRO.ODDS",
+            "code": "PRO.SCALE.WORDS",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -695,7 +677,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Every probability is between 0 and 1.",
+            "v": "True. 0 is the impossible end of the probability scale.",
           },
         ],
       },
@@ -703,7 +685,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A probability can be greater than 1.",
+        "v": "Una says an event with a probability of 0 is impossible.",
       },
     ],
   },
@@ -715,7 +697,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-PRO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -727,7 +709,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "C",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -762,7 +744,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. A probability of 1 means certain; nothing can be more likely than certain.",
+                  "v": "Sometimes. When there are lots of good outcomes.",
                 },
               ],
               "id": "RA",
@@ -771,7 +753,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Probabilities are any positive number.",
+                  "v": "Never. A probability of 1 means certain; nothing can be more likely than certain.",
                 },
               ],
               "id": "RB",
@@ -780,7 +762,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. When there are lots of good outcomes.",
+                  "v": "Always. Probabilities are any positive number.",
                 },
               ],
               "id": "RC",
@@ -792,10 +774,10 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "PRO.SCALE.WORDS",
+            "code": "PRO.ODDS",
             "feedback": [],
           },
           {
@@ -803,7 +785,7 @@ exports[`Y7-PRO-01.a > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "PRO.ODDS",
+            "code": "PRO.SCALE.WORDS",
             "feedback": [],
           },
         ],

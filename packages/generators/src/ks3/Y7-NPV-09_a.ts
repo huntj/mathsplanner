@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -25,7 +26,7 @@ const sf1 = (n: number) => {
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-09.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.ROUND.WRONG-PLACE", "NPV.ROUND.ALWAYS-DOWN"],
 
@@ -100,25 +101,69 @@ export default defineGenerator<Params>({
       default: {
         const x = 10 * p.k - 1;
         const y = 10 * p.m + 1;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Kim estimates ${x} × ${y} as ${10 * p.k} × ${10 * p.m} = ${100 * p.k * p.m}. She says the exact answer must be less than ${100 * p.k * p.m}.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Kim estimates ${x} × ${y} as ${10 * p.k} × ${10 * p.m} = ${100 * p.k * p.m}. She says the exact answer must be less than ${100 * p.k * p.m}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${x} was rounded up but ${y} was rounded down, so the estimate could be too big or too small. In fact ${x} × ${y} = ${x * y}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Rounding always gives an overestimate.",
+                  code: "NPV.ROUND.ALWAYS-DOWN",
+                },
+                {
+                  text: "True. Estimates are always bigger than exact answers.",
+                  code: "NPV.ROUND.WRONG-PLACE",
+                },
+              ],
+              solution: [{ say: "Look at which way each number was rounded." }],
+            }),
+          [
             {
-              text: `False. ${x} was rounded up but ${y} was rounded down, so the estimate could be too big or too small. In fact ${x} × ${y} = ${x * y}.`,
-              correct: true,
+              statement: `Eli estimates $${p.a} \\times ${p.b}$ by rounding each number to 1 significant figure: ${sf1(p.a)} × ${sf1(p.b)} = ${sf1(p.a) * sf1(p.b)}.`,
+              truth: true,
+              right:
+                "True. Rounding each number to 1 significant figure gives numbers that are easy to multiply.",
+              wrong: [
+                ["False. An estimate must use the exact numbers."],
+                [
+                  `False. Round to the nearest 10 first: ${Math.round(p.a / 10) * 10} × ${Math.round(p.b / 10) * 10}.`,
+                  "NPV.ROUND.WRONG-PLACE",
+                ],
+              ],
             },
-            { text: "True. Rounding always gives an overestimate.", code: "NPV.ROUND.ALWAYS-DOWN" },
             {
-              text: "True. Estimates are always bigger than exact answers.",
-              code: "NPV.ROUND.WRONG-PLACE",
+              statement:
+                "Gus estimates $39.8 \\div 4.1$ as $40 \\div 4 = 10$, and says the exact answer is 10.",
+              truth: false,
+              right:
+                "False. 10 is an estimate. The exact answer, 9.7 to 1 decimal place, is close to 10 but not equal to it.",
+              wrong: [
+                ["True. A good estimate is exact.", "NPV.ROUND.ALWAYS-DOWN"],
+                ["True. Rounding does not change the answer."],
+              ],
+            },
+            {
+              claim:
+                "If both numbers in a multiplication of positive numbers are rounded up, the estimate is bigger than the exact answer.",
+              truth: "always",
+              right:
+                "Always. Each rounded number is bigger than the real one, so their product is bigger too.",
+              wrong: [
+                ["Sometimes. It depends how much they are rounded.", "NPV.ROUND.ALWAYS-DOWN"],
+                ["Never. Rounding makes estimates smaller.", "NPV.ROUND.ALWAYS-DOWN"],
+              ],
             },
           ],
-          solution: [{ say: "Look at which way each number was rounded." }],
-        });
+        );
       }
     }
   },

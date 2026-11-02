@@ -10,7 +10,7 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-RAT-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -85,7 +85,7 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-RAT-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -160,7 +160,7 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-RAT-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -235,7 +235,7 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-RAT-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -294,7 +294,7 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-RAT-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -353,7 +353,7 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-RAT-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -412,7 +412,7 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-RAT-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -423,8 +423,8 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RC",
+          "correct": "B",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -450,7 +450,7 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It decreases it by 80%.",
+                  "v": "True. Multiplying always increases an amount.",
                 },
               ],
               "id": "RA",
@@ -459,7 +459,7 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Multiplying always increases an amount.",
+                  "v": "False. Multiplying by 0.45 finds 45% of the amount. To increase it by 45%, multiply by 1.45.",
                 },
               ],
               "id": "RB",
@@ -468,7 +468,7 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 0.8 = 80%, so 80% is left and 20% has been taken away.",
+                  "v": "True. The percentage as a decimal is the multiplier.",
                 },
               ],
               "id": "RC",
@@ -488,7 +488,7 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "RAT.PERCENT.MULTIPLIER",
@@ -508,7 +508,7 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Multiplier = 1 − the decrease as a decimal.",
+            "v": "False. Multiplying by 0.45 finds 45% of the amount. To increase it by 45%, multiply by 1.45.",
           },
         ],
       },
@@ -516,7 +516,7 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Rae says multiplying by 0.8 decreases an amount by 20%.",
+        "v": "Leo says that to increase an amount by 45%, you multiply it by 0.45.",
       },
     ],
   },
@@ -528,123 +528,7 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-RAT-05.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Multiplying always increases an amount.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. It decreases it by 80%.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. 0.8 = 80%, so 80% is left and 20% has been taken away.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "RAT.PERCENT.MULTIPLIER",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "RAT.PERCENT.MULTIPLIER",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Multiplier = 1 − the decrease as a decimal.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Rae says multiplying by 0.8 decreases an amount by 20%.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y7-RAT-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -682,7 +566,7 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It decreases it by 80%.",
+                  "v": "False. It increases it by 1.1%.",
                 },
               ],
               "id": "RA",
@@ -691,7 +575,7 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 0.8 = 80%, so 80% is left and 20% has been taken away.",
+                  "v": "True. 1.1 = 100% + 10%: all of the amount, and 10% more.",
                 },
               ],
               "id": "RB",
@@ -700,7 +584,7 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Multiplying always increases an amount.",
+                  "v": "False. It increases it by 110%.",
                 },
               ],
               "id": "RC",
@@ -740,7 +624,7 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Multiplier = 1 − the decrease as a decimal.",
+            "v": "True. 1.1 = 100% + 10%: all of the amount, and 10% more.",
           },
         ],
       },
@@ -748,7 +632,123 @@ exports[`Y7-RAT-05.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Rae says multiplying by 0.8 decreases an amount by 20%.",
+        "v": "Mia says multiplying by 1.1 increases an amount by 10%.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y7-RAT-05.b",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It increases it by 1.25%.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It increases it by 125%.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 1.25 = 100% + 25%: all of the amount, and 25% more.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "RAT.PERCENT.MULTIPLIER",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "RAT.PERCENT.MULTIPLIER",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. 1.25 = 100% + 25%: all of the amount, and 25% more.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Mia says multiplying by 1.25 increases an amount by 25%.",
       },
     ],
   },

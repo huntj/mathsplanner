@@ -15,6 +15,7 @@ import {
 import type { BarModelSpec, NumberLineSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "./angles.ts";
 import { chosenFigure, chosenText, numberAnswer } from "./counting.ts";
+import { orClaims } from "./variety.ts";
 
 export type Pair = [number, number];
 
@@ -1170,7 +1171,7 @@ export function fractionDecimal(
   };
   return {
     id,
-    version: "1.0.0",
+    version: "1.1.0",
     depths: [1, 2, 3, 4],
     misconceptions: ["FR.DECIMAL.PLACE", "FR.DECIMAL.DIGITS"],
 
@@ -1263,39 +1264,73 @@ export function fractionDecimal(
         default: {
           const wrongValue = place ? (shifted ?? x * 10) : (digits ?? x * 10);
           const shown = p.claimTrue ? xs : String(wrongValue);
-          return A.trueOrFalseWhy({
+          return orClaims(
             rng,
-            statement: [A.math(`${fracTex(p.n, p.d)} = ${shown}`)],
-            truth: p.claimTrue,
-            reasons: p.claimTrue
-              ? [
-                  { text: `True. ${toDecimal}`, correct: true },
-                  place
-                    ? {
-                        text: `False. The ${p.n} should go straight after the point.`,
-                        code: "FR.DECIMAL.PLACE",
-                      }
-                    : {
-                        text: "False. The decimal should use the same digits as the fraction.",
-                        code: "FR.DECIMAL.DIGITS",
-                      },
-                  { text: "False. Fractions cannot be written as decimals." },
-                ]
-              : [
-                  { text: `False. ${toDecimal}`, correct: true },
-                  place
-                    ? {
-                        text: `True. The ${p.n} goes straight after the point.`,
-                        code: "FR.DECIMAL.PLACE",
-                      }
-                    : {
-                        text: "True. Write the numerator and denominator after the point.",
-                        code: "FR.DECIMAL.DIGITS",
-                      },
-                  { text: "True. Fractions and decimals always use the same digits." },
+            () =>
+              A.trueOrFalseWhy({
+                rng,
+                statement: [A.math(`${fracTex(p.n, p.d)} = ${shown}`)],
+                truth: p.claimTrue,
+                reasons: p.claimTrue
+                  ? [
+                      { text: `True. ${toDecimal}`, correct: true },
+                      place
+                        ? {
+                            text: `False. The ${p.n} should go straight after the point.`,
+                            code: "FR.DECIMAL.PLACE",
+                          }
+                        : {
+                            text: "False. The decimal should use the same digits as the fraction.",
+                            code: "FR.DECIMAL.DIGITS",
+                          },
+                      { text: "False. Fractions cannot be written as decimals." },
+                    ]
+                  : [
+                      { text: `False. ${toDecimal}`, correct: true },
+                      place
+                        ? {
+                            text: `True. The ${p.n} goes straight after the point.`,
+                            code: "FR.DECIMAL.PLACE",
+                          }
+                        : {
+                            text: "True. Write the numerator and denominator after the point.",
+                            code: "FR.DECIMAL.DIGITS",
+                          },
+                      { text: "True. Fractions and decimals always use the same digits." },
+                    ],
+                solution: [{ say: toDecimal }],
+              }),
+            [
+              {
+                statement: "Ali says $0.5 = \\frac{1}{2}$.",
+                truth: true,
+                right: "True. 0.5 is five tenths, which is the same as one half.",
+                wrong: [["False. 0.5 is a fifth.", "FR.DECIMAL.DIGITS"], ["False. A half is 0.2."]],
+              },
+              {
+                statement: "Ella says $0.3 = \\frac{1}{3}$.",
+                truth: false,
+                right: "False. 0.3 is 3 tenths. A third is a little more than that: 0.333…",
+                wrong: [
+                  ["True. The 3 in 0.3 means a third.", "FR.DECIMAL.DIGITS"],
+                  [
+                    "True. A decimal and a fraction with the same digit are equal.",
+                    "FR.DECIMAL.DIGITS",
+                  ],
                 ],
-            solution: [{ say: toDecimal }],
-          });
+              },
+              {
+                claim:
+                  "A decimal with one decimal place can be written as a fraction with denominator 10.",
+                truth: "always",
+                right: "Always. One decimal place means tenths: 0.7 = 7/10 and 2.3 = 23/10.",
+                wrong: [
+                  ["Sometimes. Only when the digit is a 5.", "FR.DECIMAL.PLACE"],
+                  ["Never. Decimals cannot be written as fractions."],
+                ],
+              },
+            ],
+          );
         }
       }
     },

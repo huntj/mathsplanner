@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -19,7 +20,7 @@ const NAMES: Record<number, string> = { 4: "quadrilateral", 5: "pentagon", 6: "h
 
 export default defineGenerator<Params>({
   id: "Y7-GEO-06.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.POLYGON.SUM-N-TIMES-180", "GEO.ANGLES.QUADRILATERAL-180"],
 
@@ -81,23 +82,68 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Rob says the angles in a quadrilateral add up to 180°, like a triangle."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Rob says the angles in a quadrilateral add up to 180°, like a triangle.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A diagonal splits a quadrilateral into two triangles, so its angles add up to 2 × 180° = 360°.",
+                  correct: true,
+                },
+                {
+                  text: "True. Every polygon's angles add up to 180°.",
+                  code: "GEO.ANGLES.QUADRILATERAL-180",
+                },
+                {
+                  text: "True. A square has four 45° angles.",
+                  code: "GEO.ANGLES.QUADRILATERAL-180",
+                },
+              ],
+              solution: [{ say: "Angle sum = (n − 2) × 180°." }],
+            }),
+          [
             {
-              text: "False. A diagonal splits a quadrilateral into two triangles, so its angles add up to 2 × 180° = 360°.",
-              correct: true,
+              statement: `Mia says the angles in a polygon with ${p.m} sides add up to ${(p.m - 2) * 180}°.`,
+              truth: true,
+              right: `True. Diagonals from one corner split it into ${p.m - 2} triangles: (${p.m} − 2) × 180° = ${(p.m - 2) * 180}°.`,
+              wrong: [
+                [`False. It is ${p.m} × 180° = ${p.m * 180}°.`, "GEO.POLYGON.SUM-N-TIMES-180"],
+                [
+                  "False. The angles of any polygon add up to 360°.",
+                  "GEO.ANGLES.QUADRILATERAL-180",
+                ],
+              ],
             },
             {
-              text: "True. Every polygon's angles add up to 180°.",
-              code: "GEO.ANGLES.QUADRILATERAL-180",
+              statement: `Raj says the angles in a ${p.n === 5 ? "pentagon" : "hexagon"} add up to ${p.n * 180}°.`,
+              truth: false,
+              right: `False. It splits into ${p.n - 2} triangles, so its angles add up to ${(p.n - 2) * 180}°.`,
+              wrong: [
+                ["True. Multiply the number of sides by 180°.", "GEO.POLYGON.SUM-N-TIMES-180"],
+                ["True. Each side brings 180°.", "GEO.POLYGON.SUM-N-TIMES-180"],
+              ],
             },
-            { text: "True. A square has four 45° angles.", code: "GEO.ANGLES.QUADRILATERAL-180" },
+            {
+              claim: "Adding one more side to a polygon keeps its angle sum the same.",
+              truth: "never",
+              right:
+                "Never. Each extra side adds one more triangle, so the angle sum goes up by 180°.",
+              wrong: [
+                [
+                  "Always. The angles of any polygon add up to 360°.",
+                  "GEO.ANGLES.QUADRILATERAL-180",
+                ],
+                ["Sometimes. When the polygon is regular."],
+              ],
+            },
           ],
-          solution: [{ say: "Angle sum = (n − 2) × 180°." }],
-        });
+        );
     }
   },
 

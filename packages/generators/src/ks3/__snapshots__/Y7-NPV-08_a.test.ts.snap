@@ -10,7 +10,7 @@ exports[`Y7-NPV-08.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-08.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -75,7 +75,7 @@ exports[`Y7-NPV-08.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-08.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -140,7 +140,7 @@ exports[`Y7-NPV-08.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-08.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -205,7 +205,7 @@ exports[`Y7-NPV-08.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-08.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -270,7 +270,7 @@ exports[`Y7-NPV-08.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-08.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -332,7 +332,7 @@ exports[`Y7-NPV-08.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-08.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -387,14 +387,139 @@ exports[`Y7-NPV-08.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-08.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. Rounding always goes down.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. Rounding goes up.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. 3.47 rounds up to 3.5, but 3.42 rounds down to 3.4.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Sometimes. 3.47 rounds up to 3.5, but 3.42 rounds down to 3.4.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Rounding a number to 1 decimal place makes it bigger.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y7-NPV-08.a",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -487,126 +612,6 @@ exports[`Y7-NPV-08.a > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "1.99 \\approx 2.0",
-        "say": [],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Mia says ",
-      },
-      {
-        "t": "math",
-        "v": "1.99",
-      },
-      {
-        "t": "text",
-        "v": " rounded to 1 decimal place is 1.10.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y7-NPV-08.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. 9 tenths rounds up to 10 tenths, which is 1 whole: the answer is 2.0.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. It is 1.9, since you always round down.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The 9 becomes 10.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.ROUND.ALWAYS-DOWN",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.ROUND.WRONG-PLACE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
         "math": "1.97 \\approx 2.0",
         "say": [],
       },
@@ -627,14 +632,14 @@ exports[`Y7-NPV-08.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-08.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -652,7 +657,7 @@ exports[`Y7-NPV-08.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -661,10 +666,19 @@ exports[`Y7-NPV-08.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -672,7 +686,7 @@ exports[`Y7-NPV-08.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 9 tenths rounds up to 10 tenths, which is 1 whole: the answer is 9.0.",
+                  "v": "Sometimes. 3.47 rounds up to 3.5, but 3.42 rounds down to 3.4.",
                 },
               ],
               "id": "RA",
@@ -681,7 +695,7 @@ exports[`Y7-NPV-08.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The 9 becomes 10.",
+                  "v": "Always. Rounding goes up.",
                 },
               ],
               "id": "RB",
@@ -690,7 +704,7 @@ exports[`Y7-NPV-08.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 8.9, since you always round down.",
+                  "v": "Never. Rounding always goes down.",
                 },
               ],
               "id": "RC",
@@ -705,7 +719,7 @@ exports[`Y7-NPV-08.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.ROUND.WRONG-PLACE",
+            "code": "NPV.ROUND.ALWAYS-DOWN",
             "feedback": [],
           },
           {
@@ -720,29 +734,25 @@ exports[`Y7-NPV-08.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
     ],
     "solution": [
       {
-        "math": "8.97 \\approx 9.0",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "Sometimes. 3.47 rounds up to 3.5, but 3.42 rounds down to 3.4.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Mia says ",
-      },
-      {
-        "t": "math",
-        "v": "8.97",
-      },
-      {
-        "t": "text",
-        "v": " rounded to 1 decimal place is 8.10.",
+        "v": "Rounding a number to 1 decimal place makes it bigger.",
       },
     ],
   },

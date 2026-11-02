@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   k: number;
@@ -19,7 +20,7 @@ const r = (v: number) => Number(v.toFixed(6));
 
 export default defineGenerator<Params>({
   id: "Y7-GEO-03.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.SCALE.DIVIDES", "MEA.CONVERT.FACTOR"],
 
@@ -75,27 +76,64 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `On a scale drawing where 1 cm represents ${p.k} m, Kai says a right angle on the drawing stands for a ${90 * p.k}° angle in real life.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `On a scale drawing where 1 cm represents ${p.k} m, Kai says a right angle on the drawing stands for a ${90 * p.k}° angle in real life.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A scale drawing changes lengths but not angles, so a right angle is still 90°.",
+                  correct: true,
+                },
+                {
+                  text: "True. Everything on the drawing is multiplied by the scale.",
+                  code: "GEO.SCALE.DIVIDES",
+                },
+                { text: `False. It is ${90 / p.k}°.`, code: "GEO.SCALE.DIVIDES" },
+              ],
+              solution: [
+                { say: "The real shape and the drawing are similar: same angles, scaled lengths." },
+              ],
+            }),
+          [
             {
-              text: "False. A scale drawing changes lengths but not angles, so a right angle is still 90°.",
-              correct: true,
+              statement: `On a drawing where 1 cm represents ${p.k} m, Pia says a line ${p.d} cm long represents ${p.d * p.k} m.`,
+              truth: true,
+              right: `True. Each centimetre stands for ${p.k} m, so ${p.d} cm stands for ${p.d} × ${p.k} = ${p.d * p.k} m.`,
+              wrong: [
+                [`False. Divide ${p.d} by ${p.k} to find the real length.`, "GEO.SCALE.DIVIDES"],
+                ["False. The scale only applies to the first centimetre."],
+              ],
             },
             {
-              text: "True. Everything on the drawing is multiplied by the scale.",
-              code: "GEO.SCALE.DIVIDES",
+              statement: `On a drawing where 1 cm represents ${p.k} m, Zoe says a real wall ${p.x} m long is drawn ${p.x * p.k} cm long.`,
+              truth: false,
+              right: `False. Going from real life to the drawing, divide by the scale: the wall is drawn ${p.x} ÷ ${p.k} cm long, which is shorter than ${p.x} cm.`,
+              wrong: [
+                [
+                  "True. Multiply by the scale to go from real life to the drawing.",
+                  "GEO.SCALE.DIVIDES",
+                ],
+                ["True. Drawings are bigger than real life."],
+              ],
             },
-            { text: `False. It is ${90 / p.k}°.`, code: "GEO.SCALE.DIVIDES" },
+            {
+              claim: "A scale drawing has the same angles as the real thing.",
+              truth: "always",
+              right:
+                "Always. Scaling changes every length in the same ratio but keeps every angle the same.",
+              wrong: [
+                ["Sometimes. Only when the scale is 1 cm to 1 m.", "GEO.SCALE.DIVIDES"],
+                ["Never. Angles are scaled like lengths.", "GEO.SCALE.DIVIDES"],
+              ],
+            },
           ],
-          solution: [
-            { say: "The real shape and the drawing are similar: same angles, scaled lengths." },
-          ],
-        });
+        );
     }
   },
 

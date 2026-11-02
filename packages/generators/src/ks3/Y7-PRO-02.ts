@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Probabilities in hundredths. */
@@ -20,7 +21,7 @@ const dec = (h: number) => String(h / 100);
 
 export default defineGenerator<Params>({
   id: "Y7-PRO-02",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["PRO.COMPLEMENT"],
 
@@ -90,40 +91,75 @@ export default defineGenerator<Params>({
       default: {
         const [a, b, c] = p.three;
         const shown = p.claimTrue ? c : c + 10;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "A spinner lands on red, blue or green. Ali says the probabilities are ",
-            A.math(`${dec(a)},\\ ${dec(b)}\\text{ and }${dec(shown)}`),
-            ".",
-          ],
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
-                {
-                  text: `True. They add up to ${dec(a)} + ${dec(b)} + ${dec(shown)} = 1, as the probabilities of all the outcomes must.`,
-                  correct: true,
-                },
-                { text: "False. Probabilities of different colours must be equal." },
-                { text: "False. They should add up to 100.", code: "PRO.COMPLEMENT" },
-              ]
-            : [
-                {
-                  text: `False. They add up to ${dec(a + b + shown)}, but the probabilities of all the outcomes must add up to 1.`,
-                  correct: true,
-                },
-                {
-                  text: "True. Any probabilities between 0 and 1 are possible.",
-                  code: "PRO.COMPLEMENT",
-                },
-                { text: "True. Spinners can have any probabilities." },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "A spinner lands on red, blue or green. Ali says the probabilities are ",
+                A.math(`${dec(a)},\\ ${dec(b)}\\text{ and }${dec(shown)}`),
+                ".",
               ],
-          solution: [
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    {
+                      text: `True. They add up to ${dec(a)} + ${dec(b)} + ${dec(shown)} = 1, as the probabilities of all the outcomes must.`,
+                      correct: true,
+                    },
+                    { text: "False. Probabilities of different colours must be equal." },
+                    { text: "False. They should add up to 100.", code: "PRO.COMPLEMENT" },
+                  ]
+                : [
+                    {
+                      text: `False. They add up to ${dec(a + b + shown)}, but the probabilities of all the outcomes must add up to 1.`,
+                      correct: true,
+                    },
+                    {
+                      text: "True. Any probabilities between 0 and 1 are possible.",
+                      code: "PRO.COMPLEMENT",
+                    },
+                    { text: "True. Spinners can have any probabilities." },
+                  ],
+              solution: [
+                {
+                  say: "The outcomes cover everything that can happen, so their probabilities add up to 1.",
+                },
+              ],
+            }),
+          [
             {
-              say: "The outcomes cover everything that can happen, so their probabilities add up to 1.",
+              statement: `The probability that Ben's bus is late is ${dec(p.p)}. He says the probability that it is not late is ${dec(100 - p.p)}.`,
+              truth: true,
+              right: `True. Late and not late cover everything, so 1 − ${dec(p.p)} = ${dec(100 - p.p)}.`,
+              wrong: [
+                [`False. It is ${dec(p.p)} as well.`, "PRO.COMPLEMENT"],
+                ["False. It cannot be worked out without more information."],
+              ],
+            },
+            {
+              claim: "The probabilities of all the outcomes of an event add up to more than 1.",
+              truth: "never",
+              right:
+                "Never. Together the outcomes cover everything that can happen, so their probabilities add up to exactly 1.",
+              wrong: [
+                ["Sometimes. When there are lots of outcomes.", "PRO.COMPLEMENT"],
+                ["Always. Each outcome adds to the total.", "PRO.COMPLEMENT"],
+              ],
+            },
+            {
+              claim:
+                "The probability that something happens, plus the probability that it does not happen, is 1.",
+              truth: "always",
+              right: "Always. It either happens or it does not, and those two cover every outcome.",
+              wrong: [
+                ["Sometimes. Only for a fair coin.", "PRO.COMPLEMENT"],
+                ["Never. They add up to 100.", "PRO.COMPLEMENT"],
+              ],
             },
           ],
-        });
+        );
       }
     }
   },

@@ -10,7 +10,7 @@ exports[`Y7-NPV-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -101,7 +101,7 @@ exports[`Y7-NPV-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -192,7 +192,7 @@ exports[`Y7-NPV-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -283,7 +283,7 @@ exports[`Y7-NPV-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -384,7 +384,7 @@ exports[`Y7-NPV-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -485,7 +485,7 @@ exports[`Y7-NPV-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -586,7 +586,7 @@ exports[`Y7-NPV-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -597,289 +597,7 @@ exports[`Y7-NPV-02.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Always true",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Sometimes true",
-                },
-              ],
-              "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Always. Both say the same thing: a is the smaller number. For example 2 < 11 and 11 > 2.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never. Swapping the numbers means swapping to the other answer.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Sometimes. Only when both numbers are positive.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.COMPARE.SIGN-DIRECTION",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.COMPARE.SIGN-DIRECTION",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this always, sometimes or never true?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "The sign always opens towards the larger number.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "If ",
-      },
-      {
-        "t": "math",
-        "v": "a < b",
-      },
-      {
-        "t": "text",
-        "v": ", then ",
-      },
-      {
-        "t": "math",
-        "v": "b > a",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "always-sometimes-never",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y7-NPV-02.c",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Always true",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Sometimes true",
-                },
-              ],
-              "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Always. Both say the same thing: a is the smaller number. For example 8 < 14 and 14 > 8.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Sometimes. Only when both numbers are positive.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never. Swapping the numbers means swapping to the other answer.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.COMPARE.SIGN-DIRECTION",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.COMPARE.SIGN-DIRECTION",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this always, sometimes or never true?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "The sign always opens towards the larger number.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "If ",
-      },
-      {
-        "t": "math",
-        "v": "a < b",
-      },
-      {
-        "t": "text",
-        "v": ", then ",
-      },
-      {
-        "t": "math",
-        "v": "b > a",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "always-sometimes-never",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y7-NPV-02.c",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
+          "correct": "B",
           "correctReason": "RB",
           "options": [
             {
@@ -915,7 +633,7 @@ exports[`Y7-NPV-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when both numbers are positive.",
+                  "v": "Never. ≠ means less than.",
                 },
               ],
               "id": "RA",
@@ -924,7 +642,7 @@ exports[`Y7-NPV-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Both say the same thing: a is the smaller number. For example 3 < 8 and 8 > 3.",
+                  "v": "Sometimes. a ≠ b only says the numbers are different: 5 ≠ 3 with 5 > 3, but 3 ≠ 5 with 3 < 5.",
                 },
               ],
               "id": "RB",
@@ -933,7 +651,7 @@ exports[`Y7-NPV-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Swapping the numbers means swapping to the other answer.",
+                  "v": "Always. ≠ means greater than.",
                 },
               ],
               "id": "RC",
@@ -954,6 +672,147 @@ exports[`Y7-NPV-02.c > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.COMPARE.SIGN-DIRECTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Sometimes. a ≠ b only says the numbers are different: 5 ≠ 3 with 5 > 3, but 3 ≠ 5 with 3 < 5.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "If ",
+      },
+      {
+        "t": "math",
+        "v": "a \\ne b",
+      },
+      {
+        "t": "text",
+        "v": ", then ",
+      },
+      {
+        "t": "math",
+        "v": "a > b",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y7-NPV-02.c",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. Swapping the numbers means swapping to the other answer.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only when both numbers are positive.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. Both say the same thing: a is the smaller number. For example 8 < 14 and 14 > 8.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.COMPARE.SIGN-DIRECTION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.COMPARE.SIGN-DIRECTION",
@@ -998,6 +857,130 @@ exports[`Y7-NPV-02.c > keeps fixed seeds unchanged 1`] = `
       {
         "t": "text",
         "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y7-NPV-02.c",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. ≤ means less than or equal to, and 3 is equal to 3.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. ≤ only compares two different numbers.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. A number cannot be less than itself.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.COMPARE.SIGN-DIRECTION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.COMPARE.SIGN-DIRECTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. ≤ means less than or equal to, and 3 is equal to 3.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Mo says ",
+      },
+      {
+        "t": "math",
+        "v": "3 \\le 3",
+      },
+      {
+        "t": "text",
+        "v": " is true.",
       },
     ],
   },

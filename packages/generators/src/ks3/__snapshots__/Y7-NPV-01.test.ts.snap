@@ -10,7 +10,7 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -105,7 +105,7 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -200,7 +200,7 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -295,7 +295,7 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -362,7 +362,7 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -442,7 +442,7 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -509,7 +509,7 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -624,7 +624,7 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -739,7 +739,7 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -847,14 +847,14 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -866,13 +866,13 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -881,19 +881,10 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -901,7 +892,7 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Each digit moves two places right, so the value is a hundredth of what it was.",
+                  "v": "False. Multiplying by 100 moves the digits right: 0.095.",
                 },
               ],
               "id": "RA",
@@ -910,7 +901,7 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only whole numbers get smaller; decimals get bigger.",
+                  "v": "False. Multiplying by 100 puts two zeros on the end: 9.500.",
                 },
               ],
               "id": "RB",
@@ -919,7 +910,7 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only if the number ends in 00.",
+                  "v": "True. Each digit moves two places to the left: 9 ones become 9 hundreds and 5 tenths become 5 tens.",
                 },
               ],
               "id": "RC",
@@ -931,17 +922,25 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.POWERS10.WRONG-WAY",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.POWERS10.APPEND-ZEROS",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -951,7 +950,7 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Each digit moves two places right, so the value is a hundredth of what it was.",
+            "v": "True. Each digit moves two places to the left: 9 ones become 9 hundreds and 5 tenths become 5 tens.",
           },
         ],
       },
@@ -959,7 +958,15 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Dividing a positive number by 100 makes it smaller.",
+        "v": "Lia says ",
+      },
+      {
+        "t": "math",
+        "v": "9.5 \\times 100 = 950",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
@@ -971,124 +978,7 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-01",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Always true",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Sometimes true",
-                },
-              ],
-              "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Only whole numbers get smaller; decimals get bigger.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Each digit moves two places right, so the value is a hundredth of what it was.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Only if the number ends in 00.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.POWERS10.WRONG-WAY",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this always, sometimes or never true?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Each digit moves two places right, so the value is a hundredth of what it was.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Dividing a positive number by 100 makes it smaller.",
-      },
-    ],
-  },
-  {
-    "archetype": "always-sometimes-never",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y7-NPV-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1144,7 +1034,7 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only whole numbers get smaller; decimals get bigger.",
+                  "v": "Only if the number ends in 00.",
                 },
               ],
               "id": "RB",
@@ -1153,7 +1043,7 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only if the number ends in 00.",
+                  "v": "Only whole numbers get smaller; decimals get bigger.",
                 },
               ],
               "id": "RC",
@@ -1165,7 +1055,7 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.POWERS10.WRONG-WAY",
@@ -1194,6 +1084,130 @@ exports[`Y7-NPV-01 > keeps fixed seeds unchanged 1`] = `
       {
         "t": "text",
         "v": "Dividing a positive number by 100 makes it smaller.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y7-NPV-01",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Only the digits after the point change.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Dividing by 10 moves each digit one place to the right: 9.1 ÷ 10 = 0.91.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. To divide by 10, put a 0 after the decimal point.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.PLACE.COLUMN-SHIFT",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.POWERS10.APPEND-ZEROS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. Dividing by 10 moves each digit one place to the right: 9.1 ÷ 10 = 0.91.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Tom says ",
+      },
+      {
+        "t": "math",
+        "v": "9.1 \\div 10 = 9.01",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },

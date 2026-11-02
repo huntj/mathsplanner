@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { trapezium } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-GEO-01.d",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.AREA.TRAPEZIUM-HALF"],
 
@@ -79,25 +80,67 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Ben finds the area of a trapezium with parallel sides ${p.a} cm and ${p.b} cm, ${p.h} cm apart, as ½ × ${p.a} × ${p.b} × ${p.h}.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Ben finds the area of a trapezium with parallel sides ${p.a} cm and ${p.b} cm, ${p.h} cm apart, as ½ × ${p.a} × ${p.b} × ${p.h}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The parallel sides are added, not multiplied: ½ × (${p.a} + ${p.b}) × ${p.h} = ${area} cm².`,
+                  correct: true,
+                },
+                {
+                  text: "True. Multiply all the lengths and halve.",
+                  code: "MEA.AREA.TRAPEZIUM-HALF",
+                },
+                {
+                  text: "True. It works like the area of a triangle.",
+                  code: "MEA.AREA.TRAPEZIUM-HALF",
+                },
+              ],
+              solution: [{ say: "Average the parallel sides, then multiply by the height." }],
+            }),
+          [
             {
-              text: `False. The parallel sides are added, not multiplied: ½ × (${p.a} + ${p.b}) × ${p.h} = ${area} cm².`,
-              correct: true,
+              statement: `Olu says a trapezium with parallel sides ${p.a} cm and ${p.b} cm, ${p.h} cm apart, has an area of ${((p.a + p.b) * p.h) / 2} cm².`,
+              truth: true,
+              right: `True. ½ × (${p.a} + ${p.b}) × ${p.h} = ${((p.a + p.b) * p.h) / 2} cm².`,
+              wrong: [
+                [
+                  `False. It is (${p.a} + ${p.b}) × ${p.h} = ${(p.a + p.b) * p.h} cm².`,
+                  "MEA.AREA.TRAPEZIUM-HALF",
+                ],
+                [`False. It is ½ × ${p.a} × ${p.b} × ${p.h}.`, "MEA.AREA.TRAPEZIUM-HALF"],
+              ],
             },
-            { text: "True. Multiply all the lengths and halve.", code: "MEA.AREA.TRAPEZIUM-HALF" },
             {
-              text: "True. It works like the area of a triangle.",
-              code: "MEA.AREA.TRAPEZIUM-HALF",
+              statement: `Pat says a trapezium with parallel sides ${p.a} cm and ${p.b} cm, ${p.h} cm apart, has an area of ${(p.a + p.b) * p.h} cm².`,
+              truth: false,
+              right: `False. That is twice the area: ½ × (${p.a} + ${p.b}) × ${p.h} = ${((p.a + p.b) * p.h) / 2} cm².`,
+              wrong: [
+                [
+                  "True. Add the parallel sides and multiply by the height.",
+                  "MEA.AREA.TRAPEZIUM-HALF",
+                ],
+                ["True. There is no half in the trapezium formula.", "MEA.AREA.TRAPEZIUM-HALF"],
+              ],
+            },
+            {
+              claim: "The trapezium formula gives the right area for a rectangle too.",
+              truth: "always",
+              right: "Always. With both parallel sides equal to a, ½ × (a + a) × h = a × h.",
+              wrong: [
+                ["Never. A rectangle needs its own formula."],
+                ["Sometimes. Only for a square."],
+              ],
             },
           ],
-          solution: [{ say: "Average the parallel sides, then multiply by the height." }],
-        });
+        );
     }
   },
 

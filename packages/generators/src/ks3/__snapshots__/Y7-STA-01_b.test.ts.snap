@@ -10,7 +10,7 @@ exports[`Y7-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -76,7 +76,7 @@ exports[`Y7-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -142,7 +142,7 @@ exports[`Y7-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -208,7 +208,7 @@ exports[`Y7-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -270,7 +270,7 @@ exports[`Y7-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -332,7 +332,7 @@ exports[`Y7-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -387,14 +387,14 @@ exports[`Y7-STA-01.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -405,7 +405,115 @@ exports[`Y7-STA-01.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. The median is always worked out with a sum.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. The median of 1, 4, 9 is 4, but the median of 1, 4, 6, 9 is 5, halfway between 4 and 6.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. The median is the middle value of the list.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Sometimes. The median of 1, 4, 9 is 4, but the median of 1, 4, 6, 9 is 5, halfway between 4 and 6.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The median of a set of data is one of the data values.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y7-STA-01.b",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
           "correctReason": "RC",
           "options": [
             {
@@ -432,7 +540,7 @@ exports[`Y7-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The mode is how many times the most common value appears.",
+                  "v": "True. The median is the biggest value.",
                 },
               ],
               "id": "RA",
@@ -441,7 +549,7 @@ exports[`Y7-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The mode is always the middle value.",
+                  "v": "True. The median is the middle number as it is written.",
                 },
               ],
               "id": "RB",
@@ -450,7 +558,7 @@ exports[`Y7-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. If two values are equally the most common, both are modes, e.g. 2, 2, 5, 7, 7.",
+                  "v": "False. Put them in order first: 2, 4, 5, 7, 9. The median is 5.",
                 },
               ],
               "id": "RC",
@@ -460,14 +568,6 @@ exports[`Y7-STA-01.b > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "STA.MODE.FREQUENCY",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RB",
@@ -490,7 +590,7 @@ exports[`Y7-STA-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Data with two modes is called bimodal.",
+            "v": "False. Put them in order first: 2, 4, 5, 7, 9. The median is 5.",
           },
         ],
       },
@@ -498,123 +598,7 @@ exports[`Y7-STA-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Zara says a set of data can have more than one mode.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y7-STA-01.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. The mode is how many times the most common value appears.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. If two values are equally the most common, both are modes, e.g. 2, 2, 5, 7, 7.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. The mode is always the middle value.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "STA.MODE.FREQUENCY",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "STA.MEDIAN.UNORDERED",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Data with two modes is called bimodal.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Zara says a set of data can have more than one mode.",
+        "v": "Lee says the median of 7, 2, 9, 4, 5 is 9, the number in the middle.",
       },
     ],
   },
@@ -626,7 +610,7 @@ exports[`Y7-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -638,7 +622,7 @@ exports[`Y7-STA-01.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -664,7 +648,7 @@ exports[`Y7-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The mode is always the middle value.",
+                  "v": "True. If two values are equally the most common, both are modes, e.g. 2, 2, 5, 7, 7.",
                 },
               ],
               "id": "RA",
@@ -673,7 +657,7 @@ exports[`Y7-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. If two values are equally the most common, both are modes, e.g. 2, 2, 5, 7, 7.",
+                  "v": "False. The mode is always the middle value.",
                 },
               ],
               "id": "RB",
@@ -694,7 +678,7 @@ exports[`Y7-STA-01.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "STA.MEDIAN.UNORDERED",

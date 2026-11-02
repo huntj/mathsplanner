@@ -10,7 +10,7 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-09.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -111,7 +111,7 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-09.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -212,7 +212,7 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-09.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -313,7 +313,7 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-09.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -375,7 +375,7 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-09.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -437,7 +437,7 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-09.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -499,7 +499,124 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-09.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. A rounded number could have been anything.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. It could be up to 1 away.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. It is at least 12.5 and less than 13.5.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.BOUNDS.ENDS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. It is at least 12.5 and less than 13.5.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A number that rounds to 13 to the nearest whole number is within 0.5 of 13.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y7-NPV-09.b",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -517,7 +634,7 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -526,19 +643,10 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -546,7 +654,7 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It can be anything from 15 up to (but not including) 25: 17 is less, but 23 is more.",
+                  "v": "False. 45 rounds up to 50, so the interval is 35 ≤ x < 45.",
                 },
               ],
               "id": "RA",
@@ -555,7 +663,7 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Rounding makes numbers bigger.",
+                  "v": "True. The interval is 35 ≤ x ≤ 45.",
                 },
               ],
               "id": "RB",
@@ -564,7 +672,7 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Rounding makes numbers smaller.",
+                  "v": "True. It can be up to 5 either side.",
                 },
               ],
               "id": "RC",
@@ -594,142 +702,25 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
     ],
     "solution": [
       {
-        "math": "15 \\le x < 25",
-        "say": [],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "A number that rounds to 20 to the nearest 10 is less than 20.",
-      },
-    ],
-  },
-  {
-    "archetype": "always-sometimes-never",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y7-NPV-09.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Always true",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Sometimes true",
-                },
-              ],
-              "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never. Rounding makes numbers smaller.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Sometimes. It can be anything from 35 up to (but not including) 45: 37 is less, but 43 is more.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Always. Rounding makes numbers bigger.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.BOUNDS.ENDS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.BOUNDS.ENDS",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
+        "say": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "False. 45 rounds up to 50, so the interval is 35 ≤ x < 45.",
           },
         ],
-      },
-    ],
-    "solution": [
-      {
-        "math": "35 \\le x < 45",
-        "say": [],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "A number that rounds to 40 to the nearest 10 is less than 40.",
+        "v": "Ian says a length that is 40 cm to the nearest 10 cm could be 45 cm.",
       },
     ],
   },
@@ -741,7 +732,7 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-09.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -752,7 +743,7 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -788,7 +779,7 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Rounding makes numbers smaller.",
+                  "v": "Never. A rounded number could have been anything.",
                 },
               ],
               "id": "RA",
@@ -797,7 +788,7 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It can be anything from 75 up to (but not including) 85: 77 is less, but 83 is more.",
+                  "v": "Always. It is at least 3.5 and less than 4.5.",
                 },
               ],
               "id": "RB",
@@ -806,7 +797,7 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Rounding makes numbers bigger.",
+                  "v": "Sometimes. It could be up to 1 away.",
                 },
               ],
               "id": "RC",
@@ -816,14 +807,6 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.BOUNDS.ENDS",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -843,14 +826,18 @@ exports[`Y7-NPV-09.b > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "75 \\le x < 85",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. It is at least 3.5 and less than 4.5.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "A number that rounds to 80 to the nearest 10 is less than 80.",
+        "v": "A number that rounds to 4 to the nearest whole number is within 0.5 of 4.",
       },
     ],
   },

@@ -76,7 +76,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -204,7 +204,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -332,7 +332,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -394,7 +394,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -456,7 +456,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -518,7 +518,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -580,7 +580,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -591,8 +591,8 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RB",
+          "correct": "B",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -627,7 +627,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when the sides are not too slanted.",
+                  "v": "Always. Multiply two sides that meet.",
                 },
               ],
               "id": "RA",
@@ -636,7 +636,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Cut the triangle off one end and move it to the other: the parallelogram becomes that rectangle.",
+                  "v": "Never. You always halve it.",
                 },
               ],
               "id": "RB",
@@ -645,7 +645,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The slanted sides make it bigger.",
+                  "v": "Sometimes. In a rectangle the other side is the perpendicular height, but in a slanted parallelogram the side is longer than the height.",
                 },
               ],
               "id": "RC",
@@ -665,10 +665,10 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "MEA.AREA.SLANT",
+            "code": "MEA.AREA.TRIANGLE-HALF",
             "feedback": [],
           },
         ],
@@ -685,7 +685,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Area = base × perpendicular height for both.",
+            "v": "Sometimes. In a rectangle the other side is the perpendicular height, but in a slanted parallelogram the side is longer than the height.",
           },
         ],
       },
@@ -693,19 +693,19 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A parallelogram has the same area as a rectangle with the same base and perpendicular height.",
+        "v": "The area of a parallelogram is its base times one of its other sides.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -716,14 +716,14 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RB",
+          "correct": "B",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -732,19 +732,10 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -752,7 +743,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The slanted sides make it bigger.",
+                  "v": "True. The sloping side is the height.",
                 },
               ],
               "id": "RA",
@@ -761,7 +752,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Cut the triangle off one end and move it to the other: the parallelogram becomes that rectangle.",
+                  "v": "True. Multiply the two sides you can see.",
                 },
               ],
               "id": "RB",
@@ -770,7 +761,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when the sides are not too slanted.",
+                  "v": "False. Use the perpendicular height, not the sloping side: 5 × 12 = 60 cm².",
                 },
               ],
               "id": "RC",
@@ -790,7 +781,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "MEA.AREA.SLANT",
@@ -800,7 +791,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -810,7 +801,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Area = base × perpendicular height for both.",
+            "v": "False. Use the perpendicular height, not the sloping side: 5 × 12 = 60 cm².",
           },
         ],
       },
@@ -818,7 +809,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A parallelogram has the same area as a rectangle with the same base and perpendicular height.",
+        "v": "Max says a parallelogram with base 5 cm, sloping side 14 cm and perpendicular height 12 cm has an area of 70 cm².",
       },
     ],
   },
@@ -830,7 +821,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -842,7 +833,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -877,7 +868,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Cut the triangle off one end and move it to the other: the parallelogram becomes that rectangle.",
+                  "v": "Sometimes. Only when the sides are not too slanted.",
                 },
               ],
               "id": "RA",
@@ -886,7 +877,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The slanted sides make it bigger.",
+                  "v": "Always. Cut the triangle off one end and move it to the other: the parallelogram becomes that rectangle.",
                 },
               ],
               "id": "RB",
@@ -895,7 +886,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when the sides are not too slanted.",
+                  "v": "Never. The slanted sides make it bigger.",
                 },
               ],
               "id": "RC",
@@ -907,7 +898,7 @@ exports[`Y7-GEO-01.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "MEA.AREA.SLANT",

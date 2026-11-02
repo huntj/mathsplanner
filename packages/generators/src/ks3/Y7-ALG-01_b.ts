@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-ALG-01.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MD.SQUARE.DOUBLES", "NPV.ORDER.LEFT-TO-RIGHT"],
 
@@ -74,23 +75,56 @@ export default defineGenerator<Params>({
           solution: [{ say: "", math: "a \\times a \\times a \\times b = a^3b" }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Zoe says ", A.math(`${p.k}a^2`), " means ", A.math(`(${p.k}a)^2`), "."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Zoe says ", A.math(`${p.k}a^2`), " means ", A.math(`(${p.k}a)^2`), "."],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Only a is squared: ${p.k}a² = ${p.k} × a × a. With a = ${p.a} it is ${p.k * p.a * p.a}, but (${p.k}a)² = ${(p.k * p.a) ** 2}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The power applies to everything in front of it.",
+                  code: "NPV.ORDER.LEFT-TO-RIGHT",
+                },
+                { text: "True. You multiply first, then square.", code: "NPV.ORDER.LEFT-TO-RIGHT" },
+              ],
+              solution: [{ say: "Powers are worked out before multiplying." }],
+            }),
+          [
             {
-              text: `False. Only a is squared: ${p.k}a² = ${p.k} × a × a. With a = ${p.a} it is ${p.k * p.a * p.a}, but (${p.k}a)² = ${(p.k * p.a) ** 2}.`,
-              correct: true,
+              statement: "Jo says $a^2$ means $a \\times a$.",
+              truth: true,
+              right: `True. With a = ${p.a}, a² = ${p.a} × ${p.a} = ${p.a * p.a}.`,
+              wrong: [
+                ["False. a² means a × 2.", "MD.SQUARE.DOUBLES"],
+                ["False. a² means a + a.", "MD.SQUARE.DOUBLES"],
+              ],
             },
             {
-              text: "True. The power applies to everything in front of it.",
-              code: "NPV.ORDER.LEFT-TO-RIGHT",
+              claim: "$a^2$ is bigger than $2a$.",
+              truth: "sometimes",
+              right: `Sometimes. With a = ${p.a}, a² = ${p.a * p.a} is bigger than 2a = ${2 * p.a}; but with a = 1, a² = 1 is smaller than 2a = 2.`,
+              wrong: [
+                ["Always. Squaring is more than doubling.", "MD.SQUARE.DOUBLES"],
+                ["Never. a² and 2a are the same thing.", "MD.SQUARE.DOUBLES"],
+              ],
             },
-            { text: "True. You multiply first, then square.", code: "NPV.ORDER.LEFT-TO-RIGHT" },
+            {
+              statement: "Max says $a^2b$ means $a \\times a \\times b$.",
+              truth: true,
+              right: "True. Only a is squared; b is multiplied once.",
+              wrong: [
+                ["False. It means (ab)², so b is squared too.", "NPV.ORDER.LEFT-TO-RIGHT"],
+                ["False. It means a × 2 × b.", "MD.SQUARE.DOUBLES"],
+              ],
+            },
           ],
-          solution: [{ say: "Powers are worked out before multiplying." }],
-        });
+        );
     }
   },
 

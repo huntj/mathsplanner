@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText, exactAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const WORDS = ["Impossible", "Unlikely", "Even chance", "Likely", "Certain"];
 const word = (p: number) => (p === 0 ? 0 : p < 0.5 ? 1 : p === 0.5 ? 2 : p < 1 ? 3 : 4);
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-PRO-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["PRO.SCALE.WORDS", "PRO.ODDS"],
 
@@ -81,20 +82,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["A probability can be greater than 1."],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["A probability can be greater than 1."],
+              truth: "never",
+              reasons: [
+                {
+                  text: "Never. A probability of 1 means certain; nothing can be more likely than certain.",
+                  correct: true,
+                },
+                { text: "Sometimes. When there are lots of good outcomes.", code: "PRO.ODDS" },
+                { text: "Always. Probabilities are any positive number.", code: "PRO.SCALE.WORDS" },
+              ],
+              solution: [{ say: "Every probability is between 0 and 1." }],
+            }),
+          [
             {
-              text: "Never. A probability of 1 means certain; nothing can be more likely than certain.",
-              correct: true,
+              statement: "Una says an event with a probability of 0 is impossible.",
+              truth: true,
+              right: "True. 0 is the impossible end of the probability scale.",
+              wrong: [
+                ["False. 0 means an even chance.", "PRO.SCALE.WORDS"],
+                ["False. 0 means unlikely, but it could still happen.", "PRO.SCALE.WORDS"],
+              ],
             },
-            { text: "Sometimes. When there are lots of good outcomes.", code: "PRO.ODDS" },
-            { text: "Always. Probabilities are any positive number.", code: "PRO.SCALE.WORDS" },
+            {
+              statement: "Vic says an event with a probability of 0.5 is likely.",
+              truth: false,
+              right: "False. 0.5 is an even chance: it is as likely to happen as not.",
+              wrong: [
+                ["True. Anything above 0 is likely.", "PRO.SCALE.WORDS"],
+                ["True. 0.5 is close to 1.", "PRO.SCALE.WORDS"],
+              ],
+            },
+            {
+              statement: `A bag holds ${p.r} red counters and ${p.b} blue counters. Wes says picking a red counter is more likely than picking a blue one.`,
+              truth: p.r > p.b,
+              right:
+                p.r > p.b
+                  ? `True. ${p.r} of the ${p.r + p.b} counters are red, more than the ${p.b} blue ones.`
+                  : `False. Only ${p.r} of the ${p.r + p.b} counters are red, fewer than the ${p.b} blue ones.`,
+              wrong:
+                p.r > p.b
+                  ? [
+                      ["False. Each colour has an even chance.", "PRO.ODDS"],
+                      ["False. Blue is always more likely."],
+                    ]
+                  : [
+                      ["True. Red is mentioned first."],
+                      ["True. Every colour is equally likely.", "PRO.ODDS"],
+                    ],
+            },
           ],
-          solution: [{ say: "Every probability is between 0 and 1." }],
-        });
+        );
     }
   },
 

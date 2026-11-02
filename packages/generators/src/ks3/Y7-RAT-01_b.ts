@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   m2: number;
@@ -18,7 +19,7 @@ const r = (v: number) => Number(v.toFixed(6));
 
 export default defineGenerator<Params>({
   id: "Y7-RAT-01.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.UNITS.AREA-FACTOR", "RAT.UNITS.DIRECTION"],
 
@@ -69,20 +70,53 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["1 cm³ = 10 mm³."],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["1 cm³ = 10 mm³."],
+              truth: "never",
+              reasons: [
+                {
+                  text: "Never. A 1 cm cube is 10 mm by 10 mm by 10 mm, so 1 cm³ = 1000 mm³.",
+                  correct: true,
+                },
+                { text: "Always. 1 cm = 10 mm.", code: "RAT.UNITS.AREA-FACTOR" },
+                { text: "Sometimes. It depends on the shape.", code: "RAT.UNITS.AREA-FACTOR" },
+              ],
+              solution: [{ say: "Cube the length factor for volume." }],
+            }),
+          [
             {
-              text: "Never. A 1 cm cube is 10 mm by 10 mm by 10 mm, so 1 cm³ = 1000 mm³.",
-              correct: true,
+              statement: `Sam says ${p.m2} m² = ${p.m2 * 100} cm².`,
+              truth: false,
+              right: `False. A 1 m square is 100 cm by 100 cm, so 1 m² = 10 000 cm²: ${p.m2} m² = ${p.m2 * 10000} cm².`,
+              wrong: [
+                ["True. 1 m = 100 cm, so multiply by 100.", "RAT.UNITS.AREA-FACTOR"],
+                ["True. Area units convert like length units.", "RAT.UNITS.AREA-FACTOR"],
+              ],
             },
-            { text: "Always. 1 cm = 10 mm.", code: "RAT.UNITS.AREA-FACTOR" },
-            { text: "Sometimes. It depends on the shape.", code: "RAT.UNITS.AREA-FACTOR" },
+            {
+              statement: "Tia says 1 litre = 1000 cm³.",
+              truth: true,
+              right: "True. 1 litre = 1000 ml, and 1 ml = 1 cm³.",
+              wrong: [
+                ["False. 1 litre = 100 cm³.", "RAT.UNITS.DIRECTION"],
+                ["False. Litres and cubic centimetres cannot be compared."],
+              ],
+            },
+            {
+              claim: "1 cm² = 100 mm².",
+              truth: "always",
+              right: "Always. A 1 cm square is 10 mm by 10 mm, which is 100 mm².",
+              wrong: [
+                ["Never. 1 cm² = 10 mm².", "RAT.UNITS.AREA-FACTOR"],
+                ["Sometimes. It depends on the shape.", "RAT.UNITS.AREA-FACTOR"],
+              ],
+            },
           ],
-          solution: [{ say: "Cube the length factor for volume." }],
-        });
+        );
     }
   },
 

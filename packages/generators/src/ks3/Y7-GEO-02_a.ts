@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   e: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-GEO-02.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MD.SQUARE.DOUBLES", "MEA.VOLUME.ADDS", "MEA.SURFACE.VOLUME"],
 
@@ -83,30 +84,70 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `A ${p.l} by ${p.w} by ${p.h} cm cuboid and a ${p.l * p.w} by ${p.h} by 1 cm cuboid have the same volume. Ana says they must have the same surface area.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `A ${p.l} by ${p.w} by ${p.h} cm cuboid and a ${p.l * p.w} by ${p.h} by 1 cm cuboid have the same volume. Ana says they must have the same surface area.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Same volume does not mean same surface area: ${2 * (p.l * p.w + p.l * p.h + p.w * p.h)} cm² and ${2 * (p.l * p.w * p.h + p.l * p.w + p.h)} cm².`,
+                  correct: true,
+                },
+                {
+                  text: "True. They are made of the same number of cubes.",
+                  code: "MEA.SURFACE.VOLUME",
+                },
+                {
+                  text: "True. Volume and surface area always go together.",
+                  code: "MEA.SURFACE.VOLUME",
+                },
+              ],
+              solution: [
+                { say: "Volume counts the cubes inside; surface area counts the squares outside." },
+              ],
+            }),
+          [
             {
-              text: `False. Same volume does not mean same surface area: ${2 * (p.l * p.w + p.l * p.h + p.w * p.h)} cm² and ${2 * (p.l * p.w * p.h + p.l * p.w + p.h)} cm².`,
-              correct: true,
+              statement: `Ria says a ${p.l} cm by ${p.w} cm by ${p.h} cm cuboid has a volume of ${p.l * p.w * p.h} cm³.`,
+              truth: true,
+              right: "True. Volume = length × width × height.",
+              wrong: [
+                [
+                  `False. It is ${p.l} + ${p.w} + ${p.h} = ${p.l + p.w + p.h} cm³.`,
+                  "MEA.VOLUME.ADDS",
+                ],
+                ["False. The volume is the area of the biggest face."],
+              ],
             },
             {
-              text: "True. They are made of the same number of cubes.",
-              code: "MEA.SURFACE.VOLUME",
+              statement: `Sol says a cube with ${p.e} cm edges has a volume of ${3 * p.e} cm³.`,
+              truth: false,
+              right: `False. ${p.e} × ${p.e} × ${p.e} = ${p.e ** 3} cm³.`,
+              wrong: [
+                [
+                  "True. A cube has three dimensions, so multiply the edge by 3.",
+                  "MD.SQUARE.DOUBLES",
+                ],
+                [`True. ${p.e} + ${p.e} + ${p.e} = ${3 * p.e}.`, "MEA.VOLUME.ADDS"],
+              ],
             },
             {
-              text: "True. Volume and surface area always go together.",
-              code: "MEA.SURFACE.VOLUME",
+              claim: "Doubling every edge of a cube doubles its volume.",
+              truth: "never",
+              right:
+                "Never. All three lengths double, so the volume becomes 2 × 2 × 2 = 8 times as big.",
+              wrong: [
+                ["Always. Double the edges, double the volume.", "MD.SQUARE.DOUBLES"],
+                ["Sometimes. For small cubes."],
+              ],
             },
           ],
-          solution: [
-            { say: "Volume counts the cubes inside; surface area counts the squares outside." },
-          ],
-        });
+        );
     }
   },
 

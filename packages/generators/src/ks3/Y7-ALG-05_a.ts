@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-ALG-05.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SEQUENCE.POSITION-RULE", "ALG.FUNCTION.ORDER"],
 
@@ -84,20 +85,58 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ['A sequence with the rule "add 3" contains only multiples of 3.'],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ['A sequence with the rule "add 3" contains only multiples of 3.'],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: "Sometimes. Starting at 3 gives 3, 6, 9, …, but starting at 1 gives 1, 4, 7, …, which are not multiples of 3.",
+                  correct: true,
+                },
+                {
+                  text: "Always. Adding 3 makes multiples of 3.",
+                  code: "ALG.SEQUENCE.POSITION-RULE",
+                },
+                { text: "Never. Sequences never contain multiples." },
+              ],
+              solution: [{ say: "The first term matters as well as the rule." }],
+            }),
+          [
             {
-              text: "Sometimes. Starting at 3 gives 3, 6, 9, …, but starting at 1 gives 1, 4, 7, …, which are not multiples of 3.",
-              correct: true,
+              statement: `A sequence starts at ${p.s} and its term-to-term rule is "multiply by ${p.m}". Ben says the third term is ${p.s * p.m * p.m}.`,
+              truth: true,
+              right: `True. ${p.s} × ${p.m} = ${p.s * p.m}, then ${p.s * p.m} × ${p.m} = ${p.s * p.m * p.m}.`,
+              wrong: [
+                [`False. Add the rule twice: ${p.s + 2 * p.m}.`, "ALG.SEQUENCE.POSITION-RULE"],
+                ["False. The third term is the first term times 3."],
+              ],
             },
-            { text: "Always. Adding 3 makes multiples of 3.", code: "ALG.SEQUENCE.POSITION-RULE" },
-            { text: "Never. Sequences never contain multiples." },
+            {
+              statement: 'Ali says the sequence 5, 8, 11, 14, … has the term-to-term rule "add 5".',
+              truth: false,
+              right:
+                "False. Each term is 3 more than the one before, so the rule is add 3. 5 is the first term, not the rule.",
+              wrong: [
+                ["True. It starts with 5, so the rule is add 5.", "ALG.SEQUENCE.POSITION-RULE"],
+                ["True. The rule always uses the first number."],
+              ],
+            },
+            {
+              claim: 'A sequence with the rule "add 4" has both odd and even terms.',
+              truth: "never",
+              right:
+                "Never. Adding 4 keeps a number odd or even, so the terms are all odd or all even.",
+              wrong: [
+                ["Always. Sequences go odd, even, odd, even."],
+                ["Sometimes. It depends where it starts."],
+              ],
+            },
           ],
-          solution: [{ say: "The first term matters as well as the rule." }],
-        });
+        );
     }
   },
 

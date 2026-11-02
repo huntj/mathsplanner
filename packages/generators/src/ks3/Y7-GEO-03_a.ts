@@ -10,6 +10,7 @@ import type { ProtractorSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { ruler } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   angle: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-GEO-03.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.PROTRACTOR.WRONG-SCALE", "MEA.RULER.END", "GEO.ANGLES.TYPE-CONFUSED"],
 
@@ -77,23 +78,59 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["An angle bigger than 90° is obtuse."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["An angle bigger than 90° is obtuse."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: "Sometimes. Angles between 90° and 180° are obtuse, but angles between 180° and 360° are reflex.",
+                  correct: true,
+                },
+                {
+                  text: "Always. Obtuse means more than a right angle.",
+                  code: "GEO.ANGLES.TYPE-CONFUSED",
+                },
+                {
+                  text: "Never. Obtuse angles are less than 90°.",
+                  code: "GEO.ANGLES.TYPE-CONFUSED",
+                },
+              ],
+              solution: [{ say: "Acute < 90° < obtuse < 180° < reflex < 360°." }],
+            }),
+          [
             {
-              text: "Sometimes. Angles between 90° and 180° are obtuse, but angles between 180° and 360° are reflex.",
-              correct: true,
+              statement: `An angle is clearly smaller than a right angle. Gus reads ${180 - Math.min(p.angle, 180 - p.angle)}° on the protractor and says that is its size.`,
+              truth: false,
+              right: `False. An angle smaller than a right angle is acute, so he has read the wrong scale: it is ${Math.min(p.angle, 180 - p.angle)}°.`,
+              wrong: [
+                ["True. A protractor reading is always right.", "GEO.PROTRACTOR.WRONG-SCALE"],
+                ["True. You always read the outer scale.", "GEO.PROTRACTOR.WRONG-SCALE"],
+              ],
             },
             {
-              text: "Always. Obtuse means more than a right angle.",
-              code: "GEO.ANGLES.TYPE-CONFUSED",
+              statement: `Ali measures a line from the 0 mark to the ${p.mm} mm mark and says it is ${p.mm / 10} cm long.`,
+              truth: true,
+              right: `True. 10 mm make 1 cm, so ${p.mm} mm = ${p.mm / 10} cm.`,
+              wrong: [
+                ["False. A ruler starts at 1, so it is 1 cm less.", "MEA.RULER.END"],
+                [`False. It is ${p.mm * 10} cm.`],
+              ],
             },
-            { text: "Never. Obtuse angles are less than 90°.", code: "GEO.ANGLES.TYPE-CONFUSED" },
+            {
+              claim: "A reflex angle is less than 180°.",
+              truth: "never",
+              right: "Never. Reflex angles are between 180° and 360°.",
+              wrong: [
+                ["Always. Every angle is less than 180°.", "GEO.ANGLES.TYPE-CONFUSED"],
+                ["Sometimes. When it is drawn small.", "GEO.ANGLES.TYPE-CONFUSED"],
+              ],
+            },
           ],
-          solution: [{ say: "Acute < 90° < obtuse < 180° < reflex < 360°." }],
-        });
+        );
     }
   },
 
