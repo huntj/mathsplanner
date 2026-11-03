@@ -10,7 +10,7 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-ALG-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -75,7 +75,7 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-ALG-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -126,7 +126,7 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-ALG-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -177,7 +177,7 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-ALG-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -242,7 +242,7 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-ALG-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -307,7 +307,7 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-ALG-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -372,7 +372,7 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-ALG-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -384,7 +384,7 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -410,7 +410,7 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Dividing by 2 only affects x.",
+                  "v": "False. You must always expand the bracket first.",
                 },
               ],
               "id": "RA",
@@ -419,7 +419,7 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You must always expand the bracket first.",
+                  "v": "True. That is a valid first step: x + 4 = 9, so x = 5. Expanding first also works.",
                 },
               ],
               "id": "RB",
@@ -428,7 +428,7 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. That is a valid first step: x + 4 = 9, so x = 5. Expanding first also works.",
+                  "v": "False. Dividing by 2 only affects x.",
                 },
               ],
               "id": "RC",
@@ -448,7 +448,7 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.EXPAND.FIRST-ONLY",
@@ -496,7 +496,7 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-ALG-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -507,8 +507,8 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RB",
+          "correct": "B",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -534,7 +534,7 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You must always expand the bracket first.",
+                  "v": "True. Expand the bracket, then solve.",
                 },
               ],
               "id": "RA",
@@ -543,7 +543,7 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. That is a valid first step: x + 1 = 2, so x = 1. Expanding first also works.",
+                  "v": "True. Answers can be fractions.",
                 },
               ],
               "id": "RB",
@@ -552,7 +552,7 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Dividing by 4 only affects x.",
+                  "v": "False. The 3 multiplies both terms in the bracket: 3x + 12 = 21, so x = 3.",
                 },
               ],
               "id": "RC",
@@ -565,14 +565,6 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.EXPAND.FIRST-ONLY",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.EXPAND.FIRST-ONLY",
@@ -592,7 +584,7 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Dividing both whole sides by the same number keeps an equation balanced.",
+            "v": "False. The 3 multiplies both terms in the bracket: 3x + 12 = 21, so x = 3.",
           },
         ],
       },
@@ -600,15 +592,31 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kit solves ",
+        "v": "Ola solves ",
       },
       {
         "t": "math",
-        "v": "4(x + 1) = 8",
+        "v": "3(x + 4) = 21",
       },
       {
         "t": "text",
-        "v": " by dividing both sides by 4 first.",
+        "v": " by writing ",
+      },
+      {
+        "t": "math",
+        "v": "3x + 4 = 21",
+      },
+      {
+        "t": "text",
+        "v": ", so ",
+      },
+      {
+        "t": "math",
+        "v": "x = \\frac{17}{3}",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
@@ -620,7 +628,7 @@ exports[`Y8-ALG-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-ALG-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

@@ -10,7 +10,7 @@ exports[`Y8-ALG-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-ALG-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -86,7 +86,7 @@ exports[`Y8-ALG-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-ALG-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -162,7 +162,7 @@ exports[`Y8-ALG-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-ALG-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -238,7 +238,7 @@ exports[`Y8-ALG-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-ALG-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -307,7 +307,7 @@ exports[`Y8-ALG-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-ALG-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -376,7 +376,7 @@ exports[`Y8-ALG-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-ALG-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -459,7 +459,7 @@ exports[`Y8-ALG-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-ALG-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -471,7 +471,7 @@ exports[`Y8-ALG-09 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -497,7 +497,7 @@ exports[`Y8-ALG-09 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. n + 3 goes up by 1 each time. The terms go up by 3, so the rule starts 3n. When n = 1, 3n = 3, but the first term is -5: subtract 8. The nth term is 3n - 8.",
+                  "v": "True. Every sequence has nth term n plus the difference.",
                 },
               ],
               "id": "RA",
@@ -515,7 +515,7 @@ exports[`Y8-ALG-09 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every sequence has nth term n plus the difference.",
+                  "v": "False. n + 3 goes up by 1 each time. The terms go up by 3, so the rule starts 3n. When n = 1, 3n = 3, but the first term is -5: subtract 8. The nth term is 3n - 8.",
                 },
               ],
               "id": "RC",
@@ -575,123 +575,7 @@ exports[`Y8-ALG-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-ALG-09",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Every sequence has nth term n plus the difference.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. "Goes up by 6" means + 6.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. n + 6 goes up by 1 each time. The terms go up by 6, so the rule starts 6n. When n = 1, 6n = 6, but the first term is -1: subtract 7. The nth term is 6n - 7.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.SEQUENCE.POSITION-RULE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "The terms go up by 6, so the rule starts 6n. When n = 1, 6n = 6, but the first term is -1: subtract 7. The nth term is 6n - 7.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Max says the nth term of -1, 5, 11, 17, … is ",
-      },
-      {
-        "t": "math",
-        "v": "n + 6",
-      },
-      {
-        "t": "text",
-        "v": ", because it goes up by 6.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y8-ALG-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -729,7 +613,7 @@ exports[`Y8-ALG-09 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. n - 3 goes up by 1 each time. The terms go down by 3, so the rule starts -3n. When n = 1, -3n = -3, but the first term is 52: add 55. The nth term is -3n + 55.",
+                  "v": "False. 4n + 2 = 40 gives n = 9.5, which is not a whole number.",
                 },
               ],
               "id": "RA",
@@ -738,7 +622,7 @@ exports[`Y8-ALG-09 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every sequence has nth term n plus the difference.",
+                  "v": "True. 40 is in the 4 times table.",
                 },
               ],
               "id": "RB",
@@ -747,7 +631,114 @@ exports[`Y8-ALG-09 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. "Goes up by -3" means + -3.",
+                  "v": "True. The terms go up forever, so every number comes up.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. 4n + 2 = 40 gives n = 9.5, which is not a whole number.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ben says 40 is a term of the sequence with nth term ",
+      },
+      {
+        "t": "math",
+        "v": "4n + 2",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y8-ALG-09",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is n + 3, as it goes up by 3.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. It goes up by 3, so it starts 3n, and 3 × 1 + 2 = 5.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 5n + 3.",
                 },
               ],
               "id": "RC",
@@ -759,7 +750,7 @@ exports[`Y8-ALG-09 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.POSITION-RULE",
@@ -779,7 +770,7 @@ exports[`Y8-ALG-09 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The terms go down by 3, so the rule starts -3n. When n = 1, -3n = -3, but the first term is 52: add 55. The nth term is -3n + 55.",
+            "v": "True. It goes up by 3, so it starts 3n, and 3 × 1 + 2 = 5.",
           },
         ],
       },
@@ -787,15 +778,15 @@ exports[`Y8-ALG-09 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Max says the nth term of 52, 49, 46, 43, … is ",
+        "v": "Ria says the sequence 5, 8, 11, 14, … has nth term ",
       },
       {
         "t": "math",
-        "v": "n - 3",
+        "v": "3n + 2",
       },
       {
         "t": "text",
-        "v": ", because it goes up by -3.",
+        "v": ".",
       },
     ],
   },

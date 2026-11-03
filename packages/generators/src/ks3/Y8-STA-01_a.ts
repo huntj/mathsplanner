@@ -9,6 +9,7 @@ import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mat
 import { wrongs } from "../shared/angles.ts";
 import { exactAnswer, numberAnswer } from "../shared/counting.ts";
 import { barChart, tableLatex, TOPICS } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   topic: number;
@@ -20,7 +21,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-STA-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.SCALE.READ", "RAT.PART-WHOLE"],
 
@@ -93,20 +94,57 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [`Sam says the tallest bar on a bar chart of ${topic.what} shows the mode.`],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Sam says the tallest bar on a bar chart of ${topic.what} shows the mode.`,
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. The tallest bar is the category with the highest frequency, which is the mode.",
+                  correct: true,
+                },
+                { text: "False. The tallest bar shows the median.", code: "STA.SCALE.READ" },
+                {
+                  text: "False. The mode is the height of the tallest bar.",
+                  code: "STA.SCALE.READ",
+                },
+              ],
+              solution: [{ say: "The mode is the category, not its frequency." }],
+            }),
+          [
             {
-              text: "True. The tallest bar is the category with the highest frequency, which is the mode.",
-              correct: true,
+              statement:
+                "A bar chart's scale goes up in 5s. A bar stops halfway between 10 and 15. Kai says it shows 11.",
+              truth: false,
+              right: "False. Halfway between 10 and 15 is 12.5.",
+              wrong: [
+                ["True. Each small step is 1.", "STA.SCALE.READ"],
+                ["True. Bars always show whole numbers."],
+              ],
             },
-            { text: "False. The tallest bar shows the median.", code: "STA.SCALE.READ" },
-            { text: "False. The mode is the height of the tallest bar.", code: "STA.SCALE.READ" },
+            {
+              statement:
+                "A frequency table shows that 6 of 24 pupils walk to school. Nia says a quarter of them walk.",
+              truth: true,
+              right: "True. 6 out of 24 is 6/24 = 1/4.",
+              wrong: [
+                ["False. It is 6/18, comparing with the pupils who do not walk.", "RAT.PART-WHOLE"],
+                ["False. It is 1/6."],
+              ],
+            },
+            {
+              claim: "The frequencies in a frequency table add up to the number of results.",
+              truth: "always",
+              right: "Always. Each result is counted once, in one row.",
+              wrong: [["Sometimes. Only when no frequency is 0."], ["Never. They add up to 100."]],
+            },
           ],
-          solution: [{ say: "The mode is the category, not its frequency." }],
-        });
+        );
     }
   },
 

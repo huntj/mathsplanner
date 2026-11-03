@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-GEO-04.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.CONSTRUCT.BISECTORS", "AS.MULTISTEP.ONE-STEP"],
 
@@ -63,25 +64,63 @@ export default defineGenerator<Params>({
           solution: [{ say: "", math: `${p.b}^\\circ \\div 2 \\div 2 = ${p.b / 4}^\\circ` }],
         });
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            "Every point on the bisector of an angle is the same distance from the two arms of the angle.",
-          ],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "Every point on the bisector of an angle is the same distance from the two arms of the angle.",
+              ],
+              truth: "always",
+              reasons: [
+                {
+                  text: "Always. That is why the angle bisector is the locus of points equidistant from two lines.",
+                  correct: true,
+                },
+                {
+                  text: "Never. The points are the same distance from the ends of the arms.",
+                  code: "GEO.CONSTRUCT.BISECTORS",
+                },
+                { text: "Sometimes. Only for a right angle.", code: "GEO.CONSTRUCT.BISECTORS" },
+              ],
+              solution: [{ say: "Distance to a line is measured at right angles to it." }],
+            }),
+          [
             {
-              text: "Always. That is why the angle bisector is the locus of points equidistant from two lines.",
-              correct: true,
+              statement: "Ola bisects an angle of 70° and says each half is 35°.",
+              truth: true,
+              right: "True. Bisect means cut into two equal parts: 70° ÷ 2 = 35°.",
+              wrong: [
+                ["False. Each half is 140°.", "GEO.CONSTRUCT.BISECTORS"],
+                ["False. Each half is 20°, the rest of a right angle."],
+              ],
             },
             {
-              text: "Never. The points are the same distance from the ends of the arms.",
-              code: "GEO.CONSTRUCT.BISECTORS",
+              statement:
+                "To bisect angle ABC, Jay draws one arc centred on B and joins B to where it crosses BA.",
+              truth: false,
+              right:
+                "False. After the arc from B, draw equal arcs from the two crossing points and join B to where they meet.",
+              wrong: [
+                ["True. One arc is enough.", "AS.MULTISTEP.ONE-STEP"],
+                ["True. The bisector runs along an arm of the angle.", "GEO.CONSTRUCT.BISECTORS"],
+              ],
             },
-            { text: "Sometimes. Only for a right angle.", code: "GEO.CONSTRUCT.BISECTORS" },
+            {
+              claim: "Bisecting an angle less than 180° gives two acute angles.",
+              truth: "always",
+              right: "Always. Half of an angle less than 180° is less than 90°.",
+              wrong: [
+                ["Sometimes. Only when the angle is acute."],
+                [
+                  "Never. Bisecting an obtuse angle gives two obtuse angles.",
+                  "GEO.CONSTRUCT.BISECTORS",
+                ],
+              ],
+            },
           ],
-          solution: [{ say: "Distance to a line is measured at right angles to it." }],
-        });
+        );
     }
   },
 

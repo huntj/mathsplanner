@@ -81,7 +81,7 @@ exports[`Y8-GEO-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-GEO-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -224,7 +224,7 @@ exports[`Y8-GEO-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-GEO-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -367,7 +367,7 @@ exports[`Y8-GEO-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-GEO-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -439,7 +439,7 @@ exports[`Y8-GEO-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-GEO-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -507,7 +507,7 @@ exports[`Y8-GEO-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-GEO-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -575,7 +575,7 @@ exports[`Y8-GEO-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-GEO-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -643,7 +643,7 @@ exports[`Y8-GEO-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-GEO-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -654,8 +654,8 @@ exports[`Y8-GEO-05.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RC",
+          "correct": "B",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -681,7 +681,7 @@ exports[`Y8-GEO-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. They always add to 180°.",
+                  "v": "True. Corresponding angles add up to 180°.",
                 },
               ],
               "id": "RA",
@@ -690,7 +690,7 @@ exports[`Y8-GEO-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Corresponding angles are always equal.",
+                  "v": "False. Corresponding angles on parallel lines are equal, so it is 50°.",
                 },
               ],
               "id": "RB",
@@ -699,7 +699,7 @@ exports[`Y8-GEO-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. If the lines are not parallel, the transversal meets them at different angles.",
+                  "v": "True. It is opposite, and opposite angles add up to 180°.",
                 },
               ],
               "id": "RC",
@@ -719,10 +719,10 @@ exports[`Y8-GEO-05.b > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "GEO.PARALLEL.ALTERNATE-SUPPLEMENTARY",
+            "code": "GEO.ANGLES.VERT-OPP-SUPPLEMENTARY",
             "feedback": [],
           },
         ],
@@ -739,7 +739,7 @@ exports[`Y8-GEO-05.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Equal corresponding angles are also a test for parallel lines.",
+            "v": "False. Corresponding angles on parallel lines are equal, so it is 50°.",
           },
         ],
       },
@@ -747,7 +747,7 @@ exports[`Y8-GEO-05.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Rae says corresponding angles are only equal when the two lines are parallel.",
+        "v": "A line crosses two parallel lines. One angle is 50°. Ben says the angle corresponding to it is 130°.",
       },
     ],
   },
@@ -759,123 +759,7 @@ exports[`Y8-GEO-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-GEO-05.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. If the lines are not parallel, the transversal meets them at different angles.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. They always add to 180°.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Corresponding angles are always equal.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "GEO.PARALLEL.ALTERNATE-SUPPLEMENTARY",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "GEO.PARALLEL.ALTERNATE-SUPPLEMENTARY",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Equal corresponding angles are also a test for parallel lines.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Rae says corresponding angles are only equal when the two lines are parallel.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y8-GEO-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -913,7 +797,7 @@ exports[`Y8-GEO-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. They always add to 180°.",
+                  "v": "False. Corresponding angles are always equal.",
                 },
               ],
               "id": "RA",
@@ -922,7 +806,7 @@ exports[`Y8-GEO-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Corresponding angles are always equal.",
+                  "v": "False. They always add to 180°.",
                 },
               ],
               "id": "RB",
@@ -980,6 +864,114 @@ exports[`Y8-GEO-05.b > keeps fixed seeds unchanged 1`] = `
       {
         "t": "text",
         "v": "Rae says corresponding angles are only equal when the two lines are parallel.",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y8-GEO-05.b",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. They are on the same side of the line.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. They add up to 360°.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Co-interior angles add up to 180°, so they are equal only when both are 90°.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Sometimes. Co-interior angles add up to 180°, so they are equal only when both are 90°.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Co-interior angles between parallel lines are equal.",
       },
     ],
   },

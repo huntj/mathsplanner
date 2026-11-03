@@ -10,7 +10,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-ALG-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -88,7 +88,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-ALG-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -166,7 +166,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-ALG-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -244,7 +244,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-ALG-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -339,7 +339,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-ALG-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -434,7 +434,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-ALG-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -529,7 +529,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-ALG-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -567,7 +567,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The y values go up by c each time.",
+                  "v": "True. y = 2 × (4 + 1) = 10.",
                 },
               ],
               "id": "RA",
@@ -576,7 +576,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The number on its own is the step.",
+                  "v": "True. The point (10, 4) is on the line.",
                 },
               ],
               "id": "RB",
@@ -585,7 +585,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Each step of 1 in x changes y by -4, the number in front of x. -1 is where the line crosses the y-axis.",
+                  "v": "False. Multiply first, then add: y = 2 × 4 + 1 = 9.",
                 },
               ],
               "id": "RC",
@@ -600,7 +600,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.LINE.M-C",
+            "code": "NPV.ORDER.LEFT-TO-RIGHT",
             "feedback": [],
           },
           {
@@ -608,7 +608,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "ALG.LINE.M-C",
+            "code": "ALG.COORD.ORDER",
             "feedback": [],
           },
         ],
@@ -622,22 +622,26 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "(-1, 3), (0, -1), (1, -5), (2, -9)",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. Multiply first, then add: y = 2 × 4 + 1 = 9.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "In a table of values for ",
+        "v": "For ",
       },
       {
         "t": "math",
-        "v": "y = -4x - 1",
+        "v": "y = 2x + 1",
       },
       {
         "t": "text",
-        "v": ", Raj says the y values change by 1 each time x goes up by 1.",
+        "v": ", Ivy says that when x = 4, y = 10.",
       },
     ],
   },
@@ -649,7 +653,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-ALG-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -660,8 +664,8 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -687,7 +691,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Each step of 1 in x changes y by 3, the number in front of x. 5 is where the line crosses the y-axis.",
+                  "v": "False. The only point on it is (0, 2).",
                 },
               ],
               "id": "RA",
@@ -696,7 +700,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The y values go up by c each time.",
+                  "v": "False. (3, 5) means x = 5 and y = 3, and 5 + 2 is not 3.",
                 },
               ],
               "id": "RB",
@@ -705,7 +709,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The number on its own is the step.",
+                  "v": "True. When x = 3, y = 3 + 2 = 5.",
                 },
               ],
               "id": "RC",
@@ -720,15 +724,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "ALG.LINE.M-C",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.LINE.M-C",
+            "code": "ALG.COORD.ORDER",
             "feedback": [],
           },
         ],
@@ -742,22 +738,26 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "(-1, 2), (0, 5), (1, 8), (2, 11)",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "True. When x = 3, y = 3 + 2 = 5.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "In a table of values for ",
+        "v": "Sol says the point (3, 5) is on the line ",
       },
       {
         "t": "math",
-        "v": "y = 3x + 5",
+        "v": "y = x + 2",
       },
       {
         "t": "text",
-        "v": ", Raj says the y values change by 5 each time x goes up by 1.",
+        "v": ".",
       },
     ],
   },
@@ -769,7 +769,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-ALG-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -780,7 +780,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -807,7 +807,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The y values go up by c each time.",
+                  "v": "False. (3, 5) means x = 5 and y = 3, and 5 + 2 is not 3.",
                 },
               ],
               "id": "RA",
@@ -816,7 +816,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Each step of 1 in x changes y by -5, the number in front of x. -6 is where the line crosses the y-axis.",
+                  "v": "True. When x = 3, y = 3 + 2 = 5.",
                 },
               ],
               "id": "RB",
@@ -825,7 +825,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The number on its own is the step.",
+                  "v": "False. The only point on it is (0, 2).",
                 },
               ],
               "id": "RC",
@@ -840,15 +840,7 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.LINE.M-C",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.LINE.M-C",
+            "code": "ALG.COORD.ORDER",
             "feedback": [],
           },
         ],
@@ -862,22 +854,26 @@ exports[`Y8-ALG-06.a > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "(-1, -1), (0, -6), (1, -11), (2, -16)",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "True. When x = 3, y = 3 + 2 = 5.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "In a table of values for ",
+        "v": "Sol says the point (3, 5) is on the line ",
       },
       {
         "t": "math",
-        "v": "y = -5x - 6",
+        "v": "y = x + 2",
       },
       {
         "t": "text",
-        "v": ", Raj says the y values change by 6 each time x goes up by 1.",
+        "v": ".",
       },
     ],
   },

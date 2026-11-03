@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   rate: number;
@@ -21,7 +22,7 @@ const r2 = (v: number) => Math.round(v * 100) / 100;
 
 export default defineGenerator<Params>({
   id: "Y8-RAT-04.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.UNITS.DIRECTION", "RAT.ADDITIVE"],
 
@@ -82,23 +83,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["If y is directly proportional to x, then when x goes up by 2, y goes up by 2."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "If y is directly proportional to x, then when x goes up by 2, y goes up by 2.",
+              ],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: "Sometimes. y = kx goes up by 2k, so it is 2 only when k = 1. With y = 3x, y goes up by 6.",
+                  correct: true,
+                },
+                {
+                  text: "Always. Proportional means they change by the same amount.",
+                  code: "RAT.ADDITIVE",
+                },
+                { text: "Never. y always goes up by more than x.", code: "RAT.ADDITIVE" },
+              ],
+              solution: [
+                { say: "Direct proportion keeps the ratio y ÷ x fixed, not the difference." },
+              ],
+            }),
+          [
             {
-              text: "Sometimes. y = kx goes up by 2k, so it is 2 only when k = 1. With y = 3x, y goes up by 6.",
-              correct: true,
+              statement: "3 pens cost £1.80. Amy says 5 pens cost £3.",
+              truth: true,
+              right: "True. One pen costs £1.80 ÷ 3 = 60p, and 5 × 60p = £3.",
+              wrong: [
+                ["False. 2 more pens cost £2 more, so £3.80.", "RAT.ADDITIVE"],
+                ["False. 5 pens cost £1.80 ÷ 5 × 3 = £1.08.", "RAT.UNITS.DIRECTION"],
+              ],
             },
             {
-              text: "Always. Proportional means they change by the same amount.",
-              code: "RAT.ADDITIVE",
+              statement: "A recipe for 4 people uses 300 g of rice. Raj says 6 people need 500 g.",
+              truth: false,
+              right: "False. 300 ÷ 4 = 75 g each, so 6 people need 6 × 75 = 450 g.",
+              wrong: [
+                ["True. 2 more people need 200 g more.", "RAT.ADDITIVE"],
+                ["True. Round up to be safe."],
+              ],
             },
-            { text: "Never. y always goes up by more than x.", code: "RAT.ADDITIVE" },
+            {
+              claim: "If y is directly proportional to x, then doubling x doubles y.",
+              truth: "always",
+              right: "Always. y = kx, so 2x gives 2kx, which is 2y.",
+              wrong: [
+                ["Sometimes. Only when y starts bigger than x."],
+                ["Never. y goes up by 2.", "RAT.ADDITIVE"],
+              ],
+            },
           ],
-          solution: [{ say: "Direct proportion keeps the ratio y ÷ x fixed, not the difference." }],
-        });
+        );
     }
   },
 

@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -20,7 +21,7 @@ const r2 = (v: number) => Math.round(v * 100) / 100;
 
 export default defineGenerator<Params>({
   id: "Y8-RAT-05.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.COMPOUND-UNIT.ARRANGEMENT"],
 
@@ -75,20 +76,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["The pack that is cheaper per gram costs less to buy."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["The pack that is cheaper per gram costs less to buy."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: "Sometimes. A big pack can be cheaper per gram but cost more in total, because you are buying more.",
+                  correct: true,
+                },
+                { text: "Always. Cheaper is cheaper.", code: "RAT.COMPOUND-UNIT.ARRANGEMENT" },
+                { text: "Never. Cheaper per gram always costs more." },
+              ],
+              solution: [{ say: "Value for money and total cost are different questions." }],
+            }),
+          [
             {
-              text: "Sometimes. A big pack can be cheaper per gram but cost more in total, because you are buying more.",
-              correct: true,
+              statement:
+                "A 500 g bag of rice costs £1.50 and a 1 kg bag costs £2.80. Pam says the 1 kg bag is better value.",
+              truth: true,
+              right: "True. The 1 kg bag costs £1.40 for each 500 g, which is less than £1.50.",
+              wrong: [
+                [
+                  "False. £1.50 is less than £2.80, so the small bag is cheaper.",
+                  "RAT.COMPOUND-UNIT.ARRANGEMENT",
+                ],
+                ["False. Bigger bags always cost more per gram."],
+              ],
             },
-            { text: "Always. Cheaper is cheaper.", code: "RAT.COMPOUND-UNIT.ARRANGEMENT" },
-            { text: "Never. Cheaper per gram always costs more." },
+            {
+              statement:
+                "Jim works out price ÷ grams for two packs and says the pack with the bigger answer is better value.",
+              truth: false,
+              right:
+                "False. Price ÷ grams is the cost of 1 gram, so the smaller answer is better value.",
+              wrong: [
+                [
+                  "True. A bigger answer means more for your money.",
+                  "RAT.COMPOUND-UNIT.ARRANGEMENT",
+                ],
+                ["True. Better value always has the bigger number."],
+              ],
+            },
+            {
+              claim: "A bigger pack of the same thing is better value.",
+              truth: "sometimes",
+              right:
+                "Sometimes. Big packs often cost less per gram, but not always: compare the cost per gram.",
+              wrong: [
+                ["Always. You get more, so it is better value.", "RAT.COMPOUND-UNIT.ARRANGEMENT"],
+                ["Never. Bigger packs cost more."],
+              ],
+            },
           ],
-          solution: [{ say: "Value for money and total cost are different questions." }],
-        });
+        );
     }
   },
 

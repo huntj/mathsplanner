@@ -10,7 +10,7 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -85,7 +85,7 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -160,7 +160,7 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -235,7 +235,7 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -297,7 +297,7 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -359,7 +359,7 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -421,7 +421,7 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -433,7 +433,7 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -459,7 +459,7 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It moves forward its area each turn.",
+                  "v": "False. It is about 2 times the diameter.",
                 },
               ],
               "id": "RA",
@@ -468,7 +468,7 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. In one turn the wheel rolls out its circumference, π × diameter.",
+                  "v": "False. It is π times the diameter squared.",
                 },
               ],
               "id": "RB",
@@ -477,7 +477,7 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It moves forward its diameter each turn.",
+                  "v": "True. C = πd, and π is about 3.14.",
                 },
               ],
               "id": "RC",
@@ -492,12 +492,120 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "MEA.CIRCLE.FORMULA",
+            "code": "GEO.CIRCLE.RADIUS-DIAMETER",
             "feedback": [],
           },
           {
             "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MEA.CIRCLE.FORMULA",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. C = πd, and π is about 3.14.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Dan says the circumference of a circle is a bit more than 3 times its diameter.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y8-GEO-01.a",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Circumference and radius are both lengths, so multiply by π once.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. C = π × r.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. C = πd, and d = 2 × 5 = 10 cm, so C = 10π cm.",
+                },
+              ],
               "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.CIRCLE.RADIUS-DIAMETER",
@@ -514,14 +622,26 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "\\pi \\times 50 \\approx 157.1",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. C = πd, and d = 2 × 5 = 10 cm, so C = 10π cm.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "A bicycle wheel has diameter 50 cm. Ben says it moves about 157.1 cm forward each time it turns once.",
+        "v": "A circle has a radius of 5 cm. Zoe says its circumference is ",
+      },
+      {
+        "t": "math",
+        "v": "5\\pi",
+      },
+      {
+        "t": "text",
+        "v": " cm.",
       },
     ],
   },
@@ -530,10 +650,10 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
     "diagrams": [],
     "key": {
       "depth": 4,
-      "numbers": "standard",
+      "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -571,7 +691,7 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. In one turn the wheel rolls out its circumference, π × diameter.",
+                  "v": "True. C = πd, and π is about 3.14.",
                 },
               ],
               "id": "RA",
@@ -580,7 +700,7 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It moves forward its diameter each turn.",
+                  "v": "False. It is π times the diameter squared.",
                 },
               ],
               "id": "RB",
@@ -589,7 +709,7 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It moves forward its area each turn.",
+                  "v": "False. It is about 2 times the diameter.",
                 },
               ],
               "id": "RC",
@@ -604,7 +724,7 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "GEO.CIRCLE.RADIUS-DIAMETER",
+            "code": "MEA.CIRCLE.FORMULA",
             "feedback": [],
           },
           {
@@ -612,7 +732,7 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "MEA.CIRCLE.FORMULA",
+            "code": "GEO.CIRCLE.RADIUS-DIAMETER",
             "feedback": [],
           },
         ],
@@ -626,126 +746,18 @@ exports[`Y8-GEO-01.a > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "\\pi \\times 30 \\approx 94.2",
-        "say": [],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "A bicycle wheel has diameter 30 cm. Ben says it moves about 94.2 cm forward each time it turns once.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y8-GEO-01.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. It moves forward its diameter each turn.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. In one turn the wheel rolls out its circumference, π × diameter.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. It moves forward its area each turn.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.CIRCLE.RADIUS-DIAMETER",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "MEA.CIRCLE.FORMULA",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
+        "say": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "True. C = πd, and π is about 3.14.",
           },
         ],
-      },
-    ],
-    "solution": [
-      {
-        "math": "\\pi \\times 30 \\approx 94.2",
-        "say": [],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "A bicycle wheel has diameter 30 cm. Ben says it moves about 94.2 cm forward each time it turns once.",
+        "v": "Dan says the circumference of a circle is a bit more than 3 times its diameter.",
       },
     ],
   },

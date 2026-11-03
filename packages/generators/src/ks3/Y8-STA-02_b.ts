@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const TYPES = ["Positive correlation", "Negative correlation", "No correlation"];
 const CONTEXTS: [string, number][] = [
@@ -33,7 +34,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-STA-02.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.CORRELATION.TYPE", "STA.SCATTER.CAUSATION"],
 
@@ -84,25 +85,61 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Taller people tend to have bigger feet. Jay says this shows that having bigger feet makes you taller.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Taller people tend to have bigger feet. Jay says this shows that having bigger feet makes you taller.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A correlation shows the two go together, not that one causes the other. Both come from growing.",
+                  correct: true,
+                },
+                {
+                  text: "True. Strong correlation proves cause and effect.",
+                  code: "STA.SCATTER.CAUSATION",
+                },
+                { text: "True. The points lie close to a line.", code: "STA.SCATTER.CAUSATION" },
+              ],
+              solution: [{ say: "Correlation is not causation." }],
+            }),
+          [
             {
-              text: "False. A correlation shows the two go together, not that one causes the other. Both come from growing.",
-              correct: true,
+              statement:
+                "As the temperature goes up, sales of hot drinks go down. Ella says this is negative correlation.",
+              truth: true,
+              right: "True. One goes up as the other goes down.",
+              wrong: [
+                ["False. Going down means there is no correlation.", "STA.CORRELATION.TYPE"],
+                ["False. It is positive, because both are about drinks."],
+              ],
             },
             {
-              text: "True. Strong correlation proves cause and effect.",
-              code: "STA.SCATTER.CAUSATION",
+              statement:
+                "The points on a scatter graph go up from left to right. Gus says this shows negative correlation.",
+              truth: false,
+              right: "False. Points going up from left to right show positive correlation.",
+              wrong: [
+                ["True. The points move away from the x-axis.", "STA.CORRELATION.TYPE"],
+                ["True. Any pattern is negative correlation."],
+              ],
             },
-            { text: "True. The points lie close to a line.", code: "STA.SCATTER.CAUSATION" },
+            {
+              claim: "Strong correlation between two things shows that one causes the other.",
+              truth: "sometimes",
+              right:
+                "Sometimes. A cause can give correlation, but so can a third thing: ice cream sales and sunburn both rise in sunny weather.",
+              wrong: [
+                ["Always. If they go together, one causes the other.", "STA.SCATTER.CAUSATION"],
+                ["Never. Correlation and cause are never linked."],
+              ],
+            },
           ],
-          solution: [{ say: "Correlation is not causation." }],
-        });
+        );
     }
   },
 

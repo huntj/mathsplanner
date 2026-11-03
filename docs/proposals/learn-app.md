@@ -1,7 +1,7 @@
 # Proposal: Learn Maths, a Duolingo-style practice app for pupils
 
 Status: **agreed on 29 October 2026.** Steps 1 to 6 are built: the course data with Year 7 as
-the pilot section (`data/course.txt`, `pnpm data:course`), the shared answer widgets
+the pilot section and Year 8 after it (`data/course.txt`, `pnpm data:course`), the shared answer widgets
 (`@mathsplanner/ui`), and the app with its path, progress, first visit, lessons, practice and
 rewards (`apps/learn`, `pnpm learn`); steps 7 to 10 are to do.
 
@@ -121,6 +121,28 @@ geometry, number…) rather than six number units in a row, and small topics wer
 | 15  | Rounding and estimating             |      4 |
 | 16  | Averages and range                  |      4 |
 | 17  | Probability                         |      3 |
+
+**Year 8** has 12 units, drafted and tidied the same way. The statement data puts changing the
+subject of a formula before solving harder equations, so formulae open that unit; nth terms join
+expressions; and probability, which has one Year 8 skill, joins the data unit:
+
+| #   | Unit                                 | Skills |
+| --- | ------------------------------------ | -----: |
+| 1   | Standard form                        |      3 |
+| 2   | Expressions and sequences            |      4 |
+| 3   | Circles and area                     |      3 |
+| 4   | Percentages                          |      4 |
+| 5   | Formulae and equations               |      5 |
+| 6   | Angles and shapes                    |      6 |
+| 7   | Coordinates and straight-line graphs |      6 |
+| 8   | Ratio and proportion                 |      3 |
+| 9   | Scale drawings and constructions     |      5 |
+| 10  | Rates                                |      3 |
+| 11  | Transformations                      |      3 |
+| 12  | Data and probability                 |      6 |
+
+Each new section also needs its reasoning questions varied (see `variety.test.ts`): Year 8's
+generators gained three claims each, with different right answers, at depth 4.
 
 **Skill levels.** Each skill climbs through up to five levels, using only the depths its
 generator supports, so the levels come from the generators when the app runs rather than from

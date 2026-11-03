@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { clearOfOrigin, grid, lineLatex, poly } from "../shared/alg.ts";
 import { chosenText } from "../shared/counting.ts";
 import { distinctFrom } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   m: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-ALG-06.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.LINE.M-C"],
 
@@ -78,20 +79,54 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["The graph of ", A.math(`y = ${p.c}`), " is a horizontal line."],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["The graph of ", A.math(`y = ${p.c}`), " is a horizontal line."],
+              truth: "always",
+              reasons: [
+                {
+                  text: `Always. Every point on it has y = ${p.c}, whatever x is, so it is flat: its gradient is 0.`,
+                  correct: true,
+                },
+                { text: "Never. It is a vertical line.", code: "ALG.LINE.M-C" },
+                { text: `Sometimes. It has gradient ${p.c}.`, code: "ALG.LINE.M-C" },
+              ],
+              solution: [{ say: "y = c is horizontal; x = c is vertical." }],
+            }),
+          [
             {
-              text: `Always. Every point on it has y = ${p.c}, whatever x is, so it is flat: its gradient is 0.`,
-              correct: true,
+              statement: "Ella says the graph of $y = 3x - 2$ crosses the y-axis at 3.",
+              truth: false,
+              right: "False. It crosses where x = 0, at y = −2. The 3 is the gradient.",
+              wrong: [
+                ["True. The number in front of x is where it crosses.", "ALG.LINE.M-C"],
+                ["True. It crosses where y = 3."],
+              ],
             },
-            { text: "Never. It is a vertical line.", code: "ALG.LINE.M-C" },
-            { text: `Sometimes. It has gradient ${p.c}.`, code: "ALG.LINE.M-C" },
+            {
+              statement: "Dev says the graphs of $y = 2x + 1$ and $y = 2x - 4$ are parallel.",
+              truth: true,
+              right: "True. Both have gradient 2.",
+              wrong: [
+                ["False. Different numbers at the end mean different slopes.", "ALG.LINE.M-C"],
+                ["False. They cross at x = 0."],
+              ],
+            },
+            {
+              claim: "The graph of $y = mx + c$ slopes upwards from left to right.",
+              truth: "sometimes",
+              right:
+                "Sometimes. Only when m is positive. When m is negative it slopes down, and when m is 0 it is flat.",
+              wrong: [
+                ["Always. Straight-line graphs go up."],
+                ["Never. The slope depends on c.", "ALG.LINE.M-C"],
+              ],
+            },
           ],
-          solution: [{ say: "y = c is horizontal; x = c is vertical." }],
-        });
+        );
     }
   },
 

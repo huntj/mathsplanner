@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
 import { coord } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   x: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-POS-01.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.TURNS.DIRECTION", "POS.REFLECT.WRONG-AXIS", "POS.ROTATE.CENTRE"],
 
@@ -87,22 +88,67 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Eva says that to describe a rotation fully you need the angle, the direction and the centre.",
-          ],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Eva says that to describe a rotation fully you need the angle, the direction and the centre.",
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. Without the centre or the direction, more than one rotation would fit (except a half turn, where direction does not matter).",
+                  correct: true,
+                },
+                { text: "False. The angle is enough.", code: "POS.ROTATE.CENTRE" },
+                {
+                  text: "False. Rotations always turn about the origin.",
+                  code: "POS.ROTATE.CENTRE",
+                },
+              ],
+              solution: [{ say: "Rotation: angle, direction, centre." }],
+            }),
+          [
             {
-              text: "True. Without the centre or the direction, more than one rotation would fit (except a half turn, where direction does not matter).",
-              correct: true,
+              statement:
+                "Leo says a rotation of 90° clockwise is the same as a rotation of 270° anticlockwise about the same centre.",
+              truth: true,
+              right:
+                "True. Turning 270° one way ends in the same place as turning 90° the other way.",
+              wrong: [
+                ["False. 90° clockwise is the same as 90° anticlockwise.", "GEO.TURNS.DIRECTION"],
+                ["False. Rotations through different angles are never the same."],
+              ],
             },
-            { text: "False. The angle is enough.", code: "POS.ROTATE.CENTRE" },
-            { text: "False. Rotations always turn about the origin.", code: "POS.ROTATE.CENTRE" },
+            {
+              statement:
+                "The point (2, 0) is rotated 90° anticlockwise about the origin. Zoe says it moves to (0, −2).",
+              truth: false,
+              right:
+                "False. Anticlockwise from the positive x-axis goes up, to (0, 2). (0, −2) is clockwise.",
+              wrong: [
+                ["True. Anticlockwise turns it downwards.", "GEO.TURNS.DIRECTION"],
+                ["True. It is reflected in the x-axis.", "POS.REFLECT.WRONG-AXIS"],
+              ],
+            },
+            {
+              claim:
+                "Rotating a shape 180° about a point gives the same image whichever way you turn.",
+              truth: "always",
+              right:
+                "Always. Half a turn clockwise and half a turn anticlockwise end in the same place.",
+              wrong: [
+                [
+                  "Never. Clockwise and anticlockwise always give different images.",
+                  "GEO.TURNS.DIRECTION",
+                ],
+                ["Sometimes. Only when the centre is the origin.", "POS.ROTATE.CENTRE"],
+              ],
+            },
           ],
-          solution: [{ say: "Rotation: angle, direction, centre." }],
-        });
+        );
     }
   },
 

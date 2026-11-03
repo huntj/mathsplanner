@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
 import { poly } from "../shared/alg.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   d: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-ALG-09",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SEQUENCE.POSITION-RULE"],
 
@@ -86,24 +87,61 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Max says the nth term of ${shown}, … is `,
-            A.math(poly([1, p.d], "n")),
-            `, because it goes up by ${p.d}.`,
-          ],
-          truth: false,
-          reasons: [
-            { text: `False. ${poly([1, p.d], "n")} goes up by 1 each time. ${how}`, correct: true },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Max says the nth term of ${shown}, … is `,
+                A.math(poly([1, p.d], "n")),
+                `, because it goes up by ${p.d}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${poly([1, p.d], "n")} goes up by 1 each time. ${how}`,
+                  correct: true,
+                },
+                {
+                  text: `True. "Goes up by ${p.d}" means + ${p.d}.`,
+                  code: "ALG.SEQUENCE.POSITION-RULE",
+                },
+                { text: "True. Every sequence has nth term n plus the difference." },
+              ],
+              solution: [{ say: how }],
+            }),
+          [
             {
-              text: `True. "Goes up by ${p.d}" means + ${p.d}.`,
-              code: "ALG.SEQUENCE.POSITION-RULE",
+              statement: "Ria says the sequence 5, 8, 11, 14, … has nth term $3n + 2$.",
+              truth: true,
+              right: "True. It goes up by 3, so it starts 3n, and 3 × 1 + 2 = 5.",
+              wrong: [
+                ["False. It is n + 3, as it goes up by 3.", "ALG.SEQUENCE.POSITION-RULE"],
+                ["False. It is 5n + 3."],
+              ],
             },
-            { text: "True. Every sequence has nth term n plus the difference." },
+            {
+              statement: "Ben says 40 is a term of the sequence with nth term $4n + 2$.",
+              truth: false,
+              right: "False. 4n + 2 = 40 gives n = 9.5, which is not a whole number.",
+              wrong: [
+                ["True. 40 is in the 4 times table."],
+                ["True. The terms go up forever, so every number comes up."],
+              ],
+            },
+            {
+              claim:
+                "In a sequence with nth term $an + b$, each term is a more than the one before.",
+              truth: "always",
+              right: "Always. a(n + 1) + b − (an + b) = a.",
+              wrong: [
+                ["Sometimes. Only when b is 0."],
+                ["Never. Each term is b more than the one before."],
+              ],
+            },
           ],
-          solution: [{ say: how }],
-        });
+        );
     }
   },
 

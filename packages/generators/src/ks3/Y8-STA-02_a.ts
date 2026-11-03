@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import type { CartesianSpec } from "@mathsplanner/diagrams";
 import { chosenText } from "../shared/counting.ts";
 import { coord } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const XS = [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -34,7 +35,7 @@ function scatter(p: Params): CartesianSpec {
 
 export default defineGenerator<Params>({
   id: "Y8-STA-02.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.COORD.ORDER"],
 
@@ -98,22 +99,57 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Lou says that after plotting a scatter graph, you should join the points with straight lines in order.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Lou says that after plotting a scatter graph, you should join the points with straight lines in order.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. The points are separate pairs of data. You may draw one line of best fit through the middle of them, but you do not join the dots.",
+                  correct: true,
+                },
+                { text: "True. It makes a line graph.", code: "ALG.COORD.ORDER" },
+                { text: "True. Joining them shows the correlation." },
+              ],
+              solution: [{ say: "Scatter graphs show the pattern of the points." }],
+            }),
+          [
             {
-              text: "False. The points are separate pairs of data. You may draw one line of best fit through the middle of them, but you do not join the dots.",
-              correct: true,
+              statement:
+                "A pupil is 150 cm tall and has shoe size 6. On a scatter graph with height across, Ava plots (6, 150).",
+              truth: false,
+              right: "False. Height is across, so the point is (150, 6).",
+              wrong: [
+                ["True. The smaller number goes first.", "ALG.COORD.ORDER"],
+                ["True. The order does not matter on a scatter graph."],
+              ],
             },
-            { text: "True. It makes a line graph.", code: "ALG.COORD.ORDER" },
-            { text: "True. Joining them shows the correlation." },
+            {
+              statement: "Raj says each point on a scatter graph stands for one pair of values.",
+              truth: true,
+              right: "True. Each point is one person or thing, with one value on each axis.",
+              wrong: [
+                ["False. Each point stands for one value."],
+                ["False. Each point is the total of a group."],
+              ],
+            },
+            {
+              claim: "Two points on a scatter graph are in the same place.",
+              truth: "sometimes",
+              right:
+                "Sometimes. When two pairs of values are the same, their points are on top of each other.",
+              wrong: [
+                ["Never. Every point needs its own place."],
+                ["Always. Points are plotted in pairs."],
+              ],
+            },
           ],
-          solution: [{ say: "Scatter graphs show the pattern of the points." }],
-        });
+        );
     }
   },
 

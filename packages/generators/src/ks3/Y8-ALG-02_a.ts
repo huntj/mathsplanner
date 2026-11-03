@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -20,7 +21,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "Y8-ALG-02.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SUBSTITUTE.ORDER", "MEA.CIRCLE.FORMULA"],
 
@@ -77,27 +78,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Using ",
-            A.math("E = mc^2"),
-            `, Eva says that if m is multiplied by ${p.m}, E is multiplied by ${p.m} too.`,
-          ],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Using ",
+                A.math("E = mc^2"),
+                `, Eva says that if m is multiplied by ${p.m}, E is multiplied by ${p.m} too.`,
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: `True. c² is fixed, so E is proportional to m: ${p.m}m gives ${p.m}mc².`,
+                  correct: true,
+                },
+                {
+                  text: `False. E is multiplied by ${p.m * p.m}, because of the square.`,
+                  code: "ALG.SUBSTITUTE.ORDER",
+                },
+                { text: "False. E stays the same.", code: "ALG.SUBSTITUTE.ORDER" },
+              ],
+              solution: [{ say: "Only c is squared." }],
+            }),
+          [
             {
-              text: `True. c² is fixed, so E is proportional to m: ${p.m}m gives ${p.m}mc².`,
-              correct: true,
+              statement:
+                "Using $A = \\pi r^2$, Jo says a circle of radius 3 cm has an area of $6\\pi$ cm².",
+              truth: false,
+              right:
+                "False. r² = 3 × 3 = 9, so the area is 9π cm². 2 × 3 = 6 comes from the circumference.",
+              wrong: [
+                ["True. r² means 2 × r.", "ALG.SUBSTITUTE.ORDER"],
+                ["True. The area is π times the diameter.", "MEA.CIRCLE.FORMULA"],
+              ],
             },
             {
-              text: `False. E is multiplied by ${p.m * p.m}, because of the square.`,
-              code: "ALG.SUBSTITUTE.ORDER",
+              statement: "Using $v = u + at$ with u = 5, a = 2 and t = 3, Ben says v = 11.",
+              truth: true,
+              right: "True. Multiply before adding: v = 5 + 2 × 3 = 5 + 6 = 11.",
+              wrong: [
+                ["False. v = (5 + 2) × 3 = 21.", "ALG.SUBSTITUTE.ORDER"],
+                ["False. v = 5 + 2 + 3 = 10."],
+              ],
             },
-            { text: "False. E stays the same.", code: "ALG.SUBSTITUTE.ORDER" },
+            {
+              claim: "In $A = \\pi r^2$, doubling the radius doubles the area.",
+              truth: "never",
+              right: "Never. π(2r)² = 4πr², so the area is multiplied by 4.",
+              wrong: [
+                ["Always. The area goes up with the radius.", "ALG.SUBSTITUTE.ORDER"],
+                ["Sometimes. Only for small circles."],
+              ],
+            },
           ],
-          solution: [{ say: "Only c is squared." }],
-        });
+        );
     }
   },
 

@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { pictogram, TOPICS } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   topic: number;
@@ -21,7 +22,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-STA-01.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.KEY-IGNORED", "STA.PIE.ANGLE-AS-COUNT"],
 
@@ -90,17 +91,57 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Dev says a sector of 90° on a pie chart stands for a quarter of the data."],
-          truth: true,
-          reasons: [
-            { text: "True. 90° is a quarter of the 360° full circle.", correct: true },
-            { text: "False. It stands for 90 people.", code: "STA.PIE.ANGLE-AS-COUNT" },
-            { text: "False. You need to know the total to say.", code: "STA.PIE.ANGLE-AS-COUNT" },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Dev says a sector of 90° on a pie chart stands for a quarter of the data.",
+              ],
+              truth: true,
+              reasons: [
+                { text: "True. 90° is a quarter of the 360° full circle.", correct: true },
+                { text: "False. It stands for 90 people.", code: "STA.PIE.ANGLE-AS-COUNT" },
+                {
+                  text: "False. You need to know the total to say.",
+                  code: "STA.PIE.ANGLE-AS-COUNT",
+                },
+              ],
+              solution: [{ say: "Pie charts show fractions of the whole." }],
+            }),
+          [
+            {
+              statement:
+                "In a pictogram, one picture stands for 4 people. Sam says 3 pictures stand for 3 people.",
+              truth: false,
+              right: "False. Use the key: 3 × 4 = 12 people.",
+              wrong: [
+                ["True. Count the pictures.", "STA.KEY-IGNORED"],
+                ["True. Each picture is one person."],
+              ],
+            },
+            {
+              statement: "A pie chart shows 36 pupils. Ola says each pupil is 10° of the chart.",
+              truth: true,
+              right: "True. 360° ÷ 36 = 10° for each pupil.",
+              wrong: [
+                ["False. Each pupil is 36°.", "STA.PIE.ANGLE-AS-COUNT"],
+                ["False. Each pupil is 1°."],
+              ],
+            },
+            {
+              claim:
+                "A bigger sector on one pie chart stands for more people than a smaller sector on another pie chart.",
+              truth: "sometimes",
+              right: "Sometimes. It depends how many people each chart shows in all.",
+              wrong: [
+                ["Always. Bigger sectors mean more people.", "STA.PIE.ANGLE-AS-COUNT"],
+                ["Never. You cannot compare pie charts."],
+              ],
+            },
           ],
-          solution: [{ say: "Pie charts show fractions of the whole." }],
-        });
+        );
     }
   },
 

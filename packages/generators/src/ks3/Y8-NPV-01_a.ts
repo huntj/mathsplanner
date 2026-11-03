@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { tex } from "../shared/npv.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -21,7 +22,7 @@ const sf = (m: string, power: number) => `${m} \\times 10^{${power}}`;
 
 export default defineGenerator<Params>({
   id: "Y8-NPV-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.STANDARD-FORM.POWER", "NPV.INDEX.NEGATIVE"],
 
@@ -74,20 +75,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Ivy says ", A.math(`${p.a} \\times 10^{-${p.k}}`), " is a negative number."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ivy says ",
+                A.math(`${p.a} \\times 10^{-${p.k}}`),
+                " is a negative number.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. A negative power of 10 makes a small positive number: ${p.a} × 10^−${p.k} = ${(p.a / 10 ** p.k).toFixed(p.k)}.`,
+                  correct: true,
+                },
+                { text: "True. The minus sign makes it negative.", code: "NPV.INDEX.NEGATIVE" },
+                { text: `True. It means ${p.a} × (−10)^${p.k}.`, code: "NPV.INDEX.NEGATIVE" },
+              ],
+              solution: [{ say: "10^−k = 1 ÷ 10^k." }],
+            }),
+          [
             {
-              text: `False. A negative power of 10 makes a small positive number: ${p.a} × 10^−${p.k} = ${(p.a / 10 ** p.k).toFixed(p.k)}.`,
-              correct: true,
+              statement: "Sam says $45 \\times 10^{3}$ is written in standard form.",
+              truth: false,
+              right:
+                "False. The first number must be at least 1 and less than 10, so it is 4.5 × 10⁴.",
+              wrong: [
+                ["True. It is a number times a power of 10.", "NPV.STANDARD-FORM.POWER"],
+                ["True. Any number times 10³ is in standard form."],
+              ],
             },
-            { text: "True. The minus sign makes it negative.", code: "NPV.INDEX.NEGATIVE" },
-            { text: `True. It means ${p.a} × (−10)^${p.k}.`, code: "NPV.INDEX.NEGATIVE" },
+            {
+              statement: "Ana writes 0.007 as $7 \\times 10^{-3}$.",
+              truth: true,
+              right: "True. 7 × 10^−3 = 7 ÷ 1000 = 0.007.",
+              wrong: [
+                ["False. It is 7 × 10³, because there are three zeros.", "NPV.INDEX.NEGATIVE"],
+                [
+                  "False. It is 7 × 10^−2, counting the zeros after the point.",
+                  "NPV.STANDARD-FORM.POWER",
+                ],
+              ],
+            },
+            {
+              claim:
+                "A positive number in standard form with a negative power of 10 is less than 1.",
+              truth: "always",
+              right:
+                "Always. The first number is less than 10 and a negative power of 10 is at most 0.1, so the number is less than 1.",
+              wrong: [
+                ["Never. A negative power makes a negative number.", "NPV.INDEX.NEGATIVE"],
+                ["Sometimes. Only when the first number is small.", "NPV.STANDARD-FORM.POWER"],
+              ],
+            },
           ],
-          solution: [{ say: "10^−k = 1 ÷ 10^k." }],
-        });
+        );
     }
   },
 

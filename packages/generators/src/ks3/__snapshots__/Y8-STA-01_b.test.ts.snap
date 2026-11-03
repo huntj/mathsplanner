@@ -29,7 +29,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -118,7 +118,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -207,7 +207,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -277,7 +277,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -340,7 +340,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -403,7 +403,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -459,14 +459,14 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -477,14 +477,14 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -493,10 +493,19 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -504,7 +513,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 90° is a quarter of the 360° full circle.",
+                  "v": "Sometimes. It depends how many people each chart shows in all.",
                 },
               ],
               "id": "RA",
@@ -513,7 +522,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You need to know the total to say.",
+                  "v": "Always. Bigger sectors mean more people.",
                 },
               ],
               "id": "RB",
@@ -522,7 +531,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It stands for 90 people.",
+                  "v": "Never. You cannot compare pie charts.",
                 },
               ],
               "id": "RC",
@@ -540,19 +549,11 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
             "code": "STA.PIE.ANGLE-AS-COUNT",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "STA.PIE.ANGLE-AS-COUNT",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -562,7 +563,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Pie charts show fractions of the whole.",
+            "v": "Sometimes. It depends how many people each chart shows in all.",
           },
         ],
       },
@@ -570,19 +571,19 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Dev says a sector of 90° on a pie chart stands for a quarter of the data.",
+        "v": "A bigger sector on one pie chart stands for more people than a smaller sector on another pie chart.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -593,14 +594,14 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RC",
+          "correct": "B",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -609,10 +610,19 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -620,7 +630,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You need to know the total to say.",
+                  "v": "Always. Bigger sectors mean more people.",
                 },
               ],
               "id": "RA",
@@ -629,7 +639,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It stands for 90 people.",
+                  "v": "Sometimes. It depends how many people each chart shows in all.",
                 },
               ],
               "id": "RB",
@@ -638,7 +648,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 90° is a quarter of the 360° full circle.",
+                  "v": "Never. You cannot compare pie charts.",
                 },
               ],
               "id": "RC",
@@ -656,19 +666,11 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
             "code": "STA.PIE.ANGLE-AS-COUNT",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "STA.PIE.ANGLE-AS-COUNT",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -678,7 +680,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Pie charts show fractions of the whole.",
+            "v": "Sometimes. It depends how many people each chart shows in all.",
           },
         ],
       },
@@ -686,7 +688,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Dev says a sector of 90° on a pie chart stands for a quarter of the data.",
+        "v": "A bigger sector on one pie chart stands for more people than a smaller sector on another pie chart.",
       },
     ],
   },
@@ -698,7 +700,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -709,7 +711,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
           "correctReason": "RA",
           "options": [
             {
@@ -736,7 +738,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 90° is a quarter of the 360° full circle.",
+                  "v": "False. Use the key: 3 × 4 = 12 people.",
                 },
               ],
               "id": "RA",
@@ -745,7 +747,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You need to know the total to say.",
+                  "v": "True. Count the pictures.",
                 },
               ],
               "id": "RB",
@@ -754,7 +756,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It stands for 90 people.",
+                  "v": "True. Each picture is one person.",
                 },
               ],
               "id": "RC",
@@ -769,15 +771,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "STA.PIE.ANGLE-AS-COUNT",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "STA.PIE.ANGLE-AS-COUNT",
+            "code": "STA.KEY-IGNORED",
             "feedback": [],
           },
         ],
@@ -794,7 +788,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Pie charts show fractions of the whole.",
+            "v": "False. Use the key: 3 × 4 = 12 people.",
           },
         ],
       },
@@ -802,7 +796,7 @@ exports[`Y8-STA-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Dev says a sector of 90° on a pie chart stands for a quarter of the data.",
+        "v": "In a pictogram, one picture stands for 4 people. Sam says 3 pictures stand for 3 people.",
       },
     ],
   },

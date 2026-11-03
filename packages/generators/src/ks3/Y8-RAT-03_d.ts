@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   principal: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-RAT-03.d",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.INTEREST.ONE-YEAR", "RAT.PERCENT.DIVIDE-BY-PERCENT"],
 
@@ -71,25 +72,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ana says money invested at 10% simple interest per year doubles in 10 years.",
-          ],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ana says money invested at 10% simple interest per year doubles in 10 years.",
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. Each year adds 10% of the original amount, so after 10 years the interest is 100% of it.",
+                  correct: true,
+                },
+                { text: "False. It doubles in 2 years.", code: "RAT.INTEREST.ONE-YEAR" },
+                {
+                  text: "False. Simple interest never doubles your money.",
+                  code: "RAT.INTEREST.ONE-YEAR",
+                },
+              ],
+              solution: [{ say: "10 years × 10% = 100%." }],
+            }),
+          [
             {
-              text: "True. Each year adds 10% of the original amount, so after 10 years the interest is 100% of it.",
-              correct: true,
+              statement:
+                "£500 is invested at 4% simple interest per year. Ola says the interest after 3 years is £20.",
+              truth: false,
+              right: "False. £20 is one year's interest. After 3 years it is 3 × £20 = £60.",
+              wrong: [
+                ["True. 4% of £500 is £20.", "RAT.INTEREST.ONE-YEAR"],
+                ["True. The interest is the same however long the money is left."],
+              ],
             },
-            { text: "False. It doubles in 2 years.", code: "RAT.INTEREST.ONE-YEAR" },
             {
-              text: "False. Simple interest never doubles your money.",
-              code: "RAT.INTEREST.ONE-YEAR",
+              statement: "Sid says £200 at 5% simple interest per year earns £50 in 5 years.",
+              truth: true,
+              right: "True. 5% of £200 is £10 a year, and 5 × £10 = £50.",
+              wrong: [
+                [
+                  "False. £200 ÷ 5 = £40 a year, so it earns £200.",
+                  "RAT.PERCENT.DIVIDE-BY-PERCENT",
+                ],
+                ["False. It earns £10 in all.", "RAT.INTEREST.ONE-YEAR"],
+              ],
+            },
+            {
+              claim: "With simple interest, the interest earned each year is the same.",
+              truth: "always",
+              right:
+                "Always. Simple interest is worked out on the amount first invested every year.",
+              wrong: [
+                ["Sometimes. It goes up as the total grows."],
+                ["Never. Each year adds interest on the interest."],
+              ],
             },
           ],
-          solution: [{ say: "10 years × 10% = 100%." }],
-        });
+        );
     }
   },
 

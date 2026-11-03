@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   total: number;
@@ -22,7 +23,7 @@ const r = (v: number) => Number(v.toFixed(6));
 
 export default defineGenerator<Params>({
   id: "Y8-RAT-03.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.ORDER", "RAT.FRACTION.UNITS"],
 
@@ -78,28 +79,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Kim scored ${p.score} out of 20 in one test and ${p.pc}% in another. She says ${p.score * 5 > p.pc ? `her ${p.score} out of 20 was the better score` : `her ${p.pc}% was the better score`}.`,
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Kim scored ${p.score} out of 20 in one test and ${p.pc}% in another. She says ${p.score * 5 > p.pc ? `her ${p.score} out of 20 was the better score` : `her ${p.pc}% was the better score`}.`,
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: `True. ${p.score} out of 20 is ${p.score * 5}%, so it can be compared with ${p.pc}%.`,
+                  correct: true,
+                },
+                {
+                  text: "False. You cannot compare marks out of different totals.",
+                  code: "RAT.FRACTION.UNITS",
+                },
+                {
+                  text: `False. ${p.score} is smaller than ${p.pc}, so it is worse.`,
+                  code: "RAT.FRACTION.UNITS",
+                },
+              ],
+              solution: [
+                { say: "Percentages put scores out of different totals on the same scale." },
+              ],
+            }),
+          [
+            {
+              statement: "Zac says 30p is 30% of £1.",
+              truth: true,
+              right: "True. £1 = 100p, and 30 out of 100 is 30%.",
+              wrong: [
+                ["False. £1 is 1000p, so 30p is 3%.", "RAT.FRACTION.UNITS"],
+                ["False. You cannot compare pence with pounds."],
+              ],
+            },
+            {
+              statement: "Ruby says 15 cm is 15% of 2 m.",
+              truth: false,
+              right: "False. 2 m = 200 cm, and 15 ÷ 200 = 0.075 = 7.5%.",
+              wrong: [
+                ["True. The units do not matter when finding a percentage.", "RAT.FRACTION.UNITS"],
+                ["True. 200 ÷ 15 is about 13, which rounds to 15.", "RAT.ORDER"],
+              ],
+            },
+            {
+              claim: "A smaller amount as a percentage of a bigger amount is less than 100%.",
+              truth: "always",
+              right: "Always. A part smaller than the whole is less than all of it.",
+              wrong: [
+                ["Sometimes. It depends which one you divide by.", "RAT.ORDER"],
+                ["Never. Percentages are bigger than the amounts."],
+              ],
+            },
           ],
-          truth: true,
-          reasons: [
-            {
-              text: `True. ${p.score} out of 20 is ${p.score * 5}%, so it can be compared with ${p.pc}%.`,
-              correct: true,
-            },
-            {
-              text: "False. You cannot compare marks out of different totals.",
-              code: "RAT.FRACTION.UNITS",
-            },
-            {
-              text: `False. ${p.score} is smaller than ${p.pc}, so it is worse.`,
-              code: "RAT.FRACTION.UNITS",
-            },
-          ],
-          solution: [{ say: "Percentages put scores out of different totals on the same scale." }],
-        });
+        );
     }
   },
 

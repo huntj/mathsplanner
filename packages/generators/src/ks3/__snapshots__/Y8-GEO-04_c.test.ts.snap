@@ -10,7 +10,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-GEO-04.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -73,7 +73,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-GEO-04.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -136,7 +136,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-GEO-04.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -199,7 +199,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-GEO-04.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -262,7 +262,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-GEO-04.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -325,7 +325,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-GEO-04.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -381,14 +381,14 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-GEO-04.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -399,14 +399,14 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RA",
+          "correct": "B",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -415,19 +415,10 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -435,7 +426,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. That is why the angle bisector is the locus of points equidistant from two lines.",
+                  "v": "True. One arc is enough.",
                 },
               ],
               "id": "RA",
@@ -444,7 +435,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only for a right angle.",
+                  "v": "False. After the arc from B, draw equal arcs from the two crossing points and join B to where they meet.",
                 },
               ],
               "id": "RB",
@@ -453,7 +444,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The points are the same distance from the ends of the arms.",
+                  "v": "True. The bisector runs along an arm of the angle.",
                 },
               ],
               "id": "RC",
@@ -465,10 +456,10 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "GEO.CONSTRUCT.BISECTORS",
+            "code": "AS.MULTISTEP.ONE-STEP",
             "feedback": [],
           },
           {
@@ -483,7 +474,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -493,7 +484,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Distance to a line is measured at right angles to it.",
+            "v": "False. After the arc from B, draw equal arcs from the two crossing points and join B to where they meet.",
           },
         ],
       },
@@ -501,19 +492,19 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Every point on the bisector of an angle is the same distance from the two arms of the angle.",
+        "v": "To bisect angle ABC, Jay draws one arc centred on B and joins B to where it crosses BA.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-GEO-04.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -524,14 +515,14 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RB",
+          "correct": "B",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -540,19 +531,10 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -560,7 +542,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The points are the same distance from the ends of the arms.",
+                  "v": "False. After the arc from B, draw equal arcs from the two crossing points and join B to where they meet.",
                 },
               ],
               "id": "RA",
@@ -569,7 +551,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. That is why the angle bisector is the locus of points equidistant from two lines.",
+                  "v": "True. The bisector runs along an arm of the angle.",
                 },
               ],
               "id": "RB",
@@ -578,7 +560,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only for a right angle.",
+                  "v": "True. One arc is enough.",
                 },
               ],
               "id": "RC",
@@ -590,7 +572,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.CONSTRUCT.BISECTORS",
@@ -601,14 +583,14 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "GEO.CONSTRUCT.BISECTORS",
+            "code": "AS.MULTISTEP.ONE-STEP",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -618,7 +600,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Distance to a line is measured at right angles to it.",
+            "v": "False. After the arc from B, draw equal arcs from the two crossing points and join B to where they meet.",
           },
         ],
       },
@@ -626,19 +608,19 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Every point on the bisector of an angle is the same distance from the two arms of the angle.",
+        "v": "To bisect angle ABC, Jay draws one arc centred on B and joins B to where it crosses BA.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-GEO-04.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -650,13 +632,13 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -665,19 +647,10 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -685,7 +658,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only for a right angle.",
+                  "v": "False. Each half is 140°.",
                 },
               ],
               "id": "RA",
@@ -694,7 +667,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. That is why the angle bisector is the locus of points equidistant from two lines.",
+                  "v": "False. Each half is 20°, the rest of a right angle.",
                 },
               ],
               "id": "RB",
@@ -703,7 +676,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The points are the same distance from the ends of the arms.",
+                  "v": "True. Bisect means cut into two equal parts: 70° ÷ 2 = 35°.",
                 },
               ],
               "id": "RC",
@@ -721,19 +694,11 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
             "code": "GEO.CONSTRUCT.BISECTORS",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "GEO.CONSTRUCT.BISECTORS",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -743,7 +708,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Distance to a line is measured at right angles to it.",
+            "v": "True. Bisect means cut into two equal parts: 70° ÷ 2 = 35°.",
           },
         ],
       },
@@ -751,7 +716,7 @@ exports[`Y8-GEO-04.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Every point on the bisector of an angle is the same distance from the two arms of the angle.",
+        "v": "Ola bisects an angle of 70° and says each half is 35°.",
       },
     ],
   },

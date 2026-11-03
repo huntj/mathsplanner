@@ -40,6 +40,24 @@ export const sectionFor = (stage: Stage | undefined): CourseSection | undefined 
 
 export const skillText = (id: string) => statementText.get(id) ?? id;
 
+/** Joins words as "a", "a and b" or "a, b and c". */
+const andList = (words: string[]) =>
+  words.length < 2 ? (words[0] ?? "") : `${words.slice(0, -1).join(", ")} and ${words.at(-1)}`;
+
+/** The years with a path so far, as a sentence's subject: "Year 7 is" or "Years 7 and 8 are". */
+export function yearsReady(stages: readonly Stage[] = course.sections.map((s) => s.stage)): string {
+  const names = YEARS.filter((y) => stages.includes(y.stage)).map((y) => y.name);
+  if (names.length === 0) return "No year is";
+  const years = names.filter((n) => n.startsWith("Year "));
+  const others = names.filter((n) => !n.startsWith("Year "));
+  const numbers = years.map((n) => n.slice("Year ".length));
+  // "Years 7 and 8", or "Years 7, 8" when more follow, as in "Years 7, 8 and GCSE Foundation".
+  const yearWords =
+    years.length > 1 ? [`Years ${others.length ? numbers.join(", ") : andList(numbers)}`] : years;
+  const words = [...yearWords, ...others];
+  return `${andList(words)} ${names.length > 1 ? "are" : "is"}`;
+}
+
 const unitBySkill = new Map(
   course.sections.flatMap((s) =>
     s.units.flatMap((u) => u.skills.map((skill) => [skill, u] as const)),

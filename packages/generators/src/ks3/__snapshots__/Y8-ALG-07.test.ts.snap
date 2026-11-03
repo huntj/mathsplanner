@@ -37,7 +37,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-ALG-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-ALG-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -231,7 +231,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-ALG-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -328,7 +328,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-ALG-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -464,7 +464,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-ALG-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -600,7 +600,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-ALG-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -703,40 +703,13 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "curves": [
-          {
-            "domain": [
-              0,
-              8,
-            ],
-            "y": "5*x + 20",
-          },
-        ],
-        "description": "A straight-line graph of cost in pounds against hours, starting on the cost axis.",
-        "grid": true,
-        "type": "cartesian",
-        "x": {
-          "label": "\\text{hours}",
-          "max": 8,
-          "min": 0,
-          "step": 1,
-        },
-        "y": {
-          "label": "\\text{cost (£)}",
-          "max": 60,
-          "min": 0,
-          "step": 5,
-        },
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-ALG-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -747,8 +720,8 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -774,7 +747,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. £20 is the fixed charge. The gradient shows it goes up £5 each hour.",
+                  "v": "False. The second hour is higher up the graph, so the car was faster then.",
                 },
               ],
               "id": "RA",
@@ -783,7 +756,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The number where the line starts is the cost per hour.",
+                  "v": "True. The steeper the graph, the more distance is covered each hour.",
                 },
               ],
               "id": "RB",
@@ -792,7 +765,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The line is straight, so it goes up by the same as it starts.",
+                  "v": "False. A steeper graph means the car went more slowly.",
                 },
               ],
               "id": "RC",
@@ -801,16 +774,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.LINE.M-C",
-            "feedback": [],
-          },
-        ],
+        "misconceptions": [],
         "prompt": [
           {
             "t": "text",
@@ -824,7 +788,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Cost = 20 + 5 × hours.",
+            "v": "True. The steeper the graph, the more distance is covered each hour.",
           },
         ],
       },
@@ -832,54 +796,19 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The graph shows the cost of hiring a canoe.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": " Jo says the cost goes up by £20 for each extra hour.",
+        "v": "A graph of a car's distance against time is steeper in the first hour than in the second. Ana says the car went faster in the first hour.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "curves": [
-          {
-            "domain": [
-              0,
-              8,
-            ],
-            "y": "10*x + 5",
-          },
-        ],
-        "description": "A straight-line graph of cost in pounds against hours, starting on the cost axis.",
-        "grid": true,
-        "type": "cartesian",
-        "x": {
-          "label": "\\text{hours}",
-          "max": 8,
-          "min": 0,
-          "step": 1,
-        },
-        "y": {
-          "label": "\\text{cost (£)}",
-          "max": 85,
-          "min": 0,
-          "step": 10,
-        },
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-ALG-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -897,7 +826,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -906,10 +835,19 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -917,7 +855,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The gradient is £10 per hour: for every hour across, the line goes up £10.",
+                  "v": "Always. That is what the gradient m means.",
                 },
               ],
               "id": "RA",
@@ -926,7 +864,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The cost is the same for any number of hours.",
+                  "v": "Sometimes. Only when c is 0.",
                 },
               ],
               "id": "RB",
@@ -935,7 +873,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It goes up by £5, where the line starts.",
+                  "v": "Never. y goes up by c each time.",
                 },
               ],
               "id": "RC",
@@ -947,17 +885,25 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.LINE.M-C",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.COORD.ORDER",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -967,7 +913,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Cost = 5 + 10 × hours.",
+            "v": "Always. That is what the gradient m means.",
           },
         ],
       },
@@ -975,15 +921,15 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The graph shows the cost of hiring a canoe.",
+        "v": "On the graph of ",
       },
       {
-        "i": 0,
-        "t": "diagram",
+        "t": "math",
+        "v": "y = mx + c",
       },
       {
         "t": "text",
-        "v": " Jo says the cost goes up by £10 for each extra hour.",
+        "v": ", y goes up by m each time x goes up by 1.",
       },
     ],
   },
@@ -1022,7 +968,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-ALG-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1034,7 +980,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -1060,7 +1006,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The cost is the same for any number of hours.",
+                  "v": "True. The gradient is £5 per hour: for every hour across, the line goes up £5.",
                 },
               ],
               "id": "RA",
@@ -1078,7 +1024,7 @@ exports[`Y8-ALG-07 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The gradient is £5 per hour: for every hour across, the line goes up £5.",
+                  "v": "False. The cost is the same for any number of hours.",
                 },
               ],
               "id": "RC",

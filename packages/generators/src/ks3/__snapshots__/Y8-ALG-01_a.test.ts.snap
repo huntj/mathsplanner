@@ -10,7 +10,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-ALG-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -73,7 +73,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-ALG-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -136,7 +136,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-ALG-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -199,7 +199,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-ALG-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -262,7 +262,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-ALG-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -322,7 +322,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-ALG-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -378,14 +378,14 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-ALG-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -396,14 +396,14 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -412,10 +412,19 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -423,7 +432,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. (x + 9)² = (x + 9)(x + 9) = x² + 18x + 81. The middle term 18x is missing.",
+                  "v": "Sometimes. Only when a and b are equal.",
                 },
               ],
               "id": "RA",
@@ -432,7 +441,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Square each term in the bracket.",
+                  "v": "Never. It gives two terms, x² and ab.",
                 },
               ],
               "id": "RB",
@@ -441,7 +450,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Squaring works like multiplying by a number.",
+                  "v": "Always. The two x terms, ax and bx, collect into one: x² + (a + b)x + ab.",
                 },
               ],
               "id": "RC",
@@ -459,19 +468,11 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
             "code": "ALG.EXPAND.BINOMIAL-TWO-TERMS",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.EXPAND.BINOMIAL-TWO-TERMS",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -481,7 +482,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Check with x = 1: (1 + 9)² = 100, but 1 + 81 = 82.",
+            "v": "Always. The two x terms, ax and bx, collect into one: x² + (a + b)x + ab.",
           },
         ],
       },
@@ -489,15 +490,15 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jay says ",
+        "v": "When a and b are positive, the expansion of ",
       },
       {
         "t": "math",
-        "v": "(x + 9)^2 = x^2 + 81",
+        "v": "(x + a)(x + b)",
       },
       {
         "t": "text",
-        "v": ".",
+        "v": " simplifies to three terms.",
       },
     ],
   },
@@ -509,7 +510,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-ALG-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -547,7 +548,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Squaring works like multiplying by a number.",
+                  "v": "True. There are three terms, so it is fully expanded.",
                 },
               ],
               "id": "RA",
@@ -556,7 +557,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Square each term in the bracket.",
+                  "v": "True. Multiply 3 and 4 for the x term, then add them for the number.",
                 },
               ],
               "id": "RB",
@@ -565,7 +566,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. (x + 1)² = (x + 1)(x + 1) = x² + 2x + 1. The middle term 2x is missing.",
+                  "v": "False. 3 and 4 add to give the x term and multiply to give the number: x² + 7x + 12.",
                 },
               ],
               "id": "RC",
@@ -574,24 +575,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.EXPAND.BINOMIAL-TWO-TERMS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.EXPAND.BINOMIAL-TWO-TERMS",
-            "feedback": [],
-          },
-        ],
+        "misconceptions": [],
         "prompt": [
           {
             "t": "text",
@@ -605,7 +589,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Check with x = 1: (1 + 1)² = 4, but 1 + 1 = 2.",
+            "v": "False. 3 and 4 add to give the x term and multiply to give the number: x² + 7x + 12.",
           },
         ],
       },
@@ -613,11 +597,11 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jay says ",
+        "v": "Nia says ",
       },
       {
         "t": "math",
-        "v": "(x + 1)^2 = x^2 + 1",
+        "v": "(x + 3)(x + 4) = x^2 + 12x + 7",
       },
       {
         "t": "text",
@@ -633,7 +617,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-ALG-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -645,7 +629,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -671,7 +655,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Square each term in the bracket.",
+                  "v": "False. (x + 4)² = (x + 4)(x + 4) = x² + 8x + 16. The middle term 8x is missing.",
                 },
               ],
               "id": "RA",
@@ -680,7 +664,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. (x + 4)² = (x + 4)(x + 4) = x² + 8x + 16. The middle term 8x is missing.",
+                  "v": "True. Squaring works like multiplying by a number.",
                 },
               ],
               "id": "RB",
@@ -689,7 +673,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Squaring works like multiplying by a number.",
+                  "v": "True. Square each term in the bracket.",
                 },
               ],
               "id": "RC",
@@ -701,7 +685,7 @@ exports[`Y8-ALG-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.EXPAND.BINOMIAL-TWO-TERMS",

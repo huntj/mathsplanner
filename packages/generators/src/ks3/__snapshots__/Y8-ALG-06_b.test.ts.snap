@@ -10,7 +10,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -93,7 +93,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -176,7 +176,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -281,7 +281,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -395,7 +395,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -509,7 +509,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -594,14 +594,14 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -613,13 +613,13 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -628,19 +628,10 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -648,7 +639,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Every point on it has y = 4, whatever x is, so it is flat: its gradient is 0.",
+                  "v": "False. Different numbers at the end mean different slopes.",
                 },
               ],
               "id": "RA",
@@ -657,7 +648,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It has gradient 4.",
+                  "v": "False. They cross at x = 0.",
                 },
               ],
               "id": "RB",
@@ -666,7 +657,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. It is a vertical line.",
+                  "v": "True. Both have gradient 2.",
                 },
               ],
               "id": "RC",
@@ -678,15 +669,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.LINE.M-C",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.LINE.M-C",
@@ -696,7 +679,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -706,7 +689,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "y = c is horizontal; x = c is vertical.",
+            "v": "True. Both have gradient 2.",
           },
         ],
       },
@@ -714,15 +697,23 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The graph of ",
+        "v": "Dev says the graphs of ",
       },
       {
         "t": "math",
-        "v": "y = 4",
+        "v": "y = 2x + 1",
       },
       {
         "t": "text",
-        "v": " is a horizontal line.",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "y = 2x - 4",
+      },
+      {
+        "t": "text",
+        "v": " are parallel.",
       },
     ],
   },
@@ -734,7 +725,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -745,7 +736,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
           "correctReason": "RA",
           "options": [
             {
@@ -781,7 +772,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Every point on it has y = 2, whatever x is, so it is flat: its gradient is 0.",
+                  "v": "Sometimes. Only when m is positive. When m is negative it slopes down, and when m is 0 it is flat.",
                 },
               ],
               "id": "RA",
@@ -790,7 +781,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. It is a vertical line.",
+                  "v": "Always. Straight-line graphs go up.",
                 },
               ],
               "id": "RB",
@@ -799,7 +790,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It has gradient 2.",
+                  "v": "Never. The slope depends on c.",
                 },
               ],
               "id": "RC",
@@ -809,14 +800,6 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.LINE.M-C",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -839,7 +822,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "y = c is horizontal; x = c is vertical.",
+            "v": "Sometimes. Only when m is positive. When m is negative it slopes down, and when m is 0 it is flat.",
           },
         ],
       },
@@ -851,23 +834,23 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "math",
-        "v": "y = 2",
+        "v": "y = mx + c",
       },
       {
         "t": "text",
-        "v": " is a horizontal line.",
+        "v": " slopes upwards from left to right.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -878,14 +861,14 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RA",
+          "correct": "B",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -894,19 +877,10 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -914,7 +888,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Every point on it has y = -4, whatever x is, so it is flat: its gradient is 0.",
+                  "v": "True. It crosses where y = 3.",
                 },
               ],
               "id": "RA",
@@ -923,7 +897,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It has gradient -4.",
+                  "v": "False. It crosses where x = 0, at y = −2. The 3 is the gradient.",
                 },
               ],
               "id": "RB",
@@ -932,7 +906,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. It is a vertical line.",
+                  "v": "True. The number in front of x is where it crosses.",
                 },
               ],
               "id": "RC",
@@ -942,14 +916,6 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.LINE.M-C",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -962,7 +928,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -972,7 +938,7 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "y = c is horizontal; x = c is vertical.",
+            "v": "False. It crosses where x = 0, at y = −2. The 3 is the gradient.",
           },
         ],
       },
@@ -980,15 +946,15 @@ exports[`Y8-ALG-06.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The graph of ",
+        "v": "Ella says the graph of ",
       },
       {
         "t": "math",
-        "v": "y = -4",
+        "v": "y = 3x - 2",
       },
       {
         "t": "text",
-        "v": " is a horizontal line.",
+        "v": " crosses the y-axis at 3.",
       },
     ],
   },

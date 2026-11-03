@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-ALG-04.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SOLVE.WRONG-INVERSE"],
 
@@ -73,25 +74,58 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            "Multiplying every term on both sides of an equation by the same non-zero number keeps it true.",
-          ],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "Multiplying every term on both sides of an equation by the same non-zero number keeps it true.",
+              ],
+              truth: "always",
+              reasons: [
+                {
+                  text: "Always. Both sides change in the same way, so they stay equal. That is how you clear fractions.",
+                  correct: true,
+                },
+                {
+                  text: "Sometimes. Only the terms with fractions should be multiplied.",
+                  code: "ALG.SOLVE.WRONG-INVERSE",
+                },
+                { text: "Never. It changes the answer.", code: "ALG.SOLVE.WRONG-INVERSE" },
+              ],
+              solution: [{ say: "Do the same to every term on both sides." }],
+            }),
+          [
             {
-              text: "Always. Both sides change in the same way, so they stay equal. That is how you clear fractions.",
-              correct: true,
+              statement: "Eli solves $\\frac{x}{4} = 3$ and gets $x = \\frac{3}{4}$.",
+              truth: false,
+              right: "False. Multiply both sides by 4: x = 12.",
+              wrong: [
+                ["True. Divide 3 by 4.", "ALG.SOLVE.WRONG-INVERSE"],
+                ["True. x is a quarter of 3."],
+              ],
             },
             {
-              text: "Sometimes. Only the terms with fractions should be multiplied.",
-              code: "ALG.SOLVE.WRONG-INVERSE",
+              statement: "Max says $x = 7$ solves $\\frac{x + 5}{3} = 4$.",
+              truth: true,
+              right: "True. (7 + 5) ÷ 3 = 12 ÷ 3 = 4.",
+              wrong: [
+                ["False. x + 5 = 4 ÷ 3, so x is negative.", "ALG.SOLVE.WRONG-INVERSE"],
+                ["False. x + 5 = 4 × 3 gives x = 17."],
+              ],
             },
-            { text: "Never. It changes the answer.", code: "ALG.SOLVE.WRONG-INVERSE" },
+            {
+              claim: "An equation with fractions in it has a fraction as its solution.",
+              truth: "sometimes",
+              right: "Sometimes. x/2 = 5 gives x = 10, but x/3 = 1/2 gives x = 3/2.",
+              wrong: [
+                ["Always. Fractions in give fractions out."],
+                ["Never. Multiplying clears the fractions."],
+              ],
+            },
           ],
-          solution: [{ say: "Do the same to every term on both sides." }],
-        });
+        );
     }
   },
 

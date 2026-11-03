@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   amount: number;
@@ -19,7 +20,7 @@ const r2 = (v: number) => Math.round(v * 100) / 100;
 
 export default defineGenerator<Params>({
   id: "Y8-RAT-03.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["AS.MULTISTEP.ONE-STEP", "RAT.PERCENT.MULTIPLIER", "RAT.COMPOUND.SIMPLE"],
 
@@ -77,22 +78,58 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Ben says increasing a price by ${p.up}% and then by another ${p.up}% is the same as one increase of ${2 * p.up}%.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Ben says increasing a price by ${p.up}% and then by another ${p.up}% is the same as one increase of ${2 * p.up}%.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The second ${p.up}% is of the bigger price, so the total rise is ${r2(((1 + p.up / 100) ** 2 - 1) * 100)}%.`,
+                  correct: true,
+                },
+                { text: "True. Percentages add up.", code: "RAT.COMPOUND.SIMPLE" },
+                { text: `True. ${p.up} + ${p.up} = ${2 * p.up}.`, code: "RAT.COMPOUND.SIMPLE" },
+              ],
+              solution: [
+                { say: "", math: `${r2(1 + p.up / 100)}^2 = ${r2((1 + p.up / 100) ** 2)}` },
+              ],
+            }),
+          [
             {
-              text: `False. The second ${p.up}% is of the bigger price, so the total rise is ${r2(((1 + p.up / 100) ** 2 - 1) * 100)}%.`,
-              correct: true,
+              statement: "To increase £80 by 15%, Ian works out $80 \\times 1.15$.",
+              truth: true,
+              right: "True. 100% + 15% = 115%, which is 1.15.",
+              wrong: [
+                ["False. He should work out 80 × 0.15.", "RAT.PERCENT.MULTIPLIER"],
+                ["False. He should work out 80 × 1.5."],
+              ],
             },
-            { text: "True. Percentages add up.", code: "RAT.COMPOUND.SIMPLE" },
-            { text: `True. ${p.up} + ${p.up} = ${2 * p.up}.`, code: "RAT.COMPOUND.SIMPLE" },
+            {
+              statement: "Gia decreases £60 by 25% and says the new price is £15.",
+              truth: false,
+              right: "False. £15 is the decrease. The new price is £60 − £15 = £45.",
+              wrong: [
+                ["True. 25% of 60 is 15.", "AS.MULTISTEP.ONE-STEP"],
+                ["True. Multiply by 0.25 to take off 25%.", "RAT.PERCENT.MULTIPLIER"],
+              ],
+            },
+            {
+              claim:
+                "Increasing an amount by 10% and then decreasing the result by 10% gets back to the start.",
+              truth: "never",
+              right: "Never. The decrease is 10% of a bigger amount: 100 → 110 → 99.",
+              wrong: [
+                ["Always. The two changes cancel out.", "RAT.COMPOUND.SIMPLE"],
+                ["Sometimes. Only for multiples of 10."],
+              ],
+            },
           ],
-          solution: [{ say: "", math: `${r2(1 + p.up / 100)}^2 = ${r2((1 + p.up / 100) ** 2)}` }],
-        });
+        );
     }
   },
 

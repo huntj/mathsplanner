@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   rho: number;
@@ -22,7 +23,7 @@ const r2 = (v: number) => Math.round(v * 100) / 100;
 
 export default defineGenerator<Params>({
   id: "Y8-RAT-05.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.COMPOUND-UNIT.ARRANGEMENT"],
 
@@ -84,20 +85,55 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Dan says a large, heavy log must sink in water because it is so heavy."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Dan says a large, heavy log must sink in water because it is so heavy."],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. Floating depends on density, mass per unit of volume. Wood is less dense than water, so even a heavy log floats.",
+                  correct: true,
+                },
+                { text: "True. Heavy things sink.", code: "RAT.COMPOUND-UNIT.ARRANGEMENT" },
+                { text: "True. Its density is its mass.", code: "RAT.COMPOUND-UNIT.ARRANGEMENT" },
+              ],
+              solution: [{ say: "Compare densities, not masses." }],
+            }),
+          [
             {
-              text: "False. Floating depends on density, mass per unit of volume. Wood is less dense than water, so even a heavy log floats.",
-              correct: true,
+              statement:
+                "A block has a mass of 200 g and a volume of 50 cm³. Ola says its density is 4 g/cm³.",
+              truth: true,
+              right: "True. Density = mass ÷ volume = 200 ÷ 50 = 4 g/cm³.",
+              wrong: [
+                ["False. It is 50 ÷ 200 = 0.25 g/cm³.", "RAT.COMPOUND-UNIT.ARRANGEMENT"],
+                ["False. It is 200 × 50 = 10 000 g/cm³."],
+              ],
             },
-            { text: "True. Heavy things sink.", code: "RAT.COMPOUND-UNIT.ARRANGEMENT" },
-            { text: "True. Its density is its mass.", code: "RAT.COMPOUND-UNIT.ARRANGEMENT" },
+            {
+              statement:
+                "Gold has a density of 19.3 g/cm³. Ray says 10 cm³ of gold has a mass of 1.93 g.",
+              truth: false,
+              right: "False. Mass = density × volume = 19.3 × 10 = 193 g.",
+              wrong: [
+                ["True. Mass = density ÷ volume.", "RAT.COMPOUND-UNIT.ARRANGEMENT"],
+                ["True. Gold is light for its size."],
+              ],
+            },
+            {
+              claim: "Cutting a block of wood in half halves its density.",
+              truth: "never",
+              right: "Never. The mass and the volume both halve, so mass ÷ volume stays the same.",
+              wrong: [
+                ["Always. Half the wood has half the mass.", "RAT.COMPOUND-UNIT.ARRANGEMENT"],
+                ["Sometimes. Only when it is cut along the grain."],
+              ],
+            },
           ],
-          solution: [{ say: "Compare densities, not masses." }],
-        });
+        );
     }
   },
 

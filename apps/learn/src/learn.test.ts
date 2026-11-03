@@ -1,6 +1,6 @@
 import type { CourseSection, Depth } from "@mathsplanner/core";
 import { describe, expect, it } from "vitest";
-import { buildPath, course, skillLevels, YEARS, type SkillLevels } from "./course.ts";
+import { buildPath, course, skillLevels, YEARS, yearsReady, type SkillLevels } from "./course.ts";
 import { exampleProgress } from "./example.ts";
 import { familyOf } from "./families.ts";
 import {
@@ -215,5 +215,16 @@ describe("example progress", () => {
     expect(units[half]?.nodes[1]?.state).toBe("current");
     expect(streak(p, today)).toBe(14);
     expect(readProgress(JSON.parse(JSON.stringify(p)))).toEqual(p);
+  });
+});
+
+describe("the years ready so far", () => {
+  it("names them for the test version's notes", () => {
+    expect(yearsReady(["Y7"])).toBe("Year 7 is");
+    expect(yearsReady(["Y8", "Y7"])).toBe("Years 7 and 8 are");
+    expect(yearsReady(["Y7", "Y8", "Y9"])).toBe("Years 7, 8 and 9 are");
+    expect(yearsReady(["Y7", "Y8", "GF"])).toBe("Years 7, 8 and GCSE Foundation are");
+    expect(yearsReady(["GF", "GH"])).toBe("GCSE Foundation and GCSE Higher are");
+    expect(yearsReady()).toBe("Years 7 and 8 are");
   });
 });

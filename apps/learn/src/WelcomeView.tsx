@@ -2,7 +2,7 @@
 // looking can open the example progress instead.
 import type { Stage } from "@mathsplanner/core";
 import { useState } from "react";
-import { sectionFor, YEARS } from "./course.ts";
+import { sectionFor, YEARS, yearsReady } from "./course.ts";
 import { Dot, Logo } from "./Dot.tsx";
 import { DAILY_GOALS, type DailyGoal } from "./progress.ts";
 
@@ -46,7 +46,7 @@ export function WelcomeView({
           <p className="muted small">
             Your progress stays on this device. Nothing about you is sent anywhere.
           </p>
-          <p className="test-note small">Test version · Year 7 is ready so far</p>
+          <p className="test-note small">Test version · {yearsReady()} ready so far</p>
         </section>
       )}
 

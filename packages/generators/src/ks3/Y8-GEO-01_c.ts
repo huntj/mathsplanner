@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   r: number;
@@ -18,7 +19,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "Y8-GEO-01.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["AS.MULTISTEP.ONE-STEP", "MEA.PERIMETER.MISSING-SIDES"],
 
@@ -78,20 +79,65 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["The perimeter of a semicircle is half the circumference of the full circle."],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "The perimeter of a semicircle is half the circumference of the full circle.",
+              ],
+              truth: "never",
+              reasons: [
+                {
+                  text: `Never. The perimeter also includes the straight diameter: πr + 2r. For r = ${p.r} that is ${r1(Math.PI * p.r + 2 * p.r)} cm, not ${r1(Math.PI * p.r)} cm.`,
+                  correct: true,
+                },
+                {
+                  text: "Always. A semicircle is half a circle.",
+                  code: "MEA.PERIMETER.MISSING-SIDES",
+                },
+                {
+                  text: "Sometimes. It depends on the radius.",
+                  code: "MEA.PERIMETER.MISSING-SIDES",
+                },
+              ],
+              solution: [{ say: "A perimeter goes all the way round the shape." }],
+            }),
+          [
             {
-              text: `Never. The perimeter also includes the straight diameter: πr + 2r. For r = ${p.r} that is ${r1(Math.PI * p.r + 2 * p.r)} cm, not ${r1(Math.PI * p.r)} cm.`,
-              correct: true,
+              statement:
+                "A 4 cm by 6 cm rectangle has a semicircle with diameter 4 cm on one of its short sides. Lee says its perimeter is $4 + 6 + 4 + 6 + 2\\pi$ cm.",
+              truth: false,
+              right:
+                "False. The side under the semicircle is inside the shape, so the perimeter is 6 + 4 + 6 + 2π cm.",
+              wrong: [
+                ["True. Add up every line in the shape.", "MEA.PERIMETER.MISSING-SIDES"],
+                ["True. It is the rectangle's perimeter plus the curve."],
+              ],
             },
-            { text: "Always. A semicircle is half a circle.", code: "MEA.PERIMETER.MISSING-SIDES" },
-            { text: "Sometimes. It depends on the radius.", code: "MEA.PERIMETER.MISSING-SIDES" },
+            {
+              statement:
+                "An L-shape is made from two rectangles that do not overlap. Ana says its area is the two rectangles' areas added together.",
+              truth: true,
+              right: "True. Split a shape into parts that do not overlap and add their areas.",
+              wrong: [
+                ["False. Multiply the two longest sides.", "AS.MULTISTEP.ONE-STEP"],
+                ["False. You must take away the corner piece."],
+              ],
+            },
+            {
+              claim:
+                "Cutting a shape into two pieces and fitting them together differently keeps the area the same.",
+              truth: "always",
+              right: "Always. The same pieces cover the same amount of space.",
+              wrong: [
+                ["Sometimes. Only if the perimeter stays the same.", "MEA.PERIMETER.MISSING-SIDES"],
+                ["Never. A new shape has a new area."],
+              ],
+            },
           ],
-          solution: [{ say: "A perimeter goes all the way round the shape." }],
-        });
+        );
     }
   },
 
