@@ -10,7 +10,7 @@ exports[`Y4-MD-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MD-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -89,7 +89,7 @@ exports[`Y4-MD-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MD-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -168,7 +168,7 @@ exports[`Y4-MD-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MD-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -247,7 +247,7 @@ exports[`Y4-MD-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MD-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -329,7 +329,7 @@ exports[`Y4-MD-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MD-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -411,7 +411,7 @@ exports[`Y4-MD-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MD-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -493,7 +493,7 @@ exports[`Y4-MD-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MD-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -504,8 +504,8 @@ exports[`Y4-MD-02.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RC",
+          "correct": "B",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -531,7 +531,7 @@ exports[`Y4-MD-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Count the zeros: there are fewer zeros in the answer.",
+                  "v": "True. 5 × 6 = 30, then add two zeros.",
                 },
               ],
               "id": "RA",
@@ -540,7 +540,7 @@ exports[`Y4-MD-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You must use the column method.",
+                  "v": "False. 5 × 6 = 30, and 50 is ten times 5, so 300.",
                 },
               ],
               "id": "RB",
@@ -549,7 +549,7 @@ exports[`Y4-MD-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 2 × 4 = 8, and the answer is 100 times bigger.",
+                  "v": "True. 50 and 6 make a big answer.",
                 },
               ],
               "id": "RC",
@@ -581,7 +581,7 @@ exports[`Y4-MD-02.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "20 × 40 = 800.",
+            "v": "False. 5 × 6 = 30, and 50 is ten times 5, so 300.",
           },
         ],
       },
@@ -589,11 +589,11 @@ exports[`Y4-MD-02.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says ",
+        "v": "Leo says ",
       },
       {
         "t": "math",
-        "v": "20 \\times 40 = 800",
+        "v": "50 \\times 6 = 3{,}000",
       },
       {
         "t": "text",
@@ -609,123 +609,7 @@ exports[`Y4-MD-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MD-02.c",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. 8 × 4 = 32, and the answer is 100 times bigger: 3,200.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Multiplying makes numbers bigger, and it is bigger.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Count the zeros in the question and put the same number on the end.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "MD.PLACE.ZEROS",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "80 × 40 = 3,200.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Ivy says ",
-      },
-      {
-        "t": "math",
-        "v": "80 \\times 40 = 320",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y4-MD-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -763,7 +647,7 @@ exports[`Y4-MD-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You must use the column method.",
+                  "v": "False. It is 2,000.",
                 },
               ],
               "id": "RA",
@@ -772,7 +656,131 @@ exports[`Y4-MD-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
+                  "v": "False. It is 20.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 6 ÷ 3 = 2, and 600 is 100 times 6, so 200.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "MD.PLACE.ZEROS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MD.PLACE.ZEROS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. 6 ÷ 3 = 2, and 600 is 100 times 6, so 200.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ella says ",
+      },
+      {
+        "t": "math",
+        "v": "600 \\div 3 = 200",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y4-MD-02.c",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
                   "v": "False. Count the zeros: there are fewer zeros in the answer.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. You must use the column method.",
                 },
               ],
               "id": "RB",
@@ -793,7 +801,7 @@ exports[`Y4-MD-02.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "MD.PLACE.ZEROS",

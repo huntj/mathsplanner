@@ -1,7 +1,7 @@
 # Proposal: Learn Maths, a Duolingo-style practice app for pupils
 
 Status: **agreed on 29 October 2026.** Steps 1 to 6 are built: the course data with Year 7 as
-the pilot section and Year 8 after it (`data/course.txt`, `pnpm data:course`), the shared answer widgets
+the pilot section, then Years 8, 9, 6, 5 and 4 (`data/course.txt`, `pnpm data:course`), the shared answer widgets
 (`@mathsplanner/ui`), and the app with its path, progress, first visit, lessons, practice and
 rewards (`apps/learn`, `pnpm learn`); steps 7 to 10 are to do.
 
@@ -143,6 +143,88 @@ expressions; and probability, which has one Year 8 skill, joins the data unit:
 
 Each new section also needs its reasoning questions varied (see `variety.test.ts`): Year 8's
 generators gained three claims each, with different right answers, at depth 4.
+
+**Year 9** has 9 units. Similar shapes come before Pythagoras and trigonometry, which the
+statement data says need them, and small topics are merged (indices with standard form, inverse
+proportion with compound change, inequalities with simultaneous equations):
+
+| #   | Unit                                    | Skills |
+| --- | --------------------------------------- | -----: |
+| 1   | Standard form and indices               |      5 |
+| 2   | Shapes, similarity and enlargement      |      5 |
+| 3   | Factorising and proof                   |      3 |
+| 4   | Straight-line graphs                    |      5 |
+| 5   | Pythagoras and trigonometry             |      3 |
+| 6   | Simultaneous equations and inequalities |      3 |
+| 7   | Compound change and inverse proportion  |      3 |
+| 8   | Graphs and sequences                    |      4 |
+| 9   | Probability                             |      4 |
+
+**Year 4** has 14 units and 65 skills. Rounding comes before written addition and subtraction,
+which use it to estimate and check, and the times tables come before the written methods:
+
+| #   | Unit                            | Skills |
+| --- | ------------------------------- | -----: |
+| 1   | Place value                     |      5 |
+| 2   | Counting and negative numbers   |      4 |
+| 3   | Rounding                        |      4 |
+| 4   | Adding and subtracting          |      4 |
+| 5   | Times tables                    |      6 |
+| 6   | Shapes and symmetry             |      4 |
+| 7   | Multiplying and dividing        |      6 |
+| 8   | Fractions                       |      4 |
+| 9   | Angles and coordinates          |      5 |
+| 10  | Decimals                        |      7 |
+| 11  | Comparing and rounding decimals |      3 |
+| 12  | Measures, perimeter and area    |      6 |
+| 13  | Time                            |      4 |
+| 14  | Bar charts and time graphs      |      3 |
+
+**Year 5** has 16 units and 80 skills. Fractions are split into two units, before and after the
+shapes unit, so a pupil does not meet eleven fraction skills in a row:
+
+| #   | Unit                               | Skills |
+| --- | ---------------------------------- | -----: |
+| 1   | Place value                        |      5 |
+| 2   | Negative numbers and rounding      |      5 |
+| 3   | Adding and subtracting             |      5 |
+| 4   | Angles                             |      4 |
+| 5   | Factors, multiples and primes      |      6 |
+| 6   | Multiplying and dividing           |      5 |
+| 7   | Squares, cubes and problems        |      3 |
+| 8   | Fractions                          |      6 |
+| 9   | Angles, shapes and transformations |      8 |
+| 10  | Adding and multiplying fractions   |      4 |
+| 11  | Decimals                           |      6 |
+| 12  | Rounding decimals                  |      3 |
+| 13  | Percentages                        |      4 |
+| 14  | Perimeter, area and volume         |      7 |
+| 15  | Measures and time                  |      6 |
+| 16  | Line graphs and tables             |      3 |
+
+**Year 6** has 15 units and 72 skills. Circles join the shapes unit, as naming the parts of a
+circle needs drawing shapes first, and number units alternate with geometry and algebra:
+
+| #   | Unit                                    | Skills |
+| --- | --------------------------------------- | -----: |
+| 1   | Place value and negative numbers        |      5 |
+| 2   | Angles                                  |      3 |
+| 3   | Multiplying and dividing                |      5 |
+| 4   | Factors, primes and order of operations |      5 |
+| 5   | Fractions                               |      5 |
+| 6   | Coordinates and transformations         |      3 |
+| 7   | Fractions, decimals and percentages     |      5 |
+| 8   | Decimals                                |      4 |
+| 9   | Shapes, angles and circles              |      8 |
+| 10  | Rounding and problem solving            |      5 |
+| 11  | Formulae, sequences and equations       |      5 |
+| 12  | Ratio and percentages                   |      5 |
+| 13  | Measures and converting units           |      5 |
+| 14  | Area and volume                         |      6 |
+| 15  | Pie charts, line graphs and the mean    |      3 |
+
+Most primary generators are built from shared families or a parent statement's generator, so
+their claims are added with `withClaims`, which leaves the shared definition alone.
 
 **Skill levels.** Each skill climbs through up to five levels, using only the depths its
 generator supports, so the levels come from the generators when the app runs rather than from

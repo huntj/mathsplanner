@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { legsTriangle } from "../shared/geo.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const TRIPLES: [number, number, number][] = [
   [3, 4, 5],
@@ -27,7 +28,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y9-GEO-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.PYTHAG.NO-SQUARE", "GEO.PYTHAG.ADD-FOR-SHORT"],
 
@@ -83,28 +84,67 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Gus says the longest side of a right-angled triangle is always opposite the right angle.",
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Gus says the longest side of a right-angled triangle is always opposite the right angle.",
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. That side is the hypotenuse; its square equals the sum of the squares of the other two, so it is the longest.",
+                  correct: true,
+                },
+                {
+                  text: "False. The longest side is next to the right angle.",
+                  code: "GEO.PYTHAG.ADD-FOR-SHORT",
+                },
+                {
+                  text: "False. It depends how the triangle is drawn.",
+                  code: "GEO.PYTHAG.ADD-FOR-SHORT",
+                },
+              ],
+              solution: [
+                { say: "Spot the hypotenuse first: it decides whether you add or subtract." },
+              ],
+            }),
+          [
+            {
+              statement:
+                "A right-angled triangle has shorter sides 6 cm and 8 cm. Ali says the hypotenuse is 10 cm.",
+              truth: true,
+              right: "True. 6² + 8² = 36 + 64 = 100, and √100 = 10.",
+              wrong: [
+                ["False. It is 14 cm, adding the sides.", "GEO.PYTHAG.NO-SQUARE"],
+                ["False. It is 100 cm."],
+              ],
+            },
+            {
+              statement:
+                "A right-angled triangle has hypotenuse 13 cm and one side 5 cm. Bo says the other side is $\\sqrt{13^2 + 5^2}$ cm.",
+              truth: false,
+              right: "False. For a shorter side, subtract: √(13² − 5²) = √144 = 12 cm.",
+              wrong: [
+                ["True. Pythagoras always adds the squares.", "GEO.PYTHAG.ADD-FOR-SHORT"],
+                ["True. Square, add and square root."],
+              ],
+            },
+            {
+              claim:
+                "For a triangle with sides a, b and c, if $a^2 + b^2 = c^2$ then the triangle has a right angle.",
+              truth: "always",
+              right:
+                "Always. This is the converse of Pythagoras' theorem: the right angle is opposite c.",
+              wrong: [
+                ["Sometimes. Only for whole-number sides."],
+                ["Never. Pythagoras only works one way.", "GEO.PYTHAG.NO-SQUARE"],
+              ],
+            },
           ],
-          truth: true,
-          reasons: [
-            {
-              text: "True. That side is the hypotenuse; its square equals the sum of the squares of the other two, so it is the longest.",
-              correct: true,
-            },
-            {
-              text: "False. The longest side is next to the right angle.",
-              code: "GEO.PYTHAG.ADD-FOR-SHORT",
-            },
-            {
-              text: "False. It depends how the triangle is drawn.",
-              code: "GEO.PYTHAG.ADD-FOR-SHORT",
-            },
-          ],
-          solution: [{ say: "Spot the hypotenuse first: it decides whether you add or subtract." }],
-        });
+        );
     }
   },
 

@@ -10,7 +10,7 @@ exports[`Y5-MD-07.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-MD-07.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -76,7 +76,7 @@ exports[`Y5-MD-07.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-MD-07.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -142,7 +142,7 @@ exports[`Y5-MD-07.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-MD-07.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -208,7 +208,7 @@ exports[`Y5-MD-07.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-MD-07.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -279,7 +279,7 @@ exports[`Y5-MD-07.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-MD-07.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -350,7 +350,7 @@ exports[`Y5-MD-07.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-MD-07.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -421,7 +421,123 @@ exports[`Y5-MD-07.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-MD-07.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Add one zero.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Multiplying by 100 moves every digit two places to the left: 3,500.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 35 and 100 make 350.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.POWERS10.APPEND-ZEROS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. Multiplying by 100 moves every digit two places to the left: 3,500.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Pia says ",
+      },
+      {
+        "t": "math",
+        "v": "35 \\times 100 = 350",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y5-MD-07.a",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -477,133 +593,9 @@ exports[`Y5-MD-07.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 12.400 is still 12.4. Multiplying by 100 moves the digits 2 places to the left: 1240.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.POWERS10.APPEND-ZEROS",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "12.4 × 100 = 1240.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "To work out ",
-      },
-      {
-        "t": "math",
-        "v": "12.4 \\times 100",
-      },
-      {
-        "t": "text",
-        "v": ", Leah writes 2 zeros on the end: ",
-      },
-      {
-        "t": "math",
-        "v": "12.400",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y5-MD-07.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The answer has more digits, so it is bigger.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
                   "v": "False. 41.70 is still 41.7. Multiplying by 10 moves the digits 1 place to the left: 417.",
                 },
               ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Multiplying by 10 always adds a zero.",
-                },
-              ],
               "id": "RC",
             },
           ],
@@ -613,7 +605,7 @@ exports[`Y5-MD-07.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.POWERS10.APPEND-ZEROS",
@@ -669,7 +661,7 @@ exports[`Y5-MD-07.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-MD-07.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -680,8 +672,8 @@ exports[`Y5-MD-07.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -707,7 +699,7 @@ exports[`Y5-MD-07.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiplying by 10 always adds a zero.",
+                  "v": "False. It is 460.0.",
                 },
               ],
               "id": "RA",
@@ -716,7 +708,7 @@ exports[`Y5-MD-07.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The answer has more digits, so it is bigger.",
+                  "v": "True. Dividing by 10 moves every digit one place to the right.",
                 },
               ],
               "id": "RB",
@@ -725,7 +717,7 @@ exports[`Y5-MD-07.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 782.70 is still 782.7. Multiplying by 10 moves the digits 1 place to the left: 7827.",
+                  "v": "False. It is 4,600.",
                 },
               ],
               "id": "RC",
@@ -737,10 +729,10 @@ exports[`Y5-MD-07.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.POWERS10.APPEND-ZEROS",
+            "code": "NPV.POWERS10.WRONG-WAY",
             "feedback": [],
           },
         ],
@@ -757,7 +749,7 @@ exports[`Y5-MD-07.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "782.7 × 10 = 7827.",
+            "v": "True. Dividing by 10 moves every digit one place to the right.",
           },
         ],
       },
@@ -765,19 +757,11 @@ exports[`Y5-MD-07.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "To work out ",
+        "v": "Mo says ",
       },
       {
         "t": "math",
-        "v": "782.7 \\times 10",
-      },
-      {
-        "t": "text",
-        "v": ", Leah writes a zero on the end: ",
-      },
-      {
-        "t": "math",
-        "v": "782.70",
+        "v": "460 \\div 10 = 46",
       },
       {
         "t": "text",

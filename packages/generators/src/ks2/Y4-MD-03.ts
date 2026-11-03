@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Depth 1: x × y, where y is 5, 25 or 50 and x splits into a factor pair that makes 10 or 100. */
@@ -24,7 +25,7 @@ const PARTNER: Record<number, number> = { 5: 2, 25: 4, 50: 2 };
 
 export default defineGenerator<Params>({
   id: "Y4-MD-03",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MD.MULTIPLY.ADDS"],
 
@@ -89,31 +90,69 @@ export default defineGenerator<Params>({
         const wrongPair: [number, number] = [p.x / 2, p.y / 2];
         const [l, r] = p.claimTrue || p.y % 2 !== 0 ? right : wrongPair;
         const truth = p.claimTrue || p.y % 2 !== 0;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Kai says ", A.math(`${p.x} \\times ${p.y} = ${l} \\times ${r}`), "."],
-          truth,
-          reasons: truth
-            ? [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Kai says ", A.math(`${p.x} \\times ${p.y} = ${l} \\times ${r}`), "."],
+              truth,
+              reasons: truth
+                ? [
+                    {
+                      text: `True. Halving ${p.x} and doubling ${p.y} keeps the product the same: both are ${p.x * p.y}.`,
+                      correct: true,
+                    },
+                    { text: "False. Changing the numbers always changes the answer." },
+                    { text: "False. Only adding works like that.", code: "MD.MULTIPLY.ADDS" },
+                  ]
+                : [
+                    {
+                      text: `False. Halving both numbers makes the product four times smaller: ${l} × ${r} = ${l * r}, not ${p.x * p.y}.`,
+                      correct: true,
+                    },
+                    { text: "True. Halving both keeps the answer the same." },
+                    {
+                      text: "True. Any factor pair gives the same answer.",
+                      code: "MD.MULTIPLY.ADDS",
+                    },
+                  ],
+              solution: [
                 {
-                  text: `True. Halving ${p.x} and doubling ${p.y} keeps the product the same: both are ${p.x * p.y}.`,
-                  correct: true,
+                  say: `${p.x} × ${p.y} = ${p.x * p.y}. If you halve one number, double the other.`,
                 },
-                { text: "False. Changing the numbers always changes the answer." },
-                { text: "False. Only adding works like that.", code: "MD.MULTIPLY.ADDS" },
-              ]
-            : [
-                {
-                  text: `False. Halving both numbers makes the product four times smaller: ${l} × ${r} = ${l * r}, not ${p.x * p.y}.`,
-                  correct: true,
-                },
-                { text: "True. Halving both keeps the answer the same." },
-                { text: "True. Any factor pair gives the same answer.", code: "MD.MULTIPLY.ADDS" },
               ],
-          solution: [
-            { say: `${p.x} × ${p.y} = ${p.x * p.y}. If you halve one number, double the other.` },
+            }),
+          [
+            {
+              statement: "Ana says the factor pairs of 12 are 1 × 12, 2 × 6 and 3 × 4.",
+              truth: true,
+              right: "True. Those are all the pairs of whole numbers that multiply to 12.",
+              wrong: [
+                ["False. 5 × 7 is one too.", "MD.MULTIPLY.ADDS"],
+                ["False. 12 has only one pair."],
+              ],
+            },
+            {
+              statement: "Gil says $6 \\times 5$ is the same as $6 + 5$.",
+              truth: false,
+              right: "False. 6 × 5 = 30, but 6 + 5 = 11.",
+              wrong: [
+                ["True. Both use 6 and 5.", "MD.MULTIPLY.ADDS"],
+                ["True. Times and add are the same."],
+              ],
+            },
+            {
+              claim: "Swapping the numbers in a multiplication changes the answer.",
+              truth: "never",
+              right: "Never. 3 × 8 and 8 × 3 are both 24.",
+              wrong: [
+                ["Always. The bigger number must go first.", "MD.MULTIPLY.ADDS"],
+                ["Sometimes. Only for big numbers."],
+              ],
+            },
           ],
-        });
+        );
       }
     }
   },

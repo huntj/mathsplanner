@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   value: number;
@@ -19,7 +20,7 @@ const r2 = (v: number) => Math.round(v * 100) / 100;
 
 export default defineGenerator<Params>({
   id: "Y9-RAT-03.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.COMPOUND.SIMPLE", "RAT.PERCENT.MULTIPLIER"],
 
@@ -73,24 +74,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Abi says that a car losing ${p.d}% of its value every year will be worth nothing after ${100 / p.d} years.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Abi says that a car losing ${p.d}% of its value every year will be worth nothing after ${100 / p.d} years.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Each year it keeps ${100 - p.d}% of its value, so it gets smaller and smaller but never reaches zero: after ${100 / p.d} years it is worth about ${r2(m ** (100 / p.d) * 100)}% of the original.`,
+                  correct: true,
+                },
+                { text: `True. ${100 / p.d} × ${p.d}% = 100%.`, code: "RAT.COMPOUND.SIMPLE" },
+                { text: "True. Depreciation always ends at zero.", code: "RAT.COMPOUND.SIMPLE" },
+              ],
+              solution: [
+                {
+                  say: "Repeated percentage decrease multiplies; it never subtracts the whole value.",
+                },
+              ],
+            }),
+          [
             {
-              text: `False. Each year it keeps ${100 - p.d}% of its value, so it gets smaller and smaller but never reaches zero: after ${100 / p.d} years it is worth about ${r2(m ** (100 / p.d) * 100)}% of the original.`,
-              correct: true,
+              statement:
+                "A £20 000 car loses 15% of its value each year. Tom works out its value after 2 years as $20\\,000 \\times 0.85^2$.",
+              truth: true,
+              right: "True. Losing 15% leaves 85%, so multiply by 0.85 for each year.",
+              wrong: [
+                ["False. It is 20 000 × 0.7, taking off 30%.", "RAT.COMPOUND.SIMPLE"],
+                ["False. It is 20 000 × 0.15².", "RAT.PERCENT.MULTIPLIER"],
+              ],
             },
-            { text: `True. ${100 / p.d} × ${p.d}% = 100%.`, code: "RAT.COMPOUND.SIMPLE" },
-            { text: "True. Depreciation always ends at zero.", code: "RAT.COMPOUND.SIMPLE" },
+            {
+              statement:
+                "A phone loses 20% of its value each year. Ella says after 2 years it has lost 40% of its value.",
+              truth: false,
+              right: "False. It keeps 0.8 × 0.8 = 0.64 of its value, so it has lost 36%.",
+              wrong: [
+                ["True. 20% + 20% = 40%.", "RAT.COMPOUND.SIMPLE"],
+                ["True. Depreciation is the same as simple interest."],
+              ],
+            },
+            {
+              claim:
+                "Something losing a fixed percentage of its value each year eventually reaches £0.",
+              truth: "never",
+              right: "Never. Each year it keeps a fraction of what it had, which is never zero.",
+              wrong: [
+                ["Always. It keeps losing value.", "RAT.COMPOUND.SIMPLE"],
+                ["Sometimes. Only if the percentage is big."],
+              ],
+            },
           ],
-          solution: [
-            { say: "Repeated percentage decrease multiplies; it never subtracts the whole value." },
-          ],
-        });
+        );
     }
   },
 

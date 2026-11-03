@@ -76,7 +76,7 @@ exports[`Y6-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -222,7 +222,7 @@ exports[`Y6-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -368,7 +368,7 @@ exports[`Y6-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -448,7 +448,7 @@ exports[`Y6-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -459,123 +459,7 @@ exports[`Y6-MEA-06.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. The triangle is half of the parallelogram: 45 cm² against 90 cm².",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Both use base × height.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Same base and height always means the same area.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "MEA.AREA.TRIANGLE-HALF",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "MEA.AREA.TRIANGLE-HALF",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Triangle: ½ × 15 × 6 = 45 cm². Parallelogram: 15 × 6 = 90 cm².",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "A triangle and a parallelogram both have a base of 15 cm and a perpendicular height of 6 cm. Ella says they have the same area.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y6-MEA-06.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -602,7 +486,7 @@ exports[`Y6-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both use base × height.",
+                  "v": "False. It is 20 cm², halving it.",
                 },
               ],
               "id": "RA",
@@ -611,7 +495,7 @@ exports[`Y6-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Same base and height always means the same area.",
+                  "v": "False. Use the slanted side instead of the height.",
                 },
               ],
               "id": "RB",
@@ -620,7 +504,7 @@ exports[`Y6-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The triangle is half of the parallelogram: 36 cm² against 72 cm².",
+                  "v": "True. Area = base × perpendicular height = 8 × 5 = 40 cm².",
                 },
               ],
               "id": "RC",
@@ -643,7 +527,7 @@ exports[`Y6-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "MEA.AREA.TRIANGLE-HALF",
+            "code": "MEA.AREA.SLANT",
             "feedback": [],
           },
         ],
@@ -660,7 +544,7 @@ exports[`Y6-MEA-06.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Triangle: ½ × 12 × 6 = 36 cm². Parallelogram: 12 × 6 = 72 cm².",
+            "v": "True. Area = base × perpendicular height = 8 × 5 = 40 cm².",
           },
         ],
       },
@@ -668,7 +552,7 @@ exports[`Y6-MEA-06.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A triangle and a parallelogram both have a base of 12 cm and a perpendicular height of 6 cm. Ella says they have the same area.",
+        "v": "A parallelogram has base 8 cm and perpendicular height 5 cm. Max says its area is 40 cm².",
       },
     ],
   },
@@ -677,10 +561,10 @@ exports[`Y6-MEA-06.a > keeps fixed seeds unchanged 1`] = `
     "diagrams": [],
     "key": {
       "depth": 4,
-      "numbers": "stretch",
+      "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -691,7 +575,7 @@ exports[`Y6-MEA-06.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -718,7 +602,7 @@ exports[`Y6-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both use base × height.",
+                  "v": "False. It is 20 cm², halving it.",
                 },
               ],
               "id": "RA",
@@ -727,7 +611,7 @@ exports[`Y6-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The triangle is half of the parallelogram: 36 cm² against 72 cm².",
+                  "v": "True. Area = base × perpendicular height = 8 × 5 = 40 cm².",
                 },
               ],
               "id": "RB",
@@ -736,7 +620,7 @@ exports[`Y6-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Same base and height always means the same area.",
+                  "v": "False. Use the slanted side instead of the height.",
                 },
               ],
               "id": "RC",
@@ -759,7 +643,7 @@ exports[`Y6-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "MEA.AREA.TRIANGLE-HALF",
+            "code": "MEA.AREA.SLANT",
             "feedback": [],
           },
         ],
@@ -776,7 +660,7 @@ exports[`Y6-MEA-06.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Triangle: ½ × 12 × 6 = 36 cm². Parallelogram: 12 × 6 = 72 cm².",
+            "v": "True. Area = base × perpendicular height = 8 × 5 = 40 cm².",
           },
         ],
       },
@@ -784,7 +668,124 @@ exports[`Y6-MEA-06.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A triangle and a parallelogram both have a base of 12 cm and a perpendicular height of 6 cm. Ella says they have the same area.",
+        "v": "A parallelogram has base 8 cm and perpendicular height 5 cm. Max says its area is 40 cm².",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y6-MEA-06.a",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only if it leans a little.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. The slanted sides make it bigger.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. Cut the triangle off one end and move it to the other: it makes the rectangle.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MEA.AREA.SLANT",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. Cut the triangle off one end and move it to the other: it makes the rectangle.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A parallelogram has the same area as a rectangle with the same base and height.",
       },
     ],
   },

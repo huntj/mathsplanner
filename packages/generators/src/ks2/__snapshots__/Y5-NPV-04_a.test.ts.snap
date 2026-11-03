@@ -10,7 +10,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -100,7 +100,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -177,7 +177,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -267,7 +267,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -362,7 +362,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -444,7 +444,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -539,7 +539,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -577,7 +577,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "You always round down by cutting off digits.",
+                  "v": "True. Halfway rounds down.",
                 },
               ],
               "id": "RA",
@@ -586,7 +586,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "A number exactly halfway rounds up: 38,050 rounds to 38,100.",
+                  "v": "False. 2,850 is exactly halfway, and halfway rounds up: 2,900.",
                 },
               ],
               "id": "RB",
@@ -595,7 +595,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Halfway numbers round down.",
+                  "v": "True. Rounding always goes down.",
                 },
               ],
               "id": "RC",
@@ -610,7 +610,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "code": "NPV.ROUND.HALFWAY",
             "feedback": [],
           },
           {
@@ -618,7 +618,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.ROUND.HALFWAY",
+            "code": "NPV.ROUND.ALWAYS-DOWN",
             "feedback": [],
           },
         ],
@@ -635,7 +635,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "By convention, halfway rounds up: 38,050 → 38,100.",
+            "v": "False. 2,850 is exactly halfway, and halfway rounds up: 2,900.",
           },
         ],
       },
@@ -643,31 +643,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ben says ",
-      },
-      {
-        "t": "math",
-        "v": "38{,}050",
-      },
-      {
-        "t": "text",
-        "v": " to the nearest ",
-      },
-      {
-        "t": "math",
-        "v": "100",
-      },
-      {
-        "t": "text",
-        "v": " is ",
-      },
-      {
-        "t": "math",
-        "v": "38{,}000",
-      },
-      {
-        "t": "text",
-        "v": ", because it is exactly in the middle.",
+        "v": "Bea rounds 2,850 to the nearest hundred and gets 2,800.",
       },
     ],
   },
@@ -679,7 +655,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -690,8 +666,8 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -717,7 +693,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "A number exactly halfway rounds up: 270,500 rounds to 271,000.",
+                  "v": "False. It is 5,000.",
                 },
               ],
               "id": "RA",
@@ -726,7 +702,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "You always round down by cutting off digits.",
+                  "v": "True. The tens digit is 3, which is less than 5, so round down.",
                 },
               ],
               "id": "RB",
@@ -735,7 +711,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Halfway numbers round down.",
+                  "v": "False. It is 4,800, as there is a 6.",
                 },
               ],
               "id": "RC",
@@ -747,18 +723,10 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.ROUND.ALWAYS-DOWN",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.ROUND.HALFWAY",
+            "code": "NPV.ROUND.WRONG-PLACE",
             "feedback": [],
           },
         ],
@@ -775,7 +743,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "By convention, halfway rounds up: 270,500 → 271,000.",
+            "v": "True. The tens digit is 3, which is less than 5, so round down.",
           },
         ],
       },
@@ -783,43 +751,19 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ben says ",
-      },
-      {
-        "t": "math",
-        "v": "270{,}500",
-      },
-      {
-        "t": "text",
-        "v": " to the nearest ",
-      },
-      {
-        "t": "math",
-        "v": "1{,}000",
-      },
-      {
-        "t": "text",
-        "v": " is ",
-      },
-      {
-        "t": "math",
-        "v": "270{,}000",
-      },
-      {
-        "t": "text",
-        "v": ", because it is exactly in the middle.",
+        "v": "Ali rounds 4,736 to the nearest hundred and gets 4,700.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -830,14 +774,14 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -846,10 +790,19 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -857,7 +810,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "A number exactly halfway rounds up: 133,450 rounds to 133,500.",
+                  "v": "Sometimes. Only if it was nearly a multiple of 10.",
                 },
               ],
               "id": "RA",
@@ -866,7 +819,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "You always round down by cutting off digits.",
+                  "v": "Always. Rounding to the nearest 10 gives a multiple of 10.",
                 },
               ],
               "id": "RB",
@@ -875,7 +828,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Halfway numbers round down.",
+                  "v": "Never. It keeps its ones digit.",
                 },
               ],
               "id": "RC",
@@ -887,25 +840,17 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.ROUND.ALWAYS-DOWN",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.ROUND.HALFWAY",
+            "code": "NPV.ROUND.WRONG-PLACE",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -915,7 +860,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "By convention, halfway rounds up: 133,450 → 133,500.",
+            "v": "Always. Rounding to the nearest 10 gives a multiple of 10.",
           },
         ],
       },
@@ -923,31 +868,7 @@ exports[`Y5-NPV-04.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ben says ",
-      },
-      {
-        "t": "math",
-        "v": "133{,}450",
-      },
-      {
-        "t": "text",
-        "v": " to the nearest ",
-      },
-      {
-        "t": "math",
-        "v": "100",
-      },
-      {
-        "t": "text",
-        "v": " is ",
-      },
-      {
-        "t": "math",
-        "v": "133{,}400",
-      },
-      {
-        "t": "text",
-        "v": ", because it is exactly in the middle.",
+        "v": "A number rounded to the nearest 10 ends in 0.",
       },
     ],
   },

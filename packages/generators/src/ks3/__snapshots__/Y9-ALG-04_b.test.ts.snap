@@ -10,7 +10,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -84,7 +84,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -158,7 +158,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -232,7 +232,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -302,7 +302,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -372,7 +372,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -442,7 +442,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -480,7 +480,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. When x = 0, y = 0, so the line goes through the origin: c = 0. 2 is the gradient.",
+                  "v": "False. When x = 0, y = 6. The −2 is the gradient.",
                 },
               ],
               "id": "RA",
@@ -489,7 +489,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every line crosses the y-axis at its gradient.",
+                  "v": "True. The number next to x is the intercept.",
                 },
               ],
               "id": "RB",
@@ -498,7 +498,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The only number in the equation is the intercept.",
+                  "v": "True. The intercept is the last number.",
                 },
               ],
               "id": "RC",
@@ -511,14 +511,6 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.LINE.M-C",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.LINE.M-C",
@@ -538,7 +530,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "y = mx is y = mx + 0.",
+            "v": "False. When x = 0, y = 6. The −2 is the gradient.",
           },
         ],
       },
@@ -546,27 +538,27 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Bo says the y-intercept of ",
+        "v": "Max says the line ",
       },
       {
         "t": "math",
-        "v": "y = 2x",
+        "v": "y = 6 - 2x",
       },
       {
         "t": "text",
-        "v": " is 2.",
+        "v": " has y-intercept −2.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -577,14 +569,14 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -593,10 +585,19 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -604,7 +605,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The only number in the equation is the intercept.",
+                  "v": "Never. It is where y = 0.",
                 },
               ],
               "id": "RA",
@@ -613,7 +614,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. When x = 0, y = 0, so the line goes through the origin: c = 0. 4 is the gradient.",
+                  "v": "Always. The y-axis is the line x = 0.",
                 },
               ],
               "id": "RB",
@@ -622,7 +623,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every line crosses the y-axis at its gradient.",
+                  "v": "Sometimes. Only for lines through the origin.",
                 },
               ],
               "id": "RC",
@@ -637,22 +638,14 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.LINE.M-C",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.LINE.M-C",
+            "code": "ALG.SOLVE.WRONG-INVERSE",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -662,7 +655,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "y = mx is y = mx + 0.",
+            "v": "Always. The y-axis is the line x = 0.",
           },
         ],
       },
@@ -670,15 +663,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Bo says the y-intercept of ",
-      },
-      {
-        "t": "math",
-        "v": "y = 4x",
-      },
-      {
-        "t": "text",
-        "v": " is 4.",
+        "v": "The y-intercept of a straight line is where x = 0.",
       },
     ],
   },
@@ -690,7 +675,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -702,7 +687,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -728,7 +713,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The only number in the equation is the intercept.",
+                  "v": "False. When x = 0, y = 6. The −2 is the gradient.",
                 },
               ],
               "id": "RA",
@@ -737,7 +722,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every line crosses the y-axis at its gradient.",
+                  "v": "True. The intercept is the last number.",
                 },
               ],
               "id": "RB",
@@ -746,7 +731,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. When x = 0, y = 0, so the line goes through the origin: c = 0. 2 is the gradient.",
+                  "v": "True. The number next to x is the intercept.",
                 },
               ],
               "id": "RC",
@@ -758,15 +743,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.LINE.M-C",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.LINE.M-C",
@@ -786,7 +763,7 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "y = mx is y = mx + 0.",
+            "v": "False. When x = 0, y = 6. The −2 is the gradient.",
           },
         ],
       },
@@ -794,15 +771,15 @@ exports[`Y9-ALG-04.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Bo says the y-intercept of ",
+        "v": "Max says the line ",
       },
       {
         "t": "math",
-        "v": "y = 2x",
+        "v": "y = 6 - 2x",
       },
       {
         "t": "text",
-        "v": " is 2.",
+        "v": " has y-intercept −2.",
       },
     ],
   },

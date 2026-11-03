@@ -10,7 +10,7 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-FR-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -99,7 +99,7 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-FR-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -188,7 +188,7 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-FR-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -277,7 +277,7 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-FR-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -350,7 +350,7 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-FR-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -423,7 +423,7 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-FR-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -496,7 +496,7 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-FR-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -534,7 +534,7 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. They have the same whole number, so compare the last digits.",
+                  "v": "True. Compare the last digits.",
                 },
               ],
               "id": "RA",
@@ -543,7 +543,7 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Compare the tenths first: 5 tenths is more than 1 tenths, so 5.55 is bigger.",
+                  "v": "False. Compare the tenths: £2.10 has 1 tenth and £2.09 has 0, so £2.10 is more.",
                 },
               ],
               "id": "RB",
@@ -552,7 +552,7 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Compare the last digits, the hundredths.",
+                  "v": "True. 09 is bigger than 10.",
                 },
               ],
               "id": "RC",
@@ -564,10 +564,10 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.COMPARE.ONES-FIRST",
+            "code": "NPV.DECIMAL.LONGER-BIGGER",
             "feedback": [],
           },
         ],
@@ -584,7 +584,7 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Write them with the same number of places: 5.55 and 5.17.",
+            "v": "False. Compare the tenths: £2.10 has 1 tenth and £2.09 has 0, so £2.10 is more.",
           },
         ],
       },
@@ -592,15 +592,7 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kim says ",
-      },
-      {
-        "t": "math",
-        "v": "5.17 > 5.55",
-      },
-      {
-        "t": "text",
-        "v": ", because 7 is bigger than 5.",
+        "v": "Leo says £2.09 is more than £2.10, because 9 is bigger than 1.",
       },
     ],
   },
@@ -612,123 +604,7 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-FR-09",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. They have the same whole number, so compare the last digits.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Compare the tenths first: 2 tenths is more than 1 tenths, so 8.21 is bigger.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Compare the last digits, the hundredths.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.COMPARE.ONES-FIRST",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Write them with the same number of places: 8.21 and 8.16.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Kim says ",
-      },
-      {
-        "t": "math",
-        "v": "8.16 > 8.21",
-      },
-      {
-        "t": "text",
-        "v": ", because 6 is bigger than 1.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y4-FR-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -766,7 +642,7 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. They have the same whole number, so compare the last digits.",
+                  "v": "True. Compare the last digits.",
                 },
               ],
               "id": "RA",
@@ -775,7 +651,7 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Compare the last digits, the hundredths.",
+                  "v": "True. 09 is bigger than 10.",
                 },
               ],
               "id": "RB",
@@ -784,7 +660,7 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Compare the tenths first: 7 tenths is more than 3 tenths, so 4.72 is bigger.",
+                  "v": "False. Compare the tenths: £2.10 has 1 tenth and £2.09 has 0, so £2.10 is more.",
                 },
               ],
               "id": "RC",
@@ -796,7 +672,115 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.DECIMAL.LONGER-BIGGER",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. Compare the tenths: £2.10 has 1 tenth and £2.09 has 0, so £2.10 is more.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Leo says £2.09 is more than £2.10, because 9 is bigger than 1.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y4-FR-09",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. They are equal, as both start with 4.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Both have 4 ones; 7 tenths is more than 3 tenths.",
+                },
+              ],
               "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 4.3 is bigger.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.COMPARE.ONES-FIRST",
@@ -816,7 +800,7 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Write them with the same number of places: 4.72 and 4.38.",
+            "v": "True. Both have 4 ones; 7 tenths is more than 3 tenths.",
           },
         ],
       },
@@ -824,15 +808,15 @@ exports[`Y4-FR-09 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kim says ",
+        "v": "Raj says ",
       },
       {
         "t": "math",
-        "v": "4.38 > 4.72",
+        "v": "4.7 > 4.3",
       },
       {
         "t": "text",
-        "v": ", because 8 is bigger than 2.",
+        "v": ".",
       },
     ],
   },

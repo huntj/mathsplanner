@@ -10,7 +10,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -80,7 +80,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -150,7 +150,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -220,7 +220,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -272,7 +272,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -324,7 +324,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -376,7 +376,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -507,7 +507,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -638,7 +638,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -769,7 +769,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -781,6 +781,122 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 4%.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 1/4 = 25/100, which is 25%.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 14%.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "FR.PERCENT.DIGITS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. 1/4 = 25/100, which is 25%.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Leo says ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{1}{4} = 25\\%",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y5-FR-12",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
           "correctReason": "RA",
           "options": [
             {
@@ -807,7 +923,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 3/5 = 60/100, which is 60% and 0.6.",
+                  "v": "False. 20% is 1/5, and 1/5 of 40 is 8.",
                 },
               ],
               "id": "RA",
@@ -816,7 +932,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Percentages cannot be written as decimals.",
+                  "v": "True. Divide by the percentage.",
                 },
               ],
               "id": "RB",
@@ -825,7 +941,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 60% is 6, the digits after the point.",
+                  "v": "True. 20% means divide by 20.",
                 },
               ],
               "id": "RC",
@@ -837,10 +953,10 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "FR.PERCENT.DIGITS",
+            "code": "FR.OF-AMOUNT.UNIT-ONLY",
             "feedback": [],
           },
         ],
@@ -857,135 +973,27 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "3/5 = 60/100, which is 60% and 0.6.",
+            "v": "False. 20% is 1/5, and 1/5 of 40 is 8.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "t": "math",
-        "v": "60\\% = 0.6",
+        "t": "text",
+        "v": "Mia says 20% of 40 is 2, because 40 ÷ 20 = 2.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y5-FR-12",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Write the digits of the percentage after the point.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. A percentage is always less than 1.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. 1/2 = 50/100, which is 50% and 0.5.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "FR.PERCENT.DIGITS",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "1/2 = 50/100, which is 50% and 0.5.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "math",
-        "v": "50\\% = 0.05",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1003,7 +1011,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1012,10 +1020,19 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1023,7 +1040,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Percentages cannot be written as decimals.",
+                  "v": "Never. 2/5 is 25%.",
                 },
               ],
               "id": "RA",
@@ -1032,7 +1049,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 60% is 6, the digits after the point.",
+                  "v": "Sometimes. Only in money problems.",
                 },
               ],
               "id": "RB",
@@ -1041,7 +1058,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 3/5 = 60/100, which is 60% and 0.6.",
+                  "v": "Always. 2/5 = 4/10 = 40/100 = 40%.",
                 },
               ],
               "id": "RC",
@@ -1053,7 +1070,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "FR.PERCENT.DIGITS",
@@ -1063,7 +1080,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1073,7 +1090,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "3/5 = 60/100, which is 60% and 0.6.",
+            "v": "Always. 2/5 = 4/10 = 40/100 = 40%.",
           },
         ],
       },
@@ -1081,7 +1098,11 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "math",
-        "v": "60\\% = 0.6",
+        "v": "\\frac{2}{5}",
+      },
+      {
+        "t": "text",
+        "v": " is the same as 40%.",
       },
     ],
   },
@@ -1093,7 +1114,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1217,7 +1238,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1327,7 +1348,7 @@ exports[`Y5-FR-12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

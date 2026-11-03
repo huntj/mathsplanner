@@ -46,7 +46,7 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-GEO-04.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -154,7 +154,7 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-GEO-04.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -262,7 +262,7 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-GEO-04.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -327,50 +327,14 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "circles": [
-          {
-            "centre": "O",
-            "radius": 2.5,
-          },
-        ],
-        "description": "A circle with centre O and its diameter labelled 18 cm.",
-        "dots": [
-          "O",
-        ],
-        "points": {
-          "O": [
-            0,
-            0,
-          ],
-          "P": [
-            2.5,
-            0,
-          ],
-          "Q": [
-            -2.5,
-            0,
-          ],
-        },
-        "segments": [
-          {
-            "from": "Q",
-            "label": "18\\text{ cm}",
-            "length": 18,
-            "to": "P",
-          },
-        ],
-        "type": "geometry",
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-GEO-04.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -381,14 +345,14 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -397,10 +361,19 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -408,7 +381,7 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "You need to know the circumference to work it out.",
+                  "v": "Sometimes. A chord can be longer.",
                 },
               ],
               "id": "RA",
@@ -417,7 +390,7 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The radius is double the diameter.",
+                  "v": "Always. Every other line across, a chord, is shorter.",
                 },
               ],
               "id": "RB",
@@ -426,7 +399,7 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The diameter is twice the radius, so the radius is 9 cm.",
+                  "v": "Never. The radius is longer.",
                 },
               ],
               "id": "RC",
@@ -438,7 +411,7 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "GEO.CIRCLE.RADIUS-DIAMETER",
@@ -448,7 +421,7 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -458,7 +431,7 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The diameter is twice the radius. Here the diameter is 18 cm, so the radius is 9 cm.",
+            "v": "Always. Every other line across, a chord, is shorter.",
           },
         ],
       },
@@ -466,63 +439,19 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "O is the centre of the circle.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": "Sam says the radius of this circle is 36 cm.",
+        "v": "The diameter of a circle is the longest straight line across it.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "circles": [
-          {
-            "centre": "O",
-            "radius": 2.5,
-          },
-        ],
-        "description": "A circle with centre O and its diameter labelled 11 cm.",
-        "dots": [
-          "O",
-        ],
-        "points": {
-          "O": [
-            0,
-            0,
-          ],
-          "P": [
-            -1.25,
-            -2.165063509,
-          ],
-          "Q": [
-            1.25,
-            2.165063509,
-          ],
-        },
-        "segments": [
-          {
-            "from": "Q",
-            "label": "11\\text{ cm}",
-            "length": 11,
-            "to": "P",
-          },
-        ],
-        "type": "geometry",
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-GEO-04.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -533,14 +462,14 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -549,10 +478,19 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -560,7 +498,7 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "You need to know the circumference to work it out.",
+                  "v": "Sometimes. A chord can be longer.",
                 },
               ],
               "id": "RA",
@@ -569,7 +507,7 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The radius is double the diameter.",
+                  "v": "Never. The radius is longer.",
                 },
               ],
               "id": "RB",
@@ -578,7 +516,7 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The diameter is twice the radius, so the radius is 5.5 cm.",
+                  "v": "Always. Every other line across, a chord, is shorter.",
                 },
               ],
               "id": "RC",
@@ -590,7 +528,7 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "GEO.CIRCLE.RADIUS-DIAMETER",
@@ -600,7 +538,7 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -610,7 +548,7 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The diameter is twice the radius. Here the diameter is 11 cm, so the radius is 5.5 cm.",
+            "v": "Always. Every other line across, a chord, is shorter.",
           },
         ],
       },
@@ -618,15 +556,7 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "O is the centre of the circle.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": "Sam says the radius of this circle is 22 cm.",
+        "v": "The diameter of a circle is the longest straight line across it.",
       },
     ],
   },
@@ -674,7 +604,7 @@ exports[`Y6-GEO-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-GEO-04.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

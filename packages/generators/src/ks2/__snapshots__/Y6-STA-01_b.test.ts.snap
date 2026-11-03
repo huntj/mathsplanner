@@ -102,7 +102,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -264,7 +264,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -426,7 +426,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -588,7 +588,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -771,7 +771,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -954,7 +954,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -1039,105 +1039,13 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "A line graph of temperature through the day, with readings every two hours.",
-        "grid": true,
-        "points": [
-          {
-            "at": [
-              8,
-              20,
-            ],
-          },
-          {
-            "at": [
-              10,
-              8,
-            ],
-          },
-          {
-            "at": [
-              12,
-              12,
-            ],
-          },
-          {
-            "at": [
-              14,
-              4,
-            ],
-          },
-          {
-            "at": [
-              16,
-              12,
-            ],
-          },
-        ],
-        "segments": [
-          {
-            "from": [
-              8,
-              20,
-            ],
-            "to": [
-              10,
-              8,
-            ],
-          },
-          {
-            "from": [
-              10,
-              8,
-            ],
-            "to": [
-              12,
-              12,
-            ],
-          },
-          {
-            "from": [
-              12,
-              12,
-            ],
-            "to": [
-              14,
-              4,
-            ],
-          },
-          {
-            "from": [
-              14,
-              4,
-            ],
-            "to": [
-              16,
-              12,
-            ],
-          },
-        ],
-        "type": "cartesian",
-        "x": {
-          "label": "\\text{time (hours)}",
-          "max": 16,
-          "min": 8,
-          "step": 2,
-        },
-        "y": {
-          "label": "\\text{°C}",
-          "max": 24,
-          "min": 0,
-          "step": 4,
-        },
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -1175,7 +1083,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Temperature changes smoothly over time, so the line between the 10:00 and 12:00 readings gives a sensible estimate.",
+                  "v": "True. The steeper the line, the faster the height changed.",
                 },
               ],
               "id": "RA",
@@ -1184,7 +1092,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You can only read values at the points that were measured.",
+                  "v": "False. Line graphs cannot show speed.",
                 },
               ],
               "id": "RB",
@@ -1193,7 +1101,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Line graphs can only show whole hours.",
+                  "v": "False. The highest point shows the fastest growth.",
                 },
               ],
               "id": "RC",
@@ -1205,7 +1113,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "STA.SCALE.READ",
@@ -1225,7 +1133,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Time and temperature are continuous, which is why the points are joined with a line.",
+            "v": "True. The steeper the line, the faster the height changed.",
           },
         ],
       },
@@ -1233,119 +1141,19 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The graph shows the temperature in a garden through the day. The time is on the 24-hour clock.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": " Sid says you can use the line to estimate the temperature at 11:00, even though it was not measured then.",
+        "v": "On a line graph of a plant's height, the line goes up steeply between week 2 and week 3. Amy says the plant grew fastest then.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "A line graph of temperature through the day, with readings every two hours.",
-        "grid": true,
-        "points": [
-          {
-            "at": [
-              8,
-              20,
-            ],
-          },
-          {
-            "at": [
-              10,
-              8,
-            ],
-          },
-          {
-            "at": [
-              12,
-              20,
-            ],
-          },
-          {
-            "at": [
-              14,
-              16,
-            ],
-          },
-          {
-            "at": [
-              16,
-              12,
-            ],
-          },
-        ],
-        "segments": [
-          {
-            "from": [
-              8,
-              20,
-            ],
-            "to": [
-              10,
-              8,
-            ],
-          },
-          {
-            "from": [
-              10,
-              8,
-            ],
-            "to": [
-              12,
-              20,
-            ],
-          },
-          {
-            "from": [
-              12,
-              20,
-            ],
-            "to": [
-              14,
-              16,
-            ],
-          },
-          {
-            "from": [
-              14,
-              16,
-            ],
-            "to": [
-              16,
-              12,
-            ],
-          },
-        ],
-        "type": "cartesian",
-        "x": {
-          "label": "\\text{time (hours)}",
-          "max": 16,
-          "min": 8,
-          "step": 2,
-        },
-        "y": {
-          "label": "\\text{°C}",
-          "max": 24,
-          "min": 0,
-          "step": 4,
-        },
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -1363,7 +1171,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1372,10 +1180,19 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1383,7 +1200,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Temperature changes smoothly over time, so the line between the 10:00 and 12:00 readings gives a sensible estimate.",
+                  "v": "Always. Time goes along the bottom, and the line shows the rise and fall.",
                 },
               ],
               "id": "RA",
@@ -1392,7 +1209,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You can only read values at the points that were measured.",
+                  "v": "Never. Use a pie chart for time.",
                 },
               ],
               "id": "RB",
@@ -1401,7 +1218,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Line graphs can only show whole hours.",
+                  "v": "Sometimes. Only for temperatures.",
                 },
               ],
               "id": "RC",
@@ -1423,7 +1240,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1433,7 +1250,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Time and temperature are continuous, which is why the points are joined with a line.",
+            "v": "Always. Time goes along the bottom, and the line shows the rise and fall.",
           },
         ],
       },
@@ -1441,119 +1258,19 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The graph shows the temperature in a garden through the day. The time is on the 24-hour clock.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": " Sid says you can use the line to estimate the temperature at 11:00, even though it was not measured then.",
+        "v": "A line graph is a good way to show how something changes over time.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "A line graph of temperature through the day, with readings every two hours.",
-        "grid": true,
-        "points": [
-          {
-            "at": [
-              8,
-              16,
-            ],
-          },
-          {
-            "at": [
-              10,
-              16,
-            ],
-          },
-          {
-            "at": [
-              12,
-              4,
-            ],
-          },
-          {
-            "at": [
-              14,
-              12,
-            ],
-          },
-          {
-            "at": [
-              16,
-              12,
-            ],
-          },
-        ],
-        "segments": [
-          {
-            "from": [
-              8,
-              16,
-            ],
-            "to": [
-              10,
-              16,
-            ],
-          },
-          {
-            "from": [
-              10,
-              16,
-            ],
-            "to": [
-              12,
-              4,
-            ],
-          },
-          {
-            "from": [
-              12,
-              4,
-            ],
-            "to": [
-              14,
-              12,
-            ],
-          },
-          {
-            "from": [
-              14,
-              12,
-            ],
-            "to": [
-              16,
-              12,
-            ],
-          },
-        ],
-        "type": "cartesian",
-        "x": {
-          "label": "\\text{time (hours)}",
-          "max": 16,
-          "min": 8,
-          "step": 2,
-        },
-        "y": {
-          "label": "\\text{°C}",
-          "max": 24,
-          "min": 0,
-          "step": 4,
-        },
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-STA-01.b",
-      "version": "1.0.0",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -1565,13 +1282,13 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1580,10 +1297,19 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1591,7 +1317,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Temperature changes smoothly over time, so the line between the 10:00 and 12:00 readings gives a sensible estimate.",
+                  "v": "Sometimes. Only for temperatures.",
                 },
               ],
               "id": "RA",
@@ -1600,7 +1326,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You can only read values at the points that were measured.",
+                  "v": "Never. Use a pie chart for time.",
                 },
               ],
               "id": "RB",
@@ -1609,7 +1335,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Line graphs can only show whole hours.",
+                  "v": "Always. Time goes along the bottom, and the line shows the rise and fall.",
                 },
               ],
               "id": "RC",
@@ -1631,7 +1357,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1641,7 +1367,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Time and temperature are continuous, which is why the points are joined with a line.",
+            "v": "Always. Time goes along the bottom, and the line shows the rise and fall.",
           },
         ],
       },
@@ -1649,15 +1375,7 @@ exports[`Y6-STA-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The graph shows the temperature in a garden through the day. The time is on the 24-hour clock.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": " Sid says you can use the line to estimate the temperature at 11:00, even though it was not measured then.",
+        "v": "A line graph is a good way to show how something changes over time.",
       },
     ],
   },

@@ -10,7 +10,7 @@ exports[`Y4-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -92,7 +92,7 @@ exports[`Y4-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -174,7 +174,7 @@ exports[`Y4-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -256,7 +256,7 @@ exports[`Y4-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -327,7 +327,7 @@ exports[`Y4-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -398,7 +398,7 @@ exports[`Y4-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -469,131 +469,7 @@ exports[`Y4-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-01.c",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "15,095 is not a multiple of 1,000: the count goes 15,000, 16,000.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Only if you start from 1.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "If you keep counting you say every number.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.SEQUENCE.STEP-ONE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Counting in 1,000s from 0 says only multiples of 1,000.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "If you count in ",
-      },
-      {
-        "t": "math",
-        "v": "1{,}000",
-      },
-      {
-        "t": "text",
-        "v": "s from 0, you will say ",
-      },
-      {
-        "t": "math",
-        "v": "15{,}095",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y4-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -631,7 +507,7 @@ exports[`Y4-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "If you keep counting you say every number.",
+                  "v": "True. Add one to the hundreds.",
                 },
               ],
               "id": "RA",
@@ -640,7 +516,7 @@ exports[`Y4-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only if you start from 1.",
+                  "v": "True. Counting on adds 100.",
                 },
               ],
               "id": "RB",
@@ -649,7 +525,7 @@ exports[`Y4-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "9,393 is not a multiple of 1,000: the count goes 9,000, 10,000.",
+                  "v": "False. Adding 1000 changes the thousands digit: 4,250.",
                 },
               ],
               "id": "RC",
@@ -662,6 +538,114 @@ exports[`Y4-NPV-01.c > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.SEQUENCE.STEP-ONE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. Adding 1000 changes the thousands digit: 4,250.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Raj counts on in 1000s from 250. He says the next number after 3,250 is 3,350.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y4-NPV-01.c",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Only if you start from 1.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "9,393 is not a multiple of 1,000: the count goes 9,000, 10,000.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "If you keep counting you say every number.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.SEQUENCE.STEP-ONE",
@@ -717,7 +701,7 @@ exports[`Y4-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -729,7 +713,7 @@ exports[`Y4-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -755,7 +739,7 @@ exports[`Y4-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only if you start from 1.",
+                  "v": "False. Adding 1000 changes the thousands digit: 4,250.",
                 },
               ],
               "id": "RA",
@@ -764,7 +748,7 @@ exports[`Y4-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "If you keep counting you say every number.",
+                  "v": "True. Counting on adds 100.",
                 },
               ],
               "id": "RB",
@@ -773,7 +757,7 @@ exports[`Y4-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "7,005 is not a multiple of 1,000: the count goes 7,000, 8,000.",
+                  "v": "True. Add one to the hundreds.",
                 },
               ],
               "id": "RC",
@@ -785,7 +769,7 @@ exports[`Y4-NPV-01.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.SEQUENCE.STEP-ONE",
@@ -805,7 +789,7 @@ exports[`Y4-NPV-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Counting in 1,000s from 0 says only multiples of 1,000.",
+            "v": "False. Adding 1000 changes the thousands digit: 4,250.",
           },
         ],
       },
@@ -813,23 +797,7 @@ exports[`Y4-NPV-01.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "If you count in ",
-      },
-      {
-        "t": "math",
-        "v": "1{,}000",
-      },
-      {
-        "t": "text",
-        "v": "s from 0, you will say ",
-      },
-      {
-        "t": "math",
-        "v": "7{,}005",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Raj counts on in 1000s from 250. He says the next number after 3,250 is 3,350.",
       },
     ],
   },

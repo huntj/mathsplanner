@@ -10,7 +10,7 @@ exports[`Y9-RAT-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-RAT-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -86,7 +86,7 @@ exports[`Y9-RAT-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-RAT-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -162,7 +162,7 @@ exports[`Y9-RAT-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-RAT-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -225,7 +225,7 @@ exports[`Y9-RAT-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-RAT-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -288,7 +288,7 @@ exports[`Y9-RAT-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-RAT-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -351,7 +351,7 @@ exports[`Y9-RAT-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-RAT-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -414,7 +414,131 @@ exports[`Y9-RAT-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-RAT-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 20 000 × 0.7, taking off 30%.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Losing 15% leaves 85%, so multiply by 0.85 for each year.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 20 000 × 0.15².",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "RAT.COMPOUND.SIMPLE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "RAT.PERCENT.MULTIPLIER",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. Losing 15% leaves 85%, so multiply by 0.85 for each year.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A £20 000 car loses 15% of its value each year. Tom works out its value after 2 years as ",
+      },
+      {
+        "t": "math",
+        "v": "20\\,000 \\times 0.85^2",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y9-RAT-03.b",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -452,7 +576,7 @@ exports[`Y9-RAT-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 5 × 20% = 100%.",
+                  "v": "True. 6.666666666666667 × 15% = 100%.",
                 },
               ],
               "id": "RA",
@@ -466,104 +590,6 @@ exports[`Y9-RAT-03.b > keeps fixed seeds unchanged 1`] = `
               ],
               "id": "RB",
             },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Each year it keeps 80% of its value, so it gets smaller and smaller but never reaches zero: after 5 years it is worth about 32.77% of the original.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "RAT.COMPOUND.SIMPLE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "RAT.COMPOUND.SIMPLE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Repeated percentage decrease multiplies; it never subtracts the whole value.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Abi says that a car losing 20% of its value every year will be worth nothing after 5 years.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y9-RAT-03.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
             {
               "content": [
                 {
@@ -571,24 +597,6 @@ exports[`Y9-RAT-03.b > keeps fixed seeds unchanged 1`] = `
                   "v": "False. Each year it keeps 85% of its value, so it gets smaller and smaller but never reaches zero: after 6.666666666666667 years it is worth about 33.84% of the original.",
                 },
               ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. 6.666666666666667 × 15% = 100%.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Depreciation always ends at zero.",
-                },
-              ],
               "id": "RC",
             },
           ],
@@ -598,7 +606,7 @@ exports[`Y9-RAT-03.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "RAT.COMPOUND.SIMPLE",
@@ -606,7 +614,7 @@ exports[`Y9-RAT-03.b > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "RAT.COMPOUND.SIMPLE",
@@ -646,7 +654,7 @@ exports[`Y9-RAT-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-RAT-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { exactAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   m: number;
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y9-ALG-02.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.INDICES.POWER-ADD", "ALG.INDICES.BRACKET-COEFF"],
 
@@ -61,20 +62,58 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Kim says ", A.math(`(x^{${p.m}})^{${p.n}} = (x^{${p.n}})^{${p.m}}`), "."],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Kim says ",
+                A.math(`(x^{${p.m}})^{${p.n}} = (x^{${p.n}})^{${p.m}}`),
+                ".",
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: `True. Both are x^(${p.m} × ${p.n}) = x^${p.m * p.n}, and multiplying is commutative.`,
+                  correct: true,
+                },
+                { text: `False. The first is x^${p.m + p.n}.`, code: "ALG.INDICES.POWER-ADD" },
+                { text: "False. The order of the powers matters.", code: "ALG.INDICES.POWER-ADD" },
+              ],
+              solution: [{ say: "(xᵐ)ⁿ = xᵐⁿ." }],
+            }),
+          [
             {
-              text: `True. Both are x^(${p.m} × ${p.n}) = x^${p.m * p.n}, and multiplying is commutative.`,
-              correct: true,
+              statement: "Gus says $(x^2)^3 = x^5$.",
+              truth: false,
+              right: "False. A power of a power multiplies the indices: (x²)³ = x².x².x² = x⁶.",
+              wrong: [
+                ["True. Add the indices: 2 + 3 = 5.", "ALG.INDICES.POWER-ADD"],
+                ["True. The 3 goes on the end."],
+              ],
             },
-            { text: `False. The first is x^${p.m + p.n}.`, code: "ALG.INDICES.POWER-ADD" },
-            { text: "False. The order of the powers matters.", code: "ALG.INDICES.POWER-ADD" },
+            {
+              statement: "Ivy says $(2x^3)^2 = 4x^6$.",
+              truth: true,
+              right: "True. Square the 2 and the x³: 2² = 4 and (x³)² = x⁶.",
+              wrong: [
+                ["False. It is 2x⁶; the 2 is not squared.", "ALG.INDICES.BRACKET-COEFF"],
+                ["False. It is 4x⁵.", "ALG.INDICES.POWER-ADD"],
+              ],
+            },
+            {
+              claim: "$(a^m)^n$ is equal to $a^{m + n}$.",
+              truth: "sometimes",
+              right:
+                "Sometimes. It equals a^(mn), which matches a^(m + n) only when mn = m + n, as when m = n = 2.",
+              wrong: [
+                ["Always. That is the rule for powers.", "ALG.INDICES.POWER-ADD"],
+                ["Never. The two can never be equal."],
+              ],
+            },
           ],
-          solution: [{ say: "(xᵐ)ⁿ = xᵐⁿ." }],
-        });
+        );
     }
   },
 

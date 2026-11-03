@@ -10,7 +10,7 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -110,7 +110,7 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -210,7 +210,7 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -310,7 +310,7 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -372,7 +372,7 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -434,7 +434,7 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -496,7 +496,7 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -552,7 +552,7 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. A bigger number means steeper.",
+                  "v": "Never. Bigger gradients are flatter.",
                 },
               ],
               "id": "RB",
@@ -561,7 +561,7 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Bigger gradients are flatter.",
+                  "v": "Always. A bigger number means steeper.",
                 },
               ],
               "id": "RC",
@@ -621,7 +621,7 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -677,7 +677,7 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. A bigger number means steeper.",
+                  "v": "Never. Bigger gradients are flatter.",
                 },
               ],
               "id": "RB",
@@ -686,7 +686,7 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Bigger gradients are flatter.",
+                  "v": "Always. A bigger number means steeper.",
                 },
               ],
               "id": "RC",
@@ -739,14 +739,14 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -757,14 +757,14 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -773,19 +773,10 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -793,7 +784,7 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Bigger gradients are flatter.",
+                  "v": "False. The gradient is the starting cost.",
                 },
               ],
               "id": "RA",
@@ -802,7 +793,7 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. y = 2x is steeper than y = x, but y = −5x is steeper than both, despite its smaller (negative) gradient. Steepness depends on the size of the gradient.",
+                  "v": "True. Each extra mile adds £2.50, which is the gradient.",
                 },
               ],
               "id": "RB",
@@ -811,7 +802,7 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. A bigger number means steeper.",
+                  "v": "False. The cost per mile is £4.",
                 },
               ],
               "id": "RC",
@@ -826,7 +817,7 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.GRADIENT.STEEPNESS",
+            "code": "RAT.PROPORTION.LINEAR-INTERCEPT",
             "feedback": [],
           },
           {
@@ -834,14 +825,14 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "ALG.GRADIENT.STEEPNESS",
+            "code": "ALG.LINE.M-C",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -851,7 +842,7 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Compare the gradients ignoring their signs.",
+            "v": "True. Each extra mile adds £2.50, which is the gradient.",
           },
         ],
       },
@@ -859,7 +850,15 @@ exports[`Y9-ALG-05.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A line with a bigger gradient is steeper.",
+        "v": "A taxi costs ",
+      },
+      {
+        "t": "math",
+        "v": "C = 2.5m + 4",
+      },
+      {
+        "t": "text",
+        "v": " pounds for m miles. Ivy says the gradient, 2.5, is the cost per mile.",
       },
     ],
   },

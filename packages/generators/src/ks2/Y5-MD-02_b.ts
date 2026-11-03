@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type GeneratorDefinition, type QuestionDraft } from "@mathsplanner/core";
 import { primesFamily } from "../shared/md.ts";
 import { mixFamilies } from "../shared/npv.ts";
+import { withClaims } from "../shared/variety.ts";
 
 // [number, a non-prime split, its prime factors]
 const CASES: [number, [number, number], number[]][] = [
@@ -66,8 +67,36 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y5-MD-02.b", {
-    2: primesFamily("Y5-MD-02.b", { friendly: 30, standard: 50, stretch: 100 }, true),
-    4: own,
-  }),
+  withClaims(
+    mixFamilies("Y5-MD-02.b", {
+      2: primesFamily("Y5-MD-02.b", { friendly: 30, standard: 50, stretch: 100 }, true),
+      4: own,
+    }),
+    [
+      {
+        statement: "Gus says the prime factors of 30 are 2, 3 and 5.",
+        truth: true,
+        right: "True. 30 = 2 × 3 × 5, and 2, 3 and 5 are all prime.",
+        wrong: [
+          ["False. 6 is a prime factor too.", "NPV.FACTOR.NOT-PRIME"],
+          ["False. 1 is a prime factor.", "MD.PRIME.ONE"],
+        ],
+      },
+      {
+        claim: "A prime number is odd.",
+        truth: "sometimes",
+        right: "Sometimes. 2 is prime and even; every other prime is odd.",
+        wrong: [["Always. Primes are odd numbers.", "MD.PRIME.ODD"], ["Never. Primes are even."]],
+      },
+      {
+        claim: "1 is a prime number.",
+        truth: "never",
+        right: "Never. A prime has exactly two factors, and 1 has only one.",
+        wrong: [
+          ["Always. It only divides by itself.", "MD.PRIME.ONE"],
+          ["Sometimes. It depends how you count."],
+        ],
+      },
+    ],
+  ),
 );

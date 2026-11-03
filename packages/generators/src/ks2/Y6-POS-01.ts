@@ -11,6 +11,7 @@ import { wrongs } from "../shared/angles.ts";
 import { grid } from "../shared/alg.ts";
 import { chosenFigure, chosenText, numberAnswer } from "../shared/counting.ts";
 import { coord, distinctFrom, same } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   p: Coord;
@@ -25,7 +26,7 @@ const R = 6;
 
 export default defineGenerator<Params>({
   id: "Y6-POS-01",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 3, 4],
   misconceptions: ["ALG.COORD.ORDER", "NPV.NEGATIVE.MIRROR"],
 
@@ -128,30 +129,63 @@ export default defineGenerator<Params>({
       default: {
         const truth = p.claimRight ? x > 0 : y > 0;
         const claim = p.claimRight ? "to the right of the y-axis" : "above the x-axis";
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Mo says the point ", A.math(right), ` is ${claim}.`],
-          truth,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Mo says the point ", A.math(right), ` is ${claim}.`],
+              truth,
+              reasons: [
+                {
+                  text: `${truth ? "True" : "False"}. ${p.claimRight ? `The x-coordinate ${x} is ${x > 0 ? "positive, so it is right of" : "negative, so it is left of"} the y-axis` : `The y-coordinate ${y} is ${y > 0 ? "positive, so it is above" : "negative, so it is below"} the x-axis`}.`,
+                  correct: true,
+                },
+                {
+                  text: `${truth ? "False" : "True"}. ${p.claimRight ? "The second number tells you left or right." : "The first number tells you up or down."}`,
+                  code: "ALG.COORD.ORDER",
+                },
+                {
+                  text: `${truth ? "False" : "True"}. Negative numbers are always to the left of and below the origin.`,
+                  code: "NPV.NEGATIVE.MIRROR",
+                },
+              ],
+              solution: [
+                {
+                  say: "x tells you left (negative) or right (positive); y tells you down (negative) or up (positive).",
+                },
+              ],
+            }),
+          [
             {
-              text: `${truth ? "True" : "False"}. ${p.claimRight ? `The x-coordinate ${x} is ${x > 0 ? "positive, so it is right of" : "negative, so it is left of"} the y-axis` : `The y-coordinate ${y} is ${y > 0 ? "positive, so it is above" : "negative, so it is below"} the x-axis`}.`,
-              correct: true,
+              claim: "A point with a negative x-coordinate is to the left of the y-axis.",
+              truth: "always",
+              right: "Always. Negative x means you go left from the origin.",
+              wrong: [
+                ["Never. Negative x means below.", "ALG.COORD.ORDER"],
+                ["Sometimes. Only if y is negative too.", "NPV.NEGATIVE.MIRROR"],
+              ],
             },
             {
-              text: `${truth ? "False" : "True"}. ${p.claimRight ? "The second number tells you left or right." : "The first number tells you up or down."}`,
-              code: "ALG.COORD.ORDER",
+              statement: "Kit plots $(-3, 2)$ by going 3 up and 2 left.",
+              truth: false,
+              right: "False. The x-coordinate comes first: go 3 left, then 2 up.",
+              wrong: [
+                ["True. The first number is up or down.", "ALG.COORD.ORDER"],
+                ["True. The order does not matter."],
+              ],
             },
             {
-              text: `${truth ? "False" : "True"}. Negative numbers are always to the left of and below the origin.`,
-              code: "NPV.NEGATIVE.MIRROR",
+              claim: "The point $(0, 5)$ is on the y-axis.",
+              truth: "always",
+              right: "Always. Its x-coordinate is 0, so it is not left or right of the y-axis.",
+              wrong: [
+                ["Never. It is on the x-axis.", "ALG.COORD.ORDER"],
+                ["Sometimes. It depends on the scale."],
+              ],
             },
           ],
-          solution: [
-            {
-              say: "x tells you left (negative) or right (positive); y tells you down (negative) or up (positive).",
-            },
-          ],
-        });
+        );
       }
     }
   },

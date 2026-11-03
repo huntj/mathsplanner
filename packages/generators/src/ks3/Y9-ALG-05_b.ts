@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   rate: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y9-ALG-05.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.LINE.M-C", "RAT.PROPORTION.LINEAR-INTERCEPT", "ALG.GRADIENT.STEEPNESS"],
 
@@ -74,20 +75,59 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["A line with a bigger gradient is steeper."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["A line with a bigger gradient is steeper."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: "Sometimes. y = 2x is steeper than y = x, but y = −5x is steeper than both, despite its smaller (negative) gradient. Steepness depends on the size of the gradient.",
+                  correct: true,
+                },
+                { text: "Always. A bigger number means steeper.", code: "ALG.GRADIENT.STEEPNESS" },
+                { text: "Never. Bigger gradients are flatter.", code: "ALG.GRADIENT.STEEPNESS" },
+              ],
+              solution: [{ say: "Compare the gradients ignoring their signs." }],
+            }),
+          [
             {
-              text: "Sometimes. y = 2x is steeper than y = x, but y = −5x is steeper than both, despite its smaller (negative) gradient. Steepness depends on the size of the gradient.",
-              correct: true,
+              statement:
+                "A taxi costs $C = 2.5m + 4$ pounds for m miles. Ivy says the gradient, 2.5, is the cost per mile.",
+              truth: true,
+              right: "True. Each extra mile adds £2.50, which is the gradient.",
+              wrong: [
+                ["False. The cost per mile is £4.", "ALG.LINE.M-C"],
+                ["False. The gradient is the starting cost.", "RAT.PROPORTION.LINEAR-INTERCEPT"],
+              ],
             },
-            { text: "Always. A bigger number means steeper.", code: "ALG.GRADIENT.STEEPNESS" },
-            { text: "Never. Bigger gradients are flatter.", code: "ALG.GRADIENT.STEEPNESS" },
+            {
+              statement:
+                "A line has gradient −3. Leo says it is less steep than a line with gradient 2, because −3 is less than 2.",
+              truth: false,
+              right:
+                "False. Steepness depends on the size of the gradient: 3 is bigger than 2, so the −3 line is steeper.",
+              wrong: [
+                ["True. A smaller gradient means a less steep line.", "ALG.GRADIENT.STEEPNESS"],
+                ["True. Negative gradients are flat."],
+              ],
+            },
+            {
+              claim: "The y-intercept of a graph of cost against time is the cost at the start.",
+              truth: "always",
+              right: "Always. The intercept is the value when time is 0.",
+              wrong: [
+                ["Never. It is the cost for each unit of time.", "ALG.LINE.M-C"],
+                [
+                  "Sometimes. Only when the graph goes through the origin.",
+                  "RAT.PROPORTION.LINEAR-INTERCEPT",
+                ],
+              ],
+            },
           ],
-          solution: [{ say: "Compare the gradients ignoring their signs." }],
-        });
+        );
     }
   },
 

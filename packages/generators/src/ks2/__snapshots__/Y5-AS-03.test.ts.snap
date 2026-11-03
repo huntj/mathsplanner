@@ -10,7 +10,7 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-AS-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -79,7 +79,7 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-AS-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -148,7 +148,7 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-AS-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -203,7 +203,7 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-AS-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -303,7 +303,7 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-AS-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -403,7 +403,7 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-AS-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -503,7 +503,139 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-AS-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. You check addition with addition.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. An estimate must match exactly.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 6,085 is close to the estimate of 6,000.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "AS.INVERSE.SAME-OPERATION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. 6,085 is close to the estimate of 6,000.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Kit works out ",
+      },
+      {
+        "t": "math",
+        "v": "3{,}980 + 2{,}105 = 6{,}085",
+      },
+      {
+        "t": "text",
+        "v": ". Sam estimates ",
+      },
+      {
+        "t": "math",
+        "v": "4{,}000 + 2{,}000 = 6{,}000",
+      },
+      {
+        "t": "text",
+        "v": " and says the answer looks right.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y5-AS-03",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -541,7 +673,7 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. An answer is only right if it is exactly the same as the estimate.",
+                  "v": "True. Check by doing the same numbers again.",
                 },
               ],
               "id": "RA",
@@ -550,7 +682,7 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Rounding always shows the exact answer.",
+                  "v": "True. Adding always checks subtracting.",
                 },
               ],
               "id": "RB",
@@ -559,7 +691,7 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The estimate is 71,000, which is close to 70,801, so Leo's answer is sensible. The inverse shows it is right.",
+                  "v": "False. Check with the inverse: 234 + 278 should give 512.",
                 },
               ],
               "id": "RC",
@@ -568,7 +700,16 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "AS.INVERSE.SAME-OPERATION",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
@@ -582,15 +723,7 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "29,598 ≈ 30,000 and 41,203 ≈ 41,000, so 30,000 + 41,000 = 71,000.",
-          },
-        ],
-      },
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "The exact answer is 70,801.",
+            "v": "False. Check with the inverse: 234 + 278 should give 512.",
           },
         ],
       },
@@ -598,130 +731,23 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Leo works out ",
+        "v": "To check ",
       },
       {
         "t": "math",
-        "v": "29{,}598 + 41{,}203",
+        "v": "512 - 278 = 234",
       },
       {
         "t": "text",
-        "v": " and gets 70,801. Mia rounds to the nearest 1,000 and says Leo must have made a mistake.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y5-AS-03",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Estimates are never close enough to spot a mistake.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The estimate is 30,000, but 124,878 is a long way from it, so Leo has made a mistake.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. The answer must be right because it has the same number of digits.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "65,684 ≈ 70,000 and 40,806 ≈ 40,000, so 70,000 − 40,000 = 30,000.",
-          },
-        ],
-      },
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "The exact answer is 24,878.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Leo works out ",
+        "v": ", Ivy works out ",
       },
       {
         "t": "math",
-        "v": "65{,}684 - 40{,}806",
+        "v": "512 + 278",
       },
       {
         "t": "text",
-        "v": " and gets 124,878. Mia rounds to the nearest 10,000 and says Leo must have made a mistake.",
+        "v": ".",
       },
     ],
   },
@@ -733,7 +759,7 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-AS-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -744,7 +770,7 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
           "correctReason": "RC",
           "options": [
             {
@@ -771,7 +797,7 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The answer must be right because it has the same number of digits.",
+                  "v": "True. Adding always checks subtracting.",
                 },
               ],
               "id": "RA",
@@ -780,7 +806,7 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Estimates are never close enough to spot a mistake.",
+                  "v": "True. Check by doing the same numbers again.",
                 },
               ],
               "id": "RB",
@@ -789,7 +815,7 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The estimate is 400,000, but 1,405,428 is a long way from it, so Leo has made a mistake.",
+                  "v": "False. Check with the inverse: 234 + 278 should give 512.",
                 },
               ],
               "id": "RC",
@@ -798,7 +824,16 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "AS.INVERSE.SAME-OPERATION",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
@@ -812,15 +847,7 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "934,487 ≈ 900,000 and 529,059 ≈ 500,000, so 900,000 − 500,000 = 400,000.",
-          },
-        ],
-      },
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "The exact answer is 405,428.",
+            "v": "False. Check with the inverse: 234 + 278 should give 512.",
           },
         ],
       },
@@ -828,15 +855,23 @@ exports[`Y5-AS-03 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Leo works out ",
+        "v": "To check ",
       },
       {
         "t": "math",
-        "v": "934{,}487 - 529{,}059",
+        "v": "512 - 278 = 234",
       },
       {
         "t": "text",
-        "v": " and gets 1,405,428. Mia rounds to the nearest 100,000 and says Leo must have made a mistake.",
+        "v": ", Ivy works out ",
+      },
+      {
+        "t": "math",
+        "v": "512 + 278",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },

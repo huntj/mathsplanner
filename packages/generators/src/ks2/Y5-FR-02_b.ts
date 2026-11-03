@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { fracTex } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y5-FR-02.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["FR.EQUIV.ADD-SAME", "FR.DECIMAL.PLACE"],
 
@@ -62,20 +63,56 @@ export default defineGenerator<Params>({
           solution: [{ say: "", math: `${fracTex(10 * p.n, 100)} = ${fracTex(p.n, 10)}` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Ben says ", A.math(`${fracTex(p.n, 10)} = ${fracTex(p.n, 100)}`), "."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Ben says ", A.math(`${fracTex(p.n, 10)} = ${fracTex(p.n, 100)}`), "."],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. One tenth is ten hundredths, so ${p.n} tenths is ${10 * p.n} hundredths.`,
+                  correct: true,
+                },
+                { text: "True. The numerators are the same.", code: "FR.DECIMAL.PLACE" },
+                {
+                  text: "True. Tenths and hundredths are the same size.",
+                  code: "FR.DECIMAL.PLACE",
+                },
+              ],
+              solution: [{ say: "", math: `${fracTex(p.n, 10)} = ${fracTex(10 * p.n, 100)}` }],
+            }),
+          [
             {
-              text: `False. One tenth is ten hundredths, so ${p.n} tenths is ${10 * p.n} hundredths.`,
-              correct: true,
+              statement: "Ivy says $\\frac{7}{10} = \\frac{70}{100}$.",
+              truth: true,
+              right: "True. Multiply the top and bottom by 10.",
+              wrong: [
+                ["False. It is 7/100.", "FR.DECIMAL.PLACE"],
+                ["False. It is 17/100.", "FR.EQUIV.ADD-SAME"],
+              ],
             },
-            { text: "True. The numerators are the same.", code: "FR.DECIMAL.PLACE" },
-            { text: "True. Tenths and hundredths are the same size.", code: "FR.DECIMAL.PLACE" },
+            {
+              statement: "Max says $\\frac{40}{100}$ is the same as $\\frac{4}{100}$.",
+              truth: false,
+              right: "False. 40/100 = 4/10, not 4/100.",
+              wrong: [
+                ["True. Take the 0 off.", "FR.DECIMAL.PLACE"],
+                ["True. The zero does not count."],
+              ],
+            },
+            {
+              claim: "A number of tenths can be written as hundredths.",
+              truth: "always",
+              right: "Always. Each tenth is 10 hundredths.",
+              wrong: [
+                ["Never. Tenths and hundredths are different.", "FR.DECIMAL.PLACE"],
+                ["Sometimes. Only for even numbers of tenths."],
+              ],
+            },
           ],
-          solution: [{ say: "", math: `${fracTex(p.n, 10)} = ${fracTex(10 * p.n, 100)}` }],
-        });
+        );
     }
   },
 

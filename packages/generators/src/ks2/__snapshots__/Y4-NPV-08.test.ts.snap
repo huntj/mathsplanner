@@ -10,7 +10,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-08",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -83,7 +83,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-NPV-08",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -179,7 +179,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-08",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -275,7 +275,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-08",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -356,7 +356,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-NPV-08",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -460,7 +460,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-08",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -564,7 +564,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-08",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -679,7 +679,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-NPV-08",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -794,7 +794,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-08",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -909,7 +909,115 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-08",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. X is 10 and IX is 9: 10 + 9 = 19.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 9.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 21: 10 + 1 + 10.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.ROMAN.SUBTRACTIVE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. X is 10 and IX is 9: 10 + 9 = 19.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Leo says XIX is 19.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y4-NPV-08",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -947,7 +1055,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Neither: you must always subtract.",
+                  "v": "False. It is 21: 10 + 1 + 10.",
                 },
               ],
               "id": "RA",
@@ -956,7 +1064,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only the shorter one is correct.",
+                  "v": "False. It is 9.",
                 },
               ],
               "id": "RB",
@@ -965,7 +1073,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "They are the same numeral here.",
+                  "v": "True. X is 10 and IX is 9: 10 + 9 = 19.",
                 },
               ],
               "id": "RC",
@@ -997,7 +1105,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "They are the same numeral here.",
+            "v": "True. X is 10 and IX is 9: 10 + 9 = 19.",
           },
         ],
       },
@@ -1005,115 +1113,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "XVI and XVI are both correct ways to write 16.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y4-NPV-08",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Both are right because both add up to the number.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Only XLIX is correct: the same symbol is never used four times in a row.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Only XXXXVIIII is correct, because it is longer.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.ROMAN.SUBTRACTIVE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Only XLIX is correct: the same symbol is never used four times in a row.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "XLIX and XXXXVIIII are both correct ways to write 49.",
+        "v": "Leo says XIX is 19.",
       },
     ],
   },
@@ -1125,7 +1125,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-08",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1136,7 +1136,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
@@ -1163,7 +1163,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only XCVIII is correct: the same symbol is never used four times in a row.",
+                  "v": "True. X is 10 and IX is 9: 10 + 9 = 19.",
                 },
               ],
               "id": "RA",
@@ -1172,7 +1172,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Both are right because both add up to the number.",
+                  "v": "False. It is 9.",
                 },
               ],
               "id": "RB",
@@ -1181,7 +1181,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only LXXXXVIII is correct, because it is longer.",
+                  "v": "False. It is 21: 10 + 1 + 10.",
                 },
               ],
               "id": "RC",
@@ -1193,7 +1193,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.ROMAN.SUBTRACTIVE",
@@ -1213,7 +1213,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Only XCVIII is correct: the same symbol is never used four times in a row.",
+            "v": "True. X is 10 and IX is 9: 10 + 9 = 19.",
           },
         ],
       },
@@ -1221,7 +1221,7 @@ exports[`Y4-NPV-08 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "XCVIII and LXXXXVIII are both correct ways to write 98.",
+        "v": "Leo says XIX is 19.",
       },
     ],
   },

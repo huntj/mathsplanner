@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { lineLatex } from "../shared/alg.ts";
 import { chosenText } from "../shared/counting.ts";
 import { coord, distinctFrom } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   m: number;
@@ -20,7 +21,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y9-ALG-04.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.LINE.M-C"],
 
@@ -93,20 +94,54 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["Two different straight lines with the same y-intercept are parallel."],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["Two different straight lines with the same y-intercept are parallel."],
+              truth: "never",
+              reasons: [
+                {
+                  text: "Never. They both pass through the same point on the y-axis, so they cross there. Parallel lines never meet.",
+                  correct: true,
+                },
+                { text: "Always. The same c means the same direction.", code: "ALG.LINE.M-C" },
+                { text: "Sometimes. If their gradients are close.", code: "ALG.LINE.M-C" },
+              ],
+              solution: [{ say: "Parallel lines share a gradient, not an intercept." }],
+            }),
+          [
             {
-              text: "Never. They both pass through the same point on the y-axis, so they cross there. Parallel lines never meet.",
-              correct: true,
+              statement: "Ali says $y = 3x + 1$ and $y = 3x - 5$ are parallel.",
+              truth: true,
+              right: "True. Both have gradient 3.",
+              wrong: [
+                ["False. They have different intercepts.", "ALG.LINE.M-C"],
+                ["False. Parallel lines must have the same equation."],
+              ],
             },
-            { text: "Always. The same c means the same direction.", code: "ALG.LINE.M-C" },
-            { text: "Sometimes. If their gradients are close.", code: "ALG.LINE.M-C" },
+            {
+              statement: "Bea says $y = 2x + 4$ and $y = 4x + 2$ are parallel.",
+              truth: false,
+              right: "False. Their gradients are 2 and 4, so they are not parallel.",
+              wrong: [
+                ["True. They use the same numbers.", "ALG.LINE.M-C"],
+                ["True. Both go up from left to right."],
+              ],
+            },
+            {
+              claim: "Two lines with the same gradient are parallel.",
+              truth: "sometimes",
+              right:
+                "Sometimes. They are parallel unless they also have the same intercept, when they are the same line.",
+              wrong: [
+                ["Never. Parallel lines need different gradients.", "ALG.LINE.M-C"],
+                ["Always, even when they have the same equation."],
+              ],
+            },
           ],
-          solution: [{ say: "Parallel lines share a gradient, not an intercept." }],
-        });
+        );
     }
   },
 

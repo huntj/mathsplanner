@@ -10,7 +10,7 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MD-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -88,7 +88,7 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MD-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -166,7 +166,7 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MD-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -244,7 +244,7 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MD-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -315,7 +315,7 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MD-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -386,7 +386,7 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MD-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -450,14 +450,14 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MD-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -468,14 +468,14 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -484,10 +484,19 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -495,7 +504,7 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Both parts must be multiplied: 150 + 20 = 170.",
+                  "v": "Sometimes. Only for even numbers.",
                 },
               ],
               "id": "RA",
@@ -504,7 +513,7 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Adding 4 at the end is the same as multiplying it.",
+                  "v": "Always. 14 lots of 5 is 10 lots of 5 and 4 lots of 5: 50 + 20 = 70.",
                 },
               ],
               "id": "RB",
@@ -513,7 +522,7 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You only multiply the tens.",
+                  "v": "Never. You must multiply 14 by 5 in one go.",
                 },
               ],
               "id": "RC",
@@ -523,14 +532,6 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "MD.PARTITION.MISSES-PARTS",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -543,37 +544,41 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
     ],
     "solution": [
       {
-        "math": "34 \\times 5 = 150 + 20 = 170",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. 14 lots of 5 is 10 lots of 5 and 4 lots of 5: 50 + 20 = 70.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Nadia works out ",
+        "v": "To multiply 14 by 5, you can work out ",
       },
       {
         "t": "math",
-        "v": "34 \\times 5",
+        "v": "10 \\times 5",
       },
       {
         "t": "text",
-        "v": " as ",
+        "v": " and ",
       },
       {
         "t": "math",
-        "v": "30 \\times 5 + 4 = 154",
+        "v": "4 \\times 5",
       },
       {
         "t": "text",
-        "v": ".",
+        "v": " and add them.",
       },
     ],
   },
@@ -585,7 +590,7 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MD-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -713,7 +718,7 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MD-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -725,7 +730,7 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -751,7 +756,7 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You only multiply the tens.",
+                  "v": "True. Adding 4 at the end is the same as multiplying it.",
                 },
               ],
               "id": "RA",
@@ -760,7 +765,7 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Adding 4 at the end is the same as multiplying it.",
+                  "v": "False. Both parts must be multiplied: 360 + 24 = 384.",
                 },
               ],
               "id": "RB",
@@ -769,7 +774,7 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Both parts must be multiplied: 360 + 24 = 384.",
+                  "v": "True. You only multiply the tens.",
                 },
               ],
               "id": "RC",
@@ -789,7 +794,7 @@ exports[`Y4-MD-05.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "MD.PARTITION.MISSES-PARTS",

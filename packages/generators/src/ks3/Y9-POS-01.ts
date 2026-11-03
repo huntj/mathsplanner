@@ -20,6 +20,7 @@ import {
   shapesGrid,
   translate,
 } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   shape: number;
@@ -34,7 +35,7 @@ const MAX = 12;
 
 export default defineGenerator<Params>({
   id: "Y9-POS-01",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 3, 4],
   misconceptions: ["POS.ENLARGE.ADD", "POS.ENLARGE.CENTRE", "POS.TRANSFORM.CHANGES-SHAPE"],
 
@@ -170,24 +171,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Nina says that enlarging a shape by scale factor ½ makes it bigger, because it is an enlargement.`,
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Nina says that enlarging a shape by scale factor ½ makes it bigger, because it is an enlargement.`,
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A scale factor between 0 and 1 makes every length smaller: scale factor ½ halves them.",
+                  correct: true,
+                },
+                { text: "True. Enlargements always make shapes bigger.", code: "POS.ENLARGE.ADD" },
+                { text: "True. You add ½ to every length.", code: "POS.ENLARGE.ADD" },
+              ],
+              solution: [
+                {
+                  say: "Every length is multiplied by the scale factor, so ½ halves them. The angles stay the same.",
+                },
+              ],
+            }),
+          [
             {
-              text: "False. A scale factor between 0 and 1 makes every length smaller: scale factor ½ halves them.",
-              correct: true,
+              statement:
+                "A 3 cm by 5 cm rectangle is enlarged by scale factor 2. Ola says the image is 6 cm by 10 cm.",
+              truth: true,
+              right: "True. Every length is multiplied by 2.",
+              wrong: [
+                ["False. It is 5 cm by 7 cm, adding 2.", "POS.ENLARGE.ADD"],
+                ["False. The shape also changes."],
+              ],
             },
-            { text: "True. Enlargements always make shapes bigger.", code: "POS.ENLARGE.ADD" },
-            { text: "True. You add ½ to every length.", code: "POS.ENLARGE.ADD" },
-          ],
-          solution: [
             {
-              say: "Every length is multiplied by the scale factor, so ½ halves them. The angles stay the same.",
+              statement: "Bea says an enlargement changes the angles of a shape.",
+              truth: false,
+              right:
+                "False. An enlargement changes lengths, not angles: the image is similar to the shape.",
+              wrong: [
+                ["True. Everything gets bigger, angles too.", "POS.TRANSFORM.CHANGES-SHAPE"],
+                ["True. Angles grow by the scale factor."],
+              ],
+            },
+            {
+              claim:
+                "Enlarging a shape with a different centre but the same scale factor gives an image the same size.",
+              truth: "always",
+              right: "Always. The centre changes where the image is, not its size.",
+              wrong: [
+                ["Never. A new centre makes a bigger image.", "POS.ENLARGE.CENTRE"],
+                ["Sometimes. Only if the centre is inside the shape."],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

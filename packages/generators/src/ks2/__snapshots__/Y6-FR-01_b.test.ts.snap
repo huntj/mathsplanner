@@ -10,7 +10,7 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -87,7 +87,7 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -164,7 +164,7 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -234,14 +234,14 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -252,14 +252,14 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -268,10 +268,19 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -279,7 +288,7 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The common denominator is always the biggest denominator.",
+                  "v": "Never. You must add them.",
                 },
               ],
               "id": "RA",
@@ -288,7 +297,7 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 24 works, but 12 is a smaller common multiple of 4 and 6.",
+                  "v": "Sometimes. Only when one is double the other.",
                 },
               ],
               "id": "RB",
@@ -297,7 +306,7 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You always multiply the denominators to find the smallest one.",
+                  "v": "Always. The product is a multiple of both, though it may not be the smallest.",
                 },
               ],
               "id": "RC",
@@ -309,7 +318,15 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "FR.EQUIV.ADD-SAME",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.FACTOR.LCM-PRODUCT",
@@ -319,7 +336,7 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -329,7 +346,7 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Multiples of 6: 6, 12, 18, … The first that is also a multiple of 4 is 12.",
+            "v": "Always. The product is a multiple of both, though it may not be the smallest.",
           },
         ],
       },
@@ -337,23 +354,7 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ravi says the smallest common denominator for ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{1}{4}",
-      },
-      {
-        "t": "text",
-        "v": " and ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{1}{6}",
-      },
-      {
-        "t": "text",
-        "v": " is 24, because 4 × 6 = 24.",
+        "v": "Multiplying the two denominators gives a common denominator.",
       },
     ],
   },
@@ -365,7 +366,7 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -482,14 +483,14 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -500,14 +501,14 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -516,10 +517,19 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -527,7 +537,7 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 24 works, but 12 is a smaller common multiple of 4 and 6.",
+                  "v": "Always. The product is a multiple of both, though it may not be the smallest.",
                 },
               ],
               "id": "RA",
@@ -536,7 +546,7 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The common denominator is always the biggest denominator.",
+                  "v": "Never. You must add them.",
                 },
               ],
               "id": "RB",
@@ -545,7 +555,7 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You always multiply the denominators to find the smallest one.",
+                  "v": "Sometimes. Only when one is double the other.",
                 },
               ],
               "id": "RC",
@@ -555,6 +565,14 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "FR.EQUIV.ADD-SAME",
+            "feedback": [],
+          },
           {
             "answer": {
               "id": "RC",
@@ -567,7 +585,7 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -577,7 +595,7 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Multiples of 6: 6, 12, 18, … The first that is also a multiple of 4 is 12.",
+            "v": "Always. The product is a multiple of both, though it may not be the smallest.",
           },
         ],
       },
@@ -585,23 +603,7 @@ exports[`Y6-FR-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ravi says the smallest common denominator for ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{1}{4}",
-      },
-      {
-        "t": "text",
-        "v": " and ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{1}{6}",
-      },
-      {
-        "t": "text",
-        "v": " is 24, because 4 × 6 = 24.",
+        "v": "Multiplying the two denominators gives a common denominator.",
       },
     ],
   },

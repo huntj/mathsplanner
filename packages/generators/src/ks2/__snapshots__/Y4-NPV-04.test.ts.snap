@@ -10,7 +10,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -92,7 +92,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-NPV-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -174,7 +174,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -284,7 +284,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -382,7 +382,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-NPV-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -468,7 +468,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -538,7 +538,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -630,7 +630,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-NPV-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -722,7 +722,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -814,7 +814,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -826,7 +826,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -852,7 +852,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "With negative numbers, the bigger digit means the bigger number.",
+                  "v": "False. 3, 2, 1, 0, −1, −2: counting back 5 from 3 gives −2.",
                 },
               ],
               "id": "RA",
@@ -861,7 +861,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Negative numbers cannot be compared.",
+                  "v": "True. Take away 5 and change the sign.",
                 },
               ],
               "id": "RB",
@@ -870,7 +870,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "−3 is further left on the number line, so it is smaller: −3 < −1.",
+                  "v": "True. 3 mirrored is −3.",
                 },
               ],
               "id": "RC",
@@ -882,10 +882,10 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.NEGATIVE.ORDER",
+            "code": "NPV.NEGATIVE.MIRROR",
             "feedback": [],
           },
         ],
@@ -902,19 +902,15 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "On a number line −3 is left of −1, so −3 < −1.",
+            "v": "False. 3, 2, 1, 0, −1, −2: counting back 5 from 3 gives −2.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "t": "math",
-        "v": "-3 > -1",
-      },
-      {
         "t": "text",
-        "v": ", because 3 is bigger than 1.",
+        "v": "Leo counts back 5 from 3 and says he gets −3.",
       },
     ],
   },
@@ -926,7 +922,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-NPV-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -937,119 +933,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "With negative numbers, the bigger digit means the bigger number.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Negative numbers cannot be compared.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "−2 is further left on the number line, so it is smaller: −2 < −1.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.NEGATIVE.ORDER",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "On a number line −2 is left of −1, so −2 < −1.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "math",
-        "v": "-2 > -1",
-      },
-      {
-        "t": "text",
-        "v": ", because 2 is bigger than 1.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y4-NPV-04",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -1076,7 +960,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Negative numbers cannot be compared.",
+                  "v": "False. You cannot count back past 0.",
                 },
               ],
               "id": "RA",
@@ -1085,7 +969,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "−16 is further left on the number line, so it is smaller: −16 < −11.",
+                  "v": "True. After 0, counting back goes to the negative numbers.",
                 },
               ],
               "id": "RB",
@@ -1094,7 +978,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "With negative numbers, the bigger digit means the bigger number.",
+                  "v": "False. After 0 it goes 1, 2.",
                 },
               ],
               "id": "RC",
@@ -1109,7 +993,7 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.NEGATIVE.ORDER",
+            "code": "NPV.NEGATIVE.MIRROR",
             "feedback": [],
           },
         ],
@@ -1126,19 +1010,123 @@ exports[`Y4-NPV-04 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "On a number line −16 is left of −11, so −16 < −11.",
+            "v": "True. After 0, counting back goes to the negative numbers.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "t": "math",
-        "v": "-16 > -11",
+        "t": "text",
+        "v": "Mia counts back in ones from 2: 2, 1, 0, −1, −2.",
       },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y4-NPV-04",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. After 0, counting back goes to the negative numbers.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. After 0 it goes 1, 2.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. You cannot count back past 0.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.NEGATIVE.MIRROR",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. After 0, counting back goes to the negative numbers.",
+          },
+        ],
+      },
+    ],
+    "stem": [
       {
         "t": "text",
-        "v": ", because 16 is bigger than 11.",
+        "v": "Mia counts back in ones from 2: 2, 1, 0, −1, −2.",
       },
     ],
   },

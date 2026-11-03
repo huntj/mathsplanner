@@ -10,7 +10,7 @@ exports[`Y4-NPV-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -102,7 +102,7 @@ exports[`Y4-NPV-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-NPV-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -194,7 +194,7 @@ exports[`Y4-NPV-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -286,7 +286,7 @@ exports[`Y4-NPV-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -372,7 +372,7 @@ exports[`Y4-NPV-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-NPV-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -458,7 +458,7 @@ exports[`Y4-NPV-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -544,7 +544,115 @@ exports[`Y4-NPV-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 4,035 has a 5 at the end.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Both have 4 thousands; then 3 hundreds is more than 0 hundreds.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. They use the same digits, so they are equal.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.COMPARE.FIRST-DIGIT",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. Both have 4 thousands; then 3 hundreds is more than 0 hundreds.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Sol says 4,305 is bigger than 4,035.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y4-NPV-05",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -582,7 +690,7 @@ exports[`Y4-NPV-05 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "1,001 has more digits, so it is bigger: 901 < 1,001.",
+                  "v": "False. Both have 2 thousands and 9 hundreds; then 9 tens is more than 0 tens, so 2,999 > 2,909.",
                 },
               ],
               "id": "RA",
@@ -591,7 +699,7 @@ exports[`Y4-NPV-05 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The number with the bigger first digit is always bigger.",
+                  "v": "True. 2,909 has a 0, so it is bigger.",
                 },
               ],
               "id": "RB",
@@ -600,7 +708,7 @@ exports[`Y4-NPV-05 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The sign is the wrong way round, but the reason is right.",
+                  "v": "True. The arrow points to the bigger number.",
                 },
               ],
               "id": "RC",
@@ -610,14 +718,6 @@ exports[`Y4-NPV-05 > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.COMPARE.FIRST-DIGIT",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -640,139 +740,15 @@ exports[`Y4-NPV-05 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Count the digits first: 901 has 3, 1,001 has 4.",
+            "v": "False. Both have 2 thousands and 9 hundreds; then 9 tens is more than 0 tens, so 2,999 > 2,909.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "t": "math",
-        "v": "901 > 1{,}001",
-      },
-      {
         "t": "text",
-        "v": ", because 9 is bigger than 1.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y4-NPV-05",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "The number with the bigger first digit is always bigger.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "1,009 has more digits, so it is bigger: 976 < 1,009.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "The sign is the wrong way round, but the reason is right.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.COMPARE.FIRST-DIGIT",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.COMPARE.SIGN-DIRECTION",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Count the digits first: 976 has 3, 1,009 has 4.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "math",
-        "v": "976 > 1{,}009",
-      },
-      {
-        "t": "text",
-        "v": ", because 9 is bigger than 1.",
+        "v": "Pia writes 2,999 < 2,909.",
       },
     ],
   },
@@ -784,7 +760,7 @@ exports[`Y4-NPV-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -831,7 +807,7 @@ exports[`Y4-NPV-05 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The sign is the wrong way round, but the reason is right.",
+                  "v": "The number with the bigger first digit is always bigger.",
                 },
               ],
               "id": "RB",
@@ -840,7 +816,7 @@ exports[`Y4-NPV-05 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The number with the bigger first digit is always bigger.",
+                  "v": "The sign is the wrong way round, but the reason is right.",
                 },
               ],
               "id": "RC",
@@ -855,7 +831,7 @@ exports[`Y4-NPV-05 > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.COMPARE.SIGN-DIRECTION",
+            "code": "NPV.COMPARE.FIRST-DIGIT",
             "feedback": [],
           },
           {
@@ -863,7 +839,7 @@ exports[`Y4-NPV-05 > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.COMPARE.FIRST-DIGIT",
+            "code": "NPV.COMPARE.SIGN-DIRECTION",
             "feedback": [],
           },
         ],

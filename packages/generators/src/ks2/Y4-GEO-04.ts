@@ -8,6 +8,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import type { CartesianSpec, Coord } from "@mathsplanner/diagrams";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** The left half: it starts and ends on the mirror line x = 5. */
@@ -47,7 +48,7 @@ const same = (a: Coord[], b: Coord[]) =>
 
 export default defineGenerator<Params>({
   id: "Y4-GEO-04",
-  version: "1.0.1",
+  version: "1.1.0",
   depths: [1, 3, 4],
   misconceptions: ["GEO.SYMMETRY.TRANSLATES", "GEO.SYMMETRY.HALF-DISTANCE"],
 
@@ -174,49 +175,86 @@ export default defineGenerator<Params>({
       default: {
         const shift = MIRROR - Math.min(...p.half.map((q) => q[0]));
         const other = p.symmetric ? mirror : p.half.map(([x, y]): Coord => [x + shift, y]);
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Mia completes the shape. She says it is now symmetric about the dashed line.",
-            A.figure(
-              grid(
-                [p.half, other],
-                p.symmetric
-                  ? "A shape whose right half is the reflection of its left half."
-                  : "A shape whose right half is a slid copy of its left half.",
-              ),
-            ),
-          ],
-          truth: p.symmetric,
-          reasons: p.symmetric
-            ? [
-                {
-                  text: "Each corner on the right is the same distance from the mirror as its partner on the left.",
-                  correct: true,
-                },
-                {
-                  text: "It is not symmetric: the right half should look exactly like the left half, the same way round.",
-                  code: "GEO.SYMMETRY.TRANSLATES",
-                },
-                { text: "It is not symmetric because the shape is not a square." },
-              ]
-            : [
-                {
-                  text: "The right half has been slid across instead of flipped, so folding on the mirror would not match it up.",
-                  correct: true,
-                },
-                {
-                  text: "Both halves are the same shape and size, so it must be symmetric.",
-                  code: "GEO.SYMMETRY.TRANSLATES",
-                },
-                { text: "Any shape with a vertical dashed line through it is symmetric." },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Mia completes the shape. She says it is now symmetric about the dashed line.",
+                A.figure(
+                  grid(
+                    [p.half, other],
+                    p.symmetric
+                      ? "A shape whose right half is the reflection of its left half."
+                      : "A shape whose right half is a slid copy of its left half.",
+                  ),
+                ),
               ],
-          solution: [
+              truth: p.symmetric,
+              reasons: p.symmetric
+                ? [
+                    {
+                      text: "Each corner on the right is the same distance from the mirror as its partner on the left.",
+                      correct: true,
+                    },
+                    {
+                      text: "It is not symmetric: the right half should look exactly like the left half, the same way round.",
+                      code: "GEO.SYMMETRY.TRANSLATES",
+                    },
+                    { text: "It is not symmetric because the shape is not a square." },
+                  ]
+                : [
+                    {
+                      text: "The right half has been slid across instead of flipped, so folding on the mirror would not match it up.",
+                      correct: true,
+                    },
+                    {
+                      text: "Both halves are the same shape and size, so it must be symmetric.",
+                      code: "GEO.SYMMETRY.TRANSLATES",
+                    },
+                    { text: "Any shape with a vertical dashed line through it is symmetric." },
+                  ],
+              solution: [
+                {
+                  say: "Imagine folding along the mirror line. Every corner must land on its partner, which means each pair is the same distance from the line on opposite sides.",
+                },
+              ],
+            }),
+          [
             {
-              say: "Imagine folding along the mirror line. Every corner must land on its partner, which means each pair is the same distance from the line on opposite sides.",
+              claim:
+                "Each point and its reflection are the same distance from the line of symmetry.",
+              truth: "always",
+              right: "Always. That is what makes the two halves match.",
+              wrong: [
+                ["Sometimes. Only near the line.", "GEO.SYMMETRY.HALF-DISTANCE"],
+                ["Never. The reflection is twice as far."],
+              ],
+            },
+            {
+              statement:
+                "To complete a symmetric shape, Ivy copies the half and slides it across the line.",
+              truth: false,
+              right:
+                "False. Sliding keeps it facing the same way. Reflect it, so it is flipped over the line.",
+              wrong: [
+                ["True. Slide the half to the other side.", "GEO.SYMMETRY.TRANSLATES"],
+                ["True. Symmetry is a slide."],
+              ],
+            },
+            {
+              statement:
+                "A square is 2 squares to the left of a mirror line. Ola draws its reflection 2 squares to the right.",
+              truth: true,
+              right: "True. The image is the same distance from the line, on the other side.",
+              wrong: [
+                ["False. It goes 4 squares to the right.", "GEO.SYMMETRY.HALF-DISTANCE"],
+                ["False. It goes on the line."],
+              ],
             },
           ],
-        });
+        );
       }
     }
   },

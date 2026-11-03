@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y9-ALG-08.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SEQUENCE.GEOMETRIC-ADD"],
 
@@ -67,25 +68,61 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["The terms of a geometric sequence get bigger."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["The terms of a geometric sequence get bigger."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: `Sometimes. Multiplying by ${p.r} makes them grow, but multiplying by ½ (e.g. 64, 32, 16, …) makes them shrink.`,
+                  correct: true,
+                },
+                {
+                  text: "Always. Multiplying makes numbers bigger.",
+                  code: "ALG.SEQUENCE.GEOMETRIC-ADD",
+                },
+                { text: "Never. Geometric sequences always go down." },
+              ],
+              solution: [
+                { say: "The common ratio decides: bigger than 1 grows; between 0 and 1 shrinks." },
+              ],
+            }),
+          [
             {
-              text: `Sometimes. Multiplying by ${p.r} makes them grow, but multiplying by ½ (e.g. 64, 32, 16, …) makes them shrink.`,
-              correct: true,
+              statement: "Ivy says the next term of 3, 6, 12, 24, … is 48.",
+              truth: true,
+              right: "True. Each term is double the one before, and 24 × 2 = 48.",
+              wrong: [
+                ["False. It goes up by 3, so 27.", "ALG.SEQUENCE.GEOMETRIC-ADD"],
+                ["False. It is 36, adding 12."],
+              ],
             },
             {
-              text: "Always. Multiplying makes numbers bigger.",
-              code: "ALG.SEQUENCE.GEOMETRIC-ADD",
+              statement: "Sam says 2, 4, 6, 8, … is a geometric sequence.",
+              truth: false,
+              right:
+                "False. It adds 2 each time, so it is arithmetic. A geometric sequence multiplies by the same number.",
+              wrong: [
+                ["True. The terms double: 2 to 4.", "ALG.SEQUENCE.GEOMETRIC-ADD"],
+                ["True. Any sequence of even numbers is geometric."],
+              ],
             },
-            { text: "Never. Geometric sequences always go down." },
+            {
+              claim:
+                "Multiplying each term by $\\frac{1}{2}$ gives a geometric sequence whose terms get smaller.",
+              truth: "always",
+              right:
+                "Always, for positive terms. Halving makes each positive term smaller: 40, 20, 10, 5, …",
+              wrong: [
+                ["Never. Geometric sequences always grow.", "ALG.SEQUENCE.GEOMETRIC-ADD"],
+                ["Sometimes. Only when the first term is even."],
+              ],
+            },
           ],
-          solution: [
-            { say: "The common ratio decides: bigger than 1 grows; between 0 and 1 shrinks." },
-          ],
-        });
+        );
     }
   },
 

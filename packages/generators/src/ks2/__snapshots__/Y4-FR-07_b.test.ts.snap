@@ -10,7 +10,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-FR-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -89,7 +89,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-FR-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -168,7 +168,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-FR-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -247,7 +247,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-FR-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -369,7 +369,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-FR-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -491,7 +491,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-FR-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -613,7 +613,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-FR-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -624,7 +624,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
@@ -651,7 +651,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Dividing by 100 moves every digit 2 places to the right: 4 ÷ 100 = 0.04.",
+                  "v": "True. Dividing by 100 moves the digits two places to the right: 5 hundredths.",
                 },
               ],
               "id": "RA",
@@ -660,7 +660,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Dividing by 100 puts two zeros after the point.",
+                  "v": "False. It is 0.5.",
                 },
               ],
               "id": "RB",
@@ -669,7 +669,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The answer is smaller, so it must be right.",
+                  "v": "False. It is 500.",
                 },
               ],
               "id": "RC",
@@ -687,6 +687,14 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
             "code": "FR.DECIMAL.PLACE",
             "feedback": [],
           },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.POWERS10.WRONG-WAY",
+            "feedback": [],
+          },
         ],
         "prompt": [
           {
@@ -701,7 +709,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Dividing by 100 moves every digit 2 places to the right: 4 ÷ 100 = 0.04.",
+            "v": "True. Dividing by 100 moves the digits two places to the right: 5 hundredths.",
           },
         ],
       },
@@ -709,11 +717,11 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Isla says ",
+        "v": "Sam says ",
       },
       {
         "t": "math",
-        "v": "4 \\div 100 = 0.004",
+        "v": "5 \\div 100 = 0.05",
       },
       {
         "t": "text",
@@ -722,14 +730,14 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-FR-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -740,14 +748,14 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -756,10 +764,19 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -767,7 +784,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The answer is smaller, so it must be right.",
+                  "v": "Always. 10 × 10 = 100.",
                 },
               ],
               "id": "RA",
@@ -776,7 +793,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Dividing by 100 puts two zeros after the point.",
+                  "v": "Never. It is the same as dividing by 20.",
                 },
               ],
               "id": "RB",
@@ -785,7 +802,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Dividing by 100 moves every digit 2 places to the right: 28 ÷ 100 = 0.28.",
+                  "v": "Sometimes. Only for multiples of 10.",
                 },
               ],
               "id": "RC",
@@ -800,14 +817,14 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "FR.DECIMAL.PLACE",
+            "code": "NPV.POWERS10.WRONG-WAY",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -817,7 +834,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Dividing by 100 moves every digit 2 places to the right: 28 ÷ 100 = 0.28.",
+            "v": "Always. 10 × 10 = 100.",
           },
         ],
       },
@@ -825,15 +842,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Isla says ",
-      },
-      {
-        "t": "math",
-        "v": "28 \\div 100 = 0.028",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Dividing by 100 is the same as dividing by 10 and then by 10 again.",
       },
     ],
   },
@@ -845,7 +854,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-FR-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -856,7 +865,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -883,7 +892,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The answer is smaller, so it must be right.",
+                  "v": "False. It is 0.5.",
                 },
               ],
               "id": "RA",
@@ -892,7 +901,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Dividing by 100 puts two zeros after the point.",
+                  "v": "False. It is 500.",
                 },
               ],
               "id": "RB",
@@ -901,7 +910,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Dividing by 100 moves every digit 2 places to the right: 19 ÷ 100 = 0.19.",
+                  "v": "True. Dividing by 100 moves the digits two places to the right: 5 hundredths.",
                 },
               ],
               "id": "RC",
@@ -913,10 +922,18 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "FR.DECIMAL.PLACE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.POWERS10.WRONG-WAY",
             "feedback": [],
           },
         ],
@@ -933,7 +950,7 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Dividing by 100 moves every digit 2 places to the right: 19 ÷ 100 = 0.19.",
+            "v": "True. Dividing by 100 moves the digits two places to the right: 5 hundredths.",
           },
         ],
       },
@@ -941,11 +958,11 @@ exports[`Y4-FR-07.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Isla says ",
+        "v": "Sam says ",
       },
       {
         "t": "math",
-        "v": "19 \\div 100 = 0.019",
+        "v": "5 \\div 100 = 0.05",
       },
       {
         "t": "text",

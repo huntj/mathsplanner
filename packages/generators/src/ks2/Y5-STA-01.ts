@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { lineGraph } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Plant height in cm at weeks 0 to 6, rising. */
@@ -20,7 +21,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y5-STA-01",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.SCALE.READ", "AS.PROBLEM.KEYWORD"],
 
@@ -84,25 +85,57 @@ export default defineGenerator<Params>({
           flat >= 0
             ? `The plant did not grow between week ${flat} and week ${flat + 1}.`
             : "The plant grew every week.";
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [intro, graph, ` Pia says: "${statement}"`],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [intro, graph, ` Pia says: "${statement}"`],
+              truth: true,
+              reasons: [
+                {
+                  text:
+                    flat >= 0
+                      ? `True. The line is flat between week ${flat} and week ${flat + 1}: the height stayed the same.`
+                      : "True. The line goes up between every pair of weeks.",
+                  correct: true,
+                },
+                { text: "False. A line graph always goes up.", code: "STA.SCALE.READ" },
+                { text: "False. You cannot tell growth from a line graph." },
+              ],
+              solution: [
+                { say: "A flat part of the line means no change; going up means the plant grew." },
+              ],
+            }),
+          [
             {
-              text:
-                flat >= 0
-                  ? `True. The line is flat between week ${flat} and week ${flat + 1}: the height stayed the same.`
-                  : "True. The line goes up between every pair of weeks.",
-              correct: true,
+              statement:
+                "A line graph's scale goes up in 2s. A point is halfway between 6 and 8. Leo says it shows 7.",
+              truth: true,
+              right: "True. Halfway between 6 and 8 is 7.",
+              wrong: [["False. It shows 6.5.", "STA.SCALE.READ"], ["False. It shows 8."]],
             },
-            { text: "False. A line graph always goes up.", code: "STA.SCALE.READ" },
-            { text: "False. You cannot tell growth from a line graph." },
+            {
+              statement:
+                "A line graph shows 12°C at 9:00 and 20°C at 13:00. Ivy says the temperature fell by 8 degrees.",
+              truth: false,
+              right: "False. It rose by 8 degrees: from 12°C up to 20°C.",
+              wrong: [
+                ["True. 'By' means take away, and 20 − 12 = 8.", "AS.PROBLEM.KEYWORD"],
+                ["True. Temperatures fall during the day."],
+              ],
+            },
+            {
+              claim: "A flat part of a line graph shows that nothing changed then.",
+              truth: "always",
+              right: "Always. A flat line means the value stayed the same.",
+              wrong: [
+                ["Never. Flat means it went down.", "STA.SCALE.READ"],
+                ["Sometimes. Only at the start."],
+              ],
+            },
           ],
-          solution: [
-            { say: "A flat part of the line means no change; going up means the plant grew." },
-          ],
-        });
+        );
       }
     }
   },

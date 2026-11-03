@@ -10,7 +10,7 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -92,7 +92,7 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -174,7 +174,7 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -256,7 +256,7 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -327,7 +327,7 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -398,7 +398,7 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -462,138 +462,14 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-01.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "71 is not a multiple of 6: the count goes 66, 72.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Only if you start from 1.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "If you keep counting you say every number.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.SEQUENCE.STEP-ONE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Counting in 6s from 0 says only multiples of 6.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "If you count in ",
-      },
-      {
-        "t": "math",
-        "v": "6",
-      },
-      {
-        "t": "text",
-        "v": "s from 0, you will say ",
-      },
-      {
-        "t": "math",
-        "v": "71",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y4-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -605,13 +481,13 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -620,10 +496,19 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -631,7 +516,7 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "98 = 14 × 7, so it is in the count.",
+                  "v": "Sometimes. Only up to 90.",
                 },
               ],
               "id": "RA",
@@ -640,7 +525,7 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only numbers below 50 are said.",
+                  "v": "Always. 9 → 9, 18 → 1 + 8 = 9, 27 → 9, and 99 → 18.",
                 },
               ],
               "id": "RB",
@@ -649,7 +534,7 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "You never say it, because it is not a multiple of 7.",
+                  "v": "Never. The digits are random.",
                 },
               ],
               "id": "RC",
@@ -658,11 +543,20 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.SEQUENCE.STEP-ONE",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -672,7 +566,7 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Counting in 7s from 0 says only multiples of 7.",
+            "v": "Always. 9 → 9, 18 → 1 + 8 = 9, 27 → 9, and 99 → 18.",
           },
         ],
       },
@@ -680,23 +574,7 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "If you count in ",
-      },
-      {
-        "t": "math",
-        "v": "7",
-      },
-      {
-        "t": "text",
-        "v": "s from 0, you will say ",
-      },
-      {
-        "t": "math",
-        "v": "98",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "When you count in 9s from 0, the digits of each number add up to a multiple of 9.",
       },
     ],
   },
@@ -705,10 +583,10 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
     "diagrams": [],
     "key": {
       "depth": 4,
-      "numbers": "stretch",
+      "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -746,7 +624,7 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "If you keep counting you say every number.",
+                  "v": "True. 45 is between 42 and 48.",
                 },
               ],
               "id": "RA",
@@ -755,7 +633,7 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only if you start from 1.",
+                  "v": "True. Every number comes up in the end.",
                 },
               ],
               "id": "RB",
@@ -764,7 +642,7 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "67 is not a multiple of 9: the count goes 63, 72.",
+                  "v": "False. Counting in 6s gives multiples of 6: 42, 48 … 45 is not one of them.",
                 },
               ],
               "id": "RC",
@@ -796,7 +674,7 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Counting in 9s from 0 says only multiples of 9.",
+            "v": "False. Counting in 6s gives multiples of 6: 42, 48 … 45 is not one of them.",
           },
         ],
       },
@@ -804,23 +682,115 @@ exports[`Y4-NPV-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "If you count in ",
+        "v": "Leo counts in 6s from 0. He says he will say 45.",
       },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y4-NPV-01.a",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
       {
-        "t": "math",
-        "v": "9",
+        "answer": {
+          "correct": "C",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. The numbers go odd, even, odd, even: 7, 14, 21, 28 …",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. 7 is odd, so its multiples are odd.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only after 50.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
       },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Never. The numbers go odd, even, odd, even: 7, 14, 21, 28 …",
+          },
+        ],
+      },
+    ],
+    "stem": [
       {
         "t": "text",
-        "v": "s from 0, you will say ",
-      },
-      {
-        "t": "math",
-        "v": "67",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Counting in 7s from 0 gives odd numbers only.",
       },
     ],
   },

@@ -119,7 +119,7 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-GEO-02.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -320,7 +320,7 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-GEO-02.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -521,7 +521,7 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-GEO-02.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -606,89 +606,14 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "angles": [
-          {
-            "from": "A",
-            "label": "",
-            "to": "B",
-            "value": 30,
-            "vertex": "O",
-          },
-        ],
-        "description": "Angle P, an angle with long arms.",
-        "points": {
-          "A": [
-            3.34834636,
-            0.590403804,
-          ],
-          "B": [
-            2.604551107,
-            2.185477873,
-          ],
-          "O": [
-            0,
-            0,
-          ],
-        },
-        "segments": [
-          {
-            "from": "O",
-            "to": "A",
-          },
-          {
-            "from": "O",
-            "to": "B",
-          },
-        ],
-        "type": "geometry",
-      },
-      {
-        "angles": [
-          {
-            "from": "A",
-            "label": "",
-            "to": "B",
-            "value": 150,
-            "vertex": "O",
-          },
-        ],
-        "description": "Angle Q, an angle with short arms.",
-        "points": {
-          "A": [
-            1.575692405,
-            0.277837084,
-          ],
-          "B": [
-            -1.503508193,
-            0.547232229,
-          ],
-          "O": [
-            0,
-            0,
-          ],
-        },
-        "segments": [
-          {
-            "from": "O",
-            "to": "A",
-          },
-          {
-            "from": "O",
-            "to": "B",
-          },
-        ],
-        "type": "geometry",
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-GEO-02.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -699,14 +624,14 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "C",
           "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -715,10 +640,19 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -726,7 +660,7 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "They are the same size because they are both drawn from a point.",
+                  "v": "Sometimes. For obtuse angles.",
                 },
               ],
               "id": "RA",
@@ -735,7 +669,7 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Angle P has longer arms, so it is the bigger angle.",
+                  "v": "Always. Longer arms mean a bigger angle.",
                 },
               ],
               "id": "RB",
@@ -744,7 +678,7 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Angle Q opens wider: it is a bigger turn, whatever the length of the arms.",
+                  "v": "Never. The size of an angle is the turn between its arms, not their length.",
                 },
               ],
               "id": "RC",
@@ -766,7 +700,7 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -776,7 +710,7 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Angle P is 30° and angle Q is 150°. Arm length does not change the size of an angle.",
+            "v": "Never. The size of an angle is the turn between its arms, not their length.",
           },
         ],
       },
@@ -784,106 +718,19 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Angle P has long arms; angle Q has short arms.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "i": 1,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": "Ali says angle Q is bigger than angle P.",
+        "v": "An angle with longer arms is bigger.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "angles": [
-          {
-            "from": "A",
-            "label": "",
-            "to": "B",
-            "value": 30,
-            "vertex": "O",
-          },
-        ],
-        "description": "Angle P, an angle with long arms.",
-        "points": {
-          "A": [
-            3.34834636,
-            0.590403804,
-          ],
-          "B": [
-            2.604551107,
-            2.185477873,
-          ],
-          "O": [
-            0,
-            0,
-          ],
-        },
-        "segments": [
-          {
-            "from": "O",
-            "to": "A",
-          },
-          {
-            "from": "O",
-            "to": "B",
-          },
-        ],
-        "type": "geometry",
-      },
-      {
-        "angles": [
-          {
-            "from": "A",
-            "label": "",
-            "to": "B",
-            "value": 140,
-            "vertex": "O",
-          },
-        ],
-        "description": "Angle Q, an angle with short arms.",
-        "points": {
-          "A": [
-            1.575692405,
-            0.277837084,
-          ],
-          "B": [
-            -1.385640646,
-            0.8,
-          ],
-          "O": [
-            0,
-            0,
-          ],
-        },
-        "segments": [
-          {
-            "from": "O",
-            "to": "A",
-          },
-          {
-            "from": "O",
-            "to": "B",
-          },
-        ],
-        "type": "geometry",
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-GEO-02.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -894,14 +741,14 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "C",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -910,10 +757,19 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -921,7 +777,7 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Angle P has longer arms, so it is the bigger angle.",
+                  "v": "Always. Longer arms mean a bigger angle.",
                 },
               ],
               "id": "RA",
@@ -930,7 +786,7 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Angle Q opens wider: it is a bigger turn, whatever the length of the arms.",
+                  "v": "Never. The size of an angle is the turn between its arms, not their length.",
                 },
               ],
               "id": "RB",
@@ -939,7 +795,7 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "They are the same size because they are both drawn from a point.",
+                  "v": "Sometimes. For obtuse angles.",
                 },
               ],
               "id": "RC",
@@ -961,7 +817,7 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -971,7 +827,7 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Angle P is 30° and angle Q is 140°. Arm length does not change the size of an angle.",
+            "v": "Never. The size of an angle is the turn between its arms, not their length.",
           },
         ],
       },
@@ -979,106 +835,19 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Angle P has long arms; angle Q has short arms.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "i": 1,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": "Ali says angle Q is bigger than angle P.",
+        "v": "An angle with longer arms is bigger.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "angles": [
-          {
-            "from": "A",
-            "label": "",
-            "to": "B",
-            "value": 95,
-            "vertex": "O",
-          },
-        ],
-        "description": "Angle P, an angle with long arms.",
-        "points": {
-          "A": [
-            3.34834636,
-            0.590403804,
-          ],
-          "B": [
-            -0.879984753,
-            3.284147809,
-          ],
-          "O": [
-            0,
-            0,
-          ],
-        },
-        "segments": [
-          {
-            "from": "O",
-            "to": "A",
-          },
-          {
-            "from": "O",
-            "to": "B",
-          },
-        ],
-        "type": "geometry",
-      },
-      {
-        "angles": [
-          {
-            "from": "A",
-            "label": "",
-            "to": "B",
-            "value": 150,
-            "vertex": "O",
-          },
-        ],
-        "description": "Angle Q, an angle with short arms.",
-        "points": {
-          "A": [
-            1.575692405,
-            0.277837084,
-          ],
-          "B": [
-            -1.503508193,
-            0.547232229,
-          ],
-          "O": [
-            0,
-            0,
-          ],
-        },
-        "segments": [
-          {
-            "from": "O",
-            "to": "A",
-          },
-          {
-            "from": "O",
-            "to": "B",
-          },
-        ],
-        "type": "geometry",
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-GEO-02.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1089,14 +858,14 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "C",
           "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1105,10 +874,19 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1116,7 +894,7 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Angle P has longer arms, so it is the bigger angle.",
+                  "v": "Always. Longer arms mean a bigger angle.",
                 },
               ],
               "id": "RA",
@@ -1125,7 +903,7 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "They are the same size because they are both drawn from a point.",
+                  "v": "Sometimes. For obtuse angles.",
                 },
               ],
               "id": "RB",
@@ -1134,7 +912,7 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Angle Q opens wider: it is a bigger turn, whatever the length of the arms.",
+                  "v": "Never. The size of an angle is the turn between its arms, not their length.",
                 },
               ],
               "id": "RC",
@@ -1156,7 +934,7 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1166,7 +944,7 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Angle P is 95° and angle Q is 150°. Arm length does not change the size of an angle.",
+            "v": "Never. The size of an angle is the turn between its arms, not their length.",
           },
         ],
       },
@@ -1174,19 +952,7 @@ exports[`Y4-GEO-02.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Angle P has long arms; angle Q has short arms.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "i": 1,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": "Ali says angle P is bigger than angle Q.",
+        "v": "An angle with longer arms is bigger.",
       },
     ],
   },

@@ -10,7 +10,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -99,7 +99,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -188,7 +188,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -277,7 +277,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -350,7 +350,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -423,7 +423,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -496,7 +496,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -534,7 +534,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The bigger numerator means the bigger fraction.",
+                  "v": "True. Eighths are bigger than quarters.",
                 },
               ],
               "id": "RA",
@@ -543,7 +543,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You cannot compare fractions with different denominators.",
+                  "v": "True. Compare the tops.",
                 },
               ],
               "id": "RB",
@@ -552,7 +552,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. With a common denominator: 5/10 > 4/10.",
+                  "v": "False. 3/4 = 6/8, which is more than 5/8.",
                 },
               ],
               "id": "RC",
@@ -565,6 +565,14 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
+              "type": "choice",
+            },
+            "code": "FR.UNIT.BIGGER-DENOMINATOR",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
               "type": "choice",
             },
             "code": "FR.COMPARE.NUMERATOR-ONLY",
@@ -584,7 +592,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "With a common denominator: 5/10 > 4/10.",
+            "v": "False. 3/4 = 6/8, which is more than 5/8.",
           },
         ],
       },
@@ -592,15 +600,15 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jo says ",
+        "v": "Ella says ",
       },
       {
         "t": "math",
-        "v": "\\frac{2}{5} > \\frac{1}{2}",
+        "v": "\\frac{3}{4} < \\frac{5}{8}",
       },
       {
         "t": "text",
-        "v": ", because 2 is bigger than 1.",
+        "v": ", because 3 is less than 5.",
       },
     ],
   },
@@ -612,7 +620,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -623,7 +631,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -650,7 +658,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The bigger numerator means the bigger fraction.",
+                  "v": "False. 8 is bigger than 2, so 5/8 is smaller.",
                 },
               ],
               "id": "RA",
@@ -659,7 +667,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You cannot compare fractions with different denominators.",
+                  "v": "False. They are equal.",
                 },
               ],
               "id": "RB",
@@ -668,7 +676,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. With a common denominator: 10/15 > 9/15.",
+                  "v": "True. 1/2 = 4/8, and 5/8 is more than 4/8.",
                 },
               ],
               "id": "RC",
@@ -683,7 +691,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "FR.COMPARE.NUMERATOR-ONLY",
+            "code": "FR.UNIT.BIGGER-DENOMINATOR",
             "feedback": [],
           },
         ],
@@ -700,7 +708,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "With a common denominator: 10/15 > 9/15.",
+            "v": "True. 1/2 = 4/8, and 5/8 is more than 4/8.",
           },
         ],
       },
@@ -708,27 +716,27 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jo says ",
+        "v": "Sam says ",
       },
       {
         "t": "math",
-        "v": "\\frac{3}{5} > \\frac{2}{3}",
+        "v": "\\frac{5}{8} > \\frac{1}{2}",
       },
       {
         "t": "text",
-        "v": ", because 3 is bigger than 2.",
+        "v": ".",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -739,14 +747,14 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -755,10 +763,19 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -766,7 +783,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The bigger numerator means the bigger fraction.",
+                  "v": "Sometimes. Only for halves.",
                 },
               ],
               "id": "RA",
@@ -775,7 +792,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. With a common denominator: 32/40 > 25/40.",
+                  "v": "Never. The smaller numerator is bigger.",
                 },
               ],
               "id": "RB",
@@ -784,7 +801,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You cannot compare fractions with different denominators.",
+                  "v": "Always. The parts are the same size, so more parts is more.",
                 },
               ],
               "id": "RC",
@@ -796,17 +813,17 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "FR.COMPARE.NUMERATOR-ONLY",
+            "code": "FR.UNIT.BIGGER-DENOMINATOR",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -816,7 +833,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "With a common denominator: 32/40 > 25/40.",
+            "v": "Always. The parts are the same size, so more parts is more.",
           },
         ],
       },
@@ -824,15 +841,7 @@ exports[`Y5-FR-01 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jo says ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{5}{8} > \\frac{4}{5}",
-      },
-      {
-        "t": "text",
-        "v": ", because 5 is bigger than 4.",
+        "v": "Of two fractions with the same denominator, the one with the bigger numerator is bigger.",
       },
     ],
   },

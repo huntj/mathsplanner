@@ -10,6 +10,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { rectangle } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   l: number;
@@ -21,7 +22,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y4-MEA-02",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: [
     "MEA.PERIMETER.MISSING-SIDES",
@@ -89,52 +90,84 @@ export default defineGenerator<Params>({
         });
       default: {
         const sq = 4 * p.side;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            A.figure(rectangle(p.l, p.w, p.unit)),
-            `Ivy says a square with sides of ${p.side} ${p.unit} has the same perimeter as this rectangle.`,
-          ],
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                A.figure(rectangle(p.l, p.w, p.unit)),
+                `Ivy says a square with sides of ${p.side} ${p.unit} has the same perimeter as this rectangle.`,
+              ],
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    {
+                      text: `True. The square's perimeter is 4 × ${p.side} = ${sq} ${p.unit}, and the rectangle's is ${per} ${p.unit}.`,
+                      correct: true,
+                    },
+                    {
+                      text: `False. The square's perimeter is ${p.side * p.side} ${p.unit}.`,
+                      code: "MEA.PERIMETER.AREA",
+                    },
+                    {
+                      text: `False. The rectangle's perimeter is ${p.l + p.w} ${p.unit}.`,
+                      code: "MEA.PERIMETER.MISSING-SIDES",
+                    },
+                  ]
+                : [
+                    {
+                      text: `False. The square's perimeter is 4 × ${p.side} = ${sq} ${p.unit}, but the rectangle's is ${per} ${p.unit}.`,
+                      correct: true,
+                    },
+                    { text: "True. Squares and rectangles always have the same perimeter." },
+                    {
+                      text: `True. The rectangle's perimeter is ${p.l + p.w} ${p.unit}.`,
+                      code: "MEA.PERIMETER.MISSING-SIDES",
+                    },
+                  ],
+              solution: [
                 {
-                  text: `True. The square's perimeter is 4 × ${p.side} = ${sq} ${p.unit}, and the rectangle's is ${per} ${p.unit}.`,
-                  correct: true,
-                },
-                {
-                  text: `False. The square's perimeter is ${p.side * p.side} ${p.unit}.`,
-                  code: "MEA.PERIMETER.AREA",
-                },
-                {
-                  text: `False. The rectangle's perimeter is ${p.l + p.w} ${p.unit}.`,
-                  code: "MEA.PERIMETER.MISSING-SIDES",
-                },
-              ]
-            : [
-                {
-                  text: `False. The square's perimeter is 4 × ${p.side} = ${sq} ${p.unit}, but the rectangle's is ${per} ${p.unit}.`,
-                  correct: true,
-                },
-                { text: "True. Squares and rectangles always have the same perimeter." },
-                {
-                  text: `True. The rectangle's perimeter is ${p.l + p.w} ${p.unit}.`,
-                  code: "MEA.PERIMETER.MISSING-SIDES",
+                  say: `Rectangle: 2 × (${p.l} + ${p.w}) = ${per} ${p.unit}. Square: 4 × ${p.side} = ${sq} ${p.unit}.`,
                 },
               ],
-          solution: [
+            }),
+          [
             {
-              say: `Rectangle: 2 × (${p.l} + ${p.w}) = ${per} ${p.unit}. Square: 4 × ${p.side} = ${sq} ${p.unit}.`,
+              statement: "Kai says a square with sides of 5 cm has a perimeter of 20 cm.",
+              truth: true,
+              right: "True. 4 sides of 5 cm: 5 + 5 + 5 + 5 = 20 cm.",
+              wrong: [
+                ["False. It is 25 cm, its area.", "MEA.PERIMETER.AREA"],
+                ["False. It is 10 cm.", "MEA.PERIMETER.MISSING-SIDES"],
+              ],
+            },
+            {
+              claim: "The perimeter of a rectangle is two lengths and two widths added together.",
+              truth: "always",
+              right: "Always. A rectangle has two sides of each length.",
+              wrong: [
+                ["Never. Add one length and one width.", "MEA.PERIMETER.MISSING-SIDES"],
+                ["Sometimes. Only for squares."],
+              ],
+            },
+            {
+              statement: "A rectangle is 6 cm long and 2 cm wide. Leo says its perimeter is 8 cm.",
+              truth: false,
+              right: "False. 8 cm is only two sides. All four: 6 + 2 + 6 + 2 = 16 cm.",
+              wrong: [
+                ["True. 6 + 2 = 8.", "MEA.PERIMETER.MISSING-SIDES"],
+                ["True. Add the numbers you can see.", "MEA.PERIMETER.MISSING-SIDES"],
+              ],
             },
           ],
-        });
+        );
       }
     }
   },
 
   verify(p, question) {
-    if (question.archetype === "true-or-false-why")
-      return (4 * p.side === 2 * (p.l + p.w)) === p.claimTrue;
+    if (question.key.depth === 4) return (4 * p.side === 2 * (p.l + p.w)) === p.claimTrue;
     const n = numberAnswer(question);
     return n === 2 * (p.l + p.w) || n === p.w;
   },

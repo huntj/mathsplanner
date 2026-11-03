@@ -10,7 +10,7 @@ exports[`Y5-FR-09.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-09.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -123,7 +123,7 @@ exports[`Y5-FR-09.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-09.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -236,7 +236,7 @@ exports[`Y5-FR-09.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-09.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -349,7 +349,7 @@ exports[`Y5-FR-09.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-09.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -418,7 +418,7 @@ exports[`Y5-FR-09.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-09.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -487,7 +487,7 @@ exports[`Y5-FR-09.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-09.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -556,7 +556,7 @@ exports[`Y5-FR-09.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-09.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -594,7 +594,7 @@ exports[`Y5-FR-09.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 13.07 and 13.7 are the same number.",
+                  "v": "True. Zeros after the point do not matter.",
                 },
               ],
               "id": "RA",
@@ -603,7 +603,7 @@ exports[`Y5-FR-09.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Zeros after the point do not matter.",
+                  "v": "True. 13.07 and 13.7 are the same number.",
                 },
               ],
               "id": "RB",
@@ -680,7 +680,7 @@ exports[`Y5-FR-09.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-09.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -692,7 +692,7 @@ exports[`Y5-FR-09.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -718,7 +718,7 @@ exports[`Y5-FR-09.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Zeros after the point do not matter.",
+                  "v": "False. 4.6 is four and six tenths. Four and six hundredths is 4.06.",
                 },
               ],
               "id": "RA",
@@ -727,7 +727,7 @@ exports[`Y5-FR-09.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The 0 holds the tenths place, so it is 2 point zero 8: 8 hundredths, not 8 tenths.",
+                  "v": "True. The 6 goes after the point.",
                 },
               ],
               "id": "RB",
@@ -736,7 +736,7 @@ exports[`Y5-FR-09.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 2.08 and 2.8 are the same number.",
+                  "v": "True. Hundredths and tenths are written the same way.",
                 },
               ],
               "id": "RC",
@@ -748,15 +748,7 @@ exports[`Y5-FR-09.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "FR.DECIMAL.PLACE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "FR.DECIMAL.PLACE",
@@ -776,7 +768,7 @@ exports[`Y5-FR-09.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "2.08 is 2 and 8 hundredths; 2.8 is 2 and 8 tenths.",
+            "v": "False. 4.6 is four and six tenths. Four and six hundredths is 4.06.",
           },
         ],
       },
@@ -784,15 +776,7 @@ exports[`Y5-FR-09.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Nia reads ",
-      },
-      {
-        "t": "math",
-        "v": "2.08",
-      },
-      {
-        "t": "text",
-        "v": " as "2 point 8".",
+        "v": "Bea writes four and six hundredths as 4.6.",
       },
     ],
   },
@@ -804,7 +788,7 @@ exports[`Y5-FR-09.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-09.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

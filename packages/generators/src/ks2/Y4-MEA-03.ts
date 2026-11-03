@@ -10,6 +10,7 @@ import type { CartesianSpec, Coord } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { chosenFigure, numberAnswer } from "../shared/counting.ts";
 import { lVertices, onGrid, polygonArea, polygonPerimeter } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   W: number;
@@ -32,7 +33,7 @@ const area = (v: Coord[]) => polygonArea(v);
 
 export default defineGenerator<Params>({
   id: "Y4-MEA-03",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 3, 4],
   misconceptions: ["MEA.PERIMETER.AREA"],
 
@@ -120,27 +121,67 @@ export default defineGenerator<Params>({
       default: {
         const r = rect(p.W2, p.H2);
         const truth = area(r) === n;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Each square is 1 cm².",
-            A.figure(onGrid([shape, r], "An L-shape and a rectangle drawn on a centimetre grid.")),
-            `Asha says the two shapes have the same area.`,
-          ],
-          truth,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Each square is 1 cm².",
+                A.figure(
+                  onGrid([shape, r], "An L-shape and a rectangle drawn on a centimetre grid."),
+                ),
+                `Asha says the two shapes have the same area.`,
+              ],
+              truth,
+              reasons: [
+                {
+                  text: `${truth ? "True" : "False"}. The L-shape covers ${n} squares and the rectangle covers ${area(r)}.`,
+                  correct: true,
+                },
+                {
+                  text: `${truth ? "False" : "True"}. ${per === polygonPerimeter(r) ? "They have the same perimeter, so they have the same area." : "Shapes that look different always have different areas."}`,
+                  code: "MEA.PERIMETER.AREA",
+                },
+                {
+                  text: `${truth ? "False" : "True"}. The taller shape always has the bigger area.`,
+                },
+              ],
+              solution: [
+                { say: `L-shape: ${n} cm². Rectangle: ${p.W2} × ${p.H2} = ${area(r)} cm².` },
+              ],
+            }),
+          [
             {
-              text: `${truth ? "True" : "False"}. The L-shape covers ${n} squares and the rectangle covers ${area(r)}.`,
-              correct: true,
+              statement: "A shape is made of 8 squares, each 1 cm². Sam says its area is 8 cm².",
+              truth: true,
+              right: "True. Area is how many squares cover it: 8 squares of 1 cm².",
+              wrong: [
+                ["False. Count the edges to find the area.", "MEA.PERIMETER.AREA"],
+                ["False. Its area is 8 cm."],
+              ],
             },
             {
-              text: `${truth ? "False" : "True"}. ${per === polygonPerimeter(r) ? "They have the same perimeter, so they have the same area." : "Shapes that look different always have different areas."}`,
-              code: "MEA.PERIMETER.AREA",
+              claim: "Two shapes made of the same number of squares have the same area.",
+              truth: "always",
+              right: "Always. They cover the same number of squares.",
+              wrong: [
+                ["Sometimes. The longer one has more area.", "MEA.PERIMETER.AREA"],
+                ["Never. Different shapes have different areas."],
+              ],
             },
-            { text: `${truth ? "False" : "True"}. The taller shape always has the bigger area.` },
+            {
+              claim: "Two shapes with the same area have the same perimeter.",
+              truth: "sometimes",
+              right:
+                "Sometimes. 4 squares in a row and 4 squares in a 2 by 2 block both have area 4, but perimeters 10 and 8.",
+              wrong: [
+                ["Always. Same squares, same edge.", "MEA.PERIMETER.AREA"],
+                ["Never. They are always different."],
+              ],
+            },
           ],
-          solution: [{ say: `L-shape: ${n} cm². Rectangle: ${p.W2} × ${p.H2} = ${area(r)} cm².` }],
-        });
+        );
       }
     }
   },

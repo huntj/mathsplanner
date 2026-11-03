@@ -47,7 +47,7 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-GEO-03.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -160,7 +160,7 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-GEO-03.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -283,7 +283,7 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-GEO-03.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -391,7 +391,7 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-GEO-03.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -504,7 +504,7 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-GEO-03.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -627,7 +627,7 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-GEO-03.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -691,14 +691,14 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-GEO-03.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -709,14 +709,14 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "C",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -725,10 +725,19 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -736,7 +745,7 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every angle in a polygon is 180°.",
+                  "v": "Never. 180° is a straight line, so the shape would have no corner there.",
                 },
               ],
               "id": "RA",
@@ -745,7 +754,7 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A pentagon splits into 3 triangles, so the angles add up to 540° and each is 108°.",
+                  "v": "Sometimes. In shapes with many sides.",
                 },
               ],
               "id": "RB",
@@ -754,7 +763,7 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A shape with 5 sides has 5 triangles inside it.",
+                  "v": "Always. Each angle is 180°.",
                 },
               ],
               "id": "RC",
@@ -764,14 +773,6 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.POLYGON.SUM-N-TIMES-180",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -784,7 +785,7 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -794,7 +795,7 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "(5 − 2) × 180° = 540°, and 540° ÷ 5 = 108°.",
+            "v": "Never. 180° is a straight line, so the shape would have no corner there.",
           },
         ],
       },
@@ -802,7 +803,124 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Omar says each angle inside a regular pentagon is 180°, because the angles add up to 5 × 180°.",
+        "v": "An angle inside a regular polygon is 180°.",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y6-GEO-03.d",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. It stops at the square.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. 60° for a triangle, 90° for a square, 108° for a pentagon, 120° for a hexagon, and so on.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. More sides make smaller angles.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "GEO.POLYGON.INTERIOR-EXTERIOR",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. 60° for a triangle, 90° for a square, 108° for a pentagon, 120° for a hexagon, and so on.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Each angle in a regular polygon gets bigger as the number of sides goes up.",
       },
     ],
   },
@@ -811,10 +929,10 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
     "diagrams": [],
     "key": {
       "depth": 4,
-      "numbers": "standard",
+      "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-GEO-03.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -852,118 +970,20 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
+                  "v": "True. A shape with 8 sides has 8 triangles inside it.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
                   "v": "True. Every angle in a polygon is 180°.",
                 },
               ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. A shape with 6 sides has 6 triangles inside it.",
-                },
-              ],
               "id": "RB",
             },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. A hexagon splits into 4 triangles, so the angles add up to 720° and each is 120°.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.POLYGON.SUM-N-TIMES-180",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "GEO.POLYGON.SUM-N-TIMES-180",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "(6 − 2) × 180° = 720°, and 720° ÷ 6 = 120°.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Omar says each angle inside a regular hexagon is 180°, because the angles add up to 6 × 180°.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y6-GEO-03.d",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
             {
               "content": [
                 {
@@ -971,24 +991,6 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
                   "v": "False. A octagon splits into 6 triangles, so the angles add up to 1080° and each is 135°.",
                 },
               ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Every angle in a polygon is 180°.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. A shape with 8 sides has 8 triangles inside it.",
-                },
-              ],
               "id": "RC",
             },
           ],
@@ -998,7 +1000,7 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "GEO.POLYGON.SUM-N-TIMES-180",
@@ -1006,7 +1008,7 @@ exports[`Y6-GEO-03.d > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.POLYGON.SUM-N-TIMES-180",

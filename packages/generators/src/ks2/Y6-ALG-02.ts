@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   first: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y6-ALG-02",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SEQUENCE.POSITION-RULE"],
 
@@ -76,27 +77,61 @@ export default defineGenerator<Params>({
       default: {
         const right = term(p.far);
         const slip = p.far * p.step;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `In the sequence ${shown}, …, Maya says the ${p.far}th term is ${p.far} × ${p.step} = ${slip}.`,
-          truth: slip === right,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `In the sequence ${shown}, …, Maya says the ${p.far}th term is ${p.far} × ${p.step} = ${slip}.`,
+              truth: slip === right,
+              reasons: [
+                {
+                  text: `False. The first term is ${p.first}, not ${p.step}. There are ${p.far - 1} steps after the first term: ${p.first} + ${p.far - 1} × ${p.step} = ${right}.`,
+                  correct: true,
+                },
+                {
+                  text: `True. The ${p.far}th term is always ${p.far} lots of the difference.`,
+                  code: "ALG.SEQUENCE.POSITION-RULE",
+                },
+                { text: "True. You cannot find a term without writing them all out." },
+              ],
+              solution: [
+                {
+                  say: `term = ${p.first} + (position − 1) × ${p.step}, so the ${p.far}th term is ${right}.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. The first term is ${p.first}, not ${p.step}. There are ${p.far - 1} steps after the first term: ${p.first} + ${p.far - 1} × ${p.step} = ${right}.`,
-              correct: true,
+              statement: "Zara says the sequence 5, 9, 13, 17, … goes up by 4 each time.",
+              truth: true,
+              right: "True. 9 − 5 = 4, 13 − 9 = 4 and 17 − 13 = 4.",
+              wrong: [
+                ["False. It goes up by 5, the first term.", "ALG.SEQUENCE.POSITION-RULE"],
+                ["False. It doubles each time."],
+              ],
             },
             {
-              text: `True. The ${p.far}th term is always ${p.far} lots of the difference.`,
-              code: "ALG.SEQUENCE.POSITION-RULE",
+              statement: "In the sequence 2, 5, 8, 11, …, Sol says the 10th term is 30.",
+              truth: false,
+              right: "False. It starts at 2 and adds 3 nine times: 2 + 27 = 29.",
+              wrong: [
+                ["True. 10 × 3 = 30.", "ALG.SEQUENCE.POSITION-RULE"],
+                ["True. Every term is a multiple of 3."],
+              ],
             },
-            { text: "True. You cannot find a term without writing them all out." },
+            {
+              claim: "A sequence that adds the same number each time keeps getting bigger.",
+              truth: "sometimes",
+              right:
+                "Sometimes. If the number added is positive it grows, but adding −2 makes it get smaller.",
+              wrong: [
+                ["Always. Adding makes things bigger.", "ALG.SEQUENCE.POSITION-RULE"],
+                ["Never. Sequences go down."],
+              ],
+            },
           ],
-          solution: [
-            {
-              say: `term = ${p.first} + (position − 1) × ${p.step}, so the ${p.far}th term is ${right}.`,
-            },
-          ],
-        });
+        );
       }
     }
   },

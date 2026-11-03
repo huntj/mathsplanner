@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { cylinder } from "../shared/solids.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   r: number;
@@ -21,7 +22,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "Y9-GEO-02.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.CIRCLE.FORMULA", "MD.SQUARE.DOUBLES"],
 
@@ -97,25 +98,59 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Mo says doubling the height of a cylinder of radius ${p.r} cm doubles its volume.`,
-          ],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Mo says doubling the height of a cylinder of radius ${p.r} cm doubles its volume.`,
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. Volume = πr²h, and the height is not squared, so doubling h doubles the volume.",
+                  correct: true,
+                },
+                { text: "False. It multiplies the volume by 4.", code: "MD.SQUARE.DOUBLES" },
+                {
+                  text: "False. The volume does not depend on the height.",
+                  code: "MEA.CIRCLE.FORMULA",
+                },
+              ],
+              solution: [{ say: "Doubling the radius would multiply it by 4." }],
+            }),
+          [
             {
-              text: "True. Volume = πr²h, and the height is not squared, so doubling h doubles the volume.",
-              correct: true,
+              statement:
+                "A cylinder has radius 3 cm and height 5 cm. Raj says its volume is $45\\pi$ cm³.",
+              truth: true,
+              right: "True. V = πr²h = π × 9 × 5 = 45π cm³.",
+              wrong: [
+                ["False. It is 30π cm³, as 3² = 6.", "MD.SQUARE.DOUBLES"],
+                ["False. It is 2π × 3 × 5 = 30π cm³.", "MEA.CIRCLE.FORMULA"],
+              ],
             },
-            { text: "False. It multiplies the volume by 4.", code: "MD.SQUARE.DOUBLES" },
             {
-              text: "False. The volume does not depend on the height.",
-              code: "MEA.CIRCLE.FORMULA",
+              statement: "Eve says doubling the radius of a cylinder doubles its volume.",
+              truth: false,
+              right: "False. V = πr²h, so doubling r multiplies the volume by 4.",
+              wrong: [
+                ["True. The volume goes up as the radius does.", "MD.SQUARE.DOUBLES"],
+                ["True. Doubling any length doubles the volume."],
+              ],
+            },
+            {
+              claim: "A cylinder's volume is its cross-section area times its height.",
+              truth: "always",
+              right: "Always. A cylinder is a prism with a circle for its cross-section.",
+              wrong: [
+                ["Never. Cylinders need a different formula.", "MEA.CIRCLE.FORMULA"],
+                ["Sometimes. Only when the height is bigger than the radius."],
+              ],
             },
           ],
-          solution: [{ say: "Doubling the radius would multiply it by 4." }],
-        });
+        );
     }
   },
 

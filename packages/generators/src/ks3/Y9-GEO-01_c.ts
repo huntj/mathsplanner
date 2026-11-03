@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { legsTriangle } from "../shared/geo.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   opp: number;
@@ -21,7 +22,7 @@ const deg = (r: number) => (r * 180) / Math.PI;
 
 export default defineGenerator<Params>({
   id: "Y9-GEO-01.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.TRIG.RATIO"],
 
@@ -113,22 +114,59 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ben says that if the opposite side of a right-angled triangle doubles (with the adjacent side the same), the angle doubles too.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ben says that if the opposite side of a right-angled triangle doubles (with the adjacent side the same), the angle doubles too.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. tan θ doubles, but θ does not: tan⁻¹(${p.opp}/${p.adj}) ≈ ${r1(deg(Math.atan(p.opp / p.adj)))}°, while tan⁻¹(${2 * p.opp}/${p.adj}) ≈ ${r1(deg(Math.atan((2 * p.opp) / p.adj)))}°.`,
+                  correct: true,
+                },
+                { text: "True. Angles and sides are in proportion.", code: "GEO.TRIG.RATIO" },
+                { text: "True. The angle is opposite ÷ adjacent.", code: "GEO.TRIG.RATIO" },
+              ],
+              solution: [{ say: "The angle grows more slowly than the side." }],
+            }),
+          [
             {
-              text: `False. tan θ doubles, but θ does not: tan⁻¹(${p.opp}/${p.adj}) ≈ ${r1(deg(Math.atan(p.opp / p.adj)))}°, while tan⁻¹(${2 * p.opp}/${p.adj}) ≈ ${r1(deg(Math.atan((2 * p.opp) / p.adj)))}°.`,
-              correct: true,
+              statement:
+                "A right-angled triangle has opposite 5 cm and adjacent 5 cm for angle θ. Jay says θ = 45°.",
+              truth: true,
+              right: "True. tan θ = 5 ÷ 5 = 1, and tan 45° = 1.",
+              wrong: [
+                ["False. θ = sin⁻¹(1) = 90°.", "GEO.TRIG.RATIO"],
+                ["False. θ is half of 180°, so 90°."],
+              ],
             },
-            { text: "True. Angles and sides are in proportion.", code: "GEO.TRIG.RATIO" },
-            { text: "True. The angle is opposite ÷ adjacent.", code: "GEO.TRIG.RATIO" },
+            {
+              statement:
+                "To find θ when the adjacent is 4 cm and the hypotenuse is 8 cm, Pam works out $\\cos 0.5$.",
+              truth: false,
+              right:
+                "False. cos θ = 4 ÷ 8 = 0.5, so θ = cos⁻¹(0.5) = 60°. Use the inverse function.",
+              wrong: [
+                ["True. cos θ = 0.5, so work out cos 0.5.", "GEO.TRIG.RATIO"],
+                ["True. Divide, then press cos."],
+              ],
+            },
+            {
+              claim:
+                "The two angles that are not the right angle in a right-angled triangle add up to 90°.",
+              truth: "always",
+              right: "Always. The angles add to 180°, and the right angle uses 90°.",
+              wrong: [
+                ["Sometimes. Only when the triangle is isosceles."],
+                ["Never. They add to 180°.", "GEO.TRIG.RATIO"],
+              ],
+            },
           ],
-          solution: [{ say: "The angle grows more slowly than the side." }],
-        });
+        );
     }
   },
 

@@ -10,7 +10,7 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-MEA-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -133,7 +133,7 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-MEA-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -256,7 +256,7 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-MEA-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -379,7 +379,7 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-MEA-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -449,7 +449,7 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-MEA-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -519,7 +519,7 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-MEA-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -670,7 +670,7 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-MEA-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -775,95 +775,14 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "An L-shaped rectilinear shape with some side lengths labelled.",
-        "points": {
-          "A": [
-            0,
-            0,
-          ],
-          "B": [
-            10,
-            0,
-          ],
-          "C": [
-            10,
-            2,
-          ],
-          "D": [
-            3,
-            2,
-          ],
-          "E": [
-            3,
-            10,
-          ],
-          "F": [
-            0,
-            10,
-          ],
-        },
-        "polygons": [
-          {
-            "vertices": [
-              "A",
-              "B",
-              "C",
-              "D",
-              "E",
-              "F",
-            ],
-          },
-        ],
-        "segments": [
-          {
-            "from": "A",
-            "label": "10\\text{ cm}",
-            "length": 10,
-            "to": "B",
-          },
-          {
-            "from": "B",
-            "label": "2\\text{ cm}",
-            "length": 2,
-            "to": "C",
-          },
-          {
-            "from": "C",
-            "label": "7\\text{ cm}",
-            "length": 7,
-            "to": "D",
-          },
-          {
-            "from": "D",
-            "label": "8\\text{ cm}",
-            "length": 8,
-            "to": "E",
-          },
-          {
-            "from": "E",
-            "label": "3\\text{ cm}",
-            "length": 3,
-            "to": "F",
-          },
-          {
-            "from": "F",
-            "label": "10\\text{ cm}",
-            "length": 10,
-            "to": "A",
-          },
-        ],
-        "type": "geometry",
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-MEA-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -874,14 +793,14 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -890,10 +809,19 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -901,7 +829,7 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The longest side times the tallest side always gives the area.",
+                  "v": "Never. You add them.",
                 },
               ],
               "id": "RA",
@@ -910,7 +838,7 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The shape is not a rectangle, so l × w does not fit it. Split it into rectangles, or take the cut corner away: 100 − 56 = 44 cm².",
+                  "v": "Sometimes. Only for cubes.",
                 },
               ],
               "id": "RB",
@@ -919,7 +847,7 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Length × width works for any shape.",
+                  "v": "Always. That counts the 1 cm cubes in every layer, times the number of layers.",
                 },
               ],
               "id": "RC",
@@ -931,17 +859,17 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "MEA.PERIMETER.AREA",
+            "code": "MEA.VOLUME.ADDS",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -951,112 +879,27 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "10 × 10 − 7 × 8 = 44 cm².",
+            "v": "Always. That counts the 1 cm cubes in every layer, times the number of layers.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
         "t": "text",
-        "v": "Ravi says the area is 10 × 10 = 100 cm², using length × width.",
+        "v": "The volume of a cuboid can be found by multiplying its length, width and height.",
       },
     ],
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "An L-shaped rectilinear shape with some side lengths labelled.",
-        "points": {
-          "A": [
-            0,
-            0,
-          ],
-          "B": [
-            9,
-            0,
-          ],
-          "C": [
-            9,
-            5,
-          ],
-          "D": [
-            6,
-            5,
-          ],
-          "E": [
-            6,
-            10,
-          ],
-          "F": [
-            0,
-            10,
-          ],
-        },
-        "polygons": [
-          {
-            "vertices": [
-              "A",
-              "B",
-              "C",
-              "D",
-              "E",
-              "F",
-            ],
-          },
-        ],
-        "segments": [
-          {
-            "from": "A",
-            "label": "9\\text{ cm}",
-            "length": 9,
-            "to": "B",
-          },
-          {
-            "from": "B",
-            "label": "5\\text{ cm}",
-            "length": 5,
-            "to": "C",
-          },
-          {
-            "from": "C",
-            "label": "3\\text{ cm}",
-            "length": 3,
-            "to": "D",
-          },
-          {
-            "from": "D",
-            "label": "5\\text{ cm}",
-            "length": 5,
-            "to": "E",
-          },
-          {
-            "from": "E",
-            "label": "6\\text{ cm}",
-            "length": 6,
-            "to": "F",
-          },
-          {
-            "from": "F",
-            "label": "10\\text{ cm}",
-            "length": 10,
-            "to": "A",
-          },
-        ],
-        "type": "geometry",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-MEA-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1067,8 +910,8 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -1094,7 +937,7 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The shape is not a rectangle, so l × w does not fit it. Split it into rectangles, or take the cut corner away: 90 − 15 = 75 cm².",
+                  "v": "False. It is 10 cm².",
                 },
               ],
               "id": "RA",
@@ -1103,7 +946,7 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The longest side times the tallest side always gives the area.",
+                  "v": "False. It is 20 cm², adding the sides.",
                 },
               ],
               "id": "RB",
@@ -1112,7 +955,7 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Length × width works for any shape.",
+                  "v": "True. Area of a rectangle = length × width = 6 × 4 = 24 cm².",
                 },
               ],
               "id": "RC",
@@ -1124,7 +967,7 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "MEA.PERIMETER.AREA",
@@ -1144,19 +987,15 @@ exports[`Y6-MEA-05 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "9 × 10 − 3 × 5 = 75 cm².",
+            "v": "True. Area of a rectangle = length × width = 6 × 4 = 24 cm².",
           },
         ],
       },
     ],
     "stem": [
       {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
         "t": "text",
-        "v": "Ravi says the area is 9 × 10 = 90 cm², using length × width.",
+        "v": "Ivy says the area of a 6 cm by 4 cm rectangle is 24 cm².",
       },
     ],
   },

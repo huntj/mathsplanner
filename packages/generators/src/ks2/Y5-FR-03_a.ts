@@ -14,6 +14,7 @@ import {
 import { fracTex, gcdOf } from "../shared/fr.ts";
 import { mixFamilies } from "../shared/npv.ts";
 import parent from "./Y5-FR-03.ts";
+import { withClaims } from "../shared/variety.ts";
 
 interface Params {
   w: number;
@@ -78,5 +79,33 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y5-FR-03.a", { 1: own, 2: { ...parent.definition, id: "Y5-FR-03.a" }, 4: own }),
+  withClaims(
+    mixFamilies("Y5-FR-03.a", { 1: own, 2: { ...parent.definition, id: "Y5-FR-03.a" }, 4: own }),
+    [
+      {
+        statement: "Leo says $\\frac{11}{4} = 2\\frac{3}{4}$.",
+        truth: true,
+        right: "True. 11 quarters is 2 wholes (8 quarters) and 3 quarters more.",
+        wrong: [["False. It is 3 1/4.", "FR.MIXED.CONVERT"], ["False. It is 11 1/4."]],
+      },
+      {
+        statement: "Mia says $\\frac{9}{5} = 1\\frac{9}{5}$.",
+        truth: false,
+        right: "False. 9 fifths is 1 whole (5 fifths) and 4 fifths: 1 4/5.",
+        wrong: [
+          ["True. Put a 1 in front.", "FR.MIXED.CONVERT"],
+          ["True. Any fraction over 1 just gets a whole number."],
+        ],
+      },
+      {
+        claim: "An improper fraction can be written as a mixed number or a whole number.",
+        truth: "always",
+        right: "Always. Take out as many wholes as you can; anything left is the fraction part.",
+        wrong: [
+          ["Never. Improper fractions stay as they are.", "FR.MIXED.CONVERT"],
+          ["Sometimes. Only for halves."],
+        ],
+      },
+    ],
+  ),
 );

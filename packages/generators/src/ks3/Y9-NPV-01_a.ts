@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { exactAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -21,7 +22,7 @@ const sf = (x: number | string, p: number) => `${x} \\times 10^{${p}}`;
 
 export default defineGenerator<Params>({
   id: "Y9-NPV-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.STANDARD-FORM.INDEX-LAWS", "NPV.STANDARD-FORM.POWER"],
 
@@ -92,30 +93,67 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ella says ",
-            A.math(`(${sf(p.a, p.m)}) \\times (${sf(p.b, p.m)}) = ${sf(p.a * p.b, p.m)}`),
-            ".",
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ella says ",
+                A.math(`(${sf(p.a, p.m)}) \\times (${sf(p.b, p.m)}) = ${sf(p.a * p.b, p.m)}`),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. 10^${p.m} × 10^${p.m} = 10^${2 * p.m}, so the answer is ${p.a * p.b} × 10^${2 * p.m}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The powers are the same, so they stay the same.",
+                  code: "NPV.STANDARD-FORM.INDEX-LAWS",
+                },
+                {
+                  text: `False. It is ${p.a * p.b} × 10^${p.m * p.m}.`,
+                  code: "NPV.STANDARD-FORM.INDEX-LAWS",
+                },
+              ],
+              solution: [{ say: "Multiply the numbers; add the powers." }],
+            }),
+          [
+            {
+              statement:
+                "Sam says $(2 \\times 10^{3}) \\times (4 \\times 10^{5}) = 8 \\times 10^{8}$.",
+              truth: true,
+              right: "True. Multiply the numbers, 2 × 4 = 8, and add the powers, 3 + 5 = 8.",
+              wrong: [
+                ["False. Multiply the powers too: 8 × 10¹⁵.", "NPV.STANDARD-FORM.INDEX-LAWS"],
+                ["False. It is 6 × 10⁸, adding the 2 and 4."],
+              ],
+            },
+            {
+              statement:
+                "Zoe says $(5 \\times 10^{4}) \\times (3 \\times 10^{2}) = 15 \\times 10^{6}$ is in standard form.",
+              truth: false,
+              right: "False. 15 is not between 1 and 10. In standard form it is 1.5 × 10⁷.",
+              wrong: [
+                ["True. It is a number times a power of 10.", "NPV.STANDARD-FORM.POWER"],
+                ["True. 5 × 3 = 15 and 4 + 2 = 6, so it is right."],
+              ],
+            },
+            {
+              claim:
+                "Dividing $a \\times 10^{m}$ by $b \\times 10^{n}$ gives a power of 10 of m − n before any adjusting.",
+              truth: "always",
+              right:
+                "Always. Divide the numbers and subtract the powers: 10^m ÷ 10^n = 10^(m − n).",
+              wrong: [
+                ["Never. Divide the powers: 10^(m ÷ n).", "NPV.STANDARD-FORM.INDEX-LAWS"],
+                ["Sometimes. Only when m is bigger than n."],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: `False. 10^${p.m} × 10^${p.m} = 10^${2 * p.m}, so the answer is ${p.a * p.b} × 10^${2 * p.m}.`,
-              correct: true,
-            },
-            {
-              text: "True. The powers are the same, so they stay the same.",
-              code: "NPV.STANDARD-FORM.INDEX-LAWS",
-            },
-            {
-              text: `False. It is ${p.a * p.b} × 10^${p.m * p.m}.`,
-              code: "NPV.STANDARD-FORM.INDEX-LAWS",
-            },
-          ],
-          solution: [{ say: "Multiply the numbers; add the powers." }],
-        });
+        );
     }
   },
 

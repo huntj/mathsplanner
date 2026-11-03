@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { rightTriangle } from "../shared/geo.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   angle: number;
@@ -20,7 +21,7 @@ const rad = (d: number) => (d * Math.PI) / 180;
 
 export default defineGenerator<Params>({
   id: "Y9-GEO-01.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.TRIG.RATIO"],
 
@@ -87,27 +88,64 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            A.math("\\cos \\theta = \\sin(90^\\circ - \\theta)"),
-            " for an angle θ in a right-angled triangle.",
-          ],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                A.math("\\cos \\theta = \\sin(90^\\circ - \\theta)"),
+                " for an angle θ in a right-angled triangle.",
+              ],
+              truth: "always",
+              reasons: [
+                {
+                  text: "Always. The other acute angle is 90° − θ, and the side adjacent to θ is opposite that angle.",
+                  correct: true,
+                },
+                { text: "Never. Sine and cosine are unrelated.", code: "GEO.TRIG.RATIO" },
+                { text: "Sometimes. Only at 45°.", code: "GEO.TRIG.RATIO" },
+              ],
+              solution: [
+                {
+                  say: `For example cos ${p.angle}° = sin ${90 - p.angle}° ≈ ${Math.cos(rad(p.angle)).toFixed(3)}.`,
+                },
+              ],
+            }),
+          [
             {
-              text: "Always. The other acute angle is 90° − θ, and the side adjacent to θ is opposite that angle.",
-              correct: true,
+              statement:
+                "In a right-angled triangle, the hypotenuse is 10 cm and one angle is 30°. Kit says the side opposite the 30° angle is 5 cm.",
+              truth: true,
+              right: "True. opposite = hypotenuse × sin 30° = 10 × 0.5 = 5 cm.",
+              wrong: [
+                ["False. Use cos: 10 × cos 30° ≈ 8.7 cm.", "GEO.TRIG.RATIO"],
+                ["False. Use tan: 10 × tan 30° ≈ 5.8 cm.", "GEO.TRIG.RATIO"],
+              ],
             },
-            { text: "Never. Sine and cosine are unrelated.", code: "GEO.TRIG.RATIO" },
-            { text: "Sometimes. Only at 45°.", code: "GEO.TRIG.RATIO" },
-          ],
-          solution: [
             {
-              say: `For example cos ${p.angle}° = sin ${90 - p.angle}° ≈ ${Math.cos(rad(p.angle)).toFixed(3)}.`,
+              statement:
+                "Tia wants the side adjacent to angle θ and knows the opposite side. She says to use sin θ.",
+              truth: false,
+              right: "False. Opposite and adjacent go with tan θ = opposite ÷ adjacent.",
+              wrong: [
+                ["True. Sin is for the opposite side.", "GEO.TRIG.RATIO"],
+                ["True. Any ratio works if you rearrange it."],
+              ],
+            },
+            {
+              claim:
+                "In a right-angled triangle, $\\sin \\theta$ is less than 1 for the angle θ that is not the right angle.",
+              truth: "always",
+              right:
+                "Always. sin θ = opposite ÷ hypotenuse, and the hypotenuse is the longest side.",
+              wrong: [
+                ["Sometimes. For big angles it is more than 1.", "GEO.TRIG.RATIO"],
+                ["Never. Sin is always 1 or more."],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

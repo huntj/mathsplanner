@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import type { VennSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   onlyA: number;
@@ -28,7 +29,7 @@ const venn = (p: Params): VennSpec => ({
 
 export default defineGenerator<Params>({
   id: "Y9-PRO-01.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["PRO.VENN.DOUBLE-COUNT"],
 
@@ -87,27 +88,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Rae says the numbers in the four regions of a Venn diagram must add up to the total number of people asked.",
-          ],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Rae says the numbers in the four regions of a Venn diagram must add up to the total number of people asked.",
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. Every person goes in exactly one region: only A, both, only B, or neither (outside both circles).",
+                  correct: true,
+                },
+                {
+                  text: "False. People in the overlap are counted twice.",
+                  code: "PRO.VENN.DOUBLE-COUNT",
+                },
+                { text: "False. The outside region is not part of the total." },
+              ],
+              solution: [
+                { say: "", math: `${p.onlyA} + ${p.both} + ${p.onlyB} + ${p.neither} = ${total}` },
+              ],
+            }),
+          [
             {
-              text: "True. Every person goes in exactly one region: only A, both, only B, or neither (outside both circles).",
-              correct: true,
+              statement:
+                "In a class, 12 play football, 8 play tennis and 3 play both. Kim says 17 play at least one of the two.",
+              truth: true,
+              right: "True. 12 + 8 − 3 = 17, as the 3 who play both are counted twice otherwise.",
+              wrong: [
+                ["False. It is 20: 12 + 8.", "PRO.VENN.DOUBLE-COUNT"],
+                ["False. It is 23: 12 + 8 + 3.", "PRO.VENN.DOUBLE-COUNT"],
+              ],
             },
             {
-              text: "False. People in the overlap are counted twice.",
-              code: "PRO.VENN.DOUBLE-COUNT",
+              statement:
+                "In a Venn diagram, the A circle holds 9 people in all, 4 of them in the overlap. Raj writes 9 in the part of A outside the overlap.",
+              truth: false,
+              right: "False. The part of A outside the overlap holds 9 − 4 = 5.",
+              wrong: [
+                ["True. A has 9 people, so write 9.", "PRO.VENN.DOUBLE-COUNT"],
+                ["True. The overlap is separate from A."],
+              ],
             },
-            { text: "False. The outside region is not part of the total." },
+            {
+              claim: "The overlap of a Venn diagram is empty.",
+              truth: "sometimes",
+              right: "Sometimes. It is empty only when nothing belongs to both sets.",
+              wrong: [
+                ["Always. Each thing belongs to one circle."],
+                ["Never. Every Venn diagram has things in both sets."],
+              ],
+            },
           ],
-          solution: [
-            { say: "", math: `${p.onlyA} + ${p.both} + ${p.onlyB} + ${p.neither} = ${total}` },
-          ],
-        });
+        );
     }
   },
 

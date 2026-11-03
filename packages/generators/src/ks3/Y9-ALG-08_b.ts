@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const tri = (n: number) => (n * (n + 1)) / 2;
 
@@ -20,7 +21,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y9-ALG-08.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SEQUENCE.TYPE"],
 
@@ -77,29 +78,62 @@ export default defineGenerator<Params>({
       }
       default: {
         const odd = tri(p.s + 3);
-        return A.oddOneOut({
+        return orClaims(
           rng,
-          question: "Which number is the odd one out?",
-          items: [
-            { content: A.math(String(p.s * p.s)) },
-            { content: A.math(String((p.s + 1) ** 2)) },
-            { content: A.math(String((p.s + 2) ** 2)) },
-            { content: A.math(String(odd)), odd: true },
-          ],
-          reasons: [
+          () =>
+            A.oddOneOut({
+              rng,
+              question: "Which number is the odd one out?",
+              items: [
+                { content: A.math(String(p.s * p.s)) },
+                { content: A.math(String((p.s + 1) ** 2)) },
+                { content: A.math(String((p.s + 2) ** 2)) },
+                { content: A.math(String(odd)), odd: true },
+              ],
+              reasons: [
+                {
+                  text: `It is the only one that is not a square number (${odd} is a triangular number).`,
+                  correct: true,
+                },
+                { text: "It is the only even number.", code: "ALG.SEQUENCE.TYPE" },
+                { text: "It is the only number bigger than 20.", code: "ALG.SEQUENCE.TYPE" },
+              ],
+              solution: [
+                {
+                  say: `${p.s * p.s}, ${(p.s + 1) ** 2} and ${(p.s + 2) ** 2} are ${p.s}², ${p.s + 1}² and ${p.s + 2}².`,
+                },
+              ],
+            }),
+          [
             {
-              text: `It is the only one that is not a square number (${odd} is a triangular number).`,
-              correct: true,
+              statement: "Leo says the next Fibonacci number after 1, 1, 2, 3, 5, 8 is 13.",
+              truth: true,
+              right: "True. Each term is the sum of the two before: 5 + 8 = 13.",
+              wrong: [
+                ["False. It goes up by 3, so 11.", "ALG.SEQUENCE.TYPE"],
+                ["False. It doubles, so 16.", "ALG.SEQUENCE.TYPE"],
+              ],
             },
-            { text: "It is the only even number.", code: "ALG.SEQUENCE.TYPE" },
-            { text: "It is the only number bigger than 20.", code: "ALG.SEQUENCE.TYPE" },
-          ],
-          solution: [
             {
-              say: `${p.s * p.s}, ${(p.s + 1) ** 2} and ${(p.s + 2) ** 2} are ${p.s}², ${p.s + 1}² and ${p.s + 2}².`,
+              statement: "Ana says 10 is a square number.",
+              truth: false,
+              right: "False. 3² = 9 and 4² = 16, so 10 is not square. 10 is a triangular number.",
+              wrong: [
+                ["True. 5 × 2 = 10.", "ALG.SEQUENCE.TYPE"],
+                ["True. Square numbers are even."],
+              ],
+            },
+            {
+              claim: "A triangular number is also a square number.",
+              truth: "sometimes",
+              right: "Sometimes. 1 and 36 are both, but 3, 6 and 10 are not square.",
+              wrong: [
+                ["Never. They are different sequences.", "ALG.SEQUENCE.TYPE"],
+                ["Always. Both come from dot patterns."],
+              ],
             },
           ],
-        });
+        );
       }
     }
   },

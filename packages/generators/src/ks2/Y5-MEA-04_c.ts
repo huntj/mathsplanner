@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const THINGS = ["a leaf", "a puddle", "a handprint", "a pond on a map", "an island on a map"];
 
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y5-MEA-04.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: [],
 
@@ -85,24 +86,61 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Tom counts every square that ${thing} touches, even a tiny corner, and says that gives a good estimate of its area.`,
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Tom counts every square that ${thing} touches, even a tiny corner, and says that gives a good estimate of its area.`,
+              truth: false,
+              reasons: [
+                {
+                  text: "False. Counting tiny bits as whole squares makes the estimate too big. Count squares more than half covered.",
+                  correct: true,
+                },
+                { text: "True. Every square it touches is part of the area." },
+                { text: "True. Over-counting does not matter for an estimate." },
+              ],
+              solution: [
+                {
+                  say: "Count whole squares, then count squares more than half covered, and ignore the rest.",
+                },
+              ],
+            }),
+          [
             {
-              text: "False. Counting tiny bits as whole squares makes the estimate too big. Count squares more than half covered.",
-              correct: true,
+              statement:
+                "To estimate a leaf's area on squared paper, Mia counts whole squares and adds about half the part squares.",
+              truth: true,
+              right:
+                "True. Part squares are roughly half full on average, so this gives a good estimate.",
+              wrong: [
+                ["False. Count only whole squares."],
+                ["False. Count every square the leaf touches."],
+              ],
             },
-            { text: "True. Every square it touches is part of the area." },
-            { text: "True. Over-counting does not matter for an estimate." },
-          ],
-          solution: [
             {
-              say: "Count whole squares, then count squares more than half covered, and ignore the rest.",
+              claim: "An estimate of an irregular shape's area is exact.",
+              truth: "never",
+              right:
+                "Never quite. Counting squares gives an estimate; the curved edges make an exact count impossible.",
+              wrong: [
+                ["Always. Counting squares is exact."],
+                ["Sometimes. When the squares are big."],
+              ],
+            },
+            {
+              claim: "Using smaller squares gives a better estimate of an irregular area.",
+              truth: "always",
+              right:
+                "Always, if counted carefully. Smaller squares fit the curved edge more closely.",
+              wrong: [
+                ["Never. Big squares are more accurate."],
+                ["Sometimes. Only for round shapes."],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

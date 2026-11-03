@@ -10,6 +10,7 @@ import type { CartesianSpec, Coord } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { chosenFigure, chosenText, numberAnswer } from "../shared/counting.ts";
 import { CUBE_NETS, FACTS, netGrid, NOT_CUBE_NETS, type Solid } from "../shared/solids.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   good: number;
@@ -31,7 +32,7 @@ const key = (s: Coord[]) => JSON.stringify([...s].sort());
 
 export default defineGenerator<Params>({
   id: "Y6-GEO-02",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 3, 4],
   misconceptions: ["GEO.NET.ANY-SIX", "GEO.SOLIDS.FACES-EDGES"],
 
@@ -131,33 +132,66 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Noah says any six squares joined edge to edge will fold into a cube, like this one.",
-            A.figure(netGrid(bad, [], "Six squares joined edge to edge on squared paper.")),
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Noah says any six squares joined edge to edge will fold into a cube, like this one.",
+                A.figure(netGrid(bad, [], "Six squares joined edge to edge on squared paper.")),
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. This arrangement folds with two squares overlapping, so one face of the cube is missing. Only 11 arrangements of six squares are cube nets.",
+                  correct: true,
+                },
+                {
+                  text: "True. A cube has six faces, so any six squares work.",
+                  code: "GEO.NET.ANY-SIX",
+                },
+                {
+                  text: "True. As long as the squares touch, they fold into a cube.",
+                  code: "GEO.NET.ANY-SIX",
+                },
+              ],
+              solution: [
+                {
+                  say: "Try folding it: if two squares meet on the same face, it is not a net of a cube.",
+                },
+              ],
+            }),
+          [
+            {
+              statement: "Kai says a cube has 6 faces, 12 edges and 8 vertices.",
+              truth: true,
+              right: "True. Count them: 6 square faces, 12 edges where faces meet, 8 corners.",
+              wrong: [
+                ["False. It has 6 edges.", "GEO.SOLIDS.FACES-EDGES"],
+                ["False. It has 4 vertices."],
+              ],
+            },
+            {
+              claim: "A net of a cube is made of 6 squares.",
+              truth: "always",
+              right: "Always. Each of the cube's 6 faces is a square in the net.",
+              wrong: [
+                ["Sometimes. Some nets have 4 squares.", "GEO.NET.ANY-SIX"],
+                ["Never. Nets use rectangles."],
+              ],
+            },
+            {
+              statement: "Bea says a square-based pyramid has 4 faces.",
+              truth: false,
+              right: "False. It has 5: the square base and 4 triangles.",
+              wrong: [
+                ["True. It has 4 triangles.", "GEO.SOLIDS.FACES-EDGES"],
+                ["True. The base is not a face."],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: "False. This arrangement folds with two squares overlapping, so one face of the cube is missing. Only 11 arrangements of six squares are cube nets.",
-              correct: true,
-            },
-            {
-              text: "True. A cube has six faces, so any six squares work.",
-              code: "GEO.NET.ANY-SIX",
-            },
-            {
-              text: "True. As long as the squares touch, they fold into a cube.",
-              code: "GEO.NET.ANY-SIX",
-            },
-          ],
-          solution: [
-            {
-              say: "Try folding it: if two squares meet on the same face, it is not a net of a cube.",
-            },
-          ],
-        });
+        );
     }
   },
 

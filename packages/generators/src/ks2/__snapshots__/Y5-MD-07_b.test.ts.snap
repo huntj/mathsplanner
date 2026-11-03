@@ -10,7 +10,7 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-MD-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -89,7 +89,7 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-MD-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -155,7 +155,7 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-MD-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -221,7 +221,7 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-MD-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -292,7 +292,7 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-MD-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -363,7 +363,7 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-MD-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -427,14 +427,14 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-MD-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -445,138 +445,14 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. 27.10 is still 27.1. Multiplying by 10 moves the digits 1 place to the left: 271.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The answer has more digits, so it is bigger.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Multiplying by 10 always adds a zero.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.POWERS10.APPEND-ZEROS",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "27.1 × 10 = 271.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "To work out ",
-      },
-      {
-        "t": "math",
-        "v": "27.1 \\times 10",
-      },
-      {
-        "t": "text",
-        "v": ", Leah writes a zero on the end: ",
-      },
-      {
-        "t": "math",
-        "v": "27.10",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y5-MD-07.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
+          "correct": "C",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -585,10 +461,19 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -596,7 +481,7 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The answer has more digits, so it is bigger.",
+                  "v": "Sometimes. Only with one decimal place.",
                 },
               ],
               "id": "RA",
@@ -605,7 +490,7 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 9.40 is still 9.4. Multiplying by 10 moves the digits 1 place to the left: 94.",
+                  "v": "Never. 4.5 and 4.50 are the same number. To multiply by 10, move the digits.",
                 },
               ],
               "id": "RB",
@@ -614,7 +499,7 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiplying by 10 always adds a zero.",
+                  "v": "Always. Adding a 0 multiplies by 10.",
                 },
               ],
               "id": "RC",
@@ -636,7 +521,7 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -646,7 +531,7 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "9.4 × 10 = 94.",
+            "v": "Never. 4.5 and 4.50 are the same number. To multiply by 10, move the digits.",
           },
         ],
       },
@@ -654,35 +539,19 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "To work out ",
-      },
-      {
-        "t": "math",
-        "v": "9.4 \\times 10",
-      },
-      {
-        "t": "text",
-        "v": ", Leah writes a zero on the end: ",
-      },
-      {
-        "t": "math",
-        "v": "9.40",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Writing a 0 on the end of a decimal multiplies it by 10.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
-      "numbers": "stretch",
+      "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-MD-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -693,14 +562,14 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "C",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -709,10 +578,19 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -720,7 +598,7 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 208.50 is still 208.5. Multiplying by 10 moves the digits 1 place to the left: 2085.",
+                  "v": "Never. 4.5 and 4.50 are the same number. To multiply by 10, move the digits.",
                 },
               ],
               "id": "RA",
@@ -729,7 +607,7 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiplying by 10 always adds a zero.",
+                  "v": "Always. Adding a 0 multiplies by 10.",
                 },
               ],
               "id": "RB",
@@ -738,7 +616,7 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The answer has more digits, so it is bigger.",
+                  "v": "Sometimes. Only with one decimal place.",
                 },
               ],
               "id": "RC",
@@ -760,7 +638,7 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -770,7 +648,7 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "208.5 × 10 = 2085.",
+            "v": "Never. 4.5 and 4.50 are the same number. To multiply by 10, move the digits.",
           },
         ],
       },
@@ -778,23 +656,124 @@ exports[`Y5-MD-07.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "To work out ",
+        "v": "Writing a 0 on the end of a decimal multiplies it by 10.",
       },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y5-MD-07.b",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
       {
-        "t": "math",
-        "v": "208.5 \\times 10",
+        "answer": {
+          "correct": "C",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. Adding a 0 multiplies by 10.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only with one decimal place.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. 4.5 and 4.50 are the same number. To multiply by 10, move the digits.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.POWERS10.APPEND-ZEROS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
       },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Never. 4.5 and 4.50 are the same number. To multiply by 10, move the digits.",
+          },
+        ],
+      },
+    ],
+    "stem": [
       {
         "t": "text",
-        "v": ", Leah writes a zero on the end: ",
-      },
-      {
-        "t": "math",
-        "v": "208.50",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Writing a 0 on the end of a decimal multiplies it by 10.",
       },
     ],
   },

@@ -10,7 +10,7 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-09.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -99,7 +99,7 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-09.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -188,7 +188,7 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-09.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -291,7 +291,7 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-09.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -364,7 +364,7 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-09.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -437,7 +437,7 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-09.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -524,123 +524,7 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-09.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The number with more digits after the point is bigger.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Compare the tenths first: 5 tenths is more than 1 tenths, so 1.5 is bigger.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. They have the same whole number, so compare the last digits.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.DECIMAL.LONGER-BIGGER",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Write them with the same number of places: 1.50 and 1.18.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Kim says ",
-      },
-      {
-        "t": "math",
-        "v": "1.18 > 1.5",
-      },
-      {
-        "t": "text",
-        "v": ", because 18 is bigger than 5.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y5-FR-09.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -678,7 +562,7 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. They have the same whole number, so compare the last digits.",
+                  "v": "True. 2.1 has the fewest digits, so it is smallest.",
                 },
               ],
               "id": "RA",
@@ -687,7 +571,7 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The number with more digits after the point is bigger.",
+                  "v": "True. Compare the ones first, and they are all 2.",
                 },
               ],
               "id": "RB",
@@ -696,7 +580,132 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Compare the tenths first: 3 tenths is more than 2 tenths, so 4.3 is bigger.",
+                  "v": "False. 2.09 has 0 tenths, so it is smallest: 2.09, 2.1, 2.15.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.DECIMAL.LONGER-BIGGER",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.COMPARE.ONES-FIRST",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. 2.09 has 0 tenths, so it is smallest: 2.09, 2.1, 2.15.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Max puts 2.1, 2.09 and 2.15 in order, smallest first: 2.1, 2.09, 2.15.",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y5-FR-09.b",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. 0.35 > 0.3, but 0.12 < 0.5. Compare tenths first.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. More digits make a bigger number.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. Fewer digits are bigger.",
                 },
               ],
               "id": "RC",
@@ -718,7 +727,7 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -728,7 +737,7 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Write them with the same number of places: 4.300 and 4.257.",
+            "v": "Sometimes. 0.35 > 0.3, but 0.12 < 0.5. Compare tenths first.",
           },
         ],
       },
@@ -736,27 +745,19 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kim says ",
-      },
-      {
-        "t": "math",
-        "v": "4.257 > 4.3",
-      },
-      {
-        "t": "text",
-        "v": ", because 257 is bigger than 3.",
+        "v": "A decimal with more digits after the point is bigger.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-09.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -774,7 +775,7 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -783,10 +784,19 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -794,7 +804,7 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The number with more digits after the point is bigger.",
+                  "v": "Always. More digits make a bigger number.",
                 },
               ],
               "id": "RA",
@@ -803,7 +813,7 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Compare the tenths first: 9 tenths is more than 6 tenths, so 4.9 is bigger.",
+                  "v": "Sometimes. 0.35 > 0.3, but 0.12 < 0.5. Compare tenths first.",
                 },
               ],
               "id": "RB",
@@ -812,7 +822,7 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. They have the same whole number, so compare the last digits.",
+                  "v": "Never. Fewer digits are bigger.",
                 },
               ],
               "id": "RC",
@@ -834,7 +844,7 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -844,7 +854,7 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Write them with the same number of places: 4.900 and 4.621.",
+            "v": "Sometimes. 0.35 > 0.3, but 0.12 < 0.5. Compare tenths first.",
           },
         ],
       },
@@ -852,15 +862,7 @@ exports[`Y5-FR-09.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kim says ",
-      },
-      {
-        "t": "math",
-        "v": "4.621 > 4.9",
-      },
-      {
-        "t": "text",
-        "v": ", because 621 is bigger than 9.",
+        "v": "A decimal with more digits after the point is bigger.",
       },
     ],
   },

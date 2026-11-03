@@ -26,7 +26,7 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-PRO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -112,7 +112,7 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-PRO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -198,7 +198,7 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-PRO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -268,7 +268,7 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-PRO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -316,7 +316,7 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-PRO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -364,7 +364,7 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-PRO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -412,7 +412,7 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-PRO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -424,7 +424,7 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -450,7 +450,7 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The outside region is not part of the total.",
+                  "v": "True. Every person goes in exactly one region: only A, both, only B, or neither (outside both circles).",
                 },
               ],
               "id": "RA",
@@ -459,7 +459,7 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every person goes in exactly one region: only A, both, only B, or neither (outside both circles).",
+                  "v": "False. The outside region is not part of the total.",
                 },
               ],
               "id": "RB",
@@ -516,7 +516,7 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-PRO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -554,7 +554,7 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The outside region is not part of the total.",
+                  "v": "False. It is 23: 12 + 8 + 3.",
                 },
               ],
               "id": "RA",
@@ -563,7 +563,7 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every person goes in exactly one region: only A, both, only B, or neither (outside both circles).",
+                  "v": "True. 12 + 8 − 3 = 17, as the 3 who play both are counted twice otherwise.",
                 },
               ],
               "id": "RB",
@@ -572,7 +572,7 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. People in the overlap are counted twice.",
+                  "v": "False. It is 20: 12 + 8.",
                 },
               ],
               "id": "RC",
@@ -582,6 +582,14 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "PRO.VENN.DOUBLE-COUNT",
+            "feedback": [],
+          },
           {
             "answer": {
               "id": "RC",
@@ -601,14 +609,18 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "8 + 6 + 13 + 6 = 33",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "True. 12 + 8 − 3 = 17, as the 3 who play both are counted twice otherwise.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Rae says the numbers in the four regions of a Venn diagram must add up to the total number of people asked.",
+        "v": "In a class, 12 play football, 8 play tennis and 3 play both. Kim says 17 play at least one of the two.",
       },
     ],
   },
@@ -620,7 +632,7 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-PRO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -631,8 +643,8 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RC",
+          "correct": "B",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -658,7 +670,7 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The outside region is not part of the total.",
+                  "v": "False. The part of A outside the overlap holds 9 − 4 = 5.",
                 },
               ],
               "id": "RA",
@@ -667,7 +679,7 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. People in the overlap are counted twice.",
+                  "v": "True. A has 9 people, so write 9.",
                 },
               ],
               "id": "RB",
@@ -676,7 +688,7 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every person goes in exactly one region: only A, both, only B, or neither (outside both circles).",
+                  "v": "True. The overlap is separate from A.",
                 },
               ],
               "id": "RC",
@@ -705,14 +717,18 @@ exports[`Y9-PRO-01.b > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "3 + 4 + 13 + 2 = 22",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. The part of A outside the overlap holds 9 − 4 = 5.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Rae says the numbers in the four regions of a Venn diagram must add up to the total number of people asked.",
+        "v": "In a Venn diagram, the A circle holds 9 people in all, 4 of them in the overlap. Raj writes 9 in the part of A outside the overlap.",
       },
     ],
   },

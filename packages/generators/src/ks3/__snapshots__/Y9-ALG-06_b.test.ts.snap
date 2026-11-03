@@ -10,7 +10,7 @@ exports[`Y9-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -93,7 +93,7 @@ exports[`Y9-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -162,7 +162,7 @@ exports[`Y9-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -231,7 +231,7 @@ exports[`Y9-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -313,7 +313,7 @@ exports[`Y9-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -395,7 +395,7 @@ exports[`Y9-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -477,7 +477,7 @@ exports[`Y9-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -488,8 +488,8 @@ exports[`Y9-ALG-06.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -515,7 +515,7 @@ exports[`Y9-ALG-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. One value is enough.",
+                  "v": "False. It gives x = 4.5.",
                 },
               ],
               "id": "RA",
@@ -524,7 +524,7 @@ exports[`Y9-ALG-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The solution is a pair of values: she also needs y = 3. Checking both in the second equation confirms them.",
+                  "v": "False. You must eliminate, not substitute.",
                 },
               ],
               "id": "RB",
@@ -533,7 +533,7 @@ exports[`Y9-ALG-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. y is always equal to x.",
+                  "v": "True. 3x = 9 gives x = 3, and y = 2 × 3 = 6. Check: 3 + 6 = 9.",
                 },
               ],
               "id": "RC",
@@ -546,14 +546,6 @@ exports[`Y9-ALG-06.b > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.SIMULTANEOUS.PAIR",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.SIMULTANEOUS.PAIR",
@@ -573,7 +565,7 @@ exports[`Y9-ALG-06.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Give x and y, then check in both equations.",
+            "v": "True. 3x = 9 gives x = 3, and y = 2 × 3 = 6. Check: 3 + 6 = 9.",
           },
         ],
       },
@@ -581,7 +573,31 @@ exports[`Y9-ALG-06.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ivy finds x = 1 and says she has finished solving the simultaneous equations.",
+        "v": "Using ",
+      },
+      {
+        "t": "math",
+        "v": "y = 2x",
+      },
+      {
+        "t": "text",
+        "v": " in ",
+      },
+      {
+        "t": "math",
+        "v": "x + y = 9",
+      },
+      {
+        "t": "text",
+        "v": ", Jay writes ",
+      },
+      {
+        "t": "math",
+        "v": "x + 2x = 9",
+      },
+      {
+        "t": "text",
+        "v": ", so x = 3 and y = 6.",
       },
     ],
   },
@@ -593,7 +609,139 @@ exports[`Y9-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The 2 only goes with the x.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 2y = 2(x + 1) = 2x + 2, so it is 3x + 2x + 2 = 12.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Swap y for x + 1.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.EXPAND.FIRST-ONLY",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. 2y = 2(x + 1) = 2x + 2, so it is 3x + 2x + 2 = 12.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Using ",
+      },
+      {
+        "t": "math",
+        "v": "y = x + 1",
+      },
+      {
+        "t": "text",
+        "v": " in ",
+      },
+      {
+        "t": "math",
+        "v": "3x + 2y = 12",
+      },
+      {
+        "t": "text",
+        "v": ", Sol writes ",
+      },
+      {
+        "t": "math",
+        "v": "3x + 2x + 1 = 12",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y9-ALG-06.b",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -632,122 +780,6 @@ exports[`Y9-ALG-06.b > keeps fixed seeds unchanged 1`] = `
                 {
                   "t": "text",
                   "v": "True. y is always equal to x.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. The solution is a pair of values: she also needs y = 3. Checking both in the second equation confirms them.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. One value is enough.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.SIMULTANEOUS.PAIR",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.SIMULTANEOUS.PAIR",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Give x and y, then check in both equations.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Ivy finds x = 2 and says she has finished solving the simultaneous equations.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y9-ALG-06.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. One value is enough.",
                 },
               ],
               "id": "RA",
@@ -765,7 +797,7 @@ exports[`Y9-ALG-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. y is always equal to x.",
+                  "v": "True. One value is enough.",
                 },
               ],
               "id": "RC",

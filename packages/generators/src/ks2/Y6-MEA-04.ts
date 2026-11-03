@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   area: number;
@@ -24,7 +25,7 @@ const rectangles = (area: number) => {
 
 export default defineGenerator<Params>({
   id: "Y6-MEA-04",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.AREA.SAME-PERIMETER", "MEA.PERIMETER.AREA"],
 
@@ -93,47 +94,87 @@ export default defineGenerator<Params>({
       default: {
         const [a, b] = all[0] ?? [p.area, 1];
         const [c, d] = all[all.length - 1] ?? [p.l, w];
-        return p.perimeterFirst
-          ? A.alwaysSometimesNever({
-              rng,
-              claim: "Two rectangles with the same area have the same perimeter.",
-              truth: "sometimes",
-              reasons: [
-                {
-                  text: `Sometimes. ${a} by ${b} and ${c} by ${d} both have area ${p.area} cm², but perimeters ${2 * (a + b)} cm and ${2 * (c + d)} cm. Only identical rectangles must match.`,
-                  correct: true,
-                },
-                {
-                  text: "Always. Area and perimeter go together.",
-                  code: "MEA.AREA.SAME-PERIMETER",
-                },
-                { text: "Never. Rectangles with the same area can never have the same perimeter." },
+        return orClaims(
+          rng,
+          () =>
+            p.perimeterFirst
+              ? A.alwaysSometimesNever({
+                  rng,
+                  claim: "Two rectangles with the same area have the same perimeter.",
+                  truth: "sometimes",
+                  reasons: [
+                    {
+                      text: `Sometimes. ${a} by ${b} and ${c} by ${d} both have area ${p.area} cm², but perimeters ${2 * (a + b)} cm and ${2 * (c + d)} cm. Only identical rectangles must match.`,
+                      correct: true,
+                    },
+                    {
+                      text: "Always. Area and perimeter go together.",
+                      code: "MEA.AREA.SAME-PERIMETER",
+                    },
+                    {
+                      text: "Never. Rectangles with the same area can never have the same perimeter.",
+                    },
+                  ],
+                  solution: [
+                    {
+                      say: `Compare ${a} × ${b} and ${c} × ${d}: same area, different perimeters. A ${p.l} by ${w} rectangle and its copy turned round have the same of both.`,
+                    },
+                  ],
+                })
+              : A.alwaysSometimesNever({
+                  rng,
+                  claim: "Two rectangles with the same perimeter have the same area.",
+                  truth: "sometimes",
+                  reasons: [
+                    {
+                      text: `Sometimes. ${p.l} by ${w} and ${p.l + 1} by ${w - 1} both have perimeter ${per} cm, but areas ${p.area} cm² and ${(p.l + 1) * (w - 1)} cm².`,
+                      correct: true,
+                    },
+                    {
+                      text: "Always. If the distance round is the same, the inside is the same.",
+                      code: "MEA.AREA.SAME-PERIMETER",
+                    },
+                    { text: "Never. Different rectangles always have different perimeters." },
+                  ],
+                  solution: [
+                    {
+                      say: `Keep the perimeter at ${per} cm and change the sides: the area changes.`,
+                    },
+                  ],
+                }),
+          [
+            {
+              statement:
+                "A 2 cm by 8 cm rectangle and a 4 cm by 4 cm square both have an area of 16 cm². Leo says they have the same perimeter.",
+              truth: false,
+              right: "False. The rectangle's perimeter is 20 cm and the square's is 16 cm.",
+              wrong: [
+                ["True. Same area means same perimeter.", "MEA.AREA.SAME-PERIMETER"],
+                ["True. Both are made of 16 squares."],
               ],
-              solution: [
-                {
-                  say: `Compare ${a} × ${b} and ${c} × ${d}: same area, different perimeters. A ${p.l} by ${w} rectangle and its copy turned round have the same of both.`,
-                },
+            },
+            {
+              statement:
+                "Kim says a 3 cm by 5 cm rectangle and a 4 cm by 4 cm square have the same perimeter.",
+              truth: true,
+              right: "True. 3 + 5 + 3 + 5 = 16 cm and 4 + 4 + 4 + 4 = 16 cm.",
+              wrong: [
+                ["False. Their areas are different, 15 cm² and 16 cm².", "MEA.PERIMETER.AREA"],
+                ["False. A square and a rectangle can never match."],
               ],
-            })
-          : A.alwaysSometimesNever({
-              rng,
-              claim: "Two rectangles with the same perimeter have the same area.",
-              truth: "sometimes",
-              reasons: [
-                {
-                  text: `Sometimes. ${p.l} by ${w} and ${p.l + 1} by ${w - 1} both have perimeter ${per} cm, but areas ${p.area} cm² and ${(p.l + 1) * (w - 1)} cm².`,
-                  correct: true,
-                },
-                {
-                  text: "Always. If the distance round is the same, the inside is the same.",
-                  code: "MEA.AREA.SAME-PERIMETER",
-                },
-                { text: "Never. Different rectangles always have different perimeters." },
+            },
+            {
+              claim: "Cutting a corner square off a rectangle makes its perimeter smaller.",
+              truth: "never",
+              right:
+                "Never. The two sides cut away are replaced by two inner sides of the same length, so the perimeter stays the same.",
+              wrong: [
+                ["Always. Less shape means less perimeter.", "MEA.PERIMETER.AREA"],
+                ["Sometimes. Only for big squares.", "MEA.AREA.SAME-PERIMETER"],
               ],
-              solution: [
-                { say: `Keep the perimeter at ${per} cm and change the sides: the area changes.` },
-              ],
-            });
+            },
+          ],
+        );
       }
     }
   },

@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { coord } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   m: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y9-ALG-04.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.LINE.M-C", "ALG.SOLVE.WRONG-INVERSE"],
 
@@ -84,27 +85,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Bo says the y-intercept of ",
-            A.math(`y = ${Math.abs(p.m)}x`),
-            ` is ${Math.abs(p.m)}.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Bo says the y-intercept of ",
+                A.math(`y = ${Math.abs(p.m)}x`),
+                ` is ${Math.abs(p.m)}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. When x = 0, y = 0, so the line goes through the origin: c = 0. ${Math.abs(p.m)} is the gradient.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The only number in the equation is the intercept.",
+                  code: "ALG.LINE.M-C",
+                },
+                {
+                  text: "True. Every line crosses the y-axis at its gradient.",
+                  code: "ALG.LINE.M-C",
+                },
+              ],
+              solution: [{ say: "y = mx is y = mx + 0." }],
+            }),
+          [
             {
-              text: `False. When x = 0, y = 0, so the line goes through the origin: c = 0. ${Math.abs(p.m)} is the gradient.`,
-              correct: true,
+              statement: "Kit says the line $y = 4x - 3$ crosses the y-axis at (0, −3).",
+              truth: true,
+              right: "True. When x = 0, y = 4 × 0 − 3 = −3.",
+              wrong: [
+                ["False. It crosses at (0, 4).", "ALG.LINE.M-C"],
+                ["False. It crosses at (−3, 0)."],
+              ],
             },
             {
-              text: "True. The only number in the equation is the intercept.",
-              code: "ALG.LINE.M-C",
+              statement: "Max says the line $y = 6 - 2x$ has y-intercept −2.",
+              truth: false,
+              right: "False. When x = 0, y = 6. The −2 is the gradient.",
+              wrong: [
+                ["True. The number next to x is the intercept.", "ALG.LINE.M-C"],
+                ["True. The intercept is the last number."],
+              ],
             },
-            { text: "True. Every line crosses the y-axis at its gradient.", code: "ALG.LINE.M-C" },
+            {
+              claim: "The y-intercept of a straight line is where x = 0.",
+              truth: "always",
+              right: "Always. The y-axis is the line x = 0.",
+              wrong: [
+                ["Sometimes. Only for lines through the origin."],
+                ["Never. It is where y = 0.", "ALG.SOLVE.WRONG-INVERSE"],
+              ],
+            },
           ],
-          solution: [{ say: "y = mx is y = mx + 0." }],
-        });
+        );
     }
   },
 

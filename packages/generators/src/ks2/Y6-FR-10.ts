@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Depth 1: £total shared between `people`, to the nearest penny. */
@@ -23,7 +24,7 @@ const down = (x: number, dp: number) => Math.floor(x * 10 ** dp) / 10 ** dp;
 
 export default defineGenerator<Params>({
   id: "Y6-FR-10",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.ROUND.ALWAYS-DOWN", "NPV.ROUND.WRONG-PLACE"],
 
@@ -103,29 +104,65 @@ export default defineGenerator<Params>({
         // Rounding too early: each share rounded, then multiplied back up, misses the total.
         const each = round(p.length / p.pieces, 1);
         const back = round(each * p.pieces, 1);
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `A rope ${p.length} m long is cut into ${p.pieces} equal pieces. Each is ${each} m to one decimal place. Dan says ${p.pieces} pieces of ${each} m make exactly ${back} m, so the rope was ${back} m long.`,
-          ],
-          truth: back === p.length,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `A rope ${p.length} m long is cut into ${p.pieces} equal pieces. Each is ${each} m to one decimal place. Dan says ${p.pieces} pieces of ${each} m make exactly ${back} m, so the rope was ${back} m long.`,
+              ],
+              truth: back === p.length,
+              reasons: [
+                {
+                  text: `False. ${each} m is rounded. The real pieces are ${(p.length / p.pieces).toFixed(3)}… m, and ${p.pieces} of them make exactly ${p.length} m. Round only at the end.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Rounded numbers give exact answers when you multiply them.",
+                  code: "NPV.ROUND.WRONG-PLACE",
+                },
+                { text: "True. Rounding never changes a total." },
+              ],
+              solution: [
+                {
+                  say: `${p.pieces} × ${each} = ${back}, not ${p.length}: the rounding error is multiplied by ${p.pieces}.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. ${each} m is rounded. The real pieces are ${(p.length / p.pieces).toFixed(3)}… m, and ${p.pieces} of them make exactly ${p.length} m. Round only at the end.`,
-              correct: true,
+              statement:
+                "A bill of £50 is shared by 3 friends. Ali says each should pay £16.67, rounded to the nearest penny.",
+              truth: true,
+              right: "True. 50 ÷ 3 = 16.666…, which is £16.67 to 2 decimal places.",
+              wrong: [
+                ["False. It is £16.66; you always round down.", "NPV.ROUND.ALWAYS-DOWN"],
+                ["False. It is £16.7.", "NPV.ROUND.WRONG-PLACE"],
+              ],
             },
             {
-              text: "True. Rounded numbers give exact answers when you multiply them.",
-              code: "NPV.ROUND.WRONG-PLACE",
+              statement: "Bea rounds 3.846 m to one decimal place and gets 3.9 m.",
+              truth: false,
+              right: "False. Look at the hundredths digit: 4 is less than 5, so it is 3.8 m.",
+              wrong: [
+                ["True. 6 rounds the 4 up, then the 4 rounds the 8 up.", "NPV.ROUND.WRONG-PLACE"],
+                ["True. Rounding always goes up."],
+              ],
             },
-            { text: "True. Rounding never changes a total." },
-          ],
-          solution: [
             {
-              say: `${p.pieces} × ${each} = ${back}, not ${p.length}: the rounding error is multiplied by ${p.pieces}.`,
+              claim:
+                "Adding numbers that have been rounded gives the same total as adding the exact numbers.",
+              truth: "sometimes",
+              right:
+                "Sometimes. The rounding errors can cancel out, but often they add up: 1.4 + 1.4 = 2.8, but rounded it is 1 + 1 = 2.",
+              wrong: [
+                ["Always. Rounding does not change totals.", "NPV.ROUND.ALWAYS-DOWN"],
+                ["Never. The total is always different."],
+              ],
             },
           ],
-        });
+        );
       }
     }
   },

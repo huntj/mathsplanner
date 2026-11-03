@@ -10,7 +10,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-11.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -79,7 +79,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-11.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -148,7 +148,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-11.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -217,7 +217,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-11.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -287,7 +287,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-11.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -357,7 +357,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-11.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -420,14 +420,14 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-11.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -438,14 +438,14 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -454,10 +454,19 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -465,7 +474,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Percentages and decimals use the same digits.",
+                  "v": "Sometimes. Only for money.",
                 },
               ],
               "id": "RA",
@@ -474,7 +483,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 6% is 6 hundredths, which is 0.06. 0.6 is 60%.",
+                  "v": "Never. 100% is 100.",
                 },
               ],
               "id": "RB",
@@ -483,7 +492,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You put the digits straight after the point.",
+                  "v": "Always. 100% is 100 hundredths, which is one whole.",
                 },
               ],
               "id": "RC",
@@ -495,15 +504,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "FR.PERCENT.DIGITS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "FR.PERCENT.DIGITS",
@@ -513,7 +514,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -523,7 +524,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "6% = 6/100 = 0.06.",
+            "v": "Always. 100% is 100 hundredths, which is one whole.",
           },
         ],
       },
@@ -531,15 +532,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jack says ",
-      },
-      {
-        "t": "math",
-        "v": "6\\% = 0.6",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "100% is the same as 1.",
       },
     ],
   },
@@ -551,7 +544,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-11.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -562,7 +555,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
@@ -589,7 +582,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 3% is 3 hundredths, which is 0.03. 0.3 is 30%.",
+                  "v": "True. 45% is 45 hundredths, which is 0.45.",
                 },
               ],
               "id": "RA",
@@ -598,7 +591,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You put the digits straight after the point.",
+                  "v": "False. It is 4.5.",
                 },
               ],
               "id": "RB",
@@ -607,7 +600,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Percentages and decimals use the same digits.",
+                  "v": "False. It is 0.045.",
                 },
               ],
               "id": "RC",
@@ -647,7 +640,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "3% = 3/100 = 0.03.",
+            "v": "True. 45% is 45 hundredths, which is 0.45.",
           },
         ],
       },
@@ -655,11 +648,11 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jack says ",
+        "v": "Dan says ",
       },
       {
         "t": "math",
-        "v": "3\\% = 0.3",
+        "v": "45\\% = 0.45",
       },
       {
         "t": "text",
@@ -675,7 +668,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-11.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -687,7 +680,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -713,7 +706,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 9% is 9 hundredths, which is 0.09. 0.9 is 90%.",
+                  "v": "True. 0.6 and 6% both have a 6.",
                 },
               ],
               "id": "RA",
@@ -722,7 +715,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Percentages and decimals use the same digits.",
+                  "v": "True. The digit is 6, so it is 6%.",
                 },
               ],
               "id": "RB",
@@ -731,7 +724,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You put the digits straight after the point.",
+                  "v": "False. 0.6 is 6 tenths, which is 60 hundredths: 60%.",
                 },
               ],
               "id": "RC",
@@ -744,14 +737,6 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RB",
-              "type": "choice",
-            },
-            "code": "FR.PERCENT.DIGITS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
               "type": "choice",
             },
             "code": "FR.PERCENT.DIGITS",
@@ -771,7 +756,7 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "9% = 9/100 = 0.09.",
+            "v": "False. 0.6 is 6 tenths, which is 60 hundredths: 60%.",
           },
         ],
       },
@@ -779,11 +764,11 @@ exports[`Y5-FR-11.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jack says ",
+        "v": "Pia says ",
       },
       {
         "t": "math",
-        "v": "9\\% = 0.9",
+        "v": "0.6 = 6\\%",
       },
       {
         "t": "text",

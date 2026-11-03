@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Multiples of 5 miles. */
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y6-MEA-03",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.CONVERT.APPROX"],
 
@@ -70,30 +71,63 @@ export default defineGenerator<Params>({
       default: {
         const kmInMiles = (p.km * 5) / 8;
         const truth = kmInMiles > p.miles;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `${fact} Sara says a ${p.km} km race is longer than a ${p.miles} mile race.`,
-          truth,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `${fact} Sara says a ${p.km} km race is longer than a ${p.miles} mile race.`,
+              truth,
+              reasons: [
+                {
+                  text: `${truth ? "True" : "False"}. ${p.km} km is about ${p.km} ÷ 8 × 5 = ${Math.round(kmInMiles * 10) / 10} miles, which is ${truth ? "more" : "less"} than ${p.miles} miles.`,
+                  correct: true,
+                },
+                {
+                  text: `${truth ? "False" : "True"}. ${Math.max(p.km, p.miles)} is the bigger number.`,
+                  code: "MEA.CONVERT.APPROX",
+                },
+                {
+                  text: `${truth ? "False" : "True"}. ${p.km} km is about ${p.km} ÷ 5 × 8 = ${(p.km * 8) / 5} miles.`,
+                  code: "MEA.CONVERT.APPROX",
+                },
+              ],
+              solution: [
+                {
+                  say: `Convert to the same unit: ${p.km} km ≈ ${Math.round(kmInMiles * 10) / 10} miles.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `${truth ? "True" : "False"}. ${p.km} km is about ${p.km} ÷ 8 × 5 = ${Math.round(kmInMiles * 10) / 10} miles, which is ${truth ? "more" : "less"} than ${p.miles} miles.`,
-              correct: true,
+              statement: "5 miles is about 8 km. Ana says 20 miles is about 32 km.",
+              truth: true,
+              right: "True. 20 miles is 4 × 5 miles, so about 4 × 8 = 32 km.",
+              wrong: [
+                ["False. It is about 23 km, adding 3.", "MEA.CONVERT.APPROX"],
+                ["False. It is about 12.5 km."],
+              ],
             },
             {
-              text: `${truth ? "False" : "True"}. ${Math.max(p.km, p.miles)} is the bigger number.`,
-              code: "MEA.CONVERT.APPROX",
+              statement: "5 miles is about 8 km. Gus says 40 km is about 64 miles.",
+              truth: false,
+              right: "False. 40 km is 5 × 8 km, so about 5 × 5 = 25 miles.",
+              wrong: [
+                ["True. Multiply by 8 and divide by 5.", "MEA.CONVERT.APPROX"],
+                ["True. Miles are bigger numbers than kilometres."],
+              ],
             },
             {
-              text: `${truth ? "False" : "True"}. ${p.km} km is about ${p.km} ÷ 5 × 8 = ${(p.km * 8) / 5} miles.`,
-              code: "MEA.CONVERT.APPROX",
+              claim: "A distance in kilometres is a bigger number than the same distance in miles.",
+              truth: "always",
+              right: "Always. A kilometre is shorter than a mile, so it takes more kilometres.",
+              wrong: [
+                ["Never. Miles are the bigger numbers.", "MEA.CONVERT.APPROX"],
+                ["Sometimes. Only for long distances."],
+              ],
             },
           ],
-          solution: [
-            {
-              say: `Convert to the same unit: ${p.km} km ≈ ${Math.round(kmInMiles * 10) / 10} miles.`,
-            },
-          ],
-        });
+        );
       }
     }
   },

@@ -29,7 +29,7 @@ exports[`Y6-STA-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-STA-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -118,7 +118,7 @@ exports[`Y6-STA-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-STA-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -207,7 +207,7 @@ exports[`Y6-STA-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-STA-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -277,7 +277,7 @@ exports[`Y6-STA-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-STA-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -343,7 +343,7 @@ exports[`Y6-STA-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-STA-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -409,7 +409,7 @@ exports[`Y6-STA-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-STA-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -475,7 +475,7 @@ exports[`Y6-STA-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-STA-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -487,7 +487,7 @@ exports[`Y6-STA-01.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -513,7 +513,7 @@ exports[`Y6-STA-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 90° is the same fraction of each group, but the groups are different sizes: 5 out of 20 and 10 out of 40.",
+                  "v": "True. Pie charts always show 360 people.",
                 },
               ],
               "id": "RA",
@@ -522,7 +522,7 @@ exports[`Y6-STA-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Pie charts always show 360 people.",
+                  "v": "True. The same angle always means the same number.",
                 },
               ],
               "id": "RB",
@@ -531,7 +531,7 @@ exports[`Y6-STA-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The same angle always means the same number.",
+                  "v": "False. 90° is the same fraction of each group, but the groups are different sizes: 5 out of 20 and 10 out of 40.",
                 },
               ],
               "id": "RC",
@@ -543,7 +543,7 @@ exports[`Y6-STA-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "STA.PIE.ANGLE-AS-COUNT",
@@ -576,14 +576,14 @@ exports[`Y6-STA-01.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-STA-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -594,7 +594,124 @@ exports[`Y6-STA-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. They add to 100°.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. The sectors make a whole circle.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only if 360 people were asked.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "STA.PIE.ANGLE-AS-COUNT",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. The sectors make a whole circle.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The angles of a pie chart add up to 360°.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y6-STA-01.a",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -621,7 +738,7 @@ exports[`Y6-STA-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Pie charts always show 360 people.",
+                  "v": "False. It stands for 25 people.",
                 },
               ],
               "id": "RA",
@@ -630,7 +747,7 @@ exports[`Y6-STA-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 90° is the same fraction of each group, but the groups are different sizes: 6 out of 24 and 12 out of 48.",
+                  "v": "True. 90° is a quarter of 360°, and a quarter of 60 is 15.",
                 },
               ],
               "id": "RB",
@@ -639,7 +756,7 @@ exports[`Y6-STA-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The same angle always means the same number.",
+                  "v": "False. It stands for 90 people.",
                 },
               ],
               "id": "RC",
@@ -671,7 +788,7 @@ exports[`Y6-STA-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A pie chart shows proportions. To compare numbers you need the size of each group.",
+            "v": "True. 90° is a quarter of 360°, and a quarter of 60 is 15.",
           },
         ],
       },
@@ -679,115 +796,7 @@ exports[`Y6-STA-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Two pie charts show the favourite colour of two groups: one of 24 people and one of 48. The blue sector has the same angle, 90°, in both. Kai says the same number chose blue in each group.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y6-STA-01.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. 48° is the same fraction of each group, but the groups are different sizes: 6 out of 45 and 12 out of 90.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Pie charts always show 360 people.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The same angle always means the same number.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "STA.PIE.ANGLE-AS-COUNT",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "A pie chart shows proportions. To compare numbers you need the size of each group.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Two pie charts show the way to school of two groups: one of 45 children and one of 90. The walk sector has the same angle, 48°, in both. Kai says the same number chose walk in each group.",
+        "v": "A pie chart shows 60 people. Zoe says a sector of 90° stands for 15 people.",
       },
     ],
   },

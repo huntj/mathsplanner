@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { curveClearOfOrigin, grid, poly } from "../shared/alg.ts";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   k: number;
@@ -19,7 +20,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "Y9-ALG-07.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.GRAPH.SOLUTION-Y", "ALG.QUADRATIC.ONE-ROOT"],
 
@@ -92,22 +93,64 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Lou says every quadratic equation has two solutions, because a U-shaped graph always crosses the x-axis twice.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Lou says every quadratic equation has two solutions, because a U-shaped graph always crosses the x-axis twice.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A U-shape whose lowest point is above the x-axis never crosses it (no solutions), and one that just touches it has one solution.",
+                  correct: true,
+                },
+                {
+                  text: "True. Quadratics always have two answers.",
+                  code: "ALG.QUADRATIC.ONE-ROOT",
+                },
+                {
+                  text: "True. The y-intercept counts as a solution.",
+                  code: "ALG.GRAPH.SOLUTION-Y",
+                },
+              ],
+              solution: [{ say: "A quadratic equation can have 0, 1 or 2 solutions." }],
+            }),
+          [
             {
-              text: "False. A U-shape whose lowest point is above the x-axis never crosses it (no solutions), and one that just touches it has one solution.",
-              correct: true,
+              statement:
+                "The graph of $y = x^2 - 4$ crosses the x-axis at −2 and 2. Kim says these solve $x^2 - 4 = 0$.",
+              truth: true,
+              right:
+                "True. Where the curve meets the x-axis, y = 0, so x = −2 and x = 2 are the solutions.",
+              wrong: [
+                ["False. The solution is −4, where it crosses the y-axis.", "ALG.GRAPH.SOLUTION-Y"],
+                ["False. Only x = 2 counts.", "ALG.QUADRATIC.ONE-ROOT"],
+              ],
             },
-            { text: "True. Quadratics always have two answers.", code: "ALG.QUADRATIC.ONE-ROOT" },
-            { text: "True. The y-intercept counts as a solution.", code: "ALG.GRAPH.SOLUTION-Y" },
+            {
+              statement: "Dan says $x^2 = 9$ has only one solution, x = 3.",
+              truth: false,
+              right: "False. (−3)² = 9 too, so x = 3 or x = −3.",
+              wrong: [
+                ["True. The square root of 9 is 3.", "ALG.QUADRATIC.ONE-ROOT"],
+                ["True. Negative numbers cannot be squared."],
+              ],
+            },
+            {
+              claim: "A quadratic equation has two different solutions.",
+              truth: "sometimes",
+              right:
+                "Sometimes. Its curve can cross the x-axis twice, touch it once, or miss it altogether.",
+              wrong: [
+                ["Always. Quadratics have two solutions.", "ALG.QUADRATIC.ONE-ROOT"],
+                ["Never. There is only ever one.", "ALG.QUADRATIC.ONE-ROOT"],
+              ],
+            },
           ],
-          solution: [{ say: "A quadratic equation can have 0, 1 or 2 solutions." }],
-        });
+        );
     }
   },
 

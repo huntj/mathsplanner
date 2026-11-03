@@ -10,7 +10,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -89,7 +89,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -168,7 +168,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -247,7 +247,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -331,7 +331,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -415,7 +415,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -521,7 +521,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -643,7 +643,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -765,7 +765,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -865,7 +865,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -877,7 +877,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -903,7 +903,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Division cannot be done in any order. 7 shared into 21 groups is less than 1 each.",
+                  "v": "True. Dividing by 7 gives 7.",
                 },
               ],
               "id": "RA",
@@ -912,7 +912,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both use the same numbers.",
+                  "v": "False. 7 × 6 = 42, so 42 ÷ 7 = 6.",
                 },
               ],
               "id": "RB",
@@ -921,7 +921,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You can swap the numbers, like in multiplication.",
+                  "v": "True. 7 × 7 = 42.",
                 },
               ],
               "id": "RC",
@@ -936,7 +936,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "MD.DIVIDE.ORDER",
+            "code": "MD.TABLES.NEIGHBOUR",
             "feedback": [],
           },
         ],
@@ -953,7 +953,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Multiplication can be done in any order (3 × 7 = 7 × 3), but division cannot.",
+            "v": "False. 7 × 6 = 42, so 42 ÷ 7 = 6.",
           },
         ],
       },
@@ -961,23 +961,15 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sam knows ",
+        "v": "Ben says ",
       },
       {
         "t": "math",
-        "v": "21 \\div 7 = 3",
+        "v": "42 \\div 7 = 7",
       },
       {
         "t": "text",
-        "v": ". He says ",
-      },
-      {
-        "t": "math",
-        "v": "7 \\div 21 = 3",
-      },
-      {
-        "t": "text",
-        "v": " too.",
+        "v": ".",
       },
     ],
   },
@@ -989,7 +981,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1000,8 +992,8 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -1027,7 +1019,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You can swap the numbers, like in multiplication.",
+                  "v": "True. 7 × 8 = 56.",
                 },
               ],
               "id": "RA",
@@ -1036,7 +1028,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both use the same numbers.",
+                  "v": "False. It is 63.",
                 },
               ],
               "id": "RB",
@@ -1045,7 +1037,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Division cannot be done in any order. 7 shared into 56 groups is less than 1 each.",
+                  "v": "False. It is 15.",
                 },
               ],
               "id": "RC",
@@ -1057,10 +1049,18 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "MD.DIVIDE.ORDER",
+            "code": "MD.TABLES.NEIGHBOUR",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "MD.MULTIPLY.ADDS",
             "feedback": [],
           },
         ],
@@ -1077,7 +1077,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Multiplication can be done in any order (8 × 7 = 7 × 8), but division cannot.",
+            "v": "True. 7 × 8 = 56.",
           },
         ],
       },
@@ -1085,35 +1085,27 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sam knows ",
+        "v": "Ola says ",
       },
       {
         "t": "math",
-        "v": "56 \\div 7 = 8",
+        "v": "7 \\times 8 = 56",
       },
       {
         "t": "text",
-        "v": ". He says ",
-      },
-      {
-        "t": "math",
-        "v": "7 \\div 56 = 8",
-      },
-      {
-        "t": "text",
-        "v": " too.",
+        "v": ".",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1124,14 +1116,14 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -1140,19 +1132,10 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -1160,7 +1143,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. 7 × 2 = 14 is even, but 7 × 3 = 21 is odd.",
+                  "v": "True. 7 × 8 = 56.",
                 },
               ],
               "id": "RA",
@@ -1169,7 +1152,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. 7 is odd, so all its multiples are odd.",
+                  "v": "False. It is 15.",
                 },
               ],
               "id": "RB",
@@ -1178,7 +1161,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Every times table goes up in even steps.",
+                  "v": "False. It is 63.",
                 },
               ],
               "id": "RC",
@@ -1187,11 +1170,28 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MD.MULTIPLY.ADDS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "MD.TABLES.NEIGHBOUR",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -1201,7 +1201,7 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The 7 times table: 7, 14, 21, 28, …",
+            "v": "True. 7 × 8 = 56.",
           },
         ],
       },
@@ -1209,7 +1209,15 @@ exports[`Y4-MD-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A number in the 7 times table is even.",
+        "v": "Ola says ",
+      },
+      {
+        "t": "math",
+        "v": "7 \\times 8 = 56",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },

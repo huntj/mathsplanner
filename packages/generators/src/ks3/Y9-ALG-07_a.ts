@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { clearOfOrigin, grid, lineLatex, poly, signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   m: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y9-ALG-07.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.GRAPH.SOLUTION-Y", "ALG.COORD.ORDER"],
 
@@ -84,24 +85,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Dan says the solution of ",
-            A.math(`${poly([p.m, p.c])} = 0`),
-            " is where the line crosses the y-axis.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Dan says the solution of ",
+                A.math(`${poly([p.m, p.c])} = 0`),
+                " is where the line crosses the y-axis.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. "= 0" means y = 0, which is where the line crosses the x-axis. The y-axis crossing is at y = ${p.c}.`,
+                  correct: true,
+                },
+                { text: "True. The y-intercept is the solution.", code: "ALG.GRAPH.SOLUTION-Y" },
+                { text: "True. x = 0 there.", code: "ALG.GRAPH.SOLUTION-Y" },
+              ],
+              solution: [{ say: "Solving f(x) = k: find where the graph meets the line y = k." }],
+            }),
+          [
             {
-              text: `False. "= 0" means y = 0, which is where the line crosses the x-axis. The y-axis crossing is at y = ${p.c}.`,
-              correct: true,
+              statement:
+                "The graph of $y = 2x - 4$ crosses the x-axis at (2, 0). Ali says x = 2 solves $2x - 4 = 0$.",
+              truth: true,
+              right:
+                "True. On the x-axis y = 0, so where the line crosses it is the solution of 2x − 4 = 0.",
+              wrong: [
+                ["False. The solution is −4, where it crosses the y-axis.", "ALG.GRAPH.SOLUTION-Y"],
+                ["False. The solution is (0, 2).", "ALG.COORD.ORDER"],
+              ],
             },
-            { text: "True. The y-intercept is the solution.", code: "ALG.GRAPH.SOLUTION-Y" },
-            { text: "True. x = 0 there.", code: "ALG.GRAPH.SOLUTION-Y" },
+            {
+              statement:
+                "To estimate the value of y when x = 3.5 from a straight-line graph, Ben reads up from 3.5 on the y-axis.",
+              truth: false,
+              right: "False. Start at 3.5 on the x-axis, go up to the line, then across to read y.",
+              wrong: [
+                ["True. Values are read from the y-axis.", "ALG.COORD.ORDER"],
+                ["True. It does not matter which axis you start on."],
+              ],
+            },
+            {
+              claim: "Reading values from a graph gives an estimate, not always an exact answer.",
+              truth: "always",
+              right: "Always. A graph is only as accurate as the drawing and your reading of it.",
+              wrong: [
+                ["Never. Graphs give exact answers."],
+                ["Sometimes. Only for curved graphs."],
+              ],
+            },
           ],
-          solution: [{ say: "Solving f(x) = k: find where the graph meets the line y = k." }],
-        });
+        );
     }
   },
 

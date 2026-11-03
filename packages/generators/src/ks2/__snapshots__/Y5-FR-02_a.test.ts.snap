@@ -10,7 +10,7 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -75,7 +75,7 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -140,7 +140,7 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -419,7 +419,7 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1618,7 +1618,7 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -2197,7 +2197,7 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -2303,14 +2303,14 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -2322,13 +2322,13 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -2337,10 +2337,19 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -2348,7 +2357,7 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both fractions are less than 1.",
+                  "v": "Sometimes. Only for fractions equal to 1, like 2/2 → 5/5. Otherwise it changes: 1/2 → 2/3.",
                 },
               ],
               "id": "RA",
@@ -2357,7 +2366,7 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 1/2 and 6/7 are different amounts. Multiply, not add: 1/2 = 5/10.",
+                  "v": "Never. Even 2/2 changes.",
                 },
               ],
               "id": "RB",
@@ -2366,7 +2375,7 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Doing the same thing to the top and bottom keeps it equal.",
+                  "v": "Always. Do the same to the top and bottom.",
                 },
               ],
               "id": "RC",
@@ -2388,7 +2397,7 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -2398,7 +2407,7 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Equivalent fractions multiply (or divide) the numerator and denominator by the same number.",
+            "v": "Sometimes. Only for fractions equal to 1, like 2/2 → 5/5. Otherwise it changes: 1/2 → 2/3.",
           },
         ],
       },
@@ -2406,15 +2415,7 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Zac says ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{1}{2} = \\frac{6}{7}",
-      },
-      {
-        "t": "text",
-        "v": ", because he added 5 to the top and bottom.",
+        "v": "Adding the same number to the top and bottom of a fraction gives an equivalent fraction.",
       },
     ],
   },
@@ -2426,7 +2427,7 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -2542,7 +2543,7 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -2553,8 +2554,8 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -2580,7 +2581,7 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Doing the same thing to the top and bottom keeps it equal.",
+                  "v": "False. It is 6/12.",
                 },
               ],
               "id": "RA",
@@ -2589,7 +2590,7 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both fractions are less than 1.",
+                  "v": "True. Multiply the top and bottom by 4.",
                 },
               ],
               "id": "RB",
@@ -2598,7 +2599,7 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 1/5 and 6/10 are different amounts. Multiply, not add: 1/5 = 5/25.",
+                  "v": "False. Thirds and twelfths cannot be equal.",
                 },
               ],
               "id": "RC",
@@ -2630,7 +2631,7 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Equivalent fractions multiply (or divide) the numerator and denominator by the same number.",
+            "v": "True. Multiply the top and bottom by 4.",
           },
         ],
       },
@@ -2638,15 +2639,15 @@ exports[`Y5-FR-02.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Zac says ",
+        "v": "Kai says ",
       },
       {
         "t": "math",
-        "v": "\\frac{1}{5} = \\frac{6}{10}",
+        "v": "\\frac{2}{3} = \\frac{8}{12}",
       },
       {
         "t": "text",
-        "v": ", because he added 5 to the top and bottom.",
+        "v": ".",
       },
     ],
   },

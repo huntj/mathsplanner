@@ -10,7 +10,7 @@ exports[`Y6-FR-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-FR-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -79,7 +79,7 @@ exports[`Y6-FR-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-FR-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -148,7 +148,7 @@ exports[`Y6-FR-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-FR-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -217,7 +217,7 @@ exports[`Y6-FR-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-FR-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -283,7 +283,7 @@ exports[`Y6-FR-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-FR-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -349,7 +349,7 @@ exports[`Y6-FR-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-FR-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -415,7 +415,7 @@ exports[`Y6-FR-09 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-FR-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -427,7 +427,7 @@ exports[`Y6-FR-09 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -453,7 +453,7 @@ exports[`Y6-FR-09 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Remainders are always tenths.",
+                  "v": "False. The remainder 2 must be divided by 5 too. 87 ÷ 5 = 17 remainder 2. Carry on past the point: 2 is 20 tenths, and 20 ÷ 5 = 4. So 87 ÷ 5 = 17.4.",
                 },
               ],
               "id": "RA",
@@ -462,7 +462,7 @@ exports[`Y6-FR-09 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The remainder 2 must be divided by 5 too. 87 ÷ 5 = 17 remainder 2. Carry on past the point: 2 is 20 tenths, and 20 ÷ 5 = 4. So 87 ÷ 5 = 17.4.",
+                  "v": "True. Remainders are always tenths.",
                 },
               ],
               "id": "RB",
@@ -524,14 +524,14 @@ exports[`Y6-FR-09 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-FR-09",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -542,7 +542,124 @@ exports[`Y6-FR-09 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only when you divide by 10.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. The remainder is a fraction of the divisor, and every fraction can be written as a decimal.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. Remainders stay as remainders.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "MD.REMAINDER.AS-DECIMAL",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. The remainder is a fraction of the divisor, and every fraction can be written as a decimal.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A division with a remainder can be written as a decimal.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y6-FR-09",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -569,7 +686,7 @@ exports[`Y6-FR-09 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The remainder goes after the decimal point.",
+                  "v": "False. It is 1.4.",
                 },
               ],
               "id": "RA",
@@ -578,7 +695,7 @@ exports[`Y6-FR-09 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The remainder 1 must be divided by 5 too. 96 ÷ 5 = 19 remainder 1. Carry on past the point: 1 is 10 tenths, and 10 ÷ 5 = 2. So 96 ÷ 5 = 19.2.",
+                  "v": "True. 7 ÷ 4 = 1 remainder 3, and 3/4 = 0.75.",
                 },
               ],
               "id": "RB",
@@ -587,7 +704,7 @@ exports[`Y6-FR-09 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Remainders are always tenths.",
+                  "v": "False. It is 1.3, as the remainder is 3.",
                 },
               ],
               "id": "RC",
@@ -599,7 +716,7 @@ exports[`Y6-FR-09 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
             "code": "MD.REMAINDER.AS-DECIMAL",
@@ -619,7 +736,7 @@ exports[`Y6-FR-09 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "96 ÷ 5 = 19 remainder 1. Carry on past the point: 1 is 10 tenths, and 10 ÷ 5 = 2. So 96 ÷ 5 = 19.2.",
+            "v": "True. 7 ÷ 4 = 1 remainder 3, and 3/4 = 0.75.",
           },
         ],
       },
@@ -627,131 +744,15 @@ exports[`Y6-FR-09 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Leo says ",
+        "v": "Kim says ",
       },
       {
         "t": "math",
-        "v": "96 \\div 5 = 19.1",
+        "v": "7 \\div 4 = 1.75",
       },
       {
         "t": "text",
-        "v": ", because the answer is 19 remainder 1.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y6-FR-09",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The remainder goes after the decimal point.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Remainders are always tenths.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. The remainder 8 must be divided by 16 too. 440 ÷ 16 = 27 remainder 8. Carry on past the point: 8 is 80 tenths, and 80 ÷ 16 = 5. So 440 ÷ 16 = 27.5.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "MD.REMAINDER.AS-DECIMAL",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "440 ÷ 16 = 27 remainder 8. Carry on past the point: 8 is 80 tenths, and 80 ÷ 16 = 5. So 440 ÷ 16 = 27.5.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Leo says ",
-      },
-      {
-        "t": "math",
-        "v": "440 \\div 16 = 27.8",
-      },
-      {
-        "t": "text",
-        "v": ", because the answer is 27 remainder 8.",
+        "v": ".",
       },
     ],
   },

@@ -10,7 +10,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-RAT-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -76,7 +76,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-RAT-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -142,7 +142,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-RAT-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -208,7 +208,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-RAT-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -274,7 +274,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-RAT-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -340,7 +340,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-RAT-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -406,7 +406,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-RAT-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -418,7 +418,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -444,7 +444,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Only the length changes in an enlargement.",
+                  "v": "True. 24 ÷ 6 = 4, so the scale factor is 4. Every length is multiplied by 4: 2 × 4 = 8 cm.",
                 },
               ],
               "id": "RA",
@@ -453,7 +453,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The length grew by 18 cm, so the width grows by 18 cm too.",
+                  "v": "False. Only the length changes in an enlargement.",
                 },
               ],
               "id": "RB",
@@ -462,7 +462,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 24 ÷ 6 = 4, so the scale factor is 4. Every length is multiplied by 4: 2 × 4 = 8 cm.",
+                  "v": "False. The length grew by 18 cm, so the width grows by 18 cm too.",
                 },
               ],
               "id": "RC",
@@ -474,7 +474,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "RAT.ADDITIVE",
@@ -507,14 +507,14 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-RAT-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -525,14 +525,14 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -541,10 +541,19 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -552,7 +561,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The length grew by 33 cm, so the width grows by 33 cm too.",
+                  "v": "Never. A bigger shape has bigger angles.",
                 },
               ],
               "id": "RA",
@@ -561,7 +570,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both sides get bigger, so it must be right.",
+                  "v": "Always. Enlarging a shape changes its lengths, not its angles.",
                 },
               ],
               "id": "RB",
@@ -570,7 +579,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 44 ÷ 11 = 4, so the scale factor is 4. Every length is multiplied by 4: 9 × 4 = 36 cm.",
+                  "v": "Sometimes. Only if they are the same size.",
                 },
               ],
               "id": "RC",
@@ -592,7 +601,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -602,7 +611,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "44 ÷ 11 = 4, so the scale factor is 4. Every length is multiplied by 4: 9 × 4 = 36 cm.",
+            "v": "Always. Enlarging a shape changes its lengths, not its angles.",
           },
         ],
       },
@@ -610,7 +619,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A rectangle 11 cm by 9 cm is enlarged so that its length is 44 cm. Mia says the new width is 42 cm.",
+        "v": "Two similar shapes have the same angles.",
       },
     ],
   },
@@ -622,7 +631,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-RAT-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -634,7 +643,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -660,7 +669,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Only the length changes in an enlargement.",
+                  "v": "True. 30 ÷ 6 = 5, so the scale factor is 5. Every length is multiplied by 5: 8 × 5 = 40 cm.",
                 },
               ],
               "id": "RA",
@@ -678,7 +687,7 @@ exports[`Y6-RAT-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 30 ÷ 6 = 5, so the scale factor is 5. Every length is multiplied by 5: 8 × 5 = 40 cm.",
+                  "v": "False. Only the length changes in an enlargement.",
                 },
               ],
               "id": "RC",

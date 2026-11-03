@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { fmt, tex } from "../shared/npv.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -29,7 +30,7 @@ const leadDown = (n: number) => {
 
 export default defineGenerator<Params>({
   id: "Y6-MD-08",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.ROUND.ALWAYS-DOWN", "MD.MULTIPLY.ADDS", "MD.PLACE.ZEROS"],
 
@@ -97,36 +98,76 @@ export default defineGenerator<Params>({
         });
       default: {
         const leo = p.right ? exact : exact * 10;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Leo works out ",
-            A.math(`${tex(p.a)} \\times ${p.b} = ${tex(leo)}`),
-            ". Mia uses an estimate to say his answer must be wrong.",
-          ],
-          truth: !p.right,
-          reasons: p.right
-            ? [
-                {
-                  text: `False. The estimate is ${fmt(estimate)}, which is close to ${fmt(leo)}, so his answer is sensible.`,
-                  correct: true,
-                },
-                { text: "True. An answer is only right if it equals the estimate." },
-                { text: "True. Count the zeros: the answer has too many.", code: "MD.PLACE.ZEROS" },
-              ]
-            : [
-                {
-                  text: `True. The estimate is ${fmt(estimate)}, but ${fmt(leo)} is about ten times bigger, so a digit is in the wrong place.`,
-                  correct: true,
-                },
-                { text: "False. Estimates are never close enough to spot a mistake." },
-                {
-                  text: "False. Bigger answers are fine when you multiply.",
-                  code: "MD.PLACE.ZEROS",
-                },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Leo works out ",
+                A.math(`${tex(p.a)} \\times ${p.b} = ${tex(leo)}`),
+                ". Mia uses an estimate to say his answer must be wrong.",
               ],
-          solution: [{ say: how }, { say: `The exact answer is ${fmt(exact)}.` }],
-        });
+              truth: !p.right,
+              reasons: p.right
+                ? [
+                    {
+                      text: `False. The estimate is ${fmt(estimate)}, which is close to ${fmt(leo)}, so his answer is sensible.`,
+                      correct: true,
+                    },
+                    { text: "True. An answer is only right if it equals the estimate." },
+                    {
+                      text: "True. Count the zeros: the answer has too many.",
+                      code: "MD.PLACE.ZEROS",
+                    },
+                  ]
+                : [
+                    {
+                      text: `True. The estimate is ${fmt(estimate)}, but ${fmt(leo)} is about ten times bigger, so a digit is in the wrong place.`,
+                      correct: true,
+                    },
+                    { text: "False. Estimates are never close enough to spot a mistake." },
+                    {
+                      text: "False. Bigger answers are fine when you multiply.",
+                      code: "MD.PLACE.ZEROS",
+                    },
+                  ],
+              solution: [{ say: how }, { say: `The exact answer is ${fmt(exact)}.` }],
+            }),
+          [
+            {
+              statement: "Mo estimates $49 \\times 21$ as $50 \\times 20 = 1000$.",
+              truth: true,
+              right:
+                "True. Rounding each number to 1 significant figure gives an easy, close estimate.",
+              wrong: [
+                ["False. Estimates must use the exact numbers."],
+                ["False. 49 rounds to 40.", "NPV.ROUND.ALWAYS-DOWN"],
+              ],
+            },
+            {
+              statement:
+                "Pam works out $312 \\times 9 = 28{,}080$. Her estimate, $300 \\times 10 = 3000$, shows the answer is about right.",
+              truth: false,
+              right:
+                "False. 28,080 is nearly ten times 3,000, so a zero has slipped in. 312 × 9 = 2,808.",
+              wrong: [
+                ["True. Both answers start with a 2 or 3.", "MD.PLACE.ZEROS"],
+                ["True. An estimate cannot spot a mistake."],
+              ],
+            },
+            {
+              claim: "An estimate gives the exact answer.",
+              truth: "sometimes",
+              right:
+                "Sometimes. Usually it is only close: 20 × 30 = 600 is exact, but 19 × 31 is 589.",
+              wrong: [
+                ["Always. That is what an estimate is for.", "NPV.ROUND.ALWAYS-DOWN"],
+                ["Never. Estimates are always wrong by a lot."],
+              ],
+            },
+          ],
+        );
       }
     }
   },

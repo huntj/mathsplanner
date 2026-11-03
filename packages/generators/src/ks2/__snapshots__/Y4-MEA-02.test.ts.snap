@@ -83,7 +83,7 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MEA-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -236,7 +236,7 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MEA-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -389,7 +389,7 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MEA-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -469,7 +469,7 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MEA-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -536,7 +536,7 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MEA-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -603,7 +603,7 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MEA-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -664,86 +664,13 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "angles": [
-          {
-            "from": "B",
-            "right": true,
-            "to": "D",
-            "vertex": "A",
-          },
-          {
-            "from": "C",
-            "right": true,
-            "to": "A",
-            "vertex": "B",
-          },
-          {
-            "from": "D",
-            "right": true,
-            "to": "B",
-            "vertex": "C",
-          },
-          {
-            "from": "A",
-            "right": true,
-            "to": "C",
-            "vertex": "D",
-          },
-        ],
-        "description": "A rectangle 7 cm long and 5 cm wide.",
-        "points": {
-          "A": [
-            0,
-            0,
-          ],
-          "B": [
-            7,
-            0,
-          ],
-          "C": [
-            7,
-            5,
-          ],
-          "D": [
-            0,
-            5,
-          ],
-        },
-        "polygons": [
-          {
-            "vertices": [
-              "A",
-              "B",
-              "C",
-              "D",
-            ],
-          },
-        ],
-        "segments": [
-          {
-            "from": "A",
-            "label": "7\\text{ cm}",
-            "length": 7,
-            "to": "B",
-          },
-          {
-            "from": "B",
-            "label": "5\\text{ cm}",
-            "length": 5,
-            "to": "C",
-          },
-        ],
-        "type": "geometry",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MEA-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -755,7 +682,7 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -781,7 +708,7 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The square's perimeter is 36 cm.",
+                  "v": "True. 4 sides of 5 cm: 5 + 5 + 5 + 5 = 20 cm.",
                 },
               ],
               "id": "RA",
@@ -790,7 +717,7 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The square's perimeter is 4 × 6 = 24 cm, and the rectangle's is 24 cm.",
+                  "v": "False. It is 10 cm.",
                 },
               ],
               "id": "RB",
@@ -799,7 +726,7 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The rectangle's perimeter is 12 cm.",
+                  "v": "False. It is 25 cm, its area.",
                 },
               ],
               "id": "RC",
@@ -811,10 +738,10 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "MEA.PERIMETER.AREA",
+            "code": "MEA.PERIMETER.MISSING-SIDES",
             "feedback": [],
           },
           {
@@ -822,7 +749,7 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "MEA.PERIMETER.MISSING-SIDES",
+            "code": "MEA.PERIMETER.AREA",
             "feedback": [],
           },
         ],
@@ -839,19 +766,15 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Rectangle: 2 × (7 + 5) = 24 cm. Square: 4 × 6 = 24 cm.",
+            "v": "True. 4 sides of 5 cm: 5 + 5 + 5 + 5 = 20 cm.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
         "t": "text",
-        "v": "Ivy says a square with sides of 6 cm has the same perimeter as this rectangle.",
+        "v": "Kai says a square with sides of 5 cm has a perimeter of 20 cm.",
       },
     ],
   },
@@ -936,7 +859,7 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MEA-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -948,7 +871,7 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -974,7 +897,7 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The square's perimeter is 4 × 11 = 44 m, but the rectangle's is 40 m.",
+                  "v": "True. The rectangle's perimeter is 20 m.",
                 },
               ],
               "id": "RA",
@@ -983,7 +906,7 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The rectangle's perimeter is 20 m.",
+                  "v": "False. The square's perimeter is 4 × 11 = 44 m, but the rectangle's is 40 m.",
                 },
               ],
               "id": "RB",
@@ -1004,7 +927,7 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "MEA.PERIMETER.MISSING-SIDES",
@@ -1121,7 +1044,7 @@ exports[`Y4-MEA-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MEA-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

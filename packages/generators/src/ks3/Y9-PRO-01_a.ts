@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { exactAnswer, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   m: number;
@@ -28,7 +29,7 @@ const evens = (m: number, n: number) => {
 
 export default defineGenerator<Params>({
   id: "Y9-PRO-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["PRO.ENUMERATE", "PRO.SAMPLE-SPACE.EQUAL-TOTALS"],
 
@@ -84,25 +85,61 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Kim spins two spinners numbered 1 to ${p.m} and 1 to ${p.n}. She says there are ${p.m + p.n} possible outcomes.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Kim spins two spinners numbered 1 to ${p.m} and 1 to ${p.n}. She says there are ${p.m + p.n} possible outcomes.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Each of the ${p.m} results on A can go with each of the ${p.n} on B: ${p.m} × ${p.n} = ${p.m * p.n} outcomes.`,
+                  correct: true,
+                },
+                { text: "True. Add the numbers of sections.", code: "PRO.ENUMERATE" },
+                {
+                  text: `True. There are ${p.m + p.n} different numbers to land on.`,
+                  code: "PRO.ENUMERATE",
+                },
+              ],
+              solution: [{ say: "A grid shows every pairing." }],
+            }),
+          [
             {
-              text: `False. Each of the ${p.m} results on A can go with each of the ${p.n} on B: ${p.m} × ${p.n} = ${p.m * p.n} outcomes.`,
-              correct: true,
+              statement:
+                "A coin is flipped and a dice is rolled. Leo says there are 12 possible outcomes.",
+              truth: true,
+              right: "True. 2 outcomes for the coin times 6 for the dice is 12.",
+              wrong: [["False. There are 8: 2 + 6.", "PRO.ENUMERATE"], ["False. There are 6."]],
             },
-            { text: "True. Add the numbers of sections.", code: "PRO.ENUMERATE" },
             {
-              text: `True. There are ${p.m + p.n} different numbers to land on.`,
-              code: "PRO.ENUMERATE",
+              statement:
+                "Two dice are rolled and the scores added. Mia says every total from 2 to 12 is equally likely.",
+              truth: false,
+              right: "False. A total of 7 can be made 6 ways, but 2 only one way.",
+              wrong: [
+                [
+                  "True. There are 11 totals, each with chance 1/11.",
+                  "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
+                ],
+                ["True. The dice are fair."],
+              ],
+            },
+            {
+              claim: "A sample space grid lists every possible outcome of two events.",
+              truth: "always",
+              right:
+                "Always. Each row is one outcome of the first event and each column one of the second.",
+              wrong: [
+                ["Sometimes. It misses repeated outcomes.", "PRO.ENUMERATE"],
+                ["Never. It only lists the totals."],
+              ],
             },
           ],
-          solution: [{ say: "A grid shows every pairing." }],
-        });
+        );
     }
   },
 

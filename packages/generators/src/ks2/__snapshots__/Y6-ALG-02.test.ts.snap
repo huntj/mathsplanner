@@ -10,7 +10,7 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-ALG-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -62,7 +62,7 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-ALG-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -114,7 +114,7 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-ALG-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -166,7 +166,7 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-ALG-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -253,7 +253,7 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-ALG-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -340,7 +340,7 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-ALG-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -427,7 +427,7 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-ALG-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -438,7 +438,7 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -465,7 +465,7 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You cannot find a term without writing them all out.",
+                  "v": "False. It goes up by 5, the first term.",
                 },
               ],
               "id": "RA",
@@ -474,7 +474,7 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The 21th term is always 21 lots of the difference.",
+                  "v": "False. It doubles each time.",
                 },
               ],
               "id": "RB",
@@ -483,7 +483,7 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The first term is 14, not 5. There are 20 steps after the first term: 14 + 20 × 5 = 114.",
+                  "v": "True. 9 − 5 = 4, 13 − 9 = 4 and 17 − 13 = 4.",
                 },
               ],
               "id": "RC",
@@ -495,7 +495,7 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.POSITION-RULE",
@@ -515,7 +515,7 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "term = 14 + (position − 1) × 5, so the 21th term is 114.",
+            "v": "True. 9 − 5 = 4, 13 − 9 = 4 and 17 − 13 = 4.",
           },
         ],
       },
@@ -523,127 +523,19 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "In the sequence 14, 19, 24, 29, …, Maya says the 21th term is 21 × 5 = 105.",
+        "v": "Zara says the sequence 5, 9, 13, 17, … goes up by 4 each time.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-ALG-02",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The 19th term is always 19 lots of the difference.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. You cannot find a term without writing them all out.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. The first term is 1, not 3. There are 18 steps after the first term: 1 + 18 × 3 = 55.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.SEQUENCE.POSITION-RULE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "term = 1 + (position − 1) × 3, so the 19th term is 55.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "In the sequence 1, 4, 7, 10, …, Maya says the 19th term is 19 × 3 = 57.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y6-ALG-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -661,6 +553,123 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. Adding makes things bigger.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. If the number added is positive it grows, but adding −2 makes it get smaller.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. Sequences go down.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "ALG.SEQUENCE.POSITION-RULE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Sometimes. If the number added is positive it grows, but adding −2 makes it get smaller.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A sequence that adds the same number each time keeps getting bigger.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y6-ALG-02",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
                   "v": "True",
                 },
               ],
@@ -681,7 +690,7 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You cannot find a term without writing them all out.",
+                  "v": "True. 10 × 3 = 30.",
                 },
               ],
               "id": "RA",
@@ -690,7 +699,7 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The first term is 63, not -10. There are 12 steps after the first term: 63 + 12 × -10 = -57.",
+                  "v": "True. Every term is a multiple of 3.",
                 },
               ],
               "id": "RB",
@@ -699,7 +708,7 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The 13th term is always 13 lots of the difference.",
+                  "v": "False. It starts at 2 and adds 3 nine times: 2 + 27 = 29.",
                 },
               ],
               "id": "RC",
@@ -711,7 +720,7 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.POSITION-RULE",
@@ -731,7 +740,7 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "term = 63 + (position − 1) × -10, so the 13th term is -57.",
+            "v": "False. It starts at 2 and adds 3 nine times: 2 + 27 = 29.",
           },
         ],
       },
@@ -739,7 +748,7 @@ exports[`Y6-ALG-02 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "In the sequence 63, 53, 43, 33, …, Maya says the 13th term is 13 × -10 = -130.",
+        "v": "In the sequence 2, 5, 8, 11, …, Sol says the 10th term is 30.",
       },
     ],
   },

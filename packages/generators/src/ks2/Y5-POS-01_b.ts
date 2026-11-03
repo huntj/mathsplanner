@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   x: number;
@@ -22,7 +23,7 @@ const way = (dx: number, dy: number) =>
 
 export default defineGenerator<Params>({
   id: "Y5-POS-01.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["POS.TRANSLATE.DIRECTION", "POS.TRANSFORM.CHANGES-SHAPE"],
 
@@ -107,28 +108,62 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `A square with sides of 3 squares is translated ${way(p.dx, p.dy)}. Zoe says the new square is bigger because it has moved further from the corner of the grid.`,
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `A square with sides of 3 squares is translated ${way(p.dx, p.dy)}. Zoe says the new square is bigger because it has moved further from the corner of the grid.`,
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A translation slides a shape without turning or resizing it, so it is still 3 by 3.",
+                  correct: true,
+                },
+                {
+                  text: "True. Shapes grow as they move away from (0, 0).",
+                  code: "POS.TRANSFORM.CHANGES-SHAPE",
+                },
+                {
+                  text: "True. Every corner moves, so the size changes.",
+                  code: "POS.TRANSFORM.CHANGES-SHAPE",
+                },
+              ],
+              solution: [
+                { say: "After a translation the shape is the same size and the same way round." },
+              ],
+            }),
+          [
             {
-              text: "False. A translation slides a shape without turning or resizing it, so it is still 3 by 3.",
-              correct: true,
+              statement:
+                "A shape is translated 2 squares right and 3 squares up. Ola says every corner moves 2 right and 3 up.",
+              truth: true,
+              right: "True. In a translation every point moves the same way and the same distance.",
+              wrong: [
+                ["False. Only one corner moves.", "POS.TRANSLATE.DIRECTION"],
+                ["False. The corners move different amounts.", "POS.TRANSFORM.CHANGES-SHAPE"],
+              ],
             },
             {
-              text: "True. Shapes grow as they move away from (0, 0).",
-              code: "POS.TRANSFORM.CHANGES-SHAPE",
+              claim: "A translated shape is the same size and shape as the original.",
+              truth: "always",
+              right: "Always. A translation just slides the shape.",
+              wrong: [
+                ["Sometimes. It gets bigger if it moves far.", "POS.TRANSFORM.CHANGES-SHAPE"],
+                ["Never. Every move changes it."],
+              ],
             },
             {
-              text: "True. Every corner moves, so the size changes.",
-              code: "POS.TRANSFORM.CHANGES-SHAPE",
+              statement: "Dev moves the point (4, 5) 2 squares left and says it ends up at (6, 5).",
+              truth: false,
+              right: "False. Left takes away from the first number: 4 − 2 = 2, so (2, 5).",
+              wrong: [
+                ["True. Moving adds to the numbers.", "POS.TRANSLATE.DIRECTION"],
+                ["True. Left adds to x."],
+              ],
             },
           ],
-          solution: [
-            { say: "After a translation the shape is the same size and the same way round." },
-          ],
-        });
+        );
     }
   },
 

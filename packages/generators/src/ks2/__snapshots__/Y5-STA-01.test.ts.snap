@@ -134,7 +134,7 @@ exports[`Y5-STA-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-STA-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -328,7 +328,7 @@ exports[`Y5-STA-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-STA-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -522,7 +522,7 @@ exports[`Y5-STA-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-STA-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -716,7 +716,7 @@ exports[`Y5-STA-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-STA-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -910,7 +910,7 @@ exports[`Y5-STA-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-STA-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1104,7 +1104,7 @@ exports[`Y5-STA-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-STA-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1298,7 +1298,7 @@ exports[`Y5-STA-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-STA-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1310,6 +1310,239 @@ exports[`Y5-STA-01 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. You cannot tell growth from a line graph.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. A line graph always goes up.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The line is flat between week 2 and week 3: the height stayed the same.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "STA.SCALE.READ",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "A flat part of the line means no change; going up means the plant grew.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The graph shows the height of a plant, measured once a week.",
+      },
+      {
+        "i": 0,
+        "t": "diagram",
+      },
+      {
+        "t": "text",
+        "v": " Pia says: "The plant did not grow between week 2 and week 3."",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y5-STA-01",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. A flat line means the value stayed the same.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. Flat means it went down.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only at the start.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "STA.SCALE.READ",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. A flat line means the value stayed the same.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A flat part of a line graph shows that nothing changed then.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y5-STA-01",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
           "correctReason": "RA",
           "options": [
             {
@@ -1336,7 +1569,7 @@ exports[`Y5-STA-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The line is flat between week 2 and week 3: the height stayed the same.",
+                  "v": "False. It rose by 8 degrees: from 12°C up to 20°C.",
                 },
               ],
               "id": "RA",
@@ -1345,7 +1578,7 @@ exports[`Y5-STA-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A line graph always goes up.",
+                  "v": "True. Temperatures fall during the day.",
                 },
               ],
               "id": "RB",
@@ -1354,7 +1587,7 @@ exports[`Y5-STA-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You cannot tell growth from a line graph.",
+                  "v": "True. 'By' means take away, and 20 − 12 = 8.",
                 },
               ],
               "id": "RC",
@@ -1366,10 +1599,10 @@ exports[`Y5-STA-01 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "STA.SCALE.READ",
+            "code": "AS.PROBLEM.KEYWORD",
             "feedback": [],
           },
         ],
@@ -1386,7 +1619,7 @@ exports[`Y5-STA-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A flat part of the line means no change; going up means the plant grew.",
+            "v": "False. It rose by 8 degrees: from 12°C up to 20°C.",
           },
         ],
       },
@@ -1394,495 +1627,7 @@ exports[`Y5-STA-01 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The graph shows the height of a plant, measured once a week.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": " Pia says: "The plant did not grow between week 2 and week 3."",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "A line graph of the height of a plant each week for six weeks.",
-        "grid": true,
-        "points": [
-          {
-            "at": [
-              0,
-              6,
-            ],
-          },
-          {
-            "at": [
-              1,
-              8,
-            ],
-          },
-          {
-            "at": [
-              2,
-              14,
-            ],
-          },
-          {
-            "at": [
-              3,
-              18,
-            ],
-          },
-          {
-            "at": [
-              4,
-              22,
-            ],
-          },
-          {
-            "at": [
-              5,
-              24,
-            ],
-          },
-          {
-            "at": [
-              6,
-              26,
-            ],
-          },
-        ],
-        "segments": [
-          {
-            "from": [
-              0,
-              6,
-            ],
-            "to": [
-              1,
-              8,
-            ],
-          },
-          {
-            "from": [
-              1,
-              8,
-            ],
-            "to": [
-              2,
-              14,
-            ],
-          },
-          {
-            "from": [
-              2,
-              14,
-            ],
-            "to": [
-              3,
-              18,
-            ],
-          },
-          {
-            "from": [
-              3,
-              18,
-            ],
-            "to": [
-              4,
-              22,
-            ],
-          },
-          {
-            "from": [
-              4,
-              22,
-            ],
-            "to": [
-              5,
-              24,
-            ],
-          },
-          {
-            "from": [
-              5,
-              24,
-            ],
-            "to": [
-              6,
-              26,
-            ],
-          },
-        ],
-        "type": "cartesian",
-        "x": {
-          "label": "\\text{week}",
-          "max": 6,
-          "min": 0,
-          "step": 1,
-        },
-        "y": {
-          "label": "\\text{height (cm)}",
-          "max": 40,
-          "min": 0,
-          "step": 4,
-        },
-      },
-    ],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y5-STA-01",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. A line graph always goes up.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The line goes up between every pair of weeks.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. You cannot tell growth from a line graph.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "STA.SCALE.READ",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "A flat part of the line means no change; going up means the plant grew.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "The graph shows the height of a plant, measured once a week.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": " Pia says: "The plant grew every week."",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "A line graph of the height of a plant each week for six weeks.",
-        "grid": true,
-        "points": [
-          {
-            "at": [
-              0,
-              4,
-            ],
-          },
-          {
-            "at": [
-              1,
-              12,
-            ],
-          },
-          {
-            "at": [
-              2,
-              14,
-            ],
-          },
-          {
-            "at": [
-              3,
-              14,
-            ],
-          },
-          {
-            "at": [
-              4,
-              18,
-            ],
-          },
-          {
-            "at": [
-              5,
-              20,
-            ],
-          },
-          {
-            "at": [
-              6,
-              28,
-            ],
-          },
-        ],
-        "segments": [
-          {
-            "from": [
-              0,
-              4,
-            ],
-            "to": [
-              1,
-              12,
-            ],
-          },
-          {
-            "from": [
-              1,
-              12,
-            ],
-            "to": [
-              2,
-              14,
-            ],
-          },
-          {
-            "from": [
-              2,
-              14,
-            ],
-            "to": [
-              3,
-              14,
-            ],
-          },
-          {
-            "from": [
-              3,
-              14,
-            ],
-            "to": [
-              4,
-              18,
-            ],
-          },
-          {
-            "from": [
-              4,
-              18,
-            ],
-            "to": [
-              5,
-              20,
-            ],
-          },
-          {
-            "from": [
-              5,
-              20,
-            ],
-            "to": [
-              6,
-              28,
-            ],
-          },
-        ],
-        "type": "cartesian",
-        "x": {
-          "label": "\\text{week}",
-          "max": 6,
-          "min": 0,
-          "step": 1,
-        },
-        "y": {
-          "label": "\\text{height (cm)}",
-          "max": 40,
-          "min": 0,
-          "step": 4,
-        },
-      },
-    ],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y5-STA-01",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. A line graph always goes up.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The line is flat between week 2 and week 3: the height stayed the same.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. You cannot tell growth from a line graph.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "STA.SCALE.READ",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "A flat part of the line means no change; going up means the plant grew.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "The graph shows the height of a plant, measured once a week.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": " Pia says: "The plant did not grow between week 2 and week 3."",
+        "v": "A line graph shows 12°C at 9:00 and 20°C at 13:00. Ivy says the temperature fell by 8 degrees.",
       },
     ],
   },

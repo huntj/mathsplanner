@@ -36,7 +36,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -166,7 +166,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -305,7 +305,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -409,7 +409,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -491,7 +491,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -559,7 +559,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -714,7 +714,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -900,7 +900,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1086,7 +1086,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1192,14 +1192,14 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1210,14 +1210,14 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1226,10 +1226,19 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1237,7 +1246,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The second number tells you left or right.",
+                  "v": "Sometimes. Only if y is negative too.",
                 },
               ],
               "id": "RA",
@@ -1246,7 +1255,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Negative numbers are always to the left of and below the origin.",
+                  "v": "Always. Negative x means you go left from the origin.",
                 },
               ],
               "id": "RB",
@@ -1255,7 +1264,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The x-coordinate -4 is negative, so it is left of the y-axis.",
+                  "v": "Never. Negative x means below.",
                 },
               ],
               "id": "RC",
@@ -1270,22 +1279,22 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.COORD.ORDER",
+            "code": "NPV.NEGATIVE.MIRROR",
             "feedback": [],
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.NEGATIVE.MIRROR",
+            "code": "ALG.COORD.ORDER",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1295,7 +1304,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "x tells you left (negative) or right (positive); y tells you down (negative) or up (positive).",
+            "v": "Always. Negative x means you go left from the origin.",
           },
         ],
       },
@@ -1303,27 +1312,19 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Mo says the point ",
-      },
-      {
-        "t": "math",
-        "v": "(-4, 5)",
-      },
-      {
-        "t": "text",
-        "v": " is to the right of the y-axis.",
+        "v": "A point with a negative x-coordinate is to the left of the y-axis.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1334,14 +1335,14 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1350,10 +1351,19 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1361,7 +1371,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Negative numbers are always to the left of and below the origin.",
+                  "v": "Never. It is on the x-axis.",
                 },
               ],
               "id": "RA",
@@ -1370,7 +1380,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The second number tells you left or right.",
+                  "v": "Always. Its x-coordinate is 0, so it is not left or right of the y-axis.",
                 },
               ],
               "id": "RB",
@@ -1379,7 +1389,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The x-coordinate -5 is negative, so it is left of the y-axis.",
+                  "v": "Sometimes. It depends on the scale.",
                 },
               ],
               "id": "RC",
@@ -1394,14 +1404,6 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.NEGATIVE.MIRROR",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
             "code": "ALG.COORD.ORDER",
             "feedback": [],
           },
@@ -1409,7 +1411,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1419,7 +1421,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "x tells you left (negative) or right (positive); y tells you down (negative) or up (positive).",
+            "v": "Always. Its x-coordinate is 0, so it is not left or right of the y-axis.",
           },
         ],
       },
@@ -1427,27 +1429,27 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Mo says the point ",
+        "v": "The point ",
       },
       {
         "t": "math",
-        "v": "(-5, -4)",
+        "v": "(0, 5)",
       },
       {
         "t": "text",
-        "v": " is to the right of the y-axis.",
+        "v": " is on the y-axis.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1458,14 +1460,14 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1474,10 +1476,19 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1485,7 +1496,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Negative numbers are always to the left of and below the origin.",
+                  "v": "Always. Its x-coordinate is 0, so it is not left or right of the y-axis.",
                 },
               ],
               "id": "RA",
@@ -1494,7 +1505,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The second number tells you left or right.",
+                  "v": "Sometimes. It depends on the scale.",
                 },
               ],
               "id": "RB",
@@ -1503,7 +1514,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The x-coordinate -5 is negative, so it is left of the y-axis.",
+                  "v": "Never. It is on the x-axis.",
                 },
               ],
               "id": "RC",
@@ -1515,15 +1526,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.NEGATIVE.MIRROR",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.COORD.ORDER",
@@ -1533,7 +1536,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1543,7 +1546,7 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "x tells you left (negative) or right (positive); y tells you down (negative) or up (positive).",
+            "v": "Always. Its x-coordinate is 0, so it is not left or right of the y-axis.",
           },
         ],
       },
@@ -1551,15 +1554,15 @@ exports[`Y6-POS-01 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Mo says the point ",
+        "v": "The point ",
       },
       {
         "t": "math",
-        "v": "(-5, 2)",
+        "v": "(0, 5)",
       },
       {
         "t": "text",
-        "v": " is to the right of the y-axis.",
+        "v": " is on the y-axis.",
       },
     ],
   },

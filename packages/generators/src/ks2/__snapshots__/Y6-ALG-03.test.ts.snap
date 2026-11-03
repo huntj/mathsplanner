@@ -10,7 +10,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-ALG-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -111,7 +111,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-ALG-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -212,7 +212,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-ALG-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -313,7 +313,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-ALG-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -387,7 +387,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-ALG-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -461,7 +461,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-ALG-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -535,7 +535,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-ALG-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -573,7 +573,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Take away 6 and multiply by 2.",
+                  "v": "True. 15 + 7 = 22, so n is 22.",
                 },
               ],
               "id": "RA",
@@ -582,7 +582,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. n must be bigger than the answer.",
+                  "v": "True. Add 7 to 15.",
                 },
               ],
               "id": "RB",
@@ -591,7 +591,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Undo × 2 by dividing, not multiplying: (14 − 6) ÷ 2 = 4.",
+                  "v": "False. Undo + 7 by subtracting 7: n = 15 − 7 = 8.",
                 },
               ],
               "id": "RC",
@@ -603,7 +603,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.SOLVE.WRONG-INVERSE",
@@ -623,7 +623,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Check: 2 × 4 + 6 = 14.",
+            "v": "False. Undo + 7 by subtracting 7: n = 15 − 7 = 8.",
           },
         ],
       },
@@ -631,7 +631,23 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "I think of a number, n. I multiply it by 2 and then add 6. The answer is 14. Leo says n = 16.",
+        "v": "Solving ",
+      },
+      {
+        "t": "math",
+        "v": "n + 7 = 15",
+      },
+      {
+        "t": "text",
+        "v": ", Pam says ",
+      },
+      {
+        "t": "math",
+        "v": "n = 22",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
@@ -643,7 +659,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-ALG-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -655,7 +671,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -690,7 +706,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Multiply 30 by 3 to undo it.",
+                  "v": "True. 3 × 10 + 5 = 35.",
                 },
               ],
               "id": "RB",
@@ -699,7 +715,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 3 × 10 + 5 = 35.",
+                  "v": "False. Multiply 30 by 3 to undo it.",
                 },
               ],
               "id": "RC",
@@ -711,7 +727,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.SOLVE.WRONG-INVERSE",
@@ -751,7 +767,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-ALG-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -763,7 +779,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -789,7 +805,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Take away 10 and multiply by 7.",
+                  "v": "True. 15 + 7 = 22, so n is 22.",
                 },
               ],
               "id": "RA",
@@ -798,7 +814,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Undo × 7 by dividing, not multiplying: (52 − 10) ÷ 7 = 6.",
+                  "v": "True. Add 7 to 15.",
                 },
               ],
               "id": "RB",
@@ -807,7 +823,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. n must be bigger than the answer.",
+                  "v": "False. Undo + 7 by subtracting 7: n = 15 − 7 = 8.",
                 },
               ],
               "id": "RC",
@@ -819,7 +835,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.SOLVE.WRONG-INVERSE",
@@ -839,7 +855,7 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Check: 7 × 6 + 10 = 52.",
+            "v": "False. Undo + 7 by subtracting 7: n = 15 − 7 = 8.",
           },
         ],
       },
@@ -847,7 +863,23 @@ exports[`Y6-ALG-03 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "I think of a number, n. I multiply it by 7 and then add 10. The answer is 52. Leo says n = 294.",
+        "v": "Solving ",
+      },
+      {
+        "t": "math",
+        "v": "n + 7 = 15",
+      },
+      {
+        "t": "text",
+        "v": ", Pam says ",
+      },
+      {
+        "t": "math",
+        "v": "n = 22",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },

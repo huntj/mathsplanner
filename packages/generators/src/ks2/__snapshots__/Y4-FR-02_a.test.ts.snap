@@ -10,7 +10,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-FR-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -70,7 +70,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-FR-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -130,7 +130,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-FR-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -229,7 +229,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-FR-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -319,7 +319,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-FR-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -409,7 +409,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-FR-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -467,14 +467,14 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-FR-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -485,14 +485,14 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -501,10 +501,19 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -512,7 +521,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 1.99 + 0.01 = 2. 100 hundredths make a whole.",
+                  "v": "Sometimes. Only with money.",
                 },
               ],
               "id": "RA",
@@ -521,7 +530,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. After 9 comes 10, so after 1.99 comes 1.100.",
+                  "v": "Always. 10 × 0.01 = 0.1.",
                 },
               ],
               "id": "RB",
@@ -530,7 +539,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Decimals never get to the next whole number.",
+                  "v": "Never. Ten hundredths make one whole.",
                 },
               ],
               "id": "RC",
@@ -542,7 +551,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "FR.COUNT.POINT-TEN",
@@ -552,7 +561,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -562,7 +571,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "1.100 is the same as 1.1, which is smaller than 1.99. The next number is 2.00.",
+            "v": "Always. 10 × 0.01 = 0.1.",
           },
         ],
       },
@@ -570,23 +579,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Raj counts in hundredths. He says the number after ",
-      },
-      {
-        "t": "math",
-        "v": "1.99",
-      },
-      {
-        "t": "text",
-        "v": " is ",
-      },
-      {
-        "t": "math",
-        "v": "1.100",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Ten hundredths make one tenth.",
       },
     ],
   },
@@ -598,7 +591,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-FR-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -636,7 +629,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. After 9 comes 10, so after 0.99 comes 0.100.",
+                  "v": "True. Decimals never get to the next whole number.",
                 },
               ],
               "id": "RA",
@@ -654,7 +647,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Decimals never get to the next whole number.",
+                  "v": "True. After 9 comes 10, so after 0.99 comes 0.100.",
                 },
               ],
               "id": "RC",
@@ -666,7 +659,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
             "code": "FR.COUNT.POINT-TEN",
@@ -715,14 +708,14 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-FR-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -733,14 +726,14 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -749,10 +742,19 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -760,7 +762,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Decimals never get to the next whole number.",
+                  "v": "Never. Ten hundredths make one whole.",
                 },
               ],
               "id": "RA",
@@ -769,7 +771,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 2.99 + 0.01 = 3. 100 hundredths make a whole.",
+                  "v": "Always. 10 × 0.01 = 0.1.",
                 },
               ],
               "id": "RB",
@@ -778,7 +780,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. After 9 comes 10, so after 2.99 comes 2.100.",
+                  "v": "Sometimes. Only with money.",
                 },
               ],
               "id": "RC",
@@ -790,7 +792,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "FR.COUNT.POINT-TEN",
@@ -800,7 +802,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -810,7 +812,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "2.100 is the same as 2.1, which is smaller than 2.99. The next number is 3.00.",
+            "v": "Always. 10 × 0.01 = 0.1.",
           },
         ],
       },
@@ -818,23 +820,7 @@ exports[`Y4-FR-02.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Raj counts in hundredths. He says the number after ",
-      },
-      {
-        "t": "math",
-        "v": "2.99",
-      },
-      {
-        "t": "text",
-        "v": " is ",
-      },
-      {
-        "t": "math",
-        "v": "2.100",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Ten hundredths make one tenth.",
       },
     ],
   },

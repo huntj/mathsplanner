@@ -10,7 +10,7 @@ exports[`Y6-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -102,7 +102,7 @@ exports[`Y6-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -180,7 +180,7 @@ exports[`Y6-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -258,7 +258,7 @@ exports[`Y6-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -344,7 +344,7 @@ exports[`Y6-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -430,7 +430,7 @@ exports[`Y6-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -516,7 +516,7 @@ exports[`Y6-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -554,7 +554,7 @@ exports[`Y6-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The sign is the wrong way round, but the reason is right.",
+                  "v": "The number with the bigger first digit is always bigger.",
                 },
               ],
               "id": "RA",
@@ -563,7 +563,7 @@ exports[`Y6-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The number with the bigger first digit is always bigger.",
+                  "v": "The sign is the wrong way round, but the reason is right.",
                 },
               ],
               "id": "RB",
@@ -587,7 +587,7 @@ exports[`Y6-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.COMPARE.SIGN-DIRECTION",
+            "code": "NPV.COMPARE.FIRST-DIGIT",
             "feedback": [],
           },
           {
@@ -595,7 +595,7 @@ exports[`Y6-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.COMPARE.FIRST-DIGIT",
+            "code": "NPV.COMPARE.SIGN-DIRECTION",
             "feedback": [],
           },
         ],
@@ -629,14 +629,139 @@ exports[`Y6-NPV-01.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. Compare the first digits instead.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. A 7-digit number is at least 1,000,000, and every 6-digit number is less than that.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. It depends on the first digits.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.COMPARE.FIRST-DIGIT",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.COMPARE.FIRST-DIGIT",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. A 7-digit number is at least 1,000,000, and every 6-digit number is less than that.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A whole number with more digits is bigger than one with fewer digits.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y6-NPV-01.c",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -674,7 +799,7 @@ exports[`Y6-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The number with the bigger first digit is always bigger.",
+                  "v": "True. 1 is smaller than 9, so 1,200,000 comes before 990,000.",
                 },
               ],
               "id": "RA",
@@ -683,7 +808,7 @@ exports[`Y6-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "1,009,209 has more digits, so it is bigger: 996,425 < 1,009,209.",
+                  "v": "False. 990,000 is smaller than 1,200,000, so the order is 899,000, 990,000, 1,200,000.",
                 },
               ],
               "id": "RB",
@@ -692,7 +817,7 @@ exports[`Y6-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The sign is the wrong way round, but the reason is right.",
+                  "v": "True. Numbers with more digits come first.",
                 },
               ],
               "id": "RC",
@@ -732,139 +857,39 @@ exports[`Y6-NPV-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Count the digits first: 996,425 has 6, 1,009,209 has 7.",
+            "v": "False. 990,000 is smaller than 1,200,000, so the order is 899,000, 990,000, 1,200,000.",
           },
         ],
       },
     ],
     "stem": [
       {
+        "t": "text",
+        "v": "Ava puts these in order, smallest first: ",
+      },
+      {
         "t": "math",
-        "v": "996{,}425 > 1{,}009{,}209",
+        "v": "899{,}000",
       },
       {
         "t": "text",
-        "v": ", because 9 is bigger than 1.",
+        "v": ", ",
       },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y6-NPV-01.c",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "1,092,399 has more digits, so it is bigger: 926,739 < 1,092,399.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "The sign is the wrong way round, but the reason is right.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "The number with the bigger first digit is always bigger.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.COMPARE.SIGN-DIRECTION",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.COMPARE.FIRST-DIGIT",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Count the digits first: 926,739 has 6, 1,092,399 has 7.",
-          },
-        ],
-      },
-    ],
-    "stem": [
       {
         "t": "math",
-        "v": "926{,}739 > 1{,}092{,}399",
+        "v": "1{,}200{,}000",
       },
       {
         "t": "text",
-        "v": ", because 9 is bigger than 1.",
+        "v": ", ",
+      },
+      {
+        "t": "math",
+        "v": "990{,}000",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },

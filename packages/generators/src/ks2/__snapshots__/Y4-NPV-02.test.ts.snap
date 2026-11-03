@@ -10,7 +10,7 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -113,7 +113,7 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -216,7 +216,7 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -319,7 +319,7 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -414,7 +414,7 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -509,7 +509,7 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -597,14 +597,14 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -615,7 +615,124 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. 4,500 → 5,500 changes only the thousands, but 9,500 → 10,500 changes the ten thousands too.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. The ones change too.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. Only the thousands change.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.PLACE.TENS-ONES-MIXUP",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Sometimes. 4,500 → 5,500 changes only the thousands, but 9,500 → 10,500 changes the ten thousands too.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Finding 1000 more changes only the thousands digit.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y4-NPV-02",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
           "correctReason": "RB",
           "options": [
             {
@@ -642,7 +759,7 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The number of digits must stay the same.",
+                  "v": "True. Add 1 to the hundreds.",
                 },
               ],
               "id": "RA",
@@ -651,7 +768,7 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Changing the thousands by one gives 6,668.",
+                  "v": "False. 1000 more changes the thousands digit: 3,045.",
                 },
               ],
               "id": "RB",
@@ -660,7 +777,7 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only the last digit changes.",
+                  "v": "True. 1000 more adds a zero.",
                 },
               ],
               "id": "RC",
@@ -672,7 +789,7 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.PLACE.TENS-ONES-MIXUP",
@@ -692,7 +809,7 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "5,668 + 1,000 = 6,668.",
+            "v": "False. 1000 more changes the thousands digit: 3,045.",
           },
         ],
       },
@@ -700,43 +817,19 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Mo says ",
-      },
-      {
-        "t": "math",
-        "v": "1{,}000",
-      },
-      {
-        "t": "text",
-        "v": " more than ",
-      },
-      {
-        "t": "math",
-        "v": "5{,}668",
-      },
-      {
-        "t": "text",
-        "v": " is ",
-      },
-      {
-        "t": "math",
-        "v": "6{,}668",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Bea says 1000 more than 2,045 is 2,145.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
-      "numbers": "standard",
+      "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -754,7 +847,7 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -763,10 +856,19 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -774,7 +876,7 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "That changes the wrong place. 1,000 more is 10,643.",
+                  "v": "Sometimes. 4,500 → 5,500 changes only the thousands, but 9,500 → 10,500 changes the ten thousands too.",
                 },
               ],
               "id": "RA",
@@ -783,7 +885,7 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "1,000 more changes the next place along.",
+                  "v": "Always. Only the thousands change.",
                 },
               ],
               "id": "RB",
@@ -792,7 +894,7 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Both are right; they mean the same.",
+                  "v": "Never. The ones change too.",
                 },
               ],
               "id": "RC",
@@ -814,7 +916,7 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -824,7 +926,7 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "9,643 + 1,000 = 10,643.",
+            "v": "Sometimes. 4,500 → 5,500 changes only the thousands, but 9,500 → 10,500 changes the ten thousands too.",
           },
         ],
       },
@@ -832,163 +934,7 @@ exports[`Y4-NPV-02 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Mo says ",
-      },
-      {
-        "t": "math",
-        "v": "1{,}000",
-      },
-      {
-        "t": "text",
-        "v": " more than ",
-      },
-      {
-        "t": "math",
-        "v": "9{,}643",
-      },
-      {
-        "t": "text",
-        "v": " is ",
-      },
-      {
-        "t": "math",
-        "v": "9{,}743",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y4-NPV-02",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Changing the thousands by one gives 10,651, crossing into the next place.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Only the last digit changes.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "The number of digits must stay the same.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.PLACE.TENS-ONES-MIXUP",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "9,651 + 1,000 = 10,651.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Mo says ",
-      },
-      {
-        "t": "math",
-        "v": "1{,}000",
-      },
-      {
-        "t": "text",
-        "v": " more than ",
-      },
-      {
-        "t": "math",
-        "v": "9{,}651",
-      },
-      {
-        "t": "text",
-        "v": " is ",
-      },
-      {
-        "t": "math",
-        "v": "10{,}651",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Finding 1000 more changes only the thousands digit.",
       },
     ],
   },

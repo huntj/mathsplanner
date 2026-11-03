@@ -10,6 +10,7 @@ import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { mixFamilies } from "../shared/npv.ts";
 import parent from "./Y5-MEA-05.ts";
+import { withClaims } from "../shared/variety.ts";
 
 interface Params {
   cup: number;
@@ -73,5 +74,36 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y5-MEA-05.b", { 1: own, 2: { ...parent.definition, id: "Y5-MEA-05.b" }, 4: own }),
+  withClaims(
+    mixFamilies("Y5-MEA-05.b", { 1: own, 2: { ...parent.definition, id: "Y5-MEA-05.b" }, 4: own }),
+    [
+      {
+        statement: "Ana says a bucket holds about 10 litres.",
+        truth: true,
+        right: "True. A household bucket holds around 10 litres.",
+        wrong: [
+          ["False. It holds about 10 ml.", "MEA.CONVERT.FACTOR"],
+          ["False. It holds about 1000 litres.", "MEA.COMPARE.LOOKS"],
+        ],
+      },
+      {
+        statement: "Raj says a teaspoon holds about 5 litres.",
+        truth: false,
+        right: "False. A teaspoon holds about 5 ml. 5 litres would fill a large saucepan.",
+        wrong: [
+          ["True. Litres measure small amounts.", "MEA.CONVERT.FACTOR"],
+          ["True. A teaspoon holds a lot."],
+        ],
+      },
+      {
+        claim: "A container that looks taller holds more.",
+        truth: "sometimes",
+        right: "Sometimes. A wide bowl can hold more than a tall thin glass.",
+        wrong: [
+          ["Always. Taller means more.", "MEA.COMPARE.LOOKS"],
+          ["Never. Shorter containers hold more.", "MEA.VOLUME.ADDS"],
+        ],
+      },
+    ],
+  ),
 );

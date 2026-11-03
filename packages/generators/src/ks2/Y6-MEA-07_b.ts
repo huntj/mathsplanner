@@ -9,6 +9,7 @@ import { defineGenerator, type GeneratorDefinition, type QuestionDraft } from "@
 import { chosenText } from "../shared/counting.ts";
 import { mixFamilies } from "../shared/npv.ts";
 import parent from "./Y6-MEA-07.ts";
+import { withClaims } from "../shared/variety.ts";
 
 const THINGS: [string, string][] = [
   ["a grain of rice", "mm³"],
@@ -54,5 +55,36 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y6-MEA-07.b", { 1: own, 4: { ...parent.definition, id: "Y6-MEA-07.b" } }),
+  withClaims(
+    mixFamilies("Y6-MEA-07.b", { 1: own, 4: { ...parent.definition, id: "Y6-MEA-07.b" } }),
+    [
+      {
+        statement: "Ali says 1 litre of water fills 1000 cm³.",
+        truth: true,
+        right: "True. 1 l = 1000 ml, and 1 ml fills 1 cm³.",
+        wrong: [
+          ["False. It fills 100 cm³.", "RAT.UNITS.AREA-FACTOR"],
+          ["False. Litres cannot be written in cm³."],
+        ],
+      },
+      {
+        claim: "A 1 m cube holds 1 000 000 cm³.",
+        truth: "always",
+        right: "Always. It is 100 cm by 100 cm by 100 cm, and 100 × 100 × 100 = 1 000 000.",
+        wrong: [
+          ["Never. It holds 100 cm³, as 1 m = 100 cm.", "RAT.UNITS.AREA-FACTOR"],
+          ["Sometimes. It depends on its shape."],
+        ],
+      },
+      {
+        statement: "Tom says a matchbox has a volume of about 20 m³.",
+        truth: false,
+        right: "False. A matchbox fits in your hand: about 20 cm³. 20 m³ is the size of a room.",
+        wrong: [
+          ["True. Small things are measured in m³.", "MEA.VOLUME.ADDS"],
+          ["True. m³ and cm³ are about the same."],
+        ],
+      },
+    ],
+  ),
 );

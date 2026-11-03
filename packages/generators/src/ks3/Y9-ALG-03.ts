@@ -8,6 +8,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** How many consecutive numbers to add. */
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y9-ALG-03",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.LIKE-TERMS.UNLIKE"],
 
@@ -71,35 +72,73 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return p.claim === 0
-          ? A.alwaysSometimesNever({
-              rng,
-              claim: "The sum of two odd numbers is even.",
+        return orClaims(
+          rng,
+          () =>
+            p.claim === 0
+              ? A.alwaysSometimesNever({
+                  rng,
+                  claim: "The sum of two odd numbers is even.",
+                  truth: "always",
+                  reasons: [
+                    {
+                      text: "Always. Write the odd numbers as 2a + 1 and 2b + 1: their sum is 2a + 2b + 2 = 2(a + b + 1), which is even.",
+                      correct: true,
+                    },
+                    { text: "Sometimes. 3 + 5 = 8 is even, but other pairs may not be." },
+                    { text: "Never. Odd plus odd stays odd.", code: "ALG.LIKE-TERMS.UNLIKE" },
+                  ],
+                  solution: [{ say: "(2a + 1) + (2b + 1) = 2(a + b + 1)." }],
+                })
+              : A.alwaysSometimesNever({
+                  rng,
+                  claim: "The product of two consecutive whole numbers is even.",
+                  truth: "always",
+                  reasons: [
+                    {
+                      text: "Always. One of n and n + 1 is even, so n(n + 1) has a factor of 2.",
+                      correct: true,
+                    },
+                    { text: "Sometimes. It depends whether n is even." },
+                    {
+                      text: "Never. n(n + 1) = n² + 1, which is odd.",
+                      code: "ALG.LIKE-TERMS.UNLIKE",
+                    },
+                  ],
+                  solution: [{ say: "Of any two consecutive whole numbers, one is even." }],
+                }),
+          [
+            {
+              claim: "The sum of three consecutive whole numbers is a multiple of 3.",
               truth: "always",
-              reasons: [
-                {
-                  text: "Always. Write the odd numbers as 2a + 1 and 2b + 1: their sum is 2a + 2b + 2 = 2(a + b + 1), which is even.",
-                  correct: true,
-                },
-                { text: "Sometimes. 3 + 5 = 8 is even, but other pairs may not be." },
-                { text: "Never. Odd plus odd stays odd.", code: "ALG.LIKE-TERMS.UNLIKE" },
+              right: "Always. n + (n + 1) + (n + 2) = 3n + 3 = 3(n + 1).",
+              wrong: [
+                ["Sometimes. Only when the first number is a multiple of 3."],
+                ["Never. Adding three numbers gives an odd number."],
               ],
-              solution: [{ say: "(2a + 1) + (2b + 1) = 2(a + b + 1)." }],
-            })
-          : A.alwaysSometimesNever({
-              rng,
-              claim: "The product of two consecutive whole numbers is even.",
-              truth: "always",
-              reasons: [
-                {
-                  text: "Always. One of n and n + 1 is even, so n(n + 1) has a factor of 2.",
-                  correct: true,
-                },
-                { text: "Sometimes. It depends whether n is even." },
-                { text: "Never. n(n + 1) = n² + 1, which is odd.", code: "ALG.LIKE-TERMS.UNLIKE" },
+            },
+            {
+              claim: "The product of two odd numbers is even.",
+              truth: "never",
+              right:
+                "Never. (2a + 1)(2b + 1) = 4ab + 2a + 2b + 1, which is one more than an even number.",
+              wrong: [
+                ["Always. Two odds make an even.", "ALG.LIKE-TERMS.UNLIKE"],
+                ["Sometimes. 3 × 5 = 15 but 3 × 7 = 22."],
               ],
-              solution: [{ say: "Of any two consecutive whole numbers, one is even." }],
-            });
+            },
+            {
+              claim: "$n^2 + n$ is odd for a whole number n.",
+              truth: "never",
+              right:
+                "Never. n² + n = n(n + 1), the product of two consecutive numbers, one of which is even.",
+              wrong: [
+                ["Sometimes. When n is odd it is odd."],
+                ["Always. A square plus a number is odd."],
+              ],
+            },
+          ],
+        );
     }
   },
 

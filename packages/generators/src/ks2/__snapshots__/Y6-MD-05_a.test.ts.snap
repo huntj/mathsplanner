@@ -10,7 +10,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-MD-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -71,7 +71,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-MD-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -132,7 +132,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-MD-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -186,14 +186,14 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-MD-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -205,13 +205,13 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -220,19 +220,10 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -240,7 +231,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Factors always come in pairs of different numbers.",
+                  "v": "False. 30 ÷ 4 = 7 remainder 2, so 4 does not divide 30.",
                 },
               ],
               "id": "RA",
@@ -249,7 +240,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Factors come in pairs, but a square number like 36 has a pair that is the same (6 × 6), so it has an odd number of factors.",
+                  "v": "True. Every even number divides 30.",
                 },
               ],
               "id": "RB",
@@ -258,7 +249,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. 1 is a factor on its own.",
+                  "v": "True. 4 and 30 are both even.",
                 },
               ],
               "id": "RC",
@@ -270,7 +261,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
             "code": "MD.FACTOR.MISSES-PAIR",
@@ -280,7 +271,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -290,7 +281,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "32 has 6 factors: 1, 2, 4, 8, 16, 32. 36 has 9: 1, 2, 3, 4, 6, 9, 12, 18, 36.",
+            "v": "False. 30 ÷ 4 = 7 remainder 2, so 4 does not divide 30.",
           },
         ],
       },
@@ -298,7 +289,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A whole number has an even number of factors.",
+        "v": "Leo says 4 is a factor of 30.",
       },
     ],
   },
@@ -310,7 +301,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-MD-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -321,8 +312,8 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -357,7 +348,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Factors always come in pairs of different numbers.",
+                  "v": "Sometimes. Only for odd numbers.",
                 },
               ],
               "id": "RA",
@@ -366,7 +357,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Factors come in pairs, but a square number like 36 has a pair that is the same (6 × 6), so it has an odd number of factors.",
+                  "v": "Never. 1 is too small to be a factor.",
                 },
               ],
               "id": "RB",
@@ -375,7 +366,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. 1 is a factor on its own.",
+                  "v": "Always. Every whole number is 1 times itself.",
                 },
               ],
               "id": "RC",
@@ -387,10 +378,10 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "MD.FACTOR.MISSES-PAIR",
+            "code": "MD.FACTOR.FACTOR-MULTIPLE",
             "feedback": [],
           },
         ],
@@ -407,7 +398,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "80 has 10 factors: 1, 2, 4, 5, 8, 10, 16, 20, 40, 80. 36 has 9: 1, 2, 3, 4, 6, 9, 12, 18, 36.",
+            "v": "Always. Every whole number is 1 times itself.",
           },
         ],
       },
@@ -415,19 +406,19 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A whole number has an even number of factors.",
+        "v": "1 is a factor of every whole number.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-MD-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -438,14 +429,14 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -454,19 +445,10 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -474,7 +456,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Factors always come in pairs of different numbers.",
+                  "v": "False. 36 is a common factor.",
                 },
               ],
               "id": "RA",
@@ -483,7 +465,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Factors come in pairs, but a square number like 36 has a pair that is the same (6 × 6), so it has an odd number of factors.",
+                  "v": "False. 6 is the only one.",
                 },
               ],
               "id": "RB",
@@ -492,7 +474,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. 1 is a factor on its own.",
+                  "v": "True. They divide both: 12 = 2 × 6 = 3 × 4 and 18 = 2 × 9 = 3 × 6.",
                 },
               ],
               "id": "RC",
@@ -507,14 +489,14 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "MD.FACTOR.MISSES-PAIR",
+            "code": "MD.FACTOR.FACTOR-MULTIPLE",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -524,7 +506,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "18 has 6 factors: 1, 2, 3, 6, 9, 18. 36 has 9: 1, 2, 3, 4, 6, 9, 12, 18, 36.",
+            "v": "True. They divide both: 12 = 2 × 6 = 3 × 4 and 18 = 2 × 9 = 3 × 6.",
           },
         ],
       },
@@ -532,7 +514,7 @@ exports[`Y6-MD-05.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A whole number has an even number of factors.",
+        "v": "Jo says the common factors of 12 and 18 are 1, 2, 3 and 6.",
       },
     ],
   },

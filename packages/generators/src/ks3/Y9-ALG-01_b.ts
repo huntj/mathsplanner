@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { bracket, poly } from "../shared/alg.ts";
 import { exactAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   p: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y9-ALG-01.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.FACTORISE.SIGNS"],
 
@@ -69,24 +70,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            "If the number term of ",
-            A.math("x^2 + bx + c"),
-            " is negative, the two brackets have different signs.",
-          ],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "If the number term of ",
+                A.math("x^2 + bx + c"),
+                " is negative, the two brackets have different signs.",
+              ],
+              truth: "always",
+              reasons: [
+                {
+                  text: `Always. c is the product of the two numbers, and a negative product needs one positive and one negative number, e.g. (x − ${p.p})(x + ${p.q}).`,
+                  correct: true,
+                },
+                { text: "Never. Both brackets have a minus sign.", code: "ALG.FACTORISE.SIGNS" },
+                { text: "Sometimes. It depends on b.", code: "ALG.FACTORISE.SIGNS" },
+              ],
+              solution: [{ say: "Positive × negative = negative." }],
+            }),
+          [
             {
-              text: `Always. c is the product of the two numbers, and a negative product needs one positive and one negative number, e.g. (x − ${p.p})(x + ${p.q}).`,
-              correct: true,
+              statement: "Eli says $x^2 - 2x - 15 = (x - 5)(x + 3)$.",
+              truth: true,
+              right: "True. −5 × 3 = −15 and −5 + 3 = −2.",
+              wrong: [
+                ["False. It is (x + 5)(x − 3).", "ALG.FACTORISE.SIGNS"],
+                ["False. Both brackets need minus signs."],
+              ],
             },
-            { text: "Never. Both brackets have a minus sign.", code: "ALG.FACTORISE.SIGNS" },
-            { text: "Sometimes. It depends on b.", code: "ALG.FACTORISE.SIGNS" },
+            {
+              statement: "Mia says $x^2 - 7x + 10 = (x + 2)(x + 5)$.",
+              truth: false,
+              right:
+                "False. The numbers must multiply to +10 and add to −7, so both are negative: (x − 2)(x − 5).",
+              wrong: [
+                ["True. 2 × 5 = 10 and the sign does not matter.", "ALG.FACTORISE.SIGNS"],
+                ["True. 2 + 5 = 7."],
+              ],
+            },
+            {
+              claim:
+                "If b is negative and c is positive in $x^2 + bx + c$, both brackets have minus signs.",
+              truth: "always",
+              right:
+                "Always. The numbers multiply to a positive and add to a negative, so both are negative.",
+              wrong: [
+                ["Sometimes. One could be positive.", "ALG.FACTORISE.SIGNS"],
+                ["Never. The brackets always have different signs.", "ALG.FACTORISE.SIGNS"],
+              ],
+            },
           ],
-          solution: [{ say: "Positive × negative = negative." }],
-        });
+        );
     }
   },
 

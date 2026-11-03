@@ -10,7 +10,7 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-NPV-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -85,7 +85,7 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-NPV-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -160,7 +160,7 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-NPV-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -235,7 +235,7 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-NPV-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -246,8 +246,8 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RC",
+          "correct": "B",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -273,7 +273,7 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Take the smaller from the bigger: 9 − 3.",
+                  "v": "9 and 3 differ by 6, so he is right.",
                 },
               ],
               "id": "RA",
@@ -282,7 +282,7 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "You cannot find a difference across zero.",
+                  "v": "That ignores the minus sign. Up to zero is 9, then 3 more: 12.",
                 },
               ],
               "id": "RB",
@@ -291,7 +291,7 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "9 degrees up to zero, then 3 more: 12.",
+                  "v": "Negative temperatures do not count.",
                 },
               ],
               "id": "RC",
@@ -331,7 +331,7 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ali says the difference between −9°C and 3°C is 12 degrees.",
+        "v": "Ali says the difference between −9°C and 3°C is 6 degrees.",
       },
     ],
   },
@@ -343,7 +343,7 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-NPV-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -355,7 +355,7 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -390,7 +390,7 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "You cannot find a difference across zero.",
+                  "v": "10 degrees up to zero, then 6 more: 16.",
                 },
               ],
               "id": "RB",
@@ -399,7 +399,7 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "10 degrees up to zero, then 6 more: 16.",
+                  "v": "You cannot find a difference across zero.",
                 },
               ],
               "id": "RC",
@@ -444,14 +444,14 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-NPV-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -462,14 +462,14 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -478,10 +478,19 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -489,7 +498,7 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "49 and 6 differ by 43, so he is right.",
+                  "v": "Sometimes. −1°C is warmer than 10°C.",
                 },
               ],
               "id": "RA",
@@ -498,7 +507,7 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "That ignores the minus sign. Up to zero is 49, then 6 more: 55.",
+                  "v": "Always. Every temperature below 0°C is lower than every temperature above 0°C.",
                 },
               ],
               "id": "RB",
@@ -507,7 +516,7 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Negative temperatures do not count.",
+                  "v": "Never. It depends on the numbers.",
                 },
               ],
               "id": "RC",
@@ -529,7 +538,7 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -539,7 +548,7 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Across zero, add the two distances from zero: 49 + 6 = 55.",
+            "v": "Always. Every temperature below 0°C is lower than every temperature above 0°C.",
           },
         ],
       },
@@ -547,7 +556,7 @@ exports[`Y6-NPV-03.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ali says the difference between −49°C and 6°C is 43 degrees.",
+        "v": "A temperature below zero is colder than any temperature above zero.",
       },
     ],
   },
