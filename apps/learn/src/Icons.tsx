@@ -192,3 +192,11 @@ export const TeacherIcon = ({ size }: { size?: number }) => (
     <path d="M22 9v6" />
   </Icon>
 );
+
+/** A unit lesson: a light bulb, for an idea found. */
+export const IdeaIcon = ({ size }: { size?: number }) => (
+  <Icon {...(size ? { size } : {})}>
+    <path d="M9 18h6M10 21h4" />
+    <path d="M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.4 1.1 2.2h5c0-.8.4-1.6 1.1-2.2A6 6 0 0 0 12 3z" />
+  </Icon>
+);

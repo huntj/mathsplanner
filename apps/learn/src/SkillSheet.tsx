@@ -7,6 +7,7 @@ import { familyOf } from "./families.ts";
 import {
   CheckIcon,
   FamilyIcon,
+  IdeaIcon,
   LockIcon,
   RefreshIcon,
   ReviewIcon,
@@ -24,6 +25,7 @@ export type Start =
     }
   | { kind: "refresh"; skill: string }
   | { kind: "unit"; unit: PathUnit["unit"] }
+  | { kind: "lesson"; unit: string }
   | { kind: "year" };
 
 const NUMBERS_WORDS = {
@@ -128,6 +130,47 @@ function SheetBody({
 
   const { unit } = selection;
   const family = familyOf(unit.unit.topic);
+  if (selection.kind === "lesson") {
+    const { lesson, done } = selection;
+    return (
+      <div className={`sheet-body fam-${family}`}>
+        <p className="eyebrow">
+          Unit {unit.number} · {unit.unit.name}
+        </p>
+        <h2 id="sheet-title" className="sheet-title" tabIndex={-1}>
+          <span className="sheet-icon">
+            <IdeaIcon size={26} />
+          </span>
+          {lesson.title}
+        </h2>
+        <p>
+          {lesson.summary} A hands-on lesson of {lesson.screens.length} short steps, before the
+          unit’s skills.{" "}
+          {done
+            ? "You have done it. Do it again any time."
+            : "Its skills skip their worked examples once it is done."}
+        </p>
+        {teacher && (
+          <p className="teacher-note">
+            <TeacherIcon size={18} /> Teacher mode: unit lessons are only shown to teachers for now.
+          </p>
+        )}
+        <div className="sheet-actions">
+          <button
+            type="button"
+            className="button primary big"
+            onClick={() => onStart({ kind: "lesson", unit: unit.unit.id })}
+          >
+            {done ? "Do it again" : "Start the lesson"}
+          </button>
+          <button type="button" className="button" onClick={onClose}>
+            Close
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   if (selection.kind === "review") {
     return (
       <div className={`sheet-body fam-${family}`}>

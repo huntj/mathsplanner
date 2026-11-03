@@ -3,7 +3,7 @@
 // #practise, #you), so the back button works; the path is the start view.
 import type { Stage } from "@mathsplanner/core";
 import { useEffect, useState } from "react";
-import { course, sectionFor, skillText } from "./course.ts";
+import { course, sectionFor, skillText, unitOf } from "./course.ts";
 import { exampleProgress } from "./example.ts";
 import { planLesson, type LessonPlan, type LessonSummary } from "./lesson.ts";
 import { LessonView, type LessonEnding } from "./LessonView.tsx";
@@ -28,10 +28,13 @@ import {
   yearPlan,
 } from "./practice.ts";
 import { PractiseView, type PracticeStart } from "./PractiseView.tsx";
+import { unitLessonFor, type UnitLesson } from "./unit-lessons/index.ts";
+import { UnitLessonView, type UnitLessonEnding } from "./UnitLessonView.tsx";
 import {
   dayKey,
   levelOf,
   emptyProgress,
+  finishUnitLesson,
   lessonsOn,
   loadProgress,
   rememberForms,
@@ -88,6 +91,8 @@ export function App() {
   const [selection, setSelection] = useState<Selection>();
   /** The lesson being played, how to make another like it (for "Try again"), and its ending. */
   const [lesson, setLesson] = useState<{ plan: LessonPlan; make: Make; ending?: LessonEnding }>();
+  /** The unit lesson being played, and its ending once done. */
+  const [unitLesson, setUnitLesson] = useState<{ lesson: UnitLesson; ending?: UnitLessonEnding }>();
   const today = dayKey(new Date());
   // Freezes spent on missed days when the app opened, to say so once.
   const [frozeDays, setFrozeDays] = useState(0);
@@ -146,7 +151,13 @@ export function App() {
   /** A lesson from a sheet on the path. */
   const startFromPath = (start: Start) => {
     if (!section) return;
-    if (start.kind === "skill") {
+    if (start.kind === "lesson") {
+      const lesson = unitLessonFor(start.unit, progress.settings.teacher);
+      if (!lesson) return;
+      setSelection(undefined);
+      setUnitLesson({ lesson });
+      scrollTo({ top: 0 });
+    } else if (start.kind === "skill") {
       // Review questions come from the skills already finished in this year.
       const reviewFrom = section.units
         .flatMap((u) => u.skills)
@@ -156,7 +167,13 @@ export function App() {
       // A level a teacher picked, or the skill's next one.
       const done = start.level ? start.level - 1 : levelOf(progress, start.skill);
       const picked = start.level ? { picked: true as const } : {};
-      begin((seed) => ({ ...planLesson(start.skill, info, done, reviewFrom, seed), ...picked }));
+      // A unit lesson done already taught the idea, so the skill skips its worked example.
+      const unit = unitOf(start.skill)?.id;
+      const taught = unit !== undefined && unit in progress.unitLessons;
+      begin((seed) => {
+        const { example, ...plan } = planLesson(start.skill, info, done, reviewFrom, seed);
+        return { ...plan, ...(example && !taught ? { example } : {}), ...picked };
+      });
     } else if (start.kind === "refresh")
       begin((seed) => refreshPlan(start.skill, skillText(start.skill), levelsOf, seed));
     else if (start.kind === "unit") begin((seed) => unitPlan(start.unit, levelsOf, seed));
@@ -195,6 +212,30 @@ export function App() {
       },
     });
   };
+
+  if (unitLesson) {
+    return (
+      <UnitLessonView
+        lesson={unitLesson.lesson}
+        ending={unitLesson.ending}
+        sound={progress.settings.sound}
+        onComplete={() => {
+          const next = finishUnitLesson(progress, unitLesson.lesson.unit, today);
+          setProgress(next);
+          setUnitLesson({
+            ...unitLesson,
+            ending: {
+              xp: next.xp - progress.xp,
+              streak: streak(next, today),
+              today: lessonsOn(next, today),
+              goal: next.settings.dailyGoal,
+            },
+          });
+        }}
+        onClose={() => setUnitLesson(undefined)}
+      />
+    );
+  }
 
   if (lesson && section) {
     return (
