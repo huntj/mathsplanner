@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import type { GeometrySpec } from "@mathsplanner/diagrams";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** P divides AB in the ratio m : n. */
@@ -55,7 +56,7 @@ function triangle(withP: boolean, m: number, n: number): GeometrySpec {
 
 export default defineGenerator<Params>({
   id: "GH-G25",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.VECTOR.DIRECTION", "RAT.ORDER"],
 
@@ -145,34 +146,73 @@ export default defineGenerator<Params>({
         const w = p.claimTrue
           ? `${p.k}${bold("a")} + ${2 * p.k}${bold("b")}`
           : `2${bold("a")} + ${bold("b")}`;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Ben says the vectors ", A.math(v), " and ", A.math(w), " are parallel."],
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
-                {
-                  text: `True. The second is ${p.k} times the first, so they point the same way.`,
-                  correct: true,
-                },
-                { text: "False. Parallel vectors must be equal." },
-                {
-                  text: "False. The numbers in front are different.",
-                  code: "GEO.VECTOR.DIRECTION",
-                },
-              ]
-            : [
-                {
-                  text: "False. 2a + b is not a multiple of a + 2b: the ratio of the a and b parts is different.",
-                  correct: true,
-                },
-                { text: "True. Both use one a-part and one b-part.", code: "GEO.VECTOR.DIRECTION" },
-                { text: "True. They have the same length." },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Ben says the vectors ", A.math(v), " and ", A.math(w), " are parallel."],
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    {
+                      text: `True. The second is ${p.k} times the first, so they point the same way.`,
+                      correct: true,
+                    },
+                    { text: "False. Parallel vectors must be equal." },
+                    {
+                      text: "False. The numbers in front are different.",
+                      code: "GEO.VECTOR.DIRECTION",
+                    },
+                  ]
+                : [
+                    {
+                      text: "False. 2a + b is not a multiple of a + 2b: the ratio of the a and b parts is different.",
+                      correct: true,
+                    },
+                    {
+                      text: "True. Both use one a-part and one b-part.",
+                      code: "GEO.VECTOR.DIRECTION",
+                    },
+                    { text: "True. They have the same length." },
+                  ],
+              solution: [
+                { say: "Two vectors are parallel when one is a scalar multiple of the other." },
               ],
-          solution: [
-            { say: "Two vectors are parallel when one is a scalar multiple of the other." },
+            }),
+          [
+            {
+              statement:
+                "Sol says $2\\mathbf{a} - 4\\mathbf{b}$ is parallel to $\\mathbf{a} - 2\\mathbf{b}$.",
+              truth: true,
+              right: "True. It is 2 times a − 2b.",
+              wrong: [
+                ["False. The numbers are different.", "GEO.VECTOR.DIRECTION"],
+                ["False. One has minus signs.", "RAT.ORDER"],
+              ],
+            },
+            {
+              claim:
+                "If $\\vec{AB} = k\\vec{BC}$ for a number k, then A, B and C lie on a straight line.",
+              truth: "always",
+              right: "Always. AB and BC are parallel and share point B.",
+              wrong: [
+                ["Never. They are parallel but separate.", "GEO.VECTOR.DIRECTION"],
+                ["Sometimes. Only if k is positive."],
+              ],
+            },
+            {
+              statement:
+                "Bea says $\\mathbf{a} + 3\\mathbf{b}$ is parallel to $3\\mathbf{a} + \\mathbf{b}$.",
+              truth: false,
+              right: "False. They are not a multiple of each other.",
+              wrong: [
+                ["True. They use the same numbers.", "RAT.ORDER"],
+                ["True. Swapping the numbers keeps the direction.", "GEO.VECTOR.DIRECTION"],
+              ],
+            },
           ],
-        });
+        );
       }
     }
   },

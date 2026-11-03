@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
 import { gcdOf } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GH-N10.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["FR.RECURRING.TRUNCATE"],
 
@@ -85,23 +86,53 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["A fraction with denominator 12 gives a recurring decimal."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["A fraction with denominator 12 gives a recurring decimal."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: "Sometimes. 1/12 = 0.0833… recurs, but 3/12 = 1/4 = 0.25 stops: simplify first, then look at the denominator.",
+                  correct: true,
+                },
+                { text: "Always. 12 has a factor of 3.", code: "FR.RECURRING.TRUNCATE" },
+                {
+                  text: "Never. Every fraction gives a decimal that stops.",
+                  code: "FR.RECURRING.TRUNCATE",
+                },
+              ],
+              solution: [{ say: "Only the simplified denominator matters." }],
+            }),
+          [
             {
-              text: "Sometimes. 1/12 = 0.0833… recurs, but 3/12 = 1/4 = 0.25 stops: simplify first, then look at the denominator.",
-              correct: true,
+              statement: "Kai says $\\frac{1}{11} = 0.\\dot{0}\\dot{9}$.",
+              truth: true,
+              right: "True. 1 ÷ 11 = 0.090909…",
+              wrong: [
+                ["False. It is 0.11.", "FR.RECURRING.TRUNCATE"],
+                ["False. It stops at 0.09.", "FR.RECURRING.TRUNCATE"],
+              ],
             },
-            { text: "Always. 12 has a factor of 3.", code: "FR.RECURRING.TRUNCATE" },
             {
-              text: "Never. Every fraction gives a decimal that stops.",
-              code: "FR.RECURRING.TRUNCATE",
+              claim: "A fraction in its simplest form with denominator 8 is a terminating decimal.",
+              truth: "always",
+              right: "Always. 8 = 2³, so it can be written over 1000.",
+              wrong: [["Never. Eighths recur.", "FR.RECURRING.TRUNCATE"], ["Sometimes. Only 1/8."]],
+            },
+            {
+              statement: "Pia says $\\frac{2}{7} = 0.29$ exactly.",
+              truth: false,
+              right: "False. 2/7 = 0.285714… recurring; 0.29 is rounded.",
+              wrong: [
+                ["True. The calculator shows 0.29.", "FR.RECURRING.TRUNCATE"],
+                ["True. Sevenths stop after two places.", "FR.RECURRING.TRUNCATE"],
+              ],
             },
           ],
-          solution: [{ say: "Only the simplified denominator matters." }],
-        });
+        );
     }
   },
 

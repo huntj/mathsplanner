@@ -6,6 +6,7 @@
 // GH-A6: Construct algebraic proofs
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
+import { orClaims } from "../shared/variety.ts";
 
 interface Fact {
   claim: string;
@@ -56,7 +57,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GH-A6",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.PROOF.EXAMPLES", "ALG.EXPAND.BINOMIAL-TWO-TERMS"],
 
@@ -126,31 +127,65 @@ export default defineGenerator<Params>({
       }
       default: {
         const s = STUBBORN[p.stubborn] ?? (STUBBORN[0] as (typeof STUBBORN)[number]);
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Max works out ",
-            A.math(s.expr),
-            " for n = 1, 2, 3, …, 10 and gets a prime number every time. He says this proves it is prime for every positive integer n.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Max works out ",
+                A.math(s.expr),
+                " for n = 1, 2, 3, …, 10 and gets a prime number every time. He says this proves it is prime for every positive integer n.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Checking examples is not a proof. When n = ${s.fails} it gives ${s.value}, which is not prime.`,
+                  correct: true,
+                },
+                { text: "True. Ten examples is enough to prove it.", code: "ALG.PROOF.EXAMPLES" },
+                {
+                  text: "True. If it works for the first few numbers it always works.",
+                  code: "ALG.PROOF.EXAMPLES",
+                },
+              ],
+              solution: [
+                {
+                  say: `A single counter-example disproves a statement: n = ${s.fails} gives ${s.value} = 41 × ${s.value / 41}.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. Checking examples is not a proof. When n = ${s.fails} it gives ${s.value}, which is not prime.`,
-              correct: true,
+              statement:
+                "To prove the sum of two odd numbers is even, Sol writes $(2a + 1) + (2b + 1) = 2(a + b + 1)$.",
+              truth: true,
+              right: "True. It is 2 times a whole number for any whole a and b.",
+              wrong: [
+                ["False. He should test examples.", "ALG.PROOF.EXAMPLES"],
+                ["False. 2a + 1 is even.", "ALG.EXPAND.BINOMIAL-TWO-TERMS"],
+              ],
             },
-            { text: "True. Ten examples is enough to prove it.", code: "ALG.PROOF.EXAMPLES" },
             {
-              text: "True. If it works for the first few numbers it always works.",
-              code: "ALG.PROOF.EXAMPLES",
+              claim: "Testing many examples proves a statement for every number.",
+              truth: "never",
+              right: "Never. Examples can only show it works for those cases.",
+              wrong: [
+                ["Always. Enough examples prove it.", "ALG.PROOF.EXAMPLES"],
+                ["Sometimes. If you test 100 cases.", "ALG.PROOF.EXAMPLES"],
+              ],
+            },
+            {
+              statement: "Ana says $n(n + 1)$ is always odd for a positive integer n.",
+              truth: false,
+              right: "False. One of n and n + 1 is even, so the product is even.",
+              wrong: [
+                ["True. Odd numbers multiply to odd numbers.", "ALG.PROOF.EXAMPLES"],
+                ["True. It is n² + n, which is odd.", "ALG.EXPAND.BINOMIAL-TWO-TERMS"],
+              ],
             },
           ],
-          solution: [
-            {
-              say: `A single counter-example disproves a statement: n = ${s.fails} gives ${s.value} = 41 × ${s.value / 41}.`,
-            },
-          ],
-        });
+        );
       }
     }
   },

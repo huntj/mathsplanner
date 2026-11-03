@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, Surd, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText, exactAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -15,7 +16,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GH-N8.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.SURD.SIMPLIFY"],
 
@@ -66,27 +67,63 @@ export default defineGenerator<Params>({
           solution: [{ say: "", math: `\\sqrt{${n}} = ${right}` }],
         });
       default:
-        return A.oddOneOut({
+        return orClaims(
           rng,
-          question: "Which is the odd one out?",
-          items: [
-            { content: A.math(`\\sqrt{${4 * p.b}}`) },
-            { content: A.math(`2\\sqrt{${p.b}}`) },
-            { content: A.math(`\\sqrt{4} \\times \\sqrt{${p.b}}`) },
-            { content: A.math(`4\\sqrt{${p.b}}`), odd: true },
-          ],
-          reasons: [
-            { text: `It is the only one that is not equal to 2√${p.b}.`, correct: true },
-            { text: "It is the only one in its simplest form.", code: "NPV.SURD.SIMPLIFY" },
-            { text: "It is the only one with a whole number in front.", code: "NPV.SURD.SIMPLIFY" },
-          ],
-          solution: [
+          () =>
+            A.oddOneOut({
+              rng,
+              question: "Which is the odd one out?",
+              items: [
+                { content: A.math(`\\sqrt{${4 * p.b}}`) },
+                { content: A.math(`2\\sqrt{${p.b}}`) },
+                { content: A.math(`\\sqrt{4} \\times \\sqrt{${p.b}}`) },
+                { content: A.math(`4\\sqrt{${p.b}}`), odd: true },
+              ],
+              reasons: [
+                { text: `It is the only one that is not equal to 2√${p.b}.`, correct: true },
+                { text: "It is the only one in its simplest form.", code: "NPV.SURD.SIMPLIFY" },
+                {
+                  text: "It is the only one with a whole number in front.",
+                  code: "NPV.SURD.SIMPLIFY",
+                },
+              ],
+              solution: [
+                {
+                  say: "",
+                  math: `\\sqrt{${4 * p.b}} = \\sqrt{4} \\times \\sqrt{${p.b}} = 2\\sqrt{${p.b}}`,
+                },
+              ],
+            }),
+          [
             {
-              say: "",
-              math: `\\sqrt{${4 * p.b}} = \\sqrt{4} \\times \\sqrt{${p.b}} = 2\\sqrt{${p.b}}`,
+              statement: "Ana says $\\sqrt{12} = 2\\sqrt{3}$.",
+              truth: true,
+              right: "True. √12 = √4 × √3 = 2√3.",
+              wrong: [
+                ["False. It is 6√2.", "NPV.SURD.SIMPLIFY"],
+                ["False. It is 4√3.", "NPV.SURD.SIMPLIFY"],
+              ],
+            },
+            {
+              claim: "$\\sqrt{ab} = \\sqrt{a} \\times \\sqrt{b}$ for positive a and b.",
+              truth: "always",
+              right: "Always. Roots can be split over multiplication.",
+              wrong: [
+                ["Never. Roots cannot be split.", "NPV.SURD.SIMPLIFY"],
+                ["Sometimes. Only if a = b."],
+              ],
+            },
+            {
+              statement: "Sol says $\\sqrt{50} = 25\\sqrt{2}$.",
+              truth: false,
+              right: "False. √50 = √25 × √2 = 5√2.",
+              wrong: [
+                ["True. 50 = 25 × 2.", "NPV.SURD.SIMPLIFY"],
+                ["True. Take 25 outside the root.", "NPV.SURD.SIMPLIFY"],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

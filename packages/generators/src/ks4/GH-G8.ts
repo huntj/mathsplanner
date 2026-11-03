@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import type { Coord } from "@mathsplanner/diagrams";
 import { chosenText } from "../shared/counting.ts";
 import { coord } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Combo {
   first: string;
@@ -52,7 +53,7 @@ function combos(p: Params): Combo[] {
 
 export default defineGenerator<Params>({
   id: "GH-G8",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["POS.COMBINE"],
 
@@ -136,28 +137,59 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement:
-            "Mo says the order does not matter when you combine a reflection and a translation.",
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement:
+                "Mo says the order does not matter when you combine a reflection and a translation.",
+              truth: false,
+              reasons: [
+                {
+                  text: `False. For example, reflecting P${coord(p.point)} in x = ${p.m} then translating by (${p.t[0]}, ${p.t[1]}) gives ${coord([2 * p.m - p.point[0] + p.t[0], p.point[1] + p.t[1]])}, but translating first gives ${coord([2 * p.m - p.point[0] - p.t[0], p.point[1] + p.t[1]])}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Both are just moves, so they can be done in any order.",
+                  code: "POS.COMBINE",
+                },
+                { text: "True. The shape stays the same size either way." },
+              ],
+              solution: [
+                {
+                  say: "Any translation with a sideways part changes where the mirror line sends the shape, so the order matters.",
+                },
+              ],
+            }),
+          [
             {
-              text: `False. For example, reflecting P${coord(p.point)} in x = ${p.m} then translating by (${p.t[0]}, ${p.t[1]}) gives ${coord([2 * p.m - p.point[0] + p.t[0], p.point[1] + p.t[1]])}, but translating first gives ${coord([2 * p.m - p.point[0] - p.t[0], p.point[1] + p.t[1]])}.`,
-              correct: true,
+              statement: "Leo says two reflections in parallel lines give a translation.",
+              truth: true,
+              right: "True. The image moves twice the distance between the lines, without turning.",
+              wrong: [["False. They give a rotation.", "POS.COMBINE"], ["False. They cancel out."]],
             },
             {
-              text: "True. Both are just moves, so they can be done in any order.",
-              code: "POS.COMBINE",
+              claim: "Two reflections in the same line return a shape to where it started.",
+              truth: "always",
+              right: "Always. The second reflection undoes the first.",
+              wrong: [
+                ["Never. It moves twice as far.", "POS.COMBINE"],
+                ["Sometimes. Only in the y-axis."],
+              ],
             },
-            { text: "True. The shape stays the same size either way." },
+            {
+              statement:
+                "Kim says rotating 90° then 90° again, about the same centre, is a 90° rotation.",
+              truth: false,
+              right: "False. The turns add: 180°.",
+              wrong: [
+                ["True. Each is 90°.", "POS.COMBINE"],
+                ["True. Repeated rotations do not add.", "POS.COMBINE"],
+              ],
+            },
           ],
-          solution: [
-            {
-              say: "Any translation with a sideways part changes where the mirror line sends the shape, so the order matters.",
-            },
-          ],
-        });
+        );
     }
   },
 

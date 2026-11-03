@@ -10,7 +10,7 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N6",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -114,7 +114,7 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-N6",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -218,7 +218,7 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-N6",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -322,7 +322,7 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N6",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -426,7 +426,7 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-N6",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -530,7 +530,7 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-N6",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -627,14 +627,14 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N6",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -645,14 +645,14 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -661,10 +661,19 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -672,7 +681,7 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 1.9 is less than 2, so 1.9 to the power 4 is less than 16.",
+                  "v": "Never. Roots are whole numbers.",
                 },
               ],
               "id": "RA",
@@ -681,7 +690,7 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Rounding always makes an estimate too small.",
+                  "v": "Always. It sits between the roots of the squares either side.",
                 },
               ],
               "id": "RB",
@@ -690,7 +699,7 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 2^4 = 8, so the estimate is wrong.",
+                  "v": "Sometimes. Only for small n.",
                 },
               ],
               "id": "RC",
@@ -702,17 +711,17 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.POWER.TIMES-INDEX",
+            "code": "NPV.POWER.ROOT-HALF",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -722,23 +731,19 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Rounding 1.9 up to 2 makes the estimate an overestimate.",
+            "v": "Always. It sits between the roots of the squares either side.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "t": "text",
-        "v": "Ben estimates ",
-      },
-      {
         "t": "math",
-        "v": "1.9^{4}",
+        "v": "\\sqrt{n}",
       },
       {
         "t": "text",
-        "v": " by working out 2^4 = 16. He says the exact answer is a little more than 16.",
+        "v": " lies between two consecutive whole numbers when n is not a square number.",
       },
     ],
   },
@@ -750,123 +755,7 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-N6",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. 5^3 = 15, so the estimate is wrong.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Rounding always makes an estimate too small.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. 4.9 is less than 5, so 4.9 to the power 3 is less than 125.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.POWER.TIMES-INDEX",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Rounding 4.9 up to 5 makes the estimate an overestimate.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Ben estimates ",
-      },
-      {
-        "t": "math",
-        "v": "4.9^{3}",
-      },
-      {
-        "t": "text",
-        "v": " by working out 5^3 = 125. He says the exact answer is a little more than 125.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GH-N6",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -904,7 +793,7 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 2.9 is less than 3, so 2.9 to the power 4 is less than 81.",
+                  "v": "False. 2¹⁰ = 1024, about 1000.",
                 },
               ],
               "id": "RA",
@@ -913,7 +802,7 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 3^4 = 12, so the estimate is wrong.",
+                  "v": "True. Each power doubles 1000.",
                 },
               ],
               "id": "RB",
@@ -922,7 +811,7 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Rounding always makes an estimate too small.",
+                  "v": "True. 2 × 10 = 20, then times 100.",
                 },
               ],
               "id": "RC",
@@ -934,7 +823,7 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.POWER.TIMES-INDEX",
@@ -954,7 +843,7 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Rounding 2.9 up to 3 makes the estimate an overestimate.",
+            "v": "False. 2¹⁰ = 1024, about 1000.",
           },
         ],
       },
@@ -962,15 +851,131 @@ exports[`GH-N6 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ben estimates ",
+        "v": "Pia says ",
       },
       {
         "t": "math",
-        "v": "2.9^{4}",
+        "v": "2^{10}",
       },
       {
         "t": "text",
-        "v": " by working out 3^4 = 81. He says the exact answer is a little more than 81.",
+        "v": " is about 2000.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GH-N6",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 7² = 49, just under 50.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 25.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is a little under 7.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.POWER.ROOT-HALF",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. 7² = 49, just under 50.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Leo estimates ",
+      },
+      {
+        "t": "math",
+        "v": "\\sqrt{50}",
+      },
+      {
+        "t": "text",
+        "v": " as a little more than 7.",
       },
     ],
   },

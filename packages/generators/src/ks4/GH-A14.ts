@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import type { CartesianSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Depth 1: bacteria start at `start` and double each hour for `hours`. */
@@ -41,7 +42,7 @@ function curve(a: number, b: number): CartesianSpec {
 
 export default defineGenerator<Params>({
   id: "GH-A14",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4, 5],
   misconceptions: ["RAT.COMPOUND.SIMPLE", "RAT.PERCENT.MULTIPLIER"],
 
@@ -118,28 +119,65 @@ export default defineGenerator<Params>({
         });
       }
       case 4:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "The number of rabbits on an island after t years is ",
-            A.math("N = 100 \\times 1.5^t"),
-            ". Ali says the number goes up by 50 every year.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "The number of rabbits on an island after t years is ",
+                A.math("N = 100 \\times 1.5^t"),
+                ". Ali says the number goes up by 50 every year.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. It is multiplied by 1.5 each year: 100, 150, 225, … The increase grows each year.",
+                  correct: true,
+                },
+                { text: "True. 1.5 means an extra 50 each year.", code: "RAT.COMPOUND.SIMPLE" },
+                {
+                  text: "True. Exponential graphs are straight lines.",
+                  code: "RAT.COMPOUND.SIMPLE",
+                },
+              ],
+              solution: [
+                {
+                  say: "Exponential growth multiplies by the same factor each year, so the yearly increase keeps getting bigger.",
+                },
+              ],
+            }),
+          [
             {
-              text: "False. It is multiplied by 1.5 each year: 100, 150, 225, … The increase grows each year.",
-              correct: true,
+              statement:
+                "An investment is worth $V = 500 \\times 1.04^t$ after t years. Raj says it grows by 4% each year.",
+              truth: true,
+              right: "True. The multiplier 1.04 adds 4% each year.",
+              wrong: [
+                ["False. It grows by £4 a year.", "RAT.COMPOUND.SIMPLE"],
+                ["False. It grows by 104%.", "RAT.PERCENT.MULTIPLIER"],
+              ],
             },
-            { text: "True. 1.5 means an extra 50 each year.", code: "RAT.COMPOUND.SIMPLE" },
-            { text: "True. Exponential graphs are straight lines.", code: "RAT.COMPOUND.SIMPLE" },
-          ],
-          solution: [
             {
-              say: "Exponential growth multiplies by the same factor each year, so the yearly increase keeps getting bigger.",
+              claim: "In $y = a \\times b^t$ with $0 < b < 1$, y decreases as t increases.",
+              truth: "always",
+              right: "Always, for a > 0. Each step multiplies by less than 1.",
+              wrong: [
+                ["Never. It always grows.", "RAT.COMPOUND.SIMPLE"],
+                ["Sometimes. Only for small a."],
+              ],
+            },
+            {
+              statement: "A value halves every year from 800. Bea writes it as $800 - 0.5t$.",
+              truth: false,
+              right: "False. Halving is multiplying: 800 × 0.5ᵗ.",
+              wrong: [
+                ["True. It loses half each year.", "RAT.COMPOUND.SIMPLE"],
+                ["True. Subtract the rate each year.", "RAT.COMPOUND.SIMPLE"],
+              ],
             },
           ],
-        });
+        );
       default: {
         const later = p.a * p.b ** 3;
         return A.multiStepContext({

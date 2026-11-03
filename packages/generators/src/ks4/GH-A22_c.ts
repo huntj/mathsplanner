@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GH-A22.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.INEQUALITY.FLIP"],
 
@@ -68,23 +69,59 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Cy says the set ", A.math(`\\{x : x > ${p.b}\\}`), ` includes ${p.b}.`],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Cy says the set ", A.math(`\\{x : x > ${p.b}\\}`), ` includes ${p.b}.`],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. x > ${p.b} is strict, so ${p.b} itself is not included; {x : x ≥ ${p.b}} would include it.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The number in the set is always included.",
+                  code: "ALG.INEQUALITY.FLIP",
+                },
+                {
+                  text: "True. > and ≥ mean the same in set notation.",
+                  code: "ALG.INEQUALITY.FLIP",
+                },
+              ],
+              solution: [{ say: "Strict inequalities leave out the end value." }],
+            }),
+          [
             {
-              text: `False. x > ${p.b} is strict, so ${p.b} itself is not included; {x : x ≥ ${p.b}} would include it.`,
-              correct: true,
+              statement: "Sol says the set $\\{x : x \\le 4\\}$ includes 4.",
+              truth: true,
+              right: "True. ≤ includes the end value.",
+              wrong: [
+                ["False. It stops before 4.", "ALG.INEQUALITY.FLIP"],
+                ["False. Sets never include ends."],
+              ],
             },
             {
-              text: "True. The number in the set is always included.",
-              code: "ALG.INEQUALITY.FLIP",
+              claim: "Multiplying both sides of an inequality by −1 reverses the inequality sign.",
+              truth: "always",
+              right: "Always. Order reverses for negatives.",
+              wrong: [
+                ["Never. The sign stays.", "ALG.INEQUALITY.FLIP"],
+                ["Sometimes. Only for ≤."],
+              ],
             },
-            { text: "True. > and ≥ mean the same in set notation.", code: "ALG.INEQUALITY.FLIP" },
+            {
+              statement: "Bea solves $5 - 2x > 1$ and gets $x > 2$.",
+              truth: false,
+              right: "False. −2x > −4, and dividing by −2 reverses the sign: x < 2.",
+              wrong: [
+                ["True. Solve it like an equation.", "ALG.INEQUALITY.FLIP"],
+                ["True. Divide both sides by −2.", "ALG.INEQUALITY.FLIP"],
+              ],
+            },
           ],
-          solution: [{ say: "Strict inequalities leave out the end value." }],
-        });
+        );
     }
   },
 

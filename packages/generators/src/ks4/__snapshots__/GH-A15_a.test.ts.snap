@@ -42,7 +42,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A15.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -160,7 +160,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A15.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -278,7 +278,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A15.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -364,7 +364,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A15.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -445,7 +445,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A15.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -526,7 +526,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A15.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -607,7 +607,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A15.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -618,7 +618,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
@@ -645,7 +645,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The curve gets steeper as x moves away from 0, so the gradient changes from point to point. It is found from a tangent at each point.",
+                  "v": "True. The tangent's gradient is the curve's gradient at that point.",
                 },
               ],
               "id": "RA",
@@ -654,7 +654,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The gradient is the average over the whole curve.",
+                  "v": "False. Use the gradient of a chord far away.",
                 },
               ],
               "id": "RB",
@@ -663,7 +663,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every graph has one gradient.",
+                  "v": "False. Join the point to the origin.",
                 },
               ],
               "id": "RC",
@@ -703,7 +703,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Compare tangents at x = 1 (gradient 2) and x = 3 (gradient 6).",
+            "v": "True. The tangent's gradient is the curve's gradient at that point.",
           },
         ],
       },
@@ -711,15 +711,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jas says a curve like ",
-      },
-      {
-        "t": "math",
-        "v": "y = x^2",
-      },
-      {
-        "t": "text",
-        "v": " has the same gradient everywhere, like a straight line.",
+        "v": "Leo estimates the gradient of a curve at a point by drawing a tangent there.",
       },
     ],
   },
@@ -731,7 +723,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A15.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -743,7 +735,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -769,7 +761,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every graph has one gradient.",
+                  "v": "True. Gradients are constant.",
                 },
               ],
               "id": "RA",
@@ -778,7 +770,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The curve gets steeper as x moves away from 0, so the gradient changes from point to point. It is found from a tangent at each point.",
+                  "v": "True. It is one curve.",
                 },
               ],
               "id": "RB",
@@ -787,7 +779,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The gradient is the average over the whole curve.",
+                  "v": "False. The curve gets steeper as x increases.",
                 },
               ],
               "id": "RC",
@@ -807,7 +799,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "RAT.RATE.AVERAGE-INSTANT",
@@ -827,7 +819,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Compare tangents at x = 1 (gradient 2) and x = 3 (gradient 6).",
+            "v": "False. The curve gets steeper as x increases.",
           },
         ],
       },
@@ -835,7 +827,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jas says a curve like ",
+        "v": "Kim says the gradient of ",
       },
       {
         "t": "math",
@@ -843,7 +835,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "text",
-        "v": " has the same gradient everywhere, like a straight line.",
+        "v": " is the same at x = 1 and x = 3.",
       },
     ],
   },
@@ -855,7 +847,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A15.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -866,7 +858,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -893,7 +885,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every graph has one gradient.",
+                  "v": "False. Use the gradient of a chord far away.",
                 },
               ],
               "id": "RA",
@@ -902,7 +894,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The curve gets steeper as x moves away from 0, so the gradient changes from point to point. It is found from a tangent at each point.",
+                  "v": "True. The tangent's gradient is the curve's gradient at that point.",
                 },
               ],
               "id": "RB",
@@ -911,7 +903,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The gradient is the average over the whole curve.",
+                  "v": "False. Join the point to the origin.",
                 },
               ],
               "id": "RC",
@@ -951,7 +943,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Compare tangents at x = 1 (gradient 2) and x = 3 (gradient 6).",
+            "v": "True. The tangent's gradient is the curve's gradient at that point.",
           },
         ],
       },
@@ -959,15 +951,7 @@ exports[`GH-A15.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jas says a curve like ",
-      },
-      {
-        "t": "math",
-        "v": "y = x^2",
-      },
-      {
-        "t": "text",
-        "v": " has the same gradient everywhere, like a straight line.",
+        "v": "Leo estimates the gradient of a curve at a point by drawing a tangent there.",
       },
     ],
   },

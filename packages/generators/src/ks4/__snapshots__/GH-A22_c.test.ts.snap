@@ -10,7 +10,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A22.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -119,7 +119,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A22.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -228,7 +228,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A22.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -337,7 +337,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A22.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -406,7 +406,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A22.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -475,7 +475,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A22.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -537,14 +537,14 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A22.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -555,14 +555,14 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -571,10 +571,19 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -582,7 +591,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The number in the set is always included.",
+                  "v": "Always. Order reverses for negatives.",
                 },
               ],
               "id": "RA",
@@ -591,7 +600,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. x > 3 is strict, so 3 itself is not included; {x : x ≥ 3} would include it.",
+                  "v": "Sometimes. Only for ≤.",
                 },
               ],
               "id": "RB",
@@ -600,7 +609,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. > and ≥ mean the same in set notation.",
+                  "v": "Never. The sign stays.",
                 },
               ],
               "id": "RC",
@@ -610,14 +619,6 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.INEQUALITY.FLIP",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -630,7 +631,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -640,7 +641,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Strict inequalities leave out the end value.",
+            "v": "Always. Order reverses for negatives.",
           },
         ],
       },
@@ -648,15 +649,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Cy says the set ",
-      },
-      {
-        "t": "math",
-        "v": "\\{x : x > 3\\}",
-      },
-      {
-        "t": "text",
-        "v": " includes 3.",
+        "v": "Multiplying both sides of an inequality by −1 reverses the inequality sign.",
       },
     ],
   },
@@ -668,7 +661,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A22.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -680,7 +673,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -715,7 +708,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. x > 2 is strict, so 2 itself is not included; {x : x ≥ 2} would include it.",
+                  "v": "True. > and ≥ mean the same in set notation.",
                 },
               ],
               "id": "RB",
@@ -724,7 +717,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. > and ≥ mean the same in set notation.",
+                  "v": "False. x > 2 is strict, so 2 itself is not included; {x : x ≥ 2} would include it.",
                 },
               ],
               "id": "RC",
@@ -744,7 +737,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.INEQUALITY.FLIP",
@@ -785,14 +778,14 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A22.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -803,14 +796,14 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -819,10 +812,19 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -830,7 +832,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. > and ≥ mean the same in set notation.",
+                  "v": "Always. Order reverses for negatives.",
                 },
               ],
               "id": "RA",
@@ -839,7 +841,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. x > 2 is strict, so 2 itself is not included; {x : x ≥ 2} would include it.",
+                  "v": "Never. The sign stays.",
                 },
               ],
               "id": "RB",
@@ -848,7 +850,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The number in the set is always included.",
+                  "v": "Sometimes. Only for ≤.",
                 },
               ],
               "id": "RC",
@@ -860,15 +862,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.INEQUALITY.FLIP",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.INEQUALITY.FLIP",
@@ -878,7 +872,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -888,7 +882,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Strict inequalities leave out the end value.",
+            "v": "Always. Order reverses for negatives.",
           },
         ],
       },
@@ -896,15 +890,7 @@ exports[`GH-A22.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Cy says the set ",
-      },
-      {
-        "t": "math",
-        "v": "\\{x : x > 2\\}",
-      },
-      {
-        "t": "text",
-        "v": " includes 2.",
+        "v": "Multiplying both sides of an inequality by −1 reverses the inequality sign.",
       },
     ],
   },

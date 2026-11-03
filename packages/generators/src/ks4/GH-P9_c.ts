@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import type { VennSpec } from "@mathsplanner/diagrams";
 import { exactAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 export interface Params {
   onlyA: number;
@@ -27,7 +28,7 @@ const venn = (p: Params): VennSpec => ({
 
 export default defineGenerator<Params>({
   id: "GH-P9.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["PRO.CONDITIONAL.TOTAL"],
 
@@ -91,20 +92,53 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["P(A given B) is at least as big as P(A and B)."],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["P(A given B) is at least as big as P(A and B)."],
+              truth: "always",
+              reasons: [
+                {
+                  text: `Always. Both count the overlap, but P(A given B) divides by the smaller group B instead of everyone: ${p.both}/${p.both + p.onlyB} ≥ ${p.both}/${total}.`,
+                  correct: true,
+                },
+                {
+                  text: "Never. 'Given' makes a probability smaller.",
+                  code: "PRO.CONDITIONAL.TOTAL",
+                },
+                { text: "Sometimes. It depends on the size of A." },
+              ],
+              solution: [{ say: "A smaller denominator gives a bigger fraction." }],
+            }),
+          [
             {
-              text: `Always. Both count the overlap, but P(A given B) divides by the smaller group B instead of everyone: ${p.both}/${p.both + p.onlyB} ≥ ${p.both}/${total}.`,
-              correct: true,
+              statement: "P(A and B) = 0.12 and P(B) = 0.4. Raj says P(A | B) = 0.3.",
+              truth: true,
+              right: "True. 0.12 ÷ 0.4 = 0.3.",
+              wrong: [["False. It is 0.048.", "PRO.CONDITIONAL.TOTAL"], ["False. It is 0.52."]],
             },
-            { text: "Never. 'Given' makes a probability smaller.", code: "PRO.CONDITIONAL.TOTAL" },
-            { text: "Sometimes. It depends on the size of A." },
+            {
+              claim: "If A and B are independent, P(A | B) = P(A).",
+              truth: "always",
+              right: "Always. Knowing B tells you nothing about A.",
+              wrong: [
+                ["Never. It is P(B).", "PRO.CONDITIONAL.TOTAL"],
+                ["Sometimes. Only if P(A) = 0.5."],
+              ],
+            },
+            {
+              statement: "P(A) = 0.5 and P(B | A) = 0.4. Bea says P(A and B) = 0.9.",
+              truth: false,
+              right: "False. Multiply: 0.5 × 0.4 = 0.2.",
+              wrong: [
+                ["True. Add them.", "PRO.CONDITIONAL.TOTAL"],
+                ["True. And means add.", "PRO.CONDITIONAL.TOTAL"],
+              ],
+            },
           ],
-          solution: [{ say: "A smaller denominator gives a bigger fraction." }],
-        });
+        );
     }
   },
 

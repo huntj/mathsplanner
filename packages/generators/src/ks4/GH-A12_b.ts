@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import type { CartesianSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const FNS = ["sin", "cos", "tan"] as const;
 
@@ -37,7 +38,7 @@ function trigGraph(fn: string): CartesianSpec {
 
 export default defineGenerator<Params>({
   id: "GH-A12.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.GRAPH.TRIG-VALUES", "ALG.GRAPH.SHAPE"],
 
@@ -90,24 +91,57 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Kit says the graph of ",
-            A.math("y = \\cos x"),
-            " passes through the origin.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Kit says the graph of ",
+                A.math("y = \\cos x"),
+                " passes through the origin.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. cos 0° = 1, so the graph starts at (0, 1). It is y = sin x that passes through the origin.",
+                  correct: true,
+                },
+                { text: "True. All trig graphs start at 0.", code: "ALG.GRAPH.TRIG-VALUES" },
+                { text: "True. cos 0° = 0.", code: "ALG.GRAPH.TRIG-VALUES" },
+              ],
+              solution: [{ say: "cos x = 0 at 90° and 270°." }],
+            }),
+          [
             {
-              text: "False. cos 0° = 1, so the graph starts at (0, 1). It is y = sin x that passes through the origin.",
-              correct: true,
+              statement: "Leo says the graph of $y = \\sin x$ passes through (0°, 0).",
+              truth: true,
+              right: "True. sin 0° = 0.",
+              wrong: [
+                ["False. It passes through (0°, 1).", "ALG.GRAPH.TRIG-VALUES"],
+                ["False. It starts at 90°."],
+              ],
             },
-            { text: "True. All trig graphs start at 0.", code: "ALG.GRAPH.TRIG-VALUES" },
-            { text: "True. cos 0° = 0.", code: "ALG.GRAPH.TRIG-VALUES" },
+            {
+              claim: "The values of $\\sin x$ lie between −1 and 1.",
+              truth: "always",
+              right: "Always. The graph never goes above 1 or below −1.",
+              wrong: [
+                ["Never. It goes up to 90.", "ALG.GRAPH.TRIG-VALUES"],
+                ["Sometimes. Only between 0° and 180°."],
+              ],
+            },
+            {
+              statement: "Mia says $\\tan 90^\\circ = 1$.",
+              truth: false,
+              right: "False. tan 90° is undefined: the graph has an asymptote there.",
+              wrong: [
+                ["True. tan 45° = 1, so tan 90° is too.", "ALG.GRAPH.TRIG-VALUES"],
+                ["True. tan is like sin.", "ALG.GRAPH.SHAPE"],
+              ],
+            },
           ],
-          solution: [{ say: "cos x = 0 at 90° and 270°." }],
-        });
+        );
     }
   },
 

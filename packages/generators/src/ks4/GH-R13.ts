@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Depth 1: y = kx², known at x = a, wanted at x = b. */
@@ -30,7 +31,7 @@ const lcm = (x: number, y: number): number => {
 
 export default defineGenerator<Params>({
   id: "GH-R13",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4, 5],
   misconceptions: ["RAT.PROPORTION.POWER", "RAT.INVERSE.AS-DIRECT"],
 
@@ -107,20 +108,57 @@ export default defineGenerator<Params>({
         });
       }
       case 4:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `The area of a square tile is proportional to the square of its side length. Zak says that if the side length is doubled, the area is doubled.`,
-          truth: false,
-          reasons: [
-            { text: "False. A ∝ s², so doubling s multiplies the area by 2² = 4.", correct: true },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `The area of a square tile is proportional to the square of its side length. Zak says that if the side length is doubled, the area is doubled.`,
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A ∝ s², so doubling s multiplies the area by 2² = 4.",
+                  correct: true,
+                },
+                {
+                  text: "True. Proportional means it changes by the same factor.",
+                  code: "RAT.PROPORTION.POWER",
+                },
+                { text: "False. The area is halved.", code: "RAT.INVERSE.AS-DIRECT" },
+              ],
+              solution: [{ say: "If y ∝ x², multiplying x by n multiplies y by n²." }],
+            }),
+          [
             {
-              text: "True. Proportional means it changes by the same factor.",
-              code: "RAT.PROPORTION.POWER",
+              statement:
+                "y is proportional to $x^2$, and y = 12 when x = 2. Ana says y = 48 when x = 4.",
+              truth: true,
+              right: "True. Doubling x multiplies y by 2² = 4.",
+              wrong: [
+                ["False. y = 24.", "RAT.PROPORTION.POWER"],
+                ["False. y = 6.", "RAT.INVERSE.AS-DIRECT"],
+              ],
             },
-            { text: "False. The area is halved.", code: "RAT.INVERSE.AS-DIRECT" },
+            {
+              claim: "If $y \\propto x^3$, tripling x multiplies y by 27.",
+              truth: "always",
+              right: "Always. 3³ = 27.",
+              wrong: [
+                ["Never. It multiplies by 3.", "RAT.PROPORTION.POWER"],
+                ["Sometimes. Only for whole numbers."],
+              ],
+            },
+            {
+              statement: "y is inversely proportional to $x^2$. Kai says doubling x halves y.",
+              truth: false,
+              right: "False. Doubling x divides y by 2² = 4.",
+              wrong: [
+                ["True. Inverse means halve.", "RAT.PROPORTION.POWER"],
+                ["True. It is like y ∝ 1/x.", "RAT.INVERSE.AS-DIRECT"],
+              ],
+            },
           ],
-          solution: [{ say: "If y ∝ x², multiplying x by n multiplies y by n²." }],
-        });
+        );
       default: {
         const y1 = p.j * p.s;
         const target = p.j * p.t;

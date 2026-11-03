@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import type { CartesianSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 export interface Params {
   a: number;
@@ -29,7 +30,7 @@ function expGraph(k: number): CartesianSpec {
 
 export default defineGenerator<Params>({
   id: "GH-A12.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.GRAPH.SHAPE"],
 
@@ -75,24 +76,60 @@ export default defineGenerator<Params>({
           solution: [{ say: `When x = 1, y = ${p.k}, so k = ${p.k}.` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Jake says the graph of ",
-            A.math(`y = ${p.k}^x`),
-            " crosses the x-axis when x is very negative.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Jake says the graph of ",
+                A.math(`y = ${p.k}^x`),
+                " crosses the x-axis when x is very negative.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${p.k}^x is positive for every x: for very negative x it gets closer and closer to 0 but never reaches it.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Every curve crosses the x-axis eventually.",
+                  code: "ALG.GRAPH.SHAPE",
+                },
+                { text: `True. ${p.k}^(−10) is negative.`, code: "ALG.GRAPH.SHAPE" },
+              ],
+              solution: [{ say: `${p.k}^(−n) = 1/${p.k}^n, which is small but positive.` }],
+            }),
+          [
             {
-              text: `False. ${p.k}^x is positive for every x: for very negative x it gets closer and closer to 0 but never reaches it.`,
-              correct: true,
+              statement: "Sam says the graph of $y = 2^x$ passes through (0, 1).",
+              truth: true,
+              right: "True. 2⁰ = 1.",
+              wrong: [
+                ["False. It passes through the origin.", "ALG.GRAPH.SHAPE"],
+                ["False. It passes through (0, 2)."],
+              ],
             },
-            { text: "True. Every curve crosses the x-axis eventually.", code: "ALG.GRAPH.SHAPE" },
-            { text: `True. ${p.k}^(−10) is negative.`, code: "ALG.GRAPH.SHAPE" },
+            {
+              claim: "The graph of $y = a^x$ with $a > 1$ is always above the x-axis.",
+              truth: "always",
+              right: "Always. A positive number to any power is positive.",
+              wrong: [
+                ["Never. It goes below for negative x.", "ALG.GRAPH.SHAPE"],
+                ["Sometimes. Only for positive x."],
+              ],
+            },
+            {
+              statement: "Pia says the graph of $y = \\frac{1}{x}$ crosses both axes.",
+              truth: false,
+              right: "False. It never meets either axis; they are asymptotes.",
+              wrong: [
+                ["True. Every curve crosses the axes.", "ALG.GRAPH.SHAPE"],
+                ["True. It goes through (0, 0).", "ALG.GRAPH.SHAPE"],
+              ],
+            },
           ],
-          solution: [{ say: `${p.k}^(−n) = 1/${p.k}^n, which is small but positive.` }],
-        });
+        );
     }
   },
 

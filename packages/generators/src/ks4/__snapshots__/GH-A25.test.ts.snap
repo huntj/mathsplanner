@@ -10,7 +10,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A25",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -86,7 +86,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A25",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -162,7 +162,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A25",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -238,7 +238,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A25",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -304,7 +304,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A25",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -370,7 +370,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A25",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -436,7 +436,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A25",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -448,7 +448,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -474,7 +474,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The second difference is the coefficient of n².",
+                  "v": "False. an² has a second difference of 2a, so a = 4 ÷ 2 = 2.",
                 },
               ],
               "id": "RA",
@@ -483,7 +483,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. an² has a second difference of 2a, so a = 4 ÷ 2 = 2.",
+                  "v": "False. The first difference gives the coefficient of n².",
                 },
               ],
               "id": "RB",
@@ -492,7 +492,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The first difference gives the coefficient of n².",
+                  "v": "True. The second difference is the coefficient of n².",
                 },
               ],
               "id": "RC",
@@ -504,10 +504,10 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "ALG.SEQUENCE.QUADRATIC-HALF",
+            "code": "ALG.SEQUENCE.TYPE",
             "feedback": [],
           },
           {
@@ -515,7 +515,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "ALG.SEQUENCE.TYPE",
+            "code": "ALG.SEQUENCE.QUADRATIC-HALF",
             "feedback": [],
           },
         ],
@@ -545,14 +545,14 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A25",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -563,14 +563,14 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -579,10 +579,19 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -590,7 +599,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The second difference is the coefficient of n².",
+                  "v": "Always. Terms 2, 5, 10, 17: differences 3, 5, 7.",
                 },
               ],
               "id": "RA",
@@ -599,7 +608,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The first difference gives the coefficient of n².",
+                  "v": "Never. It is arithmetic.",
                 },
               ],
               "id": "RB",
@@ -608,7 +617,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. an² has a second difference of 2a, so a = 2 ÷ 2 = 1.",
+                  "v": "Sometimes. Only for small n.",
                 },
               ],
               "id": "RC",
@@ -618,14 +627,6 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.SEQUENCE.QUADRATIC-HALF",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RB",
@@ -638,7 +639,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -648,7 +649,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "n² gives 1, 4, 9, 16, … with second difference 2, so halve the second difference.",
+            "v": "Always. Terms 2, 5, 10, 17: differences 3, 5, 7.",
           },
         ],
       },
@@ -656,19 +657,27 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The sequence -4, -3, 0, 5, 12 has a second difference of 2. Lily says its nth term begins 2n².",
+        "v": "A sequence with nth term ",
+      },
+      {
+        "t": "math",
+        "v": "n^2 + 1",
+      },
+      {
+        "t": "text",
+        "v": " has a constant second difference of 2.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A25",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -679,14 +688,14 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -695,10 +704,19 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -706,7 +724,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The first difference gives the coefficient of n².",
+                  "v": "Never. It is arithmetic.",
                 },
               ],
               "id": "RA",
@@ -715,7 +733,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. an² has a second difference of 2a, so a = 4 ÷ 2 = 2.",
+                  "v": "Sometimes. Only for small n.",
                 },
               ],
               "id": "RB",
@@ -724,7 +742,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The second difference is the coefficient of n².",
+                  "v": "Always. Terms 2, 5, 10, 17: differences 3, 5, 7.",
                 },
               ],
               "id": "RC",
@@ -742,19 +760,11 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
             "code": "ALG.SEQUENCE.TYPE",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.SEQUENCE.QUADRATIC-HALF",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -764,7 +774,7 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "n² gives 1, 4, 9, 16, … with second difference 2, so halve the second difference.",
+            "v": "Always. Terms 2, 5, 10, 17: differences 3, 5, 7.",
           },
         ],
       },
@@ -772,7 +782,15 @@ exports[`GH-A25 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The sequence 8, 19, 34, 53, 76 has a second difference of 4. Lily says its nth term begins 4n².",
+        "v": "A sequence with nth term ",
+      },
+      {
+        "t": "math",
+        "v": "n^2 + 1",
+      },
+      {
+        "t": "text",
+        "v": " has a constant second difference of 2.",
       },
     ],
   },

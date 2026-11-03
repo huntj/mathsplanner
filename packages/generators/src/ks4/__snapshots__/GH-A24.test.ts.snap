@@ -10,7 +10,7 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A24",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -82,7 +82,7 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A24",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -154,7 +154,7 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A24",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -226,7 +226,7 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A24",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -293,7 +293,7 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A24",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -360,7 +360,7 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A24",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -422,7 +422,7 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A24",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -433,8 +433,8 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -460,7 +460,7 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every other term is a whole number, so the 6th is too.",
+                  "v": "False. It is 30.",
                 },
               ],
               "id": "RA",
@@ -469,7 +469,7 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Add the same amount each time.",
+                  "v": "True. The common ratio is 2.",
                 },
               ],
               "id": "RB",
@@ -478,7 +478,7 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The 6th term is 1 × (√3)⁵, which still has a √3. 27 is the 7th term.",
+                  "v": "False. It goes up by 12, so 36.",
                 },
               ],
               "id": "RC",
@@ -490,7 +490,7 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.GEOMETRIC-ADD",
@@ -510,7 +510,7 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The nth term is a × r^(n − 1); odd powers of √k keep a √k.",
+            "v": "True. The common ratio is 2.",
           },
         ],
       },
@@ -518,31 +518,7 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The geometric sequence ",
-      },
-      {
-        "t": "math",
-        "v": "1,\\ \\sqrt{3},\\ 3,\\ \\dots",
-      },
-      {
-        "t": "text",
-        "v": " has common ratio ",
-      },
-      {
-        "t": "math",
-        "v": "\\sqrt{3}",
-      },
-      {
-        "t": "text",
-        "v": ". Kim says the 6th term is ",
-      },
-      {
-        "t": "math",
-        "v": "27",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Leo says the next term of 3, 6, 12, 24, … is 48.",
       },
     ],
   },
@@ -554,139 +530,7 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A24",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. The 6th term is 2 × (√2)⁵, which still has a √2. 16 is the 7th term.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Every other term is a whole number, so the 6th is too.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Add the same amount each time.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.SEQUENCE.GEOMETRIC-ADD",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "The nth term is a × r^(n − 1); odd powers of √k keep a √k.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "The geometric sequence ",
-      },
-      {
-        "t": "math",
-        "v": "2,\\ 2\\sqrt{2},\\ 4,\\ \\dots",
-      },
-      {
-        "t": "text",
-        "v": " has common ratio ",
-      },
-      {
-        "t": "math",
-        "v": "\\sqrt{2}",
-      },
-      {
-        "t": "text",
-        "v": ". Kim says the 6th term is ",
-      },
-      {
-        "t": "math",
-        "v": "16",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GH-A24",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -724,7 +568,7 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Surds cannot be raised to powers.",
+                  "v": "False. It goes up by 12, so 36.",
                 },
               ],
               "id": "RA",
@@ -733,7 +577,7 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 54, because the terms are whole numbers.",
+                  "v": "False. It is 30.",
                 },
               ],
               "id": "RB",
@@ -742,7 +586,7 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The 6th term is 2 × (√3)⁵ = 2 × 9√3.",
+                  "v": "True. The common ratio is 2.",
                 },
               ],
               "id": "RC",
@@ -754,7 +598,7 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.GEOMETRIC-ADD",
@@ -774,7 +618,7 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The nth term is a × r^(n − 1); odd powers of √k keep a √k.",
+            "v": "True. The common ratio is 2.",
           },
         ],
       },
@@ -782,31 +626,115 @@ exports[`GH-A24 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The geometric sequence ",
+        "v": "Leo says the next term of 3, 6, 12, 24, … is 48.",
       },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GH-A24",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
       {
-        "t": "math",
-        "v": "2,\\ 2\\sqrt{3},\\ 6,\\ \\dots",
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 30.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The common ratio is 2.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It goes up by 12, so 36.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.SEQUENCE.GEOMETRIC-ADD",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
       },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. The common ratio is 2.",
+          },
+        ],
+      },
+    ],
+    "stem": [
       {
         "t": "text",
-        "v": " has common ratio ",
-      },
-      {
-        "t": "math",
-        "v": "\\sqrt{3}",
-      },
-      {
-        "t": "text",
-        "v": ". Kim says the 6th term is ",
-      },
-      {
-        "t": "math",
-        "v": "18\\sqrt{3}",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Leo says the next term of 3, 6, 12, 24, … is 48.",
       },
     ],
   },

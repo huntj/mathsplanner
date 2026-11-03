@@ -10,7 +10,7 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -76,7 +76,7 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-N7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -142,7 +142,7 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-N7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -208,7 +208,7 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -274,7 +274,7 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-N7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -340,7 +340,7 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-N7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -406,7 +406,7 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -543,7 +543,7 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-N7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -680,7 +680,7 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-N7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -810,14 +810,14 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -828,14 +828,14 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -844,10 +844,19 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -855,7 +864,7 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A power of a half means the square root, so it is 6.",
+                  "v": "Always. A negative power is a reciprocal.",
                 },
               ],
               "id": "RA",
@@ -864,7 +873,7 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A power of a half means halve the number.",
+                  "v": "Never. It is −aⁿ.",
                 },
               ],
               "id": "RB",
@@ -873,7 +882,7 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 72, because you multiply by 2.",
+                  "v": "Sometimes. Only for n = 1.",
                 },
               ],
               "id": "RC",
@@ -888,22 +897,14 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.INDEX.FRACTIONAL",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.INDEX.FRACTIONAL",
+            "code": "NPV.INDEX.NEGATIVE",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -913,35 +914,31 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "6 × 6 = 36, so the square root is 6.",
+            "v": "Always. A negative power is a reciprocal.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "t": "text",
-        "v": "Zoe says ",
-      },
-      {
         "t": "math",
-        "v": "36^{\\frac{1}{2}} = 18",
+        "v": "a^{-n} = \\frac{1}{a^n}",
       },
       {
         "t": "text",
-        "v": ".",
+        "v": " for a non-zero.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-N7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -952,14 +949,14 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -968,10 +965,19 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -979,7 +985,7 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A power of a half means the square root, so it is 5.",
+                  "v": "Always. A negative power is a reciprocal.",
                 },
               ],
               "id": "RA",
@@ -988,7 +994,7 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 50, because you multiply by 2.",
+                  "v": "Sometimes. Only for n = 1.",
                 },
               ],
               "id": "RB",
@@ -997,7 +1003,7 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A power of a half means halve the number.",
+                  "v": "Never. It is −aⁿ.",
                 },
               ],
               "id": "RC",
@@ -1009,25 +1015,17 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.INDEX.FRACTIONAL",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.INDEX.FRACTIONAL",
+            "code": "NPV.INDEX.NEGATIVE",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1037,23 +1035,19 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "5 × 5 = 25, so the square root is 5.",
+            "v": "Always. A negative power is a reciprocal.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "t": "text",
-        "v": "Zoe says ",
-      },
-      {
         "t": "math",
-        "v": "25^{\\frac{1}{2}} = 12.5",
+        "v": "a^{-n} = \\frac{1}{a^n}",
       },
       {
         "t": "text",
-        "v": ".",
+        "v": " for a non-zero.",
       },
     ],
   },
@@ -1065,7 +1059,7 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-N7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1103,7 +1097,7 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 32, because you multiply by 2.",
+                  "v": "True. A power of a half means halve the number.",
                 },
               ],
               "id": "RA",
@@ -1112,7 +1106,7 @@ exports[`GH-N7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A power of a half means halve the number.",
+                  "v": "False. It is 32, because you multiply by 2.",
                 },
               ],
               "id": "RB",

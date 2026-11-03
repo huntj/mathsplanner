@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import type { ChartSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 export interface Params {
   list: number[];
@@ -17,7 +18,7 @@ export interface Params {
 
 export default defineGenerator<Params>({
   id: "GH-S4.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.IQR.RANGE"],
 
@@ -83,24 +84,59 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ali says one very large value in a data set has a big effect on the interquartile range.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ali says one very large value in a data set has a big effect on the interquartile range.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. The IQR uses only the middle half of the data, so an extreme value hardly changes it. It does change the range.",
+                  correct: true,
+                },
+                { text: "True. The IQR uses the largest value.", code: "STA.IQR.RANGE" },
+                { text: "True. Every value affects the IQR equally.", code: "STA.IQR.RANGE" },
+              ],
+              solution: [
+                {
+                  say: "That is why the IQR is a better measure of spread when there are outliers.",
+                },
+              ],
+            }),
+          [
             {
-              text: "False. The IQR uses only the middle half of the data, so an extreme value hardly changes it. It does change the range.",
-              correct: true,
+              statement:
+                "Lower quartile 12, upper quartile 20. Raj says the interquartile range is 8.",
+              truth: true,
+              right: "True. 20 − 12 = 8.",
+              wrong: [["False. It is 32.", "STA.IQR.RANGE"], ["False. It is 16, the median."]],
             },
-            { text: "True. The IQR uses the largest value.", code: "STA.IQR.RANGE" },
-            { text: "True. Every value affects the IQR equally.", code: "STA.IQR.RANGE" },
+            {
+              claim: "The interquartile range covers the middle half of the data.",
+              truth: "always",
+              right: "Always. It runs from the lower to the upper quartile.",
+              wrong: [
+                ["Never. It covers all the data.", "STA.IQR.RANGE"],
+                ["Sometimes. Only for even counts."],
+              ],
+            },
+            {
+              statement:
+                "Ana says the interquartile range is the biggest value minus the smallest.",
+              truth: false,
+              right:
+                "False. That is the range. The IQR is the upper quartile minus the lower quartile.",
+              wrong: [
+                ["True. It is the range.", "STA.IQR.RANGE"],
+                ["True. IQR and range are the same.", "STA.IQR.RANGE"],
+              ],
+            },
           ],
-          solution: [
-            { say: "That is why the IQR is a better measure of spread when there are outliers." },
-          ],
-        });
+        );
     }
   },
 

@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { exactAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -15,7 +16,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GH-N10.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["FR.RECURRING.OVER-TEN", "NPV.INFINITE.NOTHING-BETWEEN"],
 
@@ -75,23 +76,56 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Eva says ", A.math("0.\\dot{9} = 1"), "."],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Eva says ", A.math("0.\\dot{9} = 1"), "."],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. If x = 0.999…, then 10x − x = 9.999… − 0.999… = 9, so 9x = 9 and x = 1.",
+                  correct: true,
+                },
+                {
+                  text: "False. 0.999… is always a tiny bit less than 1.",
+                  code: "NPV.INFINITE.NOTHING-BETWEEN",
+                },
+                { text: "False. 0.999… = 9/10.", code: "FR.RECURRING.OVER-TEN" },
+              ],
+              solution: [{ say: "There is no number between 0.999… and 1, so they are equal." }],
+            }),
+          [
             {
-              text: "True. If x = 0.999…, then 10x − x = 9.999… − 0.999… = 9, so 9x = 9 and x = 1.",
-              correct: true,
+              statement: "Leo says $0.\\dot{3} = \\frac{1}{3}$.",
+              truth: true,
+              right: "True. Let x = 0.333…, then 10x − x = 3, so x = 3/9 = 1/3.",
+              wrong: [
+                ["False. It is 3/10.", "FR.RECURRING.OVER-TEN"],
+                ["False. It is less than 1/3."],
+              ],
             },
             {
-              text: "False. 0.999… is always a tiny bit less than 1.",
-              code: "NPV.INFINITE.NOTHING-BETWEEN",
+              claim: "Every recurring decimal can be written as a fraction.",
+              truth: "always",
+              right: "Always. Recurring decimals are rational.",
+              wrong: [
+                ["Never. They go on for ever.", "NPV.INFINITE.NOTHING-BETWEEN"],
+                ["Sometimes. Only with one recurring digit."],
+              ],
             },
-            { text: "False. 0.999… = 9/10.", code: "FR.RECURRING.OVER-TEN" },
+            {
+              statement: "Mia says $0.\\dot{1}\\dot{2} = \\frac{12}{100}$.",
+              truth: false,
+              right: "False. 100x − x = 12 gives x = 12/99 = 4/33.",
+              wrong: [
+                ["True. Put the digits over 100.", "FR.RECURRING.OVER-TEN"],
+                ["True. Two digits means hundredths.", "FR.RECURRING.OVER-TEN"],
+              ],
+            },
           ],
-          solution: [{ say: "There is no number between 0.999… and 1, so they are equal." }],
-        });
+        );
     }
   },
 

@@ -10,7 +10,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-P9.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -73,7 +73,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-P9.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -136,7 +136,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-P9.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -199,7 +199,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-P9.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -262,7 +262,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-P9.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -325,7 +325,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-P9.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -388,7 +388,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-P9.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -399,7 +399,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -426,7 +426,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both are 15 out of the whole table.",
+                  "v": "False. It is 12/32.",
                 },
               ],
               "id": "RA",
@@ -435,7 +435,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both are about girls with bikes.",
+                  "v": "False. Divide by the whole class.",
                 },
               ],
               "id": "RB",
@@ -444,7 +444,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. They divide by different groups: 15/44 and 15/41.",
+                  "v": "True. Given girl, look only at the 20 girls.",
                 },
               ],
               "id": "RC",
@@ -456,18 +456,10 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "PRO.CONDITIONAL.TOTAL",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RB",
               "type": "choice",
             },
-            "code": "PRO.CONDITIONAL.FORMULA",
+            "code": "PRO.CONDITIONAL.TOTAL",
             "feedback": [],
           },
         ],
@@ -484,7 +476,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The 'given' group goes on the bottom.",
+            "v": "True. Given girl, look only at the 20 girls.",
           },
         ],
       },
@@ -492,7 +484,15 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ben says P(girl given has a bike) is always the same as P(has a bike given girl).",
+        "v": "In a class, 12 of 20 girls have a bike. Kai says P(has a bike | girl) = ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{12}{20}",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
@@ -504,7 +504,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-P9.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -515,7 +515,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -542,7 +542,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both are about girls with bikes.",
+                  "v": "False. Divide by the whole class.",
                 },
               ],
               "id": "RA",
@@ -551,7 +551,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both are 12 out of the whole table.",
+                  "v": "False. It is 12/32.",
                 },
               ],
               "id": "RB",
@@ -560,7 +560,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. They divide by different groups: 12/35 and 12/37.",
+                  "v": "True. Given girl, look only at the 20 girls.",
                 },
               ],
               "id": "RC",
@@ -573,14 +573,6 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
-              "type": "choice",
-            },
-            "code": "PRO.CONDITIONAL.FORMULA",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
               "type": "choice",
             },
             "code": "PRO.CONDITIONAL.TOTAL",
@@ -600,7 +592,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The 'given' group goes on the bottom.",
+            "v": "True. Given girl, look only at the 20 girls.",
           },
         ],
       },
@@ -608,19 +600,27 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ben says P(girl given has a bike) is always the same as P(has a bike given girl).",
+        "v": "In a class, 12 of 20 girls have a bike. Kai says P(has a bike | girl) = ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{12}{20}",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-P9.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -631,14 +631,14 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -647,10 +647,19 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -658,7 +667,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both are about girls with bikes.",
+                  "v": "Never. Always divide by the total.",
                 },
               ],
               "id": "RA",
@@ -667,7 +676,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both are 15 out of the whole table.",
+                  "v": "Always. Given B, B becomes the whole.",
                 },
               ],
               "id": "RB",
@@ -676,7 +685,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. They divide by different groups: 15/38 and 15/25.",
+                  "v": "Sometimes. Only for independent events.",
                 },
               ],
               "id": "RC",
@@ -691,22 +700,22 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "PRO.CONDITIONAL.FORMULA",
+            "code": "PRO.CONDITIONAL.TOTAL",
             "feedback": [],
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "PRO.CONDITIONAL.TOTAL",
+            "code": "PRO.CONDITIONAL.FORMULA",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -716,7 +725,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The 'given' group goes on the bottom.",
+            "v": "Always. Given B, B becomes the whole.",
           },
         ],
       },
@@ -724,7 +733,7 @@ exports[`GH-P9.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ben says P(girl given has a bike) is always the same as P(has a bike given girl).",
+        "v": "P(A | B) is found by dividing by the number in B, not the total.",
       },
     ],
   },

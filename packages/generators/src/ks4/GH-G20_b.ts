@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { cuboid } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   l: number;
@@ -21,7 +22,7 @@ const deg = (r: number) => (r * 180) / Math.PI;
 
 export default defineGenerator<Params>({
   id: "GH-G20.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.3D.WRONG-TRIANGLE", "GEO.TRIG.RATIO"],
 
@@ -84,26 +85,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Bea says the angle between a cuboid's space diagonal and its base is the same as the angle between the space diagonal and one of the base edges.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Bea says the angle between a cuboid's space diagonal and its base is the same as the angle between the space diagonal and one of the base edges.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. The angle with a plane is measured to the line in the plane directly below the diagonal: the base diagonal, not an edge.",
+                  correct: true,
+                },
+                { text: "True. The base edges are in the base.", code: "GEO.3D.WRONG-TRIANGLE" },
+                {
+                  text: "True. All angles with the base are equal.",
+                  code: "GEO.3D.WRONG-TRIANGLE",
+                },
+              ],
+              solution: [
+                {
+                  say: "Drop a perpendicular from the top of the diagonal to find the right triangle.",
+                },
+              ],
+            }),
+          [
             {
-              text: "False. The angle with a plane is measured to the line in the plane directly below the diagonal: the base diagonal, not an edge.",
-              correct: true,
+              statement:
+                "To find the angle between a space diagonal and the base, Leo uses a right-angled triangle with the base diagonal as one side.",
+              truth: true,
+              right: "True. The angle with a plane is measured to the line's projection on it.",
+              wrong: [
+                ["False. Use a base edge.", "GEO.3D.WRONG-TRIANGLE"],
+                ["False. Use the height only."],
+              ],
             },
-            { text: "True. The base edges are in the base.", code: "GEO.3D.WRONG-TRIANGLE" },
-            { text: "True. All angles with the base are equal.", code: "GEO.3D.WRONG-TRIANGLE" },
-          ],
-          solution: [
             {
-              say: "Drop a perpendicular from the top of the diagonal to find the right triangle.",
+              claim: "Pythagoras can be used twice to find a length in 3D.",
+              truth: "always",
+              right: "Always possible for a cuboid: once on the base, then again with the height.",
+              wrong: [
+                ["Never. 3D needs trigonometry.", "GEO.3D.WRONG-TRIANGLE"],
+                ["Sometimes. Only for cubes."],
+              ],
+            },
+            {
+              statement: "In a 3D problem, Kim uses tan with the hypotenuse and the opposite side.",
+              truth: false,
+              right: "False. Opposite and hypotenuse go with sin.",
+              wrong: [
+                ["True. tan works for any two sides.", "GEO.TRIG.RATIO"],
+                ["True. In 3D the ratios change.", "GEO.TRIG.RATIO"],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

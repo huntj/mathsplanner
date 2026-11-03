@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   b: number;
@@ -24,7 +25,7 @@ const deg = (r: number) => (r * 180) / Math.PI;
 
 export default defineGenerator<Params>({
   id: "GH-G22.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.COSINE-RULE.ORDER"],
 
@@ -102,27 +103,61 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            "When A = 90°, the cosine rule ",
-            A.math("a^2 = b^2 + c^2 - 2bc\\cos A"),
-            " becomes Pythagoras' theorem.",
-          ],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "When A = 90°, the cosine rule ",
+                A.math("a^2 = b^2 + c^2 - 2bc\\cos A"),
+                " becomes Pythagoras' theorem.",
+              ],
+              truth: "always",
+              reasons: [
+                {
+                  text: "Always. cos 90° = 0, so the last term vanishes and a² = b² + c².",
+                  correct: true,
+                },
+                {
+                  text: "Never. The cosine rule is only for triangles without a right angle.",
+                  code: "GEO.COSINE-RULE.ORDER",
+                },
+                { text: "Sometimes. Only when b = c." },
+              ],
+              solution: [{ say: "The cosine rule is Pythagoras with a correction term." }],
+            }),
+          [
             {
-              text: "Always. cos 90° = 0, so the last term vanishes and a² = b² + c².",
-              correct: true,
+              statement:
+                "Raj uses the cosine rule to find a side when he knows two sides and the angle between them.",
+              truth: true,
+              right: "True. That is exactly when the cosine rule finds a side.",
+              wrong: [
+                ["False. Use the sine rule.", "GEO.COSINE-RULE.ORDER"],
+                ["False. Use Pythagoras."],
+              ],
             },
             {
-              text: "Never. The cosine rule is only for triangles without a right angle.",
-              code: "GEO.COSINE-RULE.ORDER",
+              claim: "The cosine rule works in any triangle.",
+              truth: "always",
+              right: "Always. It is not limited to right-angled triangles.",
+              wrong: [
+                ["Never. Only in right-angled triangles.", "GEO.COSINE-RULE.ORDER"],
+                ["Sometimes. Only for acute angles."],
+              ],
             },
-            { text: "Sometimes. Only when b = c." },
+            {
+              statement: "Mia works out $b^2 + c^2 - 2bc\\cos A$ as $(b^2 + c^2 - 2bc)\\cos A$.",
+              truth: false,
+              right: "False. Only 2bc is multiplied by cos A.",
+              wrong: [
+                ["True. Work left to right.", "GEO.COSINE-RULE.ORDER"],
+                ["True. cos A applies to everything.", "GEO.COSINE-RULE.ORDER"],
+              ],
+            },
           ],
-          solution: [{ say: "The cosine rule is Pythagoras with a correction term." }],
-        });
+        );
     }
   },
 

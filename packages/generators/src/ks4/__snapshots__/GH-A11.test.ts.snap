@@ -10,7 +10,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A11",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -98,7 +98,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A11",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -186,7 +186,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A11",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -274,7 +274,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A11",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -418,7 +418,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A11",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -562,7 +562,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A11",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -706,7 +706,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A11",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -718,7 +718,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -744,7 +744,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The square is zero when x = -6, and then y = -29.",
+                  "v": "False. It is (x + 3)² + 2.",
                 },
               ],
               "id": "RA",
@@ -753,7 +753,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is (0, -29).",
+                  "v": "False. It is (x + 6)² + 2.",
                 },
               ],
               "id": "RB",
@@ -762,7 +762,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is (6, -29): read the number in the bracket.",
+                  "v": "True. (x + 3)² = x² + 6x + 9, and 9 − 7 = 2.",
                 },
               ],
               "id": "RC",
@@ -774,18 +774,18 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.QUADRATIC.TURNING",
+            "code": "ALG.COMPLETE-SQUARE.HALF",
             "feedback": [],
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "ALG.QUADRATIC.TURNING",
+            "code": "ALG.COMPLETE-SQUARE.HALF",
             "feedback": [],
           },
         ],
@@ -802,7 +802,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "y = (x + a)² + b has its turning point at (−a, b).",
+            "v": "True. (x + 3)² = x² + 6x + 9, and 9 − 7 = 2.",
           },
         ],
       },
@@ -810,19 +810,19 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Eve says the turning point of ",
+        "v": "Kim writes ",
       },
       {
         "t": "math",
-        "v": "y = (x + 6)^2 - 29",
+        "v": "x^2 + 6x + 2",
       },
       {
         "t": "text",
-        "v": " is ",
+        "v": " as ",
       },
       {
         "t": "math",
-        "v": "(-6, -29)",
+        "v": "(x + 3)^2 - 7",
       },
       {
         "t": "text",
@@ -838,7 +838,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A11",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -850,7 +850,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -876,7 +876,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The square is zero when x = -3, and then y = -13.",
+                  "v": "False. It is (3, -13): read the number in the bracket.",
                 },
               ],
               "id": "RA",
@@ -885,7 +885,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is (3, -13): read the number in the bracket.",
+                  "v": "True. The square is zero when x = -3, and then y = -13.",
                 },
               ],
               "id": "RB",
@@ -906,7 +906,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.QUADRATIC.TURNING",
@@ -970,7 +970,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A11",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -982,7 +982,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -1008,7 +1008,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is (0, -16).",
+                  "v": "False. It is (-5, -16): read the number in the bracket.",
                 },
               ],
               "id": "RA",
@@ -1017,7 +1017,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The square is zero when x = 5, and then y = -16.",
+                  "v": "False. It is (0, -16).",
                 },
               ],
               "id": "RB",
@@ -1026,7 +1026,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is (-5, -16): read the number in the bracket.",
+                  "v": "True. The square is zero when x = 5, and then y = -16.",
                 },
               ],
               "id": "RC",
@@ -1046,7 +1046,7 @@ exports[`GH-A11 > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.QUADRATIC.TURNING",

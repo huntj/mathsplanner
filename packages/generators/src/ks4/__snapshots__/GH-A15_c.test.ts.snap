@@ -60,7 +60,7 @@ exports[`GH-A15.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A15.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -177,7 +177,7 @@ exports[`GH-A15.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A15.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -294,7 +294,7 @@ exports[`GH-A15.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A15.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -411,7 +411,7 @@ exports[`GH-A15.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A15.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -570,7 +570,7 @@ exports[`GH-A15.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A15.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -729,7 +729,7 @@ exports[`GH-A15.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A15.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -832,63 +832,13 @@ exports[`GH-A15.c > keeps fixed seeds unchanged 1`] = `
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "A velocity–time graph: speeding up steadily, a constant speed, then slowing down to stop.",
-        "grid": true,
-        "segments": [
-          {
-            "from": [
-              0,
-              0,
-            ],
-            "to": [
-              8,
-              8,
-            ],
-          },
-          {
-            "from": [
-              8,
-              8,
-            ],
-            "to": [
-              16,
-              8,
-            ],
-          },
-          {
-            "from": [
-              16,
-              8,
-            ],
-            "to": [
-              22,
-              0,
-            ],
-          },
-        ],
-        "type": "cartesian",
-        "x": {
-          "label": "\\text{time (s)}",
-          "max": 24,
-          "min": 0,
-          "step": 2,
-        },
-        "y": {
-          "label": "\\text{velocity (m/s)}",
-          "max": 10,
-          "min": 0,
-          "step": 2,
-        },
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A15.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -899,181 +849,7 @@ exports[`GH-A15.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. A negative gradient means moving backwards.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The graph is going down towards zero distance.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. The velocity is still positive, so the car moves forwards; the downward slope means it is slowing down (decelerating).",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.AREA-GRADIENT",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.AREA-GRADIENT",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "On a velocity–time graph the gradient is the acceleration; a negative gradient is deceleration.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "The graph shows the velocity of a car.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": " Ben says the car is going backwards in the last 6 seconds, because the line slopes down.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "A velocity–time graph: speeding up steadily, a constant speed, then slowing down to stop.",
-        "grid": true,
-        "segments": [
-          {
-            "from": [
-              0,
-              0,
-            ],
-            "to": [
-              4,
-              12,
-            ],
-          },
-          {
-            "from": [
-              4,
-              12,
-            ],
-            "to": [
-              14,
-              12,
-            ],
-          },
-          {
-            "from": [
-              14,
-              12,
-            ],
-            "to": [
-              20,
-              0,
-            ],
-          },
-        ],
-        "type": "cartesian",
-        "x": {
-          "label": "\\text{time (s)}",
-          "max": 22,
-          "min": 0,
-          "step": 2,
-        },
-        "y": {
-          "label": "\\text{velocity (m/s)}",
-          "max": 14,
-          "min": 0,
-          "step": 2,
-        },
-      },
-    ],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "GH-A15.c",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
@@ -1100,7 +876,7 @@ exports[`GH-A15.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The velocity is still positive, so the car moves forwards; the downward slope means it is slowing down (decelerating).",
+                  "v": "True. Velocity is falling but still positive.",
                 },
               ],
               "id": "RA",
@@ -1109,7 +885,7 @@ exports[`GH-A15.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The graph is going down towards zero distance.",
+                  "v": "False. It is going backwards.",
                 },
               ],
               "id": "RB",
@@ -1118,7 +894,7 @@ exports[`GH-A15.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A negative gradient means moving backwards.",
+                  "v": "False. It has stopped.",
                 },
               ],
               "id": "RC",
@@ -1131,14 +907,6 @@ exports[`GH-A15.c > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.AREA-GRADIENT",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.GRAPH.AREA-GRADIENT",
@@ -1158,7 +926,7 @@ exports[`GH-A15.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "On a velocity–time graph the gradient is the acceleration; a negative gradient is deceleration.",
+            "v": "True. Velocity is falling but still positive.",
           },
         ],
       },
@@ -1166,77 +934,19 @@ exports[`GH-A15.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The graph shows the velocity of a car.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": " Ben says the car is going backwards in the last 6 seconds, because the line slopes down.",
+        "v": "A velocity–time graph slopes down but stays above the axis. Kai says the car is slowing down.",
       },
     ],
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "A velocity–time graph: speeding up steadily, a constant speed, then slowing down to stop.",
-        "grid": true,
-        "segments": [
-          {
-            "from": [
-              0,
-              0,
-            ],
-            "to": [
-              6,
-              12,
-            ],
-          },
-          {
-            "from": [
-              6,
-              12,
-            ],
-            "to": [
-              14,
-              12,
-            ],
-          },
-          {
-            "from": [
-              14,
-              12,
-            ],
-            "to": [
-              18,
-              0,
-            ],
-          },
-        ],
-        "type": "cartesian",
-        "x": {
-          "label": "\\text{time (s)}",
-          "max": 20,
-          "min": 0,
-          "step": 2,
-        },
-        "y": {
-          "label": "\\text{velocity (m/s)}",
-          "max": 14,
-          "min": 0,
-          "step": 2,
-        },
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
-      "numbers": "stretch",
+      "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A15.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1274,7 +984,7 @@ exports[`GH-A15.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The graph is going down towards zero distance.",
+                  "v": "True. Flat means stopped.",
                 },
               ],
               "id": "RA",
@@ -1283,7 +993,7 @@ exports[`GH-A15.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The velocity is still positive, so the car moves forwards; the downward slope means it is slowing down (decelerating).",
+                  "v": "False. It moves at a steady velocity; only a line on the axis means stopped.",
                 },
               ],
               "id": "RB",
@@ -1292,7 +1002,7 @@ exports[`GH-A15.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A negative gradient means moving backwards.",
+                  "v": "True. Like a distance–time graph.",
                 },
               ],
               "id": "RC",
@@ -1332,7 +1042,7 @@ exports[`GH-A15.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "On a velocity–time graph the gradient is the acceleration; a negative gradient is deceleration.",
+            "v": "False. It moves at a steady velocity; only a line on the axis means stopped.",
           },
         ],
       },
@@ -1340,15 +1050,115 @@ exports[`GH-A15.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The graph shows the velocity of a car.",
+        "v": "Bea says a horizontal line on a velocity–time graph means the object is not moving.",
       },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GH-A15.c",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
       {
-        "i": 0,
-        "t": "diagram",
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It has stopped.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is going backwards.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Velocity is falling but still positive.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "ALG.GRAPH.AREA-GRADIENT",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
       },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. Velocity is falling but still positive.",
+          },
+        ],
+      },
+    ],
+    "stem": [
       {
         "t": "text",
-        "v": " Ben says the car is going backwards in the last 4 seconds, because the line slopes down.",
+        "v": "A velocity–time graph slopes down but stays above the axis. Kai says the car is slowing down.",
       },
     ],
   },

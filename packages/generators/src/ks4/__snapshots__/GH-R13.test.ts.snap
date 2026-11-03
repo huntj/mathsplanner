@@ -10,7 +10,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-R13",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -84,7 +84,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-R13",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -158,7 +158,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-R13",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -232,7 +232,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-R13",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -304,7 +304,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-R13",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -376,7 +376,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-R13",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -448,7 +448,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-R13",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -486,7 +486,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Proportional means it changes by the same factor.",
+                  "v": "True. It is like y ∝ 1/x.",
                 },
               ],
               "id": "RA",
@@ -495,7 +495,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The area is halved.",
+                  "v": "True. Inverse means halve.",
                 },
               ],
               "id": "RB",
@@ -504,7 +504,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A ∝ s², so doubling s multiplies the area by 2² = 4.",
+                  "v": "False. Doubling x divides y by 2² = 4.",
                 },
               ],
               "id": "RC",
@@ -519,7 +519,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "RAT.PROPORTION.POWER",
+            "code": "RAT.INVERSE.AS-DIRECT",
             "feedback": [],
           },
           {
@@ -527,7 +527,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "RAT.INVERSE.AS-DIRECT",
+            "code": "RAT.PROPORTION.POWER",
             "feedback": [],
           },
         ],
@@ -544,7 +544,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "If y ∝ x², multiplying x by n multiplies y by n².",
+            "v": "False. Doubling x divides y by 2² = 4.",
           },
         ],
       },
@@ -552,7 +552,15 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The area of a square tile is proportional to the square of its side length. Zak says that if the side length is doubled, the area is doubled.",
+        "v": "y is inversely proportional to ",
+      },
+      {
+        "t": "math",
+        "v": "x^2",
+      },
+      {
+        "t": "text",
+        "v": ". Kai says doubling x halves y.",
       },
     ],
   },
@@ -564,123 +572,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-R13",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Proportional means it changes by the same factor.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. The area is halved.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. A ∝ s², so doubling s multiplies the area by 2² = 4.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "RAT.PROPORTION.POWER",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "RAT.INVERSE.AS-DIRECT",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "If y ∝ x², multiplying x by n multiplies y by n².",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "The area of a square tile is proportional to the square of its side length. Zak says that if the side length is doubled, the area is doubled.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GH-R13",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -727,7 +619,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The area is halved.",
+                  "v": "True. Proportional means it changes by the same factor.",
                 },
               ],
               "id": "RB",
@@ -736,7 +628,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Proportional means it changes by the same factor.",
+                  "v": "False. The area is halved.",
                 },
               ],
               "id": "RC",
@@ -751,7 +643,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "RAT.INVERSE.AS-DIRECT",
+            "code": "RAT.PROPORTION.POWER",
             "feedback": [],
           },
           {
@@ -759,7 +651,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "RAT.PROPORTION.POWER",
+            "code": "RAT.INVERSE.AS-DIRECT",
             "feedback": [],
           },
         ],
@@ -789,6 +681,131 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GH-R13",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only for whole numbers.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. It multiplies by 3.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. 3³ = 27.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "RAT.PROPORTION.POWER",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. 3³ = 27.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "If ",
+      },
+      {
+        "t": "math",
+        "v": "y \\propto x^3",
+      },
+      {
+        "t": "text",
+        "v": ", tripling x multiplies y by 27.",
+      },
+    ],
+  },
+  {
     "archetype": "multi-step-context",
     "diagrams": [],
     "key": {
@@ -796,7 +813,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-R13",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -900,7 +917,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-R13",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1004,7 +1021,7 @@ exports[`GH-R13 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-R13",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

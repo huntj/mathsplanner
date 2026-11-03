@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import type { ChartSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 type Five = [number, number, number, number, number];
 
@@ -29,7 +30,7 @@ const RIGHT = "Class A had the higher median; Class B's marks were more consiste
 
 export default defineGenerator<Params>({
   id: "GH-S4.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.IQR.RANGE", "STA.COMPARE", "STA.RANGE.HIGHER-BETTER"],
 
@@ -101,20 +102,55 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Eli says half of the data lies inside the box of a box plot."],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Eli says half of the data lies inside the box of a box plot."],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. The box runs from the lower quartile to the upper quartile, which holds the middle 50% of the data.",
+                  correct: true,
+                },
+                { text: "False. The box holds a quarter of the data.", code: "STA.IQR.RANGE" },
+                { text: "False. All the data is inside the box.", code: "STA.IQR.RANGE" },
+              ],
+              solution: [{ say: "Each whisker and each half of the box holds about a quarter." }],
+            }),
+          [
             {
-              text: "True. The box runs from the lower quartile to the upper quartile, which holds the middle 50% of the data.",
-              correct: true,
+              statement:
+                "Box plot A has a bigger median than box plot B. Leo says the values in A are higher on average.",
+              truth: true,
+              right: "True. The median is an average.",
+              wrong: [
+                ["False. Compare the ranges.", "STA.COMPARE"],
+                ["False. Compare the whiskers.", "STA.RANGE.HIGHER-BETTER"],
+              ],
             },
-            { text: "False. The box holds a quarter of the data.", code: "STA.IQR.RANGE" },
-            { text: "False. All the data is inside the box.", code: "STA.IQR.RANGE" },
+            {
+              claim:
+                "A box plot's whiskers reach the smallest and largest values (ignoring outliers).",
+              truth: "always",
+              right: "Always. They show the full spread.",
+              wrong: [
+                ["Never. They stop at the quartiles.", "STA.IQR.RANGE"],
+                ["Sometimes. Only for small data."],
+              ],
+            },
+            {
+              statement: "Kim says a wider box means higher values.",
+              truth: false,
+              right: "False. A wider box means more spread in the middle half, not higher values.",
+              wrong: [
+                ["True. Bigger box, bigger numbers.", "STA.RANGE.HIGHER-BETTER"],
+                ["True. Width shows the average.", "STA.COMPARE"],
+              ],
+            },
           ],
-          solution: [{ say: "Each whisker and each half of the box holds about a quarter." }],
-        });
+        );
     }
   },
 

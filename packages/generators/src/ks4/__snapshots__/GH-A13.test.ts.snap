@@ -10,7 +10,7 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A13",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -161,7 +161,7 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A13",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -312,7 +312,7 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A13",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -463,7 +463,7 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A13",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -614,7 +614,7 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A13",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -765,7 +765,7 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A13",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -916,7 +916,7 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A13",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -928,7 +928,7 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -954,7 +954,7 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It moves 5 units up.",
+                  "v": "True. Minus means left.",
                 },
               ],
               "id": "RA",
@@ -963,7 +963,7 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. (x + 5)² is zero when x = -5, so the curve moves 5 units left.",
+                  "v": "True. Subtracting moves backwards.",
                 },
               ],
               "id": "RB",
@@ -972,7 +972,7 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The sign in the bracket tells you: plus means right.",
+                  "v": "False. f(x − 2) moves the graph 2 units right.",
                 },
               ],
               "id": "RC",
@@ -992,7 +992,7 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.TRANSFORM.DIRECTION",
@@ -1012,7 +1012,7 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "y = f(x − a) is a translation a units to the right; y = f(x + a) is a units to the left.",
+            "v": "False. f(x − 2) moves the graph 2 units right.",
           },
         ],
       },
@@ -1020,23 +1020,23 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sam says the graph of ",
+        "v": "Ana says ",
       },
       {
         "t": "math",
-        "v": "y = (x + 5)^2",
+        "v": "y = f(x - 2)",
       },
       {
         "t": "text",
-        "v": " is the graph of ",
+        "v": " is ",
       },
       {
         "t": "math",
-        "v": "y = x^2",
+        "v": "y = f(x)",
       },
       {
         "t": "text",
-        "v": " translated 5 units right.",
+        "v": " moved 2 units left.",
       },
     ],
   },
@@ -1048,7 +1048,139 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A13",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Subtracting moves backwards.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Minus means left.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. f(x − 2) moves the graph 2 units right.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "ALG.TRANSFORM.DIRECTION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "ALG.TRANSFORM.DIRECTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. f(x − 2) moves the graph 2 units right.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ana says ",
+      },
+      {
+        "t": "math",
+        "v": "y = f(x - 2)",
+      },
+      {
+        "t": "text",
+        "v": " is ",
+      },
+      {
+        "t": "math",
+        "v": "y = f(x)",
+      },
+      {
+        "t": "text",
+        "v": " moved 2 units left.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GH-A13",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1086,7 +1218,7 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The sign in the bracket tells you: plus means right.",
+                  "v": "True. Subtracting moves backwards.",
                 },
               ],
               "id": "RA",
@@ -1095,7 +1227,7 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. (x + 3)² is zero when x = -3, so the curve moves 3 units left.",
+                  "v": "False. f(x − 2) moves the graph 2 units right.",
                 },
               ],
               "id": "RB",
@@ -1104,7 +1236,7 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It moves 3 units up.",
+                  "v": "True. Minus means left.",
                 },
               ],
               "id": "RC",
@@ -1144,7 +1276,7 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "y = f(x − a) is a translation a units to the right; y = f(x + a) is a units to the left.",
+            "v": "False. f(x − 2) moves the graph 2 units right.",
           },
         ],
       },
@@ -1152,155 +1284,23 @@ exports[`GH-A13 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sam says the graph of ",
+        "v": "Ana says ",
       },
       {
         "t": "math",
-        "v": "y = (x + 3)^2",
+        "v": "y = f(x - 2)",
       },
       {
         "t": "text",
-        "v": " is the graph of ",
+        "v": " is ",
       },
       {
         "t": "math",
-        "v": "y = x^2",
+        "v": "y = f(x)",
       },
       {
         "t": "text",
-        "v": " translated 3 units right.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GH-A13",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. (x − 2)² is zero when x = 2, so the curve moves 2 units right.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. It moves 2 units down.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The sign in the bracket tells you: minus means left.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.TRANSFORM.DIRECTION",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.TRANSFORM.DIRECTION",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "y = f(x − a) is a translation a units to the right; y = f(x + a) is a units to the left.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Sam says the graph of ",
-      },
-      {
-        "t": "math",
-        "v": "y = (x - 2)^2",
-      },
-      {
-        "t": "text",
-        "v": " is the graph of ",
-      },
-      {
-        "t": "math",
-        "v": "y = x^2",
-      },
-      {
-        "t": "text",
-        "v": " translated 2 units left.",
+        "v": " moved 2 units left.",
       },
     ],
   },

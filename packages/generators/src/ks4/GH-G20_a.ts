@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { cuboid } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   l: number;
@@ -20,7 +21,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "GH-G20.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.3D.WRONG-TRIANGLE", "GEO.PYTHAG.NO-SQUARE"],
 
@@ -80,30 +81,64 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Jay says the longest straight rod that fits inside a ${p.l} cm by ${p.w} cm by ${p.h} cm box is ${p.l} cm long.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Jay says the longest straight rod that fits inside a ${p.l} cm by ${p.w} cm by ${p.h} cm box is ${p.l} cm long.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. It fits along the space diagonal, √(${p.l}² + ${p.w}² + ${p.h}²) ≈ ${r1(Math.sqrt(p.l ** 2 + p.w ** 2 + p.h ** 2))} cm.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The longest edge is the longest length.",
+                  code: "GEO.3D.WRONG-TRIANGLE",
+                },
+                {
+                  text: `True. It fits across the base diagonal, ${p.l} cm.`,
+                  code: "GEO.3D.WRONG-TRIANGLE",
+                },
+              ],
+              solution: [
+                { say: "Corner to opposite corner through the inside is the longest distance." },
+              ],
+            }),
+          [
             {
-              text: `False. It fits along the space diagonal, √(${p.l}² + ${p.w}² + ${p.h}²) ≈ ${r1(Math.sqrt(p.l ** 2 + p.w ** 2 + p.h ** 2))} cm.`,
-              correct: true,
+              statement: "Kai says the space diagonal of a 3 by 4 by 12 box is 13.",
+              truth: true,
+              right: "True. √(3² + 4² + 12²) = √169 = 13.",
+              wrong: [
+                ["False. It is 19.", "GEO.PYTHAG.NO-SQUARE"],
+                ["False. It is 5, the base diagonal.", "GEO.3D.WRONG-TRIANGLE"],
+              ],
             },
             {
-              text: "True. The longest edge is the longest length.",
-              code: "GEO.3D.WRONG-TRIANGLE",
+              claim: "The longest straight line inside a cuboid is a space diagonal.",
+              truth: "always",
+              right: "Always. It joins opposite corners through the inside.",
+              wrong: [
+                ["Never. It is the longest edge.", "GEO.3D.WRONG-TRIANGLE"],
+                ["Sometimes. Only for cubes."],
+              ],
             },
             {
-              text: `True. It fits across the base diagonal, ${p.l} cm.`,
-              code: "GEO.3D.WRONG-TRIANGLE",
+              statement:
+                "Pia finds the space diagonal of a 2 by 2 by 1 box as $\\sqrt{2^2 + 2^2}$.",
+              truth: false,
+              right: "False. Include all three dimensions: √(4 + 4 + 1) = 3.",
+              wrong: [
+                ["True. Use the base diagonal.", "GEO.3D.WRONG-TRIANGLE"],
+                ["True. The height does not matter.", "GEO.3D.WRONG-TRIANGLE"],
+              ],
             },
           ],
-          solution: [
-            { say: "Corner to opposite corner through the inside is the longest distance." },
-          ],
-        });
+        );
     }
   },
 

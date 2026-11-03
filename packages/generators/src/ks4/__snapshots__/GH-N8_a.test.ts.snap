@@ -10,7 +10,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N8.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -73,7 +73,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-N8.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -136,7 +136,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-N8.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -199,7 +199,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N8.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -303,7 +303,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-N8.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -407,7 +407,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-N8.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -504,14 +504,14 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "odd-one-out",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N8.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -522,14 +522,14 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "D",
-          "correctReason": "RB",
+          "correct": "B",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "\\sqrt{44}",
+                  "t": "text",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -537,29 +537,11 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "2\\sqrt{11}",
+                  "t": "text",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "math",
-                  "v": "\\sqrt{4} \\times \\sqrt{11}",
-                },
-              ],
-              "id": "C",
-            },
-            {
-              "content": [
-                {
-                  "t": "math",
-                  "v": "4\\sqrt{11}",
-                },
-              ],
-              "id": "D",
             },
           ],
           "reasons": [
@@ -567,7 +549,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one with a whole number in front.",
+                  "v": "False. √50 = √25 × √2 = 5√2.",
                 },
               ],
               "id": "RA",
@@ -576,7 +558,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one that is not equal to 2√11.",
+                  "v": "True. 50 = 25 × 2.",
                 },
               ],
               "id": "RB",
@@ -585,7 +567,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one in its simplest form.",
+                  "v": "True. Take 25 outside the root.",
                 },
               ],
               "id": "RC",
@@ -597,7 +579,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.SURD.SIMPLIFY",
@@ -615,33 +597,45 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Choose the odd one out and the reason.",
+            "v": "Is this true or false?",
           },
         ],
       },
     ],
     "solution": [
       {
-        "math": "\\sqrt{44} = \\sqrt{4} \\times \\sqrt{11} = 2\\sqrt{11}",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. √50 = √25 × √2 = 5√2.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Which is the odd one out?",
+        "v": "Sol says ",
+      },
+      {
+        "t": "math",
+        "v": "\\sqrt{50} = 25\\sqrt{2}",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
   {
-    "archetype": "odd-one-out",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-N8.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -652,14 +646,14 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "\\sqrt{12}",
+                  "t": "text",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -667,8 +661,8 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "2\\sqrt{3}",
+                  "t": "text",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
@@ -676,20 +670,11 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "4\\sqrt{3}",
+                  "t": "text",
+                  "v": "Never true",
                 },
               ],
               "id": "C",
-            },
-            {
-              "content": [
-                {
-                  "t": "math",
-                  "v": "\\sqrt{4} \\times \\sqrt{3}",
-                },
-              ],
-              "id": "D",
             },
           ],
           "reasons": [
@@ -697,7 +682,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one in its simplest form.",
+                  "v": "Always. Roots can be split over multiplication.",
                 },
               ],
               "id": "RA",
@@ -706,7 +691,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one with a whole number in front.",
+                  "v": "Never. Roots cannot be split.",
                 },
               ],
               "id": "RB",
@@ -715,7 +700,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one that is not equal to 2√3.",
+                  "v": "Sometimes. Only if a = b.",
                 },
               ],
               "id": "RC",
@@ -725,14 +710,6 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.SURD.SIMPLIFY",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RB",
@@ -745,21 +722,29 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Choose the odd one out and the reason.",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
     ],
     "solution": [
       {
-        "math": "\\sqrt{12} = \\sqrt{4} \\times \\sqrt{3} = 2\\sqrt{3}",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. Roots can be split over multiplication.",
+          },
+        ],
       },
     ],
     "stem": [
       {
+        "t": "math",
+        "v": "\\sqrt{ab} = \\sqrt{a} \\times \\sqrt{b}",
+      },
+      {
         "t": "text",
-        "v": "Which is the odd one out?",
+        "v": " for positive a and b.",
       },
     ],
   },
@@ -771,7 +756,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-N8.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -782,14 +767,14 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RA",
+          "correct": "D",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "math",
-                  "v": "2\\sqrt{6}",
+                  "v": "\\sqrt{4} \\times \\sqrt{6}",
                 },
               ],
               "id": "A",
@@ -798,7 +783,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "math",
-                  "v": "\\sqrt{4} \\times \\sqrt{6}",
+                  "v": "2\\sqrt{6}",
                 },
               ],
               "id": "B",
@@ -807,7 +792,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "math",
-                  "v": "4\\sqrt{6}",
+                  "v": "\\sqrt{24}",
                 },
               ],
               "id": "C",
@@ -816,7 +801,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "math",
-                  "v": "\\sqrt{24}",
+                  "v": "4\\sqrt{6}",
                 },
               ],
               "id": "D",
@@ -827,7 +812,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one that is not equal to 2√6.",
+                  "v": "It is the only one with a whole number in front.",
                 },
               ],
               "id": "RA",
@@ -836,7 +821,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one with a whole number in front.",
+                  "v": "It is the only one in its simplest form.",
                 },
               ],
               "id": "RB",
@@ -845,7 +830,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one in its simplest form.",
+                  "v": "It is the only one that is not equal to 2√6.",
                 },
               ],
               "id": "RC",
@@ -857,7 +842,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.SURD.SIMPLIFY",
@@ -865,7 +850,7 @@ exports[`GH-N8.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.SURD.SIMPLIFY",

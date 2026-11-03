@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { triangle } from "../shared/geo.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   A: number;
@@ -22,7 +23,7 @@ const deg = (r: number) => (r * 180) / Math.PI;
 
 export default defineGenerator<Params>({
   id: "GH-G22.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.SINE-RULE.PAIR"],
 
@@ -113,29 +114,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Dan says that in the sine rule, ",
-            A.math("\\frac{a}{\\sin A} = \\frac{b}{\\sin B}"),
-            ", side a can be any side next to angle A.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Dan says that in the sine rule, ",
+                A.math("\\frac{a}{\\sin A} = \\frac{b}{\\sin B}"),
+                ", side a can be any side next to angle A.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. Side a must be opposite angle A, and side b opposite angle B.",
+                  correct: true,
+                },
+                { text: "True. Any side touching the angle works.", code: "GEO.SINE-RULE.PAIR" },
+                {
+                  text: "True. The sine rule works for any side and angle.",
+                  code: "GEO.SINE-RULE.PAIR",
+                },
+              ],
+              solution: [
+                { say: "Lower-case letters name the sides opposite the capital-letter angles." },
+              ],
+            }),
+          [
             {
-              text: "False. Side a must be opposite angle A, and side b opposite angle B.",
-              correct: true,
+              statement: "Ana says in the sine rule, side a must be opposite angle A.",
+              truth: true,
+              right: "True. Each side pairs with the angle opposite it.",
+              wrong: [
+                ["False. It can be any side.", "GEO.SINE-RULE.PAIR"],
+                ["False. It is next to A.", "GEO.SINE-RULE.PAIR"],
+              ],
             },
-            { text: "True. Any side touching the angle works.", code: "GEO.SINE-RULE.PAIR" },
             {
-              text: "True. The sine rule works for any side and angle.",
-              code: "GEO.SINE-RULE.PAIR",
+              claim: "The sine rule can find a side when you know two angles and one side.",
+              truth: "always",
+              right: "Always. Use the third angle if needed, then pair sides with opposite angles.",
+              wrong: [
+                ["Never. It needs three sides.", "GEO.SINE-RULE.PAIR"],
+                ["Sometimes. Only in right-angled triangles."],
+              ],
+            },
+            {
+              statement: "Kai uses $\\frac{a}{\\sin B} = \\frac{b}{\\sin A}$.",
+              truth: false,
+              right: "False. Each side must go with its opposite angle: a/sin A = b/sin B.",
+              wrong: [
+                ["True. Any pairing works.", "GEO.SINE-RULE.PAIR"],
+                ["True. Cross the letters over.", "GEO.SINE-RULE.PAIR"],
+              ],
             },
           ],
-          solution: [
-            { say: "Lower-case letters name the sides opposite the capital-letter angles." },
-          ],
-        });
+        );
     }
   },
 

@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { coord } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const PLACES = ["On the circle", "Inside the circle", "Outside the circle"];
 
@@ -26,7 +27,7 @@ const place = (p: Params) => {
 
 export default defineGenerator<Params>({
   id: "GH-A16.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.CIRCLE.RADIUS-SQUARED"],
 
@@ -85,31 +86,64 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Cal says the circle ",
-            A.math(`x^2 + y^2 = ${p.r * p.r}`),
-            " passes through ",
-            A.math(coord([p.r, p.r])),
-            ".",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Cal says the circle ",
+                A.math(`x^2 + y^2 = ${p.r * p.r}`),
+                " passes through ",
+                A.math(coord([p.r, p.r])),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${p.r}² + ${p.r}² = ${2 * p.r * p.r}, not ${p.r * p.r}. The circle passes through (${p.r}, 0) and (0, ${p.r}).`,
+                  correct: true,
+                },
+                {
+                  text: `True. The radius is ${p.r}, so both coordinates are ${p.r}.`,
+                  code: "ALG.CIRCLE.RADIUS-SQUARED",
+                },
+                { text: "True. Every point with equal coordinates is on it." },
+              ],
+              solution: [
+                { say: "A point is on the circle when x² + y² equals the number on the right." },
+              ],
+            }),
+          [
             {
-              text: `False. ${p.r}² + ${p.r}² = ${2 * p.r * p.r}, not ${p.r * p.r}. The circle passes through (${p.r}, 0) and (0, ${p.r}).`,
-              correct: true,
+              statement: "Leo says $x^2 + y^2 = 25$ is a circle of radius 5 centred at the origin.",
+              truth: true,
+              right: "True. r² = 25.",
+              wrong: [
+                ["False. Its radius is 25.", "ALG.CIRCLE.RADIUS-SQUARED"],
+                ["False. Its radius is 12.5."],
+              ],
             },
             {
-              text: `True. The radius is ${p.r}, so both coordinates are ${p.r}.`,
-              code: "ALG.CIRCLE.RADIUS-SQUARED",
+              claim: "The point (3, 4) lies on $x^2 + y^2 = 25$.",
+              truth: "always",
+              right: "Always. 9 + 16 = 25.",
+              wrong: [
+                ["Never. 3 + 4 ≠ 25.", "ALG.CIRCLE.RADIUS-SQUARED"],
+                ["Sometimes. It depends on the scale."],
+              ],
             },
-            { text: "True. Every point with equal coordinates is on it." },
+            {
+              statement: "Mia says $x^2 + y^2 = 16$ has radius 16.",
+              truth: false,
+              right: "False. The radius is √16 = 4.",
+              wrong: [
+                ["True. The number is the radius.", "ALG.CIRCLE.RADIUS-SQUARED"],
+                ["True. r = 16.", "ALG.CIRCLE.RADIUS-SQUARED"],
+              ],
+            },
           ],
-          solution: [
-            { say: "A point is on the circle when x² + y² equals the number on the right." },
-          ],
-        });
+        );
     }
   },
 

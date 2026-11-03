@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** x(n+1) = √(k + x(n)), starting at x0. */
@@ -26,7 +27,7 @@ const iterate = (p: Params, n: number) => {
 
 export default defineGenerator<Params>({
   id: "GH-A20",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.FUNCTION.ORDER", "ALG.ITERATION.SUBSTITUTE"],
 
@@ -103,37 +104,74 @@ export default defineGenerator<Params>({
         const root = (1 + Math.sqrt(1 + 4 * p.k)) / 2;
         const a = Math.floor(root) + (p.claimTrue ? 0 : 1);
         const f = (x: number) => x * x - x - p.k;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "The iteration ",
-            formula,
-            " solves ",
-            A.math(`x^2 - x - ${p.k} = 0`),
-            `. Raj says this equation has a solution between ${a} and ${a + 1}.`,
-          ],
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
-                {
-                  text: `True. When x = ${a} the left side is ${f(a)}, and when x = ${a + 1} it is ${f(a + 1)}. The sign changes, so there is a solution between them.`,
-                  correct: true,
-                },
-                { text: "False. You can only tell by solving the equation exactly." },
-                { text: `False. Both values are ${f(a + 1) > 0 ? "positive" : "negative"}.` },
-              ]
-            : [
-                {
-                  text: `False. At x = ${a} the left side is ${f(a)} and at x = ${a + 1} it is ${f(a + 1)}: no sign change, so no solution is shown there.`,
-                  correct: true,
-                },
-                { text: "True. Every interval contains a solution." },
-                { text: "True. The iteration always converges to any interval you choose." },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "The iteration ",
+                formula,
+                " solves ",
+                A.math(`x^2 - x - ${p.k} = 0`),
+                `. Raj says this equation has a solution between ${a} and ${a + 1}.`,
               ],
-          solution: [
-            { say: "A change of sign between two values of x shows a solution lies between them." },
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    {
+                      text: `True. When x = ${a} the left side is ${f(a)}, and when x = ${a + 1} it is ${f(a + 1)}. The sign changes, so there is a solution between them.`,
+                      correct: true,
+                    },
+                    { text: "False. You can only tell by solving the equation exactly." },
+                    { text: `False. Both values are ${f(a + 1) > 0 ? "positive" : "negative"}.` },
+                  ]
+                : [
+                    {
+                      text: `False. At x = ${a} the left side is ${f(a)} and at x = ${a + 1} it is ${f(a + 1)}: no sign change, so no solution is shown there.`,
+                      correct: true,
+                    },
+                    { text: "True. Every interval contains a solution." },
+                    { text: "True. The iteration always converges to any interval you choose." },
+                  ],
+              solution: [
+                {
+                  say: "A change of sign between two values of x shows a solution lies between them.",
+                },
+              ],
+            }),
+          [
+            {
+              statement:
+                "Kai shows $x^3 - x - 1 = 0$ has a root between 1 and 2, because the left side is −1 at x = 1 and 5 at x = 2.",
+              truth: true,
+              right:
+                "True. The sign changes, and the function is continuous, so it crosses 0 in between.",
+              wrong: [
+                ["False. You must find the root exactly.", "ALG.ITERATION.SUBSTITUTE"],
+                ["False. Both values must be positive."],
+              ],
+            },
+            {
+              claim: "An iteration $x_{n+1} = g(x_n)$ uses each answer as the next input.",
+              truth: "always",
+              right: "Always. That is what makes it an iteration.",
+              wrong: [
+                ["Never. You use x₀ every time.", "ALG.ITERATION.SUBSTITUTE"],
+                ["Sometimes. Only for the first step.", "ALG.FUNCTION.ORDER"],
+              ],
+            },
+            {
+              statement: "With $x_{n+1} = \\frac{x_n + 6}{2}$ and $x_0 = 2$, Pia says $x_1 = 5$.",
+              truth: false,
+              right: "False. x₁ = (2 + 6) ÷ 2 = 4.",
+              wrong: [
+                ["True. 2 + 6 ÷ 2 = 5.", "ALG.FUNCTION.ORDER"],
+                ["True. Divide first, then add.", "ALG.FUNCTION.ORDER"],
+              ],
+            },
           ],
-        });
+        );
       }
     }
   },

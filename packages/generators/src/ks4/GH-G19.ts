@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Length scale factor k. */
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GH-G19",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4, 5],
   misconceptions: ["RAT.SCALE.AREA-LINEAR"],
 
@@ -88,23 +89,58 @@ export default defineGenerator<Params>({
         });
       }
       case 4:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `A model ${p.solid} is made with every length ${p.k} times as long as the original. Tia says it holds ${p.k} times as much.`,
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `A model ${p.solid} is made with every length ${p.k} times as long as the original. Tia says it holds ${p.k} times as much.`,
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Volume scales by the cube of the length scale factor: ${p.k}³ = ${p.k ** 3} times as much.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Every length is multiplied by the same number, so the volume is too.",
+                  code: "RAT.SCALE.AREA-LINEAR",
+                },
+                {
+                  text: `False. It holds ${p.k * p.k} times as much.`,
+                  code: "RAT.SCALE.AREA-LINEAR",
+                },
+              ],
+              solution: [{ say: `Length × ${p.k}, area × ${p.k * p.k}, volume × ${p.k ** 3}.` }],
+            }),
+          [
             {
-              text: `False. Volume scales by the cube of the length scale factor: ${p.k}³ = ${p.k ** 3} times as much.`,
-              correct: true,
+              statement:
+                "Two similar shapes have length scale factor 3. Ana says the area scale factor is 9.",
+              truth: true,
+              right: "True. Area scale factor = 3² = 9.",
+              wrong: [
+                ["False. It is 3.", "RAT.SCALE.AREA-LINEAR"],
+                ["False. It is 27.", "RAT.SCALE.AREA-LINEAR"],
+              ],
             },
             {
-              text: "True. Every length is multiplied by the same number, so the volume is too.",
-              code: "RAT.SCALE.AREA-LINEAR",
+              claim: "If the length scale factor is k, the volume scale factor is $k^3$.",
+              truth: "always",
+              right: "Always. Each of three dimensions is multiplied by k.",
+              wrong: [["Never. It is k.", "RAT.SCALE.AREA-LINEAR"], ["Sometimes. Only for cubes."]],
             },
-            { text: `False. It holds ${p.k * p.k} times as much.`, code: "RAT.SCALE.AREA-LINEAR" },
+            {
+              statement:
+                "Two similar jugs have volumes 54 ml and 2 ml. Raj says the length scale factor is 27.",
+              truth: false,
+              right: "False. The volume scale factor is 27, so the length scale factor is ∛27 = 3.",
+              wrong: [
+                ["True. 54 ÷ 2 = 27.", "RAT.SCALE.AREA-LINEAR"],
+                ["True. Lengths scale like volumes.", "RAT.SCALE.AREA-LINEAR"],
+              ],
+            },
           ],
-          solution: [{ say: `Length × ${p.k}, area × ${p.k * p.k}, volume × ${p.k ** 3}.` }],
-        });
+        );
       default: {
         const big = p.volume * p.k ** 3;
         return A.multiStepContext({

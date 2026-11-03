@@ -10,7 +10,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -90,7 +90,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-N16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -170,7 +170,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-N16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -250,7 +250,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -317,7 +317,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-N16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -384,7 +384,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-N16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -451,7 +451,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -498,7 +498,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 140 ÷ 35.",
+                  "v": "True. Upper bounds always use the upper bound of every number.",
                 },
               ],
               "id": "RB",
@@ -507,7 +507,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Upper bounds always use the upper bound of every number.",
+                  "v": "False. It is 140 ÷ 35.",
                 },
               ],
               "id": "RC",
@@ -522,7 +522,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.BOUNDS.ENDS",
+            "code": "NPV.BOUNDS.DIVIDE",
             "feedback": [],
           },
           {
@@ -530,7 +530,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.BOUNDS.DIVIDE",
+            "code": "NPV.BOUNDS.ENDS",
             "feedback": [],
           },
         ],
@@ -567,7 +567,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-N16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -579,7 +579,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -605,7 +605,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The greatest speed comes from the longest distance in the shortest time: 285 ÷ 59.5.",
+                  "v": "False. It is 290 ÷ 61.",
                 },
               ],
               "id": "RA",
@@ -614,7 +614,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Upper bounds always use the upper bound of every number.",
+                  "v": "False. The greatest speed comes from the longest distance in the shortest time: 285 ÷ 59.5.",
                 },
               ],
               "id": "RB",
@@ -623,7 +623,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 290 ÷ 61.",
+                  "v": "True. Upper bounds always use the upper bound of every number.",
                 },
               ],
               "id": "RC",
@@ -635,10 +635,10 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.BOUNDS.DIVIDE",
+            "code": "NPV.BOUNDS.ENDS",
             "feedback": [],
           },
           {
@@ -646,7 +646,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.BOUNDS.ENDS",
+            "code": "NPV.BOUNDS.DIVIDE",
             "feedback": [],
           },
         ],
@@ -676,14 +676,14 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-N16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -694,14 +694,14 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -710,10 +710,19 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -721,7 +730,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 310 ÷ 46.",
+                  "v": "Always. To make the difference as big as possible, take the biggest a and smallest b.",
                 },
               ],
               "id": "RA",
@@ -730,7 +739,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Upper bounds always use the upper bound of every number.",
+                  "v": "Sometimes. Only if a > b.",
                 },
               ],
               "id": "RB",
@@ -739,7 +748,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The greatest speed comes from the longest distance in the shortest time: 305 ÷ 44.5.",
+                  "v": "Never. Use both upper bounds.",
                 },
               ],
               "id": "RC",
@@ -751,25 +760,25 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.BOUNDS.ENDS",
+            "code": "NPV.BOUNDS.SUBTRACT",
             "feedback": [],
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.BOUNDS.DIVIDE",
+            "code": "NPV.BOUNDS.SUBTRACT",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -779,7 +788,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Dividing by a smaller number gives a bigger answer, so divide by the lower bound of the time.",
+            "v": "Always. To make the difference as big as possible, take the biggest a and smallest b.",
           },
         ],
       },
@@ -787,7 +796,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A cyclist travels 300 m, to the nearest 10 m, in 45 s, to the nearest second. Max says the upper bound of the speed is 305 ÷ 45.5.",
+        "v": "The upper bound of a − b uses the upper bound of a and the lower bound of b.",
       },
     ],
   },
@@ -799,7 +808,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -908,7 +917,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-N16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1017,7 +1026,7 @@ exports[`GH-N16 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-N16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

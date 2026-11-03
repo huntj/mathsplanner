@@ -10,7 +10,7 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A16.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -75,7 +75,7 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A16.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -140,7 +140,7 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A16.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -205,7 +205,7 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A16.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -321,7 +321,7 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A16.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -437,7 +437,7 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A16.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -546,14 +546,14 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A16.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -564,14 +564,14 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -580,10 +580,19 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -591,7 +600,7 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every point with equal coordinates is on it.",
+                  "v": "Always. 9 + 16 = 25.",
                 },
               ],
               "id": "RA",
@@ -600,7 +609,7 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 11² + 11² = 242, not 121. The circle passes through (11, 0) and (0, 11).",
+                  "v": "Never. 3 + 4 ≠ 25.",
                 },
               ],
               "id": "RB",
@@ -609,7 +618,7 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The radius is 11, so both coordinates are 11.",
+                  "v": "Sometimes. It depends on the scale.",
                 },
               ],
               "id": "RC",
@@ -621,7 +630,7 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.CIRCLE.RADIUS-SQUARED",
@@ -631,7 +640,7 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -641,7 +650,7 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A point is on the circle when x² + y² equals the number on the right.",
+            "v": "Always. 9 + 16 = 25.",
           },
         ],
       },
@@ -649,19 +658,11 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Cal says the circle ",
+        "v": "The point (3, 4) lies on ",
       },
       {
         "t": "math",
-        "v": "x^2 + y^2 = 121",
-      },
-      {
-        "t": "text",
-        "v": " passes through ",
-      },
-      {
-        "t": "math",
-        "v": "(11, 11)",
+        "v": "x^2 + y^2 = 25",
       },
       {
         "t": "text",
@@ -677,7 +678,7 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A16.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -688,131 +689,7 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Every point with equal coordinates is on it.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. 7² + 7² = 98, not 49. The circle passes through (7, 0) and (0, 7).",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The radius is 7, so both coordinates are 7.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.CIRCLE.RADIUS-SQUARED",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "A point is on the circle when x² + y² equals the number on the right.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Cal says the circle ",
-      },
-      {
-        "t": "math",
-        "v": "x^2 + y^2 = 49",
-      },
-      {
-        "t": "text",
-        "v": " passes through ",
-      },
-      {
-        "t": "math",
-        "v": "(7, 7)",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GH-A16.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -839,7 +716,7 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every point with equal coordinates is on it.",
+                  "v": "False. Its radius is 12.5.",
                 },
               ],
               "id": "RA",
@@ -848,7 +725,7 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The radius is 7, so both coordinates are 7.",
+                  "v": "False. Its radius is 25.",
                 },
               ],
               "id": "RB",
@@ -857,7 +734,7 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 7² + 7² = 98, not 49. The circle passes through (7, 0) and (0, 7).",
+                  "v": "True. r² = 25.",
                 },
               ],
               "id": "RC",
@@ -889,7 +766,7 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A point is on the circle when x² + y² equals the number on the right.",
+            "v": "True. r² = 25.",
           },
         ],
       },
@@ -897,23 +774,139 @@ exports[`GH-A16.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Cal says the circle ",
+        "v": "Leo says ",
       },
       {
         "t": "math",
-        "v": "x^2 + y^2 = 49",
+        "v": "x^2 + y^2 = 25",
       },
       {
         "t": "text",
-        "v": " passes through ",
+        "v": " is a circle of radius 5 centred at the origin.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GH-A16.a",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The number is the radius.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The radius is √16 = 4.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. r = 16.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "ALG.CIRCLE.RADIUS-SQUARED",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.CIRCLE.RADIUS-SQUARED",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. The radius is √16 = 4.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Mia says ",
       },
       {
         "t": "math",
-        "v": "(7, 7)",
+        "v": "x^2 + y^2 = 16",
       },
       {
         "t": "text",
-        "v": ".",
+        "v": " has radius 16.",
       },
     ],
   },

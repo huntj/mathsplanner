@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { poly } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -20,7 +21,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GH-A3",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.EQUATION.IDENTITY", "ALG.EXPAND.BINOMIAL-TWO-TERMS", "ALG.EXPAND.NEGATIVE"],
 
@@ -90,57 +91,96 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return p.difference
-          ? A.trueOrFalseWhy({
-              rng,
-              statement: [
-                "Nia says ",
-                A.math(`x^2 - ${p.a * p.a} \\equiv (x - ${p.a})(x + ${p.a})`),
-                ".",
-              ],
-              truth: true,
-              reasons: [
-                {
-                  text: `True. Expanding gives x² + ${p.a}x − ${p.a}x − ${p.a * p.a} = x² − ${p.a * p.a} for every x.`,
-                  correct: true,
-                },
-                {
-                  text: "False. It only works for some values of x.",
-                  code: "ALG.EQUATION.IDENTITY",
-                },
-                { text: `False. It should be (x − ${p.a})².` },
-              ],
-              solution: [{ say: "This is the difference of two squares: it holds for every x." }],
-            })
-          : A.trueOrFalseWhy({
-              rng,
-              statement: ["Nia says ", A.math(`(x + ${p.a})^2 \\equiv x^2 + ${p.a * p.a}`), "."],
-              truth: false,
-              reasons: [
-                {
-                  text: `False. (x + ${p.a})² = x² + ${2 * p.a}x + ${p.a * p.a}; the two sides are only equal when x = 0.`,
-                  correct: true,
-                },
-                {
-                  text: "True. Square each term in the bracket.",
-                  code: "ALG.EXPAND.BINOMIAL-TWO-TERMS",
-                },
-                {
-                  text: "True. It works when x = 0, so it is always true.",
-                  code: "ALG.EQUATION.IDENTITY",
-                },
-              ],
-              solution: [
-                {
-                  say:
-                    "Test x = 1: the left side is " +
-                    (1 + p.a) ** 2 +
-                    " but the right side is " +
-                    (1 + p.a * p.a) +
+        return orClaims(
+          rng,
+          () =>
+            p.difference
+              ? A.trueOrFalseWhy({
+                  rng,
+                  statement: [
+                    "Nia says ",
+                    A.math(`x^2 - ${p.a * p.a} \\equiv (x - ${p.a})(x + ${p.a})`),
                     ".",
-                },
+                  ],
+                  truth: true,
+                  reasons: [
+                    {
+                      text: `True. Expanding gives x² + ${p.a}x − ${p.a}x − ${p.a * p.a} = x² − ${p.a * p.a} for every x.`,
+                      correct: true,
+                    },
+                    {
+                      text: "False. It only works for some values of x.",
+                      code: "ALG.EQUATION.IDENTITY",
+                    },
+                    { text: `False. It should be (x − ${p.a})².` },
+                  ],
+                  solution: [
+                    { say: "This is the difference of two squares: it holds for every x." },
+                  ],
+                })
+              : A.trueOrFalseWhy({
+                  rng,
+                  statement: [
+                    "Nia says ",
+                    A.math(`(x + ${p.a})^2 \\equiv x^2 + ${p.a * p.a}`),
+                    ".",
+                  ],
+                  truth: false,
+                  reasons: [
+                    {
+                      text: `False. (x + ${p.a})² = x² + ${2 * p.a}x + ${p.a * p.a}; the two sides are only equal when x = 0.`,
+                      correct: true,
+                    },
+                    {
+                      text: "True. Square each term in the bracket.",
+                      code: "ALG.EXPAND.BINOMIAL-TWO-TERMS",
+                    },
+                    {
+                      text: "True. It works when x = 0, so it is always true.",
+                      code: "ALG.EQUATION.IDENTITY",
+                    },
+                  ],
+                  solution: [
+                    {
+                      say:
+                        "Test x = 1: the left side is " +
+                        (1 + p.a) ** 2 +
+                        " but the right side is " +
+                        (1 + p.a * p.a) +
+                        ".",
+                    },
+                  ],
+                }),
+          [
+            {
+              statement: "Leo says $(x - 3)^2 \\equiv x^2 - 6x + 9$.",
+              truth: true,
+              right: "True. (x − 3)(x − 3) = x² − 3x − 3x + 9.",
+              wrong: [
+                ["False. It is x² + 9.", "ALG.EXPAND.BINOMIAL-TWO-TERMS"],
+                ["False. It is x² − 9.", "ALG.EXPAND.NEGATIVE"],
               ],
-            });
+            },
+            {
+              claim: "An identity is true for every value of the variable.",
+              truth: "always",
+              right: "Always. That is what distinguishes it from an equation.",
+              wrong: [
+                ["Never. It is true for one value.", "ALG.EQUATION.IDENTITY"],
+                ["Sometimes. Only for positive x."],
+              ],
+            },
+            {
+              statement: "Kim says $3(x + 2) \\equiv 3x + 2$.",
+              truth: false,
+              right: "False. 3(x + 2) = 3x + 6.",
+              wrong: [
+                ["True. Multiply the first term.", "ALG.EXPAND.BINOMIAL-TWO-TERMS"],
+                ["True. It works when x = 0.", "ALG.EQUATION.IDENTITY"],
+              ],
+            },
+          ],
+        );
     }
   },
 

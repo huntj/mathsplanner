@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { poly } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** an² + bn + c. */
@@ -30,7 +31,7 @@ function halfSlip(p: Params): string {
 
 export default defineGenerator<Params>({
   id: "GH-A25",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SEQUENCE.QUADRATIC-HALF", "ALG.SEQUENCE.TYPE"],
 
@@ -93,30 +94,64 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `The sequence ${seq} has a second difference of ${2 * p.a}. Lily says its nth term begins ${2 * p.a}n².`,
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `The sequence ${seq} has a second difference of ${2 * p.a}. Lily says its nth term begins ${2 * p.a}n².`,
+              truth: false,
+              reasons: [
+                {
+                  text: `False. an² has a second difference of 2a, so a = ${2 * p.a} ÷ 2 = ${p.a}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The second difference is the coefficient of n².",
+                  code: "ALG.SEQUENCE.QUADRATIC-HALF",
+                },
+                {
+                  text: "False. The first difference gives the coefficient of n².",
+                  code: "ALG.SEQUENCE.TYPE",
+                },
+              ],
+              solution: [
+                {
+                  say: `n² gives 1, 4, 9, 16, … with second difference 2, so halve the second difference.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. an² has a second difference of 2a, so a = ${2 * p.a} ÷ 2 = ${p.a}.`,
-              correct: true,
+              statement:
+                "A quadratic sequence has second difference 6. Kim says its nth term begins $3n^2$.",
+              truth: true,
+              right: "True. The coefficient of n² is half the second difference.",
+              wrong: [
+                ["False. It begins 6n².", "ALG.SEQUENCE.QUADRATIC-HALF"],
+                ["False. It begins 12n²."],
+              ],
             },
             {
-              text: "True. The second difference is the coefficient of n².",
-              code: "ALG.SEQUENCE.QUADRATIC-HALF",
+              claim: "A sequence with nth term $n^2 + 1$ has a constant second difference of 2.",
+              truth: "always",
+              right: "Always. Terms 2, 5, 10, 17: differences 3, 5, 7.",
+              wrong: [
+                ["Never. It is arithmetic.", "ALG.SEQUENCE.TYPE"],
+                ["Sometimes. Only for small n."],
+              ],
             },
             {
-              text: "False. The first difference gives the coefficient of n².",
-              code: "ALG.SEQUENCE.TYPE",
+              statement: "Raj says 2, 5, 10, 17, 26, … has nth term $3n - 1$.",
+              truth: false,
+              right: "False. The first differences change, so it is quadratic: n² + 1.",
+              wrong: [
+                ["True. It goes up by 3 at first.", "ALG.SEQUENCE.TYPE"],
+                ["True. Use the first difference.", "ALG.SEQUENCE.TYPE"],
+              ],
             },
           ],
-          solution: [
-            {
-              say: `n² gives 1, 4, 9, 16, … with second difference 2, so halve the second difference.`,
-            },
-          ],
-        });
+        );
     }
   },
 

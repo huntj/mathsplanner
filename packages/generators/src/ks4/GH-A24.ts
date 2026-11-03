@@ -6,6 +6,7 @@
 // GH-A24: Work with geometric sequences with surd ratios and other sequences
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, Surd, toLatex, type QuestionDraft } from "@mathsplanner/core";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Terms a, a√k, ak, ak√k, … */
@@ -20,7 +21,7 @@ const list = (p: Params, n: number) =>
 
 export default defineGenerator<Params>({
   id: "GH-A24",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SEQUENCE.GEOMETRIC-ADD"],
 
@@ -86,43 +87,77 @@ export default defineGenerator<Params>({
       default: {
         const sixth = term(p, 6);
         const claimed = p.claimTrue ? sixth : Surd.from(p.a * p.k ** 3);
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "The geometric sequence ",
-            A.math(`${list(p, 3)},\\ \\dots`),
-            " has common ratio ",
-            A.math(`\\sqrt{${p.k}}`),
-            ". Kim says the 6th term is ",
-            A.math(toLatex(claimed)),
-            ".",
-          ],
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
-                {
-                  text: `True. The 6th term is ${p.a} × (√${p.k})⁵ = ${p.a} × ${p.k * p.k}√${p.k}.`,
-                  correct: true,
-                },
-                {
-                  text: `False. It is ${p.a * p.k ** 3}, because the terms are whole numbers.`,
-                  code: "ALG.SEQUENCE.GEOMETRIC-ADD",
-                },
-                { text: "False. Surds cannot be raised to powers." },
-              ]
-            : [
-                {
-                  text: `False. The 6th term is ${p.a} × (√${p.k})⁵, which still has a √${p.k}. ${p.a * p.k ** 3} is the 7th term.`,
-                  correct: true,
-                },
-                { text: "True. Every other term is a whole number, so the 6th is too." },
-                {
-                  text: "True. Add the same amount each time.",
-                  code: "ALG.SEQUENCE.GEOMETRIC-ADD",
-                },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "The geometric sequence ",
+                A.math(`${list(p, 3)},\\ \\dots`),
+                " has common ratio ",
+                A.math(`\\sqrt{${p.k}}`),
+                ". Kim says the 6th term is ",
+                A.math(toLatex(claimed)),
+                ".",
               ],
-          solution: [{ say: "The nth term is a × r^(n − 1); odd powers of √k keep a √k." }],
-        });
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    {
+                      text: `True. The 6th term is ${p.a} × (√${p.k})⁵ = ${p.a} × ${p.k * p.k}√${p.k}.`,
+                      correct: true,
+                    },
+                    {
+                      text: `False. It is ${p.a * p.k ** 3}, because the terms are whole numbers.`,
+                      code: "ALG.SEQUENCE.GEOMETRIC-ADD",
+                    },
+                    { text: "False. Surds cannot be raised to powers." },
+                  ]
+                : [
+                    {
+                      text: `False. The 6th term is ${p.a} × (√${p.k})⁵, which still has a √${p.k}. ${p.a * p.k ** 3} is the 7th term.`,
+                      correct: true,
+                    },
+                    { text: "True. Every other term is a whole number, so the 6th is too." },
+                    {
+                      text: "True. Add the same amount each time.",
+                      code: "ALG.SEQUENCE.GEOMETRIC-ADD",
+                    },
+                  ],
+              solution: [{ say: "The nth term is a × r^(n − 1); odd powers of √k keep a √k." }],
+            }),
+          [
+            {
+              statement: "Leo says the next term of 3, 6, 12, 24, … is 48.",
+              truth: true,
+              right: "True. The common ratio is 2.",
+              wrong: [
+                ["False. It goes up by 12, so 36.", "ALG.SEQUENCE.GEOMETRIC-ADD"],
+                ["False. It is 30."],
+              ],
+            },
+            {
+              claim: "The nth term of a geometric sequence is $ar^{n-1}$.",
+              truth: "always",
+              right: "Always. Start at a and multiply by r, n − 1 times.",
+              wrong: [
+                ["Never. It is a + (n − 1)r.", "ALG.SEQUENCE.GEOMETRIC-ADD"],
+                ["Sometimes. Only for r > 1."],
+              ],
+            },
+            {
+              statement:
+                "A geometric sequence has first term 5 and ratio 3. Mia says the 4th term is 14.",
+              truth: false,
+              right: "False. 5 × 3³ = 135.",
+              wrong: [
+                ["True. 5 + 3 × 3 = 14.", "ALG.SEQUENCE.GEOMETRIC-ADD"],
+                ["True. Add 3 each time.", "ALG.SEQUENCE.GEOMETRIC-ADD"],
+              ],
+            },
+          ],
+        );
       }
     }
   },

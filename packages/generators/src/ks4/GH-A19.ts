@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { lineLatex, poly } from "../shared/alg.ts";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** The line y = mx + n meets y = x² + px + q at x1 and x2. */
@@ -24,7 +25,7 @@ const sol = (pts: [number, number][]) =>
 
 export default defineGenerator<Params>({
   id: "GH-A19",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SIMULTANEOUS.PAIR", "ALG.QUADRATIC.ROOT-SIGN", "ALG.EXPAND.NEGATIVE"],
 
@@ -144,24 +145,58 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: "Ava says a straight line always meets a parabola at exactly two points.",
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: "Ava says a straight line always meets a parabola at exactly two points.",
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A line can miss the curve, touch it once (a tangent), or cross it twice: the quadratic can have 0, 1 or 2 solutions.",
+                  correct: true,
+                },
+                { text: "True. Every quadratic equation has two solutions." },
+                { text: "True. A parabola has two sides, so a line must cross both." },
+              ],
+              solution: [
+                {
+                  say: "The number of meeting points is the number of solutions of the quadratic you get by substituting.",
+                },
+              ],
+            }),
+          [
             {
-              text: "False. A line can miss the curve, touch it once (a tangent), or cross it twice: the quadratic can have 0, 1 or 2 solutions.",
-              correct: true,
+              statement: "Solving $y = x + 1$ and $y = x^2 - 1$, Sol gets $x^2 - x - 2 = 0$.",
+              truth: true,
+              right: "True. x + 1 = x² − 1, so x² − x − 2 = 0.",
+              wrong: [
+                ["False. It is x² + x = 0.", "ALG.EXPAND.NEGATIVE"],
+                ["False. You cannot combine them.", "ALG.SIMULTANEOUS.PAIR"],
+              ],
             },
-            { text: "True. Every quadratic equation has two solutions." },
-            { text: "True. A parabola has two sides, so a line must cross both." },
-          ],
-          solution: [
             {
-              say: "The number of meeting points is the number of solutions of the quadratic you get by substituting.",
+              claim: "A straight line meets a parabola at most twice.",
+              truth: "always",
+              right: "Always. Substituting gives a quadratic, which has at most two roots.",
+              wrong: [
+                ["Never. They meet three times.", "ALG.SIMULTANEOUS.PAIR"],
+                ["Sometimes. They can meet four times."],
+              ],
+            },
+            {
+              statement:
+                "Solving $(x - 4)(x + 1) = 0$ for the x-values where a line meets a curve, Bea gets x = −4 and x = 1.",
+              truth: false,
+              right: "False. Each bracket is 0 at x = 4 and x = −1.",
+              wrong: [
+                ["True. Read the numbers in the brackets.", "ALG.QUADRATIC.ROOT-SIGN"],
+                ["True. Signs stay the same.", "ALG.QUADRATIC.ROOT-SIGN"],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

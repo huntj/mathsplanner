@@ -10,7 +10,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A3",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -132,7 +132,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A3",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -254,7 +254,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A3",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -376,7 +376,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A3",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -446,7 +446,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A3",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -512,7 +512,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A3",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -582,7 +582,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A3",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -594,7 +594,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -620,7 +620,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Expanding gives x² + 9x − 9x − 81 = x² − 81 for every x.",
+                  "v": "False. It only works for some values of x.",
                 },
               ],
               "id": "RA",
@@ -629,7 +629,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It only works for some values of x.",
+                  "v": "True. Expanding gives x² + 9x − 9x − 81 = x² − 81 for every x.",
                 },
               ],
               "id": "RB",
@@ -650,7 +650,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.EQUATION.IDENTITY",
@@ -698,7 +698,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A3",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -709,7 +709,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -736,7 +736,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It works when x = 0, so it is always true.",
+                  "v": "False. It is x² + 9.",
                 },
               ],
               "id": "RA",
@@ -745,7 +745,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Square each term in the bracket.",
+                  "v": "False. It is x² − 9.",
                 },
               ],
               "id": "RB",
@@ -754,7 +754,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. (x + 4)² = x² + 8x + 16; the two sides are only equal when x = 0.",
+                  "v": "True. (x − 3)(x − 3) = x² − 3x − 3x + 9.",
                 },
               ],
               "id": "RC",
@@ -769,7 +769,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.EQUATION.IDENTITY",
+            "code": "ALG.EXPAND.BINOMIAL-TWO-TERMS",
             "feedback": [],
           },
           {
@@ -777,7 +777,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "ALG.EXPAND.BINOMIAL-TWO-TERMS",
+            "code": "ALG.EXPAND.NEGATIVE",
             "feedback": [],
           },
         ],
@@ -794,7 +794,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Test x = 1: the left side is 25 but the right side is 17.",
+            "v": "True. (x − 3)(x − 3) = x² − 3x − 3x + 9.",
           },
         ],
       },
@@ -802,11 +802,11 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Nia says ",
+        "v": "Leo says ",
       },
       {
         "t": "math",
-        "v": "(x + 4)^2 \\equiv x^2 + 16",
+        "v": "(x - 3)^2 \\equiv x^2 - 6x + 9",
       },
       {
         "t": "text",
@@ -815,14 +815,14 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A3",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -833,14 +833,14 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -849,10 +849,19 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -860,7 +869,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Square each term in the bracket.",
+                  "v": "Never. It is true for one value.",
                 },
               ],
               "id": "RA",
@@ -869,7 +878,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. (x + 6)² = x² + 12x + 36; the two sides are only equal when x = 0.",
+                  "v": "Always. That is what distinguishes it from an equation.",
                 },
               ],
               "id": "RB",
@@ -878,7 +887,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It works when x = 0, so it is always true.",
+                  "v": "Sometimes. Only for positive x.",
                 },
               ],
               "id": "RC",
@@ -893,14 +902,6 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.EXPAND.BINOMIAL-TWO-TERMS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
             "code": "ALG.EQUATION.IDENTITY",
             "feedback": [],
           },
@@ -908,7 +909,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -918,7 +919,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Test x = 1: the left side is 49 but the right side is 37.",
+            "v": "Always. That is what distinguishes it from an equation.",
           },
         ],
       },
@@ -926,15 +927,7 @@ exports[`GH-A3 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Nia says ",
-      },
-      {
-        "t": "math",
-        "v": "(x + 6)^2 \\equiv x^2 + 36",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "An identity is true for every value of the variable.",
       },
     ],
   },

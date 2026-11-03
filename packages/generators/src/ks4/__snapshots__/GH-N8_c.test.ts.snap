@@ -10,7 +10,7 @@ exports[`GH-N8.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N8.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -73,7 +73,7 @@ exports[`GH-N8.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-N8.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -136,7 +136,7 @@ exports[`GH-N8.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-N8.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -199,7 +199,7 @@ exports[`GH-N8.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N8.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -267,7 +267,7 @@ exports[`GH-N8.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-N8.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -335,7 +335,7 @@ exports[`GH-N8.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-N8.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -396,14 +396,135 @@ exports[`GH-N8.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N8.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. The surds stay.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only if a = b.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. It equals a² − b.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.SURD.RATIONALISE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. It equals a² − b.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "math",
+        "v": "(a + \\sqrt{b})(a - \\sqrt{b})",
+      },
+      {
+        "t": "text",
+        "v": " has no surd in it.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GH-N8.c",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -441,7 +562,7 @@ exports[`GH-N8.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiply by the denominator to clear it.",
+                  "v": "True. Squaring the bottom removes the root.",
                 },
               ],
               "id": "RA",
@@ -450,7 +571,7 @@ exports[`GH-N8.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Only the √10 needs to be squared.",
+                  "v": "True. Multiply by the bottom.",
                 },
               ],
               "id": "RB",
@@ -459,7 +580,7 @@ exports[`GH-N8.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. That leaves a surd in the denominator. Multiply by 5 − √10, so the bottom becomes 5² − 10 = 15.",
+                  "v": "False. Multiply by 2 + √3, so the bottom becomes 4 − 3 = 1.",
                 },
               ],
               "id": "RC",
@@ -496,136 +617,12 @@ exports[`GH-N8.c > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "(5 + \\sqrt{10})(5 - \\sqrt{10}) = 15",
-        "say": [],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "To rationalise ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{1}{5 + \\sqrt{10}}",
-      },
-      {
-        "t": "text",
-        "v": ", Ali multiplies the top and bottom by ",
-      },
-      {
-        "t": "math",
-        "v": "5 + \\sqrt{10}",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "GH-N8.c",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. That leaves a surd in the denominator. Multiply by 1 − √2, so the bottom becomes 1² − 2 = -1.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Only the √2 needs to be squared.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Multiply by the denominator to clear it.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.SURD.RATIONALISE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.SURD.RATIONALISE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
+        "say": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "False. Multiply by 2 + √3, so the bottom becomes 4 − 3 = 1.",
           },
         ],
-      },
-    ],
-    "solution": [
-      {
-        "math": "(1 + \\sqrt{2})(1 - \\sqrt{2}) = -1",
-        "say": [],
       },
     ],
     "stem": [
@@ -635,15 +632,15 @@ exports[`GH-N8.c > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "math",
-        "v": "\\frac{1}{1 + \\sqrt{2}}",
+        "v": "\\frac{1}{2 - \\sqrt{3}}",
       },
       {
         "t": "text",
-        "v": ", Ali multiplies the top and bottom by ",
+        "v": ", Bea multiplies top and bottom by ",
       },
       {
         "t": "math",
-        "v": "1 + \\sqrt{2}",
+        "v": "2 - \\sqrt{3}",
       },
       {
         "t": "text",
@@ -659,7 +656,7 @@ exports[`GH-N8.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-N8.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -671,7 +668,7 @@ exports[`GH-N8.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -697,7 +694,7 @@ exports[`GH-N8.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. That leaves a surd in the denominator. Multiply by 3 − √7, so the bottom becomes 3² − 7 = 2.",
+                  "v": "True. Only the √7 needs to be squared.",
                 },
               ],
               "id": "RA",
@@ -706,7 +703,7 @@ exports[`GH-N8.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Only the √7 needs to be squared.",
+                  "v": "False. That leaves a surd in the denominator. Multiply by 3 − √7, so the bottom becomes 3² − 7 = 2.",
                 },
               ],
               "id": "RB",
@@ -727,7 +724,7 @@ exports[`GH-N8.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.SURD.RATIONALISE",

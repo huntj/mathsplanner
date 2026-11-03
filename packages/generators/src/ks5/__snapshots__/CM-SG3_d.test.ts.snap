@@ -10,7 +10,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "CM-SG3.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -80,7 +80,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "CM-SG3.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -150,7 +150,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "CM-SG3.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -245,7 +245,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "CM-SG3.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -387,7 +387,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "CM-SG3.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -529,7 +529,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "CM-SG3.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -646,7 +646,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "CM-SG3.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -684,7 +684,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 2^x is positive for every x: for very negative x it gets closer and closer to 0 but never reaches it.",
+                  "v": "False. It never meets either axis; they are asymptotes.",
                 },
               ],
               "id": "RA",
@@ -693,7 +693,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 2^(−10) is negative.",
+                  "v": "True. Every curve crosses the axes.",
                 },
               ],
               "id": "RB",
@@ -702,7 +702,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every curve crosses the x-axis eventually.",
+                  "v": "True. It goes through (0, 0).",
                 },
               ],
               "id": "RC",
@@ -742,7 +742,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "2^(−n) = 1/2^n, which is small but positive.",
+            "v": "False. It never meets either axis; they are asymptotes.",
           },
         ],
       },
@@ -750,27 +750,27 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jake says the graph of ",
+        "v": "Pia says the graph of ",
       },
       {
         "t": "math",
-        "v": "y = 2^x",
+        "v": "y = \\frac{1}{x}",
       },
       {
         "t": "text",
-        "v": " crosses the x-axis when x is very negative.",
+        "v": " crosses both axes.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "CM-SG3.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -781,14 +781,14 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -797,10 +797,19 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -808,7 +817,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every curve crosses the x-axis eventually.",
+                  "v": "Never. It goes below for negative x.",
                 },
               ],
               "id": "RA",
@@ -817,7 +826,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 2^(−10) is negative.",
+                  "v": "Always. A positive number to any power is positive.",
                 },
               ],
               "id": "RB",
@@ -826,7 +835,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 2^x is positive for every x: for very negative x it gets closer and closer to 0 but never reaches it.",
+                  "v": "Sometimes. Only for positive x.",
                 },
               ],
               "id": "RC",
@@ -844,19 +853,11 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
             "code": "ALG.GRAPH.SHAPE",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SHAPE",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -866,7 +867,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "2^(−n) = 1/2^n, which is small but positive.",
+            "v": "Always. A positive number to any power is positive.",
           },
         ],
       },
@@ -874,15 +875,23 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jake says the graph of ",
+        "v": "The graph of ",
       },
       {
         "t": "math",
-        "v": "y = 2^x",
+        "v": "y = a^x",
       },
       {
         "t": "text",
-        "v": " crosses the x-axis when x is very negative.",
+        "v": " with ",
+      },
+      {
+        "t": "math",
+        "v": "a > 1",
+      },
+      {
+        "t": "text",
+        "v": " is always above the x-axis.",
       },
     ],
   },
@@ -894,7 +903,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "CM-SG3.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -905,7 +914,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -932,7 +941,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 4^(−10) is negative.",
+                  "v": "False. It passes through the origin.",
                 },
               ],
               "id": "RA",
@@ -941,7 +950,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every curve crosses the x-axis eventually.",
+                  "v": "False. It passes through (0, 2).",
                 },
               ],
               "id": "RB",
@@ -950,7 +959,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 4^x is positive for every x: for very negative x it gets closer and closer to 0 but never reaches it.",
+                  "v": "True. 2⁰ = 1.",
                 },
               ],
               "id": "RC",
@@ -963,14 +972,6 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SHAPE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.GRAPH.SHAPE",
@@ -990,7 +991,7 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "4^(−n) = 1/4^n, which is small but positive.",
+            "v": "True. 2⁰ = 1.",
           },
         ],
       },
@@ -998,15 +999,15 @@ exports[`CM-SG3.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jake says the graph of ",
+        "v": "Sam says the graph of ",
       },
       {
         "t": "math",
-        "v": "y = 4^x",
+        "v": "y = 2^x",
       },
       {
         "t": "text",
-        "v": " crosses the x-axis when x is very negative.",
+        "v": " passes through (0, 1).",
       },
     ],
   },

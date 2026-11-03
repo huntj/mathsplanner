@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import type { CartesianSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const EDGES = [0, 10, 15, 20, 30, 50];
 
@@ -42,7 +43,7 @@ function histogram(fd: number[]): CartesianSpec {
 
 export default defineGenerator<Params>({
   id: "GH-S3.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.HISTOGRAM.HEIGHT"],
 
@@ -107,22 +108,54 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Gil says the tallest bar in a histogram with unequal class widths always has the biggest frequency.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Gil says the tallest bar in a histogram with unequal class widths always has the biggest frequency.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. Frequency is the area of the bar. A short, wide bar can hold more than a tall, thin one.",
+                  correct: true,
+                },
+                { text: "True. Height shows the frequency.", code: "STA.HISTOGRAM.HEIGHT" },
+                { text: "True. Taller bars are always bigger.", code: "STA.HISTOGRAM.HEIGHT" },
+              ],
+              solution: [{ say: "Compare areas, not heights." }],
+            }),
+          [
             {
-              text: "False. Frequency is the area of the bar. A short, wide bar can hold more than a tall, thin one.",
-              correct: true,
+              statement:
+                "A histogram bar has class width 10 and frequency density 3. Ana says its frequency is 30.",
+              truth: true,
+              right: "True. Frequency = frequency density × class width.",
+              wrong: [["False. It is 3.", "STA.HISTOGRAM.HEIGHT"], ["False. It is 13."]],
             },
-            { text: "True. Height shows the frequency.", code: "STA.HISTOGRAM.HEIGHT" },
-            { text: "True. Taller bars are always bigger.", code: "STA.HISTOGRAM.HEIGHT" },
+            {
+              claim: "In a histogram, the area of a bar shows its frequency.",
+              truth: "always",
+              right: "Always. Frequency density times class width gives frequency.",
+              wrong: [
+                ["Never. The height shows frequency.", "STA.HISTOGRAM.HEIGHT"],
+                ["Sometimes. Only for equal widths."],
+              ],
+            },
+            {
+              statement:
+                "A class of width 5 has frequency 20. Leo draws its bar 20 units high on a histogram.",
+              truth: false,
+              right: "False. The height is frequency density: 20 ÷ 5 = 4.",
+              wrong: [
+                ["True. Height is frequency.", "STA.HISTOGRAM.HEIGHT"],
+                ["True. Like a bar chart.", "STA.HISTOGRAM.HEIGHT"],
+              ],
+            },
           ],
-          solution: [{ say: "Compare areas, not heights." }],
-        });
+        );
     }
   },
 

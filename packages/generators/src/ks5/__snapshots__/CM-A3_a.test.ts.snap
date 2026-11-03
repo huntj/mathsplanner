@@ -10,7 +10,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "CM-A3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "CM-A3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "CM-A3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -321,7 +321,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "CM-A3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -517,7 +517,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "CM-A3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -713,7 +713,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "CM-A3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -784,7 +784,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "CM-A3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -795,8 +795,8 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -822,7 +822,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Frequency is the area of the bar. A short, wide bar can hold more than a tall, thin one.",
+                  "v": "False. It is 3.",
                 },
               ],
               "id": "RA",
@@ -831,7 +831,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Taller bars are always bigger.",
+                  "v": "True. Frequency = frequency density × class width.",
                 },
               ],
               "id": "RB",
@@ -840,7 +840,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Height shows the frequency.",
+                  "v": "False. It is 13.",
                 },
               ],
               "id": "RC",
@@ -852,15 +852,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "STA.HISTOGRAM.HEIGHT",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "STA.HISTOGRAM.HEIGHT",
@@ -880,7 +872,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Compare areas, not heights.",
+            "v": "True. Frequency = frequency density × class width.",
           },
         ],
       },
@@ -888,19 +880,19 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Gil says the tallest bar in a histogram with unequal class widths always has the biggest frequency.",
+        "v": "A histogram bar has class width 10 and frequency density 3. Ana says its frequency is 30.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "CM-A3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -911,14 +903,14 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -927,10 +919,19 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -938,7 +939,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Frequency is the area of the bar. A short, wide bar can hold more than a tall, thin one.",
+                  "v": "Always. Frequency density times class width gives frequency.",
                 },
               ],
               "id": "RA",
@@ -947,7 +948,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Height shows the frequency.",
+                  "v": "Never. The height shows frequency.",
                 },
               ],
               "id": "RB",
@@ -956,7 +957,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Taller bars are always bigger.",
+                  "v": "Sometimes. Only for equal widths.",
                 },
               ],
               "id": "RC",
@@ -974,19 +975,11 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
             "code": "STA.HISTOGRAM.HEIGHT",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "STA.HISTOGRAM.HEIGHT",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -996,7 +989,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Compare areas, not heights.",
+            "v": "Always. Frequency density times class width gives frequency.",
           },
         ],
       },
@@ -1004,7 +997,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Gil says the tallest bar in a histogram with unequal class widths always has the biggest frequency.",
+        "v": "In a histogram, the area of a bar shows its frequency.",
       },
     ],
   },
@@ -1016,7 +1009,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "CM-A3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1028,7 +1021,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -1054,7 +1047,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Frequency is the area of the bar. A short, wide bar can hold more than a tall, thin one.",
+                  "v": "True. Taller bars are always bigger.",
                 },
               ],
               "id": "RA",
@@ -1063,7 +1056,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Height shows the frequency.",
+                  "v": "False. Frequency is the area of the bar. A short, wide bar can hold more than a tall, thin one.",
                 },
               ],
               "id": "RB",
@@ -1072,7 +1065,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Taller bars are always bigger.",
+                  "v": "True. Height shows the frequency.",
                 },
               ],
               "id": "RC",
@@ -1084,7 +1077,7 @@ exports[`CM-A3.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "STA.HISTOGRAM.HEIGHT",

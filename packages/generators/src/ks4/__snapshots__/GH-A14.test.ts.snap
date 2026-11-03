@@ -10,7 +10,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -76,7 +76,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -142,7 +142,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -208,7 +208,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -296,7 +296,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -384,7 +384,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -464,7 +464,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -475,8 +475,8 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -502,7 +502,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Exponential graphs are straight lines.",
+                  "v": "False. It grows by £4 a year.",
                 },
               ],
               "id": "RA",
@@ -511,7 +511,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 1.5 means an extra 50 each year.",
+                  "v": "True. The multiplier 1.04 adds 4% each year.",
                 },
               ],
               "id": "RB",
@@ -520,7 +520,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is multiplied by 1.5 each year: 100, 150, 225, … The increase grows each year.",
+                  "v": "False. It grows by 104%.",
                 },
               ],
               "id": "RC",
@@ -540,10 +540,10 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "RAT.COMPOUND.SIMPLE",
+            "code": "RAT.PERCENT.MULTIPLIER",
             "feedback": [],
           },
         ],
@@ -560,7 +560,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Exponential growth multiplies by the same factor each year, so the yearly increase keeps getting bigger.",
+            "v": "True. The multiplier 1.04 adds 4% each year.",
           },
         ],
       },
@@ -568,15 +568,15 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The number of rabbits on an island after t years is ",
+        "v": "An investment is worth ",
       },
       {
         "t": "math",
-        "v": "N = 100 \\times 1.5^t",
+        "v": "V = 500 \\times 1.04^t",
       },
       {
         "t": "text",
-        "v": ". Ali says the number goes up by 50 every year.",
+        "v": " after t years. Raj says it grows by 4% each year.",
       },
     ],
   },
@@ -588,7 +588,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -600,7 +600,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -626,7 +626,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is multiplied by 1.5 each year: 100, 150, 225, … The increase grows each year.",
+                  "v": "True. 1.5 means an extra 50 each year.",
                 },
               ],
               "id": "RA",
@@ -635,7 +635,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 1.5 means an extra 50 each year.",
+                  "v": "False. It is multiplied by 1.5 each year: 100, 150, 225, … The increase grows each year.",
                 },
               ],
               "id": "RB",
@@ -656,7 +656,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "RAT.COMPOUND.SIMPLE",
@@ -712,7 +712,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -879,7 +879,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1081,7 +1081,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1283,7 +1283,7 @@ exports[`GH-A14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

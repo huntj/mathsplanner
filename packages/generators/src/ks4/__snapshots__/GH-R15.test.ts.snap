@@ -37,7 +37,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-R15",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -139,7 +139,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-R15",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -241,7 +241,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-R15",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -372,7 +372,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-R15",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -507,7 +507,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-R15",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -642,7 +642,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-R15",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -721,7 +721,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-R15",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -732,7 +732,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -759,7 +759,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The chord and the tangent always have the same gradient.",
+                  "v": "False. Read the distance at t = 3.",
                 },
               ],
               "id": "RA",
@@ -768,7 +768,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any line between two points on the curve gives the speed at the end point.",
+                  "v": "False. Use the chord from 0 to 3.",
                 },
               ],
               "id": "RB",
@@ -777,7 +777,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The chord gives the average speed over that time. The speed at t = 4 is the gradient of the tangent there.",
+                  "v": "True. The tangent gives the instantaneous rate.",
                 },
               ],
               "id": "RC",
@@ -787,14 +787,6 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "RAT.RATE.AVERAGE-INSTANT",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RB",
@@ -817,7 +809,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Chord: average rate of change. Tangent: rate of change at an instant.",
+            "v": "True. The tangent gives the instantaneous rate.",
           },
         ],
       },
@@ -825,19 +817,19 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A distance-time graph is curved. Eli says the gradient of the chord from t = 1 to t = 4 gives the speed at exactly t = 4.",
+        "v": "Leo estimates the speed at t = 3 from a curved distance–time graph by the gradient of the tangent at t = 3.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-R15",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -848,14 +840,14 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -864,10 +856,19 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -875,7 +876,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any line between two points on the curve gives the speed at the end point.",
+                  "v": "Never. It gives the rate at one instant.",
                 },
               ],
               "id": "RA",
@@ -884,7 +885,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The chord and the tangent always have the same gradient.",
+                  "v": "Sometimes. Only for curves.",
                 },
               ],
               "id": "RB",
@@ -893,7 +894,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The chord gives the average speed over that time. The speed at t = 5 is the gradient of the tangent there.",
+                  "v": "Always. It uses two points, so it averages the change between them.",
                 },
               ],
               "id": "RC",
@@ -911,19 +912,11 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
             "code": "RAT.RATE.AVERAGE-INSTANT",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "RAT.RATE.AVERAGE-INSTANT",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -933,7 +926,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Chord: average rate of change. Tangent: rate of change at an instant.",
+            "v": "Always. It uses two points, so it averages the change between them.",
           },
         ],
       },
@@ -941,7 +934,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A distance-time graph is curved. Eli says the gradient of the chord from t = 1 to t = 5 gives the speed at exactly t = 5.",
+        "v": "The gradient of a chord gives an average rate of change.",
       },
     ],
   },
@@ -953,7 +946,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-R15",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -965,7 +958,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -991,7 +984,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any line between two points on the curve gives the speed at the end point.",
+                  "v": "True. 100 ÷ 10 = 10.",
                 },
               ],
               "id": "RA",
@@ -1000,7 +993,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The chord and the tangent always have the same gradient.",
+                  "v": "False. 10 m/s is the average; it was speeding up, so at t = 10 it is faster.",
                 },
               ],
               "id": "RB",
@@ -1009,7 +1002,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The chord gives the average speed over that time. The speed at t = 4 is the gradient of the tangent there.",
+                  "v": "True. Average and instant speeds match.",
                 },
               ],
               "id": "RC",
@@ -1029,7 +1022,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "RAT.RATE.AVERAGE-INSTANT",
@@ -1049,7 +1042,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Chord: average rate of change. Tangent: rate of change at an instant.",
+            "v": "False. 10 m/s is the average; it was speeding up, so at t = 10 it is faster.",
           },
         ],
       },
@@ -1057,7 +1050,7 @@ exports[`GH-R15 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A distance-time graph is curved. Eli says the gradient of the chord from t = 1 to t = 4 gives the speed at exactly t = 4.",
+        "v": "A car travels 100 m in the first 10 s, speeding up. Kim says its speed at t = 10 is exactly 10 m/s.",
       },
     ],
   },

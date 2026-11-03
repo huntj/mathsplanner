@@ -10,7 +10,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-R16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -76,7 +76,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-R16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -142,7 +142,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-R16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -208,7 +208,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-R16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -298,7 +298,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-R16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -388,7 +388,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-R16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -454,7 +454,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-R16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -465,8 +465,8 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RB",
+          "correct": "B",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -492,7 +492,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The number always grows, because the percentage increase comes first.",
+                  "v": "False. u₁ = 2 × 4 − 3 = 5.",
                 },
               ],
               "id": "RA",
@@ -501,7 +501,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 10% of 300 is 30, which is exactly the number sold.",
+                  "v": "True. Subtract first.",
                 },
               ],
               "id": "RB",
@@ -510,7 +510,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The number of fish can never stay the same.",
+                  "v": "True. 2(4 − 3) = 2.",
                 },
               ],
               "id": "RC",
@@ -522,7 +522,15 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "ALG.FUNCTION.ORDER",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.FUNCTION.ORDER",
@@ -542,7 +550,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The number stays fixed when the increase equals the sale: 10% of F = 30, so F = 300.",
+            "v": "False. u₁ = 2 × 4 − 3 = 5.",
           },
         ],
       },
@@ -550,7 +558,31 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Each year the number of fish on a farm increases by 10%, then 30 fish are sold. Ruth says that if the farm has 300 fish, the number will stay the same every year.",
+        "v": "With ",
+      },
+      {
+        "t": "math",
+        "v": "u_{n+1} = 2u_n - 3",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "u_0 = 4",
+      },
+      {
+        "t": "text",
+        "v": ", Ana says ",
+      },
+      {
+        "t": "math",
+        "v": "u_1 = 2",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
@@ -562,7 +594,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-R16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -573,8 +605,8 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RB",
+          "correct": "B",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -600,7 +632,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The number always grows, because the percentage increase comes first.",
+                  "v": "True. Subtract first.",
                 },
               ],
               "id": "RA",
@@ -609,7 +641,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 10% of 400 is 40, which is exactly the number sold.",
+                  "v": "True. 2(4 − 3) = 2.",
                 },
               ],
               "id": "RB",
@@ -618,7 +650,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The number of fish can never stay the same.",
+                  "v": "False. u₁ = 2 × 4 − 3 = 5.",
                 },
               ],
               "id": "RC",
@@ -631,6 +663,14 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
+              "type": "choice",
+            },
+            "code": "ALG.FUNCTION.ORDER",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.FUNCTION.ORDER",
@@ -650,7 +690,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The number stays fixed when the increase equals the sale: 10% of F = 40, so F = 400.",
+            "v": "False. u₁ = 2 × 4 − 3 = 5.",
           },
         ],
       },
@@ -658,19 +698,43 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Each year the number of fish on a farm increases by 10%, then 40 fish are sold. Ruth says that if the farm has 400 fish, the number will stay the same every year.",
+        "v": "With ",
+      },
+      {
+        "t": "math",
+        "v": "u_{n+1} = 2u_n - 3",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "u_0 = 4",
+      },
+      {
+        "t": "text",
+        "v": ", Ana says ",
+      },
+      {
+        "t": "math",
+        "v": "u_1 = 2",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-R16",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -682,13 +746,13 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -697,10 +761,19 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -708,7 +781,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The number always grows, because the percentage increase comes first.",
+                  "v": "Sometimes. Only for growth.",
                 },
               ],
               "id": "RA",
@@ -717,7 +790,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 10% of 400 is 40, which is exactly the number sold.",
+                  "v": "Never. Each is worked out from the start.",
                 },
               ],
               "id": "RB",
@@ -726,7 +799,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The number of fish can never stay the same.",
+                  "v": "Always. That is what iterative means.",
                 },
               ],
               "id": "RC",
@@ -744,11 +817,19 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
             "code": "ALG.FUNCTION.ORDER",
             "feedback": [],
           },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "ALG.ITERATION.SUBSTITUTE",
+            "feedback": [],
+          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -758,7 +839,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The number stays fixed when the increase equals the sale: 10% of F = 40, so F = 400.",
+            "v": "Always. That is what iterative means.",
           },
         ],
       },
@@ -766,7 +847,7 @@ exports[`GH-R16 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Each year the number of fish on a farm increases by 10%, then 40 fish are sold. Ruth says that if the farm has 400 fish, the number will stay the same every year.",
+        "v": "In an iterative process, each value is worked out from the one before.",
       },
     ],
   },

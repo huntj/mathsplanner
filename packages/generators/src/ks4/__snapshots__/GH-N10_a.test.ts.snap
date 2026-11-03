@@ -10,7 +10,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N10.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-N10.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-N10.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N10.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -258,7 +258,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-N10.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -320,7 +320,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-N10.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -382,7 +382,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-N10.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -393,8 +393,8 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RC",
+          "correct": "B",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -420,7 +420,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 0.999… is always a tiny bit less than 1.",
+                  "v": "False. 100x − x = 12 gives x = 12/99 = 4/33.",
                 },
               ],
               "id": "RA",
@@ -429,7 +429,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 0.999… = 9/10.",
+                  "v": "True. Put the digits over 100.",
                 },
               ],
               "id": "RB",
@@ -438,7 +438,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. If x = 0.999…, then 10x − x = 9.999… − 0.999… = 9, so 9x = 9 and x = 1.",
+                  "v": "True. Two digits means hundredths.",
                 },
               ],
               "id": "RC",
@@ -450,15 +450,15 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.INFINITE.NOTHING-BETWEEN",
+            "code": "FR.RECURRING.OVER-TEN",
             "feedback": [],
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "FR.RECURRING.OVER-TEN",
@@ -478,7 +478,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "There is no number between 0.999… and 1, so they are equal.",
+            "v": "False. 100x − x = 12 gives x = 12/99 = 4/33.",
           },
         ],
       },
@@ -486,11 +486,11 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Eva says ",
+        "v": "Mia says ",
       },
       {
         "t": "math",
-        "v": "0.\\dot{9} = 1",
+        "v": "0.\\dot{1}\\dot{2} = \\frac{12}{100}",
       },
       {
         "t": "text",
@@ -506,7 +506,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-N10.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -553,7 +553,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 0.999… = 9/10.",
+                  "v": "False. 0.999… is always a tiny bit less than 1.",
                 },
               ],
               "id": "RB",
@@ -562,7 +562,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 0.999… is always a tiny bit less than 1.",
+                  "v": "False. 0.999… = 9/10.",
                 },
               ],
               "id": "RC",
@@ -577,7 +577,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "FR.RECURRING.OVER-TEN",
+            "code": "NPV.INFINITE.NOTHING-BETWEEN",
             "feedback": [],
           },
           {
@@ -585,7 +585,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.INFINITE.NOTHING-BETWEEN",
+            "code": "FR.RECURRING.OVER-TEN",
             "feedback": [],
           },
         ],
@@ -630,7 +630,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-N10.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -642,7 +642,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -668,7 +668,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 0.999… is always a tiny bit less than 1.",
+                  "v": "True. If x = 0.999…, then 10x − x = 9.999… − 0.999… = 9, so 9x = 9 and x = 1.",
                 },
               ],
               "id": "RA",
@@ -677,7 +677,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 0.999… = 9/10.",
+                  "v": "False. 0.999… is always a tiny bit less than 1.",
                 },
               ],
               "id": "RB",
@@ -686,7 +686,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. If x = 0.999…, then 10x − x = 9.999… − 0.999… = 9, so 9x = 9 and x = 1.",
+                  "v": "False. 0.999… = 9/10.",
                 },
               ],
               "id": "RC",
@@ -698,7 +698,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.INFINITE.NOTHING-BETWEEN",
@@ -706,7 +706,7 @@ exports[`GH-N10.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "FR.RECURRING.OVER-TEN",

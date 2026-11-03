@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import type { CartesianSpec } from "@mathsplanner/diagrams";
 import { chosenText } from "../shared/counting.ts";
 import { coord } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Region: x ≥ a, y ≥ b, x + y ≤ s. */
@@ -42,7 +43,7 @@ function region(p: Params): CartesianSpec {
 
 export default defineGenerator<Params>({
   id: "GH-A22.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.INEQUALITY.FLIP"],
 
@@ -109,24 +110,57 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ali says the boundary line for ",
-            A.math(`x + y < ${p.s}`),
-            " should be drawn solid.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ali says the boundary line for ",
+                A.math(`x + y < ${p.s}`),
+                " should be drawn solid.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Points on x + y = ${p.s} are not included in a strict inequality, so the line is dashed.`,
+                  correct: true,
+                },
+                { text: "True. All boundary lines are solid.", code: "ALG.INEQUALITY.FLIP" },
+                { text: "True. Solid lines are for < and >.", code: "ALG.INEQUALITY.FLIP" },
+              ],
+              solution: [{ say: "Solid for ≤ and ≥; dashed for < and >." }],
+            }),
+          [
             {
-              text: `False. Points on x + y = ${p.s} are not included in a strict inequality, so the line is dashed.`,
-              correct: true,
+              statement: "Leo draws the boundary of $y \\le 2x$ as a solid line.",
+              truth: true,
+              right: "True. ≤ includes the line itself.",
+              wrong: [
+                ["False. It should be dashed.", "ALG.INEQUALITY.FLIP"],
+                ["False. There is no boundary."],
+              ],
             },
-            { text: "True. All boundary lines are solid.", code: "ALG.INEQUALITY.FLIP" },
-            { text: "True. Solid lines are for < and >.", code: "ALG.INEQUALITY.FLIP" },
+            {
+              claim: "A strict inequality such as $y > 3$ has its boundary drawn dashed.",
+              truth: "always",
+              right: "Always. Points on the line are not included.",
+              wrong: [
+                ["Never. Boundaries are always solid.", "ALG.INEQUALITY.FLIP"],
+                ["Sometimes. Only for horizontal lines."],
+              ],
+            },
+            {
+              statement: "Ana shades the region $y > x + 1$ below the line $y = x + 1$.",
+              truth: false,
+              right: "False. y > x + 1 is the region above the line.",
+              wrong: [
+                ["True. Greater than means below.", "ALG.INEQUALITY.FLIP"],
+                ["True. Shade where the origin is.", "ALG.INEQUALITY.FLIP"],
+              ],
+            },
           ],
-          solution: [{ say: "Solid for ≤ and ≥; dashed for < and >." }],
-        });
+        );
     }
   },
 
