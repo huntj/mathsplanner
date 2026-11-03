@@ -10,7 +10,7 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -75,7 +75,7 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -140,7 +140,7 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -218,7 +218,7 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -288,7 +288,7 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -340,7 +340,7 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -396,7 +396,7 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -434,7 +434,7 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A fraction of an amount is always a part of it.",
+                  "v": "True. You divide by 6, which makes it smaller.",
                 },
               ],
               "id": "RA",
@@ -443,7 +443,7 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You divide by 6, which makes it smaller.",
+                  "v": "True. A fraction of an amount is always a part of it.",
                 },
               ],
               "id": "RB",
@@ -516,7 +516,7 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -528,7 +528,7 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -554,7 +554,7 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 9/8 is more than 1, so it gives 108, which is more than 96.",
+                  "v": "True. A fraction of an amount is always a part of it.",
                 },
               ],
               "id": "RA",
@@ -563,7 +563,7 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You divide by 8, which makes it smaller.",
+                  "v": "False. 9/8 is more than 1, so it gives 108, which is more than 96.",
                 },
               ],
               "id": "RB",
@@ -572,7 +572,7 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A fraction of an amount is always a part of it.",
+                  "v": "True. You divide by 8, which makes it smaller.",
                 },
               ],
               "id": "RC",
@@ -584,7 +584,7 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "FR.OF-AMOUNT.UNIT-ONLY",
@@ -629,14 +629,14 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -648,13 +648,13 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -663,10 +663,19 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -674,7 +683,7 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You divide by 3, which makes it smaller.",
+                  "v": "Sometimes. A proper fraction gives less, but 3/2 of an amount is more.",
                 },
               ],
               "id": "RA",
@@ -683,7 +692,7 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 4/3 is more than 1, so it gives 56, which is more than 42.",
+                  "v": "Always. A fraction is a part.",
                 },
               ],
               "id": "RB",
@@ -692,7 +701,7 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A fraction of an amount is always a part of it.",
+                  "v": "Never. It is bigger.",
                 },
               ],
               "id": "RC",
@@ -704,15 +713,7 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "FR.OF-AMOUNT.UNIT-ONLY",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "FR.OF-AMOUNT.UNIT-ONLY",
@@ -722,29 +723,25 @@ exports[`GF-N12.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
     ],
     "solution": [
       {
-        "math": "42 \\div 3 \\times 4 = 56",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "Sometimes. A proper fraction gives less, but 3/2 of an amount is more.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Eli says ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{4}{3}",
-      },
-      {
-        "t": "text",
-        "v": " of 42 must be less than 42, because you are taking a fraction of it.",
+        "v": "A fraction of an amount is smaller than the amount.",
       },
     ],
   },

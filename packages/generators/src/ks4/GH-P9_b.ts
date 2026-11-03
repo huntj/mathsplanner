@@ -10,6 +10,7 @@ import type { TreeSpec } from "@mathsplanner/diagrams";
 import { exactAnswer } from "../shared/counting.ts";
 import { fracTex } from "../shared/fr.ts";
 import { txt } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 export interface Params {
   r: number;
@@ -45,7 +46,7 @@ function tree(r: number, b: number): TreeSpec {
 
 export default defineGenerator<Params>({
   id: "GH-P9.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["PRO.TREE.REPLACEMENT", "PRO.CONDITIONAL.TOTAL"],
 
@@ -107,32 +108,67 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ana says the probabilities on the second set of branches of a tree diagram are conditional probabilities.",
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ana says the probabilities on the second set of branches of a tree diagram are conditional probabilities.",
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. Each second branch gives the probability of the second event, given what happened on the first branch.",
+                  correct: true,
+                },
+                {
+                  text: "False. They are the same as the first branches.",
+                  code: "PRO.TREE.REPLACEMENT",
+                },
+                {
+                  text: "False. Conditional probabilities need a two-way table.",
+                  code: "PRO.CONDITIONAL.TOTAL",
+                },
+              ],
+              solution: [
+                {
+                  say: "When the events are independent, the conditional probabilities just happen to equal the first ones.",
+                },
+              ],
+            }),
+          [
+            {
+              statement:
+                "A bag has 5 red and 3 blue. Two are taken without replacement. Leo says P(both blue) = $\\frac{3}{8} \\times \\frac{2}{7}$.",
+              truth: true,
+              right: "True. After a blue goes, 2 blue remain of 7.",
+              wrong: [
+                ["False. It is 3/8 × 3/8.", "PRO.TREE.REPLACEMENT"],
+                ["False. It is 3/8 + 2/7."],
+              ],
+            },
+            {
+              claim:
+                "Without replacement, the second pick's probabilities depend on the first pick.",
+              truth: "always",
+              right: "Always. The bag has changed.",
+              wrong: [
+                ["Never. They stay the same.", "PRO.TREE.REPLACEMENT"],
+                ["Sometimes. Only if the first was red."],
+              ],
+            },
+            {
+              statement: "Kim says P(B | A) = P(A) for any two events.",
+              truth: false,
+              right: "False. P(B | A) = P(A and B) ÷ P(A); it depends on both events.",
+              wrong: [
+                ["True. Given A, it is A's probability.", "PRO.CONDITIONAL.TOTAL"],
+                ["True. Conditional probabilities are the first branch.", "PRO.CONDITIONAL.TOTAL"],
+              ],
+            },
           ],
-          truth: true,
-          reasons: [
-            {
-              text: "True. Each second branch gives the probability of the second event, given what happened on the first branch.",
-              correct: true,
-            },
-            {
-              text: "False. They are the same as the first branches.",
-              code: "PRO.TREE.REPLACEMENT",
-            },
-            {
-              text: "False. Conditional probabilities need a two-way table.",
-              code: "PRO.CONDITIONAL.TOTAL",
-            },
-          ],
-          solution: [
-            {
-              say: "When the events are independent, the conditional probabilities just happen to equal the first ones.",
-            },
-          ],
-        });
+        );
     }
   },
 

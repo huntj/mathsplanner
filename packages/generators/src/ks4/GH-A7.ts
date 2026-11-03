@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { poly } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { signedWrongs } from "../shared/alg.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** f(x) = ax + b and g(x) = x². */
@@ -24,7 +25,7 @@ const f = (p: Params) => poly([p.a, p.b]);
 
 export default defineGenerator<Params>({
   id: "GH-A7",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.FUNCTION.ORDER", "ALG.INVERSE.RECIPROCAL"],
 
@@ -98,33 +99,66 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Given ",
-            A.math(`f(x) = x + ${p.s}`),
-            " and ",
-            A.math(`g(x) = ${p.k}x`),
-            ", Ana says fg(x) and gf(x) are the same function.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Given ",
+                A.math(`f(x) = x + ${p.s}`),
+                " and ",
+                A.math(`g(x) = ${p.k}x`),
+                ", Ana says fg(x) and gf(x) are the same function.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. fg(x) = ${p.k}x + ${p.s}, but gf(x) = ${p.k}(x + ${p.s}) = ${p.k}x + ${p.k * p.s}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The same two functions are used, so the order does not matter.",
+                  code: "ALG.FUNCTION.ORDER",
+                },
+                { text: "True. Both are straight lines." },
+              ],
+              solution: [
+                {
+                  say: "In fg(x), g is applied first; in gf(x), f is applied first. The order usually changes the result.",
+                },
+              ],
+            }),
+          [
             {
-              text: `False. fg(x) = ${p.k}x + ${p.s}, but gf(x) = ${p.k}(x + ${p.s}) = ${p.k}x + ${p.k * p.s}.`,
-              correct: true,
+              statement: "For $f(x) = 2x + 1$, Kai says $f^{-1}(x) = \\frac{x - 1}{2}$.",
+              truth: true,
+              right: "True. Undo + 1, then undo × 2.",
+              wrong: [
+                ["False. It is 1/(2x + 1).", "ALG.INVERSE.RECIPROCAL"],
+                ["False. It is x/2 − 1.", "ALG.FUNCTION.ORDER"],
+              ],
             },
             {
-              text: "True. The same two functions are used, so the order does not matter.",
-              code: "ALG.FUNCTION.ORDER",
+              claim: "$f(f^{-1}(x)) = x$.",
+              truth: "always",
+              right: "Always, where defined. The inverse undoes the function.",
+              wrong: [
+                ["Never. It gives 1.", "ALG.INVERSE.RECIPROCAL"],
+                ["Sometimes. Only for linear f."],
+              ],
             },
-            { text: "True. Both are straight lines." },
-          ],
-          solution: [
             {
-              say: "In fg(x), g is applied first; in gf(x), f is applied first. The order usually changes the result.",
+              statement: "For $f(x) = x^2$ and $g(x) = x + 1$, Pia says $fg(2) = 5$.",
+              truth: false,
+              right: "False. fg(2) = f(g(2)) = f(3) = 9. gf(2) is 5.",
+              wrong: [
+                ["True. Square, then add 1.", "ALG.FUNCTION.ORDER"],
+                ["True. fg means f first.", "ALG.FUNCTION.ORDER"],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

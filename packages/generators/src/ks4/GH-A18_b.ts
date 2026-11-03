@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { poly, signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -21,7 +22,7 @@ const big = (p: Params) => r2((-p.b + Math.sqrt(disc(p))) / (2 * p.a));
 
 export default defineGenerator<Params>({
   id: "GH-A18.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.QUADRATIC.FORMULA"],
 
@@ -91,30 +92,64 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Uma says that when ",
-            A.math("b^2 - 4ac < 0"),
-            ", the quadratic formula still gives two solutions.",
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Uma says that when ",
+                A.math("b^2 - 4ac < 0"),
+                ", the quadratic formula still gives two solutions.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. The square root of a negative number has no real value, so there are no real solutions: the graph does not cross the x-axis.",
+                  correct: true,
+                },
+                {
+                  text: "True. The formula always gives two answers, from the ±.",
+                  code: "ALG.QUADRATIC.FORMULA",
+                },
+                {
+                  text: "True. Take the square root of the positive part.",
+                  code: "ALG.QUADRATIC.FORMULA",
+                },
+              ],
+              solution: [{ say: "Discriminant > 0: two roots; = 0: one; < 0: none." }],
+            }),
+          [
+            {
+              statement:
+                "For $x^2 - 6x + 9 = 0$, Kim says $b^2 - 4ac = 0$, so there is one repeated root.",
+              truth: true,
+              right: "True. 36 − 36 = 0: the root is x = 3.",
+              wrong: [
+                ["False. There are two different roots.", "ALG.QUADRATIC.FORMULA"],
+                ["False. There are no roots."],
+              ],
+            },
+            {
+              claim: "If $b^2 - 4ac > 0$, a quadratic has two different real roots.",
+              truth: "always",
+              right: "Always. The square root in the formula is a positive real number.",
+              wrong: [
+                ["Never. It has none.", "ALG.QUADRATIC.FORMULA"],
+                ["Sometimes. Only if a = 1."],
+              ],
+            },
+            {
+              statement: "Leo uses the quadratic formula on $2x^2 + 3x - 5 = 0$ with b = 2.",
+              truth: false,
+              right: "False. b is the coefficient of x, which is 3; a = 2.",
+              wrong: [
+                ["True. b is the second number.", "ALG.QUADRATIC.FORMULA"],
+                ["True. Order does not matter.", "ALG.QUADRATIC.FORMULA"],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: "False. The square root of a negative number has no real value, so there are no real solutions: the graph does not cross the x-axis.",
-              correct: true,
-            },
-            {
-              text: "True. The formula always gives two answers, from the ±.",
-              code: "ALG.QUADRATIC.FORMULA",
-            },
-            {
-              text: "True. Take the square root of the positive part.",
-              code: "ALG.QUADRATIC.FORMULA",
-            },
-          ],
-          solution: [{ say: "Discriminant > 0: two roots; = 0: one; < 0: none." }],
-        });
+        );
     }
   },
 

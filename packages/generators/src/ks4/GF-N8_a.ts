@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { exactAnswer } from "../shared/counting.ts";
 import { gcdOf } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-N8.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["FR.ADD.TOPS-AND-BOTTOMS", "FR.DIVIDE.NO-FLIP", "FR.MULTIPLY.ALWAYS-BIGGER"],
 
@@ -84,23 +85,54 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["Multiplying a positive number by a fraction makes it smaller."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["Multiplying a positive number by a fraction makes it smaller."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: `Sometimes. A proper fraction like ${p.a}/${p.b} makes it smaller, but an improper fraction like ${p.b}/${p.a} makes it bigger.`,
+                  correct: true,
+                },
+                { text: "Always. A fraction is a part of something." },
+                {
+                  text: "Never. Multiplying always makes numbers bigger.",
+                  code: "FR.MULTIPLY.ALWAYS-BIGGER",
+                },
+              ],
+              solution: [{ say: "It depends whether the fraction is less than or more than 1." }],
+            }),
+          [
             {
-              text: `Sometimes. A proper fraction like ${p.a}/${p.b} makes it smaller, but an improper fraction like ${p.b}/${p.a} makes it bigger.`,
-              correct: true,
+              statement: "Sol says $\\frac{2}{3} \\div \\frac{1}{3} = 2$.",
+              truth: true,
+              right: "True. 1/3 goes into 2/3 twice.",
+              wrong: [["False. It is 2/9.", "FR.DIVIDE.NO-FLIP"], ["False. It is 1/3."]],
             },
-            { text: "Always. A fraction is a part of something." },
             {
-              text: "Never. Multiplying always makes numbers bigger.",
-              code: "FR.MULTIPLY.ALWAYS-BIGGER",
+              statement: "Ana says $\\frac{1}{2} + \\frac{1}{3} = \\frac{2}{5}$.",
+              truth: false,
+              right: "False. Use sixths: 3/6 + 2/6 = 5/6.",
+              wrong: [
+                ["True. Add the tops and the bottoms.", "FR.ADD.TOPS-AND-BOTTOMS"],
+                ["True. 1 + 1 = 2 and 2 + 3 = 5.", "FR.ADD.TOPS-AND-BOTTOMS"],
+              ],
+            },
+            {
+              claim: "Dividing a positive number by a fraction between 0 and 1 makes it bigger.",
+              truth: "always",
+              right:
+                "Always. You count how many small parts fit in, which is more than the number.",
+              wrong: [
+                ["Never. Dividing makes things smaller.", "FR.MULTIPLY.ALWAYS-BIGGER"],
+                ["Sometimes. Only for unit fractions."],
+              ],
             },
           ],
-          solution: [{ say: "It depends whether the fraction is less than or more than 1." }],
-        });
+        );
     }
   },
 

@@ -71,7 +71,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-G22.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -194,7 +194,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-G22.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -317,7 +317,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-G22.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -440,7 +440,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-G22.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -550,7 +550,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-G22.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -660,7 +660,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-G22.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -723,7 +723,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-G22.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -735,7 +735,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -761,7 +761,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Side a must be opposite angle A, and side b opposite angle B.",
+                  "v": "True. Any pairing works.",
                 },
               ],
               "id": "RA",
@@ -770,7 +770,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The sine rule works for any side and angle.",
+                  "v": "False. Each side must go with its opposite angle: a/sin A = b/sin B.",
                 },
               ],
               "id": "RB",
@@ -779,7 +779,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any side touching the angle works.",
+                  "v": "True. Cross the letters over.",
                 },
               ],
               "id": "RC",
@@ -791,7 +791,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "GEO.SINE-RULE.PAIR",
@@ -819,7 +819,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Lower-case letters name the sides opposite the capital-letter angles.",
+            "v": "False. Each side must go with its opposite angle: a/sin A = b/sin B.",
           },
         ],
       },
@@ -827,15 +827,15 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Dan says that in the sine rule, ",
+        "v": "Kai uses ",
       },
       {
         "t": "math",
-        "v": "\\frac{a}{\\sin A} = \\frac{b}{\\sin B}",
+        "v": "\\frac{a}{\\sin B} = \\frac{b}{\\sin A}",
       },
       {
         "t": "text",
-        "v": ", side a can be any side next to angle A.",
+        "v": ".",
       },
     ],
   },
@@ -847,7 +847,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-G22.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -858,8 +858,8 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -885,7 +885,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The sine rule works for any side and angle.",
+                  "v": "False. It is next to A.",
                 },
               ],
               "id": "RA",
@@ -894,7 +894,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any side touching the angle works.",
+                  "v": "True. Each side pairs with the angle opposite it.",
                 },
               ],
               "id": "RB",
@@ -903,7 +903,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Side a must be opposite angle A, and side b opposite angle B.",
+                  "v": "False. It can be any side.",
                 },
               ],
               "id": "RC",
@@ -923,7 +923,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "GEO.SINE-RULE.PAIR",
@@ -943,7 +943,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Lower-case letters name the sides opposite the capital-letter angles.",
+            "v": "True. Each side pairs with the angle opposite it.",
           },
         ],
       },
@@ -951,15 +951,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Dan says that in the sine rule, ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{a}{\\sin A} = \\frac{b}{\\sin B}",
-      },
-      {
-        "t": "text",
-        "v": ", side a can be any side next to angle A.",
+        "v": "Ana says in the sine rule, side a must be opposite angle A.",
       },
     ],
   },
@@ -971,7 +963,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-G22.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -983,7 +975,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -1009,7 +1001,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any side touching the angle works.",
+                  "v": "True. The sine rule works for any side and angle.",
                 },
               ],
               "id": "RA",
@@ -1018,7 +1010,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The sine rule works for any side and angle.",
+                  "v": "False. Side a must be opposite angle A, and side b opposite angle B.",
                 },
               ],
               "id": "RB",
@@ -1027,7 +1019,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Side a must be opposite angle A, and side b opposite angle B.",
+                  "v": "True. Any side touching the angle works.",
                 },
               ],
               "id": "RC",
@@ -1047,7 +1039,7 @@ exports[`GH-G22.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "GEO.SINE-RULE.PAIR",

@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -20,7 +21,7 @@ const rad = (d: number) => (d * Math.PI) / 180;
 
 export default defineGenerator<Params>({
   id: "GH-G20.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.AREA.TRIANGLE-HALF", "GEO.AREA-SINE.INCLUDED"],
 
@@ -81,29 +82,64 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Tom says Area = ½ab sin C works with any two sides of a triangle and any one of its angles.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Tom says Area = ½ab sin C works with any two sides of a triangle and any one of its angles.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. C must be the angle between sides a and b (the included angle).",
+                  correct: true,
+                },
+                {
+                  text: "True. Any angle of the triangle will do.",
+                  code: "GEO.AREA-SINE.INCLUDED",
+                },
+                {
+                  text: "True. As long as the triangle is not right-angled.",
+                  code: "GEO.AREA-SINE.INCLUDED",
+                },
+              ],
+              solution: [
+                {
+                  say: "b sin C is the height of the triangle on base a only when C is between a and b.",
+                },
+              ],
+            }),
+          [
             {
-              text: "False. C must be the angle between sides a and b (the included angle).",
-              correct: true,
+              statement:
+                "Sol says a triangle with sides 6 and 10 and an included angle of 30° has area 15.",
+              truth: true,
+              right: "True. ½ × 6 × 10 × sin 30° = 30 × 0.5 = 15.",
+              wrong: [["False. It is 30.", "MEA.AREA.TRIANGLE-HALF"], ["False. It is 60."]],
             },
-            { text: "True. Any angle of the triangle will do.", code: "GEO.AREA-SINE.INCLUDED" },
             {
-              text: "True. As long as the triangle is not right-angled.",
-              code: "GEO.AREA-SINE.INCLUDED",
+              claim: "Area = ½ab sin C needs C to be the angle between sides a and b.",
+              truth: "always",
+              right: "Always. It must be the included angle.",
+              wrong: [
+                ["Never. Any angle will do.", "GEO.AREA-SINE.INCLUDED"],
+                ["Sometimes. Only for right angles."],
+              ],
+            },
+            {
+              statement:
+                "Bea says Area = ½ab sin C gives a bigger area when C is 150° than when C is 30°.",
+              truth: false,
+              right: "False. sin 150° = sin 30°, so the areas are equal.",
+              wrong: [
+                ["True. A bigger angle gives a bigger area.", "GEO.AREA-SINE.INCLUDED"],
+                ["True. sin grows with the angle.", "GEO.AREA-SINE.INCLUDED"],
+              ],
             },
           ],
-          solution: [
-            {
-              say: "b sin C is the height of the triangle on base a only when C is between a and b.",
-            },
-          ],
-        });
+        );
     }
   },
 

@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const LOCI: [string, string, string][] = [
   ["{r} cm from a point P", "A circle, centre P, radius {r} cm", "A straight line {r} cm long"],
@@ -37,7 +38,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "GF-G2.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.LOCUS.TYPE"],
 
@@ -103,22 +104,58 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            "The points that are the same distance from two fixed points lie on a straight line.",
-          ],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "The points that are the same distance from two fixed points lie on a straight line.",
+              ],
+              truth: "always",
+              reasons: [
+                {
+                  text: "Always. They lie on the perpendicular bisector of the line joining the two points.",
+                  correct: true,
+                },
+                { text: "Never. They lie on a circle.", code: "GEO.LOCUS.TYPE" },
+                { text: "Sometimes. Only the midpoint works.", code: "GEO.LOCUS.TYPE" },
+              ],
+              solution: [{ say: "Construct the perpendicular bisector to draw this locus." }],
+            }),
+          [
             {
-              text: "Always. They lie on the perpendicular bisector of the line joining the two points.",
-              correct: true,
+              statement:
+                "Sam says the locus of points 2 cm from a straight line segment is a racetrack shape.",
+              truth: true,
+              right: "True. Two parallel lines joined by semicircles at the ends.",
+              wrong: [
+                ["False. It is a circle.", "GEO.LOCUS.TYPE"],
+                ["False. It is two lines only."],
+              ],
             },
-            { text: "Never. They lie on a circle.", code: "GEO.LOCUS.TYPE" },
-            { text: "Sometimes. Only the midpoint works.", code: "GEO.LOCUS.TYPE" },
+            {
+              claim:
+                "The points closer to A than to B lie on one side of the perpendicular bisector of AB.",
+              truth: "always",
+              right: "Always. The bisector is where the distances are equal.",
+              wrong: [
+                ["Never. They lie on the bisector.", "GEO.LOCUS.TYPE"],
+                ["Sometimes. Only near A."],
+              ],
+            },
+            {
+              statement: "Mia says the locus of points 4 cm from a point is a disc.",
+              truth: false,
+              right:
+                "False. Exactly 4 cm away is the circle; the disc is the points up to 4 cm away.",
+              wrong: [
+                ["True. Points inside are 4 cm away too.", "GEO.LOCUS.TYPE"],
+                ["True. Locus means region."],
+              ],
+            },
           ],
-          solution: [{ say: "Construct the perpendicular bisector to draw this locus." }],
-        });
+        );
     }
   },
 

@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { clearOfOrigin, grid, poly, signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GH-A15.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.RATE.AVERAGE-INSTANT"],
 
@@ -102,27 +103,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Jas says a curve like ",
-            A.math("y = x^2"),
-            " has the same gradient everywhere, like a straight line.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Jas says a curve like ",
+                A.math("y = x^2"),
+                " has the same gradient everywhere, like a straight line.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. The curve gets steeper as x moves away from 0, so the gradient changes from point to point. It is found from a tangent at each point.",
+                  correct: true,
+                },
+                { text: "True. Every graph has one gradient.", code: "RAT.RATE.AVERAGE-INSTANT" },
+                {
+                  text: "True. The gradient is the average over the whole curve.",
+                  code: "RAT.RATE.AVERAGE-INSTANT",
+                },
+              ],
+              solution: [{ say: "Compare tangents at x = 1 (gradient 2) and x = 3 (gradient 6)." }],
+            }),
+          [
             {
-              text: "False. The curve gets steeper as x moves away from 0, so the gradient changes from point to point. It is found from a tangent at each point.",
-              correct: true,
+              statement:
+                "Leo estimates the gradient of a curve at a point by drawing a tangent there.",
+              truth: true,
+              right: "True. The tangent's gradient is the curve's gradient at that point.",
+              wrong: [
+                ["False. Join the point to the origin.", "RAT.RATE.AVERAGE-INSTANT"],
+                ["False. Use the gradient of a chord far away.", "RAT.RATE.AVERAGE-INSTANT"],
+              ],
             },
-            { text: "True. Every graph has one gradient.", code: "RAT.RATE.AVERAGE-INSTANT" },
             {
-              text: "True. The gradient is the average over the whole curve.",
-              code: "RAT.RATE.AVERAGE-INSTANT",
+              claim:
+                "The gradient of a chord between two points gives the average rate of change between them.",
+              truth: "always",
+              right: "Always. It is the change in y over the change in x.",
+              wrong: [
+                ["Never. It gives the rate at one point.", "RAT.RATE.AVERAGE-INSTANT"],
+                ["Sometimes. Only for straight lines."],
+              ],
+            },
+            {
+              statement: "Kim says the gradient of $y = x^2$ is the same at x = 1 and x = 3.",
+              truth: false,
+              right: "False. The curve gets steeper as x increases.",
+              wrong: [
+                ["True. It is one curve.", "RAT.RATE.AVERAGE-INSTANT"],
+                ["True. Gradients are constant.", "RAT.RATE.AVERAGE-INSTANT"],
+              ],
             },
           ],
-          solution: [{ say: "Compare tangents at x = 1 (gradient 2) and x = 3 (gradient 6)." }],
-        });
+        );
     }
   },
 

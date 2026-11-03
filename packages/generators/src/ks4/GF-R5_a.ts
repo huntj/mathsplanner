@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-R5.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.SHARE.WRONG-TOTAL", "RAT.SIMPLIFY.SUBTRACT"],
 
@@ -96,32 +97,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ivy says ",
-            A.math(`${p.a} : ${p.b}`),
-            " is the same ratio as ",
-            A.math(`${p.a + p.c} : ${p.b + p.c}`),
-            ` because you add ${p.c} to both parts.`,
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ivy says ",
+                A.math(`${p.a} : ${p.b}`),
+                " is the same ratio as ",
+                A.math(`${p.a + p.c} : ${p.b + p.c}`),
+                ` because you add ${p.c} to both parts.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Equal ratios multiply both parts by the same number. ${p.a} : ${p.b} = ${p.a * 2} : ${p.b * 2}, for example.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Doing the same to both parts keeps the ratio.",
+                  code: "RAT.SIMPLIFY.SUBTRACT",
+                },
+                {
+                  text: "True. The difference between the parts stays the same.",
+                  code: "RAT.SIMPLIFY.SUBTRACT",
+                },
+              ],
+              solution: [{ say: `${p.a}/${p.b} is not equal to ${p.a + p.c}/${p.b + p.c}.` }],
+            }),
+          [
+            {
+              statement: "£40 is shared in the ratio 3 : 5. Kai says the bigger share is £25.",
+              truth: true,
+              right: "True. 8 parts make £40, so 1 part is £5, and 5 parts are £25.",
+              wrong: [["False. It is £8.", "RAT.SHARE.WRONG-TOTAL"], ["False. It is £15."]],
+            },
+            {
+              claim: "When you share in a ratio, the shares add up to the total.",
+              truth: "always",
+              right: "Always. Every part of the total goes to someone.",
+              wrong: [
+                ["Never. They add up to the ratio.", "RAT.SHARE.WRONG-TOTAL"],
+                ["Sometimes. Only for 1 : 1."],
+              ],
+            },
+            {
+              statement:
+                "60 sweets are shared in the ratio 1 : 2. Mia says the smaller share is 30.",
+              truth: false,
+              right: "False. 3 parts make 60, so 1 part is 20.",
+              wrong: [
+                ["True. Half of 60.", "RAT.SHARE.WRONG-TOTAL"],
+                ["True. Divide by 2, the biggest part.", "RAT.SHARE.WRONG-TOTAL"],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: `False. Equal ratios multiply both parts by the same number. ${p.a} : ${p.b} = ${p.a * 2} : ${p.b * 2}, for example.`,
-              correct: true,
-            },
-            {
-              text: "True. Doing the same to both parts keeps the ratio.",
-              code: "RAT.SIMPLIFY.SUBTRACT",
-            },
-            {
-              text: "True. The difference between the parts stays the same.",
-              code: "RAT.SIMPLIFY.SUBTRACT",
-            },
-          ],
-          solution: [{ say: `${p.a}/${p.b} is not equal to ${p.a + p.c}/${p.b + p.c}.` }],
-        });
+        );
     }
   },
 

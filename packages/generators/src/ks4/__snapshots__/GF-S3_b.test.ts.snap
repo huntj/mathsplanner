@@ -10,7 +10,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-S3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -124,7 +124,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-S3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -238,7 +238,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-S3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -444,7 +444,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-S3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -606,7 +606,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-S3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -768,7 +768,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-S3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -831,14 +831,14 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-S3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -849,14 +849,14 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
+          "correct": "B",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -865,19 +865,10 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -885,7 +876,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. They are plotted at the class midpoints, with the frequency as the height.",
+                  "v": "False. Plot at the midpoint, 25.",
                 },
               ],
               "id": "RA",
@@ -894,7 +885,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. That is where each class ends.",
+                  "v": "True. Use the top of the class.",
                 },
               ],
               "id": "RB",
@@ -903,7 +894,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends on the width of the classes.",
+                  "v": "True. Use the biggest value.",
                 },
               ],
               "id": "RC",
@@ -933,7 +924,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -943,7 +934,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Cumulative frequency graphs use upper boundaries; frequency polygons use midpoints.",
+            "v": "False. Plot at the midpoint, 25.",
           },
         ],
       },
@@ -951,7 +942,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The points of a frequency polygon are plotted at the upper class boundaries.",
+        "v": "For the class 20 < x ≤ 30, Mia plots her point at x = 30.",
       },
     ],
   },
@@ -963,7 +954,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-S3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -974,8 +965,8 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -1010,7 +1001,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. They are plotted at the class midpoints, with the frequency as the height.",
+                  "v": "Sometimes. Only for small data.",
                 },
               ],
               "id": "RA",
@@ -1019,7 +1010,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. That is where each class ends.",
+                  "v": "Never. They are joined with a curve.",
                 },
               ],
               "id": "RB",
@@ -1028,7 +1019,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends on the width of the classes.",
+                  "v": "Always. That is how it is drawn.",
                 },
               ],
               "id": "RC",
@@ -1043,15 +1034,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "STA.GROUPED.MIDPOINT",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "STA.GROUPED.MIDPOINT",
+            "code": "STA.SCALE.READ",
             "feedback": [],
           },
         ],
@@ -1068,7 +1051,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Cumulative frequency graphs use upper boundaries; frequency polygons use midpoints.",
+            "v": "Always. That is how it is drawn.",
           },
         ],
       },
@@ -1076,19 +1059,19 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The points of a frequency polygon are plotted at the upper class boundaries.",
+        "v": "A frequency polygon's points are joined with straight lines.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-S3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1099,14 +1082,14 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
+          "correct": "B",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -1115,19 +1098,10 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -1135,7 +1109,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. They are plotted at the class midpoints, with the frequency as the height.",
+                  "v": "False. Plot at the midpoint, 25.",
                 },
               ],
               "id": "RA",
@@ -1144,7 +1118,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. That is where each class ends.",
+                  "v": "True. Use the biggest value.",
                 },
               ],
               "id": "RB",
@@ -1153,7 +1127,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends on the width of the classes.",
+                  "v": "True. Use the top of the class.",
                 },
               ],
               "id": "RC",
@@ -1183,7 +1157,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -1193,7 +1167,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Cumulative frequency graphs use upper boundaries; frequency polygons use midpoints.",
+            "v": "False. Plot at the midpoint, 25.",
           },
         ],
       },
@@ -1201,7 +1175,7 @@ exports[`GF-S3.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The points of a frequency polygon are plotted at the upper class boundaries.",
+        "v": "For the class 20 < x ≤ 30, Mia plots her point at x = 30.",
       },
     ],
   },

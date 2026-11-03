@@ -32,7 +32,7 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A11.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -172,7 +172,7 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A11.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -312,7 +312,7 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A11.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -430,7 +430,7 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A11.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -496,7 +496,7 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A11.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -562,7 +562,7 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A11.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -628,7 +628,7 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A11.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -675,7 +675,7 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Turning points are always on the x-axis.",
+                  "v": "Always. The turning point is where x = 0.",
                 },
               ],
               "id": "RA",
@@ -693,7 +693,7 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. The turning point is where x = 0.",
+                  "v": "Never. Turning points are always on the x-axis.",
                 },
               ],
               "id": "RC",
@@ -754,14 +754,14 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A11.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -772,14 +772,14 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -788,19 +788,10 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -808,7 +799,7 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. The turning point is at x = −b/2, so it is on the y-axis only when b = 0, e.g. y = x² − 4.",
+                  "v": "False. It is (2, 0).",
                 },
               ],
               "id": "RA",
@@ -817,7 +808,7 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Turning points are always on the x-axis.",
+                  "v": "False. It is (−4, 0).",
                 },
               ],
               "id": "RB",
@@ -826,7 +817,7 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. The turning point is where x = 0.",
+                  "v": "True. x² is smallest at x = 0, giving y = −4.",
                 },
               ],
               "id": "RC",
@@ -844,19 +835,11 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
             "code": "ALG.QUADRATIC.TURNING",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.QUADRATIC.TURNING",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -866,7 +849,7 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Compare y = x² − 4 (turning point (0, −4)) with y = x² − 4x (turning point (2, −4)).",
+            "v": "True. x² is smallest at x = 0, giving y = −4.",
           },
         ],
       },
@@ -874,27 +857,27 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The turning point of ",
+        "v": "Bea says the turning point of ",
       },
       {
         "t": "math",
-        "v": "y = x^2 + bx + c",
+        "v": "y = x^2 - 4",
       },
       {
         "t": "text",
-        "v": " lies on the y-axis.",
+        "v": " is (0, −4).",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A11.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -905,14 +888,14 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -921,19 +904,10 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -941,7 +915,7 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. The turning point is at x = −b/2, so it is on the y-axis only when b = 0, e.g. y = x² − 4.",
+                  "v": "True. x² is smallest at x = 0, giving y = −4.",
                 },
               ],
               "id": "RA",
@@ -950,7 +924,7 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Turning points are always on the x-axis.",
+                  "v": "False. It is (2, 0).",
                 },
               ],
               "id": "RB",
@@ -959,7 +933,7 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. The turning point is where x = 0.",
+                  "v": "False. It is (−4, 0).",
                 },
               ],
               "id": "RC",
@@ -969,14 +943,6 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.QUADRATIC.TURNING",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -989,7 +955,7 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -999,7 +965,7 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Compare y = x² − 4 (turning point (0, −4)) with y = x² − 4x (turning point (2, −4)).",
+            "v": "True. x² is smallest at x = 0, giving y = −4.",
           },
         ],
       },
@@ -1007,15 +973,15 @@ exports[`GF-A11.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The turning point of ",
+        "v": "Bea says the turning point of ",
       },
       {
         "t": "math",
-        "v": "y = x^2 + bx + c",
+        "v": "y = x^2 - 4",
       },
       {
         "t": "text",
-        "v": " lies on the y-axis.",
+        "v": " is (0, −4).",
       },
     ],
   },

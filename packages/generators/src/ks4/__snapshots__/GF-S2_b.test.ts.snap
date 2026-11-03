@@ -35,7 +35,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-S2.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -130,7 +130,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-S2.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -225,7 +225,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-S2.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -320,7 +320,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-S2.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -415,7 +415,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-S2.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -510,7 +510,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-S2.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -580,7 +580,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-S2.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -591,8 +591,8 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -627,7 +627,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. All bar charts have touching bars.",
+                  "v": "Sometimes. Only for odd numbers of values.",
                 },
               ],
               "id": "RA",
@@ -636,7 +636,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Discrete data takes separate values, so the bars (or lines) have gaps between them. Histograms, for continuous data, have touching bars.",
+                  "v": "Never. It is the middle value as written.",
                 },
               ],
               "id": "RB",
@@ -645,7 +645,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when the frequencies are close.",
+                  "v": "Always. Order first, then find the middle.",
                 },
               ],
               "id": "RC",
@@ -657,10 +657,10 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "STA.MODE.FREQUENCY",
+            "code": "STA.MEDIAN.UNORDERED",
             "feedback": [],
           },
         ],
@@ -677,7 +677,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Gaps show that values in between are not possible.",
+            "v": "Always. Order first, then find the middle.",
           },
         ],
       },
@@ -685,19 +685,19 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The bars of a bar chart for discrete data, such as numbers of siblings, touch each other.",
+        "v": "The median of a set of data is the middle value once the data are in order.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-S2.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -708,14 +708,14 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RB",
+          "correct": "B",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -724,19 +724,10 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -744,7 +735,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. All bar charts have touching bars.",
+                  "v": "True. Read the top of the bar.",
                 },
               ],
               "id": "RA",
@@ -753,7 +744,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Discrete data takes separate values, so the bars (or lines) have gaps between them. Histograms, for continuous data, have touching bars.",
+                  "v": "True. The mode is the biggest number.",
                 },
               ],
               "id": "RB",
@@ -762,7 +753,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when the frequencies are close.",
+                  "v": "False. The mode is the value, 2 siblings; 12 is its frequency.",
                 },
               ],
               "id": "RC",
@@ -774,7 +765,15 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "STA.MODE.FREQUENCY",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
               "type": "choice",
             },
             "code": "STA.MODE.FREQUENCY",
@@ -784,7 +783,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -794,7 +793,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Gaps show that values in between are not possible.",
+            "v": "False. The mode is the value, 2 siblings; 12 is its frequency.",
           },
         ],
       },
@@ -802,19 +801,19 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The bars of a bar chart for discrete data, such as numbers of siblings, touch each other.",
+        "v": "A bar chart shows 12 pupils with 2 siblings, the most of any bar. Ana says the mode is 12.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-S2.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -825,14 +824,14 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -841,19 +840,10 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -861,7 +851,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. All bar charts have touching bars.",
+                  "v": "True. The mode is the value with the highest frequency.",
                 },
               ],
               "id": "RA",
@@ -870,7 +860,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Discrete data takes separate values, so the bars (or lines) have gaps between them. Histograms, for continuous data, have touching bars.",
+                  "v": "False. The mode is the bar's height.",
                 },
               ],
               "id": "RB",
@@ -879,7 +869,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when the frequencies are close.",
+                  "v": "False. The mode is the middle bar.",
                 },
               ],
               "id": "RC",
@@ -891,17 +881,25 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "STA.MODE.FREQUENCY",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "STA.MEDIAN.UNORDERED",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -911,7 +909,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Gaps show that values in between are not possible.",
+            "v": "True. The mode is the value with the highest frequency.",
           },
         ],
       },
@@ -919,7 +917,7 @@ exports[`GF-S2.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The bars of a bar chart for discrete data, such as numbers of siblings, touch each other.",
+        "v": "On a bar chart of shoe sizes, the tallest bar is at size 5. Leo says the mode is 5.",
       },
     ],
   },

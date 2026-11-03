@@ -10,7 +10,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -93,7 +93,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -176,7 +176,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -259,7 +259,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -330,7 +330,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -401,7 +401,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -465,14 +465,14 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "odd-one-out",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -483,14 +483,14 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RA",
+          "correct": "B",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "27",
+                  "t": "text",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -498,8 +498,8 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "9",
+                  "t": "text",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
@@ -507,20 +507,11 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "29",
+                  "t": "text",
+                  "v": "Never true",
                 },
               ],
               "id": "C",
-            },
-            {
-              "content": [
-                {
-                  "t": "math",
-                  "v": "81",
-                },
-              ],
-              "id": "D",
             },
           ],
           "reasons": [
@@ -528,7 +519,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one that is not a power of 3.",
+                  "v": "Always. Cubes are bigger squares.",
                 },
               ],
               "id": "RA",
@@ -537,7 +528,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only even number.",
+                  "v": "Sometimes. 1 and 64 are both, but 8 and 27 are not square.",
                 },
               ],
               "id": "RB",
@@ -546,7 +537,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one that is not a square number.",
+                  "v": "Never. They are different.",
                 },
               ],
               "id": "RC",
@@ -558,7 +549,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.POWER.TIMES-INDEX",
@@ -568,7 +559,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Choose the odd one out and the reason.",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -578,7 +569,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "9, 27 and 81 are 3², 3³ and 3⁴.",
+            "v": "Sometimes. 1 and 64 are both, but 8 and 27 are not square.",
           },
         ],
       },
@@ -586,19 +577,19 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Which number is the odd one out?",
+        "v": "A cube number is also a square number.",
       },
     ],
   },
   {
-    "archetype": "odd-one-out",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -609,14 +600,14 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "D",
+          "correct": "B",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "256",
+                  "t": "text",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -624,29 +615,11 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "16",
+                  "t": "text",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "math",
-                  "v": "64",
-                },
-              ],
-              "id": "C",
-            },
-            {
-              "content": [
-                {
-                  "t": "math",
-                  "v": "66",
-                },
-              ],
-              "id": "D",
             },
           ],
           "reasons": [
@@ -654,7 +627,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one that is not a square number.",
+                  "v": "True. Cube means times 3.",
                 },
               ],
               "id": "RA",
@@ -663,7 +636,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one that is not a power of 4.",
+                  "v": "False. 5 × 5 × 5 = 125.",
                 },
               ],
               "id": "RB",
@@ -672,7 +645,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only even number.",
+                  "v": "True. 5 × 3 = 15.",
                 },
               ],
               "id": "RC",
@@ -690,11 +663,19 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
             "code": "NPV.POWER.TIMES-INDEX",
             "feedback": [],
           },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.POWER.TIMES-INDEX",
+            "feedback": [],
+          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Choose the odd one out and the reason.",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -704,7 +685,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "16, 64 and 256 are 4², 4³ and 4⁴.",
+            "v": "False. 5 × 5 × 5 = 125.",
           },
         ],
       },
@@ -712,19 +693,27 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Which number is the odd one out?",
+        "v": "Leo says ",
+      },
+      {
+        "t": "math",
+        "v": "5^3 = 15",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
   {
-    "archetype": "odd-one-out",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -735,14 +724,14 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "D",
+          "correct": "B",
           "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "8",
+                  "t": "text",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -750,29 +739,11 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "16",
+                  "t": "text",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "math",
-                  "v": "4",
-                },
-              ],
-              "id": "C",
-            },
-            {
-              "content": [
-                {
-                  "t": "math",
-                  "v": "10",
-                },
-              ],
-              "id": "D",
             },
           ],
           "reasons": [
@@ -780,7 +751,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one that is not a square number.",
+                  "v": "True. 5 × 3 = 15.",
                 },
               ],
               "id": "RA",
@@ -789,7 +760,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only even number.",
+                  "v": "True. Cube means times 3.",
                 },
               ],
               "id": "RB",
@@ -798,7 +769,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one that is not a power of 2.",
+                  "v": "False. 5 × 5 × 5 = 125.",
                 },
               ],
               "id": "RC",
@@ -816,11 +787,19 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
             "code": "NPV.POWER.TIMES-INDEX",
             "feedback": [],
           },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.POWER.TIMES-INDEX",
+            "feedback": [],
+          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Choose the odd one out and the reason.",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -830,7 +809,7 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "4, 8 and 16 are 2², 2³ and 2⁴.",
+            "v": "False. 5 × 5 × 5 = 125.",
           },
         ],
       },
@@ -838,7 +817,15 @@ exports[`GF-N6.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Which number is the odd one out?",
+        "v": "Leo says ",
+      },
+      {
+        "t": "math",
+        "v": "5^3 = 15",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },

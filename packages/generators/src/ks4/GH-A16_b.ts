@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { exactAnswer } from "../shared/counting.ts";
 import { coord } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const TRIPLES = [
   [3, 4],
@@ -31,7 +32,7 @@ const point = (p: Params) => {
 
 export default defineGenerator<Params>({
   id: "GH-A16.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.PERPENDICULAR.GRADIENT"],
 
@@ -100,28 +101,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Dee says the tangent to a circle at a point is parallel to the radius at that point.",
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Dee says the tangent to a circle at a point is parallel to the radius at that point.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A tangent is perpendicular to the radius at the point where it touches, so the gradients multiply to −1.",
+                  correct: true,
+                },
+                {
+                  text: "True. Both lines go through the same point.",
+                  code: "ALG.PERPENDICULAR.GRADIENT",
+                },
+                {
+                  text: "True. A tangent has the same gradient as the radius.",
+                  code: "ALG.PERPENDICULAR.GRADIENT",
+                },
+              ],
+              solution: [{ say: "Radius and tangent meet at 90°." }],
+            }),
+          [
+            {
+              statement:
+                "The radius to (3, 4) on $x^2 + y^2 = 25$ has gradient $\\frac{4}{3}$. Kai says the tangent there has gradient $-\\frac{3}{4}$.",
+              truth: true,
+              right: "True. The tangent is perpendicular to the radius.",
+              wrong: [
+                ["False. It is 4/3 too.", "ALG.PERPENDICULAR.GRADIENT"],
+                ["False. It is −4/3.", "ALG.PERPENDICULAR.GRADIENT"],
+              ],
+            },
+            {
+              claim: "A tangent to a circle meets the radius at a right angle.",
+              truth: "always",
+              right: "Always. This is a circle theorem.",
+              wrong: [
+                ["Never. It is parallel to the radius.", "ALG.PERPENDICULAR.GRADIENT"],
+                ["Sometimes. Only at the top of the circle."],
+              ],
+            },
+            {
+              statement:
+                "The radius to a point has gradient 2. Pia says the tangent there has gradient −2.",
+              truth: false,
+              right: "False. The perpendicular gradient is −1/2.",
+              wrong: [
+                ["True. Change the sign.", "ALG.PERPENDICULAR.GRADIENT"],
+                ["True. Perpendicular means opposite sign.", "ALG.PERPENDICULAR.GRADIENT"],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: "False. A tangent is perpendicular to the radius at the point where it touches, so the gradients multiply to −1.",
-              correct: true,
-            },
-            {
-              text: "True. Both lines go through the same point.",
-              code: "ALG.PERPENDICULAR.GRADIENT",
-            },
-            {
-              text: "True. A tangent has the same gradient as the radius.",
-              code: "ALG.PERPENDICULAR.GRADIENT",
-            },
-          ],
-          solution: [{ say: "Radius and tangent meet at 90°." }],
-        });
+        );
     }
   },
 

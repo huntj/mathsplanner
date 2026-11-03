@@ -10,7 +10,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R9.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -67,7 +67,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R9.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -124,7 +124,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R9.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -181,7 +181,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R9.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -244,7 +244,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R9.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -307,7 +307,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R9.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -363,14 +363,14 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R9.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -388,7 +388,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -397,19 +397,10 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -417,7 +408,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Any number can be a percentage.",
+                  "v": "True. Multiply by the percentage.",
                 },
               ],
               "id": "RA",
@@ -426,7 +417,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. 100% is the whole, so you cannot have more.",
+                  "v": "True. 4% is 0.4.",
                 },
               ],
               "id": "RB",
@@ -435,7 +426,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. A test score cannot be more than 100%, but a value can grow to 230% of what it was.",
+                  "v": "False. 100% − 4% = 96%: multiply by 0.96.",
                 },
               ],
               "id": "RC",
@@ -445,6 +436,14 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "RAT.PERCENT.MULTIPLIER",
+            "feedback": [],
+          },
           {
             "answer": {
               "id": "RB",
@@ -457,7 +456,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -467,7 +466,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Comparing a new value with an old one can give a percentage over 100.",
+            "v": "False. 100% − 4% = 96%: multiply by 0.96.",
           },
         ],
       },
@@ -475,7 +474,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A percentage can be more than 100%.",
+        "v": "Ana says to decrease an amount by 4%, multiply by 0.4.",
       },
     ],
   },
@@ -487,7 +486,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R9.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -534,7 +533,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. 100% is the whole, so you cannot have more.",
+                  "v": "Always. Any number can be a percentage.",
                 },
               ],
               "id": "RA",
@@ -552,7 +551,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Any number can be a percentage.",
+                  "v": "Never. 100% is the whole, so you cannot have more.",
                 },
               ],
               "id": "RC",
@@ -564,7 +563,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
             "code": "RAT.PERCENT.MULTIPLIER",
@@ -597,14 +596,14 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R9.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -615,14 +614,14 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -631,19 +630,10 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -651,7 +641,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. 100% is the whole, so you cannot have more.",
+                  "v": "True. 100% + 15% = 115% = 1.15.",
                 },
               ],
               "id": "RA",
@@ -660,7 +650,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Any number can be a percentage.",
+                  "v": "False. Multiply by 0.15.",
                 },
               ],
               "id": "RB",
@@ -669,7 +659,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. A test score cannot be more than 100%, but a value can grow to 220% of what it was.",
+                  "v": "False. Multiply by 1.5.",
                 },
               ],
               "id": "RC",
@@ -681,7 +671,15 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "RAT.PERCENT.MULTIPLIER",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
               "type": "choice",
             },
             "code": "RAT.PERCENT.MULTIPLIER",
@@ -691,7 +689,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -701,7 +699,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Comparing a new value with an old one can give a percentage over 100.",
+            "v": "True. 100% + 15% = 115% = 1.15.",
           },
         ],
       },
@@ -709,7 +707,7 @@ exports[`GF-R9.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A percentage can be more than 100%.",
+        "v": "Leo says to increase £60 by 15%, multiply by 1.15.",
       },
     ],
   },

@@ -10,7 +10,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -81,7 +81,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -152,7 +152,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -223,7 +223,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -318,7 +318,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -413,7 +413,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -508,7 +508,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -520,7 +520,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -546,7 +546,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any change done to both parts keeps the ratio.",
+                  "v": "True. Both ratios grew by the same amount.",
                 },
               ],
               "id": "RA",
@@ -555,7 +555,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Equal ratios come from multiplying both parts by the same number. 4/12 ≠ 7/15.",
+                  "v": "True. Any change done to both parts keeps the ratio.",
                 },
               ],
               "id": "RB",
@@ -564,7 +564,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both ratios grew by the same amount.",
+                  "v": "False. Equal ratios come from multiplying both parts by the same number. 4/12 ≠ 7/15.",
                 },
               ],
               "id": "RC",
@@ -584,7 +584,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "RAT.ADDITIVE",
@@ -633,14 +633,14 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -651,14 +651,14 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -667,10 +667,19 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -678,7 +687,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any change done to both parts keeps the ratio.",
+                  "v": "Never. Add the same to both.",
                 },
               ],
               "id": "RA",
@@ -687,7 +696,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Equal ratios come from multiplying both parts by the same number. 5/7 ≠ 10/12.",
+                  "v": "Always. That keeps the same relationship between the parts.",
                 },
               ],
               "id": "RB",
@@ -696,7 +705,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both ratios grew by the same amount.",
+                  "v": "Sometimes. Only by 2.",
                 },
               ],
               "id": "RC",
@@ -714,19 +723,11 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
             "code": "RAT.ADDITIVE",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "RAT.ADDITIVE",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -736,7 +737,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Ratios are equal when their parts are in the same multiplicative relationship.",
+            "v": "Always. That keeps the same relationship between the parts.",
           },
         ],
       },
@@ -744,23 +745,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jas says ",
-      },
-      {
-        "t": "math",
-        "v": "5 : 7",
-      },
-      {
-        "t": "text",
-        "v": " and ",
-      },
-      {
-        "t": "math",
-        "v": "10 : 12",
-      },
-      {
-        "t": "text",
-        "v": " are in proportion, because she added the same to both parts.",
+        "v": "Equivalent ratios are made by multiplying both parts by the same number.",
       },
     ],
   },
@@ -772,7 +757,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -784,7 +769,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -810,7 +795,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Equal ratios come from multiplying both parts by the same number. 9/6 ≠ 13/10.",
+                  "v": "True. Add the same to both parts.",
                 },
               ],
               "id": "RA",
@@ -819,7 +804,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any change done to both parts keeps the ratio.",
+                  "v": "True. Both go up by 2.",
                 },
               ],
               "id": "RB",
@@ -828,7 +813,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both ratios grew by the same amount.",
+                  "v": "False. 4/6 = 2/3 but 6/8 = 3/4: adding changes the ratio.",
                 },
               ],
               "id": "RC",
@@ -840,15 +825,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "RAT.ADDITIVE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "RAT.ADDITIVE",
@@ -868,7 +845,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Ratios are equal when their parts are in the same multiplicative relationship.",
+            "v": "False. 4/6 = 2/3 but 6/8 = 3/4: adding changes the ratio.",
           },
         ],
       },
@@ -876,23 +853,7 @@ exports[`GF-R7 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jas says ",
-      },
-      {
-        "t": "math",
-        "v": "9 : 6",
-      },
-      {
-        "t": "text",
-        "v": " and ",
-      },
-      {
-        "t": "math",
-        "v": "13 : 10",
-      },
-      {
-        "t": "text",
-        "v": " are in proportion, because she added the same to both parts.",
+        "v": "Pia says 4 : 6 and 6 : 8 are in proportion, because each part goes up by 2.",
       },
     ],
   },

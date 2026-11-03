@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   list: number[];
@@ -21,7 +22,7 @@ const RIGHT = "Class A did better on average; Class B's marks were more consiste
 
 export default defineGenerator<Params>({
   id: "GF-S4.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.RANGE.HIGHER-BETTER", "STA.COMPARE", "STA.MEDIAN.UNORDERED"],
 
@@ -87,20 +88,55 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["Adding one more value to a data set changes its range."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["Adding one more value to a data set changes its range."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: `Sometimes. It changes only if the new value is above the maximum or below the minimum. Adding ${Math.min(...p.list) + 1} to the list here leaves the range the same.`,
+                  correct: true,
+                },
+                { text: "Always. Any new value changes the spread.", code: "STA.COMPARE" },
+                { text: "Never. The range only depends on how many values there are." },
+              ],
+              solution: [{ say: "The range uses only the two extremes." }],
+            }),
+          [
             {
-              text: `Sometimes. It changes only if the new value is above the maximum or below the minimum. Adding ${Math.min(...p.list) + 1} to the list here leaves the range the same.`,
-              correct: true,
+              statement:
+                "Team A's scores have median 60 and range 10. Team B's have median 60 and range 30. Bea says team A is more consistent.",
+              truth: true,
+              right: "True. A smaller range means the scores are less spread out.",
+              wrong: [
+                ["False. A bigger range is better.", "STA.RANGE.HIGHER-BETTER"],
+                ["False. The medians are equal, so they are the same.", "STA.COMPARE"],
+              ],
             },
-            { text: "Always. Any new value changes the spread.", code: "STA.COMPARE" },
-            { text: "Never. The range only depends on how many values there are." },
+            {
+              claim: "The range is the biggest value minus the smallest value.",
+              truth: "always",
+              right: "Always. That is its definition.",
+              wrong: [
+                ["Never. It is the biggest value.", "STA.RANGE.HIGHER-BETTER"],
+                ["Sometimes. Only in order.", "STA.MEDIAN.UNORDERED"],
+              ],
+            },
+            {
+              statement: "Kai says a bigger range means a group did better on average.",
+              truth: false,
+              right:
+                "False. The range measures spread, not average. Compare means or medians for that.",
+              wrong: [
+                ["True. Higher range, higher scores.", "STA.RANGE.HIGHER-BETTER"],
+                ["True. Range and mean go together.", "STA.COMPARE"],
+              ],
+            },
           ],
-          solution: [{ say: "The range uses only the two extremes." }],
-        });
+        );
     }
   },
 

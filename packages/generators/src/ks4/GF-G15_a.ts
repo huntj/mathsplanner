@@ -10,6 +10,7 @@ import type { ProtractorSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { ruler } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   angle: number;
@@ -21,7 +22,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "GF-G15.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.PROTRACTOR.WRONG-SCALE", "MEA.RULER.END", "GEO.ANGLES.SIZE-BY-ARMS"],
 
@@ -94,25 +95,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Eve draws two angles of 40°, one with arms 3 cm long and one with arms 8 cm long. She says the second angle is bigger.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Eve draws two angles of 40°, one with arms 3 cm long and one with arms 8 cm long. She says the second angle is bigger.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. The size of an angle is the amount of turn between the arms, not how long the arms are. Both are 40°.",
+                  correct: true,
+                },
+                { text: "True. Longer arms make a bigger angle.", code: "GEO.ANGLES.SIZE-BY-ARMS" },
+                {
+                  text: "True. The gap between the ends of the arms is wider.",
+                  code: "GEO.ANGLES.SIZE-BY-ARMS",
+                },
+              ],
+              solution: [{ say: "Extending the arms does not change the angle." }],
+            }),
+          [
             {
-              text: "False. The size of an angle is the amount of turn between the arms, not how long the arms are. Both are 40°.",
-              correct: true,
+              statement:
+                "Bea measures an angle using the protractor scale that starts at 0 on the arm. She reads 55°.",
+              truth: true,
+              right: "True. Use the scale that starts at 0 on one arm of the angle.",
+              wrong: [
+                ["False. Always use the outer scale.", "GEO.PROTRACTOR.WRONG-SCALE"],
+                ["False. Read the bigger number."],
+              ],
             },
-            { text: "True. Longer arms make a bigger angle.", code: "GEO.ANGLES.SIZE-BY-ARMS" },
             {
-              text: "True. The gap between the ends of the arms is wider.",
-              code: "GEO.ANGLES.SIZE-BY-ARMS",
+              claim: "An acute angle measures less than 90°.",
+              truth: "always",
+              right: "Always. That is what acute means.",
+              wrong: [
+                ["Never. It is more than 90°.", "GEO.PROTRACTOR.WRONG-SCALE"],
+                ["Sometimes. If its arms are short.", "GEO.ANGLES.SIZE-BY-ARMS"],
+              ],
+            },
+            {
+              statement:
+                "Gus measures a line by starting his ruler at 1 cm. The line ends at 8 cm, so he says it is 8 cm long.",
+              truth: false,
+              right: "False. From 1 to 8 is 7 cm.",
+              wrong: [
+                ["True. Read where it ends.", "MEA.RULER.END"],
+                ["True. The ruler starts at 1.", "MEA.RULER.END"],
+              ],
             },
           ],
-          solution: [{ say: "Extending the arms does not change the angle." }],
-        });
+        );
     }
   },
 

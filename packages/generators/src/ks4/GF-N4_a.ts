@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const PRIMES = [23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97];
 const ODD_COMPOSITES = [21, 27, 33, 39, 49, 51, 57, 63, 69, 77, 81, 87, 91, 93];
@@ -28,7 +29,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-N4.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.FACTOR.NOT-PRIME", "NPV.FACTOR.MULTIPLE-MIXUP"],
 
@@ -80,20 +81,53 @@ export default defineGenerator<Params>({
           solution: [{ say: `${p.n} ÷ ${p.f} = ${p.n / p.f}, a whole number.` }],
         });
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["The sum of two prime numbers is even."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["The sum of two prime numbers is even."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: "Sometimes. Two odd primes add to an even number, like 3 + 5 = 8, but 2 is prime and 2 + 3 = 5 is odd.",
+                  correct: true,
+                },
+                { text: "Always. All prime numbers are odd.", code: "NPV.FACTOR.NOT-PRIME" },
+                { text: "Never. Primes cannot add to an even number." },
+              ],
+              solution: [{ say: "2 is the only even prime." }],
+            }),
+          [
             {
-              text: "Sometimes. Two odd primes add to an even number, like 3 + 5 = 8, but 2 is prime and 2 + 3 = 5 is odd.",
-              correct: true,
+              statement: "Ivy says 51 is a prime number.",
+              truth: false,
+              right: "False. 51 = 3 × 17.",
+              wrong: [
+                ["True. It is odd and not in the times tables.", "NPV.FACTOR.NOT-PRIME"],
+                ["True. It ends in 1."],
+              ],
             },
-            { text: "Always. All prime numbers are odd.", code: "NPV.FACTOR.NOT-PRIME" },
-            { text: "Never. Primes cannot add to an even number." },
+            {
+              statement: "Dan says every multiple of 6 is also a multiple of 3.",
+              truth: true,
+              right: "True. 6 = 2 × 3, so 6k = 3 × 2k.",
+              wrong: [
+                ["False. 6 is even and 3 is odd.", "NPV.FACTOR.MULTIPLE-MIXUP"],
+                ["False. Only up to 30."],
+              ],
+            },
+            {
+              claim: "A prime number has exactly two factors.",
+              truth: "always",
+              right: "Always. That is the definition: 1 and itself.",
+              wrong: [
+                ["Sometimes. 1 has one factor and is prime.", "NPV.FACTOR.NOT-PRIME"],
+                ["Never. Primes have one factor."],
+              ],
+            },
           ],
-          solution: [{ say: "2 is the only even prime." }],
-        });
+        );
     }
   },
 

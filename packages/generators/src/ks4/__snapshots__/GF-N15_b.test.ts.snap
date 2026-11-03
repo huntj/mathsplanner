@@ -10,7 +10,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N15.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -66,7 +66,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N15.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -122,7 +122,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N15.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -178,7 +178,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N15.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -253,7 +253,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N15.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -331,7 +331,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N15.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -402,14 +402,14 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N15.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -420,14 +420,14 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RA",
+          "correct": "C",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -436,10 +436,19 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -447,7 +456,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The first significant figure is 2; the second is 0 and stays 0, so it is 0.020, written 0.02.",
+                  "v": "Sometimes. After the point they count.",
                 },
               ],
               "id": "RA",
@@ -456,7 +465,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Zeros never count as significant figures.",
+                  "v": "Always. Every digit counts.",
                 },
               ],
               "id": "RB",
@@ -465,7 +474,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It should be 0.07 to 2 decimal places.",
+                  "v": "Never. Significant figures start at the first non-zero digit.",
                 },
               ],
               "id": "RC",
@@ -477,7 +486,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.ROUND.SF-LEADING-ZERO",
@@ -485,17 +494,17 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.ROUND.DP-SF",
+            "code": "NPV.ROUND.SF-LEADING-ZERO",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -505,7 +514,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Leading zeros are not significant, but zeros between other digits are.",
+            "v": "Never. Significant figures start at the first non-zero digit.",
           },
         ],
       },
@@ -513,15 +522,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Asha says ",
-      },
-      {
-        "t": "math",
-        "v": "0.0204",
-      },
-      {
-        "t": "text",
-        "v": " to 2 significant figures is 0.02.",
+        "v": "Leading zeros, as in 0.004, are significant figures.",
       },
     ],
   },
@@ -533,7 +534,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N15.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -544,8 +545,8 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -571,7 +572,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The zeros do not count, so keep two digits after the point.",
+                  "v": "False. It is 35.",
                 },
               ],
               "id": "RA",
@@ -580,7 +581,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The first significant figure is 1; the 0 after it is the second, and it rounds up: 0.011.",
+                  "v": "False. It is 34,560.00.",
                 },
               ],
               "id": "RB",
@@ -589,7 +590,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 2 significant figures means 2 decimal places.",
+                  "v": "True. The first two significant figures are 3 and 4; the next digit, 5, rounds up.",
                 },
               ],
               "id": "RC",
@@ -604,12 +605,12 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.ROUND.SF-LEADING-ZERO",
+            "code": "NPV.PLACE.ZERO-PLACEHOLDER",
             "feedback": [],
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.ROUND.DP-SF",
@@ -629,7 +630,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Leading zeros are not significant, but zeros between other digits are.",
+            "v": "True. The first two significant figures are 3 and 4; the next digit, 5, rounds up.",
           },
         ],
       },
@@ -637,15 +638,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Asha says ",
-      },
-      {
-        "t": "math",
-        "v": "0.0107",
-      },
-      {
-        "t": "text",
-        "v": " to 2 significant figures is 0.01.",
+        "v": "Kit rounds 34,560 to 2 significant figures and gets 35,000.",
       },
     ],
   },
@@ -657,7 +650,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N15.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -669,7 +662,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -695,7 +688,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 2 significant figures means 2 decimal places.",
+                  "v": "True. The 0 does not count.",
                 },
               ],
               "id": "RA",
@@ -704,7 +697,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The first significant figure is 4; the 0 after it is the second, and it rounds up: 0.041.",
+                  "v": "True. 3 decimal places is 3 figures.",
                 },
               ],
               "id": "RB",
@@ -713,7 +706,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The zeros do not count, so keep two digits after the point.",
+                  "v": "False. 3 significant figures are 7, 0 and 3: 7.04.",
                 },
               ],
               "id": "RC",
@@ -728,15 +721,15 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.ROUND.DP-SF",
+            "code": "NPV.ROUND.SF-LEADING-ZERO",
             "feedback": [],
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.ROUND.SF-LEADING-ZERO",
+            "code": "NPV.ROUND.DP-SF",
             "feedback": [],
           },
         ],
@@ -753,7 +746,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Leading zeros are not significant, but zeros between other digits are.",
+            "v": "False. 3 significant figures are 7, 0 and 3: 7.04.",
           },
         ],
       },
@@ -761,15 +754,7 @@ exports[`GF-N15.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Asha says ",
-      },
-      {
-        "t": "math",
-        "v": "0.0407",
-      },
-      {
-        "t": "text",
-        "v": " to 2 significant figures is 0.04.",
+        "v": "Ana rounds 7.0382 to 3 significant figures and gets 7.038.",
       },
     ],
   },

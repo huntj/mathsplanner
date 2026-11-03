@@ -10,7 +10,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -67,7 +67,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -124,7 +124,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -181,7 +181,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -251,7 +251,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -321,7 +321,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -391,7 +391,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -402,7 +402,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
@@ -438,7 +438,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It works when the numbers share no factor, like 3 and 5, but the LCM of 21 and 35 is 105, not 735.",
+                  "v": "Always. A factor of a number is no bigger than the number.",
                 },
               ],
               "id": "RA",
@@ -447,7 +447,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Multiplying gives a multiple of both.",
+                  "v": "Never. It is bigger than both.",
                 },
               ],
               "id": "RB",
@@ -456,7 +456,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The LCM is always smaller than the product.",
+                  "v": "Sometimes. Only for even numbers.",
                 },
               ],
               "id": "RC",
@@ -471,15 +471,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.FACTOR.LCM-PRODUCT",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.FACTOR.LCM-PRODUCT",
+            "code": "NPV.FACTOR.HCF-LCM",
             "feedback": [],
           },
         ],
@@ -496,7 +488,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "HCF × LCM = the product of the two numbers.",
+            "v": "Always. A factor of a number is no bigger than the number.",
           },
         ],
       },
@@ -504,19 +496,19 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The LCM of two numbers is their product.",
+        "v": "The HCF of two numbers is less than or equal to both of them.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -527,14 +519,14 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -543,19 +535,10 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -563,7 +546,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Multiplying gives a multiple of both.",
+                  "v": "False. It is 3.",
                 },
               ],
               "id": "RA",
@@ -572,7 +555,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The LCM is always smaller than the product.",
+                  "v": "False. It is 36.",
                 },
               ],
               "id": "RB",
@@ -581,7 +564,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It works when the numbers share no factor, like 5 and 7, but the LCM of 30 and 42 is 210, not 1260.",
+                  "v": "True. 6 is the biggest number that divides both.",
                 },
               ],
               "id": "RC",
@@ -593,25 +576,17 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.FACTOR.LCM-PRODUCT",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.FACTOR.LCM-PRODUCT",
+            "code": "NPV.FACTOR.HCF-LCM",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -621,7 +596,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "HCF × LCM = the product of the two numbers.",
+            "v": "True. 6 is the biggest number that divides both.",
           },
         ],
       },
@@ -629,19 +604,19 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The LCM of two numbers is their product.",
+        "v": "Raj says the HCF of 12 and 18 is 6.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -653,13 +628,13 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -668,19 +643,10 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -688,7 +654,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Multiplying gives a multiple of both.",
+                  "v": "False. 24 is the lowest number in both times tables. 48 is a common multiple, but not the lowest.",
                 },
               ],
               "id": "RA",
@@ -697,7 +663,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It works when the numbers share no factor, like 2 and 5, but the LCM of 16 and 40 is 80, not 640.",
+                  "v": "True. 6 × 8 = 48.",
                 },
               ],
               "id": "RB",
@@ -706,7 +672,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The LCM is always smaller than the product.",
+                  "v": "True. LCM means multiply.",
                 },
               ],
               "id": "RC",
@@ -718,7 +684,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.FACTOR.LCM-PRODUCT",
@@ -736,7 +702,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -746,7 +712,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "HCF × LCM = the product of the two numbers.",
+            "v": "False. 24 is the lowest number in both times tables. 48 is a common multiple, but not the lowest.",
           },
         ],
       },
@@ -754,7 +720,7 @@ exports[`GF-N4.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The LCM of two numbers is their product.",
+        "v": "Kit says the LCM of 6 and 8 is 48.",
       },
     ],
   },

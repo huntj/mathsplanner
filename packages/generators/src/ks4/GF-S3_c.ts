@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import type { CartesianSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const LOWS = [140, 150, 160, 170, 180];
 
@@ -42,7 +43,7 @@ function histogram(f: number[]): CartesianSpec {
 
 export default defineGenerator<Params>({
   id: "GF-S3.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.SCALE.READ"],
 
@@ -94,22 +95,57 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Rae says the bars of a histogram should have gaps between them, like a bar chart.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Rae says the bars of a histogram should have gaps between them, like a bar chart.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A histogram shows continuous data, so each bar runs from one class boundary to the next and the bars touch.",
+                  correct: true,
+                },
+                { text: "True. All bar charts have gaps." },
+                { text: "True. The gaps show where one class ends.", code: "STA.SCALE.READ" },
+              ],
+              solution: [{ say: "Continuous data has no gaps between classes." }],
+            }),
+          [
             {
-              text: "False. A histogram shows continuous data, so each bar runs from one class boundary to the next and the bars touch.",
-              correct: true,
+              statement: "Leo says the bars of a histogram for continuous data touch each other.",
+              truth: true,
+              right: "True. Continuous data has no gaps between classes.",
+              wrong: [
+                ["False. There must be gaps.", "STA.SCALE.READ"],
+                ["False. Only bar charts touch."],
+              ],
             },
-            { text: "True. All bar charts have gaps." },
-            { text: "True. The gaps show where one class ends.", code: "STA.SCALE.READ" },
+            {
+              claim:
+                "A bar chart for categories such as favourite colour has gaps between the bars.",
+              truth: "always",
+              right: "Always. The categories are separate.",
+              wrong: [
+                ["Never. The bars always touch.", "STA.SCALE.READ"],
+                ["Sometimes. Only for colours."],
+              ],
+            },
+            {
+              statement:
+                "Ana reads a bar on a chart whose scale goes up in 2s. The bar stops halfway between 8 and 10. She says it shows 8.5.",
+              truth: false,
+              right: "False. Halfway between 8 and 10 is 9.",
+              wrong: [
+                ["True. Each small step is 0.5.", "STA.SCALE.READ"],
+                ["True. Add half to the lower number.", "STA.SCALE.READ"],
+              ],
+            },
           ],
-          solution: [{ say: "Continuous data has no gaps between classes." }],
-        });
+        );
     }
   },
 

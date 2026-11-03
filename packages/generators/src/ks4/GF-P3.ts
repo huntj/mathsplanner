@@ -8,6 +8,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   trials: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-P3",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["PRO.ODDS", "PRO.RELATIVE-FREQUENCY.EXACT"],
 
@@ -80,27 +81,61 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `A bag has ${p.red} red and ${p.total - p.red} blue counters. Kim takes one and puts it back ${p.total * 10} times. She says she expects about ${p.red * 10} reds.`,
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `A bag has ${p.red} red and ${p.total - p.red} blue counters. Kim takes one and puts it back ${p.total * 10} times. She says she expects about ${p.red * 10} reds.`,
+              truth: true,
+              reasons: [
+                {
+                  text: `True. P(red) = ${p.red}/${p.total}, and ${p.red}/${p.total} × ${p.total * 10} = ${p.red * 10}.`,
+                  correct: true,
+                },
+                {
+                  text: `False. She will get exactly ${p.red * 10}.`,
+                  code: "PRO.RELATIVE-FREQUENCY.EXACT",
+                },
+                { text: `False. P(red) = ${p.red}/${p.total - p.red}.`, code: "PRO.ODDS" },
+              ],
+              solution: [
+                {
+                  say: "Expected frequency = theoretical probability × trials; the actual count will vary around it.",
+                },
+              ],
+            }),
+          [
             {
-              text: `True. P(red) = ${p.red}/${p.total}, and ${p.red}/${p.total} × ${p.total * 10} = ${p.red * 10}.`,
-              correct: true,
+              statement: "A dice is rolled 600 times. Sol expects about 100 sixes.",
+              truth: true,
+              right: "True. 600 × 1/6 = 100.",
+              wrong: [
+                ["False. Exactly 100 must come up.", "PRO.RELATIVE-FREQUENCY.EXACT"],
+                ["False. 600 ÷ 6 means 6 sixes.", "PRO.ODDS"],
+              ],
             },
             {
-              text: `False. She will get exactly ${p.red * 10}.`,
-              code: "PRO.RELATIVE-FREQUENCY.EXACT",
+              claim: "An event with probability 0 is impossible.",
+              truth: "always",
+              right: "Always. Probability 0 means it cannot happen.",
+              wrong: [
+                ["Never. 0 means very likely.", "PRO.ODDS"],
+                ["Sometimes. With enough trials it happens."],
+              ],
             },
-            { text: `False. P(red) = ${p.red}/${p.total - p.red}.`, code: "PRO.ODDS" },
+            {
+              statement:
+                "The probability of rain is 0.2. Kim says the probability of no rain is 0.2 too.",
+              truth: false,
+              right: "False. P(no rain) = 1 − 0.2 = 0.8.",
+              wrong: [
+                ["True. Rain and no rain are even.", "PRO.ODDS"],
+                ["True. It is the same day.", "PRO.ODDS"],
+              ],
+            },
           ],
-          solution: [
-            {
-              say: "Expected frequency = theoretical probability × trials; the actual count will vary around it.",
-            },
-          ],
-        });
+        );
     }
   },
 

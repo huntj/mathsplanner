@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { bracket, poly } from "../shared/alg.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   p: number;
@@ -23,7 +24,7 @@ const factorised = (p: number, q: number) => `${bracket(Math.min(p, q))}${bracke
 
 export default defineGenerator<Params>({
   id: "GF-A4.e",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.FACTORISE.SIGNS"],
 
@@ -109,21 +110,55 @@ export default defineGenerator<Params>({
             odd: true,
           },
         ];
-        return A.oddOneOut({
+        return orClaims(
           rng,
-          question: "Which quadratic is the odd one out?",
-          items,
-          reasons: [
-            { text: `It is the only one without a factor of (x + ${p.f}).`, correct: true },
-            { text: "It is the only one with a positive constant term." },
-            { text: "It is the only one that cannot be factorised.", code: "ALG.FACTORISE.SIGNS" },
-          ],
-          solution: [
+          () =>
+            A.oddOneOut({
+              rng,
+              question: "Which quadratic is the odd one out?",
+              items,
+              reasons: [
+                { text: `It is the only one without a factor of (x + ${p.f}).`, correct: true },
+                { text: "It is the only one with a positive constant term." },
+                {
+                  text: "It is the only one that cannot be factorised.",
+                  code: "ALG.FACTORISE.SIGNS",
+                },
+              ],
+              solution: [
+                {
+                  say: `Factorising: ${p.partners.map((m) => factorised(p.f, m)).join(", ")} all contain (x + ${p.f}); the other is ${factorised(p.odd[0] ?? 1, p.odd[1] ?? 2)}.`,
+                },
+              ],
+            }),
+          [
             {
-              say: `Factorising: ${p.partners.map((m) => factorised(p.f, m)).join(", ")} all contain (x + ${p.f}); the other is ${factorised(p.odd[0] ?? 1, p.odd[1] ?? 2)}.`,
+              statement: "Kai factorises $x^2 + 5x + 6$ as $(x + 2)(x + 3)$.",
+              truth: true,
+              right: "True. 2 × 3 = 6 and 2 + 3 = 5.",
+              wrong: [
+                ["False. It is (x + 1)(x + 6).", "ALG.FACTORISE.SIGNS"],
+                ["False. It is (x + 5)(x + 6)."],
+              ],
+            },
+            {
+              claim: "If $x^2 + bx + c$ has c negative, its two brackets have different signs.",
+              truth: "always",
+              right:
+                "Always. The numbers multiply to a negative, so one is positive and one is negative.",
+              wrong: [
+                ["Never. Both are negative.", "ALG.FACTORISE.SIGNS"],
+                ["Sometimes. If b is negative."],
+              ],
+            },
+            {
+              statement: "Pia factorises $x^2 - 7x + 12$ as $(x + 3)(x + 4)$.",
+              truth: false,
+              right: "False. The numbers must add to −7: (x − 3)(x − 4).",
+              wrong: [["True. 3 × 4 = 12.", "ALG.FACTORISE.SIGNS"], ["True. Signs do not matter."]],
             },
           ],
-        });
+        );
       }
     }
   },

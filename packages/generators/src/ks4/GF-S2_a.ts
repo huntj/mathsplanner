@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { barChart, pieChart, TOPICS } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   topic: number;
@@ -22,7 +23,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-S2.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.PIE.ANGLE-AS-COUNT", "STA.SCALE.READ"],
 
@@ -98,25 +99,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `School A's pie chart of ${topic.what} has a bigger ${name(0)} sector than School B's. Jo says more pupils at School A chose ${name(0)}.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `School A's pie chart of ${topic.what} has a bigger ${name(0)} sector than School B's. Jo says more pupils at School A chose ${name(0)}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A pie chart shows proportions. If School B asked many more pupils, its smaller sector could stand for more people.",
+                  correct: true,
+                },
+                {
+                  text: "True. A bigger sector always means more people.",
+                  code: "STA.PIE.ANGLE-AS-COUNT",
+                },
+                {
+                  text: "True. The angle is the number of pupils.",
+                  code: "STA.PIE.ANGLE-AS-COUNT",
+                },
+              ],
+              solution: [{ say: "To compare numbers, you need each chart's total too." }],
+            }),
+          [
             {
-              text: "False. A pie chart shows proportions. If School B asked many more pupils, its smaller sector could stand for more people.",
-              correct: true,
+              statement: "A pie chart shows 90 people. Kai says each person is 4°.",
+              truth: true,
+              right: "True. 360° ÷ 90 = 4°.",
+              wrong: [
+                ["False. Each is 90°.", "STA.PIE.ANGLE-AS-COUNT"],
+                ["False. Each is 1°.", "STA.PIE.ANGLE-AS-COUNT"],
+              ],
             },
             {
-              text: "True. A bigger sector always means more people.",
-              code: "STA.PIE.ANGLE-AS-COUNT",
+              claim: "The angles in a pie chart add up to 360°.",
+              truth: "always",
+              right: "Always. The sectors make a full circle.",
+              wrong: [
+                ["Never. They add to 100°.", "STA.PIE.ANGLE-AS-COUNT"],
+                ["Sometimes. Only for 360 people."],
+              ],
             },
-            { text: "True. The angle is the number of pupils.", code: "STA.PIE.ANGLE-AS-COUNT" },
+            {
+              statement:
+                "In a pie chart of 60 pupils, the 'walk' sector is 120°. Mia says 120 pupils walk.",
+              truth: false,
+              right: "False. 120° is a third of the circle: 20 pupils.",
+              wrong: [
+                ["True. The angle is the number.", "STA.PIE.ANGLE-AS-COUNT"],
+                ["True. Read the angle.", "STA.SCALE.READ"],
+              ],
+            },
           ],
-          solution: [{ say: "To compare numbers, you need each chart's total too." }],
-        });
+        );
     }
   },
 

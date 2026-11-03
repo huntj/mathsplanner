@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-R7",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.ADDITIVE"],
 
@@ -64,30 +65,64 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Jas says ",
-            A.math(`${p.a} : ${p.b}`),
-            " and ",
-            A.math(`${p.a + p.k} : ${p.b + p.k}`),
-            " are in proportion, because she added the same to both parts.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Jas says ",
+                A.math(`${p.a} : ${p.b}`),
+                " and ",
+                A.math(`${p.a + p.k} : ${p.b + p.k}`),
+                " are in proportion, because she added the same to both parts.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Equal ratios come from multiplying both parts by the same number. ${p.a}/${p.b} ≠ ${p.a + p.k}/${p.b + p.k}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Any change done to both parts keeps the ratio.",
+                  code: "RAT.ADDITIVE",
+                },
+                { text: "True. Both ratios grew by the same amount.", code: "RAT.ADDITIVE" },
+              ],
+              solution: [
+                {
+                  say: "Ratios are equal when their parts are in the same multiplicative relationship.",
+                },
+              ],
+            }),
+          [
             {
-              text: `False. Equal ratios come from multiplying both parts by the same number. ${p.a}/${p.b} ≠ ${p.a + p.k}/${p.b + p.k}.`,
-              correct: true,
+              statement: "Raj says 2 : 3 and 8 : 12 are in proportion.",
+              truth: true,
+              right: "True. Both parts are multiplied by 4.",
+              wrong: [
+                ["False. 8 − 2 ≠ 12 − 3.", "RAT.ADDITIVE"],
+                ["False. They use different numbers."],
+              ],
             },
-            { text: "True. Any change done to both parts keeps the ratio.", code: "RAT.ADDITIVE" },
-            { text: "True. Both ratios grew by the same amount.", code: "RAT.ADDITIVE" },
-          ],
-          solution: [
             {
-              say: "Ratios are equal when their parts are in the same multiplicative relationship.",
+              claim: "Equivalent ratios are made by multiplying both parts by the same number.",
+              truth: "always",
+              right: "Always. That keeps the same relationship between the parts.",
+              wrong: [["Never. Add the same to both.", "RAT.ADDITIVE"], ["Sometimes. Only by 2."]],
+            },
+            {
+              statement:
+                "Pia says 4 : 6 and 6 : 8 are in proportion, because each part goes up by 2.",
+              truth: false,
+              right: "False. 4/6 = 2/3 but 6/8 = 3/4: adding changes the ratio.",
+              wrong: [
+                ["True. Add the same to both parts.", "RAT.ADDITIVE"],
+                ["True. Both go up by 2."],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

@@ -10,7 +10,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A4.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -80,7 +80,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A4.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -150,7 +150,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A4.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -220,7 +220,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A4.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -282,7 +282,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A4.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -344,7 +344,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A4.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -406,7 +406,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A4.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -418,7 +418,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -453,7 +453,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Square roots can be added like this.",
+                  "v": "Never. It is not even true for a = 0.",
                 },
               ],
               "id": "RA",
@@ -462,7 +462,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It holds when a or b is 0, but not otherwise: √4 + √6 is not √10.",
+                  "v": "Always. Square roots can be added like this.",
                 },
               ],
               "id": "RB",
@@ -471,7 +471,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. It is not even true for a = 0.",
+                  "v": "Sometimes. It holds when a or b is 0, but not otherwise: √4 + √6 is not √10.",
                 },
               ],
               "id": "RC",
@@ -483,7 +483,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.SURD.ADD-INSIDE",
@@ -531,7 +531,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A4.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -542,8 +542,8 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -578,7 +578,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. It is not even true for a = 0.",
+                  "v": "Always. Squaring undoes the square root.",
                 },
               ],
               "id": "RA",
@@ -587,7 +587,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Square roots can be added like this.",
+                  "v": "Never. It is 2a.",
                 },
               ],
               "id": "RB",
@@ -596,7 +596,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It holds when a or b is 0, but not otherwise: √81 + √5 is not √86.",
+                  "v": "Sometimes. Only for square numbers.",
                 },
               ],
               "id": "RC",
@@ -628,19 +628,23 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "√9 + √16 = 7, but √25 = 5.",
+            "v": "Always. Squaring undoes the square root.",
           },
         ],
       },
     ],
     "stem": [
       {
+        "t": "math",
+        "v": "(\\sqrt{a})^2 = a",
+      },
+      {
         "t": "text",
-        "v": "For numbers a ≥ 0 and b ≥ 0, ",
+        "v": " for ",
       },
       {
         "t": "math",
-        "v": "\\sqrt{a} + \\sqrt{b} = \\sqrt{a + b}",
+        "v": "a \\ge 0",
       },
       {
         "t": "text",
@@ -649,14 +653,14 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A4.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -667,14 +671,14 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -683,19 +687,10 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -703,7 +698,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. It is not even true for a = 0.",
+                  "v": "False. It is √3 − 1.",
                 },
               ],
               "id": "RA",
@@ -712,7 +707,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Square roots can be added like this.",
+                  "v": "True. It is (√3)² − 1² = 3 − 1.",
                 },
               ],
               "id": "RB",
@@ -721,7 +716,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It holds when a or b is 0, but not otherwise: √25 + √13 is not √38.",
+                  "v": "False. It is 4.",
                 },
               ],
               "id": "RC",
@@ -733,17 +728,25 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.SURD.ADD-INSIDE",
+            "code": "ALG.EXPAND.NEGATIVE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.EXPAND.BINOMIAL-TWO-TERMS",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -753,7 +756,7 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "√9 + √16 = 7, but √25 = 5.",
+            "v": "True. It is (√3)² − 1² = 3 − 1.",
           },
         ],
       },
@@ -761,11 +764,11 @@ exports[`GH-A4.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "For numbers a ≥ 0 and b ≥ 0, ",
+        "v": "Mia says ",
       },
       {
         "t": "math",
-        "v": "\\sqrt{a} + \\sqrt{b} = \\sqrt{a + b}",
+        "v": "(\\sqrt{3} + 1)(\\sqrt{3} - 1) = 2",
       },
       {
         "t": "text",

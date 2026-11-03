@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { legsTriangle } from "../shared/geo.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -21,7 +22,7 @@ const deg = (r: number) => (r * 180) / Math.PI;
 
 export default defineGenerator<Params>({
   id: "GF-G20.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.TRIG.RATIO"],
 
@@ -103,22 +104,53 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            "In a right-angled triangle, if the two shorter sides are equal, the other two angles are 45°.",
-          ],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "In a right-angled triangle, if the two shorter sides are equal, the other two angles are 45°.",
+              ],
+              truth: "always",
+              reasons: [
+                {
+                  text: `Always. tan θ = ${p.a} ÷ ${p.a} = 1, and tan 45° = 1. It is also an isosceles triangle.`,
+                  correct: true,
+                },
+                {
+                  text: "Sometimes. It depends on how long the sides are.",
+                  code: "GEO.TRIG.RATIO",
+                },
+                { text: "Never. The angles are 30° and 60°.", code: "GEO.TRIG.RATIO" },
+              ],
+              solution: [{ say: "Equal sides give equal angles: (180° − 90°) ÷ 2 = 45°." }],
+            }),
+          [
             {
-              text: `Always. tan θ = ${p.a} ÷ ${p.a} = 1, and tan 45° = 1. It is also an isosceles triangle.`,
-              correct: true,
+              statement:
+                "In a right-angled triangle, opposite = 5 cm and adjacent = 5 cm. Bea says the angle is 45°.",
+              truth: true,
+              right: "True. tan θ = 1, so θ = 45°.",
+              wrong: [["False. It is 90°.", "GEO.TRIG.RATIO"], ["False. It is 30°."]],
             },
-            { text: "Sometimes. It depends on how long the sides are.", code: "GEO.TRIG.RATIO" },
-            { text: "Never. The angles are 30° and 60°.", code: "GEO.TRIG.RATIO" },
+            {
+              claim: "Using $\\sin^{-1}$ on a ratio gives an angle.",
+              truth: "always",
+              right: "Always. The inverse function turns a ratio back into an angle.",
+              wrong: [["Never. It gives a side.", "GEO.TRIG.RATIO"], ["Sometimes. Only for 30°."]],
+            },
+            {
+              statement: "Ana finds an angle with cos θ = 0.5 and says θ = cos 0.5.",
+              truth: false,
+              right: "False. θ = cos⁻¹(0.5) = 60°.",
+              wrong: [
+                ["True. Press cos and the ratio.", "GEO.TRIG.RATIO"],
+                ["True. cos 0.5 is the angle.", "GEO.TRIG.RATIO"],
+              ],
+            },
           ],
-          solution: [{ say: "Equal sides give equal angles: (180° − 90°) ÷ 2 = 45°." }],
-        });
+        );
     }
   },
 

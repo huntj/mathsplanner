@@ -10,7 +10,7 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -81,7 +81,7 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -152,7 +152,7 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -223,7 +223,7 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -294,7 +294,7 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -365,7 +365,7 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -436,7 +436,7 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -448,7 +448,7 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -474,7 +474,7 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The same two operations give the same result in any order.",
+                  "v": "False. The machine multiplies first, so it is y = 5x − 7. 5(x − 7) subtracts first, giving 5x − 35.",
                 },
               ],
               "id": "RA",
@@ -483,7 +483,7 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The machine multiplies first, so it is y = 5x − 7. 5(x − 7) subtracts first, giving 5x − 35.",
+                  "v": "True. Brackets do not change the answer.",
                 },
               ],
               "id": "RB",
@@ -492,7 +492,7 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Brackets do not change the answer.",
+                  "v": "True. The same two operations give the same result in any order.",
                 },
               ],
               "id": "RC",
@@ -504,7 +504,7 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.FUNCTION.ORDER",
@@ -561,14 +561,14 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -579,146 +579,14 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The same two operations give the same result in any order.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. The machine multiplies first, so it is y = 7x − 14. 7(x − 14) subtracts first, giving 7x − 98.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Brackets do not change the answer.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.FUNCTION.ORDER",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.FUNCTION.ORDER",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Try x = 10: the machine gives 56; 7(10 − 14) = -28.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Tom says the function machine ",
-      },
-      {
-        "t": "math",
-        "v": "\\text{input} \\rightarrow \\boxed{\\times 7} \\rightarrow \\boxed{- 14} \\rightarrow \\text{output}",
-      },
-      {
-        "t": "text",
-        "v": " gives the same output as ",
-      },
-      {
-        "t": "math",
-        "v": "y = 7(x - 14)",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GF-A7",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
+          "correct": "C",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -727,10 +595,19 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -738,7 +615,7 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The machine multiplies first, so it is y = 9x − 6. 9(x − 6) subtracts first, giving 9x − 54.",
+                  "v": "Never. 2(x + 5) = 2x + 10, but 2x + 5 is always 5 less.",
                 },
               ],
               "id": "RA",
@@ -747,7 +624,7 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The same two operations give the same result in any order.",
+                  "v": "Always. Order does not matter.",
                 },
               ],
               "id": "RB",
@@ -756,7 +633,7 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Brackets do not change the answer.",
+                  "v": "Sometimes. When x is 0.",
                 },
               ],
               "id": "RC",
@@ -786,7 +663,7 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -796,7 +673,7 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Try x = 10: the machine gives 84; 9(10 − 6) = 36.",
+            "v": "Never. 2(x + 5) = 2x + 10, but 2x + 5 is always 5 less.",
           },
         ],
       },
@@ -804,23 +681,132 @@ exports[`GF-A7 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Tom says the function machine ",
+        "v": "A function machine 'add 5, then multiply by 2' gives the same output as 'multiply by 2, then add 5'.",
       },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-A7",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
       {
-        "t": "math",
-        "v": "\\text{input} \\rightarrow \\boxed{\\times 9} \\rightarrow \\boxed{- 6} \\rightarrow \\text{output}",
+        "answer": {
+          "correct": "C",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. 2(x + 5) = 2x + 10, but 2x + 5 is always 5 less.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. Order does not matter.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. When x is 0.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "ALG.FUNCTION.ORDER",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.FUNCTION.ORDER",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
       },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Never. 2(x + 5) = 2x + 10, but 2x + 5 is always 5 less.",
+          },
+        ],
+      },
+    ],
+    "stem": [
       {
         "t": "text",
-        "v": " gives the same output as ",
-      },
-      {
-        "t": "math",
-        "v": "y = 9(x - 6)",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "A function machine 'add 5, then multiply by 2' gives the same output as 'multiply by 2, then add 5'.",
       },
     ],
   },

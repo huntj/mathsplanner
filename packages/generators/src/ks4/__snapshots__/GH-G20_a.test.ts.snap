@@ -105,7 +105,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-G20.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -266,7 +266,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-G20.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -427,7 +427,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-G20.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -493,7 +493,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-G20.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -555,7 +555,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-G20.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -617,7 +617,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-G20.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -672,14 +672,14 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-G20.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -690,14 +690,14 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -706,10 +706,19 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -717,7 +726,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The longest edge is the longest length.",
+                  "v": "Sometimes. Only for cubes.",
                 },
               ],
               "id": "RA",
@@ -726,7 +735,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It fits along the space diagonal, √(6² + 7² + 5²) ≈ 10.5 cm.",
+                  "v": "Never. It is the longest edge.",
                 },
               ],
               "id": "RB",
@@ -735,7 +744,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It fits across the base diagonal, 6 cm.",
+                  "v": "Always. It joins opposite corners through the inside.",
                 },
               ],
               "id": "RC",
@@ -747,15 +756,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.3D.WRONG-TRIANGLE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.3D.WRONG-TRIANGLE",
@@ -765,7 +766,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -775,7 +776,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Corner to opposite corner through the inside is the longest distance.",
+            "v": "Always. It joins opposite corners through the inside.",
           },
         ],
       },
@@ -783,7 +784,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jay says the longest straight rod that fits inside a 6 cm by 7 cm by 5 cm box is 6 cm long.",
+        "v": "The longest straight line inside a cuboid is a space diagonal.",
       },
     ],
   },
@@ -795,7 +796,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-G20.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -807,7 +808,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -833,7 +834,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It fits along the space diagonal, √(5² + 4² + 8²) ≈ 10.2 cm.",
+                  "v": "True. The longest edge is the longest length.",
                 },
               ],
               "id": "RA",
@@ -842,7 +843,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The longest edge is the longest length.",
+                  "v": "True. It fits across the base diagonal, 5 cm.",
                 },
               ],
               "id": "RB",
@@ -851,7 +852,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It fits across the base diagonal, 5 cm.",
+                  "v": "False. It fits along the space diagonal, √(5² + 4² + 8²) ≈ 10.2 cm.",
                 },
               ],
               "id": "RC",
@@ -863,7 +864,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "GEO.3D.WRONG-TRIANGLE",
@@ -871,7 +872,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.3D.WRONG-TRIANGLE",
@@ -904,14 +905,14 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-G20.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -922,14 +923,14 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -938,10 +939,19 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -949,7 +959,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It fits along the space diagonal, √(6² + 8² + 3²) ≈ 10.4 cm.",
+                  "v": "Always. It joins opposite corners through the inside.",
                 },
               ],
               "id": "RA",
@@ -958,7 +968,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The longest edge is the longest length.",
+                  "v": "Never. It is the longest edge.",
                 },
               ],
               "id": "RB",
@@ -967,7 +977,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It fits across the base diagonal, 6 cm.",
+                  "v": "Sometimes. Only for cubes.",
                 },
               ],
               "id": "RC",
@@ -985,19 +995,11 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
             "code": "GEO.3D.WRONG-TRIANGLE",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "GEO.3D.WRONG-TRIANGLE",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1007,7 +1009,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Corner to opposite corner through the inside is the longest distance.",
+            "v": "Always. It joins opposite corners through the inside.",
           },
         ],
       },
@@ -1015,7 +1017,7 @@ exports[`GH-G20.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jay says the longest straight rod that fits inside a 6 cm by 8 cm by 3 cm box is 6 cm long.",
+        "v": "The longest straight line inside a cuboid is a space diagonal.",
       },
     ],
   },

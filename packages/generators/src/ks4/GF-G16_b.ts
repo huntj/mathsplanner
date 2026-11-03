@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { cuboid } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   l: number;
@@ -21,7 +22,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-G16.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.VOLUME.ADDS", "MEA.AREA.TRIANGLE-HALF"],
 
@@ -94,20 +95,52 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["Doubling the length of a prism doubles its volume."],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["Doubling the length of a prism doubles its volume."],
+              truth: "always",
+              reasons: [
+                {
+                  text: "Always. Volume = area of cross-section × length, and the cross-section does not change.",
+                  correct: true,
+                },
+                { text: "Sometimes. Only for cuboids." },
+                { text: "Never. It makes the volume 8 times bigger.", code: "MEA.VOLUME.ADDS" },
+              ],
+              solution: [{ say: "Only one of the three dimensions doubles." }],
+            }),
+          [
             {
-              text: "Always. Volume = area of cross-section × length, and the cross-section does not change.",
-              correct: true,
+              statement:
+                "A prism has cross-section area 12 cm² and length 5 cm. Leo says its volume is 60 cm³.",
+              truth: true,
+              right: "True. Volume = cross-section × length.",
+              wrong: [
+                ["False. It is 17 cm³.", "MEA.VOLUME.ADDS"],
+                ["False. It is 30 cm³.", "MEA.AREA.TRIANGLE-HALF"],
+              ],
             },
-            { text: "Sometimes. Only for cuboids." },
-            { text: "Never. It makes the volume 8 times bigger.", code: "MEA.VOLUME.ADDS" },
+            {
+              claim: "The volume of a prism is its cross-section area times its length.",
+              truth: "always",
+              right: "Always. Each layer has the same cross-section.",
+              wrong: [["Never. Add them.", "MEA.VOLUME.ADDS"], ["Sometimes. Only for cuboids."]],
+            },
+            {
+              statement:
+                "A triangular prism has a triangle of base 4 cm and height 3 cm, and length 10 cm. Mia says its volume is 120 cm³.",
+              truth: false,
+              right: "False. The triangle's area is ½ × 4 × 3 = 6 cm², so the volume is 60 cm³.",
+              wrong: [
+                ["True. 4 × 3 × 10 = 120.", "MEA.AREA.TRIANGLE-HALF"],
+                ["True. Multiply all the lengths.", "MEA.AREA.TRIANGLE-HALF"],
+              ],
+            },
           ],
-          solution: [{ say: "Only one of the three dimensions doubles." }],
-        });
+        );
     }
   },
 

@@ -10,7 +10,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A18.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -80,7 +80,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A18.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -150,7 +150,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A18.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -220,7 +220,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A18.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -293,7 +293,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A18.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -366,7 +366,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A18.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -432,14 +432,14 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A18.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -450,14 +450,14 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -466,10 +466,19 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -477,7 +486,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Take the square root of the positive part.",
+                  "v": "Always. The square root in the formula is a positive real number.",
                 },
               ],
               "id": "RA",
@@ -486,7 +495,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The formula always gives two answers, from the ±.",
+                  "v": "Never. It has none.",
                 },
               ],
               "id": "RB",
@@ -495,7 +504,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The square root of a negative number has no real value, so there are no real solutions: the graph does not cross the x-axis.",
+                  "v": "Sometimes. Only if a = 1.",
                 },
               ],
               "id": "RC",
@@ -505,14 +514,6 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.QUADRATIC.FORMULA",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RB",
@@ -525,7 +526,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -535,7 +536,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Discriminant > 0: two roots; = 0: one; < 0: none.",
+            "v": "Always. The square root in the formula is a positive real number.",
           },
         ],
       },
@@ -543,15 +544,15 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Uma says that when ",
+        "v": "If ",
       },
       {
         "t": "math",
-        "v": "b^2 - 4ac < 0",
+        "v": "b^2 - 4ac > 0",
       },
       {
         "t": "text",
-        "v": ", the quadratic formula still gives two solutions.",
+        "v": ", a quadratic has two different real roots.",
       },
     ],
   },
@@ -563,7 +564,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A18.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -574,8 +575,8 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -601,7 +602,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The square root of a negative number has no real value, so there are no real solutions: the graph does not cross the x-axis.",
+                  "v": "False. There are two different roots.",
                 },
               ],
               "id": "RA",
@@ -610,7 +611,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Take the square root of the positive part.",
+                  "v": "True. 36 − 36 = 0: the root is x = 3.",
                 },
               ],
               "id": "RB",
@@ -619,7 +620,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The formula always gives two answers, from the ±.",
+                  "v": "False. There are no roots.",
                 },
               ],
               "id": "RC",
@@ -631,15 +632,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.QUADRATIC.FORMULA",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.QUADRATIC.FORMULA",
@@ -659,7 +652,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Discriminant > 0: two roots; = 0: one; < 0: none.",
+            "v": "True. 36 − 36 = 0: the root is x = 3.",
           },
         ],
       },
@@ -667,15 +660,23 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Uma says that when ",
+        "v": "For ",
       },
       {
         "t": "math",
-        "v": "b^2 - 4ac < 0",
+        "v": "x^2 - 6x + 9 = 0",
       },
       {
         "t": "text",
-        "v": ", the quadratic formula still gives two solutions.",
+        "v": ", Kim says ",
+      },
+      {
+        "t": "math",
+        "v": "b^2 - 4ac = 0",
+      },
+      {
+        "t": "text",
+        "v": ", so there is one repeated root.",
       },
     ],
   },
@@ -687,7 +688,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A18.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -725,7 +726,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Take the square root of the positive part.",
+                  "v": "True. b is the second number.",
                 },
               ],
               "id": "RA",
@@ -734,7 +735,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The formula always gives two answers, from the ±.",
+                  "v": "True. Order does not matter.",
                 },
               ],
               "id": "RB",
@@ -743,7 +744,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The square root of a negative number has no real value, so there are no real solutions: the graph does not cross the x-axis.",
+                  "v": "False. b is the coefficient of x, which is 3; a = 2.",
                 },
               ],
               "id": "RC",
@@ -783,7 +784,7 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Discriminant > 0: two roots; = 0: one; < 0: none.",
+            "v": "False. b is the coefficient of x, which is 3; a = 2.",
           },
         ],
       },
@@ -791,15 +792,15 @@ exports[`GH-A18.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Uma says that when ",
+        "v": "Leo uses the quadratic formula on ",
       },
       {
         "t": "math",
-        "v": "b^2 - 4ac < 0",
+        "v": "2x^2 + 3x - 5 = 0",
       },
       {
         "t": "text",
-        "v": ", the quadratic formula still gives two solutions.",
+        "v": " with b = 2.",
       },
     ],
   },

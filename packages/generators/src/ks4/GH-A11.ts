@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { bracket, poly, signed } from "../shared/alg.ts";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** x² + 2hx + c = (x + h)² + (c − h²). */
@@ -20,7 +21,7 @@ const square = (h: number, q: number) => `${bracket(h)}^2${q === 0 ? "" : ` ${si
 
 export default defineGenerator<Params>({
   id: "GH-A11",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.COMPLETE-SQUARE.HALF", "ALG.QUADRATIC.TURNING"],
 
@@ -90,41 +91,74 @@ export default defineGenerator<Params>({
         });
       default: {
         const shown = p.claimTrue ? `(${-p.h}, ${q})` : `(${p.h}, ${q})`;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Eve says the turning point of ",
-            A.math(`y = ${square(p.h, q)}`),
-            " is ",
-            A.math(shown),
-            ".",
-          ],
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
-                {
-                  text: `True. The square is zero when x = ${-p.h}, and then y = ${q}.`,
-                  correct: true,
-                },
-                {
-                  text: `False. It is (${p.h}, ${q}): read the number in the bracket.`,
-                  code: "ALG.QUADRATIC.TURNING",
-                },
-                { text: `False. It is (0, ${q}).`, code: "ALG.QUADRATIC.TURNING" },
-              ]
-            : [
-                {
-                  text: `False. The square is zero when x = ${-p.h}, so the turning point is (${-p.h}, ${q}).`,
-                  correct: true,
-                },
-                {
-                  text: "True. The x-coordinate is the number in the bracket.",
-                  code: "ALG.QUADRATIC.TURNING",
-                },
-                { text: "True. Turning points always have a positive x-coordinate." },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Eve says the turning point of ",
+                A.math(`y = ${square(p.h, q)}`),
+                " is ",
+                A.math(shown),
+                ".",
               ],
-          solution: [{ say: `y = (x + a)² + b has its turning point at (−a, b).` }],
-        });
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    {
+                      text: `True. The square is zero when x = ${-p.h}, and then y = ${q}.`,
+                      correct: true,
+                    },
+                    {
+                      text: `False. It is (${p.h}, ${q}): read the number in the bracket.`,
+                      code: "ALG.QUADRATIC.TURNING",
+                    },
+                    { text: `False. It is (0, ${q}).`, code: "ALG.QUADRATIC.TURNING" },
+                  ]
+                : [
+                    {
+                      text: `False. The square is zero when x = ${-p.h}, so the turning point is (${-p.h}, ${q}).`,
+                      correct: true,
+                    },
+                    {
+                      text: "True. The x-coordinate is the number in the bracket.",
+                      code: "ALG.QUADRATIC.TURNING",
+                    },
+                    { text: "True. Turning points always have a positive x-coordinate." },
+                  ],
+              solution: [{ say: `y = (x + a)² + b has its turning point at (−a, b).` }],
+            }),
+          [
+            {
+              statement: "Kim writes $x^2 + 6x + 2$ as $(x + 3)^2 - 7$.",
+              truth: true,
+              right: "True. (x + 3)² = x² + 6x + 9, and 9 − 7 = 2.",
+              wrong: [
+                ["False. It is (x + 6)² + 2.", "ALG.COMPLETE-SQUARE.HALF"],
+                ["False. It is (x + 3)² + 2.", "ALG.COMPLETE-SQUARE.HALF"],
+              ],
+            },
+            {
+              claim: "The minimum point of $y = (x - a)^2 + b$ is $(a, b)$.",
+              truth: "always",
+              right: "Always. The square is smallest, 0, when x = a.",
+              wrong: [
+                ["Never. It is (−a, b).", "ALG.QUADRATIC.TURNING"],
+                ["Sometimes. Only if a is positive."],
+              ],
+            },
+            {
+              statement: "Raj writes $x^2 - 8x$ as $(x - 8)^2 - 64$.",
+              truth: false,
+              right: "False. Halve the coefficient: (x − 4)² − 16.",
+              wrong: [
+                ["True. Use the 8 as it is.", "ALG.COMPLETE-SQUARE.HALF"],
+                ["True. Subtract 8² to balance.", "ALG.COMPLETE-SQUARE.HALF"],
+              ],
+            },
+          ],
+        );
       }
     }
   },

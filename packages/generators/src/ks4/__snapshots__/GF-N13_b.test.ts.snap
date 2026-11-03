@@ -10,7 +10,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N13.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -73,7 +73,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N13.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -136,7 +136,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N13.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -199,7 +199,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N13.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -248,7 +248,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N13.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -311,7 +311,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N13.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -367,14 +367,14 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N13.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -385,14 +385,14 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RB",
+          "correct": "B",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -401,19 +401,10 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -421,7 +412,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. You have gone twice as far.",
+                  "v": "True. Distance is speed times time.",
                 },
               ],
               "id": "RA",
@@ -430,7 +421,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Speed = distance ÷ time, and doubling both leaves it the same: 80 ÷ 4 = 20.",
+                  "v": "True. 12 × 30 = 360.",
                 },
               ],
               "id": "RB",
@@ -439,7 +430,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends how fast you started.",
+                  "v": "False. 30 minutes is 0.5 hours: 12 × 0.5 = 6 km.",
                 },
               ],
               "id": "RC",
@@ -451,7 +442,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "RAT.COMPOUND-UNIT.ARRANGEMENT",
@@ -461,7 +452,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -471,7 +462,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Doubling the top and the bottom of a division does not change the answer.",
+            "v": "False. 30 minutes is 0.5 hours: 12 × 0.5 = 6 km.",
           },
         ],
       },
@@ -479,19 +470,19 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "If you travel twice as far in twice the time, your average speed doubles.",
+        "v": "A cyclist rides at 12 km/h for 30 minutes. Leo says she goes 360 km.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N13.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -502,14 +493,14 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -518,19 +509,10 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -538,7 +520,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Speed = distance ÷ time, and doubling both leaves it the same: 320 ÷ 4 = 80.",
+                  "v": "False. It is 0.017 km/h.",
                 },
               ],
               "id": "RA",
@@ -547,7 +529,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. You have gone twice as far.",
+                  "v": "False. It is 375 km/h.",
                 },
               ],
               "id": "RB",
@@ -556,7 +538,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends how fast you started.",
+                  "v": "True. 150 ÷ 2.5 = 60.",
                 },
               ],
               "id": "RC",
@@ -566,6 +548,14 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "RAT.COMPOUND-UNIT.ARRANGEMENT",
+            "feedback": [],
+          },
           {
             "answer": {
               "id": "RB",
@@ -578,7 +568,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -588,7 +578,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Doubling the top and the bottom of a division does not change the answer.",
+            "v": "True. 150 ÷ 2.5 = 60.",
           },
         ],
       },
@@ -596,7 +586,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "If you travel twice as far in twice the time, your average speed doubles.",
+        "v": "A car travels 150 km in 2.5 hours. Ivy says its average speed is 60 km/h.",
       },
     ],
   },
@@ -608,7 +598,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N13.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -655,7 +645,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends how fast you started.",
+                  "v": "Always. You have gone twice as far.",
                 },
               ],
               "id": "RA",
@@ -664,7 +654,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. You have gone twice as far.",
+                  "v": "Sometimes. It depends how fast you started.",
                 },
               ],
               "id": "RB",
@@ -685,7 +675,7 @@ exports[`GF-N13.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "RAT.COMPOUND-UNIT.ARRANGEMENT",

@@ -81,7 +81,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -224,7 +224,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -367,7 +367,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -510,7 +510,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -653,7 +653,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -796,7 +796,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -861,14 +861,14 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -879,14 +879,14 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -895,10 +895,19 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -906,7 +915,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Angles between parallel lines are always equal.",
+                  "v": "Always. One is supplementary to an angle equal to the other.",
                 },
               ],
               "id": "RA",
@@ -915,7 +924,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Co-interior angles add up to 180°, so they are only equal when both are 90°. Here, 72° pairs with 108°.",
+                  "v": "Never. They are equal.",
                 },
               ],
               "id": "RB",
@@ -924,7 +933,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Like alternate angles, they make a Z shape.",
+                  "v": "Sometimes. Only for right angles.",
                 },
               ],
               "id": "RC",
@@ -936,15 +945,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.PARALLEL.CO-INTERIOR-EQUAL",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.PARALLEL.CO-INTERIOR-EQUAL",
@@ -954,7 +955,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -964,7 +965,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Co-interior angles make a C (or U) shape and add to 180°.",
+            "v": "Always. One is supplementary to an angle equal to the other.",
           },
         ],
       },
@@ -972,7 +973,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Mo says co-interior angles on parallel lines are always equal.",
+        "v": "Co-interior angles on parallel lines add up to 180°.",
       },
     ],
   },
@@ -984,7 +985,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -995,7 +996,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -1022,7 +1023,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Angles between parallel lines are always equal.",
+                  "v": "False. It is 20°.",
                 },
               ],
               "id": "RA",
@@ -1031,7 +1032,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Co-interior angles add up to 180°, so they are only equal when both are 90°. Here, 43° pairs with 137°.",
+                  "v": "True. Alternate angles on parallel lines are equal.",
                 },
               ],
               "id": "RB",
@@ -1040,7 +1041,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Like alternate angles, they make a Z shape.",
+                  "v": "False. It is 110°.",
                 },
               ],
               "id": "RC",
@@ -1052,18 +1053,10 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.PARALLEL.CO-INTERIOR-EQUAL",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "GEO.PARALLEL.CO-INTERIOR-EQUAL",
+            "code": "GEO.PARALLEL.ALTERNATE-SUPPLEMENTARY",
             "feedback": [],
           },
         ],
@@ -1080,7 +1073,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Co-interior angles make a C (or U) shape and add to 180°.",
+            "v": "True. Alternate angles on parallel lines are equal.",
           },
         ],
       },
@@ -1088,7 +1081,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Mo says co-interior angles on parallel lines are always equal.",
+        "v": "A line crosses two parallel lines. One alternate angle is 70°. Kai says the other is 70°.",
       },
     ],
   },
@@ -1100,7 +1093,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1147,7 +1140,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Like alternate angles, they make a Z shape.",
+                  "v": "True. Angles between parallel lines are always equal.",
                 },
               ],
               "id": "RB",
@@ -1156,7 +1149,7 @@ exports[`GF-G3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Angles between parallel lines are always equal.",
+                  "v": "True. Like alternate angles, they make a Z shape.",
                 },
               ],
               "id": "RC",

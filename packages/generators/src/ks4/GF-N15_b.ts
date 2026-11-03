@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { tex } from "../shared/npv.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   z: number;
@@ -25,7 +26,7 @@ const small = (p: Params) => {
 
 export default defineGenerator<Params>({
   id: "GF-N15.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: [
     "NPV.ROUND.DP-SF",
@@ -97,39 +98,73 @@ export default defineGenerator<Params>({
       default: {
         const x = `0.0${p.a}0${p.c}`;
         const right = Number(`0.0${p.a}${p.c >= 5 ? 1 : 0}`);
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Asha says ", A.math(x), ` to 2 significant figures is 0.0${p.a}.`],
-          truth: p.c < 5,
-          reasons: [
-            p.c >= 5
-              ? {
-                  text: `False. The first significant figure is ${p.a}; the 0 after it is the second, and it rounds up: ${right}.`,
-                  correct: true,
-                }
-              : {
-                  text: `True. The first significant figure is ${p.a}; the second is 0 and stays 0, so it is 0.0${p.a}0, written ${right}.`,
-                  correct: true,
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Asha says ", A.math(x), ` to 2 significant figures is 0.0${p.a}.`],
+              truth: p.c < 5,
+              reasons: [
+                p.c >= 5
+                  ? {
+                      text: `False. The first significant figure is ${p.a}; the 0 after it is the second, and it rounds up: ${right}.`,
+                      correct: true,
+                    }
+                  : {
+                      text: `True. The first significant figure is ${p.a}; the second is 0 and stays 0, so it is 0.0${p.a}0, written ${right}.`,
+                      correct: true,
+                    },
+                {
+                  text:
+                    p.c >= 5
+                      ? "True. The zeros do not count, so keep two digits after the point."
+                      : "False. Zeros never count as significant figures.",
+                  code: "NPV.ROUND.SF-LEADING-ZERO",
                 },
+                {
+                  text:
+                    p.c >= 5
+                      ? "True. 2 significant figures means 2 decimal places."
+                      : "False. It should be 0.07 to 2 decimal places.",
+                  code: "NPV.ROUND.DP-SF",
+                },
+              ],
+              solution: [
+                { say: "Leading zeros are not significant, but zeros between other digits are." },
+              ],
+            }),
+          [
             {
-              text:
-                p.c >= 5
-                  ? "True. The zeros do not count, so keep two digits after the point."
-                  : "False. Zeros never count as significant figures.",
-              code: "NPV.ROUND.SF-LEADING-ZERO",
+              statement: "Kit rounds 34,560 to 2 significant figures and gets 35,000.",
+              truth: true,
+              right:
+                "True. The first two significant figures are 3 and 4; the next digit, 5, rounds up.",
+              wrong: [
+                ["False. It is 35.", "NPV.PLACE.ZERO-PLACEHOLDER"],
+                ["False. It is 34,560.00.", "NPV.ROUND.DP-SF"],
+              ],
             },
             {
-              text:
-                p.c >= 5
-                  ? "True. 2 significant figures means 2 decimal places."
-                  : "False. It should be 0.07 to 2 decimal places.",
-              code: "NPV.ROUND.DP-SF",
+              claim: "Leading zeros, as in 0.004, are significant figures.",
+              truth: "never",
+              right: "Never. Significant figures start at the first non-zero digit.",
+              wrong: [
+                ["Always. Every digit counts.", "NPV.ROUND.SF-LEADING-ZERO"],
+                ["Sometimes. After the point they count.", "NPV.ROUND.SF-LEADING-ZERO"],
+              ],
+            },
+            {
+              statement: "Ana rounds 7.0382 to 3 significant figures and gets 7.038.",
+              truth: false,
+              right: "False. 3 significant figures are 7, 0 and 3: 7.04.",
+              wrong: [
+                ["True. 3 decimal places is 3 figures.", "NPV.ROUND.DP-SF"],
+                ["True. The 0 does not count.", "NPV.ROUND.SF-LEADING-ZERO"],
+              ],
             },
           ],
-          solution: [
-            { say: "Leading zeros are not significant, but zeros between other digits are." },
-          ],
-        });
+        );
       }
     }
   },

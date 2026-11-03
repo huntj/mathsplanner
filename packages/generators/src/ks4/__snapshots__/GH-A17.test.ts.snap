@@ -31,7 +31,7 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A17",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -138,7 +138,7 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A17",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -245,7 +245,7 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A17",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -355,7 +355,7 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A17",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -473,7 +473,7 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A17",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -591,7 +591,7 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A17",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -685,7 +685,7 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A17",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -696,8 +696,8 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -723,7 +723,7 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Read the y-intercept instead.",
+                  "v": "True. The solutions are where y = 0.",
                 },
               ],
               "id": "RA",
@@ -732,7 +732,7 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Solutions are always where a graph crosses the x-axis.",
+                  "v": "False. Read the lowest point.",
                 },
               ],
               "id": "RB",
@@ -741,7 +741,7 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The x-axis is where y = 0. To solve this, read where the line meets y = -1.",
+                  "v": "False. Read where it crosses the y-axis.",
                 },
               ],
               "id": "RC",
@@ -753,15 +753,7 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SOLUTION-Y",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.GRAPH.SOLUTION-Y",
@@ -781,7 +773,7 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Draw the line y = -1 and read the x-coordinate where it meets y = -x + 1.",
+            "v": "True. The solutions are where y = 0.",
           },
         ],
       },
@@ -789,23 +781,23 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Leo says you can solve ",
+        "v": "To solve ",
       },
       {
         "t": "math",
-        "v": "-x + 1 = -1",
+        "v": "x^2 - 3 = 0",
       },
       {
         "t": "text",
-        "v": " by reading where the graph of ",
+        "v": " from a graph of ",
       },
       {
         "t": "math",
-        "v": "y = -x + 1",
+        "v": "y = x^2 - 3",
       },
       {
         "t": "text",
-        "v": " crosses the x-axis.",
+        "v": ", Raj reads where it crosses the x-axis.",
       },
     ],
   },
@@ -817,7 +809,7 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A17",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -855,7 +847,7 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Solutions are always where a graph crosses the x-axis.",
+                  "v": "True. Solutions are on the x-axis.",
                 },
               ],
               "id": "RA",
@@ -864,7 +856,7 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The x-axis is where y = 0. To solve this, read where the line meets y = 2.",
+                  "v": "False. x² = 5 means x² − 2 = 3, so read where it meets y = 3.",
                 },
               ],
               "id": "RB",
@@ -873,7 +865,7 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Read the y-intercept instead.",
+                  "v": "True. Any equation is solved at y = 0.",
                 },
               ],
               "id": "RC",
@@ -913,7 +905,7 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Draw the line y = 2 and read the x-coordinate where it meets y = -x + 3.",
+            "v": "False. x² = 5 means x² − 2 = 3, so read where it meets y = 3.",
           },
         ],
       },
@@ -921,23 +913,23 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Leo says you can solve ",
+        "v": "To solve ",
       },
       {
         "t": "math",
-        "v": "-x + 3 = 2",
+        "v": "x^2 = 5",
       },
       {
         "t": "text",
-        "v": " by reading where the graph of ",
+        "v": " from the graph of ",
       },
       {
         "t": "math",
-        "v": "y = -x + 3",
+        "v": "y = x^2 - 2",
       },
       {
         "t": "text",
-        "v": " crosses the x-axis.",
+        "v": ", Ana reads where it crosses the x-axis.",
       },
     ],
   },
@@ -949,7 +941,7 @@ exports[`GH-A17 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A17",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

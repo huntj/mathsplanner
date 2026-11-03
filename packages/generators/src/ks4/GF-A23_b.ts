@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { linear, signedWrongs } from "../shared/alg.ts";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 export interface Params {
   a: number;
@@ -20,7 +21,7 @@ export interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-A23.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SEQUENCE.POSITION-RULE"],
 
@@ -91,34 +92,71 @@ export default defineGenerator<Params>({
       }
       default: {
         const t = p.a * p.k + p.b + (p.truth ? 0 : 1);
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [`Sam says ${t} is a term of the sequence with nth term `, A.math(rule), "."],
-          truth: p.truth,
-          reasons: p.truth
-            ? [
-                { text: `True. ${rule} = ${t} gives n = ${p.k}, a whole number.`, correct: true },
-                {
-                  text: `False. ${t} is not a multiple of ${p.a}.`,
-                  code: "ALG.SEQUENCE.POSITION-RULE",
-                },
-                { text: "False. Big numbers cannot be in the sequence." },
-              ]
-            : [
-                {
-                  text: `False. ${rule} = ${t} gives n = ${(t - p.b) / p.a}, not a whole number.`,
-                  correct: true,
-                },
-                {
-                  text: `True. Every number above ${p.a + p.b} is in the sequence.`,
-                  code: "ALG.SEQUENCE.POSITION-RULE",
-                },
-                { text: "True. The sequence goes up steadily, so it reaches every number." },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Sam says ${t} is a term of the sequence with nth term `,
+                A.math(rule),
+                ".",
               ],
-          solution: [
-            { say: "Solve the nth term equal to the number: a term needs a whole-number n." },
+              truth: p.truth,
+              reasons: p.truth
+                ? [
+                    {
+                      text: `True. ${rule} = ${t} gives n = ${p.k}, a whole number.`,
+                      correct: true,
+                    },
+                    {
+                      text: `False. ${t} is not a multiple of ${p.a}.`,
+                      code: "ALG.SEQUENCE.POSITION-RULE",
+                    },
+                    { text: "False. Big numbers cannot be in the sequence." },
+                  ]
+                : [
+                    {
+                      text: `False. ${rule} = ${t} gives n = ${(t - p.b) / p.a}, not a whole number.`,
+                      correct: true,
+                    },
+                    {
+                      text: `True. Every number above ${p.a + p.b} is in the sequence.`,
+                      code: "ALG.SEQUENCE.POSITION-RULE",
+                    },
+                    { text: "True. The sequence goes up steadily, so it reaches every number." },
+                  ],
+              solution: [
+                { say: "Solve the nth term equal to the number: a term needs a whole-number n." },
+              ],
+            }),
+          [
+            {
+              statement: "Ana says the 10th term of the sequence with nth term $3n + 2$ is 32.",
+              truth: true,
+              right: "True. 3 × 10 + 2 = 32.",
+              wrong: [["False. It is 50.", "ALG.SEQUENCE.POSITION-RULE"], ["False. It is 15."]],
+            },
+            {
+              claim: "The sequence with nth term $2n$ contains every even number.",
+              truth: "always",
+              right: "Always, for every positive even number. 2n gives 2, 4, 6, …",
+              wrong: [
+                ["Never. It skips some.", "ALG.SEQUENCE.POSITION-RULE"],
+                ["Sometimes. Only small ones."],
+              ],
+            },
+            {
+              statement: "Raj says 50 is a term of the sequence with nth term $4n + 1$.",
+              truth: false,
+              right: "False. 4n + 1 = 50 gives n = 12.25, which is not a whole number.",
+              wrong: [
+                ["True. 50 is a big even number.", "ALG.SEQUENCE.POSITION-RULE"],
+                ["True. Every number is in it eventually."],
+              ],
+            },
           ],
-        });
+        );
       }
     }
   },

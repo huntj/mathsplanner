@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   r: number;
@@ -18,7 +19,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "GF-G17.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: [
     "MEA.CIRCLE.FORMULA",
@@ -75,22 +76,59 @@ export default defineGenerator<Params>({
       }
       default: {
         const half = r1(Math.PI * p.r);
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Sid says the perimeter of a semicircle of radius ${p.r} cm is ${half} cm, half of the circle's circumference.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Sid says the perimeter of a semicircle of radius ${p.r} cm is ${half} cm, half of the circle's circumference.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The perimeter also includes the straight edge, the diameter: ${half} + ${2 * p.r} = ${r1(Math.PI * p.r + 2 * p.r)} cm.`,
+                  correct: true,
+                },
+                {
+                  text: "True. A semicircle is half a circle.",
+                  code: "MEA.PERIMETER.MISSING-SIDES",
+                },
+                { text: "False. It is πr², half of the area.", code: "MEA.CIRCLE.FORMULA" },
+              ],
+              solution: [{ say: "A perimeter goes all the way round the shape." }],
+            }),
+          [
             {
-              text: `False. The perimeter also includes the straight edge, the diameter: ${half} + ${2 * p.r} = ${r1(Math.PI * p.r + 2 * p.r)} cm.`,
-              correct: true,
+              statement:
+                "Kim says the circumference of a circle with diameter 10 cm is $10\\pi$ cm.",
+              truth: true,
+              right: "True. C = πd.",
+              wrong: [
+                ["False. It is 25π cm.", "MEA.CIRCLE.FORMULA"],
+                ["False. It is 20π cm.", "GEO.CIRCLE.RADIUS-DIAMETER"],
+              ],
             },
-            { text: "True. A semicircle is half a circle.", code: "MEA.PERIMETER.MISSING-SIDES" },
-            { text: "False. It is πr², half of the area.", code: "MEA.CIRCLE.FORMULA" },
+            {
+              claim: "The perimeter of a semicircle is more than half the circle's circumference.",
+              truth: "always",
+              right: "Always. It also includes the straight diameter.",
+              wrong: [
+                ["Never. It is exactly half.", "MEA.PERIMETER.MISSING-SIDES"],
+                ["Sometimes. Only for big circles."],
+              ],
+            },
+            {
+              statement: "Gus says a circle of radius 5 cm has area $10\\pi$ cm².",
+              truth: false,
+              right: "False. A = πr² = 25π cm². 10π cm is the circumference.",
+              wrong: [
+                ["True. π × 2 × 5.", "MEA.CIRCLE.FORMULA"],
+                ["True. Area is π times the diameter.", "MEA.CIRCLE.FORMULA"],
+              ],
+            },
           ],
-          solution: [{ say: "A perimeter goes all the way round the shape." }],
-        });
+        );
       }
     }
   },

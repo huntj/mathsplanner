@@ -10,7 +10,7 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -80,7 +80,7 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -150,7 +150,7 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -245,7 +245,7 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -387,7 +387,7 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -529,7 +529,7 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -639,14 +639,147 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only for positive x.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. A positive number to any power is positive.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. It goes below for negative x.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.GRAPH.SHAPE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. A positive number to any power is positive.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The graph of ",
+      },
+      {
+        "t": "math",
+        "v": "y = a^x",
+      },
+      {
+        "t": "text",
+        "v": " with ",
+      },
+      {
+        "t": "math",
+        "v": "a > 1",
+      },
+      {
+        "t": "text",
+        "v": " is always above the x-axis.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GH-A12.a",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -684,7 +817,7 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 4^(−10) is negative.",
+                  "v": "True. It goes through (0, 0).",
                 },
               ],
               "id": "RA",
@@ -693,7 +826,7 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 4^x is positive for every x: for very negative x it gets closer and closer to 0 but never reaches it.",
+                  "v": "False. It never meets either axis; they are asymptotes.",
                 },
               ],
               "id": "RB",
@@ -702,7 +835,7 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every curve crosses the x-axis eventually.",
+                  "v": "True. Every curve crosses the axes.",
                 },
               ],
               "id": "RC",
@@ -742,7 +875,7 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "4^(−n) = 1/4^n, which is small but positive.",
+            "v": "False. It never meets either axis; they are asymptotes.",
           },
         ],
       },
@@ -750,139 +883,15 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jake says the graph of ",
+        "v": "Pia says the graph of ",
       },
       {
         "t": "math",
-        "v": "y = 4^x",
+        "v": "y = \\frac{1}{x}",
       },
       {
         "t": "text",
-        "v": " crosses the x-axis when x is very negative.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "GH-A12.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Every curve crosses the x-axis eventually.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. 4^(−10) is negative.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. 4^x is positive for every x: for very negative x it gets closer and closer to 0 but never reaches it.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SHAPE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SHAPE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "4^(−n) = 1/4^n, which is small but positive.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Jake says the graph of ",
-      },
-      {
-        "t": "math",
-        "v": "y = 4^x",
-      },
-      {
-        "t": "text",
-        "v": " crosses the x-axis when x is very negative.",
+        "v": " crosses both axes.",
       },
     ],
   },
@@ -894,7 +903,7 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -906,7 +915,7 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -932,7 +941,7 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every curve crosses the x-axis eventually.",
+                  "v": "False. It never meets either axis; they are asymptotes.",
                 },
               ],
               "id": "RA",
@@ -941,7 +950,7 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 2^(−10) is negative.",
+                  "v": "True. Every curve crosses the axes.",
                 },
               ],
               "id": "RB",
@@ -950,7 +959,7 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 2^x is positive for every x: for very negative x it gets closer and closer to 0 but never reaches it.",
+                  "v": "True. It goes through (0, 0).",
                 },
               ],
               "id": "RC",
@@ -962,7 +971,7 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.GRAPH.SHAPE",
@@ -970,7 +979,7 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.GRAPH.SHAPE",
@@ -990,7 +999,7 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "2^(−n) = 1/2^n, which is small but positive.",
+            "v": "False. It never meets either axis; they are asymptotes.",
           },
         ],
       },
@@ -998,15 +1007,15 @@ exports[`GH-A12.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jake says the graph of ",
+        "v": "Pia says the graph of ",
       },
       {
         "t": "math",
-        "v": "y = 2^x",
+        "v": "y = \\frac{1}{x}",
       },
       {
         "t": "text",
-        "v": " crosses the x-axis when x is very negative.",
+        "v": " crosses both axes.",
       },
     ],
   },

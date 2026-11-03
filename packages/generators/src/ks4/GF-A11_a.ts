@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { curveClearOfOrigin, grid, poly, signedWrongs } from "../shared/alg.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { distinctFrom } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 export interface Params {
   a: number;
@@ -17,7 +18,7 @@ export interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-A11.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.QUADRATIC.ROOT-SIGN", "ALG.QUADRATIC.TURNING"],
 
@@ -80,29 +81,65 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Jo says the roots of ",
-            A.math(
-              `y = (x ${p.a < 0 ? "+" : "-"} ${Math.abs(p.a)})(x ${p.b < 0 ? "+" : "-"} ${Math.abs(p.b)})`,
-            ),
-            ` are x = ${-p.a} and x = ${-p.b}.`,
-          ],
-          truth: false,
-          reasons: [
-            { text: `False. y = 0 when a bracket is 0: x = ${p.a} or x = ${p.b}.`, correct: true },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Jo says the roots of ",
+                A.math(
+                  `y = (x ${p.a < 0 ? "+" : "-"} ${Math.abs(p.a)})(x ${p.b < 0 ? "+" : "-"} ${Math.abs(p.b)})`,
+                ),
+                ` are x = ${-p.a} and x = ${-p.b}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. y = 0 when a bracket is 0: x = ${p.a} or x = ${p.b}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The roots are the numbers in the brackets.",
+                  code: "ALG.QUADRATIC.ROOT-SIGN",
+                },
+                {
+                  text: "True. Roots are where the curve crosses the y-axis.",
+                  code: "ALG.QUADRATIC.TURNING",
+                },
+              ],
+              solution: [{ say: `Check: x = ${p.a} makes the first bracket 0.` }],
+            }),
+          [
             {
-              text: "True. The roots are the numbers in the brackets.",
-              code: "ALG.QUADRATIC.ROOT-SIGN",
+              statement: "Ivy says the roots of $y = (x - 2)(x - 6)$ are x = 2 and x = 6.",
+              truth: true,
+              right: "True. Each bracket is 0 at those values.",
+              wrong: [
+                ["False. They are −2 and −6.", "ALG.QUADRATIC.ROOT-SIGN"],
+                ["False. They are 2 and −6."],
+              ],
             },
             {
-              text: "True. Roots are where the curve crosses the y-axis.",
-              code: "ALG.QUADRATIC.TURNING",
+              claim: "The roots of a quadratic are where its graph crosses the x-axis.",
+              truth: "always",
+              right: "Always. At the roots y = 0.",
+              wrong: [
+                ["Never. They are where it crosses the y-axis.", "ALG.QUADRATIC.TURNING"],
+                ["Sometimes. Only for U-shaped graphs."],
+              ],
+            },
+            {
+              statement: "Gil says the roots of $y = (x + 5)(x - 1)$ are x = 5 and x = −1.",
+              truth: false,
+              right: "False. x + 5 = 0 when x = −5, and x − 1 = 0 when x = 1.",
+              wrong: [
+                ["True. Read the numbers in the brackets.", "ALG.QUADRATIC.ROOT-SIGN"],
+                ["True. The signs stay the same.", "ALG.QUADRATIC.ROOT-SIGN"],
+              ],
             },
           ],
-          solution: [{ say: `Check: x = ${p.a} makes the first bracket 0.` }],
-        });
+        );
     }
   },
 

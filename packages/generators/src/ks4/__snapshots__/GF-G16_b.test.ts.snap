@@ -105,7 +105,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G16.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -262,7 +262,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G16.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -419,7 +419,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G16.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -481,7 +481,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G16.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -548,7 +548,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G16.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -615,7 +615,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G16.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -675,14 +675,14 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G16.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -693,14 +693,14 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -709,19 +709,10 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -729,7 +720,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. It makes the volume 8 times bigger.",
+                  "v": "True. 4 × 3 × 10 = 120.",
                 },
               ],
               "id": "RA",
@@ -738,7 +729,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Volume = area of cross-section × length, and the cross-section does not change.",
+                  "v": "False. The triangle's area is ½ × 4 × 3 = 6 cm², so the volume is 60 cm³.",
                 },
               ],
               "id": "RB",
@@ -747,7 +738,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only for cuboids.",
+                  "v": "True. Multiply all the lengths.",
                 },
               ],
               "id": "RC",
@@ -762,14 +753,22 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "MEA.VOLUME.ADDS",
+            "code": "MEA.AREA.TRIANGLE-HALF",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "MEA.AREA.TRIANGLE-HALF",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -779,7 +778,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Only one of the three dimensions doubles.",
+            "v": "False. The triangle's area is ½ × 4 × 3 = 6 cm², so the volume is 60 cm³.",
           },
         ],
       },
@@ -787,19 +786,19 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Doubling the length of a prism doubles its volume.",
+        "v": "A triangular prism has a triangle of base 4 cm and height 3 cm, and length 10 cm. Mia says its volume is 120 cm³.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G16.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -811,13 +810,13 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -826,19 +825,10 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -846,7 +836,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. It makes the volume 8 times bigger.",
+                  "v": "True. Volume = cross-section × length.",
                 },
               ],
               "id": "RA",
@@ -855,7 +845,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only for cuboids.",
+                  "v": "False. It is 30 cm³.",
                 },
               ],
               "id": "RB",
@@ -864,7 +854,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Volume = area of cross-section × length, and the cross-section does not change.",
+                  "v": "False. It is 17 cm³.",
                 },
               ],
               "id": "RC",
@@ -876,7 +866,15 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MEA.AREA.TRIANGLE-HALF",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
               "type": "choice",
             },
             "code": "MEA.VOLUME.ADDS",
@@ -886,7 +884,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -896,7 +894,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Only one of the three dimensions doubles.",
+            "v": "True. Volume = cross-section × length.",
           },
         ],
       },
@@ -904,19 +902,19 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Doubling the length of a prism doubles its volume.",
+        "v": "A prism has cross-section area 12 cm² and length 5 cm. Leo says its volume is 60 cm³.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G16.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -928,13 +926,13 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -943,19 +941,10 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -963,7 +952,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. It makes the volume 8 times bigger.",
+                  "v": "True. Volume = cross-section × length.",
                 },
               ],
               "id": "RA",
@@ -972,7 +961,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Volume = area of cross-section × length, and the cross-section does not change.",
+                  "v": "False. It is 30 cm³.",
                 },
               ],
               "id": "RB",
@@ -981,7 +970,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only for cuboids.",
+                  "v": "False. It is 17 cm³.",
                 },
               ],
               "id": "RC",
@@ -993,7 +982,15 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MEA.AREA.TRIANGLE-HALF",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
               "type": "choice",
             },
             "code": "MEA.VOLUME.ADDS",
@@ -1003,7 +1000,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -1013,7 +1010,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Only one of the three dimensions doubles.",
+            "v": "True. Volume = cross-section × length.",
           },
         ],
       },
@@ -1021,7 +1018,7 @@ exports[`GF-G16.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Doubling the length of a prism doubles its volume.",
+        "v": "A prism has cross-section area 12 cm² and length 5 cm. Leo says its volume is 60 cm³.",
       },
     ],
   },

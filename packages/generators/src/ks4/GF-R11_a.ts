@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   s: number;
@@ -20,7 +21,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-R11.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.COMPOUND-UNIT.ARRANGEMENT", "MEA.TIME.DECIMAL", "RAT.SPEED.MEAN"],
 
@@ -89,27 +90,63 @@ export default defineGenerator<Params>({
       default: {
         const mean = (p.v1 + p.v2) / 2;
         const real = Math.round(((2 * p.v1 * p.v2) / (p.v1 + p.v2)) * 10) / 10;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Lou drives to a town at ${p.v1} km/h and back along the same road at ${p.v2} km/h. She says her average speed is ${mean} km/h.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Lou drives to a town at ${p.v1} km/h and back along the same road at ${p.v2} km/h. She says her average speed is ${mean} km/h.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. She spends longer on the slower leg, so average speed = total distance ÷ total time ≈ ${real} km/h.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The average is the mean of the two speeds.",
+                  code: "RAT.SPEED.MEAN",
+                },
+                {
+                  text: "True. Both legs are the same distance, so they count equally.",
+                  code: "RAT.SPEED.MEAN",
+                },
+              ],
+              solution: [
+                { say: `Try a 120 km road: the times are ${120 / p.v1} h and ${120 / p.v2} h.` },
+              ],
+            }),
+          [
             {
-              text: `False. She spends longer on the slower leg, so average speed = total distance ÷ total time ≈ ${real} km/h.`,
-              correct: true,
+              statement: "A runner covers 10 km in 50 minutes. Kai says her speed is 12 km/h.",
+              truth: true,
+              right: "True. 50 minutes is 5/6 hour, and 10 ÷ 5/6 = 12.",
+              wrong: [
+                ["False. It is 0.2 km/h.", "RAT.COMPOUND-UNIT.ARRANGEMENT"],
+                ["False. 10 ÷ 0.5 = 20 km/h.", "MEA.TIME.DECIMAL"],
+              ],
             },
-            { text: "True. The average is the mean of the two speeds.", code: "RAT.SPEED.MEAN" },
             {
-              text: "True. Both legs are the same distance, so they count equally.",
-              code: "RAT.SPEED.MEAN",
+              claim: "Average speed is total distance divided by total time.",
+              truth: "always",
+              right: "Always. That is its definition.",
+              wrong: [
+                ["Never. It is the mean of the speeds.", "RAT.SPEED.MEAN"],
+                ["Sometimes. Only on one road."],
+              ],
+            },
+            {
+              statement: "A bus goes 90 km in 1 hour 30 minutes. Ola says its speed is 69.2 km/h.",
+              truth: false,
+              right: "False. 1 hour 30 minutes is 1.5 hours: 90 ÷ 1.5 = 60 km/h.",
+              wrong: [
+                ["True. 90 ÷ 1.3 ≈ 69.2.", "MEA.TIME.DECIMAL"],
+                ["True. Divide by the time as written.", "MEA.TIME.DECIMAL"],
+              ],
             },
           ],
-          solution: [
-            { say: `Try a 120 km road: the times are ${120 / p.v1} h and ${120 / p.v2} h.` },
-          ],
-        });
+        );
       }
     }
   },

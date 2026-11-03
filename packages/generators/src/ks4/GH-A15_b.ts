@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { vt } from "../shared/motion.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   v: number;
@@ -21,7 +22,7 @@ const distance = (p: Params) => (p.v * p.t1) / 2 + p.v * p.t2 + (p.v * p.t3) / 2
 
 export default defineGenerator<Params>({
   id: "GH-A15.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.GRAPH.AREA-GRADIENT"],
 
@@ -83,26 +84,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Lena says the area under a velocity–time graph gives the acceleration."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Lena says the area under a velocity–time graph gives the acceleration."],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. Area = velocity × time = distance travelled. The acceleration is the gradient.",
+                  correct: true,
+                },
+                {
+                  text: "True. Area measures how fast the speed changes.",
+                  code: "ALG.GRAPH.AREA-GRADIENT",
+                },
+                {
+                  text: "True. Area and gradient give the same thing.",
+                  code: "ALG.GRAPH.AREA-GRADIENT",
+                },
+              ],
+              solution: [{ say: "Check the units: (m/s) × s = m." }],
+            }),
+          [
             {
-              text: "False. Area = velocity × time = distance travelled. The acceleration is the gradient.",
-              correct: true,
+              statement: "Ana says the gradient of a velocity–time graph gives the acceleration.",
+              truth: true,
+              right: "True. Acceleration is the rate of change of velocity.",
+              wrong: [
+                ["False. It gives the distance.", "ALG.GRAPH.AREA-GRADIENT"],
+                ["False. It gives the speed."],
+              ],
             },
             {
-              text: "True. Area measures how fast the speed changes.",
-              code: "ALG.GRAPH.AREA-GRADIENT",
+              claim: "The area under a velocity–time graph gives the distance travelled.",
+              truth: "always",
+              right: "Always, for positive velocity. Area = velocity × time.",
+              wrong: [
+                ["Never. It gives the acceleration.", "ALG.GRAPH.AREA-GRADIENT"],
+                ["Sometimes. Only for straight lines."],
+              ],
             },
             {
-              text: "True. Area and gradient give the same thing.",
-              code: "ALG.GRAPH.AREA-GRADIENT",
+              statement:
+                "On a velocity–time graph, a flat line at 10 m/s for 5 s. Sol says the distance is 2 m.",
+              truth: false,
+              right: "False. Area = 10 × 5 = 50 m.",
+              wrong: [
+                ["True. 10 ÷ 5 = 2.", "ALG.GRAPH.AREA-GRADIENT"],
+                ["True. Use the gradient.", "ALG.GRAPH.AREA-GRADIENT"],
+              ],
             },
           ],
-          solution: [{ say: "Check the units: (m/s) × s = m." }],
-        });
+        );
     }
   },
 

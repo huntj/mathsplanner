@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const BASES = [2, 3, 5, 7];
 
@@ -25,7 +26,7 @@ const product = (e: number[]) =>
 
 export default defineGenerator<Params>({
   id: "GF-N4.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.FACTOR.NOT-PRIME", "NPV.POWER.TIMES-INDEX"],
 
@@ -95,27 +96,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Max says ",
-            A.math(`${right} \\times 1`),
-            ` is ${n} written as a product of prime factors.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Max says ",
+                A.math(`${right} \\times 1`),
+                ` is ${n} written as a product of prime factors.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. 1 is not a prime number, so it is left out: ${n} = ${right.replace(/\^\{(\d)\}/g, "^$1").replace(/\\times/g, "×")}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Multiplying by 1 does not change the value.",
+                  code: "NPV.FACTOR.NOT-PRIME",
+                },
+                { text: "True. 1 is a prime number.", code: "NPV.FACTOR.NOT-PRIME" },
+              ],
+              solution: [{ say: "A prime has exactly two factors; 1 has only one." }],
+            }),
+          [
             {
-              text: `False. 1 is not a prime number, so it is left out: ${n} = ${right.replace(/\^\{(\d)\}/g, "^$1").replace(/\\times/g, "×")}.`,
-              correct: true,
+              statement: "Leo says $60 = 2^2 \\times 3 \\times 5$.",
+              truth: true,
+              right: "True. 4 × 3 × 5 = 60, and 2, 3 and 5 are prime.",
+              wrong: [
+                ["False. It is 6 × 10.", "NPV.FACTOR.NOT-PRIME"],
+                ["False. 2² means 2 × 2 × 2.", "NPV.POWER.TIMES-INDEX"],
+              ],
             },
             {
-              text: "True. Multiplying by 1 does not change the value.",
-              code: "NPV.FACTOR.NOT-PRIME",
+              claim: "A number has exactly one product of prime factors, apart from the order.",
+              truth: "always",
+              right: "Always. This is the fundamental theorem of arithmetic.",
+              wrong: [
+                ["Sometimes. 12 = 2 × 6 or 3 × 4.", "NPV.FACTOR.NOT-PRIME"],
+                ["Never. There are many ways."],
+              ],
             },
-            { text: "True. 1 is a prime number.", code: "NPV.FACTOR.NOT-PRIME" },
+            {
+              statement: "Mia writes 18 as a product of prime factors as $2 \\times 9$.",
+              truth: false,
+              right: "False. 9 is not prime: 18 = 2 × 3².",
+              wrong: [
+                ["True. 2 × 9 = 18.", "NPV.FACTOR.NOT-PRIME"],
+                ["True. Any factor pair will do."],
+              ],
+            },
           ],
-          solution: [{ say: "A prime has exactly two factors; 1 has only one." }],
-        });
+        );
     }
   },
 

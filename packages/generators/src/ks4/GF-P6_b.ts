@@ -9,6 +9,7 @@ import { defineGenerator, frac, toLatex, type QuestionDraft } from "@mathsplanne
 import type { VennSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { exactAnswer, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   onlyA: number;
@@ -28,7 +29,7 @@ const venn = (p: Params): VennSpec => ({
 
 export default defineGenerator<Params>({
   id: "GF-P6.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["PRO.VENN.DOUBLE-COUNT"],
 
@@ -87,20 +88,55 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["The number in A or B equals the number in A plus the number in B."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["The number in A or B equals the number in A plus the number in B."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: `Sometimes. It works only when nothing is in both. Here ${p.onlyA + p.both} + ${p.both + p.onlyB} counts the ${p.both} in the overlap twice.`,
+                  correct: true,
+                },
+                { text: "Always. 'Or' means add.", code: "PRO.VENN.DOUBLE-COUNT" },
+                { text: "Never. You must always subtract something." },
+              ],
+              solution: [{ say: "n(A or B) = n(A) + n(B) − n(A and B)." }],
+            }),
+          [
             {
-              text: `Sometimes. It works only when nothing is in both. Here ${p.onlyA + p.both} + ${p.both + p.onlyB} counts the ${p.both} in the overlap twice.`,
-              correct: true,
+              statement:
+                "In a class, 12 play piano, 9 play guitar and 4 play both. Kim says 17 play at least one.",
+              truth: true,
+              right: "True. 12 + 9 − 4 = 17.",
+              wrong: [
+                ["False. 21 play at least one.", "PRO.VENN.DOUBLE-COUNT"],
+                ["False. 25 play at least one.", "PRO.VENN.DOUBLE-COUNT"],
+              ],
             },
-            { text: "Always. 'Or' means add.", code: "PRO.VENN.DOUBLE-COUNT" },
-            { text: "Never. You must always subtract something." },
+            {
+              claim: "The intersection $A \\cap B$ contains things in both A and B.",
+              truth: "always",
+              right: "Always. That is what intersection means.",
+              wrong: [
+                ["Never. It contains things in either.", "PRO.VENN.DOUBLE-COUNT"],
+                ["Sometimes. Only for numbers."],
+              ],
+            },
+            {
+              statement:
+                "A Venn diagram shows 6 only in A, 3 in both and 5 only in B. Leo says 9 are in B.",
+              truth: false,
+              right: "False. B holds 3 + 5 = 8.",
+              wrong: [
+                ["True. 6 + 3 = 9.", "PRO.VENN.DOUBLE-COUNT"],
+                ["True. Count A and the overlap."],
+              ],
+            },
           ],
-          solution: [{ say: "n(A or B) = n(A) + n(B) − n(A and B)." }],
-        });
+        );
     }
   },
 

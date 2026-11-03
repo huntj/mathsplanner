@@ -10,6 +10,7 @@ import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { coord, distinctFrom } from "../shared/pos.ts";
 import { lineGraph } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const LOWS = [0, 10, 20, 30, 40];
 
@@ -20,7 +21,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-S3.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.GROUPED.MIDPOINT", "STA.SCALE.READ"],
 
@@ -92,27 +93,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["The points of a frequency polygon are plotted at the upper class boundaries."],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "The points of a frequency polygon are plotted at the upper class boundaries.",
+              ],
+              truth: "never",
+              reasons: [
+                {
+                  text: "Never. They are plotted at the class midpoints, with the frequency as the height.",
+                  correct: true,
+                },
+                { text: "Always. That is where each class ends.", code: "STA.GROUPED.MIDPOINT" },
+                {
+                  text: "Sometimes. It depends on the width of the classes.",
+                  code: "STA.GROUPED.MIDPOINT",
+                },
+              ],
+              solution: [
+                {
+                  say: "Cumulative frequency graphs use upper boundaries; frequency polygons use midpoints.",
+                },
+              ],
+            }),
+          [
             {
-              text: "Never. They are plotted at the class midpoints, with the frequency as the height.",
-              correct: true,
+              statement: "Kai plots a frequency polygon using the midpoint of each class.",
+              truth: true,
+              right: "True. Points go at the class midpoints, joined with straight lines.",
+              wrong: [
+                ["False. Use the upper boundaries.", "STA.GROUPED.MIDPOINT"],
+                ["False. Use the lower boundaries.", "STA.GROUPED.MIDPOINT"],
+              ],
             },
-            { text: "Always. That is where each class ends.", code: "STA.GROUPED.MIDPOINT" },
             {
-              text: "Sometimes. It depends on the width of the classes.",
-              code: "STA.GROUPED.MIDPOINT",
+              claim: "A frequency polygon's points are joined with straight lines.",
+              truth: "always",
+              right: "Always. That is how it is drawn.",
+              wrong: [
+                ["Never. They are joined with a curve.", "STA.SCALE.READ"],
+                ["Sometimes. Only for small data."],
+              ],
+            },
+            {
+              statement: "For the class 20 < x ≤ 30, Mia plots her point at x = 30.",
+              truth: false,
+              right: "False. Plot at the midpoint, 25.",
+              wrong: [
+                ["True. Use the top of the class.", "STA.GROUPED.MIDPOINT"],
+                ["True. Use the biggest value.", "STA.GROUPED.MIDPOINT"],
+              ],
             },
           ],
-          solution: [
-            {
-              say: "Cumulative frequency graphs use upper boundaries; frequency polygons use midpoints.",
-            },
-          ],
-        });
+        );
     }
   },
 

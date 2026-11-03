@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { linear, signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-A17.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SOLVE.BOTH-SIDES"],
 
@@ -85,27 +86,61 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ben says that to solve ",
-            A.math(eq),
-            ` he should add ${p.c}x to both sides.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ben says that to solve ",
+                A.math(eq),
+                ` he should add ${p.c}x to both sides.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Subtract ${p.c}x from both sides to remove it from the right: ${p.a - p.c}x ${p.b < 0 ? "−" : "+"} ${Math.abs(p.b)} = ${d}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Moving a term to the other side keeps its sign.",
+                  code: "ALG.SOLVE.BOTH-SIDES",
+                },
+                { text: "True. Always add to collect like terms.", code: "ALG.SOLVE.BOTH-SIDES" },
+              ],
+              solution: [{ say: `x = ${p.x}.` }],
+            }),
+          [
             {
-              text: `False. Subtract ${p.c}x from both sides to remove it from the right: ${p.a - p.c}x ${p.b < 0 ? "−" : "+"} ${Math.abs(p.b)} = ${d}.`,
-              correct: true,
+              statement:
+                "To solve $5x + 2 = 3x + 10$, Ivy subtracts 3x from both sides to get $2x + 2 = 10$.",
+              truth: true,
+              right: "True. That collects the x terms on one side.",
+              wrong: [
+                ["False. She must add 3x.", "ALG.SOLVE.BOTH-SIDES"],
+                ["False. She should subtract 3x from one side only.", "ALG.SOLVE.BOTH-SIDES"],
+              ],
             },
             {
-              text: "True. Moving a term to the other side keeps its sign.",
-              code: "ALG.SOLVE.BOTH-SIDES",
+              claim: "Doing the same thing to both sides of an equation keeps it balanced.",
+              truth: "always",
+              right: "Always, as long as you do not divide by 0. Both sides stay equal.",
+              wrong: [
+                ["Never. It changes the answer.", "ALG.SOLVE.BOTH-SIDES"],
+                ["Sometimes. Only for adding."],
+              ],
             },
-            { text: "True. Always add to collect like terms.", code: "ALG.SOLVE.BOTH-SIDES" },
+            {
+              statement: "Leo solves $4x - 3 = 2x + 7$ and gets x = 2.",
+              truth: false,
+              right: "False. 2x = 10, so x = 5. Check: 17 = 17.",
+              wrong: [
+                ["True. 4x − 2x = 2x and 7 − 3 = 4, so x = 2.", "ALG.SOLVE.BOTH-SIDES"],
+                ["True. Divide 4 by 2."],
+              ],
+            },
           ],
-          solution: [{ say: `x = ${p.x}.` }],
-        });
+        );
     }
   },
 

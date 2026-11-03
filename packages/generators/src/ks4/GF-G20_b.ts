@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { rightTriangle } from "../shared/geo.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   angle: number;
@@ -21,7 +22,7 @@ const rad = (d: number) => (d * Math.PI) / 180;
 
 export default defineGenerator<Params>({
   id: "GF-G20.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.TRIG.RATIO"],
 
@@ -89,24 +90,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Nia says that in a right-angled triangle, the sine of an angle can be bigger than 1.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Nia says that in a right-angled triangle, the sine of an angle can be bigger than 1.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. sin θ = opposite ÷ hypotenuse, and the hypotenuse is the longest side, so the answer is less than 1.",
+                  correct: true,
+                },
+                { text: "True. It is a bigger number for bigger angles.", code: "GEO.TRIG.RATIO" },
+                {
+                  text: "True. It is adjacent ÷ opposite, which can be big.",
+                  code: "GEO.TRIG.RATIO",
+                },
+              ],
+              solution: [
+                { say: `For example sin ${p.angle}° ≈ ${Math.sin(rad(p.angle)).toFixed(3)}.` },
+              ],
+            }),
+          [
             {
-              text: "False. sin θ = opposite ÷ hypotenuse, and the hypotenuse is the longest side, so the answer is less than 1.",
-              correct: true,
+              statement:
+                "In a right-angled triangle, the hypotenuse is 20 cm and an angle is 30°. Kim says the side opposite it is 10 cm.",
+              truth: true,
+              right: "True. 20 × sin 30° = 20 × 0.5 = 10.",
+              wrong: [
+                ["False. Use cos: about 17.3 cm.", "GEO.TRIG.RATIO"],
+                ["False. Use tan: about 11.5 cm.", "GEO.TRIG.RATIO"],
+              ],
             },
-            { text: "True. It is a bigger number for bigger angles.", code: "GEO.TRIG.RATIO" },
-            { text: "True. It is adjacent ÷ opposite, which can be big.", code: "GEO.TRIG.RATIO" },
+            {
+              claim: "$\\tan \\theta = \\frac{\\text{opposite}}{\\text{adjacent}}$.",
+              truth: "always",
+              right: "Always. That is the definition of tangent in a right-angled triangle.",
+              wrong: [
+                ["Never. It is adjacent over opposite.", "GEO.TRIG.RATIO"],
+                ["Sometimes. Only for 45°."],
+              ],
+            },
+            {
+              statement:
+                "Sol uses sin to find the adjacent side when he knows the hypotenuse and the angle.",
+              truth: false,
+              right: "False. Adjacent and hypotenuse go with cos.",
+              wrong: [
+                ["True. Sin is for any side.", "GEO.TRIG.RATIO"],
+                ["True. Sin and cos are the same.", "GEO.TRIG.RATIO"],
+              ],
+            },
           ],
-          solution: [
-            { say: `For example sin ${p.angle}° ≈ ${Math.sin(rad(p.angle)).toFixed(3)}.` },
-          ],
-        });
+        );
     }
   },
 

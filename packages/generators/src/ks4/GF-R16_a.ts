@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   start: number;
@@ -19,7 +20,7 @@ const mult = (rate: number) => (1 + rate / 100).toFixed(2);
 
 export default defineGenerator<Params>({
   id: "GF-R16.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.COMPOUND.SIMPLE", "RAT.PERCENT.MULTIPLIER"],
 
@@ -72,22 +73,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Eli says growing by ${p.rate}% a year for 2 years is the same as growing by ${2 * p.rate}%.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Eli says growing by ${p.rate}% a year for 2 years is the same as growing by ${2 * p.rate}%.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${mult(p.rate)}² = ${Number(((1 + p.rate / 100) ** 2).toFixed(4))}, an increase of ${Number((((1 + p.rate / 100) ** 2 - 1) * 100).toFixed(2))}%: the second year grows the first year's growth too.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Two lots of the same percentage add up.",
+                  code: "RAT.COMPOUND.SIMPLE",
+                },
+                { text: `False. It is less than ${2 * p.rate}%.`, code: "RAT.COMPOUND.SIMPLE" },
+              ],
+              solution: [{ say: "Repeated percentage change multiplies." }],
+            }),
+          [
             {
-              text: `False. ${mult(p.rate)}² = ${Number(((1 + p.rate / 100) ** 2).toFixed(4))}, an increase of ${Number((((1 + p.rate / 100) ** 2 - 1) * 100).toFixed(2))}%: the second year grows the first year's growth too.`,
-              correct: true,
+              statement:
+                "£2000 grows by 5% a year. Ivy writes its value after 3 years as $2000 \\times 1.05^3$.",
+              truth: true,
+              right: "True. Multiply by 1.05 once for each year.",
+              wrong: [
+                ["False. It is 2000 × 1.15.", "RAT.COMPOUND.SIMPLE"],
+                ["False. It is 2000 × 0.05³.", "RAT.PERCENT.MULTIPLIER"],
+              ],
             },
-            { text: "True. Two lots of the same percentage add up.", code: "RAT.COMPOUND.SIMPLE" },
-            { text: `False. It is less than ${2 * p.rate}%.`, code: "RAT.COMPOUND.SIMPLE" },
+            {
+              claim: "Compound growth at a positive rate grows by more each year.",
+              truth: "always",
+              right: "Always. Each year's growth is on a bigger amount.",
+              wrong: [
+                ["Never. It grows by the same each year.", "RAT.COMPOUND.SIMPLE"],
+                ["Sometimes. Only for big rates."],
+              ],
+            },
+            {
+              statement:
+                "A population of 1000 grows by 10% a year. Raj says it is 1200 after 2 years.",
+              truth: false,
+              right: "False. 1000 × 1.1² = 1210.",
+              wrong: [
+                ["True. 10% + 10% = 20%.", "RAT.COMPOUND.SIMPLE"],
+                ["True. 100 more each year.", "RAT.COMPOUND.SIMPLE"],
+              ],
+            },
           ],
-          solution: [{ say: "Repeated percentage change multiplies." }],
-        });
+        );
     }
   },
 

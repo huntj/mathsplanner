@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { curveClearOfOrigin, grid, poly, signedWrongs } from "../shared/alg.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { coord, distinctFrom } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-A11.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.QUADRATIC.TURNING"],
 
@@ -95,27 +96,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["The turning point of ", A.math("y = x^2 + bx + c"), " lies on the y-axis."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["The turning point of ", A.math("y = x^2 + bx + c"), " lies on the y-axis."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: "Sometimes. The turning point is at x = −b/2, so it is on the y-axis only when b = 0, e.g. y = x² − 4.",
+                  correct: true,
+                },
+                {
+                  text: "Always. The turning point is where x = 0.",
+                  code: "ALG.QUADRATIC.TURNING",
+                },
+                {
+                  text: "Never. Turning points are always on the x-axis.",
+                  code: "ALG.QUADRATIC.TURNING",
+                },
+              ],
+              solution: [
+                {
+                  say: "Compare y = x² − 4 (turning point (0, −4)) with y = x² − 4x (turning point (2, −4)).",
+                },
+              ],
+            }),
+          [
             {
-              text: "Sometimes. The turning point is at x = −b/2, so it is on the y-axis only when b = 0, e.g. y = x² − 4.",
-              correct: true,
+              statement: "Bea says the turning point of $y = x^2 - 4$ is (0, −4).",
+              truth: true,
+              right: "True. x² is smallest at x = 0, giving y = −4.",
+              wrong: [["False. It is (−4, 0).", "ALG.QUADRATIC.TURNING"], ["False. It is (2, 0)."]],
             },
-            { text: "Always. The turning point is where x = 0.", code: "ALG.QUADRATIC.TURNING" },
             {
-              text: "Never. Turning points are always on the x-axis.",
-              code: "ALG.QUADRATIC.TURNING",
+              claim: "The graph of $y = x^2 + c$ is symmetrical about the y-axis.",
+              truth: "always",
+              right: "Always. x and −x give the same y.",
+              wrong: [
+                ["Never. It leans to one side.", "ALG.QUADRATIC.TURNING"],
+                ["Sometimes. Only if c = 0."],
+              ],
+            },
+            {
+              statement: "Dev says the turning point of $y = (x - 3)^2$ is at x = −3.",
+              truth: false,
+              right: "False. (x − 3)² is smallest, 0, when x = 3.",
+              wrong: [
+                ["True. The minus moves it left.", "ALG.QUADRATIC.TURNING"],
+                ["True. It is at the y-intercept."],
+              ],
             },
           ],
-          solution: [
-            {
-              say: "Compare y = x² − 4 (turning point (0, −4)) with y = x² − 4x (turning point (2, −4)).",
-            },
-          ],
-        });
+        );
     }
   },
 

@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { exactAnswer } from "../shared/counting.ts";
 import { tex } from "../shared/npv.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -20,7 +21,7 @@ const sf = (m: string, power: number) => `${m} \\times 10^{${power}}`;
 
 export default defineGenerator<Params>({
   id: "GF-N9.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.STANDARD-FORM.POWER"],
 
@@ -72,25 +73,65 @@ export default defineGenerator<Params>({
           solution: [{ say: `The point moves ${p.k} places to the right: `, math: sf(m, -p.k) }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Jo says ", A.math(sf(`${p.a}${p.b}`, p.p)), " is written in standard form."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Jo says ",
+                A.math(sf(`${p.a}${p.b}`, p.p)),
+                " is written in standard form.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The first number must be at least 1 and less than 10, so it is ${m} × 10^${p.p + 1}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. It is a number times a power of 10.",
+                  code: "NPV.STANDARD-FORM.POWER",
+                },
+                {
+                  text: `False. It should be ${m} × 10^${p.p - 1}.`,
+                  code: "NPV.STANDARD-FORM.POWER",
+                },
+              ],
+              solution: [
+                {
+                  say: "",
+                  math: `${p.a}${p.b} \\times 10^{${p.p}} = ${m} \\times 10 \\times 10^{${p.p}} = ${sf(m, p.p + 1)}`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. The first number must be at least 1 and less than 10, so it is ${m} × 10^${p.p + 1}.`,
-              correct: true,
+              statement: "Bea says $3.4 \\times 10^{-2} = 0.034$.",
+              truth: true,
+              right: "True. 10⁻² is 1/100, and 3.4 ÷ 100 = 0.034.",
+              wrong: [["False. It is 340.", "NPV.STANDARD-FORM.POWER"], ["False. It is −340."]],
             },
-            { text: "True. It is a number times a power of 10.", code: "NPV.STANDARD-FORM.POWER" },
-            { text: `False. It should be ${m} × 10^${p.p - 1}.`, code: "NPV.STANDARD-FORM.POWER" },
-          ],
-          solution: [
             {
-              say: "",
-              math: `${p.a}${p.b} \\times 10^{${p.p}} = ${m} \\times 10 \\times 10^{${p.p}} = ${sf(m, p.p + 1)}`,
+              claim: "In standard form $a \\times 10^n$, a is at least 1 and less than 10.",
+              truth: "always",
+              right: "Always. That is the rule for standard form.",
+              wrong: [
+                ["Sometimes. a can be 10 or more.", "NPV.STANDARD-FORM.POWER"],
+                ["Never. a must be less than 1."],
+              ],
+            },
+            {
+              statement: "Gil writes 52,000 as $52 \\times 10^{3}$ in standard form.",
+              truth: false,
+              right: "False. 52 is not between 1 and 10: 5.2 × 10⁴.",
+              wrong: [
+                ["True. 52 × 1000 = 52,000.", "NPV.STANDARD-FORM.POWER"],
+                ["True. Any number times a power of 10 is standard form."],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

@@ -10,6 +10,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import type { CartesianSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Distance d = k t² metres. */
@@ -55,7 +56,7 @@ function graph(p: Params, tangent: boolean): CartesianSpec {
 
 export default defineGenerator<Params>({
   id: "GH-R15",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.RATE.AVERAGE-INSTANT"],
 
@@ -124,28 +125,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `A distance-time graph is curved. Eli says the gradient of the chord from t = 1 to t = ${p.b} gives the speed at exactly t = ${p.b}.`,
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `A distance-time graph is curved. Eli says the gradient of the chord from t = 1 to t = ${p.b} gives the speed at exactly t = ${p.b}.`,
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The chord gives the average speed over that time. The speed at t = ${p.b} is the gradient of the tangent there.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Any line between two points on the curve gives the speed at the end point.",
+                  code: "RAT.RATE.AVERAGE-INSTANT",
+                },
+                {
+                  text: "True. The chord and the tangent always have the same gradient.",
+                  code: "RAT.RATE.AVERAGE-INSTANT",
+                },
+              ],
+              solution: [
+                { say: "Chord: average rate of change. Tangent: rate of change at an instant." },
+              ],
+            }),
+          [
             {
-              text: `False. The chord gives the average speed over that time. The speed at t = ${p.b} is the gradient of the tangent there.`,
-              correct: true,
+              statement:
+                "Leo estimates the speed at t = 3 from a curved distance–time graph by the gradient of the tangent at t = 3.",
+              truth: true,
+              right: "True. The tangent gives the instantaneous rate.",
+              wrong: [
+                ["False. Use the chord from 0 to 3.", "RAT.RATE.AVERAGE-INSTANT"],
+                ["False. Read the distance at t = 3."],
+              ],
             },
             {
-              text: "True. Any line between two points on the curve gives the speed at the end point.",
-              code: "RAT.RATE.AVERAGE-INSTANT",
+              claim: "The gradient of a chord gives an average rate of change.",
+              truth: "always",
+              right: "Always. It uses two points, so it averages the change between them.",
+              wrong: [
+                ["Never. It gives the rate at one instant.", "RAT.RATE.AVERAGE-INSTANT"],
+                ["Sometimes. Only for curves."],
+              ],
             },
             {
-              text: "True. The chord and the tangent always have the same gradient.",
-              code: "RAT.RATE.AVERAGE-INSTANT",
+              statement:
+                "A car travels 100 m in the first 10 s, speeding up. Kim says its speed at t = 10 is exactly 10 m/s.",
+              truth: false,
+              right: "False. 10 m/s is the average; it was speeding up, so at t = 10 it is faster.",
+              wrong: [
+                ["True. 100 ÷ 10 = 10.", "RAT.RATE.AVERAGE-INSTANT"],
+                ["True. Average and instant speeds match.", "RAT.RATE.AVERAGE-INSTANT"],
+              ],
             },
           ],
-          solution: [
-            { say: "Chord: average rate of change. Tangent: rate of change at an instant." },
-          ],
-        });
+        );
     }
   },
 

@@ -6,6 +6,7 @@
 // GF-P7: Construct sample spaces for single and combined experiments and calculate probabilities
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, toLatex, type QuestionDraft } from "@mathsplanner/core";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Two spinners numbered 1 to m and 1 to n. */
@@ -35,7 +36,7 @@ const count = (m: number, n: number, test: (a: number, b: number) => boolean) =>
 
 export default defineGenerator<Params>({
   id: "GF-P7",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["PRO.SAMPLE-SPACE.EQUAL-TOTALS", "PRO.ODDS"],
 
@@ -106,34 +107,68 @@ export default defineGenerator<Params>({
         const kinds = p.coins + 1;
         const all = 2 ** p.coins;
         const heads = p.coins === 2 ? "two heads" : "three heads";
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `${p.coins === 2 ? "Two" : "Three"} fair coins are flipped. Jo says the number of heads can be ${range(
-            kinds,
-          )
-            .map((k) => k - 1)
-            .join(", ")}, so the probability of ${heads} is 1/${kinds}.`,
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `${p.coins === 2 ? "Two" : "Three"} fair coins are flipped. Jo says the number of heads can be ${range(
+                kinds,
+              )
+                .map((k) => k - 1)
+                .join(", ")}, so the probability of ${heads} is 1/${kinds}.`,
+              truth: false,
+              reasons: [
+                {
+                  text: `False. There are ${all} equally likely outcomes (such as ${p.coins === 2 ? "HH, HT, TH, TT" : "HHH, HHT, HTH, …"}), and only one is ${heads}, so it is 1/${all}.`,
+                  correct: true,
+                },
+                {
+                  text: `True. There are ${kinds} possible numbers of heads.`,
+                  code: "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
+                },
+                {
+                  text: "True. Each coin is fair, so every result is equally likely.",
+                  code: "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
+                },
+              ],
+              solution: [
+                {
+                  say: "List the sample space: the numbers of heads are not equally likely, because one head can happen in more than one way.",
+                },
+              ],
+            }),
+          [
             {
-              text: `False. There are ${all} equally likely outcomes (such as ${p.coins === 2 ? "HH, HT, TH, TT" : "HHH, HHT, HTH, …"}), and only one is ${heads}, so it is 1/${all}.`,
-              correct: true,
+              statement: "Two fair coins are flipped. Sam says P(two heads) is $\\frac{1}{4}$.",
+              truth: true,
+              right: "True. HH is one of 4 equally likely outcomes.",
+              wrong: [
+                ["False. It is 1/3.", "PRO.SAMPLE-SPACE.EQUAL-TOTALS"],
+                ["False. It is 1/2.", "PRO.ODDS"],
+              ],
             },
             {
-              text: `True. There are ${kinds} possible numbers of heads.`,
-              code: "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
+              claim: "Probabilities from a sample space need outcomes that are equally likely.",
+              truth: "always",
+              right: "Always. Counting outcomes only works if each is equally likely.",
+              wrong: [
+                ["Never. Any list of results will do.", "PRO.SAMPLE-SPACE.EQUAL-TOTALS"],
+                ["Sometimes. Only for coins."],
+              ],
             },
             {
-              text: "True. Each coin is fair, so every result is equally likely.",
-              code: "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
+              statement:
+                "A spinner has 3 equal sections: A, B and C. Kai spins twice and says P(A then A) is $\\frac{2}{6}$.",
+              truth: false,
+              right: "False. There are 9 equally likely outcomes and one is AA: 1/9.",
+              wrong: [
+                ["True. 1/3 + 1/3 = 2/6.", "PRO.ODDS"],
+                ["True. There are 6 outcomes.", "PRO.SAMPLE-SPACE.EQUAL-TOTALS"],
+              ],
             },
           ],
-          solution: [
-            {
-              say: "List the sample space: the numbers of heads are not equally likely, because one head can happen in more than one way.",
-            },
-          ],
-        });
+        );
       }
     }
   },

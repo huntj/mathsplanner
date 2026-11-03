@@ -9,6 +9,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   k: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-R13",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.INVERSE.AS-DIRECT"],
 
@@ -78,28 +79,60 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Given ",
-            A.math(`y = \\frac{${p.k}}{x}`),
-            ", Ana says that tripling x makes y three times bigger.",
-          ],
-          truth: false,
-          reasons: [
-            { text: "False. y = k/x, so tripling x divides y by 3.", correct: true },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Given ",
+                A.math(`y = \\frac{${p.k}}{x}`),
+                ", Ana says that tripling x makes y three times bigger.",
+              ],
+              truth: false,
+              reasons: [
+                { text: "False. y = k/x, so tripling x divides y by 3.", correct: true },
+                {
+                  text: "True. y and x always change by the same factor.",
+                  code: "RAT.INVERSE.AS-DIRECT",
+                },
+                { text: "True. The bigger x, the bigger y.", code: "RAT.INVERSE.AS-DIRECT" },
+              ],
+              solution: [
+                {
+                  say: `x = 1 gives y = ${p.k}; x = 3 gives y = ${Math.round((p.k / 3) * 100) / 100}.`,
+                },
+              ],
+            }),
+          [
             {
-              text: "True. y and x always change by the same factor.",
-              code: "RAT.INVERSE.AS-DIRECT",
+              statement: "Given $y = \\frac{60}{x}$, Kai says y = 12 when x = 5.",
+              truth: true,
+              right: "True. 60 ÷ 5 = 12.",
+              wrong: [["False. y = 300.", "RAT.INVERSE.AS-DIRECT"], ["False. y = 55."]],
             },
-            { text: "True. The bigger x, the bigger y.", code: "RAT.INVERSE.AS-DIRECT" },
-          ],
-          solution: [
             {
-              say: `x = 1 gives y = ${p.k}; x = 3 gives y = ${Math.round((p.k / 3) * 100) / 100}.`,
+              claim:
+                "In $y = \\frac{k}{x}$ with k positive, y gets smaller as x gets bigger, for positive x.",
+              truth: "always",
+              right: "Always. Dividing by a bigger number gives less.",
+              wrong: [
+                ["Never. y grows with x.", "RAT.INVERSE.AS-DIRECT"],
+                ["Sometimes. Only for small x."],
+              ],
+            },
+            {
+              statement:
+                "y is inversely proportional to x, and y = 8 when x = 2. Mia says y = 16 when x = 4.",
+              truth: false,
+              right: "False. xy = 16, so when x = 4, y = 4.",
+              wrong: [
+                ["True. Double x, double y.", "RAT.INVERSE.AS-DIRECT"],
+                ["True. y = 4x.", "RAT.INVERSE.AS-DIRECT"],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

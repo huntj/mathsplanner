@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { exactAnswer, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 export interface Params {
   a: number;
@@ -18,7 +19,7 @@ export interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-N7.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.INDEX.NEGATIVE", "NPV.INDEX.ZERO", "ALG.INDICES.MULTIPLY"],
 
@@ -74,27 +75,54 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ola says ",
-            A.math(`${p.a + 4}^0 = 0`),
-            ` because there are no ${p.a + 4}s multiplied together.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ola says ",
+                A.math(`${p.a + 4}^0 = 0`),
+                ` because there are no ${p.a + 4}s multiplied together.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${p.a + 4}^0 = 1: for example ${p.a + 4}³ ÷ ${p.a + 4}³ = ${p.a + 4}^0, and anything divided by itself is 1.`,
+                  correct: true,
+                },
+                { text: "True. Any number to the power 0 is 0.", code: "NPV.INDEX.ZERO" },
+                {
+                  text: `False. It is ${p.a + 4}, because the power does nothing.`,
+                  code: "NPV.INDEX.ZERO",
+                },
+              ],
+              solution: [{ say: "Any non-zero number to the power 0 is 1." }],
+            }),
+          [
             {
-              text: `False. ${p.a + 4}^0 = 1: for example ${p.a + 4}³ ÷ ${p.a + 4}³ = ${p.a + 4}^0, and anything divided by itself is 1.`,
-              correct: true,
+              statement: "Raj says $2^3 \\times 2^4 = 2^7$.",
+              truth: true,
+              right: "True. Multiplying powers of 2 adds the indices.",
+              wrong: [["False. It is 2¹².", "ALG.INDICES.MULTIPLY"], ["False. It is 4⁷."]],
             },
-            { text: "True. Any number to the power 0 is 0.", code: "NPV.INDEX.ZERO" },
             {
-              text: `False. It is ${p.a + 4}, because the power does nothing.`,
-              code: "NPV.INDEX.ZERO",
+              statement: "Pam says $5^{-1} = -5$.",
+              truth: false,
+              right: "False. A negative power means a reciprocal: 5⁻¹ = 1/5.",
+              wrong: [
+                ["True. The minus makes it negative.", "NPV.INDEX.NEGATIVE"],
+                ["True. Power −1 means times −1.", "NPV.INDEX.NEGATIVE"],
+              ],
+            },
+            {
+              claim: "Any non-zero number to the power 0 is 1.",
+              truth: "always",
+              right: "Always. For example, 5³ ÷ 5³ = 5⁰, and it is also 1.",
+              wrong: [["Never. It is 0.", "NPV.INDEX.ZERO"], ["Sometimes. Only for 1."]],
             },
           ],
-          solution: [{ say: "Any non-zero number to the power 0 is 1." }],
-        });
+        );
     }
   },
 

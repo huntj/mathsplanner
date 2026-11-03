@@ -10,7 +10,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-G20.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-G20.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-G20.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-G20.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -258,7 +258,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-G20.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -320,7 +320,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-G20.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -382,7 +382,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-G20.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -394,7 +394,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -420,7 +420,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any angle of the triangle will do.",
+                  "v": "False. C must be the angle between sides a and b (the included angle).",
                 },
               ],
               "id": "RA",
@@ -438,7 +438,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. C must be the angle between sides a and b (the included angle).",
+                  "v": "True. Any angle of the triangle will do.",
                 },
               ],
               "id": "RC",
@@ -450,7 +450,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.AREA-SINE.INCLUDED",
@@ -458,7 +458,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "GEO.AREA-SINE.INCLUDED",
@@ -491,14 +491,14 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-G20.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -509,14 +509,14 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -525,10 +525,19 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -536,7 +545,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. As long as the triangle is not right-angled.",
+                  "v": "Never. Any angle will do.",
                 },
               ],
               "id": "RA",
@@ -545,7 +554,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. C must be the angle between sides a and b (the included angle).",
+                  "v": "Always. It must be the included angle.",
                 },
               ],
               "id": "RB",
@@ -554,7 +563,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any angle of the triangle will do.",
+                  "v": "Sometimes. Only for right angles.",
                 },
               ],
               "id": "RC",
@@ -572,19 +581,11 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
             "code": "GEO.AREA-SINE.INCLUDED",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "GEO.AREA-SINE.INCLUDED",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -594,7 +595,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "b sin C is the height of the triangle on base a only when C is between a and b.",
+            "v": "Always. It must be the included angle.",
           },
         ],
       },
@@ -602,7 +603,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Tom says Area = ½ab sin C works with any two sides of a triangle and any one of its angles.",
+        "v": "Area = ½ab sin C needs C to be the angle between sides a and b.",
       },
     ],
   },
@@ -614,7 +615,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-G20.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -625,8 +626,8 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -652,7 +653,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. As long as the triangle is not right-angled.",
+                  "v": "True. ½ × 6 × 10 × sin 30° = 30 × 0.5 = 15.",
                 },
               ],
               "id": "RA",
@@ -661,7 +662,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. C must be the angle between sides a and b (the included angle).",
+                  "v": "False. It is 30.",
                 },
               ],
               "id": "RB",
@@ -670,7 +671,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any angle of the triangle will do.",
+                  "v": "False. It is 60.",
                 },
               ],
               "id": "RC",
@@ -682,18 +683,10 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "GEO.AREA-SINE.INCLUDED",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "GEO.AREA-SINE.INCLUDED",
+            "code": "MEA.AREA.TRIANGLE-HALF",
             "feedback": [],
           },
         ],
@@ -710,7 +703,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "b sin C is the height of the triangle on base a only when C is between a and b.",
+            "v": "True. ½ × 6 × 10 × sin 30° = 30 × 0.5 = 15.",
           },
         ],
       },
@@ -718,7 +711,7 @@ exports[`GH-G20.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Tom says Area = ½ab sin C works with any two sides of a triangle and any one of its angles.",
+        "v": "Sol says a triangle with sides 6 and 10 and an included angle of 30° has area 15.",
       },
     ],
   },

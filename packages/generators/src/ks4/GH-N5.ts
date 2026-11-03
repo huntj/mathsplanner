@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Depth 1: a lock with `wheels` wheels, each showing 1 to `digits`. */
@@ -30,7 +31,7 @@ const fall = (n: number, k: number) =>
 
 export default defineGenerator<Params>({
   id: "GH-N5",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4, 5],
   misconceptions: ["NPV.POWER.TIMES-INDEX", "NPV.PRODUCT-RULE.REPEAT"],
 
@@ -97,39 +98,75 @@ export default defineGenerator<Params>({
       }
       case 4: {
         const claim = p.claimTrue ? "9 × 9 × 8 = 648" : "10 × 9 × 8 = 720";
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Sam says there are ${claim} three-digit numbers with no repeated digits.`,
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Sam says there are ${claim} three-digit numbers with no repeated digits.`,
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    {
+                      text: "True. The first digit cannot be 0, so it has 9 choices; then 9 digits are left (including 0), then 8.",
+                      correct: true,
+                    },
+                    { text: "False. It should be 10 × 9 × 8, because there are 10 digits." },
+                    {
+                      text: "False. It should be 9 × 9 × 9, because each place has 9 choices.",
+                      code: "NPV.PRODUCT-RULE.REPEAT",
+                    },
+                  ]
+                : [
+                    {
+                      text: "False. A three-digit number cannot start with 0, so the first digit has only 9 choices: 9 × 9 × 8 = 648.",
+                      correct: true,
+                    },
+                    { text: "True. There are 10 digits, then 9 left, then 8." },
+                    {
+                      text: "False. Digits can repeat, so it is 10 × 10 × 10.",
+                      code: "NPV.PRODUCT-RULE.REPEAT",
+                    },
+                  ],
+              solution: [
                 {
-                  text: "True. The first digit cannot be 0, so it has 9 choices; then 9 digits are left (including 0), then 8.",
-                  correct: true,
-                },
-                { text: "False. It should be 10 × 9 × 8, because there are 10 digits." },
-                {
-                  text: "False. It should be 9 × 9 × 9, because each place has 9 choices.",
-                  code: "NPV.PRODUCT-RULE.REPEAT",
-                },
-              ]
-            : [
-                {
-                  text: "False. A three-digit number cannot start with 0, so the first digit has only 9 choices: 9 × 9 × 8 = 648.",
-                  correct: true,
-                },
-                { text: "True. There are 10 digits, then 9 left, then 8." },
-                {
-                  text: "False. Digits can repeat, so it is 10 × 10 × 10.",
-                  code: "NPV.PRODUCT-RULE.REPEAT",
+                  say: "Fill the most restricted place first: 9 choices for the first digit, then 9, then 8.",
                 },
               ],
-          solution: [
+            }),
+          [
             {
-              say: "Fill the most restricted place first: 9 choices for the first digit, then 9, then 8.",
+              statement:
+                "A code is 3 letters from A to Z, repeats allowed. Kai says there are $26^3$ codes.",
+              truth: true,
+              right: "True. 26 choices for each of the 3 places.",
+              wrong: [
+                ["False. There are 26 × 3.", "NPV.POWER.TIMES-INDEX"],
+                ["False. There are 26 × 25 × 24.", "NPV.PRODUCT-RULE.REPEAT"],
+              ],
+            },
+            {
+              claim:
+                "If one choice has m options and a second has n, together there are mn options.",
+              truth: "always",
+              right: "Always. This is the product rule for counting.",
+              wrong: [
+                ["Never. There are m + n.", "NPV.PRODUCT-RULE.REPEAT"],
+                ["Sometimes. Only if m = n."],
+              ],
+            },
+            {
+              statement:
+                "4 runners finish a race with no ties. Mia says there are 16 possible finishing orders.",
+              truth: false,
+              right: "False. 4 × 3 × 2 × 1 = 24 orders.",
+              wrong: [
+                ["True. 4² = 16.", "NPV.POWER.TIMES-INDEX"],
+                ["True. Each runner has 4 places.", "NPV.PRODUCT-RULE.REPEAT"],
+              ],
             },
           ],
-        });
+        );
       }
       default: {
         const letters = ALPHABET.slice(0, p.pool);

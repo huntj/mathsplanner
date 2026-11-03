@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** A rectangle (or plank and offcut) in whole centimetres, each to the nearest cm. */
@@ -22,7 +23,7 @@ const r2 = (x: number) => Math.round(x * 100) / 100;
 
 export default defineGenerator<Params>({
   id: "GH-N16",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4, 5],
   misconceptions: ["NPV.BOUNDS.ENDS", "NPV.BOUNDS.SUBTRACT", "NPV.BOUNDS.DIVIDE"],
 
@@ -84,27 +85,66 @@ export default defineGenerator<Params>({
         });
       }
       case 4:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `A cyclist travels ${p.distance} m, to the nearest 10 m, in ${p.time} s, to the nearest second. Max says the upper bound of the speed is ${p.distance + 5} ÷ ${p.time + 0.5}.`,
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `A cyclist travels ${p.distance} m, to the nearest 10 m, in ${p.time} s, to the nearest second. Max says the upper bound of the speed is ${p.distance + 5} ÷ ${p.time + 0.5}.`,
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The greatest speed comes from the longest distance in the shortest time: ${p.distance + 5} ÷ ${p.time - 0.5}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Upper bounds always use the upper bound of every number.",
+                  code: "NPV.BOUNDS.DIVIDE",
+                },
+                {
+                  text: `False. It is ${p.distance + 10} ÷ ${p.time + 1}.`,
+                  code: "NPV.BOUNDS.ENDS",
+                },
+              ],
+              solution: [
+                {
+                  say: "Dividing by a smaller number gives a bigger answer, so divide by the lower bound of the time.",
+                },
+              ],
+            }),
+          [
             {
-              text: `False. The greatest speed comes from the longest distance in the shortest time: ${p.distance + 5} ÷ ${p.time - 0.5}.`,
-              correct: true,
+              statement:
+                "A length is 20 cm to the nearest cm. Ana says the upper bound is 20.5 cm.",
+              truth: true,
+              right: "True. Half a unit above: 20.5 cm.",
+              wrong: [
+                ["False. It is 21 cm.", "NPV.BOUNDS.ENDS"],
+                ["False. It is 20.49 cm.", "NPV.BOUNDS.ENDS"],
+              ],
             },
             {
-              text: "True. Upper bounds always use the upper bound of every number.",
-              code: "NPV.BOUNDS.DIVIDE",
+              claim: "The upper bound of a − b uses the upper bound of a and the lower bound of b.",
+              truth: "always",
+              right:
+                "Always. To make the difference as big as possible, take the biggest a and smallest b.",
+              wrong: [
+                ["Never. Use both upper bounds.", "NPV.BOUNDS.SUBTRACT"],
+                ["Sometimes. Only if a > b.", "NPV.BOUNDS.SUBTRACT"],
+              ],
             },
-            { text: `False. It is ${p.distance + 10} ÷ ${p.time + 1}.`, code: "NPV.BOUNDS.ENDS" },
+            {
+              statement:
+                "To find the upper bound of a ÷ b, Raj uses the upper bounds of both a and b.",
+              truth: false,
+              right: "False. Use the upper bound of a and the lower bound of b.",
+              wrong: [
+                ["True. Upper with upper.", "NPV.BOUNDS.DIVIDE"],
+                ["True. Bigger numbers give bigger answers.", "NPV.BOUNDS.DIVIDE"],
+              ],
+            },
           ],
-          solution: [
-            {
-              say: "Dividing by a smaller number gives a bigger answer, so divide by the lower bound of the time.",
-            },
-          ],
-        });
+        );
       default: {
         const ubd = p.distance + 5;
         const speed = r2(ubd / (p.time - 0.5));

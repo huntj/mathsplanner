@@ -37,7 +37,7 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -148,7 +148,7 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -259,7 +259,7 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -370,7 +370,7 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -493,7 +493,7 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -616,7 +616,7 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -739,7 +739,7 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -777,7 +777,7 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The rate increases as the tank fills.",
+                  "v": "True. Read the graph at 4 minutes to find the rate.",
                 },
               ],
               "id": "RA",
@@ -786,7 +786,7 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Read the graph at 4 minutes to find the rate.",
+                  "v": "True. The rate increases as the tank fills.",
                 },
               ],
               "id": "RB",
@@ -857,40 +857,13 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "curves": [
-          {
-            "domain": [
-              0,
-              10,
-            ],
-            "y": "3x + 5",
-          },
-        ],
-        "description": "A straight-line graph of the volume of water in a tank against time.",
-        "grid": true,
-        "type": "cartesian",
-        "x": {
-          "label": "\\text{time (min)}",
-          "max": 12,
-          "min": 0,
-          "step": 2,
-        },
-        "y": {
-          "label": "\\text{volume (litres)}",
-          "max": 41,
-          "min": 0,
-          "step": 5,
-        },
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -901,8 +874,8 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -928,7 +901,7 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Read the graph at 4 minutes to find the rate.",
+                  "v": "True. The gradient is 40 ÷ 5 = 8.",
                 },
               ],
               "id": "RA",
@@ -937,7 +910,7 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The rate increases as the tank fills.",
+                  "v": "False. It is 5 ÷ 40.",
                 },
               ],
               "id": "RB",
@@ -946,7 +919,7 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 17 litres is the volume after 4 minutes. The line is straight, so the rate is always 3 litres per minute.",
+                  "v": "False. It is 40, the final distance.",
                 },
               ],
               "id": "RC",
@@ -958,15 +931,15 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "RAT.RATE.VALUE",
+            "code": "ALG.GRADIENT.RUN-RISE",
             "feedback": [],
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "RAT.RATE.VALUE",
@@ -986,7 +959,7 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A rate is a gradient: the change in y for each unit of x.",
+            "v": "True. The gradient is 40 ÷ 5 = 8.",
           },
         ],
       },
@@ -994,15 +967,7 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The graph shows the volume of water in a tank.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": "Mo says that after 4 minutes water is being added at 17 litres per minute.",
+        "v": "A straight-line graph of distance against time goes from (0, 0) to (5, 40). Leo says the speed is 8 units per unit time.",
       },
     ],
   },
@@ -1041,7 +1006,7 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R14",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1053,7 +1018,7 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -1088,7 +1053,7 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The rate increases as the tank fills.",
+                  "v": "False. 18 litres is the volume after 4 minutes. The line is straight, so the rate is always 2 litres per minute.",
                 },
               ],
               "id": "RB",
@@ -1097,7 +1062,7 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 18 litres is the volume after 4 minutes. The line is straight, so the rate is always 2 litres per minute.",
+                  "v": "True. The rate increases as the tank fills.",
                 },
               ],
               "id": "RC",
@@ -1117,7 +1082,7 @@ exports[`GF-R14 > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "RAT.RATE.VALUE",

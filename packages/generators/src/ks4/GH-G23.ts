@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import type { GeometrySpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Sides a = CB and b = CA with angle C between them. */
@@ -51,7 +52,7 @@ function tri(p: Params, sideA: string, showB: boolean): GeometrySpec {
 
 export default defineGenerator<Params>({
   id: "GH-G23",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.AREA-SINE.INCLUDED", "MEA.AREA.TRIANGLE-HALF"],
 
@@ -131,28 +132,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: p.claimTrue
-            ? "Ivy says a triangle with sides 8 cm and 5 cm and an angle of 30° between them has an area of 10 cm²."
-            : "Ivy says Area = ½ab sin C only works when C is a right angle.",
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
-                { text: "True. ½ × 8 × 5 × sin 30° = 20 × 0.5 = 10.", correct: true },
-                { text: "False. It is 20 cm²: ½ × 8 × 5.", code: "GEO.AREA-SINE.INCLUDED" },
-                { text: "False. It is 40 cm².", code: "MEA.AREA.TRIANGLE-HALF" },
-              ]
-            : [
-                {
-                  text: "False. It works for any triangle, as long as C is the angle between sides a and b. When C = 90°, sin C = 1 and it becomes ½ × base × height.",
-                  correct: true,
-                },
-                { text: "True. Otherwise use ½ × base × height.", code: "GEO.AREA-SINE.INCLUDED" },
-                { text: "True. sin C is only defined for right angles." },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: p.claimTrue
+                ? "Ivy says a triangle with sides 8 cm and 5 cm and an angle of 30° between them has an area of 10 cm²."
+                : "Ivy says Area = ½ab sin C only works when C is a right angle.",
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    { text: "True. ½ × 8 × 5 × sin 30° = 20 × 0.5 = 10.", correct: true },
+                    { text: "False. It is 20 cm²: ½ × 8 × 5.", code: "GEO.AREA-SINE.INCLUDED" },
+                    { text: "False. It is 40 cm².", code: "MEA.AREA.TRIANGLE-HALF" },
+                  ]
+                : [
+                    {
+                      text: "False. It works for any triangle, as long as C is the angle between sides a and b. When C = 90°, sin C = 1 and it becomes ½ × base × height.",
+                      correct: true,
+                    },
+                    {
+                      text: "True. Otherwise use ½ × base × height.",
+                      code: "GEO.AREA-SINE.INCLUDED",
+                    },
+                    { text: "True. sin C is only defined for right angles." },
+                  ],
+              solution: [{ say: "Area = ½ab sin C uses two sides and the angle between them." }],
+            }),
+          [
+            {
+              statement:
+                "Leo says sides 4 cm and 9 cm with an included angle of 90° give an area of 18 cm².",
+              truth: true,
+              right: "True. ½ × 4 × 9 × sin 90° = 18.",
+              wrong: [["False. It is 36 cm².", "MEA.AREA.TRIANGLE-HALF"], ["False. It is 13 cm²."]],
+            },
+            {
+              claim: "Area = ½ab sin C gives ½ × base × height when C = 90°.",
+              truth: "always",
+              right: "Always. sin 90° = 1.",
+              wrong: [
+                ["Never. The formulas are unrelated.", "GEO.AREA-SINE.INCLUDED"],
+                ["Sometimes. Only for isosceles triangles."],
               ],
-          solution: [{ say: "Area = ½ab sin C uses two sides and the angle between them." }],
-        });
+            },
+            {
+              statement: "Kim uses Area = ½ab sin C with a = 5, b = 7 and C the angle opposite a.",
+              truth: false,
+              right: "False. C must be the angle between a and b.",
+              wrong: [
+                ["True. Any angle in the triangle works.", "GEO.AREA-SINE.INCLUDED"],
+                ["True. Use the angle opposite the first side.", "GEO.AREA-SINE.INCLUDED"],
+              ],
+            },
+          ],
+        );
     }
   },
 

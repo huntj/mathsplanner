@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** A fish farm grows by `pct`% each year, then `out` fish are taken. */
@@ -27,7 +28,7 @@ const after = (p: Params, years: number) => {
 
 export default defineGenerator<Params>({
   id: "GH-R16",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.FUNCTION.ORDER", "ALG.ITERATION.SUBSTITUTE"],
 
@@ -99,39 +100,72 @@ export default defineGenerator<Params>({
       default: {
         const steady = (p.out * 100) / p.pct;
         const claimed = p.claimTrue ? steady : steady * 2;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Each year the number of fish on a farm increases by ${p.pct}%, then ${p.out} fish are sold. Ruth says that if the farm has ${claimed} fish, the number will stay the same every year.`,
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Each year the number of fish on a farm increases by ${p.pct}%, then ${p.out} fish are sold. Ruth says that if the farm has ${claimed} fish, the number will stay the same every year.`,
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    {
+                      text: `True. ${p.pct}% of ${steady} is ${p.out}, which is exactly the number sold.`,
+                      correct: true,
+                    },
+                    {
+                      text: "False. The number always grows, because the percentage increase comes first.",
+                      code: "ALG.FUNCTION.ORDER",
+                    },
+                    { text: "False. The number of fish can never stay the same." },
+                  ]
+                : [
+                    {
+                      text: `False. ${p.pct}% of ${claimed} is ${(claimed * p.pct) / 100}, more than the ${p.out} sold, so the number grows. It stays the same at ${steady}.`,
+                      correct: true,
+                    },
+                    {
+                      text: "True. Any number of fish stays the same in the long run.",
+                      code: "ALG.ITERATION.SUBSTITUTE",
+                    },
+                    { text: "True. The sale cancels the increase every year." },
+                  ],
+              solution: [
                 {
-                  text: `True. ${p.pct}% of ${steady} is ${p.out}, which is exactly the number sold.`,
-                  correct: true,
+                  say: `The number stays fixed when the increase equals the sale: ${p.pct}% of F = ${p.out}, so F = ${steady}.`,
                 },
-                {
-                  text: "False. The number always grows, because the percentage increase comes first.",
-                  code: "ALG.FUNCTION.ORDER",
-                },
-                { text: "False. The number of fish can never stay the same." },
-              ]
-            : [
-                {
-                  text: `False. ${p.pct}% of ${claimed} is ${(claimed * p.pct) / 100}, more than the ${p.out} sold, so the number grows. It stays the same at ${steady}.`,
-                  correct: true,
-                },
-                {
-                  text: "True. Any number of fish stays the same in the long run.",
-                  code: "ALG.ITERATION.SUBSTITUTE",
-                },
-                { text: "True. The sale cancels the increase every year." },
               ],
-          solution: [
+            }),
+          [
             {
-              say: `The number stays fixed when the increase equals the sale: ${p.pct}% of F = ${p.out}, so F = ${steady}.`,
+              statement: "With $u_{n+1} = 1.1u_n$ and $u_0 = 200$, Raj says $u_2 = 242$.",
+              truth: true,
+              right: "True. 200 × 1.1 = 220, and 220 × 1.1 = 242.",
+              wrong: [
+                ["False. It is 240.", "ALG.ITERATION.SUBSTITUTE"],
+                ["False. It is 220.", "ALG.ITERATION.SUBSTITUTE"],
+              ],
+            },
+            {
+              claim: "In an iterative process, each value is worked out from the one before.",
+              truth: "always",
+              right: "Always. That is what iterative means.",
+              wrong: [
+                ["Never. Each is worked out from the start.", "ALG.ITERATION.SUBSTITUTE"],
+                ["Sometimes. Only for growth.", "ALG.FUNCTION.ORDER"],
+              ],
+            },
+            {
+              statement: "With $u_{n+1} = 2u_n - 3$ and $u_0 = 4$, Ana says $u_1 = 2$.",
+              truth: false,
+              right: "False. u₁ = 2 × 4 − 3 = 5.",
+              wrong: [
+                ["True. 2(4 − 3) = 2.", "ALG.FUNCTION.ORDER"],
+                ["True. Subtract first.", "ALG.FUNCTION.ORDER"],
+              ],
             },
           ],
-        });
+        );
       }
     }
   },

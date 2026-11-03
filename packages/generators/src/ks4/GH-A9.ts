@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { lineLatex, poly } from "../shared/alg.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Depth 1: a gradient m = top/bottom. */
@@ -26,7 +27,7 @@ const grad = (n: number, d: number) => toLatex(frac(n, d));
 
 export default defineGenerator<Params>({
   id: "GH-A9",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.PERPENDICULAR.GRADIENT"],
 
@@ -126,38 +127,74 @@ export default defineGenerator<Params>({
       default: {
         const m = p.k;
         const other = p.claimTrue ? `-\\frac{1}{${m}}` : `-${m}`;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Jo says the lines ",
-            A.math(`y = ${poly([m, 1])}`),
-            " and ",
-            A.math(`y = ${other}x + 4`),
-            " are perpendicular.",
-          ],
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
-                { text: `True. ${m} × (−1/${m}) = −1.`, correct: true },
-                {
-                  text: "False. Perpendicular lines have opposite gradients.",
-                  code: "ALG.PERPENDICULAR.GRADIENT",
-                },
-                { text: "False. They have different y-intercepts." },
-              ]
-            : [
-                {
-                  text: `False. ${m} × (−${m}) = −${m * m}, not −1. The perpendicular gradient is −1/${m}.`,
-                  correct: true,
-                },
-                {
-                  text: "True. The gradients have opposite signs.",
-                  code: "ALG.PERPENDICULAR.GRADIENT",
-                },
-                { text: "True. The lines cross, so they are perpendicular." },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Jo says the lines ",
+                A.math(`y = ${poly([m, 1])}`),
+                " and ",
+                A.math(`y = ${other}x + 4`),
+                " are perpendicular.",
               ],
-          solution: [{ say: "Two lines are perpendicular when their gradients multiply to −1." }],
-        });
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    { text: `True. ${m} × (−1/${m}) = −1.`, correct: true },
+                    {
+                      text: "False. Perpendicular lines have opposite gradients.",
+                      code: "ALG.PERPENDICULAR.GRADIENT",
+                    },
+                    { text: "False. They have different y-intercepts." },
+                  ]
+                : [
+                    {
+                      text: `False. ${m} × (−${m}) = −${m * m}, not −1. The perpendicular gradient is −1/${m}.`,
+                      correct: true,
+                    },
+                    {
+                      text: "True. The gradients have opposite signs.",
+                      code: "ALG.PERPENDICULAR.GRADIENT",
+                    },
+                    { text: "True. The lines cross, so they are perpendicular." },
+                  ],
+              solution: [
+                { say: "Two lines are perpendicular when their gradients multiply to −1." },
+              ],
+            }),
+          [
+            {
+              statement:
+                "Bea says a line perpendicular to $y = 2x + 3$ has gradient $-\\frac{1}{2}$.",
+              truth: true,
+              right: "True. Perpendicular gradients multiply to −1.",
+              wrong: [
+                ["False. It is −2.", "ALG.PERPENDICULAR.GRADIENT"],
+                ["False. It is 1/2.", "ALG.PERPENDICULAR.GRADIENT"],
+              ],
+            },
+            {
+              claim: "Perpendicular lines (neither vertical) have gradients that multiply to −1.",
+              truth: "always",
+              right: "Always. One gradient is the negative reciprocal of the other.",
+              wrong: [
+                ["Never. They have the same gradient.", "ALG.PERPENDICULAR.GRADIENT"],
+                ["Sometimes. Only through the origin."],
+              ],
+            },
+            {
+              statement: "Leo says $y = 5x$ and $y = -5x$ are perpendicular.",
+              truth: false,
+              right: "False. 5 × −5 = −25, not −1.",
+              wrong: [
+                ["True. The gradients have opposite signs.", "ALG.PERPENDICULAR.GRADIENT"],
+                ["True. One goes up and one goes down.", "ALG.PERPENDICULAR.GRADIENT"],
+              ],
+            },
+          ],
+        );
       }
     }
   },

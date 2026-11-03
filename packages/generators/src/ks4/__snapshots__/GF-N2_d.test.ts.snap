@@ -10,7 +10,7 @@ exports[`GF-N2.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N2.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -93,7 +93,7 @@ exports[`GF-N2.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N2.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -176,7 +176,7 @@ exports[`GF-N2.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N2.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -259,7 +259,7 @@ exports[`GF-N2.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N2.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -329,7 +329,7 @@ exports[`GF-N2.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N2.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -399,7 +399,7 @@ exports[`GF-N2.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N2.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -469,7 +469,7 @@ exports[`GF-N2.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N2.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -507,7 +507,7 @@ exports[`GF-N2.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The decimal point moves six places.",
+                  "v": "True. Thousand means six zeros.",
                 },
               ],
               "id": "RA",
@@ -516,7 +516,7 @@ exports[`GF-N2.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A million is 1 000 000, so 1.6 million = 1 600 000.",
+                  "v": "False. 45 thousand is 45,000.",
                 },
               ],
               "id": "RB",
@@ -525,7 +525,7 @@ exports[`GF-N2.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A million has six zeros, so write six digits after the first.",
+                  "v": "True. Add three zeros twice.",
                 },
               ],
               "id": "RC",
@@ -543,14 +543,6 @@ exports[`GF-N2.d > keeps fixed seeds unchanged 1`] = `
             "code": "NPV.PLACE.COLUMN-SHIFT",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.PLACE.COLUMN-SHIFT",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
@@ -562,22 +554,18 @@ exports[`GF-N2.d > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "1.6 \\times 1{,}000{,}000 = 1{,}600{,}000",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. 45 thousand is 45,000.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Zara says ",
-      },
-      {
-        "t": "math",
-        "v": "1.6 \\text{ million} = 160{,}000",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Mia writes 45 thousand as 45,000,000.",
       },
     ],
   },
@@ -589,127 +577,7 @@ exports[`GF-N2.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N2.d",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. A million is 1 000 000, so 2.9 million = 2 900 000.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The decimal point moves six places.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. A million has six zeros, so write six digits after the first.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.PLACE.COLUMN-SHIFT",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.PLACE.COLUMN-SHIFT",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "math": "2.9 \\times 1{,}000{,}000 = 2{,}900{,}000",
-        "say": [],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Zara says ",
-      },
-      {
-        "t": "math",
-        "v": "2.9 \\text{ million} = 290{,}000",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GF-N2.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -765,7 +633,7 @@ exports[`GF-N2.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A million is 1 000 000, so 8.5 million = 8 500 000.",
+                  "v": "False. A million is 1 000 000, so 2.9 million = 2 900 000.",
                 },
               ],
               "id": "RC",
@@ -802,7 +670,7 @@ exports[`GF-N2.d > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "8.5 \\times 1{,}000{,}000 = 8{,}500{,}000",
+        "math": "2.9 \\times 1{,}000{,}000 = 2{,}900{,}000",
         "say": [],
       },
     ],
@@ -813,11 +681,119 @@ exports[`GF-N2.d > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "math",
-        "v": "8.5 \\text{ million} = 850{,}000",
+        "v": "2.9 \\text{ million} = 290{,}000",
       },
       {
         "t": "text",
         "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-N2.d",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Add three zeros twice.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Thousand means six zeros.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 45 thousand is 45,000.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.PLACE.COLUMN-SHIFT",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. 45 thousand is 45,000.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Mia writes 45 thousand as 45,000,000.",
       },
     ],
   },

@@ -10,7 +10,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -258,7 +258,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -320,7 +320,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -382,7 +382,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -420,7 +420,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Cancel the x's and 6 ÷ 3 = 2.",
+                  "v": "True. Only the first term is divided.",
                 },
               ],
               "id": "RA",
@@ -429,7 +429,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The top is twice the bottom.",
+                  "v": "True. Cancel the 2s.",
                 },
               ],
               "id": "RB",
@@ -438,7 +438,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Only common factors cancel, not terms. Try x = 1: 7/4 is not 2.",
+                  "v": "False. Both terms divide by 2: x + 3.",
                 },
               ],
               "id": "RC",
@@ -478,7 +478,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "x + 6 has no factor of x + 3, so the fraction does not simplify.",
+            "v": "False. Both terms divide by 2: x + 3.",
           },
         ],
       },
@@ -486,11 +486,19 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Rob says ",
+        "v": "Kai simplifies ",
       },
       {
         "t": "math",
-        "v": "\\frac{x + 6}{x + 3} = 2",
+        "v": "\\frac{2x + 6}{2}",
+      },
+      {
+        "t": "text",
+        "v": " to ",
+      },
+      {
+        "t": "math",
+        "v": "x + 6",
       },
       {
         "t": "text",
@@ -506,7 +514,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -518,7 +526,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -544,7 +552,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Only common factors cancel, not terms. Try x = 1: 9/5 is not 2.",
+                  "v": "True. Only the first term is divided.",
                 },
               ],
               "id": "RA",
@@ -553,7 +561,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The top is twice the bottom.",
+                  "v": "True. Cancel the 2s.",
                 },
               ],
               "id": "RB",
@@ -562,7 +570,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Cancel the x's and 8 ÷ 4 = 2.",
+                  "v": "False. Both terms divide by 2: x + 3.",
                 },
               ],
               "id": "RC",
@@ -574,7 +582,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.FRACTION.CANCEL-TERMS",
@@ -582,7 +590,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.FRACTION.CANCEL-TERMS",
@@ -602,7 +610,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "x + 8 has no factor of x + 4, so the fraction does not simplify.",
+            "v": "False. Both terms divide by 2: x + 3.",
           },
         ],
       },
@@ -610,11 +618,19 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Rob says ",
+        "v": "Kai simplifies ",
       },
       {
         "t": "math",
-        "v": "\\frac{x + 8}{x + 4} = 2",
+        "v": "\\frac{2x + 6}{2}",
+      },
+      {
+        "t": "text",
+        "v": " to ",
+      },
+      {
+        "t": "math",
+        "v": "x + 6",
       },
       {
         "t": "text",
@@ -630,7 +646,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -642,7 +658,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -668,7 +684,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Only common factors cancel, not terms. Try x = 1: 19/10 is not 2.",
+                  "v": "True. Only the first term is divided.",
                 },
               ],
               "id": "RA",
@@ -677,7 +693,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The top is twice the bottom.",
+                  "v": "True. Cancel the 2s.",
                 },
               ],
               "id": "RB",
@@ -686,7 +702,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Cancel the x's and 18 ÷ 9 = 2.",
+                  "v": "False. Both terms divide by 2: x + 3.",
                 },
               ],
               "id": "RC",
@@ -698,7 +714,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.FRACTION.CANCEL-TERMS",
@@ -706,7 +722,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.FRACTION.CANCEL-TERMS",
@@ -726,7 +742,7 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "x + 18 has no factor of x + 9, so the fraction does not simplify.",
+            "v": "False. Both terms divide by 2: x + 3.",
           },
         ],
       },
@@ -734,11 +750,19 @@ exports[`GH-A4.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Rob says ",
+        "v": "Kai simplifies ",
       },
       {
         "t": "math",
-        "v": "\\frac{x + 18}{x + 9} = 2",
+        "v": "\\frac{2x + 6}{2}",
+      },
+      {
+        "t": "text",
+        "v": " to ",
+      },
+      {
+        "t": "math",
+        "v": "x + 6",
       },
       {
         "t": "text",

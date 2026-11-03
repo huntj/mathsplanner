@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { vt } from "../shared/motion.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   v: number;
@@ -21,7 +22,7 @@ const ANSWER = "The distance travelled";
 
 export default defineGenerator<Params>({
   id: "GH-A15.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.GRAPH.AREA-GRADIENT"],
 
@@ -78,34 +79,69 @@ export default defineGenerator<Params>({
           solution: [{ say: "Velocity × time = distance, so the area is the distance travelled." }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "The graph shows the velocity of a car.",
-            fig,
-            ` Ben says the car is going backwards in the last ${p.t3} seconds, because the line slopes down.`,
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "The graph shows the velocity of a car.",
+                fig,
+                ` Ben says the car is going backwards in the last ${p.t3} seconds, because the line slopes down.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. The velocity is still positive, so the car moves forwards; the downward slope means it is slowing down (decelerating).",
+                  correct: true,
+                },
+                {
+                  text: "True. A negative gradient means moving backwards.",
+                  code: "ALG.GRAPH.AREA-GRADIENT",
+                },
+                {
+                  text: "True. The graph is going down towards zero distance.",
+                  code: "ALG.GRAPH.AREA-GRADIENT",
+                },
+              ],
+              solution: [
+                {
+                  say: "On a velocity–time graph the gradient is the acceleration; a negative gradient is deceleration.",
+                },
+              ],
+            }),
+          [
+            {
+              statement:
+                "A velocity–time graph slopes down but stays above the axis. Kai says the car is slowing down.",
+              truth: true,
+              right: "True. Velocity is falling but still positive.",
+              wrong: [
+                ["False. It is going backwards.", "ALG.GRAPH.AREA-GRADIENT"],
+                ["False. It has stopped."],
+              ],
+            },
+            {
+              claim: "A horizontal velocity–time graph means constant velocity.",
+              truth: "always",
+              right: "Always. Zero gradient means zero acceleration.",
+              wrong: [
+                ["Never. It means stopped.", "ALG.GRAPH.AREA-GRADIENT"],
+                ["Sometimes. Only at 0 m/s."],
+              ],
+            },
+            {
+              statement:
+                "Bea says a horizontal line on a velocity–time graph means the object is not moving.",
+              truth: false,
+              right: "False. It moves at a steady velocity; only a line on the axis means stopped.",
+              wrong: [
+                ["True. Flat means stopped.", "ALG.GRAPH.AREA-GRADIENT"],
+                ["True. Like a distance–time graph.", "ALG.GRAPH.AREA-GRADIENT"],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: "False. The velocity is still positive, so the car moves forwards; the downward slope means it is slowing down (decelerating).",
-              correct: true,
-            },
-            {
-              text: "True. A negative gradient means moving backwards.",
-              code: "ALG.GRAPH.AREA-GRADIENT",
-            },
-            {
-              text: "True. The graph is going down towards zero distance.",
-              code: "ALG.GRAPH.AREA-GRADIENT",
-            },
-          ],
-          solution: [
-            {
-              say: "On a velocity–time graph the gradient is the acceleration; a negative gradient is deceleration.",
-            },
-          ],
-        });
+        );
     }
   },
 

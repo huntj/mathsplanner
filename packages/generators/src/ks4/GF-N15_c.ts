@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const ROUNDS: [number, string][] = [
   [100, "the nearest 100"],
@@ -25,7 +26,7 @@ const r = (v: number) => Number(v.toFixed(6));
 
 export default defineGenerator<Params>({
   id: "GF-N15.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.BOUNDS.ENDS"],
 
@@ -79,20 +80,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [`A number rounds to ${v} (to ${words}). Lee says it could be exactly ${hi}.`],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `A number rounds to ${v} (to ${words}). Lee says it could be exactly ${hi}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${hi} rounds up to ${r(v + unit)}, so it is not included: x < ${hi}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The upper bound is included in the interval.",
+                  code: "NPV.BOUNDS.ENDS",
+                },
+                { text: "True. Both bounds round to the same value.", code: "NPV.BOUNDS.ENDS" },
+              ],
+              solution: [{ say: "", math: `${lo} \\le x < ${hi}` }],
+            }),
+          [
             {
-              text: `False. ${hi} rounds up to ${r(v + unit)}, so it is not included: x < ${hi}.`,
-              correct: true,
+              statement:
+                "A length is 8 cm to the nearest cm. Raj writes the error interval as $7.5 \\le l < 8.5$.",
+              truth: true,
+              right: "True. Half a unit either side: 7.5 rounds up to 8, and 8.5 would round to 9.",
+              wrong: [
+                ["False. It is 7 ≤ l < 9.", "NPV.BOUNDS.ENDS"],
+                ["False. It is 7.5 ≤ l ≤ 8.5.", "NPV.BOUNDS.ENDS"],
+              ],
             },
-            { text: "True. The upper bound is included in the interval.", code: "NPV.BOUNDS.ENDS" },
-            { text: "True. Both bounds round to the same value.", code: "NPV.BOUNDS.ENDS" },
+            {
+              claim: "The lower bound of a rounded measurement is included in its error interval.",
+              truth: "always",
+              right: "Always. The lower bound rounds up to the value, so it belongs.",
+              wrong: [
+                ["Never. Neither end is included.", "NPV.BOUNDS.ENDS"],
+                ["Sometimes. Only for whole numbers."],
+              ],
+            },
+            {
+              statement:
+                "A mass is 40 kg to the nearest 10 kg. Bea says the smallest it could be is 39.5 kg.",
+              truth: false,
+              right: "False. Half of 10 kg is 5 kg: the lower bound is 35 kg.",
+              wrong: [
+                ["True. Take off half of 1.", "NPV.BOUNDS.ENDS"],
+                ["True. Bounds are always 0.5 away."],
+              ],
+            },
           ],
-          solution: [{ say: "", math: `${lo} \\le x < ${hi}` }],
-        });
+        );
     }
   },
 

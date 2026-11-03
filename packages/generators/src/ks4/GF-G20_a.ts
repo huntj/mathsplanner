@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { legsTriangle } from "../shared/geo.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -21,7 +22,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "GF-G20.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.PYTHAG.NO-SQUARE", "GEO.PYTHAG.ADD-FOR-SHORT"],
 
@@ -105,24 +106,60 @@ export default defineGenerator<Params>({
       }
       default: {
         const [x, y, z] = [3 * p.k, 4 * p.k, 5 * p.k + 1];
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Ola says a triangle with sides ${x} cm, ${y} cm and ${z} cm is right-angled.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Ola says a triangle with sides ${x} cm, ${y} cm and ${z} cm is right-angled.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${x}² + ${y}² = ${x * x + y * y}, but ${z}² = ${z * z}. They are not equal, so there is no right angle.`,
+                  correct: true,
+                },
+                { text: `True. ${x} + ${y} is more than ${z}.`, code: "GEO.PYTHAG.NO-SQUARE" },
+                { text: "True. Any triangle with a long side is right-angled." },
+              ],
+              solution: [
+                {
+                  say: "A triangle is right-angled exactly when a² + b² = c² for its longest side c.",
+                },
+              ],
+            }),
+          [
             {
-              text: `False. ${x}² + ${y}² = ${x * x + y * y}, but ${z}² = ${z * z}. They are not equal, so there is no right angle.`,
-              correct: true,
+              statement: "Pia says a triangle with sides 5, 12 and 13 cm is right-angled.",
+              truth: true,
+              right: "True. 5² + 12² = 25 + 144 = 169 = 13².",
+              wrong: [
+                ["False. 5 + 12 ≠ 13.", "GEO.PYTHAG.NO-SQUARE"],
+                ["False. Only 3, 4, 5 is right-angled."],
+              ],
             },
-            { text: `True. ${x} + ${y} is more than ${z}.`, code: "GEO.PYTHAG.NO-SQUARE" },
-            { text: "True. Any triangle with a long side is right-angled." },
+            {
+              claim: "The hypotenuse is the longest side of a right-angled triangle.",
+              truth: "always",
+              right: "Always. It is opposite the right angle, the biggest angle.",
+              wrong: [
+                ["Never. It is the shortest.", "GEO.PYTHAG.ADD-FOR-SHORT"],
+                ["Sometimes. It depends how it is drawn."],
+              ],
+            },
+            {
+              statement:
+                "A right-angled triangle has hypotenuse 10 cm and one side 6 cm. Leo says the other side is about 11.7 cm.",
+              truth: false,
+              right: "False. Subtract for a shorter side: √(100 − 36) = 8 cm.",
+              wrong: [
+                ["True. √(100 + 36) ≈ 11.7.", "GEO.PYTHAG.ADD-FOR-SHORT"],
+                ["True. Always add the squares.", "GEO.PYTHAG.ADD-FOR-SHORT"],
+              ],
+            },
           ],
-          solution: [
-            { say: "A triangle is right-angled exactly when a² + b² = c² for its longest side c." },
-          ],
-        });
+        );
       }
     }
   },

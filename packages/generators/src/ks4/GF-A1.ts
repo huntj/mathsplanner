@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   k: number;
@@ -60,7 +61,7 @@ const CLAIMS: { latex: string; truth: boolean; why: string; code?: string }[] = 
 
 export default defineGenerator<Params>({
   id: "GF-A1",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.NOTATION.JUXTAPOSE", "ALG.FORM.WORDS"],
 
@@ -114,23 +115,56 @@ export default defineGenerator<Params>({
       }
       default: {
         const c = CLAIMS[p.claim] as (typeof CLAIMS)[number];
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Is this true? ", A.math(c.latex)],
-          truth: c.truth,
-          reasons: [
-            { text: `${c.truth ? "True" : "False"}. ${c.why}`, correct: true },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Is this true? ", A.math(c.latex)],
+              truth: c.truth,
+              reasons: [
+                { text: `${c.truth ? "True" : "False"}. ${c.why}`, correct: true },
+                {
+                  text: `${c.truth ? "False" : "True"}. Letters next to each other are added.`,
+                  code: "ALG.NOTATION.JUXTAPOSE",
+                },
+                {
+                  text: `${c.truth ? "False" : "True"}. A power means multiply by the power.`,
+                  code: "ALG.NOTATION.JUXTAPOSE",
+                },
+              ],
+              solution: [{ say: "3y = 3 × y; y² = y × y; x/4 = x ÷ 4." }],
+            }),
+          [
             {
-              text: `${c.truth ? "False" : "True"}. Letters next to each other are added.`,
-              code: "ALG.NOTATION.JUXTAPOSE",
+              claim: "$ab$ means the same as $ba$.",
+              truth: "always",
+              right: "Always. Both mean a × b, and multiplication can be done in either order.",
+              wrong: [
+                ["Never. The order of letters matters.", "ALG.NOTATION.JUXTAPOSE"],
+                ["Sometimes. Only for numbers."],
+              ],
             },
             {
-              text: `${c.truth ? "False" : "True"}. A power means multiply by the power.`,
-              code: "ALG.NOTATION.JUXTAPOSE",
+              statement: "Kim says $2y$ means $2 + y$.",
+              truth: false,
+              right: "False. 2y means 2 × y.",
+              wrong: [
+                ["True. Writing next to means add.", "ALG.NOTATION.JUXTAPOSE"],
+                ["True. 2y is two and y.", "ALG.FORM.WORDS"],
+              ],
+            },
+            {
+              statement: "Sol says 'three more than n' is $n + 3$.",
+              truth: true,
+              right: "True. More than means add to n.",
+              wrong: [
+                ["False. It is 3n.", "ALG.FORM.WORDS"],
+                ["False. It is 3 − n.", "ALG.FORM.WORDS"],
+              ],
             },
           ],
-          solution: [{ say: "3y = 3 × y; y² = y × y; x/4 = x ÷ 4." }],
-        });
+        );
       }
     }
   },

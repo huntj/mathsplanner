@@ -10,7 +10,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-P5",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -137,7 +137,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-P5",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -264,7 +264,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-P5",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -391,7 +391,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-P5",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -462,7 +462,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-P5",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -533,7 +533,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-P5",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -604,7 +604,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-P5",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -642,7 +642,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A fair dice would give exactly 3 sixes.",
+                  "v": "True. 4 out of 18 is more than a sixth, and that proves it.",
                 },
               ],
               "id": "RA",
@@ -660,7 +660,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 4 out of 18 is more than a sixth, and that proves it.",
+                  "v": "True. A fair dice would give exactly 3 sixes.",
                 },
               ],
               "id": "RC",
@@ -675,7 +675,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "PRO.RELATIVE-FREQUENCY.EXACT",
+            "code": "PRO.SAMPLE.SMALL",
             "feedback": [],
           },
           {
@@ -683,7 +683,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "PRO.SAMPLE.SMALL",
+            "code": "PRO.RELATIVE-FREQUENCY.EXACT",
             "feedback": [],
           },
         ],
@@ -720,7 +720,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-P5",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -731,8 +731,8 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -758,7 +758,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 3 out of 6 is more than a sixth, and that proves it.",
+                  "v": "True. Relative frequency = 480 ÷ 1000.",
                 },
               ],
               "id": "RA",
@@ -767,7 +767,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A fair dice would give exactly 1 sixes.",
+                  "v": "False. 1000 spins is too few.",
                 },
               ],
               "id": "RB",
@@ -776,7 +776,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 6 rolls is too few to tell; results vary a lot in small samples. Sam needs many more rolls.",
+                  "v": "False. It must be exactly 0.5.",
                 },
               ],
               "id": "RC",
@@ -788,7 +788,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "PRO.SAMPLE.SMALL",
@@ -796,7 +796,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "PRO.RELATIVE-FREQUENCY.EXACT",
@@ -816,7 +816,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A small sample can easily stray from the theoretical probability; only a large sample is good evidence of bias.",
+            "v": "True. Relative frequency = 480 ÷ 1000.",
           },
         ],
       },
@@ -824,7 +824,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sam rolls a dice 6 times and gets 3 sixes. Sam says the dice must be biased towards six.",
+        "v": "A spinner lands on blue 480 times in 1000 spins. Raj estimates P(blue) as 0.48.",
       },
     ],
   },
@@ -836,7 +836,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-P5",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -847,8 +847,8 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -874,7 +874,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A fair dice would give exactly 2 sixes.",
+                  "v": "True. Relative frequency = 480 ÷ 1000.",
                 },
               ],
               "id": "RA",
@@ -883,7 +883,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 4 out of 12 is more than a sixth, and that proves it.",
+                  "v": "False. 1000 spins is too few.",
                 },
               ],
               "id": "RB",
@@ -892,7 +892,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 12 rolls is too few to tell; results vary a lot in small samples. Sam needs many more rolls.",
+                  "v": "False. It must be exactly 0.5.",
                 },
               ],
               "id": "RC",
@@ -904,18 +904,18 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "PRO.RELATIVE-FREQUENCY.EXACT",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RB",
               "type": "choice",
             },
             "code": "PRO.SAMPLE.SMALL",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "PRO.RELATIVE-FREQUENCY.EXACT",
             "feedback": [],
           },
         ],
@@ -932,7 +932,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A small sample can easily stray from the theoretical probability; only a large sample is good evidence of bias.",
+            "v": "True. Relative frequency = 480 ÷ 1000.",
           },
         ],
       },
@@ -940,7 +940,7 @@ exports[`GF-P5 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sam rolls a dice 12 times and gets 4 sixes. Sam says the dice must be biased towards six.",
+        "v": "A spinner lands on blue 480 times in 1000 spins. Raj estimates P(blue) as 0.48.",
       },
     ],
   },

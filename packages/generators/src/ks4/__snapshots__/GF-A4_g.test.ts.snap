@@ -10,7 +10,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A4.g",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A4.g",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A4.g",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A4.g",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -263,7 +263,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A4.g",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -316,7 +316,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A4.g",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -383,7 +383,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A4.g",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -394,7 +394,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
@@ -421,7 +421,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Square the number as well: 2² = 4, so it is 4x^16.",
+                  "v": "True. Dividing subtracts the indices: 7 − 3 = 4.",
                 },
               ],
               "id": "RA",
@@ -430,7 +430,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Only the power of x is doubled.",
+                  "v": "False. It is x¹⁰.",
                 },
               ],
               "id": "RB",
@@ -439,7 +439,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 2x^10.",
+                  "v": "False. It is x^(7/3).",
                 },
               ],
               "id": "RC",
@@ -454,7 +454,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "ALG.INDICES.BRACKET-COEFF",
+            "code": "ALG.INDICES.POWER-ADD",
             "feedback": [],
           },
           {
@@ -462,7 +462,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "ALG.INDICES.POWER-ADD",
+            "code": "ALG.INDICES.MULTIPLY",
             "feedback": [],
           },
         ],
@@ -476,18 +476,22 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "\\left(2x^{8}\\right)^2 = 2^2 \\times x^{16} = 4x^{16}",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "True. Dividing subtracts the indices: 7 − 3 = 4.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Eva says ",
+        "v": "Sam says ",
       },
       {
         "t": "math",
-        "v": "\\left(2x^{8}\\right)^2 = 2x^{16}",
+        "v": "\\frac{x^7}{x^3} = x^4",
       },
       {
         "t": "text",
@@ -503,7 +507,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A4.g",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -541,7 +545,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Only the power of x is doubled.",
+                  "v": "True. 3 + 4 = 7.",
                 },
               ],
               "id": "RA",
@@ -550,7 +554,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 4x^10.",
+                  "v": "True. Add the indices.",
                 },
               ],
               "id": "RB",
@@ -559,7 +563,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Square the number as well: 4² = 16, so it is 16x^16.",
+                  "v": "False. A power of a power multiplies: x¹².",
                 },
               ],
               "id": "RC",
@@ -574,7 +578,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.INDICES.BRACKET-COEFF",
+            "code": "ALG.INDICES.POWER-ADD",
             "feedback": [],
           },
           {
@@ -596,18 +600,22 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "\\left(4x^{8}\\right)^2 = 4^2 \\times x^{16} = 16x^{16}",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. A power of a power multiplies: x¹².",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Eva says ",
+        "v": "Kit says ",
       },
       {
         "t": "math",
-        "v": "\\left(4x^{8}\\right)^2 = 4x^{16}",
+        "v": "(x^3)^4 = x^7",
       },
       {
         "t": "text",
@@ -623,7 +631,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A4.g",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -635,7 +643,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -661,7 +669,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Square the number as well: 6² = 36, so it is 36x^18.",
+                  "v": "True. 3 + 4 = 7.",
                 },
               ],
               "id": "RA",
@@ -670,7 +678,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Only the power of x is doubled.",
+                  "v": "True. Add the indices.",
                 },
               ],
               "id": "RB",
@@ -679,7 +687,7 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 6x^11.",
+                  "v": "False. A power of a power multiplies: x¹².",
                 },
               ],
               "id": "RC",
@@ -691,15 +699,15 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.INDICES.BRACKET-COEFF",
+            "code": "ALG.INDICES.POWER-ADD",
             "feedback": [],
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.INDICES.POWER-ADD",
@@ -716,18 +724,22 @@ exports[`GF-A4.g > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "\\left(6x^{9}\\right)^2 = 6^2 \\times x^{18} = 36x^{18}",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. A power of a power multiplies: x¹².",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Eva says ",
+        "v": "Kit says ",
       },
       {
         "t": "math",
-        "v": "\\left(6x^{9}\\right)^2 = 6x^{18}",
+        "v": "(x^3)^4 = x^7",
       },
       {
         "t": "text",

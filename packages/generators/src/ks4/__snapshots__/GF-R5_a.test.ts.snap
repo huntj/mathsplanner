@@ -10,7 +10,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R5.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -59,7 +59,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R5.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -122,7 +122,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R5.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -198,7 +198,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R5.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -246,7 +246,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R5.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -308,7 +308,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R5.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -370,7 +370,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R5.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -408,7 +408,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Equal ratios multiply both parts by the same number. 1 : 2 = 2 : 4, for example.",
+                  "v": "False. 3 parts make 60, so 1 part is 20.",
                 },
               ],
               "id": "RA",
@@ -417,7 +417,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Doing the same to both parts keeps the ratio.",
+                  "v": "True. Half of 60.",
                 },
               ],
               "id": "RB",
@@ -426,7 +426,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The difference between the parts stays the same.",
+                  "v": "True. Divide by 2, the biggest part.",
                 },
               ],
               "id": "RC",
@@ -441,7 +441,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "RAT.SIMPLIFY.SUBTRACT",
+            "code": "RAT.SHARE.WRONG-TOTAL",
             "feedback": [],
           },
           {
@@ -449,7 +449,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "RAT.SIMPLIFY.SUBTRACT",
+            "code": "RAT.SHARE.WRONG-TOTAL",
             "feedback": [],
           },
         ],
@@ -466,7 +466,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "1/2 is not equal to 5/6.",
+            "v": "False. 3 parts make 60, so 1 part is 20.",
           },
         ],
       },
@@ -474,23 +474,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says ",
-      },
-      {
-        "t": "math",
-        "v": "1 : 2",
-      },
-      {
-        "t": "text",
-        "v": " is the same ratio as ",
-      },
-      {
-        "t": "math",
-        "v": "5 : 6",
-      },
-      {
-        "t": "text",
-        "v": " because you add 4 to both parts.",
+        "v": "60 sweets are shared in the ratio 1 : 2. Mia says the smaller share is 30.",
       },
     ],
   },
@@ -502,7 +486,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R5.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -513,139 +497,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Equal ratios multiply both parts by the same number. 5 : 9 = 10 : 18, for example.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Doing the same to both parts keeps the ratio.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The difference between the parts stays the same.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "RAT.SIMPLIFY.SUBTRACT",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "RAT.SIMPLIFY.SUBTRACT",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "5/9 is not equal to 9/13.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Ivy says ",
-      },
-      {
-        "t": "math",
-        "v": "5 : 9",
-      },
-      {
-        "t": "text",
-        "v": " is the same ratio as ",
-      },
-      {
-        "t": "math",
-        "v": "9 : 13",
-      },
-      {
-        "t": "text",
-        "v": " because you add 4 to both parts.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GF-R5.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -672,7 +524,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Doing the same to both parts keeps the ratio.",
+                  "v": "False. It is £8.",
                 },
               ],
               "id": "RA",
@@ -681,7 +533,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Equal ratios multiply both parts by the same number. 6 : 8 = 12 : 16, for example.",
+                  "v": "True. 8 parts make £40, so 1 part is £5, and 5 parts are £25.",
                 },
               ],
               "id": "RB",
@@ -690,7 +542,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The difference between the parts stays the same.",
+                  "v": "False. It is £15.",
                 },
               ],
               "id": "RC",
@@ -705,15 +557,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "RAT.SIMPLIFY.SUBTRACT",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "RAT.SIMPLIFY.SUBTRACT",
+            "code": "RAT.SHARE.WRONG-TOTAL",
             "feedback": [],
           },
         ],
@@ -730,7 +574,7 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "6/8 is not equal to 10/12.",
+            "v": "True. 8 parts make £40, so 1 part is £5, and 5 parts are £25.",
           },
         ],
       },
@@ -738,23 +582,124 @@ exports[`GF-R5.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says ",
+        "v": "£40 is shared in the ratio 3 : 5. Kai says the bigger share is £25.",
       },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-R5.a",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
       {
-        "t": "math",
-        "v": "6 : 8",
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only for 1 : 1.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. Every part of the total goes to someone.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. They add up to the ratio.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "RAT.SHARE.WRONG-TOTAL",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
       },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. Every part of the total goes to someone.",
+          },
+        ],
+      },
+    ],
+    "stem": [
       {
         "t": "text",
-        "v": " is the same ratio as ",
-      },
-      {
-        "t": "math",
-        "v": "10 : 12",
-      },
-      {
-        "t": "text",
-        "v": " because you add 4 to both parts.",
+        "v": "When you share in a ratio, the shares add up to the total.",
       },
     ],
   },

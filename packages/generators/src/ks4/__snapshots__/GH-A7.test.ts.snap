@@ -10,7 +10,7 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -100,7 +100,7 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -190,7 +190,7 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -280,7 +280,7 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -382,7 +382,7 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -484,7 +484,7 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -579,14 +579,14 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -597,14 +597,14 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -613,10 +613,19 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -624,7 +633,7 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The same two functions are used, so the order does not matter.",
+                  "v": "Always, where defined. The inverse undoes the function.",
                 },
               ],
               "id": "RA",
@@ -633,7 +642,7 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both are straight lines.",
+                  "v": "Sometimes. Only for linear f.",
                 },
               ],
               "id": "RB",
@@ -642,7 +651,7 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. fg(x) = 2x + 7, but gf(x) = 2(x + 7) = 2x + 14.",
+                  "v": "Never. It gives 1.",
                 },
               ],
               "id": "RC",
@@ -654,17 +663,17 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "ALG.FUNCTION.ORDER",
+            "code": "ALG.INVERSE.RECIPROCAL",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -674,31 +683,19 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "In fg(x), g is applied first; in gf(x), f is applied first. The order usually changes the result.",
+            "v": "Always, where defined. The inverse undoes the function.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "t": "text",
-        "v": "Given ",
-      },
-      {
         "t": "math",
-        "v": "f(x) = x + 7",
+        "v": "f(f^{-1}(x)) = x",
       },
       {
         "t": "text",
-        "v": " and ",
-      },
-      {
-        "t": "math",
-        "v": "g(x) = 2x",
-      },
-      {
-        "t": "text",
-        "v": ", Ana says fg(x) and gf(x) are the same function.",
+        "v": ".",
       },
     ],
   },
@@ -710,7 +707,7 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -748,7 +745,7 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both are straight lines.",
+                  "v": "True. fg means f first.",
                 },
               ],
               "id": "RA",
@@ -757,7 +754,7 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. fg(x) = 2x + 9, but gf(x) = 2(x + 9) = 2x + 18.",
+                  "v": "False. fg(2) = f(g(2)) = f(3) = 9. gf(2) is 5.",
                 },
               ],
               "id": "RB",
@@ -766,7 +763,7 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The same two functions are used, so the order does not matter.",
+                  "v": "True. Square, then add 1.",
                 },
               ],
               "id": "RC",
@@ -776,6 +773,14 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "ALG.FUNCTION.ORDER",
+            "feedback": [],
+          },
           {
             "answer": {
               "id": "RC",
@@ -798,7 +803,7 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "In fg(x), g is applied first; in gf(x), f is applied first. The order usually changes the result.",
+            "v": "False. fg(2) = f(g(2)) = f(3) = 9. gf(2) is 5.",
           },
         ],
       },
@@ -806,11 +811,11 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Given ",
+        "v": "For ",
       },
       {
         "t": "math",
-        "v": "f(x) = x + 9",
+        "v": "f(x) = x^2",
       },
       {
         "t": "text",
@@ -818,11 +823,19 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "math",
-        "v": "g(x) = 2x",
+        "v": "g(x) = x + 1",
       },
       {
         "t": "text",
-        "v": ", Ana says fg(x) and gf(x) are the same function.",
+        "v": ", Pia says ",
+      },
+      {
+        "t": "math",
+        "v": "fg(2) = 5",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
@@ -834,7 +847,7 @@ exports[`GH-A7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

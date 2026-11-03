@@ -10,7 +10,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -257,7 +257,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -318,7 +318,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -372,14 +372,14 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -397,7 +397,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -406,10 +406,19 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -417,7 +426,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The three numbers make a fact family.",
+                  "v": "Always. Order does not matter.",
                 },
               ],
               "id": "RA",
@@ -426,7 +435,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiplying is the inverse of dividing.",
+                  "v": "Never. Even when a = b.",
                 },
               ],
               "id": "RB",
@@ -435,7 +444,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Dividing by 7 is undone by multiplying by 7: 6 × 7 = 42.",
+                  "v": "Sometimes. Only when a = b; otherwise the answers have opposite signs.",
                 },
               ],
               "id": "RC",
@@ -453,19 +462,11 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
             "code": "NPV.INVERSE.WRONG-PAIR",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.INVERSE.WRONG-PAIR",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -475,31 +476,19 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Check by working it out: the product is far bigger than 7.",
+            "v": "Sometimes. Only when a = b; otherwise the answers have opposite signs.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "t": "text",
-        "v": "Ivy says that because ",
-      },
-      {
         "t": "math",
-        "v": "42 \\div 7 = 6",
+        "v": "a - b = b - a",
       },
       {
         "t": "text",
-        "v": ", it follows that ",
-      },
-      {
-        "t": "math",
-        "v": "42 \\times 6 = 7",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": " for any two numbers a and b.",
       },
     ],
   },
@@ -511,7 +500,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -523,7 +512,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -549,7 +538,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The three numbers make a fact family.",
+                  "v": "False. The inverse is 37 + 19 = 56.",
                 },
               ],
               "id": "RA",
@@ -558,7 +547,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiplying is the inverse of dividing.",
+                  "v": "True. Swap the minus for a plus.",
                 },
               ],
               "id": "RB",
@@ -567,7 +556,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Dividing by 15 is undone by multiplying by 15: 5 × 15 = 75.",
+                  "v": "True. Adding undoes subtracting.",
                 },
               ],
               "id": "RC",
@@ -577,14 +566,6 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.INVERSE.WRONG-PAIR",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RB",
@@ -607,7 +588,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Check by working it out: the product is far bigger than 15.",
+            "v": "False. The inverse is 37 + 19 = 56.",
           },
         ],
       },
@@ -615,11 +596,11 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says that because ",
+        "v": "Sol says that because ",
       },
       {
         "t": "math",
-        "v": "75 \\div 15 = 5",
+        "v": "56 - 19 = 37",
       },
       {
         "t": "text",
@@ -627,7 +608,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "math",
-        "v": "75 \\times 5 = 15",
+        "v": "56 + 37 = 19",
       },
       {
         "t": "text",
@@ -643,7 +624,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -654,8 +635,8 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -681,7 +662,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The three numbers make a fact family.",
+                  "v": "True. Division undoes multiplication.",
                 },
               ],
               "id": "RA",
@@ -690,7 +671,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Dividing by 4 is undone by multiplying by 4: 8 × 4 = 32.",
+                  "v": "False. It gives 84 ÷ 12 = 84.",
                 },
               ],
               "id": "RB",
@@ -699,7 +680,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiplying is the inverse of dividing.",
+                  "v": "False. You cannot work back.",
                 },
               ],
               "id": "RC",
@@ -711,15 +692,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.INVERSE.WRONG-PAIR",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.INVERSE.WRONG-PAIR",
@@ -739,7 +712,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Check by working it out: the product is far bigger than 4.",
+            "v": "True. Division undoes multiplication.",
           },
         ],
       },
@@ -747,11 +720,11 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says that because ",
+        "v": "Kim says that because ",
       },
       {
         "t": "math",
-        "v": "32 \\div 4 = 8",
+        "v": "12 \\times 7 = 84",
       },
       {
         "t": "text",
@@ -759,7 +732,7 @@ exports[`GF-N3.a > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "math",
-        "v": "32 \\times 8 = 4",
+        "v": "84 \\div 7 = 12",
       },
       {
         "t": "text",

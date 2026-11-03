@@ -135,7 +135,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-S3.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -330,7 +330,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-S3.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -525,7 +525,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-S3.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -720,7 +720,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-S3.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -911,7 +911,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-S3.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1102,7 +1102,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-S3.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1161,14 +1161,14 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-S3.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1179,14 +1179,14 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1195,10 +1195,19 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1206,7 +1215,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A histogram shows continuous data, so each bar runs from one class boundary to the next and the bars touch.",
+                  "v": "Always. The categories are separate.",
                 },
               ],
               "id": "RA",
@@ -1215,7 +1224,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The gaps show where one class ends.",
+                  "v": "Sometimes. Only for colours.",
                 },
               ],
               "id": "RB",
@@ -1224,7 +1233,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. All bar charts have gaps.",
+                  "v": "Never. The bars always touch.",
                 },
               ],
               "id": "RC",
@@ -1236,7 +1245,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "STA.SCALE.READ",
@@ -1246,7 +1255,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1256,7 +1265,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Continuous data has no gaps between classes.",
+            "v": "Always. The categories are separate.",
           },
         ],
       },
@@ -1264,7 +1273,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Rae says the bars of a histogram should have gaps between them, like a bar chart.",
+        "v": "A bar chart for categories such as favourite colour has gaps between the bars.",
       },
     ],
   },
@@ -1276,7 +1285,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-S3.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1288,7 +1297,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -1314,7 +1323,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. All bar charts have gaps.",
+                  "v": "True. The gaps show where one class ends.",
                 },
               ],
               "id": "RA",
@@ -1323,7 +1332,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A histogram shows continuous data, so each bar runs from one class boundary to the next and the bars touch.",
+                  "v": "True. All bar charts have gaps.",
                 },
               ],
               "id": "RB",
@@ -1332,7 +1341,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The gaps show where one class ends.",
+                  "v": "False. A histogram shows continuous data, so each bar runs from one class boundary to the next and the bars touch.",
                 },
               ],
               "id": "RC",
@@ -1344,7 +1353,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "STA.SCALE.READ",
@@ -1377,14 +1386,14 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-S3.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1395,14 +1404,14 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1411,10 +1420,19 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1422,7 +1440,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. All bar charts have gaps.",
+                  "v": "Never. The bars always touch.",
                 },
               ],
               "id": "RA",
@@ -1431,7 +1449,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A histogram shows continuous data, so each bar runs from one class boundary to the next and the bars touch.",
+                  "v": "Sometimes. Only for colours.",
                 },
               ],
               "id": "RB",
@@ -1440,7 +1458,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The gaps show where one class ends.",
+                  "v": "Always. The categories are separate.",
                 },
               ],
               "id": "RC",
@@ -1452,7 +1470,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "STA.SCALE.READ",
@@ -1462,7 +1480,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1472,7 +1490,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Continuous data has no gaps between classes.",
+            "v": "Always. The categories are separate.",
           },
         ],
       },
@@ -1480,7 +1498,7 @@ exports[`GF-S3.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Rae says the bars of a histogram should have gaps between them, like a bar chart.",
+        "v": "A bar chart for categories such as favourite colour has gaps between the bars.",
       },
     ],
   },

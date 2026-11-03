@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { lShape } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   W: number;
@@ -23,7 +24,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "GF-G17.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: [
     "MEA.PERIMETER.MISSING-SIDES",
@@ -103,26 +104,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["Two shapes with the same area have the same perimeter."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["Two shapes with the same area have the same perimeter."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: "Sometimes. A 4 by 4 square and a 2 by 8 rectangle both have area 16, but perimeters 16 and 20.",
+                  correct: true,
+                },
+                {
+                  text: "Always. Area and perimeter both measure size.",
+                  code: "MEA.AREA.SAME-PERIMETER",
+                },
+                {
+                  text: "Never. Different shapes always have different perimeters.",
+                  code: "MEA.AREA.SAME-PERIMETER",
+                },
+              ],
+              solution: [{ say: "Area and perimeter measure different things." }],
+            }),
+          [
             {
-              text: "Sometimes. A 4 by 4 square and a 2 by 8 rectangle both have area 16, but perimeters 16 and 20.",
-              correct: true,
+              statement:
+                "A shape is a 10 cm square with a semicircle of diameter 10 cm on one side. Bea says its area is $100 + 12.5\\pi$ cm².",
+              truth: true,
+              right: "True. The semicircle has radius 5: ½π × 25 = 12.5π.",
+              wrong: [
+                ["False. It is 100 + 25π.", "GEO.CIRCLE.RADIUS-DIAMETER"],
+                ["False. It is 100 + 50π.", "GEO.CIRCLE.RADIUS-DIAMETER"],
+              ],
             },
             {
-              text: "Always. Area and perimeter both measure size.",
-              code: "MEA.AREA.SAME-PERIMETER",
+              claim:
+                "The area of a compound shape is the sum of the areas of the parts it splits into.",
+              truth: "always",
+              right: "Always, if the parts do not overlap.",
+              wrong: [
+                ["Never. You multiply them.", "MEA.AREA.SAME-PERIMETER"],
+                ["Sometimes. Only for rectangles."],
+              ],
             },
             {
-              text: "Never. Different shapes always have different perimeters.",
-              code: "MEA.AREA.SAME-PERIMETER",
+              statement:
+                "Leo says the perimeter of a compound shape is the sum of the perimeters of its parts.",
+              truth: false,
+              right: "False. Shared edges are inside the shape and are not part of its perimeter.",
+              wrong: [
+                ["True. Add all the edges.", "MEA.PERIMETER.MISSING-SIDES"],
+                ["True. Perimeter works like area.", "MEA.PERIMETER.MISSING-SIDES"],
+              ],
             },
           ],
-          solution: [{ say: "Area and perimeter measure different things." }],
-        });
+        );
     }
   },
 

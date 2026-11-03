@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n1: number;
@@ -22,7 +23,7 @@ const r2 = (v: number) => Math.round(v * 100) / 100;
 
 export default defineGenerator<Params>({
   id: "GF-R10.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.ADDITIVE", "RAT.PROPORTION.LINEAR-INTERCEPT"],
 
@@ -97,28 +98,61 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `A taxi charges £3 plus £${p.k} per mile. Ola says the cost is directly proportional to the number of miles.`,
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `A taxi charges £3 plus £${p.k} per mile. Ola says the cost is directly proportional to the number of miles.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A journey of 0 miles still costs £3, so doubling the miles does not double the cost. Its graph does not go through the origin.",
+                  correct: true,
+                },
+                {
+                  text: "True. The cost goes up by the same amount for every mile.",
+                  code: "RAT.PROPORTION.LINEAR-INTERCEPT",
+                },
+                {
+                  text: "True. Its graph is a straight line.",
+                  code: "RAT.PROPORTION.LINEAR-INTERCEPT",
+                },
+              ],
+              solution: [{ say: "Direct proportion: a straight line through the origin." }],
+            }),
+          [
+            {
+              statement: "5 pens cost £3. Sol says 15 pens cost £9.",
+              truth: true,
+              right: "True. 15 is 3 times 5, so the cost is 3 × £3.",
+              wrong: [
+                ["False. 10 more pens cost £10 more.", "RAT.ADDITIVE"],
+                ["False. It is £13."],
+              ],
+            },
+            {
+              claim: "The graph of a direct proportion passes through the origin.",
+              truth: "always",
+              right: "Always. Zero of one means zero of the other.",
+              wrong: [
+                ["Never. It starts at the fixed charge.", "RAT.PROPORTION.LINEAR-INTERCEPT"],
+                ["Sometimes. If the line is steep."],
+              ],
+            },
+            {
+              statement: "4 tickets cost £20. Pia says 6 tickets cost £22.",
+              truth: false,
+              right: "False. One ticket is £5, so 6 tickets cost £30.",
+              wrong: [
+                ["True. 2 more tickets add £2.", "RAT.ADDITIVE"],
+                ["True. Add the difference.", "RAT.ADDITIVE"],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: "False. A journey of 0 miles still costs £3, so doubling the miles does not double the cost. Its graph does not go through the origin.",
-              correct: true,
-            },
-            {
-              text: "True. The cost goes up by the same amount for every mile.",
-              code: "RAT.PROPORTION.LINEAR-INTERCEPT",
-            },
-            {
-              text: "True. Its graph is a straight line.",
-              code: "RAT.PROPORTION.LINEAR-INTERCEPT",
-            },
-          ],
-          solution: [{ say: "Direct proportion: a straight line through the origin." }],
-        });
+        );
     }
   },
 

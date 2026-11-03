@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { poly, signedWrongs } from "../shared/alg.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -19,7 +20,7 @@ const roots = (a: number, b: number) => `x = ${Math.min(a, b)} \\text{ or } x = 
 
 export default defineGenerator<Params>({
   id: "GF-A11.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.QUADRATIC.ROOT-SIGN", "ALG.QUADRATIC.ONE-ROOT"],
 
@@ -84,29 +85,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Al solves ",
-            A.math(`x^2 = ${p.k}x`),
-            " by dividing both sides by x, and says the only root is ",
-            A.math(`x = ${p.k}`),
-            ".",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Al solves ",
+                A.math(`x^2 = ${p.k}x`),
+                " by dividing both sides by x, and says the only root is ",
+                A.math(`x = ${p.k}`),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Dividing by x loses the root x = 0. Factorise instead: x(x − ${p.k}) = 0, so x = 0 or x = ${p.k}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. A quadratic has only one positive root.",
+                  code: "ALG.QUADRATIC.ONE-ROOT",
+                },
+                { text: `False. The root is x = −${p.k}.`, code: "ALG.QUADRATIC.ROOT-SIGN" },
+              ],
+              solution: [{ say: "Never divide both sides by an expression that could be 0." }],
+            }),
+          [
             {
-              text: `False. Dividing by x loses the root x = 0. Factorise instead: x(x − ${p.k}) = 0, so x = 0 or x = ${p.k}.`,
-              correct: true,
+              statement: "Ola solves $x^2 = 16$ and gets x = 4 or x = −4.",
+              truth: true,
+              right: "True. Both 4² and (−4)² are 16.",
+              wrong: [
+                ["False. Only x = 4.", "ALG.QUADRATIC.ONE-ROOT"],
+                ["False. x = 8.", "ALG.QUADRATIC.ROOT-SIGN"],
+              ],
             },
             {
-              text: "True. A quadratic has only one positive root.",
-              code: "ALG.QUADRATIC.ONE-ROOT",
+              claim: "Dividing both sides of $x^2 = 5x$ by x can lose a solution.",
+              truth: "always",
+              right: "Always. It loses x = 0, which also solves x² = 5x.",
+              wrong: [
+                ["Never. Dividing is always safe.", "ALG.QUADRATIC.ONE-ROOT"],
+                ["Sometimes. Only for big numbers."],
+              ],
             },
-            { text: `False. The root is x = −${p.k}.`, code: "ALG.QUADRATIC.ROOT-SIGN" },
+            {
+              statement: "Kim solves $(x - 3)(x + 2) = 0$ and says x = 3 only.",
+              truth: false,
+              right: "False. x + 2 = 0 also gives x = −2.",
+              wrong: [
+                ["True. Only the first bracket counts.", "ALG.QUADRATIC.ONE-ROOT"],
+                ["True. Solutions are positive.", "ALG.QUADRATIC.ROOT-SIGN"],
+              ],
+            },
           ],
-          solution: [{ say: "Never divide both sides by an expression that could be 0." }],
-        });
+        );
     }
   },
 

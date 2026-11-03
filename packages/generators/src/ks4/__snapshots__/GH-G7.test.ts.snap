@@ -67,7 +67,7 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-G7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -241,7 +241,7 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-G7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -415,7 +415,7 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-G7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -626,7 +626,7 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-G7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -805,7 +805,7 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-G7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -984,7 +984,7 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-G7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1086,14 +1086,14 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-G7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1105,6 +1105,139 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. It depends on the centre.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. It doubles them.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. Each length is multiplied by 1/2.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "POS.ENLARGE.CENTRE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "POS.ENLARGE.NEGATIVE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. Each length is multiplied by 1/2.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "An enlargement with scale factor ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{1}{2}",
+      },
+      {
+        "t": "text",
+        "v": " halves every length.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GH-G7",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
           "correctReason": "RA",
           "options": [
             {
@@ -1131,110 +1264,11 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Each point goes to the same distance on the opposite side of the centre, which is a half-turn.",
+                  "v": "False. Scale factor −1 sends each point through the centre to the other side: a rotation of 180°, not a reflection.",
                 },
               ],
               "id": "RA",
             },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. It makes the shape smaller.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. It reflects the shape.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "POS.ENLARGE.NEGATIVE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Scale factor −1 keeps the size and turns the shape upside down about the centre.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Ben says an enlargement with scale factor −1 has the same effect as a rotation of 180° about the centre of enlargement.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "GH-G7",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
             {
               "content": [
                 {
@@ -1242,7 +1276,7 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
                   "v": "True. A negative scale factor flips the shape over.",
                 },
               ],
-              "id": "RA",
+              "id": "RB",
             },
             {
               "content": [
@@ -1251,15 +1285,6 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
                   "v": "True. It leaves the shape where it is.",
                 },
               ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Scale factor −1 sends each point through the centre to the other side: a rotation of 180°, not a reflection.",
-                },
-              ],
               "id": "RC",
             },
           ],
@@ -1269,7 +1294,7 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "POS.ENLARGE.NEGATIVE",
@@ -1302,14 +1327,14 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-G7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1320,14 +1345,14 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1336,10 +1361,19 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1347,7 +1381,7 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A negative scale factor flips the shape over.",
+                  "v": "Sometimes. It depends on the centre.",
                 },
               ],
               "id": "RA",
@@ -1356,7 +1390,7 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It leaves the shape where it is.",
+                  "v": "Never. It doubles them.",
                 },
               ],
               "id": "RB",
@@ -1365,7 +1399,7 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Scale factor −1 sends each point through the centre to the other side: a rotation of 180°, not a reflection.",
+                  "v": "Always. Each length is multiplied by 1/2.",
                 },
               ],
               "id": "RC",
@@ -1380,6 +1414,14 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
+            "code": "POS.ENLARGE.CENTRE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
             "code": "POS.ENLARGE.NEGATIVE",
             "feedback": [],
           },
@@ -1387,7 +1429,7 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1397,7 +1439,7 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Scale factor −1 keeps the size and turns the shape upside down about the centre.",
+            "v": "Always. Each length is multiplied by 1/2.",
           },
         ],
       },
@@ -1405,7 +1447,15 @@ exports[`GH-G7 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ben says an enlargement with scale factor −1 has the same effect as a reflection in a line through the centre of enlargement.",
+        "v": "An enlargement with scale factor ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{1}{2}",
+      },
+      {
+        "t": "text",
+        "v": " halves every length.",
       },
     ],
   },

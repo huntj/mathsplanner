@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const TRIANGLES: [string, string, string[]][] = [
   ["exactly one line of symmetry", "Isosceles", ["Equilateral", "Scalene"]],
@@ -25,7 +26,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-G4.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.POLYGON.REGULAR-SIDES-ONLY", "GEO.TRIANGLE.INEQUALITY"],
 
@@ -84,25 +85,64 @@ export default defineGenerator<Params>({
       }
       default: {
         const c = p.a + p.b + p.extra;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Tia says she can draw a triangle with sides ${p.a} cm, ${p.b} cm and ${c} cm.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Tia says she can draw a triangle with sides ${p.a} cm, ${p.b} cm and ${c} cm.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${p.a} + ${p.b} = ${p.a + p.b}, which is not more than ${c}, so the two shorter sides cannot meet.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Any three lengths make a triangle.",
+                  code: "GEO.TRIANGLE.INEQUALITY",
+                },
+                {
+                  text: `True. The longest side, ${c} cm, goes along the bottom.`,
+                  code: "GEO.TRIANGLE.INEQUALITY",
+                },
+              ],
+              solution: [
+                { say: "The two shorter sides must add up to more than the longest side." },
+              ],
+            }),
+          [
             {
-              text: `False. ${p.a} + ${p.b} = ${p.a + p.b}, which is not more than ${c}, so the two shorter sides cannot meet.`,
-              correct: true,
+              statement: "Sol says he can draw a triangle with sides 4 cm, 5 cm and 6 cm.",
+              truth: true,
+              right: "True. Each side is shorter than the other two added together.",
+              wrong: [
+                ["False. The sides must be equal.", "GEO.POLYGON.REGULAR-SIDES-ONLY"],
+                ["False. 4 + 5 is less than 6 + 6."],
+              ],
             },
-            { text: "True. Any three lengths make a triangle.", code: "GEO.TRIANGLE.INEQUALITY" },
             {
-              text: `True. The longest side, ${c} cm, goes along the bottom.`,
-              code: "GEO.TRIANGLE.INEQUALITY",
+              claim:
+                "In any triangle, the longest side is shorter than the other two sides added together.",
+              truth: "always",
+              right: "Always. Otherwise the two short sides cannot meet.",
+              wrong: [
+                ["Never. It is longer.", "GEO.TRIANGLE.INEQUALITY"],
+                ["Sometimes. Only for right-angled triangles."],
+              ],
+            },
+            {
+              statement: "Mia says a shape with four equal sides must be regular.",
+              truth: false,
+              right: "False. A rhombus has four equal sides but its angles need not be equal.",
+              wrong: [
+                ["True. Equal sides make it regular.", "GEO.POLYGON.REGULAR-SIDES-ONLY"],
+                ["True. A rhombus is a square.", "GEO.POLYGON.REGULAR-SIDES-ONLY"],
+              ],
             },
           ],
-          solution: [{ say: "The two shorter sides must add up to more than the longest side." }],
-        });
+        );
       }
     }
   },

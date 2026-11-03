@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { linear, signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { distinctFrom } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   k: number;
@@ -26,7 +27,7 @@ const simplified = (p: Params) =>
 
 export default defineGenerator<Params>({
   id: "GF-A6.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.EXPAND.NEGATIVE", "ALG.EXPAND.FIRST-ONLY", "ALG.EXPAND.BINOMIAL-TWO-TERMS"],
 
@@ -111,47 +112,81 @@ export default defineGenerator<Params>({
       }
       default: {
         const target = `${p.k}(x + ${p.a})`;
-        return A.oddOneOut({
+        return orClaims(
           rng,
-          question: "Which expression is not equivalent to the others?",
-          items: [
-            { content: A.math(target) },
+          () =>
+            A.oddOneOut({
+              rng,
+              question: "Which expression is not equivalent to the others?",
+              items: [
+                { content: A.math(target) },
+                {
+                  content: A.math(
+                    linear([
+                      [p.k, "x"],
+                      [p.k * p.a, ""],
+                    ]),
+                  ),
+                },
+                { content: A.math(`${p.k}x + ${p.k}(${p.a})`) },
+                {
+                  content: A.math(
+                    linear([
+                      [p.k, "x"],
+                      [p.a, ""],
+                    ]),
+                  ),
+                  odd: true,
+                },
+              ],
+              reasons: [
+                {
+                  text: `It is the only one not equal to ${target}: the ${p.a} has not been multiplied by ${p.k}.`,
+                  correct: true,
+                },
+                { text: "It is the only one without brackets." },
+                { text: "It is the only expanded one.", code: "ALG.EXPAND.FIRST-ONLY" },
+              ],
+              solution: [
+                {
+                  say: `${target} = ${linear([
+                    [p.k, "x"],
+                    [p.k * p.a, ""],
+                  ])}.`,
+                },
+              ],
+            }),
+          [
             {
-              content: A.math(
-                linear([
-                  [p.k, "x"],
-                  [p.k * p.a, ""],
-                ]),
-              ),
+              statement: "Kai says $4(x + 2) - 3$ is equivalent to $4x + 5$.",
+              truth: true,
+              right: "True. 4x + 8 − 3 = 4x + 5.",
+              wrong: [
+                ["False. It is 4x − 1.", "ALG.EXPAND.FIRST-ONLY"],
+                ["False. It is 4x + 2 − 3 = 4x − 1.", "ALG.EXPAND.FIRST-ONLY"],
+              ],
             },
-            { content: A.math(`${p.k}x + ${p.k}(${p.a})`) },
             {
-              content: A.math(
-                linear([
-                  [p.k, "x"],
-                  [p.a, ""],
-                ]),
-              ),
-              odd: true,
+              statement: "Mia says $5 - 2(x - 1)$ is equivalent to $3 - 2x$.",
+              truth: false,
+              right: "False. 5 − 2x + 2 = 7 − 2x.",
+              wrong: [
+                ["True. 5 − 2 = 3.", "ALG.EXPAND.NEGATIVE"],
+                ["True. −2 × −1 = −2.", "ALG.EXPAND.NEGATIVE"],
+              ],
+            },
+            {
+              claim: "Two expressions that give the same value for one x are equivalent.",
+              truth: "sometimes",
+              right:
+                "Sometimes. x + 2 and 2x agree when x = 2 but not otherwise; equivalent expressions agree for every x.",
+              wrong: [
+                ["Always. One value proves it.", "ALG.EXPAND.BINOMIAL-TWO-TERMS"],
+                ["Never. Even equal expressions differ."],
+              ],
             },
           ],
-          reasons: [
-            {
-              text: `It is the only one not equal to ${target}: the ${p.a} has not been multiplied by ${p.k}.`,
-              correct: true,
-            },
-            { text: "It is the only one without brackets." },
-            { text: "It is the only expanded one.", code: "ALG.EXPAND.FIRST-ONLY" },
-          ],
-          solution: [
-            {
-              say: `${target} = ${linear([
-                [p.k, "x"],
-                [p.k * p.a, ""],
-              ])}.`,
-            },
-          ],
-        });
+        );
       }
     }
   },

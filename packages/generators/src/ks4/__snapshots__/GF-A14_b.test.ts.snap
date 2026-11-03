@@ -40,7 +40,7 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A14.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -141,7 +141,7 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A14.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -242,7 +242,7 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A14.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -343,7 +343,7 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A14.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -444,7 +444,7 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A14.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -545,7 +545,7 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A14.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -646,7 +646,7 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A14.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -800,7 +800,7 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A14.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -838,7 +838,7 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every graph starts at the origin.",
+                  "v": "True. Time 0 means no water.",
                 },
               ],
               "id": "RA",
@@ -856,7 +856,7 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Time 0 means no water.",
+                  "v": "True. Every graph starts at the origin.",
                 },
               ],
               "id": "RC",
@@ -917,44 +917,14 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "A straight-line graph of the water in a tank as it fills.",
-        "grid": true,
-        "segments": [
-          {
-            "from": [
-              0,
-              20,
-            ],
-            "to": [
-              10,
-              70,
-            ],
-          },
-        ],
-        "type": "cartesian",
-        "x": {
-          "label": "\\text{time (minutes)}",
-          "max": 10,
-          "min": 0,
-          "step": 1,
-        },
-        "y": {
-          "label": "\\text{water (litres)}",
-          "max": 80,
-          "min": 0,
-          "step": 10,
-        },
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A14.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -965,14 +935,14 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -981,10 +951,19 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -992,7 +971,7 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The graph starts at 20 litres when the time is 0: the intercept is the starting amount.",
+                  "v": "Never. It shows the rate.",
                 },
               ],
               "id": "RA",
@@ -1001,7 +980,7 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every graph starts at the origin.",
+                  "v": "Sometimes. Only for money.",
                 },
               ],
               "id": "RB",
@@ -1010,7 +989,7 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Time 0 means no water.",
+                  "v": "Always. It is the value when the x quantity (often time) is 0.",
                 },
               ],
               "id": "RC",
@@ -1022,15 +1001,7 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.READ",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.GRAPH.READ",
@@ -1040,7 +1011,7 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1050,7 +1021,7 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Read the value where time = 0.",
+            "v": "Always. It is the value when the x quantity (often time) is 0.",
           },
         ],
       },
@@ -1058,15 +1029,7 @@ exports[`GF-A14.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The graph shows the water in a tank as it fills.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": " Lou says the tank was empty at the start.",
+        "v": "The y-intercept of a real-life graph shows the value at the start.",
       },
     ],
   },

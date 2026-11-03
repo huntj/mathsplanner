@@ -10,7 +10,7 @@ exports[`GF-A23.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A23.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -80,7 +80,7 @@ exports[`GF-A23.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A23.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -150,7 +150,7 @@ exports[`GF-A23.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A23.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -220,7 +220,7 @@ exports[`GF-A23.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A23.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -290,7 +290,7 @@ exports[`GF-A23.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A23.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -360,7 +360,7 @@ exports[`GF-A23.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A23.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -430,7 +430,7 @@ exports[`GF-A23.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A23.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -441,8 +441,8 @@ exports[`GF-A23.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RB",
+          "correct": "B",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -468,7 +468,7 @@ exports[`GF-A23.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 75 is not a multiple of 4.",
+                  "v": "True. 50 is a big even number.",
                 },
               ],
               "id": "RA",
@@ -477,7 +477,7 @@ exports[`GF-A23.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 4n + 3 = 75 gives n = 18, a whole number.",
+                  "v": "True. Every number is in it eventually.",
                 },
               ],
               "id": "RB",
@@ -486,7 +486,7 @@ exports[`GF-A23.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Big numbers cannot be in the sequence.",
+                  "v": "False. 4n + 1 = 50 gives n = 12.25, which is not a whole number.",
                 },
               ],
               "id": "RC",
@@ -518,7 +518,7 @@ exports[`GF-A23.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Solve the nth term equal to the number: a term needs a whole-number n.",
+            "v": "False. 4n + 1 = 50 gives n = 12.25, which is not a whole number.",
           },
         ],
       },
@@ -526,11 +526,11 @@ exports[`GF-A23.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sam says 75 is a term of the sequence with nth term ",
+        "v": "Raj says 50 is a term of the sequence with nth term ",
       },
       {
         "t": "math",
-        "v": "4n + 3",
+        "v": "4n + 1",
       },
       {
         "t": "text",
@@ -546,123 +546,7 @@ exports[`GF-A23.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A23.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. 5n - 5 = 156 gives n = 32.2, not a whole number.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The sequence goes up steadily, so it reaches every number.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Every number above 0 is in the sequence.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.SEQUENCE.POSITION-RULE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Solve the nth term equal to the number: a term needs a whole-number n.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Sam says 156 is a term of the sequence with nth term ",
-      },
-      {
-        "t": "math",
-        "v": "5n - 5",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GF-A23.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -700,7 +584,7 @@ exports[`GF-A23.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 7n - 3 = 179 gives n = 26, a whole number.",
+                  "v": "True. 3 × 10 + 2 = 32.",
                 },
               ],
               "id": "RA",
@@ -709,7 +593,7 @@ exports[`GF-A23.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Big numbers cannot be in the sequence.",
+                  "v": "False. It is 15.",
                 },
               ],
               "id": "RB",
@@ -718,7 +602,7 @@ exports[`GF-A23.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 179 is not a multiple of 7.",
+                  "v": "False. It is 50.",
                 },
               ],
               "id": "RC",
@@ -750,7 +634,7 @@ exports[`GF-A23.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Solve the nth term equal to the number: a term needs a whole-number n.",
+            "v": "True. 3 × 10 + 2 = 32.",
           },
         ],
       },
@@ -758,15 +642,131 @@ exports[`GF-A23.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sam says 179 is a term of the sequence with nth term ",
+        "v": "Ana says the 10th term of the sequence with nth term ",
       },
       {
         "t": "math",
-        "v": "7n - 3",
+        "v": "3n + 2",
       },
       {
         "t": "text",
-        "v": ".",
+        "v": " is 32.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-A23.b",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 15.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 50.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 3 × 10 + 2 = 32.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "ALG.SEQUENCE.POSITION-RULE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. 3 × 10 + 2 = 32.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ana says the 10th term of the sequence with nth term ",
+      },
+      {
+        "t": "math",
+        "v": "3n + 2",
+      },
+      {
+        "t": "text",
+        "v": " is 32.",
       },
     ],
   },

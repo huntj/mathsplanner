@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -21,7 +22,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-A10.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.LINE.M-C"],
 
@@ -94,27 +95,66 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "A taxi fare in pounds is ",
-            A.math(`F = ${p.fee} + ${(p.rate / 10).toFixed(1)}d`),
-            ` for d miles. Kai says the ${p.fee} is the cost of each mile.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "A taxi fare in pounds is ",
+                A.math(`F = ${p.fee} + ${(p.rate / 10).toFixed(1)}d`),
+                ` for d miles. Kai says the ${p.fee} is the cost of each mile.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${p.fee} is the intercept: the fare when d = 0, a fixed charge. The cost of each mile is the gradient, £${(p.rate / 10).toFixed(2)}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The first number in a formula is always the rate.",
+                  code: "ALG.LINE.M-C",
+                },
+                {
+                  text: "True. The bigger number must be the cost per mile.",
+                  code: "ALG.LINE.M-C",
+                },
+              ],
+              solution: [{ say: "The intercept is the value when the variable is 0." }],
+            }),
+          [
             {
-              text: `False. ${p.fee} is the intercept: the fare when d = 0, a fixed charge. The cost of each mile is the gradient, £${(p.rate / 10).toFixed(2)}.`,
-              correct: true,
+              statement:
+                "A plumber charges $C = 40 + 25h$ pounds for h hours. Sam says the £40 is a fixed call-out charge.",
+              truth: true,
+              right: "True. It is paid even when h = 0: it is the y-intercept.",
+              wrong: [
+                ["False. It is the cost per hour.", "ALG.LINE.M-C"],
+                ["False. It is the total for 1 hour."],
+              ],
             },
             {
-              text: "True. The first number in a formula is always the rate.",
-              code: "ALG.LINE.M-C",
+              claim:
+                "In a cost formula $C = a + bn$, the gradient b is the cost of each extra item.",
+              truth: "always",
+              right: "Always. Each extra n adds b to the cost.",
+              wrong: [
+                ["Never. a is the cost of each item.", "ALG.LINE.M-C"],
+                ["Sometimes. Only if a = 0."],
+              ],
             },
-            { text: "True. The bigger number must be the cost per mile.", code: "ALG.LINE.M-C" },
+            {
+              statement:
+                "A phone plan costs $C = 10 + 0.05m$ pounds for m minutes. Kai says each minute costs £10.",
+              truth: false,
+              right: "False. £10 is the fixed charge; each minute costs £0.05.",
+              wrong: [
+                ["True. 10 is the first number.", "ALG.LINE.M-C"],
+                ["True. The bigger number is the rate."],
+              ],
+            },
           ],
-          solution: [{ say: "The intercept is the value when the variable is 0." }],
-        });
+        );
     }
   },
 

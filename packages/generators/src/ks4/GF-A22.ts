@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import type { NumberLineSpec } from "@mathsplanner/diagrams";
 import { chosenFigure, chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -39,7 +40,7 @@ const line = (
 
 export default defineGenerator<Params>({
   id: "GF-A22",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 3, 4],
   misconceptions: ["ALG.INEQUALITY.FLIP", "ALG.SOLVE.WRONG-INVERSE", "NPV.BOUNDS.ENDS"],
 
@@ -124,27 +125,61 @@ export default defineGenerator<Params>({
         });
       default: {
         const ints = Array.from({ length: p.hi - p.lo }, (_, i) => p.lo + 1 + i);
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Kai says the integers that satisfy ",
-            A.math(`${p.lo} < x \\le ${p.hi}`),
-            ` are ${[p.lo, ...ints].join(", ")}.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Kai says the integers that satisfy ",
+                A.math(`${p.lo} < x \\le ${p.hi}`),
+                ` are ${[p.lo, ...ints].join(", ")}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${p.lo} is not included, because x must be greater than ${p.lo}. The integers are ${ints.join(", ")}.`,
+                  correct: true,
+                },
+                { text: "True. Both ends are always included.", code: "NPV.BOUNDS.ENDS" },
+                {
+                  text: `True. ${p.lo} is the first number in the inequality.`,
+                  code: "NPV.BOUNDS.ENDS",
+                },
+              ],
+              solution: [{ say: `< leaves ${p.lo} out; ≤ keeps ${p.hi} in: ${ints.join(", ")}.` }],
+            }),
+          [
             {
-              text: `False. ${p.lo} is not included, because x must be greater than ${p.lo}. The integers are ${ints.join(", ")}.`,
-              correct: true,
+              statement: "Solving $2x + 3 > 11$, Sam gets $x > 4$.",
+              truth: true,
+              right: "True. Subtract 3, then divide by 2.",
+              wrong: [
+                ["False. x < 4.", "ALG.INEQUALITY.FLIP"],
+                ["False. x > 7.", "ALG.SOLVE.WRONG-INVERSE"],
+              ],
             },
-            { text: "True. Both ends are always included.", code: "NPV.BOUNDS.ENDS" },
             {
-              text: `True. ${p.lo} is the first number in the inequality.`,
-              code: "NPV.BOUNDS.ENDS",
+              claim:
+                "Multiplying both sides of an inequality by a negative number reverses the sign.",
+              truth: "always",
+              right: "Always. For example 2 < 3, but −2 > −3.",
+              wrong: [
+                ["Never. The sign stays.", "ALG.INEQUALITY.FLIP"],
+                ["Sometimes. Only for −1."],
+              ],
+            },
+            {
+              statement: "Solving $-3x < 12$, Pia gets $x < -4$.",
+              truth: false,
+              right: "False. Dividing by −3 reverses the sign: x > −4.",
+              wrong: [
+                ["True. Divide both sides by −3.", "ALG.INEQUALITY.FLIP"],
+                ["True. Inequalities work like equations.", "ALG.INEQUALITY.FLIP"],
+              ],
             },
           ],
-          solution: [{ say: `< leaves ${p.lo} out; ≤ keeps ${p.hi} in: ${ints.join(", ")}.` }],
-        });
+        );
       }
     }
   },

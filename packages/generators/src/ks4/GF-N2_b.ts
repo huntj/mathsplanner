@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -22,7 +23,7 @@ const r = (v: number) => Number(v.toFixed(6));
 
 export default defineGenerator<Params>({
   id: "GF-N2.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.DECIMAL.POINT-PLACE"],
 
@@ -84,27 +85,57 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Ben says ", A.math(`0.${p.s} \\times 0.${p.t} = 0.${p.s * p.t}`), "."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Ben says ", A.math(`0.${p.s} \\times 0.${p.t} = 0.${p.s * p.t}`), "."],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${p.s} × ${p.t} = ${p.s * p.t}, and tenths times tenths gives hundredths: 0.0${p.s * p.t}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Multiply the digits and keep one decimal point.",
+                  code: "NPV.DECIMAL.POINT-PLACE",
+                },
+                { text: `False. It is ${p.s * p.t}.`, code: "NPV.DECIMAL.POINT-PLACE" },
+              ],
+              solution: [
+                {
+                  say: "Estimate: both numbers are less than 1, so the product is smaller than each of them.",
+                },
+              ],
+            }),
+          [
             {
-              text: `False. ${p.s} × ${p.t} = ${p.s * p.t}, and tenths times tenths gives hundredths: 0.0${p.s * p.t}.`,
-              correct: true,
+              statement: "Ana says $0.4 \\times 0.2 = 0.08$.",
+              truth: true,
+              right: "True. 4 × 2 = 8, and the answer needs two decimal places.",
+              wrong: [["False. It is 0.8.", "NPV.DECIMAL.POINT-PLACE"], ["False. It is 8."]],
             },
             {
-              text: "True. Multiply the digits and keep one decimal point.",
-              code: "NPV.DECIMAL.POINT-PLACE",
+              claim: "Multiplying a number by 0.5 halves it.",
+              truth: "always",
+              right: "Always. 0.5 is a half.",
+              wrong: [
+                ["Never. Multiplying makes it bigger.", "NPV.DECIMAL.POINT-PLACE"],
+                ["Sometimes. Only for even numbers."],
+              ],
             },
-            { text: `False. It is ${p.s * p.t}.`, code: "NPV.DECIMAL.POINT-PLACE" },
+            {
+              statement: "Leo says $6 \\div 0.2 = 1.2$.",
+              truth: false,
+              right: "False. Dividing by 0.2 is the same as multiplying by 5: 30.",
+              wrong: [
+                ["True. 6 × 0.2 = 1.2.", "NPV.DECIMAL.POINT-PLACE"],
+                ["True. Dividing always makes smaller."],
+              ],
+            },
           ],
-          solution: [
-            {
-              say: "Estimate: both numbers are less than 1, so the product is smaller than each of them.",
-            },
-          ],
-        });
+        );
     }
   },
 

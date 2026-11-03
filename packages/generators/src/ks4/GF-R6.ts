@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   k: number;
@@ -18,7 +19,7 @@ const g = (a: number, b: number): number => (b === 0 ? a : g(b, a % b));
 
 export default defineGenerator<Params>({
   id: "GF-R6",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.ORDER", "RAT.PART-WHOLE"],
 
@@ -66,33 +67,65 @@ export default defineGenerator<Params>({
           solution: [{ say: "", math: `\\frac{a}{b} = ${toLatex(frac(p.x, p.y))}` }],
         });
       default: {
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Red and blue beads are in the ratio ",
-            A.math(`${p.x} : ${p.y}`),
-            ". Tom says ",
-            A.math(toLatex(frac(p.x, p.y))),
-            " of the beads are red.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Red and blue beads are in the ratio ",
+                A.math(`${p.x} : ${p.y}`),
+                ". Tom says ",
+                A.math(toLatex(frac(p.x, p.y))),
+                " of the beads are red.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. For every ${p.x + p.y} beads, ${p.x} are red, so ${toLatex(frac(p.x, p.x + p.y)).replace(/\\frac\{(\d+)\}\{(\d+)\}/, "$1/$2")} are red. ${p.x}/${p.y} compares red with blue.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The ratio and the fraction use the same numbers.",
+                  code: "RAT.PART-WHOLE",
+                },
+                { text: `True. Red is ${p.x} out of ${p.y}.`, code: "RAT.PART-WHOLE" },
+              ],
+              solution: [
+                {
+                  say: "Part : part becomes a fraction of the whole by using the total of the parts as the denominator.",
+                },
+              ],
+            }),
+          [
             {
-              text: `False. For every ${p.x + p.y} beads, ${p.x} are red, so ${toLatex(frac(p.x, p.x + p.y)).replace(/\\frac\{(\d+)\}\{(\d+)\}/, "$1/$2")} are red. ${p.x}/${p.y} compares red with blue.`,
-              correct: true,
+              statement:
+                "Flour and sugar are mixed 3 : 1. Kim says there is 3 times as much flour as sugar.",
+              truth: true,
+              right: "True. For every 1 part sugar there are 3 parts flour.",
+              wrong: [
+                ["False. There is 2 more flour."],
+                ["False. 3/4 is flour, so 0.75 times as much.", "RAT.PART-WHOLE"],
+              ],
             },
             {
-              text: "True. The ratio and the fraction use the same numbers.",
-              code: "RAT.PART-WHOLE",
+              claim: "The ratio a : b is the same as b : a.",
+              truth: "sometimes",
+              right: "Sometimes. Only when a = b; otherwise the order matters.",
+              wrong: [
+                ["Always. Order does not matter.", "RAT.ORDER"],
+                ["Never. Even 2 : 2 changes."],
+              ],
             },
-            { text: `True. Red is ${p.x} out of ${p.y}.`, code: "RAT.PART-WHOLE" },
-          ],
-          solution: [
             {
-              say: "Part : part becomes a fraction of the whole by using the total of the parts as the denominator.",
+              statement:
+                "Cats and dogs are in the ratio 2 : 5. Leo says there are more cats than dogs.",
+              truth: false,
+              right: "False. 2 parts cats and 5 parts dogs: more dogs.",
+              wrong: [["True. Cats come first.", "RAT.ORDER"], ["True. 2 : 5 means cats win."]],
             },
           ],
-        });
+        );
       }
     }
   },

@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -21,7 +22,7 @@ const g = (x: number, y: number): number => (y === 0 ? x : g(y, x % y));
 
 export default defineGenerator<Params>({
   id: "GF-R4",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.SIMPLIFY.SUBTRACT", "RAT.FRACTION.UNITS", "RAT.ORDER"],
 
@@ -105,32 +106,66 @@ export default defineGenerator<Params>({
       }
       default: {
         const shown = p.claimTrue ? `${p.a} : ${p.b}` : `${p.b} : ${p.a}`;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `There are ${p.a * p.k} boys and ${p.b * p.k} girls in a club. Sam says the ratio of boys to girls is ${shown}.`,
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
-                {
-                  text: `True. ${p.a * p.k} : ${p.b * p.k}, dividing both by ${p.k}, is ${p.a} : ${p.b}, boys first.`,
-                  correct: true,
-                },
-                {
-                  text: `False. The order does not matter, but it should be ${p.b} : ${p.a}.`,
-                  code: "RAT.ORDER",
-                },
-                { text: "False. Ratios must be written as fractions." },
-              ]
-            : [
-                {
-                  text: `False. That is girls to boys. Boys to girls is ${p.a} : ${p.b}.`,
-                  correct: true,
-                },
-                { text: "True. The order of a ratio does not matter.", code: "RAT.ORDER" },
-                { text: "True. The bigger number always comes first.", code: "RAT.ORDER" },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `There are ${p.a * p.k} boys and ${p.b * p.k} girls in a club. Sam says the ratio of boys to girls is ${shown}.`,
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    {
+                      text: `True. ${p.a * p.k} : ${p.b * p.k}, dividing both by ${p.k}, is ${p.a} : ${p.b}, boys first.`,
+                      correct: true,
+                    },
+                    {
+                      text: `False. The order does not matter, but it should be ${p.b} : ${p.a}.`,
+                      code: "RAT.ORDER",
+                    },
+                    { text: "False. Ratios must be written as fractions." },
+                  ]
+                : [
+                    {
+                      text: `False. That is girls to boys. Boys to girls is ${p.a} : ${p.b}.`,
+                      correct: true,
+                    },
+                    { text: "True. The order of a ratio does not matter.", code: "RAT.ORDER" },
+                    { text: "True. The bigger number always comes first.", code: "RAT.ORDER" },
+                  ],
+              solution: [{ say: `Boys : girls = ${p.a * p.k} : ${p.b * p.k} = ${p.a} : ${p.b}.` }],
+            }),
+          [
+            {
+              statement:
+                "A class has 12 boys and 18 girls. Ivy says the ratio of boys to girls is 2 : 3.",
+              truth: true,
+              right: "True. 12 : 18 simplifies by 6 to 2 : 3.",
+              wrong: [
+                ["False. It is 3 : 2.", "RAT.ORDER"],
+                ["False. It is 12 : 30.", "RAT.FRACTION.UNITS"],
               ],
-          solution: [{ say: `Boys : girls = ${p.a * p.k} : ${p.b * p.k} = ${p.a} : ${p.b}.` }],
-        });
+            },
+            {
+              claim: "A ratio stays the same if you divide both parts by the same number.",
+              truth: "always",
+              right: "Always. Both parts change by the same factor.",
+              wrong: [
+                ["Never. It changes.", "RAT.SIMPLIFY.SUBTRACT"],
+                ["Sometimes. Only for even numbers."],
+              ],
+            },
+            {
+              statement: "Leo simplifies 15 : 10 to 5 : 0 by taking 10 from both parts.",
+              truth: false,
+              right: "False. Divide by 5: 3 : 2.",
+              wrong: [
+                ["True. Take the same from each part.", "RAT.SIMPLIFY.SUBTRACT"],
+                ["True. Simplifying means subtracting.", "RAT.SIMPLIFY.SUBTRACT"],
+              ],
+            },
+          ],
+        );
       }
     }
   },

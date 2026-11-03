@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { linear, signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   m: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-A19.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.EXPAND.FIRST-ONLY", "ALG.SIMULTANEOUS.PAIR"],
 
@@ -104,28 +105,60 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Kim finds x = ",
-            A.math(String(p.x)),
-            " and says she has solved ",
-            A.math(lineEq),
-            " and ",
-            A.math(other),
-            ".",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Kim finds x = ",
+                A.math(String(p.x)),
+                " and says she has solved ",
+                A.math(lineEq),
+                " and ",
+                A.math(other),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. A solution is a pair of values: she still needs y = ${y}, from substituting x back.`,
+                  correct: true,
+                },
+                { text: "True. Finding one letter is enough.", code: "ALG.SIMULTANEOUS.PAIR" },
+                { text: "True. y must equal x.", code: "ALG.SIMULTANEOUS.PAIR" },
+              ],
+              solution: [{ say: `The solution is x = ${p.x}, y = ${y}.` }],
+            }),
+          [
             {
-              text: `False. A solution is a pair of values: she still needs y = ${y}, from substituting x back.`,
-              correct: true,
+              statement: "Solving $y = 2x$ and $x + y = 12$, Ola gets x = 4 and y = 8.",
+              truth: true,
+              right: "True. x + 2x = 12 gives x = 4, so y = 8. Check: 4 + 8 = 12.",
+              wrong: [["False. She only needs x.", "ALG.SIMULTANEOUS.PAIR"], ["False. y = 2."]],
             },
-            { text: "True. Finding one letter is enough.", code: "ALG.SIMULTANEOUS.PAIR" },
-            { text: "True. y must equal x.", code: "ALG.SIMULTANEOUS.PAIR" },
+            {
+              claim:
+                "The solution of a pair of simultaneous equations is a pair of values that fits both.",
+              truth: "always",
+              right: "Always. One value on its own is only half the answer.",
+              wrong: [
+                ["Never. You only need x.", "ALG.SIMULTANEOUS.PAIR"],
+                ["Sometimes. Only if they are equal."],
+              ],
+            },
+            {
+              statement:
+                "Substituting $y = x + 2$ into $3x + 2y = 19$, Gus writes $3x + 2x + 2 = 19$.",
+              truth: false,
+              right: "False. 2y = 2(x + 2) = 2x + 4.",
+              wrong: [
+                ["True. Swap y for x + 2.", "ALG.EXPAND.FIRST-ONLY"],
+                ["True. The 2 only multiplies x.", "ALG.EXPAND.FIRST-ONLY"],
+              ],
+            },
           ],
-          solution: [{ say: `The solution is x = ${p.x}, y = ${y}.` }],
-        });
+        );
     }
   },
 

@@ -10,7 +10,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-S1",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -137,7 +137,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-S1",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -264,7 +264,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-S1",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -391,7 +391,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-S1",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -496,7 +496,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-S1",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -601,7 +601,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-S1",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -699,14 +699,14 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-S1",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -717,14 +717,14 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -733,10 +733,19 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -744,7 +753,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A large sample is still biased if it is chosen badly: people at a gym probably exercise more than most, so they are not typical of the whole town.",
+                  "v": "Always. That is what random means.",
                 },
               ],
               "id": "RA",
@@ -753,7 +762,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 600 people is too small a sample.",
+                  "v": "Sometimes. Only for big populations.",
                 },
               ],
               "id": "RB",
@@ -762,7 +771,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A large enough sample is always representative.",
+                  "v": "Never. Some are more likely.",
                 },
               ],
               "id": "RC",
@@ -792,7 +801,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -802,7 +811,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Bigger samples reduce random variation, but they do not fix bias in how people are chosen.",
+            "v": "Always. That is what random means.",
           },
         ],
       },
@@ -810,7 +819,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "To find out how much exercise people in a town do, Tom asks 600 people at a gym. He says such a large sample must represent everyone.",
+        "v": "A random sample gives every member of the population an equal chance of being chosen.",
       },
     ],
   },
@@ -822,7 +831,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-S1",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -833,7 +842,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -860,7 +869,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 400 people is too small a sample.",
+                  "v": "False. He should ask his friends.",
                 },
               ],
               "id": "RA",
@@ -869,7 +878,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A large sample is still biased if it is chosen badly: people leaving the library already use it, so they are not typical of the whole town.",
+                  "v": "True. A random sample from the whole school avoids bias.",
                 },
               ],
               "id": "RB",
@@ -878,7 +887,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A large enough sample is always representative.",
+                  "v": "False. He must ask everyone.",
                 },
               ],
               "id": "RC",
@@ -890,18 +899,10 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "PRO.SAMPLE.SMALL",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "STA.SAMPLE.BIAS",
+            "code": "PRO.SAMPLE.SMALL",
             "feedback": [],
           },
         ],
@@ -918,7 +919,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Bigger samples reduce random variation, but they do not fix bias in how people are chosen.",
+            "v": "True. A random sample from the whole school avoids bias.",
           },
         ],
       },
@@ -926,7 +927,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "To find out how often people in a town use the library, Tom asks 400 people leaving the library. He says such a large sample must represent everyone.",
+        "v": "To find out how pupils travel to school, Sam asks a random sample from the school list.",
       },
     ],
   },
@@ -938,7 +939,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-S1",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -949,8 +950,8 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -976,7 +977,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A large sample is still biased if it is chosen badly: pupils who queue for dinners probably like them more, so they are not typical of the whole school.",
+                  "v": "False. He must ask everyone.",
                 },
               ],
               "id": "RA",
@@ -985,7 +986,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 200 people is too small a sample.",
+                  "v": "True. A random sample from the whole school avoids bias.",
                 },
               ],
               "id": "RB",
@@ -994,7 +995,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A large enough sample is always representative.",
+                  "v": "False. He should ask his friends.",
                 },
               ],
               "id": "RC",
@@ -1006,18 +1007,10 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "PRO.SAMPLE.SMALL",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "STA.SAMPLE.BIAS",
             "feedback": [],
           },
         ],
@@ -1034,7 +1027,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Bigger samples reduce random variation, but they do not fix bias in how people are chosen.",
+            "v": "True. A random sample from the whole school avoids bias.",
           },
         ],
       },
@@ -1042,7 +1035,7 @@ exports[`GF-S1 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "To find out what pupils think of school dinners, Tom asks 200 pupils in the queue for school dinners. He says such a large sample must represent everyone.",
+        "v": "To find out how pupils travel to school, Sam asks a random sample from the school list.",
       },
     ],
   },

@@ -10,7 +10,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-S6.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -110,7 +110,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-S6.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -210,7 +210,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-S6.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -382,7 +382,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-S6.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -558,7 +558,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-S6.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -734,7 +734,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-S6.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -831,14 +831,14 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-S6.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -850,13 +850,13 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -865,10 +865,19 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -876,7 +885,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Strong correlation proves one thing causes the other.",
+                  "v": "Never. Correlation and cause are unrelated.",
                 },
               ],
               "id": "RA",
@@ -885,7 +894,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Correlation does not show causation. Both go up in hot, sunny weather, a third factor.",
+                  "v": "Always. If they go together, one causes the other.",
                 },
               ],
               "id": "RB",
@@ -894,7 +903,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The points lie close to a straight line.",
+                  "v": "Sometimes. A cause can produce correlation, but so can a third factor or chance.",
                 },
               ],
               "id": "RC",
@@ -906,15 +915,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "STA.SCATTER.CAUSATION",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "STA.SCATTER.CAUSATION",
@@ -924,7 +925,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -934,7 +935,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Look for a hidden variable that affects both.",
+            "v": "Sometimes. A cause can produce correlation, but so can a third factor or chance.",
           },
         ],
       },
@@ -942,7 +943,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ice cream sales and cases of sunburn show strong positive correlation. Max says eating ice cream causes sunburn.",
+        "v": "Correlation shows that one variable causes the other.",
       },
     ],
   },
@@ -954,7 +955,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-S6.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -965,7 +966,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -992,7 +993,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The points lie close to a straight line.",
+                  "v": "False. It is positive.",
                 },
               ],
               "id": "RA",
@@ -1001,7 +1002,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Correlation does not show causation. Both go up in hot, sunny weather, a third factor.",
+                  "v": "True. One goes up as the other goes down.",
                 },
               ],
               "id": "RB",
@@ -1010,7 +1011,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Strong correlation proves one thing causes the other.",
+                  "v": "False. It is no correlation.",
                 },
               ],
               "id": "RC",
@@ -1025,7 +1026,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "STA.SCATTER.CAUSATION",
+            "code": "STA.CORRELATION.TYPE",
             "feedback": [],
           },
           {
@@ -1033,7 +1034,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "STA.SCATTER.CAUSATION",
+            "code": "STA.CORRELATION.TYPE",
             "feedback": [],
           },
         ],
@@ -1050,7 +1051,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Look for a hidden variable that affects both.",
+            "v": "True. One goes up as the other goes down.",
           },
         ],
       },
@@ -1058,7 +1059,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ice cream sales and cases of sunburn show strong positive correlation. Max says eating ice cream causes sunburn.",
+        "v": "As temperature rises, sales of hot chocolate fall. Ivy says this is negative correlation.",
       },
     ],
   },
@@ -1070,7 +1071,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-S6.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1081,7 +1082,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -1108,7 +1109,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Strong correlation proves one thing causes the other.",
+                  "v": "False. It is positive.",
                 },
               ],
               "id": "RA",
@@ -1117,7 +1118,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The points lie close to a straight line.",
+                  "v": "False. It is no correlation.",
                 },
               ],
               "id": "RB",
@@ -1126,7 +1127,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Correlation does not show causation. Both go up in hot, sunny weather, a third factor.",
+                  "v": "True. One goes up as the other goes down.",
                 },
               ],
               "id": "RC",
@@ -1141,7 +1142,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "STA.SCATTER.CAUSATION",
+            "code": "STA.CORRELATION.TYPE",
             "feedback": [],
           },
           {
@@ -1149,7 +1150,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "STA.SCATTER.CAUSATION",
+            "code": "STA.CORRELATION.TYPE",
             "feedback": [],
           },
         ],
@@ -1166,7 +1167,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Look for a hidden variable that affects both.",
+            "v": "True. One goes up as the other goes down.",
           },
         ],
       },
@@ -1174,7 +1175,7 @@ exports[`GF-S6.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ice cream sales and cases of sunburn show strong positive correlation. Max says eating ice cream causes sunburn.",
+        "v": "As temperature rises, sales of hot chocolate fall. Ivy says this is negative correlation.",
       },
     ],
   },

@@ -10,7 +10,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A23.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -76,7 +76,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A23.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -142,7 +142,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A23.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -194,7 +194,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A23.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -260,7 +260,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A23.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -326,7 +326,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A23.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -371,14 +371,14 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A23.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -390,13 +390,13 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -405,19 +405,10 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -425,7 +416,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Adding 3 always gives multiples of 3.",
+                  "v": "False. 5 → 9 → 17: the third term is 17.",
                 },
               ],
               "id": "RA",
@@ -434,7 +425,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends on the first term: starting at 3 gives 3, 6, 9, … but starting at 1 gives 1, 4, …",
+                  "v": "True. Each term is 4 more.",
                 },
               ],
               "id": "RB",
@@ -443,7 +434,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Term-to-term rules never give multiples.",
+                  "v": "True. 5 × 2 − 1 = 9.",
                 },
               ],
               "id": "RC",
@@ -455,7 +446,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.POSITION-RULE",
@@ -465,7 +456,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -475,7 +466,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A term-to-term rule needs a first term as well.",
+            "v": "False. 5 → 9 → 17: the third term is 17.",
           },
         ],
       },
@@ -483,19 +474,19 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A sequence uses the rule "add 3". Ola says every term is a multiple of 3.",
+        "v": "A sequence starts at 5 and the rule is 'double and subtract 1'. Kim says the third term is 9.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A23.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -506,14 +497,14 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -522,19 +513,10 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -542,7 +524,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Adding 3 always gives multiples of 3.",
+                  "v": "False. It is 38.",
                 },
               ],
               "id": "RA",
@@ -551,7 +533,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends on the first term: starting at 3 gives 3, 6, 9, … but starting at 1 gives 1, 4, …",
+                  "v": "True. It goes up by 4.",
                 },
               ],
               "id": "RB",
@@ -560,7 +542,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Term-to-term rules never give multiples.",
+                  "v": "False. It is 20.",
                 },
               ],
               "id": "RC",
@@ -572,7 +554,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.POSITION-RULE",
@@ -582,7 +564,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -592,7 +574,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A term-to-term rule needs a first term as well.",
+            "v": "True. It goes up by 4.",
           },
         ],
       },
@@ -600,19 +582,19 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A sequence uses the rule "add 3". Ola says every term is a multiple of 3.",
+        "v": "Leo says the next term of 7, 11, 15, 19, … is 23.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A23.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -623,14 +605,14 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -639,19 +621,10 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -659,7 +632,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Term-to-term rules never give multiples.",
+                  "v": "False. It is 20.",
                 },
               ],
               "id": "RA",
@@ -668,7 +641,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Adding 2 always gives multiples of 2.",
+                  "v": "True. It goes up by 4.",
                 },
               ],
               "id": "RB",
@@ -677,7 +650,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends on the first term: starting at 2 gives 2, 4, 6, … but starting at 1 gives 1, 3, …",
+                  "v": "False. It is 38.",
                 },
               ],
               "id": "RC",
@@ -689,7 +662,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.POSITION-RULE",
@@ -699,7 +672,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -709,7 +682,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A term-to-term rule needs a first term as well.",
+            "v": "True. It goes up by 4.",
           },
         ],
       },
@@ -717,7 +690,7 @@ exports[`GF-A23.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A sequence uses the rule "add 2". Ola says every term is a multiple of 2.",
+        "v": "Leo says the next term of 7, 11, 15, 19, … is 23.",
       },
     ],
   },

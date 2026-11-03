@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { grid } from "../shared/alg.ts";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 export interface Params {
   a: number;
@@ -17,7 +18,7 @@ export interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-A12.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.GRAPH.SHAPE"],
 
@@ -80,24 +81,57 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ivy says the graph of ",
-            A.math(`y = \\frac{${p.a}}{x}`),
-            " crosses the y-axis.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ivy says the graph of ",
+                A.math(`y = \\frac{${p.a}}{x}`),
+                " crosses the y-axis.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. x = 0 is impossible (you cannot divide by 0), so the curve never reaches the y-axis; it gets closer and closer to it.`,
+                  correct: true,
+                },
+                { text: `True. It crosses at y = ${p.a}.`, code: "ALG.GRAPH.SHAPE" },
+                { text: "True. Every graph crosses the y-axis.", code: "ALG.GRAPH.SHAPE" },
+              ],
+              solution: [{ say: "The axes are asymptotes of the reciprocal graph." }],
+            }),
+          [
             {
-              text: `False. x = 0 is impossible (you cannot divide by 0), so the curve never reaches the y-axis; it gets closer and closer to it.`,
-              correct: true,
+              statement: "Sam says the point (2, 3) lies on $y = \\frac{6}{x}$.",
+              truth: true,
+              right: "True. 6 ÷ 2 = 3.",
+              wrong: [
+                ["False. 6 ÷ 2 = 12.", "ALG.GRAPH.SHAPE"],
+                ["False. Reciprocal graphs have no points."],
+              ],
             },
-            { text: `True. It crosses at y = ${p.a}.`, code: "ALG.GRAPH.SHAPE" },
-            { text: "True. Every graph crosses the y-axis.", code: "ALG.GRAPH.SHAPE" },
+            {
+              claim: "The graph of $y = \\frac{1}{x}$ touches the x-axis.",
+              truth: "never",
+              right: "Never. 1 ÷ x is never 0.",
+              wrong: [
+                ["Always. Every graph touches it.", "ALG.GRAPH.SHAPE"],
+                ["Sometimes. For very big x.", "ALG.GRAPH.SHAPE"],
+              ],
+            },
+            {
+              statement: "Mia says the graph of $y = \\frac{4}{x}$ is a straight line.",
+              truth: false,
+              right: "False. It is a curve in two parts, a reciprocal graph.",
+              wrong: [
+                ["True. There is no power of x.", "ALG.GRAPH.SHAPE"],
+                ["True. It is like y = 4x."],
+              ],
+            },
           ],
-          solution: [{ say: "The axes are asymptotes of the reciprocal graph." }],
-        });
+        );
     }
   },
 

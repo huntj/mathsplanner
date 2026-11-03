@@ -17,6 +17,7 @@ import {
   shapeClearOfOrigin,
   shapesGrid,
 } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   shape: Coord[];
@@ -27,7 +28,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GH-G7",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["POS.ENLARGE.NEGATIVE", "POS.ENLARGE.CENTRE"],
 
@@ -126,38 +127,74 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: p.claimTrue
-            ? "Ben says an enlargement with scale factor −1 has the same effect as a rotation of 180° about the centre of enlargement."
-            : "Ben says an enlargement with scale factor −1 has the same effect as a reflection in a line through the centre of enlargement.",
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: p.claimTrue
+                ? "Ben says an enlargement with scale factor −1 has the same effect as a rotation of 180° about the centre of enlargement."
+                : "Ben says an enlargement with scale factor −1 has the same effect as a reflection in a line through the centre of enlargement.",
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    {
+                      text: "True. Each point goes to the same distance on the opposite side of the centre, which is a half-turn.",
+                      correct: true,
+                    },
+                    { text: "False. It makes the shape smaller.", code: "POS.ENLARGE.NEGATIVE" },
+                    { text: "False. It reflects the shape." },
+                  ]
+                : [
+                    {
+                      text: "False. Scale factor −1 sends each point through the centre to the other side: a rotation of 180°, not a reflection.",
+                      correct: true,
+                    },
+                    {
+                      text: "True. A negative scale factor flips the shape over.",
+                      code: "POS.ENLARGE.NEGATIVE",
+                    },
+                    { text: "True. It leaves the shape where it is." },
+                  ],
+              solution: [
                 {
-                  text: "True. Each point goes to the same distance on the opposite side of the centre, which is a half-turn.",
-                  correct: true,
+                  say: "Scale factor −1 keeps the size and turns the shape upside down about the centre.",
                 },
-                { text: "False. It makes the shape smaller.", code: "POS.ENLARGE.NEGATIVE" },
-                { text: "False. It reflects the shape." },
-              ]
-            : [
-                {
-                  text: "False. Scale factor −1 sends each point through the centre to the other side: a rotation of 180°, not a reflection.",
-                  correct: true,
-                },
-                {
-                  text: "True. A negative scale factor flips the shape over.",
-                  code: "POS.ENLARGE.NEGATIVE",
-                },
-                { text: "True. It leaves the shape where it is." },
               ],
-          solution: [
+            }),
+          [
             {
-              say: "Scale factor −1 keeps the size and turns the shape upside down about the centre.",
+              statement:
+                "Kai enlarges a shape by scale factor −2. He says the image is twice as big and on the other side of the centre.",
+              truth: true,
+              right:
+                "True. A negative scale factor puts the image on the opposite side, upside down.",
+              wrong: [
+                ["False. It is half the size.", "POS.ENLARGE.NEGATIVE"],
+                ["False. It is on the same side.", "POS.ENLARGE.NEGATIVE"],
+              ],
+            },
+            {
+              claim: "An enlargement with scale factor $\\frac{1}{2}$ halves every length.",
+              truth: "always",
+              right: "Always. Each length is multiplied by 1/2.",
+              wrong: [
+                ["Never. It doubles them.", "POS.ENLARGE.NEGATIVE"],
+                ["Sometimes. It depends on the centre.", "POS.ENLARGE.CENTRE"],
+              ],
+            },
+            {
+              statement:
+                "Mia says the centre of enlargement does not affect where the image ends up.",
+              truth: false,
+              right: "False. Changing the centre moves the image, even with the same scale factor.",
+              wrong: [
+                ["True. Only the scale factor matters.", "POS.ENLARGE.CENTRE"],
+                ["True. The image is always in the same place.", "POS.ENLARGE.CENTRE"],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

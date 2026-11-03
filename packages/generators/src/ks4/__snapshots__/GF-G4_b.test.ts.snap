@@ -10,7 +10,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -83,7 +83,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -156,7 +156,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -229,7 +229,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -316,7 +316,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -403,7 +403,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -490,7 +490,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -501,8 +501,8 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -528,7 +528,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 7 + 4 = 11, which is not more than 14, so the two shorter sides cannot meet.",
+                  "v": "False. 4 + 5 is less than 6 + 6.",
                 },
               ],
               "id": "RA",
@@ -537,7 +537,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any three lengths make a triangle.",
+                  "v": "True. Each side is shorter than the other two added together.",
                 },
               ],
               "id": "RB",
@@ -546,7 +546,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The longest side, 14 cm, goes along the bottom.",
+                  "v": "False. The sides must be equal.",
                 },
               ],
               "id": "RC",
@@ -558,18 +558,10 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "GEO.TRIANGLE.INEQUALITY",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "GEO.TRIANGLE.INEQUALITY",
+            "code": "GEO.POLYGON.REGULAR-SIDES-ONLY",
             "feedback": [],
           },
         ],
@@ -586,7 +578,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The two shorter sides must add up to more than the longest side.",
+            "v": "True. Each side is shorter than the other two added together.",
           },
         ],
       },
@@ -594,19 +586,19 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Tia says she can draw a triangle with sides 7 cm, 4 cm and 14 cm.",
+        "v": "Sol says he can draw a triangle with sides 4 cm, 5 cm and 6 cm.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -617,14 +609,14 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -633,10 +625,19 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -644,7 +645,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 3 + 7 = 10, which is not more than 13, so the two shorter sides cannot meet.",
+                  "v": "Always. Otherwise the two short sides cannot meet.",
                 },
               ],
               "id": "RA",
@@ -653,7 +654,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any three lengths make a triangle.",
+                  "v": "Sometimes. Only for right-angled triangles.",
                 },
               ],
               "id": "RB",
@@ -662,7 +663,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The longest side, 13 cm, goes along the bottom.",
+                  "v": "Never. It is longer.",
                 },
               ],
               "id": "RC",
@@ -672,14 +673,6 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "GEO.TRIANGLE.INEQUALITY",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -692,7 +685,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -702,7 +695,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The two shorter sides must add up to more than the longest side.",
+            "v": "Always. Otherwise the two short sides cannot meet.",
           },
         ],
       },
@@ -710,7 +703,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Tia says she can draw a triangle with sides 3 cm, 7 cm and 13 cm.",
+        "v": "In any triangle, the longest side is shorter than the other two sides added together.",
       },
     ],
   },
@@ -722,7 +715,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -734,7 +727,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -760,7 +753,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The longest side, 12 cm, goes along the bottom.",
+                  "v": "False. 5 + 5 = 10, which is not more than 12, so the two shorter sides cannot meet.",
                 },
               ],
               "id": "RA",
@@ -778,7 +771,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 5 + 5 = 10, which is not more than 12, so the two shorter sides cannot meet.",
+                  "v": "True. The longest side, 12 cm, goes along the bottom.",
                 },
               ],
               "id": "RC",
@@ -790,7 +783,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.TRIANGLE.INEQUALITY",
@@ -798,7 +791,7 @@ exports[`GF-G4.b > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "GEO.TRIANGLE.INEQUALITY",

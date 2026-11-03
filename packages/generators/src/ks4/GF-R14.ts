@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import type { CartesianSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   start: number;
@@ -35,7 +36,7 @@ function tank(p: Params): CartesianSpec {
 
 export default defineGenerator<Params>({
   id: "GF-R14",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.RATE.VALUE", "ALG.GRADIENT.RUN-RISE"],
 
@@ -93,24 +94,62 @@ export default defineGenerator<Params>({
           solution: [{ say: "Gradient = change in volume ÷ change in time: litres per minute." }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "The graph shows the volume of water in a tank.",
-            A.figure(tank(p)),
-            `Mo says that after 4 minutes water is being added at ${p.start + 4 * p.rate} litres per minute.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "The graph shows the volume of water in a tank.",
+                A.figure(tank(p)),
+                `Mo says that after 4 minutes water is being added at ${p.start + 4 * p.rate} litres per minute.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${p.start + 4 * p.rate} litres is the volume after 4 minutes. The line is straight, so the rate is always ${p.rate} litres per minute.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Read the graph at 4 minutes to find the rate.",
+                  code: "RAT.RATE.VALUE",
+                },
+                { text: "True. The rate increases as the tank fills.", code: "RAT.RATE.VALUE" },
+              ],
+              solution: [{ say: "A rate is a gradient: the change in y for each unit of x." }],
+            }),
+          [
             {
-              text: `False. ${p.start + 4 * p.rate} litres is the volume after 4 minutes. The line is straight, so the rate is always ${p.rate} litres per minute.`,
-              correct: true,
+              statement:
+                "A straight-line graph of distance against time goes from (0, 0) to (5, 40). Leo says the speed is 8 units per unit time.",
+              truth: true,
+              right: "True. The gradient is 40 ÷ 5 = 8.",
+              wrong: [
+                ["False. It is 40, the final distance.", "RAT.RATE.VALUE"],
+                ["False. It is 5 ÷ 40.", "ALG.GRADIENT.RUN-RISE"],
+              ],
             },
-            { text: "True. Read the graph at 4 minutes to find the rate.", code: "RAT.RATE.VALUE" },
-            { text: "True. The rate increases as the tank fills.", code: "RAT.RATE.VALUE" },
+            {
+              claim: "The gradient of a graph shows a rate of change.",
+              truth: "always",
+              right: "Always. It tells you how much y changes for each unit of x.",
+              wrong: [
+                ["Never. It shows the total.", "RAT.RATE.VALUE"],
+                ["Sometimes. Only for money."],
+              ],
+            },
+            {
+              statement:
+                "On a graph of water against time, the line is flat from 3 to 5 minutes. Sol says water is flowing in fastest then.",
+              truth: false,
+              right: "False. A flat line means no change: no water flows in.",
+              wrong: [
+                ["True. The value is highest there.", "RAT.RATE.VALUE"],
+                ["True. Flat means fast."],
+              ],
+            },
           ],
-          solution: [{ say: "A rate is a gradient: the change in y for each unit of x." }],
-        });
+        );
     }
   },
 

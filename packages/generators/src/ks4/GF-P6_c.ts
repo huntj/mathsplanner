@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { nCr } from "../shared/dist.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-P6.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["PRO.ENUMERATE", "PRO.SAMPLE-SPACE.EQUAL-TOTALS"],
 
@@ -72,27 +73,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Tia flips two coins. She says the outcomes two heads, one of each, and two tails are equally likely.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Tia flips two coins. She says the outcomes two heads, one of each, and two tails are equally likely.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A tree shows HH, HT, TH and TT. 'One of each' happens two ways, so it has probability ½, not ⅓.",
+                  correct: true,
+                },
+                {
+                  text: "True. There are three possible results, so each is ⅓.",
+                  code: "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
+                },
+                { text: "True. Coins are fair.", code: "PRO.SAMPLE-SPACE.EQUAL-TOTALS" },
+              ],
+              solution: [
+                { say: "Count outcomes from a list or tree, where each one is equally likely." },
+              ],
+            }),
+          [
             {
-              text: "False. A tree shows HH, HT, TH and TT. 'One of each' happens two ways, so it has probability ½, not ⅓.",
-              correct: true,
+              statement:
+                "A coin is flipped and a dice rolled. Raj says there are 12 possible outcomes.",
+              truth: true,
+              right: "True. 2 × 6 = 12.",
+              wrong: [["False. There are 8.", "PRO.ENUMERATE"], ["False. There are 6."]],
             },
             {
-              text: "True. There are three possible results, so each is ⅓.",
-              code: "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
+              claim: "Listing outcomes systematically finds every possible outcome.",
+              truth: "always",
+              right: "Always, if done carefully. A system stops you missing any.",
+              wrong: [
+                ["Never. Some always get missed.", "PRO.ENUMERATE"],
+                ["Sometimes. Only for two coins."],
+              ],
             },
-            { text: "True. Coins are fair.", code: "PRO.SAMPLE-SPACE.EQUAL-TOTALS" },
+            {
+              statement:
+                "Two coins are flipped. Pia says P(one head and one tail) is $\\frac{1}{3}$.",
+              truth: false,
+              right: "False. HT and TH are both outcomes: 2/4 = 1/2.",
+              wrong: [
+                [
+                  "True. There are three results: HH, one of each, TT.",
+                  "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
+                ],
+                ["True. Each result is equally likely.", "PRO.SAMPLE-SPACE.EQUAL-TOTALS"],
+              ],
+            },
           ],
-          solution: [
-            { say: "Count outcomes from a list or tree, where each one is equally likely." },
-          ],
-        });
+        );
     }
   },
 

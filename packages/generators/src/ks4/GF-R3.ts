@@ -7,6 +7,7 @@
 // greater than 1
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   minutes: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-R3",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.FRACTION.UNITS"],
 
@@ -75,24 +76,55 @@ export default defineGenerator<Params>({
       }
       default: {
         const right = frac(p.big, p.small);
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `A red rope is ${p.big} m long and a blue rope is ${p.small} m long. Ella says the red rope is `,
-            A.math(toLatex(right)),
-            " of the length of the blue rope.",
-          ],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `A red rope is ${p.big} m long and a blue rope is ${p.small} m long. Ella says the red rope is `,
+                A.math(toLatex(right)),
+                " of the length of the blue rope.",
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: `True. Red ÷ blue = ${p.big} ÷ ${p.small} = ${toLatex(right).replace(/\\frac\{(\d+)\}\{(\d+)\}/, "$1/$2")}. A fraction can be greater than 1.`,
+                  correct: true,
+                },
+                { text: "False. A fraction of something must be less than 1." },
+                { text: `False. It should be ${p.small}/${p.big}, the smaller over the bigger.` },
+              ],
+              solution: [{ say: "‘A as a fraction of B’ means A ÷ B, whichever is larger." }],
+            }),
+          [
             {
-              text: `True. Red ÷ blue = ${p.big} ÷ ${p.small} = ${toLatex(right).replace(/\\frac\{(\d+)\}\{(\d+)\}/, "$1/$2")}. A fraction can be greater than 1.`,
-              correct: true,
+              statement: "Sam says 40 cm as a fraction of 2 m is $\\frac{1}{5}$.",
+              truth: true,
+              right: "True. 2 m = 200 cm, and 40/200 = 1/5.",
+              wrong: [["False. It is 40/2 = 20.", "RAT.FRACTION.UNITS"], ["False. It is 1/2."]],
             },
-            { text: "False. A fraction of something must be less than 1." },
-            { text: `False. It should be ${p.small}/${p.big}, the smaller over the bigger.` },
+            {
+              claim:
+                "To write one quantity as a fraction of another, both must be in the same units.",
+              truth: "always",
+              right: "Always. Otherwise you compare different-sized units.",
+              wrong: [
+                ["Never. Units do not matter.", "RAT.FRACTION.UNITS"],
+                ["Sometimes. Only for money."],
+              ],
+            },
+            {
+              statement: "Kim says 30 minutes is $\\frac{30}{1}$ of an hour.",
+              truth: false,
+              right: "False. 1 hour = 60 minutes, so it is 30/60 = 1/2.",
+              wrong: [
+                ["True. 30 out of 1 hour.", "RAT.FRACTION.UNITS"],
+                ["True. Minutes and hours are the same unit."],
+              ],
+            },
           ],
-          solution: [{ say: "‘A as a fraction of B’ means A ÷ B, whichever is larger." }],
-        });
+        );
       }
     }
   },

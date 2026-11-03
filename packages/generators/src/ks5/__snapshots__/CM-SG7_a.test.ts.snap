@@ -411,7 +411,7 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
@@ -430,13 +430,13 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -445,10 +445,19 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -456,7 +465,7 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Big numbers cannot be in the sequence.",
+                  "v": "Never. It skips some.",
                 },
               ],
               "id": "RA",
@@ -465,7 +474,7 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 8n + 5 = 301 gives n = 37, a whole number.",
+                  "v": "Sometimes. Only small ones.",
                 },
               ],
               "id": "RB",
@@ -474,7 +483,7 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 301 is not a multiple of 8.",
+                  "v": "Always, for every positive even number. 2n gives 2, 4, 6, …",
                 },
               ],
               "id": "RC",
@@ -486,7 +495,7 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.POSITION-RULE",
@@ -496,7 +505,7 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -506,7 +515,7 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Solve the nth term equal to the number: a term needs a whole-number n.",
+            "v": "Always, for every positive even number. 2n gives 2, 4, 6, …",
           },
         ],
       },
@@ -514,15 +523,15 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sam says 301 is a term of the sequence with nth term ",
+        "v": "The sequence with nth term ",
       },
       {
         "t": "math",
-        "v": "8n + 5",
+        "v": "2n",
       },
       {
         "t": "text",
-        "v": ".",
+        "v": " contains every even number.",
       },
     ],
   },
@@ -545,8 +554,8 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -572,7 +581,7 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 7n + 4 = 257 gives n = 36.142857142857146, not a whole number.",
+                  "v": "False. It is 15.",
                 },
               ],
               "id": "RA",
@@ -581,7 +590,7 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The sequence goes up steadily, so it reaches every number.",
+                  "v": "False. It is 50.",
                 },
               ],
               "id": "RB",
@@ -590,7 +599,7 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every number above 11 is in the sequence.",
+                  "v": "True. 3 × 10 + 2 = 32.",
                 },
               ],
               "id": "RC",
@@ -602,7 +611,7 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.POSITION-RULE",
@@ -622,7 +631,7 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Solve the nth term equal to the number: a term needs a whole-number n.",
+            "v": "True. 3 × 10 + 2 = 32.",
           },
         ],
       },
@@ -630,20 +639,20 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sam says 257 is a term of the sequence with nth term ",
+        "v": "Ana says the 10th term of the sequence with nth term ",
       },
       {
         "t": "math",
-        "v": "7n + 4",
+        "v": "3n + 2",
       },
       {
         "t": "text",
-        "v": ".",
+        "v": " is 32.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
@@ -662,13 +671,13 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -677,10 +686,19 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -688,7 +706,7 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 4n + 4 = 120 gives n = 29, a whole number.",
+                  "v": "Sometimes. Only small ones.",
                 },
               ],
               "id": "RA",
@@ -697,7 +715,7 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 120 is not a multiple of 4.",
+                  "v": "Never. It skips some.",
                 },
               ],
               "id": "RB",
@@ -706,7 +724,7 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Big numbers cannot be in the sequence.",
+                  "v": "Always, for every positive even number. 2n gives 2, 4, 6, …",
                 },
               ],
               "id": "RC",
@@ -728,7 +746,7 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -738,7 +756,7 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Solve the nth term equal to the number: a term needs a whole-number n.",
+            "v": "Always, for every positive even number. 2n gives 2, 4, 6, …",
           },
         ],
       },
@@ -746,15 +764,15 @@ exports[`CM-SG7.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sam says 120 is a term of the sequence with nth term ",
+        "v": "The sequence with nth term ",
       },
       {
         "t": "math",
-        "v": "4n + 4",
+        "v": "2n",
       },
       {
         "t": "text",
-        "v": ".",
+        "v": " contains every even number.",
       },
     ],
   },

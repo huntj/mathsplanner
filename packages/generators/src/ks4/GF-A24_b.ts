@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const TYPES = ["Arithmetic", "Geometric", "Neither"];
 
@@ -25,7 +26,7 @@ const terms = (p: Params) =>
 
 export default defineGenerator<Params>({
   id: "GF-A24.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SEQUENCE.TYPE", "ALG.SEQUENCE.GEOMETRIC-ADD"],
 
@@ -79,25 +80,58 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Fay says ${[0, 1, 2, 3].map((k) => p.a * 2 ** k).join(", ")}, … is an arithmetic sequence because it goes up each time.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Fay says ${[0, 1, 2, 3].map((k) => p.a * 2 ** k).join(", ")}, … is an arithmetic sequence because it goes up each time.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. The differences are not equal; each term is double the one before, so it is geometric.",
+                  correct: true,
+                },
+                { text: "True. Any increasing sequence is arithmetic.", code: "ALG.SEQUENCE.TYPE" },
+                {
+                  text: "True. It goes up by the same amount each time.",
+                  code: "ALG.SEQUENCE.GEOMETRIC-ADD",
+                },
+              ],
+              solution: [{ say: "Check the differences: they double too." }],
+            }),
+          [
             {
-              text: "False. The differences are not equal; each term is double the one before, so it is geometric.",
-              correct: true,
+              statement: "Mia says 3, 9, 27, 81, … is a geometric sequence.",
+              truth: true,
+              right: "True. Each term is 3 times the one before.",
+              wrong: [
+                ["False. It is arithmetic.", "ALG.SEQUENCE.TYPE"],
+                ["False. It adds 6.", "ALG.SEQUENCE.GEOMETRIC-ADD"],
+              ],
             },
-            { text: "True. Any increasing sequence is arithmetic.", code: "ALG.SEQUENCE.TYPE" },
             {
-              text: "True. It goes up by the same amount each time.",
-              code: "ALG.SEQUENCE.GEOMETRIC-ADD",
+              claim: "An arithmetic sequence adds the same number each time.",
+              truth: "always",
+              right: "Always. That is the definition.",
+              wrong: [
+                ["Never. It multiplies.", "ALG.SEQUENCE.GEOMETRIC-ADD"],
+                ["Sometimes. Only for even numbers."],
+              ],
+            },
+            {
+              statement: "Leo says the next term of the geometric sequence 2, 6, 18, … is 30.",
+              truth: false,
+              right: "False. It multiplies by 3: the next term is 54.",
+              wrong: [
+                ["True. It goes up by 12.", "ALG.SEQUENCE.GEOMETRIC-ADD"],
+                ["True. Add the last two."],
+              ],
             },
           ],
-          solution: [{ say: "Check the differences: they double too." }],
-        });
+        );
     }
   },
 

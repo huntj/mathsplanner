@@ -9,6 +9,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   p: number;
@@ -20,7 +21,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-P2",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["PRO.EXPECTED.DIVIDE", "PRO.RELATIVE-FREQUENCY.EXACT"],
 
@@ -74,28 +75,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `A fair dice is rolled ${p.rolls} times. Mia says it must land on six exactly ${p.rolls / 6} times.`,
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `A fair dice is rolled ${p.rolls} times. Mia says it must land on six exactly ${p.rolls / 6} times.`,
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${p.rolls / 6} is the expected number, but outcomes are random, so the actual number of sixes can be more or fewer.`,
+                  correct: true,
+                },
+                {
+                  text: "True. A fair dice always gives each number equally often.",
+                  code: "PRO.RELATIVE-FREQUENCY.EXACT",
+                },
+                {
+                  text: `True. ${p.rolls} ÷ 6 = ${p.rolls / 6}, so that is what happens.`,
+                  code: "PRO.RELATIVE-FREQUENCY.EXACT",
+                },
+              ],
+              solution: [
+                { say: "Expected frequency is an average over many repeats, not a guarantee." },
+              ],
+            }),
+          [
             {
-              text: `False. ${p.rolls / 6} is the expected number, but outcomes are random, so the actual number of sixes can be more or fewer.`,
-              correct: true,
+              statement:
+                "A spinner lands on red with probability 0.3. Leo expects about 30 reds in 100 spins.",
+              truth: true,
+              right: "True. Expected number = 0.3 × 100 = 30.",
+              wrong: [
+                ["False. Exactly 30 must come up.", "PRO.RELATIVE-FREQUENCY.EXACT"],
+                ["False. 100 ÷ 0.3 ≈ 333.", "PRO.EXPECTED.DIVIDE"],
+              ],
             },
             {
-              text: "True. A fair dice always gives each number equally often.",
-              code: "PRO.RELATIVE-FREQUENCY.EXACT",
+              claim:
+                "Relative frequency gets closer to the probability as the number of trials grows, in the long run.",
+              truth: "always",
+              right: "Always, as a tendency: more trials give a better estimate.",
+              wrong: [
+                ["Never. It moves further away.", "PRO.RELATIVE-FREQUENCY.EXACT"],
+                ["Sometimes. Only for coins."],
+              ],
             },
             {
-              text: `True. ${p.rolls} ÷ 6 = ${p.rolls / 6}, so that is what happens.`,
-              code: "PRO.RELATIVE-FREQUENCY.EXACT",
+              statement: "A coin is flipped 10 times. Mia says it must land heads exactly 5 times.",
+              truth: false,
+              right: "False. 5 is the expected number, but the actual count varies.",
+              wrong: [
+                ["True. Half of 10 is 5.", "PRO.RELATIVE-FREQUENCY.EXACT"],
+                ["True. A fair coin is always even.", "PRO.RELATIVE-FREQUENCY.EXACT"],
+              ],
             },
           ],
-          solution: [
-            { say: "Expected frequency is an average over many repeats, not a guarantee." },
-          ],
-        });
+        );
     }
   },
 

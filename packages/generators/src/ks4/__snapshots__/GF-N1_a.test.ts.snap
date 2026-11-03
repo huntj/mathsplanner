@@ -10,7 +10,7 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N1.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -93,7 +93,7 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N1.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -176,7 +176,7 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N1.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -259,7 +259,7 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N1.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -359,7 +359,7 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N1.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -459,7 +459,7 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N1.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -559,7 +559,7 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N1.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -570,7 +570,7 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -597,7 +597,7 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The number with the bigger digit is bigger.",
+                  "v": "False. 0.7 is bigger than 0.5.",
                 },
               ],
               "id": "RA",
@@ -606,7 +606,7 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. −11 is further left on the number line, so −11 < −2.",
+                  "v": "True. −0.5 is nearer zero, so it is further right on the number line.",
                 },
               ],
               "id": "RB",
@@ -615,7 +615,7 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Negative numbers are ordered the same way as positive ones.",
+                  "v": "False. They are both negative, so they are equal.",
                 },
               ],
               "id": "RC",
@@ -628,14 +628,6 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.NEGATIVE.ORDER",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.NEGATIVE.ORDER",
@@ -655,7 +647,7 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "For negative numbers, the further from zero, the smaller the number.",
+            "v": "True. −0.5 is nearer zero, so it is further right on the number line.",
           },
         ],
       },
@@ -663,15 +655,132 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ana says ",
+        "v": "Kai says ",
       },
       {
         "t": "math",
-        "v": "-11 > -2",
+        "v": "-0.5 > -0.7",
       },
       {
         "t": "text",
-        "v": " because 11 is bigger than 2.",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-N1.a",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. It depends on the digits.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. −100 is bigger than 1.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. Every negative number is to the left of zero, and every positive number to the right.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.NEGATIVE.ORDER",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. Every negative number is to the left of zero, and every positive number to the right.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A negative number is less than any positive number.",
       },
     ],
   },
@@ -680,10 +789,10 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
     "diagrams": [],
     "key": {
       "depth": 4,
-      "numbers": "standard",
+      "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N1.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -721,7 +830,7 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. −10 is further left on the number line, so −10 < −5.",
+                  "v": "False. Compare tenths first: 0.305 < 0.32 < 0.4.",
                 },
               ],
               "id": "RA",
@@ -730,7 +839,7 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The number with the bigger digit is bigger.",
+                  "v": "True. Shorter decimals are smaller.",
                 },
               ],
               "id": "RB",
@@ -739,7 +848,7 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Negative numbers are ordered the same way as positive ones.",
+                  "v": "True. 4 is smaller than 32 and 305.",
                 },
               ],
               "id": "RC",
@@ -754,7 +863,7 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.NEGATIVE.ORDER",
+            "code": "NPV.DECIMAL.LONGER-BIGGER",
             "feedback": [],
           },
           {
@@ -762,7 +871,7 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.NEGATIVE.ORDER",
+            "code": "NPV.DECIMAL.LONGER-BIGGER",
             "feedback": [],
           },
         ],
@@ -779,7 +888,7 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "For negative numbers, the further from zero, the smaller the number.",
+            "v": "False. Compare tenths first: 0.305 < 0.32 < 0.4.",
           },
         ],
       },
@@ -787,139 +896,7 @@ exports[`GF-N1.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ana says ",
-      },
-      {
-        "t": "math",
-        "v": "-10 > -5",
-      },
-      {
-        "t": "text",
-        "v": " because 10 is bigger than 5.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GF-N1.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Negative numbers are ordered the same way as positive ones.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The number with the bigger digit is bigger.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. −4 is further left on the number line, so −4 < −2.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.NEGATIVE.ORDER",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.NEGATIVE.ORDER",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "For negative numbers, the further from zero, the smaller the number.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Ana says ",
-      },
-      {
-        "t": "math",
-        "v": "-4 > -2",
-      },
-      {
-        "t": "text",
-        "v": " because 4 is bigger than 2.",
+        "v": "Pia orders 0.32, 0.4, 0.305 from smallest: 0.4, 0.32, 0.305.",
       },
     ],
   },

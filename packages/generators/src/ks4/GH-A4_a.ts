@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { bracket, poly, signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -19,7 +20,7 @@ const cubic = (a: number, b: number, c: number) => [1, a + b + c, a * b + b * c 
 
 export default defineGenerator<Params>({
   id: "GH-A4.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.EXPAND.BINOMIAL-TWO-TERMS", "ALG.EXPAND.NEGATIVE"],
 
@@ -87,27 +88,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Isla says ",
-            A.math(`(x + ${Math.abs(p.a)})^3 = x^3 + ${Math.abs(p.a) ** 3}`),
-            ".",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Isla says ",
+                A.math(`(x + ${Math.abs(p.a)})^3 = x^3 + ${Math.abs(p.a) ** 3}`),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. (x + ${Math.abs(p.a)})³ = (x + ${Math.abs(p.a)})(x + ${Math.abs(p.a)})(x + ${Math.abs(p.a)}) = ${poly(cubic(Math.abs(p.a), Math.abs(p.a), Math.abs(p.a)))}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Cube each term in the bracket.",
+                  code: "ALG.EXPAND.BINOMIAL-TWO-TERMS",
+                },
+                {
+                  text: "True. Powers can be shared out over addition.",
+                  code: "ALG.EXPAND.BINOMIAL-TWO-TERMS",
+                },
+              ],
+              solution: [{ say: "Try x = 1 to check: the two sides differ." }],
+            }),
+          [
             {
-              text: `False. (x + ${Math.abs(p.a)})³ = (x + ${Math.abs(p.a)})(x + ${Math.abs(p.a)})(x + ${Math.abs(p.a)}) = ${poly(cubic(Math.abs(p.a), Math.abs(p.a), Math.abs(p.a)))}.`,
-              correct: true,
+              statement: "Ana says $(x + 1)(x + 2)(x + 3) = x^3 + 6x^2 + 11x + 6$.",
+              truth: true,
+              right: "True. (x + 1)(x + 2) = x² + 3x + 2, then times (x + 3).",
+              wrong: [
+                ["False. It is x³ + 6.", "ALG.EXPAND.BINOMIAL-TWO-TERMS"],
+                ["False. It is x³ + 6x + 6."],
+              ],
             },
-            { text: "True. Cube each term in the bracket.", code: "ALG.EXPAND.BINOMIAL-TWO-TERMS" },
             {
-              text: "True. Powers can be shared out over addition.",
-              code: "ALG.EXPAND.BINOMIAL-TWO-TERMS",
+              claim: "Expanding three brackets each of the form $(x + a)$ gives an $x^3$ term.",
+              truth: "always",
+              right: "Always. x × x × x = x³.",
+              wrong: [
+                ["Never. It gives x² at most.", "ALG.EXPAND.BINOMIAL-TWO-TERMS"],
+                ["Sometimes. Only if a is positive."],
+              ],
+            },
+            {
+              statement: "Raj says $(x - 2)^3 = x^3 - 8$.",
+              truth: false,
+              right: "False. (x − 2)³ = x³ − 6x² + 12x − 8.",
+              wrong: [
+                ["True. Cube each term.", "ALG.EXPAND.BINOMIAL-TWO-TERMS"],
+                ["True. (−2)³ = −8, and that is all.", "ALG.EXPAND.NEGATIVE"],
+              ],
             },
           ],
-          solution: [{ say: "Try x = 1 to check: the two sides differ." }],
-        });
+        );
     }
   },
 

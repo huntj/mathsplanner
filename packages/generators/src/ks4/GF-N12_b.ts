@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   p: number;
@@ -18,7 +19,7 @@ const r = (v: number) => Number(v.toFixed(6));
 
 export default defineGenerator<Params>({
   id: "GF-N12.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.PERCENT.MULTIPLIER", "RAT.PERCENT.UNDO"],
 
@@ -70,30 +71,63 @@ export default defineGenerator<Params>({
       }
       default: {
         const end = r(100 * (1 + p.p / 100) * (1 - p.p / 100));
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Gil says increasing an amount by ${p.p}% and then decreasing it by ${p.p}% gets back to the start.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Gil says increasing an amount by ${p.p}% and then decreasing it by ${p.p}% gets back to the start.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The decrease is ${p.p}% of a bigger amount. Starting from 100: 100 × ${r(1 + p.p / 100)} × ${r(1 - p.p / 100)} = ${end}.`,
+                  correct: true,
+                },
+                { text: "True. The two changes cancel out.", code: "RAT.PERCENT.UNDO" },
+                {
+                  text: "True. Adding and subtracting the same thing gets back to the start.",
+                  code: "RAT.PERCENT.UNDO",
+                },
+              ],
+              solution: [
+                {
+                  say: "Combine the multipliers: ",
+                  math: `${r(1 + p.p / 100)} \\times ${r(1 - p.p / 100)} = ${r((1 + p.p / 100) * (1 - p.p / 100))}`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. The decrease is ${p.p}% of a bigger amount. Starting from 100: 100 × ${r(1 + p.p / 100)} × ${r(1 - p.p / 100)} = ${end}.`,
-              correct: true,
+              statement: "Raj says 15% of 80 is 12.",
+              truth: true,
+              right: "True. 10% is 8, 5% is 4, and 8 + 4 = 12.",
+              wrong: [
+                ["False. It is 5.3.", "RAT.PERCENT.MULTIPLIER"],
+                ["False. It is 1.2.", "RAT.PERCENT.MULTIPLIER"],
+              ],
             },
-            { text: "True. The two changes cancel out.", code: "RAT.PERCENT.UNDO" },
             {
-              text: "True. Adding and subtracting the same thing gets back to the start.",
-              code: "RAT.PERCENT.UNDO",
+              claim: "A 50% increase followed by a 50% decrease returns to the original amount.",
+              truth: "never",
+              right: "Never, for a non-zero amount. 100 → 150 → 75.",
+              wrong: [
+                ["Always. They cancel.", "RAT.PERCENT.UNDO"],
+                ["Sometimes. For round numbers."],
+              ],
+            },
+            {
+              statement: "Mia says to decrease by 20% you multiply by 0.2.",
+              truth: false,
+              right: "False. Decreasing by 20% leaves 80%: multiply by 0.8.",
+              wrong: [
+                ["True. 20% is 0.2.", "RAT.PERCENT.MULTIPLIER"],
+                ["True. Multiply by the percentage."],
+              ],
             },
           ],
-          solution: [
-            {
-              say: "Combine the multipliers: ",
-              math: `${r(1 + p.p / 100)} \\times ${r(1 - p.p / 100)} = ${r((1 + p.p / 100) * (1 - p.p / 100))}`,
-            },
-          ],
-        });
+        );
       }
     }
   },

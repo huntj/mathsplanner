@@ -10,7 +10,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-G19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -77,7 +77,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-G19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -144,7 +144,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-G19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -211,7 +211,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-G19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -286,7 +286,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-G19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -361,7 +361,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-G19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -429,14 +429,14 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-G19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -447,14 +447,14 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -463,10 +463,19 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -474,7 +483,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Volume scales by the cube of the length scale factor: 4³ = 64 times as much.",
+                  "v": "Always. Each of three dimensions is multiplied by k.",
                 },
               ],
               "id": "RA",
@@ -483,7 +492,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every length is multiplied by the same number, so the volume is too.",
+                  "v": "Never. It is k.",
                 },
               ],
               "id": "RB",
@@ -492,7 +501,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It holds 16 times as much.",
+                  "v": "Sometimes. Only for cubes.",
                 },
               ],
               "id": "RC",
@@ -510,19 +519,11 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
             "code": "RAT.SCALE.AREA-LINEAR",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "RAT.SCALE.AREA-LINEAR",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -532,7 +533,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Length × 4, area × 16, volume × 64.",
+            "v": "Always. Each of three dimensions is multiplied by k.",
           },
         ],
       },
@@ -540,7 +541,15 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A model cone is made with every length 4 times as long as the original. Tia says it holds 4 times as much.",
+        "v": "If the length scale factor is k, the volume scale factor is ",
+      },
+      {
+        "t": "math",
+        "v": "k^3",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
@@ -552,7 +561,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-G19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -590,7 +599,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Volume scales by the cube of the length scale factor: 2³ = 8 times as much.",
+                  "v": "False. The volume scale factor is 27, so the length scale factor is ∛27 = 3.",
                 },
               ],
               "id": "RA",
@@ -599,7 +608,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It holds 4 times as much.",
+                  "v": "True. Lengths scale like volumes.",
                 },
               ],
               "id": "RB",
@@ -608,7 +617,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every length is multiplied by the same number, so the volume is too.",
+                  "v": "True. 54 ÷ 2 = 27.",
                 },
               ],
               "id": "RC",
@@ -648,7 +657,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Length × 2, area × 4, volume × 8.",
+            "v": "False. The volume scale factor is 27, so the length scale factor is ∛27 = 3.",
           },
         ],
       },
@@ -656,7 +665,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A model cone is made with every length 2 times as long as the original. Tia says it holds 2 times as much.",
+        "v": "Two similar jugs have volumes 54 ml and 2 ml. Raj says the length scale factor is 27.",
       },
     ],
   },
@@ -668,7 +677,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-G19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -679,7 +688,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -706,7 +715,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every length is multiplied by the same number, so the volume is too.",
+                  "v": "False. It is 3.",
                 },
               ],
               "id": "RA",
@@ -715,7 +724,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Volume scales by the cube of the length scale factor: 2³ = 8 times as much.",
+                  "v": "True. Area scale factor = 3² = 9.",
                 },
               ],
               "id": "RB",
@@ -724,7 +733,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It holds 4 times as much.",
+                  "v": "False. It is 27.",
                 },
               ],
               "id": "RC",
@@ -764,7 +773,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Length × 2, area × 4, volume × 8.",
+            "v": "True. Area scale factor = 3² = 9.",
           },
         ],
       },
@@ -772,7 +781,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A model jug is made with every length 2 times as long as the original. Tia says it holds 2 times as much.",
+        "v": "Two similar shapes have length scale factor 3. Ana says the area scale factor is 9.",
       },
     ],
   },
@@ -784,7 +793,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-G19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -892,7 +901,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-G19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1000,7 +1009,7 @@ exports[`GH-G19 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-G19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

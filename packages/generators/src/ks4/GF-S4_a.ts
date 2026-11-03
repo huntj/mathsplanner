@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   list: number[];
@@ -18,7 +19,7 @@ const median = (xs: number[]) => [...xs].sort((a, b) => a - b)[Math.floor(xs.len
 
 export default defineGenerator<Params>({
   id: "GF-S4.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.MEDIAN.UNORDERED", "STA.MEAN.DIVISOR", "STA.OUTLIER.MEAN"],
 
@@ -85,25 +86,61 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Five workers earn £18k, £20k, £21k, £22k and £250k. Sam says the mean is the best average to describe a typical wage.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Five workers earn £18k, £20k, £21k, £22k and £250k. Sam says the mean is the best average to describe a typical wage.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. The £250k outlier pulls the mean up to £66.2k, more than four of the five earn. The median, £21k, is more typical.",
+                  correct: true,
+                },
+                {
+                  text: "True. The mean uses every value, so it is always best.",
+                  code: "STA.OUTLIER.MEAN",
+                },
+                { text: "True. The mean is the most accurate average.", code: "STA.OUTLIER.MEAN" },
+              ],
+              solution: [
+                { say: "With an extreme value, the median is often more representative." },
+              ],
+            }),
+          [
             {
-              text: "False. The £250k outlier pulls the mean up to £66.2k, more than four of the five earn. The median, £21k, is more typical.",
-              correct: true,
+              statement: "Raj says the median of 3, 9, 4, 7, 5 is 5.",
+              truth: true,
+              right: "True. In order: 3, 4, 5, 7, 9. The middle is 5.",
+              wrong: [
+                ["False. It is 4, the middle as written.", "STA.MEDIAN.UNORDERED"],
+                ["False. It is 5.6, the mean.", "STA.MEAN.DIVISOR"],
+              ],
             },
             {
-              text: "True. The mean uses every value, so it is always best.",
-              code: "STA.OUTLIER.MEAN",
+              claim: "An outlier affects the mean more than the median.",
+              truth: "always",
+              right:
+                "Always, in general. The mean uses every value's size; the median only its position.",
+              wrong: [
+                ["Never. The median moves more.", "STA.OUTLIER.MEAN"],
+                ["Sometimes. Only for small outliers."],
+              ],
             },
-            { text: "True. The mean is the most accurate average.", code: "STA.OUTLIER.MEAN" },
+            {
+              statement: "Kim finds the mean of 2, 4, 6 and 8 by adding them and dividing by 3.",
+              truth: false,
+              right: "False. There are 4 values: 20 ÷ 4 = 5.",
+              wrong: [
+                ["True. Divide by the middle number.", "STA.MEAN.DIVISOR"],
+                ["True. Divide by one less than the count.", "STA.MEAN.DIVISOR"],
+              ],
+            },
           ],
-          solution: [{ say: "With an extreme value, the median is often more representative." }],
-        });
+        );
     }
   },
 

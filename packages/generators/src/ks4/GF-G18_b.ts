@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { sector } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   r: number;
@@ -19,7 +20,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "GF-G18.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.CIRCLE.FORMULA", "GEO.SECTOR.FRACTION"],
 
@@ -84,26 +85,59 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Rob says doubling the angle of a sector, with the radius unchanged, doubles its area.",
-          ],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Rob says doubling the angle of a sector, with the radius unchanged, doubles its area.",
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. The area is (angle ÷ 360) × πr², so it is proportional to the angle.",
+                  correct: true,
+                },
+                { text: "False. It multiplies the area by 4.", code: "GEO.SECTOR.FRACTION" },
+                { text: "False. The area only depends on the radius.", code: "MEA.CIRCLE.FORMULA" },
+              ],
+              solution: [
+                {
+                  say: "Doubling the radius would multiply the area by 4; doubling the angle doubles it.",
+                },
+              ],
+            }),
+          [
             {
-              text: "True. The area is (angle ÷ 360) × πr², so it is proportional to the angle.",
-              correct: true,
+              statement: "Leo says a 60° sector of a circle of radius 6 cm has area $6\\pi$ cm².",
+              truth: true,
+              right: "True. 60/360 × π × 36 = 6π.",
+              wrong: [
+                ["False. It is 36π cm².", "GEO.SECTOR.FRACTION"],
+                ["False. It is 2π cm².", "MEA.CIRCLE.FORMULA"],
+              ],
             },
-            { text: "False. It multiplies the area by 4.", code: "GEO.SECTOR.FRACTION" },
-            { text: "False. The area only depends on the radius.", code: "MEA.CIRCLE.FORMULA" },
-          ],
-          solution: [
             {
-              say: "Doubling the radius would multiply the area by 4; doubling the angle doubles it.",
+              claim: "Doubling the radius of a sector, with the same angle, doubles its area.",
+              truth: "never",
+              right: "Never. Area depends on r², so it is multiplied by 4.",
+              wrong: [
+                ["Always. Twice as wide, twice the area.", "MEA.CIRCLE.FORMULA"],
+                ["Sometimes. Only for small angles."],
+              ],
+            },
+            {
+              statement: "Kim says a 120° sector is half of the circle.",
+              truth: false,
+              right: "False. 120/360 = 1/3 of the circle.",
+              wrong: [
+                ["True. 120° is half of 240°.", "GEO.SECTOR.FRACTION"],
+                ["True. Use 180° as the whole.", "GEO.SECTOR.FRACTION"],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

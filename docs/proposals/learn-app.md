@@ -1,7 +1,7 @@
 # Proposal: Learn Maths, a Duolingo-style practice app for pupils
 
 Status: **agreed on 29 October 2026.** Steps 1 to 6 are built: the course data with Year 7 as
-the pilot section, then Years 8 and 9 and Years 1 to 6 (`data/course.txt`, `pnpm data:course`), the shared answer widgets
+the pilot section, then every other year: Years 1 to 9, GCSE Foundation and GCSE Higher (`data/course.txt`, `pnpm data:course`), the shared answer widgets
 (`@mathsplanner/ui`), and the app with its path, progress, first visit, lessons, practice and
 rewards (`apps/learn`, `pnpm learn`); steps 7 to 10 are to do.
 
@@ -121,6 +121,68 @@ geometry, number…) rather than six number units in a row, and small topics wer
 | 15  | Rounding and estimating             |      4 |
 | 16  | Averages and range                  |      4 |
 | 17  | Probability                         |      3 |
+
+**GCSE Higher** has 13 units and 61 skills: the Higher-only statements, which
+pupils meet after GCSE Foundation. Its draft had many one- and two-skill topics, merged by
+strand:
+
+| #   | Unit                                  | Skills |
+| --- | ------------------------------------- | -----: |
+| 1   | Counting, powers and surds            |      6 |
+| 2   | Expressions and proof                 |      6 |
+| 3   | Transformations and similarity        |      3 |
+| 4   | Recurring decimals and bounds         |      3 |
+| 5   | Functions, lines and quadratics       |      6 |
+| 6   | Probability                           |      3 |
+| 7   | Equations, iteration and inequalities |      6 |
+| 8   | Pythagoras and trigonometry           |      6 |
+| 9   | Sequences and growth                  |      3 |
+| 10  | Graphs of functions                   |      7 |
+| 11  | Proportion and rates of change        |      4 |
+| 12  | Circles and vectors                   |      4 |
+| 13  | Histograms and box plots              |      4 |
+
+**GCSE Foundation** has 35 units and 176 skills. Strands alternate as in the other years; where
+the statement data says a skill needs one in a later unit, that unit was moved earlier, which is
+why straight-line graphs come before the shape units:
+
+| #   | Unit                                       | Skills |
+| --- | ------------------------------------------ | -----: |
+| 1   | Place value and calculation                |      8 |
+| 2   | Expressions                                |      5 |
+| 3   | Formulae and substitution                  |      4 |
+| 4   | Straight-line graphs and functions         |      7 |
+| 5   | 2D and 3D shapes                           |      6 |
+| 6   | Coordinates and transformations            |      6 |
+| 7   | Congruence and similarity                  |      3 |
+| 8   | Angles                                     |      4 |
+| 9   | Factors, primes and listing                |      4 |
+| 10  | Expanding and factorising                  |      4 |
+| 11  | Fractions, decimals and percentages        |      3 |
+| 12  | Probability                                |      6 |
+| 13  | Powers, roots and surds                    |      7 |
+| 14  | Equations                                  |      4 |
+| 15  | Perimeter and area                         |      3 |
+| 16  | Ratio                                      |      5 |
+| 17  | Rounding, estimation and standard form     |      8 |
+| 18  | Sequences                                  |      7 |
+| 19  | Representing data and sampling             |      7 |
+| 20  | Ratio problems                             |      4 |
+| 21  | Percentages                                |      4 |
+| 22  | Measures and units                         |      3 |
+| 23  | Scale drawings, constructions and bearings |      6 |
+| 24  | Simultaneous equations and inequalities    |      4 |
+| 25  | Averages, spread and correlation           |      6 |
+| 26  | Proportion                                 |      4 |
+| 27  | Circles                                    |      8 |
+| 28  | Quadratics                                 |      5 |
+| 29  | Compound measures and rates                |      6 |
+| 30  | Pythagoras and trigonometry                |      5 |
+| 31  | Graphs of functions                        |      5 |
+| 32  | Growth, decay and interest                 |      3 |
+| 33  | More probability                           |      5 |
+| 34  | Proof and identities                       |      3 |
+| 35  | Vectors                                    |      4 |
 
 **Year 8** has 12 units, drafted and tidied the same way. The statement data puts changing the
 subject of a formula before solving harder equations, so formulae open that unit; nth terms join
@@ -502,8 +564,9 @@ polished.
   teacher can look through a year without unlocking it. A level tried this way counts as reached
   (never as a step back). The You page also lets anyone change year; progress in every year is
   kept.
-- **Every year group**, one section at a time: Year 9 next, completing Key Stage 3, then the other
-  years. Each needs its units tidied and its reasoning questions varied, as Year 8's were.
+- **Every year group. Done.** Years 1 to 9, GCSE Foundation and GCSE Higher are all on the path,
+  each tidied into units with its reasoning questions varied (`withClaims` and `orClaims` in
+  `shared/variety.ts`). Every skill on the path passes `variety.test.ts`.
 - **Question previews**: from a skill's sheet, see one question at each level without starting a
   lesson.
 - **Learning the idea first**: a better way into a new skill than one worked example before the

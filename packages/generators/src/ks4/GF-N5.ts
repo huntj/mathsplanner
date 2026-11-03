@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   starters: number;
@@ -23,7 +24,7 @@ const pairs = (n: number) => (n * (n - 1)) / 2;
 
 export default defineGenerator<Params>({
   id: "GF-N5",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.LISTING.INCOMPLETE", "MD.MULTIPLY.ADDS"],
 
@@ -87,42 +88,77 @@ export default defineGenerator<Params>({
       default: {
         const right = pairs(p.people);
         const said = p.claimOrdered ? p.people * (p.people - 1) : right;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `${p.people} friends each shake hands once with every other friend. Kit says there are ${said} handshakes.`,
-          truth: !p.claimOrdered,
-          reasons: p.claimOrdered
-            ? [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `${p.people} friends each shake hands once with every other friend. Kit says there are ${said} handshakes.`,
+              truth: !p.claimOrdered,
+              reasons: p.claimOrdered
+                ? [
+                    {
+                      text: `False. That counts each handshake twice (A with B and B with A). There are ${said} ÷ 2 = ${right}.`,
+                      correct: true,
+                    },
+                    {
+                      text: `True. Each of the ${p.people} people shakes ${p.people - 1} hands.`,
+                      code: "NPV.LISTING.INCOMPLETE",
+                    },
+                    {
+                      text: `True. ${p.people} × ${p.people - 1} counts every pair.`,
+                      code: "NPV.LISTING.INCOMPLETE",
+                    },
+                  ]
+                : [
+                    {
+                      text: `True. Listing systematically: the first person shakes ${p.people - 1} hands, the next ${p.people - 2} new ones, and so on: ${Array.from({ length: p.people - 1 }, (_, i) => p.people - 1 - i).join(" + ")} = ${right}.`,
+                      correct: true,
+                    },
+                    {
+                      text: `False. There are ${p.people * (p.people - 1)}, because each person shakes ${p.people - 1} hands.`,
+                      code: "NPV.LISTING.INCOMPLETE",
+                    },
+                    {
+                      text: `False. There are ${p.people}, one each.`,
+                      code: "NPV.LISTING.INCOMPLETE",
+                    },
+                  ],
+              solution: [
                 {
-                  text: `False. That counts each handshake twice (A with B and B with A). There are ${said} ÷ 2 = ${right}.`,
-                  correct: true,
+                  say: `${Array.from({ length: p.people - 1 }, (_, i) => p.people - 1 - i).join(" + ")} = ${right} handshakes.`,
                 },
-                {
-                  text: `True. Each of the ${p.people} people shakes ${p.people - 1} hands.`,
-                  code: "NPV.LISTING.INCOMPLETE",
-                },
-                {
-                  text: `True. ${p.people} × ${p.people - 1} counts every pair.`,
-                  code: "NPV.LISTING.INCOMPLETE",
-                },
-              ]
-            : [
-                {
-                  text: `True. Listing systematically: the first person shakes ${p.people - 1} hands, the next ${p.people - 2} new ones, and so on: ${Array.from({ length: p.people - 1 }, (_, i) => p.people - 1 - i).join(" + ")} = ${right}.`,
-                  correct: true,
-                },
-                {
-                  text: `False. There are ${p.people * (p.people - 1)}, because each person shakes ${p.people - 1} hands.`,
-                  code: "NPV.LISTING.INCOMPLETE",
-                },
-                { text: `False. There are ${p.people}, one each.`, code: "NPV.LISTING.INCOMPLETE" },
               ],
-          solution: [
+            }),
+          [
             {
-              say: `${Array.from({ length: p.people - 1 }, (_, i) => p.people - 1 - i).join(" + ")} = ${right} handshakes.`,
+              statement:
+                "A menu has 3 starters and 4 mains. Bea says there are 12 different two-course meals.",
+              truth: true,
+              right: "True. Each starter goes with each main: 3 × 4 = 12.",
+              wrong: [["False. There are 7.", "MD.MULTIPLY.ADDS"], ["False. There are 34."]],
+            },
+            {
+              statement:
+                "A code uses two digits, each from 0 to 9, and digits can repeat. Ali says there are 90 codes.",
+              truth: false,
+              right: "False. There are 10 choices for each digit: 10 × 10 = 100.",
+              wrong: [
+                ["True. 9 × 10 = 90.", "NPV.LISTING.INCOMPLETE"],
+                ["True. The first digit cannot be 0, so 9 × 10.", "NPV.LISTING.INCOMPLETE"],
+              ],
+            },
+            {
+              claim: "Listing outcomes in a fixed order helps you find them all.",
+              truth: "always",
+              right: "Always. A system means none is missed or counted twice.",
+              wrong: [
+                ["Never. Random guessing is better.", "NPV.LISTING.INCOMPLETE"],
+                ["Sometimes. Only for small lists."],
+              ],
             },
           ],
-        });
+        );
       }
     }
   },

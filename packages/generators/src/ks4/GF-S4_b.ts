@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { groupedTable } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const LOWS = [0, 10, 20, 30];
 
@@ -23,7 +24,7 @@ const sumAt = (f: number[], offset: number) =>
 
 export default defineGenerator<Params>({
   id: "GF-S4.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.GROUPED.MIDPOINT"],
 
@@ -77,20 +78,55 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Ken says the mean worked out from a grouped frequency table is exact."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Ken says the mean worked out from a grouped frequency table is exact."],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. It is an estimate: each value is assumed to be at the midpoint of its class, which is not exactly true.",
+                  correct: true,
+                },
+                { text: "True. Every frequency is used.", code: "STA.GROUPED.MIDPOINT" },
+                { text: "True. The midpoints are the real values.", code: "STA.GROUPED.MIDPOINT" },
+              ],
+              solution: [{ say: "Grouping loses the exact values." }],
+            }),
+          [
             {
-              text: "False. It is an estimate: each value is assumed to be at the midpoint of its class, which is not exactly true.",
-              correct: true,
+              statement:
+                "Sam estimates the mean from a grouped table using each class midpoint times its frequency.",
+              truth: true,
+              right: "True. Then divide the total by the total frequency.",
+              wrong: [
+                ["False. Use the class widths.", "STA.GROUPED.MIDPOINT"],
+                ["False. Use the upper boundaries."],
+              ],
             },
-            { text: "True. Every frequency is used.", code: "STA.GROUPED.MIDPOINT" },
-            { text: "True. The midpoints are the real values.", code: "STA.GROUPED.MIDPOINT" },
+            {
+              claim: "A mean estimated from grouped data is exact.",
+              truth: "never",
+              right: "Never guaranteed. Midpoints stand in for the unknown actual values.",
+              wrong: [
+                ["Always. Midpoints are exact.", "STA.GROUPED.MIDPOINT"],
+                ["Sometimes. If the classes are small.", "STA.GROUPED.MIDPOINT"],
+              ],
+            },
+            {
+              statement:
+                "In a grouped table the total frequency is 40. Pia divides the total of midpoint × frequency by the number of classes, 5.",
+              truth: false,
+              right: "False. Divide by the total frequency, 40.",
+              wrong: [
+                ["True. Divide by how many classes there are.", "STA.GROUPED.MIDPOINT"],
+                ["True. 5 classes means divide by 5.", "STA.GROUPED.MIDPOINT"],
+              ],
+            },
           ],
-          solution: [{ say: "Grouping loses the exact values." }],
-        });
+        );
     }
   },
 

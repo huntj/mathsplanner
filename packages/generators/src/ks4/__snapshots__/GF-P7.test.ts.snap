@@ -10,7 +10,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-P7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -65,7 +65,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-P7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-P7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -203,7 +203,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-P7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -272,7 +272,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-P7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -341,7 +341,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-P7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -403,14 +403,14 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-P7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -421,14 +421,14 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -437,10 +437,19 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -448,7 +457,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. There are 3 possible numbers of heads.",
+                  "v": "Always. Counting outcomes only works if each is equally likely.",
                 },
               ],
               "id": "RA",
@@ -457,7 +466,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Each coin is fair, so every result is equally likely.",
+                  "v": "Sometimes. Only for coins.",
                 },
               ],
               "id": "RB",
@@ -466,7 +475,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. There are 4 equally likely outcomes (such as HH, HT, TH, TT), and only one is two heads, so it is 1/4.",
+                  "v": "Never. Any list of results will do.",
                 },
               ],
               "id": "RC",
@@ -478,15 +487,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
@@ -496,7 +497,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -506,7 +507,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "List the sample space: the numbers of heads are not equally likely, because one head can happen in more than one way.",
+            "v": "Always. Counting outcomes only works if each is equally likely.",
           },
         ],
       },
@@ -514,7 +515,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Two fair coins are flipped. Jo says the number of heads can be 0, 1, 2, so the probability of two heads is 1/3.",
+        "v": "Probabilities from a sample space need outcomes that are equally likely.",
       },
     ],
   },
@@ -526,7 +527,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-P7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -537,7 +538,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -564,7 +565,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Each coin is fair, so every result is equally likely.",
+                  "v": "False. It is 1/2.",
                 },
               ],
               "id": "RA",
@@ -573,7 +574,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. There are 3 possible numbers of heads.",
+                  "v": "False. It is 1/3.",
                 },
               ],
               "id": "RB",
@@ -582,7 +583,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. There are 4 equally likely outcomes (such as HH, HT, TH, TT), and only one is two heads, so it is 1/4.",
+                  "v": "True. HH is one of 4 equally likely outcomes.",
                 },
               ],
               "id": "RC",
@@ -597,7 +598,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
+            "code": "PRO.ODDS",
             "feedback": [],
           },
           {
@@ -622,7 +623,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "List the sample space: the numbers of heads are not equally likely, because one head can happen in more than one way.",
+            "v": "True. HH is one of 4 equally likely outcomes.",
           },
         ],
       },
@@ -630,19 +631,27 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Two fair coins are flipped. Jo says the number of heads can be 0, 1, 2, so the probability of two heads is 1/3.",
+        "v": "Two fair coins are flipped. Sam says P(two heads) is ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{1}{4}",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-P7",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -653,14 +662,14 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -669,10 +678,19 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -680,7 +698,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. There are 4 possible numbers of heads.",
+                  "v": "Always. Counting outcomes only works if each is equally likely.",
                 },
               ],
               "id": "RA",
@@ -689,7 +707,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. There are 8 equally likely outcomes (such as HHH, HHT, HTH, …), and only one is three heads, so it is 1/8.",
+                  "v": "Sometimes. Only for coins.",
                 },
               ],
               "id": "RB",
@@ -698,7 +716,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Each coin is fair, so every result is equally likely.",
+                  "v": "Never. Any list of results will do.",
                 },
               ],
               "id": "RC",
@@ -708,14 +726,6 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -728,7 +738,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -738,7 +748,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "List the sample space: the numbers of heads are not equally likely, because one head can happen in more than one way.",
+            "v": "Always. Counting outcomes only works if each is equally likely.",
           },
         ],
       },
@@ -746,7 +756,7 @@ exports[`GF-P7 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Three fair coins are flipped. Jo says the number of heads can be 0, 1, 2, 3, so the probability of three heads is 1/4.",
+        "v": "Probabilities from a sample space need outcomes that are equally likely.",
       },
     ],
   },

@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { curveClearOfOrigin, grid } from "../shared/alg.ts";
 import { chosenText } from "../shared/counting.ts";
 import { coord } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   c: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-A12.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.GRAPH.SHAPE", "ALG.SUBSTITUTE.NEGATIVE-SQUARE"],
 
@@ -85,38 +86,68 @@ export default defineGenerator<Params>({
       }
       default: {
         const y = p.onCurve ? -(p.k ** 3) : p.k ** 3;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Hugo says the point ",
-            A.math(coord([-p.k, y])),
-            " lies on the curve ",
-            A.math("y = x^3"),
-            ".",
-          ],
-          truth: p.onCurve,
-          reasons: p.onCurve
-            ? [
-                { text: `True. (−${p.k})³ = −${p.k ** 3}.`, correct: true },
-                {
-                  text: `False. (−${p.k})³ = ${p.k ** 3}, since cubes are positive.`,
-                  code: "ALG.SUBSTITUTE.NEGATIVE-SQUARE",
-                },
-                { text: "False. Cubic curves do not have points with negative x." },
-              ]
-            : [
-                { text: `False. (−${p.k})³ = −${p.k ** 3}, not ${p.k ** 3}.`, correct: true },
-                {
-                  text: "True. Cubing a negative number gives a positive number.",
-                  code: "ALG.SUBSTITUTE.NEGATIVE-SQUARE",
-                },
-                {
-                  text: "True. The cubic curve is symmetrical about the y-axis.",
-                  code: "ALG.GRAPH.SHAPE",
-                },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Hugo says the point ",
+                A.math(coord([-p.k, y])),
+                " lies on the curve ",
+                A.math("y = x^3"),
+                ".",
               ],
-          solution: [{ say: "A negative number cubed is negative." }],
-        });
+              truth: p.onCurve,
+              reasons: p.onCurve
+                ? [
+                    { text: `True. (−${p.k})³ = −${p.k ** 3}.`, correct: true },
+                    {
+                      text: `False. (−${p.k})³ = ${p.k ** 3}, since cubes are positive.`,
+                      code: "ALG.SUBSTITUTE.NEGATIVE-SQUARE",
+                    },
+                    { text: "False. Cubic curves do not have points with negative x." },
+                  ]
+                : [
+                    { text: `False. (−${p.k})³ = −${p.k ** 3}, not ${p.k ** 3}.`, correct: true },
+                    {
+                      text: "True. Cubing a negative number gives a positive number.",
+                      code: "ALG.SUBSTITUTE.NEGATIVE-SQUARE",
+                    },
+                    {
+                      text: "True. The cubic curve is symmetrical about the y-axis.",
+                      code: "ALG.GRAPH.SHAPE",
+                    },
+                  ],
+              solution: [{ say: "A negative number cubed is negative." }],
+            }),
+          [
+            {
+              statement: "Pia says the point (2, 8) lies on $y = x^3$.",
+              truth: true,
+              right: "True. 2³ = 8.",
+              wrong: [["False. 2³ = 6.", "ALG.GRAPH.SHAPE"], ["False. It lies on y = x²."]],
+            },
+            {
+              claim: "The graph of $y = x^3$ passes through the origin.",
+              truth: "always",
+              right: "Always. When x = 0, y = 0³ = 0.",
+              wrong: [
+                ["Never. It crosses at y = 3.", "ALG.GRAPH.SHAPE"],
+                ["Sometimes. Only for positive x."],
+              ],
+            },
+            {
+              statement: "Leo says $y = x^3$ is never negative.",
+              truth: false,
+              right: "False. For negative x, x³ is negative: (−2)³ = −8.",
+              wrong: [
+                ["True. Cubes are positive.", "ALG.SUBSTITUTE.NEGATIVE-SQUARE"],
+                ["True. Powers make numbers positive.", "ALG.SUBSTITUTE.NEGATIVE-SQUARE"],
+              ],
+            },
+          ],
+        );
       }
     }
   },

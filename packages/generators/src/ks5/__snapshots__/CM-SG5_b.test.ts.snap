@@ -10,7 +10,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "CM-SG5.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "CM-SG5.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "CM-SG5.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "CM-SG5.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -262,7 +262,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "CM-SG5.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -328,7 +328,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "CM-SG5.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -394,7 +394,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "CM-SG5.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -405,7 +405,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
@@ -432,7 +432,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 9^0 = 1: for example 9³ ÷ 9³ = 9^0, and anything divided by itself is 1.",
+                  "v": "True. Multiplying powers of 2 adds the indices.",
                 },
               ],
               "id": "RA",
@@ -441,7 +441,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 9, because the power does nothing.",
+                  "v": "False. It is 2¹².",
                 },
               ],
               "id": "RB",
@@ -450,7 +450,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any number to the power 0 is 0.",
+                  "v": "False. It is 4⁷.",
                 },
               ],
               "id": "RC",
@@ -465,15 +465,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.INDEX.ZERO",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.INDEX.ZERO",
+            "code": "ALG.INDICES.MULTIPLY",
             "feedback": [],
           },
         ],
@@ -490,7 +482,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Any non-zero number to the power 0 is 1.",
+            "v": "True. Multiplying powers of 2 adds the indices.",
           },
         ],
       },
@@ -498,15 +490,15 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ola says ",
+        "v": "Raj says ",
       },
       {
         "t": "math",
-        "v": "9^0 = 0",
+        "v": "2^3 \\times 2^4 = 2^7",
       },
       {
         "t": "text",
-        "v": " because there are no 9s multiplied together.",
+        "v": ".",
       },
     ],
   },
@@ -518,7 +510,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "CM-SG5.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -529,8 +521,8 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -556,7 +548,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any number to the power 0 is 0.",
+                  "v": "False. It is 2¹².",
                 },
               ],
               "id": "RA",
@@ -565,7 +557,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 8, because the power does nothing.",
+                  "v": "True. Multiplying powers of 2 adds the indices.",
                 },
               ],
               "id": "RB",
@@ -574,7 +566,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 8^0 = 1: for example 8³ ÷ 8³ = 8^0, and anything divided by itself is 1.",
+                  "v": "False. It is 4⁷.",
                 },
               ],
               "id": "RC",
@@ -589,15 +581,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.INDEX.ZERO",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.INDEX.ZERO",
+            "code": "ALG.INDICES.MULTIPLY",
             "feedback": [],
           },
         ],
@@ -614,7 +598,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Any non-zero number to the power 0 is 1.",
+            "v": "True. Multiplying powers of 2 adds the indices.",
           },
         ],
       },
@@ -622,27 +606,27 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ola says ",
+        "v": "Raj says ",
       },
       {
         "t": "math",
-        "v": "8^0 = 0",
+        "v": "2^3 \\times 2^4 = 2^7",
       },
       {
         "t": "text",
-        "v": " because there are no 8s multiplied together.",
+        "v": ".",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "CM-SG5.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -653,14 +637,14 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -669,10 +653,19 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -680,7 +673,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 9, because the power does nothing.",
+                  "v": "Sometimes. Only for 1.",
                 },
               ],
               "id": "RA",
@@ -689,7 +682,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any number to the power 0 is 0.",
+                  "v": "Always. For example, 5³ ÷ 5³ = 5⁰, and it is also 1.",
                 },
               ],
               "id": "RB",
@@ -698,7 +691,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 9^0 = 1: for example 9³ ÷ 9³ = 9^0, and anything divided by itself is 1.",
+                  "v": "Never. It is 0.",
                 },
               ],
               "id": "RC",
@@ -710,15 +703,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.INDEX.ZERO",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.INDEX.ZERO",
@@ -728,7 +713,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -738,7 +723,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Any non-zero number to the power 0 is 1.",
+            "v": "Always. For example, 5³ ÷ 5³ = 5⁰, and it is also 1.",
           },
         ],
       },
@@ -746,15 +731,7 @@ exports[`CM-SG5.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ola says ",
-      },
-      {
-        "t": "math",
-        "v": "9^0 = 0",
-      },
-      {
-        "t": "text",
-        "v": " because there are no 9s multiplied together.",
+        "v": "Any non-zero number to the power 0 is 1.",
       },
     ],
   },

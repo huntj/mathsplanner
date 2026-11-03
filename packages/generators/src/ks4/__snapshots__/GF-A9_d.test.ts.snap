@@ -10,7 +10,7 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A9.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -83,7 +83,7 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A9.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -156,7 +156,7 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A9.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -229,7 +229,7 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A9.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -309,7 +309,7 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A9.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -389,7 +389,7 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A9.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -469,7 +469,7 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A9.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -480,8 +480,8 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -507,7 +507,7 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Gradient is across over up.",
+                  "v": "False. It is 6.",
                 },
               ],
               "id": "RA",
@@ -516,7 +516,7 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The order does not matter.",
+                  "v": "True. Change in y ÷ change in x = 6 ÷ 2 = 3.",
                 },
               ],
               "id": "RB",
@@ -525,7 +525,7 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Gradient = change in y ÷ change in x = -12 ÷ 3 = -4.",
+                  "v": "False. It is 2 ÷ 6.",
                 },
               ],
               "id": "RC",
@@ -537,12 +537,112 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.GRADIENT.RUN-RISE",
             "feedback": [],
           },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. Change in y ÷ change in x = 6 ÷ 2 = 3.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Raj says the gradient from (1, 2) to (3, 8) is 3.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-A9.d",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Change in y ÷ change in x = 6 ÷ 2 = 3.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 2 ÷ 6.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 6.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
           {
             "answer": {
               "id": "RB",
@@ -565,7 +665,7 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Rise over run: vertical change on top.",
+            "v": "True. Change in y ÷ change in x = 6 ÷ 2 = 3.",
           },
         ],
       },
@@ -573,23 +673,7 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Max says the gradient from ",
-      },
-      {
-        "t": "math",
-        "v": "(4, -10)",
-      },
-      {
-        "t": "text",
-        "v": " to ",
-      },
-      {
-        "t": "math",
-        "v": "(7, -22)",
-      },
-      {
-        "t": "text",
-        "v": " is 3 ÷ -12.",
+        "v": "Raj says the gradient from (1, 2) to (3, 8) is 3.",
       },
     ],
   },
@@ -598,10 +682,10 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
     "diagrams": [],
     "key": {
       "depth": 4,
-      "numbers": "standard",
+      "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A9.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -639,7 +723,7 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Gradient is across over up.",
+                  "v": "True. 4 ÷ 4 = 1.",
                 },
               ],
               "id": "RA",
@@ -648,7 +732,7 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Gradient = change in y ÷ change in x = -6 ÷ 3 = -2.",
+                  "v": "False. (1 − 5) ÷ (4 − 0) = −4 ÷ 4 = −1.",
                 },
               ],
               "id": "RB",
@@ -657,7 +741,7 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The order does not matter.",
+                  "v": "True. Gradients have no sign.",
                 },
               ],
               "id": "RC",
@@ -670,14 +754,6 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.GRADIENT.RUN-RISE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.GRADIENT.RUN-RISE",
@@ -697,7 +773,7 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Rise over run: vertical change on top.",
+            "v": "False. (1 − 5) ÷ (4 − 0) = −4 ÷ 4 = −1.",
           },
         ],
       },
@@ -705,155 +781,7 @@ exports[`GF-A9.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Max says the gradient from ",
-      },
-      {
-        "t": "math",
-        "v": "(4, -3)",
-      },
-      {
-        "t": "text",
-        "v": " to ",
-      },
-      {
-        "t": "math",
-        "v": "(7, -9)",
-      },
-      {
-        "t": "text",
-        "v": " is 3 ÷ -6.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GF-A9.d",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Gradient = change in y ÷ change in x = -6 ÷ 2 = -3.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The order does not matter.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Gradient is across over up.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.GRADIENT.RUN-RISE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.GRADIENT.RUN-RISE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Rise over run: vertical change on top.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Max says the gradient from ",
-      },
-      {
-        "t": "math",
-        "v": "(2, -13)",
-      },
-      {
-        "t": "text",
-        "v": " to ",
-      },
-      {
-        "t": "math",
-        "v": "(4, -19)",
-      },
-      {
-        "t": "text",
-        "v": " is 2 ÷ -6.",
+        "v": "Pia says the gradient from (0, 5) to (4, 1) is 1.",
       },
     ],
   },

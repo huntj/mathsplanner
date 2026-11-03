@@ -10,7 +10,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A9",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -95,7 +95,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A9",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -180,7 +180,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A9",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -265,7 +265,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A9",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -343,7 +343,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A9",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -426,7 +426,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A9",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -504,7 +504,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A9",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -516,7 +516,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -542,7 +542,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 2 × (−2) = −4, not −1. The perpendicular gradient is −1/2.",
+                  "v": "True. The gradients have opposite signs.",
                 },
               ],
               "id": "RA",
@@ -551,7 +551,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The gradients have opposite signs.",
+                  "v": "False. 2 × (−2) = −4, not −1. The perpendicular gradient is −1/2.",
                 },
               ],
               "id": "RB",
@@ -572,7 +572,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.PERPENDICULAR.GRADIENT",
@@ -628,7 +628,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A9",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -640,7 +640,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -666,7 +666,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 3 × (−1/3) = −1.",
+                  "v": "False. It is −2.",
                 },
               ],
               "id": "RA",
@@ -675,7 +675,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Perpendicular lines have opposite gradients.",
+                  "v": "True. Perpendicular gradients multiply to −1.",
                 },
               ],
               "id": "RB",
@@ -684,7 +684,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. They have different y-intercepts.",
+                  "v": "False. It is 1/2.",
                 },
               ],
               "id": "RC",
@@ -696,7 +696,15 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "ALG.PERPENDICULAR.GRADIENT",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.PERPENDICULAR.GRADIENT",
@@ -716,7 +724,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Two lines are perpendicular when their gradients multiply to −1.",
+            "v": "True. Perpendicular gradients multiply to −1.",
           },
         ],
       },
@@ -724,23 +732,23 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jo says the lines ",
+        "v": "Bea says a line perpendicular to ",
       },
       {
         "t": "math",
-        "v": "y = 3x + 1",
+        "v": "y = 2x + 3",
       },
       {
         "t": "text",
-        "v": " and ",
+        "v": " has gradient ",
       },
       {
         "t": "math",
-        "v": "y = -\\frac{1}{3}x + 4",
+        "v": "-\\frac{1}{2}",
       },
       {
         "t": "text",
-        "v": " are perpendicular.",
+        "v": ".",
       },
     ],
   },
@@ -752,7 +760,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A9",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -764,7 +772,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -790,7 +798,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 4 × (−1/4) = −1.",
+                  "v": "False. It is 1/2.",
                 },
               ],
               "id": "RA",
@@ -799,7 +807,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Perpendicular lines have opposite gradients.",
+                  "v": "True. Perpendicular gradients multiply to −1.",
                 },
               ],
               "id": "RB",
@@ -808,7 +816,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. They have different y-intercepts.",
+                  "v": "False. It is −2.",
                 },
               ],
               "id": "RC",
@@ -820,7 +828,15 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "ALG.PERPENDICULAR.GRADIENT",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.PERPENDICULAR.GRADIENT",
@@ -840,7 +856,7 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Two lines are perpendicular when their gradients multiply to −1.",
+            "v": "True. Perpendicular gradients multiply to −1.",
           },
         ],
       },
@@ -848,23 +864,23 @@ exports[`GH-A9 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jo says the lines ",
+        "v": "Bea says a line perpendicular to ",
       },
       {
         "t": "math",
-        "v": "y = 4x + 1",
+        "v": "y = 2x + 3",
       },
       {
         "t": "text",
-        "v": " and ",
+        "v": " has gradient ",
       },
       {
         "t": "math",
-        "v": "y = -\\frac{1}{4}x + 4",
+        "v": "-\\frac{1}{2}",
       },
       {
         "t": "text",
-        "v": " are perpendicular.",
+        "v": ".",
       },
     ],
   },

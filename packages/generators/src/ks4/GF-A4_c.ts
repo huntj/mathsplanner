@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { linear } from "../shared/alg.ts";
 import { gcdOf } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   k: number;
@@ -25,7 +26,7 @@ const inner = (a: number, b: number, letter = "x") =>
 
 export default defineGenerator<Params>({
   id: "GF-A4.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.FACTORISE.ONE-TERM"],
 
@@ -105,29 +106,63 @@ export default defineGenerator<Params>({
       }
       default: {
         const partial = `${p.f}(${inner((p.k / p.f) * p.a, (p.k / p.f) * p.b)})`;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Cleo says ",
-            A.math(partial),
-            " is the full factorisation of ",
-            A.math(inner(p.k * p.a, p.k * p.b)),
-            ".",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Cleo says ",
+                A.math(partial),
+                " is the full factorisation of ",
+                A.math(inner(p.k * p.a, p.k * p.b)),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Expanding gives the right expression, but the bracket still has a common factor of ${p.k / p.f}. Fully factorised, it is ${p.k}(${inner(p.a, p.b)}).`,
+                  correct: true,
+                },
+                { text: "True. Any factor taken out of both terms is a full factorisation." },
+                {
+                  text: "False. You can only take out a factor from the first term.",
+                  code: "ALG.FACTORISE.ONE-TERM",
+                },
+              ],
+              solution: [{ say: `Take out the highest common factor, ${p.k}.` }],
+            }),
+          [
             {
-              text: `False. Expanding gives the right expression, but the bracket still has a common factor of ${p.k / p.f}. Fully factorised, it is ${p.k}(${inner(p.a, p.b)}).`,
-              correct: true,
+              statement: "Ana fully factorises $12x + 18$ as $6(2x + 3)$.",
+              truth: true,
+              right: "True. 6 is the HCF of 12 and 18.",
+              wrong: [
+                ["False. It is 2(6x + 9).", "ALG.FACTORISE.ONE-TERM"],
+                ["False. It is 6(2x + 18).", "ALG.FACTORISE.ONE-TERM"],
+              ],
             },
-            { text: "True. Any factor taken out of both terms is a full factorisation." },
             {
-              text: "False. You can only take out a factor from the first term.",
-              code: "ALG.FACTORISE.ONE-TERM",
+              claim: "Expanding a correct factorisation gives back the original expression.",
+              truth: "always",
+              right: "Always. Factorising and expanding undo each other.",
+              wrong: [
+                ["Never. They give different expressions.", "ALG.FACTORISE.ONE-TERM"],
+                ["Sometimes. Only with numbers."],
+              ],
+            },
+            {
+              statement:
+                "Leo factorises $5x^2 + 10x$ as $5(x^2 + 2x)$ and says it is fully factorised.",
+              truth: false,
+              right: "False. x is a common factor too: 5x(x + 2).",
+              wrong: [
+                ["True. 5 is the common factor.", "ALG.FACTORISE.ONE-TERM"],
+                ["True. You only take out numbers."],
+              ],
             },
           ],
-          solution: [{ say: `Take out the highest common factor, ${p.k}.` }],
-        });
+        );
       }
     }
   },

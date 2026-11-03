@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { chosenText } from "../shared/counting.ts";
 import { distinctFrom } from "../shared/pos.ts";
 import { col } from "../shared/vec.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: [number, number];
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-G25.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.VECTOR.COMPONENTS", "GEO.VECTOR.DIRECTION"],
 
@@ -93,23 +94,61 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [A.math("\\mathbf{a} + \\mathbf{b} = \\mathbf{b} + \\mathbf{a}")],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [A.math("\\mathbf{a} + \\mathbf{b} = \\mathbf{b} + \\mathbf{a}")],
+              truth: "always",
+              reasons: [
+                {
+                  text: "Always. Following a then b, or b then a, ends at the same point: the two routes are sides of a parallelogram.",
+                  correct: true,
+                },
+                {
+                  text: "Never. Changing the order changes the direction.",
+                  code: "GEO.VECTOR.DIRECTION",
+                },
+                {
+                  text: "Sometimes. Only when a and b are parallel.",
+                  code: "GEO.VECTOR.DIRECTION",
+                },
+              ],
+              solution: [{ say: "Addition of vectors is commutative; subtraction is not." }],
+            }),
+          [
             {
-              text: "Always. Following a then b, or b then a, ends at the same point: the two routes are sides of a parallelogram.",
-              correct: true,
+              statement:
+                "Kai says $\\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix} + \\begin{pmatrix} 1 \\\\ -5 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix}$.",
+              truth: true,
+              right: "True. Add the tops and add the bottoms.",
+              wrong: [
+                ["False. It is (2, −15).", "GEO.VECTOR.COMPONENTS"],
+                ["False. It is (5, −4).", "GEO.VECTOR.COMPONENTS"],
+              ],
             },
             {
-              text: "Never. Changing the order changes the direction.",
-              code: "GEO.VECTOR.DIRECTION",
+              claim: "$\\mathbf{a} - \\mathbf{b} = \\mathbf{b} - \\mathbf{a}$.",
+              truth: "sometimes",
+              right: "Sometimes. Only when a = b; otherwise they point in opposite directions.",
+              wrong: [
+                ["Always. Order does not matter.", "GEO.VECTOR.DIRECTION"],
+                ["Never. Even when a = b."],
+              ],
             },
-            { text: "Sometimes. Only when a and b are parallel.", code: "GEO.VECTOR.DIRECTION" },
+            {
+              statement:
+                "Mia says $\\begin{pmatrix} 5 \\\\ 2 \\end{pmatrix} - \\begin{pmatrix} 1 \\\\ 4 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 6 \\end{pmatrix}$.",
+              truth: false,
+              right: "False. 2 − 4 = −2: the answer is (4, −2).",
+              wrong: [
+                ["True. 5 − 1 = 4 and 2 + 4 = 6.", "GEO.VECTOR.COMPONENTS"],
+                ["True. Subtract the tops, add the bottoms.", "GEO.VECTOR.DIRECTION"],
+              ],
+            },
           ],
-          solution: [{ say: "Addition of vectors is commutative; subtraction is not." }],
-        });
+        );
     }
   },
 

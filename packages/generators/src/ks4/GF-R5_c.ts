@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   s: number;
@@ -24,7 +25,7 @@ const r = (v: number) => Number(v.toFixed(6));
 
 export default defineGenerator<Params>({
   id: "GF-R5.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.ADDITIVE", "RAT.UNITS.DIRECTION"],
 
@@ -94,20 +95,53 @@ export default defineGenerator<Params>({
       }
       default: {
         const euros = r(p.pounds * p.rate);
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [`£1 = €${p.rate}. Ella says €${euros} is worth £${r(euros * p.rate)}.`],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [`£1 = €${p.rate}. Ella says €${euros} is worth £${r(euros * p.rate)}.`],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Each pound buys more than one euro, so divide: ${euros} ÷ ${p.rate} = £${p.pounds}.`,
+                  correct: true,
+                },
+                { text: `True. Multiply by the rate, ${p.rate}.`, code: "RAT.UNITS.DIRECTION" },
+                { text: "True. Converting always means multiplying.", code: "RAT.UNITS.DIRECTION" },
+              ],
+              solution: [{ say: "Check: there should be fewer pounds than euros." }],
+            }),
+          [
             {
-              text: `False. Each pound buys more than one euro, so divide: ${euros} ÷ ${p.rate} = £${p.pounds}.`,
-              correct: true,
+              statement: "£1 = €1.20. Ana says £50 is worth €60.",
+              truth: true,
+              right: "True. 50 × 1.20 = 60.",
+              wrong: [
+                ["False. It is €41.67.", "RAT.UNITS.DIRECTION"],
+                ["False. It is €51.20.", "RAT.ADDITIVE"],
+              ],
             },
-            { text: `True. Multiply by the rate, ${p.rate}.`, code: "RAT.UNITS.DIRECTION" },
-            { text: "True. Converting always means multiplying.", code: "RAT.UNITS.DIRECTION" },
+            {
+              claim: "To convert pounds to euros when £1 = €k, multiply by k.",
+              truth: "always",
+              right: "Always. Each pound is worth k euros.",
+              wrong: [
+                ["Never. Divide by k.", "RAT.UNITS.DIRECTION"],
+                ["Sometimes. Only for whole pounds."],
+              ],
+            },
+            {
+              statement: "1 inch = 2.54 cm. Gus says 10 cm is 25.4 inches.",
+              truth: false,
+              right: "False. 10 cm is 10 ÷ 2.54 ≈ 3.9 inches; 25.4 cm is 10 inches.",
+              wrong: [
+                ["True. Multiply by 2.54.", "RAT.UNITS.DIRECTION"],
+                ["True. Inches are bigger numbers."],
+              ],
+            },
           ],
-          solution: [{ say: "Check: there should be fewer pounds than euros." }],
-        });
+        );
       }
     }
   },

@@ -10,7 +10,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G17.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -80,7 +80,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G17.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -150,7 +150,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G17.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -220,7 +220,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G17.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -290,7 +290,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G17.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -360,7 +360,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G17.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -423,14 +423,14 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G17.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -442,13 +442,13 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -457,19 +457,10 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -477,7 +468,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. V = ⅓πr²h for the cone and πr²h for the cylinder.",
+                  "v": "False. It is 90 cm³.",
                 },
               ],
               "id": "RA",
@@ -486,7 +477,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when the height equals the radius.",
+                  "v": "True. ⅓ × 36 × 5 = 60.",
                 },
               ],
               "id": "RB",
@@ -495,7 +486,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. A cone has half the volume.",
+                  "v": "False. It is 180 cm³.",
                 },
               ],
               "id": "RC",
@@ -505,14 +496,6 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "MEA.VOLUME.FORMULA",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -525,7 +508,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -535,7 +518,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The same is true of a pyramid and a prism.",
+            "v": "True. ⅓ × 36 × 5 = 60.",
           },
         ],
       },
@@ -543,19 +526,19 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A cone has one third of the volume of a cylinder with the same base and height.",
+        "v": "A square-based pyramid has base 6 cm by 6 cm and height 5 cm. Ana says its volume is 60 cm³.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G17.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -573,7 +556,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -582,19 +565,10 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -602,7 +576,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when the height equals the radius.",
+                  "v": "False. It is 180 cm³.",
                 },
               ],
               "id": "RA",
@@ -611,7 +585,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. A cone has half the volume.",
+                  "v": "False. It is 90 cm³.",
                 },
               ],
               "id": "RB",
@@ -620,7 +594,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. V = ⅓πr²h for the cone and πr²h for the cylinder.",
+                  "v": "True. ⅓ × 36 × 5 = 60.",
                 },
               ],
               "id": "RC",
@@ -638,19 +612,11 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
             "code": "MEA.VOLUME.FORMULA",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "MEA.VOLUME.FORMULA",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -660,7 +626,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The same is true of a pyramid and a prism.",
+            "v": "True. ⅓ × 36 × 5 = 60.",
           },
         ],
       },
@@ -668,19 +634,19 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A cone has one third of the volume of a cylinder with the same base and height.",
+        "v": "A square-based pyramid has base 6 cm by 6 cm and height 5 cm. Ana says its volume is 60 cm³.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G17.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -692,13 +658,13 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -707,19 +673,10 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -727,7 +684,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. V = ⅓πr²h for the cone and πr²h for the cylinder.",
+                  "v": "False. It is 180 cm³.",
                 },
               ],
               "id": "RA",
@@ -736,7 +693,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. A cone has half the volume.",
+                  "v": "False. It is 90 cm³.",
                 },
               ],
               "id": "RB",
@@ -745,7 +702,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when the height equals the radius.",
+                  "v": "True. ⅓ × 36 × 5 = 60.",
                 },
               ],
               "id": "RC",
@@ -757,15 +714,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "MEA.VOLUME.FORMULA",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "MEA.VOLUME.FORMULA",
@@ -775,7 +724,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -785,7 +734,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The same is true of a pyramid and a prism.",
+            "v": "True. ⅓ × 36 × 5 = 60.",
           },
         ],
       },
@@ -793,7 +742,7 @@ exports[`GF-G17.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A cone has one third of the volume of a cylinder with the same base and height.",
+        "v": "A square-based pyramid has base 6 cm by 6 cm and height 5 cm. Ana says its volume is 60 cm³.",
       },
     ],
   },

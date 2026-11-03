@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
 import { coord, distinctFrom } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   x: number;
@@ -22,7 +23,7 @@ const image = (p: Params) =>
 
 export default defineGenerator<Params>({
   id: "GF-G7.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["POS.REFLECT.WRONG-AXIS"],
 
@@ -104,23 +105,56 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Abi says a point on the mirror line moves when it is reflected."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Abi says a point on the mirror line moves when it is reflected."],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A point on the mirror line is zero distance from it, so it stays where it is.",
+                  correct: true,
+                },
+                {
+                  text: "True. Every point moves to the other side of the line.",
+                  code: "POS.REFLECT.WRONG-AXIS",
+                },
+                { text: "True. It moves along the mirror line." },
+              ],
+              solution: [{ say: "Points on the mirror line are invariant." }],
+            }),
+          [
             {
-              text: "False. A point on the mirror line is zero distance from it, so it stays where it is.",
-              correct: true,
+              statement: "Kai reflects (2, 5) in the line y = x and gets (5, 2).",
+              truth: true,
+              right: "True. Reflecting in y = x swaps the coordinates.",
+              wrong: [
+                ["False. It is (−2, 5).", "POS.REFLECT.WRONG-AXIS"],
+                ["False. It is (2, −5).", "POS.REFLECT.WRONG-AXIS"],
+              ],
             },
             {
-              text: "True. Every point moves to the other side of the line.",
-              code: "POS.REFLECT.WRONG-AXIS",
+              claim: "A reflected image is the same size and shape as the original.",
+              truth: "always",
+              right: "Always. Reflection is an isometry.",
+              wrong: [
+                ["Never. It is bigger.", "POS.REFLECT.WRONG-AXIS"],
+                ["Sometimes. Only in the y-axis."],
+              ],
             },
-            { text: "True. It moves along the mirror line." },
+            {
+              statement: "Pia reflects (3, −4) in the x-axis and gets (−3, −4).",
+              truth: false,
+              right: "False. Reflecting in the x-axis changes the sign of y: (3, 4).",
+              wrong: [
+                ["True. The x-axis changes x.", "POS.REFLECT.WRONG-AXIS"],
+                ["True. Reflections change the first number.", "POS.REFLECT.WRONG-AXIS"],
+              ],
+            },
           ],
-          solution: [{ say: "Points on the mirror line are invariant." }],
-        });
+        );
     }
   },
 

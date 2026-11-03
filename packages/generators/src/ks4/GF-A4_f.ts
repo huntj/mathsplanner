@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { gcdOf } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   k: number;
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-A4.f",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.FACTORISE.SIGNS"],
 
@@ -68,27 +69,64 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["For a number x, ", A.math(`x^2 + ${p.k * p.k} = (x + ${p.k})(x - ${p.k})`), "."],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "For a number x, ",
+                A.math(`x^2 + ${p.k * p.k} = (x + ${p.k})(x - ${p.k})`),
+                ".",
+              ],
+              truth: "never",
+              reasons: [
+                {
+                  text: `Never. (x + ${p.k})(x − ${p.k}) = x² − ${p.k * p.k}, which is always ${2 * p.k * p.k} less than x² + ${p.k * p.k}.`,
+                  correct: true,
+                },
+                {
+                  text: "Always. A sum of two squares factorises like a difference.",
+                  code: "ALG.FACTORISE.SIGNS",
+                },
+                { text: "Sometimes. It is true when x = 0." },
+              ],
+              solution: [
+                {
+                  say: "Only a difference of two squares factorises this way; a sum of two squares does not.",
+                },
+              ],
+            }),
+          [
             {
-              text: `Never. (x + ${p.k})(x − ${p.k}) = x² − ${p.k * p.k}, which is always ${2 * p.k * p.k} less than x² + ${p.k * p.k}.`,
-              correct: true,
+              statement: "Raj says $x^2 - 25 = (x + 5)(x - 5)$.",
+              truth: true,
+              right: "True. This is the difference of two squares.",
+              wrong: [
+                ["False. It is (x − 5)².", "ALG.FACTORISE.SIGNS"],
+                ["False. It cannot be factorised."],
+              ],
             },
             {
-              text: "Always. A sum of two squares factorises like a difference.",
-              code: "ALG.FACTORISE.SIGNS",
+              claim: "$a^2 - b^2 = (a + b)(a - b)$ for any numbers a and b.",
+              truth: "always",
+              right: "Always. Expanding gives a² − ab + ab − b² = a² − b².",
+              wrong: [
+                ["Sometimes. Only for whole numbers.", "ALG.FACTORISE.SIGNS"],
+                ["Never. It is (a − b)²."],
+              ],
             },
-            { text: "Sometimes. It is true when x = 0." },
+            {
+              statement: "Ella says $x^2 - 9 = (x - 3)^2$.",
+              truth: false,
+              right: "False. (x − 3)² = x² − 6x + 9. x² − 9 = (x + 3)(x − 3).",
+              wrong: [
+                ["True. 3² = 9.", "ALG.FACTORISE.SIGNS"],
+                ["True. Take the square root of each term.", "ALG.FACTORISE.SIGNS"],
+              ],
+            },
           ],
-          solution: [
-            {
-              say: "Only a difference of two squares factorises this way; a sum of two squares does not.",
-            },
-          ],
-        });
+        );
     }
   },
 

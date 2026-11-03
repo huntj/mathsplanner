@@ -10,7 +10,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-P8.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -69,7 +69,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-P8.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -128,7 +128,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-P8.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -187,7 +187,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-P8.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -251,7 +251,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-P8.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -315,7 +315,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-P8.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -372,14 +372,14 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-P8.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -390,14 +390,14 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RA",
+          "correct": "B",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -406,19 +406,10 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -426,7 +417,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Taking one counter changes what is left: there are 12 counters for the second pick, not 13.",
+                  "v": "True. The bag starts with 4 of 10.",
                 },
               ],
               "id": "RA",
@@ -435,7 +426,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. The bag is the same bag.",
+                  "v": "False. One green has gone: 3 green of 9 left, so 3/9.",
                 },
               ],
               "id": "RB",
@@ -444,7 +435,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only if the first counter was red.",
+                  "v": "True. Probabilities stay the same.",
                 },
               ],
               "id": "RC",
@@ -456,7 +447,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "PRO.TREE.REPLACEMENT",
@@ -474,7 +465,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -484,7 +475,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Without replacement, the events are dependent.",
+            "v": "False. One green has gone: 3 green of 9 left, so 3/9.",
           },
         ],
       },
@@ -492,19 +483,27 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "When the first counter is not replaced, the second branches of the tree have the same probabilities as the first.",
+        "v": "A bag has 4 green and 6 yellow. Without replacement, Kim says P(green second, after green first) is ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{4}{10}",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-P8.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -515,14 +514,14 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -531,19 +530,10 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -551,7 +541,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only if the first counter was red.",
+                  "v": "False. It is 3/5 × 3/5.",
                 },
               ],
               "id": "RA",
@@ -560,7 +550,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. The bag is the same bag.",
+                  "v": "False. It is 3/5 + 2/4.",
                 },
               ],
               "id": "RB",
@@ -569,7 +559,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Taking one counter changes what is left: there are 9 counters for the second pick, not 10.",
+                  "v": "True. After one red goes, 2 reds remain of 4.",
                 },
               ],
               "id": "RC",
@@ -599,7 +589,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -609,7 +599,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Without replacement, the events are dependent.",
+            "v": "True. After one red goes, 2 reds remain of 4.",
           },
         ],
       },
@@ -617,7 +607,15 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "When the first counter is not replaced, the second branches of the tree have the same probabilities as the first.",
+        "v": "A bag has 3 red and 2 blue. One is taken and not replaced. Bea says P(red then red) is ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{3}{5} \\times \\frac{2}{4}",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
@@ -629,7 +627,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-P8.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -641,7 +639,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "C",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -676,7 +674,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Taking one counter changes what is left: there are 13 counters for the second pick, not 14.",
+                  "v": "Always. The bag is the same bag.",
                 },
               ],
               "id": "RA",
@@ -685,7 +683,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. The bag is the same bag.",
+                  "v": "Never. Taking one counter changes what is left: there are 13 counters for the second pick, not 14.",
                 },
               ],
               "id": "RB",
@@ -706,7 +704,7 @@ exports[`GF-P8.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "PRO.TREE.REPLACEMENT",

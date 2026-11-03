@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { groupedTable, lineGraph } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const LOWS = [0, 10, 20, 30, 40];
 
@@ -21,7 +22,7 @@ const cum = (f: number[], k: number) => f.slice(0, k + 1).reduce((s, x) => s + x
 
 export default defineGenerator<Params>({
   id: "GH-S3.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.CUMFREQ.READ"],
 
@@ -98,28 +99,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ivy has a cumulative frequency graph for 80 values. She reads across from 20 to find the median.",
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ivy has a cumulative frequency graph for 80 values. She reads across from 20 to find the median.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. The median is the 40th value, so read across from 40. Reading from 20 gives the lower quartile.",
+                  correct: true,
+                },
+                {
+                  text: "True. The median is found from a quarter of the total.",
+                  code: "STA.CUMFREQ.READ",
+                },
+                {
+                  text: "True. Read from the middle of the vertical axis, whatever its scale.",
+                  code: "STA.CUMFREQ.READ",
+                },
+              ],
+              solution: [{ say: "Median at n/2, quartiles at n/4 and 3n/4." }],
+            }),
+          [
+            {
+              statement:
+                "A cumulative frequency graph shows 60 values. Kim reads across from 30 to estimate the median.",
+              truth: true,
+              right: "True. The median is at half the total.",
+              wrong: [
+                ["False. Read across from 60.", "STA.CUMFREQ.READ"],
+                ["False. Read across from 31."],
+              ],
+            },
+            {
+              claim: "A cumulative frequency graph never goes down.",
+              truth: "always",
+              right: "Always. Totals can only stay the same or increase.",
+              wrong: [
+                ["Never. It goes up and down.", "STA.CUMFREQ.READ"],
+                ["Sometimes. If a class is empty."],
+              ],
+            },
+            {
+              statement: "For 100 values, Sol finds the lower quartile by reading across from 75.",
+              truth: false,
+              right: "False. The lower quartile is at 25; 75 gives the upper quartile.",
+              wrong: [
+                ["True. Lower quartile is 75%.", "STA.CUMFREQ.READ"],
+                ["True. Read from three quarters.", "STA.CUMFREQ.READ"],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: "False. The median is the 40th value, so read across from 40. Reading from 20 gives the lower quartile.",
-              correct: true,
-            },
-            {
-              text: "True. The median is found from a quarter of the total.",
-              code: "STA.CUMFREQ.READ",
-            },
-            {
-              text: "True. Read from the middle of the vertical axis, whatever its scale.",
-              code: "STA.CUMFREQ.READ",
-            },
-          ],
-          solution: [{ say: "Median at n/2, quartiles at n/4 and 3n/4." }],
-        });
+        );
     }
   },
 

@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 /** The largest power used for each base, keeping numbers to 1024 or less. */
 const TOP: Record<number, number> = { 2: 10, 3: 6, 4: 5, 5: 4 };
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-N6.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.POWER.TIMES-INDEX"],
 
@@ -72,27 +73,62 @@ export default defineGenerator<Params>({
         });
       default: {
         const odd = p.b ** 3 + 2;
-        return A.oddOneOut({
+        return orClaims(
           rng,
-          question: "Which number is the odd one out?",
-          items: [
-            { content: A.math(String(p.b ** 2)) },
-            { content: A.math(String(p.b ** 3)) },
-            { content: A.math(String(p.b ** 4)) },
-            { content: A.math(String(odd)), odd: true },
-          ],
-          reasons: [
-            { text: `It is the only one that is not a power of ${p.b}.`, correct: true },
-            { text: "It is the only even number." },
+          () =>
+            A.oddOneOut({
+              rng,
+              question: "Which number is the odd one out?",
+              items: [
+                { content: A.math(String(p.b ** 2)) },
+                { content: A.math(String(p.b ** 3)) },
+                { content: A.math(String(p.b ** 4)) },
+                { content: A.math(String(odd)), odd: true },
+              ],
+              reasons: [
+                { text: `It is the only one that is not a power of ${p.b}.`, correct: true },
+                { text: "It is the only even number." },
+                {
+                  text: "It is the only one that is not a square number.",
+                  code: "NPV.POWER.TIMES-INDEX",
+                },
+              ],
+              solution: [
+                {
+                  say: `${p.b ** 2}, ${p.b ** 3} and ${p.b ** 4} are ${p.b}², ${p.b}³ and ${p.b}⁴.`,
+                },
+              ],
+            }),
+          [
             {
-              text: "It is the only one that is not a square number.",
-              code: "NPV.POWER.TIMES-INDEX",
+              statement: "Ivy says 64 is both a square number and a cube number.",
+              truth: true,
+              right: "True. 8² = 64 and 4³ = 64.",
+              wrong: [
+                ["False. 64 is only square.", "NPV.POWER.TIMES-INDEX"],
+                ["False. 64 is 3 × 21 + 1."],
+              ],
+            },
+            {
+              claim: "A cube number is also a square number.",
+              truth: "sometimes",
+              right: "Sometimes. 1 and 64 are both, but 8 and 27 are not square.",
+              wrong: [
+                ["Always. Cubes are bigger squares.", "NPV.POWER.TIMES-INDEX"],
+                ["Never. They are different."],
+              ],
+            },
+            {
+              statement: "Leo says $5^3 = 15$.",
+              truth: false,
+              right: "False. 5 × 5 × 5 = 125.",
+              wrong: [
+                ["True. 5 × 3 = 15.", "NPV.POWER.TIMES-INDEX"],
+                ["True. Cube means times 3.", "NPV.POWER.TIMES-INDEX"],
+              ],
             },
           ],
-          solution: [
-            { say: `${p.b ** 2}, ${p.b ** 3} and ${p.b ** 4} are ${p.b}², ${p.b}³ and ${p.b}⁴.` },
-          ],
-        });
+        );
       }
     }
   },

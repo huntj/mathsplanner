@@ -67,7 +67,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-G23",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -204,7 +204,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-G23",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -341,7 +341,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-G23",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -471,7 +471,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-G23",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -588,7 +588,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-G23",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -705,7 +705,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-G23",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -772,7 +772,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-G23",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -880,7 +880,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-G23",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -892,7 +892,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -918,7 +918,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. sin C is only defined for right angles.",
+                  "v": "True. Any angle in the triangle works.",
                 },
               ],
               "id": "RA",
@@ -927,7 +927,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It works for any triangle, as long as C is the angle between sides a and b. When C = 90°, sin C = 1 and it becomes ½ × base × height.",
+                  "v": "True. Use the angle opposite the first side.",
                 },
               ],
               "id": "RB",
@@ -936,7 +936,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Otherwise use ½ × base × height.",
+                  "v": "False. C must be the angle between a and b.",
                 },
               ],
               "id": "RC",
@@ -948,7 +948,15 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "GEO.AREA-SINE.INCLUDED",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.AREA-SINE.INCLUDED",
@@ -968,7 +976,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Area = ½ab sin C uses two sides and the angle between them.",
+            "v": "False. C must be the angle between a and b.",
           },
         ],
       },
@@ -976,7 +984,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says Area = ½ab sin C only works when C is a right angle.",
+        "v": "Kim uses Area = ½ab sin C with a = 5, b = 7 and C the angle opposite a.",
       },
     ],
   },
@@ -988,7 +996,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-G23",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1000,7 +1008,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -1026,7 +1034,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 20 cm²: ½ × 8 × 5.",
+                  "v": "True. ½ × 8 × 5 × sin 30° = 20 × 0.5 = 10.",
                 },
               ],
               "id": "RA",
@@ -1035,7 +1043,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. ½ × 8 × 5 × sin 30° = 20 × 0.5 = 10.",
+                  "v": "False. It is 40 cm².",
                 },
               ],
               "id": "RB",
@@ -1044,7 +1052,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 40 cm².",
+                  "v": "False. It is 20 cm²: ½ × 8 × 5.",
                 },
               ],
               "id": "RC",
@@ -1056,10 +1064,10 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "GEO.AREA-SINE.INCLUDED",
+            "code": "MEA.AREA.TRIANGLE-HALF",
             "feedback": [],
           },
           {
@@ -1067,7 +1075,7 @@ exports[`GH-G23 > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "MEA.AREA.TRIANGLE-HALF",
+            "code": "GEO.AREA-SINE.INCLUDED",
             "feedback": [],
           },
         ],

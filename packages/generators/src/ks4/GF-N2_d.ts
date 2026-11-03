@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { tex } from "../shared/npv.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   d: number;
@@ -24,7 +25,7 @@ const tiny = (zeros: number, digits: string) => `0.${"0".repeat(zeros)}${digits}
 
 export default defineGenerator<Params>({
   id: "GF-N2.d",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.PLACE.COLUMN-SHIFT"],
 
@@ -102,27 +103,64 @@ export default defineGenerator<Params>({
       }
       default: {
         const right = (10 * p.q + p.w) * 10 ** 5;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Zara says ",
-            A.math(`${p.q}.${p.w} \\text{ million} = ${tex(right / 10)}`),
-            ".",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Zara says ",
+                A.math(`${p.q}.${p.w} \\text{ million} = ${tex(right / 10)}`),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. A million is 1 000 000, so ${p.q}.${p.w} million = ${tex(right).replace(/\{,\}/g, " ")}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. A million has six zeros, so write six digits after the first.",
+                  code: "NPV.PLACE.COLUMN-SHIFT",
+                },
+                {
+                  text: "True. The decimal point moves six places.",
+                  code: "NPV.PLACE.COLUMN-SHIFT",
+                },
+              ],
+              solution: [{ say: "", math: `${p.q}.${p.w} \\times 1{,}000{,}000 = ${tex(right)}` }],
+            }),
+          [
             {
-              text: `False. A million is 1 000 000, so ${p.q}.${p.w} million = ${tex(right).replace(/\{,\}/g, " ")}.`,
-              correct: true,
+              statement: "Raj says 0.6 million is 600,000.",
+              truth: true,
+              right: "True. One million is 1,000,000, and 0.6 of it is 600,000.",
+              wrong: [
+                ["False. It is 6,000,000.", "NPV.PLACE.COLUMN-SHIFT"],
+                ["False. It is 60,000.", "NPV.PLACE.COLUMN-SHIFT"],
+              ],
             },
             {
-              text: "True. A million has six zeros, so write six digits after the first.",
-              code: "NPV.PLACE.COLUMN-SHIFT",
+              claim: "A billion is a thousand millions.",
+              truth: "always",
+              right:
+                "Always, in the usual (short-scale) meaning used in the UK today: 1,000,000,000.",
+              wrong: [
+                ["Never. A billion is a million millions.", "NPV.PLACE.COLUMN-SHIFT"],
+                ["Sometimes. Only for money."],
+              ],
             },
-            { text: "True. The decimal point moves six places.", code: "NPV.PLACE.COLUMN-SHIFT" },
+            {
+              statement: "Mia writes 45 thousand as 45,000,000.",
+              truth: false,
+              right: "False. 45 thousand is 45,000.",
+              wrong: [
+                ["True. Thousand means six zeros.", "NPV.PLACE.COLUMN-SHIFT"],
+                ["True. Add three zeros twice."],
+              ],
+            },
           ],
-          solution: [{ say: "", math: `${p.q}.${p.w} \\times 1{,}000{,}000 = ${tex(right)}` }],
-        });
+        );
       }
     }
   },

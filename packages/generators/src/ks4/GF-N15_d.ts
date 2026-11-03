@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   i: number;
@@ -19,7 +20,7 @@ const r = (v: number) => Number(v.toFixed(6));
 
 export default defineGenerator<Params>({
   id: "GF-N15.d",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.BOUNDS.TRUNCATE", "NPV.BOUNDS.ENDS"],
 
@@ -70,22 +71,52 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            "Truncating a number to 1 decimal place gives the same answer as rounding it to 1 decimal place.",
-          ],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "Truncating a number to 1 decimal place gives the same answer as rounding it to 1 decimal place.",
+              ],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: `Sometimes. They agree when the 2nd decimal digit is 0 to 4, like ${p.i}.${p.d}3, but ${p.i}.${p.d}7 truncates to ${p.i}.${p.d} and rounds to ${r(Number(`${p.i}.${p.d}`) + 0.1)}.`,
+                  correct: true,
+                },
+                { text: "Always. Both keep one decimal place.", code: "NPV.BOUNDS.TRUNCATE" },
+                { text: "Never. Truncating always gives a smaller answer." },
+              ],
+              solution: [{ say: "Truncating never rounds up." }],
+            }),
+          [
             {
-              text: `Sometimes. They agree when the 2nd decimal digit is 0 to 4, like ${p.i}.${p.d}3, but ${p.i}.${p.d}7 truncates to ${p.i}.${p.d} and rounds to ${r(Number(`${p.i}.${p.d}`) + 0.1)}.`,
-              correct: true,
+              statement: "Leo truncates 5.79 to 1 decimal place and gets 5.7.",
+              truth: true,
+              right: "True. Truncating cuts off the extra digits without rounding.",
+              wrong: [["False. It is 5.8.", "NPV.BOUNDS.TRUNCATE"], ["False. It is 6."]],
             },
-            { text: "Always. Both keep one decimal place.", code: "NPV.BOUNDS.TRUNCATE" },
-            { text: "Never. Truncating always gives a smaller answer." },
+            {
+              claim: "Truncating a positive number never makes it bigger.",
+              truth: "always",
+              right: "Always. Cutting off digits can only keep it the same or make it smaller.",
+              wrong: [
+                ["Sometimes. If the next digit is 5 or more.", "NPV.BOUNDS.TRUNCATE"],
+                ["Never. It always gets bigger."],
+              ],
+            },
+            {
+              statement: "A number truncates to 4 at 0 decimal places. Mia says it could be 4.9.",
+              truth: true,
+              right: "True. Anything from 4 up to (but not including) 5 truncates to 4.",
+              wrong: [
+                ["False. 4.9 truncates to 5.", "NPV.BOUNDS.TRUNCATE"],
+                ["False. Only 4.0 truncates to 4.", "NPV.BOUNDS.ENDS"],
+              ],
+            },
           ],
-          solution: [{ say: "Truncating never rounds up." }],
-        });
+        );
     }
   },
 

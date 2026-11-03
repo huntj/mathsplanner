@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-A7",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.FUNCTION.ORDER"],
 
@@ -65,33 +66,65 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Tom says the function machine ",
-            A.math(machine),
-            " gives the same output as ",
-            A.math(`y = ${p.a}(x - ${p.b})`),
-            ".",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Tom says the function machine ",
+                A.math(machine),
+                " gives the same output as ",
+                A.math(`y = ${p.a}(x - ${p.b})`),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The machine multiplies first, so it is y = ${p.a}x − ${p.b}. ${p.a}(x − ${p.b}) subtracts first, giving ${p.a}x − ${p.a * p.b}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The same two operations give the same result in any order.",
+                  code: "ALG.FUNCTION.ORDER",
+                },
+                { text: "True. Brackets do not change the answer.", code: "ALG.FUNCTION.ORDER" },
+              ],
+              solution: [
+                {
+                  say: `Try x = 10: the machine gives ${10 * p.a - p.b}; ${p.a}(10 − ${p.b}) = ${p.a * (10 - p.b)}.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. The machine multiplies first, so it is y = ${p.a}x − ${p.b}. ${p.a}(x − ${p.b}) subtracts first, giving ${p.a}x − ${p.a * p.b}.`,
-              correct: true,
+              statement: "For $f(x) = 3x - 1$, Sam says $f(4) = 11$.",
+              truth: true,
+              right: "True. 3 × 4 − 1 = 11.",
+              wrong: [["False. It is 9.", "ALG.FUNCTION.ORDER"], ["False. It is 3x − 1 times 4."]],
             },
             {
-              text: "True. The same two operations give the same result in any order.",
-              code: "ALG.FUNCTION.ORDER",
+              claim:
+                "A function machine 'add 5, then multiply by 2' gives the same output as 'multiply by 2, then add 5'.",
+              truth: "never",
+              right: "Never. 2(x + 5) = 2x + 10, but 2x + 5 is always 5 less.",
+              wrong: [
+                ["Always. Order does not matter.", "ALG.FUNCTION.ORDER"],
+                ["Sometimes. When x is 0.", "ALG.FUNCTION.ORDER"],
+              ],
             },
-            { text: "True. Brackets do not change the answer.", code: "ALG.FUNCTION.ORDER" },
-          ],
-          solution: [
             {
-              say: `Try x = 10: the machine gives ${10 * p.a - p.b}; ${p.a}(10 − ${p.b}) = ${p.a * (10 - p.b)}.`,
+              statement:
+                "The function machine 'multiply by 4, then subtract 3' gives 17. Pia says the input was 3.5.",
+              truth: false,
+              right: "False. Undo each step: add 3 to get 20, then divide by 4 to get 5.",
+              wrong: [
+                ["True. 17 − 3 = 14, and 14 ÷ 4 = 3.5.", "ALG.FUNCTION.ORDER"],
+                ["True. Put 17 through the machine again."],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

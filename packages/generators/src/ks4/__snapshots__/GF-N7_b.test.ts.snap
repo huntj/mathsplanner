@@ -10,7 +10,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N7.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N7.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N7.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N7.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -262,7 +262,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N7.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -328,7 +328,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N7.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -387,14 +387,14 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N7.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -405,14 +405,14 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -421,10 +421,19 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -432,7 +441,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 8, because the power does nothing.",
+                  "v": "Always. For example, 5³ ÷ 5³ = 5⁰, and it is also 1.",
                 },
               ],
               "id": "RA",
@@ -441,7 +450,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 8^0 = 1: for example 8³ ÷ 8³ = 8^0, and anything divided by itself is 1.",
+                  "v": "Sometimes. Only for 1.",
                 },
               ],
               "id": "RB",
@@ -450,7 +459,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any number to the power 0 is 0.",
+                  "v": "Never. It is 0.",
                 },
               ],
               "id": "RC",
@@ -460,14 +469,6 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.INDEX.ZERO",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -480,7 +481,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -490,7 +491,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Any non-zero number to the power 0 is 1.",
+            "v": "Always. For example, 5³ ÷ 5³ = 5⁰, and it is also 1.",
           },
         ],
       },
@@ -498,15 +499,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ola says ",
-      },
-      {
-        "t": "math",
-        "v": "8^0 = 0",
-      },
-      {
-        "t": "text",
-        "v": " because there are no 8s multiplied together.",
+        "v": "Any non-zero number to the power 0 is 1.",
       },
     ],
   },
@@ -518,7 +511,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N7.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -530,7 +523,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -556,7 +549,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 6, because the power does nothing.",
+                  "v": "True. The minus makes it negative.",
                 },
               ],
               "id": "RA",
@@ -565,7 +558,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 6^0 = 1: for example 6³ ÷ 6³ = 6^0, and anything divided by itself is 1.",
+                  "v": "True. Power −1 means times −1.",
                 },
               ],
               "id": "RB",
@@ -574,7 +567,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any number to the power 0 is 0.",
+                  "v": "False. A negative power means a reciprocal: 5⁻¹ = 1/5.",
                 },
               ],
               "id": "RC",
@@ -589,15 +582,15 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.INDEX.ZERO",
+            "code": "NPV.INDEX.NEGATIVE",
             "feedback": [],
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.INDEX.ZERO",
+            "code": "NPV.INDEX.NEGATIVE",
             "feedback": [],
           },
         ],
@@ -614,7 +607,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Any non-zero number to the power 0 is 1.",
+            "v": "False. A negative power means a reciprocal: 5⁻¹ = 1/5.",
           },
         ],
       },
@@ -622,15 +615,15 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ola says ",
+        "v": "Pam says ",
       },
       {
         "t": "math",
-        "v": "6^0 = 0",
+        "v": "5^{-1} = -5",
       },
       {
         "t": "text",
-        "v": " because there are no 6s multiplied together.",
+        "v": ".",
       },
     ],
   },
@@ -642,7 +635,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N7.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -654,7 +647,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -680,7 +673,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 6^0 = 1: for example 6³ ÷ 6³ = 6^0, and anything divided by itself is 1.",
+                  "v": "True. Any number to the power 0 is 0.",
                 },
               ],
               "id": "RA",
@@ -689,7 +682,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any number to the power 0 is 0.",
+                  "v": "False. It is 6, because the power does nothing.",
                 },
               ],
               "id": "RB",
@@ -698,7 +691,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 6, because the power does nothing.",
+                  "v": "False. 6^0 = 1: for example 6³ ÷ 6³ = 6^0, and anything divided by itself is 1.",
                 },
               ],
               "id": "RC",
@@ -710,7 +703,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.INDEX.ZERO",
@@ -718,7 +711,7 @@ exports[`GF-N7.b > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.INDEX.ZERO",

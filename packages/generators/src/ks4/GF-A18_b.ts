@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { curveClearOfOrigin, grid, poly, signedWrongs } from "../shared/alg.ts";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   k: number;
@@ -20,7 +21,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "GF-A18.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.GRAPH.SOLUTION-Y"],
 
@@ -103,27 +104,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Eve says ",
-            A.math(`x^2 + ${p.k} = 0`),
-            " has two solutions, because every U-shaped graph has two roots.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Eve says ",
+                A.math(`x^2 + ${p.k} = 0`),
+                " has two solutions, because every U-shaped graph has two roots.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The graph of y = x² + ${p.k} has its lowest point at (0, ${p.k}), above the x-axis, so it never crosses it: there are no solutions.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Every quadratic equation has two solutions.",
+                  code: "ALG.GRAPH.SOLUTION-Y",
+                },
+                { text: `True. The solutions are x = ±${p.k}.`, code: "ALG.GRAPH.SOLUTION-Y" },
+              ],
+              solution: [{ say: "x² is never negative, so x² + k > 0 for every x." }],
+            }),
+          [
             {
-              text: `False. The graph of y = x² + ${p.k} has its lowest point at (0, ${p.k}), above the x-axis, so it never crosses it: there are no solutions.`,
-              correct: true,
+              statement:
+                "The graph of $y = x^2 - 5x + 4$ crosses the x-axis at 1 and 4. Kim says these solve $x^2 - 5x + 4 = 0$.",
+              truth: true,
+              right: "True. At the x-axis, y = 0.",
+              wrong: [
+                ["False. The solution is 4, the y-intercept.", "ALG.GRAPH.SOLUTION-Y"],
+                ["False. Only one of them counts."],
+              ],
             },
             {
-              text: "True. Every quadratic equation has two solutions.",
-              code: "ALG.GRAPH.SOLUTION-Y",
+              claim: "A quadratic equation can have no real solutions.",
+              truth: "sometimes",
+              right: "Sometimes. If the curve does not reach the x-axis, as for x² + 1 = 0.",
+              wrong: [
+                ["Never. Every quadratic has two.", "ALG.GRAPH.SOLUTION-Y"],
+                ["Always. Quadratics cannot be solved."],
+              ],
             },
-            { text: `True. The solutions are x = ±${p.k}.`, code: "ALG.GRAPH.SOLUTION-Y" },
+            {
+              statement:
+                "Raj reads the solution of $x^2 - 9 = 0$ from where the graph crosses the y-axis, at −9.",
+              truth: false,
+              right: "False. Solutions are where the graph crosses the x-axis: x = −3 and x = 3.",
+              wrong: [
+                ["True. The y-intercept is the answer.", "ALG.GRAPH.SOLUTION-Y"],
+                ["True. Solutions are y-values.", "ALG.GRAPH.SOLUTION-Y"],
+              ],
+            },
           ],
-          solution: [{ say: "x² is never negative, so x² + k > 0 for every x." }],
-        });
+        );
     }
   },
 

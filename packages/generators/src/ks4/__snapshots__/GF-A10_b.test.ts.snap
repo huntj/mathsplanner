@@ -10,7 +10,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A10.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -80,7 +80,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A10.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -150,7 +150,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A10.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -220,7 +220,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A10.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -290,7 +290,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A10.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -360,7 +360,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A10.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -430,7 +430,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A10.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -441,8 +441,8 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -468,7 +468,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The bigger number must be the cost per mile.",
+                  "v": "False. It is the cost per hour.",
                 },
               ],
               "id": "RA",
@@ -477,7 +477,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 35 is the intercept: the fare when d = 0, a fixed charge. The cost of each mile is the gradient, £1.30.",
+                  "v": "False. It is the total for 1 hour.",
                 },
               ],
               "id": "RB",
@@ -486,7 +486,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The first number in a formula is always the rate.",
+                  "v": "True. It is paid even when h = 0: it is the y-intercept.",
                 },
               ],
               "id": "RC",
@@ -499,14 +499,6 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.LINE.M-C",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.LINE.M-C",
@@ -526,7 +518,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The intercept is the value when the variable is 0.",
+            "v": "True. It is paid even when h = 0: it is the y-intercept.",
           },
         ],
       },
@@ -534,15 +526,15 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A taxi fare in pounds is ",
+        "v": "A plumber charges ",
       },
       {
         "t": "math",
-        "v": "F = 35 + 1.3d",
+        "v": "C = 40 + 25h",
       },
       {
         "t": "text",
-        "v": " for d miles. Kai says the 35 is the cost of each mile.",
+        "v": " pounds for h hours. Sam says the £40 is a fixed call-out charge.",
       },
     ],
   },
@@ -554,7 +546,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A10.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -565,8 +557,8 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -592,7 +584,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 50 is the intercept: the fare when d = 0, a fixed charge. The cost of each mile is the gradient, £1.50.",
+                  "v": "False. It is the cost per hour.",
                 },
               ],
               "id": "RA",
@@ -601,7 +593,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The bigger number must be the cost per mile.",
+                  "v": "True. It is paid even when h = 0: it is the y-intercept.",
                 },
               ],
               "id": "RB",
@@ -610,7 +602,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The first number in a formula is always the rate.",
+                  "v": "False. It is the total for 1 hour.",
                 },
               ],
               "id": "RC",
@@ -622,15 +614,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.LINE.M-C",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.LINE.M-C",
@@ -650,7 +634,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The intercept is the value when the variable is 0.",
+            "v": "True. It is paid even when h = 0: it is the y-intercept.",
           },
         ],
       },
@@ -658,15 +642,15 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A taxi fare in pounds is ",
+        "v": "A plumber charges ",
       },
       {
         "t": "math",
-        "v": "F = 50 + 1.5d",
+        "v": "C = 40 + 25h",
       },
       {
         "t": "text",
-        "v": " for d miles. Kai says the 50 is the cost of each mile.",
+        "v": " pounds for h hours. Sam says the £40 is a fixed call-out charge.",
       },
     ],
   },
@@ -678,7 +662,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A10.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -716,7 +700,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The bigger number must be the cost per mile.",
+                  "v": "True. The first number in a formula is always the rate.",
                 },
               ],
               "id": "RA",
@@ -734,7 +718,7 @@ exports[`GF-A10.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The first number in a formula is always the rate.",
+                  "v": "True. The bigger number must be the cost per mile.",
                 },
               ],
               "id": "RC",

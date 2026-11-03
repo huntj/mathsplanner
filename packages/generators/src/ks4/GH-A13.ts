@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 type Move = "up" | "neg-f" | "neg-x";
 
@@ -24,7 +25,7 @@ const pt = (x: number, y: number) => `(${x}, ${y})`;
 
 export default defineGenerator<Params>({
   id: "GH-A13",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.TRANSFORM.DIRECTION"],
 
@@ -122,36 +123,69 @@ export default defineGenerator<Params>({
       default: {
         const dir = p.left ? "left" : "right";
         const eq = `y = (x ${p.left ? "-" : "+"} ${p.c})^2`;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Sam says the graph of ",
-            A.math(eq),
-            " is the graph of ",
-            A.math("y = x^2"),
-            ` translated ${p.c} units ${dir}.`,
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Sam says the graph of ",
+                A.math(eq),
+                " is the graph of ",
+                A.math("y = x^2"),
+                ` translated ${p.c} units ${dir}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. (x ${p.left ? "−" : "+"} ${p.c})² is zero when x = ${p.left ? p.c : -p.c}, so the curve moves ${p.c} units ${p.left ? "right" : "left"}.`,
+                  correct: true,
+                },
+                {
+                  text: `True. The sign in the bracket tells you: ${p.left ? "minus means left" : "plus means right"}.`,
+                  code: "ALG.TRANSFORM.DIRECTION",
+                },
+                {
+                  text: `False. It moves ${p.c} units ${p.left ? "down" : "up"}.`,
+                  code: "ALG.TRANSFORM.DIRECTION",
+                },
+              ],
+              solution: [
+                {
+                  say: "y = f(x − a) is a translation a units to the right; y = f(x + a) is a units to the left.",
+                },
+              ],
+            }),
+          [
+            {
+              statement: "Kai says $y = x^2 + 4$ is $y = x^2$ translated 4 units up.",
+              truth: true,
+              right: "True. Adding outside the function moves the graph up.",
+              wrong: [
+                ["False. It moves 4 right.", "ALG.TRANSFORM.DIRECTION"],
+                ["False. It moves 4 left.", "ALG.TRANSFORM.DIRECTION"],
+              ],
+            },
+            {
+              claim: "$y = -f(x)$ is the reflection of $y = f(x)$ in the x-axis.",
+              truth: "always",
+              right: "Always. Every y-value changes sign.",
+              wrong: [
+                ["Never. It reflects in the y-axis.", "ALG.TRANSFORM.DIRECTION"],
+                ["Sometimes. Only for parabolas."],
+              ],
+            },
+            {
+              statement: "Ana says $y = f(x - 2)$ is $y = f(x)$ moved 2 units left.",
+              truth: false,
+              right: "False. f(x − 2) moves the graph 2 units right.",
+              wrong: [
+                ["True. Minus means left.", "ALG.TRANSFORM.DIRECTION"],
+                ["True. Subtracting moves backwards.", "ALG.TRANSFORM.DIRECTION"],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: `False. (x ${p.left ? "−" : "+"} ${p.c})² is zero when x = ${p.left ? p.c : -p.c}, so the curve moves ${p.c} units ${p.left ? "right" : "left"}.`,
-              correct: true,
-            },
-            {
-              text: `True. The sign in the bracket tells you: ${p.left ? "minus means left" : "plus means right"}.`,
-              code: "ALG.TRANSFORM.DIRECTION",
-            },
-            {
-              text: `False. It moves ${p.c} units ${p.left ? "down" : "up"}.`,
-              code: "ALG.TRANSFORM.DIRECTION",
-            },
-          ],
-          solution: [
-            {
-              say: "y = f(x − a) is a translation a units to the right; y = f(x + a) is a units to the left.",
-            },
-          ],
-        });
+        );
       }
     }
   },

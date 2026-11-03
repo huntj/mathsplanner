@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { chosenText } from "../shared/counting.ts";
 import { distinctFrom } from "../shared/pos.ts";
 import { col } from "../shared/vec.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: [number, number];
@@ -20,7 +21,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-G25.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.VECTOR.SCALAR-ONE", "NPV.NEGATIVE.SIGN-RULE"],
 
@@ -97,27 +98,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            A.math("-\\mathbf{a}"),
-            " is the same length as ",
-            A.math("\\mathbf{a}"),
-            " but points in the opposite direction.",
-          ],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                A.math("-\\mathbf{a}"),
+                " is the same length as ",
+                A.math("\\mathbf{a}"),
+                " but points in the opposite direction.",
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. Every part of a changes sign, so the length stays the same and the direction reverses.",
+                  correct: true,
+                },
+                { text: "False. −a is shorter than a.", code: "GEO.VECTOR.SCALAR-ONE" },
+                { text: "False. Only the top number changes sign.", code: "GEO.VECTOR.SCALAR-ONE" },
+              ],
+              solution: [
+                { say: "A negative scalar reverses the direction; its size scales the length." },
+              ],
+            }),
+          [
             {
-              text: "True. Every part of a changes sign, so the length stays the same and the direction reverses.",
-              correct: true,
+              statement:
+                "Ana says $3\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix} = \\begin{pmatrix} 6 \\\\ -3 \\end{pmatrix}$.",
+              truth: true,
+              right: "True. Multiply each component by 3.",
+              wrong: [
+                ["False. It is (6, −1).", "GEO.VECTOR.SCALAR-ONE"],
+                ["False. It is (5, 2).", "GEO.VECTOR.SCALAR-ONE"],
+              ],
             },
-            { text: "False. −a is shorter than a.", code: "GEO.VECTOR.SCALAR-ONE" },
-            { text: "False. Only the top number changes sign.", code: "GEO.VECTOR.SCALAR-ONE" },
+            {
+              claim: "$2\\mathbf{a}$ points in the same direction as $\\mathbf{a}$.",
+              truth: "always",
+              right: "Always. It is twice as long, in the same direction.",
+              wrong: [
+                ["Never. It points the other way.", "NPV.NEGATIVE.SIGN-RULE"],
+                ["Sometimes. Only for short vectors."],
+              ],
+            },
+            {
+              statement:
+                "Raj says $-2\\begin{pmatrix} 4 \\\\ -3 \\end{pmatrix} = \\begin{pmatrix} -8 \\\\ -6 \\end{pmatrix}$.",
+              truth: false,
+              right: "False. −2 × −3 = 6: the answer is (−8, 6).",
+              wrong: [
+                ["True. Multiply each part by −2 and keep the signs.", "NPV.NEGATIVE.SIGN-RULE"],
+                ["True. A negative scalar makes both negative.", "NPV.NEGATIVE.SIGN-RULE"],
+              ],
+            },
           ],
-          solution: [
-            { say: "A negative scalar reverses the direction; its size scales the length." },
-          ],
-        });
+        );
     }
   },
 

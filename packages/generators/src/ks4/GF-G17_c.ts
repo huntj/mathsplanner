@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   r: number;
@@ -17,7 +18,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "GF-G17.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.VOLUME.FORMULA", "MEA.CIRCLE.FORMULA", "MEA.SURFACE.MISSING-FACES"],
 
@@ -83,24 +84,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Lou says the total surface area of a solid hemisphere of radius r is ",
-            A.math("2\\pi r^2"),
-            ", half of a sphere's.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Lou says the total surface area of a solid hemisphere of radius r is ",
+                A.math("2\\pi r^2"),
+                ", half of a sphere's.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A solid hemisphere also has a flat circular face, πr², so its total is 3πr².",
+                  correct: true,
+                },
+                { text: "True. A hemisphere is half a sphere.", code: "MEA.SURFACE.MISSING-FACES" },
+                {
+                  text: "False. It is 4πr², the same as a sphere.",
+                  code: "MEA.SURFACE.MISSING-FACES",
+                },
+              ],
+              solution: [{ say: "", math: `2\\pi r^2 + \\pi r^2 = 3\\pi r^2` }],
+            }),
+          [
             {
-              text: "False. A solid hemisphere also has a flat circular face, πr², so its total is 3πr².",
-              correct: true,
+              statement: "Sol says the surface area of a sphere of radius 3 cm is $36\\pi$ cm².",
+              truth: true,
+              right: "True. 4πr² = 4π × 9 = 36π.",
+              wrong: [
+                ["False. It is 12π cm².", "MEA.VOLUME.FORMULA"],
+                ["False. It is 36π cm³, its volume.", "MEA.VOLUME.FORMULA"],
+              ],
             },
-            { text: "True. A hemisphere is half a sphere.", code: "MEA.SURFACE.MISSING-FACES" },
-            { text: "False. It is 4πr², the same as a sphere.", code: "MEA.SURFACE.MISSING-FACES" },
+            {
+              claim: "The total surface area of a cylinder includes the two circular ends.",
+              truth: "always",
+              right: "Always. Curved surface plus two circles.",
+              wrong: [
+                ["Never. Only the curved part counts.", "MEA.SURFACE.MISSING-FACES"],
+                ["Sometimes. Only if it is closed at one end."],
+              ],
+            },
+            {
+              statement: "Mia says the volume of a cone with radius 3 and height 4 is $36\\pi$.",
+              truth: false,
+              right: "False. V = ⅓πr²h = ⅓ × π × 9 × 4 = 12π.",
+              wrong: [
+                ["True. πr²h = 36π.", "MEA.VOLUME.FORMULA"],
+                ["True. A cone is a cylinder.", "MEA.VOLUME.FORMULA"],
+              ],
+            },
           ],
-          solution: [{ say: "", math: `2\\pi r^2 + \\pi r^2 = 3\\pi r^2` }],
-        });
+        );
     }
   },
 

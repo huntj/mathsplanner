@@ -47,7 +47,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-P1",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -154,7 +154,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-P1",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -261,7 +261,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-P1",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -331,7 +331,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-P1",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -400,7 +400,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-P1",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -469,7 +469,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-P1",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -575,7 +575,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-P1",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -587,7 +587,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -613,7 +613,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 12 girls take the bus.",
+                  "v": "False. Out of the girls only, 12 of 22 take the bus: 12/22. 12/38 is the chance a pupil is a girl who takes the bus.",
                 },
               ],
               "id": "RA",
@@ -622,7 +622,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Always divide by the total number of pupils.",
+                  "v": "True. 12 girls take the bus.",
                 },
               ],
               "id": "RB",
@@ -631,7 +631,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Out of the girls only, 12 of 22 take the bus: 12/22. 12/38 is the chance a pupil is a girl who takes the bus.",
+                  "v": "True. Always divide by the total number of pupils.",
                 },
               ],
               "id": "RC",
@@ -643,7 +643,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "AS.MULTISTEP.ONE-STEP",
@@ -685,50 +685,13 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "branches": [
-          {
-            "children": [
-              {
-                "label": "8",
-                "outcome": "\\text{walk}",
-              },
-              {
-                "label": "17",
-                "outcome": "\\text{bus}",
-              },
-            ],
-            "label": "25",
-            "outcome": "\\text{boys}",
-          },
-          {
-            "children": [
-              {
-                "label": "8",
-                "outcome": "\\text{walk}",
-              },
-              {
-                "label": "24",
-                "outcome": "\\text{bus}",
-              },
-            ],
-            "label": "32",
-            "outcome": "\\text{girls}",
-          },
-        ],
-        "description": "A frequency tree showing how many boys and girls walk or take the bus to school.",
-        "kind": "tree",
-        "root": "57",
-        "type": "probability",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-P1",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -766,7 +729,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 24 girls take the bus.",
+                  "v": "True. Compare walkers with non-walkers.",
                 },
               ],
               "id": "RA",
@@ -775,7 +738,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Out of the girls only, 24 of 32 take the bus: 24/32. 24/57 is the chance a pupil is a girl who takes the bus.",
+                  "v": "False. 15 of the 40 girls walk: 15/40.",
                 },
               ],
               "id": "RB",
@@ -784,7 +747,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Always divide by the total number of pupils.",
+                  "v": "True. 40 − 15 = 25.",
                 },
               ],
               "id": "RC",
@@ -794,6 +757,14 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "PRO.ODDS",
+            "feedback": [],
+          },
           {
             "answer": {
               "id": "RC",
@@ -816,7 +787,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Given the pupil is a girl, the denominator is the number of girls, 32.",
+            "v": "False. 15 of the 40 girls walk: 15/40.",
           },
         ],
       },
@@ -824,64 +795,27 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The frequency tree shows how some pupils travel to school.",
+        "v": "In a frequency tree, 40 pupils are girls and 15 of them walk. Pia says P(a girl walks) is ",
       },
       {
-        "i": 0,
-        "t": "diagram",
+        "t": "math",
+        "v": "\\frac{15}{25}",
       },
       {
         "t": "text",
-        "v": "Ella says the probability that a girl chosen at random takes the bus is 24/57.",
+        "v": ".",
       },
     ],
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "branches": [
-          {
-            "children": [
-              {
-                "label": "15",
-                "outcome": "\\text{walk}",
-              },
-              {
-                "label": "11",
-                "outcome": "\\text{bus}",
-              },
-            ],
-            "label": "26",
-            "outcome": "\\text{boys}",
-          },
-          {
-            "children": [
-              {
-                "label": "4",
-                "outcome": "\\text{walk}",
-              },
-              {
-                "label": "31",
-                "outcome": "\\text{bus}",
-              },
-            ],
-            "label": "35",
-            "outcome": "\\text{girls}",
-          },
-        ],
-        "description": "A frequency tree showing how many boys and girls walk or take the bus to school.",
-        "kind": "tree",
-        "root": "61",
-        "type": "probability",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-P1",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -892,8 +826,8 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -919,7 +853,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 31 girls take the bus.",
+                  "v": "True. 3 of the 10 counters are red.",
                 },
               ],
               "id": "RA",
@@ -928,7 +862,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Always divide by the total number of pupils.",
+                  "v": "False. It is 1/2: red or blue.",
                 },
               ],
               "id": "RB",
@@ -937,7 +871,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Out of the girls only, 31 of 35 take the bus: 31/35. 31/61 is the chance a pupil is a girl who takes the bus.",
+                  "v": "False. It is 3/7.",
                 },
               ],
               "id": "RC",
@@ -949,10 +883,10 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "AS.MULTISTEP.ONE-STEP",
+            "code": "PRO.ODDS",
             "feedback": [],
           },
         ],
@@ -969,7 +903,7 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Given the pupil is a girl, the denominator is the number of girls, 35.",
+            "v": "True. 3 of the 10 counters are red.",
           },
         ],
       },
@@ -977,15 +911,15 @@ exports[`GF-P1 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The frequency tree shows how some pupils travel to school.",
+        "v": "A bag has 3 red and 7 blue counters. Kai says the probability of red is ",
       },
       {
-        "i": 0,
-        "t": "diagram",
+        "t": "math",
+        "v": "\\frac{3}{10}",
       },
       {
         "t": "text",
-        "v": "Ella says the probability that a girl chosen at random takes the bus is 31/61.",
+        "v": ".",
       },
     ],
   },

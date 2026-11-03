@@ -10,7 +10,7 @@ exports[`GF-G11 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G11",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -85,7 +85,7 @@ exports[`GF-G11 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G11",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -160,7 +160,7 @@ exports[`GF-G11 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G11",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -235,7 +235,7 @@ exports[`GF-G11 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G11",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -344,7 +344,7 @@ exports[`GF-G11 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G11",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -453,7 +453,7 @@ exports[`GF-G11 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G11",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -562,7 +562,7 @@ exports[`GF-G11 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G11",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -574,7 +574,7 @@ exports[`GF-G11 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -600,7 +600,7 @@ exports[`GF-G11 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Add the distances across and up.",
+                  "v": "False. Use Pythagoras: √(8² + 6²) = √100 = 10.",
                 },
               ],
               "id": "RA",
@@ -609,7 +609,7 @@ exports[`GF-G11 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Use Pythagoras: √(8² + 6²) = √100 = 10.",
+                  "v": "True. Add the distances across and up.",
                 },
               ],
               "id": "RB",
@@ -630,7 +630,7 @@ exports[`GF-G11 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.PYTHAG.NO-SQUARE",
@@ -686,7 +686,123 @@ exports[`GF-G11 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G11",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 6 × 4 = 24.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. ½ × 6 × 4 = 12.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Base times height.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "MEA.AREA.TRIANGLE-HALF",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "MEA.AREA.TRIANGLE-HALF",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. ½ × 6 × 4 = 12.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Pia says the area of the triangle with corners (0, 0), (6, 0) and (0, 4) is 24.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-G11",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -724,7 +840,7 @@ exports[`GF-G11 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Use Pythagoras: √(3² + 4²) = √25 = 5.",
+                  "v": "False. ½ × 6 × 4 = 12.",
                 },
               ],
               "id": "RA",
@@ -733,7 +849,7 @@ exports[`GF-G11 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Distance is the sum of the coordinates.",
+                  "v": "True. 6 × 4 = 24.",
                 },
               ],
               "id": "RB",
@@ -742,7 +858,7 @@ exports[`GF-G11 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Add the distances across and up.",
+                  "v": "True. Base times height.",
                 },
               ],
               "id": "RC",
@@ -754,10 +870,18 @@ exports[`GF-G11 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MEA.AREA.TRIANGLE-HALF",
+            "feedback": [],
+          },
+          {
+            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "GEO.PYTHAG.NO-SQUARE",
+            "code": "MEA.AREA.TRIANGLE-HALF",
             "feedback": [],
           },
         ],
@@ -774,7 +898,7 @@ exports[`GF-G11 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The straight-line distance is the hypotenuse: 5.",
+            "v": "False. ½ × 6 × 4 = 12.",
           },
         ],
       },
@@ -782,147 +906,7 @@ exports[`GF-G11 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Mo says the distance between ",
-      },
-      {
-        "t": "math",
-        "v": "(0, 0)",
-      },
-      {
-        "t": "text",
-        "v": " and ",
-      },
-      {
-        "t": "math",
-        "v": "(3, 4)",
-      },
-      {
-        "t": "text",
-        "v": " is 7.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GF-G11",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Add the distances across and up.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Distance is the sum of the coordinates.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Use Pythagoras: √(5² + 12²) = √169 = 13.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.PYTHAG.NO-SQUARE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "The straight-line distance is the hypotenuse: 13.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Mo says the distance between ",
-      },
-      {
-        "t": "math",
-        "v": "(0, 0)",
-      },
-      {
-        "t": "text",
-        "v": " and ",
-      },
-      {
-        "t": "math",
-        "v": "(5, 12)",
-      },
-      {
-        "t": "text",
-        "v": " is 17.",
+        "v": "Pia says the area of the triangle with corners (0, 0), (6, 0) and (0, 4) is 24.",
       },
     ],
   },

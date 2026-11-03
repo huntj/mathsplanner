@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { clearOfOrigin, grid, lineLatex, poly } from "../shared/alg.ts";
 import { chosenText } from "../shared/counting.ts";
 import { coord, distinctFrom } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 export interface Params {
   m1: number;
@@ -19,7 +20,7 @@ export interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-A19.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SIMULTANEOUS.PAIR", "ALG.GRAPH.SOLUTION-Y"],
 
@@ -97,29 +98,65 @@ export default defineGenerator<Params>({
           solution: [{ say: `Both equations give y = ${p.y} when x = ${p.x}.` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ned says ",
-            A.math(lineLatex(p.m1, c1)),
-            " and ",
-            A.math(lineLatex(p.m1, c1 + 3)),
-            " have exactly one solution.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ned says ",
+                A.math(lineLatex(p.m1, c1)),
+                " and ",
+                A.math(lineLatex(p.m1, c1 + 3)),
+                " have exactly one solution.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Both have gradient ${p.m1}, so the lines are parallel and never cross: there is no solution.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Two straight lines always cross once.",
+                  code: "ALG.SIMULTANEOUS.PAIR",
+                },
+                {
+                  text: "True. The solution is where they cross the y-axis.",
+                  code: "ALG.GRAPH.SOLUTION-Y",
+                },
+              ],
+              solution: [{ say: "Graphically, solutions are crossing points." }],
+            }),
+          [
             {
-              text: `False. Both have gradient ${p.m1}, so the lines are parallel and never cross: there is no solution.`,
-              correct: true,
+              statement: "Bea says $y = x + 1$ and $y = 2x - 1$ meet at (2, 3).",
+              truth: true,
+              right: "True. Both give y = 3 when x = 2.",
+              wrong: [
+                ["False. They meet at (3, 2).", "ALG.GRAPH.SOLUTION-Y"],
+                ["False. They never meet.", "ALG.SIMULTANEOUS.PAIR"],
+              ],
             },
-            { text: "True. Two straight lines always cross once.", code: "ALG.SIMULTANEOUS.PAIR" },
             {
-              text: "True. The solution is where they cross the y-axis.",
-              code: "ALG.GRAPH.SOLUTION-Y",
+              claim: "Two different parallel lines have no point in common.",
+              truth: "always",
+              right: "Always. They never meet, so the equations have no solution.",
+              wrong: [
+                ["Never. All lines meet.", "ALG.SIMULTANEOUS.PAIR"],
+                ["Sometimes. Far away they meet."],
+              ],
+            },
+            {
+              statement: "Two lines cross at (4, −1). Dev says the solution is y = −1 only.",
+              truth: false,
+              right: "False. The solution is the pair x = 4, y = −1.",
+              wrong: [
+                ["True. Only y matters.", "ALG.GRAPH.SOLUTION-Y"],
+                ["True. The x is the line number."],
+              ],
             },
           ],
-          solution: [{ say: "Graphically, solutions are crossing points." }],
-        });
+        );
     }
   },
 

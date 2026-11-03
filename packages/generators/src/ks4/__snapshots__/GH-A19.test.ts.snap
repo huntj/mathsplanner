@@ -10,7 +10,7 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -167,7 +167,7 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -324,7 +324,7 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -481,7 +481,7 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -556,7 +556,7 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -631,7 +631,7 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -699,14 +699,14 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -717,14 +717,14 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -733,10 +733,19 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -744,7 +753,7 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every quadratic equation has two solutions.",
+                  "v": "Never. They meet three times.",
                 },
               ],
               "id": "RA",
@@ -753,7 +762,7 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A parabola has two sides, so a line must cross both.",
+                  "v": "Sometimes. They can meet four times.",
                 },
               ],
               "id": "RB",
@@ -762,7 +771,7 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A line can miss the curve, touch it once (a tangent), or cross it twice: the quadratic can have 0, 1 or 2 solutions.",
+                  "v": "Always. Substituting gives a quadratic, which has at most two roots.",
                 },
               ],
               "id": "RC",
@@ -771,11 +780,20 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "ALG.SIMULTANEOUS.PAIR",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -785,7 +803,7 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The number of meeting points is the number of solutions of the quadratic you get by substituting.",
+            "v": "Always. Substituting gives a quadratic, which has at most two roots.",
           },
         ],
       },
@@ -793,7 +811,7 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ava says a straight line always meets a parabola at exactly two points.",
+        "v": "A straight line meets a parabola at most twice.",
       },
     ],
   },
@@ -805,7 +823,7 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -816,7 +834,7 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -843,7 +861,7 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A parabola has two sides, so a line must cross both.",
+                  "v": "False. You cannot combine them.",
                 },
               ],
               "id": "RA",
@@ -852,7 +870,7 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every quadratic equation has two solutions.",
+                  "v": "False. It is x² + x = 0.",
                 },
               ],
               "id": "RB",
@@ -861,7 +879,7 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A line can miss the curve, touch it once (a tangent), or cross it twice: the quadratic can have 0, 1 or 2 solutions.",
+                  "v": "True. x + 1 = x² − 1, so x² − x − 2 = 0.",
                 },
               ],
               "id": "RC",
@@ -870,7 +888,24 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "ALG.SIMULTANEOUS.PAIR",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "ALG.EXPAND.NEGATIVE",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
@@ -884,7 +919,7 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The number of meeting points is the number of solutions of the quadratic you get by substituting.",
+            "v": "True. x + 1 = x² − 1, so x² − x − 2 = 0.",
           },
         ],
       },
@@ -892,7 +927,31 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ava says a straight line always meets a parabola at exactly two points.",
+        "v": "Solving ",
+      },
+      {
+        "t": "math",
+        "v": "y = x + 1",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "y = x^2 - 1",
+      },
+      {
+        "t": "text",
+        "v": ", Sol gets ",
+      },
+      {
+        "t": "math",
+        "v": "x^2 - x - 2 = 0",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
@@ -904,7 +963,7 @@ exports[`GH-A19 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A19",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

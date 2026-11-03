@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import type { CartesianSpec, Coord } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   t1: number;
@@ -36,7 +37,7 @@ function journey(p: Params): CartesianSpec {
 
 export default defineGenerator<Params>({
   id: "GF-A14.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.GRAPH.DISTANCE-TIME"],
 
@@ -92,23 +93,63 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            ...intro,
-            ` Kim says she walked faster on the way ${p.t1 < p.t3 ? "back" : "out"}, because that part of the graph is longer.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                ...intro,
+                ` Kim says she walked faster on the way ${p.t1 < p.t3 ? "back" : "out"}, because that part of the graph is longer.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Speed is shown by steepness. The way ${p.t1 < p.t3 ? "out" : "back"} is steeper (the same distance in less time), so it was faster.`,
+                  correct: true,
+                },
+                {
+                  text: "True. A longer line means a faster speed.",
+                  code: "ALG.GRAPH.DISTANCE-TIME",
+                },
+                { text: "True. A less steep line means faster.", code: "ALG.GRAPH.DISTANCE-TIME" },
+              ],
+              solution: [
+                { say: `Out: ${(p.d * 60) / p.t1} km/h. Back: ${(p.d * 60) / p.t3} km/h.` },
+              ],
+            }),
+          [
             {
-              text: `False. Speed is shown by steepness. The way ${p.t1 < p.t3 ? "out" : "back"} is steeper (the same distance in less time), so it was faster.`,
-              correct: true,
+              statement:
+                "On a distance–time graph, Ana says a flat section means she was not moving.",
+              truth: true,
+              right: "True. Distance does not change, so the speed is 0.",
+              wrong: [
+                ["False. It means she moved at a steady speed.", "ALG.GRAPH.DISTANCE-TIME"],
+                ["False. It means she went back."],
+              ],
             },
-            { text: "True. A longer line means a faster speed.", code: "ALG.GRAPH.DISTANCE-TIME" },
-            { text: "True. A less steep line means faster.", code: "ALG.GRAPH.DISTANCE-TIME" },
+            {
+              claim: "On a distance–time graph, a steeper line means a faster speed.",
+              truth: "always",
+              right: "Always. The gradient is the speed.",
+              wrong: [
+                ["Never. Steeper means slower.", "ALG.GRAPH.DISTANCE-TIME"],
+                ["Sometimes. Only going away from home."],
+              ],
+            },
+            {
+              statement:
+                "On a distance–time graph, Kai says a line sloping down means he slowed down.",
+              truth: false,
+              right: "False. A line sloping down means he was going back towards the start.",
+              wrong: [
+                ["True. Down means slower.", "ALG.GRAPH.DISTANCE-TIME"],
+                ["True. The graph shows speed.", "ALG.GRAPH.DISTANCE-TIME"],
+              ],
+            },
           ],
-          solution: [{ say: `Out: ${(p.d * 60) / p.t1} km/h. Back: ${(p.d * 60) / p.t3} km/h.` }],
-        });
+        );
     }
   },
 

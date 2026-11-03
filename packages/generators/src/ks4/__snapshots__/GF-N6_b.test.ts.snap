@@ -10,7 +10,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N6.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -75,7 +75,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N6.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -140,7 +140,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N6.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -205,7 +205,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N6.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -283,7 +283,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N6.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -334,7 +334,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N6.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -405,14 +405,14 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N6.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -430,7 +430,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -439,19 +439,10 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -459,7 +450,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. For example 5² and (−5)² both equal 25, so 25 has square roots 5 and −5.",
+                  "v": "True. 9 × 9 = 81.",
                 },
               ],
               "id": "RA",
@@ -468,7 +459,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only square numbers have square roots.",
+                  "v": "False. It is 18.",
                 },
               ],
               "id": "RB",
@@ -477,7 +468,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. A square root is half of the number.",
+                  "v": "False. It is 40.5.",
                 },
               ],
               "id": "RC",
@@ -499,7 +490,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -509,7 +500,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The √ sign means the positive root, but there is a negative one too.",
+            "v": "True. 9 × 9 = 81.",
           },
         ],
       },
@@ -517,19 +508,27 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A positive number has two square roots.",
+        "v": "Eli says ",
+      },
+      {
+        "t": "math",
+        "v": "\\sqrt{81} = 9",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N6.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -540,14 +539,14 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RB",
+          "correct": "B",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -556,19 +555,10 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -576,7 +566,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. A square root is half of the number.",
+                  "v": "True. 27 ÷ 3 = 9.",
                 },
               ],
               "id": "RA",
@@ -585,7 +575,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. For example 9² and (−9)² both equal 81, so 81 has square roots 9 and −9.",
+                  "v": "True. 9 × 3 = 27.",
                 },
               ],
               "id": "RB",
@@ -594,7 +584,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only square numbers have square roots.",
+                  "v": "False. 3 × 3 × 3 = 27, so the cube root is 3.",
                 },
               ],
               "id": "RC",
@@ -616,7 +606,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -626,7 +616,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The √ sign means the positive root, but there is a negative one too.",
+            "v": "False. 3 × 3 × 3 = 27, so the cube root is 3.",
           },
         ],
       },
@@ -634,19 +624,19 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A positive number has two square roots.",
+        "v": "Ola says the cube root of 27 is 9.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N6.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -657,14 +647,14 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -673,19 +663,10 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -693,7 +674,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. A square root is half of the number.",
+                  "v": "True. 27 ÷ 3 = 9.",
                 },
               ],
               "id": "RA",
@@ -702,7 +683,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. For example 14² and (−14)² both equal 196, so 196 has square roots 14 and −14.",
+                  "v": "False. 3 × 3 × 3 = 27, so the cube root is 3.",
                 },
               ],
               "id": "RB",
@@ -711,7 +692,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only square numbers have square roots.",
+                  "v": "True. 9 × 3 = 27.",
                 },
               ],
               "id": "RC",
@@ -733,7 +714,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -743,7 +724,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The √ sign means the positive root, but there is a negative one too.",
+            "v": "False. 3 × 3 × 3 = 27, so the cube root is 3.",
           },
         ],
       },
@@ -751,7 +732,7 @@ exports[`GF-N6.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A positive number has two square roots.",
+        "v": "Ola says the cube root of 27 is 9.",
       },
     ],
   },

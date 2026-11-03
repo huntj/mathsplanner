@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { clearOfOrigin, grid, lineLatex, poly } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Depth 1: y = mx + c, solved for y = k at x = x1. */
@@ -22,7 +23,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GH-A17",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.GRAPH.SOLUTION-Y"],
 
@@ -107,33 +108,69 @@ export default defineGenerator<Params>({
       }
       default: {
         const k = p.m * p.x1 + p.c;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Leo says you can solve ",
-            A.math(`${poly([p.m, p.c])} = ${k}`),
-            " by reading where the graph of ",
-            A.math(line),
-            " crosses the x-axis.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Leo says you can solve ",
+                A.math(`${poly([p.m, p.c])} = ${k}`),
+                " by reading where the graph of ",
+                A.math(line),
+                " crosses the x-axis.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The x-axis is where y = 0. To solve this, read where the line meets y = ${k}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Solutions are always where a graph crosses the x-axis.",
+                  code: "ALG.GRAPH.SOLUTION-Y",
+                },
+                { text: "True. Read the y-intercept instead.", code: "ALG.GRAPH.SOLUTION-Y" },
+              ],
+              solution: [
+                {
+                  say: `Draw the line y = ${k} and read the x-coordinate where it meets ${line.replace("y = ", "y = ")}.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. The x-axis is where y = 0. To solve this, read where the line meets y = ${k}.`,
-              correct: true,
+              statement:
+                "To solve $x^2 - 3 = 0$ from a graph of $y = x^2 - 3$, Raj reads where it crosses the x-axis.",
+              truth: true,
+              right: "True. The solutions are where y = 0.",
+              wrong: [
+                ["False. Read where it crosses the y-axis.", "ALG.GRAPH.SOLUTION-Y"],
+                ["False. Read the lowest point."],
+              ],
             },
             {
-              text: "True. Solutions are always where a graph crosses the x-axis.",
-              code: "ALG.GRAPH.SOLUTION-Y",
+              claim:
+                "To solve $f(x) = k$ from the graph of $y = f(x)$, read where the line $y = k$ meets the graph.",
+              truth: "always",
+              right: "Always. Those x-values make f(x) equal k.",
+              wrong: [
+                ["Never. Read where it crosses y = 0.", "ALG.GRAPH.SOLUTION-Y"],
+                ["Sometimes. Only if k = 0."],
+              ],
             },
-            { text: "True. Read the y-intercept instead.", code: "ALG.GRAPH.SOLUTION-Y" },
-          ],
-          solution: [
             {
-              say: `Draw the line y = ${k} and read the x-coordinate where it meets ${line.replace("y = ", "y = ")}.`,
+              statement:
+                "To solve $x^2 = 5$ from the graph of $y = x^2 - 2$, Ana reads where it crosses the x-axis.",
+              truth: false,
+              right: "False. x² = 5 means x² − 2 = 3, so read where it meets y = 3.",
+              wrong: [
+                ["True. Solutions are on the x-axis.", "ALG.GRAPH.SOLUTION-Y"],
+                ["True. Any equation is solved at y = 0.", "ALG.GRAPH.SOLUTION-Y"],
+              ],
             },
           ],
-        });
+        );
       }
     }
   },

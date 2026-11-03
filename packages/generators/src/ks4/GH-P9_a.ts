@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { exactAnswer } from "../shared/counting.ts";
 import { tableLatex } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 export interface Params {
   by: number;
@@ -18,7 +19,7 @@ export interface Params {
 
 export default defineGenerator<Params>({
   id: "GH-P9.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["PRO.CONDITIONAL.TOTAL", "PRO.CONDITIONAL.FORMULA"],
 
@@ -79,25 +80,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ben says P(girl given has a bike) is always the same as P(has a bike given girl).",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ben says P(girl given has a bike) is always the same as P(has a bike given girl).",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. They divide by different groups: ${p.gy}/${p.gy + p.by} and ${p.gy}/${p.gy + p.gn}.`,
+                  correct: true,
+                },
+                { text: "True. Both are about girls with bikes.", code: "PRO.CONDITIONAL.FORMULA" },
+                {
+                  text: `True. Both are ${p.gy} out of the whole table.`,
+                  code: "PRO.CONDITIONAL.TOTAL",
+                },
+              ],
+              solution: [{ say: "The 'given' group goes on the bottom." }],
+            }),
+          [
             {
-              text: `False. They divide by different groups: ${p.gy}/${p.gy + p.by} and ${p.gy}/${p.gy + p.gn}.`,
-              correct: true,
+              statement:
+                "In a class, 12 of 20 girls have a bike. Kai says P(has a bike | girl) = $\\frac{12}{20}$.",
+              truth: true,
+              right: "True. Given girl, look only at the 20 girls.",
+              wrong: [
+                ["False. Divide by the whole class.", "PRO.CONDITIONAL.TOTAL"],
+                ["False. It is 12/32."],
+              ],
             },
-            { text: "True. Both are about girls with bikes.", code: "PRO.CONDITIONAL.FORMULA" },
             {
-              text: `True. Both are ${p.gy} out of the whole table.`,
-              code: "PRO.CONDITIONAL.TOTAL",
+              claim: "P(A | B) is found by dividing by the number in B, not the total.",
+              truth: "always",
+              right: "Always. Given B, B becomes the whole.",
+              wrong: [
+                ["Never. Always divide by the total.", "PRO.CONDITIONAL.TOTAL"],
+                ["Sometimes. Only for independent events.", "PRO.CONDITIONAL.FORMULA"],
+              ],
+            },
+            {
+              statement:
+                "30 pupils: 18 like maths, 10 of whom like art. Ana says P(likes art | likes maths) = $\\frac{10}{30}$.",
+              truth: false,
+              right: "False. Given they like maths, divide by 18: 10/18.",
+              wrong: [
+                ["True. Divide by everyone.", "PRO.CONDITIONAL.TOTAL"],
+                ["True. 10 out of the class.", "PRO.CONDITIONAL.TOTAL"],
+              ],
             },
           ],
-          solution: [{ say: "The 'given' group goes on the bottom." }],
-        });
+        );
     }
   },
 

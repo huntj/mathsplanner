@@ -10,7 +10,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R5.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -73,7 +73,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R5.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -136,7 +136,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R5.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -199,7 +199,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R5.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -261,7 +261,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R5.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -323,7 +323,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R5.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -385,7 +385,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R5.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -423,7 +423,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Converting always means multiplying.",
+                  "v": "True. Multiply by 2.54.",
                 },
               ],
               "id": "RA",
@@ -432,7 +432,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Each pound buys more than one euro, so divide: 198 ÷ 1.1 = £180.",
+                  "v": "False. 10 cm is 10 ÷ 2.54 ≈ 3.9 inches; 25.4 cm is 10 inches.",
                 },
               ],
               "id": "RB",
@@ -441,7 +441,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiply by the rate, 1.1.",
+                  "v": "True. Inches are bigger numbers.",
                 },
               ],
               "id": "RC",
@@ -454,14 +454,6 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
-              "type": "choice",
-            },
-            "code": "RAT.UNITS.DIRECTION",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
               "type": "choice",
             },
             "code": "RAT.UNITS.DIRECTION",
@@ -481,7 +473,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Check: there should be fewer pounds than euros.",
+            "v": "False. 10 cm is 10 ÷ 2.54 ≈ 3.9 inches; 25.4 cm is 10 inches.",
           },
         ],
       },
@@ -489,7 +481,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "£1 = €1.1. Ella says €198 is worth £217.8.",
+        "v": "1 inch = 2.54 cm. Gus says 10 cm is 25.4 inches.",
       },
     ],
   },
@@ -501,7 +493,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R5.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -512,8 +504,8 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -539,7 +531,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Each pound buys more than one euro, so divide: 440 ÷ 1.1 = £400.",
+                  "v": "False. It is €41.67.",
                 },
               ],
               "id": "RA",
@@ -548,7 +540,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiply by the rate, 1.1.",
+                  "v": "False. It is €51.20.",
                 },
               ],
               "id": "RB",
@@ -557,7 +549,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Converting always means multiplying.",
+                  "v": "True. 50 × 1.20 = 60.",
                 },
               ],
               "id": "RC",
@@ -569,7 +561,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "RAT.UNITS.DIRECTION",
@@ -577,10 +569,10 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "RAT.UNITS.DIRECTION",
+            "code": "RAT.ADDITIVE",
             "feedback": [],
           },
         ],
@@ -597,7 +589,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Check: there should be fewer pounds than euros.",
+            "v": "True. 50 × 1.20 = 60.",
           },
         ],
       },
@@ -605,7 +597,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "£1 = €1.1. Ella says €440 is worth £484.",
+        "v": "£1 = €1.20. Ana says £50 is worth €60.",
       },
     ],
   },
@@ -617,7 +609,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R5.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -629,7 +621,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -655,7 +647,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Each pound buys more than one euro, so divide: 400 ÷ 1.25 = £320.",
+                  "v": "True. Inches are bigger numbers.",
                 },
               ],
               "id": "RA",
@@ -664,7 +656,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiply by the rate, 1.25.",
+                  "v": "True. Multiply by 2.54.",
                 },
               ],
               "id": "RB",
@@ -673,7 +665,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Converting always means multiplying.",
+                  "v": "False. 10 cm is 10 ÷ 2.54 ≈ 3.9 inches; 25.4 cm is 10 inches.",
                 },
               ],
               "id": "RC",
@@ -686,14 +678,6 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RB",
-              "type": "choice",
-            },
-            "code": "RAT.UNITS.DIRECTION",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
               "type": "choice",
             },
             "code": "RAT.UNITS.DIRECTION",
@@ -713,7 +697,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Check: there should be fewer pounds than euros.",
+            "v": "False. 10 cm is 10 ÷ 2.54 ≈ 3.9 inches; 25.4 cm is 10 inches.",
           },
         ],
       },
@@ -721,7 +705,7 @@ exports[`GF-R5.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "£1 = €1.25. Ella says €400 is worth £500.",
+        "v": "1 inch = 2.54 cm. Gus says 10 cm is 25.4 inches.",
       },
     ],
   },

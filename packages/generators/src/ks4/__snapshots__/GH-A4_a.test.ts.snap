@@ -10,7 +10,7 @@ exports[`GH-A4.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A4.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -82,7 +82,7 @@ exports[`GH-A4.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A4.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -154,7 +154,7 @@ exports[`GH-A4.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A4.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -226,7 +226,7 @@ exports[`GH-A4.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A4.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -282,7 +282,7 @@ exports[`GH-A4.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A4.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -352,7 +352,7 @@ exports[`GH-A4.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GH-A4.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -422,7 +422,7 @@ exports[`GH-A4.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GH-A4.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -434,7 +434,7 @@ exports[`GH-A4.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -460,7 +460,7 @@ exports[`GH-A4.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. (x + 3)³ = (x + 3)(x + 3)(x + 3) = x^3 + 9x^2 + 27x + 27.",
+                  "v": "True. Powers can be shared out over addition.",
                 },
               ],
               "id": "RA",
@@ -469,7 +469,7 @@ exports[`GH-A4.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Cube each term in the bracket.",
+                  "v": "False. (x + 3)³ = (x + 3)(x + 3)(x + 3) = x^3 + 9x^2 + 27x + 27.",
                 },
               ],
               "id": "RB",
@@ -478,7 +478,7 @@ exports[`GH-A4.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Powers can be shared out over addition.",
+                  "v": "True. Cube each term in the bracket.",
                 },
               ],
               "id": "RC",
@@ -490,7 +490,7 @@ exports[`GH-A4.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.EXPAND.BINOMIAL-TWO-TERMS",
@@ -546,131 +546,7 @@ exports[`GH-A4.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GH-A4.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. (x + 4)³ = (x + 4)(x + 4)(x + 4) = x^3 + 12x^2 + 48x + 64.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Cube each term in the bracket.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Powers can be shared out over addition.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.EXPAND.BINOMIAL-TWO-TERMS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.EXPAND.BINOMIAL-TWO-TERMS",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Try x = 1 to check: the two sides differ.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Isla says ",
-      },
-      {
-        "t": "math",
-        "v": "(x + 4)^3 = x^3 + 64",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GH-A4.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -708,7 +584,7 @@ exports[`GH-A4.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Powers can be shared out over addition.",
+                  "v": "True. (−2)³ = −8, and that is all.",
                 },
               ],
               "id": "RA",
@@ -717,7 +593,7 @@ exports[`GH-A4.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. (x + 5)³ = (x + 5)(x + 5)(x + 5) = x^3 + 15x^2 + 75x + 125.",
+                  "v": "False. (x − 2)³ = x³ − 6x² + 12x − 8.",
                 },
               ],
               "id": "RB",
@@ -726,7 +602,7 @@ exports[`GH-A4.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Cube each term in the bracket.",
+                  "v": "True. Cube each term.",
                 },
               ],
               "id": "RC",
@@ -741,7 +617,7 @@ exports[`GH-A4.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.EXPAND.BINOMIAL-TWO-TERMS",
+            "code": "ALG.EXPAND.NEGATIVE",
             "feedback": [],
           },
           {
@@ -766,7 +642,7 @@ exports[`GH-A4.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Try x = 1 to check: the two sides differ.",
+            "v": "False. (x − 2)³ = x³ − 6x² + 12x − 8.",
           },
         ],
       },
@@ -774,11 +650,127 @@ exports[`GH-A4.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Isla says ",
+        "v": "Raj says ",
       },
       {
         "t": "math",
-        "v": "(x + 5)^3 = x^3 + 125",
+        "v": "(x - 2)^3 = x^3 - 8",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GH-A4.a",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. (x + 1)(x + 2) = x² + 3x + 2, then times (x + 3).",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is x³ + 6x + 6.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is x³ + 6.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.EXPAND.BINOMIAL-TWO-TERMS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. (x + 1)(x + 2) = x² + 3x + 2, then times (x + 3).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ana says ",
+      },
+      {
+        "t": "math",
+        "v": "(x + 1)(x + 2)(x + 3) = x^3 + 6x^2 + 11x + 6",
       },
       {
         "t": "text",

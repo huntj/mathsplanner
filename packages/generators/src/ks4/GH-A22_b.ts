@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { poly } from "../shared/alg.ts";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   k: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GH-A22.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.INEQUALITY.QUADRATIC-REGION", "ALG.QUADRATIC.ONE-ROOT"],
 
@@ -85,26 +86,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Bea says the solution of ",
-            A.math(`x^2 > ${p.k * p.k}`),
-            " is ",
-            A.math(`x > ${p.k}`),
-            ".",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Bea says the solution of ",
+                A.math(`x^2 > ${p.k * p.k}`),
+                " is ",
+                A.math(`x > ${p.k}`),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. x = −${p.k + 1} also works, since (−${p.k + 1})² = ${(p.k + 1) ** 2}. The solution is x < −${p.k} or x > ${p.k}.`,
+                  correct: true,
+                },
+                { text: "True. Square root both sides.", code: "ALG.QUADRATIC.ONE-ROOT" },
+                {
+                  text: `False. It is −${p.k} < x < ${p.k}.`,
+                  code: "ALG.INEQUALITY.QUADRATIC-REGION",
+                },
+              ],
+              solution: [{ say: "Sketch y = x² and the line y = k² to see both parts." }],
+            }),
+          [
             {
-              text: `False. x = −${p.k + 1} also works, since (−${p.k + 1})² = ${(p.k + 1) ** 2}. The solution is x < −${p.k} or x > ${p.k}.`,
-              correct: true,
+              statement: "Kim says the solution of $x^2 < 9$ is $-3 < x < 3$.",
+              truth: true,
+              right: "True. x² is less than 9 between the roots −3 and 3.",
+              wrong: [
+                ["False. It is x < 3.", "ALG.QUADRATIC.ONE-ROOT"],
+                ["False. It is x < −3 or x > 3.", "ALG.INEQUALITY.QUADRATIC-REGION"],
+              ],
             },
-            { text: "True. Square root both sides.", code: "ALG.QUADRATIC.ONE-ROOT" },
-            { text: `False. It is −${p.k} < x < ${p.k}.`, code: "ALG.INEQUALITY.QUADRATIC-REGION" },
+            {
+              claim: "The solution of $(x - a)(x - b) > 0$ with $a < b$ is $x < a$ or $x > b$.",
+              truth: "always",
+              right: "Always. The U-shaped graph is above the axis outside its roots.",
+              wrong: [
+                ["Never. It is between the roots.", "ALG.INEQUALITY.QUADRATIC-REGION"],
+                ["Sometimes. Only if a is negative."],
+              ],
+            },
+            {
+              statement: "Raj solves $x^2 \\ge 25$ and says $x \\ge 5$.",
+              truth: false,
+              right: "False. x ≤ −5 works too: x ≤ −5 or x ≥ 5.",
+              wrong: [
+                ["True. Take the square root.", "ALG.QUADRATIC.ONE-ROOT"],
+                ["True. Negative values are not solutions.", "ALG.QUADRATIC.ONE-ROOT"],
+              ],
+            },
           ],
-          solution: [{ say: "Sketch y = x² and the line y = k² to see both parts." }],
-        });
+        );
     }
   },
 

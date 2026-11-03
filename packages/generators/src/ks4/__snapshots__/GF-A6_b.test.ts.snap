@@ -10,7 +10,7 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A6.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -114,7 +114,7 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A6.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -218,7 +218,7 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A6.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -322,7 +322,7 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A6.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -388,7 +388,7 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A6.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -454,7 +454,7 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A6.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -513,140 +513,14 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "odd-one-out",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A6.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "D",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "math",
-                  "v": "3(x + 7)",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "math",
-                  "v": "3x + 3(7)",
-                },
-              ],
-              "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "math",
-                  "v": "3x + 21",
-                },
-              ],
-              "id": "C",
-            },
-            {
-              "content": [
-                {
-                  "t": "math",
-                  "v": "3x + 7",
-                },
-              ],
-              "id": "D",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "It is the only one not equal to 3(x + 7): the 7 has not been multiplied by 3.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "It is the only expanded one.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "It is the only one without brackets.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.EXPAND.FIRST-ONLY",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Choose the odd one out and the reason.",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "3(x + 7) = 3x + 21.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Which expression is not equivalent to the others?",
-      },
-    ],
-  },
-  {
-    "archetype": "odd-one-out",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "GF-A6.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -658,13 +532,130 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. x + 2 and 2x agree when x = 2 but not otherwise; equivalent expressions agree for every x.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. Even equal expressions differ.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. One value proves it.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.EXPAND.BINOMIAL-TWO-TERMS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Sometimes. x + 2 and 2x agree when x = 2 but not otherwise; equivalent expressions agree for every x.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Two expressions that give the same value for one x are equivalent.",
+      },
+    ],
+  },
+  {
+    "archetype": "odd-one-out",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-A6.b",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "C",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "math",
-                  "v": "8x + 8(9)",
+                  "v": "8x + 72",
                 },
               ],
               "id": "A",
@@ -673,7 +664,7 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "math",
-                  "v": "8x + 9",
+                  "v": "8(x + 9)",
                 },
               ],
               "id": "B",
@@ -682,7 +673,7 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "math",
-                  "v": "8x + 72",
+                  "v": "8x + 9",
                 },
               ],
               "id": "C",
@@ -691,7 +682,7 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "math",
-                  "v": "8(x + 9)",
+                  "v": "8x + 8(9)",
                 },
               ],
               "id": "D",
@@ -711,7 +702,7 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only expanded one.",
+                  "v": "It is the only one not equal to 8(x + 9): the 9 has not been multiplied by 8.",
                 },
               ],
               "id": "RB",
@@ -720,7 +711,7 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one not equal to 8(x + 9): the 9 has not been multiplied by 8.",
+                  "v": "It is the only expanded one.",
                 },
               ],
               "id": "RC",
@@ -732,7 +723,7 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.EXPAND.FIRST-ONLY",
@@ -765,14 +756,14 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "odd-one-out",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A6.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -783,14 +774,14 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "D",
-          "correctReason": "RB",
+          "correct": "B",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "6(x + 9)",
+                  "t": "text",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -798,8 +789,8 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "6x + 6(9)",
+                  "t": "text",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
@@ -807,20 +798,11 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "6x + 54",
+                  "t": "text",
+                  "v": "Never true",
                 },
               ],
               "id": "C",
-            },
-            {
-              "content": [
-                {
-                  "t": "math",
-                  "v": "6x + 9",
-                },
-              ],
-              "id": "D",
             },
           ],
           "reasons": [
@@ -828,7 +810,7 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one without brackets.",
+                  "v": "Sometimes. x + 2 and 2x agree when x = 2 but not otherwise; equivalent expressions agree for every x.",
                 },
               ],
               "id": "RA",
@@ -837,7 +819,7 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one not equal to 6(x + 9): the 9 has not been multiplied by 6.",
+                  "v": "Never. Even equal expressions differ.",
                 },
               ],
               "id": "RB",
@@ -846,7 +828,7 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only expanded one.",
+                  "v": "Always. One value proves it.",
                 },
               ],
               "id": "RC",
@@ -861,14 +843,14 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "ALG.EXPAND.FIRST-ONLY",
+            "code": "ALG.EXPAND.BINOMIAL-TWO-TERMS",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Choose the odd one out and the reason.",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -878,7 +860,7 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "6(x + 9) = 6x + 54.",
+            "v": "Sometimes. x + 2 and 2x agree when x = 2 but not otherwise; equivalent expressions agree for every x.",
           },
         ],
       },
@@ -886,7 +868,7 @@ exports[`GF-A6.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Which expression is not equivalent to the others?",
+        "v": "Two expressions that give the same value for one x are equivalent.",
       },
     ],
   },

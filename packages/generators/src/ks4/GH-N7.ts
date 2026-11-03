@@ -6,6 +6,7 @@
 // GH-N7: Calculate with fractional indices
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** The root k, the root index n (base = kⁿ) and the power m. */
@@ -21,7 +22,7 @@ const pow = (n: number, d: number) => `^{\\frac{${n}}{${d}}}`;
 
 export default defineGenerator<Params>({
   id: "GH-N7",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 3, 4],
   misconceptions: ["NPV.INDEX.FRACTIONAL", "NPV.INDEX.NEGATIVE"],
 
@@ -106,26 +107,56 @@ export default defineGenerator<Params>({
       default: {
         // At least 4, so halving the square never happens to give the root.
         const s = p.k + 2;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Zoe says ", A.math(`${s * s}${pow(1, 2)} = ${(s * s) / 2}`), "."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Zoe says ", A.math(`${s * s}${pow(1, 2)} = ${(s * s) / 2}`), "."],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. A power of a half means the square root, so it is ${s}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. A power of a half means halve the number.",
+                  code: "NPV.INDEX.FRACTIONAL",
+                },
+                {
+                  text: `False. It is ${s * s * 2}, because you multiply by 2.`,
+                  code: "NPV.INDEX.FRACTIONAL",
+                },
+              ],
+              solution: [{ say: `${s} × ${s} = ${s * s}, so the square root is ${s}.` }],
+            }),
+          [
             {
-              text: `False. A power of a half means the square root, so it is ${s}.`,
-              correct: true,
+              statement: "Kim says $8^{\\frac{2}{3}} = 4$.",
+              truth: true,
+              right: "True. The cube root of 8 is 2, and 2² = 4.",
+              wrong: [
+                ["False. It is 16/3.", "NPV.INDEX.FRACTIONAL"],
+                ["False. It is 5.3.", "NPV.INDEX.FRACTIONAL"],
+              ],
             },
             {
-              text: "True. A power of a half means halve the number.",
-              code: "NPV.INDEX.FRACTIONAL",
+              claim: "$a^{-n} = \\frac{1}{a^n}$ for a non-zero.",
+              truth: "always",
+              right: "Always. A negative power is a reciprocal.",
+              wrong: [["Never. It is −aⁿ.", "NPV.INDEX.NEGATIVE"], ["Sometimes. Only for n = 1."]],
             },
             {
-              text: `False. It is ${s * s * 2}, because you multiply by 2.`,
-              code: "NPV.INDEX.FRACTIONAL",
+              statement: "Raj says $16^{-\\frac{1}{2}} = -4$.",
+              truth: false,
+              right: "False. 16^(1/2) = 4, so 16^(−1/2) = 1/4.",
+              wrong: [
+                ["True. The minus makes it negative.", "NPV.INDEX.NEGATIVE"],
+                ["True. Square root, then negative.", "NPV.INDEX.NEGATIVE"],
+              ],
             },
           ],
-          solution: [{ say: `${s} × ${s} = ${s * s}, so the square root is ${s}.` }],
-        });
+        );
       }
     }
   },

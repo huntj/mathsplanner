@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   rho: number;
@@ -18,7 +19,7 @@ const r = (v: number) => Number(v.toFixed(6));
 
 export default defineGenerator<Params>({
   id: "GF-R11.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.COMPOUND-UNIT.ARRANGEMENT"],
 
@@ -67,25 +68,62 @@ export default defineGenerator<Params>({
           solution: [{ say: "", math: `${mass} \\div ${p.rho} = ${p.vol} \\text{ cm}^3` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Zed says a ${2 * p.vol} cm³ piece of a metal has a bigger density than a ${p.vol} cm³ piece of the same metal.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Zed says a ${2 * p.vol} cm³ piece of a metal has a bigger density than a ${p.vol} cm³ piece of the same metal.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. Doubling the volume doubles the mass too, so mass ÷ volume stays the same.",
+                  correct: true,
+                },
+                {
+                  text: "True. It is heavier, so it is denser.",
+                  code: "RAT.COMPOUND-UNIT.ARRANGEMENT",
+                },
+                {
+                  text: "True. Density goes up with volume.",
+                  code: "RAT.COMPOUND-UNIT.ARRANGEMENT",
+                },
+              ],
+              solution: [{ say: "Density belongs to the material, not the size of the piece." }],
+            }),
+          [
             {
-              text: "False. Doubling the volume doubles the mass too, so mass ÷ volume stays the same.",
-              correct: true,
+              statement:
+                "A block of mass 600 g has volume 200 cm³. Sam says its density is 3 g/cm³.",
+              truth: true,
+              right: "True. 600 ÷ 200 = 3.",
+              wrong: [
+                ["False. It is 1/3 g/cm³.", "RAT.COMPOUND-UNIT.ARRANGEMENT"],
+                ["False. It is 120,000 g/cm³."],
+              ],
             },
             {
-              text: "True. It is heavier, so it is denser.",
-              code: "RAT.COMPOUND-UNIT.ARRANGEMENT",
+              claim: "Density is mass divided by volume.",
+              truth: "always",
+              right: "Always. It is the mass of each cm³.",
+              wrong: [
+                ["Never. It is volume divided by mass.", "RAT.COMPOUND-UNIT.ARRANGEMENT"],
+                ["Sometimes. Only for water."],
+              ],
             },
-            { text: "True. Density goes up with volume.", code: "RAT.COMPOUND-UNIT.ARRANGEMENT" },
+            {
+              statement: "Iron has density 7.9 g/cm³. Kim says 50 cm³ of iron has mass 6.3 g.",
+              truth: false,
+              right: "False. mass = density × volume = 7.9 × 50 = 395 g.",
+              wrong: [
+                ["True. 50 ÷ 7.9 ≈ 6.3.", "RAT.COMPOUND-UNIT.ARRANGEMENT"],
+                ["True. Divide the volume by the density.", "RAT.COMPOUND-UNIT.ARRANGEMENT"],
+              ],
+            },
           ],
-          solution: [{ say: "Density belongs to the material, not the size of the piece." }],
-        });
+        );
     }
   },
 

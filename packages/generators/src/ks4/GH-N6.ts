@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Depth 1: a non-square close to k². */
@@ -20,7 +21,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GH-N6",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.POWER.ROOT-HALF", "NPV.POWER.TIMES-INDEX"],
 
@@ -109,29 +110,63 @@ export default defineGenerator<Params>({
       default: {
         const whole = Math.round(p.base);
         const est = whole ** p.power;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ben estimates ",
-            A.math(`${p.base}^{${p.power}}`),
-            ` by working out ${whole}^${p.power} = ${est}. He says the exact answer is a little more than ${est}.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ben estimates ",
+                A.math(`${p.base}^{${p.power}}`),
+                ` by working out ${whole}^${p.power} = ${est}. He says the exact answer is a little more than ${est}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${p.base} is less than ${whole}, so ${p.base} to the power ${p.power} is less than ${est}.`,
+                  correct: true,
+                },
+                { text: "True. Rounding always makes an estimate too small." },
+                {
+                  text: `False. ${whole}^${p.power} = ${whole * p.power}, so the estimate is wrong.`,
+                  code: "NPV.POWER.TIMES-INDEX",
+                },
+              ],
+              solution: [
+                { say: `Rounding ${p.base} up to ${whole} makes the estimate an overestimate.` },
+              ],
+            }),
+          [
             {
-              text: `False. ${p.base} is less than ${whole}, so ${p.base} to the power ${p.power} is less than ${est}.`,
-              correct: true,
+              statement: "Leo estimates $\\sqrt{50}$ as a little more than 7.",
+              truth: true,
+              right: "True. 7² = 49, just under 50.",
+              wrong: [
+                ["False. It is 25.", "NPV.POWER.ROOT-HALF"],
+                ["False. It is a little under 7."],
+              ],
             },
-            { text: "True. Rounding always makes an estimate too small." },
             {
-              text: `False. ${whole}^${p.power} = ${whole * p.power}, so the estimate is wrong.`,
-              code: "NPV.POWER.TIMES-INDEX",
+              claim:
+                "$\\sqrt{n}$ lies between two consecutive whole numbers when n is not a square number.",
+              truth: "always",
+              right: "Always. It sits between the roots of the squares either side.",
+              wrong: [
+                ["Never. Roots are whole numbers.", "NPV.POWER.ROOT-HALF"],
+                ["Sometimes. Only for small n."],
+              ],
+            },
+            {
+              statement: "Pia says $2^{10}$ is about 2000.",
+              truth: false,
+              right: "False. 2¹⁰ = 1024, about 1000.",
+              wrong: [
+                ["True. 2 × 10 = 20, then times 100.", "NPV.POWER.TIMES-INDEX"],
+                ["True. Each power doubles 1000."],
+              ],
             },
           ],
-          solution: [
-            { say: `Rounding ${p.base} up to ${whole} makes the estimate an overestimate.` },
-          ],
-        });
+        );
       }
     }
   },

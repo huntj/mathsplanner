@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const ANGLES = [30, 40, 45, 60, 72, 80, 90, 120, 135, 150, 160];
 
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-G18.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.SECTOR.FRACTION", "MEA.CIRCLE.FORMULA"],
 
@@ -92,25 +93,57 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Kim says a sector with arc length equal to half the circle's circumference has an angle of 90°.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Kim says a sector with arc length equal to half the circle's circumference has an angle of 90°.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. Half the circumference means half of 360°, which is 180°: a semicircle.",
+                  correct: true,
+                },
+                { text: "True. Half of 180° is 90°.", code: "GEO.SECTOR.FRACTION" },
+                {
+                  text: "True. A quarter of the area is a quarter of the arc.",
+                  code: "MEA.CIRCLE.FORMULA",
+                },
+              ],
+              solution: [{ say: "Fraction of the arc = fraction of 360°." }],
+            }),
+          [
             {
-              text: "False. Half the circumference means half of 360°, which is 180°: a semicircle.",
-              correct: true,
+              statement:
+                "A sector's arc is a quarter of the circumference. Bea says its angle is 90°.",
+              truth: true,
+              right: "True. A quarter of 360° is 90°.",
+              wrong: [["False. It is 45°.", "GEO.SECTOR.FRACTION"], ["False. It is 25°."]],
             },
-            { text: "True. Half of 180° is 90°.", code: "GEO.SECTOR.FRACTION" },
             {
-              text: "True. A quarter of the area is a quarter of the arc.",
-              code: "MEA.CIRCLE.FORMULA",
+              claim: "A sector with angle 360° is the whole circle.",
+              truth: "always",
+              right: "Always. 360° is a full turn.",
+              wrong: [
+                ["Never. It is half.", "GEO.SECTOR.FRACTION"],
+                ["Sometimes. Only for small circles."],
+              ],
+            },
+            {
+              statement:
+                "A sector of radius 10 cm has area $25\\pi$ cm². Sol says its angle is 45°.",
+              truth: false,
+              right: "False. The circle's area is 100π, so 25π is a quarter: 90°.",
+              wrong: [
+                ["True. 25 out of 100 is 45°.", "GEO.SECTOR.FRACTION"],
+                ["True. Use 180° for the whole.", "GEO.SECTOR.FRACTION"],
+              ],
             },
           ],
-          solution: [{ say: "Fraction of the arc = fraction of 360°." }],
-        });
+        );
     }
   },
 

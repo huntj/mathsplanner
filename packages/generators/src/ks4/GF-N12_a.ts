@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { gcdOf } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-N12.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: [
     "FR.OF-AMOUNT.UNIT-ONLY",
@@ -98,30 +99,63 @@ export default defineGenerator<Params>({
       }
       default: {
         const top = p.d + p.extra;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Eli says ",
-            A.math(`\\frac{${top}}{${p.d}}`),
-            ` of ${amount} must be less than ${amount}, because you are taking a fraction of it.`,
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Eli says ",
+                A.math(`\\frac{${top}}{${p.d}}`),
+                ` of ${amount} must be less than ${amount}, because you are taking a fraction of it.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${top}/${p.d} is more than 1, so it gives ${top * p.k}, which is more than ${amount}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. A fraction of an amount is always a part of it.",
+                  code: "FR.OF-AMOUNT.UNIT-ONLY",
+                },
+                {
+                  text: `True. You divide by ${p.d}, which makes it smaller.`,
+                  code: "FR.OF-AMOUNT.UNIT-ONLY",
+                },
+              ],
+              solution: [{ say: "", math: `${amount} \\div ${p.d} \\times ${top} = ${top * p.k}` }],
+            }),
+          [
+            {
+              statement: "Kai says $\\frac{3}{5}$ of 40 is 24.",
+              truth: true,
+              right: "True. 1/5 of 40 is 8, so 3/5 is 24.",
+              wrong: [
+                ["False. It is 8.", "FR.OF-AMOUNT.UNIT-ONLY"],
+                ["False. It is 13.3.", "FR.OF-AMOUNT.DIVIDES-BY-NUMERATOR"],
+              ],
+            },
+            {
+              statement: "$\\frac{2}{3}$ of a number is 18. Pia says the number is 12.",
+              truth: false,
+              right: "False. 1/3 of the number is 9, so the number is 27.",
+              wrong: [
+                ["True. 2/3 of 18 is 12.", "FR.OF-AMOUNT.REVERSE"],
+                ["True. Take 2/3 again.", "FR.OF-AMOUNT.REVERSE"],
+              ],
+            },
+            {
+              claim: "A fraction of an amount is smaller than the amount.",
+              truth: "sometimes",
+              right: "Sometimes. A proper fraction gives less, but 3/2 of an amount is more.",
+              wrong: [
+                ["Always. A fraction is a part.", "FR.OF-AMOUNT.UNIT-ONLY"],
+                ["Never. It is bigger."],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: `False. ${top}/${p.d} is more than 1, so it gives ${top * p.k}, which is more than ${amount}.`,
-              correct: true,
-            },
-            {
-              text: "True. A fraction of an amount is always a part of it.",
-              code: "FR.OF-AMOUNT.UNIT-ONLY",
-            },
-            {
-              text: `True. You divide by ${p.d}, which makes it smaller.`,
-              code: "FR.OF-AMOUNT.UNIT-ONLY",
-            },
-          ],
-          solution: [{ say: "", math: `${amount} \\div ${p.d} \\times ${top} = ${top * p.k}` }],
-        });
+        );
       }
     }
   },

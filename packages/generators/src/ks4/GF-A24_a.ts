@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const tri = (n: number) => (n * (n + 1)) / 2;
 const isSquare = (n: number) => Number.isInteger(Math.sqrt(n));
@@ -21,7 +22,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-A24.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SEQUENCE.TYPE"],
 
@@ -70,30 +71,58 @@ export default defineGenerator<Params>({
       default: {
         // 1 and 64 are both squares and cubes; pick a cube that is not a square.
         const cube = p.c === 4 ? 27 : p.c ** 3;
-        return A.oddOneOut({
+        return orClaims(
           rng,
-          question: "Which number is the odd one out?",
-          items: [
-            { content: A.math(String((p.c + 1) ** 2)) },
-            { content: A.math(String((p.c + 2) ** 2)) },
-            { content: A.math(String((p.c + 3) ** 2)) },
-            { content: A.math(String(cube)), odd: true },
-          ].filter(
-            (it, i, all) =>
-              all.findIndex((x) => JSON.stringify(x.content) === JSON.stringify(it.content)) === i,
-          ),
-          reasons: [
+          () =>
+            A.oddOneOut({
+              rng,
+              question: "Which number is the odd one out?",
+              items: [
+                { content: A.math(String((p.c + 1) ** 2)) },
+                { content: A.math(String((p.c + 2) ** 2)) },
+                { content: A.math(String((p.c + 3) ** 2)) },
+                { content: A.math(String(cube)), odd: true },
+              ].filter(
+                (it, i, all) =>
+                  all.findIndex((x) => JSON.stringify(x.content) === JSON.stringify(it.content)) ===
+                  i,
+              ),
+              reasons: [
+                {
+                  text: `It is the only one that is not a square number (${cube} is a cube number).`,
+                  correct: true,
+                },
+                { text: "It is the only odd number.", code: "ALG.SEQUENCE.TYPE" },
+                { text: "It is the only triangular number.", code: "ALG.SEQUENCE.TYPE" },
+              ],
+              solution: [
+                { say: `${(p.c + 1) ** 2}, ${(p.c + 2) ** 2} and ${(p.c + 3) ** 2} are squares.` },
+              ],
+            }),
+          [
             {
-              text: `It is the only one that is not a square number (${cube} is a cube number).`,
-              correct: true,
+              statement: "Sol says 36 is both a square number and a triangular number.",
+              truth: true,
+              right: "True. 6² = 36 and 1 + 2 + … + 8 = 36.",
+              wrong: [
+                ["False. It is only square.", "ALG.SEQUENCE.TYPE"],
+                ["False. It is a cube number."],
+              ],
             },
-            { text: "It is the only odd number.", code: "ALG.SEQUENCE.TYPE" },
-            { text: "It is the only triangular number.", code: "ALG.SEQUENCE.TYPE" },
+            {
+              claim: "A cube number is odd.",
+              truth: "sometimes",
+              right: "Sometimes. 1, 27 and 125 are odd; 8 and 64 are even.",
+              wrong: [["Always. Cubes are odd.", "ALG.SEQUENCE.TYPE"], ["Never. Cubes are even."]],
+            },
+            {
+              statement: "Kai says 10 is a square number.",
+              truth: false,
+              right: "False. 3² = 9 and 4² = 16. 10 is a triangular number.",
+              wrong: [["True. 5 × 2 = 10.", "ALG.SEQUENCE.TYPE"], ["True. It is a round number."]],
+            },
           ],
-          solution: [
-            { say: `${(p.c + 1) ** 2}, ${(p.c + 2) ** 2} and ${(p.c + 3) ** 2} are squares.` },
-          ],
-        });
+        );
       }
     }
   },

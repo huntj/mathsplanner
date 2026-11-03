@@ -10,7 +10,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A24.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -110,7 +110,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A24.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -210,7 +210,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A24.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -310,7 +310,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A24.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -367,7 +367,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A24.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -424,7 +424,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A24.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -474,14 +474,14 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "odd-one-out",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A24.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -493,13 +493,13 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "16",
+                  "t": "text",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -507,8 +507,8 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "27",
+                  "t": "text",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
@@ -516,20 +516,11 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "25",
+                  "t": "text",
+                  "v": "Never true",
                 },
               ],
               "id": "C",
-            },
-            {
-              "content": [
-                {
-                  "t": "math",
-                  "v": "36",
-                },
-              ],
-              "id": "D",
             },
           ],
           "reasons": [
@@ -537,7 +528,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only triangular number.",
+                  "v": "Sometimes. 1, 27 and 125 are odd; 8 and 64 are even.",
                 },
               ],
               "id": "RA",
@@ -546,7 +537,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one that is not a square number (27 is a cube number).",
+                  "v": "Never. Cubes are even.",
                 },
               ],
               "id": "RB",
@@ -555,7 +546,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only odd number.",
+                  "v": "Always. Cubes are odd.",
                 },
               ],
               "id": "RC",
@@ -565,14 +556,6 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.SEQUENCE.TYPE",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -585,7 +568,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Choose the odd one out and the reason.",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -595,7 +578,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "16, 25 and 36 are squares.",
+            "v": "Sometimes. 1, 27 and 125 are odd; 8 and 64 are even.",
           },
         ],
       },
@@ -603,19 +586,19 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Which number is the odd one out?",
+        "v": "A cube number is odd.",
       },
     ],
   },
   {
-    "archetype": "odd-one-out",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A24.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -626,14 +609,14 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "D",
-          "correctReason": "RB",
+          "correct": "B",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "49",
+                  "t": "text",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -641,29 +624,11 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "64",
+                  "t": "text",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "math",
-                  "v": "81",
-                },
-              ],
-              "id": "C",
-            },
-            {
-              "content": [
-                {
-                  "t": "math",
-                  "v": "216",
-                },
-              ],
-              "id": "D",
             },
           ],
           "reasons": [
@@ -671,7 +636,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only odd number.",
+                  "v": "False. 3² = 9 and 4² = 16. 10 is a triangular number.",
                 },
               ],
               "id": "RA",
@@ -680,7 +645,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one that is not a square number (216 is a cube number).",
+                  "v": "True. 5 × 2 = 10.",
                 },
               ],
               "id": "RB",
@@ -689,7 +654,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only triangular number.",
+                  "v": "True. It is a round number.",
                 },
               ],
               "id": "RC",
@@ -701,15 +666,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.SEQUENCE.TYPE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.TYPE",
@@ -719,7 +676,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Choose the odd one out and the reason.",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -729,7 +686,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "49, 64 and 81 are squares.",
+            "v": "False. 3² = 9 and 4² = 16. 10 is a triangular number.",
           },
         ],
       },
@@ -737,19 +694,19 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Which number is the odd one out?",
+        "v": "Kai says 10 is a square number.",
       },
     ],
   },
   {
-    "archetype": "odd-one-out",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A24.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -760,14 +717,14 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "D",
-          "correctReason": "RB",
+          "correct": "B",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "9",
+                  "t": "text",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -775,29 +732,11 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
             {
               "content": [
                 {
-                  "t": "math",
-                  "v": "16",
+                  "t": "text",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "math",
-                  "v": "25",
-                },
-              ],
-              "id": "C",
-            },
-            {
-              "content": [
-                {
-                  "t": "math",
-                  "v": "8",
-                },
-              ],
-              "id": "D",
             },
           ],
           "reasons": [
@@ -805,7 +744,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only odd number.",
+                  "v": "False. 3² = 9 and 4² = 16. 10 is a triangular number.",
                 },
               ],
               "id": "RA",
@@ -814,7 +753,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only one that is not a square number (8 is a cube number).",
+                  "v": "True. 5 × 2 = 10.",
                 },
               ],
               "id": "RB",
@@ -823,7 +762,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is the only triangular number.",
+                  "v": "True. It is a round number.",
                 },
               ],
               "id": "RC",
@@ -835,15 +774,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.SEQUENCE.TYPE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.TYPE",
@@ -853,7 +784,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Choose the odd one out and the reason.",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -863,7 +794,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "9, 16 and 25 are squares.",
+            "v": "False. 3² = 9 and 4² = 16. 10 is a triangular number.",
           },
         ],
       },
@@ -871,7 +802,7 @@ exports[`GF-A24.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Which number is the odd one out?",
+        "v": "Kai says 10 is a square number.",
       },
     ],
   },

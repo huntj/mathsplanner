@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-N6.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.POWER.ROOT-HALF"],
 
@@ -69,22 +70,52 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["A positive number has two square roots."],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["A positive number has two square roots."],
+              truth: "always",
+              reasons: [
+                {
+                  text: `Always. For example ${p.n}² and (−${p.n})² both equal ${p.n * p.n}, so ${p.n * p.n} has square roots ${p.n} and −${p.n}.`,
+                  correct: true,
+                },
+                { text: "Sometimes. Only square numbers have square roots." },
+                {
+                  text: "Never. A square root is half of the number.",
+                  code: "NPV.POWER.ROOT-HALF",
+                },
+              ],
+              solution: [
+                { say: "The √ sign means the positive root, but there is a negative one too." },
+              ],
+            }),
+          [
             {
-              text: `Always. For example ${p.n}² and (−${p.n})² both equal ${p.n * p.n}, so ${p.n * p.n} has square roots ${p.n} and −${p.n}.`,
-              correct: true,
+              statement: "Eli says $\\sqrt{81} = 9$.",
+              truth: true,
+              right: "True. 9 × 9 = 81.",
+              wrong: [["False. It is 40.5.", "NPV.POWER.ROOT-HALF"], ["False. It is 18."]],
             },
-            { text: "Sometimes. Only square numbers have square roots." },
-            { text: "Never. A square root is half of the number.", code: "NPV.POWER.ROOT-HALF" },
+            {
+              statement: "Ola says the cube root of 27 is 9.",
+              truth: false,
+              right: "False. 3 × 3 × 3 = 27, so the cube root is 3.",
+              wrong: [["True. 27 ÷ 3 = 9.", "NPV.POWER.ROOT-HALF"], ["True. 9 × 3 = 27."]],
+            },
+            {
+              claim: "The square root of a number is half of it.",
+              truth: "sometimes",
+              right: "Sometimes. √4 = 2 is half of 4, but √9 = 3 is not half of 9.",
+              wrong: [
+                ["Always. Root means half.", "NPV.POWER.ROOT-HALF"],
+                ["Never. Not even for 4."],
+              ],
+            },
           ],
-          solution: [
-            { say: "The √ sign means the positive root, but there is a negative one too." },
-          ],
-        });
+        );
     }
   },
 

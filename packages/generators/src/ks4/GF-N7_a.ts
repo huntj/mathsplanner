@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 export interface Params {
   k: number;
@@ -19,7 +20,7 @@ export interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-N7.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.POWER.ROOT-HALF", "NPV.SURD.ADD-INSIDE"],
 
@@ -84,24 +85,63 @@ export default defineGenerator<Params>({
       }
       default: {
         const s = p.x * p.x + p.y * p.y;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Remy says ",
-            A.math(`\\sqrt{${p.x * p.x}} + \\sqrt{${p.y * p.y}} = \\sqrt{${s}}`),
-            ".",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Remy says ",
+                A.math(`\\sqrt{${p.x * p.x}} + \\sqrt{${p.y * p.y}} = \\sqrt{${s}}`),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The left side is ${p.x} + ${p.y} = ${p.x + p.y}, but ${p.x + p.y}² = ${(p.x + p.y) ** 2}, not ${s}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. You can add the numbers under the roots.",
+                  code: "NPV.SURD.ADD-INSIDE",
+                },
+                {
+                  text: "True. Square roots work like ordinary numbers.",
+                  code: "NPV.SURD.ADD-INSIDE",
+                },
+              ],
+              solution: [{ say: "√a × √b = √(ab), but √a + √b is not √(a + b)." }],
+            }),
+          [
             {
-              text: `False. The left side is ${p.x} + ${p.y} = ${p.x + p.y}, but ${p.x + p.y}² = ${(p.x + p.y) ** 2}, not ${s}.`,
-              correct: true,
+              statement: "Kai says $\\sqrt{9 \\times 16} = 12$.",
+              truth: true,
+              right: "True. √9 × √16 = 3 × 4 = 12, and 9 × 16 = 144.",
+              wrong: [
+                ["False. It is 25.", "NPV.SURD.ADD-INSIDE"],
+                ["False. It is 72.", "NPV.POWER.ROOT-HALF"],
+              ],
             },
-            { text: "True. You can add the numbers under the roots.", code: "NPV.SURD.ADD-INSIDE" },
-            { text: "True. Square roots work like ordinary numbers.", code: "NPV.SURD.ADD-INSIDE" },
+            {
+              claim: "$\\sqrt{a + b} = \\sqrt{a} + \\sqrt{b}$ for positive a and b.",
+              truth: "never",
+              right: "Never, for positive a and b. √(9 + 16) = 5, but √9 + √16 = 7.",
+              wrong: [
+                ["Always. Roots can be split.", "NPV.SURD.ADD-INSIDE"],
+                ["Sometimes. For square numbers."],
+              ],
+            },
+            {
+              statement: "Mia says $\\sqrt{25} + \\sqrt{25} = \\sqrt{50}$.",
+              truth: false,
+              right: "False. 5 + 5 = 10, but √50 is about 7.07.",
+              wrong: [
+                ["True. Add inside the roots.", "NPV.SURD.ADD-INSIDE"],
+                ["True. 25 + 25 = 50."],
+              ],
+            },
           ],
-          solution: [{ say: "√a × √b = √(ab), but √a + √b is not √(a + b)." }],
-        });
+        );
       }
     }
   },

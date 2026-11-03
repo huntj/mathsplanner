@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import type { CartesianSpec } from "@mathsplanner/diagrams";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Direct: y = kx, marked at x = a. Inverse: y = n/x. */
@@ -35,7 +36,7 @@ function graph(
 
 export default defineGenerator<Params>({
   id: "GH-R14",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 3, 4],
   misconceptions: [
     "RAT.INVERSE.AS-DIRECT",
@@ -117,31 +118,66 @@ export default defineGenerator<Params>({
           solution: [{ say: "y = kx is a straight line through the origin." }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Jack says the graph of ",
-            A.math(`y = ${p.k}x + ${p.c}`),
-            " shows that y is directly proportional to x, because it is a straight line.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Jack says the graph of ",
+                A.math(`y = ${p.k}x + ${p.c}`),
+                " shows that y is directly proportional to x, because it is a straight line.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. It does not pass through the origin: when x = 0, y = ${p.c}. Doubling x does not double y.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Every straight line shows direct proportion.",
+                  code: "RAT.PROPORTION.LINEAR-INTERCEPT",
+                },
+                { text: "True. The gradient is constant." },
+              ],
+              solution: [
+                {
+                  say: `Check: x = 1 gives y = ${p.k + p.c}, but x = 2 gives y = ${2 * p.k + p.c}, not double.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. It does not pass through the origin: when x = 0, y = ${p.c}. Doubling x does not double y.`,
-              correct: true,
+              statement:
+                "Sol says the graph of $y = \\frac{12}{x}$ shows y inversely proportional to x.",
+              truth: true,
+              right: "True. It is y = k/x with k = 12.",
+              wrong: [
+                ["False. It shows direct proportion.", "RAT.INVERSE.AS-DIRECT"],
+                ["False. It is a straight line.", "RAT.PROPORTION.LINEAR-INTERCEPT"],
+              ],
             },
             {
-              text: "True. Every straight line shows direct proportion.",
-              code: "RAT.PROPORTION.LINEAR-INTERCEPT",
+              claim: "A direct-proportion graph is a straight line through the origin.",
+              truth: "always",
+              right: "Always. y = kx passes through (0, 0).",
+              wrong: [
+                ["Never. It crosses at the constant.", "RAT.PROPORTION.LINEAR-INTERCEPT"],
+                ["Sometimes. Only if k = 1."],
+              ],
             },
-            { text: "True. The gradient is constant." },
-          ],
-          solution: [
             {
-              say: `Check: x = 1 gives y = ${p.k + p.c}, but x = 2 gives y = ${2 * p.k + p.c}, not double.`,
+              statement:
+                "A straight line goes through (0, 0) and (4, 10). Bea says its gradient, and so k, is 0.4.",
+              truth: false,
+              right: "False. k = 10 ÷ 4 = 2.5.",
+              wrong: [
+                ["True. 4 ÷ 10 = 0.4.", "ALG.GRADIENT.RUN-RISE"],
+                ["True. Divide x by y.", "ALG.GRADIENT.RUN-RISE"],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

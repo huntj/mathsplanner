@@ -35,7 +35,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A19.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -186,7 +186,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A19.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -337,7 +337,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A19.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -463,7 +463,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A19.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -576,7 +576,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A19.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -689,7 +689,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A19.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -795,14 +795,14 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A19.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -813,14 +813,14 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -829,10 +829,19 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -840,7 +849,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Both have gradient 1, so the lines are parallel and never cross: there is no solution.",
+                  "v": "Sometimes. Far away they meet.",
                 },
               ],
               "id": "RA",
@@ -849,7 +858,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The solution is where they cross the y-axis.",
+                  "v": "Always. They never meet, so the equations have no solution.",
                 },
               ],
               "id": "RB",
@@ -858,7 +867,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Two straight lines always cross once.",
+                  "v": "Never. All lines meet.",
                 },
               ],
               "id": "RC",
@@ -868,14 +877,6 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SOLUTION-Y",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -888,7 +889,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -898,7 +899,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Graphically, solutions are crossing points.",
+            "v": "Always. They never meet, so the equations have no solution.",
           },
         ],
       },
@@ -906,23 +907,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ned says ",
-      },
-      {
-        "t": "math",
-        "v": "y = x - 2",
-      },
-      {
-        "t": "text",
-        "v": " and ",
-      },
-      {
-        "t": "math",
-        "v": "y = x + 1",
-      },
-      {
-        "t": "text",
-        "v": " have exactly one solution.",
+        "v": "Two different parallel lines have no point in common.",
       },
     ],
   },
@@ -934,7 +919,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A19.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -972,7 +957,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The solution is where they cross the y-axis.",
+                  "v": "True. The x is the line number.",
                 },
               ],
               "id": "RA",
@@ -981,7 +966,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Two straight lines always cross once.",
+                  "v": "True. Only y matters.",
                 },
               ],
               "id": "RB",
@@ -990,7 +975,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Both have gradient 3, so the lines are parallel and never cross: there is no solution.",
+                  "v": "False. The solution is the pair x = 4, y = −1.",
                 },
               ],
               "id": "RC",
@@ -1002,18 +987,10 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SOLUTION-Y",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RB",
               "type": "choice",
             },
-            "code": "ALG.SIMULTANEOUS.PAIR",
+            "code": "ALG.GRAPH.SOLUTION-Y",
             "feedback": [],
           },
         ],
@@ -1030,7 +1007,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Graphically, solutions are crossing points.",
+            "v": "False. The solution is the pair x = 4, y = −1.",
           },
         ],
       },
@@ -1038,23 +1015,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ned says ",
-      },
-      {
-        "t": "math",
-        "v": "y = 3x - 3",
-      },
-      {
-        "t": "text",
-        "v": " and ",
-      },
-      {
-        "t": "math",
-        "v": "y = 3x",
-      },
-      {
-        "t": "text",
-        "v": " have exactly one solution.",
+        "v": "Two lines cross at (4, −1). Dev says the solution is y = −1 only.",
       },
     ],
   },
@@ -1066,7 +1027,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A19.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1078,7 +1039,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -1104,7 +1065,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Two straight lines always cross once.",
+                  "v": "True. Only y matters.",
                 },
               ],
               "id": "RA",
@@ -1113,7 +1074,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The solution is where they cross the y-axis.",
+                  "v": "False. The solution is the pair x = 4, y = −1.",
                 },
               ],
               "id": "RB",
@@ -1122,7 +1083,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Both have gradient 2, so the lines are parallel and never cross: there is no solution.",
+                  "v": "True. The x is the line number.",
                 },
               ],
               "id": "RC",
@@ -1135,14 +1096,6 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.SIMULTANEOUS.PAIR",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.GRAPH.SOLUTION-Y",
@@ -1162,7 +1115,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Graphically, solutions are crossing points.",
+            "v": "False. The solution is the pair x = 4, y = −1.",
           },
         ],
       },
@@ -1170,23 +1123,7 @@ exports[`GF-A19.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ned says ",
-      },
-      {
-        "t": "math",
-        "v": "y = 2x + 3",
-      },
-      {
-        "t": "text",
-        "v": " and ",
-      },
-      {
-        "t": "math",
-        "v": "y = 2x + 6",
-      },
-      {
-        "t": "text",
-        "v": " have exactly one solution.",
+        "v": "Two lines cross at (4, −1). Dev says the solution is y = −1 only.",
       },
     ],
   },

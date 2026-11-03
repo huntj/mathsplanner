@@ -10,7 +10,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A19.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -74,7 +74,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A19.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -138,7 +138,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A19.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -216,7 +216,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A19.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -298,7 +298,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A19.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -380,7 +380,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A19.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -462,7 +462,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A19.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -473,8 +473,8 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -500,7 +500,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A solution is a pair of values: she still needs y = -18, from substituting x back.",
+                  "v": "False. She only needs x.",
                 },
               ],
               "id": "RA",
@@ -509,7 +509,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Finding one letter is enough.",
+                  "v": "False. y = 2.",
                 },
               ],
               "id": "RB",
@@ -518,7 +518,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. y must equal x.",
+                  "v": "True. x + 2x = 12 gives x = 4, so y = 8. Check: 4 + 8 = 12.",
                 },
               ],
               "id": "RC",
@@ -530,15 +530,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.SIMULTANEOUS.PAIR",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.SIMULTANEOUS.PAIR",
@@ -558,7 +550,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The solution is x = -3, y = -18.",
+            "v": "True. x + 2x = 12 gives x = 4, so y = 8. Check: 4 + 8 = 12.",
           },
         ],
       },
@@ -566,19 +558,11 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kim finds x = ",
+        "v": "Solving ",
       },
       {
         "t": "math",
-        "v": "-3",
-      },
-      {
-        "t": "text",
-        "v": " and says she has solved ",
-      },
-      {
-        "t": "math",
-        "v": "y = 5x - 3",
+        "v": "y = 2x",
       },
       {
         "t": "text",
@@ -586,11 +570,11 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "math",
-        "v": "3x + 3y = -63",
+        "v": "x + y = 12",
       },
       {
         "t": "text",
-        "v": ".",
+        "v": ", Ola gets x = 4 and y = 8.",
       },
     ],
   },
@@ -602,7 +586,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A19.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -614,7 +598,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -640,7 +624,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A solution is a pair of values: she still needs y = -2, from substituting x back.",
+                  "v": "True. Swap y for x + 2.",
                 },
               ],
               "id": "RA",
@@ -649,7 +633,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Finding one letter is enough.",
+                  "v": "False. 2y = 2(x + 2) = 2x + 4.",
                 },
               ],
               "id": "RB",
@@ -658,7 +642,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. y must equal x.",
+                  "v": "True. The 2 only multiplies x.",
                 },
               ],
               "id": "RC",
@@ -670,10 +654,10 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.SIMULTANEOUS.PAIR",
+            "code": "ALG.EXPAND.FIRST-ONLY",
             "feedback": [],
           },
           {
@@ -681,7 +665,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "ALG.SIMULTANEOUS.PAIR",
+            "code": "ALG.EXPAND.FIRST-ONLY",
             "feedback": [],
           },
         ],
@@ -698,7 +682,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The solution is x = 1, y = -2.",
+            "v": "False. 2y = 2(x + 2) = 2x + 4.",
           },
         ],
       },
@@ -706,27 +690,27 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kim finds x = ",
+        "v": "Substituting ",
       },
       {
         "t": "math",
-        "v": "1",
+        "v": "y = x + 2",
       },
       {
         "t": "text",
-        "v": " and says she has solved ",
+        "v": " into ",
       },
       {
         "t": "math",
-        "v": "y = -5x + 3",
+        "v": "3x + 2y = 19",
       },
       {
         "t": "text",
-        "v": " and ",
+        "v": ", Gus writes ",
       },
       {
         "t": "math",
-        "v": "x + 5y = -9",
+        "v": "3x + 2x + 2 = 19",
       },
       {
         "t": "text",
@@ -742,7 +726,7 @@ exports[`GF-A19.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A19.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

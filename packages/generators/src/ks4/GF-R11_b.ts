@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   rate: number;
@@ -22,7 +23,7 @@ const r2 = (v: number) => Math.round(v * 100) / 100;
 
 export default defineGenerator<Params>({
   id: "GF-R11.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.COMPOUND-UNIT.ARRANGEMENT"],
 
@@ -91,20 +92,59 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["The bigger pack of something is better value."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["The bigger pack of something is better value."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: "Sometimes. It is often cheaper per gram, but not always: you have to compare the unit prices.",
+                  correct: true,
+                },
+                {
+                  text: "Always. You get more for your money.",
+                  code: "RAT.COMPOUND-UNIT.ARRANGEMENT",
+                },
+                { text: "Never. Bigger packs cost more." },
+              ],
+              solution: [{ say: "Divide price by quantity for each pack, then compare." }],
+            }),
+          [
             {
-              text: "Sometimes. It is often cheaper per gram, but not always: you have to compare the unit prices.",
-              correct: true,
+              statement:
+                "A 400 g jar costs £2 and a 600 g jar costs £2.70. Raj says the 600 g jar is better value.",
+              truth: true,
+              right: "True. 0.5p per g against 0.45p per g.",
+              wrong: [
+                ["False. £2 is cheaper.", "RAT.COMPOUND-UNIT.ARRANGEMENT"],
+                ["False. They are the same value."],
+              ],
             },
-            { text: "Always. You get more for your money.", code: "RAT.COMPOUND-UNIT.ARRANGEMENT" },
-            { text: "Never. Bigger packs cost more." },
+            {
+              claim: "Comparing cost per gram shows which pack is better value.",
+              truth: "always",
+              right: "Always. The lower cost per gram gives more for your money.",
+              wrong: [
+                ["Never. Compare total prices.", "RAT.COMPOUND-UNIT.ARRANGEMENT"],
+                ["Sometimes. Only for food."],
+              ],
+            },
+            {
+              statement:
+                "Bea works out grams per penny for two packs and says the smaller answer is the better buy.",
+              truth: false,
+              right:
+                "False. Grams per penny is how much you get for each penny, so the bigger answer is better.",
+              wrong: [
+                ["True. Smaller numbers are cheaper.", "RAT.COMPOUND-UNIT.ARRANGEMENT"],
+                ["True. Always pick the smaller rate."],
+              ],
+            },
           ],
-          solution: [{ say: "Divide price by quantity for each pack, then compare." }],
-        });
+        );
     }
   },
 

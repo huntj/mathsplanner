@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { lineGraph } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 export interface Params {
   sales: number[];
@@ -19,7 +20,7 @@ export interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-S2.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.SCALE.READ", "STA.EXTRAPOLATE"],
 
@@ -80,22 +81,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "A shop's sales have gone up every month this year. Lee says the graph proves they will keep going up for ever.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "A shop's sales have gone up every month this year. Lee says the graph proves they will keep going up for ever.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A trend only describes the data you have; predicting far beyond it is unreliable, as seasons and other changes affect sales.",
+                  correct: true,
+                },
+                { text: "True. A trend always continues.", code: "STA.EXTRAPOLATE" },
+                {
+                  text: "True. The line can be extended as far as you like.",
+                  code: "STA.EXTRAPOLATE",
+                },
+              ],
+              solution: [{ say: "Be careful predicting outside the time the data covers." }],
+            }),
+          [
             {
-              text: "False. A trend only describes the data you have; predicting far beyond it is unreliable, as seasons and other changes affect sales.",
-              correct: true,
+              statement:
+                "A time series of monthly sales rises every December. Kim says the data show a seasonal pattern.",
+              truth: true,
+              right: "True. A repeat at the same time each year is seasonal.",
+              wrong: [
+                ["False. It is random.", "STA.EXTRAPOLATE"],
+                ["False. Time series cannot show patterns."],
+              ],
             },
-            { text: "True. A trend always continues.", code: "STA.EXTRAPOLATE" },
-            { text: "True. The line can be extended as far as you like.", code: "STA.EXTRAPOLATE" },
+            {
+              claim: "A trend in data so far shows what will certainly happen next.",
+              truth: "never",
+              right: "Never with certainty. A trend can suggest, but the future can change.",
+              wrong: [
+                ["Always. Trends continue.", "STA.EXTRAPOLATE"],
+                ["Sometimes. If it has risen for a year.", "STA.EXTRAPOLATE"],
+              ],
+            },
+            {
+              statement:
+                "A line graph's scale goes up in 5s. Raj reads a point halfway between 20 and 25 as 21.",
+              truth: false,
+              right: "False. Halfway between 20 and 25 is 22.5.",
+              wrong: [
+                ["True. Each small step is 1.", "STA.SCALE.READ"],
+                ["True. Round to the next whole number."],
+              ],
+            },
           ],
-          solution: [{ say: "Be careful predicting outside the time the data covers." }],
-        });
+        );
     }
   },
 
