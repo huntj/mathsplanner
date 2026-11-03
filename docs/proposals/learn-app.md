@@ -567,7 +567,14 @@ polished.
 - **Every year group. Done.** Years 1 to 9, GCSE Foundation and GCSE Higher are all on the path,
   each tidied into units with its reasoning questions varied (`withClaims` and `orClaims` in
   `shared/variety.ts`). Every skill on the path passes `variety.test.ts`.
-- **Question previews**: from a skill's sheet, see one question at each level without starting a
-  lesson.
-- **Learning the idea first**: a better way into a new skill than one worked example before the
-  questions, such as a short explanation built up step by step.
+- **Learning the idea first. Started.** A unit can open with a lesson, in the style of a
+  Brilliant course: short screens where the pupil discovers the idea by doing, before the unit's
+  skills. The first is for Year 8's straight-line graphs ("Spot the rule"): feed a function
+  machine and spot its pattern, plot what comes out, notice the points line up, find the step
+  and the starting point, slide m and c until the line hits a star, plot a line from its rule,
+  predict a slope, build a drawn line's equation from chips and drag a line into place. Lessons
+  are data built from reusable screen kinds (`apps/learn/src/unit-lessons/`), so the next ones
+  are mostly writing. They show only in teacher mode until they are reviewed (`FOR_PUPILS`).
+  Once a unit's lesson is done, its skills skip their worked examples.
+- **Question previews** (later): from a skill's sheet, see one question at each level without
+  starting a lesson.

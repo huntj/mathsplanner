@@ -6,10 +6,19 @@ import { useEffect, useRef, type CSSProperties } from "react";
 import { skillText, topicName, type PathNode, type PathUnit, type ReviewState } from "./course.ts";
 import { Dot } from "./Dot.tsx";
 import { familyOf } from "./families.ts";
-import { CheckIcon, FamilyIcon, LockIcon, RefreshIcon, ReviewIcon, StarIcon } from "./Icons.tsx";
+import {
+  CheckIcon,
+  FamilyIcon,
+  IdeaIcon,
+  LockIcon,
+  RefreshIcon,
+  ReviewIcon,
+  StarIcon,
+} from "./Icons.tsx";
 import { yearReviewId } from "./practice.ts";
 import { pathFor } from "./path.ts";
 import type { Progress } from "./progress.ts";
+import { unitLessonFor, type UnitLesson } from "./unit-lessons/index.ts";
 
 /** How far each node sits from the middle, in rem, repeating down the path. */
 const SWAY = [0, 2.6, 4, 2.6, 0, -2.6, -4, -2.6];
@@ -17,6 +26,7 @@ const SWAY = [0, 2.6, 4, 2.6, 0, -2.6, -4, -2.6];
 export type Selection =
   | { kind: "skill"; unit: PathUnit; node: PathNode; before?: string }
   | { kind: "review"; unit: PathUnit }
+  | { kind: "lesson"; unit: PathUnit; lesson: UnitLesson; done: boolean }
   | { kind: "year"; section: CourseSection; state: ReviewState };
 
 const REVIEW_WORDS: Record<ReviewState, string> = {
@@ -93,6 +103,8 @@ export function PathView({
       {units.map((u) => {
         const family = familyOf(u.unit.topic);
         const done = u.nodes.filter((n) => n.level >= n.info.pathLevels).length;
+        const lesson = unitLessonFor(u.unit.id, progress.settings.teacher);
+        const lessonDone = u.unit.id in progress.unitLessons;
         return (
           <section key={u.unit.id} className={`unit fam-${family}`} aria-labelledby={u.unit.id}>
             <header className="unit-banner">
@@ -108,6 +120,27 @@ export function PathView({
               </p>
             </header>
             <ol className="nodes">
+              {lesson && (
+                <li className="node-row" style={{ "--sway": "0rem" } as CSSProperties}>
+                  <div className="node-wrap">
+                    <button
+                      type="button"
+                      className={`lesson-stop${lessonDone ? " lesson-stop-done" : ""}`}
+                      onClick={() =>
+                        onSelect({ kind: "lesson", unit: u, lesson, done: lessonDone })
+                      }
+                    >
+                      {lessonDone ? <CheckIcon size={30} /> : <IdeaIcon size={32} />}
+                      <span className="visually-hidden">
+                        Lesson: {lesson.title}, {lessonDone ? "done" : "start here"}
+                      </span>
+                    </button>
+                    <span className="node-label" aria-hidden="true">
+                      Lesson: {lesson.title}
+                    </span>
+                  </div>
+                </li>
+              )}
               {u.nodes.map((node) => {
                 const sway = SWAY[step++ % SWAY.length] ?? 0;
                 const before = previous;

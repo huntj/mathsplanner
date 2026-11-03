@@ -68,6 +68,8 @@ export interface Progress {
   speedBest: number;
   /** The forms of question each skill showed lately (see formOf in skills.ts), newest first. */
   recent: Record<string, string[]>;
+  /** Unit lessons done (see unit-lessons/), by unit id, and the day each was last done. */
+  unitLessons: Record<string, string>;
   /** Set on the example progress, so the app can say it is an example. */
   example?: true;
 }
@@ -93,6 +95,7 @@ export const emptyProgress = (): Progress => ({
   badges: {},
   speedBest: 0,
   recent: {},
+  unitLessons: {},
 });
 
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
@@ -149,6 +152,9 @@ export function readProgress(raw: unknown): Progress {
         progress.recent[skill] = forms
           .filter((f): f is string => typeof f === "string")
           .slice(0, RECENT_FORMS);
+  if (isRecord(raw.unitLessons))
+    for (const [id, day] of Object.entries(raw.unitLessons))
+      if (typeof day === "string" && DAY.test(day)) progress.unitLessons[id] = day;
   if (raw.example === true) progress.example = true;
   return progress;
 }
@@ -232,4 +238,14 @@ export function rememberForms(progress: Progress, shown: Record<string, string[]
       RECENT_FORMS,
     );
   return { ...progress, recent };
+}
+
+/** Records a unit lesson done: its XP, a lesson towards the day's goal, and the day. */
+export function finishUnitLesson(progress: Progress, unit: string, today: string): Progress {
+  return {
+    ...progress,
+    xp: progress.xp + LESSON_XP,
+    days: { ...progress.days, [today]: lessonsOn(progress, today) + 1 },
+    unitLessons: { ...progress.unitLessons, [unit]: today },
+  };
 }
