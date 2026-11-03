@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Depth 1: tops × trousers. */
@@ -30,7 +31,7 @@ const solutions = (ca: number, cb: number, total: number) => {
 
 export default defineGenerator<Params>({
   id: "Y6-ALG-05",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MD.MULTIPLY.ADDS"],
 
@@ -83,27 +84,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Zoe has ${p.tops} tops and ${p.trousers} pairs of trousers. She says she can make ${p.tops + p.trousers} different outfits.`,
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Zoe has ${p.tops} tops and ${p.trousers} pairs of trousers. She says she can make ${p.tops + p.trousers} different outfits.`,
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Each top goes with every pair of trousers, so there are ${p.tops} × ${p.trousers} = ${p.tops * p.trousers}.`,
+                  correct: true,
+                },
+                {
+                  text: `True. ${p.tops} + ${p.trousers} = ${p.tops + p.trousers}.`,
+                  code: "MD.MULTIPLY.ADDS",
+                },
+                { text: "True. Each item makes one outfit." },
+              ],
+              solution: [
+                {
+                  say: `Top 1 with each pair of trousers, then top 2, and so on: ${p.tops} groups of ${p.trousers}.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. Each top goes with every pair of trousers, so there are ${p.tops} × ${p.trousers} = ${p.tops * p.trousers}.`,
-              correct: true,
+              statement:
+                "A café has 3 sandwiches and 4 drinks. Raj says there are 12 ways to choose one of each.",
+              truth: true,
+              right: "True. Each of the 3 sandwiches goes with each of the 4 drinks: 3 × 4 = 12.",
+              wrong: [["False. There are 7: 3 + 4.", "MD.MULTIPLY.ADDS"], ["False. There are 4."]],
             },
             {
-              text: `True. ${p.tops} + ${p.trousers} = ${p.tops + p.trousers}.`,
-              code: "MD.MULTIPLY.ADDS",
+              statement:
+                "Using the digits 1, 2 and 3 once each, Kit says she can make only 3 different 3-digit numbers.",
+              truth: false,
+              right: "False. There are 6: 123, 132, 213, 231, 312 and 321.",
+              wrong: [
+                ["True. There are 3 digits, so 3 numbers.", "MD.MULTIPLY.ADDS"],
+                ["True. Each digit can start once."],
+              ],
             },
-            { text: "True. Each item makes one outfit." },
+            {
+              claim:
+                "Listing in a system, like keeping the first choice fixed while changing the second, helps find every possibility.",
+              truth: "always",
+              right: "Always. Working in order means nothing is missed or counted twice.",
+              wrong: [
+                ["Never. Guessing finds them faster.", "MD.MULTIPLY.ADDS"],
+                ["Sometimes. Only for two choices."],
+              ],
+            },
           ],
-          solution: [
-            {
-              say: `Top 1 with each pair of trousers, then top 2, and so on: ${p.tops} groups of ${p.trousers}.`,
-            },
-          ],
-        });
+        );
     }
   },
 

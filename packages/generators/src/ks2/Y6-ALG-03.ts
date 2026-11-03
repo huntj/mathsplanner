@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   times: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y6-ALG-03",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SOLVE.WRONG-INVERSE", "NPV.ORDER.LEFT-TO-RIGHT"],
 
@@ -81,32 +82,65 @@ export default defineGenerator<Params>({
         });
       default: {
         const said = p.claimTrue ? p.n : (total - p.add) * p.times;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [`${story} Leo says n = ${said}.`],
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
-                { text: `True. ${p.times} × ${p.n} + ${p.add} = ${total}.`, correct: true },
-                {
-                  text: `False. Multiply ${total - p.add} by ${p.times} to undo it.`,
-                  code: "ALG.SOLVE.WRONG-INVERSE",
-                },
-                { text: "False. There is no way to find n." },
-              ]
-            : [
-                {
-                  text: `False. Undo × ${p.times} by dividing, not multiplying: (${total} − ${p.add}) ÷ ${p.times} = ${p.n}.`,
-                  correct: true,
-                },
-                {
-                  text: `True. Take away ${p.add} and multiply by ${p.times}.`,
-                  code: "ALG.SOLVE.WRONG-INVERSE",
-                },
-                { text: "True. n must be bigger than the answer." },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [`${story} Leo says n = ${said}.`],
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    { text: `True. ${p.times} × ${p.n} + ${p.add} = ${total}.`, correct: true },
+                    {
+                      text: `False. Multiply ${total - p.add} by ${p.times} to undo it.`,
+                      code: "ALG.SOLVE.WRONG-INVERSE",
+                    },
+                    { text: "False. There is no way to find n." },
+                  ]
+                : [
+                    {
+                      text: `False. Undo × ${p.times} by dividing, not multiplying: (${total} − ${p.add}) ÷ ${p.times} = ${p.n}.`,
+                      correct: true,
+                    },
+                    {
+                      text: `True. Take away ${p.add} and multiply by ${p.times}.`,
+                      code: "ALG.SOLVE.WRONG-INVERSE",
+                    },
+                    { text: "True. n must be bigger than the answer." },
+                  ],
+              solution: [{ say: `Check: ${p.times} × ${p.n} + ${p.add} = ${total}.` }],
+            }),
+          [
+            {
+              statement:
+                "I think of a number, double it and take away 4. The answer is 10. Ben writes $2n - 4 = 10$.",
+              truth: true,
+              right: "True. Doubling n gives 2n, and taking away 4 gives 2n − 4.",
+              wrong: [
+                ["False. It should be 2(n − 4) = 10.", "NPV.ORDER.LEFT-TO-RIGHT"],
+                ["False. It should be n − 4 × 2 = 10."],
               ],
-          solution: [{ say: `Check: ${p.times} × ${p.n} + ${p.add} = ${total}.` }],
-        });
+            },
+            {
+              statement: "Solving $n + 7 = 15$, Pam says $n = 22$.",
+              truth: false,
+              right: "False. Undo + 7 by subtracting 7: n = 15 − 7 = 8.",
+              wrong: [
+                ["True. Add 7 to 15.", "ALG.SOLVE.WRONG-INVERSE"],
+                ["True. 15 + 7 = 22, so n is 22."],
+              ],
+            },
+            {
+              claim:
+                "A missing number problem like $\\square \\times 4 = 20$ can be written with a letter instead of a box.",
+              truth: "always",
+              right:
+                "Always. 4n = 20 means the same thing; the letter stands for the missing number.",
+              wrong: [["Never. Letters are only for words."], ["Sometimes. Only for adding."]],
+            },
+          ],
+        );
       }
     }
   },

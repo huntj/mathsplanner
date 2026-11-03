@@ -9,6 +9,7 @@ import { defineGenerator, type GeneratorDefinition, type QuestionDraft } from "@
 import { fracTex } from "../shared/fr.ts";
 import { mixFamilies } from "../shared/npv.ts";
 import parent from "./Y6-FR-01.ts";
+import { withClaims } from "../shared/variety.ts";
 
 // Denominators that share a factor, so the lowest common denominator is less than their product.
 const PAIRS: [number, number][] = [
@@ -68,5 +69,36 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y6-FR-01.b", { 2: { ...parent.definition, id: "Y6-FR-01.b" }, 4: own }),
+  withClaims(mixFamilies("Y6-FR-01.b", { 2: { ...parent.definition, id: "Y6-FR-01.b" }, 4: own }), [
+    {
+      statement:
+        "Eli writes $\\frac{2}{3}$ and $\\frac{3}{4}$ as $\\frac{8}{12}$ and $\\frac{9}{12}$.",
+      truth: true,
+      right: "True. 12 is a common multiple of 3 and 4: 2/3 = 8/12 and 3/4 = 9/12.",
+      wrong: [
+        ["False. It should be 2/12 and 3/12.", "FR.EQUIV.ADD-SAME"],
+        ["False. The common denominator must be 7."],
+      ],
+    },
+    {
+      statement:
+        "To compare $\\frac{1}{4}$ and $\\frac{3}{8}$, Ola changes $\\frac{1}{4}$ to $\\frac{5}{8}$ by adding 4 to the top and bottom.",
+      truth: false,
+      right:
+        "False. Multiply the top and bottom by 2: 1/4 = 2/8. Adding the same number changes the fraction.",
+      wrong: [
+        ["True. Do the same to the top and bottom.", "FR.EQUIV.ADD-SAME"],
+        ["True. 4 + 4 = 8, so it works."],
+      ],
+    },
+    {
+      claim: "Multiplying the two denominators gives a common denominator.",
+      truth: "always",
+      right: "Always. The product is a multiple of both, though it may not be the smallest.",
+      wrong: [
+        ["Never. You must add them.", "FR.EQUIV.ADD-SAME"],
+        ["Sometimes. Only when one is double the other.", "NPV.FACTOR.LCM-PRODUCT"],
+      ],
+    },
+  ]),
 );

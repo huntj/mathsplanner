@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   values: number[];
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y6-STA-02",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.MEAN.DIVISOR"],
 
@@ -79,46 +80,79 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return p.claim === 0
-          ? A.alwaysSometimesNever({
-              rng,
-              claim: "The mean of a set of numbers is one of the numbers in the set.",
-              truth: "sometimes",
-              reasons: [
-                {
-                  text: `Sometimes. The mean of 2, 4 and 6 is 4, which is in the set, but the mean of 1 and 2 is 1.5, which is not.`,
-                  correct: true,
-                },
-                { text: "Always. The mean is the middle number.", code: "STA.MEAN.DIVISOR" },
-                { text: "Never. The mean is always a decimal." },
+        return orClaims(
+          rng,
+          () =>
+            p.claim === 0
+              ? A.alwaysSometimesNever({
+                  rng,
+                  claim: "The mean of a set of numbers is one of the numbers in the set.",
+                  truth: "sometimes",
+                  reasons: [
+                    {
+                      text: `Sometimes. The mean of 2, 4 and 6 is 4, which is in the set, but the mean of 1 and 2 is 1.5, which is not.`,
+                      correct: true,
+                    },
+                    { text: "Always. The mean is the middle number.", code: "STA.MEAN.DIVISOR" },
+                    { text: "Never. The mean is always a decimal." },
+                  ],
+                  solution: [
+                    {
+                      say: `Here the mean is ${mean}${p.values.includes(mean) ? ", which is in the set" : ", which is not in the set"}.`,
+                    },
+                  ],
+                })
+              : A.trueOrFalseWhy({
+                  rng,
+                  statement: [
+                    "Ben finds the mean of ",
+                    A.math(p.values.join(",\\ ")),
+                    ` by adding them and dividing by ${n + 1}.`,
+                  ],
+                  truth: false,
+                  reasons: [
+                    {
+                      text: `False. Divide by how many numbers there are: ${n}. ${how}`,
+                      correct: true,
+                    },
+                    {
+                      text: "True. You divide by one more than the number of values.",
+                      code: "STA.MEAN.DIVISOR",
+                    },
+                    { text: "True. Any number will do, as long as you add first." },
+                  ],
+                  solution: [{ say: how }],
+                }),
+          [
+            {
+              statement: "Jo says the mean of 4, 6 and 8 is 6.",
+              truth: true,
+              right: "True. 4 + 6 + 8 = 18, and 18 ÷ 3 = 6.",
+              wrong: [
+                ["False. It is 18.", "STA.MEAN.DIVISOR"],
+                ["False. It is 9, as 18 ÷ 2 = 9.", "STA.MEAN.DIVISOR"],
               ],
-              solution: [
-                {
-                  say: `Here the mean is ${mean}${p.values.includes(mean) ? ", which is in the set" : ", which is not in the set"}.`,
-                },
+            },
+            {
+              claim: "Adding a number bigger than the mean to a set makes the mean bigger.",
+              truth: "always",
+              right: "Always. The new number pulls the average up towards it.",
+              wrong: [
+                ["Never. The mean stays the same.", "STA.MEAN.DIVISOR"],
+                ["Sometimes. Only if it is the biggest number."],
               ],
-            })
-          : A.trueOrFalseWhy({
-              rng,
-              statement: [
-                "Ben finds the mean of ",
-                A.math(p.values.join(",\\ ")),
-                ` by adding them and dividing by ${n + 1}.`,
+            },
+            {
+              claim: "The mean of a set of numbers is bigger than every number in the set.",
+              truth: "never",
+              right: "Never. The mean is between the smallest and biggest numbers.",
+              wrong: [
+                ["Always. It is the total, so it is the biggest.", "STA.MEAN.DIVISOR"],
+                ["Sometimes. When the numbers are big."],
               ],
-              truth: false,
-              reasons: [
-                {
-                  text: `False. Divide by how many numbers there are: ${n}. ${how}`,
-                  correct: true,
-                },
-                {
-                  text: "True. You divide by one more than the number of values.",
-                  code: "STA.MEAN.DIVISOR",
-                },
-                { text: "True. Any number will do, as long as you add first." },
-              ],
-              solution: [{ say: how }],
-            });
+            },
+          ],
+        );
     }
   },
 

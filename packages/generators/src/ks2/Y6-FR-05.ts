@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { fracTex, gcdOf, slash } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y6-FR-05",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["FR.DIVIDE.MULTIPLIES"],
 
@@ -74,23 +75,56 @@ export default defineGenerator<Params>({
           solution: [{ say: how }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Finn says ", A.math(`${fracTex(p.a, p.b)} \\div ${p.k} = ${slip}`), "."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Finn says ", A.math(`${fracTex(p.a, p.b)} \\div ${p.k} = ${slip}`), "."],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Sharing ${slash(p.a, p.b)} into ${p.k} equal parts gives less than ${slash(p.a, p.b)}. ${how}`,
+                  correct: true,
+                },
+                {
+                  text: `True. Divide by ${p.k} by multiplying the numerator by ${p.k}.`,
+                  code: "FR.DIVIDE.MULTIPLIES",
+                },
+                { text: "True. You cannot divide a fraction, so you multiply it." },
+              ],
+              solution: [{ say: how }],
+            }),
+          [
             {
-              text: `False. Sharing ${slash(p.a, p.b)} into ${p.k} equal parts gives less than ${slash(p.a, p.b)}. ${how}`,
-              correct: true,
+              statement: "Gil says $\\frac{1}{3} \\div 2 = \\frac{1}{6}$.",
+              truth: true,
+              right: "True. Halving a third gives a sixth.",
+              wrong: [
+                ["False. It is 2/3.", "FR.DIVIDE.MULTIPLIES"],
+                ["False. It is 1/5, as 3 + 2 = 5."],
+              ],
             },
             {
-              text: `True. Divide by ${p.k} by multiplying the numerator by ${p.k}.`,
-              code: "FR.DIVIDE.MULTIPLIES",
+              statement: "Sol says $\\frac{4}{5} \\div 2 = \\frac{8}{5}$.",
+              truth: false,
+              right: "False. Dividing by 2 halves it: 4/5 ÷ 2 = 2/5.",
+              wrong: [
+                ["True. Multiply the top by 2.", "FR.DIVIDE.MULTIPLIES"],
+                ["True. Dividing makes fractions bigger."],
+              ],
             },
-            { text: "True. You cannot divide a fraction, so you multiply it." },
+            {
+              claim: "Dividing a fraction by a whole number bigger than 1 makes it smaller.",
+              truth: "always",
+              right: "Always. You share it into more parts, so each part is smaller.",
+              wrong: [
+                ["Never. It gets bigger.", "FR.DIVIDE.MULTIPLIES"],
+                ["Sometimes. Only for unit fractions."],
+              ],
+            },
           ],
-          solution: [{ say: how }],
-        });
+        );
     }
   },
 

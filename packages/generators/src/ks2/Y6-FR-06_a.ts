@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
 import { fracTex } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y6-FR-06.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MD.DIVIDE.ORDER"],
 
@@ -71,24 +72,59 @@ export default defineGenerator<Params>({
           solution: [{ say: "", math: `${fracTex(p.n, p.d)} = ${p.n} \\div ${p.d}` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Mia says that sharing ${p.d} bars of chocolate between ${p.n} children gives each child `,
-            A.math(fracTex(p.n, p.d)),
-            " of a bar.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Mia says that sharing ${p.d} bars of chocolate between ${p.n} children gives each child `,
+                A.math(fracTex(p.n, p.d)),
+                " of a bar.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Each child gets ${p.d} ÷ ${p.n} = ${p.d}/${p.n} bars, which is more than one bar.`,
+                  correct: true,
+                },
+                { text: "True. The smaller number always goes on top.", code: "MD.DIVIDE.ORDER" },
+                { text: "True. Sharing always gives less than one each." },
+              ],
+              solution: [{ say: "", math: `${p.d} \\div ${p.n} = ${fracTex(p.d, p.n)}` }],
+            }),
+          [
             {
-              text: `False. Each child gets ${p.d} ÷ ${p.n} = ${p.d}/${p.n} bars, which is more than one bar.`,
-              correct: true,
+              statement:
+                "Ali says sharing 3 pizzas between 4 people gives each person $\\frac{3}{4}$ of a pizza.",
+              truth: true,
+              right: "True. 3 ÷ 4 = 3/4.",
+              wrong: [
+                ["False. Each gets 4/3 of a pizza.", "MD.DIVIDE.ORDER"],
+                ["False. Each gets 1/4 of a pizza."],
+              ],
             },
-            { text: "True. The smaller number always goes on top.", code: "MD.DIVIDE.ORDER" },
-            { text: "True. Sharing always gives less than one each." },
+            {
+              statement: "Kit says $\\frac{5}{8}$ means $8 \\div 5$.",
+              truth: false,
+              right: "False. 5/8 means 5 ÷ 8: the top is divided by the bottom.",
+              wrong: [
+                ["True. You divide the bigger number by the smaller.", "MD.DIVIDE.ORDER"],
+                ["True. A fraction is the bottom shared by the top."],
+              ],
+            },
+            {
+              claim:
+                "Sharing fewer bars than there are children gives each child less than one bar.",
+              truth: "always",
+              right: "Always. The bars ÷ the children is a fraction less than 1.",
+              wrong: [
+                ["Never. Each child gets at least one bar.", "MD.DIVIDE.ORDER"],
+                ["Sometimes. Only with an odd number of children."],
+              ],
+            },
           ],
-          solution: [{ say: "", math: `${p.d} \\div ${p.n} = ${fracTex(p.d, p.n)}` }],
-        });
+        );
     }
   },
 

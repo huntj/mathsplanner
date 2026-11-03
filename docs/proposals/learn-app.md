@@ -1,7 +1,7 @@
 # Proposal: Learn Maths, a Duolingo-style practice app for pupils
 
 Status: **agreed on 29 October 2026.** Steps 1 to 6 are built: the course data with Year 7 as
-the pilot section and Years 8 and 9 after it (`data/course.txt`, `pnpm data:course`), the shared answer widgets
+the pilot section, then Years 8, 9 and 6 (`data/course.txt`, `pnpm data:course`), the shared answer widgets
 (`@mathsplanner/ui`), and the app with its path, progress, first visit, lessons, practice and
 rewards (`apps/learn`, `pnpm learn`); steps 7 to 10 are to do.
 
@@ -159,6 +159,30 @@ proportion with compound change, inequalities with simultaneous equations):
 | 7   | Compound change and inverse proportion  |      3 |
 | 8   | Graphs and sequences                    |      4 |
 | 9   | Probability                             |      4 |
+
+**Year 6** has 15 units and 72 skills. Circles join the shapes unit, as naming the parts of a
+circle needs drawing shapes first, and number units alternate with geometry and algebra:
+
+| #   | Unit                                    | Skills |
+| --- | --------------------------------------- | -----: |
+| 1   | Place value and negative numbers        |      5 |
+| 2   | Angles                                  |      3 |
+| 3   | Multiplying and dividing                |      5 |
+| 4   | Factors, primes and order of operations |      5 |
+| 5   | Fractions                               |      5 |
+| 6   | Coordinates and transformations         |      3 |
+| 7   | Fractions, decimals and percentages     |      5 |
+| 8   | Decimals                                |      4 |
+| 9   | Shapes, angles and circles              |      8 |
+| 10  | Rounding and problem solving            |      5 |
+| 11  | Formulae, sequences and equations       |      5 |
+| 12  | Ratio and percentages                   |      5 |
+| 13  | Measures and converting units           |      5 |
+| 14  | Area and volume                         |      6 |
+| 15  | Pie charts, line graphs and the mean    |      3 |
+
+Most primary generators are built from shared families or a parent statement's generator, so
+their claims are added with `withClaims`, which leaves the shared definition alone.
 
 **Skill levels.** Each skill climbs through up to five levels, using only the depths its
 generator supports, so the levels come from the generators when the app runs rather than from

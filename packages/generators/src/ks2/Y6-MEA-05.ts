@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { lShape } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   shape: number;
@@ -63,7 +64,7 @@ const FORMULAE: [string, string, [string, string][]][] = [
 
 export default defineGenerator<Params>({
   id: "Y6-MEA-05",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.PERIMETER.AREA", "MEA.VOLUME.ADDS", "MEA.AREA.TRIANGLE-HALF"],
 
@@ -118,23 +119,56 @@ export default defineGenerator<Params>({
       }
       default: {
         const area = p.W * p.H - p.a * p.b;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            A.figure(lShape(p.W, p.H, p.a, p.b, [0, 1, 2, 3, 4, 5])),
-            `Ravi says the area is ${p.W} × ${p.H} = ${p.W * p.H} cm², using length × width.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                A.figure(lShape(p.W, p.H, p.a, p.b, [0, 1, 2, 3, 4, 5])),
+                `Ravi says the area is ${p.W} × ${p.H} = ${p.W * p.H} cm², using length × width.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The shape is not a rectangle, so l × w does not fit it. Split it into rectangles, or take the cut corner away: ${p.W * p.H} − ${p.a * p.b} = ${area} cm².`,
+                  correct: true,
+                },
+                { text: "True. Length × width works for any shape.", code: "MEA.PERIMETER.AREA" },
+                { text: "True. The longest side times the tallest side always gives the area." },
+              ],
+              solution: [{ say: `${p.W} × ${p.H} − ${p.a} × ${p.b} = ${area} cm².` }],
+            }),
+          [
             {
-              text: `False. The shape is not a rectangle, so l × w does not fit it. Split it into rectangles, or take the cut corner away: ${p.W * p.H} − ${p.a * p.b} = ${area} cm².`,
-              correct: true,
+              statement: "Ivy says the area of a 6 cm by 4 cm rectangle is 24 cm².",
+              truth: true,
+              right: "True. Area of a rectangle = length × width = 6 × 4 = 24 cm².",
+              wrong: [
+                ["False. It is 20 cm², adding the sides.", "MEA.PERIMETER.AREA"],
+                ["False. It is 10 cm²."],
+              ],
             },
-            { text: "True. Length × width works for any shape.", code: "MEA.PERIMETER.AREA" },
-            { text: "True. The longest side times the tallest side always gives the area." },
+            {
+              claim: "You can use length × width to find the area of a right-angled triangle.",
+              truth: "never",
+              right:
+                "Never. A right-angled triangle is half a rectangle, so its area is half of length × width.",
+              wrong: [
+                ["Always. It has a length and a width.", "MEA.AREA.TRIANGLE-HALF"],
+                ["Sometimes. When the sides are equal."],
+              ],
+            },
+            {
+              claim:
+                "The volume of a cuboid can be found by multiplying its length, width and height.",
+              truth: "always",
+              right:
+                "Always. That counts the 1 cm cubes in every layer, times the number of layers.",
+              wrong: [["Never. You add them.", "MEA.VOLUME.ADDS"], ["Sometimes. Only for cubes."]],
+            },
           ],
-          solution: [{ say: `${p.W} × ${p.H} − ${p.a} × ${p.b} = ${area} cm².` }],
-        });
+        );
       }
     }
   },

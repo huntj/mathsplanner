@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** p·a + q·b = total, with a = a0 a known solution. */
@@ -21,7 +22,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y6-ALG-04",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SOLVE.WRONG-INVERSE"],
 
@@ -75,29 +76,62 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Rory says ",
-            A.math(eq),
-            " has only one pair of answers, ",
-            A.math(`a = ${p.a0},\\ b = ${p.b0}`),
-            ".",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Rory says ",
+                A.math(eq),
+                " has only one pair of answers, ",
+                A.math(`a = ${p.a0},\\ b = ${p.b0}`),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Other pairs work too, for example a = ${p.a0 + p.qb}, b = ${p.b0 - p.pa}: ${p.pa} × ${p.a0 + p.qb} + ${p.qb} × ${p.b0 - p.pa} = ${total}. An equation with two unknowns usually has many solutions.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Every equation has exactly one answer.",
+                  code: "ALG.SOLVE.WRONG-INVERSE",
+                },
+                { text: "True. a and b must be equal." },
+              ],
+              solution: [{ say: `Choose a value for a, then find b. Each choice gives a pair.` }],
+            }),
+          [
             {
-              text: `False. Other pairs work too, for example a = ${p.a0 + p.qb}, b = ${p.b0 - p.pa}: ${p.pa} × ${p.a0 + p.qb} + ${p.qb} × ${p.b0 - p.pa} = ${total}. An equation with two unknowns usually has many solutions.`,
-              correct: true,
+              statement: "Kai says $a = 3,\\ b = 7$ is one answer to $a + b = 10$.",
+              truth: true,
+              right: "True. 3 + 7 = 10.",
+              wrong: [
+                ["False. a and b must be the same.", "ALG.SOLVE.WRONG-INVERSE"],
+                ["False. a + b = 10 has no answers."],
+              ],
             },
             {
-              text: "True. Every equation has exactly one answer.",
-              code: "ALG.SOLVE.WRONG-INVERSE",
+              claim: "The equation $a + b = 10$ has more than one pair of whole-number answers.",
+              truth: "always",
+              right: "Always. 1 + 9, 2 + 8, 3 + 7 and more all work.",
+              wrong: [
+                ["Never. Each equation has one answer.", "ALG.SOLVE.WRONG-INVERSE"],
+                ["Sometimes. Only when a and b are different."],
+              ],
             },
-            { text: "True. a and b must be equal." },
+            {
+              statement: "Ella says $a = 2,\\ b = 5$ is the only answer to $2a + b = 9$.",
+              truth: false,
+              right: "False. a = 1, b = 7 and a = 3, b = 3 work too.",
+              wrong: [
+                ["True. 2 × 2 + 5 = 9, so that is the answer.", "ALG.SOLVE.WRONG-INVERSE"],
+                ["True. Equations have one answer."],
+              ],
+            },
           ],
-          solution: [{ say: `Choose a value for a, then find b. Each choice gives a pair.` }],
-        });
+        );
     }
   },
 

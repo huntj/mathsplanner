@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -19,7 +20,7 @@ const quotient = (n: number, d: number) => Number(((n * 100) / d / 100).toFixed(
 
 export default defineGenerator<Params>({
   id: "Y6-FR-09",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MD.REMAINDER.AS-DECIMAL"],
 
@@ -78,32 +79,66 @@ export default defineGenerator<Params>({
           solution: [{ say: how }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Leo says ",
-            A.math(`${p.n} \\div ${p.d} = ${slip}`),
-            `, because the answer is ${q} remainder ${r}.`,
-          ],
-          truth: slip === answer,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Leo says ",
+                A.math(`${p.n} \\div ${p.d} = ${slip}`),
+                `, because the answer is ${q} remainder ${r}.`,
+              ],
+              truth: slip === answer,
+              reasons: [
+                {
+                  text: `False. The remainder ${r} must be divided by ${p.d} too. ${how}`,
+                  correct: true,
+                },
+                {
+                  text: "True. The remainder goes after the decimal point.",
+                  code: "MD.REMAINDER.AS-DECIMAL",
+                },
+                { text: "True. Remainders are always tenths." },
+              ],
+              solution: [{ say: how }],
+            }),
+          [
             {
-              text: `False. The remainder ${r} must be divided by ${p.d} too. ${how}`,
-              correct: true,
+              statement: "Kim says $7 \\div 4 = 1.75$.",
+              truth: true,
+              right: "True. 7 ÷ 4 = 1 remainder 3, and 3/4 = 0.75.",
+              wrong: [
+                ["False. It is 1.3, as the remainder is 3.", "MD.REMAINDER.AS-DECIMAL"],
+                ["False. It is 1.4."],
+              ],
             },
             {
-              text: "True. The remainder goes after the decimal point.",
-              code: "MD.REMAINDER.AS-DECIMAL",
+              statement: "Raj says $23 \\div 4 = 5.3$, because 23 ÷ 4 is 5 remainder 3.",
+              truth: false,
+              right: "False. The remainder 3 is 3/4, which is 0.75. So 23 ÷ 4 = 5.75.",
+              wrong: [
+                ["True. The remainder goes after the point.", "MD.REMAINDER.AS-DECIMAL"],
+                ["True. 5 × 4 + 3 = 23."],
+              ],
             },
-            { text: "True. Remainders are always tenths." },
+            {
+              claim: "A division with a remainder can be written as a decimal.",
+              truth: "always",
+              right:
+                "Always. The remainder is a fraction of the divisor, and every fraction can be written as a decimal.",
+              wrong: [
+                ["Never. Remainders stay as remainders.", "MD.REMAINDER.AS-DECIMAL"],
+                ["Sometimes. Only when you divide by 10."],
+              ],
+            },
           ],
-          solution: [{ say: how }],
-        });
+        );
     }
   },
 
   verify(p, question) {
-    if (question.archetype === "true-or-false-why")
+    if (question.key.depth === 4)
       return Number(`${Math.floor(p.n / p.d)}.${p.n % p.d}`) !== p.n / p.d;
     return Math.abs(numberAnswer(question) - p.n / p.d) < 1e-9;
   },

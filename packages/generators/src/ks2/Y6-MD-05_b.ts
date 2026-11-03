@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type GeneratorDefinition, type QuestionDraft } from "@mathsplanner/core";
 import { factorsFamily } from "../shared/md.ts";
 import { mixFamilies } from "../shared/npv.ts";
+import { withClaims } from "../shared/variety.ts";
 
 const base = factorsFamily("Y6-MD-05.b", { friendly: 60, standard: 100, stretch: 100 }, true);
 
@@ -67,8 +68,37 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y6-MD-05.b", {
-    1: lowest,
-    4: own,
-  }),
+  withClaims(
+    mixFamilies("Y6-MD-05.b", {
+      1: lowest,
+      4: own,
+    }),
+    [
+      {
+        statement: "Ana says the lowest common multiple of 4 and 6 is 12.",
+        truth: true,
+        right:
+          "True. Multiples of 4 are 4, 8, 12, … and of 6 are 6, 12, …: 12 is the first in both.",
+        wrong: [
+          ["False. It is 24, as 4 × 6 = 24.", "NPV.FACTOR.LCM-PRODUCT"],
+          ["False. It is 2.", "MD.FACTOR.FACTOR-MULTIPLE"],
+        ],
+      },
+      {
+        statement: "Gus says 3 is a common multiple of 6 and 9.",
+        truth: false,
+        right: "False. 3 is a common factor. Common multiples of 6 and 9 are 18, 36, 54, …",
+        wrong: [["True. 3 goes into both.", "MD.FACTOR.FACTOR-MULTIPLE"], ["True. 9 − 6 = 3."]],
+      },
+      {
+        claim: "Two numbers have a common multiple.",
+        truth: "always",
+        right: "Always. Their product is a multiple of both.",
+        wrong: [
+          ["Sometimes. Only if one is a multiple of the other.", "MD.FACTOR.MISSES-PAIR"],
+          ["Never. Each number has its own multiples."],
+        ],
+      },
+    ],
+  ),
 );

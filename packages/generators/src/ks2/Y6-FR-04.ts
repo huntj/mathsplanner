@@ -8,6 +8,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { fracTex, gcdOf, slash } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y6-FR-04",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["FR.MULTIPLY.ALWAYS-BIGGER", "FR.ADD.TOPS-AND-BOTTOMS"],
 
@@ -90,29 +91,63 @@ export default defineGenerator<Params>({
           solution: [{ say: `"Of" means multiply. ${how}` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ruby says ",
-            A.math(expr),
-            " must be bigger than ",
-            A.math(fracTex(p.a, p.b)),
-            ", because multiplying makes things bigger.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ruby says ",
+                A.math(expr),
+                " must be bigger than ",
+                A.math(fracTex(p.a, p.b)),
+                ", because multiplying makes things bigger.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Multiplying by ${slash(p.c, p.d)}, which is less than 1, takes only part of ${slash(p.a, p.b)}: the answer is ${v.toString()}, which is smaller.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Multiplying always gives a bigger answer.",
+                  code: "FR.MULTIPLY.ALWAYS-BIGGER",
+                },
+                { text: "True. The denominator gets bigger, so the fraction gets bigger." },
+              ],
+              solution: [{ say: how }],
+            }),
+          [
             {
-              text: `False. Multiplying by ${slash(p.c, p.d)}, which is less than 1, takes only part of ${slash(p.a, p.b)}: the answer is ${v.toString()}, which is smaller.`,
-              correct: true,
+              statement:
+                "Dev says $\\frac{2}{3} \\times \\frac{3}{4} = \\frac{6}{12}$, which is $\\frac{1}{2}$.",
+              truth: true,
+              right: "True. Multiply the tops and the bottoms: 6/12, which simplifies to 1/2.",
+              wrong: [
+                ["False. It is 5/7, adding tops and bottoms.", "FR.ADD.TOPS-AND-BOTTOMS"],
+                ["False. It is bigger than 3/4.", "FR.MULTIPLY.ALWAYS-BIGGER"],
+              ],
             },
             {
-              text: "True. Multiplying always gives a bigger answer.",
-              code: "FR.MULTIPLY.ALWAYS-BIGGER",
+              statement: "Amy says $\\frac{1}{2} \\times \\frac{1}{5} = \\frac{2}{7}$.",
+              truth: false,
+              right: "False. Multiply the tops and the bottoms: 1/10. Half of a fifth is a tenth.",
+              wrong: [
+                ["True. Add the tops and add the bottoms.", "FR.ADD.TOPS-AND-BOTTOMS"],
+                ["True. 1 + 1 = 2 and 2 + 5 = 7."],
+              ],
             },
-            { text: "True. The denominator gets bigger, so the fraction gets bigger." },
+            {
+              claim: "Multiplying two proper fractions gives an answer smaller than both of them.",
+              truth: "always",
+              right: "Always. Taking part of a part gives less than either part.",
+              wrong: [
+                ["Never. Multiplying makes things bigger.", "FR.MULTIPLY.ALWAYS-BIGGER"],
+                ["Sometimes. Only for unit fractions."],
+              ],
+            },
           ],
-          solution: [{ say: how }],
-        });
+        );
     }
   },
 

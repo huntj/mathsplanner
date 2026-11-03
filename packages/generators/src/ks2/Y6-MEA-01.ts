@@ -9,6 +9,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   kg: number;
@@ -25,7 +26,7 @@ const r3 = (x: number) => Math.round(x * 1000) / 1000;
 
 export default defineGenerator<Params>({
   id: "Y6-MEA-01",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4, 5],
   misconceptions: ["MEA.CONVERT.FACTOR", "MEA.UNITS.MIXED", "AS.MULTISTEP.ONE-STEP"],
 
@@ -87,26 +88,58 @@ export default defineGenerator<Params>({
       }
       case 4: {
         const truth = p.km * 1000 > p.m;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Mia says ${p.km} km is longer than ${p.m} m.`,
-          truth,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Mia says ${p.km} km is longer than ${p.m} m.`,
+              truth,
+              reasons: [
+                {
+                  text: `${truth ? "True" : "False"}. ${p.km} km = ${Math.round(p.km * 1000)} m, which is ${truth ? "more" : "less"} than ${p.m} m.`,
+                  correct: true,
+                },
+                {
+                  text: `${truth ? "False" : "True"}. ${p.m} is a bigger number than ${p.km}.`,
+                  code: "MEA.UNITS.MIXED",
+                },
+                {
+                  text: `${truth ? "False" : "True"}. ${p.km} km = ${Math.round(p.km * 100)} m.`,
+                  code: "MEA.CONVERT.FACTOR",
+                },
+              ],
+              solution: [
+                { say: `Convert to metres: ${p.km} × 1000 = ${Math.round(p.km * 1000)} m.` },
+              ],
+            }),
+          [
             {
-              text: `${truth ? "True" : "False"}. ${p.km} km = ${Math.round(p.km * 1000)} m, which is ${truth ? "more" : "less"} than ${p.m} m.`,
-              correct: true,
+              statement: "Amy says 2.5 kg is 2500 g.",
+              truth: true,
+              right: "True. 1 kg = 1000 g, so 2.5 kg = 2.5 × 1000 = 2500 g.",
+              wrong: [["False. It is 250 g.", "MEA.CONVERT.FACTOR"], ["False. It is 25 g."]],
             },
             {
-              text: `${truth ? "False" : "True"}. ${p.m} is a bigger number than ${p.km}.`,
-              code: "MEA.UNITS.MIXED",
+              statement: "Dan has 1.2 m of ribbon and uses 45 cm. He says 75 cm is left.",
+              truth: true,
+              right: "True. 1.2 m = 120 cm, and 120 − 45 = 75 cm.",
+              wrong: [
+                ["False. 1.2 − 45 cannot be done.", "MEA.UNITS.MIXED"],
+                ["False. 45 − 1.2 = 43.8 cm is left.", "MEA.UNITS.MIXED"],
+              ],
             },
             {
-              text: `${truth ? "False" : "True"}. ${p.km} km = ${Math.round(p.km * 100)} m.`,
-              code: "MEA.CONVERT.FACTOR",
+              claim: "To add 350 ml and 1.5 l, you must first write them in the same unit.",
+              truth: "always",
+              right: "Always. 350 ml + 1500 ml = 1850 ml, or 0.35 l + 1.5 l = 1.85 l.",
+              wrong: [
+                ["Never. Just add 350 and 1.5.", "MEA.UNITS.MIXED"],
+                ["Sometimes. Only for big amounts."],
+              ],
             },
           ],
-          solution: [{ say: `Convert to metres: ${p.km} × 1000 = ${Math.round(p.km * 1000)} m.` }],
-        });
+        );
       }
       default: {
         const poured = p.glass * p.glasses;

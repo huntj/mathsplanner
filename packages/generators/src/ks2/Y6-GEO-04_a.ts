@@ -9,6 +9,7 @@ import { defineGenerator, type GeneratorDefinition, type QuestionDraft } from "@
 import { chosenText } from "../shared/counting.ts";
 import { mixFamilies } from "../shared/npv.ts";
 import parent from "./Y6-GEO-04.ts";
+import { withClaims } from "../shared/variety.ts";
 
 const PARTS: [string, string][] = [
   ["the point in the middle of the circle", "Centre"],
@@ -77,5 +78,38 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y6-GEO-04.a", { 1: own, 3: { ...parent.definition, id: "Y6-GEO-04.a" }, 4: own }),
+  withClaims(
+    mixFamilies("Y6-GEO-04.a", { 1: own, 3: { ...parent.definition, id: "Y6-GEO-04.a" }, 4: own }),
+    [
+      {
+        statement: "Leo says the distance all the way round a circle is called its circumference.",
+        truth: true,
+        right: "True. The circumference is the perimeter of a circle.",
+        wrong: [
+          ["False. It is the diameter.", "GEO.CIRCLE.RADIUS-DIAMETER"],
+          ["False. It is the radius."],
+        ],
+      },
+      {
+        claim: "Every radius of a circle is the same length.",
+        truth: "always",
+        right: "Always. Every point on a circle is the same distance from its centre.",
+        wrong: [
+          ["Sometimes. It depends which way you draw it.", "GEO.CIRCLE.RADIUS-DIAMETER"],
+          ["Never. Some are longer."],
+        ],
+      },
+      {
+        statement:
+          "Mia says a diameter can go from one side of a circle to the other without passing through the centre.",
+        truth: false,
+        right:
+          "False. A diameter always passes through the centre. A line across that misses the centre is a chord.",
+        wrong: [
+          ["True. Any line across the circle is a diameter.", "GEO.CIRCLE.RADIUS-DIAMETER"],
+          ["True. Diameters can be anywhere."],
+        ],
+      },
+    ],
+  ),
 );

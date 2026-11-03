@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { regularPolygon } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const NAMES: Record<number, string> = {
   5: "pentagon",
@@ -24,7 +25,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y6-GEO-03.d",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.POLYGON.SUM-N-TIMES-180", "GEO.POLYGON.INTERIOR-EXTERIOR"],
 
@@ -76,26 +77,62 @@ export default defineGenerator<Params>({
           solution: [{ say: `${p.n - 2} × 180° = ${sum}°.` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Omar says each angle inside a regular ${name} is 180°, because the angles add up to ${p.n} × 180°.`,
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Omar says each angle inside a regular ${name} is 180°, because the angles add up to ${p.n} × 180°.`,
+              truth: false,
+              reasons: [
+                {
+                  text: `False. A ${name} splits into ${p.n - 2} triangles, so the angles add up to ${sum}° and each is ${each}°.`,
+                  correct: true,
+                },
+                {
+                  text: `True. A shape with ${p.n} sides has ${p.n} triangles inside it.`,
+                  code: "GEO.POLYGON.SUM-N-TIMES-180",
+                },
+                {
+                  text: "True. Every angle in a polygon is 180°.",
+                  code: "GEO.POLYGON.SUM-N-TIMES-180",
+                },
+              ],
+              solution: [
+                { say: `(${p.n} − 2) × 180° = ${sum}°, and ${sum}° ÷ ${p.n} = ${each}°.` },
+              ],
+            }),
+          [
             {
-              text: `False. A ${name} splits into ${p.n - 2} triangles, so the angles add up to ${sum}° and each is ${each}°.`,
-              correct: true,
+              statement: "Ana says each angle in a regular pentagon is 108°.",
+              truth: true,
+              right: "True. The angles add up to 3 × 180° = 540°, and 540 ÷ 5 = 108°.",
+              wrong: [
+                ["False. It is 180°.", "GEO.POLYGON.SUM-N-TIMES-180"],
+                ["False. It is 72°, the exterior angle.", "GEO.POLYGON.INTERIOR-EXTERIOR"],
+              ],
             },
             {
-              text: `True. A shape with ${p.n} sides has ${p.n} triangles inside it.`,
-              code: "GEO.POLYGON.SUM-N-TIMES-180",
+              claim: "Each angle in a regular polygon gets bigger as the number of sides goes up.",
+              truth: "always",
+              right:
+                "Always. 60° for a triangle, 90° for a square, 108° for a pentagon, 120° for a hexagon, and so on.",
+              wrong: [
+                ["Never. More sides make smaller angles.", "GEO.POLYGON.INTERIOR-EXTERIOR"],
+                ["Sometimes. It stops at the square."],
+              ],
             },
             {
-              text: "True. Every angle in a polygon is 180°.",
-              code: "GEO.POLYGON.SUM-N-TIMES-180",
+              claim: "An angle inside a regular polygon is 180°.",
+              truth: "never",
+              right: "Never. 180° is a straight line, so the shape would have no corner there.",
+              wrong: [
+                ["Always. Each angle is 180°.", "GEO.POLYGON.SUM-N-TIMES-180"],
+                ["Sometimes. In shapes with many sides."],
+              ],
             },
           ],
-          solution: [{ say: `(${p.n} − 2) × 180° = ${sum}°, and ${sum}° ÷ ${p.n} = ${each}°.` }],
-        });
+        );
     }
   },
 
