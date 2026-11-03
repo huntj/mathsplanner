@@ -3,14 +3,16 @@
 // slider to nudge until a line hits a star, an equation to build from chips, and a line to drag
 // into place. Each screen opens the next once it is done; a wrong try gets a nudge, never a
 // penalty. The lesson ends on a summary, like any other lesson.
-import { renderRich } from "@mathsplanner/render";
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { course } from "./course.ts";
 import { Dot } from "./Dot.tsx";
 import { familyOf, type Family } from "./families.ts";
 import { StarIcon, StreakIcon } from "./Icons.tsx";
 import { latticeOn, LineGraph, type GraphLine, type GraphPoint } from "./LineGraph.tsx";
 import { play } from "./sounds.ts";
+import { describeScene, PictureView, sceneProps } from "./Picture.tsx";
+import { fmt, say, tex, Title, useChime, Verdict, W, Working, type Step } from "./unit-ui.tsx";
+import { ScreenStepMore } from "./unit-screens.tsx";
 import {
   makesLine,
   onLine,
@@ -26,42 +28,10 @@ import {
   type Plot,
   type Point,
   type Rule,
-  type Scene,
   type Screen,
   type Slider,
   type UnitLesson,
 } from "./unit-lessons/index.ts";
-
-const CHEERS = ["Brilliant!", "Nice one!", "Spot on!", "Great work!", "You got it!", "Yes!"];
-
-const ESCAPES: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" };
-
-/** Words as HTML: maths between dollar signs, and **bold**. */
-export function wordsHtml(words: string): string {
-  return words
-    .split("$")
-    .map((part, i) =>
-      i % 2
-        ? renderRich([{ t: "math", v: part }])
-        : part
-            .replace(/[&<>"]/g, (ch) => ESCAPES[ch] ?? ch)
-            .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>"),
-    )
-    .join("");
-}
-
-function W({ text, className }: { text: string; className?: string }) {
-  return (
-    <span
-      {...(className ? { className } : {})}
-      dangerouslySetInnerHTML={{ __html: wordsHtml(text) }}
-    />
-  );
-}
-
-const fmt = (n: number) => (n < 0 ? `−${Math.abs(n)}` : String(n));
-const tex = (rule: Rule) => `$${ruleText(rule, "-")}$`;
-const say = (p: Point) => `(${fmt(p.x)}, ${fmt(p.y)})`;
 
 /** What the end screen shows, worked out once progress is saved. */
 export interface UnitLessonEnding {
@@ -69,14 +39,6 @@ export interface UnitLessonEnding {
   streak: number;
   today: number;
   goal: number;
-}
-
-/** Props every screen takes. */
-interface Step<S> {
-  screen: S;
-  family: Family;
-  sound: boolean;
-  onNext: () => void;
 }
 
 export function UnitLessonView({
@@ -200,123 +162,9 @@ function ScreenStep({
       return <BuildStep screen={screen} {...step} />;
     case "drag-line":
       return <DragLineStep screen={screen} {...step} />;
+    default:
+      return <ScreenStepMore screen={screen} {...step} />;
   }
-}
-
-/** A screen's heading, with Dot. */
-function Title({
-  title,
-  family,
-  eyebrow,
-}: {
-  title: string;
-  family: Family;
-  eyebrow?: string | undefined;
-}) {
-  return (
-    <div className="lesson-intro">
-      <Dot size={52} family={family} />
-      <div>
-        {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-        <h1 className="lesson-skill">
-          <W text={title} />
-        </h1>
-      </div>
-    </div>
-  );
-}
-
-/** The panel at the foot once a screen is done (or a try was wrong). */
-function Verdict({
-  right,
-  text,
-  family,
-  seed,
-  action,
-  onAction,
-}: {
-  right: boolean;
-  text: string;
-  family: Family;
-  seed: number;
-  action: string;
-  onAction: () => void;
-}) {
-  return (
-    <footer className={`lesson-foot ${right ? "right" : "wrong"}`}>
-      <div className="lesson-foot-inner">
-        <div className="verdict" role="status">
-          <div className="verdict-head">
-            <Dot size={44} mood={right ? "cheer" : "oops"} family={family} />
-            <h2>{right ? CHEERS[Math.abs(seed) % CHEERS.length] : "Not quite"}</h2>
-          </div>
-          <p className="ul-feedback">
-            <W text={text} />
-          </p>
-          <div className="verdict-actions">
-            <button type="button" className="button primary big" onClick={onAction} autoFocus>
-              {action}
-            </button>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-/** The foot while a screen is being worked on: a nudge, and any buttons. */
-function Working({ children, note }: { children?: ReactNode; note?: string | undefined }) {
-  return (
-    <footer className="lesson-foot">
-      <div className="lesson-foot-inner">
-        {note && (
-          <p className="ul-nudge" role="status">
-            <W text={note} />
-          </p>
-        )}
-        {children && <div className="check-row">{children}</div>}
-      </div>
-    </footer>
-  );
-}
-
-/** Plays a sound once, when `when` turns true. */
-function useChime(when: boolean, sound: boolean) {
-  useEffect(() => {
-    if (when) play("right", sound);
-  }, [when, sound]);
-}
-
-function sceneProps(scene: Scene, rise = true) {
-  const first = scene.lines?.[0];
-  return {
-    range: scene.range,
-    lines: (scene.lines ?? []).map((rule): GraphLine => ({ rule })),
-    points: (scene.points ?? []).map((at): GraphPoint => ({ at })),
-    star: scene.star,
-    steps: scene.steps && first ? stepsFor(first, scene) : [],
-    rise,
-  };
-}
-
-/**
- * Where to draw a line's steps: between the points shown, if any are on it; otherwise from where
- * it crosses the y-axis, a few steps along, as a pupil would draw it.
- */
-export function stepsFor(rule: Rule, scene: Scene): Point[] {
-  const shown = (scene.points ?? []).filter((p) => onLine(rule, p)).sort((a, b) => a.x - b.x);
-  if (shown.length > 1) return shown;
-  return latticeOn(rule, scene.range)
-    .filter((p) => p.x >= 0)
-    .slice(0, 4);
-}
-
-function describeScene(scene: Scene): string {
-  const parts = [
-    ...(scene.lines ?? []).map((l) => `the line ${ruleText(l)}`),
-    ...(scene.points?.length ? [`points at ${scene.points.map(say).join(", ")}`] : []),
-  ];
-  return parts.length ? `A grid showing ${parts.join(" and ")}.` : "An empty grid.";
 }
 
 function ExplainStep({
@@ -332,6 +180,7 @@ function ExplainStep({
         {screen.scene && (
           <LineGraph {...sceneProps(screen.scene)} label={describeScene(screen.scene)} />
         )}
+        {screen.picture && <PictureView picture={screen.picture} />}
         <div className="ul-text">
           {screen.text.map((t, i) => (
             <p key={i}>
@@ -351,6 +200,15 @@ function ExplainStep({
   );
 }
 
+/** A machine's rule in TeX with its own names for what goes in and out: term = 4n - 1. */
+export function machineRuleTex(rule: Rule, inName: string, outName: string): string {
+  const name = (n: string) => (n.length > 1 ? `\\text{${n}}` : n);
+  // The input's name first, so an "x" in \text{…} is never touched.
+  return ruleText(rule, "-")
+    .replace(/x/g, name(inName))
+    .replace(/^y =/, `${name(outName)} =`);
+}
+
 /** The outputs a machine offers for an input: the right one and the decoys, smallest first. */
 export function machineChoices(screen: Machine, x: number): number[] {
   return [...new Set([yOn(screen.rule, x), ...(screen.decoys[x] ?? [])])].sort((a, b) => a - b);
@@ -358,6 +216,7 @@ export function machineChoices(screen: Machine, x: number): number[] {
 
 function MachineStep({ screen, family, sound, onNext }: Step<Machine>) {
   const { inputs, shown, rule } = screen;
+  const [inName, outName] = screen.ports ?? ["x", "y"];
   const [fed, setFed] = useState(0);
   /** The input waiting in the machine for the pupil to say what comes out. */
   const [waiting, setWaiting] = useState(false);
@@ -393,7 +252,7 @@ function MachineStep({ screen, family, sound, onNext }: Step<Machine>) {
     : waiting
       ? wrong.length
         ? "Look down the y row: each time x goes up 1, y goes up by the same amount."
-        : `What will come out for $x = ${x}$? Look for the pattern in the table.`
+        : `What will come out for $${inName} = ${x}$? Look for the pattern in the table.`
       : fed < shown
         ? "Tap the glowing number to feed it into the machine."
         : "Now you say what comes out. Feed in the next number.";
@@ -418,18 +277,22 @@ function MachineStep({ screen, family, sound, onNext }: Step<Machine>) {
             ))}
           </div>
           <div className={`machine-box${waiting ? " busy" : ""}${done ? " open" : ""}`}>
-            <span className="machine-port">x</span>
+            <span className="machine-port">{inName}</span>
             <span className="machine-rule">
-              {done ? <W text={tex(rule)} /> : <span aria-label="a hidden rule">?</span>}
+              {done ? (
+                <W text={`$${machineRuleTex(rule, inName, outName)}$`} />
+              ) : (
+                <span aria-label="a hidden rule">?</span>
+              )}
             </span>
-            <span className="machine-port">y</span>
+            <span className="machine-port">{outName}</span>
           </div>
           <div className="machine-out" aria-live="polite">
             {waiting && x !== undefined ? (
               <div
                 className="machine-choices"
                 role="group"
-                aria-label={`What comes out for x = ${x}?`}
+                aria-label={`What comes out for ${inName} = ${x}?`}
               >
                 {machineChoices(screen, x).map((y) => (
                   <button
@@ -455,13 +318,13 @@ function MachineStep({ screen, family, sound, onNext }: Step<Machine>) {
         <table className="ul-table">
           <tbody>
             <tr>
-              <th scope="row">x</th>
+              <th scope="row">{inName}</th>
               {inputs.map((input) => (
                 <td key={input}>{fmt(input)}</td>
               ))}
             </tr>
             <tr>
-              <th scope="row">y</th>
+              <th scope="row">{outName}</th>
               {inputs.map((input, i) => (
                 <td key={input} className={i < fed ? "filled" : undefined}>
                   {i < fed ? fmt(yOn(rule, input)) : waiting && i === fed ? "?" : ""}
@@ -474,7 +337,10 @@ function MachineStep({ screen, family, sound, onNext }: Step<Machine>) {
       {done ? (
         <Verdict
           right
-          text={`The machine’s rule is ${tex(rule)}. Each time x goes up 1, y goes ${rule.m < 0 ? "down" : "up"} ${Math.abs(rule.m)}.`}
+          text={
+            screen.done ??
+            `The machine’s rule is ${tex(rule)}. Each time x goes up 1, y goes ${rule.m < 0 ? "down" : "up"} ${Math.abs(rule.m)}.`
+          }
           family={family}
           seed={inputs.length}
           action="Continue"
@@ -606,6 +472,8 @@ function ChoiceStep({ screen, family, sound, onNext }: Step<Choice>) {
   }, [checked, right, sound]);
   useChime(right, sound);
   const scene = right && screen.reveal ? screen.reveal : screen.scene;
+  const picture = right && screen.revealPicture ? screen.revealPicture : screen.picture;
+  const revealing = Boolean(screen.reveal || screen.revealPicture);
 
   return (
     <>
@@ -616,18 +484,19 @@ function ChoiceStep({ screen, family, sound, onNext }: Step<Choice>) {
             <W text={screen.text} />
           </p>
         )}
-        {scene ? (
+        {scene || picture ? (
           <div
-            className={right && screen.reveal ? "ul-reveal" : undefined}
+            className={right && revealing ? "ul-reveal" : undefined}
             key={right ? "after" : "before"}
           >
-            <LineGraph {...sceneProps(scene, right)} label={describeScene(scene)} />
+            {scene && <LineGraph {...sceneProps(scene, right)} label={describeScene(scene)} />}
+            {picture && <PictureView picture={picture} />}
           </div>
-        ) : (
+        ) : revealing ? (
           <div className="ul-mystery" aria-hidden="true">
             <span>?</span>
           </div>
-        )}
+        ) : null}
         <div className="ul-options" role="radiogroup" aria-label="Your answer">
           {screen.options.map((o, i) => (
             <button

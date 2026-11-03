@@ -567,14 +567,19 @@ polished.
 - **Every year group. Done.** Years 1 to 9, GCSE Foundation and GCSE Higher are all on the path,
   each tidied into units with its reasoning questions varied (`withClaims` and `orClaims` in
   `shared/variety.ts`). Every skill on the path passes `variety.test.ts`.
-- **Learning the idea first. Started.** A unit can open with a lesson, in the style of a
-  Brilliant course: short screens where the pupil discovers the idea by doing, before the unit's
-  skills. The first is for Year 8's straight-line graphs ("Spot the rule"): feed a function
-  machine and spot its pattern, plot what comes out, notice the points line up, find the step
-  and the starting point, slide m and c until the line hits a star, plot a line from its rule,
-  predict a slope, build a drawn line's equation from chips and drag a line into place. Lessons
-  are data built from reusable screen kinds (`apps/learn/src/unit-lessons/`), so the next ones
-  are mostly writing. They show only in teacher mode until they are reviewed (`FOR_PUPILS`).
-  Once a unit's lesson is done, its skills skip their worked examples.
+- **Learning the idea first. Years 7 and 8 under way.** A unit can open with a lesson, in the
+  style of a Brilliant course: short screens where the pupil discovers the idea by doing, before
+  the unit's skills, covering the unit's big idea and every skill in it. The first was Year 8's
+  straight-line graphs ("Spot the rule"), now open to pupils. Every Year 7 unit has one too, in
+  teacher mode for review: place value on number lines and charts, algebra shorthand, negatives
+  and fractions, measuring angles with a protractor, BIDMAS a step at a time, like terms,
+  factor trees, angle facts, fractions, decimals and percentages on a hundred square, sequences
+  and equations on a balance, squares and cubes, ratio as bar models, converting units, area
+  formulas found by sliding and turning shapes, rounding and error intervals, averages as
+  levelled towers, and probability with a spinner to spin. Lessons are data built from reusable
+  screen kinds (`apps/learn/src/unit-lessons/`), so the next ones are mostly writing. Each
+  shows only in teacher mode until it is reviewed, then its unit goes in `OPEN_TO_PUPILS`. Once
+  a unit's lesson is done, its skills skip their worked examples. Years 8 and 9 come next, a
+  year at a time.
 - **Question previews** (later): from a skill's sheet, see one question at each level without
   starting a lesson.

@@ -45,6 +45,7 @@ export interface Explain {
   title: Words;
   text: Words[];
   scene?: Scene;
+  picture?: Picture;
 }
 
 /**
@@ -59,6 +60,10 @@ export interface Machine {
   shown: number;
   /** Wrong outputs to offer beside the right one, by input, from common slips. */
   decoys: Record<number, number[]>;
+  /** What goes in and comes out, x and y unless set (n and term, for a sequence). */
+  ports?: [string, string];
+  /** Said once it is done, instead of the rule. */
+  done?: Words;
 }
 
 /**
@@ -96,6 +101,9 @@ export interface Choice {
   scene?: Scene;
   /** What the picture becomes once the right answer is chosen. */
   reveal?: Scene;
+  /** A picture of another kind, and what it becomes once answered. */
+  picture?: Picture;
+  revealPicture?: Picture;
   options: Option[];
 }
 
@@ -140,7 +148,308 @@ export interface DragLine {
   hint: Words;
 }
 
-export type Screen = Explain | Machine | Plot | Choice | Slider | Build | DragLine;
+// Pictures, for any screen that shows one. Coordinates are in the picture's own units, y upward.
+
+/** A number line from min to max, with a tick every `step`. */
+export interface NumberLinePic {
+  kind: "number-line";
+  min: number;
+  max: number;
+  step: number;
+  /** Label every nth tick (1 by default); 0 labels only the ends. */
+  every?: number;
+  /** Label ticks as fractions with this denominator, rather than as decimals. */
+  denominator?: number;
+  marks?: { at: number; label?: string; tone?: "given" | "mine" | "wrong" | "hint" }[];
+  /** Hops along the line, drawn as arcs above it. */
+  jumps?: { from: number; to: number; label?: string }[];
+  /** An interval, with a filled (closed) or empty (open) circle at each end. */
+  interval?: { from: number; to: number; fromClosed: boolean; toClosed: boolean };
+}
+
+/** Rays from a point, at angles in degrees (0 to the right, turning anticlockwise). */
+export interface AnglesPic {
+  kind: "angles";
+  rays: number[];
+  /** Arcs from one ray to another (indexes into rays), anticlockwise, each labelled. */
+  arcs: { from: number; to: number; label: string; find?: true }[];
+}
+
+/** A polygon with labelled sides and angles. */
+export interface ShapePic {
+  kind: "shape";
+  points: Point[];
+  /** A letter for each corner, outside the shape. */
+  names?: string[];
+  /** A label for each side, from point i to point i + 1. */
+  sides?: (string | null)[];
+  /** A label for the angle at each point. */
+  angles?: (string | null)[];
+  /** Points that get a right-angle mark. */
+  square?: number[];
+  /** Dashed lines, such as a height. */
+  dashed?: [Point, Point][];
+  /** Lines of symmetry, drawn across the shape. */
+  mirrors?: [Point, Point][];
+  /** Dots, such as a centre of rotation. */
+  dots?: Point[];
+}
+
+/** Bar models: rows of equal parts, for ratio and fractions. */
+export interface BarsPic {
+  kind: "bars";
+  rows: { label: string; parts: number; shaded?: number; each?: string }[];
+  /** A bracket over every row, labelled, for a total. */
+  total?: string;
+}
+
+/** A grid of squares with some shaded, such as a hundred square. */
+export interface GridPic {
+  kind: "grid";
+  cols: number;
+  rows: number;
+  shaded: number;
+}
+
+/** A cuboid drawn in 3D, as unit cubes when `cubes` is set. */
+export interface CuboidPic {
+  kind: "cuboid";
+  w: number;
+  d: number;
+  h: number;
+  cubes?: boolean;
+  labels?: [string, string, string];
+}
+
+export interface SpinnerPic {
+  kind: "spinner";
+  sectors: { label: string; size: number }[];
+}
+
+export interface TablePic {
+  kind: "table";
+  head?: Words[];
+  rows: Words[][];
+}
+
+/** A growing pattern: columns of squares, one column per term. */
+export interface StacksPic {
+  kind: "stacks";
+  counts: number[];
+  /** A label under each column; "Term 1", "Term 2" and so on unless set. */
+  labels?: string[];
+}
+
+/** A line segment on a ruler, in centimetres. */
+export interface RulerPic {
+  kind: "ruler";
+  from: number;
+  to: number;
+}
+
+/** Big maths on its own. */
+export interface MathsPic {
+  kind: "maths";
+  tex: string;
+}
+
+/** A place value chart: a number's digits under their column headings. */
+export interface PlaceValuePic {
+  kind: "place-value";
+  number: string;
+  /** Columns to show, from the largest, as powers of ten (3 is thousands, -2 hundredths). */
+  from: number;
+  to: number;
+  /** The column to pick out. */
+  highlight?: number;
+}
+
+export type Picture =
+  | ({ kind: "graph" } & Scene)
+  | NumberLinePic
+  | AnglesPic
+  | ShapePic
+  | BarsPic
+  | GridPic
+  | CuboidPic
+  | SpinnerPic
+  | TablePic
+  | StacksPic
+  | RulerPic
+  | MathsPic
+  | PlaceValuePic;
+
+/** Type an answer: a number, a fraction or a short expression. */
+export interface Answer {
+  kind: "answer";
+  title: Words;
+  text?: Words;
+  picture?: Picture;
+  /** Every answer accepted, as typed (spaces and case do not matter). */
+  answers: string[];
+  /** Shown after the box, such as a unit. */
+  unit?: string;
+  /** Nudges for common wrong answers. */
+  wrong?: { answer: string; feedback: Words }[];
+  hint: Words;
+  done: Words;
+}
+
+/** Tap a number line to put each value in its place, one at a time. */
+export interface Place {
+  kind: "place";
+  title: Words;
+  text?: Words;
+  line: NumberLinePic;
+  /** Each value, how the pupil is asked for it, and a short mark to show once it is placed. */
+  targets: { value: number; label: Words; mark?: string }[];
+  hint: Words;
+  done: Words;
+}
+
+/** Tap cards in order. */
+export interface Order {
+  kind: "order";
+  title: Words;
+  text?: Words;
+  picture?: Picture;
+  /** The cards, in the right order. */
+  items: Words[];
+  /** What the first and last are, such as "smallest" and "largest". */
+  first: string;
+  last: string;
+  hint: Words;
+  done: Words;
+}
+
+/** Sort cards into groups. */
+export interface Sort {
+  kind: "sort";
+  title: Words;
+  text?: Words;
+  groups: Words[];
+  items: { text: Words; group: number; why: Words }[];
+  done: Words;
+}
+
+/** Fill the gaps, marked [], from a bank of chips. */
+export interface Fill {
+  kind: "fill";
+  title: Words;
+  text?: Words;
+  picture?: Picture;
+  template: Words;
+  bank: Words[];
+  answers: Words[];
+  hint: Words;
+  done: Words;
+}
+
+/** Tap squares of a grid to shade a given number of them. */
+export interface Shade {
+  kind: "shade";
+  title: Words;
+  text?: Words;
+  cols: number;
+  rows: number;
+  target: number;
+  hint: Words;
+  done: Words;
+}
+
+/** Solve ax + b = c on a balance scale, keeping it level. */
+export interface Balance {
+  kind: "balance";
+  title: Words;
+  text?: Words;
+  a: number;
+  b: number;
+  c: number;
+  letter: string;
+  done: Words;
+}
+
+/** Work something out a step at a time: each step a choice, and the working grows. */
+export interface Steps {
+  kind: "steps";
+  title: Words;
+  text?: Words;
+  picture?: Picture;
+  start: Words;
+  stages: { prompt: Words; options: Option[]; then: Words }[];
+  done: Words;
+}
+
+/** Turn a ray to make an angle. */
+export interface Dial {
+  kind: "dial";
+  title: Words;
+  text?: Words;
+  target: number;
+  /** How close counts, in degrees. */
+  within: number;
+  /** Show a protractor, and the size of the angle as it turns. */
+  protractor: boolean;
+  hint: Words;
+  done: Words;
+}
+
+/** Spin a spinner many times and watch the results settle. */
+export interface Spin {
+  kind: "spin";
+  title: Words;
+  text: Words;
+  sectors: { label: string; size: number }[];
+  /** Spins needed before it is done. */
+  spins: number;
+  done: Words;
+}
+
+/** Split a number into factors until every branch ends in a prime. */
+export interface Tree {
+  kind: "tree";
+  title: Words;
+  text?: Words;
+  root: number;
+  done: Words;
+}
+
+/**
+ * Move a slider to change a shape and see why its formula works: slide a parallelogram's corner
+ * across to make a rectangle, turn a copy of a triangle or trapezium to make a parallelogram, or
+ * stack a cuboid's layers.
+ */
+export interface Morph {
+  kind: "morph";
+  title: Words;
+  text: Words;
+  shape: "parallelogram" | "triangle" | "trapezium" | "cuboid";
+  /** Parallelogram: base, height, slant. Triangle: base, height, apex. Trapezium: top, bottom,
+   *  height, offset. Cuboid: width, depth, height. */
+  dims: number[];
+  done: Words;
+}
+
+export type Screen =
+  | Explain
+  | Machine
+  | Plot
+  | Choice
+  | Slider
+  | Build
+  | DragLine
+  | Answer
+  | Place
+  | Order
+  | Sort
+  | Fill
+  | Shade
+  | Balance
+  | Steps
+  | Dial
+  | Spin
+  | Tree
+  | Morph;
 
 export interface UnitLesson {
   /** The course unit it opens, as in data/course.json. */

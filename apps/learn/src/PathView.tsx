@@ -18,7 +18,7 @@ import {
 import { yearReviewId } from "./practice.ts";
 import { pathFor } from "./path.ts";
 import type { Progress } from "./progress.ts";
-import { unitLessonFor, type UnitLesson } from "./unit-lessons/index.ts";
+import { OPEN_TO_PUPILS, unitLessonFor, type UnitLesson } from "./unit-lessons/index.ts";
 
 /** How far each node sits from the middle, in rem, repeating down the path. */
 const SWAY = [0, 2.6, 4, 2.6, 0, -2.6, -4, -2.6];
@@ -26,7 +26,7 @@ const SWAY = [0, 2.6, 4, 2.6, 0, -2.6, -4, -2.6];
 export type Selection =
   | { kind: "skill"; unit: PathUnit; node: PathNode; before?: string }
   | { kind: "review"; unit: PathUnit }
-  | { kind: "lesson"; unit: PathUnit; lesson: UnitLesson; done: boolean }
+  | { kind: "lesson"; unit: PathUnit; lesson: UnitLesson; done: boolean; open: boolean }
   | { kind: "year"; section: CourseSection; state: ReviewState };
 
 const REVIEW_WORDS: Record<ReviewState, string> = {
@@ -127,7 +127,13 @@ export function PathView({
                       type="button"
                       className={`lesson-stop${lessonDone ? " lesson-stop-done" : ""}`}
                       onClick={() =>
-                        onSelect({ kind: "lesson", unit: u, lesson, done: lessonDone })
+                        onSelect({
+                          kind: "lesson",
+                          unit: u,
+                          lesson,
+                          done: lessonDone,
+                          open: OPEN_TO_PUPILS.has(u.unit.id),
+                        })
                       }
                     >
                       {lessonDone ? <CheckIcon size={30} /> : <IdeaIcon size={32} />}
