@@ -14,6 +14,7 @@ import {
 import { mixFamilies } from "../shared/npv.ts";
 import { distinctValues, pictogram, TOPICS } from "../shared/sta.ts";
 import parent from "./Y3-STA-01.ts";
+import { withClaims } from "../shared/variety.ts";
 
 interface Params {
   topic: number;
@@ -76,5 +77,38 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y3-STA-01.b", { 2: { ...parent.definition, id: "Y3-STA-01.b" }, 4: own }),
+  withClaims(
+    mixFamilies("Y3-STA-01.b", { 2: { ...parent.definition, id: "Y3-STA-01.b" }, 4: own }),
+    [
+      {
+        statement:
+          "In a pictogram, each picture stands for 2 children. Leo says 3 pictures stand for 6 children.",
+        truth: true,
+        right: "True. 3 lots of 2 is 6.",
+        wrong: [
+          ["False. 3 pictures are 3 children.", "STA.KEY-IGNORED"],
+          ["False. 3 pictures are 5 children."],
+        ],
+      },
+      {
+        claim: "You need the key to read a pictogram.",
+        truth: "always",
+        right: "Always. The key tells you how many each picture stands for.",
+        wrong: [
+          ["Never. Just count the pictures.", "STA.KEY-IGNORED"],
+          ["Sometimes. Only for big numbers."],
+        ],
+      },
+      {
+        statement:
+          "In a pictogram, each picture stands for 4. Mia says half a picture stands for 1.",
+        truth: false,
+        right: "False. Half of 4 is 2, so half a picture stands for 2.",
+        wrong: [
+          ["True. Half a picture is always 1.", "STA.KEY-IGNORED"],
+          ["True. Halves are small."],
+        ],
+      },
+    ],
+  ),
 );

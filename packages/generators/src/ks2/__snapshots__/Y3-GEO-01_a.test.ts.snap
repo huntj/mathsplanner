@@ -134,7 +134,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -363,7 +363,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -592,7 +592,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -697,7 +697,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -775,7 +775,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -853,7 +853,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -925,45 +925,13 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "points": {
-          "A": [
-            -0,
-            -1.414213562,
-          ],
-          "B": [
-            1.414213562,
-            -0,
-          ],
-          "C": [
-            0,
-            1.414213562,
-          ],
-          "D": [
-            -1.414213562,
-            0,
-          ],
-        },
-        "polygons": [
-          {
-            "vertices": [
-              "A",
-              "B",
-              "C",
-              "D",
-            ],
-          },
-        ],
-        "type": "geometry",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -975,7 +943,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -1001,7 +969,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Standing on a corner makes it a diamond, not a square.",
+                  "v": "False. A hexagon has 6 sides. A pentagon has 5.",
                 },
               ],
               "id": "RA",
@@ -1010,7 +978,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A square must have a flat bottom.",
+                  "v": "True. Hex means five.",
                 },
               ],
               "id": "RB",
@@ -1019,7 +987,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It still has 4 equal sides and 4 right angles. Turning a shape does not change it.",
+                  "v": "True. All shapes have 5 sides.",
                 },
               ],
               "id": "RC",
@@ -1031,18 +999,10 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.SHAPES.ORIENTATION",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RB",
               "type": "choice",
             },
-            "code": "GEO.SHAPES.ORIENTATION",
+            "code": "GEO.SHAPES.SIDES-VERTICES",
             "feedback": [],
           },
         ],
@@ -1059,7 +1019,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A shape's name depends on its sides and angles, not which way it faces.",
+            "v": "False. A hexagon has 6 sides. A pentagon has 5.",
           },
         ],
       },
@@ -1067,15 +1027,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Theo draws a square standing on one corner.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": "He says it is no longer a square.",
+        "v": "Mia says a hexagon has 5 sides.",
       },
     ],
   },
@@ -1119,7 +1071,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1131,7 +1083,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -1157,7 +1109,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A square must have a flat bottom.",
+                  "v": "False. It still has 4 equal sides and 4 right angles. Turning a shape does not change it.",
                 },
               ],
               "id": "RA",
@@ -1166,7 +1118,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Standing on a corner makes it a diamond, not a square.",
+                  "v": "True. A square must have a flat bottom.",
                 },
               ],
               "id": "RB",
@@ -1175,7 +1127,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It still has 4 equal sides and 4 right angles. Turning a shape does not change it.",
+                  "v": "True. Standing on a corner makes it a diamond, not a square.",
                 },
               ],
               "id": "RC",
@@ -1187,7 +1139,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.SHAPES.ORIENTATION",
@@ -1195,7 +1147,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "GEO.SHAPES.ORIENTATION",
@@ -1237,45 +1189,13 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "points": {
-          "A": [
-            -0,
-            -1.414213562,
-          ],
-          "B": [
-            1.414213562,
-            -0,
-          ],
-          "C": [
-            0,
-            1.414213562,
-          ],
-          "D": [
-            -1.414213562,
-            0,
-          ],
-        },
-        "polygons": [
-          {
-            "vertices": [
-              "A",
-              "B",
-              "C",
-              "D",
-            ],
-          },
-        ],
-        "type": "geometry",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1287,7 +1207,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -1313,7 +1233,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Standing on a corner makes it a diamond, not a square.",
+                  "v": "True. All shapes have 5 sides.",
                 },
               ],
               "id": "RA",
@@ -1322,7 +1242,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A square must have a flat bottom.",
+                  "v": "False. A hexagon has 6 sides. A pentagon has 5.",
                 },
               ],
               "id": "RB",
@@ -1331,7 +1251,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It still has 4 equal sides and 4 right angles. Turning a shape does not change it.",
+                  "v": "True. Hex means five.",
                 },
               ],
               "id": "RC",
@@ -1343,18 +1263,10 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "GEO.SHAPES.ORIENTATION",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "GEO.SHAPES.ORIENTATION",
+            "code": "GEO.SHAPES.SIDES-VERTICES",
             "feedback": [],
           },
         ],
@@ -1371,7 +1283,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A shape's name depends on its sides and angles, not which way it faces.",
+            "v": "False. A hexagon has 6 sides. A pentagon has 5.",
           },
         ],
       },
@@ -1379,15 +1291,7 @@ exports[`Y3-GEO-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Theo draws a square standing on one corner.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": "He says it is no longer a square.",
+        "v": "Mia says a hexagon has 5 sides.",
       },
     ],
   },

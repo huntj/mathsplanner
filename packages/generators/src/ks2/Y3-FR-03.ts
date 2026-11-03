@@ -10,6 +10,7 @@ import { defineGenerator, frac, type QuestionDraft } from "@mathsplanner/core";
 import type { NumberLineSpec } from "@mathsplanner/diagrams";
 import { chosenFigure } from "../shared/counting.ts";
 import { fracTex, fractionLine, ratTex, slash } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y3-FR-03",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 3, 4],
   misconceptions: ["NPV.NUMBERLINE.COUNT-TICKS"],
 
@@ -82,27 +83,61 @@ export default defineGenerator<Params>({
           solution: [{ say: `Split 0 to 1 into ${p.d} equal parts and count ${p.n} along.` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Noah says ", A.math(fracTex(p.n, p.d)), " is a number between 0 and 1."],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Noah says ", A.math(fracTex(p.n, p.d)), " is a number between 0 and 1."],
+              truth: true,
+              reasons: [
+                {
+                  text: `True. ${slash(p.n, p.d)} is ${p.n} of ${p.d} equal parts of 1, so it is more than 0 and less than 1.`,
+                  correct: true,
+                },
+                { text: "False. Fractions are not numbers, so they are not on the number line." },
+                {
+                  text: `False. It is bigger than ${p.n}, because it has a ${p.d} in it.`,
+                  code: "NPV.NUMBERLINE.COUNT-TICKS",
+                },
+              ],
+              solution: [
+                {
+                  say: `${slash(p.n, p.d)} sits ${p.n} part${p.n === 1 ? "" : "s"} along a line from 0 to 1 split into ${p.d}.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `True. ${slash(p.n, p.d)} is ${p.n} of ${p.d} equal parts of 1, so it is more than 0 and less than 1.`,
-              correct: true,
+              claim: "A fraction with the same number on the top and the bottom is 1 whole.",
+              truth: "always",
+              right: "Always. 4/4 means all 4 of 4 equal parts: the whole thing.",
+              wrong: [
+                ["Never. It is 0.", "NPV.NUMBERLINE.COUNT-TICKS"],
+                ["Sometimes. Only for halves."],
+              ],
             },
-            { text: "False. Fractions are not numbers, so they are not on the number line." },
             {
-              text: `False. It is bigger than ${p.n}, because it has a ${p.d} in it.`,
-              code: "NPV.NUMBERLINE.COUNT-TICKS",
+              statement:
+                "On a number line from 0 to 1 split into quarters, Ben says the first mark after 0 is 1/4.",
+              truth: true,
+              right: "True. The line is in 4 equal parts, and the first part ends at 1/4.",
+              wrong: [
+                ["False. It is 1/5, as there are 5 marks.", "NPV.NUMBERLINE.COUNT-TICKS"],
+                ["False. It is 1."],
+              ],
+            },
+            {
+              statement: "Mia says 5/4 is between 0 and 1.",
+              truth: false,
+              right: "False. 5/4 is more than 4/4, which is 1, so it is past 1.",
+              wrong: [
+                ["True. All fractions are between 0 and 1.", "NPV.NUMBERLINE.COUNT-TICKS"],
+                ["True. Quarters are small."],
+              ],
             },
           ],
-          solution: [
-            {
-              say: `${slash(p.n, p.d)} sits ${p.n} part${p.n === 1 ? "" : "s"} along a line from 0 to 1 split into ${p.d}.`,
-            },
-          ],
-        });
+        );
     }
   },
 

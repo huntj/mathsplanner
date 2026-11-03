@@ -1,7 +1,7 @@
 # Proposal: Learn Maths, a Duolingo-style practice app for pupils
 
 Status: **agreed on 29 October 2026.** Steps 1 to 6 are built: the course data with Year 7 as
-the pilot section, then Years 8, 9, 6, 5 and 4 (`data/course.txt`, `pnpm data:course`), the shared answer widgets
+the pilot section, then Years 8, 9, 6, 5, 4 and 3 (`data/course.txt`, `pnpm data:course`), the shared answer widgets
 (`@mathsplanner/ui`), and the app with its path, progress, first visit, lessons, practice and
 rewards (`apps/learn`, `pnpm learn`); steps 7 to 10 are to do.
 
@@ -159,6 +159,26 @@ proportion with compound change, inequalities with simultaneous equations):
 | 7   | Compound change and inverse proportion  |      3 |
 | 8   | Graphs and sequences                    |      4 |
 | 9   | Probability                             |      4 |
+
+**Year 3** has 14 units and 61 skills. Angles come before the unit on lines, as perpendicular
+lines need right angles:
+
+| #   | Unit                                | Skills |
+| --- | ----------------------------------- | -----: |
+| 1   | Place value                         |      5 |
+| 2   | Counting in steps                   |      3 |
+| 3   | Adding and subtracting in your head |      3 |
+| 4   | Angles                              |      4 |
+| 5   | Times tables                        |      4 |
+| 6   | Shapes and lines                    |      4 |
+| 7   | Written adding and subtracting      |      5 |
+| 8   | Fractions                           |      4 |
+| 9   | Multiplying and dividing            |      5 |
+| 10  | Tenths and comparing fractions      |      5 |
+| 11  | Length, mass, capacity and money    |      5 |
+| 12  | Telling the time                    |      5 |
+| 13  | Time facts                          |      4 |
+| 14  | Charts and tables                   |      5 |
 
 **Year 4** has 14 units and 65 skills. Rounding comes before written addition and subtraction,
 which use it to estimate and check, and the times tables come before the written methods:

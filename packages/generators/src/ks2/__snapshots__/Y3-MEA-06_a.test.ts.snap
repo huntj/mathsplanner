@@ -10,7 +10,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -263,7 +263,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -330,7 +330,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -397,7 +397,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -409,7 +409,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -435,7 +435,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A minute has 100 seconds.",
+                  "v": "True. The digits after the point are the seconds.",
                 },
               ],
               "id": "RA",
@@ -444,7 +444,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 0.5 of a minute is half of 60 seconds, which is 30 seconds. So it is 9 minutes and 30 seconds.",
+                  "v": "True. A minute has 100 seconds.",
                 },
               ],
               "id": "RB",
@@ -453,7 +453,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The digits after the point are the seconds.",
+                  "v": "False. 0.5 of a minute is half of 60 seconds, which is 30 seconds. So it is 9 minutes and 30 seconds.",
                 },
               ],
               "id": "RC",
@@ -468,15 +468,15 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "MEA.TIME.FACTS",
+            "code": "MEA.TIME.DECIMAL",
             "feedback": [],
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "MEA.TIME.DECIMAL",
+            "code": "MEA.TIME.FACTS",
             "feedback": [],
           },
         ],
@@ -506,14 +506,14 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -524,14 +524,14 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "C",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -540,10 +540,19 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -551,7 +560,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A minute has 100 seconds.",
+                  "v": "Always. Like 100 cm in a metre.",
                 },
               ],
               "id": "RA",
@@ -560,7 +569,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 0.5 of a minute is half of 60 seconds, which is 30 seconds. So it is 6 minutes and 30 seconds.",
+                  "v": "Sometimes. On a stopwatch.",
                 },
               ],
               "id": "RB",
@@ -569,7 +578,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The digits after the point are the seconds.",
+                  "v": "Never. There are 60 seconds in a minute.",
                 },
               ],
               "id": "RC",
@@ -584,14 +593,6 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "MEA.TIME.FACTS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
             "code": "MEA.TIME.DECIMAL",
             "feedback": [],
           },
@@ -599,7 +600,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -609,7 +610,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Half a minute is 30 seconds, because a minute is 60 seconds.",
+            "v": "Never. There are 60 seconds in a minute.",
           },
         ],
       },
@@ -617,7 +618,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Omar says 6.5 minutes is 6 minutes and 50 seconds.",
+        "v": "There are 100 seconds in a minute.",
       },
     ],
   },
@@ -629,7 +630,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -641,7 +642,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -667,7 +668,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A minute has 100 seconds.",
+                  "v": "False. 0.5 of a minute is half of 60 seconds, which is 30 seconds. So it is 5 minutes and 30 seconds.",
                 },
               ],
               "id": "RA",
@@ -676,7 +677,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 0.5 of a minute is half of 60 seconds, which is 30 seconds. So it is 5 minutes and 30 seconds.",
+                  "v": "True. A minute has 100 seconds.",
                 },
               ],
               "id": "RB",
@@ -697,7 +698,7 @@ exports[`Y3-MEA-06.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "MEA.TIME.FACTS",

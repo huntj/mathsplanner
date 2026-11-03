@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
 import { fracTex, fractionBar } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -15,7 +16,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y3-FR-01.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: [
     "FR.NAME.SHADED-UNSHADED",
@@ -70,36 +71,67 @@ export default defineGenerator<Params>({
           solution: [{ say: "", math: `${p.n} \\div 10 = ${fracTex(p.n, 10)}` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ravi says ",
-            A.math(fracTex(1, 10)),
-            " is bigger than ",
-            A.math(fracTex(1, 2)),
-            " because 10 is bigger than 2.",
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ravi says ",
+                A.math(fracTex(1, 10)),
+                " is bigger than ",
+                A.math(fracTex(1, 2)),
+                " because 10 is bigger than 2.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. Cutting a whole into 10 equal parts makes each part smaller than cutting it into 2.",
+                  correct: true,
+                },
+                {
+                  text: "True. The bigger the bottom number, the bigger the fraction.",
+                  code: "FR.UNIT.BIGGER-DENOMINATOR",
+                },
+                {
+                  text: "True. Tenths are always bigger than halves.",
+                  code: "FR.UNIT.BIGGER-DENOMINATOR",
+                },
+              ],
+              solution: [
+                {
+                  say: "One tenth is one of 10 small equal parts; one half is one of 2 big equal parts.",
+                },
+              ],
+            }),
+          [
+            {
+              statement: "Ivy says 3 ÷ 10 is 3 tenths.",
+              truth: true,
+              right: "True. Sharing 3 into 10 equal parts gives 3/10.",
+              wrong: [["False. It is 30.", "NPV.POWERS10.WRONG-WAY"], ["False. It is 10/3."]],
+            },
+            {
+              claim: "One tenth is smaller than one half.",
+              truth: "always",
+              right: "Always. Cutting a whole into 10 makes smaller pieces than cutting it into 2.",
+              wrong: [
+                ["Never. 10 is bigger than 2.", "FR.UNIT.BIGGER-DENOMINATOR"],
+                ["Sometimes. It depends on the shape."],
+              ],
+            },
+            {
+              statement:
+                "A shape is cut into 10 equal parts and 3 are shaded. Raj says 7/10 is shaded.",
+              truth: false,
+              right: "False. 3 parts are shaded, so 3/10 is shaded. 7/10 is not shaded.",
+              wrong: [
+                ["True. Count the parts left.", "FR.NAME.SHADED-UNSHADED"],
+                ["True. 10 − 3 = 7."],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: "False. Cutting a whole into 10 equal parts makes each part smaller than cutting it into 2.",
-              correct: true,
-            },
-            {
-              text: "True. The bigger the bottom number, the bigger the fraction.",
-              code: "FR.UNIT.BIGGER-DENOMINATOR",
-            },
-            {
-              text: "True. Tenths are always bigger than halves.",
-              code: "FR.UNIT.BIGGER-DENOMINATOR",
-            },
-          ],
-          solution: [
-            {
-              say: "One tenth is one of 10 small equal parts; one half is one of 2 big equal parts.",
-            },
-          ],
-        });
+        );
     }
   },
 

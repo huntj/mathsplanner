@@ -9,6 +9,7 @@ import { defineGenerator, type GeneratorDefinition, type QuestionDraft } from "@
 import { chosenText } from "../shared/counting.ts";
 import { mixFamilies, toRoman } from "../shared/npv.ts";
 import parent from "./Y3-MEA-04.ts";
+import { withClaims } from "../shared/variety.ts";
 
 // Numerals that are easy to mix up with another, and the one they are mixed up with.
 const PAIRS: [number, number][] = [
@@ -75,5 +76,37 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y3-MEA-04.a", { 1: { ...parent.definition, id: "Y3-MEA-04.a" }, 2: own, 4: own }),
+  withClaims(
+    mixFamilies("Y3-MEA-04.a", { 1: { ...parent.definition, id: "Y3-MEA-04.a" }, 2: own, 4: own }),
+    [
+      {
+        statement: "On a clock, the minute hand points at 6. Ben says it is half past.",
+        truth: true,
+        right: "True. The minute hand at 6 means 30 minutes past the hour.",
+        wrong: [
+          ["False. It is 6 minutes past.", "MEA.CLOCK.MINUTE-NUMBER"],
+          ["False. It is 6 o'clock."],
+        ],
+      },
+      {
+        claim: "When the minute hand points at 12, it is an exact hour, like 3 o'clock.",
+        truth: "always",
+        right: "Always. The minute hand at 12 means 0 minutes past.",
+        wrong: [
+          ["Never. It means 12 minutes past.", "MEA.CLOCK.MINUTE-NUMBER"],
+          ["Sometimes. Only at midday."],
+        ],
+      },
+      {
+        statement: "The minute hand points at 3. Kit says it is 3 minutes past.",
+        truth: false,
+        right:
+          "False. Each number on the clock is 5 minutes for the minute hand: at 3 it is 15 minutes past.",
+        wrong: [
+          ["True. The number shows the minutes.", "MEA.CLOCK.MINUTE-NUMBER"],
+          ["True. 3 is 3."],
+        ],
+      },
+    ],
+  ),
 );

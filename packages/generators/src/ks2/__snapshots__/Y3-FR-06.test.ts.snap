@@ -10,7 +10,7 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -113,7 +113,7 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -216,7 +216,7 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -319,7 +319,7 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -392,7 +392,7 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -465,7 +465,7 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -538,7 +538,7 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -654,7 +654,7 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -666,7 +666,7 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -692,7 +692,7 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Splitting into 3 parts makes bigger parts than splitting into 6.",
+                  "v": "True. Smaller numbers mean bigger fractions.",
                 },
               ],
               "id": "RA",
@@ -701,7 +701,7 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You cannot compare fractions with different denominators.",
+                  "v": "False. Both are fifths: 4 fifths is more than 2 fifths.",
                 },
               ],
               "id": "RB",
@@ -710,7 +710,7 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The bigger the denominator, the bigger the fraction.",
+                  "v": "True. 2/5 has fewer parts left over.",
                 },
               ],
               "id": "RC",
@@ -722,10 +722,10 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "FR.UNIT.BIGGER-DENOMINATOR",
+            "code": "FR.COMPARE.NUMERATOR-ONLY",
             "feedback": [],
           },
         ],
@@ -742,7 +742,7 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Splitting into 3 parts makes bigger parts than splitting into 6.",
+            "v": "False. Both are fifths: 4 fifths is more than 2 fifths.",
           },
         ],
       },
@@ -750,27 +750,19 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jo says ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{1}{6} > \\frac{1}{3}",
-      },
-      {
-        "t": "text",
-        "v": ", because 6 is bigger than 3.",
+        "v": "Pia says 2/5 is bigger than 4/5, because 2 is smaller.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-FR-06",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -781,14 +773,14 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -797,10 +789,19 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -808,7 +809,7 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Splitting into 7 parts makes bigger parts than splitting into 10.",
+                  "v": "Sometimes. Only for quarters.",
                 },
               ],
               "id": "RA",
@@ -817,7 +818,7 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You cannot compare fractions with different denominators.",
+                  "v": "Always. The pieces are the same size, so more pieces is more.",
                 },
               ],
               "id": "RB",
@@ -826,7 +827,7 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The bigger the denominator, the bigger the fraction.",
+                  "v": "Never. The smaller number is bigger.",
                 },
               ],
               "id": "RC",
@@ -848,7 +849,7 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -858,7 +859,7 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Splitting into 7 parts makes bigger parts than splitting into 10.",
+            "v": "Always. The pieces are the same size, so more pieces is more.",
           },
         ],
       },
@@ -866,15 +867,7 @@ exports[`Y3-FR-06 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jo says ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{1}{10} > \\frac{1}{7}",
-      },
-      {
-        "t": "text",
-        "v": ", because 10 is bigger than 7.",
+        "v": "Of two fractions with the same denominator, the bigger numerator is the bigger fraction.",
       },
     ],
   },

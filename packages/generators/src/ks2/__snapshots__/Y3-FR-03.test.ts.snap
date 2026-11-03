@@ -35,7 +35,7 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-FR-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -127,7 +127,7 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-FR-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -219,7 +219,7 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-FR-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -359,7 +359,7 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-FR-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -532,7 +532,7 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-FR-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -705,7 +705,7 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-FR-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -805,7 +805,7 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-FR-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -817,7 +817,7 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -843,7 +843,7 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 1/2 is 1 of 2 equal parts of 1, so it is more than 0 and less than 1.",
+                  "v": "False. It is 1.",
                 },
               ],
               "id": "RA",
@@ -852,7 +852,7 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is bigger than 1, because it has a 2 in it.",
+                  "v": "True. The line is in 4 equal parts, and the first part ends at 1/4.",
                 },
               ],
               "id": "RB",
@@ -861,7 +861,7 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Fractions are not numbers, so they are not on the number line.",
+                  "v": "False. It is 1/5, as there are 5 marks.",
                 },
               ],
               "id": "RC",
@@ -873,7 +873,7 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.NUMBERLINE.COUNT-TICKS",
@@ -893,7 +893,7 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "1/2 sits 1 part along a line from 0 to 1 split into 2.",
+            "v": "True. The line is in 4 equal parts, and the first part ends at 1/4.",
           },
         ],
       },
@@ -901,15 +901,124 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Noah says ",
+        "v": "On a number line from 0 to 1 split into quarters, Ben says the first mark after 0 is 1/4.",
       },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y3-FR-03",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
       {
-        "t": "math",
-        "v": "\\frac{1}{2}",
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. 4/4 means all 4 of 4 equal parts: the whole thing.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only for halves.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. It is 0.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.NUMBERLINE.COUNT-TICKS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
       },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. 4/4 means all 4 of 4 equal parts: the whole thing.",
+          },
+        ],
+      },
+    ],
+    "stem": [
       {
         "t": "text",
-        "v": " is a number between 0 and 1.",
+        "v": "A fraction with the same number on the top and the bottom is 1 whole.",
       },
     ],
   },
@@ -918,10 +1027,10 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
     "diagrams": [],
     "key": {
       "depth": 4,
-      "numbers": "standard",
+      "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-FR-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -959,7 +1068,7 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is bigger than 4, because it has a 5 in it.",
+                  "v": "False. It is 1.",
                 },
               ],
               "id": "RA",
@@ -968,7 +1077,7 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Fractions are not numbers, so they are not on the number line.",
+                  "v": "False. It is 1/5, as there are 5 marks.",
                 },
               ],
               "id": "RB",
@@ -977,123 +1086,7 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 4/5 is 4 of 5 equal parts of 1, so it is more than 0 and less than 1.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.NUMBERLINE.COUNT-TICKS",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "4/5 sits 4 parts along a line from 0 to 1 split into 5.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Noah says ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{4}{5}",
-      },
-      {
-        "t": "text",
-        "v": " is a number between 0 and 1.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y3-FR-03",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. 2/10 is 2 of 10 equal parts of 1, so it is more than 0 and less than 1.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. It is bigger than 2, because it has a 10 in it.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Fractions are not numbers, so they are not on the number line.",
+                  "v": "True. The line is in 4 equal parts, and the first part ends at 1/4.",
                 },
               ],
               "id": "RC",
@@ -1125,7 +1118,7 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "2/10 sits 2 parts along a line from 0 to 1 split into 10.",
+            "v": "True. The line is in 4 equal parts, and the first part ends at 1/4.",
           },
         ],
       },
@@ -1133,15 +1126,7 @@ exports[`Y3-FR-03 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Noah says ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{2}{10}",
-      },
-      {
-        "t": "text",
-        "v": " is a number between 0 and 1.",
+        "v": "On a number line from 0 to 1 split into quarters, Ben says the first mark after 0 is 1/4.",
       },
     ],
   },

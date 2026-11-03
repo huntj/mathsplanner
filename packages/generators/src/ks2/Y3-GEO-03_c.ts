@@ -11,6 +11,7 @@ import { pickAngle } from "../shared/angles.ts";
 import { chosenText } from "../shared/counting.ts";
 import { mixFamilies } from "../shared/npv.ts";
 import parent from "./Y3-GEO-03.ts";
+import { withClaims } from "../shared/variety.ts";
 
 interface Params {
   degrees: number;
@@ -92,5 +93,36 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y3-GEO-03.c", { 1: own, 3: { ...parent.definition, id: "Y3-GEO-03.c" }, 4: own }),
+  withClaims(
+    mixFamilies("Y3-GEO-03.c", { 1: own, 3: { ...parent.definition, id: "Y3-GEO-03.c" }, 4: own }),
+    [
+      {
+        statement: "Leo says an angle smaller than a right angle is acute.",
+        truth: true,
+        right: "True. Acute angles are less than a right angle.",
+        wrong: [
+          ["False. It is obtuse.", "GEO.TURNS.FRACTION"],
+          ["False. Size depends on the arms.", "GEO.ANGLES.SIZE-BY-ARMS"],
+        ],
+      },
+      {
+        claim: "Drawing the arms of an angle longer makes the angle bigger.",
+        truth: "never",
+        right: "Never. The angle is how much it turns, not how long its arms are.",
+        wrong: [
+          ["Always. Long arms make big angles.", "GEO.ANGLES.SIZE-BY-ARMS"],
+          ["Sometimes. Only for small angles.", "GEO.ANGLES.SIZE-BY-ARMS"],
+        ],
+      },
+      {
+        claim: "A square has an obtuse angle.",
+        truth: "never",
+        right: "Never. All four angles of a square are right angles.",
+        wrong: [
+          ["Always. Squares have big corners.", "GEO.ANGLES.SIZE-BY-ARMS"],
+          ["Sometimes. When it is turned.", "GEO.TURNS.FRACTION"],
+        ],
+      },
+    ],
+  ),
 );

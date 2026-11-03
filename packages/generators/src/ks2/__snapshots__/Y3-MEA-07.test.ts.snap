@@ -10,7 +10,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-MEA-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -77,7 +77,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-MEA-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -144,7 +144,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-MEA-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -211,7 +211,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-MEA-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -325,7 +325,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-MEA-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -439,7 +439,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-MEA-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -546,14 +546,14 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-MEA-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -564,14 +564,14 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -580,10 +580,19 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -591,7 +600,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Take the start from the end like ordinary numbers: 70 and 98.",
+                  "v": "Never. It is 60 minutes, as 1110 − 1050 = 60.",
                 },
               ],
               "id": "RA",
@@ -600,7 +609,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Task A takes 30 minutes and task B takes 58 minutes.",
+                  "v": "Always. 10 minutes to reach 11:00, then 10 more to 11:10.",
                 },
               ],
               "id": "RB",
@@ -609,7 +618,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The task that ends later takes longer.",
+                  "v": "Sometimes. Only in the morning.",
                 },
               ],
               "id": "RC",
@@ -631,7 +640,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -641,7 +650,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A: 30 minutes. B: 58 minutes.",
+            "v": "Always. 10 minutes to reach 11:00, then 10 more to 11:10.",
           },
         ],
       },
@@ -649,7 +658,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Task A takes from 10:50 to 11:20. Task B takes from 2:45 to 3:43. Raj says task A takes longer.",
+        "v": "From 10:50 to 11:10 is 20 minutes.",
       },
     ],
   },
@@ -661,7 +670,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-MEA-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -672,7 +681,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -699,7 +708,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The task that ends later takes longer.",
+                  "v": "False. 3:45 − 2:15 = 1:30, which is 130 minutes.",
                 },
               ],
               "id": "RA",
@@ -708,7 +717,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Task A takes 38 minutes and task B takes 46 minutes.",
+                  "v": "True. 2:15 to 3:15 is 1 hour, and 3:15 to 3:45 is 30 minutes.",
                 },
               ],
               "id": "RB",
@@ -717,7 +726,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Take the start from the end like ordinary numbers: 78 and 86.",
+                  "v": "False. It lasts 2 hours.",
                 },
               ],
               "id": "RC",
@@ -729,7 +738,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "MEA.TIME.DECIMAL",
@@ -749,7 +758,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A: 38 minutes. B: 46 minutes.",
+            "v": "True. 2:15 to 3:15 is 1 hour, and 3:15 to 3:45 is 30 minutes.",
           },
         ],
       },
@@ -757,7 +766,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Task A takes from 10:51 to 11:29. Task B takes from 2:50 to 3:36. Raj says task A takes longer.",
+        "v": "A film starts at 2:15 and ends at 3:45. Ivy says it lasts 1 hour 30 minutes.",
       },
     ],
   },
@@ -769,7 +778,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-MEA-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -781,7 +790,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -816,7 +825,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Task A takes 48 minutes and task B takes 65 minutes.",
+                  "v": "True. The task that ends later takes longer.",
                 },
               ],
               "id": "RB",
@@ -825,7 +834,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The task that ends later takes longer.",
+                  "v": "False. Task A takes 48 minutes and task B takes 65 minutes.",
                 },
               ],
               "id": "RC",
@@ -877,7 +886,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-MEA-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -986,7 +995,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-MEA-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1095,7 +1104,7 @@ exports[`Y3-MEA-07 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-MEA-07",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

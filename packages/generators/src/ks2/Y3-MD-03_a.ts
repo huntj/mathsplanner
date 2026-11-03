@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y3-MD-03.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["AS.INVERSE.SAME-OPERATION", "MD.DIVIDE.ORDER"],
 
@@ -69,27 +70,60 @@ export default defineGenerator<Params>({
           solution: [{ say: "", math: `${c} \\div ${p.a} = ${p.b}` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Jay solves ",
-            A.math(`\\square \\div ${p.a} = ${p.b}`),
-            ` and says the missing number is ${p.b}.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Jay solves ",
+                A.math(`\\square \\div ${p.a} = ${p.b}`),
+                ` and says the missing number is ${p.b}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The missing number is ${p.b} × ${p.a} = ${c}, because ${c} ÷ ${p.a} = ${p.b}.`,
+                  correct: true,
+                },
+                {
+                  text: `True. Dividing by ${p.a} gives ${p.b}, so it starts as ${p.b}.`,
+                  code: "AS.INVERSE.SAME-OPERATION",
+                },
+                { text: `True. ${p.b} ÷ ${p.a} = ${p.b}.` },
+              ],
+              solution: [{ say: "Use the inverse: multiply to undo a division." }],
+            }),
+          [
             {
-              text: `False. The missing number is ${p.b} × ${p.a} = ${c}, because ${c} ÷ ${p.a} = ${p.b}.`,
-              correct: true,
+              statement: "To find □ in □ ÷ 2 = 9, Ali works out 9 × 2.",
+              truth: true,
+              right: "True. Multiplying undoes dividing: □ = 18.",
+              wrong: [
+                ["False. Work out 9 ÷ 2.", "AS.INVERSE.SAME-OPERATION"],
+                ["False. The answer is 9."],
+              ],
             },
             {
-              text: `True. Dividing by ${p.a} gives ${p.b}, so it starts as ${p.b}.`,
-              code: "AS.INVERSE.SAME-OPERATION",
+              claim: "Dividing a number by 2 gives half of it.",
+              truth: "always",
+              right: "Always. Sharing into 2 equal groups gives half in each.",
+              wrong: [
+                ["Never. It doubles it.", "MD.DIVIDE.ORDER"],
+                ["Sometimes. Only for even numbers."],
+              ],
             },
-            { text: `True. ${p.b} ÷ ${p.a} = ${p.b}.` },
+            {
+              statement: "To find □ in □ × 5 = 30, Bea works out 30 × 5.",
+              truth: false,
+              right: "False. Dividing undoes multiplying: 30 ÷ 5 = 6.",
+              wrong: [
+                ["True. Do the same thing again.", "AS.INVERSE.SAME-OPERATION"],
+                ["True. The answer is 150."],
+              ],
+            },
           ],
-          solution: [{ say: "Use the inverse: multiply to undo a division." }],
-        });
+        );
     }
   },
 

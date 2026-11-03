@@ -37,7 +37,7 @@ exports[`Y3-GEO-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-GEO-02",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -149,7 +149,7 @@ exports[`Y3-GEO-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-GEO-02",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -266,7 +266,7 @@ exports[`Y3-GEO-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-GEO-02",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -336,7 +336,7 @@ exports[`Y3-GEO-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-GEO-02",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -441,7 +441,7 @@ exports[`Y3-GEO-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-GEO-02",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -546,7 +546,7 @@ exports[`Y3-GEO-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-GEO-02",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -651,7 +651,7 @@ exports[`Y3-GEO-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-GEO-02",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -663,7 +663,7 @@ exports[`Y3-GEO-02 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -689,7 +689,7 @@ exports[`Y3-GEO-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "A circle has no straight sides and no corners, so it has no angles.",
+                  "v": "It has 4 angles, like a square.",
                 },
               ],
               "id": "RA",
@@ -698,7 +698,7 @@ exports[`Y3-GEO-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It has 4 angles, like a square.",
+                  "v": "A circle is a whole turn, so it has a 360° angle.",
                 },
               ],
               "id": "RB",
@@ -707,7 +707,7 @@ exports[`Y3-GEO-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "A circle is a whole turn, so it has a 360° angle.",
+                  "v": "A circle has no straight sides and no corners, so it has no angles.",
                 },
               ],
               "id": "RC",
@@ -750,7 +750,115 @@ exports[`Y3-GEO-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-GEO-02",
-      "version": "1.0.1",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Turns and angles are different things.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. A quarter is 2.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. A quarter turn is one right angle. Two right angles make a half turn.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "GEO.TURNS.FRACTION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. A quarter turn is one right angle. Two right angles make a half turn.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Kim says a quarter turn is the same as two right angles.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y3-GEO-02",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -788,7 +896,7 @@ exports[`Y3-GEO-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "A circle has no straight sides and no corners, so it has no angles.",
+                  "v": "False. A quarter turn is one right angle. Two right angles make a half turn.",
                 },
               ],
               "id": "RA",
@@ -797,7 +905,7 @@ exports[`Y3-GEO-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "A circle is a whole turn, so it has a 360° angle.",
+                  "v": "True. Turns and angles are different things.",
                 },
               ],
               "id": "RB",
@@ -806,106 +914,7 @@ exports[`Y3-GEO-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It has 4 angles, like a square.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "A circle has no straight sides and no corners, so it has no angles.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "A circle has angles.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y3-GEO-02",
-      "version": "1.0.1",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "It has 10 angles: one at each end of each side.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Angles only count if they are right angles.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Every corner, where two sides meet, makes an angle, and there are as many corners as sides.",
+                  "v": "True. A quarter is 2.",
                 },
               ],
               "id": "RC",
@@ -917,10 +926,10 @@ exports[`Y3-GEO-02 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "GEO.SHAPES.SIDES-VERTICES",
+            "code": "GEO.TURNS.FRACTION",
             "feedback": [],
           },
         ],
@@ -937,7 +946,7 @@ exports[`Y3-GEO-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Every corner, where two sides meet, makes an angle, and there are as many corners as sides.",
+            "v": "False. A quarter turn is one right angle. Two right angles make a half turn.",
           },
         ],
       },
@@ -945,7 +954,7 @@ exports[`Y3-GEO-02 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A shape with 5 straight sides has 5 angles.",
+        "v": "Kim says a quarter turn is the same as two right angles.",
       },
     ],
   },

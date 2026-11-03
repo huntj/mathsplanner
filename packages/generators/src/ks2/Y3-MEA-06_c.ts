@@ -10,6 +10,7 @@ import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { mixFamilies } from "../shared/npv.ts";
 import parent from "./Y3-MEA-06.ts";
+import { withClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Depth 2: how many years, one of them a leap year. */
@@ -68,5 +69,36 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y3-MEA-06.c", { 1: own, 2: own, 4: { ...parent.definition, id: "Y3-MEA-06.c" } }),
+  withClaims(
+    mixFamilies("Y3-MEA-06.c", { 1: own, 2: own, 4: { ...parent.definition, id: "Y3-MEA-06.c" } }),
+    [
+      {
+        claim: "A leap year has 366 days.",
+        truth: "always",
+        right: "Always. A leap year adds a 29th of February, so 365 + 1 = 366.",
+        wrong: [
+          ["Never. Every year has 365 days.", "MEA.TIME.FACTS"],
+          ["Sometimes. Only every 10 years."],
+        ],
+      },
+      {
+        statement: "Ben says an ordinary year has 365 days.",
+        truth: true,
+        right: "True. A year that is not a leap year has 365 days.",
+        wrong: [
+          ["False. It has 360 days.", "MEA.TIME.FACTS"],
+          ["False. It has 100 days.", "MEA.TIME.DECIMAL"],
+        ],
+      },
+      {
+        claim: "A leap year comes every year.",
+        truth: "never",
+        right: "Never. Leap years come about once every 4 years.",
+        wrong: [
+          ["Always. Every year is a leap year.", "MEA.TIME.FACTS"],
+          ["Sometimes. Only in summer."],
+        ],
+      },
+    ],
+  ),
 );

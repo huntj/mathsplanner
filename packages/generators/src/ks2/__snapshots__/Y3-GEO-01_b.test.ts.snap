@@ -80,7 +80,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -227,7 +227,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -348,7 +348,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -488,7 +488,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -622,7 +622,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -729,7 +729,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -785,7 +785,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -900,7 +900,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1015,7 +1015,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1130,7 +1130,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1141,8 +1141,8 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -1168,7 +1168,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Turning a shape changes how many faces it has.",
+                  "v": "False. It has 3 faces, the ones you can see.",
                 },
               ],
               "id": "RA",
@@ -1177,7 +1177,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A shape's name depends on which way up it is.",
+                  "v": "True. Top, bottom and four sides: 6 square faces.",
                 },
               ],
               "id": "RB",
@@ -1186,7 +1186,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Turning a shape does not change it: it has the same faces, edges and vertices, so it is still a square-based pyramid.",
+                  "v": "False. It has 4 faces.",
                 },
               ],
               "id": "RC",
@@ -1201,15 +1201,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "GEO.SHAPES.ORIENTATION",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "GEO.SHAPES.ORIENTATION",
+            "code": "GEO.SOLIDS.VISIBLE-ONLY",
             "feedback": [],
           },
         ],
@@ -1226,7 +1218,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A 3D shape keeps its name in any position.",
+            "v": "True. Top, bottom and four sides: 6 square faces.",
           },
         ],
       },
@@ -1234,7 +1226,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Theo says a square-based pyramid turned upside down is no longer a square-based pyramid.",
+        "v": "Ana says a cube has 6 faces.",
       },
     ],
   },
@@ -1246,7 +1238,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1293,7 +1285,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Turning a shape changes how many faces it has.",
+                  "v": "True. A shape's name depends on which way up it is.",
                 },
               ],
               "id": "RB",
@@ -1302,7 +1294,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A shape's name depends on which way up it is.",
+                  "v": "True. Turning a shape changes how many faces it has.",
                 },
               ],
               "id": "RC",
@@ -1362,7 +1354,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1374,7 +1366,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -1400,7 +1392,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Turning a shape does not change it: it has the same faces, edges and vertices, so it is still a square-based pyramid.",
+                  "v": "True. Turning a shape changes how many faces it has.",
                 },
               ],
               "id": "RA",
@@ -1409,7 +1401,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A shape's name depends on which way up it is.",
+                  "v": "False. Turning a shape does not change it: it has the same faces, edges and vertices, so it is still a square-based pyramid.",
                 },
               ],
               "id": "RB",
@@ -1418,7 +1410,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Turning a shape changes how many faces it has.",
+                  "v": "True. A shape's name depends on which way up it is.",
                 },
               ],
               "id": "RC",
@@ -1430,7 +1422,7 @@ exports[`Y3-GEO-01.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "GEO.SHAPES.ORIENTATION",

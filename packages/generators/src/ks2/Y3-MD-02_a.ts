@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y3-MD-02.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MD.DIVIDE.ORDER", "MD.PLACE.ZEROS"],
 
@@ -88,33 +89,67 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ellie knows ",
-            fact,
-            ". She says that means ",
-            A.math(`${p.b} \\div ${c} = ${p.a}`),
-            ".",
-          ],
-          truth: false,
-          reasons: [
-            { text: `False. You divide the product: ${c} ÷ ${p.b} = ${p.a}.`, correct: true },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ellie knows ",
+                fact,
+                ". She says that means ",
+                A.math(`${p.b} \\div ${c} = ${p.a}`),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                { text: `False. You divide the product: ${c} ÷ ${p.b} = ${p.a}.`, correct: true },
+                {
+                  text: "True. Division can be done in either order, like multiplication.",
+                  code: "MD.DIVIDE.ORDER",
+                },
+                {
+                  text: "True. The three numbers are the same, so it must be right.",
+                  code: "MD.DIVIDE.ORDER",
+                },
+              ],
+              solution: [
+                {
+                  say: `The fact family is ${p.a} × ${p.b} = ${c}, ${p.b} × ${p.a} = ${c}, ${c} ÷ ${p.a} = ${p.b} and ${c} ÷ ${p.b} = ${p.a}.`,
+                },
+              ],
+            }),
+          [
             {
-              text: "True. Division can be done in either order, like multiplication.",
-              code: "MD.DIVIDE.ORDER",
+              statement: "Dan knows 4 × 5 = 20. He says that means 20 ÷ 5 = 4.",
+              truth: true,
+              right:
+                "True. Multiplying and dividing are opposites: 20 shared into 5s makes 4 groups.",
+              wrong: [
+                ["False. 20 ÷ 5 = 20.", "MD.DIVIDE.ORDER"],
+                ["False. It means 5 ÷ 20 = 4.", "MD.DIVIDE.ORDER"],
+              ],
             },
             {
-              text: "True. The three numbers are the same, so it must be right.",
-              code: "MD.DIVIDE.ORDER",
+              claim: "If you know 6 × 3 = 18, you also know 18 ÷ 3 = 6.",
+              truth: "always",
+              right: "Always. Each times fact gives two divide facts: 18 ÷ 3 = 6 and 18 ÷ 6 = 3.",
+              wrong: [
+                ["Never. You must work it out again.", "MD.DIVIDE.ORDER"],
+                ["Sometimes. Only for the 3 times table."],
+              ],
             },
-          ],
-          solution: [
             {
-              say: `The fact family is ${p.a} × ${p.b} = ${c}, ${p.b} × ${p.a} = ${c}, ${c} ÷ ${p.a} = ${p.b} and ${c} ÷ ${p.b} = ${p.a}.`,
+              statement: "Mia knows 3 × 4 = 12. She says 3 × 40 = 1200.",
+              truth: false,
+              right: "False. 40 is ten times 4, so the answer is ten times 12: 120.",
+              wrong: [
+                ["True. Add two zeros.", "MD.PLACE.ZEROS"],
+                ["True. Big numbers make big answers."],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

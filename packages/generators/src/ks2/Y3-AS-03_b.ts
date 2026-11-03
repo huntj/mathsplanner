@@ -15,6 +15,7 @@ import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { mixFamilies } from "../shared/npv.ts";
 import parent from "./Y3-AS-03.ts";
+import { withClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -93,5 +94,36 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y3-AS-03.b", { 1: own, 2: { ...parent.definition, id: "Y3-AS-03.b" }, 4: own }),
+  withClaims(
+    mixFamilies("Y3-AS-03.b", { 1: own, 2: { ...parent.definition, id: "Y3-AS-03.b" }, 4: own }),
+    [
+      {
+        statement: "To check 345 + 128 = 473, Mia works out 473 − 128.",
+        truth: true,
+        right: "True. Subtracting undoes adding: 473 − 128 should give 345.",
+        wrong: [
+          ["False. Check by adding again.", "AS.INVERSE.SAME-OPERATION"],
+          ["False. You cannot check adding."],
+        ],
+      },
+      {
+        claim: "Adding undoes subtracting.",
+        truth: "always",
+        right: "Always. If 50 − 20 = 30, then 30 + 20 = 50.",
+        wrong: [
+          ["Never. You must subtract again.", "AS.INVERSE.SAME-OPERATION"],
+          ["Sometimes. Only for small numbers."],
+        ],
+      },
+      {
+        statement: "To check 600 − 250 = 350, Raj works out 600 + 250.",
+        truth: false,
+        right: "False. Check with 350 + 250: it should give 600.",
+        wrong: [
+          ["True. Adding always checks subtracting.", "AS.INVERSE.SAME-OPERATION"],
+          ["True. Use the same numbers."],
+        ],
+      },
+    ],
+  ),
 );
