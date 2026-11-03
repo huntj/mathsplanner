@@ -10,7 +10,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-STA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -81,7 +81,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-STA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -152,7 +152,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-STA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -223,7 +223,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-STA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -294,7 +294,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-STA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -365,7 +365,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-STA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -436,7 +436,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-STA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -448,7 +448,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -474,7 +474,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The order of the rows does not matter. green has the biggest number.",
+                  "v": "True. Tables always put the most popular first.",
                 },
               ],
               "id": "RA",
@@ -483,7 +483,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. red has the most letters.",
+                  "v": "False. The order of the rows does not matter. green has the biggest number.",
                 },
               ],
               "id": "RB",
@@ -492,7 +492,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Tables always put the most popular first.",
+                  "v": "True. red has the most letters.",
                 },
               ],
               "id": "RC",
@@ -537,14 +537,14 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-STA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -555,14 +555,14 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -571,10 +571,19 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -582,7 +591,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Tables always put the most popular first.",
+                  "v": "Always. Each row shows a thing and how many.",
                 },
               ],
               "id": "RA",
@@ -591,7 +600,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The order of the rows does not matter. fish has the biggest number.",
+                  "v": "Sometimes. Only for pets.",
                 },
               ],
               "id": "RB",
@@ -600,7 +609,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. cat has the most letters.",
+                  "v": "Never. Tables only show names.",
                 },
               ],
               "id": "RC",
@@ -609,11 +618,20 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "AS.PROBLEM.KEYWORD",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -623,7 +641,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Compare the numbers: fish has 17.",
+            "v": "Always. Each row shows a thing and how many.",
           },
         ],
       },
@@ -631,16 +649,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The table shows the pets of some children.",
-      },
-      {
-        "display": true,
-        "t": "math",
-        "v": "\\begin{array}{|l|c|}\\hline \\text{pets} & \\text{children} \\\\ \\hline \\text{cat} & 16 \\\\ \\hline \\text{dog} & 10 \\\\ \\hline \\text{fish} & 17 \\\\ \\hline \\text{rabbit} & 7 \\\\ \\hline\\end{array}",
-      },
-      {
-        "t": "text",
-        "v": "Kai says cat is the most popular, because it is at the top of the table.",
+        "v": "A table can show how many there are of each thing.",
       },
     ],
   },
@@ -652,7 +661,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-STA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -664,7 +673,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -690,7 +699,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. cat has the most letters.",
+                  "v": "True. The difference is 3.",
                 },
               ],
               "id": "RA",
@@ -699,7 +708,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The order of the rows does not matter. dog has the biggest number.",
+                  "v": "True. 'More' means the second one.",
                 },
               ],
               "id": "RB",
@@ -708,7 +717,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Tables always put the most popular first.",
+                  "v": "False. There are 3 more apples: 9 − 6 = 3.",
                 },
               ],
               "id": "RC",
@@ -717,7 +726,16 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "AS.PROBLEM.KEYWORD",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
@@ -731,7 +749,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Compare the numbers: dog has 20.",
+            "v": "False. There are 3 more apples: 9 − 6 = 3.",
           },
         ],
       },
@@ -739,16 +757,7 @@ exports[`Y2-STA-01.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The table shows the pets of some children.",
-      },
-      {
-        "display": true,
-        "t": "math",
-        "v": "\\begin{array}{|l|c|}\\hline \\text{pets} & \\text{children} \\\\ \\hline \\text{cat} & 17 \\\\ \\hline \\text{dog} & 20 \\\\ \\hline \\text{fish} & 9 \\\\ \\hline \\text{rabbit} & 5 \\\\ \\hline\\end{array}",
-      },
-      {
-        "t": "text",
-        "v": "Kai says cat is the most popular, because it is at the top of the table.",
+        "v": "A table shows 9 apples and 6 pears. Ana says there are 3 more pears than apples.",
       },
     ],
   },

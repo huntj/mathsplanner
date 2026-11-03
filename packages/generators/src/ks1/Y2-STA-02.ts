@@ -9,6 +9,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
 import { distinctValues, pictogram, TOPICS } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   topic: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y2-STA-02",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.KEY-IGNORED"],
 
@@ -95,28 +96,60 @@ export default defineGenerator<Params>({
       default: {
         const big = order.at(-1);
         const second = order.at(-2);
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `The pictogram shows the ${topic.what} of some ${topic.who}.`,
-            figure,
-            ` Ali says more ${topic.who} chose ${second?.[0]} than ${big?.[0]}.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `The pictogram shows the ${topic.what} of some ${topic.who}.`,
+                figure,
+                ` Ali says more ${topic.who} chose ${second?.[0]} than ${big?.[0]}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${big?.[0]} has ${big?.[1]} and ${second?.[0]} has ${second?.[1]}, so ${big?.[0]} has more.`,
+                  correct: true,
+                },
+                { text: "True. Its row is nearer the top.", code: "STA.KEY-IGNORED" },
+                { text: "True. Its name is longer." },
+              ],
+              solution: [
+                {
+                  say: `Count the symbols and use the key: ${big?.[0]} ${big?.[1]}, ${second?.[0]} ${second?.[1]}.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. ${big?.[0]} has ${big?.[1]} and ${second?.[0]} has ${second?.[1]}, so ${big?.[0]} has more.`,
-              correct: true,
+              claim:
+                "The row with the most pictures shows the most popular choice, if every picture stands for the same number.",
+              truth: "always",
+              right: "Always. More pictures means more people.",
+              wrong: [
+                ["Never. The fewest pictures wins.", "STA.KEY-IGNORED"],
+                ["Sometimes. It depends on the colours."],
+              ],
             },
-            { text: "True. Its row is nearer the top.", code: "STA.KEY-IGNORED" },
-            { text: "True. Its name is longer." },
-          ],
-          solution: [
             {
-              say: `Count the symbols and use the key: ${big?.[0]} ${big?.[1]}, ${second?.[0]} ${second?.[1]}.`,
+              statement:
+                "Football has 5 pictures and tennis has 3. Each picture is 2. Leo says football has 4 more.",
+              truth: true,
+              right: "True. 10 for football and 6 for tennis: 10 − 6 = 4.",
+              wrong: [["False. It has 2 more.", "STA.KEY-IGNORED"], ["False. Tennis has more."]],
+            },
+            {
+              statement: "Each picture is 5. Cats have 2 pictures. Kim says 2 children chose cats.",
+              truth: false,
+              right: "False. 2 pictures of 5 is 10 children.",
+              wrong: [
+                ["True. Count the pictures.", "STA.KEY-IGNORED"],
+                ["True. The key is only a picture."],
+              ],
             },
           ],
-        });
+        );
       }
     }
   },

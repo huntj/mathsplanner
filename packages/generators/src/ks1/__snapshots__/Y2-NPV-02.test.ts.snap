@@ -10,7 +10,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -92,7 +92,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -174,7 +174,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -270,7 +270,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -367,7 +367,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -464,7 +464,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -604,7 +604,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -783,7 +783,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -948,7 +948,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1048,7 +1048,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1060,7 +1060,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -1086,7 +1086,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The first 1 is 1 tens, worth 10; the second is 1 ones.",
+                  "v": "True. The bigger digit is the tens.",
                 },
               ],
               "id": "RA",
@@ -1095,7 +1095,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "They are the same digit, so they are worth the same.",
+                  "v": "True. The order does not matter.",
                 },
               ],
               "id": "RB",
@@ -1104,7 +1104,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The second one is worth more because it comes last.",
+                  "v": "False. 36 is 3 tens and 6 ones.",
                 },
               ],
               "id": "RC",
@@ -1116,10 +1116,18 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.PLACE.DIGIT-ORDER",
+            "feedback": [],
+          },
+          {
+            "answer": {
               "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.PLACE.FACE-VALUE",
+            "code": "NPV.PLACE.DIGIT-ORDER",
             "feedback": [],
           },
         ],
@@ -1136,7 +1144,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A digit's value depends on its place: 11 = 10 + 1.",
+            "v": "False. 36 is 3 tens and 6 ones.",
           },
         ],
       },
@@ -1144,15 +1152,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "In ",
-      },
-      {
-        "t": "math",
-        "v": "11",
-      },
-      {
-        "t": "text",
-        "v": ", both 1s are worth the same.",
+        "v": "Pia says 36 is 6 tens and 3 ones.",
       },
     ],
   },
@@ -1164,7 +1164,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1176,7 +1176,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -1202,7 +1202,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The first 5 is 5 tens, worth 50; the second is 5 ones.",
+                  "v": "They are the same digit, so they are worth the same.",
                 },
               ],
               "id": "RA",
@@ -1220,7 +1220,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "They are the same digit, so they are worth the same.",
+                  "v": "The first 5 is 5 tens, worth 50; the second is 5 ones.",
                 },
               ],
               "id": "RC",
@@ -1232,7 +1232,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.PLACE.FACE-VALUE",
@@ -1280,7 +1280,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1292,7 +1292,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -1318,7 +1318,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The second one is worth more because it comes last.",
+                  "v": "True. The order does not matter.",
                 },
               ],
               "id": "RA",
@@ -1327,7 +1327,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The first 3 is 3 tens, worth 30; the second is 3 ones.",
+                  "v": "True. The bigger digit is the tens.",
                 },
               ],
               "id": "RB",
@@ -1336,7 +1336,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "They are the same digit, so they are worth the same.",
+                  "v": "False. 36 is 3 tens and 6 ones.",
                 },
               ],
               "id": "RC",
@@ -1348,10 +1348,18 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.PLACE.FACE-VALUE",
+            "code": "NPV.PLACE.DIGIT-ORDER",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.PLACE.DIGIT-ORDER",
             "feedback": [],
           },
         ],
@@ -1368,7 +1376,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A digit's value depends on its place: 33 = 30 + 3.",
+            "v": "False. 36 is 3 tens and 6 ones.",
           },
         ],
       },
@@ -1376,15 +1384,7 @@ exports[`Y2-NPV-02 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "In ",
-      },
-      {
-        "t": "math",
-        "v": "33",
-      },
-      {
-        "t": "text",
-        "v": ", both 3s are worth the same.",
+        "v": "Pia says 36 is 6 tens and 3 ones.",
       },
     ],
   },

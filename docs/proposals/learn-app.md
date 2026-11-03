@@ -1,7 +1,7 @@
 # Proposal: Learn Maths, a Duolingo-style practice app for pupils
 
 Status: **agreed on 29 October 2026.** Steps 1 to 6 are built: the course data with Year 7 as
-the pilot section, then Years 8, 9, 6, 5, 4 and 3 (`data/course.txt`, `pnpm data:course`), the shared answer widgets
+the pilot section, then Years 8, 9, 6, 5, 4, 3 and 2 (`data/course.txt`, `pnpm data:course`), the shared answer widgets
 (`@mathsplanner/ui`), and the app with its path, progress, first visit, lessons, practice and
 rewards (`apps/learn`, `pnpm learn`); steps 7 to 10 are to do.
 
@@ -159,6 +159,27 @@ proportion with compound change, inequalities with simultaneous equations):
 | 7   | Compound change and inverse proportion  |      3 |
 | 8   | Graphs and sequences                    |      4 |
 | 9   | Probability                             |      4 |
+
+**Year 2** has 15 units and 62 skills. Written addition is split so that number facts and
+adding tens and ones come before adding two 2-digit numbers and three 1-digit numbers:
+
+| #   | Unit                       | Skills |
+| --- | -------------------------- | -----: |
+| 1   | Counting in steps          |      3 |
+| 2   | Tens and ones              |      3 |
+| 3   | Number facts               |      4 |
+| 4   | 2D and 3D shapes           |      6 |
+| 5   | Comparing numbers          |      3 |
+| 6   | Adding and subtracting     |      5 |
+| 7   | Times tables, odd and even |      4 |
+| 8   | Patterns and turns         |      4 |
+| 9   | Multiplying and dividing   |      4 |
+| 10  | Fractions                  |      5 |
+| 11  | Measuring                  |      4 |
+| 12  | Comparing measures         |      3 |
+| 13  | Money                      |      4 |
+| 14  | Time                       |      4 |
+| 15  | Charts and tables          |      6 |
 
 **Year 3** has 14 units and 61 skills. Angles come before the unit on lines, as perpendicular
 lines need right angles:

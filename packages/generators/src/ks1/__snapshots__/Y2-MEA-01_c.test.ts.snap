@@ -20,7 +20,7 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MEA-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -97,7 +97,7 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MEA-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -174,7 +174,7 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MEA-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -234,24 +234,14 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "divisions": 5,
-        "instrument": "thermometer",
-        "max": 20,
-        "reading": 8,
-        "step": 10,
-        "type": "measure",
-        "unit": "^\\circ\\text{C}",
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MEA-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -262,14 +252,14 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -278,10 +268,19 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -289,7 +288,7 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You always count in 1s on a scale.",
+                  "v": "Sometimes. Only in winter.",
                 },
               ],
               "id": "RA",
@@ -298,7 +297,7 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every small mark on a scale is worth 1.",
+                  "v": "Never. It measures length.",
                 },
               ],
               "id": "RB",
@@ -307,7 +306,7 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The numbered marks go up in 10s with 5 spaces between, so each small mark is 2. It shows 8 °C.",
+                  "v": "Always. It measures temperature in degrees.",
                 },
               ],
               "id": "RC",
@@ -317,14 +316,6 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "MEA.SCALE.INTERVAL",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RB",
@@ -337,7 +328,7 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -347,41 +338,27 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Work out what one small mark is worth first: 10 ÷ 5 = 2.",
+            "v": "Always. It measures temperature in degrees.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
         "t": "text",
-        "v": "Ella says it shows 4 °C, because she counted on 1 for each small mark.",
+        "v": "A thermometer shows how hot or cold something is.",
       },
     ],
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "divisions": 5,
-        "instrument": "thermometer",
-        "max": 50,
-        "reading": 4,
-        "step": 10,
-        "type": "measure",
-        "unit": "^\\circ\\text{C}",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MEA-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -392,8 +369,8 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -419,7 +396,7 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every small mark on a scale is worth 1.",
+                  "v": "False. It is 11 °C.",
                 },
               ],
               "id": "RA",
@@ -428,7 +405,7 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You always count in 1s on a scale.",
+                  "v": "True. Each mark is 2 degrees: 10, 12.",
                 },
               ],
               "id": "RB",
@@ -437,7 +414,7 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The numbered marks go up in 10s with 5 spaces between, so each small mark is 2. It shows 4 °C.",
+                  "v": "False. It is 20 °C.",
                 },
               ],
               "id": "RC",
@@ -450,14 +427,6 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
-              "type": "choice",
-            },
-            "code": "MEA.SCALE.INTERVAL",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
               "type": "choice",
             },
             "code": "MEA.SCALE.INTERVAL",
@@ -477,41 +446,27 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Work out what one small mark is worth first: 10 ÷ 5 = 2.",
+            "v": "True. Each mark is 2 degrees: 10, 12.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
         "t": "text",
-        "v": "Ella says it shows 2 °C, because she counted on 1 for each small mark.",
+        "v": "A thermometer goes up in 2s. Kai says one mark above 10 °C is 12 °C.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "divisions": 5,
-        "instrument": "thermometer",
-        "max": 500,
-        "reading": 80,
-        "step": 100,
-        "type": "measure",
-        "unit": "^\\circ\\text{C}",
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MEA-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -522,14 +477,14 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -538,10 +493,19 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -549,7 +513,7 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You always count in 1s on a scale.",
+                  "v": "Never. It measures length.",
                 },
               ],
               "id": "RA",
@@ -558,7 +522,7 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every small mark on a scale is worth 1.",
+                  "v": "Sometimes. Only in winter.",
                 },
               ],
               "id": "RB",
@@ -567,7 +531,7 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The numbered marks go up in 100s with 5 spaces between, so each small mark is 20. It shows 80 °C.",
+                  "v": "Always. It measures temperature in degrees.",
                 },
               ],
               "id": "RC",
@@ -585,19 +549,11 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
             "code": "MEA.SCALE.INTERVAL",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "MEA.SCALE.INTERVAL",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -607,19 +563,15 @@ exports[`Y2-MEA-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Work out what one small mark is worth first: 100 ÷ 5 = 20.",
+            "v": "Always. It measures temperature in degrees.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
         "t": "text",
-        "v": "Ella says it shows 4 °C, because she counted on 1 for each small mark.",
+        "v": "A thermometer shows how hot or cold something is.",
       },
     ],
   },

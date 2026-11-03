@@ -10,7 +10,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-AS-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -92,7 +92,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-AS-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -174,7 +174,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-AS-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -256,7 +256,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-AS-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -322,7 +322,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-AS-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -388,7 +388,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-AS-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -454,7 +454,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-AS-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -466,7 +466,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -501,7 +501,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Only the ones digit changes when you add 9.",
+                  "v": "False. 5 + 9 = 14 makes a new ten, so the answer is 24.",
                 },
               ],
               "id": "RB",
@@ -510,7 +510,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 5 + 9 = 14 makes a new ten, so the answer is 24.",
+                  "v": "True. Only the ones digit changes when you add 9.",
                 },
               ],
               "id": "RC",
@@ -522,7 +522,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "AS.COLUMN.NO-CARRY",
@@ -578,7 +578,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-AS-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -616,7 +616,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The ones make 12, which is 1 ten and 2 ones, so 8 tens become 9 tens.",
+                  "v": "True. 3 tens and 4 tens make 7 tens.",
                 },
               ],
               "id": "RA",
@@ -625,7 +625,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The tens should stay as 8.",
+                  "v": "False. It is 34.",
                 },
               ],
               "id": "RB",
@@ -634,7 +634,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You cannot use a fact to 20 for bigger numbers.",
+                  "v": "False. It is 7.",
                 },
               ],
               "id": "RC",
@@ -649,7 +649,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "AS.COLUMN.NO-CARRY",
+            "code": "NPV.PLACE.TENS-ONES-MIXUP",
             "feedback": [],
           },
         ],
@@ -666,7 +666,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "89 + 3 = 92.",
+            "v": "True. 3 tens and 4 tens make 7 tens.",
           },
         ],
       },
@@ -674,23 +674,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Raj knows ",
-      },
-      {
-        "t": "math",
-        "v": "9 + 3 = 12",
-      },
-      {
-        "t": "text",
-        "v": ". He says ",
-      },
-      {
-        "t": "math",
-        "v": "89 + 3 = 92",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Leo says 30 + 40 = 70.",
       },
     ],
   },
@@ -702,7 +686,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-AS-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -714,7 +698,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -740,7 +724,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The ones make 12, which is 1 ten and 2 ones, so 1 tens become 2 tens.",
+                  "v": "False. You cannot use a fact to 20 for bigger numbers.",
                 },
               ],
               "id": "RA",
@@ -749,7 +733,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The tens should stay as 1.",
+                  "v": "True. The ones make 12, which is 1 ten and 2 ones, so 1 tens become 2 tens.",
                 },
               ],
               "id": "RB",
@@ -758,7 +742,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You cannot use a fact to 20 for bigger numbers.",
+                  "v": "False. The tens should stay as 1.",
                 },
               ],
               "id": "RC",
@@ -770,7 +754,7 @@ exports[`Y2-AS-01.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "AS.COLUMN.NO-CARRY",

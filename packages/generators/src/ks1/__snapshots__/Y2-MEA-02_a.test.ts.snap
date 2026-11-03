@@ -10,7 +10,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MEA-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -88,7 +88,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MEA-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -166,7 +166,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MEA-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -244,7 +244,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MEA-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -256,7 +256,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -282,7 +282,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Metres and centimetres are the same size.",
+                  "v": "False. 2 m is 200 cm, so 2 m > 119 cm. Compare in the same units.",
                 },
               ],
               "id": "RA",
@@ -291,7 +291,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 2 m is 200 cm, so 2 m > 119 cm. Compare in the same units.",
+                  "v": "True. 2 is a smaller number than 119.",
                 },
               ],
               "id": "RB",
@@ -300,7 +300,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 2 is a smaller number than 119.",
+                  "v": "True. Metres and centimetres are the same size.",
                 },
               ],
               "id": "RC",
@@ -312,7 +312,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "MEA.UNITS.MIXED",
@@ -368,7 +368,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MEA-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -379,8 +379,8 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -406,7 +406,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Metres and centimetres are the same size.",
+                  "v": "True. 30 cm is less than 40 cm.",
                 },
               ],
               "id": "RA",
@@ -415,7 +415,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 2 m is 200 cm, so 2 m > 56 cm. Compare in the same units.",
+                  "v": "False. They are the same.",
                 },
               ],
               "id": "RB",
@@ -424,7 +424,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 2 is a smaller number than 56.",
+                  "v": "False. 30 cm is longer.",
                 },
               ],
               "id": "RC",
@@ -436,18 +436,10 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "MEA.UNITS.MIXED",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "MEA.UNITS.MIXED",
+            "code": "NPV.COMPARE.SIGN-DIRECTION",
             "feedback": [],
           },
         ],
@@ -464,7 +456,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "1 m = 100 cm, so 2 m = 200 cm.",
+            "v": "True. 30 cm is less than 40 cm.",
           },
         ],
       },
@@ -472,15 +464,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Joe writes ",
-      },
-      {
-        "t": "math",
-        "v": "2\\text{ m} < 56\\text{ cm}",
-      },
-      {
-        "t": "text",
-        "v": " because 2 is less than 56.",
+        "v": "Sam says a 30 cm ruler is shorter than a 40 cm ruler.",
       },
     ],
   },
@@ -492,7 +476,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MEA-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -503,7 +487,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -530,7 +514,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Metres and centimetres are the same size.",
+                  "v": "False. 30 cm is longer.",
                 },
               ],
               "id": "RA",
@@ -539,7 +523,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 1 is a smaller number than 72.",
+                  "v": "False. They are the same.",
                 },
               ],
               "id": "RB",
@@ -548,7 +532,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 1 m is 100 cm, so 1 m > 72 cm. Compare in the same units.",
+                  "v": "True. 30 cm is less than 40 cm.",
                 },
               ],
               "id": "RC",
@@ -563,15 +547,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "MEA.UNITS.MIXED",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "MEA.UNITS.MIXED",
+            "code": "NPV.COMPARE.SIGN-DIRECTION",
             "feedback": [],
           },
         ],
@@ -588,7 +564,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "1 m = 100 cm, so 1 m = 100 cm.",
+            "v": "True. 30 cm is less than 40 cm.",
           },
         ],
       },
@@ -596,15 +572,7 @@ exports[`Y2-MEA-02.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Joe writes ",
-      },
-      {
-        "t": "math",
-        "v": "1\\text{ m} < 72\\text{ cm}",
-      },
-      {
-        "t": "text",
-        "v": " because 1 is less than 72.",
+        "v": "Sam says a 30 cm ruler is shorter than a 40 cm ruler.",
       },
     ],
   },

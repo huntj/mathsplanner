@@ -10,7 +10,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -89,7 +89,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -168,7 +168,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -247,7 +247,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -331,7 +331,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -415,7 +415,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -521,7 +521,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -643,7 +643,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -765,7 +765,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -865,7 +865,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -876,8 +876,8 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -912,7 +912,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. 5 is odd, so all its multiples are odd.",
+                  "v": "Sometimes. 5 × 3 = 13.",
                 },
               ],
               "id": "RA",
@@ -921,7 +921,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Every times table goes up in even steps.",
+                  "v": "Always. 5, 10, 15, 20 … they end in 5 or 0.",
                 },
               ],
               "id": "RB",
@@ -930,7 +930,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. 5 × 2 = 10 is even, but 5 × 3 = 15 is odd.",
+                  "v": "Never. They end in 3.",
                 },
               ],
               "id": "RC",
@@ -939,7 +939,16 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "MD.TABLES.NEIGHBOUR",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
@@ -953,7 +962,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The 5 times table: 5, 10, 15, 20, …",
+            "v": "Always. 5, 10, 15, 20 … they end in 5 or 0.",
           },
         ],
       },
@@ -961,7 +970,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A number in the 5 times table is even.",
+        "v": "Numbers in the 5 times table end in 0 or 5.",
       },
     ],
   },
@@ -973,7 +982,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -985,7 +994,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -1011,7 +1020,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You can swap the numbers, like in multiplication.",
+                  "v": "False. Division cannot be done in any order. 5 shared into 40 groups is less than 1 each.",
                 },
               ],
               "id": "RA",
@@ -1020,7 +1029,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Division cannot be done in any order. 5 shared into 40 groups is less than 1 each.",
+                  "v": "True. You can swap the numbers, like in multiplication.",
                 },
               ],
               "id": "RB",
@@ -1041,7 +1050,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "MD.DIVIDE.ORDER",
@@ -1090,14 +1099,14 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MD-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1108,14 +1117,14 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1124,10 +1133,19 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1135,7 +1153,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Division cannot be done in any order. 5 shared into 20 groups is less than 1 each.",
+                  "v": "Sometimes. 5 × 3 = 13.",
                 },
               ],
               "id": "RA",
@@ -1144,7 +1162,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You can swap the numbers, like in multiplication.",
+                  "v": "Never. They end in 3.",
                 },
               ],
               "id": "RB",
@@ -1153,7 +1171,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both use the same numbers.",
+                  "v": "Always. 5, 10, 15, 20 … they end in 5 or 0.",
                 },
               ],
               "id": "RC",
@@ -1165,17 +1183,17 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "MD.DIVIDE.ORDER",
+            "code": "MD.TABLES.NEIGHBOUR",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1185,7 +1203,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Multiplication can be done in any order (4 × 5 = 5 × 4), but division cannot.",
+            "v": "Always. 5, 10, 15, 20 … they end in 5 or 0.",
           },
         ],
       },
@@ -1193,23 +1211,7 @@ exports[`Y2-MD-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sam knows ",
-      },
-      {
-        "t": "math",
-        "v": "20 \\div 5 = 4",
-      },
-      {
-        "t": "text",
-        "v": ". He says ",
-      },
-      {
-        "t": "math",
-        "v": "5 \\div 20 = 4",
-      },
-      {
-        "t": "text",
-        "v": " too.",
+        "v": "Numbers in the 5 times table end in 0 or 5.",
       },
     ],
   },

@@ -17,7 +17,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -150,7 +150,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -283,7 +283,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -409,7 +409,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -514,7 +514,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -619,7 +619,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -743,7 +743,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -867,7 +867,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -991,7 +991,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1089,21 +1089,14 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "hours": 1,
-        "instrument": "clock",
-        "minutes": 45,
-        "type": "measure",
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1114,14 +1107,14 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1130,10 +1123,19 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1141,7 +1143,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 9 o'clock.",
+                  "v": "Sometimes. Only at lunch time.",
                 },
               ],
               "id": "RA",
@@ -1150,7 +1152,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Each number on the clock is 5 minutes for the minute hand, so 9 means 9 × 5 = 45 minutes past. It is quarter to 2.",
+                  "v": "Never. It means 12 minutes.",
                 },
               ],
               "id": "RB",
@@ -1159,7 +1161,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The minute hand points to the number of minutes.",
+                  "v": "Always. The minute hand at 12 means no minutes past.",
                 },
               ],
               "id": "RC",
@@ -1171,7 +1173,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "MEA.CLOCK.MINUTE-NUMBER",
@@ -1181,7 +1183,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1191,7 +1193,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Count in fives round the clock to read the minute hand.",
+            "v": "Always. The minute hand at 12 means no minutes past.",
           },
         ],
       },
@@ -1199,34 +1201,19 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Look at the clock.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": "Kim says it is 9 minutes past 1, because the minute hand points to 9.",
+        "v": "When the minute hand points to 12, it is an o'clock time.",
       },
     ],
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "hours": 6,
-        "instrument": "clock",
-        "minutes": 45,
-        "type": "measure",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1237,7 +1224,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -1264,7 +1251,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 9 o'clock.",
+                  "v": "False. It is 6 o'clock.",
                 },
               ],
               "id": "RA",
@@ -1273,7 +1260,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Each number on the clock is 5 minutes for the minute hand, so 9 means 9 × 5 = 45 minutes past. It is quarter to 7.",
+                  "v": "True. The minute hand at 6 is halfway round: 30 minutes past.",
                 },
               ],
               "id": "RB",
@@ -1282,7 +1269,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The minute hand points to the number of minutes.",
+                  "v": "False. It is 6 minutes past.",
                 },
               ],
               "id": "RC",
@@ -1314,7 +1301,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Count in fives round the clock to read the minute hand.",
+            "v": "True. The minute hand at 6 is halfway round: 30 minutes past.",
           },
         ],
       },
@@ -1322,34 +1309,19 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Look at the clock.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": "Kim says it is 9 minutes past 6, because the minute hand points to 9.",
+        "v": "The minute hand points to 6. Sam says it is half past.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "hours": 9,
-        "instrument": "clock",
-        "minutes": 15,
-        "type": "measure",
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MEA-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1360,14 +1332,14 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1376,10 +1348,19 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1387,7 +1368,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Each number on the clock is 5 minutes for the minute hand, so 3 means 3 × 5 = 15 minutes past. It is quarter past 9.",
+                  "v": "Sometimes. Only at lunch time.",
                 },
               ],
               "id": "RA",
@@ -1396,7 +1377,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 3 o'clock.",
+                  "v": "Always. The minute hand at 12 means no minutes past.",
                 },
               ],
               "id": "RB",
@@ -1405,7 +1386,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The minute hand points to the number of minutes.",
+                  "v": "Never. It means 12 minutes.",
                 },
               ],
               "id": "RC",
@@ -1427,7 +1408,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1437,7 +1418,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Count in fives round the clock to read the minute hand.",
+            "v": "Always. The minute hand at 12 means no minutes past.",
           },
         ],
       },
@@ -1445,15 +1426,7 @@ exports[`Y2-MEA-06.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Look at the clock.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": "Kim says it is 3 minutes past 9, because the minute hand points to 3.",
+        "v": "When the minute hand points to 12, it is an o'clock time.",
       },
     ],
   },

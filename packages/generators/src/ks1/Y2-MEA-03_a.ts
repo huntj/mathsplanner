@@ -10,6 +10,7 @@ import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { mixFamilies } from "../shared/npv.ts";
 import parent from "./Y2-MEA-03.ts";
+import { withClaims } from "../shared/variety.ts";
 
 interface Params {
   pounds: number;
@@ -71,5 +72,33 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y2-MEA-03.a", { 1: own, 2: { ...parent.definition, id: "Y2-MEA-03.a" }, 4: own }),
+  withClaims(
+    mixFamilies("Y2-MEA-03.a", { 1: own, 2: { ...parent.definition, id: "Y2-MEA-03.a" }, 4: own }),
+    [
+      {
+        claim: "100 pence make £1.",
+        truth: "always",
+        right: "Always. There are 100p in a pound.",
+        wrong: [
+          ["Never. 10p make £1.", "MEA.MONEY.POUNDS-PENCE"],
+          ["Sometimes. Only with 1p coins."],
+        ],
+      },
+      {
+        statement: "Sam has a 20p coin and a 5p coin. He says he has 25p.",
+        truth: true,
+        right: "True. 20p + 5p = 25p.",
+        wrong: [
+          ["False. He has 2p, one for each coin.", "MEA.MONEY.COIN-COUNT"],
+          ["False. He has 205p."],
+        ],
+      },
+      {
+        statement: "Kim has three 10p coins. She says she has 3p.",
+        truth: false,
+        right: "False. Three 10p coins are 10p + 10p + 10p = 30p.",
+        wrong: [["True. 3 coins is 3p.", "MEA.MONEY.COIN-COUNT"], ["True. Count the coins."]],
+      },
+    ],
+  ),
 );

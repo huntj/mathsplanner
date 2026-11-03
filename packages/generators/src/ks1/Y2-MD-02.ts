@@ -10,6 +10,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { array } from "../shared/md.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   rows: number;
@@ -20,7 +21,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y2-MD-02",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MD.MULTIPLY.ADDS", "MD.DIVIDE.ORDER"],
 
@@ -86,31 +87,61 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Mo writes ",
-            A.math(`${p.columns} \\div ${n} = ${p.rows}`),
-            ` for ${n} counters in rows of ${p.columns}.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Mo writes ",
+                A.math(`${p.columns} \\div ${n} = ${p.rows}`),
+                ` for ${n} counters in rows of ${p.columns}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Division starts with the total: ${n} ÷ ${p.columns} = ${p.rows}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. You can write division in any order, like multiplication.",
+                  code: "MD.DIVIDE.ORDER",
+                },
+                { text: "True. It uses the right three numbers." },
+              ],
+              solution: [
+                {
+                  say: `${p.rows} × ${p.columns} = ${n}, ${p.columns} × ${p.rows} = ${n}, ${n} ÷ ${p.columns} = ${p.rows} and ${n} ÷ ${p.rows} = ${p.columns}.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. Division starts with the total: ${n} ÷ ${p.columns} = ${p.rows}.`,
-              correct: true,
+              statement: "12 counters are in 3 rows of 4. Leo writes 3 × 4 = 12.",
+              truth: true,
+              right: "True. 3 rows of 4 is 3 × 4 = 12.",
+              wrong: [["False. It is 3 + 4 = 12.", "MD.MULTIPLY.ADDS"], ["False. It is 12 × 3."]],
             },
             {
-              text: "True. You can write division in any order, like multiplication.",
-              code: "MD.DIVIDE.ORDER",
+              claim: "An array of 2 rows of 5 has the same number as 5 rows of 2.",
+              truth: "always",
+              right: "Always. Turn the array round: both have 10.",
+              wrong: [
+                ["Never. They look different.", "MD.DIVIDE.ORDER"],
+                ["Sometimes. Only if the rows are long."],
+              ],
             },
-            { text: "True. It uses the right three numbers." },
-          ],
-          solution: [
             {
-              say: `${p.rows} × ${p.columns} = ${n}, ${p.columns} × ${p.rows} = ${n}, ${n} ÷ ${p.columns} = ${p.rows} and ${n} ÷ ${p.rows} = ${p.columns}.`,
+              statement: "20 sweets are shared between 4 children. Mia writes 4 ÷ 20 = 5.",
+              truth: false,
+              right: "False. Sharing 20 between 4 is 20 ÷ 4 = 5.",
+              wrong: [
+                ["True. Write the small number first.", "MD.DIVIDE.ORDER"],
+                ["True. The order does not matter.", "MD.DIVIDE.ORDER"],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

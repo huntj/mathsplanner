@@ -17,7 +17,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MD-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -142,7 +142,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MD-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -267,7 +267,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MD-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -392,7 +392,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MD-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -460,7 +460,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MD-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -528,7 +528,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MD-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -596,14 +596,14 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MD-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -614,14 +614,14 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -630,10 +630,19 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -641,7 +650,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Division starts with the total: 40 ÷ 10 = 4.",
+                  "v": "Sometimes. Only if the rows are long.",
                 },
               ],
               "id": "RA",
@@ -650,7 +659,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You can write division in any order, like multiplication.",
+                  "v": "Never. They look different.",
                 },
               ],
               "id": "RB",
@@ -659,7 +668,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It uses the right three numbers.",
+                  "v": "Always. Turn the array round: both have 10.",
                 },
               ],
               "id": "RC",
@@ -681,7 +690,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -691,7 +700,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "4 × 10 = 40, 10 × 4 = 40, 40 ÷ 10 = 4 and 40 ÷ 4 = 10.",
+            "v": "Always. Turn the array round: both have 10.",
           },
         ],
       },
@@ -699,15 +708,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Mo writes ",
-      },
-      {
-        "t": "math",
-        "v": "10 \\div 40 = 4",
-      },
-      {
-        "t": "text",
-        "v": " for 40 counters in rows of 10.",
+        "v": "An array of 2 rows of 5 has the same number as 5 rows of 2.",
       },
     ],
   },
@@ -719,7 +720,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MD-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -731,7 +732,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -757,7 +758,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Division starts with the total: 15 ÷ 5 = 3.",
+                  "v": "True. Write the small number first.",
                 },
               ],
               "id": "RA",
@@ -766,7 +767,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It uses the right three numbers.",
+                  "v": "False. Sharing 20 between 4 is 20 ÷ 4 = 5.",
                 },
               ],
               "id": "RB",
@@ -775,7 +776,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You can write division in any order, like multiplication.",
+                  "v": "True. The order does not matter.",
                 },
               ],
               "id": "RC",
@@ -785,6 +786,14 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "MD.DIVIDE.ORDER",
+            "feedback": [],
+          },
           {
             "answer": {
               "id": "RC",
@@ -807,7 +816,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "3 × 5 = 15, 5 × 3 = 15, 15 ÷ 5 = 3 and 15 ÷ 3 = 5.",
+            "v": "False. Sharing 20 between 4 is 20 ÷ 4 = 5.",
           },
         ],
       },
@@ -815,27 +824,19 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Mo writes ",
-      },
-      {
-        "t": "math",
-        "v": "5 \\div 15 = 3",
-      },
-      {
-        "t": "text",
-        "v": " for 15 counters in rows of 5.",
+        "v": "20 sweets are shared between 4 children. Mia writes 4 ÷ 20 = 5.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MD-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -846,14 +847,14 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -862,10 +863,19 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -873,7 +883,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It uses the right three numbers.",
+                  "v": "Always. Turn the array round: both have 10.",
                 },
               ],
               "id": "RA",
@@ -882,7 +892,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You can write division in any order, like multiplication.",
+                  "v": "Sometimes. Only if the rows are long.",
                 },
               ],
               "id": "RB",
@@ -891,7 +901,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Division starts with the total: 80 ÷ 10 = 8.",
+                  "v": "Never. They look different.",
                 },
               ],
               "id": "RC",
@@ -903,7 +913,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "MD.DIVIDE.ORDER",
@@ -913,7 +923,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -923,7 +933,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "8 × 10 = 80, 10 × 8 = 80, 80 ÷ 10 = 8 and 80 ÷ 8 = 10.",
+            "v": "Always. Turn the array round: both have 10.",
           },
         ],
       },
@@ -931,15 +941,7 @@ exports[`Y2-MD-02 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Mo writes ",
-      },
-      {
-        "t": "math",
-        "v": "10 \\div 80 = 8",
-      },
-      {
-        "t": "text",
-        "v": " for 80 counters in rows of 10.",
+        "v": "An array of 2 rows of 5 has the same number as 5 rows of 2.",
       },
     ],
   },

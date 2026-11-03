@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { distinctValues, tableLatex, TOPICS } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   topic: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y2-STA-03",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["AS.PROBLEM.KEYWORD"],
 
@@ -72,31 +73,60 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            intro,
-            table,
-            ` Mo says ${diff} more ${topic.who} chose ${cats[small]} than ${cats[big]}.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                intro,
+                table,
+                ` Mo says ${diff} more ${topic.who} chose ${cats[small]} than ${cats[big]}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${cats[big]} has ${Math.max(va, vb)} and ${cats[small]} has ${Math.min(va, vb)}, so it is ${cats[big]} that has ${diff} more.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The difference is the same whichever way round you say it.",
+                  code: "AS.PROBLEM.KEYWORD",
+                },
+                { text: "True. It comes first in the question." },
+              ],
+              solution: [
+                {
+                  say: `${Math.max(va, vb)} − ${Math.min(va, vb)} = ${diff}, and ${cats[big]} is the bigger.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. ${cats[big]} has ${Math.max(va, vb)} and ${cats[small]} has ${Math.min(va, vb)}, so it is ${cats[big]} that has ${diff} more.`,
-              correct: true,
+              claim: "To find how many altogether, you add the numbers.",
+              truth: "always",
+              right: "Always. Altogether means all of them added up.",
+              wrong: [
+                ["Never. Take away the numbers.", "AS.PROBLEM.KEYWORD"],
+                ["Sometimes. Only for two things."],
+              ],
             },
             {
-              text: "True. The difference is the same whichever way round you say it.",
-              code: "AS.PROBLEM.KEYWORD",
+              statement:
+                "A table shows 12 walk and 7 go by car. Sam says 5 more walk than go by car.",
+              truth: true,
+              right: "True. 12 − 7 = 5.",
+              wrong: [["False. 19 more walk.", "AS.PROBLEM.KEYWORD"], ["False. 5 more go by car."]],
             },
-            { text: "True. It comes first in the question." },
-          ],
-          solution: [
             {
-              say: `${Math.max(va, vb)} − ${Math.min(va, vb)} = ${diff}, and ${cats[big]} is the bigger.`,
+              statement:
+                "A table shows 6 on red team and 9 on blue team. Mia says 3 children are on the teams altogether.",
+              truth: false,
+              right: "False. Altogether means add: 6 + 9 = 15.",
+              wrong: [["True. 9 − 6 = 3.", "AS.PROBLEM.KEYWORD"], ["True. Find the difference."]],
             },
           ],
-        });
+        );
     }
   },
 

@@ -10,7 +10,7 @@ exports[`Y2-NPV-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-NPV-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -119,7 +119,7 @@ exports[`Y2-NPV-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-NPV-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -228,7 +228,7 @@ exports[`Y2-NPV-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-NPV-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -323,7 +323,7 @@ exports[`Y2-NPV-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-NPV-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -423,7 +423,7 @@ exports[`Y2-NPV-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-NPV-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -523,7 +523,7 @@ exports[`Y2-NPV-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-NPV-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -623,7 +623,7 @@ exports[`Y2-NPV-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-NPV-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -634,7 +634,7 @@ exports[`Y2-NPV-04.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
@@ -661,7 +661,7 @@ exports[`Y2-NPV-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. He ordered the ones digits. Comparing the tens first gives 17, 34, 69, 86.",
+                  "v": "True. 1 ten, then 4 tens, then 8 tens.",
                 },
               ],
               "id": "RA",
@@ -670,7 +670,7 @@ exports[`Y2-NPV-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any order is fine if the numbers are all different.",
+                  "v": "False. 81 is smallest.",
                 },
               ],
               "id": "RB",
@@ -679,7 +679,7 @@ exports[`Y2-NPV-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The ones digits go up each time.",
+                  "v": "False. 45 is smallest.",
                 },
               ],
               "id": "RC",
@@ -711,7 +711,7 @@ exports[`Y2-NPV-04.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Smallest first: 17, 34, 69, 86.",
+            "v": "True. 1 ten, then 4 tens, then 8 tens.",
           },
         ],
       },
@@ -719,15 +719,7 @@ exports[`Y2-NPV-04.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Tom puts ",
-      },
-      {
-        "t": "math",
-        "v": "86,\\ 69,\\ 17,\\ 34",
-      },
-      {
-        "t": "text",
-        "v": " in order, smallest first: 34, 86, 17, 69.",
+        "v": "Ola puts 18, 81, 45 in order, smallest first: 18, 45, 81.",
       },
     ],
   },
@@ -739,123 +731,7 @@ exports[`Y2-NPV-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-NPV-04.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. He ordered the ones digits. Comparing the tens first gives 36, 43, 84, 91.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The ones digits go up each time.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Any order is fine if the numbers are all different.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.COMPARE.ONES-FIRST",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Smallest first: 36, 43, 84, 91.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Tom puts ",
-      },
-      {
-        "t": "math",
-        "v": "36,\\ 84,\\ 91,\\ 43",
-      },
-      {
-        "t": "text",
-        "v": " in order, smallest first: 91, 43, 84, 36.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y2-NPV-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -902,7 +778,7 @@ exports[`Y2-NPV-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. He ordered the ones digits. Comparing the tens first gives 41, 56, 68, 97.",
+                  "v": "False. He ordered the ones digits. Comparing the tens first gives 36, 43, 84, 91.",
                 },
               ],
               "id": "RB",
@@ -943,7 +819,7 @@ exports[`Y2-NPV-04.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Smallest first: 41, 56, 68, 97.",
+            "v": "Smallest first: 36, 43, 84, 91.",
           },
         ],
       },
@@ -955,11 +831,128 @@ exports[`Y2-NPV-04.b > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "math",
-        "v": "56,\\ 97,\\ 41,\\ 68",
+        "v": "36,\\ 84,\\ 91,\\ 43",
       },
       {
         "t": "text",
-        "v": " in order, smallest first: 41, 56, 97, 68.",
+        "v": " in order, smallest first: 91, 43, 84, 36.",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y2-NPV-04.b",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. Ones matter most.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always, for 2-digit numbers. 1 more ten is more than any number of ones up to 9.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. 29 is bigger than 30.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.COMPARE.ONES-FIRST",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always, for 2-digit numbers. 1 more ten is more than any number of ones up to 9.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A number with more tens is bigger.",
       },
     ],
   },

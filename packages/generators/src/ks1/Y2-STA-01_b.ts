@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { distinctValues, pictogram, TOPICS } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   topic: number;
@@ -20,7 +21,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y2-STA-01.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.KEY-IGNORED", "AS.PROBLEM.KEYWORD"],
 
@@ -84,20 +85,57 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [intro, chart, `Max says ${value / p.key} ${topic.who} chose ${name}.`],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [intro, chart, `Max says ${value / p.key} ${topic.who} chose ${name}.`],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. He counted the symbols. Each is worth ${p.key}, so ${value} chose ${name}.`,
+                  correct: true,
+                },
+                { text: "True. Each symbol is one person.", code: "STA.KEY-IGNORED" },
+                {
+                  text: "True. You count the symbols to read a pictogram.",
+                  code: "STA.KEY-IGNORED",
+                },
+              ],
+              solution: [{ say: `${value / p.key} × ${p.key} = ${value}.` }],
+            }),
+          [
             {
-              text: `False. He counted the symbols. Each is worth ${p.key}, so ${value} chose ${name}.`,
-              correct: true,
+              claim: "In a pictogram, the key tells you what each picture stands for.",
+              truth: "always",
+              right: "Always. Read the key before you count.",
+              wrong: [
+                ["Never. Each picture is 1.", "STA.KEY-IGNORED"],
+                ["Sometimes. Only for animals."],
+              ],
             },
-            { text: "True. Each symbol is one person.", code: "STA.KEY-IGNORED" },
-            { text: "True. You count the symbols to read a pictogram.", code: "STA.KEY-IGNORED" },
+            {
+              statement:
+                "Each picture stands for 2 children. Sam sees 4 pictures and says 8 children.",
+              truth: true,
+              right: "True. 4 lots of 2 is 8.",
+              wrong: [
+                ["False. It is 4 children.", "STA.KEY-IGNORED"],
+                ["False. It is 6 children."],
+              ],
+            },
+            {
+              statement: "Each picture stands for 10. Mia sees 3 pictures and says 3.",
+              truth: false,
+              right: "False. 3 lots of 10 is 30.",
+              wrong: [
+                ["True. Count the pictures.", "STA.KEY-IGNORED"],
+                ["True. The key does not matter."],
+              ],
+            },
           ],
-          solution: [{ say: `${value / p.key} × ${p.key} = ${value}.` }],
-        });
+        );
     }
   },
 

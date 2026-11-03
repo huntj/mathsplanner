@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
 import { duration } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Three durations in minutes, one of them written in hours. */
@@ -19,7 +20,7 @@ const write = (m: number) => (m % 60 === 0 ? duration(m) : `${m} minutes`);
 
 export default defineGenerator<Params>({
   id: "Y2-MEA-05",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.UNITS.MIXED", "MEA.TIME.FACTS"],
 
@@ -82,23 +83,56 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Leo says half an hour is longer than ${p.half} minutes.`,
-          truth: p.half < 30,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Leo says half an hour is longer than ${p.half} minutes.`,
+              truth: p.half < 30,
+              reasons: [
+                {
+                  text: `False. Half an hour is 30 minutes, which is less than ${p.half} minutes.`,
+                  correct: true,
+                },
+                { text: "True. Half an hour is 50 minutes.", code: "MEA.TIME.FACTS" },
+                {
+                  text: "True. An hour is longer than any number of minutes.",
+                  code: "MEA.UNITS.MIXED",
+                },
+              ],
+              solution: [{ say: "An hour is 60 minutes, so half an hour is 30 minutes." }],
+            }),
+          [
             {
-              text: `False. Half an hour is 30 minutes, which is less than ${p.half} minutes.`,
-              correct: true,
+              claim: "An hour is longer than a minute.",
+              truth: "always",
+              right: "Always. An hour is 60 minutes.",
+              wrong: [
+                ["Never. A minute is longer.", "MEA.TIME.FACTS"],
+                ["Sometimes. It depends on the clock."],
+              ],
             },
-            { text: "True. Half an hour is 50 minutes.", code: "MEA.TIME.FACTS" },
             {
-              text: "True. An hour is longer than any number of minutes.",
-              code: "MEA.UNITS.MIXED",
+              statement: "Kai says 1 hour is longer than 45 minutes.",
+              truth: true,
+              right: "True. 1 hour is 60 minutes, which is more than 45.",
+              wrong: [
+                ["False. 45 is bigger than 1.", "MEA.UNITS.MIXED"],
+                ["False. They are the same."],
+              ],
+            },
+            {
+              statement: "Ana says a day is shorter than an hour.",
+              truth: false,
+              right: "False. A day is 24 hours.",
+              wrong: [
+                ["True. A day goes by fast.", "MEA.TIME.FACTS"],
+                ["True. Hours are longer than days.", "MEA.TIME.FACTS"],
+              ],
             },
           ],
-          solution: [{ say: "An hour is 60 minutes, so half an hour is 30 minutes." }],
-        });
+        );
     }
   },
 

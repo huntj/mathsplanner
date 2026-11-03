@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   hours: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y2-MEA-07",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.TIME.FACTS", "MEA.TIME.DECIMAL"],
 
@@ -63,33 +64,66 @@ export default defineGenerator<Params>({
       default: {
         const right = 60 + p.extra;
         const said = p.claimTrue ? `1 hour and ${p.extra} minutes` : `${100 + p.extra} minutes`;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Max says ${right} minutes is the same as ${said}.`,
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Max says ${right} minutes is the same as ${said}.`,
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    {
+                      text: `True. 60 minutes make 1 hour, and ${p.extra} minutes are left over.`,
+                      correct: true,
+                    },
+                    { text: `False. It is ${right / 60} hours.`, code: "MEA.TIME.DECIMAL" },
+                    { text: "False. There are 100 minutes in an hour.", code: "MEA.TIME.FACTS" },
+                  ]
+                : [
+                    {
+                      text: `False. 1 hour is 60 minutes, so ${100 + p.extra} minutes is more than ${right} minutes.`,
+                      correct: true,
+                    },
+                    { text: "True. An hour is 100 minutes.", code: "MEA.TIME.FACTS" },
+                    { text: "True. You add 100 for each hour.", code: "MEA.TIME.FACTS" },
+                  ],
+              solution: [
                 {
-                  text: `True. 60 minutes make 1 hour, and ${p.extra} minutes are left over.`,
-                  correct: true,
+                  say: `${right} minutes = 60 minutes + ${p.extra} minutes = 1 hour ${p.extra} minutes.`,
                 },
-                { text: `False. It is ${right / 60} hours.`, code: "MEA.TIME.DECIMAL" },
-                { text: "False. There are 100 minutes in an hour.", code: "MEA.TIME.FACTS" },
-              ]
-            : [
-                {
-                  text: `False. 1 hour is 60 minutes, so ${100 + p.extra} minutes is more than ${right} minutes.`,
-                  correct: true,
-                },
-                { text: "True. An hour is 100 minutes.", code: "MEA.TIME.FACTS" },
-                { text: "True. You add 100 for each hour.", code: "MEA.TIME.FACTS" },
               ],
-          solution: [
+            }),
+          [
             {
-              say: `${right} minutes = 60 minutes + ${p.extra} minutes = 1 hour ${p.extra} minutes.`,
+              claim: "There are 60 minutes in an hour.",
+              truth: "always",
+              right: "Always. An hour is 60 minutes.",
+              wrong: [
+                ["Never. There are 100.", "MEA.TIME.DECIMAL"],
+                ["Sometimes. In the morning."],
+              ],
+            },
+            {
+              statement: "Raj says 2 hours is 120 minutes.",
+              truth: true,
+              right: "True. 60 + 60 = 120.",
+              wrong: [
+                ["False. It is 200 minutes.", "MEA.TIME.DECIMAL"],
+                ["False. It is 20 minutes."],
+              ],
+            },
+            {
+              statement: "Ana says there are 7 days in a week and 10 days in a fortnight.",
+              truth: false,
+              right: "False. A fortnight is 2 weeks: 14 days.",
+              wrong: [
+                ["True. A fortnight is 10 days.", "MEA.TIME.FACTS"],
+                ["True. Days go in tens.", "MEA.TIME.DECIMAL"],
+              ],
             },
           ],
-        });
+        );
       }
     }
   },

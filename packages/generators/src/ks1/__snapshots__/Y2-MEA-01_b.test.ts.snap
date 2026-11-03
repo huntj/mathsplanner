@@ -20,7 +20,7 @@ exports[`Y2-MEA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MEA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -97,7 +97,7 @@ exports[`Y2-MEA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MEA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -174,7 +174,7 @@ exports[`Y2-MEA-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MEA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -235,23 +235,13 @@ exports[`Y2-MEA-01.b > keeps fixed seeds unchanged 1`] = `
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "divisions": 5,
-        "instrument": "scales",
-        "max": 10,
-        "reading": 8,
-        "step": 10,
-        "type": "measure",
-        "unit": "\\text{g}",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MEA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -262,8 +252,8 @@ exports[`Y2-MEA-01.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -289,7 +279,7 @@ exports[`Y2-MEA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The numbered marks go up in 10s with 5 spaces between, so each small mark is 2. It shows 8 g.",
+                  "v": "False. It is 11.",
                 },
               ],
               "id": "RA",
@@ -298,7 +288,7 @@ exports[`Y2-MEA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every small mark on a scale is worth 1.",
+                  "v": "True. Halfway between 10 and 20 is 15.",
                 },
               ],
               "id": "RB",
@@ -307,7 +297,7 @@ exports[`Y2-MEA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You always count in 1s on a scale.",
+                  "v": "False. It is 12.",
                 },
               ],
               "id": "RC",
@@ -319,15 +309,7 @@ exports[`Y2-MEA-01.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "MEA.SCALE.INTERVAL",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "MEA.SCALE.INTERVAL",
@@ -347,41 +329,135 @@ exports[`Y2-MEA-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Work out what one small mark is worth first: 10 ÷ 5 = 2.",
+            "v": "True. Halfway between 10 and 20 is 15.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
         "t": "text",
-        "v": "Ella says it shows 4 g, because she counted on 1 for each small mark.",
+        "v": "A scale goes 0, 10, 20 with one mark halfway between each number. Sam says the halfway mark between 10 and 20 is 15.",
       },
     ],
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "divisions": 5,
-        "instrument": "scales",
-        "max": 500,
-        "reading": 380,
-        "step": 100,
-        "type": "measure",
-        "unit": "\\text{g}",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MEA-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Halfway between 10 and 20 is 15.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 11.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 12.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MEA.SCALE.INTERVAL",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. Halfway between 10 and 20 is 15.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A scale goes 0, 10, 20 with one mark halfway between each number. Sam says the halfway mark between 10 and 20 is 15.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y2-MEA-01.b",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -419,7 +495,7 @@ exports[`Y2-MEA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The numbered marks go up in 100s with 5 spaces between, so each small mark is 20. It shows 380 g.",
+                  "v": "False. From 1 to 7 is 6 cm. Start at 0, or take away the start.",
                 },
               ],
               "id": "RA",
@@ -428,7 +504,7 @@ exports[`Y2-MEA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every small mark on a scale is worth 1.",
+                  "v": "True. Rulers start at 1.",
                 },
               ],
               "id": "RB",
@@ -437,7 +513,7 @@ exports[`Y2-MEA-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You always count in 1s on a scale.",
+                  "v": "True. Read the end of the pencil.",
                 },
               ],
               "id": "RC",
@@ -449,18 +525,10 @@ exports[`Y2-MEA-01.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "MEA.SCALE.INTERVAL",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "MEA.SCALE.INTERVAL",
+            "code": "MEA.RULER.END",
             "feedback": [],
           },
         ],
@@ -477,149 +545,15 @@ exports[`Y2-MEA-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Work out what one small mark is worth first: 100 ÷ 5 = 20.",
+            "v": "False. From 1 to 7 is 6 cm. Start at 0, or take away the start.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
         "t": "text",
-        "v": "Ella says it shows 304 g, because she counted on 1 for each small mark.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "divisions": 5,
-        "instrument": "scales",
-        "max": 50,
-        "reading": 34,
-        "step": 10,
-        "type": "measure",
-        "unit": "\\text{g}",
-      },
-    ],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y2-MEA-01.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. You always count in 1s on a scale.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Every small mark on a scale is worth 1.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. The numbered marks go up in 10s with 5 spaces between, so each small mark is 2. It shows 34 g.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "MEA.SCALE.INTERVAL",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "MEA.SCALE.INTERVAL",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Work out what one small mark is worth first: 10 ÷ 5 = 2.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": "Ella says it shows 32 g, because she counted on 1 for each small mark.",
+        "v": "A ruler starts at 0. Mia measures a pencil from the 1 cm mark to the 7 cm mark and says it is 7 cm long.",
       },
     ],
   },

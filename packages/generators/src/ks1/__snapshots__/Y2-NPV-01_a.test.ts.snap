@@ -10,7 +10,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -76,7 +76,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -142,7 +142,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -299,7 +299,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -468,7 +468,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -637,7 +637,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -708,14 +708,14 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -726,14 +726,14 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -742,10 +742,19 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -753,7 +762,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only if you count past 30.",
+                  "v": "Never. They end in 2.",
                 },
               ],
               "id": "RA",
@@ -762,7 +771,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Every number is said eventually if you keep counting.",
+                  "v": "Sometimes. 5 + 5 is 11.",
                 },
               ],
               "id": "RB",
@@ -771,7 +780,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Counting in 5s from 0 only says numbers ending in 0 or 5.",
+                  "v": "Always. 5, 10, 15, 20 … they end in 5, then 0, then 5.",
                 },
               ],
               "id": "RC",
@@ -793,7 +802,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -803,7 +812,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Counting in 5s from 0 only says numbers ending in 0 or 5.",
+            "v": "Always. 5, 10, 15, 20 … they end in 5, then 0, then 5.",
           },
         ],
       },
@@ -811,7 +820,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "If you count in 5s from 0, you will say 32.",
+        "v": "When you count in 5s from 0, the numbers end in 0 or 5.",
       },
     ],
   },
@@ -823,7 +832,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -834,7 +843,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
           "correctReason": "RB",
           "options": [
             {
@@ -861,7 +870,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only the first few are even.",
+                  "v": "True. You say every number.",
                 },
               ],
               "id": "RA",
@@ -870,7 +879,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Starting at 0 and adding 2 each time always gives even numbers.",
+                  "v": "False. Counting in 2s from 0 gives even numbers: 8, 10. 9 is odd.",
                 },
               ],
               "id": "RB",
@@ -879,7 +888,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Counting in 2s says every number, odd and even.",
+                  "v": "True. 9 comes after 8.",
                 },
               ],
               "id": "RC",
@@ -911,7 +920,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Starting at 0 and adding 2 each time always gives even numbers.",
+            "v": "False. Counting in 2s from 0 gives even numbers: 8, 10. 9 is odd.",
           },
         ],
       },
@@ -919,7 +928,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "If you count in 2s from 0, every number you say is even.",
+        "v": "Mia counts in 2s from 0. She says she will say 9.",
       },
     ],
   },
@@ -931,7 +940,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -943,7 +952,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -969,7 +978,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Counting in 5s from 0 only says numbers ending in 0 or 5.",
+                  "v": "True. 9 comes after 8.",
                 },
               ],
               "id": "RA",
@@ -978,7 +987,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only if you count past 30.",
+                  "v": "False. Counting in 2s from 0 gives even numbers: 8, 10. 9 is odd.",
                 },
               ],
               "id": "RB",
@@ -987,7 +996,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Every number is said eventually if you keep counting.",
+                  "v": "True. You say every number.",
                 },
               ],
               "id": "RC",
@@ -999,7 +1008,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.SEQUENCE.STEP-ONE",
@@ -1019,7 +1028,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Counting in 5s from 0 only says numbers ending in 0 or 5.",
+            "v": "False. Counting in 2s from 0 gives even numbers: 8, 10. 9 is odd.",
           },
         ],
       },
@@ -1027,7 +1036,7 @@ exports[`Y2-NPV-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "If you count in 5s from 0, you will say 32.",
+        "v": "Mia counts in 2s from 0. She says she will say 9.",
       },
     ],
   },

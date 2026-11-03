@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y2-MD-03",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MD.DIVIDE.ORDER", "MD.MULTIPLY.ADDS", "AS.EQUALS.ANSWER-NEXT"],
 
@@ -73,44 +74,77 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return p.claim === 0
-          ? A.alwaysSometimesNever({
-              rng,
-              claim: "If you swap the two numbers in a multiplication, the answer stays the same.",
-              truth: "always",
-              reasons: [
-                {
-                  text: `Always. ${p.a} rows of ${p.t} and ${p.t} rows of ${p.a} are the same array turned round.`,
-                  correct: true,
-                },
-                { text: "Sometimes. Only for the 2 times table." },
-                { text: "Never. The bigger number has to go first.", code: "MD.DIVIDE.ORDER" },
+        return orClaims(
+          rng,
+          () =>
+            p.claim === 0
+              ? A.alwaysSometimesNever({
+                  rng,
+                  claim:
+                    "If you swap the two numbers in a multiplication, the answer stays the same.",
+                  truth: "always",
+                  reasons: [
+                    {
+                      text: `Always. ${p.a} rows of ${p.t} and ${p.t} rows of ${p.a} are the same array turned round.`,
+                      correct: true,
+                    },
+                    { text: "Sometimes. Only for the 2 times table." },
+                    { text: "Never. The bigger number has to go first.", code: "MD.DIVIDE.ORDER" },
+                  ],
+                  solution: [{ say: `${p.a} × ${p.t} = ${n} and ${p.t} × ${p.a} = ${n}.` }],
+                })
+              : A.trueOrFalseWhy({
+                  rng,
+                  statement: [
+                    "Ella knows ",
+                    A.math(`${n} \\div ${p.t} = ${p.a}`),
+                    ". She says ",
+                    A.math(`${p.t} \\div ${n}`),
+                    ` is also ${p.a}.`,
+                  ],
+                  truth: false,
+                  reasons: [
+                    {
+                      text: `False. Sharing ${p.t} between ${n} gives each less than 1. Division cannot be done in any order.`,
+                      correct: true,
+                    },
+                    {
+                      text: "True. You can swap the numbers, like in multiplication.",
+                      code: "MD.DIVIDE.ORDER",
+                    },
+                    { text: "True. Both use the same two numbers." },
+                  ],
+                  solution: [
+                    { say: "Multiplication can be done in any order, but division cannot." },
+                  ],
+                }),
+          [
+            {
+              statement: "Kai knows 2 × 6 = 12. He says that means 12 ÷ 2 = 6.",
+              truth: true,
+              right: "True. Sharing 12 into 2 groups gives 6 in each.",
+              wrong: [
+                ["False. 12 ÷ 2 = 24.", "MD.DIVIDE.ORDER"],
+                ["False. It means 2 ÷ 12 = 6.", "MD.DIVIDE.ORDER"],
               ],
-              solution: [{ say: `${p.a} × ${p.t} = ${n} and ${p.t} × ${p.a} = ${n}.` }],
-            })
-          : A.trueOrFalseWhy({
-              rng,
-              statement: [
-                "Ella knows ",
-                A.math(`${n} \\div ${p.t} = ${p.a}`),
-                ". She says ",
-                A.math(`${p.t} \\div ${n}`),
-                ` is also ${p.a}.`,
+            },
+            {
+              claim: "If you swap the two numbers in a sharing sum, the answer stays the same.",
+              truth: "never",
+              right: "Never, if the numbers are different. 10 ÷ 2 = 5, but 2 ÷ 10 is not 5.",
+              wrong: [
+                ["Always. Like times.", "MD.DIVIDE.ORDER"],
+                ["Sometimes. Only for even numbers."],
               ],
+            },
+            {
+              statement: "Pia says 5 × 2 = 7.",
               truth: false,
-              reasons: [
-                {
-                  text: `False. Sharing ${p.t} between ${n} gives each less than 1. Division cannot be done in any order.`,
-                  correct: true,
-                },
-                {
-                  text: "True. You can swap the numbers, like in multiplication.",
-                  code: "MD.DIVIDE.ORDER",
-                },
-                { text: "True. Both use the same two numbers." },
-              ],
-              solution: [{ say: "Multiplication can be done in any order, but division cannot." }],
-            });
+              right: "False. 5 × 2 means 5 twos: 10.",
+              wrong: [["True. 5 and 2 make 7.", "MD.MULTIPLY.ADDS"], ["True. Times means add."]],
+            },
+          ],
+        );
     }
   },
 

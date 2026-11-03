@@ -47,7 +47,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -188,7 +188,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -334,7 +334,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -462,7 +462,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -607,7 +607,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -757,7 +757,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -838,45 +838,13 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "A repeating pattern of shapes.",
-        "items": [
-          {
-            "filled": false,
-            "shape": "circle",
-          },
-          {
-            "filled": false,
-            "shape": "star",
-          },
-          {
-            "filled": false,
-            "shape": "square",
-          },
-          {
-            "filled": false,
-            "shape": "circle",
-          },
-          {
-            "filled": false,
-            "shape": "star",
-          },
-          {
-            "filled": false,
-            "shape": "square",
-          },
-        ],
-        "layout": "pattern",
-        "type": "counters",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -888,7 +856,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -914,7 +882,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You only need to look at the last shape you can see.",
+                  "v": "True. The last one was square, so square again.",
                 },
               ],
               "id": "RA",
@@ -923,7 +891,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every shape in a pattern is the same.",
+                  "v": "False. The group is circle, square, square, so the next one is circle.",
                 },
               ],
               "id": "RB",
@@ -932,7 +900,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The part repeats every 3 shapes; counting on, the 15th shape is a empty square.",
+                  "v": "True. There are more squares.",
                 },
               ],
               "id": "RC",
@@ -947,12 +915,12 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "PAT.REPEAT.UNIT",
+            "code": "AS.MULTISTEP.ONE-STEP",
             "feedback": [],
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "PAT.REPEAT.UNIT",
@@ -972,7 +940,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Shapes 3, 6, 9, … end a repeat. Count on from there to 15.",
+            "v": "False. The group is circle, square, square, so the next one is circle.",
           },
         ],
       },
@@ -980,15 +948,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The pattern keeps going.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": "Sid says the 15th shape is a empty star.",
+        "v": "A pattern goes circle, square, square, circle, square, square. Mia says the next one is square.",
       },
     ],
   },
@@ -1028,7 +988,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1040,7 +1000,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -1066,7 +1026,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The part repeats every 3 shapes; counting on, the 13th shape is a filled star.",
+                  "v": "True. You only need to look at the last shape you can see.",
                 },
               ],
               "id": "RA",
@@ -1075,7 +1035,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every shape in a pattern is the same.",
+                  "v": "False. The part repeats every 3 shapes; counting on, the 13th shape is a filled star.",
                 },
               ],
               "id": "RB",
@@ -1084,7 +1044,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You only need to look at the last shape you can see.",
+                  "v": "True. Every shape in a pattern is the same.",
                 },
               ],
               "id": "RC",
@@ -1096,7 +1056,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "PAT.REPEAT.UNIT",
@@ -1184,7 +1144,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1196,7 +1156,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -1222,7 +1182,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every shape in a pattern is the same.",
+                  "v": "False. The part repeats every 3 shapes; counting on, the 14th shape is a empty square.",
                 },
               ],
               "id": "RA",
@@ -1231,7 +1191,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The part repeats every 3 shapes; counting on, the 14th shape is a empty square.",
+                  "v": "True. Every shape in a pattern is the same.",
                 },
               ],
               "id": "RB",
@@ -1252,7 +1212,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "PAT.REPEAT.UNIT",
@@ -1340,7 +1300,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1465,7 +1425,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1594,7 +1554,7 @@ exports[`Y2-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

@@ -10,7 +10,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-AS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-AS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-AS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-AS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -263,7 +263,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-AS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -330,7 +330,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-AS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -397,7 +397,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-AS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -408,7 +408,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
           "correctReason": "RB",
           "options": [
             {
@@ -435,7 +435,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. An addition fact cannot tell you a subtraction fact.",
+                  "v": "True. 8 is half of 15.",
                 },
               ],
               "id": "RA",
@@ -444,7 +444,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 4 and 4 are the two parts of 8, so taking one part away leaves the other.",
+                  "v": "False. 8 + 7 = 15, so 15 − 8 = 7.",
                 },
               ],
               "id": "RB",
@@ -453,7 +453,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. She needs to add: 8 + 4.",
+                  "v": "True. Count back 8 from 15: 15, 14 … 8.",
                 },
               ],
               "id": "RC",
@@ -468,7 +468,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "AS.INVERSE.SAME-OPERATION",
+            "code": "AS.COUNT-ON.INCLUDES-START",
             "feedback": [],
           },
         ],
@@ -485,7 +485,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Addition and subtraction facts come in families: the same three numbers.",
+            "v": "False. 8 + 7 = 15, so 15 − 8 = 7.",
           },
         ],
       },
@@ -493,23 +493,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Mia knows ",
-      },
-      {
-        "t": "math",
-        "v": "4 + 4 = 8",
-      },
-      {
-        "t": "text",
-        "v": ". She says that means ",
-      },
-      {
-        "t": "math",
-        "v": "8 - 4 = 4",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Pia says 15 − 8 = 8.",
       },
     ],
   },
@@ -521,7 +505,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-AS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -532,8 +516,8 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RA",
+          "correct": "B",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -559,7 +543,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 8 and 3 are the two parts of 11, so taking one part away leaves the other.",
+                  "v": "True. Count back 8 from 15: 15, 14 … 8.",
                 },
               ],
               "id": "RA",
@@ -568,7 +552,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. She needs to add: 11 + 3.",
+                  "v": "False. 8 + 7 = 15, so 15 − 8 = 7.",
                 },
               ],
               "id": "RB",
@@ -577,7 +561,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. An addition fact cannot tell you a subtraction fact.",
+                  "v": "True. 8 is half of 15.",
                 },
               ],
               "id": "RC",
@@ -589,10 +573,10 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "AS.INVERSE.SAME-OPERATION",
+            "code": "AS.COUNT-ON.INCLUDES-START",
             "feedback": [],
           },
         ],
@@ -609,7 +593,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Addition and subtraction facts come in families: the same three numbers.",
+            "v": "False. 8 + 7 = 15, so 15 − 8 = 7.",
           },
         ],
       },
@@ -617,35 +601,19 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Mia knows ",
-      },
-      {
-        "t": "math",
-        "v": "8 + 3 = 11",
-      },
-      {
-        "t": "text",
-        "v": ". She says that means ",
-      },
-      {
-        "t": "math",
-        "v": "11 - 3 = 8",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Pia says 15 − 8 = 8.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-AS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -657,13 +625,13 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -672,10 +640,19 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -683,7 +660,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 7 and 6 are the two parts of 13, so taking one part away leaves the other.",
+                  "v": "Sometimes. Only for small numbers.",
                 },
               ],
               "id": "RA",
@@ -692,7 +669,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. She needs to add: 13 + 6.",
+                  "v": "Always. Taking away undoes adding.",
                 },
               ],
               "id": "RB",
@@ -701,7 +678,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. An addition fact cannot tell you a subtraction fact.",
+                  "v": "Never. You need to add again.",
                 },
               ],
               "id": "RC",
@@ -713,7 +690,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "AS.INVERSE.SAME-OPERATION",
@@ -723,7 +700,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -733,7 +710,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Addition and subtraction facts come in families: the same three numbers.",
+            "v": "Always. Taking away undoes adding.",
           },
         ],
       },
@@ -741,23 +718,7 @@ exports[`Y2-AS-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Mia knows ",
-      },
-      {
-        "t": "math",
-        "v": "7 + 6 = 13",
-      },
-      {
-        "t": "text",
-        "v": ". She says that means ",
-      },
-      {
-        "t": "math",
-        "v": "13 - 6 = 7",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "If 5 + 4 = 9, then 9 − 4 = 5.",
       },
     ],
   },
