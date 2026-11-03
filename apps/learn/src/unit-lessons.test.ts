@@ -5,7 +5,7 @@ import { course } from "./course.ts";
 import { latticeOn } from "./LineGraph.tsx";
 import { emptyProgress, finishUnitLesson, LESSON_XP, lessonsOn, readProgress } from "./progress.ts";
 import {
-  FOR_PUPILS,
+  OPEN_TO_PUPILS,
   makesLine,
   onLine,
   ruleText,
@@ -13,27 +13,116 @@ import {
   unitLessonFor,
   UNIT_LESSONS,
   yOn,
+  type Picture,
   type Point,
   type Range,
   type Scene,
 } from "./unit-lessons/index.ts";
-import { machineChoices, wordsHtml } from "./UnitLessonView.tsx";
+import { snapToTick } from "./Picture.tsx";
+import {
+  balanceMoves,
+  factorPairs,
+  isPrime,
+  matches,
+  morphPieces,
+  plainLabel,
+  primeProductTex,
+  sectorAt,
+  shuffled,
+} from "./unit-screens.tsx";
+import { machineChoices, machineRuleTex } from "./UnitLessonView.tsx";
+import { wordsHtml } from "./unit-ui.tsx";
 
 const inside = (r: Range, p: Point) =>
   p.x >= r.xMin && p.x <= r.xMax && p.y >= r.yMin && p.y <= r.yMax;
 const whole = (p: Point) => Number.isInteger(p.x) && Number.isInteger(p.y);
 
+const pictureWords = (p: Picture | undefined): string[] =>
+  p?.kind === "table" ? [...(p.head ?? []), ...p.rows.flat()] : [];
+
+/** Every piece of writing in a lesson, which must all render. */
 const words = (lesson: (typeof UNIT_LESSONS)[number]): string[] =>
   [lesson.title, lesson.summary].concat(
     lesson.screens.flatMap((s) => {
       const own: string[] = [s.title];
       if ("text" in s && s.text) own.push(...(Array.isArray(s.text) ? s.text : [s.text]));
       if ("hint" in s) own.push(s.hint);
-      if ("done" in s) own.push(s.done);
-      if (s.kind === "choice") own.push(...s.options.flatMap((o) => [o.text, o.feedback]));
+      if ("done" in s && s.done) own.push(s.done);
+      if ("picture" in s) own.push(...pictureWords(s.picture));
+      if (s.kind === "choice")
+        own.push(
+          ...s.options.flatMap((o) => [o.text, o.feedback]),
+          ...pictureWords(s.revealPicture),
+        );
+      if (s.kind === "steps")
+        own.push(
+          s.start,
+          ...s.stages.flatMap((st) => [
+            st.prompt,
+            st.then,
+            ...st.options.flatMap((o) => [o.text, o.feedback]),
+          ]),
+        );
+      if (s.kind === "sort") own.push(...s.groups, ...s.items.flatMap((i) => [i.text, i.why]));
+      if (s.kind === "fill") own.push(s.template, ...s.bank);
+      if (s.kind === "order") own.push(...s.items);
+      if (s.kind === "answer") own.push(...(s.wrong ?? []).map((w) => w.feedback));
+      if (s.kind === "place") own.push(...s.targets.map((t) => t.label));
       return own;
     }),
   );
+
+/** Pictures must fit: marks on the line, labels for every side, and so on. */
+function checkPicture(p: Picture | undefined) {
+  if (!p) return;
+  switch (p.kind) {
+    case "graph":
+      checkScene(p);
+      break;
+    case "number-line": {
+      expect(p.min).toBeLessThan(p.max);
+      const ticks = (p.max - p.min) / p.step;
+      expect(Math.abs(ticks - Math.round(ticks))).toBeLessThan(1e-9);
+      expect(ticks).toBeLessThanOrEqual(40);
+      for (const m of p.marks ?? []) expect(m.at >= p.min && m.at <= p.max, `${m.at}`).toBe(true);
+      for (const j of p.jumps ?? []) expect(j.from >= p.min && j.to <= p.max).toBe(true);
+      break;
+    }
+    case "angles":
+      for (const a of p.arcs) {
+        expect(p.rays[a.from]).toBeDefined();
+        expect(p.rays[a.to]).toBeDefined();
+      }
+      break;
+    case "shape":
+      expect(p.points.length).toBeGreaterThanOrEqual(3);
+      for (const list of [p.sides, p.angles, p.names])
+        if (list) expect(list.length).toBeLessThanOrEqual(p.points.length);
+      break;
+    case "grid":
+      expect(p.shaded).toBeLessThanOrEqual(p.cols * p.rows);
+      break;
+    case "table":
+      for (const row of p.rows) if (p.head) expect(row.length).toBe(p.head.length);
+      break;
+    case "ruler":
+      expect(p.from).toBeLessThan(p.to);
+      break;
+    default:
+      break;
+  }
+}
+
+/** What the factor tree screen ends on: the primes of n, smallest first. */
+function primes(n: number): number[] {
+  const out: number[] = [];
+  for (let d = 2; n > 1; d++)
+    while (n % d === 0) {
+      out.push(d);
+      n /= d;
+    }
+  return out;
+}
 
 function checkScene(scene: Scene) {
   const { range } = scene;
@@ -103,7 +192,6 @@ describe.each(UNIT_LESSONS.map((l) => [l.unit, l] as const))("unit lesson %s", (
           expect(new Set(screen.options.map((o) => o.text)).size).toBe(screen.options.length);
           if (screen.scene) checkScene(screen.scene);
           if (screen.reveal) checkScene(screen.reveal);
-          expect(screen.scene ?? screen.reveal).toBeDefined();
           break;
         }
         case "slider": {
@@ -143,9 +231,163 @@ describe.each(UNIT_LESSONS.map((l) => [l.unit, l] as const))("unit lesson %s", (
           expect(lattice.some((p) => p.x === 0)).toBe(true);
           break;
         }
+        case "answer": {
+          checkPicture(screen.picture);
+          expect(screen.answers.length).toBeGreaterThan(0);
+          // A nudge for a wrong answer must not match a right one.
+          for (const w of screen.wrong ?? [])
+            for (const a of screen.answers) expect(matches(w.answer, a), w.answer).toBe(false);
+          break;
+        }
+        case "place": {
+          checkPicture(screen.line);
+          for (const t of screen.targets) {
+            expect(t.value >= screen.line.min && t.value <= screen.line.max).toBe(true);
+            // Every target sits on a tick, so a tap can land on it.
+            expect(snapToTick(screen.line, t.value), t.label).toBeCloseTo(t.value, 9);
+          }
+          break;
+        }
+        case "order":
+          checkPicture(screen.picture);
+          expect(new Set(screen.items).size).toBe(screen.items.length);
+          expect(screen.items.length).toBeGreaterThan(2);
+          break;
+        case "sort":
+          expect(screen.groups.length).toBeGreaterThan(1);
+          for (const item of screen.items) expect(screen.groups[item.group]).toBeDefined();
+          // Every group gets something.
+          for (const g of screen.groups.keys())
+            expect(screen.items.some((i) => i.group === g)).toBe(true);
+          break;
+        case "fill": {
+          checkPicture(screen.picture);
+          expect(screen.template.split("[]").length - 1).toBe(screen.answers.length);
+          for (const a of screen.answers) expect(screen.bank, a).toContain(a);
+          expect(new Set(screen.bank).size).toBe(screen.bank.length);
+          break;
+        }
+        case "shade":
+          expect(screen.target).toBeGreaterThan(0);
+          expect(screen.target).toBeLessThanOrEqual(screen.cols * screen.rows);
+          break;
+        case "balance": {
+          const moves = balanceMoves(screen.a, screen.b, screen.c, screen.letter);
+          expect(moves.length).toBeGreaterThan(0);
+          // It ends on a whole-number answer, with every pile small enough to draw.
+          expect((screen.c - screen.b) % screen.a).toBe(0);
+          expect(screen.c - screen.b).toBeGreaterThan(0);
+          expect(screen.b).toBeGreaterThanOrEqual(0);
+          expect(screen.c).toBeLessThanOrEqual(24);
+          expect(screen.title).toContain(`= ${screen.c}`);
+          break;
+        }
+        case "steps":
+          checkPicture(screen.picture);
+          for (const st of screen.stages)
+            expect(
+              st.options.filter((o) => o.correct),
+              st.prompt,
+            ).toHaveLength(1);
+          break;
+        case "dial":
+          expect(screen.target).toBeGreaterThan(0);
+          expect(screen.target).toBeLessThan(360);
+          // The dial starts away from the target.
+          expect(Math.abs((screen.target > 180 ? 200 : 40) - screen.target)).toBeGreaterThan(
+            screen.within,
+          );
+          break;
+        case "spin":
+          expect(screen.sectors.length).toBeGreaterThan(1);
+          expect(screen.spins).toBeGreaterThan(0);
+          expect(sectorAt([1, 1, 2], 0.6)).toBe(2);
+          break;
+        case "tree":
+          expect(isPrime(screen.root)).toBe(false);
+          expect(screen.done).toContain(primes(screen.root).join(" \\times "));
+          break;
+        case "morph":
+          expect(screen.dims.every((d) => d > 0)).toBe(true);
+          if (screen.shape !== "cuboid") {
+            // At the end, the moving piece and the still one make one shape with no overlap.
+            const end = morphPieces(screen.shape, screen.dims, 1);
+            expect(end.moving.length).toBeGreaterThan(2);
+          }
+          break;
+      }
+      if (screen.kind === "explain" || screen.kind === "choice") {
+        checkPicture(screen.picture);
+        if (screen.kind === "choice") checkPicture(screen.revealPicture);
       }
     },
   );
+});
+
+describe("unit lesson screens", () => {
+  it("marks typed answers however they are written", () => {
+    expect(matches(" 2500 ", "2500")).toBe(true);
+    expect(matches("2,500", "2500")).toBe(true);
+    expect(matches("0.50", "0.5")).toBe(true);
+    expect(matches("−3", "-3")).toBe(true);
+    expect(matches("3 : 2", "3:2")).toBe(true);
+    expect(matches("3X+9", "3x+9")).toBe(true);
+    expect(matches("6/10", "3/5")).toBe(false);
+  });
+
+  it("mixes cards up the same way every time, never already in order", () => {
+    const items = ["a", "b", "c", "d"];
+    expect(shuffled(items, "x")).toEqual(shuffled(items, "x"));
+    expect(shuffled(items, "x")).not.toEqual(items);
+    expect([...shuffled(items, "x")].sort()).toEqual(items);
+  });
+
+  it("solves a balance a step at a time", () => {
+    const [first] = balanceMoves(2, 5, 17, "x");
+    expect(first?.after).toEqual({ a: 2, b: 0, c: 12 });
+    const [second] = balanceMoves(2, 0, 12, "x");
+    expect(second?.after).toEqual({ a: 1, b: 0, c: 6 });
+    expect(balanceMoves(1, 0, 6, "x")).toEqual([]);
+  });
+
+  it("splits numbers into factor pairs and writes primes with powers", () => {
+    expect(factorPairs(60)).toEqual([
+      [2, 30],
+      [3, 20],
+      [4, 15],
+      [5, 12],
+      [6, 10],
+    ]);
+    expect(primeProductTex([5, 2, 3, 2])).toBe("2^{2} \\times 3 \\times 5");
+  });
+
+  it("slides and turns shapes so their pieces end up side by side", () => {
+    const para = morphPieces("parallelogram", [6, 4, 2], 1);
+    expect(para.moving.map((p) => p.x)).toEqual([6, 8, 8]);
+    const tri = morphPieces("triangle", [6, 4, 2], 1);
+    // The turned copy's corners land on the parallelogram's: (8, 4), (2, 4) and (6, 0).
+    const near = (p: Point, q: Point) => Math.hypot(p.x - q.x, p.y - q.y) < 1e-9;
+    expect(tri.moving.some((p) => near(p, { x: 8, y: 4 }))).toBe(true);
+    expect(tri.moving.some((p) => near(p, { x: 6, y: 0 }))).toBe(true);
+  });
+
+  it("writes a machine's rule with its own names, as maths that renders", () => {
+    expect(machineRuleTex({ m: 2, c: 1 }, "x", "y")).toBe("y = 2x + 1");
+    const term = machineRuleTex({ m: 4, c: -1 }, "n", "term");
+    expect(term).toBe("\\text{term} = 4n - 1");
+    expect(wordsHtml(`$${term}$`)).not.toContain("katex-error");
+    for (const lesson of UNIT_LESSONS)
+      for (const s of lesson.screens)
+        if (s.kind === "machine") {
+          const [a, b] = s.ports ?? ["x", "y"];
+          expect(wordsHtml(`$${machineRuleTex(s.rule, a, b)}$`)).not.toContain("katex-error");
+        }
+  });
+
+  it("turns lesson maths into plain labels for drawings", () => {
+    expect(plainLabel("$\\frac{3}{4}$")).toBe("3/4");
+    expect(plainLabel("$-\\frac{1}{2}$")).toBe("−1/2");
+  });
 });
 
 describe("unit lesson helpers", () => {
@@ -167,10 +409,11 @@ describe("unit lesson helpers", () => {
     expect(makesLine(rule, { x: 0, y: -2 }, { x: 1, y: 0 })).toBe(false);
   });
 
-  it("shows unit lessons only to teachers until they are opened to pupils", () => {
+  it("shows a unit lesson only to teachers until it is opened to pupils", () => {
     const unit = UNIT_LESSONS[0]?.unit ?? "";
     expect(unitLessonFor(unit, true)).toBeDefined();
-    expect(unitLessonFor(unit, false) !== undefined).toBe(FOR_PUPILS);
+    expect(unitLessonFor(unit, false) !== undefined).toBe(OPEN_TO_PUPILS.has(unit));
+    for (const open of OPEN_TO_PUPILS) expect(unitLessonFor(open, false)).toBeDefined();
     expect(unitLessonFor("no-such-unit", true)).toBeUndefined();
   });
 

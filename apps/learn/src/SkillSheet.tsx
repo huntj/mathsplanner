@@ -150,9 +150,10 @@ function SheetBody({
             ? "You have done it. Do it again any time."
             : "Its skills skip their worked examples once it is done."}
         </p>
-        {teacher && (
+        {teacher && !selection.open && (
           <p className="teacher-note">
-            <TeacherIcon size={18} /> Teacher mode: unit lessons are only shown to teachers for now.
+            <TeacherIcon size={18} /> Teacher mode: this lesson is only shown to teachers until it
+            has been reviewed.
           </p>
         )}
         <div className="sheet-actions">

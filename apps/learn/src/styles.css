@@ -2537,3 +2537,717 @@ body::before {
     transition: none !important;
   }
 }
+
+/* Pictures in unit lessons. */
+.pic {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-inline: auto;
+  overflow: visible;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.pic.tappable {
+  cursor: pointer;
+  touch-action: none;
+}
+
+.pic:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.pic:focus-visible {
+  outline: 3px solid var(--biro);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.pic text {
+  font-family: var(--display);
+  font-weight: 600;
+  fill: var(--ink);
+}
+
+.pic-label {
+  font-size: 16px;
+}
+
+.pic-label.small {
+  font-size: 13px;
+  fill: var(--ink-soft);
+}
+
+.pic-shape {
+  fill: color-mix(in srgb, var(--c, var(--biro)) 14%, var(--surface));
+  stroke: var(--ink);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.pic-shape.moving {
+  fill: color-mix(in srgb, var(--gold) 45%, var(--surface));
+  stroke: var(--gold-deep);
+}
+
+.pic-shape.moving.home {
+  fill: color-mix(in srgb, var(--c, var(--biro)) 14%, var(--surface));
+  stroke: var(--ink);
+  transition: fill 300ms;
+}
+
+.pic-dashed {
+  stroke: var(--ink-soft);
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+}
+
+.pic-mirror {
+  stroke: var(--gold-deep);
+  stroke-width: 2.5;
+  stroke-dasharray: 8 6;
+}
+
+.pic-square {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.8;
+}
+
+.pic-angle {
+  font-size: 15px;
+  fill: var(--biro) !important;
+}
+
+.pic-ray {
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.pic-ray.live {
+  stroke: var(--biro);
+  stroke-width: 4;
+}
+
+.pic-centre {
+  fill: var(--ink);
+}
+
+.pic-arc path {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 2;
+}
+
+.pic-arc text {
+  font-size: 15px;
+}
+
+.pic-arc.find path {
+  stroke: var(--biro);
+  stroke-width: 3;
+}
+
+.pic-arc.find text {
+  fill: var(--biro);
+}
+
+.pic-part {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.pic-part.shaded {
+  fill: color-mix(in srgb, var(--c, var(--biro)) 30%, var(--surface));
+}
+
+.pic-part-label {
+  font-size: 14px;
+}
+
+.pic-brace path {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 2;
+}
+
+.pic-brace text {
+  font-size: 15px;
+}
+
+.pic-cell {
+  fill: var(--surface);
+  stroke: var(--line);
+  stroke-width: 1.5;
+}
+
+.pic-cell.shaded {
+  fill: color-mix(in srgb, var(--c, var(--biro)) 55%, var(--surface));
+  stroke: color-mix(in srgb, var(--c, var(--biro)) 70%, var(--ink));
+}
+
+.tappable .pic-cell {
+  cursor: pointer;
+}
+
+.cube-front {
+  fill: color-mix(in srgb, var(--c, var(--biro)) 40%, var(--surface));
+  stroke: var(--ink);
+  stroke-width: 1.2;
+}
+
+.cube-top {
+  fill: color-mix(in srgb, var(--c, var(--biro)) 22%, var(--surface));
+  stroke: var(--ink);
+  stroke-width: 1.2;
+}
+
+.cube-side {
+  fill: color-mix(in srgb, var(--c, var(--biro)) 60%, var(--surface));
+  stroke: var(--ink);
+  stroke-width: 1.2;
+}
+
+.cube-ghost {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 4;
+}
+
+.spinner-wheel {
+  transition: transform 900ms cubic-bezier(0.2, 0.8, 0.25, 1);
+}
+
+.spinner-sector {
+  stroke: var(--surface);
+  stroke-width: 2;
+}
+
+.pic .spinner-label {
+  font-size: 18px;
+  fill: #fff;
+}
+
+.spinner-pointer {
+  fill: var(--ink);
+}
+
+.pic-segment {
+  stroke: var(--biro);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.pic-segment-end {
+  stroke: var(--biro);
+  stroke-width: 2;
+}
+
+.pic-ruler {
+  fill: color-mix(in srgb, var(--gold) 30%, var(--surface));
+  stroke: var(--gold-deep);
+  stroke-width: 1.5;
+}
+
+.pic-ruler-tick {
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+.pic-maths {
+  display: grid;
+  place-items: center;
+  min-height: 5rem;
+  padding: 0.8rem;
+  border: 2px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  font-size: 1.9rem;
+  overflow-x: auto;
+}
+
+.place-value th.hl,
+.place-value td.hl {
+  background: color-mix(in srgb, var(--gold) 30%, var(--surface));
+}
+
+.place-value .point {
+  border-left: 4px dotted var(--ink-soft);
+}
+
+.pic-table td,
+.pic-table th {
+  font-size: var(--step-0);
+}
+
+/* Number lines. */
+.number-line {
+  max-width: 36rem;
+}
+
+.nl-axis {
+  stroke: var(--ink);
+  stroke-width: 2.5;
+}
+
+.nl-tick {
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.pic .nl-label,
+.pic .nl-label text {
+  font-size: 15px;
+  fill: var(--ink-soft);
+}
+
+.nl-label line {
+  stroke: var(--ink-soft);
+  stroke-width: 1.5;
+}
+
+.nl-mark circle {
+  fill: var(--ink);
+  stroke: var(--surface);
+  stroke-width: 2;
+}
+
+.nl-mark text {
+  font-size: 15px;
+}
+
+.nl-mark.tone-mine circle {
+  fill: var(--biro);
+  animation: ul-pop 260ms ease-out;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.pic .nl-mark.tone-mine text {
+  fill: var(--biro);
+}
+
+.nl-mark.tone-wrong circle {
+  fill: var(--wrong);
+  animation: ul-shake 300ms ease-out;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.nl-mark.tone-hint circle {
+  fill: none;
+  stroke: var(--gold-deep);
+  stroke-width: 3;
+}
+
+.nl-cursor {
+  fill: none;
+  stroke: var(--biro);
+  stroke-width: 2;
+  stroke-dasharray: 3 3;
+  pointer-events: none;
+}
+
+.nl-jump path {
+  fill: none;
+  stroke: var(--gold-deep);
+  stroke-width: 2.5;
+}
+
+.pic .nl-jump text {
+  font-size: 14px;
+  fill: var(--gold-deep);
+}
+
+.nl-interval line {
+  stroke: var(--biro);
+  stroke-width: 6;
+}
+
+.nl-interval circle {
+  stroke: var(--biro);
+  stroke-width: 3;
+}
+
+.nl-interval .closed {
+  fill: var(--biro);
+}
+
+.nl-interval .open {
+  fill: var(--surface);
+}
+
+/* Typing an answer. */
+.ul-answer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.ul-input {
+  width: min(100%, 12rem);
+  min-height: 3.4rem;
+  padding: 0.4rem 0.8rem;
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: var(--step-2);
+  text-align: center;
+}
+
+.ul-input:focus {
+  outline: none;
+  border-color: var(--biro);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--biro) 25%, transparent);
+}
+
+.ul-unit {
+  font-family: var(--display);
+  font-size: var(--step-1);
+  color: var(--ink-soft);
+}
+
+.ul-target,
+.ul-prompt {
+  margin: 0;
+  font-size: var(--step-1);
+  text-align: center;
+}
+
+/* Cards to order, sort and fill. */
+.ul-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.ul-card {
+  min-width: 3.4rem;
+  font-size: var(--step-1);
+}
+
+.ul-chip.small {
+  min-width: 0;
+  min-height: 0;
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+  font-size: var(--step--1);
+  box-shadow: none;
+}
+
+.ul-order {
+  display: grid;
+  gap: 0.35rem;
+  justify-items: center;
+}
+
+.ul-order ol {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ul-order li {
+  display: grid;
+  place-items: center;
+  min-width: 3.4rem;
+  min-height: 3rem;
+  padding: 0.2rem 0.6rem;
+  border: 2px dashed var(--line);
+  border-radius: 12px;
+  font-family: var(--display);
+  font-size: var(--step-1);
+}
+
+.ul-order li.filled {
+  border-style: solid;
+  border-color: var(--biro);
+  background: color-mix(in srgb, var(--biro) 10%, var(--surface));
+  color: var(--biro);
+  animation: ul-pop 260ms ease-out;
+}
+
+.ul-order-end {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ul-groups {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.ul-group {
+  display: grid;
+  align-content: start;
+  gap: 0.4rem;
+  min-height: 6rem;
+  padding: 0.6rem;
+  border: 2px dashed var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+}
+
+.ul-group.ready {
+  border-color: var(--biro);
+  cursor: pointer;
+}
+
+.ul-group:disabled {
+  cursor: default;
+}
+
+.ul-group-name {
+  font-family: var(--display);
+  font-weight: 600;
+}
+
+.ul-group-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.ul-fill {
+  margin: 0;
+  font-size: var(--step-2);
+  line-height: 2.4;
+  text-align: center;
+}
+
+.ul-slot.active {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--biro) 30%, transparent);
+}
+
+.ul-slot.wrong {
+  border-color: var(--wrong);
+  background: var(--wrong-bg);
+  color: var(--wrong);
+}
+
+.ul-slot.right {
+  border-color: var(--right);
+  background: var(--right-bg);
+  color: var(--right);
+}
+
+/* Working that grows a line at a time. */
+.ul-working {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  font-size: var(--step-1);
+}
+
+.ul-working p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.ul-working p.latest {
+  color: var(--ink);
+  animation: ul-drop 260ms ease-out;
+}
+
+.ul-equation.small {
+  font-size: var(--step-1);
+  font-style: normal;
+}
+
+/* The balance. */
+.scale {
+  max-width: 26rem;
+}
+
+.scale-beam {
+  transition: transform 400ms ease-in-out;
+}
+
+.scale-arm {
+  stroke: var(--ink);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.scale-pan {
+  fill: var(--line);
+  stroke: var(--ink-soft);
+  stroke-width: 2;
+}
+
+.scale-stand {
+  fill: var(--ink-soft);
+}
+
+.scale-cube {
+  fill: var(--gold);
+  stroke: var(--gold-deep);
+  stroke-width: 1.5;
+}
+
+.scale-bag {
+  fill: var(--c, var(--biro));
+  stroke: var(--c-deep, var(--biro-deep));
+  stroke-width: 2;
+}
+
+.pic .scale-bag-label {
+  fill: var(--on-colour);
+  font-size: 18px;
+  font-style: italic;
+}
+
+/* The dial. */
+.dial {
+  max-width: 22rem;
+}
+
+.protractor path {
+  fill: color-mix(in srgb, var(--biro) 6%, var(--surface));
+  stroke: var(--ink-soft);
+  stroke-width: 1.5;
+}
+
+.protractor line {
+  stroke: var(--ink-soft);
+  stroke-width: 1.2;
+}
+
+.pic .protractor text {
+  font-size: 11px;
+  fill: var(--ink-soft);
+}
+
+.dial-arc {
+  fill: color-mix(in srgb, var(--biro) 18%, transparent);
+  stroke: var(--biro);
+  stroke-width: 2.5;
+}
+
+/* The spinner. */
+.spin-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.spin-table td {
+  font-size: var(--step-0);
+}
+
+.spin-bar {
+  position: relative;
+  display: inline-block;
+  width: 60%;
+  height: 0.8rem;
+  margin-right: 0.4rem;
+  border-radius: 999px;
+  background: var(--locked);
+  vertical-align: middle;
+}
+
+.spin-bar span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 999px;
+  background: var(--biro);
+  transition: width 300ms;
+}
+
+.spin-bar i {
+  position: absolute;
+  top: -0.25rem;
+  bottom: -0.25rem;
+  width: 3px;
+  margin-left: -1.5px;
+  background: var(--gold-deep);
+}
+
+.spin-share {
+  font-family: var(--display);
+}
+
+/* A factor tree. */
+.tree {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  padding-bottom: 0.4rem;
+}
+
+.tree-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tree-kids {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+  padding-top: 0.9rem;
+  border-top: 2px solid var(--ink-soft);
+}
+
+.tree-branch {
+  display: flex;
+  justify-content: center;
+  min-width: 3rem;
+}
+
+.tree-value {
+  display: grid;
+  place-items: center;
+  min-width: 2.9rem;
+  min-height: 2.9rem;
+  padding: 0 0.4rem;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: var(--step-1);
+  font-weight: 600;
+}
+
+.tree-value.open {
+  border-color: var(--biro);
+  box-shadow: 0 3px 0 var(--biro);
+  cursor: pointer;
+}
+
+.tree-value.picked {
+  background: color-mix(in srgb, var(--biro) 14%, var(--surface));
+}
+
+.tree-value.prime {
+  border-color: var(--right);
+  border-radius: 50%;
+  background: var(--right-bg);
+  color: var(--right);
+}
+
+.tree-value:disabled {
+  cursor: default;
+  opacity: 1;
+}
