@@ -44,7 +44,9 @@
   min-width: 1.2em;
 }
 
-.option .content svg {
+/* Diagrams only: KaTeX draws some symbols (the root sign, vector arrows, tall brackets) as SVGs
+   sized by its own stylesheet, and resizing those makes them vanish. */
+.option .content .mp-diagram svg {
   max-width: 100%;
   height: auto;
 }
@@ -180,7 +182,7 @@
   flex: 1 1 12rem;
 }
 
-.match li .content svg {
+.match li .content .mp-diagram svg {
   max-width: min(100%, 240px);
   max-height: 180px;
   height: auto;
