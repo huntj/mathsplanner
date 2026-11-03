@@ -32,6 +32,8 @@ export interface Settings {
   /** Hearts in lessons, for pupils who want a challenge. */
   challenge: boolean;
   theme: Theme;
+  /** Teacher mode: every skill and review open, and any level of a skill can be tried. */
+  teacher: boolean;
 }
 
 export interface SkillProgress {
@@ -75,6 +77,7 @@ export const DEFAULT_SETTINGS: Settings = {
   sound: true,
   challenge: false,
   theme: "system",
+  teacher: false,
 };
 
 export const emptyProgress = (): Progress => ({
@@ -109,6 +112,7 @@ export function readProgress(raw: unknown): Progress {
   if (typeof s.sound === "boolean") progress.settings.sound = s.sound;
   if (typeof s.challenge === "boolean") progress.settings.challenge = s.challenge;
   if (THEMES.includes(s.theme as Theme)) progress.settings.theme = s.theme as Theme;
+  if (typeof s.teacher === "boolean") progress.settings.teacher = s.teacher;
 
   if (isRecord(raw.skills))
     for (const [id, value] of Object.entries(raw.skills)) {

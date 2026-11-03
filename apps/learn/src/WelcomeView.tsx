@@ -1,9 +1,11 @@
 // The first visit: Dot says hello, then the pupil picks their year and a daily goal. Someone just
-// looking can open the example progress instead.
+// looking can open the example progress instead, and a teacher can go straight into teacher mode
+// with a year to look through.
 import type { Stage } from "@mathsplanner/core";
 import { useState } from "react";
 import { sectionFor, YEARS, yearsReady } from "./course.ts";
 import { Dot, Logo } from "./Dot.tsx";
+import { TeacherIcon } from "./Icons.tsx";
 import { DAILY_GOALS, type DailyGoal } from "./progress.ts";
 
 const GOAL_WORDS: Record<DailyGoal, string> = {
@@ -17,12 +19,13 @@ export function WelcomeView({
   onDone,
   onExample,
 }: {
-  onDone: (stage: Stage, goal: DailyGoal) => void;
+  onDone: (stage: Stage, goal: DailyGoal, teacher: boolean) => void;
   onExample: () => void;
 }) {
   const [step, setStep] = useState(0);
   const [stage, setStage] = useState<Stage>();
   const [goal, setGoal] = useState<DailyGoal>(2);
+  const [teacher, setTeacher] = useState(false);
 
   return (
     <main className="welcome">
@@ -42,6 +45,16 @@ export function WelcomeView({
             <button type="button" className="button big" onClick={onExample}>
               See an example
             </button>
+            <button
+              type="button"
+              className="button link"
+              onClick={() => {
+                setTeacher(true);
+                setStep(1);
+              }}
+            >
+              <TeacherIcon size={18} /> I’m a teacher
+            </button>
           </div>
           <p className="muted small">
             Your progress stays on this device. Nothing about you is sent anywhere.
@@ -53,7 +66,15 @@ export function WelcomeView({
       {step === 1 && (
         <section className="welcome-step" aria-labelledby="year">
           <Dot size={84} />
-          <h1 id="year">Which year are you in?</h1>
+          <h1 id="year">
+            {teacher ? "Which year would you like to look through?" : "Which year are you in?"}
+          </h1>
+          {teacher && (
+            <p className="lead">
+              Teacher mode opens every skill and review, and lets you try any level. You can switch
+              it off, or change year, on the You page.
+            </p>
+          )}
           <div className="choices" role="radiogroup" aria-labelledby="year">
             {YEARS.map((y) => {
               const ready = sectionFor(y.stage) !== undefined;
@@ -78,11 +99,18 @@ export function WelcomeView({
               type="button"
               className="button primary big"
               disabled={!stage}
-              onClick={() => setStep(2)}
+              onClick={() => (teacher && stage ? onDone(stage, goal, true) : setStep(2))}
             >
               Continue
             </button>
-            <button type="button" className="button link" onClick={() => setStep(0)}>
+            <button
+              type="button"
+              className="button link"
+              onClick={() => {
+                setTeacher(false);
+                setStep(0);
+              }}
+            >
               Back
             </button>
           </div>
@@ -115,7 +143,7 @@ export function WelcomeView({
             <button
               type="button"
               className="button primary big"
-              onClick={() => onDone(stage, goal)}
+              onClick={() => onDone(stage, goal, false)}
             >
               Start learning
             </button>

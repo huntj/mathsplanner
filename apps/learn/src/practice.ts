@@ -194,7 +194,11 @@ export function finishLesson(
     const skill = plan.skill;
     const info = infoOf(skill);
     const was = skills[skill] ?? fresh(today);
-    const level = Math.min(was.level + 1, info.levels.length);
+    // A level a teacher picked counts as reached (never as a step back); otherwise one level up.
+    const level = Math.min(
+      plan.picked && plan.level ? Math.max(was.level, plan.level) : was.level + 1,
+      info.levels.length,
+    );
     const now = { ...was, level, lessons: was.lessons + 1, last: today };
     if (was.level < info.pathLevels && level >= info.pathLevels) {
       Object.assign(now, firstMemory(today));

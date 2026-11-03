@@ -14,6 +14,7 @@ import {
   SnowflakeIcon,
   StarIcon,
   StreakIcon,
+  TeacherIcon,
 } from "./Icons.tsx";
 import { PathView, type Selection } from "./PathView.tsx";
 import {
@@ -152,8 +153,10 @@ export function App() {
         .filter((s) => s !== start.skill && levelOf(progress, s) >= levelsOf(s).pathLevels)
         .map((s) => ({ skill: s, info: levelsOf(s) }));
       const info = levelsOf(start.skill);
-      const done = levelOf(progress, start.skill);
-      begin((seed) => planLesson(start.skill, info, done, reviewFrom, seed));
+      // A level a teacher picked, or the skill's next one.
+      const done = start.level ? start.level - 1 : levelOf(progress, start.skill);
+      const picked = start.level ? { picked: true as const } : {};
+      begin((seed) => ({ ...planLesson(start.skill, info, done, reviewFrom, seed), ...picked }));
     } else if (start.kind === "refresh")
       begin((seed) => refreshPlan(start.skill, skillText(start.skill), levelsOf, seed));
     else if (start.kind === "unit") begin((seed) => unitPlan(start.unit, levelsOf, seed));
@@ -212,8 +215,10 @@ export function App() {
   if (!section || view === "welcome") {
     return (
       <WelcomeView
-        onDone={(stage: Stage, dailyGoal: DailyGoal) => {
-          setProgress((p) => withSettings(p.example ? emptyProgress() : p, { stage, dailyGoal }));
+        onDone={(stage: Stage, dailyGoal: DailyGoal, teacher: boolean) => {
+          setProgress((p) =>
+            withSettings(p.example ? emptyProgress() : p, { stage, dailyGoal, teacher }),
+          );
           go("path");
         }}
         onExample={showExample}
@@ -228,9 +233,17 @@ export function App() {
   return (
     <div className="app">
       <header className="top-bar">
-        <button type="button" className="year-chip" onClick={() => go("you")}>
-          {section.name}
-        </button>
+        <div className="top-left">
+          <button type="button" className="year-chip" onClick={() => go("you")}>
+            {section.name}
+          </button>
+          {progress.settings.teacher && (
+            <button type="button" className="teacher-chip" onClick={() => go("you")}>
+              <TeacherIcon size={16} />
+              Teacher
+            </button>
+          )}
+        </div>
         <div className="top-stats">
           <span className="stat streak" title="Days in a row you met your goal">
             <StreakIcon size={20} />
@@ -333,6 +346,7 @@ export function App() {
 
       <SkillSheet
         selection={selection}
+        teacher={progress.settings.teacher}
         onClose={() => setSelection(undefined)}
         onStart={startFromPath}
       />

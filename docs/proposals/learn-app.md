@@ -355,3 +355,17 @@ are less likely than a teacher to notice a bad question. So:
 
 Steps 2 to 4 make Year 7 playable; it is worth trying with pupils before steps 5 to 9 are
 polished.
+
+**Since play-testing began** (3 November 2026), the plan is:
+
+- **Teacher mode. Done.** A switch on the You page, or "I’m a teacher" on the first screen, opens
+  every skill, unit review and year review, and puts a Try button on each level of a skill, so a
+  teacher can look through a year without unlocking it. A level tried this way counts as reached
+  (never as a step back). The You page also lets anyone change year; progress in every year is
+  kept.
+- **Every year group**, one section at a time: Year 9 next, completing Key Stage 3, then the other
+  years. Each needs its units tidied and its reasoning questions varied, as Year 8's were.
+- **Question previews**: from a skill's sheet, see one question at each level without starting a
+  lesson.
+- **Learning the idea first**: a better way into a new skill than one worked example before the
+  questions, such as a short explanation built up step by step.

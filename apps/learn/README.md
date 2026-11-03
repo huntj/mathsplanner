@@ -17,3 +17,5 @@ Variety: when it makes a question, the app tries a few and prefers a form (`form
 Run it locally with `pnpm learn` (http://localhost:5175). `vite build --mode single` inlines the fonts, for hosts that serve only the page and its scripts.
 
 It is online at https://learnmaths.jedhunt.co.uk: `.github/workflows/learn.yml` builds it on every push to `main` and publishes it through the `huntj/learnmaths` repository. The one-off set-up is in [docs/deploy-learn-maths.md](../../docs/deploy-learn-maths.md).
+
+Teacher mode (a switch on the You page, or "I’m a teacher" on the first screen) opens every skill and review on the path (`open` in `buildPath`) and puts a Try button on each level of a skill's sheet. A lesson at a level picked this way is marked `picked`, and finishing it counts that level as reached rather than moving up one.

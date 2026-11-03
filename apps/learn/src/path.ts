@@ -10,4 +10,5 @@ export const pathFor = (section: CourseSection, progress: Progress, today: strin
   buildPath(section, (s) => levelOf(progress, s), levelsOf, {
     dueOf: (s) => isDue(memoryOf(progress.skills[s], levelsOf(s).pathLevels), today),
     reviewed: (id) => id in progress.reviews,
+    open: progress.settings.teacher,
   });
