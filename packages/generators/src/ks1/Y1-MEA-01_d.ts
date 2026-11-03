@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y1-MEA-01.d",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["AS.PROBLEM.KEYWORD", "MEA.COMPARE.LOOKS"],
 
@@ -69,20 +70,54 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `${x} takes ${p.a} seconds to tidy up. ${y} takes ${p.b} seconds. ${x} says, "I was quicker, because ${p.a} is bigger."`,
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `${x} takes ${p.a} seconds to tidy up. ${y} takes ${p.b} seconds. ${x} says, "I was quicker, because ${p.a} is bigger."`,
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Taking more seconds means taking longer, so ${y} was quicker.`,
+                  correct: true,
+                },
+                { text: "True. The bigger number always wins.", code: "MEA.COMPARE.LOOKS" },
+                { text: "True. More seconds means faster.", code: "MEA.COMPARE.LOOKS" },
+              ],
+              solution: [{ say: "The quicker person takes less time." }],
+            }),
+          [
             {
-              text: `False. Taking more seconds means taking longer, so ${y} was quicker.`,
-              correct: true,
+              claim: "The person who takes less time is quicker.",
+              truth: "always",
+              right: "Always. Less time means they finished first.",
+              wrong: [
+                ["Never. More time is quicker.", "MEA.COMPARE.LOOKS"],
+                ["Sometimes. It depends who it is."],
+              ],
             },
-            { text: "True. The bigger number always wins.", code: "MEA.COMPARE.LOOKS" },
-            { text: "True. More seconds means faster.", code: "MEA.COMPARE.LOOKS" },
+            {
+              statement: "Ann takes 5 seconds and Bob takes 9 seconds. Ann says she was quicker.",
+              truth: true,
+              right: "True. 5 seconds is less time than 9 seconds.",
+              wrong: [
+                ["False. 9 is bigger, so Bob was quicker.", "AS.PROBLEM.KEYWORD"],
+                ["False. They were the same."],
+              ],
+            },
+            {
+              statement:
+                "Kai takes 12 seconds and Lee takes 8 seconds. Kai says he took less time.",
+              truth: false,
+              right: "False. 12 seconds is more time than 8 seconds.",
+              wrong: [
+                ["True. 12 is the winner.", "AS.PROBLEM.KEYWORD"],
+                ["True. Bigger numbers are faster."],
+              ],
+            },
           ],
-          solution: [{ say: "The quicker person takes less time." }],
-        });
+        );
     }
   },
 

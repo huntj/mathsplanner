@@ -10,7 +10,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -76,7 +76,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -142,7 +142,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -208,7 +208,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -279,7 +279,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -350,7 +350,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -421,7 +421,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -432,8 +432,8 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -459,7 +459,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Counting on always lands on a number ending in 9.",
+                  "v": "False. After 19 comes 30.",
                 },
               ],
               "id": "RA",
@@ -468,7 +468,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "After 49 comes 50, not 40.",
+                  "v": "False. After 19 comes 110.",
                 },
               ],
               "id": "RB",
@@ -477,7 +477,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "40 comes next because the ones go back to 0.",
+                  "v": "True. After 19 comes 20.",
                 },
               ],
               "id": "RC",
@@ -489,7 +489,15 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.SEQUENCE.DECADE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.SEQUENCE.DECADE",
@@ -509,7 +517,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Counting on in ones: 48, 49, 50, 51.",
+            "v": "True. After 19 comes 20.",
           },
         ],
       },
@@ -517,7 +525,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Zak counts on: "48, 49, 40". He says that is right.",
+        "v": "Sam counts on: 18, 19, 20.",
       },
     ],
   },
@@ -529,7 +537,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -540,8 +548,8 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RA",
+          "correct": "B",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -567,7 +575,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "After 69, the ones go back to 0 and the tens go up by one: 70.",
+                  "v": "True. After 9 comes 0.",
                 },
               ],
               "id": "RA",
@@ -576,7 +584,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "You cannot count on across a ten.",
+                  "v": "True. The tens stay the same.",
                 },
               ],
               "id": "RB",
@@ -585,7 +593,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "After 69 comes 60.",
+                  "v": "False. After 39 comes 40.",
                 },
               ],
               "id": "RC",
@@ -597,7 +605,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.SEQUENCE.DECADE",
@@ -617,7 +625,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Counting on in ones: 68, 69, 70, 71.",
+            "v": "False. After 39 comes 40.",
           },
         ],
       },
@@ -625,7 +633,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Zak counts on: "68, 69, 70". He says that is right.",
+        "v": "Mia counts on: 37, 38, 39, 30.",
       },
     ],
   },
@@ -637,7 +645,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-NPV-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -648,7 +656,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
           "correctReason": "RA",
           "options": [
             {
@@ -675,7 +683,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "After 109, the ones go back to 0 and the tens go up by one: 110.",
+                  "v": "False. After 39 comes 40.",
                 },
               ],
               "id": "RA",
@@ -684,7 +692,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "After 109 comes 100.",
+                  "v": "True. The tens stay the same.",
                 },
               ],
               "id": "RB",
@@ -693,7 +701,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "You cannot count on across a ten.",
+                  "v": "True. After 9 comes 0.",
                 },
               ],
               "id": "RC",
@@ -705,7 +713,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.SEQUENCE.DECADE",
@@ -725,7 +733,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Counting on in ones: 108, 109, 110, 111.",
+            "v": "False. After 39 comes 40.",
           },
         ],
       },
@@ -733,7 +741,7 @@ exports[`Y1-NPV-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Zak counts on: "108, 109, 110". He says that is right.",
+        "v": "Mia counts on: 37, 38, 39, 30.",
       },
     ],
   },

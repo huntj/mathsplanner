@@ -1,7 +1,7 @@
 # Proposal: Learn Maths, a Duolingo-style practice app for pupils
 
 Status: **agreed on 29 October 2026.** Steps 1 to 6 are built: the course data with Year 7 as
-the pilot section, then Years 8, 9, 6, 5, 4, 3 and 2 (`data/course.txt`, `pnpm data:course`), the shared answer widgets
+the pilot section, then Years 8 and 9 and Years 1 to 6 (`data/course.txt`, `pnpm data:course`), the shared answer widgets
 (`@mathsplanner/ui`), and the app with its path, progress, first visit, lessons, practice and
 rewards (`apps/learn`, `pnpm learn`); steps 7 to 10 are to do.
 
@@ -159,6 +159,22 @@ proportion with compound change, inequalities with simultaneous equations):
 | 7   | Compound change and inverse proportion  |      3 |
 | 8   | Graphs and sequences                    |      4 |
 | 9   | Probability                             |      4 |
+
+**Year 1** has 10 units and 44 skills. Turns come after fractions, since quarter turns need
+quarters:
+
+| #   | Unit                          | Skills |
+| --- | ----------------------------- | -----: |
+| 1   | Counting to 100               |      4 |
+| 2   | Numbers to 20                 |      4 |
+| 3   | Number bonds                  |      4 |
+| 4   | Counting in 2s, 5s and 10s    |      3 |
+| 5   | Comparing measures            |      4 |
+| 6   | Adding and subtracting        |      5 |
+| 7   | Groups, sharing and fractions |      5 |
+| 8   | Shapes and position           |      5 |
+| 9   | Measuring and money           |      5 |
+| 10  | Time                          |      5 |
 
 **Year 2** has 15 units and 62 skills. Written addition is split so that number facts and
 adding tens and ones come before adding two 2-digit numbers and three 1-digit numbers:

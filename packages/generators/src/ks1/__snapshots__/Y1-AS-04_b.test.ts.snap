@@ -36,7 +36,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-AS-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -132,7 +132,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-AS-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -228,7 +228,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-AS-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -298,7 +298,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-AS-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -369,7 +369,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-AS-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -440,7 +440,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-AS-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -504,14 +504,14 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-AS-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -523,13 +523,13 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -538,10 +538,19 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -549,7 +558,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Check a subtraction by doing the subtraction again.",
+                  "v": "Always. 6 + 4 = 10.",
                 },
               ],
               "id": "RA",
@@ -558,7 +567,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You can only check with a calculator.",
+                  "v": "Sometimes. It depends on the day.",
                 },
               ],
               "id": "RB",
@@ -567,7 +576,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Addition undoes subtraction: if 7 + 8 = 15, the subtraction was right.",
+                  "v": "Never. It is 14.",
                 },
               ],
               "id": "RC",
@@ -579,17 +588,17 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "AS.INVERSE.SAME-OPERATION",
+            "code": "AS.EQUALS.ANSWER-NEXT",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -599,7 +608,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "15 − 8 = 7 and 7 + 8 = 15 are a fact family: each undoes the other.",
+            "v": "Always. 6 + 4 = 10.",
           },
         ],
       },
@@ -607,23 +616,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "To check that ",
-      },
-      {
-        "t": "math",
-        "v": "15 - 8 = 7",
-      },
-      {
-        "t": "text",
-        "v": ", Sam works out ",
-      },
-      {
-        "t": "math",
-        "v": "7 + 8",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "The missing number in 10 = □ + 4 is 6.",
       },
     ],
   },
@@ -635,7 +628,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-AS-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -647,7 +640,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -673,7 +666,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Undo taking away 5 by adding it back: 9 + 5 = 14.",
+                  "v": "True. Use the same operation as the question.",
                 },
               ],
               "id": "RA",
@@ -682,7 +675,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Use the same operation as the question.",
+                  "v": "False. Undo taking away 5 by adding it back: 9 + 5 = 14.",
                 },
               ],
               "id": "RB",
@@ -703,7 +696,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "AS.INVERSE.SAME-OPERATION",
@@ -759,7 +752,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-AS-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -771,7 +764,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -797,7 +790,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Undo taking away 8 by adding it back: 7 + 8 = 15.",
+                  "v": "True. Take the small number from the big one.",
                 },
               ],
               "id": "RA",
@@ -806,7 +799,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Use the same operation as the question.",
+                  "v": "False. Something take away 2 leaves 5, so it is 7.",
                 },
               ],
               "id": "RB",
@@ -815,7 +808,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The missing number must be smaller than 7.",
+                  "v": "True. 5 − 2 = 3.",
                 },
               ],
               "id": "RC",
@@ -827,7 +820,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "AS.INVERSE.SAME-OPERATION",
@@ -847,7 +840,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "15 − 8 = 7 and 7 + 8 = 15 are a fact family: each undoes the other.",
+            "v": "False. Something take away 2 leaves 5, so it is 7.",
           },
         ],
       },
@@ -855,23 +848,7 @@ exports[`Y1-AS-04.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "To find the missing number in ",
-      },
-      {
-        "t": "math",
-        "v": "\\square - 8 = 7",
-      },
-      {
-        "t": "text",
-        "v": ", Sam works out ",
-      },
-      {
-        "t": "math",
-        "v": "7 - 8",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Mia says the missing number in □ − 2 = 5 is 3.",
       },
     ],
   },

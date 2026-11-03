@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer, tenFrames } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   whole: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y1-AS-02.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.COMPOSITION.ADD-NOT-PART", "NPV.PLACE.FACE-VALUE"],
 
@@ -62,26 +63,62 @@ export default defineGenerator<Params>({
           solution: [{ say: `${p.a} + ${b} = 10, so ${10 + p.a} + ${b} = 20.` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Joe says: ",
-            A.math(`${p.a} + ${b} = 10`),
-            ", so ",
-            A.math(`${p.a} + ${10 + b} = 20`),
-            ".",
-          ],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Joe says: ",
+                A.math(`${p.a} + ${b} = 10`),
+                ", so ",
+                A.math(`${p.a} + ${10 + b} = 20`),
+                ".",
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: `True. ${10 + b} is 10 more than ${b}, so the total is 10 more than 10.`,
+                  correct: true,
+                },
+                {
+                  text: `False. You have to add 10 to both numbers.`,
+                  code: "NPV.PLACE.FACE-VALUE",
+                },
+                { text: `False. Bonds to 10 do not help with bonds to 20.` },
+              ],
+              solution: [{ say: "", math: `${p.a} + ${10 + b} = ${p.a} + ${b} + 10 = 20` }],
+            }),
+          [
             {
-              text: `True. ${10 + b} is 10 more than ${b}, so the total is 10 more than 10.`,
-              correct: true,
+              statement: "Sam says 12 + 8 = 20.",
+              truth: true,
+              right: "True. 2 + 8 = 10, and 10 more makes 20.",
+              wrong: [
+                ["False. It is 18.", "NPV.PLACE.FACE-VALUE"],
+                ["False. It is 128.", "NPV.COMPOSITION.ADD-NOT-PART"],
+              ],
             },
-            { text: `False. You have to add 10 to both numbers.`, code: "NPV.PLACE.FACE-VALUE" },
-            { text: `False. Bonds to 10 do not help with bonds to 20.` },
+            {
+              claim: "If 3 + 7 = 10, then 13 + 7 = 20.",
+              truth: "always",
+              right: "Always. 13 is 10 more than 3, so the answer is 10 more.",
+              wrong: [
+                ["Never. You must count again.", "NPV.COMPOSITION.ADD-NOT-PART"],
+                ["Sometimes. Only on Mondays."],
+              ],
+            },
+            {
+              statement: "Kim says 15 + 5 = 25.",
+              truth: false,
+              right: "False. 5 + 5 = 10, so 15 + 5 = 20.",
+              wrong: [
+                ["True. Add 5 and 5 and put 2 in front.", "NPV.PLACE.FACE-VALUE"],
+                ["True. 15 and 5 make 25."],
+              ],
+            },
           ],
-          solution: [{ say: "", math: `${p.a} + ${10 + b} = ${p.a} + ${b} + 10 = 20` }],
-        });
+        );
     }
   },
 

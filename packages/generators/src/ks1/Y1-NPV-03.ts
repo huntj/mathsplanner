@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenFigure, countOf, numberAnswer, placeValue } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y1-NPV-03",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 3, 4],
   misconceptions: ["NPV.SEQUENCE.BEFORE-AFTER", "NPV.PLACE.TENS-ONES-MIXUP"],
 
@@ -84,32 +85,68 @@ export default defineGenerator<Params>({
         });
       default: {
         const claimed = p.right ? answer : p.n + 10 * d;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Leo says one ${p.way} than ${p.n} is ${claimed}.`,
-          truth: p.right,
-          reasons: p.right
-            ? [
-                {
-                  text: `${answer} is the number just ${p.way === "more" ? "after" : "before"} ${p.n} when we count.`,
-                  correct: true,
-                },
-                { text: `One ${p.way} changes the tens digit.`, code: "NPV.PLACE.TENS-ONES-MIXUP" },
-                {
-                  text: `One ${p.way} means the number just ${p.way === "more" ? "before" : "after"}.`,
-                  code: "NPV.SEQUENCE.BEFORE-AFTER",
-                },
-              ]
-            : [
-                {
-                  text: `${claimed} is ten ${p.way}. One ${p.way} than ${p.n} is ${answer}.`,
-                  correct: true,
-                },
-                { text: `One ${p.way} changes the tens digit.`, code: "NPV.PLACE.TENS-ONES-MIXUP" },
-                { text: "Both are right; one and ten mean the same here." },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Leo says one ${p.way} than ${p.n} is ${claimed}.`,
+              truth: p.right,
+              reasons: p.right
+                ? [
+                    {
+                      text: `${answer} is the number just ${p.way === "more" ? "after" : "before"} ${p.n} when we count.`,
+                      correct: true,
+                    },
+                    {
+                      text: `One ${p.way} changes the tens digit.`,
+                      code: "NPV.PLACE.TENS-ONES-MIXUP",
+                    },
+                    {
+                      text: `One ${p.way} means the number just ${p.way === "more" ? "before" : "after"}.`,
+                      code: "NPV.SEQUENCE.BEFORE-AFTER",
+                    },
+                  ]
+                : [
+                    {
+                      text: `${claimed} is ten ${p.way}. One ${p.way} than ${p.n} is ${answer}.`,
+                      correct: true,
+                    },
+                    {
+                      text: `One ${p.way} changes the tens digit.`,
+                      code: "NPV.PLACE.TENS-ONES-MIXUP",
+                    },
+                    { text: "Both are right; one and ten mean the same here." },
+                  ],
+              solution: [{ say: `One ${p.way} changes the number by 1: ${p.n} → ${answer}.` }],
+            }),
+          [
+            {
+              statement: "Ana says one more than 29 is 30.",
+              truth: true,
+              right: "True. After 29 comes 30.",
+              wrong: [["False. It is 39.", "NPV.PLACE.TENS-ONES-MIXUP"], ["False. It is 210."]],
+            },
+            {
+              claim: "One less than a number is the number before it.",
+              truth: "always",
+              right: "Always. One less is one step back.",
+              wrong: [
+                ["Never. It is the number after.", "NPV.SEQUENCE.BEFORE-AFTER"],
+                ["Sometimes. Only for small numbers."],
               ],
-          solution: [{ say: `One ${p.way} changes the number by 1: ${p.n} → ${answer}.` }],
-        });
+            },
+            {
+              statement: "Kai says one more than 46 is 56.",
+              truth: false,
+              right: "False. One more changes the ones: 47.",
+              wrong: [
+                ["True. Add one to the tens.", "NPV.PLACE.TENS-ONES-MIXUP"],
+                ["True. More means 10 more."],
+              ],
+            },
+          ],
+        );
       }
     }
   },

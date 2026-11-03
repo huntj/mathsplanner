@@ -18,7 +18,7 @@ exports[`Y1-AS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-AS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -87,7 +87,7 @@ exports[`Y1-AS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-AS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -156,7 +156,7 @@ exports[`Y1-AS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-AS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -217,7 +217,7 @@ exports[`Y1-AS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-AS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -288,7 +288,7 @@ exports[`Y1-AS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-AS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -359,7 +359,7 @@ exports[`Y1-AS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-AS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -430,7 +430,115 @@ exports[`Y1-AS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-AS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 6 and 4 make 10.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 64.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 9.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.COMPOSITION.ADD-NOT-PART",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. 6 and 4 make 10.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Leo says 6 + 4 = 10.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y1-AS-02.a",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -468,145 +576,25 @@ exports[`Y1-AS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any two numbers that are close together make 10.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. If one part gets 1 bigger, the other part must get 1 smaller to keep the whole at 10: 3 + 7 = 10.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Both parts went up by 1, so the whole stays the same.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.COMPOSITION.ADD-NOT-PART",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "math": "3 + 9 = 12",
-        "say": [],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Ivy knows ",
-      },
-      {
-        "t": "math",
-        "v": "2 + 8 = 10",
-      },
-      {
-        "t": "text",
-        "v": ". She says that means ",
-      },
-      {
-        "t": "math",
-        "v": "3 + 9 = 10",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y1-AS-02.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
                   "v": "True. Both parts went up by 1, so the whole stays the same.",
                 },
               ],
               "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Any two numbers that are close together make 8.",
-                },
-              ],
-              "id": "RB",
             },
             {
               "content": [
                 {
                   "t": "text",
                   "v": "False. If one part gets 1 bigger, the other part must get 1 smaller to keep the whole at 8: 5 + 3 = 8.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Any two numbers that are close together make 8.",
                 },
               ],
               "id": "RC",
@@ -670,7 +658,7 @@ exports[`Y1-AS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-AS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -708,7 +696,7 @@ exports[`Y1-AS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any two numbers that are close together make 7.",
+                  "v": "True. All bonds make 10.",
                 },
               ],
               "id": "RA",
@@ -717,7 +705,7 @@ exports[`Y1-AS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both parts went up by 1, so the whole stays the same.",
+                  "v": "True. 2 and 7 are close to 10.",
                 },
               ],
               "id": "RB",
@@ -726,7 +714,7 @@ exports[`Y1-AS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. If one part gets 1 bigger, the other part must get 1 smaller to keep the whole at 7: 3 + 4 = 7.",
+                  "v": "False. 2 + 7 = 9. 2 + 8 makes 10.",
                 },
               ],
               "id": "RC",
@@ -755,30 +743,18 @@ exports[`Y1-AS-02.a > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "3 + 6 = 9",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. 2 + 7 = 9. 2 + 8 makes 10.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Ivy knows ",
-      },
-      {
-        "t": "math",
-        "v": "2 + 5 = 7",
-      },
-      {
-        "t": "text",
-        "v": ". She says that means ",
-      },
-      {
-        "t": "math",
-        "v": "3 + 6 = 7",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Ana says 2 + 7 = 10.",
       },
     ],
   },

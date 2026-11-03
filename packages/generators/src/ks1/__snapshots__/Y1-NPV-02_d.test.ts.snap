@@ -10,7 +10,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-NPV-02.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -92,7 +92,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-NPV-02.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -174,7 +174,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-NPV-02.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -256,7 +256,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-NPV-02.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -327,7 +327,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-NPV-02.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -398,7 +398,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-NPV-02.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -469,7 +469,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-NPV-02.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -507,7 +507,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only if you start from 1.",
+                  "v": "If you keep counting you say every number.",
                 },
               ],
               "id": "RA",
@@ -516,7 +516,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "If you keep counting you say every number.",
+                  "v": "Only if you start from 1.",
                 },
               ],
               "id": "RB",
@@ -537,7 +537,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.SEQUENCE.STEP-ONE",
@@ -593,7 +593,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-NPV-02.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -604,7 +604,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -631,7 +631,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only if you start from 1.",
+                  "v": "False. It goes 10, 20, 40.",
                 },
               ],
               "id": "RA",
@@ -640,7 +640,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "159 is not a multiple of 10: the count goes 150, 160.",
+                  "v": "True. Each step adds 10.",
                 },
               ],
               "id": "RB",
@@ -649,7 +649,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "If you keep counting you say every number.",
+                  "v": "False. It goes 10, 11, 12.",
                 },
               ],
               "id": "RC",
@@ -681,7 +681,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Counting in 10s from 0 says only multiples of 10.",
+            "v": "True. Each step adds 10.",
           },
         ],
       },
@@ -689,23 +689,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "If you count in ",
-      },
-      {
-        "t": "math",
-        "v": "10",
-      },
-      {
-        "t": "text",
-        "v": "s from 0, you will say ",
-      },
-      {
-        "t": "math",
-        "v": "159",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Sam counts in 10s from 0: 10, 20, 30, 40.",
       },
     ],
   },
@@ -717,7 +701,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-NPV-02.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -729,7 +713,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -755,7 +739,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "130 = 13 × 10, so it is in the count.",
+                  "v": "You never say it, because it is not a multiple of 10.",
                 },
               ],
               "id": "RA",
@@ -773,7 +757,7 @@ exports[`Y1-NPV-02.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "You never say it, because it is not a multiple of 10.",
+                  "v": "130 = 13 × 10, so it is in the count.",
                 },
               ],
               "id": "RC",

@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** The tens boundary crossed: counting goes …, t − 1, t, t + 1, … */
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y1-NPV-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.SEQUENCE.DECADE"],
 
@@ -63,29 +64,65 @@ export default defineGenerator<Params>({
         });
       default: {
         const claimed = p.right ? p.t : p.t - 10;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Zak counts on: "${p.t - 2}, ${p.t - 1}, ${claimed}". He says that is right.`,
-          truth: p.right,
-          reasons: p.right
-            ? [
-                {
-                  text: `After ${p.t - 1}, the ones go back to 0 and the tens go up by one: ${p.t}.`,
-                  correct: true,
-                },
-                { text: `After ${p.t - 1} comes ${p.t - 10}.`, code: "NPV.SEQUENCE.DECADE" },
-                { text: "You cannot count on across a ten." },
-              ]
-            : [
-                { text: `After ${p.t - 1} comes ${p.t}, not ${p.t - 10}.`, correct: true },
-                {
-                  text: `${p.t - 10} comes next because the ones go back to 0.`,
-                  code: "NPV.SEQUENCE.DECADE",
-                },
-                { text: "Counting on always lands on a number ending in 9." },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Zak counts on: "${p.t - 2}, ${p.t - 1}, ${claimed}". He says that is right.`,
+              truth: p.right,
+              reasons: p.right
+                ? [
+                    {
+                      text: `After ${p.t - 1}, the ones go back to 0 and the tens go up by one: ${p.t}.`,
+                      correct: true,
+                    },
+                    { text: `After ${p.t - 1} comes ${p.t - 10}.`, code: "NPV.SEQUENCE.DECADE" },
+                    { text: "You cannot count on across a ten." },
+                  ]
+                : [
+                    { text: `After ${p.t - 1} comes ${p.t}, not ${p.t - 10}.`, correct: true },
+                    {
+                      text: `${p.t - 10} comes next because the ones go back to 0.`,
+                      code: "NPV.SEQUENCE.DECADE",
+                    },
+                    { text: "Counting on always lands on a number ending in 9." },
+                  ],
+              solution: [
+                { say: `Counting on in ones: ${p.t - 2}, ${p.t - 1}, ${p.t}, ${p.t + 1}.` },
               ],
-          solution: [{ say: `Counting on in ones: ${p.t - 2}, ${p.t - 1}, ${p.t}, ${p.t + 1}.` }],
-        });
+            }),
+          [
+            {
+              statement: "Sam counts on: 18, 19, 20.",
+              truth: true,
+              right: "True. After 19 comes 20.",
+              wrong: [
+                ["False. After 19 comes 110.", "NPV.SEQUENCE.DECADE"],
+                ["False. After 19 comes 30.", "NPV.SEQUENCE.DECADE"],
+              ],
+            },
+            {
+              statement: "Mia counts on: 37, 38, 39, 30.",
+              truth: false,
+              right: "False. After 39 comes 40.",
+              wrong: [
+                ["True. After 9 comes 0.", "NPV.SEQUENCE.DECADE"],
+                ["True. The tens stay the same."],
+              ],
+            },
+            {
+              claim:
+                "When you count on one from a number that ends in 9, the next number ends in 0.",
+              truth: "always",
+              right: "Always. 9, 10. 19, 20. 49, 50.",
+              wrong: [
+                ["Never. It ends in 10.", "NPV.SEQUENCE.DECADE"],
+                ["Sometimes. Only after 29."],
+              ],
+            },
+          ],
+        );
       }
     }
   },

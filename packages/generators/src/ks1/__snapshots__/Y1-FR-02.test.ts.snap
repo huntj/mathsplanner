@@ -36,7 +36,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -162,7 +162,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -288,7 +288,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -388,7 +388,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -440,7 +440,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -487,7 +487,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -614,7 +614,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -794,7 +794,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -974,7 +974,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1068,39 +1068,13 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "bars": [
-          {
-            "parts": [
-              {
-                "shaded": false,
-                "size": 1,
-              },
-              {
-                "shaded": false,
-                "size": 1,
-              },
-              {
-                "shaded": false,
-                "size": 1,
-              },
-              {
-                "shaded": false,
-                "size": 1,
-              },
-            ],
-          },
-        ],
-        "type": "bar-model",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1111,8 +1085,8 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RA",
+          "correct": "B",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -1138,7 +1112,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. There are 4 parts and they are all the same size.",
+                  "v": "True. 4 is bigger than 2.",
                 },
               ],
               "id": "RA",
@@ -1147,7 +1121,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The parts need to be different sizes.",
+                  "v": "False. A quarter is half of a half, so it is smaller.",
                 },
               ],
               "id": "RB",
@@ -1156,7 +1130,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You need more than 4 parts.",
+                  "v": "True. Quarters are the biggest.",
                 },
               ],
               "id": "RC",
@@ -1165,7 +1139,16 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "FR.NAME.SHADED-UNSHADED",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
@@ -1179,7 +1162,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Quarters are 4 equal parts.",
+            "v": "False. A quarter is half of a half, so it is smaller.",
           },
         ],
       },
@@ -1187,11 +1170,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ava says the bar is split into quarters.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
+        "v": "Ana says a quarter is bigger than a half.",
       },
     ],
   },
@@ -1229,7 +1208,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1241,7 +1220,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -1276,7 +1255,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any bar can be split like that.",
+                  "v": "False. There are 4 parts, but they are not the same size.",
                 },
               ],
               "id": "RB",
@@ -1285,7 +1264,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. There are 4 parts, but they are not the same size.",
+                  "v": "True. Any bar can be split like that.",
                 },
               ],
               "id": "RC",
@@ -1335,39 +1314,13 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "bars": [
-          {
-            "parts": [
-              {
-                "shaded": false,
-                "size": 1,
-              },
-              {
-                "shaded": false,
-                "size": 2,
-              },
-              {
-                "shaded": false,
-                "size": 1,
-              },
-              {
-                "shaded": false,
-                "size": 2,
-              },
-            ],
-          },
-        ],
-        "type": "bar-model",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1379,7 +1332,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -1405,7 +1358,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. There are 4 parts, but they are not the same size.",
+                  "v": "True. Quarters are the biggest.",
                 },
               ],
               "id": "RA",
@@ -1414,7 +1367,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any bar can be split like that.",
+                  "v": "True. 4 is bigger than 2.",
                 },
               ],
               "id": "RB",
@@ -1423,7 +1376,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. There are 4 parts, so they are quarters.",
+                  "v": "False. A quarter is half of a half, so it is smaller.",
                 },
               ],
               "id": "RC",
@@ -1435,10 +1388,10 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "FR.PARTS.UNEQUAL",
+            "code": "FR.NAME.SHADED-UNSHADED",
             "feedback": [],
           },
         ],
@@ -1455,7 +1408,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Quarters are 4 equal parts.",
+            "v": "False. A quarter is half of a half, so it is smaller.",
           },
         ],
       },
@@ -1463,11 +1416,7 @@ exports[`Y1-FR-02 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ava says the bar is split into quarters.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
+        "v": "Ana says a quarter is bigger than a half.",
       },
     ],
   },
