@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** w1 workers take d1 days; w2 workers take d2 days; w1 × d1 = w2 × d2. */
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y9-RAT-01",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.INVERSE.AS-DIRECT"],
 
@@ -81,38 +82,79 @@ export default defineGenerator<Params>({
         const less = Math.min(p.w1, p.w2);
         const days = p.total / less;
         const shown = p.claimTrue ? p.total / more : (days * more) / less;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `${less} builders take ${days} days to build a wall. Lou says ${more} builders would take ${Number(shown.toFixed(2))} days.`,
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
-                {
-                  text: `True. More builders take less time: ${less} × ${days} = ${p.total} worker-days, and ${p.total} ÷ ${more} = ${p.total / more}.`,
-                  correct: true,
-                },
-                { text: "False. More builders means more days.", code: "RAT.INVERSE.AS-DIRECT" },
-                { text: "False. The number of builders does not change the time." },
-              ]
-            : [
-                {
-                  text: `False. More builders take less time: ${p.total} worker-days ÷ ${more} = ${p.total / more} days.`,
-                  correct: true,
-                },
-                {
-                  text: `True. There are ${more / less === Math.round(more / less) ? `${more / less} times` : "more"} builders, so it takes more days.`,
-                  code: "RAT.INVERSE.AS-DIRECT",
-                },
-                { text: "True. Bigger jobs always take longer." },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `${less} builders take ${days} days to build a wall. Lou says ${more} builders would take ${Number(shown.toFixed(2))} days.`,
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    {
+                      text: `True. More builders take less time: ${less} × ${days} = ${p.total} worker-days, and ${p.total} ÷ ${more} = ${p.total / more}.`,
+                      correct: true,
+                    },
+                    {
+                      text: "False. More builders means more days.",
+                      code: "RAT.INVERSE.AS-DIRECT",
+                    },
+                    { text: "False. The number of builders does not change the time." },
+                  ]
+                : [
+                    {
+                      text: `False. More builders take less time: ${p.total} worker-days ÷ ${more} = ${p.total / more} days.`,
+                      correct: true,
+                    },
+                    {
+                      text: `True. There are ${more / less === Math.round(more / less) ? `${more / less} times` : "more"} builders, so it takes more days.`,
+                      code: "RAT.INVERSE.AS-DIRECT",
+                    },
+                    { text: "True. Bigger jobs always take longer." },
+                  ],
+              solution: [{ say: `${less} × ${days} = ${p.total} worker-days.` }],
+            }),
+          [
+            {
+              statement:
+                "A journey takes 4 hours at 60 km/h. Kai says it takes 2 hours at 120 km/h.",
+              truth: true,
+              right:
+                "True. Doubling the speed halves the time: the distance, 240 km, stays the same.",
+              wrong: [
+                [
+                  "False. It takes 8 hours; double the speed, double the time.",
+                  "RAT.INVERSE.AS-DIRECT",
+                ],
+                ["False. It takes 3 hours."],
               ],
-          solution: [{ say: `${less} × ${days} = ${p.total} worker-days.` }],
-        });
+            },
+            {
+              statement: "6 taps fill a tank in 10 minutes. Mia says 3 taps fill it in 5 minutes.",
+              truth: false,
+              right: "False. Half as many taps take twice as long: 20 minutes.",
+              wrong: [
+                ["True. Half the taps, half the time.", "RAT.INVERSE.AS-DIRECT"],
+                ["True. 10 − 3 − 2 = 5."],
+              ],
+            },
+            {
+              claim: "If y is inversely proportional to x, then when x doubles, y halves.",
+              truth: "always",
+              right: "Always. xy stays the same, so doubling x must halve y.",
+              wrong: [
+                ["Never. y doubles too.", "RAT.INVERSE.AS-DIRECT"],
+                ["Sometimes. Only when x is small."],
+              ],
+            },
+          ],
+        );
       }
     }
   },
 
   verify(p, question) {
-    if (question.archetype === "true-or-false-why") return true;
+    if (question.key.depth === 4) return true;
     return numberAnswer(question) * p.w2 === p.total;
   },
 });

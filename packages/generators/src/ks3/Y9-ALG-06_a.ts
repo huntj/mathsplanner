@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y9-ALG-06.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SIMULTANEOUS.SIGN", "ALG.SIMULTANEOUS.PAIR"],
 
@@ -81,26 +82,63 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "To eliminate y from ",
-            A.math(`3x + ${p.b1}y = ${3 * p.adult + p.b1 * p.child}`),
-            " and ",
-            A.math(`x - ${p.b1}y = ${p.adult - p.b1 * p.child}`),
-            ", Mo says you should subtract the equations.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "To eliminate y from ",
+                A.math(`3x + ${p.b1}y = ${3 * p.adult + p.b1 * p.child}`),
+                " and ",
+                A.math(`x - ${p.b1}y = ${p.adult - p.b1 * p.child}`),
+                ", Mo says you should subtract the equations.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The y terms are +${p.b1}y and −${p.b1}y, so adding them cancels y.`,
+                  correct: true,
+                },
+                { text: "True. You always subtract to eliminate.", code: "ALG.SIMULTANEOUS.SIGN" },
+                { text: "True. The y numbers are the same.", code: "ALG.SIMULTANEOUS.SIGN" },
+              ],
+              solution: [{ say: "Same signs: subtract. Different signs: add." }],
+            }),
+          [
             {
-              text: `False. The y terms are +${p.b1}y and −${p.b1}y, so adding them cancels y.`,
-              correct: true,
+              statement:
+                "To solve $2x + y = 10$ and $x + y = 7$, Ava subtracts the equations to get x = 3.",
+              truth: true,
+              right:
+                "True. The y terms are the same, so subtracting removes them: x = 3, then y = 4.",
+              wrong: [
+                ["False. Add them to get rid of y.", "ALG.SIMULTANEOUS.SIGN"],
+                ["False. You cannot subtract equations."],
+              ],
             },
-            { text: "True. You always subtract to eliminate.", code: "ALG.SIMULTANEOUS.SIGN" },
-            { text: "True. The y numbers are the same.", code: "ALG.SIMULTANEOUS.SIGN" },
+            {
+              statement:
+                "Gil solves a pair of simultaneous equations and gets x = 2, y = 5. He checks in only one equation and says he must be right.",
+              truth: false,
+              right: "False. The pair must fit both equations. Check both.",
+              wrong: [
+                ["True. One equation is enough to check.", "ALG.SIMULTANEOUS.PAIR"],
+                ["True. The other equation was used to find them."],
+              ],
+            },
+            {
+              claim:
+                "When the y terms have opposite signs and the same size, adding the equations eliminates y.",
+              truth: "always",
+              right: "Always. +ky and −ky add up to 0.",
+              wrong: [
+                ["Never. Subtract to eliminate.", "ALG.SIMULTANEOUS.SIGN"],
+                ["Sometimes. Only if the x terms match too."],
+              ],
+            },
           ],
-          solution: [{ say: "Same signs: subtract. Different signs: add." }],
-        });
+        );
     }
   },
 

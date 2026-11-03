@@ -9,6 +9,7 @@ import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mat
 import { linear, signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { coord } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   x1: number;
@@ -21,7 +22,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y9-ALG-04.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.GRADIENT.RUN-RISE", "ALG.LINE.M-C"],
 
@@ -93,20 +94,54 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["A straight line that goes down from left to right has a negative gradient."],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["A straight line that goes down from left to right has a negative gradient."],
+              truth: "always",
+              reasons: [
+                {
+                  text: "Always. As x increases, y decreases, so the rise is negative for a positive run.",
+                  correct: true,
+                },
+                { text: "Never. Gradients are always positive.", code: "ALG.GRADIENT.RUN-RISE" },
+                {
+                  text: "Sometimes. It depends where it crosses the y-axis.",
+                  code: "ALG.LINE.M-C",
+                },
+              ],
+              solution: [{ say: "Up to the right: positive. Down to the right: negative." }],
+            }),
+          [
             {
-              text: "Always. As x increases, y decreases, so the rise is negative for a positive run.",
-              correct: true,
+              statement: "A line passes through (1, 3) and (3, 7). Sam says its gradient is 2.",
+              truth: true,
+              right: "True. Gradient = change in y ÷ change in x = (7 − 3) ÷ (3 − 1) = 4 ÷ 2 = 2.",
+              wrong: [
+                ["False. It is 2 ÷ 4 = 0.5.", "ALG.GRADIENT.RUN-RISE"],
+                ["False. It is 7 − 3 = 4."],
+              ],
             },
-            { text: "Never. Gradients are always positive.", code: "ALG.GRADIENT.RUN-RISE" },
-            { text: "Sometimes. It depends where it crosses the y-axis.", code: "ALG.LINE.M-C" },
+            {
+              statement: "A line passes through (0, 1) and (4, 3). Jo says its gradient is 2.",
+              truth: false,
+              right:
+                "False. Gradient = (3 − 1) ÷ (4 − 0) = 2 ÷ 4 = 0.5. It is change in y over change in x.",
+              wrong: [["True. 4 ÷ 2 = 2.", "ALG.GRADIENT.RUN-RISE"], ["True. The line goes up 2."]],
+            },
+            {
+              claim: "A horizontal line has a gradient of 0.",
+              truth: "always",
+              right: "Always. y does not change as x changes, so the change in y is 0.",
+              wrong: [
+                ["Never. Its gradient is 1, as it is a straight line.", "ALG.LINE.M-C"],
+                ["Sometimes. Only on the x-axis."],
+              ],
+            },
           ],
-          solution: [{ say: "Up to the right: positive. Down to the right: negative." }],
-        });
+        );
     }
   },
 

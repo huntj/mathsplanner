@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { exactAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   p: number;
@@ -22,7 +23,7 @@ const term = (c: number, a: number, b: number) =>
 
 export default defineGenerator<Params>({
   id: "Y9-ALG-02.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.INDICES.MULTIPLY", "NPV.INDEX.ZERO"],
 
@@ -89,20 +90,53 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [A.math("a^0 = 0"), " for any non-zero number a."],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [A.math("a^0 = 0"), " for any non-zero number a."],
+              truth: "never",
+              reasons: [
+                {
+                  text: `Never. a^0 = 1, because a^${p.m} ÷ a^${p.m} = a^0, and anything divided by itself is 1.`,
+                  correct: true,
+                },
+                { text: "Always. A power of 0 leaves nothing.", code: "NPV.INDEX.ZERO" },
+                { text: "Sometimes. Only when a is small.", code: "NPV.INDEX.ZERO" },
+              ],
+              solution: [{ say: "Any non-zero number to the power 0 is 1." }],
+            }),
+          [
             {
-              text: `Never. a^0 = 1, because a^${p.m} ÷ a^${p.m} = a^0, and anything divided by itself is 1.`,
-              correct: true,
+              statement: "Dev says $\\frac{x^5 \\times x^3}{x^2} = x^6$.",
+              truth: true,
+              right: "True. x⁵ × x³ = x⁸, and x⁸ ÷ x² = x⁶.",
+              wrong: [
+                ["False. It is x^7.5, as 15 ÷ 2 = 7.5.", "ALG.INDICES.MULTIPLY"],
+                ["False. It is x¹⁰."],
+              ],
             },
-            { text: "Always. A power of 0 leaves nothing.", code: "NPV.INDEX.ZERO" },
-            { text: "Sometimes. Only when a is small.", code: "NPV.INDEX.ZERO" },
+            {
+              statement: "Pam says $3x^2 \\times 4x^3 = 7x^5$.",
+              truth: false,
+              right: "False. Multiply the numbers and add the indices: 12x⁵.",
+              wrong: [
+                ["True. Add the numbers and add the indices."],
+                ["True. 3 + 4 = 7 and 2 + 3 = 5.", "ALG.INDICES.MULTIPLY"],
+              ],
+            },
+            {
+              claim: "$\\frac{a^n}{a^n} = 1$ for any non-zero a.",
+              truth: "always",
+              right: "Always. Anything non-zero divided by itself is 1, which is also a⁰.",
+              wrong: [
+                ["Never. It is 0, as n − n = 0.", "NPV.INDEX.ZERO"],
+                ["Sometimes. Only when n is 1."],
+              ],
+            },
           ],
-          solution: [{ say: "Any non-zero number to the power 0 is 1." }],
-        });
+        );
     }
   },
 

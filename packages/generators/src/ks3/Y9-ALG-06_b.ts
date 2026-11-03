@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   k: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y9-ALG-06.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.EXPAND.FIRST-ONLY", "ALG.SIMULTANEOUS.PAIR"],
 
@@ -88,22 +89,57 @@ export default defineGenerator<Params>({
           solution: [{ say: `x = ${p.x}, so y = ${p.x} + ${p.k} = ${y}.` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Ivy finds x = ${p.x} and says she has finished solving the simultaneous equations.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Ivy finds x = ${p.x} and says she has finished solving the simultaneous equations.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The solution is a pair of values: she also needs y = ${y}. Checking both in the second equation confirms them.`,
+                  correct: true,
+                },
+                { text: "True. One value is enough.", code: "ALG.SIMULTANEOUS.PAIR" },
+                { text: "True. y is always equal to x.", code: "ALG.SIMULTANEOUS.PAIR" },
+              ],
+              solution: [{ say: "Give x and y, then check in both equations." }],
+            }),
+          [
             {
-              text: `False. The solution is a pair of values: she also needs y = ${y}. Checking both in the second equation confirms them.`,
-              correct: true,
+              statement:
+                "Using $y = 2x$ in $x + y = 9$, Jay writes $x + 2x = 9$, so x = 3 and y = 6.",
+              truth: true,
+              right: "True. 3x = 9 gives x = 3, and y = 2 × 3 = 6. Check: 3 + 6 = 9.",
+              wrong: [
+                ["False. It gives x = 4.5.", "ALG.SIMULTANEOUS.PAIR"],
+                ["False. You must eliminate, not substitute."],
+              ],
             },
-            { text: "True. One value is enough.", code: "ALG.SIMULTANEOUS.PAIR" },
-            { text: "True. y is always equal to x.", code: "ALG.SIMULTANEOUS.PAIR" },
+            {
+              statement: "Using $y = x + 1$ in $3x + 2y = 12$, Sol writes $3x + 2x + 1 = 12$.",
+              truth: false,
+              right: "False. 2y = 2(x + 1) = 2x + 2, so it is 3x + 2x + 2 = 12.",
+              wrong: [
+                ["True. Swap y for x + 1.", "ALG.EXPAND.FIRST-ONLY"],
+                ["True. The 2 only goes with the x."],
+              ],
+            },
+            {
+              claim: "Substitution gives the same solution as elimination.",
+              truth: "always",
+              right:
+                "Always. Both are ways of finding the one pair of values that fits both equations.",
+              wrong: [
+                ["Sometimes. They can give different answers.", "ALG.SIMULTANEOUS.PAIR"],
+                ["Never. Substitution only finds x."],
+              ],
+            },
           ],
-          solution: [{ say: "Give x and y, then check in both equations." }],
-        });
+        );
     }
   },
 

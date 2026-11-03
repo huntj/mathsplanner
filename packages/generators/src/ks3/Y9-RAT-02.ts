@@ -9,6 +9,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Scale factor k = kn / 2 (so halves are allowed). */
@@ -21,7 +22,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y9-RAT-02",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.ADDITIVE", "RAT.SCALE.AREA-LINEAR"],
 
@@ -74,47 +75,78 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return p.claim === 0
-          ? A.trueOrFalseWhy({
-              rng,
-              statement: "Doubling every length of a cube doubles its volume.",
-              truth: false,
-              reasons: [
-                {
-                  text: "False. The length, width and height are all doubled, so the volume is multiplied by 2 × 2 × 2 = 8.",
-                  correct: true,
-                },
-                {
-                  text: "True. Lengths and volumes grow by the same scale factor.",
-                  code: "RAT.SCALE.AREA-LINEAR",
-                },
-                { text: "True. Doubling anything doubles it." },
-              ],
-              solution: [{ say: "Volume scale factor = 2³ = 8." }],
-            })
-          : A.trueOrFalseWhy({
-              rng,
-              statement: `A photo is enlarged by scale factor ${k}. Rob says it needs ${k * k} times as much ink.`,
+        return orClaims(
+          rng,
+          () =>
+            p.claim === 0
+              ? A.trueOrFalseWhy({
+                  rng,
+                  statement: "Doubling every length of a cube doubles its volume.",
+                  truth: false,
+                  reasons: [
+                    {
+                      text: "False. The length, width and height are all doubled, so the volume is multiplied by 2 × 2 × 2 = 8.",
+                      correct: true,
+                    },
+                    {
+                      text: "True. Lengths and volumes grow by the same scale factor.",
+                      code: "RAT.SCALE.AREA-LINEAR",
+                    },
+                    { text: "True. Doubling anything doubles it." },
+                  ],
+                  solution: [{ say: "Volume scale factor = 2³ = 8." }],
+                })
+              : A.trueOrFalseWhy({
+                  rng,
+                  statement: `A photo is enlarged by scale factor ${k}. Rob says it needs ${k * k} times as much ink.`,
+                  truth: true,
+                  reasons: [
+                    {
+                      text: `True. The ink covers the area, and the area scale factor is ${k}² = ${k * k}.`,
+                      correct: true,
+                    },
+                    {
+                      text: `False. It needs ${k} times as much, the same as the lengths.`,
+                      code: "RAT.SCALE.AREA-LINEAR",
+                    },
+                    { text: "False. The ink needed stays the same." },
+                  ],
+                  solution: [{ say: `Area scale factor = ${k}² = ${k * k}.` }],
+                }),
+          [
+            {
+              statement:
+                "Two similar triangles have corresponding sides 4 cm and 6 cm. Jo says the scale factor is 1.5.",
               truth: true,
-              reasons: [
-                {
-                  text: `True. The ink covers the area, and the area scale factor is ${k}² = ${k * k}.`,
-                  correct: true,
-                },
-                {
-                  text: `False. It needs ${k} times as much, the same as the lengths.`,
-                  code: "RAT.SCALE.AREA-LINEAR",
-                },
-                { text: "False. The ink needed stays the same." },
+              right: "True. 6 ÷ 4 = 1.5.",
+              wrong: [["False. It is 2, as 6 − 4 = 2.", "RAT.ADDITIVE"], ["False. It is 0.5."]],
+            },
+            {
+              claim: "Similar shapes have equal corresponding angles.",
+              truth: "always",
+              right: "Always. Enlarging a shape changes its lengths but not its angles.",
+              wrong: [
+                ["Sometimes. Only when the scale factor is 1."],
+                ["Never. Bigger shapes have bigger angles.", "RAT.SCALE.AREA-LINEAR"],
               ],
-              solution: [{ say: `Area scale factor = ${k}² = ${k * k}.` }],
-            });
+            },
+            {
+              claim: "Two rectangles are similar.",
+              truth: "sometimes",
+              right: "Sometimes. Only when the length divided by the width is the same for both.",
+              wrong: [
+                ["Always. All rectangles have right angles.", "RAT.ADDITIVE"],
+                ["Never. Rectangles are never similar."],
+              ],
+            },
+          ],
+        );
     }
   },
 
   verify(p, question) {
     const k = p.kn / 2;
-    if (question.archetype === "true-or-false-why") return true;
+    if (question.key.depth === 4) return true;
     return question.key.depth === 1
       ? numberAnswer(question) === p.b * k
       : numberAnswer(question) === p.area * k * k;

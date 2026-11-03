@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { exactAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -21,7 +22,7 @@ const r = (v: number) => Number(v.toFixed(6));
 
 export default defineGenerator<Params>({
   id: "Y9-NPV-01.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.STANDARD-FORM.COMPARE-FIRST", "NPV.STANDARD-FORM.INDEX-LAWS"],
 
@@ -95,23 +96,64 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [A.math("(a \\times 10^n) + (b \\times 10^n) = (a + b) \\times 10^n")],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [A.math("(a \\times 10^n) + (b \\times 10^n) = (a + b) \\times 10^n")],
+              truth: "always",
+              reasons: [
+                {
+                  text: `Always, by collecting like terms: ${p.a} lots of 10^${p.p} plus ${p.b} lots is ${p.a + p.b} lots. The answer may need adjusting to be in standard form.`,
+                  correct: true,
+                },
+                {
+                  text: "Never. You must add the powers too.",
+                  code: "NPV.STANDARD-FORM.INDEX-LAWS",
+                },
+                {
+                  text: "Sometimes. Only when a + b is less than 10.",
+                  code: "NPV.STANDARD-FORM.COMPARE-FIRST",
+                },
+              ],
+              solution: [{ say: "Add the numbers when the powers match." }],
+            }),
+          [
             {
-              text: `Always, by collecting like terms: ${p.a} lots of 10^${p.p} plus ${p.b} lots is ${p.a + p.b} lots. The answer may need adjusting to be in standard form.`,
-              correct: true,
+              statement: "Leo says $(3 \\times 10^{4}) + (2 \\times 10^{3}) = 5 \\times 10^{7}$.",
+              truth: false,
+              right: "False. Write both as ordinary numbers: 30 000 + 2000 = 32 000 = 3.2 × 10⁴.",
+              wrong: [
+                ["True. Add the numbers and add the powers.", "NPV.STANDARD-FORM.INDEX-LAWS"],
+                ["True. 3 + 2 = 5 and the powers make 10⁷."],
+              ],
             },
-            { text: "Never. You must add the powers too.", code: "NPV.STANDARD-FORM.INDEX-LAWS" },
             {
-              text: "Sometimes. Only when a + b is less than 10.",
-              code: "NPV.STANDARD-FORM.COMPARE-FIRST",
+              statement: "Ana says $(6 \\times 10^{5}) - (2 \\times 10^{5}) = 4 \\times 10^{5}$.",
+              truth: true,
+              right: "True. The powers are the same, so 600 000 − 200 000 = 400 000.",
+              wrong: [
+                ["False. Subtract the powers too: 4 × 10⁰.", "NPV.STANDARD-FORM.INDEX-LAWS"],
+                ["False. You cannot subtract numbers in standard form."],
+              ],
+            },
+            {
+              claim:
+                "Adding two numbers in standard form gives an answer already in standard form.",
+              truth: "sometimes",
+              right:
+                "Sometimes. 2 × 10³ + 3 × 10³ = 5 × 10³ is, but 6 × 10³ + 7 × 10³ = 13 × 10³ must become 1.3 × 10⁴.",
+              wrong: [
+                [
+                  "Always. Standard form in gives standard form out.",
+                  "NPV.STANDARD-FORM.COMPARE-FIRST",
+                ],
+                ["Never. You always have to change it afterwards."],
+              ],
             },
           ],
-          solution: [{ say: "Add the numbers when the powers match." }],
-        });
+        );
     }
   },
 

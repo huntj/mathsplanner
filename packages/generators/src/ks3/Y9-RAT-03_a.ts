@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   principal: number;
@@ -19,7 +20,7 @@ const r2 = (v: number) => Math.round(v * 100) / 100;
 
 export default defineGenerator<Params>({
   id: "Y9-RAT-03.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.COMPOUND.SIMPLE"],
 
@@ -80,22 +81,59 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            "Over two or more years, compound interest earns more than simple interest at the same rate.",
-          ],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "Over two or more years, compound interest earns more than simple interest at the same rate.",
+              ],
+              truth: "always",
+              reasons: [
+                {
+                  text: "Always (for a positive rate). From the second year, compound interest is also paid on the earlier interest.",
+                  correct: true,
+                },
+                { text: "Never. They are the same thing.", code: "RAT.COMPOUND.SIMPLE" },
+                { text: "Sometimes. Only for large amounts.", code: "RAT.COMPOUND.SIMPLE" },
+              ],
+              solution: [{ say: "In year 1 they are equal; after that compound pulls ahead." }],
+            }),
+          [
             {
-              text: "Always (for a positive rate). From the second year, compound interest is also paid on the earlier interest.",
-              correct: true,
+              statement:
+                "£1000 is invested at 10% compound interest per year. Ann says it is worth £1210 after 2 years.",
+              truth: true,
+              right: "True. 1000 × 1.1 = 1100, then 1100 × 1.1 = 1210.",
+              wrong: [
+                ["False. It is £1200: £100 each year.", "RAT.COMPOUND.SIMPLE"],
+                ["False. It is £1020."],
+              ],
             },
-            { text: "Never. They are the same thing.", code: "RAT.COMPOUND.SIMPLE" },
-            { text: "Sometimes. Only for large amounts.", code: "RAT.COMPOUND.SIMPLE" },
+            {
+              statement:
+                "£500 is invested at 4% compound interest per year. Ray works out the value after 3 years as $500 \\times 1.12$.",
+              truth: false,
+              right:
+                "False. It is 500 × 1.04³, because the 4% is added on to the new amount each year.",
+              wrong: [
+                ["True. 3 × 4% = 12%.", "RAT.COMPOUND.SIMPLE"],
+                ["True. Compound and simple interest are the same over 3 years."],
+              ],
+            },
+            {
+              claim: "With compound interest, the interest earned each year is the same.",
+              truth: "never",
+              right:
+                "Never, for a positive rate. Each year's interest is on a bigger amount, so it grows.",
+              wrong: [
+                ["Always. The rate stays the same.", "RAT.COMPOUND.SIMPLE"],
+                ["Sometimes. Only in the first two years."],
+              ],
+            },
           ],
-          solution: [{ say: "In year 1 they are equal; after that compound pulls ahead." }],
-        });
+        );
     }
   },
 

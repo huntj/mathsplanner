@@ -1,7 +1,7 @@
 # Proposal: Learn Maths, a Duolingo-style practice app for pupils
 
 Status: **agreed on 29 October 2026.** Steps 1 to 6 are built: the course data with Year 7 as
-the pilot section and Year 8 after it (`data/course.txt`, `pnpm data:course`), the shared answer widgets
+the pilot section and Years 8 and 9 after it (`data/course.txt`, `pnpm data:course`), the shared answer widgets
 (`@mathsplanner/ui`), and the app with its path, progress, first visit, lessons, practice and
 rewards (`apps/learn`, `pnpm learn`); steps 7 to 10 are to do.
 
@@ -143,6 +143,22 @@ expressions; and probability, which has one Year 8 skill, joins the data unit:
 
 Each new section also needs its reasoning questions varied (see `variety.test.ts`): Year 8's
 generators gained three claims each, with different right answers, at depth 4.
+
+**Year 9** has 9 units. Similar shapes come before Pythagoras and trigonometry, which the
+statement data says need them, and small topics are merged (indices with standard form, inverse
+proportion with compound change, inequalities with simultaneous equations):
+
+| #   | Unit                                    | Skills |
+| --- | --------------------------------------- | -----: |
+| 1   | Standard form and indices               |      5 |
+| 2   | Shapes, similarity and enlargement      |      5 |
+| 3   | Factorising and proof                   |      3 |
+| 4   | Straight-line graphs                    |      5 |
+| 5   | Pythagoras and trigonometry             |      3 |
+| 6   | Simultaneous equations and inequalities |      3 |
+| 7   | Compound change and inverse proportion  |      3 |
+| 8   | Graphs and sequences                    |      4 |
+| 9   | Probability                             |      4 |
 
 **Skill levels.** Each skill climbs through up to five levels, using only the depths its
 generator supports, so the levels come from the generators when the app runs rather than from

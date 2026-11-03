@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { cuboid } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const TRIPLES: [number, number, number][] = [
   [3, 4, 5],
@@ -26,7 +27,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y9-GEO-02.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.SURFACE.MISSING-FACES", "MEA.SURFACE.VOLUME", "RAT.SCALE.AREA-LINEAR"],
 
@@ -103,20 +104,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["Doubling every length of a prism doubles its surface area."],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["Doubling every length of a prism doubles its surface area."],
+              truth: "never",
+              reasons: [
+                {
+                  text: "Never. Each face's area is multiplied by 2 × 2 = 4, so the surface area is multiplied by 4.",
+                  correct: true,
+                },
+                {
+                  text: "Always. Double the size, double the area.",
+                  code: "RAT.SCALE.AREA-LINEAR",
+                },
+                { text: "Sometimes. Only for cubes.", code: "RAT.SCALE.AREA-LINEAR" },
+              ],
+              solution: [{ say: "Lengths ×2, areas ×4, volumes ×8." }],
+            }),
+          [
             {
-              text: "Never. Each face's area is multiplied by 2 × 2 = 4, so the surface area is multiplied by 4.",
-              correct: true,
+              statement: "A cuboid is 2 cm by 3 cm by 4 cm. Gil says its surface area is 52 cm².",
+              truth: true,
+              right: "True. 2(2 × 3 + 2 × 4 + 3 × 4) = 2(6 + 8 + 12) = 52 cm².",
+              wrong: [
+                ["False. It is 24 cm³, its volume.", "MEA.SURFACE.VOLUME"],
+                ["False. It is 26 cm², adding three faces.", "MEA.SURFACE.MISSING-FACES"],
+              ],
             },
-            { text: "Always. Double the size, double the area.", code: "RAT.SCALE.AREA-LINEAR" },
-            { text: "Sometimes. Only for cubes.", code: "RAT.SCALE.AREA-LINEAR" },
+            {
+              statement:
+                "Zak finds the surface area of a triangular prism by adding the areas of its three rectangles.",
+              truth: false,
+              right:
+                "False. A triangular prism has five faces: three rectangles and two triangles.",
+              wrong: [
+                [
+                  "True. The triangles are the ends, which do not count.",
+                  "MEA.SURFACE.MISSING-FACES",
+                ],
+                ["True. Surface area is length × width × height.", "MEA.SURFACE.VOLUME"],
+              ],
+            },
+            {
+              claim: "Two prisms with the same volume have the same surface area.",
+              truth: "sometimes",
+              right:
+                "Sometimes. A 1 × 1 × 8 cuboid and a 2 × 2 × 2 cube both hold 8 cm³, with surface areas 34 cm² and 24 cm².",
+              wrong: [
+                ["Always. Volume decides surface area.", "MEA.SURFACE.VOLUME"],
+                ["Never. They cannot have the same volume."],
+              ],
+            },
           ],
-          solution: [{ say: "Lengths ×2, areas ×4, volumes ×8." }],
-        });
+        );
     }
   },
 

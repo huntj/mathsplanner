@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { exactAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   m: number;
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y9-ALG-02.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.INDICES.MULTIPLY"],
 
@@ -67,23 +68,57 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [A.math("2^3 \\times 3^2 = 6^5")],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [A.math("2^3 \\times 3^2 = 6^5")],
+              truth: "never",
+              reasons: [
+                {
+                  text: "Never. The index laws only work for the same base. 2³ × 3² = 8 × 9 = 72, but 6⁵ = 7776.",
+                  correct: true,
+                },
+                {
+                  text: "Always. Multiply the bases and add the powers.",
+                  code: "ALG.INDICES.MULTIPLY",
+                },
+                { text: "Sometimes. It works for small numbers.", code: "ALG.INDICES.MULTIPLY" },
+              ],
+              solution: [{ say: "aᵐ × aⁿ = aᵐ⁺ⁿ needs the same base a." }],
+            }),
+          [
             {
-              text: "Never. The index laws only work for the same base. 2³ × 3² = 8 × 9 = 72, but 6⁵ = 7776.",
-              correct: true,
+              statement: "Ola says $x^3 \\times x^4 = x^7$.",
+              truth: true,
+              right: "True. Multiplying powers of the same base adds the indices: 3 + 4 = 7.",
+              wrong: [
+                ["False. It is x¹², multiplying the indices.", "ALG.INDICES.MULTIPLY"],
+                ["False. It is 2x⁷."],
+              ],
             },
             {
-              text: "Always. Multiply the bases and add the powers.",
-              code: "ALG.INDICES.MULTIPLY",
+              statement: "Ben says $y^{10} \\div y^{2} = y^{5}$.",
+              truth: false,
+              right: "False. Dividing subtracts the indices: y¹⁰ ÷ y² = y⁸.",
+              wrong: [
+                ["True. Divide the indices: 10 ÷ 2 = 5.", "ALG.INDICES.MULTIPLY"],
+                ["True. Half of y¹⁰ is y⁵."],
+              ],
             },
-            { text: "Sometimes. It works for small numbers.", code: "ALG.INDICES.MULTIPLY" },
+            {
+              claim: "$a^m \\times a^n$ is bigger than $a^m$.",
+              truth: "sometimes",
+              right:
+                "Sometimes. It is when a is bigger than 1 and n is positive, but not when a = 1 or a is a fraction.",
+              wrong: [
+                ["Always. Multiplying makes things bigger."],
+                ["Never. The indices add, so it gets smaller.", "ALG.INDICES.MULTIPLY"],
+              ],
+            },
           ],
-          solution: [{ say: "aᵐ × aⁿ = aᵐ⁺ⁿ needs the same base a." }],
-        });
+        );
     }
   },
 
