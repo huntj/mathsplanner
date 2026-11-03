@@ -183,3 +183,12 @@ export const ClockIcon = ({ size }: { size?: number }) => (
     <path d="M12 9v4l2.5 2.5M10 2h4" />
   </Icon>
 );
+
+/** A mortarboard, for teacher mode. */
+export const TeacherIcon = ({ size }: { size?: number }) => (
+  <Icon {...(size ? { size } : {})}>
+    <path d="M2 9l10-5 10 5-10 5z" />
+    <path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" />
+    <path d="M22 9v6" />
+  </Icon>
+);

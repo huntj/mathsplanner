@@ -132,6 +132,8 @@ export interface PathUnit {
 export interface PathExtras {
   dueOf?: (skill: string) => boolean;
   reviewed?: (id: string) => boolean;
+  /** Teacher mode: nothing is locked, so every skill and review can be opened. */
+  open?: boolean;
 }
 
 /** A finished skill's state: legendary at the top, mastered from its mastery level, else done. */
@@ -149,7 +151,7 @@ export function buildPath(
   section: CourseSection,
   levelOf: (skill: string) => number,
   infoOf: (skill: string) => SkillLevels,
-  { dueOf = () => false, reviewed = () => false }: PathExtras = {},
+  { dueOf = () => false, reviewed = () => false, open = false }: PathExtras = {},
 ): PathUnit[] {
   let current = false;
   return section.units.map((unit, i) => {
@@ -161,11 +163,11 @@ export function buildPath(
       else if (!current) {
         state = "current";
         current = true;
-      } else state = level > 0 ? "started" : "locked";
+      } else state = level > 0 || open ? "started" : "locked";
       return { skill, level, info, state, due: level >= info.pathLevels && dueOf(skill) };
     });
     const finished = nodes.every((n) => n.level >= n.info.pathLevels);
-    const review = !finished ? "locked" : reviewed(unit.id) ? "done" : "open";
+    const review = reviewed(unit.id) ? "done" : finished || open ? "open" : "locked";
     return { unit, number: i + 1, nodes, review };
   });
 }

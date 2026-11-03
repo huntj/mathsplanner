@@ -48,6 +48,8 @@ export interface LessonPlan {
   /** For a skill lesson: the skill and the level being worked on, counting from 1. */
   skill?: string;
   level?: number;
+  /** Set when a teacher picked the level, rather than it being the skill's next one. */
+  picked?: true;
   /** For a unit or year review: what it records as done, as in Progress.reviews. */
   reviewId?: string;
   items: LessonItem[];

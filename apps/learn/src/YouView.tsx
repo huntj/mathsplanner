@@ -1,9 +1,9 @@
 // The pupil's page: their progress at a glance, then their preferences, the example progress and a
 // way to start again.
-import type { CourseSection } from "@mathsplanner/core";
+import type { CourseSection, Stage } from "@mathsplanner/core";
 import { useState } from "react";
 import { BadgeMark } from "./BadgeMark.tsx";
-import { yearsReady } from "./course.ts";
+import { sectionFor, YEARS, yearsReady } from "./course.ts";
 import { Dot } from "./Dot.tsx";
 import { FEEDBACK_URL } from "./feedback.ts";
 import { BADGES, FREEZE_EVERY } from "./rewards.ts";
@@ -171,6 +171,25 @@ export function YouView({
           </div>
         </fieldset>
 
+        <div className="pref-group">
+          <label htmlFor="year-select" className="pref-label">
+            Year
+          </label>
+          <select
+            id="year-select"
+            className="select"
+            value={settings.stage ?? section.stage}
+            onChange={(e) => onSettings({ stage: e.target.value as Stage })}
+          >
+            {YEARS.filter((y) => sectionFor(y.stage)).map((y) => (
+              <option key={y.stage} value={y.stage}>
+                {y.name}
+              </option>
+            ))}
+          </select>
+          <span className="muted small">Your progress in every year is kept when you switch.</span>
+        </div>
+
         <fieldset className="pref-group">
           <legend>Colours</legend>
           <div className="segmented three">
@@ -202,6 +221,13 @@ export function YouView({
           detail="Start each lesson with three hearts and earn double XP if you keep one."
           checked={settings.challenge}
           onChange={(challenge) => onSettings({ challenge })}
+        />
+        <Switch
+          id="teacher"
+          label="Teacher mode"
+          detail="Opens every skill, unit review and year review, and lets you try any level of a skill. For teachers looking through the course."
+          checked={settings.teacher}
+          onChange={(teacher) => onSettings({ teacher })}
         />
       </section>
 

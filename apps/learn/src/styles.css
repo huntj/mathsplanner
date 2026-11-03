@@ -345,6 +345,13 @@ body::before {
   cursor: pointer;
 }
 
+.top-left {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
 .top-stats {
   display: flex;
   gap: 0.9rem;
@@ -801,6 +808,37 @@ body::before {
 .level-text {
   display: grid;
   min-width: 0;
+  flex: 1;
+}
+
+.level-try {
+  flex: none;
+  align-self: center;
+}
+
+/* Teacher mode: a note on each skill's sheet and a chip beside the year. */
+.teacher-note,
+.teacher-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: color-mix(in srgb, var(--biro) 12%, var(--surface));
+  color: var(--ink);
+}
+
+.teacher-note {
+  padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+}
+
+.teacher-chip {
+  border: 2px solid color-mix(in srgb, var(--biro) 40%, var(--line));
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: var(--step--1);
+  cursor: pointer;
 }
 
 .level-text strong {
@@ -1013,10 +1051,27 @@ body::before {
   gap: 0.5rem;
 }
 
-.pref-group legend {
+.pref-group legend,
+.pref-label {
   padding: 0;
   margin-bottom: 0.5rem;
   font-weight: 700;
+}
+
+.pref-label {
+  margin-bottom: 0;
+}
+
+.select {
+  min-height: 2.9rem;
+  padding: 0.5rem 0.8rem;
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-family: var(--display);
+  font-weight: 600;
 }
 
 .segmented {

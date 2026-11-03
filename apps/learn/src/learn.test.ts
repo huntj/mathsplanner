@@ -81,6 +81,23 @@ describe("the path", () => {
     ]);
     expect(units.map((u) => u.review)).toEqual(["open", "locked"]);
   });
+
+  it("locks nothing in teacher mode", () => {
+    const levels: Record<string, number> = { a1: 2 };
+    const units = buildPath(
+      SECTION,
+      (s) => levels[s] ?? 0,
+      () => INFO,
+      { open: true, reviewed: (id) => id === "b" },
+    );
+    expect(units.flatMap((u) => u.nodes.map((n) => n.state))).toEqual([
+      "done",
+      "current",
+      "started",
+      "started",
+    ]);
+    expect(units.map((u) => u.review)).toEqual(["open", "done"]);
+  });
 });
 
 describe("the course in the app", () => {
@@ -156,7 +173,7 @@ describe("progress", () => {
     expect(
       readProgress({
         version: 1,
-        settings: { stage: "Y99", dailyGoal: 4, sound: "yes", theme: "dark" },
+        settings: { stage: "Y99", dailyGoal: 4, sound: "yes", theme: "dark", teacher: true },
         skills: {
           a: { level: -1, lessons: 2.5, last: "today" },
           b: "x",
@@ -168,7 +185,7 @@ describe("progress", () => {
       }),
     ).toEqual({
       ...emptyProgress(),
-      settings: { ...emptyProgress().settings, theme: "dark" },
+      settings: { ...emptyProgress().settings, theme: "dark", teacher: true },
       skills: {
         a: { level: 0, lessons: 0, last: "", box: 0, due: "" },
         c: { level: 2, lessons: 2, last: today, box: 6, due: today },

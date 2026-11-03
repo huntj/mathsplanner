@@ -148,6 +148,16 @@ describe("finishing a lesson", () => {
     expect(p.days[today]).toBe(2);
   });
 
+  it("counts a level a teacher picked as reached, and never as a step back", () => {
+    const reason = { ...planLesson("a", INFO, 2, [], 9), picked: true as const };
+    const first = finishLesson(emptyProgress(), reason, play(reason), infoOf, today);
+    expect(first.progress.skills.a?.level).toBe(3);
+    expect(first.message).toMatch(/^Mastered!/);
+    const learn = { ...planLesson("a", INFO, 0, [], 9), picked: true as const };
+    const back = finishLesson(first.progress, learn, play(learn), infoOf, today);
+    expect(back.progress.skills.a?.level).toBe(3);
+  });
+
   it("moves reviewed skills through the schedule, and records mistakes and a unit review", () => {
     const p = progressWith({ a: [2, 2, today], b: [2, 3, today], c: [2, 1, "2026-12-01"] });
     const plan = unitPlan(

@@ -1,14 +1,27 @@
 // The sheet that opens from a node: the skill, its levels and what each asks, and the way into its
-// next lesson (or a refresh, when its review is due); or a unit or year review and the way in.
+// next lesson (or a refresh, when its review is due); or a unit or year review and the way in. In
+// teacher mode every level has its own way in, so a teacher can try any of them.
 import { useEffect, useRef } from "react";
 import { skillText, topicName, type Level, type PathUnit } from "./course.ts";
 import { familyOf } from "./families.ts";
-import { CheckIcon, FamilyIcon, LockIcon, RefreshIcon, ReviewIcon, StarIcon } from "./Icons.tsx";
+import {
+  CheckIcon,
+  FamilyIcon,
+  LockIcon,
+  RefreshIcon,
+  ReviewIcon,
+  StarIcon,
+  TeacherIcon,
+} from "./Icons.tsx";
 import type { Selection } from "./PathView.tsx";
 
 /** What a sheet can start. */
 export type Start =
-  | { kind: "skill"; skill: string }
+  | {
+      kind: "skill";
+      skill: string;
+      /** A level a teacher picked, counting from 1. */ level?: number;
+    }
   | { kind: "refresh"; skill: string }
   | { kind: "unit"; unit: PathUnit["unit"] }
   | { kind: "year" };
@@ -29,10 +42,12 @@ const LEVEL_WORDS: Record<Level["name"], string> = {
 
 export function SkillSheet({
   selection,
+  teacher,
   onClose,
   onStart,
 }: {
   selection: Selection | undefined;
+  teacher: boolean;
   onClose: () => void;
   onStart: (start: Start) => void;
 }) {
@@ -57,17 +72,21 @@ export function SkillSheet({
       onClick={(e) => e.target === ref.current && onClose()}
       aria-labelledby="sheet-title"
     >
-      {selection && <SheetBody selection={selection} onClose={onClose} onStart={onStart} />}
+      {selection && (
+        <SheetBody selection={selection} teacher={teacher} onClose={onClose} onStart={onStart} />
+      )}
     </dialog>
   );
 }
 
 function SheetBody({
   selection,
+  teacher,
   onClose,
   onStart,
 }: {
   selection: Selection;
+  teacher: boolean;
   onClose: () => void;
   onStart: (start: Start) => void;
 }) {
@@ -173,6 +192,12 @@ function SheetBody({
         </p>
       ) : null}
 
+      {teacher && (
+        <p className="teacher-note">
+          <TeacherIcon size={18} /> Teacher mode: try any level below.
+        </p>
+      )}
+
       <ol className="levels">
         {node.info.levels.map((level, i) => {
           const n = i + 1;
@@ -197,6 +222,15 @@ function SheetBody({
               <span className="visually-hidden">
                 {state === "done" ? "done" : state === "next" ? "next" : "to do"}
               </span>
+              {teacher && (
+                <button
+                  type="button"
+                  className="button small-button level-try"
+                  onClick={() => onStart({ kind: "skill", skill: node.skill, level: n })}
+                >
+                  Try<span className="visually-hidden"> {level.name}</span>
+                </button>
+              )}
             </li>
           );
         })}
