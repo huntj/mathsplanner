@@ -10,7 +10,7 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -258,7 +258,7 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -320,7 +320,7 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -375,14 +375,14 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -393,14 +393,14 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -409,19 +409,10 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -429,7 +420,7 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. A power of 0 leaves nothing.",
+                  "v": "True. x⁵ × x³ = x⁸, and x⁸ ÷ x² = x⁶.",
                 },
               ],
               "id": "RA",
@@ -438,7 +429,7 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when a is small.",
+                  "v": "False. It is x¹⁰.",
                 },
               ],
               "id": "RB",
@@ -447,7 +438,7 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. a^0 = 1, because a^5 ÷ a^5 = a^0, and anything divided by itself is 1.",
+                  "v": "False. It is x^7.5, as 15 ÷ 2 = 7.5.",
                 },
               ],
               "id": "RC",
@@ -459,25 +450,17 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.INDEX.ZERO",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.INDEX.ZERO",
+            "code": "ALG.INDICES.MULTIPLY",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -487,19 +470,23 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Any non-zero number to the power 0 is 1.",
+            "v": "True. x⁵ × x³ = x⁸, and x⁸ ÷ x² = x⁶.",
           },
         ],
       },
     ],
     "stem": [
       {
+        "t": "text",
+        "v": "Dev says ",
+      },
+      {
         "t": "math",
-        "v": "a^0 = 0",
+        "v": "\\frac{x^5 \\times x^3}{x^2} = x^6",
       },
       {
         "t": "text",
-        "v": " for any non-zero number a.",
+        "v": ".",
       },
     ],
   },
@@ -511,7 +498,7 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -523,7 +510,7 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "C",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -558,7 +545,7 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. a^0 = 1, because a^3 ÷ a^3 = a^0, and anything divided by itself is 1.",
+                  "v": "Always. A power of 0 leaves nothing.",
                 },
               ],
               "id": "RA",
@@ -567,7 +554,7 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when a is small.",
+                  "v": "Never. a^0 = 1, because a^3 ÷ a^3 = a^0, and anything divided by itself is 1.",
                 },
               ],
               "id": "RB",
@@ -576,7 +563,7 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. A power of 0 leaves nothing.",
+                  "v": "Sometimes. Only when a is small.",
                 },
               ],
               "id": "RC",
@@ -588,7 +575,7 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.INDEX.ZERO",
@@ -633,14 +620,14 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -651,14 +638,14 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -667,19 +654,10 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -687,7 +665,7 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. a^0 = 1, because a^5 ÷ a^5 = a^0, and anything divided by itself is 1.",
+                  "v": "True. x⁵ × x³ = x⁸, and x⁸ ÷ x² = x⁶.",
                 },
               ],
               "id": "RA",
@@ -696,7 +674,7 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when a is small.",
+                  "v": "False. It is x^7.5, as 15 ÷ 2 = 7.5.",
                 },
               ],
               "id": "RB",
@@ -705,7 +683,7 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. A power of 0 leaves nothing.",
+                  "v": "False. It is x¹⁰.",
                 },
               ],
               "id": "RC",
@@ -720,22 +698,14 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.INDEX.ZERO",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.INDEX.ZERO",
+            "code": "ALG.INDICES.MULTIPLY",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -745,19 +715,23 @@ exports[`Y9-ALG-02.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Any non-zero number to the power 0 is 1.",
+            "v": "True. x⁵ × x³ = x⁸, and x⁸ ÷ x² = x⁶.",
           },
         ],
       },
     ],
     "stem": [
       {
+        "t": "text",
+        "v": "Dev says ",
+      },
+      {
         "t": "math",
-        "v": "a^0 = 0",
+        "v": "\\frac{x^5 \\times x^3}{x^2} = x^6",
       },
       {
         "t": "text",
-        "v": " for any non-zero number a.",
+        "v": ".",
       },
     ],
   },

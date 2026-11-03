@@ -10,7 +10,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-FR-08",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -89,7 +89,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-FR-08",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -168,7 +168,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-FR-08",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -247,7 +247,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-FR-08",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -326,7 +326,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-FR-08",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -405,7 +405,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-FR-08",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -477,14 +477,14 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-FR-08",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -495,14 +495,14 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -511,10 +511,19 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -522,7 +531,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Multiplying by a whole number does not add decimal places. Work out 77 × 4 = 308. 7.7 has 1 decimal place, so the answer does too: 30.8. Check: 8 × 4 = 32, which is close.",
+                  "v": "Never. Decimals get smaller when multiplied.",
                 },
               ],
               "id": "RA",
@@ -531,7 +540,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiplying a decimal always adds a decimal place.",
+                  "v": "Sometimes. Only if the decimal is more than 1.",
                 },
               ],
               "id": "RB",
@@ -540,7 +549,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Decimals always get smaller when you multiply them.",
+                  "v": "Always, for a positive decimal. Several lots of it are more than one lot.",
                 },
               ],
               "id": "RC",
@@ -552,7 +561,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.DECIMAL.POINT-PLACE",
@@ -562,7 +571,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -572,7 +581,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Work out 77 × 4 = 308. 7.7 has 1 decimal place, so the answer does too: 30.8. Check: 8 × 4 = 32, which is close.",
+            "v": "Always, for a positive decimal. Several lots of it are more than one lot.",
           },
         ],
       },
@@ -580,15 +589,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says ",
-      },
-      {
-        "t": "math",
-        "v": "7.7 \\times 4 = 3.08",
-      },
-      {
-        "t": "text",
-        "v": ", because the answer needs one more decimal place.",
+        "v": "Multiplying a decimal by a whole number bigger than 1 makes it bigger.",
       },
     ],
   },
@@ -600,7 +601,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-FR-08",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -611,123 +612,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Multiplying a decimal always adds a decimal place.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Decimals always get smaller when you multiply them.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Multiplying by a whole number does not add decimal places. Work out 435 × 7 = 3045. 4.35 has 2 decimal places, so the answer does too: 30.45. Check: 4 × 7 = 28, which is close.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.DECIMAL.POINT-PLACE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Work out 435 × 7 = 3045. 4.35 has 2 decimal places, so the answer does too: 30.45. Check: 4 × 7 = 28, which is close.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Ivy says ",
-      },
-      {
-        "t": "math",
-        "v": "4.35 \\times 7 = 3.045",
-      },
-      {
-        "t": "text",
-        "v": ", because the answer needs one more decimal place.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y6-FR-08",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
@@ -754,7 +639,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Multiplying by a whole number does not add decimal places. Work out 66 × 7 = 462. 6.6 has 1 decimal place, so the answer does too: 46.2. Check: 7 × 7 = 49, which is close.",
+                  "v": "True. 125 × 4 = 500, and with two decimal places that is 5.00 = 5.",
                 },
               ],
               "id": "RA",
@@ -763,7 +648,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Decimals always get smaller when you multiply them.",
+                  "v": "False. It is 0.5.",
                 },
               ],
               "id": "RB",
@@ -772,7 +657,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiplying a decimal always adds a decimal place.",
+                  "v": "False. It is 4.100, as 1 × 4 = 4 and 25 × 4 = 100.",
                 },
               ],
               "id": "RC",
@@ -784,7 +669,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.DECIMAL.POINT-PLACE",
@@ -804,7 +689,7 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Work out 66 × 7 = 462. 6.6 has 1 decimal place, so the answer does too: 46.2. Check: 7 × 7 = 49, which is close.",
+            "v": "True. 125 × 4 = 500, and with two decimal places that is 5.00 = 5.",
           },
         ],
       },
@@ -812,15 +697,132 @@ exports[`Y6-FR-08 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says ",
+        "v": "Sam says ",
       },
       {
         "t": "math",
-        "v": "6.6 \\times 7 = 4.62",
+        "v": "1.25 \\times 4 = 5",
       },
       {
         "t": "text",
-        "v": ", because the answer needs one more decimal place.",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y6-FR-08",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always, for a positive decimal. Several lots of it are more than one lot.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. Decimals get smaller when multiplied.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only if the decimal is more than 1.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.DECIMAL.POINT-PLACE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always, for a positive decimal. Several lots of it are more than one lot.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Multiplying a decimal by a whole number bigger than 1 makes it bigger.",
       },
     ],
   },

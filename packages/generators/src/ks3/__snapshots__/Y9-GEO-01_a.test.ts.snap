@@ -63,7 +63,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -178,7 +178,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -293,7 +293,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -408,7 +408,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -523,7 +523,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -638,7 +638,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -700,7 +700,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -712,7 +712,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -738,7 +738,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It depends how the triangle is drawn.",
+                  "v": "True. That side is the hypotenuse; its square equals the sum of the squares of the other two, so it is the longest.",
                 },
               ],
               "id": "RA",
@@ -747,7 +747,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. That side is the hypotenuse; its square equals the sum of the squares of the other two, so it is the longest.",
+                  "v": "False. The longest side is next to the right angle.",
                 },
               ],
               "id": "RB",
@@ -756,7 +756,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The longest side is next to the right angle.",
+                  "v": "False. It depends how the triangle is drawn.",
                 },
               ],
               "id": "RC",
@@ -768,7 +768,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.PYTHAG.ADD-FOR-SHORT",
@@ -816,7 +816,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -827,7 +827,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
           "correctReason": "RB",
           "options": [
             {
@@ -854,7 +854,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The longest side is next to the right angle.",
+                  "v": "True. Pythagoras always adds the squares.",
                 },
               ],
               "id": "RA",
@@ -863,7 +863,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. That side is the hypotenuse; its square equals the sum of the squares of the other two, so it is the longest.",
+                  "v": "False. For a shorter side, subtract: √(13² − 5²) = √144 = 12 cm.",
                 },
               ],
               "id": "RB",
@@ -872,7 +872,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It depends how the triangle is drawn.",
+                  "v": "True. Square, add and square root.",
                 },
               ],
               "id": "RC",
@@ -885,14 +885,6 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.PYTHAG.ADD-FOR-SHORT",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
               "type": "choice",
             },
             "code": "GEO.PYTHAG.ADD-FOR-SHORT",
@@ -912,7 +904,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Spot the hypotenuse first: it decides whether you add or subtract.",
+            "v": "False. For a shorter side, subtract: √(13² − 5²) = √144 = 12 cm.",
           },
         ],
       },
@@ -920,7 +912,15 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Gus says the longest side of a right-angled triangle is always opposite the right angle.",
+        "v": "A right-angled triangle has hypotenuse 13 cm and one side 5 cm. Bo says the other side is ",
+      },
+      {
+        "t": "math",
+        "v": "\\sqrt{13^2 + 5^2}",
+      },
+      {
+        "t": "text",
+        "v": " cm.",
       },
     ],
   },
@@ -932,7 +932,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -944,7 +944,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -970,7 +970,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The longest side is next to the right angle.",
+                  "v": "False. It depends how the triangle is drawn.",
                 },
               ],
               "id": "RA",
@@ -979,7 +979,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. That side is the hypotenuse; its square equals the sum of the squares of the other two, so it is the longest.",
+                  "v": "False. The longest side is next to the right angle.",
                 },
               ],
               "id": "RB",
@@ -988,7 +988,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It depends how the triangle is drawn.",
+                  "v": "True. That side is the hypotenuse; its square equals the sum of the squares of the other two, so it is the longest.",
                 },
               ],
               "id": "RC",
@@ -1008,7 +1008,7 @@ exports[`Y9-GEO-01.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.PYTHAG.ADD-FOR-SHORT",

@@ -10,7 +10,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -258,7 +258,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -320,7 +320,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -382,7 +382,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -393,7 +393,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
+          "correct": "B",
           "correctReason": "RC",
           "options": [
             {
@@ -429,7 +429,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It works for small numbers.",
+                  "v": "Always. Multiplying makes things bigger.",
                 },
               ],
               "id": "RA",
@@ -438,7 +438,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Multiply the bases and add the powers.",
+                  "v": "Never. The indices add, so it gets smaller.",
                 },
               ],
               "id": "RB",
@@ -447,7 +447,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The index laws only work for the same base. 2³ × 3² = 8 × 9 = 72, but 6⁵ = 7776.",
+                  "v": "Sometimes. It is when a is bigger than 1 and n is positive, but not when a = 1 or a is a fraction.",
                 },
               ],
               "id": "RC",
@@ -457,14 +457,6 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.INDICES.MULTIPLY",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RB",
@@ -487,7 +479,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "aᵐ × aⁿ = aᵐ⁺ⁿ needs the same base a.",
+            "v": "Sometimes. It is when a is bigger than 1 and n is positive, but not when a = 1 or a is a fraction.",
           },
         ],
       },
@@ -495,19 +487,31 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "math",
-        "v": "2^3 \\times 3^2 = 6^5",
+        "v": "a^m \\times a^n",
+      },
+      {
+        "t": "text",
+        "v": " is bigger than ",
+      },
+      {
+        "t": "math",
+        "v": "a^m",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -518,14 +522,14 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RA",
+          "correct": "B",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -534,19 +538,10 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -554,7 +549,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The index laws only work for the same base. 2³ × 3² = 8 × 9 = 72, but 6⁵ = 7776.",
+                  "v": "True. Divide the indices: 10 ÷ 2 = 5.",
                 },
               ],
               "id": "RA",
@@ -563,7 +558,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It works for small numbers.",
+                  "v": "False. Dividing subtracts the indices: y¹⁰ ÷ y² = y⁸.",
                 },
               ],
               "id": "RB",
@@ -572,7 +567,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Multiply the bases and add the powers.",
+                  "v": "True. Half of y¹⁰ is y⁵.",
                 },
               ],
               "id": "RC",
@@ -584,15 +579,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.INDICES.MULTIPLY",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.INDICES.MULTIPLY",
@@ -602,7 +589,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -612,27 +599,35 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "aᵐ × aⁿ = aᵐ⁺ⁿ needs the same base a.",
+            "v": "False. Dividing subtracts the indices: y¹⁰ ÷ y² = y⁸.",
           },
         ],
       },
     ],
     "stem": [
       {
+        "t": "text",
+        "v": "Ben says ",
+      },
+      {
         "t": "math",
-        "v": "2^3 \\times 3^2 = 6^5",
+        "v": "y^{10} \\div y^{2} = y^{5}",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -643,14 +638,14 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RC",
+          "correct": "B",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -659,19 +654,10 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -679,7 +665,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Multiply the bases and add the powers.",
+                  "v": "False. Dividing subtracts the indices: y¹⁰ ÷ y² = y⁸.",
                 },
               ],
               "id": "RA",
@@ -688,7 +674,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It works for small numbers.",
+                  "v": "True. Half of y¹⁰ is y⁵.",
                 },
               ],
               "id": "RB",
@@ -697,7 +683,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The index laws only work for the same base. 2³ × 3² = 8 × 9 = 72, but 6⁵ = 7776.",
+                  "v": "True. Divide the indices: 10 ÷ 2 = 5.",
                 },
               ],
               "id": "RC",
@@ -709,15 +695,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.INDICES.MULTIPLY",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.INDICES.MULTIPLY",
@@ -727,7 +705,7 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -737,15 +715,23 @@ exports[`Y9-ALG-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "aᵐ × aⁿ = aᵐ⁺ⁿ needs the same base a.",
+            "v": "False. Dividing subtracts the indices: y¹⁰ ÷ y² = y⁸.",
           },
         ],
       },
     ],
     "stem": [
       {
+        "t": "text",
+        "v": "Ben says ",
+      },
+      {
         "t": "math",
-        "v": "2^3 \\times 3^2 = 6^5",
+        "v": "y^{10} \\div y^{2} = y^{5}",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },

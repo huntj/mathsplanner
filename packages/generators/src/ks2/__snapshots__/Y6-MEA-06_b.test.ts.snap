@@ -71,7 +71,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-MEA-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -212,7 +212,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-MEA-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -353,7 +353,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-MEA-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -596,7 +596,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-MEA-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -851,7 +851,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-MEA-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1106,7 +1106,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-MEA-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1198,7 +1198,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-MEA-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1236,7 +1236,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both use base × height.",
+                  "v": "True. The slanted side is the height.",
                 },
               ],
               "id": "RA",
@@ -1245,7 +1245,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Same base and height always means the same area.",
+                  "v": "True. Use the longest side you are given.",
                 },
               ],
               "id": "RB",
@@ -1254,7 +1254,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The triangle is half of the parallelogram: 16 cm² against 32 cm².",
+                  "v": "False. Use the perpendicular height, 3 cm: ½ × 8 × 3 = 12 cm².",
                 },
               ],
               "id": "RC",
@@ -1269,15 +1269,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "MEA.AREA.TRIANGLE-HALF",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "MEA.AREA.TRIANGLE-HALF",
+            "code": "MEA.AREA.SLANT",
             "feedback": [],
           },
         ],
@@ -1294,7 +1286,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Triangle: ½ × 8 × 4 = 16 cm². Parallelogram: 8 × 4 = 32 cm².",
+            "v": "False. Use the perpendicular height, 3 cm: ½ × 8 × 3 = 12 cm².",
           },
         ],
       },
@@ -1302,7 +1294,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A triangle and a parallelogram both have a base of 8 cm and a perpendicular height of 4 cm. Ella says they have the same area.",
+        "v": "Mia works out the area of a triangle with base 8 cm, height 3 cm and a slanted side of 5 cm as ½ × 8 × 5.",
       },
     ],
   },
@@ -1314,7 +1306,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-MEA-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1430,7 +1422,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-MEA-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1442,7 +1434,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -1468,7 +1460,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The triangle is half of the parallelogram: 114 cm² against 228 cm².",
+                  "v": "True. The slanted side is the height.",
                 },
               ],
               "id": "RA",
@@ -1477,7 +1469,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both use base × height.",
+                  "v": "True. Use the longest side you are given.",
                 },
               ],
               "id": "RB",
@@ -1486,7 +1478,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Same base and height always means the same area.",
+                  "v": "False. Use the perpendicular height, 3 cm: ½ × 8 × 3 = 12 cm².",
                 },
               ],
               "id": "RC",
@@ -1498,18 +1490,10 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "MEA.AREA.TRIANGLE-HALF",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "MEA.AREA.TRIANGLE-HALF",
+            "code": "MEA.AREA.SLANT",
             "feedback": [],
           },
         ],
@@ -1526,7 +1510,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Triangle: ½ × 19 × 12 = 114 cm². Parallelogram: 19 × 12 = 228 cm².",
+            "v": "False. Use the perpendicular height, 3 cm: ½ × 8 × 3 = 12 cm².",
           },
         ],
       },
@@ -1534,7 +1518,7 @@ exports[`Y6-MEA-06.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A triangle and a parallelogram both have a base of 19 cm and a perpendicular height of 12 cm. Ella says they have the same area.",
+        "v": "Mia works out the area of a triangle with base 8 cm, height 3 cm and a slanted side of 5 cm as ½ × 8 × 5.",
       },
     ],
   },

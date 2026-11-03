@@ -10,7 +10,7 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -78,7 +78,7 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -146,7 +146,7 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -214,7 +214,7 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -282,7 +282,7 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -350,7 +350,7 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -418,7 +418,7 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -465,7 +465,7 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. c is the product of the two numbers, and a negative product needs one positive and one negative number, e.g. (x − 8)(x + 4).",
+                  "v": "Always. The numbers multiply to a positive and add to a negative, so both are negative.",
                 },
               ],
               "id": "RA",
@@ -474,7 +474,7 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Both brackets have a minus sign.",
+                  "v": "Never. The brackets always have different signs.",
                 },
               ],
               "id": "RB",
@@ -483,7 +483,7 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends on b.",
+                  "v": "Sometimes. One could be positive.",
                 },
               ],
               "id": "RC",
@@ -523,7 +523,7 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Positive × negative = negative.",
+            "v": "Always. The numbers multiply to a positive and add to a negative, so both are negative.",
           },
         ],
       },
@@ -531,7 +531,7 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "If the number term of ",
+        "v": "If b is negative and c is positive in ",
       },
       {
         "t": "math",
@@ -539,7 +539,7 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "text",
-        "v": " is negative, the two brackets have different signs.",
+        "v": ", both brackets have minus signs.",
       },
     ],
   },
@@ -551,140 +551,7 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-01.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Always true",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Sometimes true",
-                },
-              ],
-              "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never. Both brackets have a minus sign.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Sometimes. It depends on b.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Always. c is the product of the two numbers, and a negative product needs one positive and one negative number, e.g. (x − 4)(x + 2).",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.FACTORISE.SIGNS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.FACTORISE.SIGNS",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this always, sometimes or never true?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Positive × negative = negative.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "If the number term of ",
-      },
-      {
-        "t": "math",
-        "v": "x^2 + bx + c",
-      },
-      {
-        "t": "text",
-        "v": " is negative, the two brackets have different signs.",
-      },
-    ],
-  },
-  {
-    "archetype": "always-sometimes-never",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y9-ALG-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -731,7 +598,7 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Both brackets have a minus sign.",
+                  "v": "Sometimes. One could be positive.",
                 },
               ],
               "id": "RA",
@@ -740,7 +607,7 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. c is the product of the two numbers, and a negative product needs one positive and one negative number, e.g. (x − 7)(x + 8).",
+                  "v": "Always. The numbers multiply to a positive and add to a negative, so both are negative.",
                 },
               ],
               "id": "RB",
@@ -749,7 +616,7 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends on b.",
+                  "v": "Never. The brackets always have different signs.",
                 },
               ],
               "id": "RC",
@@ -789,7 +656,7 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Positive × negative = negative.",
+            "v": "Always. The numbers multiply to a positive and add to a negative, so both are negative.",
           },
         ],
       },
@@ -797,7 +664,7 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "If the number term of ",
+        "v": "If b is negative and c is positive in ",
       },
       {
         "t": "math",
@@ -805,7 +672,123 @@ exports[`Y9-ALG-01.b > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "text",
-        "v": " is negative, the two brackets have different signs.",
+        "v": ", both brackets have minus signs.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y9-ALG-01.b",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. The numbers must multiply to +10 and add to −7, so both are negative: (x − 2)(x − 5).",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 2 + 5 = 7.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 2 × 5 = 10 and the sign does not matter.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.FACTORISE.SIGNS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. The numbers must multiply to +10 and add to −7, so both are negative: (x − 2)(x − 5).",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Mia says ",
+      },
+      {
+        "t": "math",
+        "v": "x^2 - 7x + 10 = (x + 2)(x + 5)",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },

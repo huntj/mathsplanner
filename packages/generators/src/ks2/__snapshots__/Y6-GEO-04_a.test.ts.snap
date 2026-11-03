@@ -10,7 +10,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-GEO-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -106,7 +106,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-GEO-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -188,7 +188,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-GEO-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -369,7 +369,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-GEO-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -568,7 +568,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-GEO-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -767,7 +767,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-GEO-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -883,14 +883,14 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-GEO-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -901,14 +901,14 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -917,10 +917,19 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -928,7 +937,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any straight line inside a circle is a radius.",
+                  "v": "Always. Every point on a circle is the same distance from its centre.",
                 },
               ],
               "id": "RA",
@@ -937,7 +946,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A line through the centre from edge to edge is a diameter. A radius goes from the centre to the edge.",
+                  "v": "Never. Some are longer.",
                 },
               ],
               "id": "RB",
@@ -946,7 +955,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Radius and diameter mean the same thing.",
+                  "v": "Sometimes. It depends which way you draw it.",
                 },
               ],
               "id": "RC",
@@ -956,14 +965,6 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.CIRCLE.RADIUS-DIAMETER",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -976,7 +977,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -986,7 +987,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A diameter is two radii joined through the centre.",
+            "v": "Always. Every point on a circle is the same distance from its centre.",
           },
         ],
       },
@@ -994,19 +995,19 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kim draws a straight line from one side of a circle to the other, through the centre. She says it is a radius.",
+        "v": "Every radius of a circle is the same length.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-GEO-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1017,14 +1018,14 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1033,10 +1034,19 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1044,7 +1054,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Radius and diameter mean the same thing.",
+                  "v": "Never. Some are longer.",
                 },
               ],
               "id": "RA",
@@ -1053,7 +1063,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A line through the centre from edge to edge is a diameter. A radius goes from the centre to the edge.",
+                  "v": "Sometimes. It depends which way you draw it.",
                 },
               ],
               "id": "RB",
@@ -1062,7 +1072,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any straight line inside a circle is a radius.",
+                  "v": "Always. Every point on a circle is the same distance from its centre.",
                 },
               ],
               "id": "RC",
@@ -1074,15 +1084,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.CIRCLE.RADIUS-DIAMETER",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.CIRCLE.RADIUS-DIAMETER",
@@ -1092,7 +1094,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1102,7 +1104,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A diameter is two radii joined through the centre.",
+            "v": "Always. Every point on a circle is the same distance from its centre.",
           },
         ],
       },
@@ -1110,7 +1112,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kim draws a straight line from one side of a circle to the other, through the centre. She says it is a radius.",
+        "v": "Every radius of a circle is the same length.",
       },
     ],
   },
@@ -1122,7 +1124,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-GEO-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1160,7 +1162,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Radius and diameter mean the same thing.",
+                  "v": "True. Any line across the circle is a diameter.",
                 },
               ],
               "id": "RA",
@@ -1169,7 +1171,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any straight line inside a circle is a radius.",
+                  "v": "True. Diameters can be anywhere.",
                 },
               ],
               "id": "RB",
@@ -1178,7 +1180,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A line through the centre from edge to edge is a diameter. A radius goes from the centre to the edge.",
+                  "v": "False. A diameter always passes through the centre. A line across that misses the centre is a chord.",
                 },
               ],
               "id": "RC",
@@ -1191,14 +1193,6 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.CIRCLE.RADIUS-DIAMETER",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.CIRCLE.RADIUS-DIAMETER",
@@ -1218,7 +1212,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A diameter is two radii joined through the centre.",
+            "v": "False. A diameter always passes through the centre. A line across that misses the centre is a chord.",
           },
         ],
       },
@@ -1226,7 +1220,7 @@ exports[`Y6-GEO-04.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kim draws a straight line from one side of a circle to the other, through the centre. She says it is a radius.",
+        "v": "Mia says a diameter can go from one side of a circle to the other without passing through the centre.",
       },
     ],
   },

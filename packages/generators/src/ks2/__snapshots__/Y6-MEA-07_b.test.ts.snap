@@ -10,7 +10,7 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-MEA-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -92,7 +92,7 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-MEA-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -174,7 +174,7 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-MEA-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -256,7 +256,7 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-MEA-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -268,7 +268,7 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -303,7 +303,7 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The edges add up to twice as much, 24 cm.",
+                  "v": "False. Each of the three lengths doubles, so the volume is multiplied by 2 × 2 × 2 = 8: from 64 cm³ to 512 cm³.",
                 },
               ],
               "id": "RB",
@@ -312,7 +312,7 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Each of the three lengths doubles, so the volume is multiplied by 2 × 2 × 2 = 8: from 64 cm³ to 512 cm³.",
+                  "v": "True. The edges add up to twice as much, 24 cm.",
                 },
               ],
               "id": "RC",
@@ -332,7 +332,7 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "MEA.VOLUME.ADDS",
@@ -372,7 +372,7 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-MEA-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -383,8 +383,8 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -410,7 +410,7 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The edges add up to twice as much, 48 m.",
+                  "v": "True. 1 l = 1000 ml, and 1 ml fills 1 cm³.",
                 },
               ],
               "id": "RA",
@@ -419,7 +419,7 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Each of the three lengths doubles, so the volume is multiplied by 2 × 2 × 2 = 8: from 504 m³ to 4032 m³.",
+                  "v": "False. Litres cannot be written in cm³.",
                 },
               ],
               "id": "RB",
@@ -428,7 +428,7 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Doubling the sizes doubles everything.",
+                  "v": "False. It fills 100 cm³.",
                 },
               ],
               "id": "RC",
@@ -438,14 +438,6 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "MEA.VOLUME.ADDS",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -468,7 +460,7 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "18 × 16 × 14 = 4032 m³, which is 8 × 504.",
+            "v": "True. 1 l = 1000 ml, and 1 ml fills 1 cm³.",
           },
         ],
       },
@@ -476,19 +468,19 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A cuboid is 9 m by 8 m by 7 m. Ali says doubling every edge doubles the volume.",
+        "v": "Ali says 1 litre of water fills 1000 cm³.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-MEA-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -499,14 +491,14 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -515,10 +507,19 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -526,7 +527,7 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The edges add up to twice as much, 88 cm.",
+                  "v": "Never. It holds 100 cm³, as 1 m = 100 cm.",
                 },
               ],
               "id": "RA",
@@ -535,7 +536,7 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Each of the three lengths doubles, so the volume is multiplied by 2 × 2 × 2 = 8: from 1564 cm³ to 12512 cm³.",
+                  "v": "Always. It is 100 cm by 100 cm by 100 cm, and 100 × 100 × 100 = 1 000 000.",
                 },
               ],
               "id": "RB",
@@ -544,7 +545,7 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Doubling the sizes doubles everything.",
+                  "v": "Sometimes. It depends on its shape.",
                 },
               ],
               "id": "RC",
@@ -559,14 +560,6 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "MEA.VOLUME.ADDS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
             "code": "RAT.UNITS.AREA-FACTOR",
             "feedback": [],
           },
@@ -574,7 +567,7 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -584,7 +577,7 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "46 × 8 × 34 = 12512 cm³, which is 8 × 1564.",
+            "v": "Always. It is 100 cm by 100 cm by 100 cm, and 100 × 100 × 100 = 1 000 000.",
           },
         ],
       },
@@ -592,7 +585,7 @@ exports[`Y6-MEA-07.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A cuboid is 23 cm by 4 cm by 17 cm. Ali says doubling every edge doubles the volume.",
+        "v": "A 1 m cube holds 1 000 000 cm³.",
       },
     ],
   },

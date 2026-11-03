@@ -10,7 +10,7 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -88,7 +88,7 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -166,7 +166,7 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -244,7 +244,7 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -314,7 +314,7 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -384,7 +384,7 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -447,14 +447,14 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -465,14 +465,14 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -481,19 +481,10 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -501,7 +492,7 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Gradients are always positive.",
+                  "v": "True. 4 ÷ 2 = 2.",
                 },
               ],
               "id": "RA",
@@ -510,7 +501,7 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. As x increases, y decreases, so the rise is negative for a positive run.",
+                  "v": "False. Gradient = (3 − 1) ÷ (4 − 0) = 2 ÷ 4 = 0.5. It is change in y over change in x.",
                 },
               ],
               "id": "RB",
@@ -519,7 +510,7 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends where it crosses the y-axis.",
+                  "v": "True. The line goes up 2.",
                 },
               ],
               "id": "RC",
@@ -537,19 +528,11 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
             "code": "ALG.GRADIENT.RUN-RISE",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.LINE.M-C",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -559,7 +542,7 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Up to the right: positive. Down to the right: negative.",
+            "v": "False. Gradient = (3 − 1) ÷ (4 − 0) = 2 ÷ 4 = 0.5. It is change in y over change in x.",
           },
         ],
       },
@@ -567,7 +550,7 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A straight line that goes down from left to right has a negative gradient.",
+        "v": "A line passes through (0, 1) and (4, 3). Jo says its gradient is 2.",
       },
     ],
   },
@@ -579,7 +562,7 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -704,7 +687,7 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -751,7 +734,7 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends where it crosses the y-axis.",
+                  "v": "Never. Gradients are always positive.",
                 },
               ],
               "id": "RA",
@@ -760,7 +743,7 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Gradients are always positive.",
+                  "v": "Sometimes. It depends where it crosses the y-axis.",
                 },
               ],
               "id": "RB",
@@ -784,7 +767,7 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.LINE.M-C",
+            "code": "ALG.GRADIENT.RUN-RISE",
             "feedback": [],
           },
           {
@@ -792,7 +775,7 @@ exports[`Y9-ALG-04.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "ALG.GRADIENT.RUN-RISE",
+            "code": "ALG.LINE.M-C",
             "feedback": [],
           },
         ],

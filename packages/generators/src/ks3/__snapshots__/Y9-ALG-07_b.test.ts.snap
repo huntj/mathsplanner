@@ -32,7 +32,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -140,7 +140,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -248,7 +248,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -356,7 +356,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -464,7 +464,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -572,7 +572,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -651,14 +651,14 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -676,7 +676,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -685,10 +685,19 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -696,7 +705,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Quadratics always have two answers.",
+                  "v": "Never. There is only ever one.",
                 },
               ],
               "id": "RA",
@@ -705,7 +714,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A U-shape whose lowest point is above the x-axis never crosses it (no solutions), and one that just touches it has one solution.",
+                  "v": "Sometimes. Its curve can cross the x-axis twice, touch it once, or miss it altogether.",
                 },
               ],
               "id": "RB",
@@ -714,7 +723,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The y-intercept counts as a solution.",
+                  "v": "Always. Quadratics have two solutions.",
                 },
               ],
               "id": "RC",
@@ -737,14 +746,14 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "ALG.GRAPH.SOLUTION-Y",
+            "code": "ALG.QUADRATIC.ONE-ROOT",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -754,7 +763,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A quadratic equation can have 0, 1 or 2 solutions.",
+            "v": "Sometimes. Its curve can cross the x-axis twice, touch it once, or miss it altogether.",
           },
         ],
       },
@@ -762,7 +771,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Lou says every quadratic equation has two solutions, because a U-shaped graph always crosses the x-axis twice.",
+        "v": "A quadratic equation has two different solutions.",
       },
     ],
   },
@@ -774,7 +783,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -786,7 +795,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -812,7 +821,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The y-intercept counts as a solution.",
+                  "v": "True. Negative numbers cannot be squared.",
                 },
               ],
               "id": "RA",
@@ -821,7 +830,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A U-shape whose lowest point is above the x-axis never crosses it (no solutions), and one that just touches it has one solution.",
+                  "v": "True. The square root of 9 is 3.",
                 },
               ],
               "id": "RB",
@@ -830,7 +839,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Quadratics always have two answers.",
+                  "v": "False. (−3)² = 9 too, so x = 3 or x = −3.",
                 },
               ],
               "id": "RC",
@@ -842,15 +851,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SOLUTION-Y",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.QUADRATIC.ONE-ROOT",
@@ -870,7 +871,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A quadratic equation can have 0, 1 or 2 solutions.",
+            "v": "False. (−3)² = 9 too, so x = 3 or x = −3.",
           },
         ],
       },
@@ -878,7 +879,15 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Lou says every quadratic equation has two solutions, because a U-shaped graph always crosses the x-axis twice.",
+        "v": "Dan says ",
+      },
+      {
+        "t": "math",
+        "v": "x^2 = 9",
+      },
+      {
+        "t": "text",
+        "v": " has only one solution, x = 3.",
       },
     ],
   },
@@ -890,7 +899,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-07.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -902,7 +911,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -928,7 +937,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The y-intercept counts as a solution.",
+                  "v": "False. A U-shape whose lowest point is above the x-axis never crosses it (no solutions), and one that just touches it has one solution.",
                 },
               ],
               "id": "RA",
@@ -937,7 +946,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A U-shape whose lowest point is above the x-axis never crosses it (no solutions), and one that just touches it has one solution.",
+                  "v": "True. Quadratics always have two answers.",
                 },
               ],
               "id": "RB",
@@ -946,7 +955,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Quadratics always have two answers.",
+                  "v": "True. The y-intercept counts as a solution.",
                 },
               ],
               "id": "RC",
@@ -958,10 +967,10 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "ALG.GRAPH.SOLUTION-Y",
+            "code": "ALG.QUADRATIC.ONE-ROOT",
             "feedback": [],
           },
           {
@@ -969,7 +978,7 @@ exports[`Y9-ALG-07.b > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "ALG.QUADRATIC.ONE-ROOT",
+            "code": "ALG.GRAPH.SOLUTION-Y",
             "feedback": [],
           },
         ],

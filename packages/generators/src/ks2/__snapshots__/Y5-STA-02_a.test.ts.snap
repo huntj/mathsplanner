@@ -10,7 +10,7 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-STA-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -81,7 +81,7 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-STA-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -152,7 +152,7 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-STA-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -223,7 +223,7 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-STA-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -294,7 +294,7 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-STA-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -365,7 +365,7 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-STA-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -436,7 +436,7 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-STA-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -447,8 +447,8 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -474,7 +474,7 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Art has the most children, but Choir has the most girls, 15.",
+                  "v": "False. You need more information.",
                 },
               ],
               "id": "RA",
@@ -483,7 +483,7 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The total tells you who has the most girls.",
+                  "v": "True. 14 + 16 = 30.",
                 },
               ],
               "id": "RB",
@@ -492,7 +492,7 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The biggest club must have the most of everyone.",
+                  "v": "False. There are 2 more girls, so 2.",
                 },
               ],
               "id": "RC",
@@ -504,7 +504,15 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "AS.MULTISTEP.ONE-STEP",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
               "type": "choice",
             },
             "code": "AS.PROBLEM.KEYWORD",
@@ -524,7 +532,7 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Compare the right column: the Girls column for girls, the Total column for children.",
+            "v": "True. 14 + 16 = 30.",
           },
         ],
       },
@@ -532,28 +540,19 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The table shows how many boys and girls go to each club.",
-      },
-      {
-        "display": true,
-        "t": "math",
-        "v": "\\begin{array}{|l|c|c|c|}\\hline \\text{Club} & \\text{Boys} & \\text{Girls} & \\text{Total} \\\\ \\hline \\text{Football} & 13 & 5 & 18 \\\\ \\hline \\text{Choir} & 11 & 15 & 26 \\\\ \\hline \\text{Chess} & 11 & 12 & 23 \\\\ \\hline \\text{Art} & 14 & 13 & 27 \\\\ \\hline\\end{array}",
-      },
-      {
-        "t": "text",
-        "v": "Mia says the club with the most children also has the most girls.",
+        "v": "A table shows 14 boys and 16 girls in a class. Ana says there are 30 children.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-STA-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -564,14 +563,14 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -580,10 +579,19 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -591,7 +599,7 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Chess has the most children, but Choir has the most girls, 39.",
+                  "v": "Never. Totals are separate counts.",
                 },
               ],
               "id": "RA",
@@ -600,7 +608,7 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The total tells you who has the most girls.",
+                  "v": "Sometimes. Only for the first row.",
                 },
               ],
               "id": "RB",
@@ -609,7 +617,7 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The biggest club must have the most of everyone.",
+                  "v": "Always. That is what the total means.",
                 },
               ],
               "id": "RC",
@@ -624,14 +632,14 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "AS.PROBLEM.KEYWORD",
+            "code": "AS.MULTISTEP.ONE-STEP",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -641,7 +649,7 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Compare the right column: the Girls column for girls, the Total column for children.",
+            "v": "Always. That is what the total means.",
           },
         ],
       },
@@ -649,16 +657,7 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The table shows how many boys and girls go to each club.",
-      },
-      {
-        "display": true,
-        "t": "math",
-        "v": "\\begin{array}{|l|c|c|c|}\\hline \\text{Club} & \\text{Boys} & \\text{Girls} & \\text{Total} \\\\ \\hline \\text{Football} & 3 & 27 & 30 \\\\ \\hline \\text{Choir} & 11 & 39 & 50 \\\\ \\hline \\text{Chess} & 26 & 36 & 62 \\\\ \\hline \\text{Art} & 22 & 25 & 47 \\\\ \\hline\\end{array}",
-      },
-      {
-        "t": "text",
-        "v": "Mia says the club with the most children also has the most girls.",
+        "v": "The total column of a table equals the other columns in that row added up.",
       },
     ],
   },
@@ -670,7 +669,7 @@ exports[`Y5-STA-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-STA-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

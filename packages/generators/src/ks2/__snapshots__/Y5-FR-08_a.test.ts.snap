@@ -10,7 +10,7 @@ exports[`Y5-FR-08.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-08.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -79,7 +79,7 @@ exports[`Y5-FR-08.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-08.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -148,7 +148,7 @@ exports[`Y5-FR-08.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-08.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -217,7 +217,7 @@ exports[`Y5-FR-08.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-08.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -283,7 +283,7 @@ exports[`Y5-FR-08.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-08.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -349,7 +349,7 @@ exports[`Y5-FR-08.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-08.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -415,7 +415,7 @@ exports[`Y5-FR-08.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-08.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -426,7 +426,7 @@ exports[`Y5-FR-08.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
@@ -453,7 +453,7 @@ exports[`Y5-FR-08.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Round in one step: the tenths digit of 9.46 is 4, so it rounds down to 9.",
+                  "v": "True. The tenths digit is 7, which is 5 or more, so round up.",
                 },
               ],
               "id": "RA",
@@ -462,7 +462,7 @@ exports[`Y5-FR-08.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 9.46 is more than 9.4, so it rounds up.",
+                  "v": "False. It is 6.7.",
                 },
               ],
               "id": "RB",
@@ -471,7 +471,7 @@ exports[`Y5-FR-08.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Rounding in steps gives a more accurate answer.",
+                  "v": "False. It is 6; rounding goes down.",
                 },
               ],
               "id": "RC",
@@ -489,6 +489,14 @@ exports[`Y5-FR-08.a > keeps fixed seeds unchanged 1`] = `
             "code": "NPV.ROUND.WRONG-PLACE",
             "feedback": [],
           },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "feedback": [],
+          },
         ],
         "prompt": [
           {
@@ -503,7 +511,7 @@ exports[`Y5-FR-08.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "9.46 is between 9 and 10, and less than 9.5, so it is nearer 9.",
+            "v": "True. The tenths digit is 7, which is 5 or more, so round up.",
           },
         ],
       },
@@ -511,15 +519,7 @@ exports[`Y5-FR-08.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ben rounds ",
-      },
-      {
-        "t": "math",
-        "v": "9.46",
-      },
-      {
-        "t": "text",
-        "v": " to one decimal place, getting 9.5, and then rounds that to get 10. He says 9.46 to the nearest whole number is 10.",
+        "v": "Sam rounds 6.72 to the nearest whole number and gets 7.",
       },
     ],
   },
@@ -531,123 +531,7 @@ exports[`Y5-FR-08.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-08.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Round in one step: the tenths digit of 13.48 is 4, so it rounds down to 13.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. 13.48 is more than 13.4, so it rounds up.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Rounding in steps gives a more accurate answer.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.ROUND.WRONG-PLACE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "13.48 is between 13 and 14, and less than 13.5, so it is nearer 13.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Ben rounds ",
-      },
-      {
-        "t": "math",
-        "v": "13.48",
-      },
-      {
-        "t": "text",
-        "v": " to one decimal place, getting 13.5, and then rounds that to get 14. He says 13.48 to the nearest whole number is 14.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y5-FR-08.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -694,7 +578,7 @@ exports[`Y5-FR-08.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 55.46 is more than 55.4, so it rounds up.",
+                  "v": "True. 13.49 is more than 13.4, so it rounds up.",
                 },
               ],
               "id": "RB",
@@ -703,7 +587,7 @@ exports[`Y5-FR-08.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Round in one step: the tenths digit of 55.46 is 4, so it rounds down to 55.",
+                  "v": "False. Round in one step: the tenths digit of 13.49 is 4, so it rounds down to 13.",
                 },
               ],
               "id": "RC",
@@ -735,7 +619,7 @@ exports[`Y5-FR-08.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "55.46 is between 55 and 56, and less than 55.5, so it is nearer 55.",
+            "v": "13.49 is between 13 and 14, and less than 13.5, so it is nearer 13.",
           },
         ],
       },
@@ -747,11 +631,127 @@ exports[`Y5-FR-08.a > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "math",
-        "v": "55.46",
+        "v": "13.49",
       },
       {
         "t": "text",
-        "v": " to one decimal place, getting 55.5, and then rounds that to get 56. He says 55.46 to the nearest whole number is 56.",
+        "v": " to one decimal place, getting 13.5, and then rounds that to get 14. He says 13.49 to the nearest whole number is 14.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y5-FR-08.a",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 55.45 is more than 55.4, so it rounds up.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Rounding in steps gives a more accurate answer.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Round in one step: the tenths digit of 55.45 is 4, so it rounds down to 55.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.WRONG-PLACE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "55.45 is between 55 and 56, and less than 55.5, so it is nearer 55.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ben rounds ",
+      },
+      {
+        "t": "math",
+        "v": "55.45",
+      },
+      {
+        "t": "text",
+        "v": " to one decimal place, getting 55.5, and then rounds that to get 56. He says 55.45 to the nearest whole number is 56.",
       },
     ],
   },

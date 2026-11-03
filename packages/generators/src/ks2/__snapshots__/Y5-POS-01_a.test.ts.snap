@@ -72,7 +72,7 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -240,7 +240,7 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -420,7 +420,7 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -622,7 +622,7 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -809,7 +809,7 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1020,7 +1020,7 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1394,7 +1394,7 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1661,7 +1661,7 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -2000,7 +2000,7 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -2085,98 +2085,14 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "Two shapes, P and Q, either side of a dashed mirror line.",
-        "grid": true,
-        "polygons": [
-          {
-            "label": "P",
-            "shaded": true,
-            "vertices": [
-              [
-                3,
-                7,
-              ],
-              [
-                6,
-                7,
-              ],
-              [
-                6,
-                8,
-              ],
-              [
-                4,
-                8,
-              ],
-              [
-                4,
-                9,
-              ],
-              [
-                3,
-                9,
-              ],
-            ],
-          },
-          {
-            "label": "Q",
-            "shaded": true,
-            "vertices": [
-              [
-                11,
-                7,
-              ],
-              [
-                8,
-                7,
-              ],
-              [
-                8,
-                8,
-              ],
-              [
-                10,
-                8,
-              ],
-              [
-                10,
-                9,
-              ],
-              [
-                11,
-                9,
-              ],
-            ],
-          },
-        ],
-        "type": "cartesian",
-        "verticals": [
-          {
-            "dashed": true,
-            "x": 7,
-          },
-        ],
-        "x": {
-          "max": 12,
-          "min": 0,
-          "step": 1,
-        },
-        "y": {
-          "max": 12,
-          "min": 0,
-          "step": 1,
-        },
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -2187,14 +2103,14 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -2203,10 +2119,19 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -2214,7 +2139,7 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any shape on the other side of a line is a translation.",
+                  "v": "Always. A reflection flips a shape; it does not stretch or shrink it.",
                 },
               ],
               "id": "RA",
@@ -2223,7 +2148,7 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Q is P reflected in the mirror line: it is flipped over, so a slide could not move P onto Q.",
+                  "v": "Sometimes. It is bigger if it is further from the mirror.",
                 },
               ],
               "id": "RB",
@@ -2232,7 +2157,7 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Q is to the right of P and the same size.",
+                  "v": "Never. Reflections are smaller.",
                 },
               ],
               "id": "RC",
@@ -2244,25 +2169,17 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "GEO.SYMMETRY.TRANSLATES",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "GEO.SYMMETRY.TRANSLATES",
+            "code": "POS.TRANSFORM.CHANGES-SHAPE",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -2272,91 +2189,27 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Look at which way the shapes face: Q is a mirror image of P.",
+            "v": "Always. A reflection flips a shape; it does not stretch or shrink it.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
         "t": "text",
-        "v": "Ali says Q is P translated to the right.",
+        "v": "A reflected shape is the same size as the original.",
       },
     ],
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "Two shapes, P and Q, either side of a dashed mirror line.",
-        "grid": true,
-        "polygons": [
-          {
-            "label": "P",
-            "shaded": true,
-            "vertices": [
-              [
-                1,
-                6,
-              ],
-              [
-                3,
-                6,
-              ],
-              [
-                1,
-                9,
-              ],
-            ],
-          },
-          {
-            "label": "Q",
-            "shaded": true,
-            "vertices": [
-              [
-                11,
-                6,
-              ],
-              [
-                9,
-                6,
-              ],
-              [
-                11,
-                9,
-              ],
-            ],
-          },
-        ],
-        "type": "cartesian",
-        "verticals": [
-          {
-            "dashed": true,
-            "x": 6,
-          },
-        ],
-        "x": {
-          "max": 12,
-          "min": 0,
-          "step": 1,
-        },
-        "y": {
-          "max": 12,
-          "min": 0,
-          "step": 1,
-        },
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -2367,8 +2220,8 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -2394,7 +2247,7 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Q is P reflected in the mirror line: it is flipped over, so a slide could not move P onto Q.",
+                  "v": "False. It is 6 squares to the right.",
                 },
               ],
               "id": "RA",
@@ -2403,7 +2256,7 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any shape on the other side of a line is a translation.",
+                  "v": "False. It is on the mirror line.",
                 },
               ],
               "id": "RB",
@@ -2412,7 +2265,7 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Q is to the right of P and the same size.",
+                  "v": "True. The image is the same distance from the mirror, on the other side.",
                 },
               ],
               "id": "RC",
@@ -2424,18 +2277,10 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "GEO.SYMMETRY.TRANSLATES",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "GEO.SYMMETRY.TRANSLATES",
+            "code": "GEO.SYMMETRY.HALF-DISTANCE",
             "feedback": [],
           },
         ],
@@ -2452,115 +2297,27 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Look at which way the shapes face: Q is a mirror image of P.",
+            "v": "True. The image is the same distance from the mirror, on the other side.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
         "t": "text",
-        "v": "Ali says Q is P translated to the right.",
+        "v": "A point is 3 squares to the left of a mirror line. Kai says its reflection is 3 squares to the right of the line.",
       },
     ],
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "Two shapes, P and Q, either side of a dashed mirror line.",
-        "grid": true,
-        "polygons": [
-          {
-            "label": "P",
-            "shaded": true,
-            "vertices": [
-              [
-                3,
-                1,
-              ],
-              [
-                6,
-                1,
-              ],
-              [
-                6,
-                2,
-              ],
-              [
-                4,
-                2,
-              ],
-              [
-                4,
-                3,
-              ],
-              [
-                3,
-                3,
-              ],
-            ],
-          },
-          {
-            "label": "Q",
-            "shaded": true,
-            "vertices": [
-              [
-                11,
-                1,
-              ],
-              [
-                8,
-                1,
-              ],
-              [
-                8,
-                2,
-              ],
-              [
-                10,
-                2,
-              ],
-              [
-                10,
-                3,
-              ],
-              [
-                11,
-                3,
-              ],
-            ],
-          },
-        ],
-        "type": "cartesian",
-        "verticals": [
-          {
-            "dashed": true,
-            "x": 7,
-          },
-        ],
-        "x": {
-          "max": 12,
-          "min": 0,
-          "step": 1,
-        },
-        "y": {
-          "max": 12,
-          "min": 0,
-          "step": 1,
-        },
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -2571,8 +2328,8 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -2598,7 +2355,7 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Q is P reflected in the mirror line: it is flipped over, so a slide could not move P onto Q.",
+                  "v": "False. It is on the mirror line.",
                 },
               ],
               "id": "RA",
@@ -2607,7 +2364,7 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any shape on the other side of a line is a translation.",
+                  "v": "False. It is 6 squares to the right.",
                 },
               ],
               "id": "RB",
@@ -2616,7 +2373,7 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Q is to the right of P and the same size.",
+                  "v": "True. The image is the same distance from the mirror, on the other side.",
                 },
               ],
               "id": "RC",
@@ -2631,15 +2388,7 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "GEO.SYMMETRY.TRANSLATES",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "GEO.SYMMETRY.TRANSLATES",
+            "code": "GEO.SYMMETRY.HALF-DISTANCE",
             "feedback": [],
           },
         ],
@@ -2656,19 +2405,15 @@ exports[`Y5-POS-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Look at which way the shapes face: Q is a mirror image of P.",
+            "v": "True. The image is the same distance from the mirror, on the other side.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
         "t": "text",
-        "v": "Ali says Q is P translated to the right.",
+        "v": "A point is 3 squares to the left of a mirror line. Kai says its reflection is 3 squares to the right of the line.",
       },
     ],
   },

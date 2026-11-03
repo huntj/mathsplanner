@@ -10,7 +10,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-MEA-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-MEA-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-MEA-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-MEA-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -268,7 +268,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-MEA-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -340,7 +340,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-MEA-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -412,7 +412,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-MEA-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -450,7 +450,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Compare the numbers as they are: 300, 1.1, 0.25.",
+                  "v": "True. Numbers with more decimal places are bigger.",
                 },
               ],
               "id": "RA",
@@ -459,7 +459,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Numbers with more decimal places are bigger.",
+                  "v": "True. Compare the numbers as they are: 300, 1.1, 0.25.",
                 },
               ],
               "id": "RB",
@@ -483,7 +483,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "MEA.CONVERT.FACTOR",
+            "code": "NPV.DECIMAL.LONGER-BIGGER",
             "feedback": [],
           },
           {
@@ -491,7 +491,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.DECIMAL.LONGER-BIGGER",
+            "code": "MEA.CONVERT.FACTOR",
             "feedback": [],
           },
         ],
@@ -521,14 +521,14 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-MEA-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -539,14 +539,14 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "C",
           "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -555,10 +555,19 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -566,7 +575,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Compare the numbers as they are: 300, 0.25, 1.1.",
+                  "v": "Always. Time works in hundreds like other units.",
                 },
               ],
               "id": "RA",
@@ -575,7 +584,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Numbers with more decimal places are bigger.",
+                  "v": "Sometimes. On digital clocks.",
                 },
               ],
               "id": "RB",
@@ -584,7 +593,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. In millilitres they are 300 ml, 250 ml, 1100 ml.",
+                  "v": "Never. There are 60 minutes in an hour.",
                 },
               ],
               "id": "RC",
@@ -602,19 +611,11 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
             "code": "MEA.CONVERT.FACTOR",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.DECIMAL.LONGER-BIGGER",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -624,7 +625,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Change all to ml: 250 ml < 300 ml < 1100 ml.",
+            "v": "Never. There are 60 minutes in an hour.",
           },
         ],
       },
@@ -632,7 +633,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Leah says these are in order, smallest first: 300 ml, 0.25 l, 1.1 l.",
+        "v": "There are 100 minutes in an hour.",
       },
     ],
   },
@@ -644,7 +645,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-MEA-02.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -655,8 +656,8 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -682,7 +683,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. In millilitres they are 300 ml, 250 ml, 1100 ml.",
+                  "v": "False. It is 30 minutes.",
                 },
               ],
               "id": "RA",
@@ -691,7 +692,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Compare the numbers as they are: 300, 0.25, 1.1.",
+                  "v": "True. 1 hour = 60 minutes, and 3 × 60 = 180.",
                 },
               ],
               "id": "RB",
@@ -700,7 +701,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Numbers with more decimal places are bigger.",
+                  "v": "False. It is 300 minutes.",
                 },
               ],
               "id": "RC",
@@ -712,18 +713,10 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "MEA.CONVERT.FACTOR",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.DECIMAL.LONGER-BIGGER",
+            "code": "MEA.CONVERT.FACTOR",
             "feedback": [],
           },
         ],
@@ -740,7 +733,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Change all to ml: 250 ml < 300 ml < 1100 ml.",
+            "v": "True. 1 hour = 60 minutes, and 3 × 60 = 180.",
           },
         ],
       },
@@ -748,7 +741,7 @@ exports[`Y6-MEA-02.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Leah says these are in order, smallest first: 300 ml, 0.25 l, 1.1 l.",
+        "v": "Ivy says 3 hours is 180 minutes.",
       },
     ],
   },

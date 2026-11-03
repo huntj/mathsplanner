@@ -10,7 +10,7 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -78,7 +78,7 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -146,7 +146,7 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -214,7 +214,7 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -282,7 +282,7 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -350,7 +350,7 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -418,7 +418,7 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y9-ALG-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -535,14 +535,14 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y9-ALG-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -554,13 +554,13 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -569,10 +569,19 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -580,7 +589,7 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any brackets that contain the numbers work.",
+                  "v": "Always. Every quadratic factorises.",
                 },
               ],
               "id": "RA",
@@ -589,7 +598,7 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Expanding that gives a much bigger x term. The numbers in the brackets must multiply to 18 and add to 9: 3 and 6.",
+                  "v": "Never. Factorising needs a minus sign.",
                 },
               ],
               "id": "RB",
@@ -598,7 +607,7 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Copy the numbers from the expression into the brackets.",
+                  "v": "Sometimes. x² + 5x + 6 = (x + 2)(x + 3), but no two whole numbers multiply to 1 and add to 3 for x² + 3x + 1.",
                 },
               ],
               "id": "RC",
@@ -610,15 +619,7 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.FACTORISE.SIGNS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.FACTORISE.SIGNS",
@@ -628,7 +629,7 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -638,7 +639,7 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Check by expanding your answer.",
+            "v": "Sometimes. x² + 5x + 6 = (x + 2)(x + 3), but no two whole numbers multiply to 1 and add to 3 for x² + 3x + 1.",
           },
         ],
       },
@@ -646,15 +647,15 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Lee says ",
+        "v": "An expression ",
       },
       {
         "t": "math",
-        "v": "x^2 + 9x + 18 = (x + 9)(x + 18)",
+        "v": "x^2 + bx + c",
       },
       {
         "t": "text",
-        "v": ".",
+        "v": " with b and c positive can be factorised into two brackets with whole numbers.",
       },
     ],
   },
@@ -666,7 +667,7 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y9-ALG-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -677,7 +678,7 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -704,7 +705,7 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Copy the numbers from the expression into the brackets.",
+                  "v": "False. It is (x + 7)(x + 12).",
                 },
               ],
               "id": "RA",
@@ -713,7 +714,7 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any brackets that contain the numbers work.",
+                  "v": "False. It is (x + 2)(x + 6), as 2 × 6 = 12.",
                 },
               ],
               "id": "RB",
@@ -722,7 +723,7 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Expanding that gives a much bigger x term. The numbers in the brackets must multiply to 32 and add to 12: 4 and 8.",
+                  "v": "True. 3 × 4 = 12 and 3 + 4 = 7.",
                 },
               ],
               "id": "RC",
@@ -732,14 +733,6 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.FACTORISE.SIGNS",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RB",
@@ -762,7 +755,7 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Check by expanding your answer.",
+            "v": "True. 3 × 4 = 12 and 3 + 4 = 7.",
           },
         ],
       },
@@ -770,11 +763,11 @@ exports[`Y9-ALG-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Lee says ",
+        "v": "Kim says ",
       },
       {
         "t": "math",
-        "v": "x^2 + 12x + 32 = (x + 12)(x + 32)",
+        "v": "x^2 + 7x + 12 = (x + 3)(x + 4)",
       },
       {
         "t": "text",

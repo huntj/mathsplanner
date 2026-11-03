@@ -10,7 +10,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-POS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -137,7 +137,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-POS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -264,7 +264,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-POS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -439,7 +439,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-POS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -626,7 +626,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-POS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -805,7 +805,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-POS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -929,14 +929,14 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-POS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -947,14 +947,14 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -963,10 +963,19 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -974,7 +983,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Shapes grow as they move away from (0, 0).",
+                  "v": "Sometimes. It turns if it moves a long way.",
                 },
               ],
               "id": "RA",
@@ -983,7 +992,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every corner moves, so the size changes.",
+                  "v": "Never. It flips over.",
                 },
               ],
               "id": "RB",
@@ -992,7 +1001,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A translation slides a shape without turning or resizing it, so it is still 3 by 3.",
+                  "v": "Always. A translation slides a shape without turning or flipping it.",
                 },
               ],
               "id": "RC",
@@ -1015,14 +1024,14 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "POS.TRANSFORM.CHANGES-SHAPE",
+            "code": "POS.REFLECT.WRONG-AXIS",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1032,7 +1041,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "After a translation the shape is the same size and the same way round.",
+            "v": "Always. A translation slides a shape without turning or flipping it.",
           },
         ],
       },
@@ -1040,19 +1049,19 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A square with sides of 3 squares is translated 1 left and 4 up. Zoe says the new square is bigger because it has moved further from the corner of the grid.",
+        "v": "A translated shape faces the same way as the original.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-POS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1063,14 +1072,14 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1079,10 +1088,19 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1090,7 +1108,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A translation slides a shape without turning or resizing it, so it is still 3 by 3.",
+                  "v": "Sometimes. It turns if it moves a long way.",
                 },
               ],
               "id": "RA",
@@ -1099,7 +1117,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Shapes grow as they move away from (0, 0).",
+                  "v": "Always. A translation slides a shape without turning or flipping it.",
                 },
               ],
               "id": "RB",
@@ -1108,7 +1126,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every corner moves, so the size changes.",
+                  "v": "Never. It flips over.",
                 },
               ],
               "id": "RC",
@@ -1120,7 +1138,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "POS.TRANSFORM.CHANGES-SHAPE",
@@ -1131,14 +1149,14 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "POS.TRANSFORM.CHANGES-SHAPE",
+            "code": "POS.REFLECT.WRONG-AXIS",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1148,7 +1166,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "After a translation the shape is the same size and the same way round.",
+            "v": "Always. A translation slides a shape without turning or flipping it.",
           },
         ],
       },
@@ -1156,19 +1174,19 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A square with sides of 3 squares is translated 4 left and 2 down. Zoe says the new square is bigger because it has moved further from the corner of the grid.",
+        "v": "A translated shape faces the same way as the original.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-POS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1179,14 +1197,14 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1195,10 +1213,19 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1206,7 +1233,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A translation slides a shape without turning or resizing it, so it is still 3 by 3.",
+                  "v": "Sometimes. It turns if it moves a long way.",
                 },
               ],
               "id": "RA",
@@ -1215,7 +1242,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every corner moves, so the size changes.",
+                  "v": "Always. A translation slides a shape without turning or flipping it.",
                 },
               ],
               "id": "RB",
@@ -1224,7 +1251,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Shapes grow as they move away from (0, 0).",
+                  "v": "Never. It flips over.",
                 },
               ],
               "id": "RC",
@@ -1236,7 +1263,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "POS.TRANSFORM.CHANGES-SHAPE",
@@ -1247,14 +1274,14 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "POS.TRANSFORM.CHANGES-SHAPE",
+            "code": "POS.REFLECT.WRONG-AXIS",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1264,7 +1291,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "After a translation the shape is the same size and the same way round.",
+            "v": "Always. A translation slides a shape without turning or flipping it.",
           },
         ],
       },
@@ -1272,7 +1299,7 @@ exports[`Y6-POS-02.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A square with sides of 3 squares is translated 2 left and 4 up. Zoe says the new square is bigger because it has moved further from the corner of the grid.",
+        "v": "A translated shape faces the same way as the original.",
       },
     ],
   },

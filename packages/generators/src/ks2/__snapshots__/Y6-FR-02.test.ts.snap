@@ -10,7 +10,7 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -99,7 +99,7 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -188,7 +188,7 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -291,7 +291,7 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -364,7 +364,7 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -451,7 +451,7 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -547,123 +547,7 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-FR-02",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The bigger numerator means the bigger fraction.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. You cannot compare fractions with different denominators.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. With a common denominator: 20/15 > 18/15.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "FR.COMPARE.NUMERATOR-ONLY",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "With a common denominator: 20/15 > 18/15.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Jo says ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{6}{5} > \\frac{4}{3}",
-      },
-      {
-        "t": "text",
-        "v": ", because 6 is bigger than 4.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y6-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -701,7 +585,7 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. With a common denominator: 42/35 > 40/35.",
+                  "v": "False. Sharing into 8 gives smaller parts than sharing into 6, so 1/8 < 1/6.",
                 },
               ],
               "id": "RA",
@@ -710,7 +594,7 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The bigger numerator means the bigger fraction.",
+                  "v": "True. Compare the bottoms.",
                 },
               ],
               "id": "RB",
@@ -719,7 +603,7 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You cannot compare fractions with different denominators.",
+                  "v": "True. A bigger denominator means a bigger fraction.",
                 },
               ],
               "id": "RC",
@@ -731,10 +615,10 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "FR.COMPARE.NUMERATOR-ONLY",
+            "code": "FR.UNIT.BIGGER-DENOMINATOR",
             "feedback": [],
           },
         ],
@@ -751,7 +635,7 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "With a common denominator: 42/35 > 40/35.",
+            "v": "False. Sharing into 8 gives smaller parts than sharing into 6, so 1/8 < 1/6.",
           },
         ],
       },
@@ -759,11 +643,11 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jo says ",
+        "v": "Pia says ",
       },
       {
         "t": "math",
-        "v": "\\frac{8}{7} > \\frac{6}{5}",
+        "v": "\\frac{1}{8} > \\frac{1}{6}",
       },
       {
         "t": "text",
@@ -776,10 +660,10 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
     "diagrams": [],
     "key": {
       "depth": 4,
-      "numbers": "stretch",
+      "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-FR-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -790,7 +674,7 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -817,7 +701,7 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You cannot compare fractions with different denominators.",
+                  "v": "False. 4 is bigger than 3.",
                 },
               ],
               "id": "RA",
@@ -826,7 +710,7 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. With a common denominator: 132/84 > 91/84.",
+                  "v": "True. With denominator 35: 3/5 = 21/35 and 4/7 = 20/35.",
                 },
               ],
               "id": "RB",
@@ -835,7 +719,7 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The bigger numerator means the bigger fraction.",
+                  "v": "False. 7 is bigger than 5.",
                 },
               ],
               "id": "RC",
@@ -847,10 +731,18 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "FR.COMPARE.NUMERATOR-ONLY",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "FR.UNIT.BIGGER-DENOMINATOR",
             "feedback": [],
           },
         ],
@@ -867,7 +759,7 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "With a common denominator: 132/84 > 91/84.",
+            "v": "True. With denominator 35: 3/5 = 21/35 and 4/7 = 20/35.",
           },
         ],
       },
@@ -875,15 +767,131 @@ exports[`Y6-FR-02 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jo says ",
+        "v": "Ben says ",
       },
       {
         "t": "math",
-        "v": "\\frac{13}{12} > \\frac{11}{7}",
+        "v": "\\frac{3}{5} > \\frac{4}{7}",
       },
       {
         "t": "text",
-        "v": ", because 13 is bigger than 11.",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y6-FR-02",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. A bigger denominator means a bigger fraction.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Compare the bottoms.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Sharing into 8 gives smaller parts than sharing into 6, so 1/8 < 1/6.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "FR.UNIT.BIGGER-DENOMINATOR",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. Sharing into 8 gives smaller parts than sharing into 6, so 1/8 < 1/6.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Pia says ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{1}{8} > \\frac{1}{6}",
+      },
+      {
+        "t": "text",
+        "v": ", because 8 is bigger than 6.",
       },
     ],
   },

@@ -10,7 +10,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-08.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -79,7 +79,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-08.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -148,7 +148,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-08.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -230,7 +230,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-08.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -296,7 +296,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-08.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -362,7 +362,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-08.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -434,14 +434,14 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-08.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -452,14 +452,14 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -468,10 +468,19 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -479,7 +488,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Halfway numbers round down.",
+                  "v": "Never. It has two digits.",
                 },
               ],
               "id": "RA",
@@ -488,7 +497,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You always round down to the whole number in front.",
+                  "v": "Sometimes. 4.96 rounds to 5.",
                 },
               ],
               "id": "RB",
@@ -497,7 +506,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A number exactly halfway rounds up, so 8.5 rounds to 9.",
+                  "v": "Always. Even when it is 0, as in 5.0, you write the tenths digit to show the accuracy.",
                 },
               ],
               "id": "RC",
@@ -509,17 +518,17 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.ROUND.HALFWAY",
+            "code": "NPV.ROUND.WRONG-PLACE",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -529,7 +538,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The convention is that 5 rounds up: 8.5 ≈ 9.",
+            "v": "Always. Even when it is 0, as in 5.0, you write the tenths digit to show the accuracy.",
           },
         ],
       },
@@ -537,15 +546,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ella says ",
-      },
-      {
-        "t": "math",
-        "v": "8.5",
-      },
-      {
-        "t": "text",
-        "v": " rounded to the nearest whole number is 8, because it is exactly halfway.",
+        "v": "A number rounded to one decimal place has one digit after the point.",
       },
     ],
   },
@@ -557,7 +558,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-08.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -568,8 +569,8 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -595,7 +596,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A number exactly halfway rounds up, so 41.5 rounds to 42.",
+                  "v": "False. It is 4.3; you always round down.",
                 },
               ],
               "id": "RA",
@@ -604,7 +605,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Halfway numbers round down.",
+                  "v": "True. The hundredths digit is 6, so round the tenths up: 4.4.",
                 },
               ],
               "id": "RB",
@@ -613,7 +614,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You always round down to the whole number in front.",
+                  "v": "False. It is 4.",
                 },
               ],
               "id": "RC",
@@ -625,10 +626,18 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.ROUND.HALFWAY",
+            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.WRONG-PLACE",
             "feedback": [],
           },
         ],
@@ -645,7 +654,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The convention is that 5 rounds up: 41.5 ≈ 42.",
+            "v": "True. The hundredths digit is 6, so round the tenths up: 4.4.",
           },
         ],
       },
@@ -653,15 +662,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ella says ",
-      },
-      {
-        "t": "math",
-        "v": "41.5",
-      },
-      {
-        "t": "text",
-        "v": " rounded to the nearest whole number is 41, because it is exactly halfway.",
+        "v": "Leo rounds 4.36 to one decimal place and gets 4.4.",
       },
     ],
   },
@@ -673,7 +674,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-08.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -685,7 +686,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -711,7 +712,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Halfway numbers round down.",
+                  "v": "True. Halfway rounds down.",
                 },
               ],
               "id": "RA",
@@ -720,7 +721,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You always round down to the whole number in front.",
+                  "v": "False. The hundredths digit is 5, which rounds up: 7.3.",
                 },
               ],
               "id": "RB",
@@ -729,7 +730,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A number exactly halfway rounds up, so 29.5 rounds to 30.",
+                  "v": "True. Rounding makes numbers smaller.",
                 },
               ],
               "id": "RC",
@@ -747,6 +748,14 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
             "code": "NPV.ROUND.HALFWAY",
             "feedback": [],
           },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "feedback": [],
+          },
         ],
         "prompt": [
           {
@@ -761,7 +770,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The convention is that 5 rounds up: 29.5 ≈ 30.",
+            "v": "False. The hundredths digit is 5, which rounds up: 7.3.",
           },
         ],
       },
@@ -769,15 +778,7 @@ exports[`Y5-FR-08.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ella says ",
-      },
-      {
-        "t": "math",
-        "v": "29.5",
-      },
-      {
-        "t": "text",
-        "v": " rounded to the nearest whole number is 29, because it is exactly halfway.",
+        "v": "Kim rounds 7.25 to one decimal place and gets 7.2.",
       },
     ],
   },

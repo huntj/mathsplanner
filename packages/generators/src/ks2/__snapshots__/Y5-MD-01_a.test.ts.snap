@@ -10,7 +10,7 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -106,7 +106,7 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -188,7 +188,7 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -284,7 +284,7 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -350,7 +350,7 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -416,7 +416,7 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -482,7 +482,7 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -494,7 +494,7 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -520,7 +520,7 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 60 is a multiple of 6, because 60 = 10 × 6. 6 is a factor of 60.",
+                  "v": "True. Factors and multiples mean the same thing.",
                 },
               ],
               "id": "RA",
@@ -529,7 +529,7 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Factors and multiples mean the same thing.",
+                  "v": "False. 60 is a multiple of 6, because 60 = 10 × 6. 6 is a factor of 60.",
                 },
               ],
               "id": "RB",
@@ -550,7 +550,7 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "MD.FACTOR.FACTOR-MULTIPLE",
@@ -591,14 +591,14 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -609,14 +609,14 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -625,10 +625,19 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -636,7 +645,7 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 132 is a multiple of 11, because 132 = 12 × 11. 11 is a factor of 132.",
+                  "v": "Always. 4 = 2 × 2, so 4 lots of anything is 2 lots of double it.",
                 },
               ],
               "id": "RA",
@@ -645,7 +654,7 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 11 goes into 132, so it is a multiple.",
+                  "v": "Never. 4 and 2 have different times tables.",
                 },
               ],
               "id": "RB",
@@ -654,7 +663,7 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Factors and multiples mean the same thing.",
+                  "v": "Sometimes. Only up to 20.",
                 },
               ],
               "id": "RC",
@@ -672,19 +681,11 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
             "code": "MD.FACTOR.FACTOR-MULTIPLE",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "MD.FACTOR.FACTOR-MULTIPLE",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -694,7 +695,7 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A multiple is in the times table; a factor divides into the number exactly.",
+            "v": "Always. 4 = 2 × 2, so 4 lots of anything is 2 lots of double it.",
           },
         ],
       },
@@ -702,7 +703,7 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Lena says 11 is a multiple of 132.",
+        "v": "Every multiple of 4 is also a multiple of 2.",
       },
     ],
   },
@@ -714,7 +715,7 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -752,7 +753,7 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 6 goes into 48, so it is a multiple.",
+                  "v": "True. Factors and multiples mean the same thing.",
                 },
               ],
               "id": "RA",
@@ -770,7 +771,7 @@ exports[`Y5-MD-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Factors and multiples mean the same thing.",
+                  "v": "True. 6 goes into 48, so it is a multiple.",
                 },
               ],
               "id": "RC",

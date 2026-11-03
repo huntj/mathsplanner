@@ -10,7 +10,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -73,7 +73,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -136,7 +136,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -199,7 +199,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-FR-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -246,7 +246,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiply the top and the bottom by 2.",
+                  "v": "True. Multiplying always makes a fraction smaller.",
                 },
               ],
               "id": "RB",
@@ -255,7 +255,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiplying always makes a fraction smaller.",
+                  "v": "True. Multiply the top and the bottom by 2.",
                 },
               ],
               "id": "RC",
@@ -267,7 +267,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "FR.MULTIPLY.BOTH",
@@ -308,14 +308,14 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-FR-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -326,14 +326,14 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -342,10 +342,19 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -353,7 +362,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiplying always makes a fraction smaller.",
+                  "v": "Never. Fractions make things smaller.",
                 },
               ],
               "id": "RA",
@@ -362,7 +371,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 75/40 is the same as 15/8, so nothing has been multiplied. 5 × 1 = 5 and 5 × 7/8 = 35/8, so the answer is 9 3/8.",
+                  "v": "Sometimes. Only with big fractions.",
                 },
               ],
               "id": "RB",
@@ -371,7 +380,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiply the top and the bottom by 5.",
+                  "v": "Always. A mixed number is more than 1, so double it is more than 2.",
                 },
               ],
               "id": "RC",
@@ -383,7 +392,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "FR.MULTIPLY.BOTH",
@@ -393,7 +402,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -403,7 +412,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "5 × 1 = 5 and 5 × 7/8 = 35/8, so the answer is 9 3/8.",
+            "v": "Always. A mixed number is more than 1, so double it is more than 2.",
           },
         ],
       },
@@ -411,15 +420,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ana says ",
-      },
-      {
-        "t": "math",
-        "v": "5 \\times 1\\frac{7}{8} = \\frac{75}{40}",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Multiplying a mixed number by 2 gives more than 2.",
       },
     ],
   },
@@ -431,7 +432,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-FR-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -443,7 +444,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -469,7 +470,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiplying always makes a fraction smaller.",
+                  "v": "True. Multiply the top and the bottom by 3.",
                 },
               ],
               "id": "RA",
@@ -478,7 +479,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 15/9 is the same as 5/3, so nothing has been multiplied. 3 × 1 = 3 and 3 × 2/3 = 6/3, so the answer is 5.",
+                  "v": "True. Multiplying always makes a fraction smaller.",
                 },
               ],
               "id": "RB",
@@ -487,7 +488,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiply the top and the bottom by 3.",
+                  "v": "False. 15/9 is the same as 5/3, so nothing has been multiplied. 3 × 1 = 3 and 3 × 2/3 = 6/3, so the answer is 5.",
                 },
               ],
               "id": "RC",
@@ -499,7 +500,7 @@ exports[`Y5-FR-05.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "FR.MULTIPLY.BOTH",

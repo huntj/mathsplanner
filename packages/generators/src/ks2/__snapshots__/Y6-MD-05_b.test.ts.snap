@@ -10,7 +10,7 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-MD-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -71,7 +71,7 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-MD-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -132,7 +132,7 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-MD-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -186,14 +186,14 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-MD-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -204,14 +204,14 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -220,19 +220,10 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -240,7 +231,7 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The product is never a common multiple.",
+                  "v": "False. It is 2.",
                 },
               ],
               "id": "RA",
@@ -249,7 +240,7 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. For 3 and 4 it is 12 = 3 × 4, but for 4 and 6 it is 12, not 24.",
+                  "v": "False. It is 24, as 4 × 6 = 24.",
                 },
               ],
               "id": "RB",
@@ -258,7 +249,7 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Multiplying always gives the lowest common multiple.",
+                  "v": "True. Multiples of 4 are 4, 8, 12, … and of 6 are 6, 12, …: 12 is the first in both.",
                 },
               ],
               "id": "RC",
@@ -270,7 +261,15 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "MD.FACTOR.FACTOR-MULTIPLE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.FACTOR.LCM-PRODUCT",
@@ -280,7 +279,7 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -290,7 +289,7 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "List the multiples of 6 until one is also a multiple of 4: 12.",
+            "v": "True. Multiples of 4 are 4, 8, 12, … and of 6 are 6, 12, …: 12 is the first in both.",
           },
         ],
       },
@@ -298,19 +297,19 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The lowest common multiple of two numbers is the two numbers multiplied together.",
+        "v": "Ana says the lowest common multiple of 4 and 6 is 12.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-MD-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -322,13 +321,13 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -337,19 +336,10 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -357,7 +347,7 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Multiplying always gives the lowest common multiple.",
+                  "v": "True. 3 goes into both.",
                 },
               ],
               "id": "RA",
@@ -366,7 +356,7 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. For 3 and 4 it is 12 = 3 × 4, but for 6 and 8 it is 24, not 48.",
+                  "v": "True. 9 − 6 = 3.",
                 },
               ],
               "id": "RB",
@@ -375,7 +365,7 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The product is never a common multiple.",
+                  "v": "False. 3 is a common factor. Common multiples of 6 and 9 are 18, 36, 54, …",
                 },
               ],
               "id": "RC",
@@ -390,14 +380,14 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.FACTOR.LCM-PRODUCT",
+            "code": "MD.FACTOR.FACTOR-MULTIPLE",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -407,7 +397,7 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "List the multiples of 8 until one is also a multiple of 6: 24.",
+            "v": "False. 3 is a common factor. Common multiples of 6 and 9 are 18, 36, 54, …",
           },
         ],
       },
@@ -415,19 +405,19 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The lowest common multiple of two numbers is the two numbers multiplied together.",
+        "v": "Gus says 3 is a common multiple of 6 and 9.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-MD-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -438,14 +428,14 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -454,19 +444,10 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -474,7 +455,7 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. For 3 and 4 it is 12 = 3 × 4, but for 8 and 12 it is 24, not 96.",
+                  "v": "False. It is 24, as 4 × 6 = 24.",
                 },
               ],
               "id": "RA",
@@ -483,7 +464,7 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The product is never a common multiple.",
+                  "v": "False. It is 2.",
                 },
               ],
               "id": "RB",
@@ -492,7 +473,7 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Multiplying always gives the lowest common multiple.",
+                  "v": "True. Multiples of 4 are 4, 8, 12, … and of 6 are 6, 12, …: 12 is the first in both.",
                 },
               ],
               "id": "RC",
@@ -504,17 +485,25 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.FACTOR.LCM-PRODUCT",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MD.FACTOR.FACTOR-MULTIPLE",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -524,7 +513,7 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "List the multiples of 12 until one is also a multiple of 8: 24.",
+            "v": "True. Multiples of 4 are 4, 8, 12, … and of 6 are 6, 12, …: 12 is the first in both.",
           },
         ],
       },
@@ -532,7 +521,7 @@ exports[`Y6-MD-05.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The lowest common multiple of two numbers is the two numbers multiplied together.",
+        "v": "Ana says the lowest common multiple of 4 and 6 is 12.",
       },
     ],
   },

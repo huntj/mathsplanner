@@ -10,7 +10,7 @@ exports[`Y6-ALG-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-ALG-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -84,7 +84,7 @@ exports[`Y6-ALG-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-ALG-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -158,7 +158,7 @@ exports[`Y6-ALG-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-ALG-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -232,7 +232,7 @@ exports[`Y6-ALG-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-ALG-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -306,7 +306,7 @@ exports[`Y6-ALG-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-ALG-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -380,7 +380,7 @@ exports[`Y6-ALG-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-ALG-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -454,7 +454,147 @@ exports[`Y6-ALG-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-ALG-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Multiply first: 3 × 4 = 12, then 10 + 12 = 22.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Work from left to right.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 10 + 3 = 13, and 13 × 4 = 52.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.ORDER.LEFT-TO-RIGHT",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.ORDER.LEFT-TO-RIGHT",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. Multiply first: 3 × 4 = 12, then 10 + 12 = 22.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Using ",
+      },
+      {
+        "t": "math",
+        "v": "C = 10 + 3n",
+      },
+      {
+        "t": "text",
+        "v": ", Max says ",
+      },
+      {
+        "t": "math",
+        "v": "n = 4",
+      },
+      {
+        "t": "text",
+        "v": " gives ",
+      },
+      {
+        "t": "math",
+        "v": "C = 52",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y6-ALG-01",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -492,7 +632,7 @@ exports[`Y6-ALG-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The cost goes up with the hours, so it must be right.",
+                  "v": "True. Work from left to right.",
                 },
               ],
               "id": "RA",
@@ -501,7 +641,7 @@ exports[`Y6-ALG-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Work from left to right.",
+                  "v": "True. 10 + 3 = 13, and 13 × 4 = 52.",
                 },
               ],
               "id": "RB",
@@ -510,7 +650,7 @@ exports[`Y6-ALG-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 5h means 5 × 5, which comes before the addition: 10 + 25 = 35.",
+                  "v": "False. Multiply first: 3 × 4 = 12, then 10 + 12 = 22.",
                 },
               ],
               "id": "RC",
@@ -520,6 +660,14 @@ exports[`Y6-ALG-01 > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.ORDER.LEFT-TO-RIGHT",
+            "feedback": [],
+          },
           {
             "answer": {
               "id": "RB",
@@ -542,7 +690,7 @@ exports[`Y6-ALG-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "C = 10 + 5 × 5 = 35.",
+            "v": "False. Multiply first: 3 × 4 = 12, then 10 + 12 = 22.",
           },
         ],
       },
@@ -550,19 +698,31 @@ exports[`Y6-ALG-01 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The cost in pounds, C, of hiring a bike for h hours is ",
+        "v": "Using ",
       },
       {
         "t": "math",
-        "v": "C = 10 + 5h",
+        "v": "C = 10 + 3n",
+      },
+      {
+        "t": "text",
+        "v": ", Max says ",
+      },
+      {
+        "t": "math",
+        "v": "n = 4",
+      },
+      {
+        "t": "text",
+        "v": " gives ",
+      },
+      {
+        "t": "math",
+        "v": "C = 52",
       },
       {
         "t": "text",
         "v": ".",
-      },
-      {
-        "t": "text",
-        "v": " Kit says 5 hours costs £75.",
       },
     ],
   },
@@ -571,10 +731,10 @@ exports[`Y6-ALG-01 > keeps fixed seeds unchanged 1`] = `
     "diagrams": [],
     "key": {
       "depth": 4,
-      "numbers": "standard",
+      "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-ALG-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -612,7 +772,7 @@ exports[`Y6-ALG-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The cost goes up with the hours, so it must be right.",
+                  "v": "True. 10 + 3 = 13, and 13 × 4 = 52.",
                 },
               ],
               "id": "RA",
@@ -621,7 +781,7 @@ exports[`Y6-ALG-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 2h means 2 × 7, which comes before the addition: 4 + 14 = 18.",
+                  "v": "False. Multiply first: 3 × 4 = 12, then 10 + 12 = 22.",
                 },
               ],
               "id": "RB",
@@ -642,124 +802,12 @@ exports[`Y6-ALG-01 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.ORDER.LEFT-TO-RIGHT",
             "feedback": [],
           },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "C = 4 + 2 × 7 = 18.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "The cost in pounds, C, of hiring a bike for h hours is ",
-      },
-      {
-        "t": "math",
-        "v": "C = 4 + 2h",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-      {
-        "t": "text",
-        "v": " Kit says 7 hours costs £42.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y6-ALG-01",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. You cannot put numbers into a formula.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. 7 × 9 = 63, then add 15: 78.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Work from left to right: (15 + 7) × 9.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
           {
             "answer": {
               "id": "RC",
@@ -782,7 +830,7 @@ exports[`Y6-ALG-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "C = 15 + 7 × 9 = 78.",
+            "v": "False. Multiply first: 3 × 4 = 12, then 10 + 12 = 22.",
           },
         ],
       },
@@ -790,19 +838,31 @@ exports[`Y6-ALG-01 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The cost in pounds, C, of hiring a bike for h hours is ",
+        "v": "Using ",
       },
       {
         "t": "math",
-        "v": "C = 15 + 7h",
+        "v": "C = 10 + 3n",
+      },
+      {
+        "t": "text",
+        "v": ", Max says ",
+      },
+      {
+        "t": "math",
+        "v": "n = 4",
+      },
+      {
+        "t": "text",
+        "v": " gives ",
+      },
+      {
+        "t": "math",
+        "v": "C = 52",
       },
       {
         "t": "text",
         "v": ".",
-      },
-      {
-        "t": "text",
-        "v": " Kit says 9 hours costs £78.",
       },
     ],
   },

@@ -10,7 +10,7 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -87,7 +87,7 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -177,7 +177,7 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -282,7 +282,7 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -368,7 +368,7 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -463,7 +463,7 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -558,7 +558,7 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y6-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -569,8 +569,8 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -596,7 +596,7 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "A number exactly halfway rounds up: 300,500 rounds to 301,000.",
+                  "v": "False. It rounds to 2,500,000.",
                 },
               ],
               "id": "RA",
@@ -605,7 +605,7 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Halfway numbers round down.",
+                  "v": "True. The hundred thousands digit is 4, which is less than 5, so round down.",
                 },
               ],
               "id": "RB",
@@ -614,7 +614,7 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "You always round down by cutting off digits.",
+                  "v": "False. It rounds to 3,000,000, because it has a 6 in it.",
                 },
               ],
               "id": "RC",
@@ -626,18 +626,10 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.ROUND.HALFWAY",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "code": "NPV.ROUND.WRONG-PLACE",
             "feedback": [],
           },
         ],
@@ -654,7 +646,7 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "By convention, halfway rounds up: 300,500 → 301,000.",
+            "v": "True. The hundred thousands digit is 4, which is less than 5, so round down.",
           },
         ],
       },
@@ -662,31 +654,23 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ben says ",
+        "v": "Kai rounds ",
       },
       {
         "t": "math",
-        "v": "300{,}500",
+        "v": "2{,}463{,}000",
       },
       {
         "t": "text",
-        "v": " to the nearest ",
+        "v": " to the nearest million and gets ",
       },
       {
         "t": "math",
-        "v": "1{,}000",
+        "v": "2{,}000{,}000",
       },
       {
         "t": "text",
-        "v": " is ",
-      },
-      {
-        "t": "math",
-        "v": "300{,}000",
-      },
-      {
-        "t": "text",
-        "v": ", because it is exactly in the middle.",
+        "v": ".",
       },
     ],
   },
@@ -698,7 +682,7 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y6-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -838,7 +822,7 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y6-NPV-02",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -849,8 +833,8 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -876,7 +860,7 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Halfway numbers round down.",
+                  "v": "False. It rounds to 3,000,000, because it has a 6 in it.",
                 },
               ],
               "id": "RA",
@@ -885,7 +869,7 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "You always round down by cutting off digits.",
+                  "v": "True. The hundred thousands digit is 4, which is less than 5, so round down.",
                 },
               ],
               "id": "RB",
@@ -894,7 +878,7 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "A number exactly halfway rounds up: 8,550,000 rounds to 8,600,000.",
+                  "v": "False. It rounds to 2,500,000.",
                 },
               ],
               "id": "RC",
@@ -909,15 +893,7 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.ROUND.HALFWAY",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "code": "NPV.ROUND.WRONG-PLACE",
             "feedback": [],
           },
         ],
@@ -934,7 +910,7 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "By convention, halfway rounds up: 8,550,000 → 8,600,000.",
+            "v": "True. The hundred thousands digit is 4, which is less than 5, so round down.",
           },
         ],
       },
@@ -942,31 +918,23 @@ exports[`Y6-NPV-02 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ben says ",
+        "v": "Kai rounds ",
       },
       {
         "t": "math",
-        "v": "8{,}550{,}000",
+        "v": "2{,}463{,}000",
       },
       {
         "t": "text",
-        "v": " to the nearest ",
+        "v": " to the nearest million and gets ",
       },
       {
         "t": "math",
-        "v": "100{,}000",
+        "v": "2{,}000{,}000",
       },
       {
         "t": "text",
-        "v": " is ",
-      },
-      {
-        "t": "math",
-        "v": "8{,}500{,}000",
-      },
-      {
-        "t": "text",
-        "v": ", because it is exactly in the middle.",
+        "v": ".",
       },
     ],
   },

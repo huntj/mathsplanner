@@ -10,7 +10,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-MD-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -111,7 +111,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-MD-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -212,7 +212,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-MD-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -306,14 +306,14 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y5-MD-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -325,13 +325,13 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -340,10 +340,19 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -351,7 +360,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 6 is not prime. Keep splitting: 18 = 2 × 3 × 3.",
+                  "v": "Never. Primes are even.",
                 },
               ],
               "id": "RA",
@@ -360,7 +369,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 3 × 6 = 18, so they are its prime factors.",
+                  "v": "Always. Primes are odd numbers.",
                 },
               ],
               "id": "RB",
@@ -369,7 +378,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any two factors that multiply to the number are prime factors.",
+                  "v": "Sometimes. 2 is prime and even; every other prime is odd.",
                 },
               ],
               "id": "RC",
@@ -384,22 +393,14 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.FACTOR.NOT-PRIME",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.FACTOR.NOT-PRIME",
+            "code": "MD.PRIME.ODD",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -409,7 +410,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "18 = 2 × 3 × 3, and every one of these is prime.",
+            "v": "Sometimes. 2 is prime and even; every other prime is odd.",
           },
         ],
       },
@@ -417,35 +418,19 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says the prime factors of ",
-      },
-      {
-        "t": "math",
-        "v": "18",
-      },
-      {
-        "t": "text",
-        "v": " are ",
-      },
-      {
-        "t": "math",
-        "v": "3 \\times 6",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "A prime number is odd.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y5-MD-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -457,13 +442,13 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -472,10 +457,19 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -483,7 +477,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 5 × 9 = 45, so they are its prime factors.",
+                  "v": "Never. Primes are even.",
                 },
               ],
               "id": "RA",
@@ -492,7 +486,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 9 is not prime. Keep splitting: 45 = 3 × 3 × 5.",
+                  "v": "Always. Primes are odd numbers.",
                 },
               ],
               "id": "RB",
@@ -501,7 +495,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any two factors that multiply to the number are prime factors.",
+                  "v": "Sometimes. 2 is prime and even; every other prime is odd.",
                 },
               ],
               "id": "RC",
@@ -513,25 +507,17 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.FACTOR.NOT-PRIME",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.FACTOR.NOT-PRIME",
+            "code": "MD.PRIME.ODD",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -541,7 +527,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "45 = 3 × 3 × 5, and every one of these is prime.",
+            "v": "Sometimes. 2 is prime and even; every other prime is odd.",
           },
         ],
       },
@@ -549,23 +535,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says the prime factors of ",
-      },
-      {
-        "t": "math",
-        "v": "45",
-      },
-      {
-        "t": "text",
-        "v": " are ",
-      },
-      {
-        "t": "math",
-        "v": "5 \\times 9",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "A prime number is odd.",
       },
     ],
   },
@@ -577,7 +547,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y5-MD-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -588,7 +558,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -615,7 +585,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any two factors that multiply to the number are prime factors.",
+                  "v": "False. 6 is a prime factor too.",
                 },
               ],
               "id": "RA",
@@ -624,7 +594,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 5 × 9 = 45, so they are its prime factors.",
+                  "v": "False. 1 is a prime factor.",
                 },
               ],
               "id": "RB",
@@ -633,7 +603,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 9 is not prime. Keep splitting: 45 = 3 × 3 × 5.",
+                  "v": "True. 30 = 2 × 3 × 5, and 2, 3 and 5 are all prime.",
                 },
               ],
               "id": "RC",
@@ -656,7 +626,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.FACTOR.NOT-PRIME",
+            "code": "MD.PRIME.ONE",
             "feedback": [],
           },
         ],
@@ -673,7 +643,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "45 = 3 × 3 × 5, and every one of these is prime.",
+            "v": "True. 30 = 2 × 3 × 5, and 2, 3 and 5 are all prime.",
           },
         ],
       },
@@ -681,23 +651,7 @@ exports[`Y5-MD-02.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says the prime factors of ",
-      },
-      {
-        "t": "math",
-        "v": "45",
-      },
-      {
-        "t": "text",
-        "v": " are ",
-      },
-      {
-        "t": "math",
-        "v": "5 \\times 9",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Gus says the prime factors of 30 are 2, 3 and 5.",
       },
     ],
   },
