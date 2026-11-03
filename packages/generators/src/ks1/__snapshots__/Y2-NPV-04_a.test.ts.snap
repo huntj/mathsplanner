@@ -10,7 +10,7 @@ exports[`Y2-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -102,7 +102,7 @@ exports[`Y2-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -194,7 +194,7 @@ exports[`Y2-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -286,7 +286,7 @@ exports[`Y2-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -297,127 +297,7 @@ exports[`Y2-NPV-04.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "The sign is the wrong way round, but the reason is right.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "The number with the bigger ones digit is bigger.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Compare the tens first: 2 tens is less than 6 tens, so 29 < 60.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.COMPARE.SIGN-DIRECTION",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.COMPARE.ONES-FIRST",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "29 has 2 tens and 60 has 6 tens, so 29 < 60.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "math",
-        "v": "29 > 60",
-      },
-      {
-        "t": "text",
-        "v": " because 9 is bigger than 0.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y2-NPV-04.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
@@ -444,7 +324,7 @@ exports[`Y2-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Compare the tens first: 3 tens is less than 9 tens, so 39 < 90.",
+                  "v": "True. 52 has 5 tens and 25 has 2 tens.",
                 },
               ],
               "id": "RA",
@@ -453,7 +333,7 @@ exports[`Y2-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The sign is the wrong way round, but the reason is right.",
+                  "v": "False. 5 is bigger than 2, so 25 is bigger.",
                 },
               ],
               "id": "RB",
@@ -462,7 +342,7 @@ exports[`Y2-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The number with the bigger ones digit is bigger.",
+                  "v": "False. They have the same digits, so they are equal.",
                 },
               ],
               "id": "RC",
@@ -472,14 +352,6 @@ exports[`Y2-NPV-04.a > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.COMPARE.SIGN-DIRECTION",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -502,19 +374,132 @@ exports[`Y2-NPV-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "39 has 3 tens and 90 has 9 tens, so 39 < 90.",
+            "v": "True. 52 has 5 tens and 25 has 2 tens.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "t": "math",
-        "v": "39 > 90",
+        "t": "text",
+        "v": "Raj says 52 > 25.",
       },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y2-NPV-04.a",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. Look at the ones first.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. Tens are worth more than ones.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only if the ones are the same.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.COMPARE.ONES-FIRST",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. Tens are worth more than ones.",
+          },
+        ],
+      },
+    ],
+    "stem": [
       {
         "t": "text",
-        "v": " because 9 is bigger than 0.",
+        "v": "To compare two 2-digit numbers, you look at the tens first.",
       },
     ],
   },
@@ -526,7 +511,7 @@ exports[`Y2-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -564,7 +549,7 @@ exports[`Y2-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The sign is the wrong way round, but the reason is right.",
+                  "v": "True. 9 is bigger than 1.",
                 },
               ],
               "id": "RA",
@@ -573,7 +558,7 @@ exports[`Y2-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The number with the bigger ones digit is bigger.",
+                  "v": "True. The arrow points to the bigger number.",
                 },
               ],
               "id": "RB",
@@ -582,7 +567,7 @@ exports[`Y2-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Compare the tens first: 3 tens is less than 9 tens, so 39 < 90.",
+                  "v": "False. 61 has 6 tens and 59 has 5 tens, so 61 > 59.",
                 },
               ],
               "id": "RC",
@@ -597,7 +582,7 @@ exports[`Y2-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.COMPARE.SIGN-DIRECTION",
+            "code": "NPV.COMPARE.ONES-FIRST",
             "feedback": [],
           },
           {
@@ -605,7 +590,7 @@ exports[`Y2-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.COMPARE.ONES-FIRST",
+            "code": "NPV.COMPARE.SIGN-DIRECTION",
             "feedback": [],
           },
         ],
@@ -622,19 +607,15 @@ exports[`Y2-NPV-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "39 has 3 tens and 90 has 9 tens, so 39 < 90.",
+            "v": "False. 61 has 6 tens and 59 has 5 tens, so 61 > 59.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "t": "math",
-        "v": "39 > 90",
-      },
-      {
         "t": "text",
-        "v": " because 9 is bigger than 0.",
+        "v": "Kim writes 61 < 59.",
       },
     ],
   },

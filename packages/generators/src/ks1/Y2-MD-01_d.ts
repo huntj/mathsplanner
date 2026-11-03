@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -19,7 +20,7 @@ const parity = (n: number) => (n % 2 === 0 ? "Even" : "Odd");
 
 export default defineGenerator<Params>({
   id: "Y2-MD-01.d",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["PAT.EVEN-ODD"],
 
@@ -71,20 +72,50 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["When you add two odd numbers, the answer is even."],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["When you add two odd numbers, the answer is even."],
+              truth: "always",
+              reasons: [
+                {
+                  text: "Always. Each odd number has one left over when paired up, and the two left-overs make a pair.",
+                  correct: true,
+                },
+                { text: "Never. Odd add odd makes odd.", code: "PAT.EVEN-ODD" },
+                { text: "Sometimes. It depends how big the numbers are." },
+              ],
+              solution: [{ say: "For example 3 + 5 = 8 and 7 + 9 = 16." }],
+            }),
+          [
             {
-              text: "Always. Each odd number has one left over when paired up, and the two left-overs make a pair.",
-              correct: true,
+              claim: "An even number add an even number is even.",
+              truth: "always",
+              right: "Always. 2 + 4 = 6, 6 + 8 = 14: pairs add to pairs.",
+              wrong: [["Never. It is odd.", "PAT.EVEN-ODD"], ["Sometimes. Only small numbers."]],
             },
-            { text: "Never. Odd add odd makes odd.", code: "PAT.EVEN-ODD" },
-            { text: "Sometimes. It depends how big the numbers are." },
+            {
+              statement: "Ana says 7 is an even number.",
+              truth: false,
+              right: "False. 7 cannot be shared into 2 equal groups, so it is odd.",
+              wrong: [
+                ["True. 7 is a big number.", "PAT.EVEN-ODD"],
+                ["True. All numbers are even."],
+              ],
+            },
+            {
+              claim: "An even number add an odd number is odd.",
+              truth: "always",
+              right: "Always. 4 + 3 = 7, 10 + 5 = 15: there is one left over.",
+              wrong: [
+                ["Never. It is even.", "PAT.EVEN-ODD"],
+                ["Sometimes. It depends which is bigger.", "PAT.EVEN-ODD"],
+              ],
+            },
           ],
-          solution: [{ say: "For example 3 + 5 = 8 and 7 + 9 = 16." }],
-        });
+        );
     }
   },
 

@@ -20,7 +20,7 @@ exports[`Y2-MEA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MEA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -97,7 +97,7 @@ exports[`Y2-MEA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MEA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -174,7 +174,7 @@ exports[`Y2-MEA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MEA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -235,23 +235,13 @@ exports[`Y2-MEA-01.d > keeps fixed seeds unchanged 1`] = `
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "divisions": 5,
-        "instrument": "jug",
-        "max": 20,
-        "reading": 8,
-        "step": 10,
-        "type": "measure",
-        "unit": "\\text{ml}",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MEA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -263,7 +253,7 @@ exports[`Y2-MEA-01.d > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -289,7 +279,7 @@ exports[`Y2-MEA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every small mark on a scale is worth 1.",
+                  "v": "False. Each mark is 100 ml: the next is 300 ml.",
                 },
               ],
               "id": "RA",
@@ -298,7 +288,7 @@ exports[`Y2-MEA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The numbered marks go up in 10s with 5 spaces between, so each small mark is 2. It shows 8 ml.",
+                  "v": "True. Count on 1.",
                 },
               ],
               "id": "RB",
@@ -307,7 +297,7 @@ exports[`Y2-MEA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You always count in 1s on a scale.",
+                  "v": "True. The marks always go up in 1s.",
                 },
               ],
               "id": "RC",
@@ -319,15 +309,7 @@ exports[`Y2-MEA-01.d > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "MEA.SCALE.INTERVAL",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "MEA.SCALE.INTERVAL",
@@ -347,19 +329,15 @@ exports[`Y2-MEA-01.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Work out what one small mark is worth first: 10 ÷ 5 = 2.",
+            "v": "False. Each mark is 100 ml: the next is 300 ml.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
         "t": "text",
-        "v": "Ella says it shows 4 ml, because she counted on 1 for each small mark.",
+        "v": "A jug's scale goes up in 100s. Raj says the mark after 200 ml is 201 ml.",
       },
     ],
   },
@@ -381,7 +359,7 @@ exports[`Y2-MEA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MEA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -511,7 +489,7 @@ exports[`Y2-MEA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MEA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -549,7 +527,7 @@ exports[`Y2-MEA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You always count in 1s on a scale.",
+                  "v": "True. Every small mark on a scale is worth 1.",
                 },
               ],
               "id": "RA",
@@ -567,7 +545,7 @@ exports[`Y2-MEA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every small mark on a scale is worth 1.",
+                  "v": "True. You always count in 1s on a scale.",
                 },
               ],
               "id": "RC",

@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   start: number;
@@ -20,7 +21,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y2-POS-02.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["POS.TRANSLATE.DIRECTION"],
 
@@ -81,23 +82,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Lily moves a counter ${p.move} squares left, then ${p.move} squares right. She says it is back where it started.`,
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Lily moves a counter ${p.move} squares left, then ${p.move} squares right. She says it is back where it started.`,
+              truth: true,
+              reasons: [
+                {
+                  text: "True. Left and right are opposite directions, so the two moves cancel out.",
+                  correct: true,
+                },
+                {
+                  text: `False. It has moved ${2 * p.move} squares from the start.`,
+                  code: "POS.TRANSLATE.DIRECTION",
+                },
+                { text: "False. It depends which square it started on." },
+              ],
+              solution: [
+                { say: `${p.move} left then ${p.move} right ends on the starting square.` },
+              ],
+            }),
+          [
             {
-              text: "True. Left and right are opposite directions, so the two moves cancel out.",
-              correct: true,
+              claim: "A quarter turn and another quarter turn make a half turn.",
+              truth: "always",
+              right: "Always. 2 quarters make a half.",
+              wrong: [
+                ["Never. They make a whole turn.", "POS.TRANSLATE.DIRECTION"],
+                ["Sometimes. Only clockwise."],
+              ],
             },
             {
-              text: `False. It has moved ${2 * p.move} squares from the start.`,
-              code: "POS.TRANSLATE.DIRECTION",
+              statement:
+                "A counter moves 2 squares up, then 2 squares down. Kai says it is back where it started.",
+              truth: true,
+              right: "True. Down undoes up.",
+              wrong: [
+                ["False. It moved 4 squares away.", "POS.TRANSLATE.DIRECTION"],
+                ["False. It is 2 squares up."],
+              ],
             },
-            { text: "False. It depends which square it started on." },
+            {
+              statement:
+                "A counter moves 3 squares right, then 1 square left. Ana says it is 4 squares right of the start.",
+              truth: false,
+              right: "False. Left takes it back: 3 − 1 = 2 squares right.",
+              wrong: [
+                ["True. 3 + 1 = 4.", "POS.TRANSLATE.DIRECTION"],
+                ["True. Every move goes right."],
+              ],
+            },
           ],
-          solution: [{ say: `${p.move} left then ${p.move} right ends on the starting square.` }],
-        });
+        );
     }
   },
 

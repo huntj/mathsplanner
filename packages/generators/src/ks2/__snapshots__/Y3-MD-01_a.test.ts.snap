@@ -10,7 +10,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -89,7 +89,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -168,7 +168,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -247,7 +247,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -331,7 +331,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -415,7 +415,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -521,7 +521,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -643,7 +643,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -765,7 +765,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -865,7 +865,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -876,7 +876,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
@@ -903,7 +903,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Division cannot be done in any order. 3 shared into 27 groups is less than 1 each.",
+                  "v": "True. 7, 14, 21.",
                 },
               ],
               "id": "RA",
@@ -912,7 +912,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both use the same numbers.",
+                  "v": "False. It is 24.",
                 },
               ],
               "id": "RB",
@@ -921,7 +921,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You can swap the numbers, like in multiplication.",
+                  "v": "False. It is 10.",
                 },
               ],
               "id": "RC",
@@ -933,10 +933,18 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MD.TABLES.NEIGHBOUR",
+            "feedback": [],
+          },
+          {
+            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "MD.DIVIDE.ORDER",
+            "code": "MD.MULTIPLY.ADDS",
             "feedback": [],
           },
         ],
@@ -953,7 +961,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Multiplication can be done in any order (9 × 3 = 3 × 9), but division cannot.",
+            "v": "True. 7, 14, 21.",
           },
         ],
       },
@@ -961,23 +969,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sam knows ",
-      },
-      {
-        "t": "math",
-        "v": "27 \\div 3 = 9",
-      },
-      {
-        "t": "text",
-        "v": ". He says ",
-      },
-      {
-        "t": "math",
-        "v": "3 \\div 27 = 9",
-      },
-      {
-        "t": "text",
-        "v": " too.",
+        "v": "Ola says 3 × 7 = 21.",
       },
     ],
   },
@@ -989,7 +981,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1001,7 +993,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -1027,7 +1019,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You can swap the numbers, like in multiplication.",
+                  "v": "True. Both use the same numbers.",
                 },
               ],
               "id": "RA",
@@ -1036,7 +1028,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both use the same numbers.",
+                  "v": "False. Division cannot be done in any order. 3 shared into 21 groups is less than 1 each.",
                 },
               ],
               "id": "RB",
@@ -1045,7 +1037,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Division cannot be done in any order. 3 shared into 21 groups is less than 1 each.",
+                  "v": "True. You can swap the numbers, like in multiplication.",
                 },
               ],
               "id": "RC",
@@ -1057,7 +1049,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
             "code": "MD.DIVIDE.ORDER",
@@ -1113,7 +1105,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-MD-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1125,7 +1117,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -1151,7 +1143,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both use the same numbers.",
+                  "v": "False. 3 × 6 = 18. 21 is 3 × 7.",
                 },
               ],
               "id": "RA",
@@ -1160,7 +1152,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Division cannot be done in any order. 3 shared into 36 groups is less than 1 each.",
+                  "v": "True. 21 is in the 3 times table.",
                 },
               ],
               "id": "RB",
@@ -1169,7 +1161,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You can swap the numbers, like in multiplication.",
+                  "v": "True. 3 + 6 makes 21.",
                 },
               ],
               "id": "RC",
@@ -1181,10 +1173,10 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "MD.DIVIDE.ORDER",
+            "code": "MD.TABLES.NEIGHBOUR",
             "feedback": [],
           },
         ],
@@ -1201,7 +1193,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Multiplication can be done in any order (12 × 3 = 3 × 12), but division cannot.",
+            "v": "False. 3 × 6 = 18. 21 is 3 × 7.",
           },
         ],
       },
@@ -1209,23 +1201,7 @@ exports[`Y3-MD-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sam knows ",
-      },
-      {
-        "t": "math",
-        "v": "36 \\div 3 = 12",
-      },
-      {
-        "t": "text",
-        "v": ". He says ",
-      },
-      {
-        "t": "math",
-        "v": "3 \\div 36 = 12",
-      },
-      {
-        "t": "text",
-        "v": " too.",
+        "v": "Gus says 3 × 6 = 21.",
       },
     ],
   },

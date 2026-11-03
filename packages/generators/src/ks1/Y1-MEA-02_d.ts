@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 // Activities with the unit you would time them in.
 const ACTIVITIES: [string, "seconds" | "minutes" | "hours"][] = [
@@ -27,7 +28,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y1-MEA-02.d",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["AS.COUNT-ON.INCLUDES-START", "MEA.TIME.FACTS"],
 
@@ -76,20 +77,53 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: "Finn says a minute is longer than an hour.",
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: "Finn says a minute is longer than an hour.",
+              truth: false,
+              reasons: [
+                {
+                  text: "False. There are 60 minutes in 1 hour, so an hour is much longer.",
+                  correct: true,
+                },
+                { text: "True. Minutes are longer than hours.", code: "MEA.TIME.FACTS" },
+                { text: "True. A minute has more seconds in it.", code: "MEA.TIME.FACTS" },
+              ],
+              solution: [{ say: "1 hour is 60 minutes, and 1 minute is 60 seconds." }],
+            }),
+          [
             {
-              text: "False. There are 60 minutes in 1 hour, so an hour is much longer.",
-              correct: true,
+              claim: "A minute is shorter than an hour.",
+              truth: "always",
+              right: "Always. An hour is 60 minutes.",
+              wrong: [
+                ["Never. A minute is longer.", "MEA.TIME.FACTS"],
+                ["Sometimes. Only at night."],
+              ],
             },
-            { text: "True. Minutes are longer than hours.", code: "MEA.TIME.FACTS" },
-            { text: "True. A minute has more seconds in it.", code: "MEA.TIME.FACTS" },
+            {
+              statement: "Sam says brushing your teeth takes about 2 minutes.",
+              truth: true,
+              right: "True. It takes a few minutes.",
+              wrong: [
+                ["False. It takes 2 days.", "MEA.TIME.FACTS"],
+                ["False. It takes 2 hours.", "MEA.TIME.FACTS"],
+              ],
+            },
+            {
+              statement: "Mia says a day is shorter than an hour.",
+              truth: false,
+              right: "False. A day is much longer: 24 hours.",
+              wrong: [
+                ["True. Days go fast.", "MEA.TIME.FACTS"],
+                ["True. Hours are long.", "MEA.TIME.FACTS"],
+              ],
+            },
           ],
-          solution: [{ say: "1 hour is 60 minutes, and 1 minute is 60 seconds." }],
-        });
+        );
     }
   },
 

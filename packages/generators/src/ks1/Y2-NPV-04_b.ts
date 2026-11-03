@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
 import parent from "./Y2-NPV-04.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const def = parent.definition;
 
@@ -22,7 +23,7 @@ const byOnes = (list: number[]) => [...list].sort((x, y) => (x % 10) - (y % 10))
 
 export default defineGenerator<Params>({
   id: "Y2-NPV-04.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.COMPARE.ONES-FIRST"],
 
@@ -80,20 +81,54 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Tom puts ", shown, ` in order, smallest first: ${ones.join(", ")}.`],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Tom puts ", shown, ` in order, smallest first: ${ones.join(", ")}.`],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. He ordered the ones digits. Comparing the tens first gives ${sorted.join(", ")}.`,
+                  correct: true,
+                },
+                { text: "True. The ones digits go up each time.", code: "NPV.COMPARE.ONES-FIRST" },
+                { text: "True. Any order is fine if the numbers are all different." },
+              ],
+              solution: [{ say: `Smallest first: ${sorted.join(", ")}.` }],
+            }),
+          [
             {
-              text: `False. He ordered the ones digits. Comparing the tens first gives ${sorted.join(", ")}.`,
-              correct: true,
+              statement: "Ola puts 18, 81, 45 in order, smallest first: 18, 45, 81.",
+              truth: true,
+              right: "True. 1 ten, then 4 tens, then 8 tens.",
+              wrong: [
+                ["False. 45 is smallest.", "NPV.COMPARE.ONES-FIRST"],
+                ["False. 81 is smallest."],
+              ],
             },
-            { text: "True. The ones digits go up each time.", code: "NPV.COMPARE.ONES-FIRST" },
-            { text: "True. Any order is fine if the numbers are all different." },
+            {
+              claim: "A number with more tens is bigger.",
+              truth: "always",
+              right:
+                "Always, for 2-digit numbers. 1 more ten is more than any number of ones up to 9.",
+              wrong: [
+                ["Sometimes. 29 is bigger than 30.", "NPV.COMPARE.ONES-FIRST"],
+                ["Never. Ones matter most."],
+              ],
+            },
+            {
+              statement: "Gus puts 70, 17, 71 in order, smallest first: 70, 17, 71.",
+              truth: false,
+              right: "False. 17 is smallest: 17, 70, 71.",
+              wrong: [
+                ["True. 0 is the smallest digit.", "NPV.COMPARE.ONES-FIRST"],
+                ["True. 70 comes first because it ends in 0."],
+              ],
+            },
           ],
-          solution: [{ say: `Smallest first: ${sorted.join(", ")}.` }],
-        });
+        );
     }
   },
 

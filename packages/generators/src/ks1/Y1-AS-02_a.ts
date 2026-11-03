@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer, tenFrames } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   whole: number;
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y1-AS-02.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.COMPOSITION.ADD-NOT-PART"],
 
@@ -59,29 +60,59 @@ export default defineGenerator<Params>({
           solution: [{ say: `${p.part} and ${other} make ${p.whole}.` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ivy knows ",
-            A.math(`${p.part} + ${other} = ${p.whole}`),
-            ". She says that means ",
-            A.math(`${p.part + 1} + ${other + 1} = ${p.whole}`),
-            ".",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ivy knows ",
+                A.math(`${p.part} + ${other} = ${p.whole}`),
+                ". She says that means ",
+                A.math(`${p.part + 1} + ${other + 1} = ${p.whole}`),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. If one part gets 1 bigger, the other part must get 1 smaller to keep the whole at ${p.whole}: ${p.part + 1} + ${other - 1} = ${p.whole}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Both parts went up by 1, so the whole stays the same.",
+                  code: "NPV.COMPOSITION.ADD-NOT-PART",
+                },
+                { text: `True. Any two numbers that are close together make ${p.whole}.` },
+              ],
+              solution: [{ say: "", math: `${p.part + 1} + ${other + 1} = ${p.whole + 2}` }],
+            }),
+          [
             {
-              text: `False. If one part gets 1 bigger, the other part must get 1 smaller to keep the whole at ${p.whole}: ${p.part + 1} + ${other - 1} = ${p.whole}.`,
-              correct: true,
+              statement: "Leo says 6 + 4 = 10.",
+              truth: true,
+              right: "True. 6 and 4 make 10.",
+              wrong: [["False. It is 64.", "NPV.COMPOSITION.ADD-NOT-PART"], ["False. It is 9."]],
             },
             {
-              text: "True. Both parts went up by 1, so the whole stays the same.",
-              code: "NPV.COMPOSITION.ADD-NOT-PART",
+              claim: "If 7 + 3 = 10, then 3 + 7 = 10.",
+              truth: "always",
+              right: "Always. You can add in either order.",
+              wrong: [
+                ["Never. The order matters.", "NPV.COMPOSITION.ADD-NOT-PART"],
+                ["Sometimes. Only for small numbers."],
+              ],
             },
-            { text: `True. Any two numbers that are close together make ${p.whole}.` },
+            {
+              statement: "Ana says 2 + 7 = 10.",
+              truth: false,
+              right: "False. 2 + 7 = 9. 2 + 8 makes 10.",
+              wrong: [
+                ["True. 2 and 7 are close to 10.", "NPV.COMPOSITION.ADD-NOT-PART"],
+                ["True. All bonds make 10."],
+              ],
+            },
           ],
-          solution: [{ say: "", math: `${p.part + 1} + ${other + 1} = ${p.whole + 2}` }],
-        });
+        );
     }
   },
 

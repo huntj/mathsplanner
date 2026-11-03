@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const ITEMS = ["apple", "toy car", "shoe", "book", "orange"];
 
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y1-MEA-01.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["AS.PROBLEM.KEYWORD", "MEA.SEQUENCE.ORDER", "MEA.COMPARE.LOOKS"],
 
@@ -71,17 +72,54 @@ export default defineGenerator<Params>({
           solution: [{ say: `From heaviest to lightest: ${x}, ${y}, ${z}.` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `On a balance, the side with the ${x} goes down and the side with the ${y} goes up. Raj says the ${y} is heavier because it is higher.`,
-          truth: false,
-          reasons: [
-            { text: `False. The heavier side goes down, so the ${x} is heavier.`, correct: true },
-            { text: "True. The higher side is always heavier.", code: "MEA.COMPARE.LOOKS" },
-            { text: `True. The ${y} is bigger.`, code: "MEA.COMPARE.LOOKS" },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `On a balance, the side with the ${x} goes down and the side with the ${y} goes up. Raj says the ${y} is heavier because it is higher.`,
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The heavier side goes down, so the ${x} is heavier.`,
+                  correct: true,
+                },
+                { text: "True. The higher side is always heavier.", code: "MEA.COMPARE.LOOKS" },
+                { text: `True. The ${y} is bigger.`, code: "MEA.COMPARE.LOOKS" },
+              ],
+              solution: [{ say: "On a balance the heavier side goes down." }],
+            }),
+          [
+            {
+              claim: "On a balance, the heavier side goes down.",
+              truth: "always",
+              right: "Always. The heavy side sinks.",
+              wrong: [
+                ["Never. The heavy side goes up.", "MEA.COMPARE.LOOKS"],
+                ["Sometimes. It depends on the colour."],
+              ],
+            },
+            {
+              statement:
+                "A brick is heavier than a feather. Sam says the brick side of the balance goes down.",
+              truth: true,
+              right: "True. The heavier side goes down.",
+              wrong: [
+                ["False. The feather side goes down.", "MEA.COMPARE.LOOKS"],
+                ["False. They balance."],
+              ],
+            },
+            {
+              statement: "Mia says a big balloon must be heavier than a small stone.",
+              truth: false,
+              right: "False. Big does not mean heavy. A balloon is very light.",
+              wrong: [
+                ["True. Bigger things are heavier.", "MEA.COMPARE.LOOKS"],
+                ["True. The balloon looks heavy."],
+              ],
+            },
           ],
-          solution: [{ say: "On a balance the heavier side goes down." }],
-        });
+        );
     }
   },
 

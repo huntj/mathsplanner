@@ -11,6 +11,7 @@ import { pickAngle } from "../shared/angles.ts";
 import { chosenFigure } from "../shared/counting.ts";
 import { mixFamilies } from "../shared/npv.ts";
 import parent from "./Y3-GEO-03.ts";
+import { withClaims } from "../shared/variety.ts";
 
 interface Params {
   small: number;
@@ -82,5 +83,37 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y3-GEO-03.a", { 1: own, 2: { ...parent.definition, id: "Y3-GEO-03.a" }, 4: own }),
+  withClaims(
+    mixFamilies("Y3-GEO-03.a", { 1: own, 2: { ...parent.definition, id: "Y3-GEO-03.a" }, 4: own }),
+    [
+      {
+        claim: "A right angle is a quarter turn.",
+        truth: "always",
+        right: "Always. Four right angles make a whole turn.",
+        wrong: [
+          ["Never. It is a half turn.", "GEO.TURNS.FRACTION"],
+          ["Sometimes. Only when it points up.", "GEO.SHAPES.ORIENTATION"],
+        ],
+      },
+      {
+        statement: "Sol says the corner of a book is a right angle.",
+        truth: true,
+        right: "True. Its edges meet square, like the corner of a square.",
+        wrong: [
+          ["False. Only angles that point up are right angles.", "GEO.SHAPES.ORIENTATION"],
+          ["False. A book has no angles."],
+        ],
+      },
+      {
+        statement:
+          "A right angle is drawn tilted on its side. Mia says it is not a right angle any more.",
+        truth: false,
+        right: "False. Turning an angle does not change its size: it is still a right angle.",
+        wrong: [
+          ["True. Right angles must point up.", "GEO.SHAPES.ORIENTATION"],
+          ["True. Tilting makes it bigger.", "GEO.ANGLES.SIZE-BY-ARMS"],
+        ],
+      },
+    ],
+  ),
 );

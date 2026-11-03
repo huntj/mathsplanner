@@ -10,7 +10,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MD-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -89,7 +89,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MD-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -168,7 +168,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MD-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -247,7 +247,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MD-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -331,7 +331,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MD-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -415,7 +415,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MD-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -521,7 +521,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MD-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -643,7 +643,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MD-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -751,7 +751,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MD-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -830,14 +830,14 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MD-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -848,14 +848,14 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RA",
+          "correct": "B",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -864,19 +864,10 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -884,7 +875,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. 10 is even, and any number of lots of an even number is even.",
+                  "v": "True. 10 and 7 make 17.",
                 },
               ],
               "id": "RA",
@@ -893,7 +884,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Times-table answers are always odd.",
+                  "v": "True. Put 1 in front of 7.",
                 },
               ],
               "id": "RB",
@@ -902,7 +893,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. 10 × 3 is odd.",
+                  "v": "False. 10 × 7 means 7 tens, which is 70.",
                 },
               ],
               "id": "RC",
@@ -911,11 +902,20 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MD.MULTIPLY.ADDS",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -925,7 +925,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The 10 times table: 10, 20, 30, 40, …",
+            "v": "False. 10 × 7 means 7 tens, which is 70.",
           },
         ],
       },
@@ -933,19 +933,19 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A number in the 10 times table is even.",
+        "v": "Raj says 10 × 7 = 17.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MD-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -957,13 +957,13 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -972,19 +972,10 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -992,7 +983,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Times-table answers are always odd.",
+                  "v": "False. It is 14.",
                 },
               ],
               "id": "RA",
@@ -1001,7 +992,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. 10 is even, and any number of lots of an even number is even.",
+                  "v": "False. It is 50.",
                 },
               ],
               "id": "RB",
@@ -1010,7 +1001,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. 10 × 3 is odd.",
+                  "v": "True. 4 tens are 40.",
                 },
               ],
               "id": "RC",
@@ -1019,11 +1010,28 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "MD.MULTIPLY.ADDS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MD.TABLES.NEIGHBOUR",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -1033,7 +1041,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The 10 times table: 10, 20, 30, 40, …",
+            "v": "True. 4 tens are 40.",
           },
         ],
       },
@@ -1041,7 +1049,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A number in the 10 times table is even.",
+        "v": "Kim says 10 × 4 = 40.",
       },
     ],
   },
@@ -1053,7 +1061,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MD-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1065,7 +1073,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -1100,7 +1108,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. 10 is even, and any number of lots of an even number is even.",
+                  "v": "Sometimes. 10 × 3 is odd.",
                 },
               ],
               "id": "RA",
@@ -1118,7 +1126,7 @@ exports[`Y2-MD-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. 10 × 3 is odd.",
+                  "v": "Always. 10 is even, and any number of lots of an even number is even.",
                 },
               ],
               "id": "RC",

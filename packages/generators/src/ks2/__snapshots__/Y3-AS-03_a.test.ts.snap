@@ -10,7 +10,7 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-AS-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -65,7 +65,7 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-AS-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-AS-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -189,7 +189,7 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-AS-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -200,8 +200,8 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -227,7 +227,7 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The estimate is 600, which is close to 621, so Leo's answer is sensible. The inverse shows it is right.",
+                  "v": "False. An estimate must match exactly.",
                 },
               ],
               "id": "RA",
@@ -236,7 +236,7 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Rounding always shows the exact answer.",
+                  "v": "False. You cannot estimate with hundreds.",
                 },
               ],
               "id": "RB",
@@ -245,7 +245,7 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. An answer is only right if it is exactly the same as the estimate.",
+                  "v": "True. 401 is close to the estimate 400.",
                 },
               ],
               "id": "RC",
@@ -254,7 +254,16 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
@@ -268,15 +277,7 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "401 ≈ 400 and 220 ≈ 200, so 400 + 200 = 600.",
-          },
-        ],
-      },
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "The exact answer is 621.",
+            "v": "True. 401 is close to the estimate 400.",
           },
         ],
       },
@@ -284,27 +285,19 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Leo works out ",
-      },
-      {
-        "t": "math",
-        "v": "401 + 220",
-      },
-      {
-        "t": "text",
-        "v": " and gets 621. Mia rounds to the nearest 100 and says Leo must have made a mistake.",
+        "v": "Kim works out 298 + 103 = 401. She estimates 300 + 100 = 400 and says her answer looks right.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-AS-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -316,13 +309,13 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -331,10 +324,19 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -342,7 +344,7 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The answer must be right because it has the same number of digits.",
+                  "v": "Never. Estimates are guesses.",
                 },
               ],
               "id": "RA",
@@ -351,7 +353,7 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Estimates are never close enough to spot a mistake.",
+                  "v": "Always, if you round sensibly. It shows roughly how big the answer should be.",
                 },
               ],
               "id": "RB",
@@ -360,7 +362,7 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The estimate is 420, but 515 is a long way from it, so Leo has made a mistake.",
+                  "v": "Sometimes. Only for adding.",
                 },
               ],
               "id": "RC",
@@ -369,11 +371,20 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -383,15 +394,7 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "697 ≈ 700 and 282 ≈ 280, so 700 − 280 = 420.",
-          },
-        ],
-      },
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "The exact answer is 415.",
+            "v": "Always, if you round sensibly. It shows roughly how big the answer should be.",
           },
         ],
       },
@@ -399,27 +402,19 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Leo works out ",
-      },
-      {
-        "t": "math",
-        "v": "697 - 282",
-      },
-      {
-        "t": "text",
-        "v": " and gets 515. Mia rounds to the nearest 10 and says Leo must have made a mistake.",
+        "v": "An estimate is close to the real answer.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-AS-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -431,13 +426,13 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -446,10 +441,19 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -457,7 +461,7 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Estimates are never close enough to spot a mistake.",
+                  "v": "Always, if you round sensibly. It shows roughly how big the answer should be.",
                 },
               ],
               "id": "RA",
@@ -466,7 +470,7 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The answer must be right because it has the same number of digits.",
+                  "v": "Never. Estimates are guesses.",
                 },
               ],
               "id": "RB",
@@ -475,7 +479,7 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The estimate is 200, but 1,274 is a long way from it, so Leo has made a mistake.",
+                  "v": "Sometimes. Only for adding.",
                 },
               ],
               "id": "RC",
@@ -484,11 +488,20 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -498,15 +511,7 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "130 ≈ 100 and 144 ≈ 100, so 100 + 100 = 200.",
-          },
-        ],
-      },
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "The exact answer is 274.",
+            "v": "Always, if you round sensibly. It shows roughly how big the answer should be.",
           },
         ],
       },
@@ -514,15 +519,7 @@ exports[`Y3-AS-03.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Leo works out ",
-      },
-      {
-        "t": "math",
-        "v": "130 + 144",
-      },
-      {
-        "t": "text",
-        "v": " and gets 1,274. Mia rounds to the nearest 100 and says Leo must have made a mistake.",
+        "v": "An estimate is close to the real answer.",
       },
     ],
   },

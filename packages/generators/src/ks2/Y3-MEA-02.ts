@@ -11,6 +11,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { onGrid } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   w: number;
@@ -49,7 +50,7 @@ function labelledTriangle([a, b, c]: [number, number, number]): GeometrySpec {
 
 export default defineGenerator<Params>({
   id: "Y3-MEA-02",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.PERIMETER.AREA", "MEA.AREA.SAME-PERIMETER"],
 
@@ -122,49 +123,76 @@ export default defineGenerator<Params>({
           [2, 2],
           [4, 1],
         ]) as [[number, number], [number, number]];
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Each square is 1 cm long. Both rectangles cover the same number of squares.",
-            A.figure(
-              onGrid(
-                [
-                  [
-                    [0, 0],
-                    [a, 0],
-                    [a, b],
-                    [0, b],
-                  ],
-                  [
-                    [0, 0],
-                    [c, 0],
-                    [c, d],
-                    [0, d],
-                  ],
-                ],
-                "Two rectangles drawn on a grid of centimetre squares.",
-              ),
-            ),
-            "Ola says they must have the same perimeter.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Each square is 1 cm long. Both rectangles cover the same number of squares.",
+                A.figure(
+                  onGrid(
+                    [
+                      [
+                        [0, 0],
+                        [a, 0],
+                        [a, b],
+                        [0, b],
+                      ],
+                      [
+                        [0, 0],
+                        [c, 0],
+                        [c, d],
+                        [0, d],
+                      ],
+                    ],
+                    "Two rectangles drawn on a grid of centimetre squares.",
+                  ),
+                ),
+                "Ola says they must have the same perimeter.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The perimeters are ${2 * (a + b)} cm and ${2 * (c + d)} cm. Covering the same squares does not mean the same distance round.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Same squares inside means the same perimeter.",
+                  code: "MEA.AREA.SAME-PERIMETER",
+                },
+                { text: `True. Both perimeters are ${p.area} cm.`, code: "MEA.PERIMETER.AREA" },
+              ],
+              solution: [
+                {
+                  say: `${a} + ${b} + ${a} + ${b} = ${2 * (a + b)} cm and ${c} + ${d} + ${c} + ${d} = ${2 * (c + d)} cm.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. The perimeters are ${2 * (a + b)} cm and ${2 * (c + d)} cm. Covering the same squares does not mean the same distance round.`,
-              correct: true,
+              statement: "Leo says the perimeter of a 3 cm by 2 cm rectangle is 10 cm.",
+              truth: true,
+              right: "True. 3 + 2 + 3 + 2 = 10 cm.",
+              wrong: [["False. It is 6 cm.", "MEA.PERIMETER.AREA"], ["False. It is 5 cm."]],
             },
             {
-              text: "True. Same squares inside means the same perimeter.",
-              code: "MEA.AREA.SAME-PERIMETER",
+              claim: "The perimeter is the distance all the way round a shape.",
+              truth: "always",
+              right: "Always. Add up the lengths of all the sides.",
+              wrong: [
+                ["Never. It is the space inside.", "MEA.PERIMETER.AREA"],
+                ["Sometimes. Only for squares."],
+              ],
             },
-            { text: `True. Both perimeters are ${p.area} cm.`, code: "MEA.PERIMETER.AREA" },
-          ],
-          solution: [
             {
-              say: `${a} + ${b} + ${a} + ${b} = ${2 * (a + b)} cm and ${c} + ${d} + ${c} + ${d} = ${2 * (c + d)} cm.`,
+              statement: "A square has sides of 4 cm. Mia says its perimeter is 8 cm.",
+              truth: false,
+              right: "False. A square has 4 sides: 4 + 4 + 4 + 4 = 16 cm.",
+              wrong: [["True. 4 + 4 = 8.", "MEA.PERIMETER.AREA"], ["True. Add two sides."]],
             },
           ],
-        });
+        );
       }
     }
   },

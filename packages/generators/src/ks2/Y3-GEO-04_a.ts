@@ -9,6 +9,7 @@ import { defineGenerator, type GeneratorDefinition, type QuestionDraft } from "@
 import { chosenText } from "../shared/counting.ts";
 import { mixFamilies } from "../shared/npv.ts";
 import parent from "./Y3-GEO-04.ts";
+import { withClaims } from "../shared/variety.ts";
 
 const THINGS: [string, "Horizontal" | "Vertical"][] = [
   ["a flagpole standing straight up", "Vertical"],
@@ -81,5 +82,36 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y3-GEO-04.a", { 1: own, 2: { ...parent.definition, id: "Y3-GEO-04.a" }, 4: own }),
+  withClaims(
+    mixFamilies("Y3-GEO-04.a", { 1: own, 2: { ...parent.definition, id: "Y3-GEO-04.a" }, 4: own }),
+    [
+      {
+        claim: "Perpendicular lines meet at a right angle.",
+        truth: "always",
+        right: "Always. That is what perpendicular means.",
+        wrong: [
+          ["Never. They never meet.", "GEO.LINES.PARALLEL-PERPENDICULAR"],
+          ["Sometimes. Only if they are long."],
+        ],
+      },
+      {
+        statement: "Ana says the two long sides of a ruler are parallel.",
+        truth: true,
+        right: "True. They stay the same distance apart and never meet.",
+        wrong: [
+          ["False. Parallel lines must meet.", "GEO.LINES.PARALLEL-PERPENDICULAR"],
+          ["False. Only lines across a page are parallel.", "GEO.LINES.PARALLEL-ON-PAGE"],
+        ],
+      },
+      {
+        statement: "Raj says two lines that cross like a letter X are parallel.",
+        truth: false,
+        right: "False. Parallel lines never meet. Lines that cross are not parallel.",
+        wrong: [
+          ["True. They are both straight.", "GEO.LINES.PARALLEL-PERPENDICULAR"],
+          ["True. Any two lines are parallel."],
+        ],
+      },
+    ],
+  ),
 );

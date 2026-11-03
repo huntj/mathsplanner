@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import type { CountersSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { chosenFigure, numberAnswer, tenFrames } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -20,7 +21,7 @@ const total = (spec: unknown) =>
 
 export default defineGenerator<Params>({
   id: "Y1-NPV-04.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 3, 4],
   misconceptions: ["NPV.TEENS.REVERSAL", "NPV.COUNT.SKIP-OR-DOUBLE"],
 
@@ -85,30 +86,63 @@ export default defineGenerator<Params>({
           solution: [{ say: `${p.m} is one full ten frame and ${p.m - 10} more.` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Mo shows ${p.n} with ${ones} full ten frame${ones > 1 ? "s" : ""} and ${tens} more counter${tens > 1 ? "s" : ""}.`,
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Mo shows ${p.n} with ${ones} full ten frame${ones > 1 ? "s" : ""} and ${tens} more counter${tens > 1 ? "s" : ""}.`,
+              truth: false,
+              reasons: [
+                {
+                  text: `False. That shows ${ones * 10 + tens}. ${p.n} needs ${tens} full ten frame${tens > 1 ? "s" : ""} and ${ones} more counters.`,
+                  correct: true,
+                },
+                {
+                  text: `True. The digits of ${p.n} are ${tens} and ${ones}.`,
+                  code: "NPV.TEENS.REVERSAL",
+                },
+                {
+                  text: "True. It does not matter which digit tells you the full frames.",
+                  code: "NPV.TEENS.REVERSAL",
+                },
+              ],
+              solution: [
+                {
+                  say: `The tens digit tells you the full ten frames: ${tens}. The ones digit tells you the extra counters: ${ones}.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. That shows ${ones * 10 + tens}. ${p.n} needs ${tens} full ten frame${tens > 1 ? "s" : ""} and ${ones} more counters.`,
-              correct: true,
+              statement: "Leo shows 12 with one full ten frame and 2 more counters.",
+              truth: true,
+              right: "True. A full ten frame is 10, and 2 more makes 12.",
+              wrong: [
+                ["False. 12 needs 12 ten frames.", "NPV.COUNT.SKIP-OR-DOUBLE"],
+                ["False. 12 is 2 frames and 1 counter.", "NPV.TEENS.REVERSAL"],
+              ],
             },
             {
-              text: `True. The digits of ${p.n} are ${tens} and ${ones}.`,
-              code: "NPV.TEENS.REVERSAL",
+              claim: "A full ten frame has 10 counters.",
+              truth: "always",
+              right: "Always. It has 10 spaces, and full means every space has a counter.",
+              wrong: [
+                ["Never. It has 5.", "NPV.COUNT.SKIP-OR-DOUBLE"],
+                ["Sometimes. It depends on the counters."],
+              ],
             },
             {
-              text: "True. It does not matter which digit tells you the full frames.",
-              code: "NPV.TEENS.REVERSAL",
+              statement: "Mia shows 17 with one full ten frame and 1 more counter.",
+              truth: false,
+              right: "False. 17 is 10 and 7: one full ten frame and 7 more counters.",
+              wrong: [
+                ["True. 17 has a 1 in it.", "NPV.TEENS.REVERSAL"],
+                ["True. Seventeen starts with one ten."],
+              ],
             },
           ],
-          solution: [
-            {
-              say: `The tens digit tells you the full ten frames: ${tens}. The ones digit tells you the extra counters: ${ones}.`,
-            },
-          ],
-        });
+        );
     }
   },
 

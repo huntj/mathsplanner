@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { distinctValues, tableLatex, TOPICS } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   topic: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y2-STA-01.d",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["AS.PROBLEM.KEYWORD"],
 
@@ -75,24 +76,55 @@ export default defineGenerator<Params>({
         });
       default: {
         const top = cats[p.values.indexOf(Math.max(...p.values))] ?? "";
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            intro,
-            table,
-            `Kai says ${cats[0]} is the most popular, because it is at the top of the table.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                intro,
+                table,
+                `Kai says ${cats[0]} is the most popular, because it is at the top of the table.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The order of the rows does not matter. ${top} has the biggest number.`,
+                  correct: true,
+                },
+                { text: "True. Tables always put the most popular first." },
+                { text: `True. ${cats[0]} has the most letters.` },
+              ],
+              solution: [{ say: `Compare the numbers: ${top} has ${Math.max(...p.values)}.` }],
+            }),
+          [
             {
-              text: `False. The order of the rows does not matter. ${top} has the biggest number.`,
-              correct: true,
+              claim: "A table can show how many there are of each thing.",
+              truth: "always",
+              right: "Always. Each row shows a thing and how many.",
+              wrong: [
+                ["Never. Tables only show names.", "AS.PROBLEM.KEYWORD"],
+                ["Sometimes. Only for pets."],
+              ],
             },
-            { text: "True. Tables always put the most popular first." },
-            { text: `True. ${cats[0]} has the most letters.` },
+            {
+              statement: "A table shows 8 cats and 5 dogs. Kai says there are 13 cats and dogs.",
+              truth: true,
+              right: "True. 8 + 5 = 13.",
+              wrong: [["False. There are 3.", "AS.PROBLEM.KEYWORD"], ["False. There are 85."]],
+            },
+            {
+              statement:
+                "A table shows 9 apples and 6 pears. Ana says there are 3 more pears than apples.",
+              truth: false,
+              right: "False. There are 3 more apples: 9 − 6 = 3.",
+              wrong: [
+                ["True. 'More' means the second one.", "AS.PROBLEM.KEYWORD"],
+                ["True. The difference is 3."],
+              ],
+            },
           ],
-          solution: [{ say: `Compare the numbers: ${top} has ${Math.max(...p.values)}.` }],
-        });
+        );
       }
     }
   },

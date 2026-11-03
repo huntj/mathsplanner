@@ -19,7 +19,7 @@ exports[`Y1-AS-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-AS-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -89,7 +89,7 @@ exports[`Y1-AS-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-AS-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -159,7 +159,7 @@ exports[`Y1-AS-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-AS-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -220,7 +220,7 @@ exports[`Y1-AS-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-AS-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -299,7 +299,7 @@ exports[`Y1-AS-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-AS-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -378,7 +378,7 @@ exports[`Y1-AS-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-AS-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -457,7 +457,115 @@ exports[`Y1-AS-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-AS-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 15 and 5 make 25.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Add 5 and 5 and put 2 in front.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 5 + 5 = 10, so 15 + 5 = 20.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.PLACE.FACE-VALUE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. 5 + 5 = 10, so 15 + 5 = 20.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Kim says 15 + 5 = 25.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y1-AS-02.b",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -495,7 +603,7 @@ exports[`Y1-AS-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You have to add 10 to both numbers.",
+                  "v": "False. It is 128.",
                 },
               ],
               "id": "RA",
@@ -504,7 +612,7 @@ exports[`Y1-AS-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 18 is 10 more than 8, so the total is 10 more than 10.",
+                  "v": "True. 2 + 8 = 10, and 10 more makes 20.",
                 },
               ],
               "id": "RB",
@@ -513,7 +621,7 @@ exports[`Y1-AS-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Bonds to 10 do not help with bonds to 20.",
+                  "v": "False. It is 18.",
                 },
               ],
               "id": "RC",
@@ -526,6 +634,14 @@ exports[`Y1-AS-02.b > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.COMPOSITION.ADD-NOT-PART",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.PLACE.FACE-VALUE",
@@ -542,150 +658,18 @@ exports[`Y1-AS-02.b > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "2 + 18 = 2 + 8 + 10 = 20",
-        "say": [],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Joe says: ",
-      },
-      {
-        "t": "math",
-        "v": "2 + 8 = 10",
-      },
-      {
-        "t": "text",
-        "v": ", so ",
-      },
-      {
-        "t": "math",
-        "v": "2 + 18 = 20",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y1-AS-02.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. You have to add 10 to both numbers.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Bonds to 10 do not help with bonds to 20.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. 15 is 10 more than 5, so the total is 10 more than 10.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.PLACE.FACE-VALUE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
+        "say": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "True. 2 + 8 = 10, and 10 more makes 20.",
           },
         ],
-      },
-    ],
-    "solution": [
-      {
-        "math": "5 + 15 = 5 + 5 + 10 = 20",
-        "say": [],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Joe says: ",
-      },
-      {
-        "t": "math",
-        "v": "5 + 5 = 10",
-      },
-      {
-        "t": "text",
-        "v": ", so ",
-      },
-      {
-        "t": "math",
-        "v": "5 + 15 = 20",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Sam says 12 + 8 = 20.",
       },
     ],
   },
@@ -697,7 +681,7 @@ exports[`Y1-AS-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-AS-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -708,8 +692,8 @@ exports[`Y1-AS-02.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RC",
+          "correct": "B",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -735,7 +719,7 @@ exports[`Y1-AS-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You have to add 10 to both numbers.",
+                  "v": "False. 5 + 5 = 10, so 15 + 5 = 20.",
                 },
               ],
               "id": "RA",
@@ -744,7 +728,7 @@ exports[`Y1-AS-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Bonds to 10 do not help with bonds to 20.",
+                  "v": "True. 15 and 5 make 25.",
                 },
               ],
               "id": "RB",
@@ -753,7 +737,7 @@ exports[`Y1-AS-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 18 is 10 more than 8, so the total is 10 more than 10.",
+                  "v": "True. Add 5 and 5 and put 2 in front.",
                 },
               ],
               "id": "RC",
@@ -765,7 +749,7 @@ exports[`Y1-AS-02.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.PLACE.FACE-VALUE",
@@ -782,30 +766,18 @@ exports[`Y1-AS-02.b > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "2 + 18 = 2 + 8 + 10 = 20",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. 5 + 5 = 10, so 15 + 5 = 20.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Joe says: ",
-      },
-      {
-        "t": "math",
-        "v": "2 + 8 = 10",
-      },
-      {
-        "t": "text",
-        "v": ", so ",
-      },
-      {
-        "t": "math",
-        "v": "2 + 18 = 20",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Kim says 15 + 5 = 25.",
       },
     ],
   },

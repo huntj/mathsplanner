@@ -9,6 +9,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { regularPolygon, shape, type ShapeKind } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** A shape to count the angles of: a named kind or a regular polygon with this many sides. */
@@ -67,7 +68,7 @@ const CLAIMS = [
 
 export default defineGenerator<Params>({
   id: "Y3-GEO-02",
-  version: "1.0.1",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.SHAPES.SIDES-VERTICES", "GEO.TURNS.FRACTION"],
 
@@ -137,13 +138,43 @@ export default defineGenerator<Params>({
       }
       default: {
         const c = CLAIMS[p.claim] ?? CLAIMS[0];
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: c?.statement ?? "",
-          truth: c?.truth ?? true,
-          reasons: c?.reasons ?? [],
-          solution: [{ say: c?.reasons[0]?.text ?? "" }],
-        });
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: c?.statement ?? "",
+              truth: c?.truth ?? true,
+              reasons: c?.reasons ?? [],
+              solution: [{ say: c?.reasons[0]?.text ?? "" }],
+            }),
+          [
+            {
+              claim: "A shape with 4 straight sides has 4 angles.",
+              truth: "always",
+              right: "Always. Each corner between two sides makes an angle.",
+              wrong: [
+                ["Never. It has 2 angles.", "GEO.SHAPES.SIDES-VERTICES"],
+                ["Sometimes. Only squares do."],
+              ],
+            },
+            {
+              statement: "Ben says a square has 4 right angles.",
+              truth: true,
+              right: "True. All 4 corners of a square are right angles.",
+              wrong: [["False. It has 2.", "GEO.TURNS.FRACTION"], ["False. It has none."]],
+            },
+            {
+              statement: "Kim says a quarter turn is the same as two right angles.",
+              truth: false,
+              right: "False. A quarter turn is one right angle. Two right angles make a half turn.",
+              wrong: [
+                ["True. A quarter is 2.", "GEO.TURNS.FRACTION"],
+                ["True. Turns and angles are different things."],
+              ],
+            },
+          ],
+        );
       }
     }
   },

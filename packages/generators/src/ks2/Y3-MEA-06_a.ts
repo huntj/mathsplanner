@@ -10,6 +10,7 @@ import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { mixFamilies } from "../shared/npv.ts";
 import parent from "./Y3-MEA-06.ts";
+import { withClaims } from "../shared/variety.ts";
 
 interface Params {
   minutes: number;
@@ -65,5 +66,33 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y3-MEA-06.a", { 1: { ...parent.definition, id: "Y3-MEA-06.a" }, 2: own, 4: own }),
+  withClaims(
+    mixFamilies("Y3-MEA-06.a", { 1: { ...parent.definition, id: "Y3-MEA-06.a" }, 2: own, 4: own }),
+    [
+      {
+        statement: "Ana says 2 minutes is 120 seconds.",
+        truth: true,
+        right: "True. 1 minute = 60 seconds, so 2 minutes = 120 seconds.",
+        wrong: [["False. It is 200 seconds.", "MEA.TIME.DECIMAL"], ["False. It is 20 seconds."]],
+      },
+      {
+        claim: "There are 100 seconds in a minute.",
+        truth: "never",
+        right: "Never. There are 60 seconds in a minute.",
+        wrong: [
+          ["Always. Like 100 cm in a metre.", "MEA.TIME.DECIMAL"],
+          ["Sometimes. On a stopwatch."],
+        ],
+      },
+      {
+        statement: "Raj says 90 seconds is 1 minute and 30 seconds.",
+        truth: true,
+        right: "True. 60 seconds is 1 minute, and 30 seconds are left.",
+        wrong: [
+          ["False. It is 9 minutes.", "MEA.TIME.FACTS"],
+          ["False. It is 1 minute 90 seconds."],
+        ],
+      },
+    ],
+  ),
 );

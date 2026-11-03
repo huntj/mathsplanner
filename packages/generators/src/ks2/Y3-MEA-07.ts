@@ -10,6 +10,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { digital } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Minutes after midnight. */
@@ -27,7 +28,7 @@ const decimalGap = (a: number, b: number) => {
 
 export default defineGenerator<Params>({
   id: "Y3-MEA-07",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4, 5],
   misconceptions: ["MEA.TIME.DECIMAL", "AS.MULTISTEP.ONE-STEP"],
 
@@ -96,23 +97,58 @@ export default defineGenerator<Params>({
       case 4: {
         const [s2, l2] = p.other;
         const truth = p.length > l2;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Task A takes from ${t(p.start)} to ${t(end)}. Task B takes from ${t(s2)} to ${t(s2 + l2)}. Raj says task A takes longer.`,
-          truth,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Task A takes from ${t(p.start)} to ${t(end)}. Task B takes from ${t(s2)} to ${t(s2 + l2)}. Raj says task A takes longer.`,
+              truth,
+              reasons: [
+                {
+                  text: `${truth ? "True" : "False"}. Task A takes ${p.length} minutes and task B takes ${l2} minutes.`,
+                  correct: true,
+                },
+                { text: `${truth ? "False" : "True"}. The task that ends later takes longer.` },
+                {
+                  text: `${truth ? "False" : "True"}. Take the start from the end like ordinary numbers: ${decimalGap(p.start, end)} and ${decimalGap(s2, s2 + l2)}.`,
+                  code: "MEA.TIME.DECIMAL",
+                },
+              ],
+              solution: [{ say: `A: ${p.length} minutes. B: ${l2} minutes.` }],
+            }),
+          [
             {
-              text: `${truth ? "True" : "False"}. Task A takes ${p.length} minutes and task B takes ${l2} minutes.`,
-              correct: true,
+              statement:
+                "A film starts at 2:15 and ends at 3:45. Ivy says it lasts 1 hour 30 minutes.",
+              truth: true,
+              right: "True. 2:15 to 3:15 is 1 hour, and 3:15 to 3:45 is 30 minutes.",
+              wrong: [
+                ["False. 3:45 − 2:15 = 1:30, which is 130 minutes.", "MEA.TIME.DECIMAL"],
+                ["False. It lasts 2 hours."],
+              ],
             },
-            { text: `${truth ? "False" : "True"}. The task that ends later takes longer.` },
             {
-              text: `${truth ? "False" : "True"}. Take the start from the end like ordinary numbers: ${decimalGap(p.start, end)} and ${decimalGap(s2, s2 + l2)}.`,
-              code: "MEA.TIME.DECIMAL",
+              claim: "From 10:50 to 11:10 is 20 minutes.",
+              truth: "always",
+              right: "Always. 10 minutes to reach 11:00, then 10 more to 11:10.",
+              wrong: [
+                ["Never. It is 60 minutes, as 1110 − 1050 = 60.", "MEA.TIME.DECIMAL"],
+                ["Sometimes. Only in the morning."],
+              ],
+            },
+            {
+              statement:
+                "Kit starts reading at 4:40 and stops at 5:20. She says she read for 80 minutes.",
+              truth: false,
+              right: "False. 4:40 to 5:00 is 20 minutes, and 5:00 to 5:20 is 20 more: 40 minutes.",
+              wrong: [
+                ["True. 520 − 440 = 80.", "MEA.TIME.DECIMAL"],
+                ["True. Count on in tens.", "AS.MULTISTEP.ONE-STEP"],
+              ],
             },
           ],
-          solution: [{ say: `A: ${p.length} minutes. B: ${l2} minutes.` }],
-        });
+        );
       }
       default: {
         const back = 2 * p.length;

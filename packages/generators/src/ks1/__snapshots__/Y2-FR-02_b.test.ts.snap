@@ -103,7 +103,7 @@ exports[`Y2-FR-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-FR-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -300,7 +300,7 @@ exports[`Y2-FR-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-FR-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -497,7 +497,7 @@ exports[`Y2-FR-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-FR-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -601,7 +601,7 @@ exports[`Y2-FR-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-FR-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -613,7 +613,7 @@ exports[`Y2-FR-02.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -639,7 +639,7 @@ exports[`Y2-FR-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A half is the same as two quarters: the bars show the same amount shaded.",
+                  "v": "True. Bigger number, bigger fraction.",
                 },
               ],
               "id": "RA",
@@ -648,7 +648,7 @@ exports[`Y2-FR-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Quarters are bigger than halves.",
+                  "v": "False. Cutting into 4 makes smaller pieces than cutting into 2, so 1/4 is smaller.",
                 },
               ],
               "id": "RB",
@@ -657,7 +657,7 @@ exports[`Y2-FR-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The bigger numerator means the bigger fraction.",
+                  "v": "True. Quarters are bigger.",
                 },
               ],
               "id": "RC",
@@ -669,7 +669,7 @@ exports[`Y2-FR-02.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "FR.COMPARE.NUMERATOR-ONLY",
@@ -689,7 +689,7 @@ exports[`Y2-FR-02.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Split each half into two quarters: 1/2 = 2/4.",
+            "v": "False. Cutting into 4 makes smaller pieces than cutting into 2, so 1/4 is smaller.",
           },
         ],
       },
@@ -697,23 +697,7 @@ exports[`Y2-FR-02.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Tia says ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{2}{4}",
-      },
-      {
-        "t": "text",
-        "v": " is more than ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{1}{2}",
-      },
-      {
-        "t": "text",
-        "v": ", because 2 is more than 1.",
+        "v": "Leo says 1/4 is bigger than 1/2, because 4 is bigger than 2.",
       },
     ],
   },
@@ -725,131 +709,7 @@ exports[`Y2-FR-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-FR-02.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. A half is the same as two quarters: the bars show the same amount shaded.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Quarters are bigger than halves.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The bigger numerator means the bigger fraction.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "FR.COMPARE.NUMERATOR-ONLY",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Split each half into two quarters: 1/2 = 2/4.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Tia says ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{2}{4}",
-      },
-      {
-        "t": "text",
-        "v": " is more than ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{1}{2}",
-      },
-      {
-        "t": "text",
-        "v": ", because 2 is more than 1.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y2-FR-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -962,6 +822,114 @@ exports[`Y2-FR-02.b > keeps fixed seeds unchanged 1`] = `
       {
         "t": "text",
         "v": ", because 2 is more than 1.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y2-FR-02.b",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Bigger number, bigger fraction.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Quarters are bigger.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Cutting into 4 makes smaller pieces than cutting into 2, so 1/4 is smaller.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "FR.COMPARE.NUMERATOR-ONLY",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. Cutting into 4 makes smaller pieces than cutting into 2, so 1/4 is smaller.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Leo says 1/4 is bigger than 1/2, because 4 is bigger than 2.",
       },
     ],
   },

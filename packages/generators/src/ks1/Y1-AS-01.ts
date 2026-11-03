@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer, objects } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y1-AS-01",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["AS.EQUALS.ANSWER-NEXT", "AS.SUBTRACT.ORDER"],
 
@@ -76,37 +77,70 @@ export default defineGenerator<Params>({
         const statement = p.claimTrue
           ? `${c} = ${p.a} + ${p.b}`
           : `${p.a} + ${p.b} = ${c} + ${p.d}`;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["This number sentence is correct: ", A.math(statement), "."],
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
-                {
-                  text: `True. = means "is the same as". ${p.a} + ${p.b} is ${c}, so both sides are the same.`,
-                  correct: true,
-                },
-                {
-                  text: "False. The answer must come after the = sign.",
-                  code: "AS.EQUALS.ANSWER-NEXT",
-                },
-                { text: "False. A number sentence cannot start with a number on its own." },
-              ]
-            : [
-                {
-                  text: `False. ${p.a} + ${p.b} is ${c}, but ${c} + ${p.d} is ${c + p.d}. The two sides are not the same.`,
-                  correct: true,
-                },
-                {
-                  text: `True. ${p.a} + ${p.b} = ${c}, and then you add ${p.d}.`,
-                  code: "AS.EQUALS.ANSWER-NEXT",
-                },
-                { text: "True. Any number sentence with + and = is correct." },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["This number sentence is correct: ", A.math(statement), "."],
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    {
+                      text: `True. = means "is the same as". ${p.a} + ${p.b} is ${c}, so both sides are the same.`,
+                      correct: true,
+                    },
+                    {
+                      text: "False. The answer must come after the = sign.",
+                      code: "AS.EQUALS.ANSWER-NEXT",
+                    },
+                    { text: "False. A number sentence cannot start with a number on its own." },
+                  ]
+                : [
+                    {
+                      text: `False. ${p.a} + ${p.b} is ${c}, but ${c} + ${p.d} is ${c + p.d}. The two sides are not the same.`,
+                      correct: true,
+                    },
+                    {
+                      text: `True. ${p.a} + ${p.b} = ${c}, and then you add ${p.d}.`,
+                      code: "AS.EQUALS.ANSWER-NEXT",
+                    },
+                    { text: "True. Any number sentence with + and = is correct." },
+                  ],
+              solution: [
+                { say: `= means both sides have the same value. Work out each side and compare.` },
               ],
-          solution: [
-            { say: `= means both sides have the same value. Work out each side and compare.` },
+            }),
+          [
+            {
+              claim: "The = sign means both sides are worth the same.",
+              truth: "always",
+              right: "Always. 5 = 2 + 3 means 5 and 2 + 3 are the same.",
+              wrong: [
+                ["Never. It means the answer comes next.", "AS.EQUALS.ANSWER-NEXT"],
+                ["Sometimes. Only when the answer is last."],
+              ],
+            },
+            {
+              statement: "Kai says 9 − 4 = 5.",
+              truth: true,
+              right: "True. 9 take away 4 leaves 5.",
+              wrong: [
+                ["False. It is 13.", "AS.SUBTRACT.ORDER"],
+                ["False. You must take 9 from 4.", "AS.SUBTRACT.ORDER"],
+              ],
+            },
+            {
+              statement: "Mia says 3 + 2 = 5 + 1.",
+              truth: false,
+              right: "False. 3 + 2 = 5, but 5 + 1 = 6. The two sides are not the same.",
+              wrong: [
+                ["True. 3 + 2 is 5, so write 5 next.", "AS.EQUALS.ANSWER-NEXT"],
+                ["True. Both sides have a plus."],
+              ],
+            },
           ],
-        });
+        );
       }
     }
   },

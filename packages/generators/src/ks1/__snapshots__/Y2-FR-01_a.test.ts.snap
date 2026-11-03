@@ -28,7 +28,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-FR-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -131,7 +131,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-FR-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -257,7 +257,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-FR-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -357,7 +357,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-FR-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -404,7 +404,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-FR-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -456,7 +456,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-FR-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -559,7 +559,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-FR-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -739,7 +739,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-FR-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -919,7 +919,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-FR-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1013,31 +1013,13 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "bars": [
-          {
-            "parts": [
-              {
-                "shaded": false,
-                "size": 1,
-              },
-              {
-                "shaded": false,
-                "size": 1,
-              },
-            ],
-          },
-        ],
-        "type": "bar-model",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-FR-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1048,8 +1030,8 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RC",
+          "correct": "B",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -1075,7 +1057,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You need more than 2 parts.",
+                  "v": "True. Any cut makes halves.",
                 },
               ],
               "id": "RA",
@@ -1084,7 +1066,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The parts need to be different sizes.",
+                  "v": "False. Halves must be equal. These pieces are different sizes.",
                 },
               ],
               "id": "RB",
@@ -1093,7 +1075,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. There are 2 parts and they are all the same size.",
+                  "v": "True. 2 pieces means halves.",
                 },
               ],
               "id": "RC",
@@ -1102,7 +1084,24 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "FR.PARTS.UNEQUAL",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "FR.PARTS.UNEQUAL",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
@@ -1116,7 +1115,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Halves are 2 equal parts.",
+            "v": "False. Halves must be equal. These pieces are different sizes.",
           },
         ],
       },
@@ -1124,11 +1123,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ava says the bar is split into halves.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
+        "v": "A cake is cut into 2 pieces, one big and one small. Mia says each piece is a half.",
       },
     ],
   },
@@ -1166,7 +1161,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-FR-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1178,7 +1173,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -1213,7 +1208,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. There are 4 parts, so they are quarters.",
+                  "v": "False. There are 4 parts, but they are not the same size.",
                 },
               ],
               "id": "RB",
@@ -1222,7 +1217,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. There are 4 parts, but they are not the same size.",
+                  "v": "True. There are 4 parts, so they are quarters.",
                 },
               ],
               "id": "RC",
@@ -1234,7 +1229,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "FR.PARTS.UNEQUAL",
@@ -1304,7 +1299,7 @@ exports[`Y2-FR-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-FR-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

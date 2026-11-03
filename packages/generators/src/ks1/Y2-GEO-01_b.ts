@@ -11,6 +11,7 @@ import { chosenText } from "../shared/counting.ts";
 import { mixFamilies } from "../shared/npv.ts";
 import { shape, SHAPE_NAME } from "../shared/shapes.ts";
 import parent from "./Y2-GEO-01.ts";
+import { withClaims } from "../shared/variety.ts";
 
 // As drawn, these have a vertical line of symmetry and these do not.
 const SYMMETRIC: ShapeKind[] = ["square", "rectangle", "isosceles", "kite", "equilateral"];
@@ -88,5 +89,36 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y2-GEO-01.b", { 1: own, 3: { ...parent.definition, id: "Y2-GEO-01.b" }, 4: own }),
+  withClaims(
+    mixFamilies("Y2-GEO-01.b", { 1: own, 3: { ...parent.definition, id: "Y2-GEO-01.b" }, 4: own }),
+    [
+      {
+        claim: "A circle has no corners.",
+        truth: "always",
+        right: "Always. A circle is round all the way.",
+        wrong: [
+          ["Sometimes. Big circles have corners.", "GEO.SHAPES.SIDES-VERTICES"],
+          ["Never. It has 1 corner."],
+        ],
+      },
+      {
+        statement: "Kai says a rectangle has 4 corners.",
+        truth: true,
+        right: "True. A rectangle has 4 sides and 4 corners.",
+        wrong: [
+          ["False. It has 2 corners.", "GEO.SHAPES.SIDES-VERTICES"],
+          ["False. It has 6 corners."],
+        ],
+      },
+      {
+        statement: "Ana says a square has only 2 lines of symmetry.",
+        truth: false,
+        right: "False. A square has 4: up and down, across, and both diagonals.",
+        wrong: [
+          ["True. Only up-and-down and across count.", "GEO.SYMMETRY.DIAGONAL"],
+          ["True. All shapes have 2."],
+        ],
+      },
+    ],
+  ),
 );

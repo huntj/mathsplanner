@@ -10,7 +10,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -100,7 +100,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -203,7 +203,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -306,7 +306,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -377,7 +377,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -448,7 +448,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -512,14 +512,14 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -530,14 +530,14 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RC",
+          "correct": "C",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -546,10 +546,19 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -557,7 +566,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The ones digit goes down by one each time.",
+                  "v": "Never. Adding 10 changes the tens digit; the ones stay the same.",
                 },
               ],
               "id": "RA",
@@ -566,7 +575,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Both digits change each time.",
+                  "v": "Sometimes. Only for big numbers.",
                 },
               ],
               "id": "RB",
@@ -575,7 +584,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Taking away 10 changes only the tens digit.",
+                  "v": "Always. Adding changes the last digit.",
                 },
               ],
               "id": "RC",
@@ -587,7 +596,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.PLACE.TENS-ONES-MIXUP",
@@ -597,7 +606,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -607,7 +616,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Taking away 10 changes only the tens digit.",
+            "v": "Never. Adding 10 changes the tens digit; the ones stay the same.",
           },
         ],
       },
@@ -615,7 +624,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Counting back in tens from 91, the ones digit stays 1.",
+        "v": "Adding 10 to a number changes its ones digit.",
       },
     ],
   },
@@ -627,7 +636,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -735,7 +744,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -747,7 +756,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -773,7 +782,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The ones digit goes down by one each time.",
+                  "v": "True. Each step adds 1 ten; the ones stay 3.",
                 },
               ],
               "id": "RA",
@@ -782,7 +791,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Taking away 10 changes only the tens digit.",
+                  "v": "False. It goes 23, 24, 25.",
                 },
               ],
               "id": "RB",
@@ -791,7 +800,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Both digits change each time.",
+                  "v": "False. It goes 23, 33, 34.",
                 },
               ],
               "id": "RC",
@@ -803,7 +812,15 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.SEQUENCE.STEP-ONE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.PLACE.TENS-ONES-MIXUP",
@@ -823,7 +840,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Taking away 10 changes only the tens digit.",
+            "v": "True. Each step adds 1 ten; the ones stay 3.",
           },
         ],
       },
@@ -831,7 +848,7 @@ exports[`Y2-NPV-01.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Counting back in tens from 97, the ones digit stays 7.",
+        "v": "Leo counts on in 10s from 23: 23, 33, 43, 53.",
       },
     ],
   },

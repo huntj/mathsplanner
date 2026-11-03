@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y2-AS-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: [
     "AS.COUNT-ON.INCLUDES-START",
@@ -71,28 +72,64 @@ export default defineGenerator<Params>({
           solution: [{ say: "", math: `${p.a} + ${p.b} = ${c}` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Mia knows ",
-            A.math(`${p.a} + ${p.b} = ${c}`),
-            ". She says that means ",
-            A.math(`${c} - ${p.b} = ${p.a}`),
-            ".",
-          ],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Mia knows ",
+                A.math(`${p.a} + ${p.b} = ${c}`),
+                ". She says that means ",
+                A.math(`${c} - ${p.b} = ${p.a}`),
+                ".",
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: `True. ${p.a} and ${p.b} are the two parts of ${c}, so taking one part away leaves the other.`,
+                  correct: true,
+                },
+                {
+                  text: `False. She needs to add: ${c} + ${p.b}.`,
+                  code: "AS.INVERSE.SAME-OPERATION",
+                },
+                { text: "False. An addition fact cannot tell you a subtraction fact." },
+              ],
+              solution: [
+                { say: "Addition and subtraction facts come in families: the same three numbers." },
+              ],
+            }),
+          [
             {
-              text: `True. ${p.a} and ${p.b} are the two parts of ${c}, so taking one part away leaves the other.`,
-              correct: true,
+              statement: "Sam says 7 + 6 = 13.",
+              truth: true,
+              right: "True. 7 + 3 = 10, and 3 more makes 13.",
+              wrong: [
+                ["False. It is 12, counting 7 again.", "AS.COUNT-ON.INCLUDES-START"],
+                ["False. It is 76.", "NPV.COMPOSITION.ADD-NOT-PART"],
+              ],
             },
-            { text: `False. She needs to add: ${c} + ${p.b}.`, code: "AS.INVERSE.SAME-OPERATION" },
-            { text: "False. An addition fact cannot tell you a subtraction fact." },
+            {
+              claim: "If 5 + 4 = 9, then 9 − 4 = 5.",
+              truth: "always",
+              right: "Always. Taking away undoes adding.",
+              wrong: [
+                ["Never. You need to add again.", "AS.INVERSE.SAME-OPERATION"],
+                ["Sometimes. Only for small numbers."],
+              ],
+            },
+            {
+              statement: "Pia says 15 − 8 = 8.",
+              truth: false,
+              right: "False. 8 + 7 = 15, so 15 − 8 = 7.",
+              wrong: [
+                ["True. Count back 8 from 15: 15, 14 … 8.", "AS.COUNT-ON.INCLUDES-START"],
+                ["True. 8 is half of 15."],
+              ],
+            },
           ],
-          solution: [
-            { say: "Addition and subtraction facts come in families: the same three numbers." },
-          ],
-        });
+        );
     }
   },
 

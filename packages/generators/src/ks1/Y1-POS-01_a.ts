@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const OPPOSITE: Record<string, string> = {
   above: "below",
@@ -28,7 +29,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y1-POS-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["POS.WORDS.OPPOSITE"],
 
@@ -88,24 +89,59 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["If a cup is to the left of a plate, then the plate is to the right of the cup."],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "If a cup is to the left of a plate, then the plate is to the right of the cup.",
+              ],
+              truth: "always",
+              reasons: [
+                {
+                  text: "Always. Swapping which object you describe swaps left and right.",
+                  correct: true,
+                },
+                { text: "Never. The plate must be to the left too.", code: "POS.WORDS.OPPOSITE" },
+                { text: "Sometimes. It depends how big the plate is." },
+              ],
+              solution: [
+                {
+                  say: "Left of and right of are opposites: describe the other object and the word swaps.",
+                },
+              ],
+            }),
+          [
             {
-              text: "Always. Swapping which object you describe swaps left and right.",
-              correct: true,
+              statement: "The cat is on top of the box. Sam says the box is under the cat.",
+              truth: true,
+              right: "True. On top and under are opposites.",
+              wrong: [
+                ["False. The box is on top.", "POS.WORDS.OPPOSITE"],
+                ["False. The cat is under the box.", "POS.WORDS.OPPOSITE"],
+              ],
             },
-            { text: "Never. The plate must be to the left too.", code: "POS.WORDS.OPPOSITE" },
-            { text: "Sometimes. It depends how big the plate is." },
-          ],
-          solution: [
             {
-              say: "Left of and right of are opposites: describe the other object and the word swaps.",
+              claim: "If the ball is in front of the chair, the chair is behind the ball.",
+              truth: "always",
+              right: "Always. In front and behind are opposites.",
+              wrong: [
+                ["Never. The chair is in front too.", "POS.WORDS.OPPOSITE"],
+                ["Sometimes. It depends where you stand."],
+              ],
+            },
+            {
+              statement: "The book is above the table. Kim says the table is above the book.",
+              truth: false,
+              right: "False. The table is below the book.",
+              wrong: [
+                ["True. Above is the same as below.", "POS.WORDS.OPPOSITE"],
+                ["True. They are next to each other."],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

@@ -16,6 +16,7 @@ import { numberAnswer } from "../shared/counting.ts";
 import { ruler } from "../shared/mea.ts";
 import { mixFamilies } from "../shared/npv.ts";
 import parent from "./Y3-MEA-01.ts";
+import { withClaims } from "../shared/variety.ts";
 
 interface Params {
   /** The pencil's length in mm, starting at 0. */
@@ -78,5 +79,30 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y3-MEA-01.a", { 1: own, 2: { ...parent.definition, id: "Y3-MEA-01.a" }, 4: own }),
+  withClaims(
+    mixFamilies("Y3-MEA-01.a", { 1: own, 2: { ...parent.definition, id: "Y3-MEA-01.a" }, 4: own }),
+    [
+      {
+        statement: "Ali says 3 m is 300 cm.",
+        truth: true,
+        right: "True. 1 m = 100 cm, so 3 m = 300 cm.",
+        wrong: [["False. It is 30 cm.", "MEA.CONVERT.FACTOR"], ["False. It is 3000 cm."]],
+      },
+      {
+        claim: "There are 10 millimetres in a centimetre.",
+        truth: "always",
+        right: "Always. Each centimetre on a ruler has 10 little millimetre marks.",
+        wrong: [["Never. There are 100.", "MEA.CONVERT.FACTOR"], ["Sometimes. On long rulers."]],
+      },
+      {
+        statement: "Bea says 50 cm is longer than 1 m, because 50 is more than 1.",
+        truth: false,
+        right: "False. 1 m = 100 cm, which is longer than 50 cm.",
+        wrong: [
+          ["True. Compare 50 and 1.", "MEA.UNITS.MIXED"],
+          ["True. Centimetres are bigger than metres."],
+        ],
+      },
+    ],
+  ),
 );

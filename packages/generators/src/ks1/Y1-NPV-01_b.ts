@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** The tens number counted back past: …, t + 1, t, t − 1, … */
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y1-NPV-01.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.SEQUENCE.DECADE", "NPV.SEQUENCE.BEFORE-AFTER"],
 
@@ -65,22 +66,58 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            "When you count back one from a number that ends in 0, you land on a number that ends in 9.",
-          ],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "When you count back one from a number that ends in 0, you land on a number that ends in 9.",
+              ],
+              truth: "always",
+              reasons: [
+                {
+                  text: `Always. For example ${p.t} then ${p.t - 1}: the ones go to 9 and the tens go down by one.`,
+                  correct: true,
+                },
+                {
+                  text: `Never. After ${p.t} you land on ${p.t - 10}.`,
+                  code: "NPV.SEQUENCE.DECADE",
+                },
+                { text: "Sometimes. Only for numbers below 20." },
+              ],
+              solution: [{ say: `Counting back: ${p.t + 1}, ${p.t}, ${p.t - 1}, ${p.t - 2}.` }],
+            }),
+          [
             {
-              text: `Always. For example ${p.t} then ${p.t - 1}: the ones go to 9 and the tens go down by one.`,
-              correct: true,
+              statement: "Kai counts back: 42, 41, 40, 39.",
+              truth: true,
+              right: "True. One less than 40 is 39.",
+              wrong: [
+                ["False. After 40 comes 49.", "NPV.SEQUENCE.DECADE"],
+                ["False. After 40 comes 30.", "NPV.SEQUENCE.DECADE"],
+              ],
             },
-            { text: `Never. After ${p.t} you land on ${p.t - 10}.`, code: "NPV.SEQUENCE.DECADE" },
-            { text: "Sometimes. Only for numbers below 20." },
+            {
+              statement: "Ana counts back: 23, 22, 21, 20, 29.",
+              truth: false,
+              right: "False. One less than 20 is 19.",
+              wrong: [
+                ["True. After 0 comes 9.", "NPV.SEQUENCE.DECADE"],
+                ["True. Counting back goes up."],
+              ],
+            },
+            {
+              claim: "Counting back one makes a number one smaller.",
+              truth: "always",
+              right: "Always. Back means one less each time.",
+              wrong: [
+                ["Never. It makes it bigger.", "NPV.SEQUENCE.BEFORE-AFTER"],
+                ["Sometimes. Only for big numbers."],
+              ],
+            },
           ],
-          solution: [{ say: `Counting back: ${p.t + 1}, ${p.t}, ${p.t - 1}, ${p.t - 2}.` }],
-        });
+        );
     }
   },
 

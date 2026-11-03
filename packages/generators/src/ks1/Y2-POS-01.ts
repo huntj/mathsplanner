@@ -17,6 +17,7 @@ import {
   type Item,
   type Kind,
 } from "../shared/pat.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   kind: Kind;
@@ -28,7 +29,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y2-POS-01",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4, 5],
   misconceptions: ["PAT.REPEAT.UNIT", "AS.MULTISTEP.ONE-STEP"],
 
@@ -95,34 +96,65 @@ export default defineGenerator<Params>({
         const truthItem = p.unit[(p.ask - 1) % n] as Item;
         const wrong = p.unit[(p.ask - 2 + n) % n] as Item;
         const truth = itemName(wrong) === itemName(truthItem);
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "The pattern keeps going.",
-            A.figure(row(repeat(p.unit, n * 2), "A repeating pattern of shapes.")),
-            `Sid says the ${p.ask}th shape is a ${itemName(wrong)}.`,
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "The pattern keeps going.",
+                A.figure(row(repeat(p.unit, n * 2), "A repeating pattern of shapes.")),
+                `Sid says the ${p.ask}th shape is a ${itemName(wrong)}.`,
+              ],
+              truth,
+              reasons: [
+                {
+                  text: `${truth ? "True" : "False"}. The part repeats every ${n} shapes; counting on, the ${p.ask}th shape is a ${itemName(truthItem)}.`,
+                  correct: true,
+                },
+                {
+                  text: `${truth ? "False" : "True"}. Every shape in a pattern is the same.`,
+                  code: "PAT.REPEAT.UNIT",
+                },
+                {
+                  text: `${truth ? "False" : "True"}. You only need to look at the last shape you can see.`,
+                  code: "PAT.REPEAT.UNIT",
+                },
+              ],
+              solution: [
+                {
+                  say: `Shapes ${n}, ${2 * n}, ${3 * n}, … end a repeat. Count on from there to ${p.ask}.`,
+                },
+              ],
+            }),
+          [
+            {
+              claim: "A repeating pattern uses the same group again and again.",
+              truth: "always",
+              right: "Always. That is what makes it repeat.",
+              wrong: [
+                ["Never. Each shape is new.", "PAT.REPEAT.UNIT"],
+                ["Sometimes. Only with colours."],
+              ],
+            },
+            {
+              statement: "A pattern goes red, blue, red, blue. Sam says the next one is red.",
+              truth: true,
+              right: "True. Red, blue repeats, so after blue comes red.",
+              wrong: [["False. It is blue.", "PAT.REPEAT.UNIT"], ["False. It is green."]],
+            },
+            {
+              statement:
+                "A pattern goes circle, square, square, circle, square, square. Mia says the next one is square.",
+              truth: false,
+              right: "False. The group is circle, square, square, so the next one is circle.",
+              wrong: [
+                ["True. There are more squares.", "PAT.REPEAT.UNIT"],
+                ["True. The last one was square, so square again.", "AS.MULTISTEP.ONE-STEP"],
+              ],
+            },
           ],
-          truth,
-          reasons: [
-            {
-              text: `${truth ? "True" : "False"}. The part repeats every ${n} shapes; counting on, the ${p.ask}th shape is a ${itemName(truthItem)}.`,
-              correct: true,
-            },
-            {
-              text: `${truth ? "False" : "True"}. Every shape in a pattern is the same.`,
-              code: "PAT.REPEAT.UNIT",
-            },
-            {
-              text: `${truth ? "False" : "True"}. You only need to look at the last shape you can see.`,
-              code: "PAT.REPEAT.UNIT",
-            },
-          ],
-          solution: [
-            {
-              say: `Shapes ${n}, ${2 * n}, ${3 * n}, … end a repeat. Count on from there to ${p.ask}.`,
-            },
-          ],
-        });
+        );
       }
       default: {
         const a = p.unit[0] as Item;

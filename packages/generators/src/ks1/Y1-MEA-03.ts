@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { coinName } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   coins: number[];
@@ -24,7 +25,7 @@ const SMALL = [1, 2, 5, 10];
 
 export default defineGenerator<Params>({
   id: "Y1-MEA-03",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.MONEY.COIN-COUNT"],
 
@@ -85,31 +86,76 @@ export default defineGenerator<Params>({
       default: {
         const total = p.many.reduce((s, c) => s + c, 0);
         const truth = total > p.one;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Ben has ${p.many.length} coins: ${p.many.map(coinName).join(", ")}. Amy has one ${coinName(p.one)} coin. Ben says he has more money because he has more coins.`,
-          truth,
-          reasons: truth
-            ? [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Ben has ${p.many.length} coins: ${p.many.map(coinName).join(", ")}. Amy has one ${coinName(p.one)} coin. Ben says he has more money because he has more coins.`,
+              truth,
+              reasons: truth
+                ? [
+                    {
+                      text: `True, but not because he has more coins. His coins make ${total}p, which is more than ${p.one}p.`,
+                      correct: true,
+                    },
+                    {
+                      text: "True. More coins always means more money.",
+                      code: "MEA.MONEY.COIN-COUNT",
+                    },
+                    { text: `False. ${coinName(p.one)} is a big coin.` },
+                  ]
+                : [
+                    {
+                      text: `False. His coins only make ${total}p, which is less than ${p.one}p.`,
+                      correct: true,
+                    },
+                    {
+                      text: "True. More coins always means more money.",
+                      code: "MEA.MONEY.COIN-COUNT",
+                    },
+                    {
+                      text: `True. ${p.many.length} is more than 1.`,
+                      code: "MEA.MONEY.COIN-COUNT",
+                    },
+                  ],
+              solution: [
                 {
-                  text: `True, but not because he has more coins. His coins make ${total}p, which is more than ${p.one}p.`,
-                  correct: true,
+                  say: `Add the values: ${p.many.join(" + ")} = ${total}p. Compare with ${p.one}p.`,
                 },
-                { text: "True. More coins always means more money.", code: "MEA.MONEY.COIN-COUNT" },
-                { text: `False. ${coinName(p.one)} is a big coin.` },
-              ]
-            : [
-                {
-                  text: `False. His coins only make ${total}p, which is less than ${p.one}p.`,
-                  correct: true,
-                },
-                { text: "True. More coins always means more money.", code: "MEA.MONEY.COIN-COUNT" },
-                { text: `True. ${p.many.length} is more than 1.`, code: "MEA.MONEY.COIN-COUNT" },
               ],
-          solution: [
-            { say: `Add the values: ${p.many.join(" + ")} = ${total}p. Compare with ${p.one}p.` },
+            }),
+          [
+            {
+              statement: "Sam has a 10p coin. Kim has a 2p coin. Sam says he has more money.",
+              truth: true,
+              right: "True. 10p is more than 2p.",
+              wrong: [
+                ["False. They both have one coin.", "MEA.MONEY.COIN-COUNT"],
+                ["False. 2p is more."],
+              ],
+            },
+            {
+              claim: "Having more coins means having more money.",
+              truth: "sometimes",
+              right: "Sometimes. Three 1p coins make 3p, but one 20p coin is more.",
+              wrong: [
+                ["Always. Count the coins.", "MEA.MONEY.COIN-COUNT"],
+                ["Never. Fewer coins is more."],
+              ],
+            },
+            {
+              statement:
+                "Mia has a 5p coin and Ben has a 1p, a 1p and a 1p. Ben says he has more money.",
+              truth: false,
+              right: "False. Ben has 3p. Mia's 5p is more.",
+              wrong: [
+                ["True. He has 3 coins.", "MEA.MONEY.COIN-COUNT"],
+                ["True. More coins is more money.", "MEA.MONEY.COIN-COUNT"],
+              ],
+            },
           ],
-        });
+        );
       }
     }
   },

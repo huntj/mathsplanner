@@ -10,7 +10,7 @@ exports[`Y3-AS-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-AS-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -88,7 +88,7 @@ exports[`Y3-AS-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-AS-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -166,7 +166,7 @@ exports[`Y3-AS-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-AS-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -244,7 +244,7 @@ exports[`Y3-AS-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-AS-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -344,7 +344,7 @@ exports[`Y3-AS-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-AS-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -444,7 +444,7 @@ exports[`Y3-AS-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-AS-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -544,127 +544,7 @@ exports[`Y3-AS-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-AS-03.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Any calculation with the same numbers is a check.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. You check a calculation by doing the same thing again.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. To check a subtraction, use the inverse: 451 + 14 should give 465.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "AS.INVERSE.SAME-OPERATION",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "math": "451 + 14 = 465",
-        "say": [],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Ali checks ",
-      },
-      {
-        "t": "math",
-        "v": "465 - 14 = 451",
-      },
-      {
-        "t": "text",
-        "v": " by working out ",
-      },
-      {
-        "t": "math",
-        "v": "451 - 14",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y3-AS-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -702,7 +582,7 @@ exports[`Y3-AS-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any calculation with the same numbers is a check.",
+                  "v": "True. Use the same numbers.",
                 },
               ],
               "id": "RA",
@@ -711,7 +591,7 @@ exports[`Y3-AS-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. To check an addition, use the inverse: 430 − 182 should give 248.",
+                  "v": "False. Check with 350 + 250: it should give 600.",
                 },
               ],
               "id": "RB",
@@ -720,7 +600,7 @@ exports[`Y3-AS-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You check a calculation by doing the same thing again.",
+                  "v": "True. Adding always checks subtracting.",
                 },
               ],
               "id": "RC",
@@ -749,30 +629,135 @@ exports[`Y3-AS-03.b > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "430 - 182 = 248",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. Check with 350 + 250: it should give 600.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Ali checks ",
+        "v": "To check 600 − 250 = 350, Raj works out 600 + 250.",
       },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y3-AS-03.b",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
       {
-        "t": "math",
-        "v": "248 + 182 = 430",
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. You must subtract again.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. If 50 − 20 = 30, then 30 + 20 = 50.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only for small numbers.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "AS.INVERSE.SAME-OPERATION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
       },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. If 50 − 20 = 30, then 30 + 20 = 50.",
+          },
+        ],
+      },
+    ],
+    "stem": [
       {
         "t": "text",
-        "v": " by working out ",
-      },
-      {
-        "t": "math",
-        "v": "430 + 182",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Adding undoes subtracting.",
       },
     ],
   },
@@ -784,7 +769,7 @@ exports[`Y3-AS-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-AS-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -796,7 +781,7 @@ exports[`Y3-AS-03.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -822,7 +807,7 @@ exports[`Y3-AS-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You check a calculation by doing the same thing again.",
+                  "v": "False. To check an addition, use the inverse: 644 − 219 should give 425.",
                 },
               ],
               "id": "RA",
@@ -840,7 +825,7 @@ exports[`Y3-AS-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. To check an addition, use the inverse: 644 − 219 should give 425.",
+                  "v": "True. You check a calculation by doing the same thing again.",
                 },
               ],
               "id": "RC",
@@ -852,7 +837,7 @@ exports[`Y3-AS-03.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
             "code": "AS.INVERSE.SAME-OPERATION",

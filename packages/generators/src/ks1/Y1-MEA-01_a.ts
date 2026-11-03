@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y1-MEA-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["AS.PROBLEM.KEYWORD", "MEA.SEQUENCE.ORDER"],
 
@@ -73,23 +74,56 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `${x} is taller than ${y}. ${z} is shorter than ${y}. ${z} says, "I am taller than ${x}."`,
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `${x} is taller than ${y}. ${z} is shorter than ${y}. ${z} says, "I am taller than ${x}."`,
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${x} is taller than ${y}, and ${y} is taller than ${z}, so ${x} is taller than ${z}.`,
+                  correct: true,
+                },
+                {
+                  text: `True. ${z} was named last, so ${z} is the tallest.`,
+                  code: "MEA.SEQUENCE.ORDER",
+                },
+                { text: "We cannot tell without measuring them." },
+              ],
+              solution: [{ say: `From tallest to shortest: ${x}, ${y}, ${z}.` }],
+            }),
+          [
             {
-              text: `False. ${x} is taller than ${y}, and ${y} is taller than ${z}, so ${x} is taller than ${z}.`,
-              correct: true,
+              statement: 'Tom is taller than Sam. Sam says, "Tom is taller than me."',
+              truth: true,
+              right: "True. That means the same thing.",
+              wrong: [
+                ["False. Sam is taller.", "MEA.SEQUENCE.ORDER"],
+                ["False. They are the same height."],
+              ],
             },
             {
-              text: `True. ${z} was named last, so ${z} is the tallest.`,
-              code: "MEA.SEQUENCE.ORDER",
+              claim: "If a pencil is longer than a crayon, the crayon is shorter than the pencil.",
+              truth: "always",
+              right: "Always. Longer one way means shorter the other way.",
+              wrong: [
+                ["Never. The crayon is longer.", "MEA.SEQUENCE.ORDER"],
+                ["Sometimes. It depends on the colour."],
+              ],
             },
-            { text: "We cannot tell without measuring them." },
+            {
+              statement: "A snake is longer than a worm. Kim says the worm is the longest.",
+              truth: false,
+              right: "False. The snake is longer, so the worm is shorter.",
+              wrong: [
+                ["True. Worms are long.", "MEA.SEQUENCE.ORDER"],
+                ["True. Longer means shorter.", "AS.PROBLEM.KEYWORD"],
+              ],
+            },
           ],
-          solution: [{ say: `From tallest to shortest: ${x}, ${y}, ${z}.` }],
-        });
+        );
     }
   },
 

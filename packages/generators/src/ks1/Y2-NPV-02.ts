@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenFigure, countOf, numberAnswer, placeValue } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   tens: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y2-NPV-02",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 3, 4],
   misconceptions: ["NPV.PLACE.FACE-VALUE", "NPV.PLACE.DIGIT-ORDER"],
 
@@ -117,27 +118,57 @@ export default defineGenerator<Params>({
         });
       default: {
         const same = p.tens * 11;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["In ", A.math(String(same)), `, both ${p.tens}s are worth the same.`],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["In ", A.math(String(same)), `, both ${p.tens}s are worth the same.`],
+              truth: false,
+              reasons: [
+                {
+                  text: `The first ${p.tens} is ${p.tens} tens, worth ${same - p.tens}; the second is ${p.tens} ones.`,
+                  correct: true,
+                },
+                {
+                  text: "They are the same digit, so they are worth the same.",
+                  code: "NPV.PLACE.FACE-VALUE",
+                },
+                { text: "The second one is worth more because it comes last." },
+              ],
+              solution: [
+                {
+                  say: `A digit's value depends on its place: ${same} = ${same - p.tens} + ${p.tens}.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `The first ${p.tens} is ${p.tens} tens, worth ${same - p.tens}; the second is ${p.tens} ones.`,
-              correct: true,
+              statement: "Sam says the 4 in 47 is worth 40.",
+              truth: true,
+              right: "True. The 4 is in the tens place: 4 tens are 40.",
+              wrong: [["False. It is worth 4.", "NPV.PLACE.FACE-VALUE"], ["False. It is worth 7."]],
             },
             {
-              text: "They are the same digit, so they are worth the same.",
-              code: "NPV.PLACE.FACE-VALUE",
+              statement: "Pia says 36 is 6 tens and 3 ones.",
+              truth: false,
+              right: "False. 36 is 3 tens and 6 ones.",
+              wrong: [
+                ["True. The bigger digit is the tens.", "NPV.PLACE.DIGIT-ORDER"],
+                ["True. The order does not matter.", "NPV.PLACE.DIGIT-ORDER"],
+              ],
             },
-            { text: "The second one is worth more because it comes last." },
+            {
+              claim: "The first digit of a 2-digit number tells you how many tens.",
+              truth: "always",
+              right: "Always. In 58 the 5 means 5 tens.",
+              wrong: [
+                ["Never. It tells you the ones.", "NPV.PLACE.DIGIT-ORDER"],
+                ["Sometimes. Only if it is bigger.", "NPV.PLACE.FACE-VALUE"],
+              ],
+            },
           ],
-          solution: [
-            {
-              say: `A digit's value depends on its place: ${same} = ${same - p.tens} + ${p.tens}.`,
-            },
-          ],
-        });
+        );
       }
     }
   },
@@ -145,7 +176,7 @@ export default defineGenerator<Params>({
   verify(p, question) {
     const n = p.tens * 10 + p.ones;
     if (question.archetype === "choose-the-diagram") return countOf(chosenFigure(question)) === n;
-    if (question.archetype === "true-or-false-why") return true;
+    if (question.key.depth === 4) return true;
     if (question.diagrams.length > 0)
       return numberAnswer(question) === countOf(question.diagrams[0]);
     return numberAnswer(question) === (p.place === "tens" ? p.tens * 10 : p.ones);

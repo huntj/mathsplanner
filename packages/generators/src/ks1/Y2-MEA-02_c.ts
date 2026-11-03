@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -20,7 +21,7 @@ const sign = (a: number, b: number) => (a < b ? "<" : a > b ? ">" : "=");
 
 export default defineGenerator<Params>({
   id: "Y2-MEA-02.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.COMPARE.SIGN-DIRECTION", "NPV.COMPARE.ONES-FIRST", "MEA.UNITS.MIXED"],
 
@@ -93,17 +94,55 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Jo says a ${p.ml} ml bottle holds more than a 1 litre jug, because ${p.ml} is bigger than 1.`,
-          truth: false,
-          reasons: [
-            { text: `False. 1 litre is 1000 ml, which is more than ${p.ml} ml.`, correct: true },
-            { text: "True. The bigger number always holds more.", code: "MEA.UNITS.MIXED" },
-            { text: "True. Bottles hold more than jugs." },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Jo says a ${p.ml} ml bottle holds more than a 1 litre jug, because ${p.ml} is bigger than 1.`,
+              truth: false,
+              reasons: [
+                {
+                  text: `False. 1 litre is 1000 ml, which is more than ${p.ml} ml.`,
+                  correct: true,
+                },
+                { text: "True. The bigger number always holds more.", code: "MEA.UNITS.MIXED" },
+                { text: "True. Bottles hold more than jugs." },
+              ],
+              solution: [
+                { say: `Use the same units: 1 litre = 1000 ml, and 1000 ml > ${p.ml} ml.` },
+              ],
+            }),
+          [
+            {
+              claim: "1 litre is more than 500 ml.",
+              truth: "always",
+              right: "Always. 1 litre is 1000 ml.",
+              wrong: [
+                ["Never. 500 is bigger than 1.", "MEA.UNITS.MIXED"],
+                ["Sometimes. It depends on the bottle."],
+              ],
+            },
+            {
+              statement: "Kai says a 200 ml cup holds less than a 300 ml cup.",
+              truth: true,
+              right: "True. 200 ml is less than 300 ml.",
+              wrong: [
+                ["False. 200 ml holds more.", "NPV.COMPARE.SIGN-DIRECTION"],
+                ["False. Cups hold the same."],
+              ],
+            },
+            {
+              statement: "Ana says a tall thin glass must hold more than a short wide bowl.",
+              truth: false,
+              right: "False. You cannot tell by height. Measure in ml to find out.",
+              wrong: [
+                ["True. Taller holds more.", "MEA.UNITS.MIXED"],
+                ["True. Thin things hold more."],
+              ],
+            },
           ],
-          solution: [{ say: `Use the same units: 1 litre = 1000 ml, and 1000 ml > ${p.ml} ml.` }],
-        });
+        );
     }
   },
 

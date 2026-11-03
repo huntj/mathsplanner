@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { countMarksReading, pickScale, scaleSpec, type Scale } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   scale: Scale;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y1-MEA-02.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.SCALE.INTERVAL", "AS.PROBLEM.KEYWORD"],
 
@@ -72,26 +73,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "A parcel is on the scales.",
-            A.figure(
-              scaleSpec("scales", { max: 20, step: 10, divisions: 5, reading: 14 }, "\\text{kg}"),
-            ),
-            "Ola counts the small marks after 10 in ones and says the parcel weighs 12 kg.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "A parcel is on the scales.",
+                A.figure(
+                  scaleSpec(
+                    "scales",
+                    { max: 20, step: 10, divisions: 5, reading: 14 },
+                    "\\text{kg}",
+                  ),
+                ),
+                "Ola counts the small marks after 10 in ones and says the parcel weighs 12 kg.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. There are 5 spaces between 10 and 20, so each mark is 2 kg. The parcel weighs 14 kg.",
+                  correct: true,
+                },
+                { text: "True. Every small mark is worth 1.", code: "MEA.SCALE.INTERVAL" },
+                { text: "True. You always count the marks in ones.", code: "MEA.SCALE.INTERVAL" },
+              ],
+              solution: [{ say: "Work out what each mark is worth before you read a scale." }],
+            }),
+          [
             {
-              text: "False. There are 5 spaces between 10 and 20, so each mark is 2 kg. The parcel weighs 14 kg.",
-              correct: true,
+              claim: "A heavier parcel shows a bigger number on the scales.",
+              truth: "always",
+              right: "Always. The scales show how heavy it is.",
+              wrong: [
+                ["Never. Heavy shows small numbers.", "MEA.SCALE.INTERVAL"],
+                ["Sometimes. It depends on the box."],
+              ],
             },
-            { text: "True. Every small mark is worth 1.", code: "MEA.SCALE.INTERVAL" },
-            { text: "True. You always count the marks in ones.", code: "MEA.SCALE.INTERVAL" },
+            {
+              statement:
+                "The scales go up in 1s. The pointer is at 6 kg. Sam says the parcel weighs 6 kg.",
+              truth: true,
+              right: "True. Read the number the pointer points to.",
+              wrong: [["False. It weighs 7 kg.", "MEA.SCALE.INTERVAL"], ["False. It weighs 5 kg."]],
+            },
+            {
+              statement:
+                "The scales go up in 2s. The pointer is one mark after 10. Kim says 11 kg.",
+              truth: false,
+              right: "False. Each mark is 2 kg, so one mark after 10 is 12 kg.",
+              wrong: [
+                ["True. Each mark is 1.", "MEA.SCALE.INTERVAL"],
+                ["True. The next number after 10 is 11.", "MEA.SCALE.INTERVAL"],
+              ],
+            },
           ],
-          solution: [{ say: "Work out what each mark is worth before you read a scale." }],
-        });
+        );
     }
   },
 

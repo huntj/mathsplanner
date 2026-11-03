@@ -43,7 +43,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-GEO-04.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -172,7 +172,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-GEO-04.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -301,7 +301,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-GEO-04.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -494,7 +494,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-GEO-04.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -683,7 +683,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-GEO-04.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -872,7 +872,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-GEO-04.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -957,47 +957,14 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "Two straight lines that get closer together towards the right but do not meet in the drawing.",
-        "points": {
-          "A": [
-            0,
-            0,
-          ],
-          "B": [
-            5,
-            0,
-          ],
-          "C": [
-            0,
-            1.6,
-          ],
-          "D": [
-            4.890738004,
-            0.560441546,
-          ],
-        },
-        "segments": [
-          {
-            "from": "A",
-            "to": "B",
-          },
-          {
-            "from": "C",
-            "to": "D",
-          },
-        ],
-        "type": "geometry",
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-GEO-04.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1009,13 +976,13 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1024,10 +991,19 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1035,7 +1011,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "They are perpendicular because one slopes.",
+                  "v": "Always. Not meeting means parallel.",
                 },
               ],
               "id": "RA",
@@ -1044,7 +1020,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Lines that do not touch on the page are always parallel.",
+                  "v": "Sometimes. If they slope towards each other, they would meet if you drew them longer.",
                 },
               ],
               "id": "RB",
@@ -1053,7 +1029,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "They get closer together, so if they were made longer they would meet.",
+                  "v": "Never. Parallel lines meet.",
                 },
               ],
               "id": "RC",
@@ -1068,14 +1044,6 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "GEO.LINES.PARALLEL-PERPENDICULAR",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
             "code": "GEO.LINES.PARALLEL-ON-PAGE",
             "feedback": [],
           },
@@ -1083,7 +1051,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1093,7 +1061,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Parallel lines stay the same distance apart forever. These close in on each other, so they are not parallel.",
+            "v": "Sometimes. If they slope towards each other, they would meet if you drew them longer.",
           },
         ],
       },
@@ -1101,11 +1069,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "These two lines do not meet, so they are parallel.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
+        "v": "Two lines are parallel if they do not meet on the page.",
       },
     ],
   },
@@ -1150,7 +1114,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-GEO-04.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1162,7 +1126,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -1188,7 +1152,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Lines that do not touch on the page are always parallel.",
+                  "v": "They get closer together, so if they were made longer they would meet.",
                 },
               ],
               "id": "RA",
@@ -1197,7 +1161,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "They are perpendicular because one slopes.",
+                  "v": "Lines that do not touch on the page are always parallel.",
                 },
               ],
               "id": "RB",
@@ -1206,7 +1170,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "They get closer together, so if they were made longer they would meet.",
+                  "v": "They are perpendicular because one slopes.",
                 },
               ],
               "id": "RC",
@@ -1218,7 +1182,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.LINES.PARALLEL-ON-PAGE",
@@ -1226,7 +1190,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "GEO.LINES.PARALLEL-PERPENDICULAR",
@@ -1264,46 +1228,13 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "Two straight lines that get closer together towards the right but do not meet in the drawing.",
-        "points": {
-          "A": [
-            0,
-            0,
-          ],
-          "B": [
-            5,
-            0,
-          ],
-          "C": [
-            0,
-            1.6,
-          ],
-          "D": [
-            4.890738004,
-            0.560441546,
-          ],
-        },
-        "segments": [
-          {
-            "from": "A",
-            "to": "B",
-          },
-          {
-            "from": "C",
-            "to": "D",
-          },
-        ],
-        "type": "geometry",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-GEO-04.b",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1314,7 +1245,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -1341,7 +1272,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Lines that do not touch on the page are always parallel.",
+                  "v": "False. Only the top and bottom count.",
                 },
               ],
               "id": "RA",
@@ -1350,7 +1281,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "They get closer together, so if they were made longer they would meet.",
+                  "v": "True. The top and bottom are parallel, and so are the two sides.",
                 },
               ],
               "id": "RB",
@@ -1359,7 +1290,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "They are perpendicular because one slopes.",
+                  "v": "False. It has none.",
                 },
               ],
               "id": "RC",
@@ -1399,7 +1330,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Parallel lines stay the same distance apart forever. These close in on each other, so they are not parallel.",
+            "v": "True. The top and bottom are parallel, and so are the two sides.",
           },
         ],
       },
@@ -1407,11 +1338,7 @@ exports[`Y3-GEO-04.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "These two lines do not meet, so they are parallel.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
+        "v": "Kit says a square has two pairs of parallel sides.",
       },
     ],
   },

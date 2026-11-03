@@ -36,7 +36,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-AS-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -132,7 +132,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-AS-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -228,7 +228,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-AS-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -298,7 +298,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-AS-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -369,7 +369,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-AS-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -440,7 +440,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-AS-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -511,7 +511,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-AS-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -522,8 +522,8 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RA",
+          "correct": "B",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -549,7 +549,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Addition undoes subtraction: if 122 + 278 = 400, the subtraction was right.",
+                  "v": "True. 10 is close to 9.",
                 },
               ],
               "id": "RA",
@@ -558,7 +558,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Check a subtraction by doing the subtraction again.",
+                  "v": "False. 4 + 5 = 9, not 10. The answer can go on either side, but both sides must be equal.",
                 },
               ],
               "id": "RB",
@@ -567,7 +567,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You can only check with a calculator.",
+                  "v": "True. Swapping sides makes it right.",
                 },
               ],
               "id": "RC",
@@ -579,10 +579,10 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "AS.INVERSE.SAME-OPERATION",
+            "code": "AS.EQUALS.ANSWER-NEXT",
             "feedback": [],
           },
         ],
@@ -599,7 +599,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "400 − 278 = 122 and 122 + 278 = 400 are a fact family: each undoes the other.",
+            "v": "False. 4 + 5 = 9, not 10. The answer can go on either side, but both sides must be equal.",
           },
         ],
       },
@@ -607,23 +607,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "To check that ",
-      },
-      {
-        "t": "math",
-        "v": "400 - 278 = 122",
-      },
-      {
-        "t": "text",
-        "v": ", Sam works out ",
-      },
-      {
-        "t": "math",
-        "v": "122 + 278",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Leo says 10 = 4 + 5 is true, because the answer can go on either side.",
       },
     ],
   },
@@ -635,7 +619,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-AS-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -682,7 +666,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You can only check with a calculator.",
+                  "v": "False. Check a subtraction by doing the subtraction again.",
                 },
               ],
               "id": "RB",
@@ -691,7 +675,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Check a subtraction by doing the subtraction again.",
+                  "v": "False. You can only check with a calculator.",
                 },
               ],
               "id": "RC",
@@ -703,7 +687,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "AS.INVERSE.SAME-OPERATION",
@@ -759,7 +743,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-AS-04",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -770,8 +754,8 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RA",
+          "correct": "B",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -797,7 +781,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Addition undoes subtraction: if 340 + 767 = 1,107, the subtraction was right.",
+                  "v": "True. 10 is close to 9.",
                 },
               ],
               "id": "RA",
@@ -806,7 +790,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You can only check with a calculator.",
+                  "v": "False. 4 + 5 = 9, not 10. The answer can go on either side, but both sides must be equal.",
                 },
               ],
               "id": "RB",
@@ -815,7 +799,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Check a subtraction by doing the subtraction again.",
+                  "v": "True. Swapping sides makes it right.",
                 },
               ],
               "id": "RC",
@@ -830,7 +814,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "AS.INVERSE.SAME-OPERATION",
+            "code": "AS.EQUALS.ANSWER-NEXT",
             "feedback": [],
           },
         ],
@@ -847,7 +831,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "1,107 − 767 = 340 and 340 + 767 = 1,107 are a fact family: each undoes the other.",
+            "v": "False. 4 + 5 = 9, not 10. The answer can go on either side, but both sides must be equal.",
           },
         ],
       },
@@ -855,23 +839,7 @@ exports[`Y3-AS-04 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "To check that ",
-      },
-      {
-        "t": "math",
-        "v": "1{,}107 - 767 = 340",
-      },
-      {
-        "t": "text",
-        "v": ", Sam works out ",
-      },
-      {
-        "t": "math",
-        "v": "340 + 767",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Leo says 10 = 4 + 5 is true, because the answer can go on either side.",
       },
     ],
   },

@@ -16,6 +16,7 @@ import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { coinName } from "../shared/mea.ts";
 import { mixFamilies } from "../shared/npv.ts";
 import parent from "./Y2-MEA-03.ts";
+import { withClaims } from "../shared/variety.ts";
 
 // Ways to make each amount.
 const WAYS: Record<number, number[][]> = {
@@ -115,5 +116,36 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y2-MEA-03.c", { 1: own, 2: own, 4: { ...parent.definition, id: "Y2-MEA-03.c" } }),
+  withClaims(
+    mixFamilies("Y2-MEA-03.c", { 1: own, 2: own, 4: { ...parent.definition, id: "Y2-MEA-03.c" } }),
+    [
+      {
+        claim: "You can make 10p with two 5p coins.",
+        truth: "always",
+        right: "Always. 5p + 5p = 10p.",
+        wrong: [
+          ["Never. You need ten coins.", "MEA.MONEY.COIN-COUNT"],
+          ["Sometimes. Only on Saturdays."],
+        ],
+      },
+      {
+        statement: "A toy costs 60p. Leo pays with £1 and says his change is 40p.",
+        truth: true,
+        right: "True. £1 is 100p, and 100 − 60 = 40.",
+        wrong: [
+          ["False. His change is 60p.", "AS.MULTISTEP.ONE-STEP"],
+          ["False. His change is 50p.", "MEA.MONEY.POUNDS-PENCE"],
+        ],
+      },
+      {
+        statement: "Mia says the fewest coins to make 15p is three 5p coins.",
+        truth: false,
+        right: "False. A 10p and a 5p make 15p with just 2 coins.",
+        wrong: [
+          ["True. 5 + 5 + 5 = 15.", "MEA.MONEY.COIN-COUNT"],
+          ["True. Only 5p coins can make 15p."],
+        ],
+      },
+    ],
+  ),
 );

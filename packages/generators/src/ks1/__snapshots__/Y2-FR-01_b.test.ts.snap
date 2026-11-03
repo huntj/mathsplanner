@@ -32,7 +32,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -154,7 +154,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -276,7 +276,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -376,7 +376,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -423,7 +423,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -470,7 +470,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -585,7 +585,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -753,7 +753,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -921,7 +921,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1014,36 +1014,14 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "bars": [
-          {
-            "parts": [
-              {
-                "shaded": false,
-                "size": 1,
-              },
-              {
-                "shaded": false,
-                "size": 2,
-              },
-              {
-                "shaded": false,
-                "size": 1,
-              },
-            ],
-          },
-        ],
-        "type": "bar-model",
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1054,14 +1032,14 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1070,10 +1048,19 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1081,7 +1068,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any bar can be split like that.",
+                  "v": "Always. A third is one of 3 equal parts.",
                 },
               ],
               "id": "RA",
@@ -1090,7 +1077,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. There are 3 parts, so they are thirds.",
+                  "v": "Sometimes. One third can be bigger.",
                 },
               ],
               "id": "RB",
@@ -1099,7 +1086,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. There are 3 parts, but they are not the same size.",
+                  "v": "Never. Thirds are all different.",
                 },
               ],
               "id": "RC",
@@ -1121,7 +1108,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1131,7 +1118,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Thirds are 3 equal parts.",
+            "v": "Always. A third is one of 3 equal parts.",
           },
         ],
       },
@@ -1139,45 +1126,19 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ava says the bar is split into thirds.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
+        "v": "Thirds of the same shape are equal in size.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "bars": [
-          {
-            "parts": [
-              {
-                "shaded": false,
-                "size": 1,
-              },
-              {
-                "shaded": false,
-                "size": 1,
-              },
-              {
-                "shaded": false,
-                "size": 1,
-              },
-            ],
-          },
-        ],
-        "type": "bar-model",
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1189,13 +1150,13 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1204,10 +1165,19 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1215,7 +1185,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You need more than 3 parts.",
+                  "v": "Always. A third is one of 3 equal parts.",
                 },
               ],
               "id": "RA",
@@ -1224,7 +1194,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. There are 3 parts and they are all the same size.",
+                  "v": "Never. Thirds are all different.",
                 },
               ],
               "id": "RB",
@@ -1233,7 +1203,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The parts need to be different sizes.",
+                  "v": "Sometimes. One third can be bigger.",
                 },
               ],
               "id": "RC",
@@ -1242,11 +1212,20 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "FR.PARTS.UNEQUAL",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1256,7 +1235,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Thirds are 3 equal parts.",
+            "v": "Always. A third is one of 3 equal parts.",
           },
         ],
       },
@@ -1264,45 +1243,19 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ava says the bar is split into thirds.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
+        "v": "Thirds of the same shape are equal in size.",
       },
     ],
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "bars": [
-          {
-            "parts": [
-              {
-                "shaded": false,
-                "size": 1,
-              },
-              {
-                "shaded": false,
-                "size": 1,
-              },
-              {
-                "shaded": false,
-                "size": 1,
-              },
-            ],
-          },
-        ],
-        "type": "bar-model",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1313,7 +1266,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
           "correctReason": "RC",
           "options": [
             {
@@ -1340,7 +1293,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The parts need to be different sizes.",
+                  "v": "True. A third means 3.",
                 },
               ],
               "id": "RA",
@@ -1349,7 +1302,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You need more than 3 parts.",
+                  "v": "True. Half of 6 is 3, and a third is the same.",
                 },
               ],
               "id": "RB",
@@ -1358,7 +1311,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. There are 3 parts and they are all the same size.",
+                  "v": "False. Share 6 into 3 equal groups: 2 in each, so 1/3 of 6 is 2.",
                 },
               ],
               "id": "RC",
@@ -1367,7 +1320,16 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "FR.OF-AMOUNT.UNIT-ONLY",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
@@ -1381,7 +1343,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Thirds are 3 equal parts.",
+            "v": "False. Share 6 into 3 equal groups: 2 in each, so 1/3 of 6 is 2.",
           },
         ],
       },
@@ -1389,11 +1351,7 @@ exports[`Y2-FR-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ava says the bar is split into thirds.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
+        "v": "Kim says 1/3 of 6 sweets is 3 sweets.",
       },
     ],
   },

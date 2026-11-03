@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { ampm, clock } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   hour: number;
@@ -21,7 +22,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y3-MEA-04.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.TIME.DECIMAL", "MEA.TIME.24-HOUR", "MEA.TIME.FACTS"],
 
@@ -97,20 +98,57 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: "Lucy says there are 12 hours in a day, because a clock face goes up to 12.",
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement:
+                "Lucy says there are 12 hours in a day, because a clock face goes up to 12.",
+              truth: false,
+              reasons: [
+                {
+                  text: "False. The hour hand goes round twice a day, once for am and once for pm: 24 hours.",
+                  correct: true,
+                },
+                { text: "True. The clock only shows 12 hours.", code: "MEA.TIME.FACTS" },
+                {
+                  text: "True. The 12-hour clock covers the whole day once.",
+                  code: "MEA.TIME.FACTS",
+                },
+              ],
+              solution: [{ say: "A day has 24 hours: 12 am hours and 12 pm hours." }],
+            }),
+          [
             {
-              text: "False. The hour hand goes round twice a day, once for am and once for pm: 24 hours.",
-              correct: true,
+              claim: "There are 60 seconds in a minute.",
+              truth: "always",
+              right: "Always. A minute is 60 seconds.",
+              wrong: [
+                ["Never. There are 100.", "MEA.TIME.FACTS"],
+                ["Sometimes. On digital clocks."],
+              ],
             },
-            { text: "True. The clock only shows 12 hours.", code: "MEA.TIME.FACTS" },
-            { text: "True. The 12-hour clock covers the whole day once.", code: "MEA.TIME.FACTS" },
+            {
+              statement: "Ola says there are 24 hours in a day.",
+              truth: true,
+              right: "True. The hour hand goes round the clock twice in a day: 2 × 12 = 24.",
+              wrong: [
+                ["False. There are 12.", "MEA.TIME.FACTS"],
+                ["False. There are 100.", "MEA.TIME.DECIMAL"],
+              ],
+            },
+            {
+              statement: "Gus says half an hour is 50 minutes.",
+              truth: false,
+              right: "False. An hour is 60 minutes, so half an hour is 30 minutes.",
+              wrong: [
+                ["True. Half of 100 is 50.", "MEA.TIME.DECIMAL"],
+                ["True. 0.5 hours is 50 minutes.", "MEA.TIME.DECIMAL"],
+              ],
+            },
           ],
-          solution: [{ say: "A day has 24 hours: 12 am hours and 12 pm hours." }],
-        });
+        );
     }
   },
 

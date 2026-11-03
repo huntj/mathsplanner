@@ -10,7 +10,7 @@ exports[`Y3-NPV-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-NPV-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -102,7 +102,7 @@ exports[`Y3-NPV-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-NPV-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -194,7 +194,7 @@ exports[`Y3-NPV-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-NPV-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -286,7 +286,7 @@ exports[`Y3-NPV-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-NPV-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -372,7 +372,7 @@ exports[`Y3-NPV-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-NPV-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -458,7 +458,7 @@ exports[`Y3-NPV-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-NPV-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -537,14 +537,131 @@ exports[`Y3-NPV-03 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-NPV-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. The smallest 3-digit number, 100, is bigger than the biggest 2-digit number, 99.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. Count the nines.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. 99 is bigger than 100.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.COMPARE.FIRST-DIGIT",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. The smallest 3-digit number, 100, is bigger than the biggest 2-digit number, 99.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A 3-digit number is bigger than a 2-digit number.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y3-NPV-03",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -556,7 +673,7 @@ exports[`Y3-NPV-03 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -582,7 +699,7 @@ exports[`Y3-NPV-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "108 has more digits, so it is bigger: 96 < 108.",
+                  "v": "True. 248 ends in 8.",
                 },
               ],
               "id": "RA",
@@ -591,7 +708,7 @@ exports[`Y3-NPV-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The number with the bigger first digit is always bigger.",
+                  "v": "False. Both have 2 hundreds; 6 tens is more than 4 tens, so 268 > 248.",
                 },
               ],
               "id": "RB",
@@ -600,7 +717,7 @@ exports[`Y3-NPV-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The sign is the wrong way round, but the reason is right.",
+                  "v": "True. The < sign points to the bigger number.",
                 },
               ],
               "id": "RC",
@@ -610,14 +727,6 @@ exports[`Y3-NPV-03 > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.COMPARE.FIRST-DIGIT",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -640,19 +749,15 @@ exports[`Y3-NPV-03 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Count the digits first: 96 has 2, 108 has 3.",
+            "v": "False. Both have 2 hundreds; 6 tens is more than 4 tens, so 268 > 248.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "t": "math",
-        "v": "96 > 108",
-      },
-      {
         "t": "text",
-        "v": ", because 9 is bigger than 1.",
+        "v": "Pia writes 268 < 248.",
       },
     ],
   },
@@ -661,10 +766,10 @@ exports[`Y3-NPV-03 > keeps fixed seeds unchanged 1`] = `
     "diagrams": [],
     "key": {
       "depth": 4,
-      "numbers": "standard",
+      "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-NPV-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -702,122 +807,20 @@ exports[`Y3-NPV-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The number with the bigger first digit is always bigger.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
                   "v": "The sign is the wrong way round, but the reason is right.",
                 },
               ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "102 has more digits, so it is bigger: 99 < 102.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
               "id": "RA",
-              "type": "choice",
             },
-            "code": "NPV.COMPARE.FIRST-DIGIT",
-            "feedback": [],
-          },
-          {
-            "answer": {
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "The number with the bigger first digit is always bigger.",
+                },
+              ],
               "id": "RB",
-              "type": "choice",
             },
-            "code": "NPV.COMPARE.SIGN-DIRECTION",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Count the digits first: 99 has 2, 102 has 3.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "math",
-        "v": "99 > 102",
-      },
-      {
-        "t": "text",
-        "v": ", because 9 is bigger than 1.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y3-NPV-03",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
             {
               "content": [
                 {
@@ -825,24 +828,6 @@ exports[`Y3-NPV-03 > keeps fixed seeds unchanged 1`] = `
                   "v": "109 has more digits, so it is bigger: 97 < 109.",
                 },
               ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "The number with the bigger first digit is always bigger.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "The sign is the wrong way round, but the reason is right.",
-                },
-              ],
               "id": "RC",
             },
           ],
@@ -852,18 +837,18 @@ exports[`Y3-NPV-03 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.COMPARE.FIRST-DIGIT",
+            "code": "NPV.COMPARE.SIGN-DIRECTION",
             "feedback": [],
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.COMPARE.SIGN-DIRECTION",
+            "code": "NPV.COMPARE.FIRST-DIGIT",
             "feedback": [],
           },
         ],

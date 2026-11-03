@@ -10,7 +10,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -102,7 +102,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -194,7 +194,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -286,7 +286,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -378,7 +378,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -470,7 +470,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -555,14 +555,14 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -574,13 +574,13 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -589,19 +589,10 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -609,7 +600,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Swapping which object you describe swaps left and right.",
+                  "v": "False. The box is on top.",
                 },
               ],
               "id": "RA",
@@ -618,7 +609,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The plate must be to the left too.",
+                  "v": "False. The cat is under the box.",
                 },
               ],
               "id": "RB",
@@ -627,7 +618,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends how big the plate is.",
+                  "v": "True. On top and under are opposites.",
                 },
               ],
               "id": "RC",
@@ -637,6 +628,14 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "POS.WORDS.OPPOSITE",
+            "feedback": [],
+          },
           {
             "answer": {
               "id": "RB",
@@ -649,7 +648,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -659,7 +658,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Left of and right of are opposites: describe the other object and the word swaps.",
+            "v": "True. On top and under are opposites.",
           },
         ],
       },
@@ -667,7 +666,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "If a cup is to the left of a plate, then the plate is to the right of the cup.",
+        "v": "The cat is on top of the box. Sam says the box is under the cat.",
       },
     ],
   },
@@ -679,7 +678,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -726,7 +725,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Swapping which object you describe swaps left and right.",
+                  "v": "Always. In front and behind are opposites.",
                 },
               ],
               "id": "RA",
@@ -735,7 +734,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends how big the plate is.",
+                  "v": "Sometimes. It depends where you stand.",
                 },
               ],
               "id": "RB",
@@ -744,7 +743,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The plate must be to the left too.",
+                  "v": "Never. The chair is in front too.",
                 },
               ],
               "id": "RC",
@@ -776,7 +775,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Left of and right of are opposites: describe the other object and the word swaps.",
+            "v": "Always. In front and behind are opposites.",
           },
         ],
       },
@@ -784,7 +783,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "If a cup is to the left of a plate, then the plate is to the right of the cup.",
+        "v": "If the ball is in front of the chair, the chair is behind the ball.",
       },
     ],
   },
@@ -796,7 +795,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -843,7 +842,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends how big the plate is.",
+                  "v": "Sometimes. It depends where you stand.",
                 },
               ],
               "id": "RA",
@@ -852,7 +851,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Swapping which object you describe swaps left and right.",
+                  "v": "Always. In front and behind are opposites.",
                 },
               ],
               "id": "RB",
@@ -861,7 +860,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The plate must be to the left too.",
+                  "v": "Never. The chair is in front too.",
                 },
               ],
               "id": "RC",
@@ -893,7 +892,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Left of and right of are opposites: describe the other object and the word swaps.",
+            "v": "Always. In front and behind are opposites.",
           },
         ],
       },
@@ -901,7 +900,7 @@ exports[`Y1-POS-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "If a cup is to the left of a plate, then the plate is to the right of the cup.",
+        "v": "If the ball is in front of the chair, the chair is behind the ball.",
       },
     ],
   },

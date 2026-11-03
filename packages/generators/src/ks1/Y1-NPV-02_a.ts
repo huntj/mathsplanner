@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer, numberWords } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -18,7 +19,7 @@ const cap = (s: string) => `${s[0]?.toUpperCase()}${s.slice(1)}`;
 
 export default defineGenerator<Params>({
   id: "Y1-NPV-02.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.PLACE.DIGIT-ORDER", "NPV.TEENS.REVERSAL", "NPV.PLACE.WRITE-AS-SAID"],
 
@@ -90,21 +91,57 @@ export default defineGenerator<Params>({
           solution: [{ say: `${p.n} is ${words}.` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Leo writes ${words} as ${reverse(p.n)}.`,
-          truth: false,
-          reasons: [
-            { text: `False. The tens digit comes first, so ${words} is ${p.n}.`, correct: true },
-            { text: "True. You write the digits in the order you hear them.", code: swap.code },
-            { text: `True. ${reverse(p.n)} and ${p.n} are the same number.`, code: swap.code },
-          ],
-          solution: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Leo writes ${words} as ${reverse(p.n)}.`,
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The tens digit comes first, so ${words} is ${p.n}.`,
+                  correct: true,
+                },
+                { text: "True. You write the digits in the order you hear them.", code: swap.code },
+                { text: `True. ${reverse(p.n)} and ${p.n} are the same number.`, code: swap.code },
+              ],
+              solution: [
+                {
+                  say: `${cap(words)}: ${Math.floor(p.n / 10)} in the tens place and ${p.n % 10} in the ones place, ${p.n}.`,
+                },
+              ],
+            }),
+          [
             {
-              say: `${cap(words)}: ${Math.floor(p.n / 10)} in the tens place and ${p.n % 10} in the ones place, ${p.n}.`,
+              statement: "Leo writes forty-two as 42.",
+              truth: true,
+              right: "True. Forty is 4 tens and two is 2 ones: 42.",
+              wrong: [
+                ["False. It is 24.", "NPV.PLACE.DIGIT-ORDER"],
+                ["False. It is 402.", "NPV.PLACE.WRITE-AS-SAID"],
+              ],
+            },
+            {
+              statement: "Mia writes sixty as 600.",
+              truth: false,
+              right: "False. Sixty is 6 tens: 60.",
+              wrong: [
+                ["True. Six and a hundred.", "NPV.PLACE.WRITE-AS-SAID"],
+                ["True. Sixty is a big number."],
+              ],
+            },
+            {
+              claim: "In a 2-digit number, the first digit shows the tens.",
+              truth: "always",
+              right: "Always. In 35 the 3 means 3 tens.",
+              wrong: [
+                ["Never. The first digit is the ones.", "NPV.PLACE.DIGIT-ORDER"],
+                ["Sometimes. Only for teens.", "NPV.TEENS.REVERSAL"],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

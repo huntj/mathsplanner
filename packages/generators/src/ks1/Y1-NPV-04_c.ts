@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** A has more tens but fewer ones than B. */
@@ -22,7 +23,7 @@ const NAMES = ["Kit", "Ash", "Bo"];
 
 export default defineGenerator<Params>({
   id: "Y1-NPV-04.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.COMPARE.ONES-FIRST", "NPV.COMPARE.SPREAD"],
 
@@ -88,24 +89,57 @@ export default defineGenerator<Params>({
         const target = p.most ? big : small;
         const wrong = p.most ? small : big;
         const who = (v: number) => NAMES[p.three.indexOf(v)] ?? "";
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `${NAMES[0]} has ${p.three[0]} shells, ${NAMES[1]} has ${p.three[1]} and ${NAMES[2]} has ${p.three[2]}. ${who(wrong)} spreads the shells out in a long line and says, "I have the ${p.most ? "most" : "least"}."`,
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `${NAMES[0]} has ${p.three[0]} shells, ${NAMES[1]} has ${p.three[1]} and ${NAMES[2]} has ${p.three[2]}. ${who(wrong)} spreads the shells out in a long line and says, "I have the ${p.most ? "most" : "least"}."`,
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${who(target)} has the ${p.most ? "most" : "least"}: ${target}. Spreading shells out does not change how many there are.`,
+                  correct: true,
+                },
+                { text: "True. The longest line has the most.", code: "NPV.COMPARE.SPREAD" },
+                { text: `True. ${who(wrong)} can see more shells.`, code: "NPV.COMPARE.SPREAD" },
+              ],
+              solution: [
+                {
+                  say: `In order: ${[...p.three].sort((m, n) => m - n).join(", ")}. The most is ${big} and the least is ${small}.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. ${who(target)} has the ${p.most ? "most" : "least"}: ${target}. Spreading shells out does not change how many there are.`,
-              correct: true,
+              statement: "Sam has 8 marbles and Kim has 5. Sam says he has more.",
+              truth: true,
+              right: "True. 8 is more than 5.",
+              wrong: [
+                ["False. Kim has more.", "NPV.COMPARE.ONES-FIRST"],
+                ["False. They have the same."],
+              ],
             },
-            { text: "True. The longest line has the most.", code: "NPV.COMPARE.SPREAD" },
-            { text: `True. ${who(wrong)} can see more shells.`, code: "NPV.COMPARE.SPREAD" },
-          ],
-          solution: [
             {
-              say: `In order: ${[...p.three].sort((m, n) => m - n).join(", ")}. The most is ${big} and the least is ${small}.`,
+              claim: "Spreading counters out makes more of them.",
+              truth: "never",
+              right: "Never. Moving counters does not change how many there are.",
+              wrong: [
+                ["Always. A longer line has more.", "NPV.COMPARE.SPREAD"],
+                ["Sometimes. If you spread them a lot.", "NPV.COMPARE.SPREAD"],
+              ],
+            },
+            {
+              statement: "Ana has 12 stickers and Ben has 21. Ana says she has the most.",
+              truth: false,
+              right: "False. 21 has 2 tens and 12 has 1 ten, so Ben has more.",
+              wrong: [
+                ["True. 2 is bigger than 1.", "NPV.COMPARE.ONES-FIRST"],
+                ["True. Her stickers are spread out.", "NPV.COMPARE.SPREAD"],
+              ],
             },
           ],
-        });
+        );
       }
     }
   },

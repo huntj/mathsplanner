@@ -43,7 +43,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-GEO-01",
-      "version": "1.1.1",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -167,7 +167,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-GEO-01",
-      "version": "1.1.1",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -291,7 +291,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-GEO-01",
-      "version": "1.1.1",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -449,7 +449,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-GEO-01",
-      "version": "1.1.1",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -603,7 +603,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-GEO-01",
-      "version": "1.1.1",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -757,7 +757,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-GEO-01",
-      "version": "1.1.1",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -829,46 +829,13 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "A square turned so that it stands on one corner.",
-        "points": {
-          "A": [
-            -0,
-            -1.414213562,
-          ],
-          "B": [
-            1.414213562,
-            -0,
-          ],
-          "C": [
-            0,
-            1.414213562,
-          ],
-          "D": [
-            -1.414213562,
-            0,
-          ],
-        },
-        "polygons": [
-          {
-            "vertices": [
-              "A",
-              "B",
-              "C",
-              "D",
-            ],
-          },
-        ],
-        "type": "geometry",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-GEO-01",
-      "version": "1.1.1",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -880,7 +847,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -906,7 +873,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is still a square: it has four equal sides and four square corners, whichever way it is turned.",
+                  "v": "True. Turning changes the shape.",
                 },
               ],
               "id": "RA",
@@ -915,7 +882,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is not a square because squares are always bigger.",
+                  "v": "False. It still has 3 sides, so it is still a triangle.",
                 },
               ],
               "id": "RB",
@@ -924,7 +891,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "When a square is turned it becomes a different shape.",
+                  "v": "True. Triangles point up.",
                 },
               ],
               "id": "RC",
@@ -934,6 +901,14 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "GEO.SHAPES.ORIENTATION",
+            "feedback": [],
+          },
           {
             "answer": {
               "id": "RC",
@@ -956,7 +931,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Turning a shape does not change what it is. This is still a square.",
+            "v": "False. It still has 3 sides, so it is still a triangle.",
           },
         ],
       },
@@ -964,11 +939,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jack says this is not a square, because it is standing on its corner.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
+        "v": "Mia turns a triangle upside down and says it is not a triangle now.",
       },
     ],
   },
@@ -1013,7 +984,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-GEO-01",
-      "version": "1.1.1",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -1118,47 +1089,14 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "A square turned so that it stands on one corner.",
-        "points": {
-          "A": [
-            -0,
-            -1.414213562,
-          ],
-          "B": [
-            1.414213562,
-            -0,
-          ],
-          "C": [
-            0,
-            1.414213562,
-          ],
-          "D": [
-            -1.414213562,
-            0,
-          ],
-        },
-        "polygons": [
-          {
-            "vertices": [
-              "A",
-              "B",
-              "C",
-              "D",
-            ],
-          },
-        ],
-        "type": "geometry",
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-GEO-01",
-      "version": "1.1.1",
+      "version": "1.2.0",
     },
     "meta": {
       "calculator": false,
@@ -1169,14 +1107,14 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1185,10 +1123,19 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1196,7 +1143,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "When a square is turned it becomes a different shape.",
+                  "v": "Sometimes. Big circles do.",
                 },
               ],
               "id": "RA",
@@ -1205,7 +1152,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is still a square: it has four equal sides and four square corners, whichever way it is turned.",
+                  "v": "Never. It has 1 side.",
                 },
               ],
               "id": "RB",
@@ -1214,7 +1161,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It is not a square because squares are always bigger.",
+                  "v": "Always. A circle is curved all the way round.",
                 },
               ],
               "id": "RC",
@@ -1226,7 +1173,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.SHAPES.ORIENTATION",
@@ -1236,7 +1183,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1246,7 +1193,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Turning a shape does not change what it is. This is still a square.",
+            "v": "Always. A circle is curved all the way round.",
           },
         ],
       },
@@ -1254,11 +1201,7 @@ exports[`Y1-GEO-01 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jack says this is not a square, because it is standing on its corner.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
+        "v": "A circle has no straight sides.",
       },
     ],
   },

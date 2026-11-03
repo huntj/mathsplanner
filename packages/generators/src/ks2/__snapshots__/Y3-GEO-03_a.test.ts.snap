@@ -118,7 +118,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-GEO-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -304,7 +304,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-GEO-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -490,7 +490,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-GEO-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -600,7 +600,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-GEO-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -683,7 +683,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-GEO-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -766,7 +766,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-GEO-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -816,49 +816,13 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "angles": [
-          {
-            "from": "A",
-            "right": true,
-            "to": "B",
-            "vertex": "O",
-          },
-        ],
-        "points": {
-          "A": [
-            4,
-            0,
-          ],
-          "B": [
-            0,
-            4,
-          ],
-          "O": [
-            0,
-            0,
-          ],
-        },
-        "segments": [
-          {
-            "from": "O",
-            "to": "A",
-          },
-          {
-            "from": "O",
-            "to": "B",
-          },
-        ],
-        "type": "geometry",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-GEO-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -870,7 +834,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -896,7 +860,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A right angle must have short arms.",
+                  "v": "False. Turning an angle does not change its size: it is still a right angle.",
                 },
               ],
               "id": "RA",
@@ -905,7 +869,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Longer arms make a bigger angle.",
+                  "v": "True. Tilting makes it bigger.",
                 },
               ],
               "id": "RB",
@@ -914,7 +878,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Both are quarter turns. The size of an angle is the amount of turn, not the length of the arms.",
+                  "v": "True. Right angles must point up.",
                 },
               ],
               "id": "RC",
@@ -926,7 +890,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.ANGLES.SIZE-BY-ARMS",
@@ -934,10 +898,10 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "GEO.ANGLES.SIZE-BY-ARMS",
+            "code": "GEO.SHAPES.ORIENTATION",
             "feedback": [],
           },
         ],
@@ -954,7 +918,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Every right angle is the same size: a quarter of a whole turn.",
+            "v": "False. Turning an angle does not change its size: it is still a right angle.",
           },
         ],
       },
@@ -962,63 +926,19 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Two right angles are drawn, one with arms twice as long as the other.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": "Ali says the one with longer arms is a bigger angle.",
+        "v": "A right angle is drawn tilted on its side. Mia says it is not a right angle any more.",
       },
     ],
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "angles": [
-          {
-            "from": "A",
-            "right": true,
-            "to": "B",
-            "vertex": "O",
-          },
-        ],
-        "points": {
-          "A": [
-            3.276608177,
-            2.294305745,
-          ],
-          "B": [
-            -2.294305745,
-            3.276608177,
-          ],
-          "O": [
-            0,
-            0,
-          ],
-        },
-        "segments": [
-          {
-            "from": "O",
-            "to": "A",
-          },
-          {
-            "from": "O",
-            "to": "B",
-          },
-        ],
-        "type": "geometry",
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-GEO-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1056,7 +976,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A right angle must have short arms.",
+                  "v": "True. Tilting makes it bigger.",
                 },
               ],
               "id": "RA",
@@ -1065,7 +985,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Longer arms make a bigger angle.",
+                  "v": "True. Right angles must point up.",
                 },
               ],
               "id": "RB",
@@ -1074,7 +994,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Both are quarter turns. The size of an angle is the amount of turn, not the length of the arms.",
+                  "v": "False. Turning an angle does not change its size: it is still a right angle.",
                 },
               ],
               "id": "RC",
@@ -1097,7 +1017,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "GEO.ANGLES.SIZE-BY-ARMS",
+            "code": "GEO.SHAPES.ORIENTATION",
             "feedback": [],
           },
         ],
@@ -1114,7 +1034,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Every right angle is the same size: a quarter of a whole turn.",
+            "v": "False. Turning an angle does not change its size: it is still a right angle.",
           },
         ],
       },
@@ -1122,15 +1042,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Two right angles are drawn, one with arms twice as long as the other.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": "Ali says the one with longer arms is a bigger angle.",
+        "v": "A right angle is drawn tilted on its side. Mia says it is not a right angle any more.",
       },
     ],
   },
@@ -1178,7 +1090,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-GEO-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1190,7 +1102,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -1225,7 +1137,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A right angle must have short arms.",
+                  "v": "False. Both are quarter turns. The size of an angle is the amount of turn, not the length of the arms.",
                 },
               ],
               "id": "RB",
@@ -1234,7 +1146,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Both are quarter turns. The size of an angle is the amount of turn, not the length of the arms.",
+                  "v": "True. A right angle must have short arms.",
                 },
               ],
               "id": "RC",
@@ -1254,7 +1166,7 @@ exports[`Y3-GEO-03.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "GEO.ANGLES.SIZE-BY-ARMS",

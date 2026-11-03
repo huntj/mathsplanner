@@ -9,6 +9,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import type { GeometrySpec } from "@mathsplanner/diagrams";
 import { capital, shape } from "../shared/shapes.ts";
+import { orClaims } from "../shared/variety.ts";
 
 type Name = "square" | "rectangle" | "circle" | "triangle";
 
@@ -43,7 +44,7 @@ function figure(name: Name, p: Params): GeometrySpec {
 
 export default defineGenerator<Params>({
   id: "Y1-GEO-01",
-  version: "1.1.1",
+  version: "1.2.0",
   depths: [1, 3, 4],
   misconceptions: ["GEO.SHAPES.ORIENTATION"],
 
@@ -96,36 +97,69 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Jack says this is not a square, because it is standing on its corner.",
-            A.figure({
-              ...shape("square", { rotation: 45 }),
-              description: "A square turned so that it stands on one corner.",
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Jack says this is not a square, because it is standing on its corner.",
+                A.figure({
+                  ...shape("square", { rotation: 45 }),
+                  description: "A square turned so that it stands on one corner.",
+                }),
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "It is still a square: it has four equal sides and four square corners, whichever way it is turned.",
+                  correct: true,
+                },
+                {
+                  text: "When a square is turned it becomes a different shape.",
+                  code: "GEO.SHAPES.ORIENTATION",
+                },
+                { text: "It is not a square because squares are always bigger." },
+              ],
+              solution: [
+                { say: "Turning a shape does not change what it is. This is still a square." },
+              ],
             }),
-          ],
-          truth: false,
-          reasons: [
+          [
             {
-              text: "It is still a square: it has four equal sides and four square corners, whichever way it is turned.",
-              correct: true,
+              claim: "A circle has no straight sides.",
+              truth: "always",
+              right: "Always. A circle is curved all the way round.",
+              wrong: [
+                ["Never. It has 1 side.", "GEO.SHAPES.ORIENTATION"],
+                ["Sometimes. Big circles do."],
+              ],
             },
             {
-              text: "When a square is turned it becomes a different shape.",
-              code: "GEO.SHAPES.ORIENTATION",
+              statement: "Sam says a triangle has 3 sides.",
+              truth: true,
+              right: "True. Tri means three.",
+              wrong: [
+                ["False. It has 4 sides.", "GEO.SHAPES.ORIENTATION"],
+                ["False. It has 2 sides."],
+              ],
             },
-            { text: "It is not a square because squares are always bigger." },
+            {
+              statement: "Mia turns a triangle upside down and says it is not a triangle now.",
+              truth: false,
+              right: "False. It still has 3 sides, so it is still a triangle.",
+              wrong: [
+                ["True. Triangles point up.", "GEO.SHAPES.ORIENTATION"],
+                ["True. Turning changes the shape.", "GEO.SHAPES.ORIENTATION"],
+              ],
+            },
           ],
-          solution: [
-            { say: "Turning a shape does not change what it is. This is still a square." },
-          ],
-        });
+        );
     }
   },
 
   verify(p, question) {
-    if (question.archetype === "true-or-false-why") return true;
+    if (question.key.depth === 4) return true;
     // The shape drawn as the answer has the right number of corners for its name.
     const corners: Record<Name, number> = { square: 4, rectangle: 4, circle: 0, triangle: 3 };
     const answer = question.parts[0]?.answer;

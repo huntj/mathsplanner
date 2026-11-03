@@ -10,7 +10,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-MEA-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -76,7 +76,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-MEA-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -142,7 +142,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-MEA-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -208,7 +208,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-MEA-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -300,7 +300,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-MEA-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -392,7 +392,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-MEA-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -484,7 +484,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-MEA-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -522,7 +522,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Eve was named last, so Eve is the tallest.",
+                  "v": "True. Worms are long.",
                 },
               ],
               "id": "RA",
@@ -531,7 +531,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "We cannot tell without measuring them.",
+                  "v": "True. Longer means shorter.",
                 },
               ],
               "id": "RB",
@@ -540,7 +540,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Ben is taller than Amy, and Amy is taller than Eve, so Ben is taller than Eve.",
+                  "v": "False. The snake is longer, so the worm is shorter.",
                 },
               ],
               "id": "RC",
@@ -558,6 +558,14 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
             "code": "MEA.SEQUENCE.ORDER",
             "feedback": [],
           },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "AS.PROBLEM.KEYWORD",
+            "feedback": [],
+          },
         ],
         "prompt": [
           {
@@ -572,7 +580,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "From tallest to shortest: Ben, Amy, Eve.",
+            "v": "False. The snake is longer, so the worm is shorter.",
           },
         ],
       },
@@ -580,7 +588,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ben is taller than Amy. Eve is shorter than Amy. Eve says, "I am taller than Ben."",
+        "v": "A snake is longer than a worm. Kim says the worm is the longest.",
       },
     ],
   },
@@ -592,7 +600,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-MEA-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -604,7 +612,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -630,7 +638,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "We cannot tell without measuring them.",
+                  "v": "False. The snake is longer, so the worm is shorter.",
                 },
               ],
               "id": "RA",
@@ -639,7 +647,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Ben was named last, so Ben is the tallest.",
+                  "v": "True. Worms are long.",
                 },
               ],
               "id": "RB",
@@ -648,7 +656,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Eve is taller than Cal, and Cal is taller than Ben, so Eve is taller than Ben.",
+                  "v": "True. Longer means shorter.",
                 },
               ],
               "id": "RC",
@@ -666,6 +674,14 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
             "code": "MEA.SEQUENCE.ORDER",
             "feedback": [],
           },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "AS.PROBLEM.KEYWORD",
+            "feedback": [],
+          },
         ],
         "prompt": [
           {
@@ -680,7 +696,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "From tallest to shortest: Eve, Cal, Ben.",
+            "v": "False. The snake is longer, so the worm is shorter.",
           },
         ],
       },
@@ -688,19 +704,19 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Eve is taller than Cal. Ben is shorter than Cal. Ben says, "I am taller than Eve."",
+        "v": "A snake is longer than a worm. Kim says the worm is the longest.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-MEA-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -711,14 +727,14 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -727,10 +743,19 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -738,7 +763,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Cal was named last, so Cal is the tallest.",
+                  "v": "Never. The crayon is longer.",
                 },
               ],
               "id": "RA",
@@ -747,7 +772,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "We cannot tell without measuring them.",
+                  "v": "Always. Longer one way means shorter the other way.",
                 },
               ],
               "id": "RB",
@@ -756,7 +781,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Eve is taller than Ben, and Ben is taller than Cal, so Eve is taller than Cal.",
+                  "v": "Sometimes. It depends on the colour.",
                 },
               ],
               "id": "RC",
@@ -778,7 +803,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -788,7 +813,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "From tallest to shortest: Eve, Ben, Cal.",
+            "v": "Always. Longer one way means shorter the other way.",
           },
         ],
       },
@@ -796,7 +821,7 @@ exports[`Y1-MEA-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Eve is taller than Ben. Cal is shorter than Ben. Cal says, "I am taller than Eve."",
+        "v": "If a pencil is longer than a crayon, the crayon is shorter than the pencil.",
       },
     ],
   },

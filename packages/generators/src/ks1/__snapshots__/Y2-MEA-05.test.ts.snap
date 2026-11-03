@@ -10,7 +10,7 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MEA-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -102,7 +102,7 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MEA-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -194,7 +194,7 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MEA-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -286,7 +286,7 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MEA-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -373,7 +373,7 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-MEA-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -460,7 +460,7 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MEA-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -547,7 +547,123 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-MEA-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. A day is 24 hours.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. A day goes by fast.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Hours are longer than days.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MEA.TIME.FACTS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "MEA.TIME.FACTS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. A day is 24 hours.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ana says a day is shorter than an hour.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y2-MEA-05",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -585,7 +701,7 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. An hour is longer than any number of minutes.",
+                  "v": "True. Hours are longer than days.",
                 },
               ],
               "id": "RA",
@@ -594,7 +710,7 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Half an hour is 30 minutes, which is less than 35 minutes.",
+                  "v": "False. A day is 24 hours.",
                 },
               ],
               "id": "RB",
@@ -603,7 +719,7 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Half an hour is 50 minutes.",
+                  "v": "True. A day goes by fast.",
                 },
               ],
               "id": "RC",
@@ -618,7 +734,7 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "MEA.UNITS.MIXED",
+            "code": "MEA.TIME.FACTS",
             "feedback": [],
           },
           {
@@ -643,7 +759,7 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "An hour is 60 minutes, so half an hour is 30 minutes.",
+            "v": "False. A day is 24 hours.",
           },
         ],
       },
@@ -651,123 +767,7 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Leo says half an hour is longer than 35 minutes.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y2-MEA-05",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. An hour is longer than any number of minutes.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Half an hour is 50 minutes.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Half an hour is 30 minutes, which is less than 35 minutes.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "MEA.UNITS.MIXED",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "MEA.TIME.FACTS",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "An hour is 60 minutes, so half an hour is 30 minutes.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Leo says half an hour is longer than 35 minutes.",
+        "v": "Ana says a day is shorter than an hour.",
       },
     ],
   },
@@ -779,7 +779,7 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-MEA-05",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -791,7 +791,7 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -817,7 +817,7 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Half an hour is 50 minutes.",
+                  "v": "True. A day goes by fast.",
                 },
               ],
               "id": "RA",
@@ -826,7 +826,7 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. An hour is longer than any number of minutes.",
+                  "v": "False. A day is 24 hours.",
                 },
               ],
               "id": "RB",
@@ -835,7 +835,7 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Half an hour is 30 minutes, which is less than 40 minutes.",
+                  "v": "True. Hours are longer than days.",
                 },
               ],
               "id": "RC",
@@ -855,10 +855,10 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "MEA.UNITS.MIXED",
+            "code": "MEA.TIME.FACTS",
             "feedback": [],
           },
         ],
@@ -875,7 +875,7 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "An hour is 60 minutes, so half an hour is 30 minutes.",
+            "v": "False. A day is 24 hours.",
           },
         ],
       },
@@ -883,7 +883,7 @@ exports[`Y2-MEA-05 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Leo says half an hour is longer than 40 minutes.",
+        "v": "Ana says a day is shorter than an hour.",
       },
     ],
   },

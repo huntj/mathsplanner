@@ -10,6 +10,7 @@ import type { CountersSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { chosenFigure, numberAnswer, tally } from "../shared/counting.ts";
 import { TOPICS } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   topic: number;
@@ -22,7 +23,7 @@ const gatesAsOne = (n: number) => Math.floor(n / 5) + (n % 5);
 
 export default defineGenerator<Params>({
   id: "Y2-STA-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 3, 4],
   misconceptions: ["STA.SCALE.READ"],
 
@@ -81,26 +82,56 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            A.figure(tally(p.n, true)),
-            `Ben counts every group of marks as 1 and says this tally shows ${slip}.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                A.figure(tally(p.n, true)),
+                `Ben counts every group of marks as 1 and says this tally shows ${slip}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Each gate of five marks stands for 5, so it shows ${p.n}.`,
+                  correct: true,
+                },
+                { text: "True. Each group of marks is one vote.", code: "STA.SCALE.READ" },
+                {
+                  text: "True. The line across means you count the gate once.",
+                  code: "STA.SCALE.READ",
+                },
+              ],
+              solution: [{ say: `${Math.floor(p.n / 5)} × 5 + ${p.n % 5} = ${p.n}.` }],
+            }),
+          [
             {
-              text: `False. Each gate of five marks stands for 5, so it shows ${p.n}.`,
-              correct: true,
+              claim: "In tally marks, a gate (four lines with one across) stands for 5.",
+              truth: "always",
+              right: "Always. 4 lines and 1 across make 5.",
+              wrong: [
+                ["Never. It stands for 1.", "STA.SCALE.READ"],
+                ["Sometimes. It depends who drew it."],
+              ],
             },
-            { text: "True. Each group of marks is one vote.", code: "STA.SCALE.READ" },
             {
-              text: "True. The line across means you count the gate once.",
-              code: "STA.SCALE.READ",
+              statement: "Leo sees two gates and 3 more lines. He says the tally shows 13.",
+              truth: true,
+              right: "True. 5 + 5 + 3 = 13.",
+              wrong: [["False. It shows 5.", "STA.SCALE.READ"], ["False. It shows 3."]],
+            },
+            {
+              statement: "Kim sees one gate and 2 more lines. She says the tally shows 3.",
+              truth: false,
+              right: "False. A gate is 5, so 5 + 2 = 7.",
+              wrong: [
+                ["True. Count each group as 1.", "STA.SCALE.READ"],
+                ["True. Count the gates and lines."],
+              ],
             },
           ],
-          solution: [{ say: `${Math.floor(p.n / 5)} × 5 + ${p.n % 5} = ${p.n}.` }],
-        });
+        );
     }
   },
 

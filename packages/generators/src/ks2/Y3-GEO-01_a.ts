@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { regularPolygon, type GeometrySpec } from "@mathsplanner/diagrams";
 import { chosenFigure, chosenText } from "../shared/counting.ts";
 import { shape } from "../shared/shapes.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const NAMES: Record<number, string> = { 5: "pentagon", 6: "hexagon", 7: "heptagon", 8: "octagon" };
 
@@ -43,7 +44,7 @@ const sidesOf = (spec: unknown) =>
 
 export default defineGenerator<Params>({
   id: "Y3-GEO-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.SHAPES.SIDES-VERTICES", "GEO.SHAPES.ORIENTATION"],
 
@@ -88,29 +89,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Theo draws a square standing on one corner.",
-            A.figure(shape("square", { rotation: 45 })),
-            "He says it is no longer a square.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Theo draws a square standing on one corner.",
+                A.figure(shape("square", { rotation: 45 })),
+                "He says it is no longer a square.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. It still has 4 equal sides and 4 right angles. Turning a shape does not change it.",
+                  correct: true,
+                },
+                {
+                  text: "True. Standing on a corner makes it a diamond, not a square.",
+                  code: "GEO.SHAPES.ORIENTATION",
+                },
+                { text: "True. A square must have a flat bottom.", code: "GEO.SHAPES.ORIENTATION" },
+              ],
+              solution: [
+                { say: "A shape's name depends on its sides and angles, not which way it faces." },
+              ],
+            }),
+          [
             {
-              text: "False. It still has 4 equal sides and 4 right angles. Turning a shape does not change it.",
-              correct: true,
+              statement: "Leo says a triangle has 3 sides and 3 corners.",
+              truth: true,
+              right: "True. Tri means three: 3 sides and 3 vertices.",
+              wrong: [
+                ["False. It has 3 sides and 4 corners.", "GEO.SHAPES.SIDES-VERTICES"],
+                ["False. It has 4 sides."],
+              ],
             },
             {
-              text: "True. Standing on a corner makes it a diamond, not a square.",
-              code: "GEO.SHAPES.ORIENTATION",
+              claim: "A shape turned round is still the same shape.",
+              truth: "always",
+              right: "Always. Turning a shape does not change its sides or angles.",
+              wrong: [
+                ["Never. A turned square is a diamond, not a square.", "GEO.SHAPES.ORIENTATION"],
+                ["Sometimes. Only for circles."],
+              ],
             },
-            { text: "True. A square must have a flat bottom.", code: "GEO.SHAPES.ORIENTATION" },
+            {
+              statement: "Mia says a hexagon has 5 sides.",
+              truth: false,
+              right: "False. A hexagon has 6 sides. A pentagon has 5.",
+              wrong: [
+                ["True. Hex means five.", "GEO.SHAPES.SIDES-VERTICES"],
+                ["True. All shapes have 5 sides."],
+              ],
+            },
           ],
-          solution: [
-            { say: "A shape's name depends on its sides and angles, not which way it faces." },
-          ],
-        });
+        );
     }
   },
 

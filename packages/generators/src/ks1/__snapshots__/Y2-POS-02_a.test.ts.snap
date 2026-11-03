@@ -10,7 +10,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-POS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -76,7 +76,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-POS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -142,7 +142,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-POS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -208,7 +208,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-POS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -274,7 +274,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-POS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -340,7 +340,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-POS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -399,14 +399,14 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y2-POS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -418,13 +418,13 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -433,10 +433,19 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -444,7 +453,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It depends which square it started on.",
+                  "v": "Always. 2 quarters make a half.",
                 },
               ],
               "id": "RA",
@@ -453,7 +462,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It has moved 4 squares from the start.",
+                  "v": "Never. They make a whole turn.",
                 },
               ],
               "id": "RB",
@@ -462,7 +471,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Left and right are opposite directions, so the two moves cancel out.",
+                  "v": "Sometimes. Only clockwise.",
                 },
               ],
               "id": "RC",
@@ -484,7 +493,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -494,7 +503,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "2 left then 2 right ends on the starting square.",
+            "v": "Always. 2 quarters make a half.",
           },
         ],
       },
@@ -502,7 +511,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Lily moves a counter 2 squares left, then 2 squares right. She says it is back where it started.",
+        "v": "A quarter turn and another quarter turn make a half turn.",
       },
     ],
   },
@@ -514,7 +523,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y2-POS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -525,7 +534,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
           "correctReason": "RC",
           "options": [
             {
@@ -552,7 +561,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It has moved 6 squares from the start.",
+                  "v": "True. Every move goes right.",
                 },
               ],
               "id": "RA",
@@ -561,7 +570,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It depends which square it started on.",
+                  "v": "True. 3 + 1 = 4.",
                 },
               ],
               "id": "RB",
@@ -570,7 +579,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Left and right are opposite directions, so the two moves cancel out.",
+                  "v": "False. Left takes it back: 3 − 1 = 2 squares right.",
                 },
               ],
               "id": "RC",
@@ -582,7 +591,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "POS.TRANSLATE.DIRECTION",
@@ -602,7 +611,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "3 left then 3 right ends on the starting square.",
+            "v": "False. Left takes it back: 3 − 1 = 2 squares right.",
           },
         ],
       },
@@ -610,7 +619,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Lily moves a counter 3 squares left, then 3 squares right. She says it is back where it started.",
+        "v": "A counter moves 3 squares right, then 1 square left. Ana says it is 4 squares right of the start.",
       },
     ],
   },
@@ -622,7 +631,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y2-POS-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -633,7 +642,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
           "correctReason": "RA",
           "options": [
             {
@@ -660,7 +669,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Left and right are opposite directions, so the two moves cancel out.",
+                  "v": "False. Left takes it back: 3 − 1 = 2 squares right.",
                 },
               ],
               "id": "RA",
@@ -669,7 +678,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It depends which square it started on.",
+                  "v": "True. Every move goes right.",
                 },
               ],
               "id": "RB",
@@ -678,7 +687,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It has moved 4 squares from the start.",
+                  "v": "True. 3 + 1 = 4.",
                 },
               ],
               "id": "RC",
@@ -710,7 +719,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "2 left then 2 right ends on the starting square.",
+            "v": "False. Left takes it back: 3 − 1 = 2 squares right.",
           },
         ],
       },
@@ -718,7 +727,7 @@ exports[`Y2-POS-02.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Lily moves a counter 2 squares left, then 2 squares right. She says it is back where it started.",
+        "v": "A counter moves 3 squares right, then 1 square left. Ana says it is 4 squares right of the start.",
       },
     ],
   },

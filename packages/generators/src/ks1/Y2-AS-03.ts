@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y2-AS-03",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["AS.SUBTRACT.ORDER", "AS.EQUALS.ANSWER-NEXT"],
 
@@ -70,48 +71,84 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return p.claim === 0
-          ? A.alwaysSometimesNever({
-              rng,
-              claim: "If you swap the two numbers in an addition, the answer stays the same.",
-              truth: "always",
-              reasons: [
-                {
-                  text: `Always. Adding puts the two parts together, whichever comes first: ${p.a} + ${p.b} = ${p.b} + ${p.a}.`,
-                  correct: true,
-                },
-                { text: "Sometimes. Only when the numbers are small." },
-                { text: "Never. The bigger number has to go first.", code: "AS.SUBTRACT.ORDER" },
+        return orClaims(
+          rng,
+          () =>
+            p.claim === 0
+              ? A.alwaysSometimesNever({
+                  rng,
+                  claim: "If you swap the two numbers in an addition, the answer stays the same.",
+                  truth: "always",
+                  reasons: [
+                    {
+                      text: `Always. Adding puts the two parts together, whichever comes first: ${p.a} + ${p.b} = ${p.b} + ${p.a}.`,
+                      correct: true,
+                    },
+                    { text: "Sometimes. Only when the numbers are small." },
+                    {
+                      text: "Never. The bigger number has to go first.",
+                      code: "AS.SUBTRACT.ORDER",
+                    },
+                  ],
+                  solution: [
+                    {
+                      say: `${p.a} + ${p.b} = ${p.a + p.b} and ${p.b} + ${p.a} = ${p.a + p.b}. Addition can be done in any order.`,
+                    },
+                  ],
+                })
+              : A.trueOrFalseWhy({
+                  rng,
+                  statement: [
+                    "Lily knows ",
+                    A.math(`${p.a} - ${p.b} = ${p.a - p.b}`),
+                    ". She says ",
+                    A.math(`${p.b} - ${p.a}`),
+                    ` is also ${p.a - p.b}.`,
+                  ],
+                  truth: false,
+                  reasons: [
+                    {
+                      text: `False. ${p.b} − ${p.a} starts with ${p.b} and takes away more than that, so it is not ${p.a - p.b}. Subtraction cannot be done in any order.`,
+                      correct: true,
+                    },
+                    {
+                      text: "True. You can swap the numbers in any calculation.",
+                      code: "AS.SUBTRACT.ORDER",
+                    },
+                    { text: "True. Both use the same two numbers." },
+                  ],
+                  solution: [{ say: "Addition can be done in any order, but subtraction cannot." }],
+                }),
+          [
+            {
+              statement: "Kai says 6 + 9 gives the same answer as 9 + 6.",
+              truth: true,
+              right: "True. Both are 15: you can add in either order.",
+              wrong: [
+                ["False. The bigger number must come first.", "AS.SUBTRACT.ORDER"],
+                ["False. They are different sums."],
               ],
-              solution: [
-                {
-                  say: `${p.a} + ${p.b} = ${p.a + p.b} and ${p.b} + ${p.a} = ${p.a + p.b}. Addition can be done in any order.`,
-                },
+            },
+            {
+              claim: "If you swap the two numbers in a take-away, the answer stays the same.",
+              truth: "never",
+              right: "Never, if the numbers are different. 10 − 4 = 6, but 4 − 10 is not 6.",
+              wrong: [
+                ["Always. Like adding.", "AS.SUBTRACT.ORDER"],
+                ["Sometimes. Only for small numbers."],
               ],
-            })
-          : A.trueOrFalseWhy({
-              rng,
-              statement: [
-                "Lily knows ",
-                A.math(`${p.a} - ${p.b} = ${p.a - p.b}`),
-                ". She says ",
-                A.math(`${p.b} - ${p.a}`),
-                ` is also ${p.a - p.b}.`,
-              ],
+            },
+            {
+              statement: "Ana says 8 = 3 + 5 is wrong, because the answer must come last.",
               truth: false,
-              reasons: [
-                {
-                  text: `False. ${p.b} − ${p.a} starts with ${p.b} and takes away more than that, so it is not ${p.a - p.b}. Subtraction cannot be done in any order.`,
-                  correct: true,
-                },
-                {
-                  text: "True. You can swap the numbers in any calculation.",
-                  code: "AS.SUBTRACT.ORDER",
-                },
-                { text: "True. Both use the same two numbers." },
+              right: "False. = means both sides are the same, so 8 = 3 + 5 is right.",
+              wrong: [
+                ["True. Answers go after the =.", "AS.EQUALS.ANSWER-NEXT"],
+                ["True. You cannot start with the answer.", "AS.EQUALS.ANSWER-NEXT"],
               ],
-              solution: [{ say: "Addition can be done in any order, but subtraction cannot." }],
-            });
+            },
+          ],
+        );
     }
   },
 

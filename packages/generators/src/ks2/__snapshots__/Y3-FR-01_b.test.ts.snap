@@ -60,7 +60,7 @@ exports[`Y3-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -206,7 +206,7 @@ exports[`Y3-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -352,7 +352,7 @@ exports[`Y3-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -448,7 +448,7 @@ exports[`Y3-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -536,7 +536,7 @@ exports[`Y3-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -624,7 +624,7 @@ exports[`Y3-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -712,7 +712,115 @@ exports[`Y3-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 10 − 3 = 7.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 3 parts are shaded, so 3/10 is shaded. 7/10 is not shaded.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Count the parts left.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "FR.NAME.SHADED-UNSHADED",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. 3 parts are shaded, so 3/10 is shaded. 7/10 is not shaded.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A shape is cut into 10 equal parts and 3 are shaded. Raj says 7/10 is shaded.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y3-FR-01.b",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -789,138 +897,6 @@ exports[`Y3-FR-01.b > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RC",
-              "type": "choice",
-            },
-            "code": "FR.UNIT.BIGGER-DENOMINATOR",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "One tenth is one of 10 small equal parts; one half is one of 2 big equal parts.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Ravi says ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{1}{10}",
-      },
-      {
-        "t": "text",
-        "v": " is bigger than ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{1}{2}",
-      },
-      {
-        "t": "text",
-        "v": " because 10 is bigger than 2.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y3-FR-01.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Tenths are always bigger than halves.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The bigger the bottom number, the bigger the fraction.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Cutting a whole into 10 equal parts makes each part smaller than cutting it into 2.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "FR.UNIT.BIGGER-DENOMINATOR",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
               "type": "choice",
             },
             "code": "FR.UNIT.BIGGER-DENOMINATOR",
@@ -976,7 +952,7 @@ exports[`Y3-FR-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-FR-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1014,7 +990,7 @@ exports[`Y3-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Cutting a whole into 10 equal parts makes each part smaller than cutting it into 2.",
+                  "v": "False. 3 parts are shaded, so 3/10 is shaded. 7/10 is not shaded.",
                 },
               ],
               "id": "RA",
@@ -1023,7 +999,7 @@ exports[`Y3-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The bigger the bottom number, the bigger the fraction.",
+                  "v": "True. Count the parts left.",
                 },
               ],
               "id": "RB",
@@ -1032,7 +1008,7 @@ exports[`Y3-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Tenths are always bigger than halves.",
+                  "v": "True. 10 − 3 = 7.",
                 },
               ],
               "id": "RC",
@@ -1047,15 +1023,7 @@ exports[`Y3-FR-01.b > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "FR.UNIT.BIGGER-DENOMINATOR",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "FR.UNIT.BIGGER-DENOMINATOR",
+            "code": "FR.NAME.SHADED-UNSHADED",
             "feedback": [],
           },
         ],
@@ -1072,7 +1040,7 @@ exports[`Y3-FR-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "One tenth is one of 10 small equal parts; one half is one of 2 big equal parts.",
+            "v": "False. 3 parts are shaded, so 3/10 is shaded. 7/10 is not shaded.",
           },
         ],
       },
@@ -1080,23 +1048,7 @@ exports[`Y3-FR-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ravi says ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{1}{10}",
-      },
-      {
-        "t": "text",
-        "v": " is bigger than ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{1}{2}",
-      },
-      {
-        "t": "text",
-        "v": " because 10 is bigger than 2.",
+        "v": "A shape is cut into 10 equal parts and 3 are shaded. Raj says 7/10 is shaded.",
       },
     ],
   },

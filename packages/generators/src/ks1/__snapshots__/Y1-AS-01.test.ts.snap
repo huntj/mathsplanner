@@ -21,7 +21,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-AS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -150,7 +150,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-AS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -279,7 +279,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-AS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -397,7 +397,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-AS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -468,7 +468,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-AS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -539,7 +539,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-AS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -603,14 +603,14 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y1-AS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -621,14 +621,14 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -637,10 +637,19 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -648,7 +657,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 6 + 2 = 8, and then you add 3.",
+                  "v": "Always. 5 = 2 + 3 means 5 and 2 + 3 are the same.",
                 },
               ],
               "id": "RA",
@@ -657,7 +666,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any number sentence with + and = is correct.",
+                  "v": "Never. It means the answer comes next.",
                 },
               ],
               "id": "RB",
@@ -666,7 +675,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 6 + 2 is 8, but 8 + 3 is 11. The two sides are not the same.",
+                  "v": "Sometimes. Only when the answer is last.",
                 },
               ],
               "id": "RC",
@@ -678,7 +687,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "AS.EQUALS.ANSWER-NEXT",
@@ -688,7 +697,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -698,7 +707,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "= means both sides have the same value. Work out each side and compare.",
+            "v": "Always. 5 = 2 + 3 means 5 and 2 + 3 are the same.",
           },
         ],
       },
@@ -706,15 +715,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "This number sentence is correct: ",
-      },
-      {
-        "t": "math",
-        "v": "6 + 2 = 8 + 3",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "The = sign means both sides are worth the same.",
       },
     ],
   },
@@ -726,7 +727,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y1-AS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -738,7 +739,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -764,7 +765,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. = means "is the same as". 11 + 4 is 15, so both sides are the same.",
+                  "v": "False. It is 13.",
                 },
               ],
               "id": "RA",
@@ -773,7 +774,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A number sentence cannot start with a number on its own.",
+                  "v": "True. 9 take away 4 leaves 5.",
                 },
               ],
               "id": "RB",
@@ -782,7 +783,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The answer must come after the = sign.",
+                  "v": "False. You must take 9 from 4.",
                 },
               ],
               "id": "RC",
@@ -794,10 +795,18 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "AS.SUBTRACT.ORDER",
+            "feedback": [],
+          },
+          {
+            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "AS.EQUALS.ANSWER-NEXT",
+            "code": "AS.SUBTRACT.ORDER",
             "feedback": [],
           },
         ],
@@ -814,7 +823,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "= means both sides have the same value. Work out each side and compare.",
+            "v": "True. 9 take away 4 leaves 5.",
           },
         ],
       },
@@ -822,27 +831,19 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "This number sentence is correct: ",
-      },
-      {
-        "t": "math",
-        "v": "15 = 11 + 4",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Kai says 9 − 4 = 5.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y1-AS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -854,13 +855,13 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -869,10 +870,19 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -880,7 +890,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. = means "is the same as". 2 + 6 is 8, so both sides are the same.",
+                  "v": "Never. It means the answer comes next.",
                 },
               ],
               "id": "RA",
@@ -889,7 +899,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The answer must come after the = sign.",
+                  "v": "Always. 5 = 2 + 3 means 5 and 2 + 3 are the same.",
                 },
               ],
               "id": "RB",
@@ -898,7 +908,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A number sentence cannot start with a number on its own.",
+                  "v": "Sometimes. Only when the answer is last.",
                 },
               ],
               "id": "RC",
@@ -910,7 +920,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "AS.EQUALS.ANSWER-NEXT",
@@ -920,7 +930,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -930,7 +940,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "= means both sides have the same value. Work out each side and compare.",
+            "v": "Always. 5 = 2 + 3 means 5 and 2 + 3 are the same.",
           },
         ],
       },
@@ -938,15 +948,7 @@ exports[`Y1-AS-01 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "This number sentence is correct: ",
-      },
-      {
-        "t": "math",
-        "v": "8 = 2 + 6",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "The = sign means both sides are worth the same.",
       },
     ],
   },

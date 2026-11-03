@@ -10,7 +10,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -113,7 +113,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -216,7 +216,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -319,7 +319,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -398,7 +398,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -493,7 +493,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -572,7 +572,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y3-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -583,7 +583,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
           "correctReason": "RB",
           "options": [
             {
@@ -610,7 +610,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only the last digit changes.",
+                  "v": "True. Less means take away 10.",
                 },
               ],
               "id": "RA",
@@ -619,7 +619,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Changing the tens by one gives 806, crossing into the next place.",
+                  "v": "False. 100 less changes the hundreds digit: 527.",
                 },
               ],
               "id": "RB",
@@ -628,7 +628,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "The number of digits must stay the same.",
+                  "v": "True. Take 1 from the tens.",
                 },
               ],
               "id": "RC",
@@ -640,7 +640,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.PLACE.TENS-ONES-MIXUP",
@@ -660,7 +660,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "796 + 10 = 806.",
+            "v": "False. 100 less changes the hundreds digit: 527.",
           },
         ],
       },
@@ -668,43 +668,19 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Mo says ",
-      },
-      {
-        "t": "math",
-        "v": "10",
-      },
-      {
-        "t": "text",
-        "v": " more than ",
-      },
-      {
-        "t": "math",
-        "v": "796",
-      },
-      {
-        "t": "text",
-        "v": " is ",
-      },
-      {
-        "t": "math",
-        "v": "806",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Ben says 100 less than 627 is 617.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y3-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -715,14 +691,14 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -731,10 +707,19 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -742,7 +727,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "That changes the wrong place. 10 more is 743.",
+                  "v": "Always. Adding 100 adds one hundred, so the hundreds digit goes up (and 9 hundreds becomes 10).",
                 },
               ],
               "id": "RA",
@@ -751,7 +736,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Both are right; they mean the same.",
+                  "v": "Sometimes. Only for small numbers.",
                 },
               ],
               "id": "RB",
@@ -760,7 +745,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "10 more changes the next place along.",
+                  "v": "Never. It changes the ones.",
                 },
               ],
               "id": "RC",
@@ -782,7 +767,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -792,7 +777,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "733 + 10 = 743.",
+            "v": "Always. Adding 100 adds one hundred, so the hundreds digit goes up (and 9 hundreds becomes 10).",
           },
         ],
       },
@@ -800,31 +785,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Mo says ",
-      },
-      {
-        "t": "math",
-        "v": "10",
-      },
-      {
-        "t": "text",
-        "v": " more than ",
-      },
-      {
-        "t": "math",
-        "v": "733",
-      },
-      {
-        "t": "text",
-        "v": " is ",
-      },
-      {
-        "t": "math",
-        "v": "734",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Finding 100 more changes the hundreds digit.",
       },
     ],
   },
@@ -836,7 +797,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y3-NPV-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -874,7 +835,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "10 less changes the next place along.",
+                  "v": "Both are right; they mean the same.",
                 },
               ],
               "id": "RA",
@@ -883,7 +844,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Both are right; they mean the same.",
+                  "v": "10 less changes the next place along.",
                 },
               ],
               "id": "RB",
@@ -904,7 +865,7 @@ exports[`Y3-NPV-01.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.PLACE.TENS-ONES-MIXUP",
