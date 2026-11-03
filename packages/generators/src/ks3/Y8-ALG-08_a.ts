@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import type { CartesianSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   k: number;
@@ -30,7 +31,7 @@ function conversion(k: number): CartesianSpec {
 
 export default defineGenerator<Params>({
   id: "Y8-ALG-08.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.GRAPH.READ", "RAT.PROPORTION.LINEAR-INTERCEPT"],
 
@@ -83,28 +84,69 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `A taxi charges £3 plus £${p.k} per mile. Its cost graph is a straight line. Sam says a 10-mile trip costs twice as much as a 5-mile trip.`,
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `A taxi charges £3 plus £${p.k} per mile. Its cost graph is a straight line. Sam says a 10-mile trip costs twice as much as a 5-mile trip.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The fixed £3 is not doubled: 5 miles costs £${3 + 5 * p.k} and 10 miles costs £${3 + 10 * p.k}. The line does not go through the origin.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Double the miles, double the cost.",
+                  code: "RAT.PROPORTION.LINEAR-INTERCEPT",
+                },
+                {
+                  text: "True. Every straight-line graph shows direct proportion.",
+                  code: "RAT.PROPORTION.LINEAR-INTERCEPT",
+                },
+              ],
+              solution: [{ say: "Only lines through the origin show direct proportion." }],
+            }),
+          [
+            {
+              statement:
+                "A straight-line conversion graph goes through (0, 0) and (10, 22), for kilograms against pounds. Kit says 5 kg is 11 pounds.",
+              truth: true,
+              right:
+                "True. The graph goes through the origin, so half of 10 kg is half of 22 pounds.",
+              wrong: [
+                ["False. You cannot read values between the points.", "ALG.GRAPH.READ"],
+                ["False. 5 kg is 22 ÷ 10 = 2.2 pounds."],
+              ],
+            },
+            {
+              statement:
+                "To read the value of y when x = 4, Jay goes up the y-axis to 4 and reads across to the line.",
+              truth: false,
+              right:
+                "False. Go along the x-axis to 4, up to the line, then across to the y-axis to read y.",
+              wrong: [
+                ["True. You can start on either axis.", "ALG.GRAPH.READ"],
+                ["True. The y-axis is where values are read from."],
+              ],
+            },
+            {
+              claim:
+                "For a straight-line graph that does not pass through the origin, doubling x doubles y.",
+              truth: "never",
+              right: "Never. y = mx + c, and doubling x gives 2mx + c, not 2mx + 2c.",
+              wrong: [
+                [
+                  "Always. Straight-line graphs show proportion.",
+                  "RAT.PROPORTION.LINEAR-INTERCEPT",
+                ],
+                ["Sometimes. Only when the line is steep."],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: `False. The fixed £3 is not doubled: 5 miles costs £${3 + 5 * p.k} and 10 miles costs £${3 + 10 * p.k}. The line does not go through the origin.`,
-              correct: true,
-            },
-            {
-              text: "True. Double the miles, double the cost.",
-              code: "RAT.PROPORTION.LINEAR-INTERCEPT",
-            },
-            {
-              text: "True. Every straight-line graph shows direct proportion.",
-              code: "RAT.PROPORTION.LINEAR-INTERCEPT",
-            },
-          ],
-          solution: [{ say: "Only lines through the origin show direct proportion." }],
-        });
+        );
     }
   },
 

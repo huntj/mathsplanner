@@ -71,7 +71,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -242,7 +242,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -413,7 +413,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -523,7 +523,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -636,7 +636,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -749,7 +749,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -855,14 +855,14 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -873,14 +873,14 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "C",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -889,10 +889,19 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -900,7 +909,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The gap and the move are always the same.",
+                  "v": "Sometimes. When it moves a long way.",
                 },
               ],
               "id": "RA",
@@ -909,7 +918,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Measure how far one corner moves to the matching corner. The gap between the shapes is less than that.",
+                  "v": "Always. Every transformation changes the size.",
                 },
               ],
               "id": "RB",
@@ -918,7 +927,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Count the empty squares between them.",
+                  "v": "Never. A translation slides the shape: its size, shape and turn stay the same.",
                 },
               ],
               "id": "RC",
@@ -927,28 +936,11 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "POS.TRANSLATE.COUNT-GAP",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "POS.TRANSLATE.COUNT-GAP",
-            "feedback": [],
-          },
-        ],
+        "misconceptions": [],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -958,7 +950,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Track a single vertex from A to its image.",
+            "v": "Never. A translation slides the shape: its size, shape and turn stay the same.",
           },
         ],
       },
@@ -966,7 +958,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kim says the gap between shape A and its image B shows how far the shape moved.",
+        "v": "A translation changes the size of a shape.",
       },
     ],
   },
@@ -978,7 +970,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -989,7 +981,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
@@ -1016,7 +1008,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Measure how far one corner moves to the matching corner. The gap between the shapes is less than that.",
+                  "v": "True. The top number is across and the bottom number is up or down, so −2 is 2 down.",
                 },
               ],
               "id": "RA",
@@ -1025,7 +1017,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The gap and the move are always the same.",
+                  "v": "False. It moves 3 right and 2 up.",
                 },
               ],
               "id": "RB",
@@ -1034,7 +1026,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Count the empty squares between them.",
+                  "v": "False. It moves 3 up and 2 left.",
                 },
               ],
               "id": "RC",
@@ -1046,18 +1038,10 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "POS.TRANSLATE.COUNT-GAP",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "POS.TRANSLATE.COUNT-GAP",
+            "code": "POS.TRANSLATE.DIRECTION",
             "feedback": [],
           },
         ],
@@ -1074,7 +1058,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Track a single vertex from A to its image.",
+            "v": "True. The top number is across and the bottom number is up or down, so −2 is 2 down.",
           },
         ],
       },
@@ -1082,19 +1066,27 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kim says the gap between shape A and its image B shows how far the shape moved.",
+        "v": "Rae says the vector ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": " moves a shape 3 right and 2 down.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-POS-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1105,14 +1097,14 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "C",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1121,10 +1113,19 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1132,7 +1133,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The gap and the move are always the same.",
+                  "v": "Never. A translation slides the shape: its size, shape and turn stay the same.",
                 },
               ],
               "id": "RA",
@@ -1141,7 +1142,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Count the empty squares between them.",
+                  "v": "Sometimes. When it moves a long way.",
                 },
               ],
               "id": "RB",
@@ -1150,7 +1151,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Measure how far one corner moves to the matching corner. The gap between the shapes is less than that.",
+                  "v": "Always. Every transformation changes the size.",
                 },
               ],
               "id": "RC",
@@ -1159,28 +1160,11 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "POS.TRANSLATE.COUNT-GAP",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "POS.TRANSLATE.COUNT-GAP",
-            "feedback": [],
-          },
-        ],
+        "misconceptions": [],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1190,7 +1174,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Track a single vertex from A to its image.",
+            "v": "Never. A translation slides the shape: its size, shape and turn stay the same.",
           },
         ],
       },
@@ -1198,7 +1182,7 @@ exports[`Y8-POS-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kim says the gap between shape A and its image B shows how far the shape moved.",
+        "v": "A translation changes the size of a shape.",
       },
     ],
   },

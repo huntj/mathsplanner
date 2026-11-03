@@ -8,6 +8,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   fixed: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-ALG-03",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.LINE.M-C", "ALG.LIKE-TERMS.UNLIKE"],
 
@@ -83,41 +84,73 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "The cost of a taxi is ",
-            A.math(`C = ${p.fixed} + ${p.rate}m`),
-            `. Ada says the graph of C against m is a straight line that crosses the C axis at ${p.claimTrue ? p.fixed : p.rate}.`,
-          ],
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
-                {
-                  text: `True. When m = 0, C = ${p.fixed}: the fixed charge is the intercept. The cost rises by ${p.rate} for each mile, so the graph is a straight line.`,
-                  correct: true,
-                },
-                {
-                  text: `False. It crosses at ${p.rate}, the number in front of m.`,
-                  code: "ALG.LINE.M-C",
-                },
-                { text: "False. Cost graphs are always curves." },
-              ]
-            : [
-                {
-                  text: `False. When m = 0, C = ${p.fixed}, so it crosses at ${p.fixed}. ${p.rate} is the gradient: the cost per mile.`,
-                  correct: true,
-                },
-                {
-                  text: `True. The number in front of m is where the line starts.`,
-                  code: "ALG.LINE.M-C",
-                },
-                { text: "True. Every line crosses at the biggest number in its formula." },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "The cost of a taxi is ",
+                A.math(`C = ${p.fixed} + ${p.rate}m`),
+                `. Ada says the graph of C against m is a straight line that crosses the C axis at ${p.claimTrue ? p.fixed : p.rate}.`,
               ],
-          solution: [
-            { say: `C = ${p.fixed} + ${p.rate}m: intercept ${p.fixed}, gradient ${p.rate}.` },
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    {
+                      text: `True. When m = 0, C = ${p.fixed}: the fixed charge is the intercept. The cost rises by ${p.rate} for each mile, so the graph is a straight line.`,
+                      correct: true,
+                    },
+                    {
+                      text: `False. It crosses at ${p.rate}, the number in front of m.`,
+                      code: "ALG.LINE.M-C",
+                    },
+                    { text: "False. Cost graphs are always curves." },
+                  ]
+                : [
+                    {
+                      text: `False. When m = 0, C = ${p.fixed}, so it crosses at ${p.fixed}. ${p.rate} is the gradient: the cost per mile.`,
+                      correct: true,
+                    },
+                    {
+                      text: `True. The number in front of m is where the line starts.`,
+                      code: "ALG.LINE.M-C",
+                    },
+                    { text: "True. Every line crosses at the biggest number in its formula." },
+                  ],
+              solution: [
+                { say: `C = ${p.fixed} + ${p.rate}m: intercept ${p.fixed}, gradient ${p.rate}.` },
+              ],
+            }),
+          [
+            {
+              statement:
+                "Pens cost £p each and a pad costs £3. Ali says 4 pens and a pad cost $4p + 3$ pounds.",
+              truth: true,
+              right: "True. 4 pens cost 4p pounds, and the pad adds 3.",
+              wrong: [
+                ["False. It is 7p, collecting 4p and 3.", "ALG.LIKE-TERMS.UNLIKE"],
+                ["False. It is 4(p + 3)."],
+              ],
+            },
+            {
+              statement:
+                "A gym charges a £20 joining fee and then £15 a month. Zara writes the cost for m months as $C = 20m + 15$.",
+              truth: false,
+              right: "False. The £15 is paid every month, so it goes with m: C = 15m + 20.",
+              wrong: [
+                ["True. The bigger number goes with m.", "ALG.LINE.M-C"],
+                ["True. The order of the numbers does not matter."],
+              ],
+            },
+            {
+              claim: "When n is a whole number, $2n + 1$ is odd.",
+              truth: "always",
+              right: "Always. 2n is even, and one more than an even number is odd.",
+              wrong: [["Sometimes. Only when n is odd."], ["Never. The 2 makes it even."]],
+            },
           ],
-        });
+        );
     }
   },
 

@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-ALG-04.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.EXPAND.FIRST-ONLY", "ALG.EXPAND.NEGATIVE"],
 
@@ -81,29 +82,67 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Kit solves ",
-            A.math(`${p.a}(x + ${p.b}) = ${p.a * (p.x + p.b)}`),
-            ` by dividing both sides by ${p.a} first.`,
-          ],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Kit solves ",
+                A.math(`${p.a}(x + ${p.b}) = ${p.a * (p.x + p.b)}`),
+                ` by dividing both sides by ${p.a} first.`,
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: `True. That is a valid first step: x + ${p.b} = ${p.x + p.b}, so x = ${p.x}. Expanding first also works.`,
+                  correct: true,
+                },
+                {
+                  text: "False. You must always expand the bracket first.",
+                  code: "ALG.EXPAND.FIRST-ONLY",
+                },
+                {
+                  text: `False. Dividing by ${p.a} only affects x.`,
+                  code: "ALG.EXPAND.FIRST-ONLY",
+                },
+              ],
+              solution: [
+                { say: "Dividing both whole sides by the same number keeps an equation balanced." },
+              ],
+            }),
+          [
             {
-              text: `True. That is a valid first step: x + ${p.b} = ${p.x + p.b}, so x = ${p.x}. Expanding first also works.`,
-              correct: true,
+              statement:
+                "Ola solves $3(x + 4) = 21$ by writing $3x + 4 = 21$, so $x = \\frac{17}{3}$.",
+              truth: false,
+              right: "False. The 3 multiplies both terms in the bracket: 3x + 12 = 21, so x = 3.",
+              wrong: [
+                ["True. Expand the bracket, then solve.", "ALG.EXPAND.FIRST-ONLY"],
+                ["True. Answers can be fractions."],
+              ],
             },
             {
-              text: "False. You must always expand the bracket first.",
-              code: "ALG.EXPAND.FIRST-ONLY",
+              statement: "Tom says $x = 5$ solves $2(x - 3) = 4$.",
+              truth: true,
+              right: "True. 2(5 − 3) = 2 × 2 = 4.",
+              wrong: [
+                ["False. 2x − 3 = 4 gives x = 3.5.", "ALG.EXPAND.FIRST-ONLY"],
+                ["False. 2x + 6 = 4 gives x = −1.", "ALG.EXPAND.NEGATIVE"],
+              ],
             },
-            { text: `False. Dividing by ${p.a} only affects x.`, code: "ALG.EXPAND.FIRST-ONLY" },
+            {
+              claim:
+                "An equation like $a(x + b) = c$ can be solved by dividing both sides by a first.",
+              truth: "always",
+              right: "Always. Dividing by a gives x + b = c ÷ a. Expanding first works too.",
+              wrong: [
+                ["Never. You must expand the bracket first.", "ALG.EXPAND.FIRST-ONLY"],
+                ["Sometimes. Only when c is a multiple of a."],
+              ],
+            },
           ],
-          solution: [
-            { say: "Dividing both whole sides by the same number keeps an equation balanced." },
-          ],
-        });
+        );
     }
   },
 

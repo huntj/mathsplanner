@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const FORMULAE: [string, string, string, string, string][] = [
   ["y = mx + c", "x", "x = \\frac{y - c}{m}", "x = \\frac{y}{m} - c", "x = \\frac{y + c}{m}"],
@@ -22,7 +23,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-ALG-02.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.REARRANGE.ORDER", "ALG.SOLVE.WRONG-INVERSE"],
 
@@ -60,29 +61,64 @@ export default defineGenerator<Params>({
       case 2:
         return make(p.g, "varied-form");
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Mo rearranges ",
-            A.math("P = 2(l + w)"),
-            " to get ",
-            A.math("l = \\frac{P}{2} - w"),
-            ".",
-          ],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Mo rearranges ",
+                A.math("P = 2(l + w)"),
+                " to get ",
+                A.math("l = \\frac{P}{2} - w"),
+                ".",
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. Divide both sides by 2 to get P/2 = l + w, then subtract w.",
+                  correct: true,
+                },
+                {
+                  text: "False. You must subtract w before dividing by 2.",
+                  code: "ALG.REARRANGE.ORDER",
+                },
+                { text: "False. It should be l = P − 2 − w.", code: "ALG.SOLVE.WRONG-INVERSE" },
+              ],
+              solution: [{ say: "Check with l = 3, w = 2: P = 10, and 10 ÷ 2 − 2 = 3." }],
+            }),
+          [
             {
-              text: "True. Divide both sides by 2 to get P/2 = l + w, then subtract w.",
-              correct: true,
+              statement: "Lia rearranges $y = 3x + 2$ to get $x = \\frac{y}{3} - 2$.",
+              truth: false,
+              right: "False. Undo the + 2 first, then the × 3: x = (y − 2) ÷ 3.",
+              wrong: [
+                ["True. Undo the × 3 first, then the + 2.", "ALG.REARRANGE.ORDER"],
+                ["True. Doing the same to both sides works in any order."],
+              ],
             },
             {
-              text: "False. You must subtract w before dividing by 2.",
-              code: "ALG.REARRANGE.ORDER",
+              statement:
+                "Rearranging $v = u + at$ to make a the subject gives $a = \\frac{v - u}{t}$.",
+              truth: true,
+              right: "True. Subtract u from both sides, then divide both sides by t.",
+              wrong: [
+                ["False. It is a = v − u − t.", "ALG.SOLVE.WRONG-INVERSE"],
+                ["False. It is a = v ÷ t − u.", "ALG.REARRANGE.ORDER"],
+              ],
             },
-            { text: "False. It should be l = P − 2 − w.", code: "ALG.SOLVE.WRONG-INVERSE" },
+            {
+              claim:
+                "To change the subject of a formula, you undo its operations in the reverse of the order they were done.",
+              truth: "always",
+              right: "Always. The last thing done to the letter is the first thing to undo.",
+              wrong: [
+                ["Sometimes. Only when there are brackets.", "ALG.REARRANGE.ORDER"],
+                ["Never. You undo them in the same order they were done.", "ALG.REARRANGE.ORDER"],
+              ],
+            },
           ],
-          solution: [{ say: "Check with l = 3, w = 2: P = 10, and 10 ÷ 2 − 2 = 3." }],
-        });
+        );
     }
   },
 

@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
 import { tableLatex } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   k: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-RAT-04.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.PROPORTION.LINEAR-INTERCEPT", "RAT.INVERSE.AS-DIRECT", "RAT.ADDITIVE"],
 
@@ -81,30 +82,64 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "A plumber charges ",
-            A.math(`C = ${p.k * 10}n + ${p.c * 10}`),
-            " pounds for n hours. Jo says C is directly proportional to n.",
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "A plumber charges ",
+                A.math(`C = ${p.k * 10}n + ${p.c * 10}`),
+                " pounds for n hours. Jo says C is directly proportional to n.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. There is a fixed charge of £${p.c * 10}, so C is not 0 when n = 0, and doubling n does not double C.`,
+                  correct: true,
+                },
+                {
+                  text: "True. It is a straight-line formula.",
+                  code: "RAT.PROPORTION.LINEAR-INTERCEPT",
+                },
+                {
+                  text: "True. C goes up by the same amount each hour.",
+                  code: "RAT.PROPORTION.LINEAR-INTERCEPT",
+                },
+              ],
+              solution: [{ say: "Direct proportion has the form C = kn, with nothing added." }],
+            }),
+          [
+            {
+              statement: "Jas says the graph of $y = 3x$ shows y directly proportional to x.",
+              truth: true,
+              right: "True. It is a straight line through the origin, and y is always 3 times x.",
+              wrong: [
+                ["False. It needs a number added on as well.", "RAT.PROPORTION.LINEAR-INTERCEPT"],
+                ["False. y goes up by 3 each time, which is adding.", "RAT.ADDITIVE"],
+              ],
+            },
+            {
+              claim: "A straight-line graph shows direct proportion.",
+              truth: "sometimes",
+              right: "Sometimes. Only when the line passes through the origin.",
+              wrong: [
+                ["Always. Any straight line shows proportion.", "RAT.PROPORTION.LINEAR-INTERCEPT"],
+                ["Never. Graphs of proportion are curves.", "RAT.INVERSE.AS-DIRECT"],
+              ],
+            },
+            {
+              statement:
+                "y is directly proportional to x, and y = 12 when x = 4. Kai says the equation is $y = x + 8$.",
+              truth: false,
+              right: "False. Direct proportion means y = kx. Here k = 12 ÷ 4 = 3, so y = 3x.",
+              wrong: [
+                ["True. 12 is 8 more than 4.", "RAT.ADDITIVE"],
+                ["True. It works for x = 4 and y = 12, so it must be right."],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: `False. There is a fixed charge of £${p.c * 10}, so C is not 0 when n = 0, and doubling n does not double C.`,
-              correct: true,
-            },
-            {
-              text: "True. It is a straight-line formula.",
-              code: "RAT.PROPORTION.LINEAR-INTERCEPT",
-            },
-            {
-              text: "True. C goes up by the same amount each hour.",
-              code: "RAT.PROPORTION.LINEAR-INTERCEPT",
-            },
-          ],
-          solution: [{ say: "Direct proportion has the form C = kn, with nothing added." }],
-        });
+        );
     }
   },
 

@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   ab: number;
@@ -17,7 +18,7 @@ const RIGHT = "More than half the length of AB";
 
 export default defineGenerator<Params>({
   id: "Y8-GEO-04.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.CONSTRUCT.BISECTORS"],
 
@@ -74,20 +75,57 @@ export default defineGenerator<Params>({
           solution: [{ say: "", math: `${p.ab} \\div 2 = ${p.ab / 2} \\text{ cm}` }],
         });
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["The perpendicular bisector of AB crosses AB at its midpoint, at right angles."],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "The perpendicular bisector of AB crosses AB at its midpoint, at right angles.",
+              ],
+              truth: "always",
+              reasons: [
+                {
+                  text: "Always. Perpendicular means at right angles; bisector means it cuts AB into two equal halves.",
+                  correct: true,
+                },
+                { text: "Sometimes. Only when AB is horizontal.", code: "GEO.CONSTRUCT.BISECTORS" },
+                { text: "Never. It cuts the angle at A in half.", code: "GEO.CONSTRUCT.BISECTORS" },
+              ],
+              solution: [{ say: "Every point on it is the same distance from A and B." }],
+            }),
+          [
             {
-              text: "Always. Perpendicular means at right angles; bisector means it cuts AB into two equal halves.",
-              correct: true,
+              statement:
+                "To bisect AB, Rae draws arcs from A and from B with a radius less than half of AB.",
+              truth: false,
+              right: "False. The radius must be more than half of AB, or the arcs will not meet.",
+              wrong: [
+                ["True. Small arcs are neater."],
+                ["True. The arcs can be any size.", "GEO.CONSTRUCT.BISECTORS"],
+              ],
             },
-            { text: "Sometimes. Only when AB is horizontal.", code: "GEO.CONSTRUCT.BISECTORS" },
-            { text: "Never. It cuts the angle at A in half.", code: "GEO.CONSTRUCT.BISECTORS" },
+            {
+              statement:
+                "Kit says every point on the perpendicular bisector of AB is the same distance from A as from B.",
+              truth: true,
+              right: "True. That is why arcs of the same radius from A and from B meet on it.",
+              wrong: [
+                ["False. Only the midpoint of AB is.", "GEO.CONSTRUCT.BISECTORS"],
+                ["False. Points further along it are nearer to A."],
+              ],
+            },
+            {
+              claim: "The perpendicular bisector of a line segment passes through one of its ends.",
+              truth: "never",
+              right: "Never. It crosses the segment at its midpoint, away from both ends.",
+              wrong: [
+                ["Sometimes. When the segment is short."],
+                ["Always. It starts at A.", "GEO.CONSTRUCT.BISECTORS"],
+              ],
+            },
           ],
-          solution: [{ say: "Every point on it is the same distance from A and B." }],
-        });
+        );
     }
   },
 

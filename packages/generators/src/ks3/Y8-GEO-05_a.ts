@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { parallelAngles } from "../shared/geo.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   angle: number;
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-GEO-05.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.PARALLEL.ALTERNATE-SUPPLEMENTARY", "GEO.ANGLES.STRAIGHT-LINE-360"],
 
@@ -70,23 +71,61 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["Alternate angles on parallel lines add up to 180°."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["Alternate angles on parallel lines add up to 180°."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: "Sometimes. Alternate angles are equal, so they add to 180° only when both are 90°.",
+                  correct: true,
+                },
+                {
+                  text: "Always. They are on opposite sides of the transversal.",
+                  code: "GEO.PARALLEL.ALTERNATE-SUPPLEMENTARY",
+                },
+                {
+                  text: "Never. They add up to 360°.",
+                  code: "GEO.PARALLEL.ALTERNATE-SUPPLEMENTARY",
+                },
+              ],
+              solution: [{ say: "Alternate: equal. Co-interior: add to 180°." }],
+            }),
+          [
             {
-              text: "Sometimes. Alternate angles are equal, so they add to 180° only when both are 90°.",
-              correct: true,
+              statement:
+                "A line crosses two parallel lines. One alternate angle is 65°. Ali says the other is 115°.",
+              truth: false,
+              right: "False. Alternate angles on parallel lines are equal, so it is 65°.",
+              wrong: [
+                ["True. Alternate angles add up to 180°.", "GEO.PARALLEL.ALTERNATE-SUPPLEMENTARY"],
+                ["True. 360° − 180° − 65° = 115°.", "GEO.ANGLES.STRAIGHT-LINE-360"],
+              ],
             },
             {
-              text: "Always. They are on opposite sides of the transversal.",
-              code: "GEO.PARALLEL.ALTERNATE-SUPPLEMENTARY",
+              statement:
+                "Mo says alternate angles, in a Z shape between two parallel lines, are equal.",
+              truth: true,
+              right: "True. That is the alternate angle fact.",
+              wrong: [
+                ["False. They add up to 180°.", "GEO.PARALLEL.ALTERNATE-SUPPLEMENTARY"],
+                ["False. Only angles on the same line are equal."],
+              ],
             },
-            { text: "Never. They add up to 360°.", code: "GEO.PARALLEL.ALTERNATE-SUPPLEMENTARY" },
+            {
+              claim: "Alternate angles between two lines that are not parallel are equal.",
+              truth: "never",
+              right: "Never. Alternate angles are equal only when the lines are parallel.",
+              wrong: [
+                ["Always. Alternate angles are always equal."],
+                ["Sometimes. When the crossing line is steep."],
+              ],
+            },
           ],
-          solution: [{ say: "Alternate: equal. Co-interior: add to 180°." }],
-        });
+        );
     }
   },
 

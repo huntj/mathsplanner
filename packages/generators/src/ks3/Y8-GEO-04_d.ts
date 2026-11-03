@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { coord } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   x: number;
@@ -20,7 +21,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "Y8-GEO-04.d",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.DISTANCE.SLANT", "ALG.COORD.ORDER"],
 
@@ -82,28 +83,64 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Jo says the shortest path from a point to a straight line always meets the line at a right angle.",
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Jo says the shortest path from a point to a straight line always meets the line at a right angle.",
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. Any other path is the hypotenuse of a right-angled triangle, which is longer than the perpendicular side.",
+                  correct: true,
+                },
+                {
+                  text: "False. The shortest path goes to the nearest end of the line.",
+                  code: "GEO.DISTANCE.SLANT",
+                },
+                {
+                  text: "False. Any straight path is as short as any other.",
+                  code: "GEO.DISTANCE.SLANT",
+                },
+              ],
+              solution: [{ say: "The perpendicular distance is the shortest distance." }],
+            }),
+          [
+            {
+              statement:
+                "Point P is 5 cm from line L, measured at right angles. Leo says a slanted line from P to L could be 4 cm long.",
+              truth: false,
+              right:
+                "False. The perpendicular is the shortest distance, so any other path to L is longer than 5 cm.",
+              wrong: [
+                ["True. A slanted line is a shortcut.", "GEO.DISTANCE.SLANT"],
+                ["True. It depends where on L it goes."],
+              ],
+            },
+            {
+              statement:
+                "Ali says the shortest distance from the point (3, 7) to the x-axis is 7 units.",
+              truth: true,
+              right: "True. Go straight down to (3, 0), a distance of 7.",
+              wrong: [
+                ["False. It is 3 units.", "ALG.COORD.ORDER"],
+                ["False. It is the distance to the origin."],
+              ],
+            },
+            {
+              claim: "The distance from a point to a line is measured at right angles to the line.",
+              truth: "always",
+              right: "Always. That is the shortest way, so it is the one used.",
+              wrong: [
+                ["Sometimes. Any straight path will do.", "GEO.DISTANCE.SLANT"],
+                ["Never. It is measured parallel to the line."],
+              ],
+            },
           ],
-          truth: true,
-          reasons: [
-            {
-              text: "True. Any other path is the hypotenuse of a right-angled triangle, which is longer than the perpendicular side.",
-              correct: true,
-            },
-            {
-              text: "False. The shortest path goes to the nearest end of the line.",
-              code: "GEO.DISTANCE.SLANT",
-            },
-            {
-              text: "False. Any straight path is as short as any other.",
-              code: "GEO.DISTANCE.SLANT",
-            },
-          ],
-          solution: [{ say: "The perpendicular distance is the shortest distance." }],
-        });
+        );
     }
   },
 

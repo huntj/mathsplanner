@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import type { CartesianSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Cost = fixed + rate × hours. */
@@ -34,7 +35,7 @@ const graph = (p: Params): CartesianSpec => ({
 
 export default defineGenerator<Params>({
   id: "Y8-ALG-07",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.LINE.M-C", "ALG.COORD.ORDER"],
 
@@ -90,39 +91,74 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            intro,
-            A.figure(graph(p)),
-            ` Jo says the cost goes up by £${p.claimTrue ? p.rate : p.fixed} for each extra hour.`,
-          ],
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
-                {
-                  text: `True. The gradient is £${p.rate} per hour: for every hour across, the line goes up £${p.rate}.`,
-                  correct: true,
-                },
-                {
-                  text: `False. It goes up by £${p.fixed}, where the line starts.`,
-                  code: "ALG.LINE.M-C",
-                },
-                { text: "False. The cost is the same for any number of hours." },
-              ]
-            : [
-                {
-                  text: `False. £${p.fixed} is the fixed charge. The gradient shows it goes up £${p.rate} each hour.`,
-                  correct: true,
-                },
-                {
-                  text: "True. The number where the line starts is the cost per hour.",
-                  code: "ALG.LINE.M-C",
-                },
-                { text: "True. The line is straight, so it goes up by the same as it starts." },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                intro,
+                A.figure(graph(p)),
+                ` Jo says the cost goes up by £${p.claimTrue ? p.rate : p.fixed} for each extra hour.`,
               ],
-          solution: [{ say: `Cost = ${p.fixed} + ${p.rate} × hours.` }],
-        });
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    {
+                      text: `True. The gradient is £${p.rate} per hour: for every hour across, the line goes up £${p.rate}.`,
+                      correct: true,
+                    },
+                    {
+                      text: `False. It goes up by £${p.fixed}, where the line starts.`,
+                      code: "ALG.LINE.M-C",
+                    },
+                    { text: "False. The cost is the same for any number of hours." },
+                  ]
+                : [
+                    {
+                      text: `False. £${p.fixed} is the fixed charge. The gradient shows it goes up £${p.rate} each hour.`,
+                      correct: true,
+                    },
+                    {
+                      text: "True. The number where the line starts is the cost per hour.",
+                      code: "ALG.LINE.M-C",
+                    },
+                    { text: "True. The line is straight, so it goes up by the same as it starts." },
+                  ],
+              solution: [{ say: `Cost = ${p.fixed} + ${p.rate} × hours.` }],
+            }),
+          [
+            {
+              statement:
+                "A plumber charges $C = 30 + 25h$ pounds for h hours. Leo says the 30 is the cost of each hour.",
+              truth: false,
+              right: "False. £30 is the fixed charge, paid even for 0 hours. Each hour costs £25.",
+              wrong: [
+                ["True. It is the first number in the formula.", "ALG.LINE.M-C"],
+                ["True. 30 is bigger than 25, so it must be the rate."],
+              ],
+            },
+            {
+              statement:
+                "A graph of a car's distance against time is steeper in the first hour than in the second. Ana says the car went faster in the first hour.",
+              truth: true,
+              right: "True. The steeper the graph, the more distance is covered each hour.",
+              wrong: [
+                ["False. A steeper graph means the car went more slowly."],
+                ["False. The second hour is higher up the graph, so the car was faster then."],
+              ],
+            },
+            {
+              claim: "On the graph of $y = mx + c$, y goes up by m each time x goes up by 1.",
+              truth: "always",
+              right: "Always. That is what the gradient m means.",
+              wrong: [
+                ["Sometimes. Only when c is 0.", "ALG.LINE.M-C"],
+                ["Never. y goes up by c each time.", "ALG.COORD.ORDER"],
+              ],
+            },
+          ],
+        );
     }
   },
 

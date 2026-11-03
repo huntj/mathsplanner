@@ -114,7 +114,7 @@ describe("level messages", () => {
   });
 });
 
-describe("Year 7 lessons", () => {
+describe("lessons on the path", () => {
   it("finds a question offering the mistake a pupil is fixing, at another depth if need be", () => {
     // Y7-ALG-04.a offers the sign slip only at depth 2.
     const item = {
@@ -134,21 +134,23 @@ describe("Year 7 lessons", () => {
     ).toBe(true);
   });
 
-  it("makes every question of every level's lesson for every Year 7 skill", () => {
-    const section = course.sections.find((s) => s.stage === "Y7");
-    const skills = section?.units.flatMap((u) => u.skills) ?? [];
-    expect(skills.length).toBeGreaterThan(0);
-    const missing: string[] = [];
-    for (const skill of skills) {
-      const info = levelsOf(skill);
-      for (let done = 0; done < info.levels.length; done++) {
-        const plan = planLesson(skill, info, done, [], 1000 + done);
-        for (const item of [...plan.items, ...(plan.example ? [plan.example] : [])])
-          if (!questionFor(item)) missing.push(`${skill} depth ${item.depth} ${item.numbers}`);
+  it.each(course.sections.map((s) => [s.name, s] as const))(
+    "makes every question of every level's lesson for every %s skill",
+    (_, section) => {
+      const skills = section.units.flatMap((u) => u.skills);
+      expect(skills.length).toBeGreaterThan(0);
+      const missing: string[] = [];
+      for (const skill of skills) {
+        const info = levelsOf(skill);
+        for (let done = 0; done < info.levels.length; done++) {
+          const plan = planLesson(skill, info, done, [], 1000 + done);
+          for (const item of [...plan.items, ...(plan.example ? [plan.example] : [])])
+            if (!questionFor(item)) missing.push(`${skill} depth ${item.depth} ${item.numbers}`);
+        }
       }
-    }
-    expect(missing).toEqual([]);
-  });
+      expect(missing).toEqual([]);
+    },
+  );
 });
 
 describe("variety in a lesson", () => {

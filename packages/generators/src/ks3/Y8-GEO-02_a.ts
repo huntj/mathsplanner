@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const NAMES = [
   ["A", "B", "C"],
@@ -22,7 +23,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-GEO-02.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.TRIANGLE.SIDE-LABELS"],
 
@@ -75,30 +76,63 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Ali says side ${at.toLowerCase()} of triangle ${a}${b}${c} is one of the sides next to angle ${at}.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Ali says side ${at.toLowerCase()} of triangle ${a}${b}${c} is one of the sides next to angle ${at}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. By convention, side ${at.toLowerCase()} is opposite angle ${at}: it is ${opposite}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Each side is named after the angle it touches.",
+                  code: "GEO.TRIANGLE.SIDE-LABELS",
+                },
+                {
+                  text: `True. Side ${at.toLowerCase()} starts at ${at}.`,
+                  code: "GEO.TRIANGLE.SIDE-LABELS",
+                },
+              ],
+              solution: [
+                { say: "Small letter for a side, the same capital for the angle opposite it." },
+              ],
+            }),
+          [
             {
-              text: `False. By convention, side ${at.toLowerCase()} is opposite angle ${at}: it is ${opposite}.`,
-              correct: true,
+              statement: "In triangle ABC, Jo says side a is opposite angle A.",
+              truth: true,
+              right: "True. Side a is opposite vertex A, so it is BC.",
+              wrong: [
+                ["False. Side a is next to angle A.", "GEO.TRIANGLE.SIDE-LABELS"],
+                ["False. Side a is AB."],
+              ],
             },
             {
-              text: "True. Each side is named after the angle it touches.",
-              code: "GEO.TRIANGLE.SIDE-LABELS",
+              statement: "In triangle PQR, Sam says the side opposite angle Q is PQ.",
+              truth: false,
+              right: "False. PQ touches Q. The side opposite Q is PR.",
+              wrong: [
+                ["True. PQ has Q in its name.", "GEO.TRIANGLE.SIDE-LABELS"],
+                ["True. Any side can be opposite Q."],
+              ],
             },
             {
-              text: `True. Side ${at.toLowerCase()} starts at ${at}.`,
-              code: "GEO.TRIANGLE.SIDE-LABELS",
+              claim: "The angle ∠ABC is at the middle letter, B.",
+              truth: "always",
+              right: "Always. ∠ABC is the angle at B, between BA and BC.",
+              wrong: [
+                ["Sometimes. Only when the letters are in alphabetical order."],
+                ["Never. It is the angle at A, the first letter.", "GEO.TRIANGLE.SIDE-LABELS"],
+              ],
             },
           ],
-          solution: [
-            { say: "Small letter for a side, the same capital for the angle opposite it." },
-          ],
-        });
+        );
     }
   },
 

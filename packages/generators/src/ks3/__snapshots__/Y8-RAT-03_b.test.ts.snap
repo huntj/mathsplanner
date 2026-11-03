@@ -10,7 +10,7 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-RAT-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -73,7 +73,7 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-RAT-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -136,7 +136,7 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-RAT-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -199,7 +199,7 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-RAT-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -261,7 +261,7 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-RAT-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -323,7 +323,7 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-RAT-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -378,14 +378,14 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-RAT-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -396,14 +396,14 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "C",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -412,10 +412,19 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -423,7 +432,7 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Percentages add up.",
+                  "v": "Always. The two changes cancel out.",
                 },
               ],
               "id": "RA",
@@ -432,7 +441,7 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The second 10% is of the bigger price, so the total rise is 21%.",
+                  "v": "Never. The decrease is 10% of a bigger amount: 100 → 110 → 99.",
                 },
               ],
               "id": "RB",
@@ -441,7 +450,7 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 10 + 10 = 20.",
+                  "v": "Sometimes. Only for multiples of 10.",
                 },
               ],
               "id": "RC",
@@ -459,45 +468,41 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
             "code": "RAT.COMPOUND.SIMPLE",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "RAT.COMPOUND.SIMPLE",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
     ],
     "solution": [
       {
-        "math": "1.1^2 = 1.21",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "Never. The decrease is 10% of a bigger amount: 100 → 110 → 99.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Ben says increasing a price by 10% and then by another 10% is the same as one increase of 20%.",
+        "v": "Increasing an amount by 10% and then decreasing the result by 10% gets back to the start.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-RAT-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -508,14 +513,14 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "C",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -524,10 +529,19 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -535,7 +549,7 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The second 20% is of the bigger price, so the total rise is 44%.",
+                  "v": "Sometimes. Only for multiples of 10.",
                 },
               ],
               "id": "RA",
@@ -544,7 +558,7 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Percentages add up.",
+                  "v": "Always. The two changes cancel out.",
                 },
               ],
               "id": "RB",
@@ -553,7 +567,7 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 20 + 20 = 40.",
+                  "v": "Never. The decrease is 10% of a bigger amount: 100 → 110 → 99.",
                 },
               ],
               "id": "RC",
@@ -571,45 +585,41 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
             "code": "RAT.COMPOUND.SIMPLE",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "RAT.COMPOUND.SIMPLE",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
     ],
     "solution": [
       {
-        "math": "1.2^2 = 1.44",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "Never. The decrease is 10% of a bigger amount: 100 → 110 → 99.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Ben says increasing a price by 20% and then by another 20% is the same as one increase of 40%.",
+        "v": "Increasing an amount by 10% and then decreasing the result by 10% gets back to the start.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-RAT-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -620,14 +630,14 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "C",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -636,10 +646,19 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -647,7 +666,7 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 5 + 5 = 10.",
+                  "v": "Always. The two changes cancel out.",
                 },
               ],
               "id": "RA",
@@ -656,7 +675,7 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The second 5% is of the bigger price, so the total rise is 10.25%.",
+                  "v": "Sometimes. Only for multiples of 10.",
                 },
               ],
               "id": "RB",
@@ -665,7 +684,7 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Percentages add up.",
+                  "v": "Never. The decrease is 10% of a bigger amount: 100 → 110 → 99.",
                 },
               ],
               "id": "RC",
@@ -683,33 +702,29 @@ exports[`Y8-RAT-03.b > keeps fixed seeds unchanged 1`] = `
             "code": "RAT.COMPOUND.SIMPLE",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "RAT.COMPOUND.SIMPLE",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
     ],
     "solution": [
       {
-        "math": "1.05^2 = 1.1",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "Never. The decrease is 10% of a bigger amount: 100 → 110 → 99.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Ben says increasing a price by 5% and then by another 5% is the same as one increase of 10%.",
+        "v": "Increasing an amount by 10% and then decreasing the result by 10% gets back to the start.",
       },
     ],
   },

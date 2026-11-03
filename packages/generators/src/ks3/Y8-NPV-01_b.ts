@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   m: number[];
@@ -22,7 +23,7 @@ const sf = (m: number, e: number) => `${m} \\times 10^{${e}}`;
 
 export default defineGenerator<Params>({
   id: "Y8-NPV-01.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.STANDARD-FORM.COMPARE-FIRST"],
 
@@ -90,28 +91,65 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            "Of two positive numbers in standard form, the one with the bigger power of 10 is bigger.",
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "Of two positive numbers in standard form, the one with the bigger power of 10 is bigger.",
+              ],
+              truth: "always",
+              reasons: [
+                {
+                  text: "Always. The first parts are between 1 and 10, so even 9.9 × 10^4 is less than 1 × 10^5.",
+                  correct: true,
+                },
+                {
+                  text: "Sometimes. It depends on the first numbers too.",
+                  code: "NPV.STANDARD-FORM.COMPARE-FIRST",
+                },
+                {
+                  text: "Never. Compare the first numbers instead.",
+                  code: "NPV.STANDARD-FORM.COMPARE-FIRST",
+                },
+              ],
+              solution: [{ say: "Only when the powers match do you compare the first parts." }],
+            }),
+          [
+            {
+              statement:
+                "Leo says $9.8 \\times 10^{4}$ is bigger than $1.2 \\times 10^{5}$, because 9.8 is bigger than 1.2.",
+              truth: false,
+              right:
+                "False. 9.8 × 10⁴ = 98 000 and 1.2 × 10⁵ = 120 000. Compare the powers of 10 first.",
+              wrong: [
+                ["True. Compare the first numbers.", "NPV.STANDARD-FORM.COMPARE-FIRST"],
+                ["True. 9.8 has more digits than 1.2."],
+              ],
+            },
+            {
+              statement: "Mia says $3.5 \\times 10^{-2}$ is bigger than $8 \\times 10^{-3}$.",
+              truth: true,
+              right:
+                "True. 3.5 × 10^−2 = 0.035 and 8 × 10^−3 = 0.008, as −2 is a bigger power than −3.",
+              wrong: [
+                ["False. 8 is bigger than 3.5.", "NPV.STANDARD-FORM.COMPARE-FIRST"],
+                ["False. 10^−3 is bigger than 10^−2, because 3 is bigger than 2."],
+              ],
+            },
+            {
+              claim: "Two numbers in standard form with the same first number are equal.",
+              truth: "sometimes",
+              right:
+                "Sometimes. Only when the powers of 10 match too: 3 × 10² = 300 but 3 × 10³ = 3000.",
+              wrong: [
+                ["Always. The first number decides the size.", "NPV.STANDARD-FORM.COMPARE-FIRST"],
+                ["Never. Two numbers in standard form are never equal."],
+              ],
+            },
           ],
-          truth: "always",
-          reasons: [
-            {
-              text: "Always. The first parts are between 1 and 10, so even 9.9 × 10^4 is less than 1 × 10^5.",
-              correct: true,
-            },
-            {
-              text: "Sometimes. It depends on the first numbers too.",
-              code: "NPV.STANDARD-FORM.COMPARE-FIRST",
-            },
-            {
-              text: "Never. Compare the first numbers instead.",
-              code: "NPV.STANDARD-FORM.COMPARE-FIRST",
-            },
-          ],
-          solution: [{ say: "Only when the powers match do you compare the first parts." }],
-        });
+        );
     }
   },
 

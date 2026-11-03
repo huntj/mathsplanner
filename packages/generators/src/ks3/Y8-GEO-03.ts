@@ -9,6 +9,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import type { GeometrySpec, ShapeKind } from "@mathsplanner/diagrams";
+import { orClaims } from "../shared/variety.ts";
 import {
   capital,
   describeDiagonals,
@@ -98,7 +99,7 @@ const CLAIMS = [
 
 export default defineGenerator<Params>({
   id: "Y8-GEO-03",
-  version: "1.0.1",
+  version: "1.1.0",
   depths: [1, 3, 4],
   misconceptions: [
     "GEO.SHAPES.HIERARCHY",
@@ -158,13 +159,52 @@ export default defineGenerator<Params>({
       default: {
         const c = CLAIMS[p.claim];
         if (!c) return reject("no claim");
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: c.claim,
-          truth: c.truth,
-          reasons: c.reasons,
-          solution: [{ say: c.reasons[0]?.text ?? "" }],
-        });
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: c.claim,
+              truth: c.truth,
+              reasons: c.reasons,
+              solution: [{ say: c.reasons[0]?.text ?? "" }],
+            }),
+          [
+            {
+              claim: "A square is a rectangle.",
+              truth: "always",
+              right:
+                "Always. A square has four right angles and opposite sides equal, so it is a special rectangle.",
+              wrong: [
+                ["Never. Squares and rectangles are different shapes.", "GEO.SHAPES.HIERARCHY"],
+                ["Sometimes. Only when it is the right way up.", "GEO.SHAPES.ORIENTATION"],
+              ],
+            },
+            {
+              statement: "Ivy says a quadrilateral with four equal sides must be a square.",
+              truth: false,
+              right:
+                "False. A rhombus has four equal sides, and its angles need not be right angles.",
+              wrong: [
+                ["True. Four equal sides make a square.", "GEO.SHAPES.HIERARCHY"],
+                [
+                  "True. A rhombus is just a square turned on its corner.",
+                  "GEO.SHAPES.ORIENTATION",
+                ],
+              ],
+            },
+            {
+              claim: "A triangle has two obtuse angles.",
+              truth: "never",
+              right:
+                "Never. Two obtuse angles add up to more than 180°, leaving nothing for the third angle.",
+              wrong: [
+                ["Sometimes. In a very wide triangle."],
+                ["Sometimes. When the triangle is drawn on its side.", "GEO.SHAPES.ORIENTATION"],
+              ],
+            },
+          ],
+        );
       }
     }
   },

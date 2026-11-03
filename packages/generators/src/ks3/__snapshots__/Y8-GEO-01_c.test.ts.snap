@@ -10,7 +10,7 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-GEO-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-GEO-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-GEO-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-GEO-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -258,7 +258,7 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-GEO-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -320,7 +320,7 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-GEO-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -382,7 +382,7 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-GEO-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -393,7 +393,7 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -429,7 +429,7 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends on the radius.",
+                  "v": "Sometimes. Only if the perimeter stays the same.",
                 },
               ],
               "id": "RA",
@@ -438,7 +438,7 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The perimeter also includes the straight diameter: πr + 2r. For r = 6 that is 30.8 cm, not 18.8 cm.",
+                  "v": "Always. The same pieces cover the same amount of space.",
                 },
               ],
               "id": "RB",
@@ -447,7 +447,7 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. A semicircle is half a circle.",
+                  "v": "Never. A new shape has a new area.",
                 },
               ],
               "id": "RC",
@@ -460,14 +460,6 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
-              "type": "choice",
-            },
-            "code": "MEA.PERIMETER.MISSING-SIDES",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
               "type": "choice",
             },
             "code": "MEA.PERIMETER.MISSING-SIDES",
@@ -487,7 +479,7 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A perimeter goes all the way round the shape.",
+            "v": "Always. The same pieces cover the same amount of space.",
           },
         ],
       },
@@ -495,7 +487,7 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The perimeter of a semicircle is half the circumference of the full circle.",
+        "v": "Cutting a shape into two pieces and fitting them together differently keeps the area the same.",
       },
     ],
   },
@@ -507,7 +499,7 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-GEO-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -625,14 +617,14 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-GEO-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -643,14 +635,14 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -659,19 +651,10 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -679,7 +662,7 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. A semicircle is half a circle.",
+                  "v": "False. You must take away the corner piece.",
                 },
               ],
               "id": "RA",
@@ -688,7 +671,7 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends on the radius.",
+                  "v": "False. Multiply the two longest sides.",
                 },
               ],
               "id": "RB",
@@ -697,7 +680,7 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The perimeter also includes the straight diameter: πr + 2r. For r = 12 that is 61.7 cm, not 37.7 cm.",
+                  "v": "True. Split a shape into parts that do not overlap and add their areas.",
                 },
               ],
               "id": "RC",
@@ -709,25 +692,17 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "MEA.PERIMETER.MISSING-SIDES",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RB",
               "type": "choice",
             },
-            "code": "MEA.PERIMETER.MISSING-SIDES",
+            "code": "AS.MULTISTEP.ONE-STEP",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -737,7 +712,7 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A perimeter goes all the way round the shape.",
+            "v": "True. Split a shape into parts that do not overlap and add their areas.",
           },
         ],
       },
@@ -745,7 +720,7 @@ exports[`Y8-GEO-01.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The perimeter of a semicircle is half the circumference of the full circle.",
+        "v": "An L-shape is made from two rectangles that do not overlap. Ana says its area is the two rectangles' areas added together.",
       },
     ],
   },

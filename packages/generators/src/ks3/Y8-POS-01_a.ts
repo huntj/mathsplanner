@@ -10,6 +10,7 @@ import type { Coord } from "@mathsplanner/diagrams";
 import { chosenText } from "../shared/counting.ts";
 import { distinctFrom, inRange, moveWords, shapesGrid, SHAPES, translate } from "../shared/pos.ts";
 import { col } from "../shared/vec.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   shape: number;
@@ -21,7 +22,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-POS-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["POS.TRANSLATE.DIRECTION", "POS.TRANSLATE.COUNT-GAP"],
 
@@ -102,28 +103,65 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Kim says the gap between shape A and its image B shows how far the shape moved.`,
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Kim says the gap between shape A and its image B shows how far the shape moved.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. Measure how far one corner moves to the matching corner. The gap between the shapes is less than that.",
+                  correct: true,
+                },
+                {
+                  text: "True. Count the empty squares between them.",
+                  code: "POS.TRANSLATE.COUNT-GAP",
+                },
+                {
+                  text: "True. The gap and the move are always the same.",
+                  code: "POS.TRANSLATE.COUNT-GAP",
+                },
+              ],
+              solution: [{ say: "Track a single vertex from A to its image." }],
+            }),
+          [
+            {
+              statement:
+                "Rae says the vector $\\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix}$ moves a shape 3 right and 2 down.",
+              truth: true,
+              right:
+                "True. The top number is across and the bottom number is up or down, so −2 is 2 down.",
+              wrong: [
+                ["False. It moves 3 up and 2 left.", "POS.TRANSLATE.DIRECTION"],
+                ["False. It moves 3 right and 2 up."],
+              ],
+            },
+            {
+              statement:
+                "Kit translates the point (1, 4) 2 left and 3 up. She says the image is (3, 7).",
+              truth: false,
+              right: "False. Left takes away from x: the image is (1 − 2, 4 + 3) = (−1, 7).",
+              wrong: [
+                ["True. Add 2 and 3 to the coordinates.", "POS.TRANSLATE.DIRECTION"],
+                ["True. Count the squares between the points.", "POS.TRANSLATE.COUNT-GAP"],
+              ],
+            },
+            {
+              claim: "A translation changes the size of a shape.",
+              truth: "never",
+              right:
+                "Never. A translation slides the shape: its size, shape and turn stay the same.",
+              wrong: [
+                ["Sometimes. When it moves a long way."],
+                ["Always. Every transformation changes the size."],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: "False. Measure how far one corner moves to the matching corner. The gap between the shapes is less than that.",
-              correct: true,
-            },
-            {
-              text: "True. Count the empty squares between them.",
-              code: "POS.TRANSLATE.COUNT-GAP",
-            },
-            {
-              text: "True. The gap and the move are always the same.",
-              code: "POS.TRANSLATE.COUNT-GAP",
-            },
-          ],
-          solution: [{ say: "Track a single vertex from A to its image." }],
-        });
+        );
     }
   },
 

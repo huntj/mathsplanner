@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   r: number;
@@ -18,7 +19,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "Y8-GEO-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.CIRCLE.RADIUS-DIAMETER", "MEA.CIRCLE.FORMULA"],
 
@@ -75,27 +76,64 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `A bicycle wheel has diameter ${2 * p.r * 5} cm. Ben says it moves about ${r1(Math.PI * 2 * p.r * 5)} cm forward each time it turns once.`,
-          ],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `A bicycle wheel has diameter ${2 * p.r * 5} cm. Ben says it moves about ${r1(Math.PI * 2 * p.r * 5)} cm forward each time it turns once.`,
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. In one turn the wheel rolls out its circumference, π × diameter.",
+                  correct: true,
+                },
+                {
+                  text: "False. It moves forward its diameter each turn.",
+                  code: "GEO.CIRCLE.RADIUS-DIAMETER",
+                },
+                { text: "False. It moves forward its area each turn.", code: "MEA.CIRCLE.FORMULA" },
+              ],
+              solution: [
+                {
+                  say: "",
+                  math: `\\pi \\times ${2 * p.r * 5} \\approx ${r1(Math.PI * 2 * p.r * 5)}`,
+                },
+              ],
+            }),
+          [
             {
-              text: "True. In one turn the wheel rolls out its circumference, π × diameter.",
-              correct: true,
+              statement: "A circle has a radius of 5 cm. Zoe says its circumference is $5\\pi$ cm.",
+              truth: false,
+              right: "False. C = πd, and d = 2 × 5 = 10 cm, so C = 10π cm.",
+              wrong: [
+                ["True. C = π × r.", "GEO.CIRCLE.RADIUS-DIAMETER"],
+                ["True. Circumference and radius are both lengths, so multiply by π once."],
+              ],
             },
             {
-              text: "False. It moves forward its diameter each turn.",
-              code: "GEO.CIRCLE.RADIUS-DIAMETER",
+              statement:
+                "Dan says the circumference of a circle is a bit more than 3 times its diameter.",
+              truth: true,
+              right: "True. C = πd, and π is about 3.14.",
+              wrong: [
+                ["False. It is about 2 times the diameter.", "GEO.CIRCLE.RADIUS-DIAMETER"],
+                ["False. It is π times the diameter squared.", "MEA.CIRCLE.FORMULA"],
+              ],
             },
-            { text: "False. It moves forward its area each turn.", code: "MEA.CIRCLE.FORMULA" },
+            {
+              claim: "Doubling the diameter of a circle doubles its circumference.",
+              truth: "always",
+              right: "Always. C = πd, so a diameter of 2d gives 2πd.",
+              wrong: [
+                ["Never. It multiplies the circumference by 4.", "MEA.CIRCLE.FORMULA"],
+                ["Sometimes. Only for whole-number diameters."],
+              ],
+            },
           ],
-          solution: [
-            { say: "", math: `\\pi \\times ${2 * p.r * 5} \\approx ${r1(Math.PI * 2 * p.r * 5)}` },
-          ],
-        });
+        );
     }
   },
 

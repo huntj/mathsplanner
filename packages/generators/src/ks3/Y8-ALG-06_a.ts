@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { lineLatex, signedWrongs } from "../shared/alg.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { coord, distinctFrom } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   m: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-ALG-06.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.ORDER.LEFT-TO-RIGHT", "ALG.COORD.ORDER", "ALG.LINE.M-C"],
 
@@ -72,36 +73,73 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "In a table of values for ",
-            A.math(eq),
-            `, Raj says the y values change by ${Math.abs(p.c)} each time x goes up by 1.`,
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "In a table of values for ",
+                A.math(eq),
+                `, Raj says the y values change by ${Math.abs(p.c)} each time x goes up by 1.`,
+              ],
+              truth: Math.abs(p.c) === Math.abs(p.m),
+              reasons:
+                Math.abs(p.c) === Math.abs(p.m)
+                  ? [
+                      {
+                        text: `True here, but only because the gradient is ${p.m}: the y values always change by the number in front of x.`,
+                        correct: true,
+                      },
+                      { text: "False. They change by 1 each time.", code: "ALG.LINE.M-C" },
+                      {
+                        text: "False. They do not change by a fixed amount.",
+                        code: "ALG.LINE.M-C",
+                      },
+                    ]
+                  : [
+                      {
+                        text: `False. Each step of 1 in x changes y by ${p.m}, the number in front of x. ${p.c} is where the line crosses the y-axis.`,
+                        correct: true,
+                      },
+                      { text: "True. The number on its own is the step.", code: "ALG.LINE.M-C" },
+                      { text: "True. The y values go up by c each time.", code: "ALG.LINE.M-C" },
+                    ],
+              solution: [
+                { say: "", math: [-1, 0, 1, 2].map((x) => `(${x}, ${p.m * x + p.c})`).join(", ") },
+              ],
+            }),
+          [
+            {
+              statement: "For $y = 2x + 1$, Ivy says that when x = 4, y = 10.",
+              truth: false,
+              right: "False. Multiply first, then add: y = 2 × 4 + 1 = 9.",
+              wrong: [
+                ["True. y = 2 × (4 + 1) = 10.", "NPV.ORDER.LEFT-TO-RIGHT"],
+                ["True. The point (10, 4) is on the line.", "ALG.COORD.ORDER"],
+              ],
+            },
+            {
+              statement: "Sol says the point (3, 5) is on the line $y = x + 2$.",
+              truth: true,
+              right: "True. When x = 3, y = 3 + 2 = 5.",
+              wrong: [
+                ["False. (3, 5) means x = 5 and y = 3, and 5 + 2 is not 3.", "ALG.COORD.ORDER"],
+                ["False. The only point on it is (0, 2)."],
+              ],
+            },
+            {
+              claim:
+                "The points plotted from a table of values for $y = mx + c$ lie on a straight line.",
+              truth: "always",
+              right: "Always. Each time x goes up by 1, y changes by the same amount, m.",
+              wrong: [
+                ["Sometimes. Only when c is 0.", "ALG.LINE.M-C"],
+                ["Never. The points are joined with a curve."],
+              ],
+            },
           ],
-          truth: Math.abs(p.c) === Math.abs(p.m),
-          reasons:
-            Math.abs(p.c) === Math.abs(p.m)
-              ? [
-                  {
-                    text: `True here, but only because the gradient is ${p.m}: the y values always change by the number in front of x.`,
-                    correct: true,
-                  },
-                  { text: "False. They change by 1 each time.", code: "ALG.LINE.M-C" },
-                  { text: "False. They do not change by a fixed amount.", code: "ALG.LINE.M-C" },
-                ]
-              : [
-                  {
-                    text: `False. Each step of 1 in x changes y by ${p.m}, the number in front of x. ${p.c} is where the line crosses the y-axis.`,
-                    correct: true,
-                  },
-                  { text: "True. The number on its own is the step.", code: "ALG.LINE.M-C" },
-                  { text: "True. The y values go up by c each time.", code: "ALG.LINE.M-C" },
-                ],
-          solution: [
-            { say: "", math: [-1, 0, 1, 2].map((x) => `(${x}, ${p.m * x + p.c})`).join(", ") },
-          ],
-        });
+        );
     }
   },
 

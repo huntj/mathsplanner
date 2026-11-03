@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   d: number;
@@ -18,7 +19,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "Y8-GEO-01.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.CIRCLE.RADIUS-DIAMETER", "NPV.POWER.ROOT-HALF", "RAT.SCALE.AREA-LINEAR"],
 
@@ -66,22 +67,58 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Gil says doubling the radius of a circle from ${p.r} cm to ${2 * p.r} cm doubles its area.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Gil says doubling the radius of a circle from ${p.r} cm to ${2 * p.r} cm doubles its area.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The radius is squared, so the area is multiplied by 4: π × ${2 * p.r}² = ${4 * p.r * p.r}π, compared with ${p.r * p.r}π.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Area grows in step with the radius.",
+                  code: "RAT.SCALE.AREA-LINEAR",
+                },
+                { text: "False. It multiplies the area by 8.", code: "RAT.SCALE.AREA-LINEAR" },
+              ],
+              solution: [{ say: "Scaling lengths by 2 scales areas by 2² = 4." }],
+            }),
+          [
             {
-              text: `False. The radius is squared, so the area is multiplied by 4: π × ${2 * p.r}² = ${4 * p.r * p.r}π, compared with ${p.r * p.r}π.`,
-              correct: true,
+              statement: "A circle has a diameter of 10 cm. Tia says its area is $100\\pi$ cm².",
+              truth: false,
+              right: "False. The radius is 5 cm, so the area is π × 5² = 25π cm².",
+              wrong: [
+                ["True. A = π × 10².", "GEO.CIRCLE.RADIUS-DIAMETER"],
+                ["True. 10 × 10 = 100, and every circle's area has π in it."],
+              ],
             },
-            { text: "True. Area grows in step with the radius.", code: "RAT.SCALE.AREA-LINEAR" },
-            { text: "False. It multiplies the area by 8.", code: "RAT.SCALE.AREA-LINEAR" },
+            {
+              statement: "A circle has a radius of 3 cm. Abe says its area is about 28 cm².",
+              truth: true,
+              right: "True. π × 3² = 9π, which is about 28.3 cm².",
+              wrong: [
+                ["False. 3² = 6, so it is about 18.8 cm².", "NPV.POWER.ROOT-HALF"],
+                ["False. It is π × 3 ≈ 9.4 cm²."],
+              ],
+            },
+            {
+              claim: "The area of a circle in cm² is a bigger number than its circumference in cm.",
+              truth: "sometimes",
+              right: "Sometimes. πr² is bigger than 2πr only when the radius is more than 2 cm.",
+              wrong: [
+                ["Always. Area is always the bigger number."],
+                ["Never. The area is inside the circumference."],
+              ],
+            },
           ],
-          solution: [{ say: "Scaling lengths by 2 scales areas by 2² = 4." }],
-        });
+        );
     }
   },
 

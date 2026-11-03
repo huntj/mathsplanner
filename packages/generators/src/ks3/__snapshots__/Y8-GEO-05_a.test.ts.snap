@@ -81,7 +81,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-GEO-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -224,7 +224,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-GEO-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -367,7 +367,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-GEO-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -439,7 +439,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-GEO-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -507,7 +507,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-GEO-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -575,7 +575,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-GEO-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -643,7 +643,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-GEO-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -690,7 +690,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. They are on opposite sides of the transversal.",
+                  "v": "Never. They add up to 360°.",
                 },
               ],
               "id": "RA",
@@ -699,7 +699,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. They add up to 360°.",
+                  "v": "Always. They are on opposite sides of the transversal.",
                 },
               ],
               "id": "RB",
@@ -761,14 +761,14 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-GEO-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -786,7 +786,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -795,19 +795,10 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -815,7 +806,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Alternate angles are equal, so they add to 180° only when both are 90°.",
+                  "v": "False. Alternate angles on parallel lines are equal, so it is 65°.",
                 },
               ],
               "id": "RA",
@@ -824,7 +815,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. They are on opposite sides of the transversal.",
+                  "v": "True. Alternate angles add up to 180°.",
                 },
               ],
               "id": "RB",
@@ -833,7 +824,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. They add up to 360°.",
+                  "v": "True. 360° − 180° − 65° = 115°.",
                 },
               ],
               "id": "RC",
@@ -856,14 +847,14 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "GEO.PARALLEL.ALTERNATE-SUPPLEMENTARY",
+            "code": "GEO.ANGLES.STRAIGHT-LINE-360",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -873,7 +864,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Alternate: equal. Co-interior: add to 180°.",
+            "v": "False. Alternate angles on parallel lines are equal, so it is 65°.",
           },
         ],
       },
@@ -881,7 +872,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Alternate angles on parallel lines add up to 180°.",
+        "v": "A line crosses two parallel lines. One alternate angle is 65°. Ali says the other is 115°.",
       },
     ],
   },
@@ -893,7 +884,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-GEO-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -905,7 +896,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -940,7 +931,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Alternate angles are equal, so they add to 180° only when both are 90°.",
+                  "v": "Always. They are on opposite sides of the transversal.",
                 },
               ],
               "id": "RA",
@@ -949,7 +940,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. They add up to 360°.",
+                  "v": "Sometimes. Alternate angles are equal, so they add to 180° only when both are 90°.",
                 },
               ],
               "id": "RB",
@@ -958,7 +949,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. They are on opposite sides of the transversal.",
+                  "v": "Never. They add up to 360°.",
                 },
               ],
               "id": "RC",
@@ -970,7 +961,7 @@ exports[`Y8-GEO-05.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "GEO.PARALLEL.ALTERNATE-SUPPLEMENTARY",

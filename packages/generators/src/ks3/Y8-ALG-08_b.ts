@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { clearOfOrigin, grid, lineLatex, poly, signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   m1: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-ALG-08.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.COORD.ORDER", "ALG.GRAPH.SOLUTION-Y", "ALG.SIMULTANEOUS.PAIR"],
 
@@ -94,29 +95,71 @@ export default defineGenerator<Params>({
           solution: [{ say: `Read across from the crossing point: y = ${p.y}.` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Lee says the equations ",
-            A.math(lineLatex(p.m1, c1)),
-            " and ",
-            A.math(`${2}y = ${lineLatex(2 * p.m1, 2 * c1).slice(4)}`),
-            " have exactly one solution.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Lee says the equations ",
+                A.math(lineLatex(p.m1, c1)),
+                " and ",
+                A.math(`${2}y = ${lineLatex(2 * p.m1, 2 * c1).slice(4)}`),
+                " have exactly one solution.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. The second equation is the first one doubled, so both draw the same line: every point on it is a solution.",
+                  correct: true,
+                },
+                {
+                  text: "True. Two lines always cross at one point.",
+                  code: "ALG.SIMULTANEOUS.PAIR",
+                },
+                {
+                  text: "True. The solution is where the line crosses the y-axis.",
+                  code: "ALG.GRAPH.SOLUTION-Y",
+                },
+              ],
+              solution: [{ say: "Divide the second equation by 2." }],
+            }),
+          [
             {
-              text: "False. The second equation is the first one doubled, so both draw the same line: every point on it is a solution.",
-              correct: true,
+              statement:
+                "The lines $y = x + 1$ and $y = 3 - x$ cross at (1, 2). Mo says the solution of the two equations is x = 1, y = 2.",
+              truth: true,
+              right: "True. Both equations work for x = 1, y = 2: 1 + 1 = 2 and 3 − 1 = 2.",
+              wrong: [
+                ["False. The solution is x = 2, y = 1.", "ALG.COORD.ORDER"],
+                ["False. The solution is just y = 2.", "ALG.GRAPH.SOLUTION-Y"],
+              ],
             },
-            { text: "True. Two lines always cross at one point.", code: "ALG.SIMULTANEOUS.PAIR" },
             {
-              text: "True. The solution is where the line crosses the y-axis.",
-              code: "ALG.GRAPH.SOLUTION-Y",
+              claim: "Two straight lines with different gradients cross at exactly one point.",
+              truth: "always",
+              right:
+                "Always. Lines with different slopes must meet, and two straight lines cannot meet twice.",
+              wrong: [
+                ["Sometimes. They might never meet.", "ALG.SIMULTANEOUS.PAIR"],
+                ["Never. Lines only cross when they have the same gradient."],
+              ],
+            },
+            {
+              claim: "A pair of simultaneous linear equations has exactly one solution.",
+              truth: "sometimes",
+              right:
+                "Sometimes. Parallel lines never cross, so they have no solution, and the same line twice has every point as a solution.",
+              wrong: [
+                [
+                  "Always. Two equations and two unknowns give one answer.",
+                  "ALG.SIMULTANEOUS.PAIR",
+                ],
+                ["Never. Each equation has many solutions."],
+              ],
             },
           ],
-          solution: [{ say: "Divide the second equation by 2." }],
-        });
+        );
     }
   },
 

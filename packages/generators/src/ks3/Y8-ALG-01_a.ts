@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { poly } from "../shared/alg.ts";
 import { exactAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-ALG-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.EXPAND.BINOMIAL-TWO-TERMS"],
 
@@ -67,30 +68,68 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Jay says ", A.math(`(x + ${p.a})^2 = x^2 + ${p.a * p.a}`), "."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Jay says ", A.math(`(x + ${p.a})^2 = x^2 + ${p.a * p.a}`), "."],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. (x + ${p.a})² = (x + ${p.a})(x + ${p.a}) = ${poly([1, 2 * p.a, p.a * p.a]).replace("x^2", "x²")}. The middle term ${2 * p.a}x is missing.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Square each term in the bracket.",
+                  code: "ALG.EXPAND.BINOMIAL-TWO-TERMS",
+                },
+                {
+                  text: "True. Squaring works like multiplying by a number.",
+                  code: "ALG.EXPAND.BINOMIAL-TWO-TERMS",
+                },
+              ],
+              solution: [
+                {
+                  say: `Check with x = 1: (1 + ${p.a})² = ${(1 + p.a) ** 2}, but 1 + ${p.a * p.a} = ${1 + p.a * p.a}.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. (x + ${p.a})² = (x + ${p.a})(x + ${p.a}) = ${poly([1, 2 * p.a, p.a * p.a]).replace("x^2", "x²")}. The middle term ${2 * p.a}x is missing.`,
-              correct: true,
+              statement: "Kai expands $(x + 2)(x + 5)$ and gets $x^2 + 7x + 10$.",
+              truth: true,
+              right: "True. x × x + 5x + 2x + 2 × 5 = x² + 7x + 10.",
+              wrong: [
+                [
+                  "False. It is x² + 10, from the first terms and the last terms.",
+                  "ALG.EXPAND.BINOMIAL-TWO-TERMS",
+                ],
+                ["False. It is x² + 7x + 7."],
+              ],
             },
             {
-              text: "True. Square each term in the bracket.",
-              code: "ALG.EXPAND.BINOMIAL-TWO-TERMS",
+              statement: "Nia says $(x + 3)(x + 4) = x^2 + 12x + 7$.",
+              truth: false,
+              right:
+                "False. 3 and 4 add to give the x term and multiply to give the number: x² + 7x + 12.",
+              wrong: [
+                ["True. Multiply 3 and 4 for the x term, then add them for the number."],
+                ["True. There are three terms, so it is fully expanded."],
+              ],
             },
             {
-              text: "True. Squaring works like multiplying by a number.",
-              code: "ALG.EXPAND.BINOMIAL-TWO-TERMS",
+              claim:
+                "When a and b are positive, the expansion of $(x + a)(x + b)$ simplifies to three terms.",
+              truth: "always",
+              right: "Always. The two x terms, ax and bx, collect into one: x² + (a + b)x + ab.",
+              wrong: [
+                ["Never. It gives two terms, x² and ab.", "ALG.EXPAND.BINOMIAL-TWO-TERMS"],
+                ["Sometimes. Only when a and b are equal."],
+              ],
             },
           ],
-          solution: [
-            {
-              say: `Check with x = 1: (1 + ${p.a})² = ${(1 + p.a) ** 2}, but 1 + ${p.a * p.a} = ${1 + p.a * p.a}.`,
-            },
-          ],
-        });
+        );
     }
   },
 

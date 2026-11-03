@@ -10,7 +10,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-GEO-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -102,7 +102,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-GEO-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -194,7 +194,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-GEO-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -286,7 +286,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-GEO-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -348,7 +348,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-GEO-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -410,7 +410,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-GEO-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -465,14 +465,14 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y8-GEO-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -483,14 +483,14 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -499,19 +499,10 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -519,7 +510,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. It cuts the angle at A in half.",
+                  "v": "True. Small arcs are neater.",
                 },
               ],
               "id": "RA",
@@ -528,7 +519,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Perpendicular means at right angles; bisector means it cuts AB into two equal halves.",
+                  "v": "False. The radius must be more than half of AB, or the arcs will not meet.",
                 },
               ],
               "id": "RB",
@@ -537,7 +528,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when AB is horizontal.",
+                  "v": "True. The arcs can be any size.",
                 },
               ],
               "id": "RC",
@@ -547,14 +538,6 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.CONSTRUCT.BISECTORS",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -567,7 +550,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -577,7 +560,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Every point on it is the same distance from A and B.",
+            "v": "False. The radius must be more than half of AB, or the arcs will not meet.",
           },
         ],
       },
@@ -585,19 +568,19 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The perpendicular bisector of AB crosses AB at its midpoint, at right angles.",
+        "v": "To bisect AB, Rae draws arcs from A and from B with a radius less than half of AB.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y8-GEO-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -608,14 +591,14 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RC",
+          "correct": "B",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -624,19 +607,10 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -644,7 +618,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when AB is horizontal.",
+                  "v": "True. Small arcs are neater.",
                 },
               ],
               "id": "RA",
@@ -653,7 +627,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. It cuts the angle at A in half.",
+                  "v": "False. The radius must be more than half of AB, or the arcs will not meet.",
                 },
               ],
               "id": "RB",
@@ -662,7 +636,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Perpendicular means at right angles; bisector means it cuts AB into two equal halves.",
+                  "v": "True. The arcs can be any size.",
                 },
               ],
               "id": "RC",
@@ -674,15 +648,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.CONSTRUCT.BISECTORS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "GEO.CONSTRUCT.BISECTORS",
@@ -692,7 +658,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -702,7 +668,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Every point on it is the same distance from A and B.",
+            "v": "False. The radius must be more than half of AB, or the arcs will not meet.",
           },
         ],
       },
@@ -710,19 +676,19 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The perpendicular bisector of AB crosses AB at its midpoint, at right angles.",
+        "v": "To bisect AB, Rae draws arcs from A and from B with a radius less than half of AB.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y8-GEO-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -733,14 +699,14 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RC",
+          "correct": "B",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -749,19 +715,10 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -769,7 +726,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when AB is horizontal.",
+                  "v": "True. The arcs can be any size.",
                 },
               ],
               "id": "RA",
@@ -778,7 +735,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. It cuts the angle at A in half.",
+                  "v": "False. The radius must be more than half of AB, or the arcs will not meet.",
                 },
               ],
               "id": "RB",
@@ -787,7 +744,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Perpendicular means at right angles; bisector means it cuts AB into two equal halves.",
+                  "v": "True. Small arcs are neater.",
                 },
               ],
               "id": "RC",
@@ -805,19 +762,11 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
             "code": "GEO.CONSTRUCT.BISECTORS",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "GEO.CONSTRUCT.BISECTORS",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -827,7 +776,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Every point on it is the same distance from A and B.",
+            "v": "False. The radius must be more than half of AB, or the arcs will not meet.",
           },
         ],
       },
@@ -835,7 +784,7 @@ exports[`Y8-GEO-04.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The perpendicular bisector of AB crosses AB at its midpoint, at right angles.",
+        "v": "To bisect AB, Rae draws arcs from A and from B with a radius less than half of AB.",
       },
     ],
   },

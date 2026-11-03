@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const CASES: [string, string][] = [
   ["all three pairs of sides are equal", "SSS"],
@@ -34,7 +35,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y8-GEO-02.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.CONGRUENCE.AAA", "GEO.CONGRUENCE.SSA"],
 
@@ -83,20 +84,59 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Mia says two triangles with the same three angles must be congruent."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Mia says two triangles with the same three angles must be congruent."],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. They are similar (same shape), but one can be bigger than the other, so not congruent.",
+                  correct: true,
+                },
+                { text: "True. AAA is a congruence condition.", code: "GEO.CONGRUENCE.AAA" },
+                { text: "True. Equal angles mean equal sides.", code: "GEO.CONGRUENCE.AAA" },
+              ],
+              solution: [{ say: "Congruence needs at least one pair of equal sides as well." }],
+            }),
+          [
             {
-              text: "False. They are similar (same shape), but one can be bigger than the other, so not congruent.",
-              correct: true,
+              statement:
+                "Two triangles have all three sides the same lengths. Ali says they must be congruent.",
+              truth: true,
+              right: "True. This is SSS: three sides fix the triangle.",
+              wrong: [
+                ["False. Their angles might be different.", "GEO.CONGRUENCE.AAA"],
+                ["False. One might be a reflection of the other."],
+              ],
             },
-            { text: "True. AAA is a congruence condition.", code: "GEO.CONGRUENCE.AAA" },
-            { text: "True. Equal angles mean equal sides.", code: "GEO.CONGRUENCE.AAA" },
+            {
+              claim: "Two triangles with two sides and one angle the same are congruent.",
+              truth: "sometimes",
+              right:
+                "Sometimes. Yes when the angle is between the two sides (SAS). Otherwise two different triangles can fit.",
+              wrong: [
+                ["Always. Three facts are enough to fix a triangle.", "GEO.CONGRUENCE.SSA"],
+                ["Never. You need all three sides."],
+              ],
+            },
+            {
+              statement:
+                "Two right-angled triangles have the same hypotenuse and one other side the same. Ben says they are congruent.",
+              truth: true,
+              right: "True. This is RHS: right angle, hypotenuse and side.",
+              wrong: [
+                [
+                  "False. Two sides and an angle that is not between them is never enough.",
+                  "GEO.CONGRUENCE.SSA",
+                ],
+                ["False. You need to know the other angles too."],
+              ],
+            },
           ],
-          solution: [{ say: "Congruence needs at least one pair of equal sides as well." }],
-        });
+        );
     }
   },
 

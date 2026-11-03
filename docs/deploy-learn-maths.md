@@ -98,8 +98,8 @@ Or, as a short section:
 <section>
   <h2>Learn Maths (test version)</h2>
   <p>
-    Bite-sized maths practice, a little every day. Year 7 is ready to try. Progress stays on your
-    device and nothing about you is sent anywhere.
+    Bite-sized maths practice, a little every day. Years 7 and 8 are ready to try. Progress stays on
+    your device and nothing about you is sent anywhere.
   </p>
   <p><a href="https://learnmaths.jedhunt.co.uk">Start practising</a></p>
 </section>
@@ -128,5 +128,5 @@ To change or remove the form later, edit or delete the variable and run the work
 
 - Progress is kept in the browser on that device. A different device, a different browser, a
   private window or clearing browsing data starts afresh.
-- Only Year 7 is ready; the other years show "Coming soon".
+- Only Years 7 and 8 are ready; the other years show "Coming soon".
 - "See an example" on the first screen shows what the path looks like halfway through Year 7.
