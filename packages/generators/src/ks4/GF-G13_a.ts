@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const SOLIDS: [string, string, string][] = [
   ["a cylinder standing on one of its circular ends", "A circle", "A rectangle"],
@@ -30,7 +31,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-G13.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.PLAN.ELEVATION"],
 
@@ -106,20 +107,58 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Bo says the plan view of a cylinder standing on its end is a rectangle."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Bo says the plan view of a cylinder standing on its end is a rectangle.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. From directly above you see the circular top, so the plan is a circle. The rectangle is the front elevation.",
+                  correct: true,
+                },
+                { text: "True. A cylinder looks like a rectangle.", code: "GEO.PLAN.ELEVATION" },
+                {
+                  text: "True. The plan shows the height and the width.",
+                  code: "GEO.PLAN.ELEVATION",
+                },
+              ],
+              solution: [{ say: "Plan: from above. Elevations: from the front and the side." }],
+            }),
+          [
             {
-              text: "False. From directly above you see the circular top, so the plan is a circle. The rectangle is the front elevation.",
-              correct: true,
+              statement: "Sam says the plan view of a cube is a square.",
+              truth: true,
+              right: "True. Looking down on a cube you see one square face.",
+              wrong: [
+                ["False. It is a cube.", "GEO.PLAN.ELEVATION"],
+                ["False. It is a rectangle."],
+              ],
             },
-            { text: "True. A cylinder looks like a rectangle.", code: "GEO.PLAN.ELEVATION" },
-            { text: "True. The plan shows the height and the width.", code: "GEO.PLAN.ELEVATION" },
+            {
+              claim: "The plan view of a sphere is a circle.",
+              truth: "always",
+              right: "Always. From any direction a sphere looks like a circle.",
+              wrong: [
+                ["Never. It is a sphere.", "GEO.PLAN.ELEVATION"],
+                ["Sometimes. Only from the top."],
+              ],
+            },
+            {
+              statement: "Mia says the front elevation of a square-based pyramid is a square.",
+              truth: false,
+              right: "False. From the front you see a triangle.",
+              wrong: [
+                ["True. Its base is a square.", "GEO.PLAN.ELEVATION"],
+                ["True. Every view shows the base.", "GEO.PLAN.ELEVATION"],
+              ],
+            },
           ],
-          solution: [{ say: "Plan: from above. Elevations: from the front and the side." }],
-        });
+        );
     }
   },
 

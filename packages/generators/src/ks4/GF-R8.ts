@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   k: number;
@@ -15,7 +16,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-R8",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.ORDER", "RAT.PROPORTION.LINEAR-INTERCEPT"],
 
@@ -67,34 +68,65 @@ export default defineGenerator<Params>({
           solution: [{ say: `When x = 1, y = ${p.k}: x : y = 1 : ${p.k}.` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ravi says ",
-            A.math(`y = ${p.k}x + ${p.c}`),
-            " shows y in direct proportion to x, because its graph is a straight line.",
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ravi says ",
+                A.math(`y = ${p.k}x + ${p.c}`),
+                " shows y in direct proportion to x, because its graph is a straight line.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Direct proportion needs a straight line through the origin. When x = 0, y = ${p.c}, not 0, so the ratio y : x keeps changing.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Every straight line shows direct proportion.",
+                  code: "RAT.PROPORTION.LINEAR-INTERCEPT",
+                },
+                {
+                  text: "True. The gradient is the constant of proportion.",
+                  code: "RAT.PROPORTION.LINEAR-INTERCEPT",
+                },
+              ],
+              solution: [
+                {
+                  say: `x = 1 gives y = ${p.k + p.c}; x = 2 gives y = ${2 * p.k + p.c}. Doubling x does not double y.`,
+                },
+              ],
+            }),
+          [
+            {
+              statement: "Bea says $y = 5x$ shows y in direct proportion to x.",
+              truth: true,
+              right: "True. It is y = kx, a straight line through the origin.",
+              wrong: [
+                ["False. It needs a + c.", "RAT.PROPORTION.LINEAR-INTERCEPT"],
+                ["False. y and x are equal."],
+              ],
+            },
+            {
+              claim: "If y is directly proportional to x, then when x = 0, y = 0.",
+              truth: "always",
+              right: "Always. y = kx gives y = 0 at x = 0.",
+              wrong: [
+                ["Never. y is the constant.", "RAT.PROPORTION.LINEAR-INTERCEPT"],
+                ["Sometimes. If k is small."],
+              ],
+            },
+            {
+              statement:
+                "y is directly proportional to x, and y = 15 when x = 3. Dev says y = 25 when x = 13.",
+              truth: false,
+              right: "False. k = 5, so when x = 13, y = 65.",
+              wrong: [["True. Add 10 to both."], ["True. x went up 10, so y went up 10."]],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: `False. Direct proportion needs a straight line through the origin. When x = 0, y = ${p.c}, not 0, so the ratio y : x keeps changing.`,
-              correct: true,
-            },
-            {
-              text: "True. Every straight line shows direct proportion.",
-              code: "RAT.PROPORTION.LINEAR-INTERCEPT",
-            },
-            {
-              text: "True. The gradient is the constant of proportion.",
-              code: "RAT.PROPORTION.LINEAR-INTERCEPT",
-            },
-          ],
-          solution: [
-            {
-              say: `x = 1 gives y = ${p.k + p.c}; x = 2 gives y = ${2 * p.k + p.c}. Doubling x does not double y.`,
-            },
-          ],
-        });
+        );
     }
   },
 

@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { chosenText } from "../shared/counting.ts";
 import { distinctFrom } from "../shared/pos.ts";
 import { groupedTable } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const LOWS = [0, 10, 20, 30, 40];
 
@@ -29,7 +30,7 @@ function medianClass(f: number[]): number {
 
 export default defineGenerator<Params>({
   id: "GF-S3.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.MODE.FREQUENCY", "STA.MEDIAN.UNORDERED", "STA.GROUPED.MIDPOINT"],
 
@@ -98,22 +99,59 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Eva says you can read the longest time any pupil spent from a grouped frequency table.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Eva says you can read the longest time any pupil spent from a grouped frequency table.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. Grouping hides the exact values: you only know which class the longest time is in.",
+                  correct: true,
+                },
+                { text: "True. It is the top of the last class.", code: "STA.GROUPED.MIDPOINT" },
+                {
+                  text: "True. It is the midpoint of the last class.",
+                  code: "STA.GROUPED.MIDPOINT",
+                },
+              ],
+              solution: [{ say: "Grouped data gives estimates, not exact values." }],
+            }),
+          [
             {
-              text: "False. Grouping hides the exact values: you only know which class the longest time is in.",
-              correct: true,
+              statement:
+                "A grouped table has classes 0–10, 10–20 and 20–30, with 20–30 having the most. Sol says 20–30 is the modal class.",
+              truth: true,
+              right: "True. The modal class has the highest frequency.",
+              wrong: [
+                ["False. The modal class is the middle one.", "STA.MEDIAN.UNORDERED"],
+                ["False. It is 25, the midpoint.", "STA.GROUPED.MIDPOINT"],
+              ],
             },
-            { text: "True. It is the top of the last class.", code: "STA.GROUPED.MIDPOINT" },
-            { text: "True. It is the midpoint of the last class.", code: "STA.GROUPED.MIDPOINT" },
+            {
+              claim: "A grouped frequency table loses the exact values of the data.",
+              truth: "always",
+              right: "Always. You only know which class each value is in.",
+              wrong: [
+                ["Never. You can read every value.", "STA.GROUPED.MIDPOINT"],
+                ["Sometimes. Only for big classes."],
+              ],
+            },
+            {
+              statement: "A class 10 < t ≤ 20 has frequency 8. Bea says the class midpoint is 8.",
+              truth: false,
+              right: "False. The midpoint is (10 + 20) ÷ 2 = 15.",
+              wrong: [
+                ["True. Use the frequency.", "STA.MODE.FREQUENCY"],
+                ["True. The midpoint is the middle count.", "STA.GROUPED.MIDPOINT"],
+              ],
+            },
           ],
-          solution: [{ say: "Grouped data gives estimates, not exact values." }],
-        });
+        );
     }
   },
 

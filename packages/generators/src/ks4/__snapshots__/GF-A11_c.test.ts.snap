@@ -10,7 +10,7 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A11.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -114,7 +114,7 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A11.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -218,7 +218,7 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A11.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -322,7 +322,7 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A11.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -397,7 +397,7 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A11.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -472,7 +472,7 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A11.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -540,14 +540,14 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A11.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -558,7 +558,132 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only for big numbers.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. Dividing is always safe.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. It loses x = 0, which also solves x² = 5x.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "ALG.QUADRATIC.ONE-ROOT",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. It loses x = 0, which also solves x² = 5x.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Dividing both sides of ",
+      },
+      {
+        "t": "math",
+        "v": "x^2 = 5x",
+      },
+      {
+        "t": "text",
+        "v": " by x can lose a solution.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-A11.c",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -585,7 +710,7 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The root is x = −2.",
+                  "v": "False. Only x = 4.",
                 },
               ],
               "id": "RA",
@@ -594,7 +719,7 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Dividing by x loses the root x = 0. Factorise instead: x(x − 2) = 0, so x = 0 or x = 2.",
+                  "v": "True. Both 4² and (−4)² are 16.",
                 },
               ],
               "id": "RB",
@@ -603,7 +728,7 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A quadratic has only one positive root.",
+                  "v": "False. x = 8.",
                 },
               ],
               "id": "RC",
@@ -618,7 +743,7 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.QUADRATIC.ROOT-SIGN",
+            "code": "ALG.QUADRATIC.ONE-ROOT",
             "feedback": [],
           },
           {
@@ -626,7 +751,7 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "ALG.QUADRATIC.ONE-ROOT",
+            "code": "ALG.QUADRATIC.ROOT-SIGN",
             "feedback": [],
           },
         ],
@@ -643,7 +768,7 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Never divide both sides by an expression that could be 0.",
+            "v": "True. Both 4² and (−4)² are 16.",
           },
         ],
       },
@@ -651,23 +776,15 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Al solves ",
+        "v": "Ola solves ",
       },
       {
         "t": "math",
-        "v": "x^2 = 2x",
+        "v": "x^2 = 16",
       },
       {
         "t": "text",
-        "v": " by dividing both sides by x, and says the only root is ",
-      },
-      {
-        "t": "math",
-        "v": "x = 2",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": " and gets x = 4 or x = −4.",
       },
     ],
   },
@@ -676,10 +793,10 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
     "diagrams": [],
     "key": {
       "depth": 4,
-      "numbers": "standard",
+      "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A11.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -717,134 +834,11 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A quadratic has only one positive root.",
+                  "v": "False. The root is x = −3.",
                 },
               ],
               "id": "RA",
             },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. The root is x = −10.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Dividing by x loses the root x = 0. Factorise instead: x(x − 10) = 0, so x = 0 or x = 10.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.QUADRATIC.ONE-ROOT",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.QUADRATIC.ROOT-SIGN",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Never divide both sides by an expression that could be 0.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Al solves ",
-      },
-      {
-        "t": "math",
-        "v": "x^2 = 10x",
-      },
-      {
-        "t": "text",
-        "v": " by dividing both sides by x, and says the only root is ",
-      },
-      {
-        "t": "math",
-        "v": "x = 10",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GF-A11.c",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
             {
               "content": [
                 {
@@ -852,7 +846,7 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
                   "v": "True. A quadratic has only one positive root.",
                 },
               ],
-              "id": "RA",
+              "id": "RB",
             },
             {
               "content": [
@@ -861,15 +855,6 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
                   "v": "False. Dividing by x loses the root x = 0. Factorise instead: x(x − 3) = 0, so x = 0 or x = 3.",
                 },
               ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. The root is x = −3.",
-                },
-              ],
               "id": "RC",
             },
           ],
@@ -882,15 +867,15 @@ exports[`GF-A11.c > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.QUADRATIC.ONE-ROOT",
+            "code": "ALG.QUADRATIC.ROOT-SIGN",
             "feedback": [],
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "ALG.QUADRATIC.ROOT-SIGN",
+            "code": "ALG.QUADRATIC.ONE-ROOT",
             "feedback": [],
           },
         ],

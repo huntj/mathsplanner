@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 export interface Params {
   a: number;
@@ -19,7 +20,7 @@ const term = (p: Params, n: number) => p.a * n * n + p.b * n + p.c;
 
 export default defineGenerator<Params>({
   id: "GF-A24.d",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SEQUENCE.TYPE", "ALG.SEQUENCE.QUADRATIC-HALF"],
 
@@ -77,20 +78,53 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Gus says 2, 6, 12, 20, 30, … is an arithmetic sequence."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Gus says 2, 6, 12, 20, 30, … is an arithmetic sequence."],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. The differences 4, 6, 8, 10 increase by 2 each time, so it is a quadratic sequence (nth term n² + n).",
+                  correct: true,
+                },
+                { text: "True. It goes up each time.", code: "ALG.SEQUENCE.TYPE" },
+                { text: "True. The terms are all even.", code: "ALG.SEQUENCE.TYPE" },
+              ],
+              solution: [{ say: "An arithmetic sequence has a constant first difference." }],
+            }),
+          [
             {
-              text: "False. The differences 4, 6, 8, 10 increase by 2 each time, so it is a quadratic sequence (nth term n² + n).",
-              correct: true,
+              statement: "Kim says 1, 4, 9, 16, … has second differences of 2.",
+              truth: true,
+              right: "True. First differences are 3, 5, 7; these go up by 2.",
+              wrong: [
+                ["False. It goes up by 3 each time.", "ALG.SEQUENCE.TYPE"],
+                ["False. Second differences are 1.", "ALG.SEQUENCE.QUADRATIC-HALF"],
+              ],
             },
-            { text: "True. It goes up each time.", code: "ALG.SEQUENCE.TYPE" },
-            { text: "True. The terms are all even.", code: "ALG.SEQUENCE.TYPE" },
+            {
+              claim: "A sequence with a constant second difference is quadratic.",
+              truth: "always",
+              right: "Always. Its nth term has an n² term.",
+              wrong: [
+                ["Never. It is arithmetic.", "ALG.SEQUENCE.TYPE"],
+                ["Sometimes. Only if the difference is 2."],
+              ],
+            },
+            {
+              statement: "Sol says 3, 7, 11, 15, … is a quadratic sequence.",
+              truth: false,
+              right: "False. It goes up by 4 each time, so it is arithmetic (linear).",
+              wrong: [
+                ["True. It grows quickly.", "ALG.SEQUENCE.TYPE"],
+                ["True. Any increasing sequence is quadratic."],
+              ],
+            },
           ],
-          solution: [{ say: "An arithmetic sequence has a constant first difference." }],
-        });
+        );
     }
   },
 

@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { lineLatex, signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { coord } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   m: number;
@@ -21,7 +22,7 @@ const r2 = (v: number) => Math.round(v * 100) / 100;
 
 export default defineGenerator<Params>({
   id: "GF-A9.d",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.GRADIENT.RUN-RISE", "ALG.LINE.M-C"],
 
@@ -91,26 +92,56 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Max says the gradient from ",
-            A.math(P),
-            " to ",
-            A.math(Q),
-            ` is ${p.x2 - p.x1} ÷ ${y(p.x2) - y(p.x1)}.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Max says the gradient from ",
+                A.math(P),
+                " to ",
+                A.math(Q),
+                ` is ${p.x2 - p.x1} ÷ ${y(p.x2) - y(p.x1)}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Gradient = change in y ÷ change in x = ${y(p.x2) - y(p.x1)} ÷ ${p.x2 - p.x1} = ${p.m}.`,
+                  correct: true,
+                },
+                { text: "True. Gradient is across over up.", code: "ALG.GRADIENT.RUN-RISE" },
+                { text: "True. The order does not matter.", code: "ALG.GRADIENT.RUN-RISE" },
+              ],
+              solution: [{ say: "Rise over run: vertical change on top." }],
+            }),
+          [
             {
-              text: `False. Gradient = change in y ÷ change in x = ${y(p.x2) - y(p.x1)} ÷ ${p.x2 - p.x1} = ${p.m}.`,
-              correct: true,
+              statement: "Raj says the gradient from (1, 2) to (3, 8) is 3.",
+              truth: true,
+              right: "True. Change in y ÷ change in x = 6 ÷ 2 = 3.",
+              wrong: [["False. It is 2 ÷ 6.", "ALG.GRADIENT.RUN-RISE"], ["False. It is 6."]],
             },
-            { text: "True. Gradient is across over up.", code: "ALG.GRADIENT.RUN-RISE" },
-            { text: "True. The order does not matter.", code: "ALG.GRADIENT.RUN-RISE" },
+            {
+              claim: "A line that goes down from left to right has a negative gradient.",
+              truth: "always",
+              right: "Always. y decreases as x increases.",
+              wrong: [
+                ["Never. Gradients are positive.", "ALG.GRADIENT.RUN-RISE"],
+                ["Sometimes. If it is steep.", "ALG.LINE.M-C"],
+              ],
+            },
+            {
+              statement: "Pia says the gradient from (0, 5) to (4, 1) is 1.",
+              truth: false,
+              right: "False. (1 − 5) ÷ (4 − 0) = −4 ÷ 4 = −1.",
+              wrong: [
+                ["True. 4 ÷ 4 = 1.", "ALG.GRADIENT.RUN-RISE"],
+                ["True. Gradients have no sign."],
+              ],
+            },
           ],
-          solution: [{ say: "Rise over run: vertical change on top." }],
-        });
+        );
     }
   },
 

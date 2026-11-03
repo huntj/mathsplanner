@@ -10,7 +10,7 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-P6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-P6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-P6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-P6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -262,7 +262,7 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-P6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -328,7 +328,7 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-P6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -394,7 +394,7 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-P6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -405,123 +405,7 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. A tree shows HH, HT, TH and TT. 'One of each' happens two ways, so it has probability ½, not ⅓.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. There are three possible results, so each is ⅓.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Coins are fair.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Count outcomes from a list or tree, where each one is equally likely.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Tia flips two coins. She says the outcomes two heads, one of each, and two tails are equally likely.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "GF-P6.c",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -548,7 +432,7 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Coins are fair.",
+                  "v": "False. There are 6.",
                 },
               ],
               "id": "RA",
@@ -557,7 +441,7 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. There are three possible results, so each is ⅓.",
+                  "v": "False. There are 8.",
                 },
               ],
               "id": "RB",
@@ -566,7 +450,115 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A tree shows HH, HT, TH and TT. 'One of each' happens two ways, so it has probability ½, not ⅓.",
+                  "v": "True. 2 × 6 = 12.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "PRO.ENUMERATE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. 2 × 6 = 12.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A coin is flipped and a dice rolled. Raj says there are 12 possible outcomes.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-P6.c",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. There are three results: HH, one of each, TT.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. HT and TH are both outcomes: 2/4 = 1/2.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Each result is equally likely.",
                 },
               ],
               "id": "RC",
@@ -586,7 +578,7 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "PRO.SAMPLE-SPACE.EQUAL-TOTALS",
@@ -606,7 +598,7 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Count outcomes from a list or tree, where each one is equally likely.",
+            "v": "False. HT and TH are both outcomes: 2/4 = 1/2.",
           },
         ],
       },
@@ -614,7 +606,15 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Tia flips two coins. She says the outcomes two heads, one of each, and two tails are equally likely.",
+        "v": "Two coins are flipped. Pia says P(one head and one tail) is ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{1}{3}",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
@@ -626,7 +626,7 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-P6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -664,7 +664,7 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A tree shows HH, HT, TH and TT. 'One of each' happens two ways, so it has probability ½, not ⅓.",
+                  "v": "False. HT and TH are both outcomes: 2/4 = 1/2.",
                 },
               ],
               "id": "RA",
@@ -673,7 +673,7 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Coins are fair.",
+                  "v": "True. There are three results: HH, one of each, TT.",
                 },
               ],
               "id": "RB",
@@ -682,7 +682,7 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. There are three possible results, so each is ⅓.",
+                  "v": "True. Each result is equally likely.",
                 },
               ],
               "id": "RC",
@@ -722,7 +722,7 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Count outcomes from a list or tree, where each one is equally likely.",
+            "v": "False. HT and TH are both outcomes: 2/4 = 1/2.",
           },
         ],
       },
@@ -730,7 +730,15 @@ exports[`GF-P6.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Tia flips two coins. She says the outcomes two heads, one of each, and two tails are equally likely.",
+        "v": "Two coins are flipped. Pia says P(one head and one tail) is ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{1}{3}",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },

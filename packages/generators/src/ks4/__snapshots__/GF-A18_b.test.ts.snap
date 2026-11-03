@@ -32,7 +32,7 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A18.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -140,7 +140,7 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A18.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -248,7 +248,7 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A18.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -356,7 +356,7 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A18.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -464,7 +464,7 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A18.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -572,7 +572,7 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A18.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -658,7 +658,131 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A18.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The y-intercept is the answer.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Solutions are where the graph crosses the x-axis: x = −3 and x = 3.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Solutions are y-values.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "ALG.GRAPH.SOLUTION-Y",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.GRAPH.SOLUTION-Y",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. Solutions are where the graph crosses the x-axis: x = −3 and x = 3.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Raj reads the solution of ",
+      },
+      {
+        "t": "math",
+        "v": "x^2 - 9 = 0",
+      },
+      {
+        "t": "text",
+        "v": " from where the graph crosses the y-axis, at −9.",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-A18.b",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -676,7 +800,7 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -685,10 +809,19 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -696,7 +829,7 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every quadratic equation has two solutions.",
+                  "v": "Never. Every quadratic has two.",
                 },
               ],
               "id": "RA",
@@ -705,7 +838,7 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The solutions are x = ±3.",
+                  "v": "Always. Quadratics cannot be solved.",
                 },
               ],
               "id": "RB",
@@ -714,7 +847,7 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The graph of y = x² + 3 has its lowest point at (0, 3), above the x-axis, so it never crosses it: there are no solutions.",
+                  "v": "Sometimes. If the curve does not reach the x-axis, as for x² + 1 = 0.",
                 },
               ],
               "id": "RC",
@@ -732,19 +865,11 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
             "code": "ALG.GRAPH.SOLUTION-Y",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SOLUTION-Y",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -754,7 +879,7 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "x² is never negative, so x² + k > 0 for every x.",
+            "v": "Sometimes. If the curve does not reach the x-axis, as for x² + 1 = 0.",
           },
         ],
       },
@@ -762,139 +887,7 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Eve says ",
-      },
-      {
-        "t": "math",
-        "v": "x^2 + 3 = 0",
-      },
-      {
-        "t": "text",
-        "v": " has two solutions, because every U-shaped graph has two roots.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "GF-A18.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The solutions are x = ±6.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. The graph of y = x² + 6 has its lowest point at (0, 6), above the x-axis, so it never crosses it: there are no solutions.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Every quadratic equation has two solutions.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SOLUTION-Y",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SOLUTION-Y",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "x² is never negative, so x² + k > 0 for every x.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Eve says ",
-      },
-      {
-        "t": "math",
-        "v": "x^2 + 6 = 0",
-      },
-      {
-        "t": "text",
-        "v": " has two solutions, because every U-shaped graph has two roots.",
+        "v": "A quadratic equation can have no real solutions.",
       },
     ],
   },
@@ -906,7 +899,7 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A18.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -917,8 +910,8 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -944,7 +937,7 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every quadratic equation has two solutions.",
+                  "v": "True. At the x-axis, y = 0.",
                 },
               ],
               "id": "RA",
@@ -953,7 +946,7 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The graph of y = x² + 5 has its lowest point at (0, 5), above the x-axis, so it never crosses it: there are no solutions.",
+                  "v": "False. The solution is 4, the y-intercept.",
                 },
               ],
               "id": "RB",
@@ -962,7 +955,7 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The solutions are x = ±5.",
+                  "v": "False. Only one of them counts.",
                 },
               ],
               "id": "RC",
@@ -974,15 +967,7 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SOLUTION-Y",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.GRAPH.SOLUTION-Y",
@@ -1002,7 +987,7 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "x² is never negative, so x² + k > 0 for every x.",
+            "v": "True. At the x-axis, y = 0.",
           },
         ],
       },
@@ -1010,15 +995,23 @@ exports[`GF-A18.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Eve says ",
+        "v": "The graph of ",
       },
       {
         "t": "math",
-        "v": "x^2 + 5 = 0",
+        "v": "y = x^2 - 5x + 4",
       },
       {
         "t": "text",
-        "v": " has two solutions, because every U-shaped graph has two roots.",
+        "v": " crosses the x-axis at 1 and 4. Kim says these solve ",
+      },
+      {
+        "t": "math",
+        "v": "x^2 - 5x + 4 = 0",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },

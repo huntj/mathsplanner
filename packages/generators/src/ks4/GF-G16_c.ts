@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { cylinder } from "../shared/solids.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   r: number;
@@ -20,7 +21,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "GF-G16.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.CIRCLE.FORMULA", "GEO.CIRCLE.RADIUS-DIAMETER", "RAT.SCALE.AREA-LINEAR"],
 
@@ -78,22 +79,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Kai says doubling the radius of a cylinder of radius ${p.r} cm doubles its volume.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Kai says doubling the radius of a cylinder of radius ${p.r} cm doubles its volume.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. The radius is squared in πr²h, so doubling it multiplies the volume by 4.",
+                  correct: true,
+                },
+                {
+                  text: "True. Double the size, double the volume.",
+                  code: "RAT.SCALE.AREA-LINEAR",
+                },
+                { text: "False. It multiplies the volume by 8.", code: "RAT.SCALE.AREA-LINEAR" },
+              ],
+              solution: [{ say: "", math: `\\pi (2r)^2 h = 4\\pi r^2 h` }],
+            }),
+          [
             {
-              text: "False. The radius is squared in πr²h, so doubling it multiplies the volume by 4.",
-              correct: true,
+              statement:
+                "A cylinder has radius 2 cm and height 10 cm. Ana says its volume is $40\\pi$ cm³.",
+              truth: true,
+              right: "True. π × 2² × 10 = 40π.",
+              wrong: [
+                ["False. It is 20π cm³.", "MEA.CIRCLE.FORMULA"],
+                ["False. It is 400π cm³.", "GEO.CIRCLE.RADIUS-DIAMETER"],
+              ],
             },
-            { text: "True. Double the size, double the volume.", code: "RAT.SCALE.AREA-LINEAR" },
-            { text: "False. It multiplies the volume by 8.", code: "RAT.SCALE.AREA-LINEAR" },
+            {
+              claim: "Doubling the height of a cylinder doubles its volume.",
+              truth: "always",
+              right: "Always. V = πr²h, so it is directly proportional to h.",
+              wrong: [
+                ["Never. It multiplies by 4.", "RAT.SCALE.AREA-LINEAR"],
+                ["Sometimes. Only for wide cylinders."],
+              ],
+            },
+            {
+              statement:
+                "A cylinder has diameter 6 cm and height 5 cm. Raj says its volume is $180\\pi$ cm³.",
+              truth: false,
+              right: "False. The radius is 3 cm: π × 9 × 5 = 45π cm³.",
+              wrong: [
+                ["True. π × 6² × 5 = 180π.", "GEO.CIRCLE.RADIUS-DIAMETER"],
+                ["True. Use the diameter in the formula.", "GEO.CIRCLE.RADIUS-DIAMETER"],
+              ],
+            },
           ],
-          solution: [{ say: "", math: `\\pi (2r)^2 h = 4\\pi r^2 h` }],
-        });
+        );
     }
   },
 

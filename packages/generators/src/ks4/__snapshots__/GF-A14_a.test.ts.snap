@@ -60,7 +60,7 @@ exports[`GF-A14.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A14.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -181,7 +181,7 @@ exports[`GF-A14.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A14.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -302,7 +302,7 @@ exports[`GF-A14.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A14.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -423,7 +423,7 @@ exports[`GF-A14.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A14.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -544,7 +544,7 @@ exports[`GF-A14.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A14.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -665,7 +665,7 @@ exports[`GF-A14.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A14.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -730,63 +730,13 @@ exports[`GF-A14.a > keeps fixed seeds unchanged 1`] = `
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "A distance–time graph of a journey from home and back.",
-        "grid": true,
-        "segments": [
-          {
-            "from": [
-              0,
-              0,
-            ],
-            "to": [
-              60,
-              8,
-            ],
-          },
-          {
-            "from": [
-              60,
-              8,
-            ],
-            "to": [
-              100,
-              8,
-            ],
-          },
-          {
-            "from": [
-              100,
-              8,
-            ],
-            "to": [
-              130,
-              0,
-            ],
-          },
-        ],
-        "type": "cartesian",
-        "x": {
-          "label": "\\text{time (minutes)}",
-          "max": 140,
-          "min": 0,
-          "step": 10,
-        },
-        "y": {
-          "label": "\\text{distance from home (km)}",
-          "max": 9,
-          "min": 0,
-          "step": 1,
-        },
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A14.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -797,7 +747,115 @@ exports[`GF-A14.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Distance does not change, so the speed is 0.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It means she went back.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It means she moved at a steady speed.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.GRAPH.DISTANCE-TIME",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. Distance does not change, so the speed is 0.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "On a distance–time graph, Ana says a flat section means she was not moving.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-A14.a",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -824,7 +882,7 @@ exports[`GF-A14.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A less steep line means faster.",
+                  "v": "False. It means she went back.",
                 },
               ],
               "id": "RA",
@@ -833,7 +891,7 @@ exports[`GF-A14.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Speed is shown by steepness. The way back is steeper (the same distance in less time), so it was faster.",
+                  "v": "True. Distance does not change, so the speed is 0.",
                 },
               ],
               "id": "RB",
@@ -842,7 +900,7 @@ exports[`GF-A14.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A longer line means a faster speed.",
+                  "v": "False. It means she moved at a steady speed.",
                 },
               ],
               "id": "RC",
@@ -852,14 +910,6 @@ exports[`GF-A14.a > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.DISTANCE-TIME",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -882,7 +932,7 @@ exports[`GF-A14.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Out: 8 km/h. Back: 16 km/h.",
+            "v": "True. Distance does not change, so the speed is 0.",
           },
         ],
       },
@@ -890,77 +940,19 @@ exports[`GF-A14.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The graph shows Kim's journey from home and back.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": " Kim says she walked faster on the way out, because that part of the graph is longer.",
+        "v": "On a distance–time graph, Ana says a flat section means she was not moving.",
       },
     ],
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "A distance–time graph of a journey from home and back.",
-        "grid": true,
-        "segments": [
-          {
-            "from": [
-              0,
-              0,
-            ],
-            "to": [
-              30,
-              8,
-            ],
-          },
-          {
-            "from": [
-              30,
-              8,
-            ],
-            "to": [
-              50,
-              8,
-            ],
-          },
-          {
-            "from": [
-              50,
-              8,
-            ],
-            "to": [
-              110,
-              0,
-            ],
-          },
-        ],
-        "type": "cartesian",
-        "x": {
-          "label": "\\text{time (minutes)}",
-          "max": 120,
-          "min": 0,
-          "step": 10,
-        },
-        "y": {
-          "label": "\\text{distance from home (km)}",
-          "max": 9,
-          "min": 0,
-          "step": 1,
-        },
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
-      "numbers": "standard",
+      "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A14.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -998,7 +990,7 @@ exports[`GF-A14.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Speed is shown by steepness. The way out is steeper (the same distance in less time), so it was faster.",
+                  "v": "False. A line sloping down means he was going back towards the start.",
                 },
               ],
               "id": "RA",
@@ -1007,7 +999,7 @@ exports[`GF-A14.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A less steep line means faster.",
+                  "v": "True. Down means slower.",
                 },
               ],
               "id": "RB",
@@ -1016,7 +1008,7 @@ exports[`GF-A14.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A longer line means a faster speed.",
+                  "v": "True. The graph shows speed.",
                 },
               ],
               "id": "RC",
@@ -1056,7 +1048,7 @@ exports[`GF-A14.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Out: 16 km/h. Back: 8 km/h.",
+            "v": "False. A line sloping down means he was going back towards the start.",
           },
         ],
       },
@@ -1064,189 +1056,7 @@ exports[`GF-A14.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The graph shows Kim's journey from home and back.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": " Kim says she walked faster on the way back, because that part of the graph is longer.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "description": "A distance–time graph of a journey from home and back.",
-        "grid": true,
-        "segments": [
-          {
-            "from": [
-              0,
-              0,
-            ],
-            "to": [
-              30,
-              8,
-            ],
-          },
-          {
-            "from": [
-              30,
-              8,
-            ],
-            "to": [
-              40,
-              8,
-            ],
-          },
-          {
-            "from": [
-              40,
-              8,
-            ],
-            "to": [
-              100,
-              0,
-            ],
-          },
-        ],
-        "type": "cartesian",
-        "x": {
-          "label": "\\text{time (minutes)}",
-          "max": 110,
-          "min": 0,
-          "step": 10,
-        },
-        "y": {
-          "label": "\\text{distance from home (km)}",
-          "max": 9,
-          "min": 0,
-          "step": 1,
-        },
-      },
-    ],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GF-A14.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. A less steep line means faster.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. A longer line means a faster speed.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Speed is shown by steepness. The way out is steeper (the same distance in less time), so it was faster.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.DISTANCE-TIME",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.DISTANCE-TIME",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Out: 16 km/h. Back: 8 km/h.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "The graph shows Kim's journey from home and back.",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": " Kim says she walked faster on the way back, because that part of the graph is longer.",
+        "v": "On a distance–time graph, Kai says a line sloping down means he slowed down.",
       },
     ],
   },

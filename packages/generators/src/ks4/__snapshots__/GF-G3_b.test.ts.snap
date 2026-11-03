@@ -67,7 +67,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -187,7 +187,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -307,7 +307,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -370,7 +370,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -446,7 +446,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -572,7 +572,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -645,14 +645,14 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -670,7 +670,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -679,10 +679,19 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -690,7 +699,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The exterior angles of a triangle are all 180°.",
+                  "v": "Never. They add up to 360°.",
                 },
               ],
               "id": "RA",
@@ -699,7 +708,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It equals the angle next to it inside the triangle.",
+                  "v": "Sometimes. Only in right-angled triangles.",
                 },
               ],
               "id": "RB",
@@ -708,7 +717,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. With interior angles 84° and 59°, the third is 37°, and the exterior angle next to it is 180° − 37° = 143°.",
+                  "v": "Always. They make a straight line when put together.",
                 },
               ],
               "id": "RC",
@@ -726,19 +735,11 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
             "code": "GEO.ANGLES.TRIANGLE-360",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "GEO.ANGLES.TRIANGLE-360",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -748,7 +749,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Angles on a straight line and angles in a triangle both total 180°.",
+            "v": "Always. They make a straight line when put together.",
           },
         ],
       },
@@ -756,7 +757,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ren says the exterior angle of a triangle equals the sum of the two interior angles opposite it.",
+        "v": "The angles in a triangle add up to 180°.",
       },
     ],
   },
@@ -768,7 +769,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -779,7 +780,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
           "correctReason": "RC",
           "options": [
             {
@@ -806,7 +807,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It equals the angle next to it inside the triangle.",
+                  "v": "True. Triangles add to 360°.",
                 },
               ],
               "id": "RA",
@@ -815,7 +816,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The exterior angles of a triangle are all 180°.",
+                  "v": "True. 360 − 110 = 250.",
                 },
               ],
               "id": "RB",
@@ -824,7 +825,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. With interior angles 38° and 63°, the third is 79°, and the exterior angle next to it is 180° − 79° = 101°.",
+                  "v": "False. 180 − 50 − 60 = 70°.",
                 },
               ],
               "id": "RC",
@@ -864,7 +865,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Angles on a straight line and angles in a triangle both total 180°.",
+            "v": "False. 180 − 50 − 60 = 70°.",
           },
         ],
       },
@@ -872,7 +873,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ren says the exterior angle of a triangle equals the sum of the two interior angles opposite it.",
+        "v": "Two angles of a triangle are 50° and 60°. Ana says the third is 250°.",
       },
     ],
   },
@@ -884,7 +885,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -896,7 +897,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -922,7 +923,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The exterior angles of a triangle are all 180°.",
+                  "v": "True. (180 − 40) ÷ 2 = 70.",
                 },
               ],
               "id": "RA",
@@ -931,7 +932,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It equals the angle next to it inside the triangle.",
+                  "v": "False. Each is 160°.",
                 },
               ],
               "id": "RB",
@@ -940,7 +941,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. With interior angles 60° and 55°, the third is 65°, and the exterior angle next to it is 180° − 65° = 115°.",
+                  "v": "False. Each is 40°.",
                 },
               ],
               "id": "RC",
@@ -952,7 +953,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.ANGLES.TRIANGLE-360",
@@ -960,10 +961,10 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "GEO.ANGLES.TRIANGLE-360",
+            "code": "GEO.ISOSCELES.APEX-EQUALS-BASE",
             "feedback": [],
           },
         ],
@@ -980,7 +981,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Angles on a straight line and angles in a triangle both total 180°.",
+            "v": "True. (180 − 40) ÷ 2 = 70.",
           },
         ],
       },
@@ -988,7 +989,7 @@ exports[`GF-G3.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ren says the exterior angle of a triangle equals the sum of the two interior angles opposite it.",
+        "v": "An isosceles triangle has a top angle of 40°. Gil says each base angle is 70°.",
       },
     ],
   },

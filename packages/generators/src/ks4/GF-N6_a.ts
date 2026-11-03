@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-N6.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.POWER.TIMES-INDEX", "ALG.SUBSTITUTE.NEGATIVE-SQUARE"],
 
@@ -65,23 +66,54 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Kai says ", A.math(`${p.a}^${p.n} = ${p.a * p.n}`), "."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Kai says ", A.math(`${p.a}^${p.n} = ${p.a * p.n}`), "."],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${p.a}^${p.n} is ${p.a} multiplied by itself ${p.n} times, which is ${p.a ** p.n}.`,
+                  correct: true,
+                },
+                {
+                  text: `True. The power tells you to multiply by ${p.n}.`,
+                  code: "NPV.POWER.TIMES-INDEX",
+                },
+                { text: `False. It is ${p.a + p.n}.`, code: "NPV.POWER.TIMES-INDEX" },
+              ],
+              solution: [{ say: "The index counts how many times the base is used as a factor." }],
+            }),
+          [
             {
-              text: `False. ${p.a}^${p.n} is ${p.a} multiplied by itself ${p.n} times, which is ${p.a ** p.n}.`,
-              correct: true,
+              statement: "Sam says $2^5 = 32$.",
+              truth: true,
+              right: "True. 2 × 2 × 2 × 2 × 2 = 32.",
+              wrong: [["False. It is 10.", "NPV.POWER.TIMES-INDEX"], ["False. It is 25."]],
             },
             {
-              text: `True. The power tells you to multiply by ${p.n}.`,
-              code: "NPV.POWER.TIMES-INDEX",
+              statement: "Zoe says $(-3)^2 = -9$.",
+              truth: false,
+              right: "False. (−3) × (−3) = 9.",
+              wrong: [
+                ["True. The minus stays.", "ALG.SUBSTITUTE.NEGATIVE-SQUARE"],
+                ["True. Squaring a negative gives a negative.", "ALG.SUBSTITUTE.NEGATIVE-SQUARE"],
+              ],
             },
-            { text: `False. It is ${p.a + p.n}.`, code: "NPV.POWER.TIMES-INDEX" },
+            {
+              claim: "$n^2$ is bigger than n.",
+              truth: "sometimes",
+              right:
+                "Sometimes. For n = 3, 9 > 3, but for n = 0.5, 0.25 < 0.5, and for n = 1 they are equal.",
+              wrong: [
+                ["Always. Squaring makes numbers bigger.", "NPV.POWER.TIMES-INDEX"],
+                ["Never. It is double n."],
+              ],
+            },
           ],
-          solution: [{ say: "The index counts how many times the base is used as a factor." }],
-        });
+        );
     }
   },
 

@@ -10,7 +10,7 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N2.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -75,7 +75,7 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N2.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -140,7 +140,7 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N2.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -205,7 +205,7 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N2.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -270,7 +270,7 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N2.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -335,7 +335,7 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N2.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -393,14 +393,14 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N2.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -412,13 +412,13 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -427,19 +427,10 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -447,7 +438,7 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Subtracting a positive number makes it smaller, but -11 − (−9) = -2, which is bigger.",
+                  "v": "True. Multiplying negatives gives a negative.",
                 },
               ],
               "id": "RA",
@@ -456,7 +447,7 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The answer stays the same size.",
+                  "v": "False. A negative times a negative is positive: 12.",
                 },
               ],
               "id": "RB",
@@ -465,7 +456,7 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Subtracting means taking away.",
+                  "v": "True. Two negatives make a bigger negative.",
                 },
               ],
               "id": "RC",
@@ -477,17 +468,25 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.NEGATIVE.SIGN-RULE",
+            "feedback": [],
+          },
+          {
+            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.NEGATIVE.SUBTRACT-NEGATIVE",
+            "code": "NPV.NEGATIVE.SIGN-RULE",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -497,7 +496,7 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Subtracting a negative number moves up the number line.",
+            "v": "False. A negative times a negative is positive: 12.",
           },
         ],
       },
@@ -505,7 +504,15 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Subtracting a number makes the answer smaller.",
+        "v": "Ben says ",
+      },
+      {
+        "t": "math",
+        "v": "-4 \\times -3 = -12",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
@@ -517,7 +524,7 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N2.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -564,7 +571,7 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The answer stays the same size.",
+                  "v": "Always. Subtracting means taking away.",
                 },
               ],
               "id": "RA",
@@ -573,7 +580,7 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Subtracting means taking away.",
+                  "v": "Never. The answer stays the same size.",
                 },
               ],
               "id": "RB",
@@ -594,7 +601,7 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.NEGATIVE.SUBTRACT-NEGATIVE",
@@ -627,14 +634,14 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N2.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -645,14 +652,14 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -661,19 +668,10 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -681,7 +679,7 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Subtracting a positive number makes it smaller, but 7 − (−6) = 13, which is bigger.",
+                  "v": "True. Subtracting −5 is the same as adding 5: −3 + 5 = 2.",
                 },
               ],
               "id": "RA",
@@ -690,7 +688,7 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The answer stays the same size.",
+                  "v": "False. It is −8.",
                 },
               ],
               "id": "RB",
@@ -699,7 +697,7 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Subtracting means taking away.",
+                  "v": "False. It is 8.",
                 },
               ],
               "id": "RC",
@@ -711,17 +709,25 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.NEGATIVE.SUBTRACT-NEGATIVE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.NEGATIVE.SIGN-RULE",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -731,7 +737,7 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Subtracting a negative number moves up the number line.",
+            "v": "True. Subtracting −5 is the same as adding 5: −3 + 5 = 2.",
           },
         ],
       },
@@ -739,7 +745,15 @@ exports[`GF-N2.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Subtracting a number makes the answer smaller.",
+        "v": "Jo says ",
+      },
+      {
+        "t": "math",
+        "v": "-3 - (-5) = 2",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },

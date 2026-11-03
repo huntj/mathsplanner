@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { chosenText } from "../shared/counting.ts";
 import { coord, distinctFrom } from "../shared/pos.ts";
 import { col } from "../shared/vec.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   x: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-G7.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["POS.TRANSLATE.DIRECTION", "POS.TRANSFORM.CHANGES-SHAPE"],
 
@@ -94,20 +95,58 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["A translation turns a shape round."],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["A translation turns a shape round."],
+              truth: "never",
+              reasons: [
+                {
+                  text: "Never. A translation slides every point the same distance in the same direction, so the shape keeps its orientation.",
+                  correct: true,
+                },
+                {
+                  text: "Sometimes. It depends on the vector.",
+                  code: "POS.TRANSFORM.CHANGES-SHAPE",
+                },
+                { text: "Always. Moving a shape turns it.", code: "POS.TRANSFORM.CHANGES-SHAPE" },
+              ],
+              solution: [{ say: "Rotations turn shapes; translations only slide them." }],
+            }),
+          [
             {
-              text: "Never. A translation slides every point the same distance in the same direction, so the shape keeps its orientation.",
-              correct: true,
+              statement:
+                "Bea says the vector $\\begin{pmatrix} -2 \\\\ 5 \\end{pmatrix}$ moves a shape 2 left and 5 up.",
+              truth: true,
+              right: "True. The top number is across and the bottom is up.",
+              wrong: [
+                ["False. 2 right and 5 down.", "POS.TRANSLATE.DIRECTION"],
+                ["False. 5 left and 2 up.", "POS.TRANSLATE.DIRECTION"],
+              ],
             },
-            { text: "Sometimes. It depends on the vector.", code: "POS.TRANSFORM.CHANGES-SHAPE" },
-            { text: "Always. Moving a shape turns it.", code: "POS.TRANSFORM.CHANGES-SHAPE" },
+            {
+              claim: "A translated shape is congruent to the original.",
+              truth: "always",
+              right: "Always. It only slides; size and shape do not change.",
+              wrong: [
+                ["Never. It changes size.", "POS.TRANSFORM.CHANGES-SHAPE"],
+                ["Sometimes. If it moves far."],
+              ],
+            },
+            {
+              statement:
+                "Leo translates (1, 3) by $\\begin{pmatrix} 4 \\\\ -2 \\end{pmatrix}$ and gets (3, 7).",
+              truth: false,
+              right: "False. Add 4 to x and −2 to y: (5, 1).",
+              wrong: [
+                ["True. Add the numbers the other way round.", "POS.TRANSLATE.DIRECTION"],
+                ["True. The vector's numbers swap.", "POS.TRANSLATE.DIRECTION"],
+              ],
+            },
           ],
-          solution: [{ say: "Rotations turn shapes; translations only slide them." }],
-        });
+        );
     }
   },
 

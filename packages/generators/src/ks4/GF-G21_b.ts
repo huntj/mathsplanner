@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, Surd, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText, exactAnswer } from "../shared/counting.ts";
 import { EXACT } from "../shared/trig.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const VALUES = ["\\frac{\\sqrt{3}}{3}", "1", "\\sqrt{3}"];
 
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-G21.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.TRIG.EXACT"],
 
@@ -68,21 +69,54 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Zoe says ",
-            A.math("\\tan 45^\\circ = 1"),
-            " because a right-angled triangle with a 45° angle has its two shorter sides equal.",
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Zoe says ",
+                A.math("\\tan 45^\\circ = 1"),
+                " because a right-angled triangle with a 45° angle has its two shorter sides equal.",
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. The triangle is isosceles, so opposite ÷ adjacent = 1.",
+                  correct: true,
+                },
+                { text: "False. tan 45° = √2/2.", code: "GEO.TRIG.EXACT" },
+                { text: "False. tan 45° = 45 ÷ 90 = ½.", code: "GEO.TRIG.EXACT" },
+              ],
+              solution: [{ say: "tan 45° = sin 45° ÷ cos 45° = 1." }],
+            }),
+          [
+            {
+              statement: "Leo says $\\cos 60^\\circ = \\frac{1}{2}$.",
+              truth: true,
+              right: "True. cos 60° = sin 30° = 1/2.",
+              wrong: [["False. It is √3/2.", "GEO.TRIG.EXACT"], ["False. It is 60/90."]],
+            },
+            {
+              claim: "$\\tan 0^\\circ = 0$.",
+              truth: "always",
+              right: "Always. The opposite side is 0.",
+              wrong: [
+                ["Never. It is 1.", "GEO.TRIG.EXACT"],
+                ["Sometimes. Only in some triangles."],
+              ],
+            },
+            {
+              statement: "Pia says $\\tan 45^\\circ = \\sqrt{2}$.",
+              truth: false,
+              right: "False. The two shorter sides are equal, so tan 45° = 1.",
+              wrong: [
+                ["True. The hypotenuse is √2.", "GEO.TRIG.EXACT"],
+                ["True. tan is opposite over hypotenuse.", "GEO.TRIG.EXACT"],
+              ],
+            },
           ],
-          truth: true,
-          reasons: [
-            { text: "True. The triangle is isosceles, so opposite ÷ adjacent = 1.", correct: true },
-            { text: "False. tan 45° = √2/2.", code: "GEO.TRIG.EXACT" },
-            { text: "False. tan 45° = 45 ÷ 90 = ½.", code: "GEO.TRIG.EXACT" },
-          ],
-          solution: [{ say: "tan 45° = sin 45° ÷ cos 45° = 1." }],
-        });
+        );
     }
   },
 

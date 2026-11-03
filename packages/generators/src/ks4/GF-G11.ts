@@ -10,6 +10,7 @@ import type { Coord } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { coord, distinctFrom } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   b: number;
@@ -30,7 +31,7 @@ const TRIPLES: [number, number, number][] = [
 
 export default defineGenerator<Params>({
   id: "GF-G11",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.AREA.TRIANGLE-HALF", "ALG.COORD.ORDER", "GEO.PYTHAG.NO-SQUARE"],
 
@@ -116,26 +117,60 @@ export default defineGenerator<Params>({
       }
       default: {
         const [x, y, d] = p.t;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Mo says the distance between ",
-            A.math(coord([0, 0])),
-            " and ",
-            A.math(coord([x, y])),
-            ` is ${x + y}.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Mo says the distance between ",
+                A.math(coord([0, 0])),
+                " and ",
+                A.math(coord([x, y])),
+                ` is ${x + y}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Use Pythagoras: √(${x}² + ${y}²) = √${x * x + y * y} = ${d}.`,
+                  correct: true,
+                },
+                { text: "True. Add the distances across and up.", code: "GEO.PYTHAG.NO-SQUARE" },
+                { text: "True. Distance is the sum of the coordinates." },
+              ],
+              solution: [{ say: `The straight-line distance is the hypotenuse: ${d}.` }],
+            }),
+          [
             {
-              text: `False. Use Pythagoras: √(${x}² + ${y}²) = √${x * x + y * y} = ${d}.`,
-              correct: true,
+              statement: "Kai says the distance between (1, 1) and (4, 5) is 5.",
+              truth: true,
+              right: "True. Across 3 and up 4: √(3² + 4²) = √25 = 5.",
+              wrong: [
+                ["False. It is 7, as 3 + 4 = 7.", "GEO.PYTHAG.NO-SQUARE"],
+                ["False. It is 25."],
+              ],
             },
-            { text: "True. Add the distances across and up.", code: "GEO.PYTHAG.NO-SQUARE" },
-            { text: "True. Distance is the sum of the coordinates." },
+            {
+              claim: "The distance between two points can be found with Pythagoras' theorem.",
+              truth: "always",
+              right: "Always. The horizontal and vertical differences make the two shorter sides.",
+              wrong: [
+                ["Never. Add the differences.", "GEO.PYTHAG.NO-SQUARE"],
+                ["Sometimes. Only on the axes."],
+              ],
+            },
+            {
+              statement:
+                "Pia says the area of the triangle with corners (0, 0), (6, 0) and (0, 4) is 24.",
+              truth: false,
+              right: "False. ½ × 6 × 4 = 12.",
+              wrong: [
+                ["True. 6 × 4 = 24.", "MEA.AREA.TRIANGLE-HALF"],
+                ["True. Base times height.", "MEA.AREA.TRIANGLE-HALF"],
+              ],
+            },
           ],
-          solution: [{ say: `The straight-line distance is the hypotenuse: ${d}.` }],
-        });
+        );
       }
     }
   },

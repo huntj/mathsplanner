@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import type { CartesianSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const XS = [2, 3, 4, 5, 6, 7, 8];
 
@@ -35,7 +36,7 @@ function scatter(p: Params): CartesianSpec {
 
 export default defineGenerator<Params>({
   id: "GF-S6.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.EXTRAPOLATE", "STA.REGRESSION.VARIABLES"],
 
@@ -107,20 +108,58 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Ana says a line of best fit must pass through the origin."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Ana says a line of best fit must pass through the origin."],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. It follows the trend of the points, with about as many above as below; it need not go through (0, 0).",
+                  correct: true,
+                },
+                {
+                  text: "True. Every line on a graph starts at the origin.",
+                  code: "STA.EXTRAPOLATE",
+                },
+                { text: "True. Zero revision means zero marks.", code: "STA.EXTRAPOLATE" },
+              ],
+              solution: [{ say: "Here the line crosses the vertical axis at about " + p.c + "." }],
+            }),
+          [
             {
-              text: "False. It follows the trend of the points, with about as many above as below; it need not go through (0, 0).",
-              correct: true,
+              statement:
+                "Kim uses a line of best fit to estimate a value inside the range of her data.",
+              truth: true,
+              right: "True. Interpolating inside the data is reasonable.",
+              wrong: [
+                ["False. You can only use plotted points.", "STA.EXTRAPOLATE"],
+                ["False. Lines of best fit cannot be used for estimates."],
+              ],
             },
-            { text: "True. Every line on a graph starts at the origin.", code: "STA.EXTRAPOLATE" },
-            { text: "True. Zero revision means zero marks.", code: "STA.EXTRAPOLATE" },
+            {
+              claim: "A line of best fit should pass through every point.",
+              truth: "never",
+              right: "Never needed. It follows the trend with points either side.",
+              wrong: [
+                ["Always. It joins the points.", "STA.REGRESSION.VARIABLES"],
+                ["Sometimes. Only for small data."],
+              ],
+            },
+            {
+              statement:
+                "A line of best fit is drawn for ages 5 to 15. Raj uses it to predict the height of a 40-year-old.",
+              truth: false,
+              right: "False. 40 is far outside the data, so the estimate is unreliable.",
+              wrong: [
+                ["True. Lines go on for ever.", "STA.EXTRAPOLATE"],
+                ["True. Any value can be read off.", "STA.EXTRAPOLATE"],
+              ],
+            },
           ],
-          solution: [{ say: "Here the line crosses the vertical axis at about " + p.c + "." }],
-        });
+        );
     }
   },
 

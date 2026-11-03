@@ -10,7 +10,7 @@ exports[`GF-N9.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N9.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -78,7 +78,7 @@ exports[`GF-N9.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N9.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -146,7 +146,7 @@ exports[`GF-N9.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N9.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -214,7 +214,7 @@ exports[`GF-N9.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N9.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -282,7 +282,7 @@ exports[`GF-N9.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N9.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -350,7 +350,7 @@ exports[`GF-N9.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N9.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -418,7 +418,7 @@ exports[`GF-N9.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N9.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -430,7 +430,7 @@ exports[`GF-N9.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -456,7 +456,7 @@ exports[`GF-N9.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It is a number times a power of 10.",
+                  "v": "True. 52 × 1000 = 52,000.",
                 },
               ],
               "id": "RA",
@@ -465,7 +465,7 @@ exports[`GF-N9.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It should be 7.8 × 10^7.",
+                  "v": "False. 52 is not between 1 and 10: 5.2 × 10⁴.",
                 },
               ],
               "id": "RB",
@@ -474,7 +474,7 @@ exports[`GF-N9.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The first number must be at least 1 and less than 10, so it is 7.8 × 10^9.",
+                  "v": "True. Any number times a power of 10 is standard form.",
                 },
               ],
               "id": "RC",
@@ -492,6 +492,123 @@ exports[`GF-N9.a > keeps fixed seeds unchanged 1`] = `
             "code": "NPV.STANDARD-FORM.POWER",
             "feedback": [],
           },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. 52 is not between 1 and 10: 5.2 × 10⁴.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Gil writes 52,000 as ",
+      },
+      {
+        "t": "math",
+        "v": "52 \\times 10^{3}",
+      },
+      {
+        "t": "text",
+        "v": " in standard form.",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-N9.a",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. a must be less than 1.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. a can be 10 or more.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. That is the rule for standard form.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
           {
             "answer": {
               "id": "RB",
@@ -504,29 +621,33 @@ exports[`GF-N9.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
     ],
     "solution": [
       {
-        "math": "78 \\times 10^{8} = 7.8 \\times 10 \\times 10^{8} = 7.8 \\times 10^{9}",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. That is the rule for standard form.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Jo says ",
+        "v": "In standard form ",
       },
       {
         "t": "math",
-        "v": "78 \\times 10^{8}",
+        "v": "a \\times 10^n",
       },
       {
         "t": "text",
-        "v": " is written in standard form.",
+        "v": ", a is at least 1 and less than 10.",
       },
     ],
   },
@@ -535,10 +656,10 @@ exports[`GF-N9.a > keeps fixed seeds unchanged 1`] = `
     "diagrams": [],
     "key": {
       "depth": 4,
-      "numbers": "standard",
+      "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N9.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -576,7 +697,7 @@ exports[`GF-N9.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The first number must be at least 1 and less than 10, so it is 7.8 × 10^9.",
+                  "v": "False. The first number must be at least 1 and less than 10, so it is 4.6 × 10^9.",
                 },
               ],
               "id": "RA",
@@ -590,108 +711,6 @@ exports[`GF-N9.a > keeps fixed seeds unchanged 1`] = `
               ],
               "id": "RB",
             },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. It should be 7.8 × 10^7.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.STANDARD-FORM.POWER",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.STANDARD-FORM.POWER",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "math": "78 \\times 10^{8} = 7.8 \\times 10 \\times 10^{8} = 7.8 \\times 10^{9}",
-        "say": [],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Jo says ",
-      },
-      {
-        "t": "math",
-        "v": "78 \\times 10^{8}",
-      },
-      {
-        "t": "text",
-        "v": " is written in standard form.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GF-N9.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
             {
               "content": [
                 {
@@ -699,24 +718,6 @@ exports[`GF-N9.a > keeps fixed seeds unchanged 1`] = `
                   "v": "False. It should be 4.6 × 10^7.",
                 },
               ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. It is a number times a power of 10.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. The first number must be at least 1 and less than 10, so it is 4.6 × 10^9.",
-                },
-              ],
               "id": "RC",
             },
           ],
@@ -726,7 +727,7 @@ exports[`GF-N9.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.STANDARD-FORM.POWER",
@@ -734,7 +735,7 @@ exports[`GF-N9.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.STANDARD-FORM.POWER",

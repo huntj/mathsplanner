@@ -10,6 +10,7 @@ import type { TreeSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { txt } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 export interface Params {
   a: number;
@@ -37,7 +38,7 @@ const tree = (a: number, b: number): TreeSpec => {
 
 export default defineGenerator<Params>({
   id: "GF-P8.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["PRO.TREE.ADD-ALONG"],
 
@@ -92,27 +93,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Kit says the probability of two heads with two fair coins is ",
-            A.math("\\frac{1}{2} + \\frac{1}{2} = 1"),
-            ".",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Kit says the probability of two heads with two fair coins is ",
+                A.math("\\frac{1}{2} + \\frac{1}{2} = 1"),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. Multiply along the branches: ½ × ½ = ¼. A probability of 1 would mean it always happens.",
+                  correct: true,
+                },
+                {
+                  text: "True. Add the probabilities of the two heads.",
+                  code: "PRO.TREE.ADD-ALONG",
+                },
+                {
+                  text: "True. Each coin has a ½ chance, so together they make 1.",
+                  code: "PRO.TREE.ADD-ALONG",
+                },
+              ],
+              solution: [{ say: "Multiply along branches; add between whole paths." }],
+            }),
+          [
             {
-              text: "False. Multiply along the branches: ½ × ½ = ¼. A probability of 1 would mean it always happens.",
-              correct: true,
+              statement:
+                "P(rain) = 0.4 each day, independently. Ana says P(rain on both of two days) is 0.16.",
+              truth: true,
+              right: "True. Multiply along the branches: 0.4 × 0.4.",
+              wrong: [["False. It is 0.8.", "PRO.TREE.ADD-ALONG"], ["False. It is 0.4."]],
             },
-            { text: "True. Add the probabilities of the two heads.", code: "PRO.TREE.ADD-ALONG" },
             {
-              text: "True. Each coin has a ½ chance, so together they make 1.",
-              code: "PRO.TREE.ADD-ALONG",
+              claim:
+                "On a tree diagram, the probabilities on each set of branches from one point add up to 1.",
+              truth: "always",
+              right: "Always. One of the branches must happen.",
+              wrong: [
+                ["Never. They multiply to 1.", "PRO.TREE.ADD-ALONG"],
+                ["Sometimes. Only on the first branches."],
+              ],
+            },
+            {
+              statement:
+                "Leo says P(head and six) when flipping a coin and rolling a dice is $\\frac{1}{2} + \\frac{1}{6}$.",
+              truth: false,
+              right: "False. For 'and', multiply: 1/2 × 1/6 = 1/12.",
+              wrong: [
+                ["True. Add along the branches.", "PRO.TREE.ADD-ALONG"],
+                ["True. And means add.", "PRO.TREE.ADD-ALONG"],
+              ],
             },
           ],
-          solution: [{ say: "Multiply along branches; add between whole paths." }],
-        });
+        );
     }
   },
 

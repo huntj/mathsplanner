@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { linear, signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -23,7 +24,7 @@ const value = (p: Params) => p.a * p.k * p.k - p.b * p.k;
 
 export default defineGenerator<Params>({
   id: "GF-A2.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SUBSTITUTE.NEGATIVE-SQUARE"],
 
@@ -119,30 +120,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["For a number x, ", A.math("x^2 > x"), "."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["For a number x, ", A.math("x^2 > x"), "."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: "Sometimes. It is true for x = 3 (9 > 3) and x = −2 (4 > −2), but not for x = ½ (¼ < ½) or x = 1.",
+                  correct: true,
+                },
+                {
+                  text: "Always. Squaring always makes a number bigger.",
+                  code: "ALG.SUBSTITUTE.NEGATIVE-SQUARE",
+                },
+                {
+                  text: "Never. Squaring a negative number makes it more negative.",
+                  code: "ALG.SUBSTITUTE.NEGATIVE-SQUARE",
+                },
+              ],
+              solution: [
+                {
+                  say: "Test values from different ranges: negative numbers, numbers between 0 and 1, and numbers above 1.",
+                },
+              ],
+            }),
+          [
             {
-              text: "Sometimes. It is true for x = 3 (9 > 3) and x = −2 (4 > −2), but not for x = ½ (¼ < ½) or x = 1.",
-              correct: true,
+              statement: "When $x = -3$, Dev says $x^2 = 9$.",
+              truth: true,
+              right: "True. (−3)² = −3 × −3 = 9.",
+              wrong: [["False. It is −9.", "ALG.SUBSTITUTE.NEGATIVE-SQUARE"], ["False. It is −6."]],
             },
             {
-              text: "Always. Squaring always makes a number bigger.",
-              code: "ALG.SUBSTITUTE.NEGATIVE-SQUARE",
+              statement: "When $a = 4$, Pam says $3a^2 = 144$.",
+              truth: false,
+              right: "False. Square first: 3 × 16 = 48.",
+              wrong: [
+                ["True. (3 × 4)² = 144.", "ALG.SUBSTITUTE.NEGATIVE-SQUARE"],
+                ["True. 3a is 12, and 12² = 144."],
+              ],
             },
             {
-              text: "Never. Squaring a negative number makes it more negative.",
-              code: "ALG.SUBSTITUTE.NEGATIVE-SQUARE",
+              claim: "$-x^2$ is negative when x is not zero.",
+              truth: "always",
+              right: "Always. x² is positive, and the minus makes it negative.",
+              wrong: [
+                ["Sometimes. When x is negative it is positive.", "ALG.SUBSTITUTE.NEGATIVE-SQUARE"],
+                ["Never. Squares are positive."],
+              ],
             },
           ],
-          solution: [
-            {
-              say: "Test values from different ranges: negative numbers, numbers between 0 and 1, and numbers above 1.",
-            },
-          ],
-        });
+        );
     }
   },
 

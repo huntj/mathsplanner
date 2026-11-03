@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** A random sample of n pupils, k of whom walk to school. */
@@ -23,7 +24,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-S5",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["AS.MULTISTEP.ONE-STEP"],
 
@@ -83,45 +84,80 @@ export default defineGenerator<Params>({
       default: {
         const total = Math.round(p.meanKids * p.families);
         const statement = `A random sample of families in a town has a mean of ${p.meanKids} children per family. There are ${p.families} families in the town.`;
-        return p.claimTotal
-          ? A.trueOrFalseWhy({
-              rng,
-              statement: `${statement} Zoe estimates there are about ${total} children in the town's families.`,
+        return orClaims(
+          rng,
+          () =>
+            p.claimTotal
+              ? A.trueOrFalseWhy({
+                  rng,
+                  statement: `${statement} Zoe estimates there are about ${total} children in the town's families.`,
+                  truth: true,
+                  reasons: [
+                    {
+                      text: `True. ${p.meanKids} × ${p.families} = ${total}: the sample mean scales up to an estimate for the population.`,
+                      correct: true,
+                    },
+                    { text: "False. You cannot multiply a mean by a number of families." },
+                    {
+                      text: `False. Every family has about ${Math.round(p.meanKids)} children, so it is ${Math.round(p.meanKids) * p.families}.`,
+                    },
+                  ],
+                  solution: [
+                    {
+                      say: "Mean × number of families estimates the total, as long as the sample is random.",
+                    },
+                  ],
+                })
+              : A.trueOrFalseWhy({
+                  rng,
+                  statement: `${statement} Zoe says this means every family in the town has about ${Math.round(p.meanKids)} children.`,
+                  truth: false,
+                  reasons: [
+                    {
+                      text: "False. The mean describes the population as a whole; individual families vary a lot.",
+                      correct: true,
+                    },
+                    { text: "True. The mean is the number of children in each family." },
+                    { text: "True. A random sample tells you about every individual." },
+                  ],
+                  solution: [
+                    {
+                      say: "A sample statistic estimates a population average, not each member of it.",
+                    },
+                  ],
+                }),
+          [
+            {
+              statement:
+                "A sample shows 30% of pupils walk to school. There are 900 pupils. Leo estimates 270 walk.",
               truth: true,
-              reasons: [
-                {
-                  text: `True. ${p.meanKids} × ${p.families} = ${total}: the sample mean scales up to an estimate for the population.`,
-                  correct: true,
-                },
-                { text: "False. You cannot multiply a mean by a number of families." },
-                {
-                  text: `False. Every family has about ${Math.round(p.meanKids)} children, so it is ${Math.round(p.meanKids) * p.families}.`,
-                },
+              right: "True. 30% of 900 is 270.",
+              wrong: [
+                ["False. He must ask all 900.", "AS.MULTISTEP.ONE-STEP"],
+                ["False. It is 30 pupils."],
               ],
-              solution: [
-                {
-                  say: "Mean × number of families estimates the total, as long as the sample is random.",
-                },
+            },
+            {
+              claim: "An estimate from a sample is exactly right for the whole population.",
+              truth: "never",
+              right: "Never guaranteed. A sample gives an estimate, not the exact value.",
+              wrong: [
+                ["Always. Samples are exact.", "AS.MULTISTEP.ONE-STEP"],
+                ["Sometimes. If the sample is 10 people."],
               ],
-            })
-          : A.trueOrFalseWhy({
-              rng,
-              statement: `${statement} Zoe says this means every family in the town has about ${Math.round(p.meanKids)} children.`,
+            },
+            {
+              statement:
+                "In a sample of 50, 10 like jazz. Ana estimates that 10 of the 1000 people in the town like jazz.",
               truth: false,
-              reasons: [
-                {
-                  text: "False. The mean describes the population as a whole; individual families vary a lot.",
-                  correct: true,
-                },
-                { text: "True. The mean is the number of children in each family." },
-                { text: "True. A random sample tells you about every individual." },
+              right: "False. 10/50 = 1/5, so estimate 1/5 of 1000 = 200.",
+              wrong: [
+                ["True. The sample says 10.", "AS.MULTISTEP.ONE-STEP"],
+                ["True. Samples give the total.", "AS.MULTISTEP.ONE-STEP"],
               ],
-              solution: [
-                {
-                  say: "A sample statistic estimates a population average, not each member of it.",
-                },
-              ],
-            });
+            },
+          ],
+        );
       }
     }
   },

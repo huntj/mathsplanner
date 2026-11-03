@@ -9,6 +9,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -28,7 +29,7 @@ const GIVEN: [string, string][] = [
 
 export default defineGenerator<Params>({
   id: "GF-G19",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.ADDITIVE", "GEO.CONGRUENCE.AAA", "GEO.CONGRUENCE.SSA"],
 
@@ -87,34 +88,70 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement:
-            p.claim === 0
-              ? "Ben says two triangles with all three angles equal must be congruent."
-              : "Ben says two triangles with all three angles equal must be similar.",
-          truth: p.claim === 1,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement:
+                p.claim === 0
+                  ? "Ben says two triangles with all three angles equal must be congruent."
+                  : "Ben says two triangles with all three angles equal must be similar.",
+              truth: p.claim === 1,
+              reasons: [
+                {
+                  text:
+                    p.claim === 1
+                      ? "True. Equal angles mean the same shape, so the triangles are similar; they may be different sizes."
+                      : "False. Equal angles only show they are similar: one could be an enlargement of the other.",
+                  correct: true,
+                },
+                {
+                  text: `${p.claim === 1 ? "False" : "True"}. AAA proves congruence.`,
+                  code: "GEO.CONGRUENCE.AAA",
+                },
+                {
+                  text: `${p.claim === 1 ? "False" : "True"}. Any three equal measurements prove congruence.`,
+                  code: "GEO.CONGRUENCE.SSA",
+                },
+              ],
+              solution: [
+                {
+                  say: "Congruence needs SSS, SAS, ASA or RHS. Equal angles alone give similarity.",
+                },
+              ],
+            }),
+          [
             {
-              text:
-                p.claim === 1
-                  ? "True. Equal angles mean the same shape, so the triangles are similar; they may be different sizes."
-                  : "False. Equal angles only show they are similar: one could be an enlargement of the other.",
-              correct: true,
+              statement: "Two triangles have all three sides equal. Ana says they are congruent.",
+              truth: true,
+              right: "True. This is SSS.",
+              wrong: [
+                ["False. Their angles may differ.", "GEO.CONGRUENCE.AAA"],
+                ["False. One may be a reflection."],
+              ],
             },
             {
-              text: `${p.claim === 1 ? "False" : "True"}. AAA proves congruence.`,
-              code: "GEO.CONGRUENCE.AAA",
+              claim: "Two similar shapes have equal corresponding angles.",
+              truth: "always",
+              right: "Always. Similar shapes are enlargements of each other.",
+              wrong: [
+                ["Never. Bigger shapes have bigger angles.", "RAT.ADDITIVE"],
+                ["Sometimes. Only if they are the same size."],
+              ],
             },
             {
-              text: `${p.claim === 1 ? "False" : "True"}. Any three equal measurements prove congruence.`,
-              code: "GEO.CONGRUENCE.SSA",
+              statement:
+                "Two triangles have two sides and a non-included angle equal. Kai says they must be congruent.",
+              truth: false,
+              right: "False. SSA is not a test for congruence; two different triangles can fit.",
+              wrong: [
+                ["True. Three facts fix a triangle.", "GEO.CONGRUENCE.SSA"],
+                ["True. Any three matching parts will do.", "GEO.CONGRUENCE.SSA"],
+              ],
             },
           ],
-          solution: [
-            { say: "Congruence needs SSS, SAS, ASA or RHS. Equal angles alone give similarity." },
-          ],
-        });
+        );
     }
   },
 

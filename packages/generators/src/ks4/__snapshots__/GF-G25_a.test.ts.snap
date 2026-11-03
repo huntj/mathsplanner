@@ -10,7 +10,7 @@ exports[`GF-G25.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G25.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -131,7 +131,7 @@ exports[`GF-G25.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G25.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -252,7 +252,7 @@ exports[`GF-G25.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G25.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -373,7 +373,7 @@ exports[`GF-G25.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G25.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -494,7 +494,7 @@ exports[`GF-G25.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G25.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -615,7 +615,7 @@ exports[`GF-G25.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G25.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -729,14 +729,14 @@ exports[`GF-G25.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G25.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -748,13 +748,13 @@ exports[`GF-G25.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -763,19 +763,10 @@ exports[`GF-G25.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -783,7 +774,7 @@ exports[`GF-G25.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when a and b are parallel.",
+                  "v": "False. It is (5, −4).",
                 },
               ],
               "id": "RA",
@@ -792,7 +783,7 @@ exports[`GF-G25.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Changing the order changes the direction.",
+                  "v": "True. Add the tops and add the bottoms.",
                 },
               ],
               "id": "RB",
@@ -801,7 +792,7 @@ exports[`GF-G25.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Following a then b, or b then a, ends at the same point: the two routes are sides of a parallelogram.",
+                  "v": "False. It is (2, −15).",
                 },
               ],
               "id": "RC",
@@ -816,22 +807,22 @@ exports[`GF-G25.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "GEO.VECTOR.DIRECTION",
+            "code": "GEO.VECTOR.COMPONENTS",
             "feedback": [],
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "GEO.VECTOR.DIRECTION",
+            "code": "GEO.VECTOR.COMPONENTS",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -841,15 +832,147 @@ exports[`GF-G25.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Addition of vectors is commutative; subtraction is not.",
+            "v": "True. Add the tops and add the bottoms.",
           },
         ],
       },
     ],
     "stem": [
       {
+        "t": "text",
+        "v": "Kai says ",
+      },
+      {
         "t": "math",
-        "v": "\\mathbf{a} + \\mathbf{b} = \\mathbf{b} + \\mathbf{a}",
+        "v": "\\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix} + \\begin{pmatrix} 1 \\\\ -5 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-G25.a",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Add the tops and add the bottoms.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is (2, −15).",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is (5, −4).",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.COMPONENTS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "GEO.VECTOR.COMPONENTS",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. Add the tops and add the bottoms.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Kai says ",
+      },
+      {
+        "t": "math",
+        "v": "\\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix} + \\begin{pmatrix} 1 \\\\ -5 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix}",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
@@ -858,10 +981,10 @@ exports[`GF-G25.a > keeps fixed seeds unchanged 1`] = `
     "diagrams": [],
     "key": {
       "depth": 4,
-      "numbers": "standard",
+      "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G25.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -917,7 +1040,7 @@ exports[`GF-G25.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Changing the order changes the direction.",
+                  "v": "Sometimes. Only when a and b are parallel.",
                 },
               ],
               "id": "RB",
@@ -926,7 +1049,7 @@ exports[`GF-G25.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Only when a and b are parallel.",
+                  "v": "Never. Changing the order changes the direction.",
                 },
               ],
               "id": "RC",
@@ -947,131 +1070,6 @@ exports[`GF-G25.a > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RC",
-              "type": "choice",
-            },
-            "code": "GEO.VECTOR.DIRECTION",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this always, sometimes or never true?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Addition of vectors is commutative; subtraction is not.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "math",
-        "v": "\\mathbf{a} + \\mathbf{b} = \\mathbf{b} + \\mathbf{a}",
-      },
-    ],
-  },
-  {
-    "archetype": "always-sometimes-never",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GF-G25.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Always true",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Sometimes true",
-                },
-              ],
-              "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Sometimes. Only when a and b are parallel.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never. Changing the order changes the direction.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Always. Following a then b, or b then a, ends at the same point: the two routes are sides of a parallelogram.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.VECTOR.DIRECTION",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.VECTOR.DIRECTION",

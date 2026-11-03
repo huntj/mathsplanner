@@ -10,7 +10,7 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R4",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -127,7 +127,7 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R4",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -244,7 +244,7 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R4",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -361,7 +361,7 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R4",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -461,7 +461,7 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R4",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -561,7 +561,7 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R4",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -654,14 +654,14 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R4",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -673,13 +673,13 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -688,10 +688,19 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -699,7 +708,7 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Ratios must be written as fractions.",
+                  "v": "Never. It changes.",
                 },
               ],
               "id": "RA",
@@ -708,7 +717,7 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The order does not matter, but it should be 8 : 1.",
+                  "v": "Always. Both parts change by the same factor.",
                 },
               ],
               "id": "RB",
@@ -717,7 +726,7 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 8 : 64, dividing both by 8, is 1 : 8, boys first.",
+                  "v": "Sometimes. Only for even numbers.",
                 },
               ],
               "id": "RC",
@@ -729,17 +738,17 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "RAT.ORDER",
+            "code": "RAT.SIMPLIFY.SUBTRACT",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -749,7 +758,7 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Boys : girls = 8 : 64 = 1 : 8.",
+            "v": "Always. Both parts change by the same factor.",
           },
         ],
       },
@@ -757,7 +766,7 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "There are 8 boys and 64 girls in a club. Sam says the ratio of boys to girls is 1 : 8.",
+        "v": "A ratio stays the same if you divide both parts by the same number.",
       },
     ],
   },
@@ -769,123 +778,7 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R4",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. That is girls to boys. Boys to girls is 1 : 2.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The bigger number always comes first.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The order of a ratio does not matter.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "RAT.ORDER",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "RAT.ORDER",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Boys : girls = 10 : 20 = 1 : 2.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "There are 10 boys and 20 girls in a club. Sam says the ratio of boys to girls is 2 : 1.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GF-R4",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -923,7 +816,7 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The order does not matter, but it should be 9 : 5.",
+                  "v": "False. It is 12 : 30.",
                 },
               ],
               "id": "RA",
@@ -932,7 +825,7 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Ratios must be written as fractions.",
+                  "v": "False. It is 3 : 2.",
                 },
               ],
               "id": "RB",
@@ -941,7 +834,7 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 50 : 90, dividing both by 10, is 5 : 9, boys first.",
+                  "v": "True. 12 : 18 simplifies by 6 to 2 : 3.",
                 },
               ],
               "id": "RC",
@@ -954,6 +847,14 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
+              "type": "choice",
+            },
+            "code": "RAT.FRACTION.UNITS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
               "type": "choice",
             },
             "code": "RAT.ORDER",
@@ -973,7 +874,7 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Boys : girls = 50 : 90 = 5 : 9.",
+            "v": "True. 12 : 18 simplifies by 6 to 2 : 3.",
           },
         ],
       },
@@ -981,7 +882,124 @@ exports[`GF-R4 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "There are 50 boys and 90 girls in a club. Sam says the ratio of boys to girls is 5 : 9.",
+        "v": "A class has 12 boys and 18 girls. Ivy says the ratio of boys to girls is 2 : 3.",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-R4",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. Both parts change by the same factor.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. It changes.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only for even numbers.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "RAT.SIMPLIFY.SUBTRACT",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. Both parts change by the same factor.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A ratio stays the same if you divide both parts by the same number.",
       },
     ],
   },

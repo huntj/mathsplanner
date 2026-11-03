@@ -10,7 +10,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -78,7 +78,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -146,7 +146,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -214,7 +214,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -282,7 +282,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -350,7 +350,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -418,7 +418,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -430,7 +430,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -456,7 +456,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Expanding gives the right expression, but the bracket still has a common factor of 3. Fully factorised, it is 6(5x + 7).",
+                  "v": "True. 5 is the common factor.",
                 },
               ],
               "id": "RA",
@@ -465,7 +465,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any factor taken out of both terms is a full factorisation.",
+                  "v": "False. x is a common factor too: 5x(x + 2).",
                 },
               ],
               "id": "RB",
@@ -474,7 +474,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You can only take out a factor from the first term.",
+                  "v": "True. You only take out numbers.",
                 },
               ],
               "id": "RC",
@@ -486,7 +486,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.FACTORISE.ONE-TERM",
@@ -506,7 +506,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Take out the highest common factor, 6.",
+            "v": "False. x is a common factor too: 5x(x + 2).",
           },
         ],
       },
@@ -514,23 +514,23 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Cleo says ",
+        "v": "Leo factorises ",
       },
       {
         "t": "math",
-        "v": "2(15x + 21)",
+        "v": "5x^2 + 10x",
       },
       {
         "t": "text",
-        "v": " is the full factorisation of ",
+        "v": " as ",
       },
       {
         "t": "math",
-        "v": "30x + 42",
+        "v": "5(x^2 + 2x)",
       },
       {
         "t": "text",
-        "v": ".",
+        "v": " and says it is fully factorised.",
       },
     ],
   },
@@ -542,7 +542,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -554,7 +554,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -580,7 +580,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any factor taken out of both terms is a full factorisation.",
+                  "v": "True. 5 is the common factor.",
                 },
               ],
               "id": "RA",
@@ -589,7 +589,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Expanding gives the right expression, but the bracket still has a common factor of 3. Fully factorised, it is 6(7x - 3).",
+                  "v": "True. You only take out numbers.",
                 },
               ],
               "id": "RB",
@@ -598,7 +598,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You can only take out a factor from the first term.",
+                  "v": "False. x is a common factor too: 5x(x + 2).",
                 },
               ],
               "id": "RC",
@@ -610,7 +610,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.FACTORISE.ONE-TERM",
@@ -630,7 +630,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Take out the highest common factor, 6.",
+            "v": "False. x is a common factor too: 5x(x + 2).",
           },
         ],
       },
@@ -638,23 +638,23 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Cleo says ",
+        "v": "Leo factorises ",
       },
       {
         "t": "math",
-        "v": "2(21x - 9)",
+        "v": "5x^2 + 10x",
       },
       {
         "t": "text",
-        "v": " is the full factorisation of ",
+        "v": " as ",
       },
       {
         "t": "math",
-        "v": "42x - 18",
+        "v": "5(x^2 + 2x)",
       },
       {
         "t": "text",
-        "v": ".",
+        "v": " and says it is fully factorised.",
       },
     ],
   },
@@ -666,7 +666,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A4.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -704,7 +704,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You can only take out a factor from the first term.",
+                  "v": "True. 5 is the common factor.",
                 },
               ],
               "id": "RA",
@@ -713,7 +713,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Expanding gives the right expression, but the bracket still has a common factor of 3. Fully factorised, it is 6(3x - 7).",
+                  "v": "False. x is a common factor too: 5x(x + 2).",
                 },
               ],
               "id": "RB",
@@ -722,7 +722,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any factor taken out of both terms is a full factorisation.",
+                  "v": "True. You only take out numbers.",
                 },
               ],
               "id": "RC",
@@ -754,7 +754,7 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Take out the highest common factor, 6.",
+            "v": "False. x is a common factor too: 5x(x + 2).",
           },
         ],
       },
@@ -762,23 +762,23 @@ exports[`GF-A4.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Cleo says ",
+        "v": "Leo factorises ",
       },
       {
         "t": "math",
-        "v": "2(9x - 21)",
+        "v": "5x^2 + 10x",
       },
       {
         "t": "text",
-        "v": " is the full factorisation of ",
+        "v": " as ",
       },
       {
         "t": "math",
-        "v": "18x - 42",
+        "v": "5(x^2 + 2x)",
       },
       {
         "t": "text",
-        "v": ".",
+        "v": " and says it is fully factorised.",
       },
     ],
   },

@@ -17,6 +17,7 @@ import {
   shapesGrid,
   translate,
 } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   shape: number;
@@ -31,7 +32,7 @@ const R = 7;
 
 export default defineGenerator<Params>({
   id: "GF-G24",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.VECTOR.COMPONENTS", "POS.TRANSLATE.DIRECTION"],
 
@@ -128,30 +129,65 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Jo says the vector ",
-            A.math(col(p.dx, p.dy)),
-            ` means ${Math.abs(p.dx)} ${p.dx > 0 ? "up" : "down"} and ${Math.abs(p.dy)} ${p.dy > 0 ? "right" : "left"}.`,
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Jo says the vector ",
+                A.math(col(p.dx, p.dy)),
+                ` means ${Math.abs(p.dx)} ${p.dx > 0 ? "up" : "down"} and ${Math.abs(p.dy)} ${p.dy > 0 ? "right" : "left"}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The top number is horizontal: ${Math.abs(p.dx)} ${p.dx > 0 ? "right" : "left"}; the bottom is vertical: ${Math.abs(p.dy)} ${p.dy > 0 ? "up" : "down"}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The top number of a column vector is the vertical movement.",
+                  code: "GEO.VECTOR.COMPONENTS",
+                },
+                {
+                  text: "True. The order of the numbers does not matter.",
+                  code: "GEO.VECTOR.COMPONENTS",
+                },
+              ],
+              solution: [{ say: "Column vector: top = x (across), bottom = y (up or down)." }],
+            }),
+          [
+            {
+              statement:
+                "Sam says the vector $\\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix}$ means 4 right and 1 up.",
+              truth: true,
+              right: "True. The top number is across and the bottom is up.",
+              wrong: [
+                ["False. It means 4 up and 1 right.", "GEO.VECTOR.COMPONENTS"],
+                ["False. It means 4 left and 1 down.", "POS.TRANSLATE.DIRECTION"],
+              ],
+            },
+            {
+              claim: "A negative top number in a column vector means a move to the left.",
+              truth: "always",
+              right: "Always. Negative across is left.",
+              wrong: [
+                ["Never. It means down.", "GEO.VECTOR.COMPONENTS"],
+                ["Sometimes. Only for big numbers.", "POS.TRANSLATE.DIRECTION"],
+              ],
+            },
+            {
+              statement:
+                "Bea writes '3 left and 2 up' as $\\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix}$.",
+              truth: false,
+              right: "False. Left is negative: it is (−3, 2) as a column vector.",
+              wrong: [
+                ["True. Write the numbers in order.", "POS.TRANSLATE.DIRECTION"],
+                ["True. Directions do not change the signs.", "GEO.VECTOR.COMPONENTS"],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: `False. The top number is horizontal: ${Math.abs(p.dx)} ${p.dx > 0 ? "right" : "left"}; the bottom is vertical: ${Math.abs(p.dy)} ${p.dy > 0 ? "up" : "down"}.`,
-              correct: true,
-            },
-            {
-              text: "True. The top number of a column vector is the vertical movement.",
-              code: "GEO.VECTOR.COMPONENTS",
-            },
-            {
-              text: "True. The order of the numbers does not matter.",
-              code: "GEO.VECTOR.COMPONENTS",
-            },
-          ],
-          solution: [{ say: "Column vector: top = x (across), bottom = y (up or down)." }],
-        });
+        );
     }
   },
 

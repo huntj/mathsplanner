@@ -10,7 +10,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -77,7 +77,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -144,7 +144,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -211,7 +211,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -338,7 +338,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -465,7 +465,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -570,7 +570,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -608,7 +608,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It holds 4 times as much, using the square.",
+                  "v": "True. Sides grow by the same amount.",
                 },
               ],
               "id": "RA",
@@ -617,7 +617,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Volume scales by the cube of the length factor: 2³ = 8 times as much.",
+                  "v": "False. The scale factor is 1.5, so the length is 15 cm.",
                 },
               ],
               "id": "RB",
@@ -626,7 +626,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Everything about the jug is multiplied by the same factor.",
+                  "v": "True. Add 2, as 6 − 4 = 2.",
                 },
               ],
               "id": "RC",
@@ -641,7 +641,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "RAT.SCALE.AREA-LINEAR",
+            "code": "RAT.ADDITIVE",
             "feedback": [],
           },
           {
@@ -649,7 +649,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "RAT.SCALE.AREA-LINEAR",
+            "code": "RAT.ADDITIVE",
             "feedback": [],
           },
         ],
@@ -666,7 +666,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Length × 2, area × 4, volume × 8.",
+            "v": "False. The scale factor is 1.5, so the length is 15 cm.",
           },
         ],
       },
@@ -674,19 +674,19 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Two similar jugs have heights in the ratio 1 : 2. Max says the bigger jug holds 2 times as much.",
+        "v": "Two similar rectangles have widths 4 cm and 6 cm. The smaller is 10 cm long. Dev says the larger is 12 cm long.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -697,14 +697,14 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -713,10 +713,19 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -724,7 +733,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Everything about the jug is multiplied by the same factor.",
+                  "v": "Always. Both length and width double, so 2 × 2 = 4.",
                 },
               ],
               "id": "RA",
@@ -733,7 +742,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Volume scales by the cube of the length factor: 2³ = 8 times as much.",
+                  "v": "Sometimes. Only for squares.",
                 },
               ],
               "id": "RB",
@@ -742,7 +751,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It holds 4 times as much, using the square.",
+                  "v": "Never. The area doubles.",
                 },
               ],
               "id": "RC",
@@ -754,7 +763,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "RAT.SCALE.AREA-LINEAR",
@@ -772,7 +781,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -782,7 +791,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Length × 2, area × 4, volume × 8.",
+            "v": "Always. Both length and width double, so 2 × 2 = 4.",
           },
         ],
       },
@@ -790,7 +799,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Two similar jugs have heights in the ratio 1 : 2. Max says the bigger jug holds 2 times as much.",
+        "v": "Enlarging a shape by scale factor 2 multiplies its area by 4.",
       },
     ],
   },
@@ -802,7 +811,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R12",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -840,7 +849,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Everything about the jug is multiplied by the same factor.",
+                  "v": "True. It holds 9 times as much, using the square.",
                 },
               ],
               "id": "RA",
@@ -858,7 +867,7 @@ exports[`GF-R12 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It holds 9 times as much, using the square.",
+                  "v": "True. Everything about the jug is multiplied by the same factor.",
                 },
               ],
               "id": "RC",

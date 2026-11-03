@@ -9,6 +9,7 @@ import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mat
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { coord, distinctFrom } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const FACTORS: [number, number][] = [
   [1, 2],
@@ -30,7 +31,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-G7.d",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["POS.ENLARGE.ADD", "POS.ENLARGE.CENTRE", "GEO.CONGRUENT.SIMILAR"],
 
@@ -109,27 +110,65 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ivy says an enlargement by scale factor ",
-            A.math(toLatex(frac(n, d))),
-            " gives an image congruent to the shape.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ivy says an enlargement by scale factor ",
+                A.math(toLatex(frac(n, d))),
+                " gives an image congruent to the shape.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. The lengths change, so the image is similar (same shape) but not congruent (same shape and size).",
+                  correct: true,
+                },
+                {
+                  text: "True. The angles stay the same, so the shapes are congruent.",
+                  code: "GEO.CONGRUENT.SIMILAR",
+                },
+                {
+                  text: "True. Enlarged shapes are always congruent.",
+                  code: "GEO.CONGRUENT.SIMILAR",
+                },
+              ],
+              solution: [{ say: "Only a scale factor of 1 (or −1) gives a congruent image." }],
+            }),
+          [
             {
-              text: "False. The lengths change, so the image is similar (same shape) but not congruent (same shape and size).",
-              correct: true,
+              statement:
+                "A triangle with sides 3, 4 and 5 cm is enlarged by scale factor 2. Sam says the new sides are 6, 8 and 10 cm.",
+              truth: true,
+              right: "True. Every length doubles.",
+              wrong: [
+                ["False. They are 5, 6 and 7 cm.", "POS.ENLARGE.ADD"],
+                ["False. Only the longest side doubles."],
+              ],
             },
             {
-              text: "True. The angles stay the same, so the shapes are congruent.",
-              code: "GEO.CONGRUENT.SIMILAR",
+              claim: "An enlargement with scale factor between 0 and 1 makes a shape smaller.",
+              truth: "always",
+              right: "Always. Every length is multiplied by less than 1.",
+              wrong: [
+                ["Never. Enlargements make things bigger.", "POS.ENLARGE.ADD"],
+                ["Sometimes. It depends on the centre.", "POS.ENLARGE.CENTRE"],
+              ],
             },
-            { text: "True. Enlarged shapes are always congruent.", code: "GEO.CONGRUENT.SIMILAR" },
+            {
+              statement:
+                "Kim says enlarging a shape by scale factor 3 gives an image congruent to it.",
+              truth: false,
+              right: "False. The image is similar, not congruent: its lengths are 3 times as long.",
+              wrong: [
+                ["True. Enlargements keep the shape.", "GEO.CONGRUENT.SIMILAR"],
+                ["True. Congruent and similar mean the same.", "GEO.CONGRUENT.SIMILAR"],
+              ],
+            },
           ],
-          solution: [{ say: "Only a scale factor of 1 (or −1) gives a congruent image." }],
-        });
+        );
     }
   },
 

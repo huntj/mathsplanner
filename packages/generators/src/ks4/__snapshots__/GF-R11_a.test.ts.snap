@@ -10,7 +10,7 @@ exports[`GF-R11.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R11.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`GF-R11.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R11.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`GF-R11.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R11.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`GF-R11.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R11.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -259,7 +259,7 @@ exports[`GF-R11.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R11.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -322,7 +322,7 @@ exports[`GF-R11.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R11.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -385,7 +385,7 @@ exports[`GF-R11.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R11.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -397,7 +397,7 @@ exports[`GF-R11.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -432,7 +432,7 @@ exports[`GF-R11.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. She spends longer on the slower leg, so average speed = total distance ÷ total time ≈ 40 km/h.",
+                  "v": "True. Both legs are the same distance, so they count equally.",
                 },
               ],
               "id": "RB",
@@ -441,7 +441,7 @@ exports[`GF-R11.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both legs are the same distance, so they count equally.",
+                  "v": "False. She spends longer on the slower leg, so average speed = total distance ÷ total time ≈ 40 km/h.",
                 },
               ],
               "id": "RC",
@@ -461,7 +461,7 @@ exports[`GF-R11.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "RAT.SPEED.MEAN",
@@ -501,123 +501,7 @@ exports[`GF-R11.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R11.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. She spends longer on the slower leg, so average speed = total distance ÷ total time ≈ 34.3 km/h.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The average is the mean of the two speeds.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Both legs are the same distance, so they count equally.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "RAT.SPEED.MEAN",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "RAT.SPEED.MEAN",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Try a 120 km road: the times are 4 h and 3 h.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Lou drives to a town at 30 km/h and back along the same road at 40 km/h. She says her average speed is 35 km/h.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GF-R11.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -655,7 +539,7 @@ exports[`GF-R11.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The average is the mean of the two speeds.",
+                  "v": "True. Divide by the time as written.",
                 },
               ],
               "id": "RA",
@@ -664,7 +548,7 @@ exports[`GF-R11.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. She spends longer on the slower leg, so average speed = total distance ÷ total time ≈ 44.4 km/h.",
+                  "v": "False. 1 hour 30 minutes is 1.5 hours: 90 ÷ 1.5 = 60 km/h.",
                 },
               ],
               "id": "RB",
@@ -673,7 +557,7 @@ exports[`GF-R11.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both legs are the same distance, so they count equally.",
+                  "v": "True. 90 ÷ 1.3 ≈ 69.2.",
                 },
               ],
               "id": "RC",
@@ -688,7 +572,7 @@ exports[`GF-R11.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "RAT.SPEED.MEAN",
+            "code": "MEA.TIME.DECIMAL",
             "feedback": [],
           },
           {
@@ -696,7 +580,7 @@ exports[`GF-R11.a > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "RAT.SPEED.MEAN",
+            "code": "MEA.TIME.DECIMAL",
             "feedback": [],
           },
         ],
@@ -713,7 +597,7 @@ exports[`GF-R11.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Try a 120 km road: the times are 2.4 h and 3 h.",
+            "v": "False. 1 hour 30 minutes is 1.5 hours: 90 ÷ 1.5 = 60 km/h.",
           },
         ],
       },
@@ -721,7 +605,123 @@ exports[`GF-R11.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Lou drives to a town at 50 km/h and back along the same road at 40 km/h. She says her average speed is 45 km/h.",
+        "v": "A bus goes 90 km in 1 hour 30 minutes. Ola says its speed is 69.2 km/h.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-R11.a",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 50 minutes is 5/6 hour, and 10 ÷ 5/6 = 12.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 10 ÷ 0.5 = 20 km/h.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 0.2 km/h.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MEA.TIME.DECIMAL",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "RAT.COMPOUND-UNIT.ARRANGEMENT",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. 50 minutes is 5/6 hour, and 10 ÷ 5/6 = 12.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "A runner covers 10 km in 50 minutes. Kai says her speed is 12 km/h.",
       },
     ],
   },

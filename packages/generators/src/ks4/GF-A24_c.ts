@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 export interface Params {
   a: number;
@@ -22,7 +23,7 @@ const seq = (p: Params, n: number) => {
 
 export default defineGenerator<Params>({
   id: "GF-A24.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SEQUENCE.TYPE"],
 
@@ -73,23 +74,52 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["In a Fibonacci-type sequence of whole numbers, the terms always increase."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["In a Fibonacci-type sequence of whole numbers, the terms always increase."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: "Sometimes. With positive starting terms they increase, but starting 5, −3 gives 5, −3, 2, −1, 1, … which does not.",
+                  correct: true,
+                },
+                {
+                  text: "Always. Adding always makes the next term bigger.",
+                  code: "ALG.SEQUENCE.TYPE",
+                },
+                { text: "Never. Fibonacci sequences repeat." },
+              ],
+              solution: [{ say: "Adding a negative number makes a term smaller." }],
+            }),
+          [
             {
-              text: "Sometimes. With positive starting terms they increase, but starting 5, −3 gives 5, −3, 2, −1, 1, … which does not.",
-              correct: true,
+              statement: "In a Fibonacci-type sequence starting 2, 3, Ana says the next term is 5.",
+              truth: true,
+              right: "True. Each term is the sum of the two before.",
+              wrong: [["False. It is 4.", "ALG.SEQUENCE.TYPE"], ["False. It is 6."]],
             },
             {
-              text: "Always. Adding always makes the next term bigger.",
-              code: "ALG.SEQUENCE.TYPE",
+              claim:
+                "Each term of a Fibonacci-type sequence is the sum of the two terms before it.",
+              truth: "always",
+              right: "Always. That is the rule for this kind of sequence.",
+              wrong: [
+                ["Never. It is the product.", "ALG.SEQUENCE.TYPE"],
+                ["Sometimes. Only at the start."],
+              ],
             },
-            { text: "Never. Fibonacci sequences repeat." },
+            {
+              statement:
+                "A Fibonacci-type sequence goes 1, 4, 5, 9, … Raj says the next term is 13.",
+              truth: false,
+              right: "False. 5 + 9 = 14.",
+              wrong: [["True. It goes up by 4.", "ALG.SEQUENCE.TYPE"], ["True. 9 + 4 = 13."]],
+            },
           ],
-          solution: [{ say: "Adding a negative number makes a term smaller." }],
-        });
+        );
     }
   },
 

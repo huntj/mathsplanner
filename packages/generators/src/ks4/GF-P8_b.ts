@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { exactAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   r: number;
@@ -15,7 +16,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-P8.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["PRO.TREE.REPLACEMENT"],
 
@@ -82,22 +83,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            "When the first counter is not replaced, the second branches of the tree have the same probabilities as the first.",
-          ],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "When the first counter is not replaced, the second branches of the tree have the same probabilities as the first.",
+              ],
+              truth: "never",
+              reasons: [
+                {
+                  text: `Never. Taking one counter changes what is left: there are ${n - 1} counters for the second pick, not ${n}.`,
+                  correct: true,
+                },
+                { text: "Always. The bag is the same bag.", code: "PRO.TREE.REPLACEMENT" },
+                {
+                  text: "Sometimes. Only if the first counter was red.",
+                  code: "PRO.TREE.REPLACEMENT",
+                },
+              ],
+              solution: [{ say: "Without replacement, the events are dependent." }],
+            }),
+          [
             {
-              text: `Never. Taking one counter changes what is left: there are ${n - 1} counters for the second pick, not ${n}.`,
-              correct: true,
+              statement:
+                "A bag has 3 red and 2 blue. One is taken and not replaced. Bea says P(red then red) is $\\frac{3}{5} \\times \\frac{2}{4}$.",
+              truth: true,
+              right: "True. After one red goes, 2 reds remain of 4.",
+              wrong: [
+                ["False. It is 3/5 × 3/5.", "PRO.TREE.REPLACEMENT"],
+                ["False. It is 3/5 + 2/4.", "PRO.TREE.REPLACEMENT"],
+              ],
             },
-            { text: "Always. The bag is the same bag.", code: "PRO.TREE.REPLACEMENT" },
-            { text: "Sometimes. Only if the first counter was red.", code: "PRO.TREE.REPLACEMENT" },
+            {
+              claim: "With replacement, the probabilities on the second branches match the first.",
+              truth: "always",
+              right: "Always. The bag is the same for the second pick.",
+              wrong: [
+                ["Never. They change.", "PRO.TREE.REPLACEMENT"],
+                ["Sometimes. Only for even numbers of counters."],
+              ],
+            },
+            {
+              statement:
+                "A bag has 4 green and 6 yellow. Without replacement, Kim says P(green second, after green first) is $\\frac{4}{10}$.",
+              truth: false,
+              right: "False. One green has gone: 3 green of 9 left, so 3/9.",
+              wrong: [
+                ["True. The bag starts with 4 of 10.", "PRO.TREE.REPLACEMENT"],
+                ["True. Probabilities stay the same.", "PRO.TREE.REPLACEMENT"],
+              ],
+            },
           ],
-          solution: [{ say: "Without replacement, the events are dependent." }],
-        });
+        );
     }
   },
 

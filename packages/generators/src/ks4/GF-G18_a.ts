@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { sector } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   r: number;
@@ -19,7 +20,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "GF-G18.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.SECTOR.FRACTION", "MEA.CIRCLE.FORMULA", "MEA.PERIMETER.MISSING-SIDES"],
 
@@ -80,25 +81,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Ana says a sector with angle 90° has an arc a quarter of the length of the circle's circumference.`,
-          ],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Ana says a sector with angle 90° has an arc a quarter of the length of the circle's circumference.`,
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. 90° is 90/360 = ¼ of a full turn, so the arc is ¼ of the circumference.",
+                  correct: true,
+                },
+                {
+                  text: "False. It is half, because 90 is half of 180.",
+                  code: "GEO.SECTOR.FRACTION",
+                },
+                {
+                  text: "False. The arc depends on the area, not the angle.",
+                  code: "MEA.CIRCLE.FORMULA",
+                },
+              ],
+              solution: [{ say: "The fraction of the circle is the angle over 360°." }],
+            }),
+          [
             {
-              text: "True. 90° is 90/360 = ¼ of a full turn, so the arc is ¼ of the circumference.",
-              correct: true,
+              claim:
+                "A sector's arc length is a fraction of the circumference: the angle over 360°.",
+              truth: "always",
+              right: "Always. The arc is the same fraction of the circle as the angle.",
+              wrong: [
+                ["Never. Use angle over 180°.", "GEO.SECTOR.FRACTION"],
+                ["Sometimes. Only for 90°."],
+              ],
             },
-            { text: "False. It is half, because 90 is half of 180.", code: "GEO.SECTOR.FRACTION" },
             {
-              text: "False. The arc depends on the area, not the angle.",
-              code: "MEA.CIRCLE.FORMULA",
+              statement: "Pia says the arc of a 180° sector of radius 4 cm is $4\\pi$ cm long.",
+              truth: true,
+              right: "True. Half of 2π × 4 = 4π.",
+              wrong: [
+                ["False. It is 8π cm.", "GEO.SECTOR.FRACTION"],
+                ["False. It is 16π cm.", "MEA.CIRCLE.FORMULA"],
+              ],
+            },
+            {
+              statement: "Raj says the perimeter of a 90° sector of radius 2 cm is $\\pi$ cm.",
+              truth: false,
+              right:
+                "False. The arc is π cm, but the perimeter also includes the two radii: π + 4 cm.",
+              wrong: [
+                ["True. The perimeter is the arc.", "MEA.PERIMETER.MISSING-SIDES"],
+                ["True. A quarter of 4π.", "MEA.PERIMETER.MISSING-SIDES"],
+              ],
             },
           ],
-          solution: [{ say: "The fraction of the circle is the angle over 360°." }],
-        });
+        );
     }
   },
 

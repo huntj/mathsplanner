@@ -10,7 +10,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A24.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -71,7 +71,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A24.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -132,7 +132,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A24.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -193,7 +193,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A24.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -254,7 +254,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A24.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -315,7 +315,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A24.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -376,7 +376,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A24.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -388,7 +388,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -414,7 +414,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The differences 4, 6, 8, 10 increase by 2 each time, so it is a quadratic sequence (nth term n² + n).",
+                  "v": "True. It goes up each time.",
                 },
               ],
               "id": "RA",
@@ -432,7 +432,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It goes up each time.",
+                  "v": "False. The differences 4, 6, 8, 10 increase by 2 each time, so it is a quadratic sequence (nth term n² + n).",
                 },
               ],
               "id": "RC",
@@ -444,7 +444,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.TYPE",
@@ -452,7 +452,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.TYPE",
@@ -485,14 +485,14 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A24.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -503,14 +503,14 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -519,10 +519,19 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -530,7 +539,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It goes up each time.",
+                  "v": "Never. It is arithmetic.",
                 },
               ],
               "id": "RA",
@@ -539,7 +548,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The differences 4, 6, 8, 10 increase by 2 each time, so it is a quadratic sequence (nth term n² + n).",
+                  "v": "Sometimes. Only if the difference is 2.",
                 },
               ],
               "id": "RB",
@@ -548,7 +557,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The terms are all even.",
+                  "v": "Always. Its nth term has an n² term.",
                 },
               ],
               "id": "RC",
@@ -566,19 +575,11 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
             "code": "ALG.SEQUENCE.TYPE",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.SEQUENCE.TYPE",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -588,7 +589,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "An arithmetic sequence has a constant first difference.",
+            "v": "Always. Its nth term has an n² term.",
           },
         ],
       },
@@ -596,7 +597,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Gus says 2, 6, 12, 20, 30, … is an arithmetic sequence.",
+        "v": "A sequence with a constant second difference is quadratic.",
       },
     ],
   },
@@ -608,7 +609,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A24.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -619,8 +620,8 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -646,7 +647,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The terms are all even.",
+                  "v": "False. Second differences are 1.",
                 },
               ],
               "id": "RA",
@@ -655,7 +656,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The differences 4, 6, 8, 10 increase by 2 each time, so it is a quadratic sequence (nth term n² + n).",
+                  "v": "False. It goes up by 3 each time.",
                 },
               ],
               "id": "RB",
@@ -664,7 +665,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It goes up each time.",
+                  "v": "True. First differences are 3, 5, 7; these go up by 2.",
                 },
               ],
               "id": "RC",
@@ -679,12 +680,12 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.SEQUENCE.TYPE",
+            "code": "ALG.SEQUENCE.QUADRATIC-HALF",
             "feedback": [],
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.TYPE",
@@ -704,7 +705,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "An arithmetic sequence has a constant first difference.",
+            "v": "True. First differences are 3, 5, 7; these go up by 2.",
           },
         ],
       },
@@ -712,7 +713,7 @@ exports[`GF-A24.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Gus says 2, 6, 12, 20, 30, … is an arithmetic sequence.",
+        "v": "Kim says 1, 4, 9, 16, … has second differences of 2.",
       },
     ],
   },

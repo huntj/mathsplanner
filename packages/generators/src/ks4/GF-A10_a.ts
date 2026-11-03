@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const CONTEXTS = [
   {
@@ -41,7 +42,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-A10.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.LINE.M-C", "ALG.GRADIENT.STEEPNESS"],
 
@@ -105,32 +106,65 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Sky says the line ",
-            A.math(`y = -${p.steep + 1}x + 1`),
-            " is less steep than ",
-            A.math(`y = ${p.steep}x + 1`),
-            ` because −${p.steep + 1} is smaller than ${p.steep}.`,
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Sky says the line ",
+                A.math(`y = -${p.steep + 1}x + 1`),
+                " is less steep than ",
+                A.math(`y = ${p.steep}x + 1`),
+                ` because −${p.steep + 1} is smaller than ${p.steep}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Steepness depends on the size of the gradient: ${p.steep + 1} > ${p.steep}, so the first line is steeper. The minus sign only means it slopes downwards.`,
+                  correct: true,
+                },
+                {
+                  text: "True. A negative gradient is always less steep.",
+                  code: "ALG.GRADIENT.STEEPNESS",
+                },
+                {
+                  text: "True. The smaller gradient is always less steep.",
+                  code: "ALG.GRADIENT.STEEPNESS",
+                },
+              ],
+              solution: [{ say: "Compare |m|: the bigger it is, the steeper the line." }],
+            }),
+          [
+            {
+              statement: "Max says $y = 4x - 1$ is steeper than $y = 2x + 10$.",
+              truth: true,
+              right:
+                "True. Gradient 4 is steeper than gradient 2; the intercept does not affect steepness.",
+              wrong: [["False. 10 is bigger.", "ALG.LINE.M-C"], ["False. They are equally steep."]],
+            },
+            {
+              claim: "The line $y = mx + c$ with m = 0 is horizontal.",
+              truth: "always",
+              right: "Always. y = c for every x.",
+              wrong: [
+                ["Never. It is vertical.", "ALG.GRADIENT.STEEPNESS"],
+                ["Sometimes. Only when c = 0."],
+              ],
+            },
+            {
+              statement:
+                "Ella says $y = -3x$ is less steep than $y = x$, because −3 is less than 1.",
+              truth: false,
+              right:
+                "False. Steepness depends on the size: 3 is bigger than 1, so y = −3x is steeper.",
+              wrong: [
+                ["True. A smaller gradient is less steep.", "ALG.GRADIENT.STEEPNESS"],
+                ["True. Negative lines are flat."],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: `False. Steepness depends on the size of the gradient: ${p.steep + 1} > ${p.steep}, so the first line is steeper. The minus sign only means it slopes downwards.`,
-              correct: true,
-            },
-            {
-              text: "True. A negative gradient is always less steep.",
-              code: "ALG.GRADIENT.STEEPNESS",
-            },
-            {
-              text: "True. The smaller gradient is always less steep.",
-              code: "ALG.GRADIENT.STEEPNESS",
-            },
-          ],
-          solution: [{ say: "Compare |m|: the bigger it is, the steeper the line." }],
-        });
+        );
     }
   },
 

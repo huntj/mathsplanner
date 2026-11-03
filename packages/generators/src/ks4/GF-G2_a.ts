@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const NEEDS: [string, string][] = [
   [
@@ -32,7 +33,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-G2.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.CONSTRUCT.BISECTORS", "GEO.LOCUS.TYPE"],
 
@@ -78,28 +79,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Every point on the perpendicular bisector of a line AB, ${p.length} cm long, is the same distance from A as from B.`,
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Every point on the perpendicular bisector of a line AB, ${p.length} cm long, is the same distance from A as from B.`,
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. The perpendicular bisector is exactly the set of points equidistant from A and B.",
+                  correct: true,
+                },
+                {
+                  text: "False. Only the midpoint of AB is the same distance from both.",
+                  code: "GEO.LOCUS.TYPE",
+                },
+                {
+                  text: "False. That is true of the angle bisector, not the perpendicular bisector.",
+                  code: "GEO.CONSTRUCT.BISECTORS",
+                },
+              ],
+              solution: [{ say: "Each point on it makes an isosceles triangle with A and B." }],
+            }),
+          [
+            {
+              statement:
+                "Leo says the bisector of an angle is the set of points the same distance from both arms.",
+              truth: true,
+              right: "True. Every point on it is equidistant from the two arms.",
+              wrong: [
+                ["False. It is the points equidistant from two points.", "GEO.LOCUS.TYPE"],
+                ["False. It is a circle."],
+              ],
+            },
+            {
+              claim: "The locus of points 3 cm from a fixed point is a circle of radius 3 cm.",
+              truth: "always",
+              right: "Always. Every point on the circle is 3 cm from the centre.",
+              wrong: [
+                ["Never. It is a square.", "GEO.LOCUS.TYPE"],
+                ["Sometimes. Only on squared paper."],
+              ],
+            },
+            {
+              statement:
+                "To bisect a line AB, Pia draws arcs from A and B with radius less than half of AB.",
+              truth: false,
+              right: "False. The radius must be more than half of AB, or the arcs will not meet.",
+              wrong: [
+                ["True. Small arcs are neater.", "GEO.CONSTRUCT.BISECTORS"],
+                ["True. Any radius works.", "GEO.CONSTRUCT.BISECTORS"],
+              ],
+            },
           ],
-          truth: true,
-          reasons: [
-            {
-              text: "True. The perpendicular bisector is exactly the set of points equidistant from A and B.",
-              correct: true,
-            },
-            {
-              text: "False. Only the midpoint of AB is the same distance from both.",
-              code: "GEO.LOCUS.TYPE",
-            },
-            {
-              text: "False. That is true of the angle bisector, not the perpendicular bisector.",
-              code: "GEO.CONSTRUCT.BISECTORS",
-            },
-          ],
-          solution: [{ say: "Each point on it makes an isosceles triangle with A and B." }],
-        });
+        );
     }
   },
 

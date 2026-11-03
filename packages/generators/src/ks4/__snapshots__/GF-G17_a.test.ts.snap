@@ -10,7 +10,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G17.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G17.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G17.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G17.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -258,7 +258,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G17.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -320,7 +320,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G17.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -375,14 +375,14 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G17.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -393,14 +393,14 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -409,10 +409,19 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -420,7 +429,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is πr², half of the area.",
+                  "v": "Always. It also includes the straight diameter.",
                 },
               ],
               "id": "RA",
@@ -429,7 +438,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A semicircle is half a circle.",
+                  "v": "Sometimes. Only for big circles.",
                 },
               ],
               "id": "RB",
@@ -438,7 +447,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The perimeter also includes the straight edge, the diameter: 44 + 28 = 72 cm.",
+                  "v": "Never. It is exactly half.",
                 },
               ],
               "id": "RC",
@@ -450,15 +459,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "MEA.CIRCLE.FORMULA",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "MEA.PERIMETER.MISSING-SIDES",
@@ -468,7 +469,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -478,7 +479,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A perimeter goes all the way round the shape.",
+            "v": "Always. It also includes the straight diameter.",
           },
         ],
       },
@@ -486,7 +487,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sid says the perimeter of a semicircle of radius 14 cm is 44 cm, half of the circle's circumference.",
+        "v": "The perimeter of a semicircle is more than half the circle's circumference.",
       },
     ],
   },
@@ -498,7 +499,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G17.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -510,7 +511,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -536,7 +537,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is πr², half of the area.",
+                  "v": "False. A = πr² = 25π cm². 10π cm is the circumference.",
                 },
               ],
               "id": "RA",
@@ -545,7 +546,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A semicircle is half a circle.",
+                  "v": "True. π × 2 × 5.",
                 },
               ],
               "id": "RB",
@@ -554,7 +555,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The perimeter also includes the straight edge, the diameter: 25.1 + 16 = 41.1 cm.",
+                  "v": "True. Area is π times the diameter.",
                 },
               ],
               "id": "RC",
@@ -566,7 +567,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "MEA.CIRCLE.FORMULA",
@@ -574,10 +575,10 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "MEA.PERIMETER.MISSING-SIDES",
+            "code": "MEA.CIRCLE.FORMULA",
             "feedback": [],
           },
         ],
@@ -594,7 +595,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A perimeter goes all the way round the shape.",
+            "v": "False. A = πr² = 25π cm². 10π cm is the circumference.",
           },
         ],
       },
@@ -602,19 +603,27 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sid says the perimeter of a semicircle of radius 8 cm is 25.1 cm, half of the circle's circumference.",
+        "v": "Gus says a circle of radius 5 cm has area ",
+      },
+      {
+        "t": "math",
+        "v": "10\\pi",
+      },
+      {
+        "t": "text",
+        "v": " cm².",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G17.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -625,14 +634,14 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -641,10 +650,19 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -652,7 +670,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is πr², half of the area.",
+                  "v": "Never. It is exactly half.",
                 },
               ],
               "id": "RA",
@@ -661,7 +679,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The perimeter also includes the straight edge, the diameter: 15.7 + 10 = 25.7 cm.",
+                  "v": "Always. It also includes the straight diameter.",
                 },
               ],
               "id": "RB",
@@ -670,7 +688,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A semicircle is half a circle.",
+                  "v": "Sometimes. Only for big circles.",
                 },
               ],
               "id": "RC",
@@ -685,14 +703,6 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "MEA.CIRCLE.FORMULA",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
             "code": "MEA.PERIMETER.MISSING-SIDES",
             "feedback": [],
           },
@@ -700,7 +710,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -710,7 +720,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A perimeter goes all the way round the shape.",
+            "v": "Always. It also includes the straight diameter.",
           },
         ],
       },
@@ -718,7 +728,7 @@ exports[`GF-G17.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sid says the perimeter of a semicircle of radius 5 cm is 15.7 cm, half of the circle's circumference.",
+        "v": "The perimeter of a semicircle is more than half the circle's circumference.",
       },
     ],
   },

@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const NAMES: Record<number, string> = {
   5: "pentagon",
@@ -27,7 +28,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-G3.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.POLYGON.SUM-N-TIMES-180", "GEO.POLYGON.INTERIOR-EXTERIOR"],
 
@@ -79,26 +80,59 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["The exterior angles of a convex polygon add up to 360°."],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["The exterior angles of a convex polygon add up to 360°."],
+              truth: "always",
+              reasons: [
+                {
+                  text: `Always. Walking round the polygon you make one full turn, whatever the number of sides. For a regular ${p.m}-gon, ${p.m} × ${360 / p.m}° = 360°.`,
+                  correct: true,
+                },
+                {
+                  text: "Sometimes. Only for regular polygons.",
+                  code: "GEO.POLYGON.INTERIOR-EXTERIOR",
+                },
+                {
+                  text: "Never. They add up to (n − 2) × 180°.",
+                  code: "GEO.POLYGON.INTERIOR-EXTERIOR",
+                },
+              ],
+              solution: [{ say: "Interior angle + exterior angle = 180° at every corner." }],
+            }),
+          [
             {
-              text: `Always. Walking round the polygon you make one full turn, whatever the number of sides. For a regular ${p.m}-gon, ${p.m} × ${360 / p.m}° = 360°.`,
-              correct: true,
+              statement: "Raj says each interior angle of a regular hexagon is 120°.",
+              truth: true,
+              right: "True. The angles add to 720°, and 720 ÷ 6 = 120.",
+              wrong: [
+                ["False. It is 60°.", "GEO.POLYGON.INTERIOR-EXTERIOR"],
+                ["False. It is 180°.", "GEO.POLYGON.SUM-N-TIMES-180"],
+              ],
             },
             {
-              text: "Sometimes. Only for regular polygons.",
-              code: "GEO.POLYGON.INTERIOR-EXTERIOR",
+              statement: "Kim says the interior angles of a pentagon add up to 900°.",
+              truth: false,
+              right: "False. (5 − 2) × 180 = 540°.",
+              wrong: [
+                ["True. 5 × 180 = 900.", "GEO.POLYGON.SUM-N-TIMES-180"],
+                ["True. Each angle is 180°.", "GEO.POLYGON.SUM-N-TIMES-180"],
+              ],
             },
             {
-              text: "Never. They add up to (n − 2) × 180°.",
-              code: "GEO.POLYGON.INTERIOR-EXTERIOR",
+              claim: "An interior angle and its exterior angle add up to 180°.",
+              truth: "always",
+              right: "Always. Together they make a straight line.",
+              wrong: [
+                ["Never. They add to 360°.", "GEO.POLYGON.INTERIOR-EXTERIOR"],
+                ["Sometimes. Only for regular polygons."],
+              ],
             },
           ],
-          solution: [{ say: "Interior angle + exterior angle = 180° at every corner." }],
-        });
+        );
     }
   },
 

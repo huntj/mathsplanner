@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { chosenText } from "../shared/counting.ts";
 import { coord, distinctFrom } from "../shared/pos.ts";
 import { col } from "../shared/vec.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   A: [number, number];
@@ -25,7 +26,7 @@ const TRIPLES: [number, number, number][] = [
 
 export default defineGenerator<Params>({
   id: "GF-G25.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.VECTOR.COMPONENTS", "GEO.VECTOR.POSITION", "GEO.VECTOR.MAGNITUDE"],
 
@@ -108,24 +109,55 @@ export default defineGenerator<Params>({
       }
       default: {
         const [x, y, len] = TRIPLES[p.t] ?? [3, 4, 5];
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Ed says the vector ", A.math(col([x, y])), ` has length ${x + y}.`],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Ed says the vector ", A.math(col([x, y])), ` has length ${x + y}.`],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The parts are at right angles, so use Pythagoras: √(${x}² + ${y}²) = ${len}.`,
+                  correct: true,
+                },
+                { text: "True. Add the parts to get the length.", code: "GEO.VECTOR.MAGNITUDE" },
+                { text: `False. It is ${x * y}.`, code: "GEO.VECTOR.MAGNITUDE" },
+              ],
+              solution: [
+                {
+                  say: "Draw the vector on squared paper: it is the hypotenuse of a right-angled triangle.",
+                },
+              ],
+            }),
+          [
             {
-              text: `False. The parts are at right angles, so use Pythagoras: √(${x}² + ${y}²) = ${len}.`,
-              correct: true,
+              statement:
+                "Kim says the vector $\\begin{pmatrix} 6 \\\\ 8 \\end{pmatrix}$ has length 10.",
+              truth: true,
+              right: "True. √(6² + 8²) = √100 = 10.",
+              wrong: [["False. It is 14.", "GEO.VECTOR.MAGNITUDE"], ["False. It is 48."]],
             },
-            { text: "True. Add the parts to get the length.", code: "GEO.VECTOR.MAGNITUDE" },
-            { text: `False. It is ${x * y}.`, code: "GEO.VECTOR.MAGNITUDE" },
-          ],
-          solution: [
             {
-              say: "Draw the vector on squared paper: it is the hypotenuse of a right-angled triangle.",
+              claim: "A vector and its negative have the same length.",
+              truth: "always",
+              right: "Always. They only differ in direction.",
+              wrong: [
+                ["Never. The negative is shorter.", "GEO.VECTOR.MAGNITUDE"],
+                ["Sometimes. Only for horizontal vectors."],
+              ],
+            },
+            {
+              statement: "A is at (1, 2) and B is at (4, 6). Leo says the vector AB is (5, 8).",
+              truth: false,
+              right: "False. AB = B − A = (3, 4).",
+              wrong: [
+                ["True. Add the coordinates.", "GEO.VECTOR.POSITION"],
+                ["True. AB is A + B.", "GEO.VECTOR.POSITION"],
+              ],
             },
           ],
-        });
+        );
       }
     }
   },

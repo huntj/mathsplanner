@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const SOLIDS: [string, string, string][] = [
   ["a cylinder standing on one of its circular ends", "A rectangle", "A circle"],
@@ -30,7 +31,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-G13.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.PLAN.ELEVATION"],
 
@@ -98,20 +99,57 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["The front and side elevations of a cuboid are the same."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["The front and side elevations of a cuboid are the same."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: `Sometimes. They match only when the length equals the depth. A ${p.l} by ${p.w} by ${p.h} cm cuboid has elevations ${p.l} × ${p.h} and ${p.w} × ${p.h}.`,
+                  correct: true,
+                },
+                {
+                  text: "Always. Every face of a cuboid is a rectangle.",
+                  code: "GEO.PLAN.ELEVATION",
+                },
+                { text: "Never. The side is always narrower than the front." },
+              ],
+              solution: [{ say: "Each elevation shows two of the three dimensions." }],
+            }),
+          [
             {
-              text: `Sometimes. They match only when the length equals the depth. A ${p.l} by ${p.w} by ${p.h} cm cuboid has elevations ${p.l} × ${p.h} and ${p.w} × ${p.h}.`,
-              correct: true,
+              statement: "Leo says the plan view of a cylinder standing on its end is a circle.",
+              truth: true,
+              right: "True. From above you see its circular top.",
+              wrong: [
+                ["False. It is a rectangle.", "GEO.PLAN.ELEVATION"],
+                ["False. It is an oval."],
+              ],
             },
-            { text: "Always. Every face of a cuboid is a rectangle.", code: "GEO.PLAN.ELEVATION" },
-            { text: "Never. The side is always narrower than the front." },
+            {
+              claim: "Every elevation of a cube is a square.",
+              truth: "always",
+              right: "Always. Each face of a cube is a square.",
+              wrong: [
+                ["Never. The side is a rectangle.", "GEO.PLAN.ELEVATION"],
+                ["Sometimes. Only the front."],
+              ],
+            },
+            {
+              statement: "Ana says the side elevation of a cone lying on its side is a circle.",
+              truth: false,
+              right:
+                "False. It depends which side you look from: from the side it looks like a triangle.",
+              wrong: [
+                ["True. Cones are round.", "GEO.PLAN.ELEVATION"],
+                ["True. Every view of a cone is a circle.", "GEO.PLAN.ELEVATION"],
+              ],
+            },
           ],
-          solution: [{ say: "Each elevation shows two of the three dimensions." }],
-        });
+        );
     }
   },
 

@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { clearOfOrigin, grid, lineLatex, poly, signedWrongs } from "../shared/alg.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { coord } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   m: number;
@@ -20,7 +21,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-A9.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.LINE.M-C"],
 
@@ -90,32 +91,62 @@ export default defineGenerator<Params>({
         });
       default: {
         const py = p.m * p.px + p.c + (p.onLine ? 0 : 1);
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Tia says the point ",
-            A.math(coord([p.px, py])),
-            " lies on the line ",
-            A.math(eq),
-            ".",
-          ],
-          truth: p.onLine,
-          reasons: p.onLine
-            ? [
-                { text: `True. When x = ${p.px}, y = ${p.m * p.px + p.c}.`, correct: true },
-                { text: "False. A point is only on a line if both coordinates are positive." },
-                { text: `False. Swap the coordinates: x = ${py}.`, code: "ALG.LINE.M-C" },
-              ]
-            : [
-                {
-                  text: `False. When x = ${p.px}, y = ${p.m * p.px + p.c}, not ${py}.`,
-                  correct: true,
-                },
-                { text: "True. Any point near the line is on it." },
-                { text: `True. ${py} is close to the intercept ${p.c}.`, code: "ALG.LINE.M-C" },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Tia says the point ",
+                A.math(coord([p.px, py])),
+                " lies on the line ",
+                A.math(eq),
+                ".",
               ],
-          solution: [{ say: "Substitute the x-coordinate and compare the y values." }],
-        });
+              truth: p.onLine,
+              reasons: p.onLine
+                ? [
+                    { text: `True. When x = ${p.px}, y = ${p.m * p.px + p.c}.`, correct: true },
+                    { text: "False. A point is only on a line if both coordinates are positive." },
+                    { text: `False. Swap the coordinates: x = ${py}.`, code: "ALG.LINE.M-C" },
+                  ]
+                : [
+                    {
+                      text: `False. When x = ${p.px}, y = ${p.m * p.px + p.c}, not ${py}.`,
+                      correct: true,
+                    },
+                    { text: "True. Any point near the line is on it." },
+                    { text: `True. ${py} is close to the intercept ${p.c}.`, code: "ALG.LINE.M-C" },
+                  ],
+              solution: [{ say: "Substitute the x-coordinate and compare the y values." }],
+            }),
+          [
+            {
+              claim: "Every point on the line $y = 2x$ has a y-coordinate twice its x-coordinate.",
+              truth: "always",
+              right: "Always. That is what the equation says.",
+              wrong: [["Never. It is half.", "ALG.LINE.M-C"], ["Sometimes. Only for positive x."]],
+            },
+            {
+              statement: "Gus says the line $y = 5x - 2$ passes through (0, 5).",
+              truth: false,
+              right: "False. When x = 0, y = −2. It passes through (0, −2).",
+              wrong: [
+                ["True. The number by x is the intercept.", "ALG.LINE.M-C"],
+                ["True. 5 is in the equation."],
+              ],
+            },
+            {
+              statement: "Bea says the point (3, 7) lies on $y = 2x + 1$.",
+              truth: true,
+              right: "True. 2 × 3 + 1 = 7.",
+              wrong: [
+                ["False. It gives y = 9.", "ALG.LINE.M-C"],
+                ["False. (3, 7) means x = 7.", "ALG.LINE.M-C"],
+              ],
+            },
+          ],
+        );
       }
     }
   },

@@ -10,7 +10,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G18.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -81,7 +81,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G18.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -152,7 +152,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G18.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -223,7 +223,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G18.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -294,7 +294,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G18.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -365,7 +365,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G18.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -436,7 +436,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G18.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -448,7 +448,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -474,7 +474,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Half the circumference means half of 360°, which is 180°: a semicircle.",
+                  "v": "True. A quarter of the area is a quarter of the arc.",
                 },
               ],
               "id": "RA",
@@ -483,7 +483,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A quarter of the area is a quarter of the arc.",
+                  "v": "False. Half the circumference means half of 360°, which is 180°: a semicircle.",
                 },
               ],
               "id": "RB",
@@ -504,7 +504,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "MEA.CIRCLE.FORMULA",
@@ -545,14 +545,14 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G18.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -563,14 +563,14 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -579,10 +579,19 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -590,7 +599,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Half the circumference means half of 360°, which is 180°: a semicircle.",
+                  "v": "Sometimes. Only for small circles.",
                 },
               ],
               "id": "RA",
@@ -599,7 +608,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Half of 180° is 90°.",
+                  "v": "Always. 360° is a full turn.",
                 },
               ],
               "id": "RB",
@@ -608,7 +617,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A quarter of the area is a quarter of the arc.",
+                  "v": "Never. It is half.",
                 },
               ],
               "id": "RC",
@@ -620,25 +629,17 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "GEO.SECTOR.FRACTION",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "MEA.CIRCLE.FORMULA",
+            "code": "GEO.SECTOR.FRACTION",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -648,7 +649,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Fraction of the arc = fraction of 360°.",
+            "v": "Always. 360° is a full turn.",
           },
         ],
       },
@@ -656,19 +657,19 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kim says a sector with arc length equal to half the circle's circumference has an angle of 90°.",
+        "v": "A sector with angle 360° is the whole circle.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G18.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -679,14 +680,14 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -695,10 +696,19 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -706,7 +716,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A quarter of the area is a quarter of the arc.",
+                  "v": "Sometimes. Only for small circles.",
                 },
               ],
               "id": "RA",
@@ -715,7 +725,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Half of 180° is 90°.",
+                  "v": "Always. 360° is a full turn.",
                 },
               ],
               "id": "RB",
@@ -724,7 +734,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Half the circumference means half of 360°, which is 180°: a semicircle.",
+                  "v": "Never. It is half.",
                 },
               ],
               "id": "RC",
@@ -736,15 +746,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "MEA.CIRCLE.FORMULA",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "GEO.SECTOR.FRACTION",
@@ -754,7 +756,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -764,7 +766,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Fraction of the arc = fraction of 360°.",
+            "v": "Always. 360° is a full turn.",
           },
         ],
       },
@@ -772,7 +774,7 @@ exports[`GF-G18.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kim says a sector with arc length equal to half the circle's circumference has an angle of 90°.",
+        "v": "A sector with angle 360° is the whole circle.",
       },
     ],
   },

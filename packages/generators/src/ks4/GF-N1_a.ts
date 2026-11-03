@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   x: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-N1.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.NEGATIVE.ORDER", "NPV.DECIMAL.LONGER-BIGGER"],
 
@@ -73,32 +74,66 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ana says ",
-            A.math(`-${p.x} > -${p.y}`),
-            ` because ${p.x} is bigger than ${p.y}.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ana says ",
+                A.math(`-${p.x} > -${p.y}`),
+                ` because ${p.x} is bigger than ${p.y}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. −${p.x} is further left on the number line, so −${p.x} < −${p.y}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The number with the bigger digit is bigger.",
+                  code: "NPV.NEGATIVE.ORDER",
+                },
+                {
+                  text: "True. Negative numbers are ordered the same way as positive ones.",
+                  code: "NPV.NEGATIVE.ORDER",
+                },
+              ],
+              solution: [
+                { say: "For negative numbers, the further from zero, the smaller the number." },
+              ],
+            }),
+          [
             {
-              text: `False. −${p.x} is further left on the number line, so −${p.x} < −${p.y}.`,
-              correct: true,
+              statement: "Kai says $-0.5 > -0.7$.",
+              truth: true,
+              right: "True. −0.5 is nearer zero, so it is further right on the number line.",
+              wrong: [
+                ["False. 0.7 is bigger than 0.5.", "NPV.NEGATIVE.ORDER"],
+                ["False. They are both negative, so they are equal."],
+              ],
             },
             {
-              text: "True. The number with the bigger digit is bigger.",
-              code: "NPV.NEGATIVE.ORDER",
+              claim: "A negative number is less than any positive number.",
+              truth: "always",
+              right:
+                "Always. Every negative number is to the left of zero, and every positive number to the right.",
+              wrong: [
+                ["Sometimes. −100 is bigger than 1.", "NPV.NEGATIVE.ORDER"],
+                ["Never. It depends on the digits."],
+              ],
             },
             {
-              text: "True. Negative numbers are ordered the same way as positive ones.",
-              code: "NPV.NEGATIVE.ORDER",
+              statement: "Pia orders 0.32, 0.4, 0.305 from smallest: 0.4, 0.32, 0.305.",
+              truth: false,
+              right: "False. Compare tenths first: 0.305 < 0.32 < 0.4.",
+              wrong: [
+                ["True. Shorter decimals are smaller.", "NPV.DECIMAL.LONGER-BIGGER"],
+                ["True. 4 is smaller than 32 and 305.", "NPV.DECIMAL.LONGER-BIGGER"],
+              ],
             },
           ],
-          solution: [
-            { say: "For negative numbers, the further from zero, the smaller the number." },
-          ],
-        });
+        );
     }
   },
 

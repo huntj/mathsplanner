@@ -32,7 +32,7 @@ exports[`GF-A11.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A11.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -180,7 +180,7 @@ exports[`GF-A11.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A11.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -328,7 +328,7 @@ exports[`GF-A11.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A11.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -476,7 +476,7 @@ exports[`GF-A11.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A11.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -576,7 +576,7 @@ exports[`GF-A11.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A11.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -676,7 +676,7 @@ exports[`GF-A11.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A11.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -754,7 +754,131 @@ exports[`GF-A11.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A11.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The signs stay the same.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. x + 5 = 0 when x = −5, and x − 1 = 0 when x = 1.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Read the numbers in the brackets.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "ALG.QUADRATIC.ROOT-SIGN",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.QUADRATIC.ROOT-SIGN",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. x + 5 = 0 when x = −5, and x − 1 = 0 when x = 1.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Gil says the roots of ",
+      },
+      {
+        "t": "math",
+        "v": "y = (x + 5)(x - 1)",
+      },
+      {
+        "t": "text",
+        "v": " are x = 5 and x = −1.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "GF-A11.a",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -810,133 +934,9 @@ exports[`GF-A11.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. y = 0 when a bracket is 0: x = 2 or x = 4.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.QUADRATIC.ROOT-SIGN",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.QUADRATIC.TURNING",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Check: x = 2 makes the first bracket 0.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Jo says the roots of ",
-      },
-      {
-        "t": "math",
-        "v": "y = (x - 2)(x - 4)",
-      },
-      {
-        "t": "text",
-        "v": " are x = -2 and x = -4.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "GF-A11.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The roots are the numbers in the brackets.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
                   "v": "False. y = 0 when a bracket is 0: x = -3 or x = 1.",
                 },
               ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Roots are where the curve crosses the y-axis.",
-                },
-              ],
               "id": "RC",
             },
           ],
@@ -954,7 +954,7 @@ exports[`GF-A11.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.QUADRATIC.TURNING",
@@ -1002,7 +1002,7 @@ exports[`GF-A11.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A11.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1013,7 +1013,7 @@ exports[`GF-A11.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -1040,7 +1040,7 @@ exports[`GF-A11.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Roots are where the curve crosses the y-axis.",
+                  "v": "False. They are −2 and −6.",
                 },
               ],
               "id": "RA",
@@ -1049,7 +1049,7 @@ exports[`GF-A11.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The roots are the numbers in the brackets.",
+                  "v": "False. They are 2 and −6.",
                 },
               ],
               "id": "RB",
@@ -1058,7 +1058,7 @@ exports[`GF-A11.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. y = 0 when a bracket is 0: x = -3 or x = 1.",
+                  "v": "True. Each bracket is 0 at those values.",
                 },
               ],
               "id": "RC",
@@ -1071,14 +1071,6 @@ exports[`GF-A11.a > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.QUADRATIC.TURNING",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.QUADRATIC.ROOT-SIGN",
@@ -1098,7 +1090,7 @@ exports[`GF-A11.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Check: x = -3 makes the first bracket 0.",
+            "v": "True. Each bracket is 0 at those values.",
           },
         ],
       },
@@ -1106,15 +1098,15 @@ exports[`GF-A11.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jo says the roots of ",
+        "v": "Ivy says the roots of ",
       },
       {
         "t": "math",
-        "v": "y = (x + 3)(x - 1)",
+        "v": "y = (x - 2)(x - 6)",
       },
       {
         "t": "text",
-        "v": " are x = 3 and x = -1.",
+        "v": " are x = 2 and x = 6.",
       },
     ],
   },

@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const UNITS: [string, string, number, number][] = [
   ["km", "m", 1000, 100],
@@ -29,7 +30,7 @@ const r = (v: number) => Number(v.toFixed(6));
 
 export default defineGenerator<Params>({
   id: "GF-N13.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.CONVERT.FACTOR", "MEA.TIME.DECIMAL"],
 
@@ -90,27 +91,57 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Abi says ",
-            A.math("1 \\text{ m}^2 = 100 \\text{ cm}^2"),
-            " because 1 m = 100 cm.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Abi says ",
+                A.math("1 \\text{ m}^2 = 100 \\text{ cm}^2"),
+                " because 1 m = 100 cm.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A 1 m by 1 m square is 100 cm by 100 cm, so 1 m² = 10 000 cm².",
+                  correct: true,
+                },
+                {
+                  text: "True. Area units convert the same way as lengths.",
+                  code: "MEA.CONVERT.FACTOR",
+                },
+                { text: "False. 1 m² = 1000 cm².", code: "MEA.CONVERT.FACTOR" },
+              ],
+              solution: [{ say: "Square the length factor for area: 100² = 10 000." }],
+            }),
+          [
             {
-              text: "False. A 1 m by 1 m square is 100 cm by 100 cm, so 1 m² = 10 000 cm².",
-              correct: true,
+              statement: "Sam says 2.5 km is 2500 m.",
+              truth: true,
+              right: "True. 1 km = 1000 m.",
+              wrong: [["False. It is 250 m.", "MEA.CONVERT.FACTOR"], ["False. It is 25 m."]],
             },
             {
-              text: "True. Area units convert the same way as lengths.",
-              code: "MEA.CONVERT.FACTOR",
+              claim: "$1 \\text{ cm}^3 = 1000 \\text{ mm}^3$.",
+              truth: "always",
+              right: "Always. 1 cm = 10 mm, so 1 cm³ = 10 × 10 × 10 = 1000 mm³.",
+              wrong: [
+                ["Never. It is 10 mm³.", "MEA.CONVERT.FACTOR"],
+                ["Sometimes. Only for water."],
+              ],
             },
-            { text: "False. 1 m² = 1000 cm².", code: "MEA.CONVERT.FACTOR" },
+            {
+              statement: "Kim says 1.25 hours is 1 hour 25 minutes.",
+              truth: false,
+              right: "False. 0.25 hours is a quarter of 60 minutes: 15 minutes.",
+              wrong: [
+                ["True. The decimal part is the minutes.", "MEA.TIME.DECIMAL"],
+                ["True. Hours are decimal.", "MEA.TIME.DECIMAL"],
+              ],
+            },
           ],
-          solution: [{ say: "Square the length factor for area: 100² = 10 000." }],
-        });
+        );
     }
   },
 

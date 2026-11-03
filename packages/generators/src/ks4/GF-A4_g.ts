@@ -6,6 +6,7 @@
 // GF-A4.g: Use the laws of indices in algebra
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   m: number;
@@ -19,7 +20,7 @@ const power = (coef: number, n: number) => `${coef === 1 ? "" : coef}x^{${n}}`;
 
 export default defineGenerator<Params>({
   id: "GF-A4.g",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.INDICES.MULTIPLY", "ALG.INDICES.POWER-ADD", "ALG.INDICES.BRACKET-COEFF"],
 
@@ -93,29 +94,65 @@ export default defineGenerator<Params>({
       }
       default: {
         const right = power(p.a * p.a, 2 * p.m);
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Eva says ",
-            A.math(`\\left(${p.a}x^{${p.m}}\\right)^2 = ${power(p.a, 2 * p.m)}`),
-            ".",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Eva says ",
+                A.math(`\\left(${p.a}x^{${p.m}}\\right)^2 = ${power(p.a, 2 * p.m)}`),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Square the number as well: ${p.a}² = ${p.a * p.a}, so it is ${p.a * p.a}x^${2 * p.m}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Only the power of x is doubled.",
+                  code: "ALG.INDICES.BRACKET-COEFF",
+                },
+                { text: `False. It is ${p.a}x^${p.m + 2}.`, code: "ALG.INDICES.POWER-ADD" },
+              ],
+              solution: [
+                {
+                  say: "",
+                  math: `\\left(${p.a}x^{${p.m}}\\right)^2 = ${p.a}^2 \\times x^{${2 * p.m}} = ${right}`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. Square the number as well: ${p.a}² = ${p.a * p.a}, so it is ${p.a * p.a}x^${2 * p.m}.`,
-              correct: true,
+              statement: "Sam says $\\frac{x^7}{x^3} = x^4$.",
+              truth: true,
+              right: "True. Dividing subtracts the indices: 7 − 3 = 4.",
+              wrong: [
+                ["False. It is x^(7/3).", "ALG.INDICES.MULTIPLY"],
+                ["False. It is x¹⁰.", "ALG.INDICES.POWER-ADD"],
+              ],
             },
-            { text: "True. Only the power of x is doubled.", code: "ALG.INDICES.BRACKET-COEFF" },
-            { text: `False. It is ${p.a}x^${p.m + 2}.`, code: "ALG.INDICES.POWER-ADD" },
-          ],
-          solution: [
             {
-              say: "",
-              math: `\\left(${p.a}x^{${p.m}}\\right)^2 = ${p.a}^2 \\times x^{${2 * p.m}} = ${right}`,
+              claim: "$(xy)^2 = x^2y^2$.",
+              truth: "always",
+              right: "Always. (xy)(xy) = x·x·y·y.",
+              wrong: [
+                ["Never. It is xy².", "ALG.INDICES.BRACKET-COEFF"],
+                ["Sometimes. Only if x = y."],
+              ],
+            },
+            {
+              statement: "Kit says $(x^3)^4 = x^7$.",
+              truth: false,
+              right: "False. A power of a power multiplies: x¹².",
+              wrong: [
+                ["True. Add the indices.", "ALG.INDICES.POWER-ADD"],
+                ["True. 3 + 4 = 7.", "ALG.INDICES.POWER-ADD"],
+              ],
             },
           ],
-        });
+        );
       }
     }
   },

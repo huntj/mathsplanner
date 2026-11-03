@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { gcdOf } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   g: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-N4.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.FACTOR.HCF-LCM", "NPV.FACTOR.LCM-PRODUCT"],
 
@@ -82,26 +83,57 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["The LCM of two numbers is their product."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["The LCM of two numbers is their product."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: `Sometimes. It works when the numbers share no factor, like ${p.x} and ${p.y}, but the LCM of ${a} and ${b} is ${lcm}, not ${a * b}.`,
+                  correct: true,
+                },
+                {
+                  text: "Always. Multiplying gives a multiple of both.",
+                  code: "NPV.FACTOR.LCM-PRODUCT",
+                },
+                {
+                  text: "Never. The LCM is always smaller than the product.",
+                  code: "NPV.FACTOR.LCM-PRODUCT",
+                },
+              ],
+              solution: [{ say: "HCF × LCM = the product of the two numbers." }],
+            }),
+          [
             {
-              text: `Sometimes. It works when the numbers share no factor, like ${p.x} and ${p.y}, but the LCM of ${a} and ${b} is ${lcm}, not ${a * b}.`,
-              correct: true,
+              statement: "Raj says the HCF of 12 and 18 is 6.",
+              truth: true,
+              right: "True. 6 is the biggest number that divides both.",
+              wrong: [["False. It is 36.", "NPV.FACTOR.HCF-LCM"], ["False. It is 3."]],
             },
             {
-              text: "Always. Multiplying gives a multiple of both.",
-              code: "NPV.FACTOR.LCM-PRODUCT",
+              statement: "Kit says the LCM of 6 and 8 is 48.",
+              truth: false,
+              right:
+                "False. 24 is the lowest number in both times tables. 48 is a common multiple, but not the lowest.",
+              wrong: [
+                ["True. 6 × 8 = 48.", "NPV.FACTOR.LCM-PRODUCT"],
+                ["True. LCM means multiply.", "NPV.FACTOR.LCM-PRODUCT"],
+              ],
             },
             {
-              text: "Never. The LCM is always smaller than the product.",
-              code: "NPV.FACTOR.LCM-PRODUCT",
+              claim: "The HCF of two numbers is less than or equal to both of them.",
+              truth: "always",
+              right: "Always. A factor of a number is no bigger than the number.",
+              wrong: [
+                ["Never. It is bigger than both.", "NPV.FACTOR.HCF-LCM"],
+                ["Sometimes. Only for even numbers."],
+              ],
             },
           ],
-          solution: [{ say: "HCF × LCM = the product of the two numbers." }],
-        });
+        );
     }
   },
 

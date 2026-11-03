@@ -10,7 +10,7 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R16.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -86,7 +86,7 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R16.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -162,7 +162,7 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R16.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -238,7 +238,7 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R16.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -305,7 +305,7 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R16.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -372,7 +372,7 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R16.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -432,14 +432,14 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R16.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -450,14 +450,14 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -466,19 +466,10 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -486,7 +477,7 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. You lose the same percentage twice.",
+                  "v": "False. It is £400.",
                 },
               ],
               "id": "RA",
@@ -495,7 +486,7 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The second 25% is of a smaller amount, so the total fall is 43.75%.",
+                  "v": "True. 10,000 × 0.8² = 6400.",
                 },
               ],
               "id": "RB",
@@ -504,7 +495,7 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends on the starting amount.",
+                  "v": "False. It is £6000.",
                 },
               ],
               "id": "RC",
@@ -519,6 +510,14 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
+            "code": "RAT.PERCENT.MULTIPLIER",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
             "code": "RAT.COMPOUND.SIMPLE",
             "feedback": [],
           },
@@ -526,33 +525,37 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
     ],
     "solution": [
       {
-        "math": "0.75^2 = 0.5625",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "True. 10,000 × 0.8² = 6400.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Decreasing by 25% one year and 25% the next is a 50% decrease overall.",
+        "v": "A car worth £10,000 loses 20% a year. Ana says it is worth £6400 after 2 years.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R16.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -563,14 +566,14 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -579,19 +582,10 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -599,7 +593,7 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The second 25% is of a smaller amount, so the total fall is 43.75%.",
+                  "v": "False. It is £6000.",
                 },
               ],
               "id": "RA",
@@ -608,7 +602,7 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. You lose the same percentage twice.",
+                  "v": "False. It is £400.",
                 },
               ],
               "id": "RB",
@@ -617,7 +611,7 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends on the starting amount.",
+                  "v": "True. 10,000 × 0.8² = 6400.",
                 },
               ],
               "id": "RC",
@@ -629,43 +623,55 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "RAT.COMPOUND.SIMPLE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "RAT.PERCENT.MULTIPLIER",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
     ],
     "solution": [
       {
-        "math": "0.75^2 = 0.5625",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "True. 10,000 × 0.8² = 6400.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Decreasing by 25% one year and 25% the next is a 50% decrease overall.",
+        "v": "A car worth £10,000 loses 20% a year. Ana says it is worth £6400 after 2 years.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R16.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -676,14 +682,14 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -692,19 +698,10 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -712,7 +709,7 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. You lose the same percentage twice.",
+                  "v": "False. It is £400.",
                 },
               ],
               "id": "RA",
@@ -721,7 +718,7 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The second 25% is of a smaller amount, so the total fall is 43.75%.",
+                  "v": "True. 10,000 × 0.8² = 6400.",
                 },
               ],
               "id": "RB",
@@ -730,7 +727,7 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends on the starting amount.",
+                  "v": "False. It is £6000.",
                 },
               ],
               "id": "RC",
@@ -745,6 +742,14 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
+            "code": "RAT.PERCENT.MULTIPLIER",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
             "code": "RAT.COMPOUND.SIMPLE",
             "feedback": [],
           },
@@ -752,21 +757,25 @@ exports[`GF-R16.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
     ],
     "solution": [
       {
-        "math": "0.75^2 = 0.5625",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "True. 10,000 × 0.8² = 6400.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Decreasing by 25% one year and 25% the next is a 50% decrease overall.",
+        "v": "A car worth £10,000 loses 20% a year. Ana says it is worth £6400 after 2 years.",
       },
     ],
   },

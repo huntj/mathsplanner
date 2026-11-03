@@ -9,6 +9,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-R12",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.ADDITIVE", "RAT.SCALE.AREA-LINEAR"],
 
@@ -82,26 +83,58 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Two similar jugs have heights in the ratio 1 : ${p.n}. Max says the bigger jug holds ${p.n} times as much.`,
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Two similar jugs have heights in the ratio 1 : ${p.n}. Max says the bigger jug holds ${p.n} times as much.`,
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Volume scales by the cube of the length factor: ${p.n}³ = ${p.n ** 3} times as much.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Everything about the jug is multiplied by the same factor.",
+                  code: "RAT.SCALE.AREA-LINEAR",
+                },
+                {
+                  text: `True. It holds ${p.n * p.n} times as much, using the square.`,
+                  code: "RAT.SCALE.AREA-LINEAR",
+                },
+              ],
+              solution: [{ say: `Length × ${p.n}, area × ${p.n * p.n}, volume × ${p.n ** 3}.` }],
+            }),
+          [
             {
-              text: `False. Volume scales by the cube of the length factor: ${p.n}³ = ${p.n ** 3} times as much.`,
-              correct: true,
+              statement:
+                "Two similar triangles have sides 5 cm and 15 cm. Ana says the scale factor is 3.",
+              truth: true,
+              right: "True. 15 ÷ 5 = 3.",
+              wrong: [["False. It is 10.", "RAT.ADDITIVE"], ["False. It is 1/3."]],
             },
             {
-              text: "True. Everything about the jug is multiplied by the same factor.",
-              code: "RAT.SCALE.AREA-LINEAR",
+              claim: "Enlarging a shape by scale factor 2 multiplies its area by 4.",
+              truth: "always",
+              right: "Always. Both length and width double, so 2 × 2 = 4.",
+              wrong: [
+                ["Never. The area doubles.", "RAT.SCALE.AREA-LINEAR"],
+                ["Sometimes. Only for squares.", "RAT.SCALE.AREA-LINEAR"],
+              ],
             },
             {
-              text: `True. It holds ${p.n * p.n} times as much, using the square.`,
-              code: "RAT.SCALE.AREA-LINEAR",
+              statement:
+                "Two similar rectangles have widths 4 cm and 6 cm. The smaller is 10 cm long. Dev says the larger is 12 cm long.",
+              truth: false,
+              right: "False. The scale factor is 1.5, so the length is 15 cm.",
+              wrong: [
+                ["True. Add 2, as 6 − 4 = 2.", "RAT.ADDITIVE"],
+                ["True. Sides grow by the same amount.", "RAT.ADDITIVE"],
+              ],
             },
           ],
-          solution: [{ say: `Length × ${p.n}, area × ${p.n * p.n}, volume × ${p.n ** 3}.` }],
-        });
+        );
     }
   },
 

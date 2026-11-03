@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { bearing } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const POINTS: [string, number][] = [
   ["north-east", 45],
@@ -29,7 +30,7 @@ const back = (b: number) => (b < 180 ? b + 180 : b - 180);
 
 export default defineGenerator<Params>({
   id: "GF-G15.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.BEARINGS.BACK-BEARING", "GEO.BEARINGS.ANTICLOCKWISE"],
 
@@ -92,25 +93,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ash measures a bearing anticlockwise from north because that is the way angles are measured in maths.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ash measures a bearing anticlockwise from north because that is the way angles are measured in maths.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. Bearings are always measured clockwise from north and written with three figures, like 045°.",
+                  correct: true,
+                },
+                {
+                  text: "True. Angles always go anticlockwise.",
+                  code: "GEO.BEARINGS.ANTICLOCKWISE",
+                },
+                {
+                  text: "True. Either direction gives the same bearing.",
+                  code: "GEO.BEARINGS.ANTICLOCKWISE",
+                },
+              ],
+              solution: [{ say: "Three rules: from north, clockwise, three figures." }],
+            }),
+          [
             {
-              text: "False. Bearings are always measured clockwise from north and written with three figures, like 045°.",
-              correct: true,
+              statement: "Sol says a bearing of 090° points due east.",
+              truth: true,
+              right: "True. Bearings go clockwise from north: 090° is east.",
+              wrong: [
+                ["False. It points west.", "GEO.BEARINGS.ANTICLOCKWISE"],
+                ["False. It points north."],
+              ],
             },
-            { text: "True. Angles always go anticlockwise.", code: "GEO.BEARINGS.ANTICLOCKWISE" },
             {
-              text: "True. Either direction gives the same bearing.",
-              code: "GEO.BEARINGS.ANTICLOCKWISE",
+              claim: "A bearing is written with three figures.",
+              truth: "always",
+              right: "Always. For example 045°, not 45°.",
+              wrong: [
+                ["Never. Use as few figures as you need."],
+                ["Sometimes. Only if it is over 100°."],
+              ],
+            },
+            {
+              statement:
+                "The bearing of B from A is 060°. Ana says the bearing of A from B is 060° too.",
+              truth: false,
+              right: "False. The back bearing differs by 180°: 240°.",
+              wrong: [
+                ["True. It is the same line.", "GEO.BEARINGS.BACK-BEARING"],
+                ["True. Bearings work both ways.", "GEO.BEARINGS.BACK-BEARING"],
+              ],
             },
           ],
-          solution: [{ say: "Three rules: from north, clockwise, three figures." }],
-        });
+        );
     }
   },
 

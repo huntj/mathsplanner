@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import type { CartesianSpec } from "@mathsplanner/diagrams";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const TYPES = ["Positive correlation", "Negative correlation", "No correlation"];
 const CONTEXTS: [string, number][] = [
@@ -45,7 +46,7 @@ function scatter(p: Params): CartesianSpec {
 
 export default defineGenerator<Params>({
   id: "GF-S6.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.CORRELATION.TYPE", "STA.SCATTER.CAUSATION"],
 
@@ -91,28 +92,64 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ice cream sales and cases of sunburn show strong positive correlation. Max says eating ice cream causes sunburn.",
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ice cream sales and cases of sunburn show strong positive correlation. Max says eating ice cream causes sunburn.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. Correlation does not show causation. Both go up in hot, sunny weather, a third factor.",
+                  correct: true,
+                },
+                {
+                  text: "True. Strong correlation proves one thing causes the other.",
+                  code: "STA.SCATTER.CAUSATION",
+                },
+                {
+                  text: "True. The points lie close to a straight line.",
+                  code: "STA.SCATTER.CAUSATION",
+                },
+              ],
+              solution: [{ say: "Look for a hidden variable that affects both." }],
+            }),
+          [
+            {
+              statement:
+                "As temperature rises, sales of hot chocolate fall. Ivy says this is negative correlation.",
+              truth: true,
+              right: "True. One goes up as the other goes down.",
+              wrong: [
+                ["False. It is positive.", "STA.CORRELATION.TYPE"],
+                ["False. It is no correlation.", "STA.CORRELATION.TYPE"],
+              ],
+            },
+            {
+              claim: "Correlation shows that one variable causes the other.",
+              truth: "sometimes",
+              right:
+                "Sometimes. A cause can produce correlation, but so can a third factor or chance.",
+              wrong: [
+                ["Always. If they go together, one causes the other.", "STA.SCATTER.CAUSATION"],
+                ["Never. Correlation and cause are unrelated."],
+              ],
+            },
+            {
+              statement:
+                "Points on a scatter graph lie close to a line going up. Sol says there is weak negative correlation.",
+              truth: false,
+              right: "False. Points close to an upward line show strong positive correlation.",
+              wrong: [
+                ["True. Going up means negative.", "STA.CORRELATION.TYPE"],
+                ["True. Close points mean weak correlation.", "STA.CORRELATION.TYPE"],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: "False. Correlation does not show causation. Both go up in hot, sunny weather, a third factor.",
-              correct: true,
-            },
-            {
-              text: "True. Strong correlation proves one thing causes the other.",
-              code: "STA.SCATTER.CAUSATION",
-            },
-            {
-              text: "True. The points lie close to a straight line.",
-              code: "STA.SCATTER.CAUSATION",
-            },
-          ],
-          solution: [{ say: "Look for a hidden variable that affects both." }],
-        });
+        );
     }
   },
 

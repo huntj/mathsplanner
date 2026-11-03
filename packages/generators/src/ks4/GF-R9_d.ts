@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 export interface Params {
   principal: number;
@@ -19,7 +20,7 @@ const r2 = (v: number) => Math.round(v * 100) / 100;
 
 export default defineGenerator<Params>({
   id: "GF-R9.d",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.INTEREST.ONE-YEAR"],
 
@@ -78,23 +79,59 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["With simple interest, the same amount of interest is added every year."],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["With simple interest, the same amount of interest is added every year."],
+              truth: "always",
+              reasons: [
+                {
+                  text: `Always. Simple interest is always worked out on the original £${p.principal}, so it is £${yearly} each year.`,
+                  correct: true,
+                },
+                { text: "Sometimes. The interest grows as the money grows." },
+                {
+                  text: "Never. Interest is only paid in the first year.",
+                  code: "RAT.INTEREST.ONE-YEAR",
+                },
+              ],
+              solution: [{ say: "Compound interest is the kind that grows each year." }],
+            }),
+          [
             {
-              text: `Always. Simple interest is always worked out on the original £${p.principal}, so it is £${yearly} each year.`,
-              correct: true,
+              statement:
+                "£800 earns 3% simple interest per year. Raj says it earns £72 in 3 years.",
+              truth: true,
+              right: "True. 3% of 800 is £24 a year, and 3 × 24 = 72.",
+              wrong: [
+                ["False. It is £24.", "RAT.INTEREST.ONE-YEAR"],
+                ["False. It is £874.16, compounding."],
+              ],
             },
-            { text: "Sometimes. The interest grows as the money grows." },
             {
-              text: "Never. Interest is only paid in the first year.",
-              code: "RAT.INTEREST.ONE-YEAR",
+              statement:
+                "£500 earns 4% simple interest per year. Kim says the total after 5 years is £520.",
+              truth: false,
+              right: "False. Interest is £20 a year: £100 in 5 years, so £600 in total.",
+              wrong: [
+                ["True. 4% of 500 is 20.", "RAT.INTEREST.ONE-YEAR"],
+                ["True. Interest is added once."],
+              ],
+            },
+            {
+              claim:
+                "With simple interest, the total after n years grows by the same amount each year.",
+              truth: "always",
+              right: "Always. Each year's interest is on the original amount.",
+              wrong: [
+                ["Never. It grows faster each year.", "RAT.INTEREST.ONE-YEAR"],
+                ["Sometimes. Only for long times."],
+              ],
             },
           ],
-          solution: [{ say: "Compound interest is the kind that grows each year." }],
-        });
+        );
     }
   },
 

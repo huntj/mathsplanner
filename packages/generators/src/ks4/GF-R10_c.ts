@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   k: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-R10.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.ADDITIVE", "RAT.PROPORTION.LINEAR-INTERCEPT", "RAT.INVERSE.AS-DIRECT"],
 
@@ -79,27 +80,66 @@ export default defineGenerator<Params>({
           solution: [{ say: "Direct proportion has the form y = kx." }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Sam says the graph of ",
-            A.math(`y = \\frac{${p.k}}{x}`),
-            " is a straight line, because y is proportional to x.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Sam says the graph of ",
+                A.math(`y = \\frac{${p.k}}{x}`),
+                " is a straight line, because y is proportional to x.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. y is inversely proportional to x, so the graph is a curve: as x doubles, y halves.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Every proportion graph is a straight line.",
+                  code: "RAT.INVERSE.AS-DIRECT",
+                },
+                {
+                  text: "True. It goes through the origin.",
+                  code: "RAT.PROPORTION.LINEAR-INTERCEPT",
+                },
+              ],
+              solution: [
+                { say: "Only direct proportion gives a straight line through the origin." },
+              ],
+            }),
+          [
             {
-              text: `False. y is inversely proportional to x, so the graph is a curve: as x doubles, y halves.`,
-              correct: true,
+              statement: "Ana says the graph of $y = 3x$ shows direct proportion.",
+              truth: true,
+              right: "True. It is a straight line through the origin.",
+              wrong: [
+                ["False. It shows inverse proportion.", "RAT.INVERSE.AS-DIRECT"],
+                ["False. It needs a + c.", "RAT.PROPORTION.LINEAR-INTERCEPT"],
+              ],
             },
             {
-              text: "True. Every proportion graph is a straight line.",
-              code: "RAT.INVERSE.AS-DIRECT",
+              claim: "The graph of an inverse proportion $y = \\frac{k}{x}$ is a curve.",
+              truth: "always",
+              right: "Always, for k not 0. As x grows, y shrinks towards 0 without reaching it.",
+              wrong: [
+                ["Never. It is a straight line.", "RAT.INVERSE.AS-DIRECT"],
+                ["Sometimes. Only for big k."],
+              ],
             },
-            { text: "True. It goes through the origin.", code: "RAT.PROPORTION.LINEAR-INTERCEPT" },
+            {
+              statement:
+                "Dev says $y = x + 5$ shows direct proportion, because it is a straight line.",
+              truth: false,
+              right: "False. It does not pass through the origin.",
+              wrong: [
+                ["True. Straight lines show proportion.", "RAT.PROPORTION.LINEAR-INTERCEPT"],
+                ["True. y goes up by the same amount.", "RAT.ADDITIVE"],
+              ],
+            },
           ],
-          solution: [{ say: "Only direct proportion gives a straight line through the origin." }],
-        });
+        );
     }
   },
 

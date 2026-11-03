@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 export interface Params {
   start: number;
@@ -25,7 +26,7 @@ const rule = (p: Params) =>
 
 export default defineGenerator<Params>({
   id: "GF-A23.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SEQUENCE.POSITION-RULE"],
 
@@ -83,25 +84,56 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            `A sequence uses the rule "add ${p.m}". Ola says every term is a multiple of ${p.m}.`,
-          ],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                `A sequence uses the rule "add ${p.m}". Ola says every term is a multiple of ${p.m}.`,
+              ],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: `Sometimes. It depends on the first term: starting at ${p.m} gives ${p.m}, ${2 * p.m}, ${3 * p.m}, … but starting at 1 gives 1, ${1 + p.m}, …`,
+                  correct: true,
+                },
+                {
+                  text: `Always. Adding ${p.m} always gives multiples of ${p.m}.`,
+                  code: "ALG.SEQUENCE.POSITION-RULE",
+                },
+                { text: "Never. Term-to-term rules never give multiples." },
+              ],
+              solution: [{ say: "A term-to-term rule needs a first term as well." }],
+            }),
+          [
             {
-              text: `Sometimes. It depends on the first term: starting at ${p.m} gives ${p.m}, ${2 * p.m}, ${3 * p.m}, … but starting at 1 gives 1, ${1 + p.m}, …`,
-              correct: true,
+              statement: "Leo says the next term of 7, 11, 15, 19, … is 23.",
+              truth: true,
+              right: "True. It goes up by 4.",
+              wrong: [["False. It is 20.", "ALG.SEQUENCE.POSITION-RULE"], ["False. It is 38."]],
             },
             {
-              text: `Always. Adding ${p.m} always gives multiples of ${p.m}.`,
-              code: "ALG.SEQUENCE.POSITION-RULE",
+              claim: "A sequence with the rule 'add 2' starting at 1 contains only odd numbers.",
+              truth: "always",
+              right: "Always. Odd plus 2 is odd: 1, 3, 5, …",
+              wrong: [
+                ["Sometimes. It reaches an even number.", "ALG.SEQUENCE.POSITION-RULE"],
+                ["Never. It has even numbers."],
+              ],
             },
-            { text: "Never. Term-to-term rules never give multiples." },
+            {
+              statement:
+                "A sequence starts at 5 and the rule is 'double and subtract 1'. Kim says the third term is 9.",
+              truth: false,
+              right: "False. 5 → 9 → 17: the third term is 17.",
+              wrong: [
+                ["True. 5 × 2 − 1 = 9.", "ALG.SEQUENCE.POSITION-RULE"],
+                ["True. Each term is 4 more."],
+              ],
+            },
           ],
-          solution: [{ say: "A term-to-term rule needs a first term as well." }],
-        });
+        );
     }
   },
 

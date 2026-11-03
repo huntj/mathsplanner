@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { barChart, type Topic } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const SIBLINGS: Topic = {
   what: "number of brothers and sisters",
@@ -36,7 +37,7 @@ function median(f: number[]): number {
 
 export default defineGenerator<Params>({
   id: "GF-S2.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.MODE.FREQUENCY", "STA.MEDIAN.UNORDERED"],
 
@@ -98,22 +99,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            "The bars of a bar chart for discrete data, such as numbers of siblings, touch each other.",
-          ],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "The bars of a bar chart for discrete data, such as numbers of siblings, touch each other.",
+              ],
+              truth: "never",
+              reasons: [
+                {
+                  text: "Never. Discrete data takes separate values, so the bars (or lines) have gaps between them. Histograms, for continuous data, have touching bars.",
+                  correct: true,
+                },
+                { text: "Always. All bar charts have touching bars." },
+                {
+                  text: "Sometimes. Only when the frequencies are close.",
+                  code: "STA.MODE.FREQUENCY",
+                },
+              ],
+              solution: [{ say: "Gaps show that values in between are not possible." }],
+            }),
+          [
             {
-              text: "Never. Discrete data takes separate values, so the bars (or lines) have gaps between them. Histograms, for continuous data, have touching bars.",
-              correct: true,
+              statement:
+                "On a bar chart of shoe sizes, the tallest bar is at size 5. Leo says the mode is 5.",
+              truth: true,
+              right: "True. The mode is the value with the highest frequency.",
+              wrong: [
+                ["False. The mode is the bar's height.", "STA.MODE.FREQUENCY"],
+                ["False. The mode is the middle bar.", "STA.MEDIAN.UNORDERED"],
+              ],
             },
-            { text: "Always. All bar charts have touching bars." },
-            { text: "Sometimes. Only when the frequencies are close.", code: "STA.MODE.FREQUENCY" },
+            {
+              claim: "The median of a set of data is the middle value once the data are in order.",
+              truth: "always",
+              right: "Always. Order first, then find the middle.",
+              wrong: [
+                ["Never. It is the middle value as written.", "STA.MEDIAN.UNORDERED"],
+                ["Sometimes. Only for odd numbers of values."],
+              ],
+            },
+            {
+              statement:
+                "A bar chart shows 12 pupils with 2 siblings, the most of any bar. Ana says the mode is 12.",
+              truth: false,
+              right: "False. The mode is the value, 2 siblings; 12 is its frequency.",
+              wrong: [
+                ["True. The mode is the biggest number.", "STA.MODE.FREQUENCY"],
+                ["True. Read the top of the bar.", "STA.MODE.FREQUENCY"],
+              ],
+            },
           ],
-          solution: [{ say: "Gaps show that values in between are not possible." }],
-        });
+        );
     }
   },
 

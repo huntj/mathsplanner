@@ -10,7 +10,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R11.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -73,7 +73,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R11.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -136,7 +136,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R11.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -199,7 +199,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R11.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -262,7 +262,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R11.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -325,7 +325,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R11.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -381,14 +381,14 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R11.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -406,7 +406,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -415,19 +415,10 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -435,7 +426,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Pressure = force ÷ area, and dividing by a smaller number gives a bigger answer. That is why a knife's thin edge cuts.",
+                  "v": "True. pressure = force ÷ area = 60 ÷ 3.",
                 },
               ],
               "id": "RA",
@@ -444,7 +435,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends on the force.",
+                  "v": "False. It is 180 N/m².",
                 },
               ],
               "id": "RB",
@@ -453,7 +444,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. A smaller area means less pressure.",
+                  "v": "False. It is 0.05 N/m².",
                 },
               ],
               "id": "RC",
@@ -463,6 +454,14 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "RAT.COMPOUND-UNIT.ARRANGEMENT",
+            "feedback": [],
+          },
           {
             "answer": {
               "id": "RC",
@@ -475,7 +474,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -485,7 +484,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Area is on the bottom of the division.",
+            "v": "True. pressure = force ÷ area = 60 ÷ 3.",
           },
         ],
       },
@@ -493,7 +492,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "If the same force acts on a smaller area, the pressure is bigger.",
+        "v": "A force of 60 N acts on an area of 3 m². Leo says the pressure is 20 N/m².",
       },
     ],
   },
@@ -505,7 +504,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R11.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -517,7 +516,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -552,7 +551,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. A smaller area means less pressure.",
+                  "v": "Sometimes. It depends on the force.",
                 },
               ],
               "id": "RA",
@@ -561,7 +560,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends on the force.",
+                  "v": "Always. Pressure = force ÷ area, and dividing by a smaller number gives a bigger answer. That is why a knife's thin edge cuts.",
                 },
               ],
               "id": "RB",
@@ -570,7 +569,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Pressure = force ÷ area, and dividing by a smaller number gives a bigger answer. That is why a knife's thin edge cuts.",
+                  "v": "Never. A smaller area means less pressure.",
                 },
               ],
               "id": "RC",
@@ -582,7 +581,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RC",
               "type": "choice",
             },
             "code": "RAT.COMPOUND-UNIT.ARRANGEMENT",
@@ -622,7 +621,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R11.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -633,8 +632,8 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RA",
+          "correct": "C",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -669,7 +668,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Pressure = force ÷ area, and dividing by a smaller number gives a bigger answer. That is why a knife's thin edge cuts.",
+                  "v": "Always. Bigger area, bigger pressure.",
                 },
               ],
               "id": "RA",
@@ -678,7 +677,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. A smaller area means less pressure.",
+                  "v": "Never. Pressure = force ÷ area, so doubling the area halves the pressure.",
                 },
               ],
               "id": "RB",
@@ -687,7 +686,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It depends on the force.",
+                  "v": "Sometimes. Only for small forces.",
                 },
               ],
               "id": "RC",
@@ -699,7 +698,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "RAT.COMPOUND-UNIT.ARRANGEMENT",
@@ -719,7 +718,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Area is on the bottom of the division.",
+            "v": "Never. Pressure = force ÷ area, so doubling the area halves the pressure.",
           },
         ],
       },
@@ -727,7 +726,7 @@ exports[`GF-R11.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "If the same force acts on a smaller area, the pressure is bigger.",
+        "v": "Doubling the area that a fixed force acts on doubles the pressure.",
       },
     ],
   },

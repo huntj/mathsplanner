@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import type { CartesianSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Euros per 10 pounds. */
@@ -42,7 +43,7 @@ function tank(p: Params): CartesianSpec {
 
 export default defineGenerator<Params>({
   id: "GF-A14.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.GRAPH.READ"],
 
@@ -100,24 +101,56 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "The graph shows the water in a tank as it fills.",
-            A.figure(tank(p)),
-            " Lou says the tank was empty at the start.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "The graph shows the water in a tank as it fills.",
+                A.figure(tank(p)),
+                " Lou says the tank was empty at the start.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The graph starts at ${p.start} litres when the time is 0: the intercept is the starting amount.`,
+                  correct: true,
+                },
+                { text: "True. Every graph starts at the origin.", code: "ALG.GRAPH.READ" },
+                { text: "True. Time 0 means no water.", code: "ALG.GRAPH.READ" },
+              ],
+              solution: [{ say: "Read the value where time = 0." }],
+            }),
+          [
             {
-              text: `False. The graph starts at ${p.start} litres when the time is 0: the intercept is the starting amount.`,
-              correct: true,
+              statement:
+                "A graph of water depth against time is a straight line going up. Sol says the depth rises at a steady rate.",
+              truth: true,
+              right: "True. A straight line has a constant gradient.",
+              wrong: [["False. It speeds up.", "ALG.GRAPH.READ"], ["False. It stays the same."]],
             },
-            { text: "True. Every graph starts at the origin.", code: "ALG.GRAPH.READ" },
-            { text: "True. Time 0 means no water.", code: "ALG.GRAPH.READ" },
+            {
+              claim: "The y-intercept of a real-life graph shows the value at the start.",
+              truth: "always",
+              right: "Always. It is the value when the x quantity (often time) is 0.",
+              wrong: [
+                ["Never. It shows the rate.", "ALG.GRAPH.READ"],
+                ["Sometimes. Only for money."],
+              ],
+            },
+            {
+              statement:
+                "A conversion graph from pounds to euros goes through (0, 0) and (10, 12). Pia says £5 is €10.",
+              truth: false,
+              right: "False. Halfway along, £5 is €6.",
+              wrong: [
+                ["True. Double the pounds.", "ALG.GRAPH.READ"],
+                ["True. Read across from 5 on the y-axis.", "ALG.GRAPH.READ"],
+              ],
+            },
           ],
-          solution: [{ say: "Read the value where time = 0." }],
-        });
+        );
     }
   },
 

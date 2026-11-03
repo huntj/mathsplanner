@@ -10,7 +10,7 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -118,7 +118,7 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -226,7 +226,7 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -356,7 +356,7 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -482,7 +482,7 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -608,7 +608,7 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -712,7 +712,7 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -750,7 +750,7 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Any x² term makes the graph a parabola, whatever other terms there are.",
+                  "v": "False. The −x² makes it an upside-down U (∩).",
                 },
               ],
               "id": "RA",
@@ -759,7 +759,7 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Two terms always make a straight line.",
+                  "v": "True. The 5 makes it a U.",
                 },
               ],
               "id": "RB",
@@ -768,7 +768,7 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A graph with an x term is linear.",
+                  "v": "True. Every x² graph is a U.",
                 },
               ],
               "id": "RC",
@@ -778,14 +778,6 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SHAPE",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -808,7 +800,7 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The highest power of x decides the shape: here it is 2, a quadratic.",
+            "v": "False. The −x² makes it an upside-down U (∩).",
           },
         ],
       },
@@ -816,15 +808,15 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Gina says the graph of ",
+        "v": "Raj says the graph of ",
       },
       {
         "t": "math",
-        "v": "y = x^2 + 2x",
+        "v": "y = 5 - x^2",
       },
       {
         "t": "text",
-        "v": " is a straight line, because there is an x term.",
+        "v": " is U-shaped.",
       },
     ],
   },
@@ -836,131 +828,7 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A12.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. A graph with an x term is linear.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Any x² term makes the graph a parabola, whatever other terms there are.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Two terms always make a straight line.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SHAPE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SHAPE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "The highest power of x decides the shape: here it is 2, a quadratic.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Gina says the graph of ",
-      },
-      {
-        "t": "math",
-        "v": "y = x^2 + 2x",
-      },
-      {
-        "t": "text",
-        "v": " is a straight line, because there is an x term.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GF-A12.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -998,7 +866,7 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Any x² term makes the graph a parabola, whatever other terms there are.",
+                  "v": "False. The −x² makes it an upside-down U (∩).",
                 },
               ],
               "id": "RA",
@@ -1007,7 +875,7 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A graph with an x term is linear.",
+                  "v": "True. The 5 makes it a U.",
                 },
               ],
               "id": "RB",
@@ -1016,7 +884,7 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Two terms always make a straight line.",
+                  "v": "True. Every x² graph is a U.",
                 },
               ],
               "id": "RC",
@@ -1026,14 +894,6 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SHAPE",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -1056,7 +916,7 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The highest power of x decides the shape: here it is 2, a quadratic.",
+            "v": "False. The −x² makes it an upside-down U (∩).",
           },
         ],
       },
@@ -1064,15 +924,140 @@ exports[`GF-A12.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Gina says the graph of ",
+        "v": "Raj says the graph of ",
       },
       {
         "t": "math",
-        "v": "y = x^2 + 3x",
+        "v": "y = 5 - x^2",
       },
       {
         "t": "text",
-        "v": " is a straight line, because there is an x term.",
+        "v": " is U-shaped.",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-A12.a",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. It is a curve.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. If m is big it curves.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. It is a linear function.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "ALG.GRAPH.SHAPE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. It is a linear function.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The graph of ",
+      },
+      {
+        "t": "math",
+        "v": "y = mx + c",
+      },
+      {
+        "t": "text",
+        "v": " is a straight line.",
       },
     ],
   },

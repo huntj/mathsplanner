@@ -10,7 +10,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N13.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -80,7 +80,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N13.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -150,7 +150,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N13.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -220,7 +220,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N13.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -282,7 +282,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N13.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -339,7 +339,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N13.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -401,7 +401,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N13.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -413,7 +413,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -439,7 +439,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 1 m² = 1000 cm².",
+                  "v": "False. A 1 m by 1 m square is 100 cm by 100 cm, so 1 m² = 10 000 cm².",
                 },
               ],
               "id": "RA",
@@ -448,7 +448,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Area units convert the same way as lengths.",
+                  "v": "False. 1 m² = 1000 cm².",
                 },
               ],
               "id": "RB",
@@ -457,7 +457,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A 1 m by 1 m square is 100 cm by 100 cm, so 1 m² = 10 000 cm².",
+                  "v": "True. Area units convert the same way as lengths.",
                 },
               ],
               "id": "RC",
@@ -469,7 +469,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "MEA.CONVERT.FACTOR",
@@ -477,7 +477,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "MEA.CONVERT.FACTOR",
@@ -525,7 +525,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N13.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -563,7 +563,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 1 m² = 1000 cm².",
+                  "v": "True. The decimal part is the minutes.",
                 },
               ],
               "id": "RA",
@@ -572,7 +572,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Area units convert the same way as lengths.",
+                  "v": "True. Hours are decimal.",
                 },
               ],
               "id": "RB",
@@ -581,7 +581,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A 1 m by 1 m square is 100 cm by 100 cm, so 1 m² = 10 000 cm².",
+                  "v": "False. 0.25 hours is a quarter of 60 minutes: 15 minutes.",
                 },
               ],
               "id": "RC",
@@ -596,7 +596,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "MEA.CONVERT.FACTOR",
+            "code": "MEA.TIME.DECIMAL",
             "feedback": [],
           },
           {
@@ -604,7 +604,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "MEA.CONVERT.FACTOR",
+            "code": "MEA.TIME.DECIMAL",
             "feedback": [],
           },
         ],
@@ -621,7 +621,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Square the length factor for area: 100² = 10 000.",
+            "v": "False. 0.25 hours is a quarter of 60 minutes: 15 minutes.",
           },
         ],
       },
@@ -629,15 +629,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Abi says ",
-      },
-      {
-        "t": "math",
-        "v": "1 \\text{ m}^2 = 100 \\text{ cm}^2",
-      },
-      {
-        "t": "text",
-        "v": " because 1 m = 100 cm.",
+        "v": "Kim says 1.25 hours is 1 hour 25 minutes.",
       },
     ],
   },
@@ -649,7 +641,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N13.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -687,7 +679,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 1 m² = 1000 cm².",
+                  "v": "True. Area units convert the same way as lengths.",
                 },
               ],
               "id": "RA",
@@ -696,7 +688,7 @@ exports[`GF-N13.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Area units convert the same way as lengths.",
+                  "v": "False. 1 m² = 1000 cm².",
                 },
               ],
               "id": "RB",

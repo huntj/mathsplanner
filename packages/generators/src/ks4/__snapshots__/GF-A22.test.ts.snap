@@ -10,7 +10,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A22",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -114,7 +114,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A22",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -218,7 +218,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A22",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -322,7 +322,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A22",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -431,7 +431,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A22",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -540,7 +540,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A22",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -695,7 +695,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A22",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -854,7 +854,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A22",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1013,7 +1013,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A22",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1119,14 +1119,14 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A22",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1137,14 +1137,14 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1153,10 +1153,19 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1164,7 +1173,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both ends are always included.",
+                  "v": "Always. For example 2 < 3, but −2 > −3.",
                 },
               ],
               "id": "RA",
@@ -1173,7 +1182,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. -2 is not included, because x must be greater than -2. The integers are -1, 0, 1, 2, 3, 4, 5.",
+                  "v": "Sometimes. Only for −1.",
                 },
               ],
               "id": "RB",
@@ -1182,7 +1191,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. -2 is the first number in the inequality.",
+                  "v": "Never. The sign stays.",
                 },
               ],
               "id": "RC",
@@ -1194,25 +1203,17 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.BOUNDS.ENDS",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.BOUNDS.ENDS",
+            "code": "ALG.INEQUALITY.FLIP",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1222,7 +1223,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "< leaves -2 out; ≤ keeps 5 in: -1, 0, 1, 2, 3, 4, 5.",
+            "v": "Always. For example 2 < 3, but −2 > −3.",
           },
         ],
       },
@@ -1230,15 +1231,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kai says the integers that satisfy ",
-      },
-      {
-        "t": "math",
-        "v": "-2 < x \\le 5",
-      },
-      {
-        "t": "text",
-        "v": " are -2, -1, 0, 1, 2, 3, 4, 5.",
+        "v": "Multiplying both sides of an inequality by a negative number reverses the sign.",
       },
     ],
   },
@@ -1250,7 +1243,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A22",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1288,7 +1281,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. -5 is not included, because x must be greater than -5. The integers are -4, -3, -2, -1, 0, 1, 2, 3, 4, 5.",
+                  "v": "False. Dividing by −3 reverses the sign: x > −4.",
                 },
               ],
               "id": "RA",
@@ -1297,7 +1290,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. -5 is the first number in the inequality.",
+                  "v": "True. Divide both sides by −3.",
                 },
               ],
               "id": "RB",
@@ -1306,7 +1299,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both ends are always included.",
+                  "v": "True. Inequalities work like equations.",
                 },
               ],
               "id": "RC",
@@ -1321,7 +1314,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.BOUNDS.ENDS",
+            "code": "ALG.INEQUALITY.FLIP",
             "feedback": [],
           },
           {
@@ -1329,7 +1322,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.BOUNDS.ENDS",
+            "code": "ALG.INEQUALITY.FLIP",
             "feedback": [],
           },
         ],
@@ -1346,7 +1339,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "< leaves -5 out; ≤ keeps 5 in: -4, -3, -2, -1, 0, 1, 2, 3, 4, 5.",
+            "v": "False. Dividing by −3 reverses the sign: x > −4.",
           },
         ],
       },
@@ -1354,15 +1347,23 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kai says the integers that satisfy ",
+        "v": "Solving ",
       },
       {
         "t": "math",
-        "v": "-5 < x \\le 5",
+        "v": "-3x < 12",
       },
       {
         "t": "text",
-        "v": " are -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5.",
+        "v": ", Pia gets ",
+      },
+      {
+        "t": "math",
+        "v": "x < -4",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
@@ -1374,7 +1375,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A22",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1421,7 +1422,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. -3 is the first number in the inequality.",
+                  "v": "True. Both ends are always included.",
                 },
               ],
               "id": "RB",
@@ -1430,7 +1431,7 @@ exports[`GF-A22 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both ends are always included.",
+                  "v": "True. -3 is the first number in the inequality.",
                 },
               ],
               "id": "RC",

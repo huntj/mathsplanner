@@ -10,7 +10,7 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N10",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -73,7 +73,7 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N10",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -136,7 +136,7 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N10",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -199,7 +199,7 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N10",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -268,7 +268,7 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N10",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -337,7 +337,7 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N10",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -399,14 +399,14 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N10",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -424,7 +424,7 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -433,10 +433,19 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -444,7 +453,7 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Every decimal stops after a few places.",
+                  "v": "Sometimes. Only for halves.",
                 },
               ],
               "id": "RA",
@@ -453,7 +462,7 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Write the numerator after the decimal point.",
+                  "v": "Never. Fractions recur.",
                 },
               ],
               "id": "RB",
@@ -462,7 +471,7 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 0.15 = 15/100, which simplifies to 3/20.",
+                  "v": "Always. It can be written over a power of 10.",
                 },
               ],
               "id": "RC",
@@ -474,25 +483,17 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "FR.RECURRING.TRUNCATE",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RB",
               "type": "choice",
             },
-            "code": "FR.DECIMAL.DIGITS",
+            "code": "FR.RECURRING.TRUNCATE",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -502,7 +503,7 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Divide the numerator by the denominator to find the decimal; read the decimal's place value to find the fraction.",
+            "v": "Always. It can be written over a power of 10.",
           },
         ],
       },
@@ -510,11 +511,7 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Is this true? ",
-      },
-      {
-        "t": "math",
-        "v": "0.15 = \\frac{3}{20}",
+        "v": "A fraction whose denominator, in simplest form, has only 2 and 5 as prime factors is a terminating decimal.",
       },
     ],
   },
@@ -526,127 +523,7 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N10",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Write the numerator after the decimal point.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Every decimal stops after a few places.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. 0.15 = 15/100, which simplifies to 3/20.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "FR.DECIMAL.DIGITS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "FR.RECURRING.TRUNCATE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Divide the numerator by the denominator to find the decimal; read the decimal's place value to find the fraction.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Is this true? ",
-      },
-      {
-        "t": "math",
-        "v": "0.15 = \\frac{3}{20}",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GF-N10",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -684,7 +561,7 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every decimal stops after a few places.",
+                  "v": "True. Write the 1 and the 8 after the point.",
                 },
               ],
               "id": "RA",
@@ -693,7 +570,7 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Write the numerator after the decimal point.",
+                  "v": "True. Eighths are 0.1 something.",
                 },
               ],
               "id": "RB",
@@ -702,7 +579,131 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 1/3 = 0.333…; the 3s go on for ever. 0.3 is 3/10.",
+                  "v": "False. 1 ÷ 8 = 0.125.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "FR.DECIMAL.DIGITS",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "FR.DECIMAL.PLACE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. 1 ÷ 8 = 0.125.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Zoe says ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{1}{8} = 0.18",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-N10",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is exactly 0.67.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 2 ÷ 3 = 0.666… with the 6 recurring.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 0.23.",
                 },
               ],
               "id": "RC",
@@ -722,7 +723,7 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "FR.DECIMAL.DIGITS",
@@ -742,7 +743,7 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Divide the numerator by the denominator to find the decimal; read the decimal's place value to find the fraction.",
+            "v": "True. 2 ÷ 3 = 0.666… with the 6 recurring.",
           },
         ],
       },
@@ -750,11 +751,15 @@ exports[`GF-N10 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Is this true? ",
+        "v": "Dev says ",
       },
       {
         "t": "math",
-        "v": "\\frac{1}{3} = 0.3",
+        "v": "\\frac{2}{3} = 0.\\dot{6}",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },

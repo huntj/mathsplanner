@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Survey {
   /** What the survey wants to find out, and who it is about. */
@@ -57,7 +58,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-S1",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.SAMPLE.BIAS", "PRO.SAMPLE.SMALL"],
 
@@ -118,30 +119,67 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `To find out ${s.aim}, Tom asks ${p.size * 2} ${s.biased}. He says such a large sample must represent everyone.`,
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `To find out ${s.aim}, Tom asks ${p.size * 2} ${s.biased}. He says such a large sample must represent everyone.`,
+              truth: false,
+              reasons: [
+                {
+                  text: `False. A large sample is still biased if it is chosen badly: ${s.why}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. A large enough sample is always representative.",
+                  code: "STA.SAMPLE.BIAS",
+                },
+                {
+                  text: `False. ${p.size * 2} people is too small a sample.`,
+                  code: "PRO.SAMPLE.SMALL",
+                },
+              ],
+              solution: [
+                {
+                  say: "Bigger samples reduce random variation, but they do not fix bias in how people are chosen.",
+                },
+              ],
+            }),
+          [
             {
-              text: `False. A large sample is still biased if it is chosen badly: ${s.why}.`,
-              correct: true,
+              claim:
+                "A random sample gives every member of the population an equal chance of being chosen.",
+              truth: "always",
+              right: "Always. That is what random means.",
+              wrong: [
+                ["Never. Some are more likely.", "STA.SAMPLE.BIAS"],
+                ["Sometimes. Only for big populations.", "PRO.SAMPLE.SMALL"],
+              ],
             },
             {
-              text: "True. A large enough sample is always representative.",
-              code: "STA.SAMPLE.BIAS",
+              statement:
+                "To find out how pupils travel to school, Sam asks a random sample from the school list.",
+              truth: true,
+              right: "True. A random sample from the whole school avoids bias.",
+              wrong: [
+                ["False. He must ask everyone.", "PRO.SAMPLE.SMALL"],
+                ["False. He should ask his friends."],
+              ],
             },
             {
-              text: `False. ${p.size * 2} people is too small a sample.`,
-              code: "PRO.SAMPLE.SMALL",
+              statement:
+                "Ana surveys a town about bus use by asking people at the bus station. She says her sample is unbiased.",
+              truth: false,
+              right:
+                "False. People at a bus station use buses more than most, so the sample is biased.",
+              wrong: [
+                ["True. She asked lots of people.", "STA.SAMPLE.BIAS"],
+                ["True. Bus users know most about buses.", "STA.SAMPLE.BIAS"],
+              ],
             },
           ],
-          solution: [
-            {
-              say: "Bigger samples reduce random variation, but they do not fix bias in how people are chosen.",
-            },
-          ],
-        });
+        );
     }
   },
 

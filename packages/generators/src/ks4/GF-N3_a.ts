@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -20,7 +21,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-N3.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.INVERSE.WRONG-PAIR"],
 
@@ -84,31 +85,68 @@ export default defineGenerator<Params>({
           solution: [{ say: "", math: `${p.a * p.b} \\div ${p.b} = ${p.a}` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ivy says that because ",
-            A.math(`${p.a * p.b} \\div ${p.a} = ${p.b}`),
-            ", it follows that ",
-            A.math(`${p.a * p.b} \\times ${p.b} = ${p.a}`),
-            ".",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ivy says that because ",
+                A.math(`${p.a * p.b} \\div ${p.a} = ${p.b}`),
+                ", it follows that ",
+                A.math(`${p.a * p.b} \\times ${p.b} = ${p.a}`),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Dividing by ${p.a} is undone by multiplying by ${p.a}: ${p.b} × ${p.a} = ${p.a * p.b}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Multiplying is the inverse of dividing.",
+                  code: "NPV.INVERSE.WRONG-PAIR",
+                },
+                {
+                  text: "True. The three numbers make a fact family.",
+                  code: "NPV.INVERSE.WRONG-PAIR",
+                },
+              ],
+              solution: [
+                { say: "Check by working it out: the product is far bigger than " + p.a + "." },
+              ],
+            }),
+          [
             {
-              text: `False. Dividing by ${p.a} is undone by multiplying by ${p.a}: ${p.b} × ${p.a} = ${p.a * p.b}.`,
-              correct: true,
+              statement:
+                "Kim says that because $12 \\times 7 = 84$, it follows that $84 \\div 7 = 12$.",
+              truth: true,
+              right: "True. Division undoes multiplication.",
+              wrong: [
+                ["False. It gives 84 ÷ 12 = 84.", "NPV.INVERSE.WRONG-PAIR"],
+                ["False. You cannot work back."],
+              ],
             },
             {
-              text: "True. Multiplying is the inverse of dividing.",
-              code: "NPV.INVERSE.WRONG-PAIR",
+              claim: "$a - b = b - a$ for any two numbers a and b.",
+              truth: "sometimes",
+              right: "Sometimes. Only when a = b; otherwise the answers have opposite signs.",
+              wrong: [
+                ["Always. Order does not matter.", "NPV.INVERSE.WRONG-PAIR"],
+                ["Never. Even when a = b."],
+              ],
             },
-            { text: "True. The three numbers make a fact family.", code: "NPV.INVERSE.WRONG-PAIR" },
+            {
+              statement: "Sol says that because $56 - 19 = 37$, it follows that $56 + 37 = 19$.",
+              truth: false,
+              right: "False. The inverse is 37 + 19 = 56.",
+              wrong: [
+                ["True. Swap the minus for a plus.", "NPV.INVERSE.WRONG-PAIR"],
+                ["True. Adding undoes subtracting."],
+              ],
+            },
           ],
-          solution: [
-            { say: "Check by working it out: the product is far bigger than " + p.a + "." },
-          ],
-        });
+        );
     }
   },
 

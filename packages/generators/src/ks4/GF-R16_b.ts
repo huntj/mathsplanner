@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   value: number;
@@ -23,7 +24,7 @@ const halfYears = (rate: number) => {
 
 export default defineGenerator<Params>({
   id: "GF-R16.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.COMPOUND.SIMPLE", "RAT.PERCENT.MULTIPLIER"],
 
@@ -87,22 +88,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            `Decreasing by ${p.rate}% one year and ${p.rate}% the next is a ${2 * p.rate}% decrease overall.`,
-          ],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                `Decreasing by ${p.rate}% one year and ${p.rate}% the next is a ${2 * p.rate}% decrease overall.`,
+              ],
+              truth: "never",
+              reasons: [
+                {
+                  text: `Never. The second ${p.rate}% is of a smaller amount, so the total fall is ${2 * p.rate - (p.rate * p.rate) / 100}%.`,
+                  correct: true,
+                },
+                {
+                  text: "Always. You lose the same percentage twice.",
+                  code: "RAT.COMPOUND.SIMPLE",
+                },
+                { text: "Sometimes. It depends on the starting amount." },
+              ],
+              solution: [
+                { say: "", math: `${m}^2 = ${Number(((1 - p.rate / 100) ** 2).toFixed(4))}` },
+              ],
+            }),
+          [
             {
-              text: `Never. The second ${p.rate}% is of a smaller amount, so the total fall is ${2 * p.rate - (p.rate * p.rate) / 100}%.`,
-              correct: true,
+              statement:
+                "A car worth £10,000 loses 20% a year. Ana says it is worth £6400 after 2 years.",
+              truth: true,
+              right: "True. 10,000 × 0.8² = 6400.",
+              wrong: [
+                ["False. It is £6000.", "RAT.COMPOUND.SIMPLE"],
+                ["False. It is £400.", "RAT.PERCENT.MULTIPLIER"],
+              ],
             },
-            { text: "Always. You lose the same percentage twice.", code: "RAT.COMPOUND.SIMPLE" },
-            { text: "Sometimes. It depends on the starting amount." },
+            {
+              claim: "Depreciation at a fixed percentage each year loses less money each year.",
+              truth: "always",
+              right:
+                "Always, for a positive rate. The percentage is taken from a smaller amount each time.",
+              wrong: [
+                ["Never. It loses the same each year.", "RAT.COMPOUND.SIMPLE"],
+                ["Sometimes. Only after 10 years."],
+              ],
+            },
+            {
+              statement: "Kit writes 'decrease by 15% each year for 4 years' as $\\times 0.15^4$.",
+              truth: false,
+              right: "False. Losing 15% leaves 85%: × 0.85⁴.",
+              wrong: [
+                ["True. 15% is 0.15.", "RAT.PERCENT.MULTIPLIER"],
+                ["True. Use the percentage lost.", "RAT.PERCENT.MULTIPLIER"],
+              ],
+            },
           ],
-          solution: [{ say: "", math: `${m}^2 = ${Number(((1 - p.rate / 100) ** 2).toFixed(4))}` }],
-        });
+        );
     }
   },
 

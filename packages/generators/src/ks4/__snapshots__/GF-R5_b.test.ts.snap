@@ -10,7 +10,7 @@ exports[`GF-R5.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R5.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -69,7 +69,7 @@ exports[`GF-R5.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R5.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -128,7 +128,7 @@ exports[`GF-R5.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R5.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -187,7 +187,7 @@ exports[`GF-R5.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R5.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -253,7 +253,7 @@ exports[`GF-R5.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R5.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -319,7 +319,7 @@ exports[`GF-R5.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R5.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -385,7 +385,7 @@ exports[`GF-R5.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R5.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -423,7 +423,7 @@ exports[`GF-R5.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. There are 13 parts altogether, so 4/13 of the animals are cats.",
+                  "v": "False. There are 7 parts, so 3/7 are red.",
                 },
               ],
               "id": "RA",
@@ -432,7 +432,7 @@ exports[`GF-R5.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. There are 4 cats for every 9 dogs.",
+                  "v": "True. Red over blue gives the fraction.",
                 },
               ],
               "id": "RB",
@@ -441,7 +441,7 @@ exports[`GF-R5.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The ratio and the fraction use the same numbers.",
+                  "v": "True. 3 : 4 is 3/4.",
                 },
               ],
               "id": "RC",
@@ -481,7 +481,7 @@ exports[`GF-R5.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A part:part ratio compares parts; a fraction compares a part with the whole.",
+            "v": "False. There are 7 parts, so 3/7 are red.",
           },
         ],
       },
@@ -489,15 +489,15 @@ exports[`GF-R5.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "The ratio of cats to dogs at a rescue centre is 4 : 9. Sid says ",
+        "v": "Red and blue are in the ratio 3 : 4. Sol says ",
       },
       {
         "t": "math",
-        "v": "\\frac{4}{9}",
+        "v": "\\frac{3}{4}",
       },
       {
         "t": "text",
-        "v": " of the animals are cats.",
+        "v": " of the counters are red.",
       },
     ],
   },
@@ -509,7 +509,123 @@ exports[`GF-R5.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R5.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 2/3.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 3/5.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. There are 2 + 3 = 5 parts, and 2 are boys.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "RAT.PART-WHOLE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. There are 2 + 3 = 5 parts, and 2 are boys.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Boys and girls are in the ratio 2 : 3. Raj says ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{2}{5}",
+      },
+      {
+        "t": "text",
+        "v": " of the class are boys.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-R5.b",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -547,143 +663,10 @@ exports[`GF-R5.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. There are 7 cats for every 4 dogs.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The ratio and the fraction use the same numbers.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. There are 11 parts altogether, so 7/11 of the animals are cats.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "RAT.PART-WHOLE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "RAT.PART-WHOLE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "A part:part ratio compares parts; a fraction compares a part with the whole.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "The ratio of cats to dogs at a rescue centre is 7 : 4. Sid says ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{7}{4}",
-      },
-      {
-        "t": "text",
-        "v": " of the animals are cats.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GF-R5.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
                   "v": "True. The ratio and the fraction use the same numbers.",
                 },
               ],
               "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. There are 9 parts altogether, so 2/9 of the animals are cats.",
-                },
-              ],
-              "id": "RB",
             },
             {
               "content": [
@@ -692,6 +675,15 @@ exports[`GF-R5.b > keeps fixed seeds unchanged 1`] = `
                   "v": "True. There are 2 cats for every 7 dogs.",
                 },
               ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. There are 9 parts altogether, so 2/9 of the animals are cats.",
+                },
+              ],
               "id": "RC",
             },
           ],
@@ -709,7 +701,7 @@ exports[`GF-R5.b > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "RAT.PART-WHOLE",

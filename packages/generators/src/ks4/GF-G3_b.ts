@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { triangle } from "../shared/geo.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-G3.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.ANGLES.TRIANGLE-360", "GEO.ISOSCELES.APEX-EQUALS-BASE"],
 
@@ -88,30 +89,64 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ren says the exterior angle of a triangle equals the sum of the two interior angles opposite it.",
-          ],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ren says the exterior angle of a triangle equals the sum of the two interior angles opposite it.",
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: `True. With interior angles ${p.a}° and ${p.b}°, the third is ${180 - p.a - p.b}°, and the exterior angle next to it is 180° − ${180 - p.a - p.b}° = ${p.a + p.b}°.`,
+                  correct: true,
+                },
+                {
+                  text: "False. It equals the angle next to it inside the triangle.",
+                  code: "GEO.ANGLES.TRIANGLE-360",
+                },
+                {
+                  text: "False. The exterior angles of a triangle are all 180°.",
+                  code: "GEO.ANGLES.TRIANGLE-360",
+                },
+              ],
+              solution: [
+                { say: "Angles on a straight line and angles in a triangle both total 180°." },
+              ],
+            }),
+          [
             {
-              text: `True. With interior angles ${p.a}° and ${p.b}°, the third is ${180 - p.a - p.b}°, and the exterior angle next to it is 180° − ${180 - p.a - p.b}° = ${p.a + p.b}°.`,
-              correct: true,
+              statement:
+                "An isosceles triangle has a top angle of 40°. Gil says each base angle is 70°.",
+              truth: true,
+              right: "True. (180 − 40) ÷ 2 = 70.",
+              wrong: [
+                ["False. Each is 40°.", "GEO.ISOSCELES.APEX-EQUALS-BASE"],
+                ["False. Each is 160°.", "GEO.ANGLES.TRIANGLE-360"],
+              ],
             },
             {
-              text: "False. It equals the angle next to it inside the triangle.",
-              code: "GEO.ANGLES.TRIANGLE-360",
+              claim: "The angles in a triangle add up to 180°.",
+              truth: "always",
+              right: "Always. They make a straight line when put together.",
+              wrong: [
+                ["Never. They add up to 360°.", "GEO.ANGLES.TRIANGLE-360"],
+                ["Sometimes. Only in right-angled triangles."],
+              ],
             },
             {
-              text: "False. The exterior angles of a triangle are all 180°.",
-              code: "GEO.ANGLES.TRIANGLE-360",
+              statement: "Two angles of a triangle are 50° and 60°. Ana says the third is 250°.",
+              truth: false,
+              right: "False. 180 − 50 − 60 = 70°.",
+              wrong: [
+                ["True. 360 − 110 = 250.", "GEO.ANGLES.TRIANGLE-360"],
+                ["True. Triangles add to 360°.", "GEO.ANGLES.TRIANGLE-360"],
+              ],
             },
           ],
-          solution: [
-            { say: "Angles on a straight line and angles in a triangle both total 180°." },
-          ],
-        });
+        );
     }
   },
 

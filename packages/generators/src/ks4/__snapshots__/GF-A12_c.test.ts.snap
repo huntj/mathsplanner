@@ -10,7 +10,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A12.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -83,7 +83,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A12.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -156,7 +156,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A12.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -251,7 +251,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A12.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -377,7 +377,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A12.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -503,7 +503,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A12.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -600,14 +600,14 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A12.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -618,14 +618,14 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "C",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -634,10 +634,19 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -645,7 +654,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. x = 0 is impossible (you cannot divide by 0), so the curve never reaches the y-axis; it gets closer and closer to it.",
+                  "v": "Sometimes. For very big x.",
                 },
               ],
               "id": "RA",
@@ -654,7 +663,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It crosses at y = 6.",
+                  "v": "Always. Every graph touches it.",
                 },
               ],
               "id": "RB",
@@ -663,7 +672,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every graph crosses the y-axis.",
+                  "v": "Never. 1 ÷ x is never 0.",
                 },
               ],
               "id": "RC",
@@ -675,7 +684,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.GRAPH.SHAPE",
@@ -683,7 +692,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.GRAPH.SHAPE",
@@ -693,7 +702,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -703,7 +712,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The axes are asymptotes of the reciprocal graph.",
+            "v": "Never. 1 ÷ x is never 0.",
           },
         ],
       },
@@ -711,15 +720,15 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says the graph of ",
+        "v": "The graph of ",
       },
       {
         "t": "math",
-        "v": "y = \\frac{6}{x}",
+        "v": "y = \\frac{1}{x}",
       },
       {
         "t": "text",
-        "v": " crosses the y-axis.",
+        "v": " touches the x-axis.",
       },
     ],
   },
@@ -731,7 +740,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A12.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -742,7 +751,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -769,7 +778,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It crosses at y = 4.",
+                  "v": "False. 6 ÷ 2 = 12.",
                 },
               ],
               "id": "RA",
@@ -778,7 +787,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. x = 0 is impossible (you cannot divide by 0), so the curve never reaches the y-axis; it gets closer and closer to it.",
+                  "v": "True. 6 ÷ 2 = 3.",
                 },
               ],
               "id": "RB",
@@ -787,7 +796,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every graph crosses the y-axis.",
+                  "v": "False. Reciprocal graphs have no points.",
                 },
               ],
               "id": "RC",
@@ -800,14 +809,6 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SHAPE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.GRAPH.SHAPE",
@@ -827,7 +828,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The axes are asymptotes of the reciprocal graph.",
+            "v": "True. 6 ÷ 2 = 3.",
           },
         ],
       },
@@ -835,27 +836,27 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says the graph of ",
+        "v": "Sam says the point (2, 3) lies on ",
       },
       {
         "t": "math",
-        "v": "y = \\frac{4}{x}",
+        "v": "y = \\frac{6}{x}",
       },
       {
         "t": "text",
-        "v": " crosses the y-axis.",
+        "v": ".",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A12.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -866,14 +867,14 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "C",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -882,10 +883,19 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -893,7 +903,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It crosses at y = 6.",
+                  "v": "Always. Every graph touches it.",
                 },
               ],
               "id": "RA",
@@ -902,7 +912,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every graph crosses the y-axis.",
+                  "v": "Never. 1 ÷ x is never 0.",
                 },
               ],
               "id": "RB",
@@ -911,7 +921,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. x = 0 is impossible (you cannot divide by 0), so the curve never reaches the y-axis; it gets closer and closer to it.",
+                  "v": "Sometimes. For very big x.",
                 },
               ],
               "id": "RC",
@@ -931,7 +941,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.GRAPH.SHAPE",
@@ -941,7 +951,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -951,7 +961,7 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The axes are asymptotes of the reciprocal graph.",
+            "v": "Never. 1 ÷ x is never 0.",
           },
         ],
       },
@@ -959,15 +969,15 @@ exports[`GF-A12.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says the graph of ",
+        "v": "The graph of ",
       },
       {
         "t": "math",
-        "v": "y = \\frac{6}{x}",
+        "v": "y = \\frac{1}{x}",
       },
       {
         "t": "text",
-        "v": " crosses the y-axis.",
+        "v": " touches the x-axis.",
       },
     ],
   },

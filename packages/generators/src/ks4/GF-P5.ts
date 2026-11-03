@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { numberAnswer } from "../shared/counting.ts";
 import { tableLatex } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** The spinner's true chance of red, which the pupils do not see. */
@@ -24,7 +25,7 @@ const NAMES = ["Ava", "Ben", "Cal", "Dee"] as const;
 
 export default defineGenerator<Params>({
   id: "GF-P5",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["PRO.SAMPLE.SMALL", "PRO.RELATIVE-FREQUENCY.EXACT"],
 
@@ -108,30 +109,64 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Sam rolls a dice ${p.rolls} times and gets ${p.sixes} sixes. Sam says the dice must be biased towards six.`,
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Sam rolls a dice ${p.rolls} times and gets ${p.sixes} sixes. Sam says the dice must be biased towards six.`,
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${p.rolls} rolls is too few to tell; results vary a lot in small samples. Sam needs many more rolls.`,
+                  correct: true,
+                },
+                {
+                  text: `True. A fair dice would give exactly ${p.rolls / 6} sixes.`,
+                  code: "PRO.RELATIVE-FREQUENCY.EXACT",
+                },
+                {
+                  text: `True. ${p.sixes} out of ${p.rolls} is more than a sixth, and that proves it.`,
+                  code: "PRO.SAMPLE.SMALL",
+                },
+              ],
+              solution: [
+                {
+                  say: "A small sample can easily stray from the theoretical probability; only a large sample is good evidence of bias.",
+                },
+              ],
+            }),
+          [
             {
-              text: `False. ${p.rolls} rolls is too few to tell; results vary a lot in small samples. Sam needs many more rolls.`,
-              correct: true,
+              statement:
+                "A spinner lands on blue 480 times in 1000 spins. Raj estimates P(blue) as 0.48.",
+              truth: true,
+              right: "True. Relative frequency = 480 ÷ 1000.",
+              wrong: [
+                ["False. It must be exactly 0.5.", "PRO.RELATIVE-FREQUENCY.EXACT"],
+                ["False. 1000 spins is too few.", "PRO.SAMPLE.SMALL"],
+              ],
             },
             {
-              text: `True. A fair dice would give exactly ${p.rolls / 6} sixes.`,
-              code: "PRO.RELATIVE-FREQUENCY.EXACT",
+              claim: "More trials give a more reliable estimate of a probability.",
+              truth: "always",
+              right: "Always. Chance effects even out over many trials.",
+              wrong: [
+                ["Never. Ten trials are enough.", "PRO.SAMPLE.SMALL"],
+                ["Sometimes. Only for dice."],
+              ],
             },
             {
-              text: `True. ${p.sixes} out of ${p.rolls} is more than a sixth, and that proves it.`,
-              code: "PRO.SAMPLE.SMALL",
+              statement: "A coin lands heads 7 times in 10 flips. Bea says it must be biased.",
+              truth: false,
+              right: "False. 10 flips is too few to tell; a fair coin can do this by chance.",
+              wrong: [
+                ["True. 7 is more than half.", "PRO.SAMPLE.SMALL"],
+                ["True. A fair coin gives exactly 5.", "PRO.RELATIVE-FREQUENCY.EXACT"],
+              ],
             },
           ],
-          solution: [
-            {
-              say: "A small sample can easily stray from the theoretical probability; only a large sample is good evidence of bias.",
-            },
-          ],
-        });
+        );
     }
   },
 

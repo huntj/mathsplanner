@@ -17,7 +17,7 @@ exports[`GF-G15.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G15.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -96,7 +96,7 @@ exports[`GF-G15.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G15.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -175,7 +175,7 @@ exports[`GF-G15.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G15.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -257,7 +257,7 @@ exports[`GF-G15.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G15.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -334,7 +334,7 @@ exports[`GF-G15.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G15.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -411,7 +411,7 @@ exports[`GF-G15.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G15.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -478,7 +478,7 @@ exports[`GF-G15.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G15.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -490,7 +490,7 @@ exports[`GF-G15.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -516,7 +516,7 @@ exports[`GF-G15.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The gap between the ends of the arms is wider.",
+                  "v": "False. The size of an angle is the amount of turn between the arms, not how long the arms are. Both are 40°.",
                 },
               ],
               "id": "RA",
@@ -525,7 +525,7 @@ exports[`GF-G15.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The size of an angle is the amount of turn between the arms, not how long the arms are. Both are 40°.",
+                  "v": "True. The gap between the ends of the arms is wider.",
                 },
               ],
               "id": "RB",
@@ -546,7 +546,7 @@ exports[`GF-G15.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.ANGLES.SIZE-BY-ARMS",
@@ -594,7 +594,115 @@ exports[`GF-G15.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G15.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Always use the outer scale.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Use the scale that starts at 0 on one arm of the angle.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Read the bigger number.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "GEO.PROTRACTOR.WRONG-SCALE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. Use the scale that starts at 0 on one arm of the angle.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Bea measures an angle using the protractor scale that starts at 0 on the arm. She reads 55°.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-G15.a",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -632,7 +740,7 @@ exports[`GF-G15.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The gap between the ends of the arms is wider.",
+                  "v": "True. The ruler starts at 1.",
                 },
               ],
               "id": "RA",
@@ -641,7 +749,7 @@ exports[`GF-G15.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Longer arms make a bigger angle.",
+                  "v": "True. Read where it ends.",
                 },
               ],
               "id": "RB",
@@ -650,7 +758,7 @@ exports[`GF-G15.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The size of an angle is the amount of turn between the arms, not how long the arms are. Both are 40°.",
+                  "v": "False. From 1 to 8 is 7 cm.",
                 },
               ],
               "id": "RC",
@@ -665,7 +773,7 @@ exports[`GF-G15.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "GEO.ANGLES.SIZE-BY-ARMS",
+            "code": "MEA.RULER.END",
             "feedback": [],
           },
           {
@@ -673,7 +781,7 @@ exports[`GF-G15.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "GEO.ANGLES.SIZE-BY-ARMS",
+            "code": "MEA.RULER.END",
             "feedback": [],
           },
         ],
@@ -690,7 +798,7 @@ exports[`GF-G15.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Extending the arms does not change the angle.",
+            "v": "False. From 1 to 8 is 7 cm.",
           },
         ],
       },
@@ -698,123 +806,7 @@ exports[`GF-G15.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Eve draws two angles of 40°, one with arms 3 cm long and one with arms 8 cm long. She says the second angle is bigger.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GF-G15.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Longer arms make a bigger angle.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. The size of an angle is the amount of turn between the arms, not how long the arms are. Both are 40°.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The gap between the ends of the arms is wider.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.ANGLES.SIZE-BY-ARMS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "GEO.ANGLES.SIZE-BY-ARMS",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Extending the arms does not change the angle.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Eve draws two angles of 40°, one with arms 3 cm long and one with arms 8 cm long. She says the second angle is bigger.",
+        "v": "Gus measures a line by starting his ruler at 1 cm. The line ends at 8 cm, so he says it is 8 cm long.",
       },
     ],
   },

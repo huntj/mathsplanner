@@ -10,7 +10,7 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A2.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -83,7 +83,7 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A2.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -156,7 +156,7 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A2.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -229,7 +229,7 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A2.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -310,7 +310,7 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A2.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -391,7 +391,7 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A2.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -472,7 +472,7 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A2.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -598,14 +598,14 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A2.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -623,7 +623,7 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -632,19 +632,10 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -652,7 +643,7 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Squaring always makes a number bigger.",
+                  "v": "True. 3a is 12, and 12² = 144.",
                 },
               ],
               "id": "RA",
@@ -661,7 +652,7 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Squaring a negative number makes it more negative.",
+                  "v": "True. (3 × 4)² = 144.",
                 },
               ],
               "id": "RB",
@@ -670,7 +661,7 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It is true for x = 3 (9 > 3) and x = −2 (4 > −2), but not for x = ½ (¼ < ½) or x = 1.",
+                  "v": "False. Square first: 3 × 16 = 48.",
                 },
               ],
               "id": "RC",
@@ -680,14 +671,6 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.SUBSTITUTE.NEGATIVE-SQUARE",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RB",
@@ -700,7 +683,7 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -710,7 +693,7 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Test values from different ranges: negative numbers, numbers between 0 and 1, and numbers above 1.",
+            "v": "False. Square first: 3 × 16 = 48.",
           },
         ],
       },
@@ -718,11 +701,19 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "For a number x, ",
+        "v": "When ",
       },
       {
         "t": "math",
-        "v": "x^2 > x",
+        "v": "a = 4",
+      },
+      {
+        "t": "text",
+        "v": ", Pam says ",
+      },
+      {
+        "t": "math",
+        "v": "3a^2 = 144",
       },
       {
         "t": "text",
@@ -738,7 +729,7 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A2.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -750,7 +741,7 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -794,7 +785,7 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Squaring always makes a number bigger.",
+                  "v": "Sometimes. It is true for x = 3 (9 > 3) and x = −2 (4 > −2), but not for x = ½ (¼ < ½) or x = 1.",
                 },
               ],
               "id": "RB",
@@ -803,7 +794,7 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. It is true for x = 3 (9 > 3) and x = −2 (4 > −2), but not for x = ½ (¼ < ½) or x = 1.",
+                  "v": "Always. Squaring always makes a number bigger.",
                 },
               ],
               "id": "RC",
@@ -823,7 +814,7 @@ exports[`GF-A2.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.SUBSTITUTE.NEGATIVE-SQUARE",

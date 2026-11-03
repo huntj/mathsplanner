@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-N2.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.NEGATIVE.SUBTRACT-NEGATIVE", "NPV.NEGATIVE.SIGN-RULE"],
 
@@ -64,23 +65,56 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["Subtracting a number makes the answer smaller."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["Subtracting a number makes the answer smaller."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: `Sometimes. Subtracting a positive number makes it smaller, but ${p.a} − (−${p.b}) = ${p.a + p.b}, which is bigger.`,
+                  correct: true,
+                },
+                {
+                  text: "Always. Subtracting means taking away.",
+                  code: "NPV.NEGATIVE.SUBTRACT-NEGATIVE",
+                },
+                { text: "Never. The answer stays the same size." },
+              ],
+              solution: [{ say: "Subtracting a negative number moves up the number line." }],
+            }),
+          [
             {
-              text: `Sometimes. Subtracting a positive number makes it smaller, but ${p.a} − (−${p.b}) = ${p.a + p.b}, which is bigger.`,
-              correct: true,
+              statement: "Jo says $-3 - (-5) = 2$.",
+              truth: true,
+              right: "True. Subtracting −5 is the same as adding 5: −3 + 5 = 2.",
+              wrong: [
+                ["False. It is −8.", "NPV.NEGATIVE.SUBTRACT-NEGATIVE"],
+                ["False. It is 8.", "NPV.NEGATIVE.SIGN-RULE"],
+              ],
             },
             {
-              text: "Always. Subtracting means taking away.",
-              code: "NPV.NEGATIVE.SUBTRACT-NEGATIVE",
+              statement: "Ben says $-4 \\times -3 = -12$.",
+              truth: false,
+              right: "False. A negative times a negative is positive: 12.",
+              wrong: [
+                ["True. Two negatives make a bigger negative.", "NPV.NEGATIVE.SIGN-RULE"],
+                ["True. Multiplying negatives gives a negative.", "NPV.NEGATIVE.SIGN-RULE"],
+              ],
             },
-            { text: "Never. The answer stays the same size." },
+            {
+              claim: "Dividing a negative number by a negative number gives a positive answer.",
+              truth: "always",
+              right: "Always. Like signs give a positive result.",
+              wrong: [
+                ["Never. It stays negative.", "NPV.NEGATIVE.SIGN-RULE"],
+                ["Sometimes. Only if the first is bigger."],
+              ],
+            },
           ],
-          solution: [{ say: "Subtracting a negative number moves up the number line." }],
-        });
+        );
     }
   },
 

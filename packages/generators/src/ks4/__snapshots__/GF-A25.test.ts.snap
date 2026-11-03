@@ -10,7 +10,7 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A25",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -87,7 +87,7 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A25",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -164,7 +164,7 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A25",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -241,7 +241,7 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A25",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -295,7 +295,7 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A25",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -349,7 +349,7 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A25",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -396,14 +396,14 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A25",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -415,13 +415,13 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -430,10 +430,19 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -441,7 +450,7 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. n = 1 gives 10, n = 2 gives 12, and it goes up by 2 each time.",
+                  "v": "Sometimes. Only if d = 1.",
                 },
               ],
               "id": "RA",
@@ -450,7 +459,7 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The constant is the first term, 10.",
+                  "v": "Never. It starts with the first term times n.",
                 },
               ],
               "id": "RB",
@@ -459,7 +468,7 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The nth term is n plus the difference.",
+                  "v": "Always. Each step adds d, so the rule has d times n.",
                 },
               ],
               "id": "RC",
@@ -477,19 +486,11 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
             "code": "ALG.SEQUENCE.POSITION-RULE",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.SEQUENCE.POSITION-RULE",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -499,7 +500,7 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Check an nth term by substituting n = 1 and n = 2.",
+            "v": "Always. Each step adds d, so the rule has d times n.",
           },
         ],
       },
@@ -507,15 +508,7 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ali says the nth term of 10, 12, 14, 16, … is ",
-      },
-      {
-        "t": "math",
-        "v": "2n + 8",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "The nth term of an arithmetic sequence going up by d starts with dn.",
       },
     ],
   },
@@ -527,7 +520,7 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A25",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -651,7 +644,7 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A25",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -663,7 +656,7 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -689,7 +682,7 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. n = 1 gives 3, n = 2 gives 1, and it goes up by -2 each time.",
+                  "v": "False. It is 5n + 3.",
                 },
               ],
               "id": "RA",
@@ -698,7 +691,7 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The constant is the first term, 3.",
+                  "v": "False. It is n + 3.",
                 },
               ],
               "id": "RB",
@@ -707,7 +700,7 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The nth term is n plus the difference.",
+                  "v": "True. It goes up by 3, and 3 × 1 + 2 = 5.",
                 },
               ],
               "id": "RC",
@@ -720,14 +713,6 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.SEQUENCE.POSITION-RULE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.POSITION-RULE",
@@ -747,7 +732,7 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Check an nth term by substituting n = 1 and n = 2.",
+            "v": "True. It goes up by 3, and 3 × 1 + 2 = 5.",
           },
         ],
       },
@@ -755,11 +740,11 @@ exports[`GF-A25 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ali says the nth term of 3, 1, -1, -3, … is ",
+        "v": "Bea says the nth term of 5, 8, 11, 14, … is ",
       },
       {
         "t": "math",
-        "v": "-2n + 5",
+        "v": "3n + 2",
       },
       {
         "t": "text",

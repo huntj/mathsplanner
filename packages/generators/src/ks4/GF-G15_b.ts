@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { tex } from "../shared/npv.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   scale: number;
@@ -21,7 +22,7 @@ const r = (v: number) => Number(v.toFixed(6));
 
 export default defineGenerator<Params>({
   id: "GF-G15.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.SCALE.DIVIDES", "MEA.CONVERT.FACTOR"],
 
@@ -98,27 +99,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            "On a map with scale ",
-            A.math(`1 : ${tex(p.scale)}`),
-            `, 1 cm on the map is ${tex(p.scale).replace(/\{,\}/g, " ")} km in real life.`,
-          ],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "On a map with scale ",
+                A.math(`1 : ${tex(p.scale)}`),
+                `, 1 cm on the map is ${tex(p.scale).replace(/\{,\}/g, " ")} km in real life.`,
+              ],
+              truth: "never",
+              reasons: [
+                {
+                  text: `Never. 1 cm on the map is ${tex(p.scale).replace(/\{,\}/g, " ")} cm in real life, which is ${r(p.scale / 100000)} km.`,
+                  correct: true,
+                },
+                {
+                  text: "Always. The scale tells you the number of kilometres.",
+                  code: "MEA.CONVERT.FACTOR",
+                },
+                {
+                  text: "Sometimes. It depends what units the map uses.",
+                  code: "MEA.CONVERT.FACTOR",
+                },
+              ],
+              solution: [{ say: "A ratio scale has the same units on both sides." }],
+            }),
+          [
             {
-              text: `Never. 1 cm on the map is ${tex(p.scale).replace(/\{,\}/g, " ")} cm in real life, which is ${r(p.scale / 100000)} km.`,
-              correct: true,
+              statement: "A map has scale 1 : 50,000. Kim says 4 cm on the map is 2 km.",
+              truth: true,
+              right: "True. 4 × 50,000 = 200,000 cm = 2 km.",
+              wrong: [
+                ["False. It is 200 km.", "MEA.CONVERT.FACTOR"],
+                ["False. It is 12,500 cm.", "GEO.SCALE.DIVIDES"],
+              ],
             },
             {
-              text: "Always. The scale tells you the number of kilometres.",
-              code: "MEA.CONVERT.FACTOR",
+              claim: "On a map, a bigger real distance is a longer line on the map.",
+              truth: "always",
+              right: "Always. Every real length is divided by the same scale factor.",
+              wrong: [
+                ["Never. Longer distances look shorter.", "GEO.SCALE.DIVIDES"],
+                ["Sometimes. Only near the middle."],
+              ],
             },
-            { text: "Sometimes. It depends what units the map uses.", code: "MEA.CONVERT.FACTOR" },
+            {
+              statement: "A plan has scale 1 : 100. Raj says a 5 m wall is 50 cm long on the plan.",
+              truth: false,
+              right: "False. 5 m = 500 cm, and 500 ÷ 100 = 5 cm.",
+              wrong: [
+                ["True. 5 × 100 = 500, then … 50.", "GEO.SCALE.DIVIDES"],
+                ["True. Divide by 10.", "MEA.CONVERT.FACTOR"],
+              ],
+            },
           ],
-          solution: [{ say: "A ratio scale has the same units on both sides." }],
-        });
+        );
     }
   },
 

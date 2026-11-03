@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -22,7 +23,7 @@ const trapezium = (p: Params) => ((p.a + p.b) * p.h) / 2;
 
 export default defineGenerator<Params>({
   id: "GF-A5.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SUBSTITUTE.ORDER", "ALG.EXPAND.FIRST-ONLY", "RAT.SCALE.AREA-LINEAR"],
 
@@ -93,30 +94,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Mo says that in ",
-            A.math("A = \\pi r^2"),
-            `, if the radius doubles from ${p.r} cm to ${2 * p.r} cm, the area doubles too.`,
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Mo says that in ",
+                A.math("A = \\pi r^2"),
+                `, if the radius doubles from ${p.r} cm to ${2 * p.r} cm, the area doubles too.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The radius is squared, so the area is multiplied by 2² = 4: from ${p.r * p.r}π to ${4 * p.r * p.r}π cm².`,
+                  correct: true,
+                },
+                {
+                  text: "True. Doubling one value in a formula doubles the answer.",
+                  code: "RAT.SCALE.AREA-LINEAR",
+                },
+                {
+                  text: "True. π stays the same, so the area changes like r.",
+                  code: "RAT.SCALE.AREA-LINEAR",
+                },
+              ],
+              solution: [{ say: "", math: `\\pi (2r)^2 = 4\\pi r^2` }],
+            }),
+          [
+            {
+              statement: "Using $v = u + at$ with u = 3, a = 4 and t = 5, Bea gets v = 23.",
+              truth: true,
+              right: "True. 3 + 4 × 5 = 3 + 20 = 23.",
+              wrong: [["False. It is 35.", "ALG.SUBSTITUTE.ORDER"], ["False. It is 12."]],
+            },
+            {
+              claim: "In $P = 2(l + w)$, doubling both l and w doubles P.",
+              truth: "always",
+              right: "Always. 2(2l + 2w) = 2 × 2(l + w).",
+              wrong: [
+                ["Never. P is multiplied by 4.", "RAT.SCALE.AREA-LINEAR"],
+                ["Sometimes. Only for squares."],
+              ],
+            },
+            {
+              statement: "Using $A = \\frac{1}{2}bh$ with b = 6 and h = 4, Dan gets A = 24.",
+              truth: false,
+              right: "False. ½ × 6 × 4 = 12.",
+              wrong: [
+                ["True. 6 × 4 = 24.", "ALG.SUBSTITUTE.ORDER"],
+                ["True. The half is just a label.", "ALG.EXPAND.FIRST-ONLY"],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: `False. The radius is squared, so the area is multiplied by 2² = 4: from ${p.r * p.r}π to ${4 * p.r * p.r}π cm².`,
-              correct: true,
-            },
-            {
-              text: "True. Doubling one value in a formula doubles the answer.",
-              code: "RAT.SCALE.AREA-LINEAR",
-            },
-            {
-              text: "True. π stays the same, so the area changes like r.",
-              code: "RAT.SCALE.AREA-LINEAR",
-            },
-          ],
-          solution: [{ say: "", math: `\\pi (2r)^2 = 4\\pi r^2` }],
-        });
+        );
     }
   },
 

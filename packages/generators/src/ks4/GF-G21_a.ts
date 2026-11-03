@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
 import { EXACT } from "../shared/trig.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const VALUES = ["\\frac{1}{2}", "\\frac{\\sqrt{2}}{2}", "\\frac{\\sqrt{3}}{2}"];
 
@@ -25,7 +26,7 @@ const PAIRS: [string, string, string, string][] = [
 
 export default defineGenerator<Params>({
   id: "GF-G21.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.TRIG.EXACT"],
 
@@ -70,20 +71,47 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["For an acute angle x, ", A.math("\\sin x = \\cos x"), "."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["For an acute angle x, ", A.math("\\sin x = \\cos x"), "."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: "Sometimes. It is true only at 45°, where both are √2/2. At 30°, sin is ½ and cos is √3/2.",
+                  correct: true,
+                },
+                { text: "Always. Sine and cosine are the same function.", code: "GEO.TRIG.EXACT" },
+                { text: "Never. Sine is always smaller than cosine.", code: "GEO.TRIG.EXACT" },
+              ],
+              solution: [{ say: "In a right isosceles triangle, opposite = adjacent." }],
+            }),
+          [
             {
-              text: "Sometimes. It is true only at 45°, where both are √2/2. At 30°, sin is ½ and cos is √3/2.",
-              correct: true,
+              statement: "Raj says $\\sin 30^\\circ = \\frac{1}{2}$.",
+              truth: true,
+              right: "True. It is one of the exact values to know.",
+              wrong: [["False. It is √3/2.", "GEO.TRIG.EXACT"], ["False. It is 30."]],
             },
-            { text: "Always. Sine and cosine are the same function.", code: "GEO.TRIG.EXACT" },
-            { text: "Never. Sine is always smaller than cosine.", code: "GEO.TRIG.EXACT" },
+            {
+              claim: "$\\cos 0^\\circ = 1$.",
+              truth: "always",
+              right: "Always. At 0° the adjacent side equals the hypotenuse.",
+              wrong: [["Never. It is 0.", "GEO.TRIG.EXACT"], ["Sometimes. In degrees only."]],
+            },
+            {
+              statement: "Kim says $\\sin 90^\\circ = 0$.",
+              truth: false,
+              right: "False. sin 90° = 1; cos 90° = 0.",
+              wrong: [
+                ["True. 90° is a right angle, so it is 0.", "GEO.TRIG.EXACT"],
+                ["True. sin and cos are swapped.", "GEO.TRIG.EXACT"],
+              ],
+            },
           ],
-          solution: [{ say: "In a right isosceles triangle, opposite = adjacent." }],
-        });
+        );
     }
   },
 

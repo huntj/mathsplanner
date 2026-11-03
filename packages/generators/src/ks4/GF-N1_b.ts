@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   x: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-N1.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.COMPARE.SIGN-DIRECTION", "NPV.BOUNDS.ENDS"],
 
@@ -76,23 +77,56 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Lou says ", A.math(`x \\ge ${p.b}`), ` means x is bigger than ${p.b}.`],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Lou says ", A.math(`x \\ge ${p.b}`), ` means x is bigger than ${p.b}.`],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ≥ means greater than or equal to, so x can be ${p.b} itself.`,
+                  correct: true,
+                },
+                { text: "True. ≥ and > mean the same thing.", code: "NPV.BOUNDS.ENDS" },
+                {
+                  text: `True. x could be anything less than ${p.b}.`,
+                  code: "NPV.COMPARE.SIGN-DIRECTION",
+                },
+              ],
+              solution: [{ say: "The line under the sign means “or equal to”." }],
+            }),
+          [
             {
-              text: `False. ≥ means greater than or equal to, so x can be ${p.b} itself.`,
-              correct: true,
+              statement: "Max says $x < 5$ includes $x = 4.9$.",
+              truth: true,
+              right: "True. 4.9 is less than 5.",
+              wrong: [
+                ["False. x must be a whole number.", "NPV.BOUNDS.ENDS"],
+                ["False. < means more than.", "NPV.COMPARE.SIGN-DIRECTION"],
+              ],
             },
-            { text: "True. ≥ and > mean the same thing.", code: "NPV.BOUNDS.ENDS" },
             {
-              text: `True. x could be anything less than ${p.b}.`,
-              code: "NPV.COMPARE.SIGN-DIRECTION",
+              claim: "If $a < b$, then $b > a$.",
+              truth: "always",
+              right: "Always. They say the same thing from the other side.",
+              wrong: [
+                ["Never. The signs point different ways.", "NPV.COMPARE.SIGN-DIRECTION"],
+                ["Sometimes. Only for positive numbers."],
+              ],
+            },
+            {
+              statement: "Ella says $-2 \\le x < 3$ includes $x = 3$.",
+              truth: false,
+              right: "False. x < 3 means 3 itself is not included.",
+              wrong: [
+                ["True. Both ends are included.", "NPV.BOUNDS.ENDS"],
+                ["True. < includes the end number.", "NPV.BOUNDS.ENDS"],
+              ],
             },
           ],
-          solution: [{ say: "The line under the sign means “or equal to”." }],
-        });
+        );
     }
   },
 

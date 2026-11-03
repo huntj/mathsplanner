@@ -10,7 +10,7 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R8",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -124,7 +124,7 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R8",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -238,7 +238,7 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R8",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -352,7 +352,7 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R8",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -452,7 +452,7 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R8",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -552,7 +552,7 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R8",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -652,7 +652,7 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R8",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -664,7 +664,7 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -690,7 +690,7 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Direct proportion needs a straight line through the origin. When x = 0, y = 6, not 0, so the ratio y : x keeps changing.",
+                  "v": "True. The gradient is the constant of proportion.",
                 },
               ],
               "id": "RA",
@@ -699,7 +699,7 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The gradient is the constant of proportion.",
+                  "v": "True. Every straight line shows direct proportion.",
                 },
               ],
               "id": "RB",
@@ -708,7 +708,7 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every straight line shows direct proportion.",
+                  "v": "False. Direct proportion needs a straight line through the origin. When x = 0, y = 6, not 0, so the ratio y : x keeps changing.",
                 },
               ],
               "id": "RC",
@@ -720,7 +720,7 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "RAT.PROPORTION.LINEAR-INTERCEPT",
@@ -728,7 +728,7 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "RAT.PROPORTION.LINEAR-INTERCEPT",
@@ -776,7 +776,123 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R8",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It needs a + c.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. It is y = kx, a straight line through the origin.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. y and x are equal.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "RAT.PROPORTION.LINEAR-INTERCEPT",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. It is y = kx, a straight line through the origin.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Bea says ",
+      },
+      {
+        "t": "math",
+        "v": "y = 5x",
+      },
+      {
+        "t": "text",
+        "v": " shows y in direct proportion to x.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-R8",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -814,7 +930,7 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Direct proportion needs a straight line through the origin. When x = 0, y = 3, not 0, so the ratio y : x keeps changing.",
+                  "v": "False. k = 5, so when x = 13, y = 65.",
                 },
               ],
               "id": "RA",
@@ -823,7 +939,7 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every straight line shows direct proportion.",
+                  "v": "True. Add 10 to both.",
                 },
               ],
               "id": "RB",
@@ -832,7 +948,7 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The gradient is the constant of proportion.",
+                  "v": "True. x went up 10, so y went up 10.",
                 },
               ],
               "id": "RC",
@@ -841,24 +957,7 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "RAT.PROPORTION.LINEAR-INTERCEPT",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "RAT.PROPORTION.LINEAR-INTERCEPT",
-            "feedback": [],
-          },
-        ],
+        "misconceptions": [],
         "prompt": [
           {
             "t": "text",
@@ -872,7 +971,7 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "x = 1 gives y = 5; x = 2 gives y = 7. Doubling x does not double y.",
+            "v": "False. k = 5, so when x = 13, y = 65.",
           },
         ],
       },
@@ -880,139 +979,7 @@ exports[`GF-R8 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ravi says ",
-      },
-      {
-        "t": "math",
-        "v": "y = 2x + 3",
-      },
-      {
-        "t": "text",
-        "v": " shows y in direct proportion to x, because its graph is a straight line.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GF-R8",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Every straight line shows direct proportion.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Direct proportion needs a straight line through the origin. When x = 0, y = 9, not 0, so the ratio y : x keeps changing.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The gradient is the constant of proportion.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "RAT.PROPORTION.LINEAR-INTERCEPT",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "RAT.PROPORTION.LINEAR-INTERCEPT",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "x = 1 gives y = 13; x = 2 gives y = 17. Doubling x does not double y.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Ravi says ",
-      },
-      {
-        "t": "math",
-        "v": "y = 4x + 9",
-      },
-      {
-        "t": "text",
-        "v": " shows y in direct proportion to x, because its graph is a straight line.",
+        "v": "y is directly proportional to x, and y = 15 when x = 3. Dev says y = 25 when x = 13.",
       },
     ],
   },

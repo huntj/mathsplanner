@@ -10,7 +10,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "CM-SG3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -83,7 +83,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "CM-SG3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -156,7 +156,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "CM-SG3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -251,7 +251,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "CM-SG3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -377,7 +377,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "CM-SG3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -503,7 +503,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "CM-SG3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -607,7 +607,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "CM-SG3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -619,7 +619,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -645,7 +645,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every graph crosses the y-axis.",
+                  "v": "False. It is a curve in two parts, a reciprocal graph.",
                 },
               ],
               "id": "RA",
@@ -654,7 +654,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It crosses at y = 4.",
+                  "v": "True. It is like y = 4x.",
                 },
               ],
               "id": "RB",
@@ -663,7 +663,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. x = 0 is impossible (you cannot divide by 0), so the curve never reaches the y-axis; it gets closer and closer to it.",
+                  "v": "True. There is no power of x.",
                 },
               ],
               "id": "RC",
@@ -675,15 +675,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SHAPE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.GRAPH.SHAPE",
@@ -703,7 +695,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The axes are asymptotes of the reciprocal graph.",
+            "v": "False. It is a curve in two parts, a reciprocal graph.",
           },
         ],
       },
@@ -711,7 +703,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says the graph of ",
+        "v": "Mia says the graph of ",
       },
       {
         "t": "math",
@@ -719,7 +711,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "text",
-        "v": " crosses the y-axis.",
+        "v": " is a straight line.",
       },
     ],
   },
@@ -731,7 +723,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "CM-SG3.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -742,7 +734,123 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 6 ÷ 2 = 3.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Reciprocal graphs have no points.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. 6 ÷ 2 = 12.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "ALG.GRAPH.SHAPE",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. 6 ÷ 2 = 3.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Sam says the point (2, 3) lies on ",
+      },
+      {
+        "t": "math",
+        "v": "y = \\frac{6}{x}",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "CM-SG3.b",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -769,7 +877,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every graph crosses the y-axis.",
+                  "v": "False. 6 ÷ 2 = 12.",
                 },
               ],
               "id": "RA",
@@ -778,7 +886,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It crosses at y = 6.",
+                  "v": "False. Reciprocal graphs have no points.",
                 },
               ],
               "id": "RB",
@@ -787,7 +895,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. x = 0 is impossible (you cannot divide by 0), so the curve never reaches the y-axis; it gets closer and closer to it.",
+                  "v": "True. 6 ÷ 2 = 3.",
                 },
               ],
               "id": "RC",
@@ -800,14 +908,6 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SHAPE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.GRAPH.SHAPE",
@@ -827,7 +927,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The axes are asymptotes of the reciprocal graph.",
+            "v": "True. 6 ÷ 2 = 3.",
           },
         ],
       },
@@ -835,7 +935,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says the graph of ",
+        "v": "Sam says the point (2, 3) lies on ",
       },
       {
         "t": "math",
@@ -843,131 +943,7 @@ exports[`CM-SG3.b > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "text",
-        "v": " crosses the y-axis.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "CM-SG3.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RB",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Every graph crosses the y-axis.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. x = 0 is impossible (you cannot divide by 0), so the curve never reaches the y-axis; it gets closer and closer to it.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. It crosses at y = 8.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SHAPE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.GRAPH.SHAPE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "The axes are asymptotes of the reciprocal graph.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Ivy says the graph of ",
-      },
-      {
-        "t": "math",
-        "v": "y = \\frac{8}{x}",
-      },
-      {
-        "t": "text",
-        "v": " crosses the y-axis.",
+        "v": ".",
       },
     ],
   },

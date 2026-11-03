@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import type { Coord } from "@mathsplanner/diagrams";
 import { chosenText } from "../shared/counting.ts";
 import { coord, distinctFrom } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: Coord;
@@ -19,7 +20,7 @@ const mid = (a: Coord, b: Coord): Coord => [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2
 
 export default defineGenerator<Params>({
   id: "GF-A8",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.MIDPOINT.DIFFERENCE", "NPV.NEGATIVE.SIGN-RULE"],
 
@@ -99,33 +100,72 @@ export default defineGenerator<Params>({
       }
       default: {
         const half: Coord = [(p.b[0] - p.a[0]) / 2, (p.b[1] - p.a[1]) / 2];
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ivy says the midpoint of ",
-            A.math(`${coord(p.a)}`),
-            " and ",
-            A.math(`${coord(p.b)}`),
-            " is ",
-            A.math(coord(half)),
-            ", halfway between the differences.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ivy says the midpoint of ",
+                A.math(`${coord(p.a)}`),
+                " and ",
+                A.math(`${coord(p.b)}`),
+                " is ",
+                A.math(coord(half)),
+                ", halfway between the differences.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The midpoint is the average of the coordinates: ${coord(m)}. Half the difference tells you how far to move from A.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Halve the difference in x and in y.",
+                  code: "ALG.MIDPOINT.DIFFERENCE",
+                },
+                {
+                  text: "True. Subtract the coordinates and halve.",
+                  code: "ALG.MIDPOINT.DIFFERENCE",
+                },
+              ],
+              solution: [
+                {
+                  say: "",
+                  math: `\\text{midpoint} = \\left(\\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2}\\right) = ${coord(m)}`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. The midpoint is the average of the coordinates: ${coord(m)}. Half the difference tells you how far to move from A.`,
-              correct: true,
+              statement: "Kit says the midpoint of (2, 4) and (8, 10) is (5, 7).",
+              truth: true,
+              right: "True. Average the coordinates: (2 + 8)/2 = 5 and (4 + 10)/2 = 7.",
+              wrong: [
+                ["False. It is (3, 3), half the differences.", "ALG.MIDPOINT.DIFFERENCE"],
+                ["False. It is (10, 14)."],
+              ],
             },
-            { text: "True. Halve the difference in x and in y.", code: "ALG.MIDPOINT.DIFFERENCE" },
-            { text: "True. Subtract the coordinates and halve.", code: "ALG.MIDPOINT.DIFFERENCE" },
-          ],
-          solution: [
             {
-              say: "",
-              math: `\\text{midpoint} = \\left(\\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2}\\right) = ${coord(m)}`,
+              claim: "The midpoint of a line segment is halfway along it.",
+              truth: "always",
+              right: "Always. That is what midpoint means.",
+              wrong: [
+                ["Never. It is at one end.", "ALG.MIDPOINT.DIFFERENCE"],
+                ["Sometimes. Only for horizontal lines."],
+              ],
+            },
+            {
+              statement: "Ana says the midpoint of (−4, 1) and (2, 5) is (3, 2).",
+              truth: false,
+              right: "False. (−4 + 2)/2 = −1 and (1 + 5)/2 = 3: the midpoint is (−1, 3).",
+              wrong: [
+                ["True. Half the differences.", "ALG.MIDPOINT.DIFFERENCE"],
+                ["True. Ignore the minus sign.", "NPV.NEGATIVE.SIGN-RULE"],
+              ],
             },
           ],
-        });
+        );
       }
     }
   },

@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const KINDS = [
   { what: "always odd", right: "2n + 1", wrong: ["n + 1", "2n"] },
@@ -21,7 +22,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-A6.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.PROOF.EXAMPLES", "ALG.EXPAND.BINOMIAL-TWO-TERMS"],
 
@@ -71,25 +72,63 @@ export default defineGenerator<Params>({
           solution: [{ say: "", math: `(4n^2 + 4n + 1) - (4n^2 - 4n + 1) = 8n` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Nia checks the claim "n² + n is always even" for n = 1 to ${p.k} and says this proves it.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Nia checks the claim "n² + n is always even" for n = 1 to ${p.k} and says this proves it.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. Examples cannot prove it for every n. An algebraic argument does: n² + n = n(n + 1), a product of consecutive whole numbers, one of which is even.",
+                  correct: true,
+                },
+                {
+                  text: `True. ${p.k} examples are enough to prove it.`,
+                  code: "ALG.PROOF.EXAMPLES",
+                },
+                {
+                  text: "True. If it works for small numbers it works for all.",
+                  code: "ALG.PROOF.EXAMPLES",
+                },
+              ],
+              solution: [{ say: "The claim is true, but only the algebra proves it." }],
+            }),
+          [
             {
-              text: "False. Examples cannot prove it for every n. An algebraic argument does: n² + n = n(n + 1), a product of consecutive whole numbers, one of which is even.",
-              correct: true,
+              statement:
+                "To show 'the sum of two even numbers is even', Ola writes $2a + 2b = 2(a + b)$.",
+              truth: true,
+              right: "True. That shows the sum is 2 times a whole number, so it is even.",
+              wrong: [
+                ["False. She must try examples.", "ALG.PROOF.EXAMPLES"],
+                ["False. 2a + 2b = 4ab.", "ALG.EXPAND.BINOMIAL-TWO-TERMS"],
+              ],
             },
-            { text: `True. ${p.k} examples are enough to prove it.`, code: "ALG.PROOF.EXAMPLES" },
             {
-              text: "True. If it works for small numbers it works for all.",
-              code: "ALG.PROOF.EXAMPLES",
+              claim: "One counter-example is enough to show a claim is false.",
+              truth: "always",
+              right: "Always. A single case where it fails means it is not true for all.",
+              wrong: [
+                ["Never. You need many.", "ALG.PROOF.EXAMPLES"],
+                ["Sometimes. Only for even numbers."],
+              ],
+            },
+            {
+              statement: "Leo checks a claim for 10 numbers and says it is proved for all numbers.",
+              truth: false,
+              right:
+                "False. Checking examples cannot prove it for every number; a proof needs algebra.",
+              wrong: [
+                ["True. Ten examples are enough.", "ALG.PROOF.EXAMPLES"],
+                ["True. If it works for 10, it always works.", "ALG.PROOF.EXAMPLES"],
+              ],
             },
           ],
-          solution: [{ say: "The claim is true, but only the algebra proves it." }],
-        });
+        );
     }
   },
 

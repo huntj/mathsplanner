@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const PCTS = [5, 10, 15, 20, 25, 30, 40, 60];
 
@@ -21,7 +22,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "GF-R9.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.PERCENT.CHANGE-BASE"],
 
@@ -77,25 +78,61 @@ export default defineGenerator<Params>({
       default: {
         const now = (p.old * (100 + p.pct)) / 100;
         const back = r1(((now - p.old) / now) * 100);
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `A price goes up from £${p.old} to £${now}, then back down to £${p.old}. Tom says the rise and the fall are both ${p.pct}%.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `A price goes up from £${p.old} to £${now}, then back down to £${p.old}. Tom says the rise and the fall are both ${p.pct}%.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The fall is £${now - p.old} out of £${now}, which is about ${back}%: a smaller percentage of a bigger amount.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The amount of money is the same both ways.",
+                  code: "RAT.PERCENT.CHANGE-BASE",
+                },
+                {
+                  text: "True. Going back undoes the percentage.",
+                  code: "RAT.PERCENT.CHANGE-BASE",
+                },
+              ],
+              solution: [{ say: "A percentage change always uses the value before that change." }],
+            }),
+          [
             {
-              text: `False. The fall is £${now - p.old} out of £${now}, which is about ${back}%: a smaller percentage of a bigger amount.`,
-              correct: true,
+              statement: "A price rises from £40 to £50. Kai says this is a 25% increase.",
+              truth: true,
+              right: "True. The rise is £10, and 10/40 = 25%.",
+              wrong: [
+                ["False. It is 20%, as 10/50 = 20%.", "RAT.PERCENT.CHANGE-BASE"],
+                ["False. It is 10%."],
+              ],
             },
             {
-              text: "True. The amount of money is the same both ways.",
-              code: "RAT.PERCENT.CHANGE-BASE",
+              claim: "A percentage change is worked out as a percentage of the original amount.",
+              truth: "always",
+              right: "Always. Divide the change by the starting value.",
+              wrong: [
+                ["Never. Use the new amount.", "RAT.PERCENT.CHANGE-BASE"],
+                ["Sometimes. Only for increases."],
+              ],
             },
-            { text: "True. Going back undoes the percentage.", code: "RAT.PERCENT.CHANGE-BASE" },
+            {
+              statement: "A price falls from £80 to £60. Mia says this is a 33% decrease.",
+              truth: false,
+              right: "False. The fall is £20, and 20/80 = 25%.",
+              wrong: [
+                ["True. 20/60 is about 33%.", "RAT.PERCENT.CHANGE-BASE"],
+                ["True. Divide by the new price.", "RAT.PERCENT.CHANGE-BASE"],
+              ],
+            },
           ],
-          solution: [{ say: "A percentage change always uses the value before that change." }],
-        });
+        );
       }
     }
   },

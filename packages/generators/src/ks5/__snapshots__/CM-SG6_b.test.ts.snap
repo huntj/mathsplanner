@@ -384,7 +384,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
@@ -402,14 +402,14 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -418,10 +418,19 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -429,7 +438,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It goes up each time.",
+                  "v": "Always. Its nth term has an n² term.",
                 },
               ],
               "id": "RA",
@@ -438,7 +447,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The terms are all even.",
+                  "v": "Sometimes. Only if the difference is 2.",
                 },
               ],
               "id": "RB",
@@ -447,7 +456,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The differences 4, 6, 8, 10 increase by 2 each time, so it is a quadratic sequence (nth term n² + n).",
+                  "v": "Never. It is arithmetic.",
                 },
               ],
               "id": "RC",
@@ -459,15 +468,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.SEQUENCE.TYPE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.TYPE",
@@ -477,7 +478,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -487,7 +488,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "An arithmetic sequence has a constant first difference.",
+            "v": "Always. Its nth term has an n² term.",
           },
         ],
       },
@@ -495,12 +496,12 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Gus says 2, 6, 12, 20, 30, … is an arithmetic sequence.",
+        "v": "A sequence with a constant second difference is quadratic.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
@@ -518,14 +519,14 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -534,10 +535,19 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -545,7 +555,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It goes up each time.",
+                  "v": "Sometimes. Only if the difference is 2.",
                 },
               ],
               "id": "RA",
@@ -554,7 +564,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The terms are all even.",
+                  "v": "Always. Its nth term has an n² term.",
                 },
               ],
               "id": "RB",
@@ -563,7 +573,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The differences 4, 6, 8, 10 increase by 2 each time, so it is a quadratic sequence (nth term n² + n).",
+                  "v": "Never. It is arithmetic.",
                 },
               ],
               "id": "RC",
@@ -575,15 +585,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.SEQUENCE.TYPE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.TYPE",
@@ -593,7 +595,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -603,7 +605,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "An arithmetic sequence has a constant first difference.",
+            "v": "Always. Its nth term has an n² term.",
           },
         ],
       },
@@ -611,7 +613,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Gus says 2, 6, 12, 20, 30, … is an arithmetic sequence.",
+        "v": "A sequence with a constant second difference is quadratic.",
       },
     ],
   },
@@ -635,7 +637,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -661,7 +663,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The terms are all even.",
+                  "v": "True. Any increasing sequence is quadratic.",
                 },
               ],
               "id": "RA",
@@ -670,7 +672,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The differences 4, 6, 8, 10 increase by 2 each time, so it is a quadratic sequence (nth term n² + n).",
+                  "v": "True. It grows quickly.",
                 },
               ],
               "id": "RB",
@@ -679,7 +681,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It goes up each time.",
+                  "v": "False. It goes up by 4 each time, so it is arithmetic (linear).",
                 },
               ],
               "id": "RC",
@@ -691,15 +693,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.SEQUENCE.TYPE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.TYPE",
@@ -719,7 +713,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "An arithmetic sequence has a constant first difference.",
+            "v": "False. It goes up by 4 each time, so it is arithmetic (linear).",
           },
         ],
       },
@@ -727,7 +721,7 @@ exports[`CM-SG6.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Gus says 2, 6, 12, 20, 30, … is an arithmetic sequence.",
+        "v": "Sol says 3, 7, 11, 15, … is a quadratic sequence.",
       },
     ],
   },

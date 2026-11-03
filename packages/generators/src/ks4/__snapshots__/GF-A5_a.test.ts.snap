@@ -10,7 +10,7 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A5.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -104,7 +104,7 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A5.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -198,7 +198,7 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A5.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -292,7 +292,7 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A5.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -378,7 +378,7 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A5.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -464,7 +464,7 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A5.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -550,7 +550,7 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A5.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -561,8 +561,8 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -588,7 +588,7 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The radius is squared, so the area is multiplied by 2² = 4: from 25π to 100π cm².",
+                  "v": "False. It is 35.",
                 },
               ],
               "id": "RA",
@@ -597,7 +597,7 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Doubling one value in a formula doubles the answer.",
+                  "v": "True. 3 + 4 × 5 = 3 + 20 = 23.",
                 },
               ],
               "id": "RB",
@@ -606,7 +606,7 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. π stays the same, so the area changes like r.",
+                  "v": "False. It is 12.",
                 },
               ],
               "id": "RC",
@@ -618,18 +618,10 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "RAT.SCALE.AREA-LINEAR",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "RAT.SCALE.AREA-LINEAR",
+            "code": "ALG.SUBSTITUTE.ORDER",
             "feedback": [],
           },
         ],
@@ -643,34 +635,38 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "\\pi (2r)^2 = 4\\pi r^2",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "True. 3 + 4 × 5 = 3 + 20 = 23.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Mo says that in ",
+        "v": "Using ",
       },
       {
         "t": "math",
-        "v": "A = \\pi r^2",
+        "v": "v = u + at",
       },
       {
         "t": "text",
-        "v": ", if the radius doubles from 5 cm to 10 cm, the area doubles too.",
+        "v": " with u = 3, a = 4 and t = 5, Bea gets v = 23.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A5.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -681,14 +677,14 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -697,10 +693,19 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -708,7 +713,7 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The radius is squared, so the area is multiplied by 2² = 4: from 25π to 100π cm².",
+                  "v": "Always. 2(2l + 2w) = 2 × 2(l + w).",
                 },
               ],
               "id": "RA",
@@ -717,7 +722,7 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. π stays the same, so the area changes like r.",
+                  "v": "Never. P is multiplied by 4.",
                 },
               ],
               "id": "RB",
@@ -726,7 +731,7 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Doubling one value in a formula doubles the answer.",
+                  "v": "Sometimes. Only for squares.",
                 },
               ],
               "id": "RC",
@@ -744,41 +749,37 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
             "code": "RAT.SCALE.AREA-LINEAR",
             "feedback": [],
           },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "RAT.SCALE.AREA-LINEAR",
-            "feedback": [],
-          },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
     ],
     "solution": [
       {
-        "math": "\\pi (2r)^2 = 4\\pi r^2",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. 2(2l + 2w) = 2 × 2(l + w).",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Mo says that in ",
+        "v": "In ",
       },
       {
         "t": "math",
-        "v": "A = \\pi r^2",
+        "v": "P = 2(l + w)",
       },
       {
         "t": "text",
-        "v": ", if the radius doubles from 5 cm to 10 cm, the area doubles too.",
+        "v": ", doubling both l and w doubles P.",
       },
     ],
   },
@@ -790,7 +791,7 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A5.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -828,7 +829,7 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. π stays the same, so the area changes like r.",
+                  "v": "True. 6 × 4 = 24.",
                 },
               ],
               "id": "RA",
@@ -837,7 +838,7 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The radius is squared, so the area is multiplied by 2² = 4: from 9π to 36π cm².",
+                  "v": "False. ½ × 6 × 4 = 12.",
                 },
               ],
               "id": "RB",
@@ -846,7 +847,7 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Doubling one value in a formula doubles the answer.",
+                  "v": "True. The half is just a label.",
                 },
               ],
               "id": "RC",
@@ -861,7 +862,7 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "RAT.SCALE.AREA-LINEAR",
+            "code": "ALG.SUBSTITUTE.ORDER",
             "feedback": [],
           },
           {
@@ -869,7 +870,7 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "RAT.SCALE.AREA-LINEAR",
+            "code": "ALG.EXPAND.FIRST-ONLY",
             "feedback": [],
           },
         ],
@@ -883,22 +884,26 @@ exports[`GF-A5.a > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "\\pi (2r)^2 = 4\\pi r^2",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. ½ × 6 × 4 = 12.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Mo says that in ",
+        "v": "Using ",
       },
       {
         "t": "math",
-        "v": "A = \\pi r^2",
+        "v": "A = \\frac{1}{2}bh",
       },
       {
         "t": "text",
-        "v": ", if the radius doubles from 3 cm to 6 cm, the area doubles too.",
+        "v": " with b = 6 and h = 4, Dan gets A = 24.",
       },
     ],
   },

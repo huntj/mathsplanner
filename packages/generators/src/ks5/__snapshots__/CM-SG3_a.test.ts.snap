@@ -32,7 +32,7 @@ exports[`CM-SG3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "CM-SG3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -180,7 +180,7 @@ exports[`CM-SG3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "CM-SG3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -328,7 +328,7 @@ exports[`CM-SG3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "CM-SG3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -476,7 +476,7 @@ exports[`CM-SG3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "CM-SG3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -576,7 +576,7 @@ exports[`CM-SG3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "CM-SG3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -676,7 +676,7 @@ exports[`CM-SG3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "CM-SG3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -754,7 +754,7 @@ exports[`CM-SG3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "CM-SG3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -766,7 +766,7 @@ exports[`CM-SG3.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -792,7 +792,7 @@ exports[`CM-SG3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. y = 0 when a bracket is 0: x = 2 or x = 4.",
+                  "v": "True. The signs stay the same.",
                 },
               ],
               "id": "RA",
@@ -801,7 +801,7 @@ exports[`CM-SG3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The roots are the numbers in the brackets.",
+                  "v": "False. x + 5 = 0 when x = −5, and x − 1 = 0 when x = 1.",
                 },
               ],
               "id": "RB",
@@ -810,7 +810,7 @@ exports[`CM-SG3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Roots are where the curve crosses the y-axis.",
+                  "v": "True. Read the numbers in the brackets.",
                 },
               ],
               "id": "RC",
@@ -822,7 +822,7 @@ exports[`CM-SG3.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.QUADRATIC.ROOT-SIGN",
@@ -833,7 +833,7 @@ exports[`CM-SG3.a > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "ALG.QUADRATIC.TURNING",
+            "code": "ALG.QUADRATIC.ROOT-SIGN",
             "feedback": [],
           },
         ],
@@ -850,7 +850,7 @@ exports[`CM-SG3.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Check: x = 2 makes the first bracket 0.",
+            "v": "False. x + 5 = 0 when x = −5, and x − 1 = 0 when x = 1.",
           },
         ],
       },
@@ -858,15 +858,15 @@ exports[`CM-SG3.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Jo says the roots of ",
+        "v": "Gil says the roots of ",
       },
       {
         "t": "math",
-        "v": "y = (x - 2)(x - 4)",
+        "v": "y = (x + 5)(x - 1)",
       },
       {
         "t": "text",
-        "v": " are x = -2 and x = -4.",
+        "v": " are x = 5 and x = −1.",
       },
     ],
   },
@@ -878,131 +878,7 @@ exports[`CM-SG3.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "CM-SG3.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Roots are where the curve crosses the y-axis.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The roots are the numbers in the brackets.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. y = 0 when a bracket is 0: x = 1 or x = 3.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.QUADRATIC.TURNING",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.QUADRATIC.ROOT-SIGN",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Check: x = 1 makes the first bracket 0.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Jo says the roots of ",
-      },
-      {
-        "t": "math",
-        "v": "y = (x - 1)(x - 3)",
-      },
-      {
-        "t": "text",
-        "v": " are x = -1 and x = -3.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "CM-SG3.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1049,7 +925,7 @@ exports[`CM-SG3.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. y = 0 when a bracket is 0: x = -4 or x = -2.",
+                  "v": "False. y = 0 when a bracket is 0: x = 1 or x = 3.",
                 },
               ],
               "id": "RB",
@@ -1098,7 +974,7 @@ exports[`CM-SG3.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Check: x = -4 makes the first bracket 0.",
+            "v": "Check: x = 1 makes the first bracket 0.",
           },
         ],
       },
@@ -1110,11 +986,128 @@ exports[`CM-SG3.a > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "math",
-        "v": "y = (x + 4)(x + 2)",
+        "v": "y = (x - 1)(x - 3)",
       },
       {
         "t": "text",
-        "v": " are x = 4 and x = 2.",
+        "v": " are x = -1 and x = -3.",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "CM-SG3.a",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. They are where it crosses the y-axis.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. At the roots y = 0.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only for U-shaped graphs.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "ALG.QUADRATIC.TURNING",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. At the roots y = 0.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The roots of a quadratic are where its graph crosses the x-axis.",
       },
     ],
   },

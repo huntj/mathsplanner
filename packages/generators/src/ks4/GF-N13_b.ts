@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   s: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-N13.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.COMPOUND-UNIT.ARRANGEMENT"],
 
@@ -75,22 +76,61 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["If you travel twice as far in twice the time, your average speed doubles."],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["If you travel twice as far in twice the time, your average speed doubles."],
+              truth: "never",
+              reasons: [
+                {
+                  text: `Never. Speed = distance ÷ time, and doubling both leaves it the same: ${2 * p.s * p.t} ÷ ${2 * p.t} = ${p.s}.`,
+                  correct: true,
+                },
+                {
+                  text: "Always. You have gone twice as far.",
+                  code: "RAT.COMPOUND-UNIT.ARRANGEMENT",
+                },
+                { text: "Sometimes. It depends how fast you started." },
+              ],
+              solution: [
+                {
+                  say: "Doubling the top and the bottom of a division does not change the answer.",
+                },
+              ],
+            }),
+          [
             {
-              text: `Never. Speed = distance ÷ time, and doubling both leaves it the same: ${2 * p.s * p.t} ÷ ${2 * p.t} = ${p.s}.`,
-              correct: true,
+              statement:
+                "A car travels 150 km in 2.5 hours. Ivy says its average speed is 60 km/h.",
+              truth: true,
+              right: "True. 150 ÷ 2.5 = 60.",
+              wrong: [
+                ["False. It is 375 km/h.", "RAT.COMPOUND-UNIT.ARRANGEMENT"],
+                ["False. It is 0.017 km/h.", "RAT.COMPOUND-UNIT.ARRANGEMENT"],
+              ],
             },
-            { text: "Always. You have gone twice as far.", code: "RAT.COMPOUND-UNIT.ARRANGEMENT" },
-            { text: "Sometimes. It depends how fast you started." },
+            {
+              statement: "A cyclist rides at 12 km/h for 30 minutes. Leo says she goes 360 km.",
+              truth: false,
+              right: "False. 30 minutes is 0.5 hours: 12 × 0.5 = 6 km.",
+              wrong: [
+                ["True. 12 × 30 = 360.", "RAT.COMPOUND-UNIT.ARRANGEMENT"],
+                ["True. Distance is speed times time."],
+              ],
+            },
+            {
+              claim: "Doubling your speed for the same distance halves the time.",
+              truth: "always",
+              right: "Always. time = distance ÷ speed.",
+              wrong: [
+                ["Never. It doubles the time.", "RAT.COMPOUND-UNIT.ARRANGEMENT"],
+                ["Sometimes. Only for short trips."],
+              ],
+            },
           ],
-          solution: [
-            { say: "Doubling the top and the bottom of a division does not change the answer." },
-          ],
-        });
+        );
     }
   },
 

@@ -10,7 +10,7 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A8",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -128,7 +128,7 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A8",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -246,7 +246,7 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A8",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -341,7 +341,7 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A8",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -463,7 +463,7 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A8",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -585,7 +585,7 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A8",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -685,7 +685,7 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A8",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -696,8 +696,8 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -723,7 +723,7 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The midpoint is the average of the coordinates: (1, 4). Half the difference tells you how far to move from A.",
+                  "v": "False. It is (10, 14).",
                 },
               ],
               "id": "RA",
@@ -732,7 +732,7 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Subtract the coordinates and halve.",
+                  "v": "True. Average the coordinates: (2 + 8)/2 = 5 and (4 + 10)/2 = 7.",
                 },
               ],
               "id": "RB",
@@ -741,7 +741,7 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Halve the difference in x and in y.",
+                  "v": "False. It is (3, 3), half the differences.",
                 },
               ],
               "id": "RC",
@@ -751,14 +751,6 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.MIDPOINT.DIFFERENCE",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -778,38 +770,18 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "\\text{midpoint} = \\left(\\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2}\\right) = (1, 4)",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "True. Average the coordinates: (2 + 8)/2 = 5 and (4 + 10)/2 = 7.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says the midpoint of ",
-      },
-      {
-        "t": "math",
-        "v": "(2, -1)",
-      },
-      {
-        "t": "text",
-        "v": " and ",
-      },
-      {
-        "t": "math",
-        "v": "(0, 9)",
-      },
-      {
-        "t": "text",
-        "v": " is ",
-      },
-      {
-        "t": "math",
-        "v": "(-1, 5)",
-      },
-      {
-        "t": "text",
-        "v": ", halfway between the differences.",
+        "v": "Kit says the midpoint of (2, 4) and (8, 10) is (5, 7).",
       },
     ],
   },
@@ -821,7 +793,7 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A8",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -833,7 +805,7 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -859,7 +831,7 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Halve the difference in x and in y.",
+                  "v": "True. Half the differences.",
                 },
               ],
               "id": "RA",
@@ -868,7 +840,7 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Subtract the coordinates and halve.",
+                  "v": "False. (−4 + 2)/2 = −1 and (1 + 5)/2 = 3: the midpoint is (−1, 3).",
                 },
               ],
               "id": "RB",
@@ -877,7 +849,7 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The midpoint is the average of the coordinates: (-7, 3). Half the difference tells you how far to move from A.",
+                  "v": "True. Ignore the minus sign.",
                 },
               ],
               "id": "RC",
@@ -897,10 +869,10 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "ALG.MIDPOINT.DIFFERENCE",
+            "code": "NPV.NEGATIVE.SIGN-RULE",
             "feedback": [],
           },
         ],
@@ -914,38 +886,18 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "\\text{midpoint} = \\left(\\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2}\\right) = (-7, 3)",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. (−4 + 2)/2 = −1 and (1 + 5)/2 = 3: the midpoint is (−1, 3).",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says the midpoint of ",
-      },
-      {
-        "t": "math",
-        "v": "(-3, 1)",
-      },
-      {
-        "t": "text",
-        "v": " and ",
-      },
-      {
-        "t": "math",
-        "v": "(-11, 5)",
-      },
-      {
-        "t": "text",
-        "v": " is ",
-      },
-      {
-        "t": "math",
-        "v": "(-4, 2)",
-      },
-      {
-        "t": "text",
-        "v": ", halfway between the differences.",
+        "v": "Ana says the midpoint of (−4, 1) and (2, 5) is (3, 2).",
       },
     ],
   },
@@ -957,7 +909,7 @@ exports[`GF-A8 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A8",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

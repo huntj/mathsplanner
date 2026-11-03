@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { lineLatex, signedWrongs } from "../shared/alg.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   m: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-A9.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.LINE.M-C"],
 
@@ -82,26 +83,59 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            "The lines ",
-            A.math(lineLatex(p.m, p.c)),
-            " and ",
-            A.math(lineLatex(p.m, p.k)),
-            " meet at exactly one point.",
-          ],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "The lines ",
+                A.math(lineLatex(p.m, p.c)),
+                " and ",
+                A.math(lineLatex(p.m, p.k)),
+                " meet at exactly one point.",
+              ],
+              truth: "never",
+              reasons: [
+                {
+                  text: `Never. They have the same gradient, ${p.m}, but different intercepts, so they are parallel and never meet.`,
+                  correct: true,
+                },
+                { text: "Always. Any two straight lines cross somewhere.", code: "ALG.LINE.M-C" },
+                { text: "Sometimes. It depends how far the lines are drawn." },
+              ],
+              solution: [{ say: "Setting them equal gives an equation with no solution." }],
+            }),
+          [
             {
-              text: `Never. They have the same gradient, ${p.m}, but different intercepts, so they are parallel and never meet.`,
-              correct: true,
+              statement: "Leo says the lines $y = 2x + 1$ and $y = 2x + 5$ are parallel.",
+              truth: true,
+              right: "True. They have the same gradient, 2.",
+              wrong: [
+                ["False. They have different intercepts.", "ALG.LINE.M-C"],
+                ["False. They cross at x = 2."],
+              ],
             },
-            { text: "Always. Any two straight lines cross somewhere.", code: "ALG.LINE.M-C" },
-            { text: "Sometimes. It depends how far the lines are drawn." },
+            {
+              claim: "Two lines with different gradients meet at exactly one point.",
+              truth: "always",
+              right: "Always. They are not parallel, and two straight lines can only cross once.",
+              wrong: [
+                ["Sometimes. They might never meet.", "ALG.LINE.M-C"],
+                ["Never. They need the same gradient."],
+              ],
+            },
+            {
+              statement: "Kim says $y = 3x + 2$ and $y = 2x + 3$ are parallel.",
+              truth: false,
+              right: "False. Their gradients are 3 and 2.",
+              wrong: [
+                ["True. They use the same numbers.", "ALG.LINE.M-C"],
+                ["True. Both slope upwards."],
+              ],
+            },
           ],
-          solution: [{ say: "Setting them equal gives an equation with no solution." }],
-        });
+        );
     }
   },
 

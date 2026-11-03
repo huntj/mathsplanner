@@ -10,7 +10,7 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G25.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -123,7 +123,7 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G25.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -236,7 +236,7 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G25.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -349,7 +349,7 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G25.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -470,7 +470,7 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G25.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -591,7 +591,7 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G25.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -712,7 +712,7 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G25.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -833,14 +833,14 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G25.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -858,7 +858,7 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -867,10 +867,19 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -878,7 +887,7 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every part of a changes sign, so the length stays the same and the direction reverses.",
+                  "v": "Always. It is twice as long, in the same direction.",
                 },
               ],
               "id": "RA",
@@ -887,7 +896,7 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. −a is shorter than a.",
+                  "v": "Sometimes. Only for short vectors.",
                 },
               ],
               "id": "RB",
@@ -896,7 +905,7 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Only the top number changes sign.",
+                  "v": "Never. It points the other way.",
                 },
               ],
               "id": "RC",
@@ -908,25 +917,17 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "GEO.VECTOR.SCALAR-ONE",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "GEO.VECTOR.SCALAR-ONE",
+            "code": "NPV.NEGATIVE.SIGN-RULE",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -936,7 +937,7 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A negative scalar reverses the direction; its size scales the length.",
+            "v": "Always. It is twice as long, in the same direction.",
           },
         ],
       },
@@ -944,11 +945,11 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "math",
-        "v": "-\\mathbf{a}",
+        "v": "2\\mathbf{a}",
       },
       {
         "t": "text",
-        "v": " is the same length as ",
+        "v": " points in the same direction as ",
       },
       {
         "t": "math",
@@ -956,19 +957,19 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "text",
-        "v": " but points in the opposite direction.",
+        "v": ".",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G25.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -986,7 +987,7 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -995,10 +996,19 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1006,7 +1016,7 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. −a is shorter than a.",
+                  "v": "Sometimes. Only for short vectors.",
                 },
               ],
               "id": "RA",
@@ -1015,7 +1025,7 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every part of a changes sign, so the length stays the same and the direction reverses.",
+                  "v": "Always. It is twice as long, in the same direction.",
                 },
               ],
               "id": "RB",
@@ -1024,7 +1034,7 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Only the top number changes sign.",
+                  "v": "Never. It points the other way.",
                 },
               ],
               "id": "RC",
@@ -1036,25 +1046,17 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.VECTOR.SCALAR-ONE",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "GEO.VECTOR.SCALAR-ONE",
+            "code": "NPV.NEGATIVE.SIGN-RULE",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1064,7 +1066,7 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A negative scalar reverses the direction; its size scales the length.",
+            "v": "Always. It is twice as long, in the same direction.",
           },
         ],
       },
@@ -1072,11 +1074,11 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "math",
-        "v": "-\\mathbf{a}",
+        "v": "2\\mathbf{a}",
       },
       {
         "t": "text",
-        "v": " is the same length as ",
+        "v": " points in the same direction as ",
       },
       {
         "t": "math",
@@ -1084,7 +1086,7 @@ exports[`GF-G25.b > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "text",
-        "v": " but points in the opposite direction.",
+        "v": ".",
       },
     ],
   },

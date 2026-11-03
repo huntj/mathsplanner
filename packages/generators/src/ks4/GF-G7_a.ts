@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
 import { coord, distinctFrom } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   x: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-G7.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.TURNS.DIRECTION", "POS.ROTATE.CENTRE", "POS.TRANSFORM.CHANGES-SHAPE"],
 
@@ -91,26 +92,61 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Gus says rotating a shape can change its size."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Gus says rotating a shape can change its size."],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A rotation only turns the shape: its image is congruent, with the same lengths and angles.",
+                  correct: true,
+                },
+                {
+                  text: "True. The further from the centre, the bigger it gets.",
+                  code: "POS.TRANSFORM.CHANGES-SHAPE",
+                },
+                {
+                  text: "True. A rotation of 180° makes it upside down and bigger.",
+                  code: "POS.TRANSFORM.CHANGES-SHAPE",
+                },
+              ],
+              solution: [{ say: "Only enlargement changes size." }],
+            }),
+          [
             {
-              text: "False. A rotation only turns the shape: its image is congruent, with the same lengths and angles.",
-              correct: true,
+              statement:
+                "Ivy says a rotation of 180° gives the same image clockwise or anticlockwise.",
+              truth: true,
+              right: "True. Half a turn either way ends in the same place.",
+              wrong: [
+                ["False. The directions give different images.", "GEO.TURNS.DIRECTION"],
+                ["False. 180° rotations change size.", "POS.TRANSFORM.CHANGES-SHAPE"],
+              ],
             },
             {
-              text: "True. The further from the centre, the bigger it gets.",
-              code: "POS.TRANSFORM.CHANGES-SHAPE",
+              claim: "Changing the centre of a rotation changes where the image is.",
+              truth: "always",
+              right:
+                "Always, unless the angle is 0° or 360°. The shape turns about a different point.",
+              wrong: [
+                ["Never. Only the angle matters.", "POS.ROTATE.CENTRE"],
+                ["Sometimes. Only for big angles."],
+              ],
             },
             {
-              text: "True. A rotation of 180° makes it upside down and bigger.",
-              code: "POS.TRANSFORM.CHANGES-SHAPE",
+              statement: "Dev says 90° clockwise is the same as 90° anticlockwise.",
+              truth: false,
+              right: "False. 90° clockwise is the same as 270° anticlockwise.",
+              wrong: [
+                ["True. Both are a quarter turn.", "GEO.TURNS.DIRECTION"],
+                ["True. Direction does not matter."],
+              ],
             },
           ],
-          solution: [{ say: "Only enlargement changes size." }],
-        });
+        );
     }
   },
 

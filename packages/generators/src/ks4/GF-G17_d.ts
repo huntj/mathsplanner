@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const TRIPLES: [number, number, number][] = [
   [3, 4, 5],
@@ -28,7 +29,7 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export default defineGenerator<Params>({
   id: "GF-G17.d",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.VOLUME.FORMULA", "MEA.AREA.SLANT"],
 
@@ -103,22 +104,58 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            "A cone has one third of the volume of a cylinder with the same base and height.",
-          ],
-          truth: "always",
-          reasons: [
-            { text: "Always. V = ⅓πr²h for the cone and πr²h for the cylinder.", correct: true },
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "A cone has one third of the volume of a cylinder with the same base and height.",
+              ],
+              truth: "always",
+              reasons: [
+                {
+                  text: "Always. V = ⅓πr²h for the cone and πr²h for the cylinder.",
+                  correct: true,
+                },
+                {
+                  text: "Sometimes. Only when the height equals the radius.",
+                  code: "MEA.VOLUME.FORMULA",
+                },
+                { text: "Never. A cone has half the volume.", code: "MEA.VOLUME.FORMULA" },
+              ],
+              solution: [{ say: "The same is true of a pyramid and a prism." }],
+            }),
+          [
             {
-              text: "Sometimes. Only when the height equals the radius.",
-              code: "MEA.VOLUME.FORMULA",
+              statement:
+                "A square-based pyramid has base 6 cm by 6 cm and height 5 cm. Ana says its volume is 60 cm³.",
+              truth: true,
+              right: "True. ⅓ × 36 × 5 = 60.",
+              wrong: [["False. It is 180 cm³.", "MEA.VOLUME.FORMULA"], ["False. It is 90 cm³."]],
             },
-            { text: "Never. A cone has half the volume.", code: "MEA.VOLUME.FORMULA" },
+            {
+              claim:
+                "A pyramid's volume is less than that of a prism with the same base and height.",
+              truth: "always",
+              right: "Always. It is one third of the prism's volume.",
+              wrong: [
+                ["Never. It is the same.", "MEA.VOLUME.FORMULA"],
+                ["Sometimes. Only for square bases."],
+              ],
+            },
+            {
+              statement:
+                "Kai uses the slant height of a cone in $\\frac{1}{3}\\pi r^2 h$ to find its volume.",
+              truth: false,
+              right: "False. h is the perpendicular height, not the slant height.",
+              wrong: [
+                ["True. The slant height is the height.", "MEA.AREA.SLANT"],
+                ["True. Any height works.", "MEA.AREA.SLANT"],
+              ],
+            },
           ],
-          solution: [{ say: "The same is true of a pyramid and a prism." }],
-        });
+        );
     }
   },
 

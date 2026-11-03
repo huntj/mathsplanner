@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { poly } from "../shared/alg.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   d: number;
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-A25",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SEQUENCE.POSITION-RULE"],
 
@@ -79,41 +80,74 @@ export default defineGenerator<Params>({
         });
       default: {
         const shown = p.claimTrue ? right : slip;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [`Ali says the nth term of ${t.join(", ")}, … is `, A.math(shown), "."],
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
-                {
-                  text: `True. n = 1 gives ${t[0]}, n = 2 gives ${t[1]}, and it goes up by ${p.d} each time.`,
-                  correct: true,
-                },
-                {
-                  text: `False. The constant is the first term, ${t[0]}.`,
-                  code: "ALG.SEQUENCE.POSITION-RULE",
-                },
-                {
-                  text: "False. The nth term is n plus the difference.",
-                  code: "ALG.SEQUENCE.POSITION-RULE",
-                },
-              ]
-            : [
-                {
-                  text: `False. n = 1 gives ${p.d + (t[0] as number)}, not ${t[0]}. The nth term is ${right}.`,
-                  correct: true,
-                },
-                {
-                  text: "True. The constant is always the first term.",
-                  code: "ALG.SEQUENCE.POSITION-RULE",
-                },
-                {
-                  text: "True. Any rule with the right difference works.",
-                  code: "ALG.SEQUENCE.POSITION-RULE",
-                },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [`Ali says the nth term of ${t.join(", ")}, … is `, A.math(shown), "."],
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    {
+                      text: `True. n = 1 gives ${t[0]}, n = 2 gives ${t[1]}, and it goes up by ${p.d} each time.`,
+                      correct: true,
+                    },
+                    {
+                      text: `False. The constant is the first term, ${t[0]}.`,
+                      code: "ALG.SEQUENCE.POSITION-RULE",
+                    },
+                    {
+                      text: "False. The nth term is n plus the difference.",
+                      code: "ALG.SEQUENCE.POSITION-RULE",
+                    },
+                  ]
+                : [
+                    {
+                      text: `False. n = 1 gives ${p.d + (t[0] as number)}, not ${t[0]}. The nth term is ${right}.`,
+                      correct: true,
+                    },
+                    {
+                      text: "True. The constant is always the first term.",
+                      code: "ALG.SEQUENCE.POSITION-RULE",
+                    },
+                    {
+                      text: "True. Any rule with the right difference works.",
+                      code: "ALG.SEQUENCE.POSITION-RULE",
+                    },
+                  ],
+              solution: [{ say: "Check an nth term by substituting n = 1 and n = 2." }],
+            }),
+          [
+            {
+              claim: "The nth term of an arithmetic sequence going up by d starts with dn.",
+              truth: "always",
+              right: "Always. Each step adds d, so the rule has d times n.",
+              wrong: [
+                ["Never. It starts with the first term times n.", "ALG.SEQUENCE.POSITION-RULE"],
+                ["Sometimes. Only if d = 1."],
               ],
-          solution: [{ say: "Check an nth term by substituting n = 1 and n = 2." }],
-        });
+            },
+            {
+              statement: "Bea says the nth term of 5, 8, 11, 14, … is $3n + 2$.",
+              truth: true,
+              right: "True. It goes up by 3, and 3 × 1 + 2 = 5.",
+              wrong: [
+                ["False. It is n + 3.", "ALG.SEQUENCE.POSITION-RULE"],
+                ["False. It is 5n + 3."],
+              ],
+            },
+            {
+              statement: "Dev says the nth term of 10, 7, 4, 1, … is $3n + 7$.",
+              truth: false,
+              right: "False. It goes down by 3: −3n + 13.",
+              wrong: [
+                ["True. The difference is 3.", "ALG.SEQUENCE.POSITION-RULE"],
+                ["True. 3 + 7 = 10."],
+              ],
+            },
+          ],
+        );
       }
     }
   },

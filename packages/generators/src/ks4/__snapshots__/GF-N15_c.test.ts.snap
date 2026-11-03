@@ -10,7 +10,7 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N15.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N15.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N15.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N15.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -302,7 +302,7 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N15.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -408,7 +408,7 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N15.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -514,7 +514,7 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N15.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -552,7 +552,7 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The upper bound is included in the interval.",
+                  "v": "True. Both bounds round to the same value.",
                 },
               ],
               "id": "RA",
@@ -570,7 +570,7 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both bounds round to the same value.",
+                  "v": "True. The upper bound is included in the interval.",
                 },
               ],
               "id": "RC",
@@ -626,7 +626,7 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N15.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -664,7 +664,7 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The upper bound is included in the interval.",
+                  "v": "True. Bounds are always 0.5 away.",
                 },
               ],
               "id": "RA",
@@ -673,7 +673,7 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both bounds round to the same value.",
+                  "v": "True. Take off half of 1.",
                 },
               ],
               "id": "RB",
@@ -682,7 +682,7 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 6.35 rounds up to 6.4, so it is not included: x < 6.35.",
+                  "v": "False. Half of 10 kg is 5 kg: the lower bound is 35 kg.",
                 },
               ],
               "id": "RC",
@@ -692,14 +692,6 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.BOUNDS.ENDS",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RB",
@@ -719,14 +711,18 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "6.25 \\le x < 6.35",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. Half of 10 kg is 5 kg: the lower bound is 35 kg.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "A number rounds to 6.3 (to 1 decimal place). Lee says it could be exactly 6.35.",
+        "v": "A mass is 40 kg to the nearest 10 kg. Bea says the smallest it could be is 39.5 kg.",
       },
     ],
   },
@@ -738,7 +734,7 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N15.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -750,7 +746,7 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -776,7 +772,7 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both bounds round to the same value.",
+                  "v": "False. 3050 rounds up to 3100, so it is not included: x < 3050.",
                 },
               ],
               "id": "RA",
@@ -785,7 +781,7 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 3050 rounds up to 3100, so it is not included: x < 3050.",
+                  "v": "True. The upper bound is included in the interval.",
                 },
               ],
               "id": "RB",
@@ -794,7 +790,7 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The upper bound is included in the interval.",
+                  "v": "True. Both bounds round to the same value.",
                 },
               ],
               "id": "RC",
@@ -806,7 +802,7 @@ exports[`GF-N15.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.BOUNDS.ENDS",

@@ -10,7 +10,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G13.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -97,7 +97,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G13.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -184,7 +184,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G13.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -271,7 +271,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G13.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -351,7 +351,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G13.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -431,7 +431,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G13.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -504,14 +504,14 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-G13.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -522,14 +522,14 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -538,10 +538,19 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -549,7 +558,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A cylinder looks like a rectangle.",
+                  "v": "Sometimes. Only from the top.",
                 },
               ],
               "id": "RA",
@@ -558,7 +567,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The plan shows the height and the width.",
+                  "v": "Always. From any direction a sphere looks like a circle.",
                 },
               ],
               "id": "RB",
@@ -567,7 +576,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. From directly above you see the circular top, so the plan is a circle. The rectangle is the front elevation.",
+                  "v": "Never. It is a sphere.",
                 },
               ],
               "id": "RC",
@@ -579,15 +588,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.PLAN.ELEVATION",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "GEO.PLAN.ELEVATION",
@@ -597,7 +598,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -607,7 +608,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Plan: from above. Elevations: from the front and the side.",
+            "v": "Always. From any direction a sphere looks like a circle.",
           },
         ],
       },
@@ -615,7 +616,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Bo says the plan view of a cylinder standing on its end is a rectangle.",
+        "v": "The plan view of a sphere is a circle.",
       },
     ],
   },
@@ -627,7 +628,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-G13.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -639,7 +640,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -665,7 +666,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A cylinder looks like a rectangle.",
+                  "v": "False. From directly above you see the circular top, so the plan is a circle. The rectangle is the front elevation.",
                 },
               ],
               "id": "RA",
@@ -674,7 +675,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The plan shows the height and the width.",
+                  "v": "True. A cylinder looks like a rectangle.",
                 },
               ],
               "id": "RB",
@@ -683,7 +684,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. From directly above you see the circular top, so the plan is a circle. The rectangle is the front elevation.",
+                  "v": "True. The plan shows the height and the width.",
                 },
               ],
               "id": "RC",
@@ -695,7 +696,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.PLAN.ELEVATION",
@@ -703,7 +704,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "GEO.PLAN.ELEVATION",
@@ -736,14 +737,14 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-G13.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -754,14 +755,14 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -770,10 +771,19 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -781,7 +791,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A cylinder looks like a rectangle.",
+                  "v": "Always. From any direction a sphere looks like a circle.",
                 },
               ],
               "id": "RA",
@@ -790,7 +800,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. From directly above you see the circular top, so the plan is a circle. The rectangle is the front elevation.",
+                  "v": "Never. It is a sphere.",
                 },
               ],
               "id": "RB",
@@ -799,7 +809,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The plan shows the height and the width.",
+                  "v": "Sometimes. Only from the top.",
                 },
               ],
               "id": "RC",
@@ -811,15 +821,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.PLAN.ELEVATION",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.PLAN.ELEVATION",
@@ -829,7 +831,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -839,7 +841,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Plan: from above. Elevations: from the front and the side.",
+            "v": "Always. From any direction a sphere looks like a circle.",
           },
         ],
       },
@@ -847,7 +849,7 @@ exports[`GF-G13.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Bo says the plan view of a cylinder standing on its end is a rectangle.",
+        "v": "The plan view of a sphere is a circle.",
       },
     ],
   },

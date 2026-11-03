@@ -10,7 +10,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N1.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -101,7 +101,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N1.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -192,7 +192,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N1.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -283,7 +283,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N1.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -373,7 +373,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N1.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -463,7 +463,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N1.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -553,7 +553,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-N1.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -565,7 +565,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -591,7 +591,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. x could be anything less than 7.",
+                  "v": "False. ≥ means greater than or equal to, so x can be 7 itself.",
                 },
               ],
               "id": "RA",
@@ -600,7 +600,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. ≥ means greater than or equal to, so x can be 7 itself.",
+                  "v": "True. x could be anything less than 7.",
                 },
               ],
               "id": "RB",
@@ -621,7 +621,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.COMPARE.SIGN-DIRECTION",
@@ -670,14 +670,14 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-N1.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -688,14 +688,14 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -704,10 +704,19 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -715,7 +724,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. ≥ means greater than or equal to, so x can be 3 itself.",
+                  "v": "Sometimes. Only for positive numbers.",
                 },
               ],
               "id": "RA",
@@ -724,7 +733,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. ≥ and > mean the same thing.",
+                  "v": "Always. They say the same thing from the other side.",
                 },
               ],
               "id": "RB",
@@ -733,7 +742,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. x could be anything less than 3.",
+                  "v": "Never. The signs point different ways.",
                 },
               ],
               "id": "RC",
@@ -743,14 +752,6 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.BOUNDS.ENDS",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -763,7 +764,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -773,7 +774,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The line under the sign means “or equal to”.",
+            "v": "Always. They say the same thing from the other side.",
           },
         ],
       },
@@ -781,27 +782,35 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Lou says ",
+        "v": "If ",
       },
       {
         "t": "math",
-        "v": "x \\ge 3",
+        "v": "a < b",
       },
       {
         "t": "text",
-        "v": " means x is bigger than 3.",
+        "v": ", then ",
+      },
+      {
+        "t": "math",
+        "v": "b > a",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-N1.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -812,14 +821,14 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -828,10 +837,19 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -839,7 +857,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. ≥ means greater than or equal to, so x can be 6 itself.",
+                  "v": "Never. The signs point different ways.",
                 },
               ],
               "id": "RA",
@@ -848,7 +866,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. ≥ and > mean the same thing.",
+                  "v": "Always. They say the same thing from the other side.",
                 },
               ],
               "id": "RB",
@@ -857,7 +875,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. x could be anything less than 6.",
+                  "v": "Sometimes. Only for positive numbers.",
                 },
               ],
               "id": "RC",
@@ -869,15 +887,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.BOUNDS.ENDS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.COMPARE.SIGN-DIRECTION",
@@ -887,7 +897,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -897,7 +907,7 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The line under the sign means “or equal to”.",
+            "v": "Always. They say the same thing from the other side.",
           },
         ],
       },
@@ -905,15 +915,23 @@ exports[`GF-N1.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Lou says ",
+        "v": "If ",
       },
       {
         "t": "math",
-        "v": "x \\ge 6",
+        "v": "a < b",
       },
       {
         "t": "text",
-        "v": " means x is bigger than 6.",
+        "v": ", then ",
+      },
+      {
+        "t": "math",
+        "v": "b > a",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },

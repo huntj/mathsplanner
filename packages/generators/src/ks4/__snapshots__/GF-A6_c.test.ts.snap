@@ -10,7 +10,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -110,7 +110,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -210,7 +210,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -310,7 +310,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -414,7 +414,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -518,7 +518,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -622,7 +622,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -634,7 +634,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -660,7 +660,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. If it works for small numbers it works for all.",
+                  "v": "True. If it works for 10, it always works.",
                 },
               ],
               "id": "RA",
@@ -669,7 +669,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 4 examples are enough to prove it.",
+                  "v": "False. Checking examples cannot prove it for every number; a proof needs algebra.",
                 },
               ],
               "id": "RB",
@@ -678,7 +678,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Examples cannot prove it for every n. An algebraic argument does: n² + n = n(n + 1), a product of consecutive whole numbers, one of which is even.",
+                  "v": "True. Ten examples are enough.",
                 },
               ],
               "id": "RC",
@@ -698,7 +698,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.PROOF.EXAMPLES",
@@ -718,7 +718,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The claim is true, but only the algebra proves it.",
+            "v": "False. Checking examples cannot prove it for every number; a proof needs algebra.",
           },
         ],
       },
@@ -726,19 +726,19 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Nia checks the claim "n² + n is always even" for n = 1 to 4 and says this proves it.",
+        "v": "Leo checks a claim for 10 numbers and says it is proved for all numbers.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -749,14 +749,14 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -765,10 +765,19 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -776,7 +785,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Examples cannot prove it for every n. An algebraic argument does: n² + n = n(n + 1), a product of consecutive whole numbers, one of which is even.",
+                  "v": "Always. A single case where it fails means it is not true for all.",
                 },
               ],
               "id": "RA",
@@ -785,7 +794,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 4 examples are enough to prove it.",
+                  "v": "Sometimes. Only for even numbers.",
                 },
               ],
               "id": "RB",
@@ -794,7 +803,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. If it works for small numbers it works for all.",
+                  "v": "Never. You need many.",
                 },
               ],
               "id": "RC",
@@ -804,14 +813,6 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.PROOF.EXAMPLES",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -824,7 +825,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -834,7 +835,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The claim is true, but only the algebra proves it.",
+            "v": "Always. A single case where it fails means it is not true for all.",
           },
         ],
       },
@@ -842,7 +843,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Nia checks the claim "n² + n is always even" for n = 1 to 4 and says this proves it.",
+        "v": "One counter-example is enough to show a claim is false.",
       },
     ],
   },
@@ -854,7 +855,7 @@ exports[`GF-A6.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A6.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

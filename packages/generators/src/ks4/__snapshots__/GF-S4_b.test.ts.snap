@@ -10,7 +10,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-S4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -76,7 +76,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-S4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -142,7 +142,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-S4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -208,7 +208,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-S4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -274,7 +274,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-S4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -340,7 +340,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-S4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -406,7 +406,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-S4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -444,7 +444,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every frequency is used.",
+                  "v": "True. 5 classes means divide by 5.",
                 },
               ],
               "id": "RA",
@@ -453,7 +453,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is an estimate: each value is assumed to be at the midpoint of its class, which is not exactly true.",
+                  "v": "False. Divide by the total frequency, 40.",
                 },
               ],
               "id": "RB",
@@ -462,7 +462,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The midpoints are the real values.",
+                  "v": "True. Divide by how many classes there are.",
                 },
               ],
               "id": "RC",
@@ -502,7 +502,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Grouping loses the exact values.",
+            "v": "False. Divide by the total frequency, 40.",
           },
         ],
       },
@@ -510,19 +510,19 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ken says the mean worked out from a grouped frequency table is exact.",
+        "v": "In a grouped table the total frequency is 40. Pia divides the total of midpoint × frequency by the number of classes, 5.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-S4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -533,14 +533,14 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "C",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -549,10 +549,19 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -560,7 +569,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is an estimate: each value is assumed to be at the midpoint of its class, which is not exactly true.",
+                  "v": "Never guaranteed. Midpoints stand in for the unknown actual values.",
                 },
               ],
               "id": "RA",
@@ -569,7 +578,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every frequency is used.",
+                  "v": "Always. Midpoints are exact.",
                 },
               ],
               "id": "RB",
@@ -578,7 +587,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The midpoints are the real values.",
+                  "v": "Sometimes. If the classes are small.",
                 },
               ],
               "id": "RC",
@@ -608,7 +617,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -618,7 +627,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Grouping loses the exact values.",
+            "v": "Never guaranteed. Midpoints stand in for the unknown actual values.",
           },
         ],
       },
@@ -626,19 +635,19 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ken says the mean worked out from a grouped frequency table is exact.",
+        "v": "A mean estimated from grouped data is exact.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-S4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -649,14 +658,14 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "C",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -665,10 +674,19 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -676,7 +694,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every frequency is used.",
+                  "v": "Sometimes. If the classes are small.",
                 },
               ],
               "id": "RA",
@@ -685,7 +703,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The midpoints are the real values.",
+                  "v": "Never guaranteed. Midpoints stand in for the unknown actual values.",
                 },
               ],
               "id": "RB",
@@ -694,7 +712,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is an estimate: each value is assumed to be at the midpoint of its class, which is not exactly true.",
+                  "v": "Always. Midpoints are exact.",
                 },
               ],
               "id": "RC",
@@ -714,7 +732,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "STA.GROUPED.MIDPOINT",
@@ -724,7 +742,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -734,7 +752,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Grouping loses the exact values.",
+            "v": "Never guaranteed. Midpoints stand in for the unknown actual values.",
           },
         ],
       },
@@ -742,7 +760,7 @@ exports[`GF-S4.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ken says the mean worked out from a grouped frequency table is exact.",
+        "v": "A mean estimated from grouped data is exact.",
       },
     ],
   },

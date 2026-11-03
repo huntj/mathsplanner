@@ -10,7 +10,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -73,7 +73,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -136,7 +136,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -199,7 +199,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -262,7 +262,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -325,7 +325,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -388,7 +388,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -507,7 +507,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -626,7 +626,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -745,7 +745,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -757,7 +757,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -783,7 +783,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The minus sign only applies to the x term.",
+                  "v": "True. The −3 stays as it is.",
                 },
               ],
               "id": "RA",
@@ -792,7 +792,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiply 3 by each term and keep the signs.",
+                  "v": "False. The 4 multiplies both terms: 4x − 12.",
                 },
               ],
               "id": "RB",
@@ -801,7 +801,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. −3 × −6 = +18, so it is -3x + 18.",
+                  "v": "True. Multiply the first term.",
                 },
               ],
               "id": "RC",
@@ -816,15 +816,15 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.EXPAND.NEGATIVE",
+            "code": "ALG.EXPAND.FIRST-ONLY",
             "feedback": [],
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "ALG.EXPAND.NEGATIVE",
+            "code": "ALG.EXPAND.FIRST-ONLY",
             "feedback": [],
           },
         ],
@@ -838,18 +838,30 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "-3(x - 6) = -3x + 18",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. The 4 multiplies both terms: 4x − 12.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Ben says ",
+        "v": "Mo expands ",
       },
       {
         "t": "math",
-        "v": "-3(x - 6) = -3x - 18",
+        "v": "4(x - 3)",
+      },
+      {
+        "t": "text",
+        "v": " to ",
+      },
+      {
+        "t": "math",
+        "v": "4x - 3",
       },
       {
         "t": "text",
@@ -858,14 +870,14 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -876,14 +888,14 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -892,10 +904,19 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -903,7 +924,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The minus sign only applies to the x term.",
+                  "v": "Always. −(a − b) = −a + b = b − a.",
                 },
               ],
               "id": "RA",
@@ -912,7 +933,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiply 6 by each term and keep the signs.",
+                  "v": "Sometimes. If a is bigger.",
                 },
               ],
               "id": "RB",
@@ -921,7 +942,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. −6 × −4 = +24, so it is -6x + 24.",
+                  "v": "Never. It is −a − b.",
                 },
               ],
               "id": "RC",
@@ -933,15 +954,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.EXPAND.NEGATIVE",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.EXPAND.NEGATIVE",
@@ -951,25 +964,25 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
     ],
     "solution": [
       {
-        "math": "-6(x - 4) = -6x + 24",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. −(a − b) = −a + b = b − a.",
+          },
+        ],
       },
     ],
     "stem": [
       {
-        "t": "text",
-        "v": "Ben says ",
-      },
-      {
         "t": "math",
-        "v": "-6(x - 4) = -6x - 24",
+        "v": "-(a - b) = b - a",
       },
       {
         "t": "text",
@@ -985,7 +998,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A4.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -997,7 +1010,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -1023,7 +1036,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. −3 × −5 = +15, so it is -3x + 15.",
+                  "v": "True. Multiply the first term.",
                 },
               ],
               "id": "RA",
@@ -1032,7 +1045,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiply 3 by each term and keep the signs.",
+                  "v": "False. The 4 multiplies both terms: 4x − 12.",
                 },
               ],
               "id": "RB",
@@ -1041,7 +1054,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The minus sign only applies to the x term.",
+                  "v": "True. The −3 stays as it is.",
                 },
               ],
               "id": "RC",
@@ -1053,10 +1066,10 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.EXPAND.NEGATIVE",
+            "code": "ALG.EXPAND.FIRST-ONLY",
             "feedback": [],
           },
           {
@@ -1064,7 +1077,7 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "ALG.EXPAND.NEGATIVE",
+            "code": "ALG.EXPAND.FIRST-ONLY",
             "feedback": [],
           },
         ],
@@ -1078,18 +1091,30 @@ exports[`GF-A4.b > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "-3(x - 5) = -3x + 15",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. The 4 multiplies both terms: 4x − 12.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Ben says ",
+        "v": "Mo expands ",
       },
       {
         "t": "math",
-        "v": "-3(x - 5) = -3x - 15",
+        "v": "4(x - 3)",
+      },
+      {
+        "t": "text",
+        "v": " to ",
+      },
+      {
+        "t": "math",
+        "v": "4x - 3",
       },
       {
         "t": "text",

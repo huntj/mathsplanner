@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { curveClearOfOrigin, grid } from "../shared/alg.ts";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const SHAPES = [
   "A U-shaped curve (a parabola)",
@@ -30,7 +31,7 @@ const expr = (p: Params, shape: number) =>
 
 export default defineGenerator<Params>({
   id: "GF-A12.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.GRAPH.SHAPE"],
 
@@ -84,26 +85,59 @@ export default defineGenerator<Params>({
           solution: [{ say: `${SHAPES[p.shape]} crossing the y-axis at ${p.c}.` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Gina says the graph of ",
-            A.math(`y = x^2 + ${p.m}x`),
-            " is a straight line, because there is an x term.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Gina says the graph of ",
+                A.math(`y = x^2 + ${p.m}x`),
+                " is a straight line, because there is an x term.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. Any x² term makes the graph a parabola, whatever other terms there are.",
+                  correct: true,
+                },
+                { text: "True. A graph with an x term is linear.", code: "ALG.GRAPH.SHAPE" },
+                { text: "True. Two terms always make a straight line.", code: "ALG.GRAPH.SHAPE" },
+              ],
+              solution: [
+                { say: "The highest power of x decides the shape: here it is 2, a quadratic." },
+              ],
+            }),
+          [
             {
-              text: "False. Any x² term makes the graph a parabola, whatever other terms there are.",
-              correct: true,
+              statement: "Kim says the graph of $y = x^2$ is a U-shaped curve.",
+              truth: true,
+              right: "True. It is a parabola with its lowest point at the origin.",
+              wrong: [
+                ["False. It is a straight line.", "ALG.GRAPH.SHAPE"],
+                ["False. It is an upside-down U."],
+              ],
             },
-            { text: "True. A graph with an x term is linear.", code: "ALG.GRAPH.SHAPE" },
-            { text: "True. Two terms always make a straight line.", code: "ALG.GRAPH.SHAPE" },
+            {
+              claim: "The graph of $y = mx + c$ is a straight line.",
+              truth: "always",
+              right: "Always. It is a linear function.",
+              wrong: [
+                ["Sometimes. If m is big it curves.", "ALG.GRAPH.SHAPE"],
+                ["Never. It is a curve."],
+              ],
+            },
+            {
+              statement: "Raj says the graph of $y = 5 - x^2$ is U-shaped.",
+              truth: false,
+              right: "False. The −x² makes it an upside-down U (∩).",
+              wrong: [
+                ["True. Every x² graph is a U.", "ALG.GRAPH.SHAPE"],
+                ["True. The 5 makes it a U."],
+              ],
+            },
           ],
-          solution: [
-            { say: "The highest power of x decides the shape: here it is 2, a quadratic." },
-          ],
-        });
+        );
     }
   },
 

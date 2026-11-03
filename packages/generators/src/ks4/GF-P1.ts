@@ -11,6 +11,7 @@ import type { TreeSpec } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { tableLatex } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   boys: number;
@@ -50,7 +51,7 @@ function tree(p: Params, hide: "boys bus" | "none"): TreeSpec {
 
 export default defineGenerator<Params>({
   id: "GF-P1",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["PRO.ODDS", "AS.MULTISTEP.ONE-STEP"],
 
@@ -119,31 +120,63 @@ export default defineGenerator<Params>({
       }
       default: {
         const girlsBus = p.girls - p.girlsWalk;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "The frequency tree shows how some pupils travel to school.",
-            A.figure(tree(p, "none")),
-            `Ella says the probability that a girl chosen at random takes the bus is ${girlsBus}/${total}.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "The frequency tree shows how some pupils travel to school.",
+                A.figure(tree(p, "none")),
+                `Ella says the probability that a girl chosen at random takes the bus is ${girlsBus}/${total}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Out of the girls only, ${girlsBus} of ${p.girls} take the bus: ${girlsBus}/${p.girls}. ${girlsBus}/${total} is the chance a pupil is a girl who takes the bus.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Always divide by the total number of pupils.",
+                  code: "AS.MULTISTEP.ONE-STEP",
+                },
+                { text: `True. ${girlsBus} girls take the bus.` },
+              ],
+              solution: [
+                {
+                  say: `Given the pupil is a girl, the denominator is the number of girls, ${p.girls}.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. Out of the girls only, ${girlsBus} of ${p.girls} take the bus: ${girlsBus}/${p.girls}. ${girlsBus}/${total} is the chance a pupil is a girl who takes the bus.`,
-              correct: true,
+              statement:
+                "A bag has 3 red and 7 blue counters. Kai says the probability of red is $\\frac{3}{10}$.",
+              truth: true,
+              right: "True. 3 of the 10 counters are red.",
+              wrong: [["False. It is 3/7.", "PRO.ODDS"], ["False. It is 1/2: red or blue."]],
             },
             {
-              text: "True. Always divide by the total number of pupils.",
-              code: "AS.MULTISTEP.ONE-STEP",
+              claim: "The probabilities of all the possible outcomes add up to 1.",
+              truth: "always",
+              right: "Always. One of them must happen.",
+              wrong: [
+                ["Never. They add to 100.", "AS.MULTISTEP.ONE-STEP"],
+                ["Sometimes. Only for fair dice."],
+              ],
             },
-            { text: `True. ${girlsBus} girls take the bus.` },
-          ],
-          solution: [
             {
-              say: `Given the pupil is a girl, the denominator is the number of girls, ${p.girls}.`,
+              statement:
+                "In a frequency tree, 40 pupils are girls and 15 of them walk. Pia says P(a girl walks) is $\\frac{15}{25}$.",
+              truth: false,
+              right: "False. 15 of the 40 girls walk: 15/40.",
+              wrong: [
+                ["True. Compare walkers with non-walkers.", "PRO.ODDS"],
+                ["True. 40 − 15 = 25.", "AS.MULTISTEP.ONE-STEP"],
+              ],
             },
           ],
-        });
+        );
       }
     }
   },

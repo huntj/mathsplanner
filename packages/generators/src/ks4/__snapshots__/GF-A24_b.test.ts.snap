@@ -10,7 +10,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A24.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -110,7 +110,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A24.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -210,7 +210,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A24.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -310,7 +310,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A24.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -371,7 +371,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A24.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -432,7 +432,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A24.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -486,14 +486,14 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A24.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -504,14 +504,14 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -520,10 +520,19 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -531,7 +540,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The differences are not equal; each term is double the one before, so it is geometric.",
+                  "v": "Always. That is the definition.",
                 },
               ],
               "id": "RA",
@@ -540,7 +549,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It goes up by the same amount each time.",
+                  "v": "Sometimes. Only for even numbers.",
                 },
               ],
               "id": "RB",
@@ -549,7 +558,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any increasing sequence is arithmetic.",
+                  "v": "Never. It multiplies.",
                 },
               ],
               "id": "RC",
@@ -561,25 +570,17 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.SEQUENCE.GEOMETRIC-ADD",
-            "feedback": [],
-          },
-          {
-            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "ALG.SEQUENCE.TYPE",
+            "code": "ALG.SEQUENCE.GEOMETRIC-ADD",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -589,7 +590,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Check the differences: they double too.",
+            "v": "Always. That is the definition.",
           },
         ],
       },
@@ -597,7 +598,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Fay says 3, 6, 12, 24, … is an arithmetic sequence because it goes up each time.",
+        "v": "An arithmetic sequence adds the same number each time.",
       },
     ],
   },
@@ -609,7 +610,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A24.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -621,7 +622,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -656,7 +657,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It goes up by the same amount each time.",
+                  "v": "False. The differences are not equal; each term is double the one before, so it is geometric.",
                 },
               ],
               "id": "RB",
@@ -665,7 +666,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The differences are not equal; each term is double the one before, so it is geometric.",
+                  "v": "True. It goes up by the same amount each time.",
                 },
               ],
               "id": "RC",
@@ -685,7 +686,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.GEOMETRIC-ADD",
@@ -725,7 +726,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A24.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -737,7 +738,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -763,7 +764,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The differences are not equal; each term is double the one before, so it is geometric.",
+                  "v": "True. It goes up by 12.",
                 },
               ],
               "id": "RA",
@@ -772,7 +773,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It goes up by the same amount each time.",
+                  "v": "False. It multiplies by 3: the next term is 54.",
                 },
               ],
               "id": "RB",
@@ -781,7 +782,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any increasing sequence is arithmetic.",
+                  "v": "True. Add the last two.",
                 },
               ],
               "id": "RC",
@@ -793,18 +794,10 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.GEOMETRIC-ADD",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.SEQUENCE.TYPE",
             "feedback": [],
           },
         ],
@@ -821,7 +814,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Check the differences: they double too.",
+            "v": "False. It multiplies by 3: the next term is 54.",
           },
         ],
       },
@@ -829,7 +822,7 @@ exports[`GF-A24.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Fay says 1, 2, 4, 8, … is an arithmetic sequence because it goes up each time.",
+        "v": "Leo says the next term of the geometric sequence 2, 6, 18, … is 30.",
       },
     ],
   },

@@ -10,7 +10,7 @@ exports[`GF-R10.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R10.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -116,7 +116,7 @@ exports[`GF-R10.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R10.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -222,7 +222,7 @@ exports[`GF-R10.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R10.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -328,7 +328,7 @@ exports[`GF-R10.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R10.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -444,7 +444,7 @@ exports[`GF-R10.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R10.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -560,7 +560,7 @@ exports[`GF-R10.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-R10.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -676,7 +676,7 @@ exports[`GF-R10.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-R10.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -714,7 +714,7 @@ exports[`GF-R10.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It goes through the origin.",
+                  "v": "True. Every proportion graph is a straight line.",
                 },
               ],
               "id": "RA",
@@ -732,7 +732,7 @@ exports[`GF-R10.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every proportion graph is a straight line.",
+                  "v": "True. It goes through the origin.",
                 },
               ],
               "id": "RC",
@@ -747,7 +747,7 @@ exports[`GF-R10.c > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "RAT.PROPORTION.LINEAR-INTERCEPT",
+            "code": "RAT.INVERSE.AS-DIRECT",
             "feedback": [],
           },
           {
@@ -755,7 +755,7 @@ exports[`GF-R10.c > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "RAT.INVERSE.AS-DIRECT",
+            "code": "RAT.PROPORTION.LINEAR-INTERCEPT",
             "feedback": [],
           },
         ],
@@ -800,131 +800,7 @@ exports[`GF-R10.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-R10.c",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Every proportion graph is a straight line.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. It goes through the origin.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. y is inversely proportional to x, so the graph is a curve: as x doubles, y halves.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "RAT.INVERSE.AS-DIRECT",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "RAT.PROPORTION.LINEAR-INTERCEPT",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Only direct proportion gives a straight line through the origin.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Sam says the graph of ",
-      },
-      {
-        "t": "math",
-        "v": "y = \\frac{2}{x}",
-      },
-      {
-        "t": "text",
-        "v": " is a straight line, because y is proportional to x.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "GF-R10.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -962,7 +838,7 @@ exports[`GF-R10.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. y is inversely proportional to x, so the graph is a curve: as x doubles, y halves.",
+                  "v": "False. It does not pass through the origin.",
                 },
               ],
               "id": "RA",
@@ -971,7 +847,7 @@ exports[`GF-R10.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It goes through the origin.",
+                  "v": "True. Straight lines show proportion.",
                 },
               ],
               "id": "RB",
@@ -980,7 +856,7 @@ exports[`GF-R10.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every proportion graph is a straight line.",
+                  "v": "True. y goes up by the same amount.",
                 },
               ],
               "id": "RC",
@@ -1003,7 +879,7 @@ exports[`GF-R10.c > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "RAT.INVERSE.AS-DIRECT",
+            "code": "RAT.ADDITIVE",
             "feedback": [],
           },
         ],
@@ -1020,7 +896,7 @@ exports[`GF-R10.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Only direct proportion gives a straight line through the origin.",
+            "v": "False. It does not pass through the origin.",
           },
         ],
       },
@@ -1028,15 +904,140 @@ exports[`GF-R10.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sam says the graph of ",
+        "v": "Dev says ",
       },
       {
         "t": "math",
-        "v": "y = \\frac{6}{x}",
+        "v": "y = x + 5",
       },
       {
         "t": "text",
-        "v": " is a straight line, because y is proportional to x.",
+        "v": " shows direct proportion, because it is a straight line.",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "GF-R10.c",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only for big k.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. It is a straight line.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always, for k not 0. As x grows, y shrinks towards 0 without reaching it.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "RAT.INVERSE.AS-DIRECT",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always, for k not 0. As x grows, y shrinks towards 0 without reaching it.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The graph of an inverse proportion ",
+      },
+      {
+        "t": "math",
+        "v": "y = \\frac{k}{x}",
+      },
+      {
+        "t": "text",
+        "v": " is a curve.",
       },
     ],
   },

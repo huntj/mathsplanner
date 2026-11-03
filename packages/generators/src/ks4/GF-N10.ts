@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -35,7 +36,7 @@ const CLAIMS: { text: string; truth: boolean; why: string; code?: string }[] = [
 
 export default defineGenerator<Params>({
   id: "GF-N10",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["FR.DECIMAL.DIGITS", "FR.DECIMAL.PLACE", "FR.RECURRING.TRUNCATE"],
 
@@ -82,29 +83,63 @@ export default defineGenerator<Params>({
         });
       default: {
         const c = CLAIMS[p.claim] as (typeof CLAIMS)[number];
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: /^[\d/ =.]+$/.test(c.text)
-            ? ["Is this true? ", A.math(c.text.replace(/(\d+)\/(\d+)/g, "\\frac{$1}{$2}"))]
-            : `Ali says: "${c.text}"`,
-          truth: c.truth,
-          reasons: [
-            { text: `${c.truth ? "True" : "False"}. ${c.why}`, correct: true },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: /^[\d/ =.]+$/.test(c.text)
+                ? ["Is this true? ", A.math(c.text.replace(/(\d+)\/(\d+)/g, "\\frac{$1}{$2}"))]
+                : `Ali says: "${c.text}"`,
+              truth: c.truth,
+              reasons: [
+                { text: `${c.truth ? "True" : "False"}. ${c.why}`, correct: true },
+                {
+                  text: `${c.truth ? "False" : "True"}. Write the numerator after the decimal point.`,
+                  code: "FR.DECIMAL.DIGITS",
+                },
+                {
+                  text: `${c.truth ? "False" : "True"}. Every decimal stops after a few places.`,
+                  code: "FR.RECURRING.TRUNCATE",
+                },
+              ],
+              solution: [
+                {
+                  say: "Divide the numerator by the denominator to find the decimal; read the decimal's place value to find the fraction.",
+                },
+              ],
+            }),
+          [
             {
-              text: `${c.truth ? "False" : "True"}. Write the numerator after the decimal point.`,
-              code: "FR.DECIMAL.DIGITS",
+              claim:
+                "A fraction whose denominator, in simplest form, has only 2 and 5 as prime factors is a terminating decimal.",
+              truth: "always",
+              right: "Always. It can be written over a power of 10.",
+              wrong: [
+                ["Never. Fractions recur.", "FR.RECURRING.TRUNCATE"],
+                ["Sometimes. Only for halves."],
+              ],
             },
             {
-              text: `${c.truth ? "False" : "True"}. Every decimal stops after a few places.`,
-              code: "FR.RECURRING.TRUNCATE",
+              statement: "Zoe says $\\frac{1}{8} = 0.18$.",
+              truth: false,
+              right: "False. 1 ÷ 8 = 0.125.",
+              wrong: [
+                ["True. Write the 1 and the 8 after the point.", "FR.DECIMAL.DIGITS"],
+                ["True. Eighths are 0.1 something.", "FR.DECIMAL.PLACE"],
+              ],
+            },
+            {
+              statement: "Dev says $\\frac{2}{3} = 0.\\dot{6}$.",
+              truth: true,
+              right: "True. 2 ÷ 3 = 0.666… with the 6 recurring.",
+              wrong: [
+                ["False. It is 0.23.", "FR.DECIMAL.DIGITS"],
+                ["False. It is exactly 0.67.", "FR.RECURRING.TRUNCATE"],
+              ],
             },
           ],
-          solution: [
-            {
-              say: "Divide the numerator by the denominator to find the decimal; read the decimal's place value to find the fraction.",
-            },
-          ],
-        });
+        );
       }
     }
   },

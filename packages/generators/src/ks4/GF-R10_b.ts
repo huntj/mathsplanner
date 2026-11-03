@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   w1: number;
@@ -20,7 +21,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-R10.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.INVERSE.AS-DIRECT"],
 
@@ -90,20 +91,53 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["If y is inversely proportional to x, then when x doubles, y halves."],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["If y is inversely proportional to x, then when x doubles, y halves."],
+              truth: "always",
+              reasons: [
+                {
+                  text: "Always. xy stays the same, so if x is multiplied by 2, y must be divided by 2.",
+                  correct: true,
+                },
+                { text: "Never. When x doubles, y doubles too.", code: "RAT.INVERSE.AS-DIRECT" },
+                { text: "Sometimes. It depends on the starting values." },
+              ],
+              solution: [{ say: "Inverse proportion: y = k/x." }],
+            }),
+          [
             {
-              text: "Always. xy stays the same, so if x is multiplied by 2, y must be divided by 2.",
-              correct: true,
+              statement: "4 workers take 6 days. Gus says 8 workers take 3 days, at the same rate.",
+              truth: true,
+              right: "True. Twice the workers take half the time.",
+              wrong: [
+                ["False. They take 12 days.", "RAT.INVERSE.AS-DIRECT"],
+                ["False. They take 10 days."],
+              ],
             },
-            { text: "Never. When x doubles, y doubles too.", code: "RAT.INVERSE.AS-DIRECT" },
-            { text: "Sometimes. It depends on the starting values." },
+            {
+              statement: "A journey takes 2 hours at 60 mph. Mia says it takes 4 hours at 120 mph.",
+              truth: false,
+              right: "False. Faster means less time: 1 hour.",
+              wrong: [
+                ["True. Double the speed, double the time.", "RAT.INVERSE.AS-DIRECT"],
+                ["True. Time and speed go up together.", "RAT.INVERSE.AS-DIRECT"],
+              ],
+            },
+            {
+              claim: "If y is inversely proportional to x, then xy stays the same.",
+              truth: "always",
+              right: "Always. y = k/x means xy = k.",
+              wrong: [
+                ["Never. y/x stays the same.", "RAT.INVERSE.AS-DIRECT"],
+                ["Sometimes. For small x."],
+              ],
+            },
           ],
-          solution: [{ say: "Inverse proportion: y = k/x." }],
-        });
+        );
     }
   },
 

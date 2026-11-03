@@ -10,7 +10,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A10.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -79,7 +79,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A10.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -148,7 +148,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A10.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -217,7 +217,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A10.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -330,7 +330,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A10.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -443,7 +443,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A10.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -556,7 +556,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "GF-A10.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -567,8 +567,8 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -594,7 +594,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Steepness depends on the size of the gradient: 7 > 6, so the first line is steeper. The minus sign only means it slopes downwards.",
+                  "v": "False. They are equally steep.",
                 },
               ],
               "id": "RA",
@@ -603,7 +603,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The smaller gradient is always less steep.",
+                  "v": "False. 10 is bigger.",
                 },
               ],
               "id": "RB",
@@ -612,7 +612,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A negative gradient is always less steep.",
+                  "v": "True. Gradient 4 is steeper than gradient 2; the intercept does not affect steepness.",
                 },
               ],
               "id": "RC",
@@ -627,15 +627,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "ALG.GRADIENT.STEEPNESS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.GRADIENT.STEEPNESS",
+            "code": "ALG.LINE.M-C",
             "feedback": [],
           },
         ],
@@ -652,7 +644,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Compare |m|: the bigger it is, the steeper the line.",
+            "v": "True. Gradient 4 is steeper than gradient 2; the intercept does not affect steepness.",
           },
         ],
       },
@@ -660,23 +652,23 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sky says the line ",
+        "v": "Max says ",
       },
       {
         "t": "math",
-        "v": "y = -7x + 1",
+        "v": "y = 4x - 1",
       },
       {
         "t": "text",
-        "v": " is less steep than ",
+        "v": " is steeper than ",
       },
       {
         "t": "math",
-        "v": "y = 6x + 1",
+        "v": "y = 2x + 10",
       },
       {
         "t": "text",
-        "v": " because −7 is smaller than 6.",
+        "v": ".",
       },
     ],
   },
@@ -688,7 +680,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "GF-A10.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -699,8 +691,8 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -726,7 +718,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A negative gradient is always less steep.",
+                  "v": "True. Gradient 4 is steeper than gradient 2; the intercept does not affect steepness.",
                 },
               ],
               "id": "RA",
@@ -735,7 +727,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Steepness depends on the size of the gradient: 6 > 5, so the first line is steeper. The minus sign only means it slopes downwards.",
+                  "v": "False. 10 is bigger.",
                 },
               ],
               "id": "RB",
@@ -744,7 +736,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The smaller gradient is always less steep.",
+                  "v": "False. They are equally steep.",
                 },
               ],
               "id": "RC",
@@ -756,18 +748,10 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "ALG.GRADIENT.STEEPNESS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.GRADIENT.STEEPNESS",
+            "code": "ALG.LINE.M-C",
             "feedback": [],
           },
         ],
@@ -784,7 +768,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Compare |m|: the bigger it is, the steeper the line.",
+            "v": "True. Gradient 4 is steeper than gradient 2; the intercept does not affect steepness.",
           },
         ],
       },
@@ -792,23 +776,23 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sky says the line ",
+        "v": "Max says ",
       },
       {
         "t": "math",
-        "v": "y = -6x + 1",
+        "v": "y = 4x - 1",
       },
       {
         "t": "text",
-        "v": " is less steep than ",
+        "v": " is steeper than ",
       },
       {
         "t": "math",
-        "v": "y = 5x + 1",
+        "v": "y = 2x + 10",
       },
       {
         "t": "text",
-        "v": " because −6 is smaller than 5.",
+        "v": ".",
       },
     ],
   },
@@ -820,7 +804,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "GF-A10.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -858,7 +842,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Steepness depends on the size of the gradient: 5 > 4, so the first line is steeper. The minus sign only means it slopes downwards.",
+                  "v": "False. Steepness depends on the size: 3 is bigger than 1, so y = −3x is steeper.",
                 },
               ],
               "id": "RA",
@@ -867,7 +851,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A negative gradient is always less steep.",
+                  "v": "True. A smaller gradient is less steep.",
                 },
               ],
               "id": "RB",
@@ -876,7 +860,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The smaller gradient is always less steep.",
+                  "v": "True. Negative lines are flat.",
                 },
               ],
               "id": "RC",
@@ -889,14 +873,6 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.GRADIENT.STEEPNESS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
               "type": "choice",
             },
             "code": "ALG.GRADIENT.STEEPNESS",
@@ -916,7 +892,7 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Compare |m|: the bigger it is, the steeper the line.",
+            "v": "False. Steepness depends on the size: 3 is bigger than 1, so y = −3x is steeper.",
           },
         ],
       },
@@ -924,11 +900,11 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sky says the line ",
+        "v": "Ella says ",
       },
       {
         "t": "math",
-        "v": "y = -5x + 1",
+        "v": "y = -3x",
       },
       {
         "t": "text",
@@ -936,11 +912,11 @@ exports[`GF-A10.a > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "math",
-        "v": "y = 4x + 1",
+        "v": "y = x",
       },
       {
         "t": "text",
-        "v": " because −5 is smaller than 4.",
+        "v": ", because −3 is less than 1.",
       },
     ],
   },

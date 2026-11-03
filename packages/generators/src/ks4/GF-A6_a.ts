@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { linear } from "../shared/alg.ts";
 import { chosenText } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   k: number;
@@ -21,7 +22,7 @@ const EQUATION = "An equation: true only for a particular value of x";
 
 export default defineGenerator<Params>({
   id: "GF-A6.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.EQUATION.IDENTITY", "ALG.EXPAND.BINOMIAL-TWO-TERMS"],
 
@@ -92,23 +93,56 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["For a number x, ", A.math(`(x + ${p.a})^2 = x^2 + ${p.a * p.a}`), "."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["For a number x, ", A.math(`(x + ${p.a})^2 = x^2 + ${p.a * p.a}`), "."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: `Sometimes. (x + ${p.a})² = x² + ${2 * p.a}x + ${p.a * p.a}, which equals x² + ${p.a * p.a} only when x = 0. It is an equation, not an identity.`,
+                  correct: true,
+                },
+                {
+                  text: "Always. Square each term in the bracket.",
+                  code: "ALG.EXPAND.BINOMIAL-TWO-TERMS",
+                },
+                { text: "Never. The two sides can never be equal.", code: "ALG.EQUATION.IDENTITY" },
+              ],
+              solution: [{ say: "Test x = 0 (equal) and x = 1 (not equal)." }],
+            }),
+          [
             {
-              text: `Sometimes. (x + ${p.a})² = x² + ${2 * p.a}x + ${p.a * p.a}, which equals x² + ${p.a * p.a} only when x = 0. It is an equation, not an identity.`,
-              correct: true,
+              claim: "$2(x + 3) = 2x + 6$ for every value of x.",
+              truth: "always",
+              right: "Always. It is an identity: expanding the bracket gives the other side.",
+              wrong: [
+                ["Sometimes. Only when x = 3.", "ALG.EQUATION.IDENTITY"],
+                ["Never. It is an equation to solve."],
+              ],
             },
             {
-              text: "Always. Square each term in the bracket.",
-              code: "ALG.EXPAND.BINOMIAL-TWO-TERMS",
+              statement: "Zoe says $3x + 2 = 11$ is an identity.",
+              truth: false,
+              right: "False. It is true only for x = 3, so it is an equation.",
+              wrong: [
+                ["True. It has an equals sign.", "ALG.EQUATION.IDENTITY"],
+                ["True. Every statement with x is an identity."],
+              ],
             },
-            { text: "Never. The two sides can never be equal.", code: "ALG.EQUATION.IDENTITY" },
+            {
+              statement: "Ali says $(x + 1)(x - 1) = x^2 - 1$ is true for every x.",
+              truth: true,
+              right: "True. Expanding gives x² − x + x − 1 = x² − 1.",
+              wrong: [
+                ["False. It is x² + 1.", "ALG.EXPAND.BINOMIAL-TWO-TERMS"],
+                ["False. It works only for x = 1.", "ALG.EQUATION.IDENTITY"],
+              ],
+            },
           ],
-          solution: [{ say: "Test x = 0 (equal) and x = 1 (not equal)." }],
-        });
+        );
     }
   },
 

@@ -9,6 +9,7 @@ import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mat
 import { wrongs } from "../shared/angles.ts";
 import { exactAnswer, numberAnswer } from "../shared/counting.ts";
 import { gcdOf } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "GF-R5.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.PART-WHOLE"],
 
@@ -84,29 +85,66 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `The ratio of cats to dogs at a rescue centre is ${p.a} : ${p.b}. Sid says `,
-            A.math(`\\frac{${p.a}}{${p.b}}`),
-            " of the animals are cats.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `The ratio of cats to dogs at a rescue centre is ${p.a} : ${p.b}. Sid says `,
+                A.math(`\\frac{${p.a}}{${p.b}}`),
+                " of the animals are cats.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. There are ${p.a + p.b} parts altogether, so ${p.a}/${p.a + p.b} of the animals are cats.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The ratio and the fraction use the same numbers.",
+                  code: "RAT.PART-WHOLE",
+                },
+                {
+                  text: `True. There are ${p.a} cats for every ${p.b} dogs.`,
+                  code: "RAT.PART-WHOLE",
+                },
+              ],
+              solution: [
+                {
+                  say: "A part:part ratio compares parts; a fraction compares a part with the whole.",
+                },
+              ],
+            }),
+          [
             {
-              text: `False. There are ${p.a + p.b} parts altogether, so ${p.a}/${p.a + p.b} of the animals are cats.`,
-              correct: true,
+              statement:
+                "Boys and girls are in the ratio 2 : 3. Raj says $\\frac{2}{5}$ of the class are boys.",
+              truth: true,
+              right: "True. There are 2 + 3 = 5 parts, and 2 are boys.",
+              wrong: [["False. It is 2/3.", "RAT.PART-WHOLE"], ["False. It is 3/5."]],
             },
             {
-              text: "True. The ratio and the fraction use the same numbers.",
-              code: "RAT.PART-WHOLE",
+              claim: "If a : b = 1 : 1, each part is half of the total.",
+              truth: "always",
+              right: "Always. The two parts are equal.",
+              wrong: [
+                ["Never. It is all of the total.", "RAT.PART-WHOLE"],
+                ["Sometimes. Only for even totals."],
+              ],
             },
-            { text: `True. There are ${p.a} cats for every ${p.b} dogs.`, code: "RAT.PART-WHOLE" },
+            {
+              statement:
+                "Red and blue are in the ratio 3 : 4. Sol says $\\frac{3}{4}$ of the counters are red.",
+              truth: false,
+              right: "False. There are 7 parts, so 3/7 are red.",
+              wrong: [
+                ["True. 3 : 4 is 3/4.", "RAT.PART-WHOLE"],
+                ["True. Red over blue gives the fraction.", "RAT.PART-WHOLE"],
+              ],
+            },
           ],
-          solution: [
-            { say: "A part:part ratio compares parts; a fraction compares a part with the whole." },
-          ],
-        });
+        );
     }
   },
 
