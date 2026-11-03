@@ -10,7 +10,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-STA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -102,7 +102,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-STA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -194,7 +194,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-STA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -286,7 +286,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-STA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -378,7 +378,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-STA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -470,7 +470,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-STA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -562,7 +562,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-STA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -600,7 +600,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A bigger range means better scores.",
+                  "v": "True. Class A has the smaller range, so it did better.",
                 },
               ],
               "id": "RA",
@@ -609,7 +609,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. One high score says little; compare an average, where Blue's mean of 19 beats Red's 12.",
+                  "v": "False. Class B's mean, 19, is higher than class A's, 12.",
                 },
               ],
               "id": "RB",
@@ -618,7 +618,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The team with the highest score always did better.",
+                  "v": "True. Averages are compared using the range.",
                 },
               ],
               "id": "RC",
@@ -633,7 +633,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "STA.RANGE.HIGHER-BETTER",
+            "code": "STA.COMPARE",
             "feedback": [],
           },
           {
@@ -658,7 +658,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Compare an average and a measure of spread, not single values.",
+            "v": "False. Class B's mean, 19, is higher than class A's, 12.",
           },
         ],
       },
@@ -666,7 +666,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Team Red's best score was higher than Team Blue's best. Sid says this proves Team Red did better overall.",
+        "v": "Class A's test marks have a mean of 12 and a range of 5; class B's have a mean of 19 and a range of 10. Bea says class A did better on average.",
       },
     ],
   },
@@ -678,7 +678,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-STA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -690,7 +690,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -716,7 +716,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. One high score says little; compare an average, where Blue's mean of 31 beats Red's 26.",
+                  "v": "True. A bigger range means better scores.",
                 },
               ],
               "id": "RA",
@@ -734,7 +734,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A bigger range means better scores.",
+                  "v": "False. One high score says little; compare an average, where Blue's mean of 31 beats Red's 26.",
                 },
               ],
               "id": "RC",
@@ -746,18 +746,18 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "STA.COMPARE",
+            "code": "STA.RANGE.HIGHER-BETTER",
             "feedback": [],
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "STA.RANGE.HIGHER-BETTER",
+            "code": "STA.COMPARE",
             "feedback": [],
           },
         ],
@@ -787,14 +787,14 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-STA-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -806,13 +806,13 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -821,10 +821,19 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -832,7 +841,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. One high score says little; compare an average, where Blue's mean of 29 beats Red's 27.",
+                  "v": "Never. A higher mean always goes with a smaller range.",
                 },
               ],
               "id": "RA",
@@ -841,7 +850,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The team with the highest score always did better.",
+                  "v": "Sometimes. The mean measures a typical value and the range measures spread, so they can go either way.",
                 },
               ],
               "id": "RB",
@@ -850,7 +859,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. A bigger range means better scores.",
+                  "v": "Always. A higher average means more spread.",
                 },
               ],
               "id": "RC",
@@ -862,7 +871,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "STA.COMPARE",
@@ -873,14 +882,14 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "STA.RANGE.HIGHER-BETTER",
+            "code": "STA.COMPARE",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -890,7 +899,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Compare an average and a measure of spread, not single values.",
+            "v": "Sometimes. The mean measures a typical value and the range measures spread, so they can go either way.",
           },
         ],
       },
@@ -898,7 +907,7 @@ exports[`Y7-STA-01.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Team Red's best score was higher than Team Blue's best. Sid says this proves Team Red did better overall.",
+        "v": "The group with the higher mean also has the bigger range.",
       },
     ],
   },

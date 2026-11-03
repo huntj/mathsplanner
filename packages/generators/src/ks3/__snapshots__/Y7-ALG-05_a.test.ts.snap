@@ -10,7 +10,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -258,7 +258,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -320,7 +320,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -382,7 +382,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -393,7 +393,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "C",
           "correctReason": "RA",
           "options": [
             {
@@ -429,7 +429,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Starting at 3 gives 3, 6, 9, …, but starting at 1 gives 1, 4, 7, …, which are not multiples of 3.",
+                  "v": "Never. Adding 4 keeps a number odd or even, so the terms are all odd or all even.",
                 },
               ],
               "id": "RA",
@@ -438,7 +438,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Adding 3 makes multiples of 3.",
+                  "v": "Sometimes. It depends where it starts.",
                 },
               ],
               "id": "RB",
@@ -447,7 +447,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Sequences never contain multiples.",
+                  "v": "Always. Sequences go odd, even, odd, even.",
                 },
               ],
               "id": "RC",
@@ -456,16 +456,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.SEQUENCE.POSITION-RULE",
-            "feedback": [],
-          },
-        ],
+        "misconceptions": [],
         "prompt": [
           {
             "t": "text",
@@ -479,7 +470,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The first term matters as well as the rule.",
+            "v": "Never. Adding 4 keeps a number odd or even, so the terms are all odd or all even.",
           },
         ],
       },
@@ -487,19 +478,19 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A sequence with the rule "add 3" contains only multiples of 3.",
+        "v": "A sequence with the rule "add 4" has both odd and even terms.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -510,14 +501,14 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -526,19 +517,10 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -546,7 +528,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Adding 3 makes multiples of 3.",
+                  "v": "False. Add the rule twice: 10.",
                 },
               ],
               "id": "RA",
@@ -555,7 +537,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Sequences never contain multiples.",
+                  "v": "True. 6 × 2 = 12, then 12 × 2 = 24.",
                 },
               ],
               "id": "RB",
@@ -564,7 +546,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Starting at 3 gives 3, 6, 9, …, but starting at 1 gives 1, 4, 7, …, which are not multiples of 3.",
+                  "v": "False. The third term is the first term times 3.",
                 },
               ],
               "id": "RC",
@@ -586,7 +568,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -596,7 +578,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The first term matters as well as the rule.",
+            "v": "True. 6 × 2 = 12, then 12 × 2 = 24.",
           },
         ],
       },
@@ -604,19 +586,19 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A sequence with the rule "add 3" contains only multiples of 3.",
+        "v": "A sequence starts at 6 and its term-to-term rule is "multiply by 2". Ben says the third term is 24.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-05.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -627,14 +609,14 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -643,19 +625,10 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -663,7 +636,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. Starting at 3 gives 3, 6, 9, …, but starting at 1 gives 1, 4, 7, …, which are not multiples of 3.",
+                  "v": "True. 1 × 2 = 2, then 2 × 2 = 4.",
                 },
               ],
               "id": "RA",
@@ -672,7 +645,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Sequences never contain multiples.",
+                  "v": "False. Add the rule twice: 5.",
                 },
               ],
               "id": "RB",
@@ -681,7 +654,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Adding 3 makes multiples of 3.",
+                  "v": "False. The third term is the first term times 3.",
                 },
               ],
               "id": "RC",
@@ -693,7 +666,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.POSITION-RULE",
@@ -703,7 +676,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -713,7 +686,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The first term matters as well as the rule.",
+            "v": "True. 1 × 2 = 2, then 2 × 2 = 4.",
           },
         ],
       },
@@ -721,7 +694,7 @@ exports[`Y7-ALG-05.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A sequence with the rule "add 3" contains only multiples of 3.",
+        "v": "A sequence starts at 1 and its term-to-term rule is "multiply by 2". Ben says the third term is 4.",
       },
     ],
   },

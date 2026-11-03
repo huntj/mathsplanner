@@ -76,7 +76,7 @@ exports[`Y7-GEO-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -204,7 +204,7 @@ exports[`Y7-GEO-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -332,7 +332,7 @@ exports[`Y7-GEO-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -394,7 +394,7 @@ exports[`Y7-GEO-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -456,7 +456,7 @@ exports[`Y7-GEO-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -518,7 +518,7 @@ exports[`Y7-GEO-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -580,7 +580,7 @@ exports[`Y7-GEO-01.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -592,7 +592,7 @@ exports[`Y7-GEO-01.d > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -618,7 +618,7 @@ exports[`Y7-GEO-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiply all the lengths and halve.",
+                  "v": "True. It works like the area of a triangle.",
                 },
               ],
               "id": "RA",
@@ -627,7 +627,7 @@ exports[`Y7-GEO-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It works like the area of a triangle.",
+                  "v": "False. The parallel sides are added, not multiplied: ½ × (3 + 7) × 6 = 30 cm².",
                 },
               ],
               "id": "RB",
@@ -636,7 +636,7 @@ exports[`Y7-GEO-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The parallel sides are added, not multiplied: ½ × (3 + 7) × 6 = 30 cm².",
+                  "v": "True. Multiply all the lengths and halve.",
                 },
               ],
               "id": "RC",
@@ -656,7 +656,7 @@ exports[`Y7-GEO-01.d > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "MEA.AREA.TRAPEZIUM-HALF",
@@ -689,14 +689,122 @@ exports[`Y7-GEO-01.d > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-01.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. A rectangle needs its own formula.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. With both parallel sides equal to a, ½ × (a + a) × h = a × h.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. Only for a square.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. With both parallel sides equal to a, ½ × (a + a) × h = a × h.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "The trapezium formula gives the right area for a rectangle too.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y7-GEO-01.d",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -734,7 +842,7 @@ exports[`Y7-GEO-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The parallel sides are added, not multiplied: ½ × (3 + 7) × 3 = 15 cm².",
+                  "v": "False. That is twice the area: ½ × (5 + 7) × 5 = 30 cm².",
                 },
               ],
               "id": "RA",
@@ -743,7 +851,7 @@ exports[`Y7-GEO-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It works like the area of a triangle.",
+                  "v": "True. There is no half in the trapezium formula.",
                 },
               ],
               "id": "RB",
@@ -752,7 +860,7 @@ exports[`Y7-GEO-01.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiply all the lengths and halve.",
+                  "v": "True. Add the parallel sides and multiply by the height.",
                 },
               ],
               "id": "RC",
@@ -792,7 +900,7 @@ exports[`Y7-GEO-01.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Average the parallel sides, then multiply by the height.",
+            "v": "False. That is twice the area: ½ × (5 + 7) × 5 = 30 cm².",
           },
         ],
       },
@@ -800,123 +908,7 @@ exports[`Y7-GEO-01.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ben finds the area of a trapezium with parallel sides 3 cm and 7 cm, 3 cm apart, as ½ × 3 × 7 × 3.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y7-GEO-01.d",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. It works like the area of a triangle.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Multiply all the lengths and halve.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. The parallel sides are added, not multiplied: ½ × (5 + 7) × 5 = 30 cm².",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "MEA.AREA.TRAPEZIUM-HALF",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "MEA.AREA.TRAPEZIUM-HALF",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Average the parallel sides, then multiply by the height.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Ben finds the area of a trapezium with parallel sides 5 cm and 7 cm, 5 cm apart, as ½ × 5 × 7 × 5.",
+        "v": "Pat says a trapezium with parallel sides 5 cm and 7 cm, 5 cm apart, has an area of 60 cm².",
       },
     ],
   },

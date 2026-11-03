@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   xs: number[];
@@ -19,7 +20,7 @@ const sum = (xs: number[]) => xs.reduce((s, x) => s + x, 0);
 
 export default defineGenerator<Params>({
   id: "Y7-STA-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["AS.MULTISTEP.ONE-STEP", "STA.MEAN.DIVISOR"],
 
@@ -79,22 +80,57 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["The mean of a set of data is one of the data values."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["The mean of a set of data is one of the data values."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: "Sometimes. The mean of 2, 4 and 6 is 4, which is in the data, but the mean of 1 and 2 is 1.5, which is not.",
+                  correct: true,
+                },
+                { text: "Always. An average is a typical value.", code: "STA.MEAN.DIVISOR" },
+                { text: "Never. The mean is always a decimal." },
+              ],
+              solution: [
+                { say: "The mean shares the total equally; it need not be a value in the list." },
+              ],
+            }),
+          [
             {
-              text: "Sometimes. The mean of 2, 4 and 6 is 4, which is in the data, but the mean of 1 and 2 is 1.5, which is not.",
-              correct: true,
+              statement: `Jo says the mean of ${p.xs.join(", ")} is ${sum(p.xs) / 5}.`,
+              truth: true,
+              right: `True. The total is ${sum(p.xs)}, and ${sum(p.xs)} ÷ 5 = ${sum(p.xs) / 5}.`,
+              wrong: [
+                [`False. Divide by 2: ${sum(p.xs) / 2}.`, "STA.MEAN.DIVISOR"],
+                [`False. The mean is the total, ${sum(p.xs)}.`, "AS.MULTISTEP.ONE-STEP"],
+              ],
             },
-            { text: "Always. An average is a typical value.", code: "STA.MEAN.DIVISOR" },
-            { text: "Never. The mean is always a decimal." },
+            {
+              statement: "Kim says the mean of 3, 5 and 10 is 18 ÷ 2 = 9.",
+              truth: false,
+              right: "False. There are 3 values, so divide by 3: 18 ÷ 3 = 6.",
+              wrong: [
+                ["True. Divide the total by 2 to find an average.", "STA.MEAN.DIVISOR"],
+                ["True. 9 is between the smallest and largest values."],
+              ],
+            },
+            {
+              claim:
+                "The mean of a set of data is between its smallest and largest values (or equal to one of them).",
+              truth: "always",
+              right:
+                "Always. Sharing the total out equally can never give more than the largest value or less than the smallest.",
+              wrong: [
+                ["Sometimes. One very large value can push the mean above them all."],
+                ["Never. The mean is always one of the values."],
+              ],
+            },
           ],
-          solution: [
-            { say: "The mean shares the total equally; it need not be a value in the list." },
-          ],
-        });
+        );
     }
   },
 

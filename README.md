@@ -47,20 +47,22 @@ pnpm test
 | `pnpm typecheck`   | Strict TypeScript across every package                                                         |
 | `pnpm build`       | Builds each package to `dist/`                                                                 |
 | `pnpm data:check`  | Validates `data/` and the prerequisite graph                                                   |
+| `pnpm data:course` | Checks `data/course.txt`, the Learn Maths path, and writes `data/course.json`                  |
 | `pnpm data:import` | Re-imports `docs/progression-map.md` into `data/statements.json` (overwrites edits made since) |
 | `pnpm coverage`    | Lists statements without a generator; fails if a generator names an unknown statement          |
 | `pnpm gallery`     | Runs the gallery locally at http://localhost:5173                                              |
 | `pnpm practice`    | Runs the practice app locally at http://localhost:5174                                         |
+| `pnpm learn`       | Runs Learn Maths, the pupils' app, locally at http://localhost:5175                            |
 | `pnpm print`       | Prints a worksheet to PDF with an installed Chrome or Edge (`pnpm print --help` for options)   |
 | `pnpm new <ID>`    | Scaffolds a generator and its test for a statement                                             |
 
 ## Repository layout
 
 ```text
-data/          statements.json, misconceptions.json and their JSON Schemas
-docs/          design document, progression map and data report
-packages/      core, diagrams, archetypes, marking, render, generators
-apps/          gallery (browse and review) and practice (student-facing, stateless)
+data/          statements.json, misconceptions.json, topics, the Learn Maths course and schemas
+docs/          design document, progression map, data report and how Learn Maths is put online
+packages/      core, diagrams, archetypes, marking, render, generators, ui (answer widgets)
+apps/          gallery (browse and review), practice (student-facing, stateless) and learn (pupils' path)
 tools/         import-map (statement import and checks) and print (worksheets to PDF)
 ```
 

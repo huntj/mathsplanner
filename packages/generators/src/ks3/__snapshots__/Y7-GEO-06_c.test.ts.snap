@@ -10,7 +10,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-06.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -68,7 +68,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-06.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -126,7 +126,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-06.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -184,7 +184,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-06.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -232,7 +232,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-06.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -280,7 +280,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-06.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -342,7 +342,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-06.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -353,8 +353,8 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -389,7 +389,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The exterior angle would be 80°, and 360° ÷ 80° = 4.5 is not a whole number of sides.",
+                  "v": "Never. They add up to 360°.",
                 },
               ],
               "id": "RA",
@@ -398,7 +398,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Any angle under 180° works.",
+                  "v": "Sometimes. Only in a square.",
                 },
               ],
               "id": "RB",
@@ -407,7 +407,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. If it has 100 ÷ 360 sides.",
+                  "v": "Always. Together they make a straight line.",
                 },
               ],
               "id": "RC",
@@ -419,7 +419,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "GEO.POLYGON.INTERIOR-EXTERIOR",
@@ -427,7 +427,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.POLYGON.INTERIOR-EXTERIOR",
@@ -447,7 +447,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The exterior angle must divide 360° exactly.",
+            "v": "Always. Together they make a straight line.",
           },
         ],
       },
@@ -455,19 +455,19 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A regular polygon can have interior angles of 100°.",
+        "v": "An interior angle and the exterior angle at the same corner of a polygon add up to 180°.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-06.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -478,14 +478,14 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -494,19 +494,10 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -514,7 +505,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. If it has 100 ÷ 360 sides.",
+                  "v": "False. It is 180 ÷ 20°.",
                 },
               ],
               "id": "RA",
@@ -523,7 +514,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The exterior angle would be 80°, and 360° ÷ 80° = 4.5 is not a whole number of sides.",
+                  "v": "True. The exterior angles add up to 360°, and there are 20 equal ones: 360 ÷ 20 = 18.",
                 },
               ],
               "id": "RB",
@@ -532,7 +523,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Any angle under 180° works.",
+                  "v": "False. It is 162°.",
                 },
               ],
               "id": "RC",
@@ -542,14 +533,6 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.POLYGON.INTERIOR-EXTERIOR",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -562,7 +545,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -572,7 +555,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The exterior angle must divide 360° exactly.",
+            "v": "True. The exterior angles add up to 360°, and there are 20 equal ones: 360 ÷ 20 = 18.",
           },
         ],
       },
@@ -580,19 +563,19 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A regular polygon can have interior angles of 100°.",
+        "v": "Ivy says each exterior angle of a regular polygon with 20 sides is 18°.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-06.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -603,14 +586,14 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
+          "correct": "B",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -619,19 +602,10 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -639,7 +613,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Any angle under 180° works.",
+                  "v": "True. Divide 360° by the number of sides.",
                 },
               ],
               "id": "RA",
@@ -648,7 +622,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. The exterior angle would be 80°, and 360° ÷ 80° = 4.5 is not a whole number of sides.",
+                  "v": "False. 60° is the exterior angle; the interior angle is 180 − 60 = 120°.",
                 },
               ],
               "id": "RB",
@@ -657,7 +631,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. If it has 100 ÷ 360 sides.",
+                  "v": "True. Interior and exterior angles are the same.",
                 },
               ],
               "id": "RC",
@@ -687,7 +661,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -697,7 +671,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The exterior angle must divide 360° exactly.",
+            "v": "False. 60° is the exterior angle; the interior angle is 180 − 60 = 120°.",
           },
         ],
       },
@@ -705,7 +679,7 @@ exports[`Y7-GEO-06.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A regular polygon can have interior angles of 100°.",
+        "v": "Ben says each interior angle of a regular polygon with 6 sides is 60°.",
       },
     ],
   },

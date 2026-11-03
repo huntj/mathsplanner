@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { gcdOf } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   g: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-04.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.FACTOR.HCF-LCM"],
 
@@ -81,20 +82,61 @@ export default defineGenerator<Params>({
           solution: [{ say: "", math: `\\text{HCF}(${a}, ${b}) = ${p.g}` }],
         });
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["The HCF of two different numbers is smaller than both of them."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["The HCF of two different numbers is smaller than both of them."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: `Sometimes. The HCF of ${a} and ${b} is ${p.g}, smaller than both, but the HCF of ${p.g} and ${a} is ${p.g}, equal to the smaller number.`,
+                  correct: true,
+                },
+                { text: "Always. A factor is always smaller.", code: "NPV.FACTOR.HCF-LCM" },
+                { text: "Never. The HCF is bigger than both numbers.", code: "NPV.FACTOR.HCF-LCM" },
+              ],
+              solution: [
+                { say: "When one number divides the other, the HCF is the smaller number." },
+              ],
+            }),
+          [
             {
-              text: `Sometimes. The HCF of ${a} and ${b} is ${p.g}, smaller than both, but the HCF of ${p.g} and ${a} is ${p.g}, equal to the smaller number.`,
-              correct: true,
+              statement: `Kim says the HCF of ${p.g * p.x} and ${p.g * p.y} is ${p.g}.`,
+              truth: true,
+              right: `True. ${p.g * p.x} = ${p.g} × ${p.x} and ${p.g * p.y} = ${p.g} × ${p.y}, and ${p.x} and ${p.y} share no factor bigger than 1.`,
+              wrong: [
+                [
+                  `False. The HCF is ${p.g * p.x * p.y}, the first number they both go into.`,
+                  "NPV.FACTOR.HCF-LCM",
+                ],
+                ["False. The HCF of two numbers is always 1."],
+              ],
             },
-            { text: "Always. A factor is always smaller.", code: "NPV.FACTOR.HCF-LCM" },
-            { text: "Never. The HCF is bigger than both numbers.", code: "NPV.FACTOR.HCF-LCM" },
+            {
+              statement: `Sam says the HCF of ${p.g * p.x} and ${p.g * p.y} is bigger than ${p.g * p.x}.`,
+              truth: false,
+              right: `False. The HCF divides into both numbers, so it cannot be bigger than the smaller one, ${p.g * p.x}. It is ${p.g}.`,
+              wrong: [
+                [
+                  "True. The highest common factor is the biggest number linked to both.",
+                  "NPV.FACTOR.HCF-LCM",
+                ],
+                ["True. HCFs are found by multiplying.", "NPV.FACTOR.HCF-LCM"],
+              ],
+            },
+            {
+              claim: "The HCF of two even numbers is 2.",
+              truth: "sometimes",
+              right: "Sometimes. The HCF of 4 and 6 is 2, but the HCF of 4 and 8 is 4.",
+              wrong: [
+                ["Always. 2 goes into every even number.", "NPV.FACTOR.HCF-LCM"],
+                ["Never. The HCF of even numbers is always bigger than 2."],
+              ],
+            },
           ],
-          solution: [{ say: "When one number divides the other, the HCF is the smaller number." }],
-        });
+        );
     }
   },
 

@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -20,7 +21,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-ALG-02.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.NOTATION.JUXTAPOSE", "ALG.SUBSTITUTE.NEGATIVE-SQUARE"],
 
@@ -80,23 +81,56 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [A.math("x^2"), " is bigger than ", A.math("x"), "."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [A.math("x^2"), " is bigger than ", A.math("x"), "."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: `Sometimes. For x = ${p.x}, x² = ${p.x * p.x} is bigger; but for x = 1 they are equal, and for x = 0.5, x² = 0.25 is smaller.`,
+                  correct: true,
+                },
+                {
+                  text: "Always. Squaring makes numbers bigger.",
+                  code: "ALG.SUBSTITUTE.NEGATIVE-SQUARE",
+                },
+                { text: "Never. x² is x × 2.", code: "ALG.NOTATION.JUXTAPOSE" },
+              ],
+              solution: [{ say: "Try values between 0 and 1." }],
+            }),
+          [
             {
-              text: `Sometimes. For x = ${p.x}, x² = ${p.x * p.x} is bigger; but for x = 1 they are equal, and for x = 0.5, x² = 0.25 is smaller.`,
-              correct: true,
+              statement: `When $x = ${p.x}$, Ali says $3x = 3${p.x}$.`,
+              truth: false,
+              right: `False. 3x means 3 × x = 3 × ${p.x} = ${3 * p.x}.`,
+              wrong: [
+                ["True. Put the number in place of the x.", "ALG.NOTATION.JUXTAPOSE"],
+                ["True. 3x is 3 written next to x.", "ALG.NOTATION.JUXTAPOSE"],
+              ],
             },
             {
-              text: "Always. Squaring makes numbers bigger.",
-              code: "ALG.SUBSTITUTE.NEGATIVE-SQUARE",
+              statement: `When $x = -${p.a}$, Bo says $x^2 = ${p.a * p.a}$.`,
+              truth: true,
+              right: `True. (−${p.a}) × (−${p.a}) = ${p.a * p.a}: a negative times a negative is positive.`,
+              wrong: [
+                [`False. It is −${p.a * p.a}.`, "ALG.SUBSTITUTE.NEGATIVE-SQUARE"],
+                ["False. Squaring a negative number gives a negative answer."],
+              ],
             },
-            { text: "Never. x² is x × 2.", code: "ALG.NOTATION.JUXTAPOSE" },
+            {
+              claim: `$x + ${p.b}$ is bigger than $x$.`,
+              truth: "always",
+              right: `Always. Adding ${p.b} to any number, even a negative one, makes it ${p.b} bigger.`,
+              wrong: [
+                ["Sometimes. Not when x is negative."],
+                ["Never. A letter is bigger than a number."],
+              ],
+            },
           ],
-          solution: [{ say: "Try values between 0 and 1." }],
-        });
+        );
     }
   },
 

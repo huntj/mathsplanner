@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-05.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.ORDER.LEFT-TO-RIGHT"],
 
@@ -69,31 +70,77 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Jo says ",
-            A.math(`${p.d * 10} - ${p.b} + ${p.c}`),
-            " has the same value as ",
-            A.math(`${p.d * 10} - (${p.b} + ${p.c})`),
-            ".",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Jo says ",
+                A.math(`${p.d * 10} - ${p.b} + ${p.c}`),
+                " has the same value as ",
+                A.math(`${p.d * 10} - (${p.b} + ${p.c})`),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Without brackets you subtract ${p.b} then add ${p.c}, giving ${p.d * 10 - p.b + p.c}. With brackets you subtract both, giving ${p.d * 10 - p.b - p.c}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Brackets do not change additions and subtractions.",
+                  code: "NPV.ORDER.LEFT-TO-RIGHT",
+                },
+                {
+                  text: "True. You always add before you subtract.",
+                  code: "NPV.ORDER.LEFT-TO-RIGHT",
+                },
+              ],
+              solution: [
+                { say: "Adding and subtracting go left to right; brackets change that order." },
+              ],
+            }),
+          [
             {
-              text: `False. Without brackets you subtract ${p.b} then add ${p.c}, giving ${p.d * 10 - p.b + p.c}. With brackets you subtract both, giving ${p.d * 10 - p.b - p.c}.`,
-              correct: true,
+              statement: `Ivy says $${p.a} + ${p.b} \\times ${p.c} = ${p.a + p.b * p.c}$.`,
+              truth: true,
+              right: `True. Multiply before adding: ${p.b} × ${p.c} = ${p.b * p.c}, then ${p.a} + ${p.b * p.c} = ${p.a + p.b * p.c}.`,
+              wrong: [
+                [
+                  `False. Work from left to right: ${p.a + p.b} × ${p.c} = ${(p.a + p.b) * p.c}.`,
+                  "NPV.ORDER.LEFT-TO-RIGHT",
+                ],
+                ["False. Adding always comes before multiplying.", "NPV.ORDER.LEFT-TO-RIGHT"],
+              ],
             },
             {
-              text: "True. Brackets do not change additions and subtractions.",
-              code: "NPV.ORDER.LEFT-TO-RIGHT",
+              statement: `Ben says $(${p.a} + ${p.b}) \\times ${p.c} = ${p.a + p.b * p.c}$.`,
+              truth: false,
+              right: `False. The bracket comes first: ${p.a + p.b} × ${p.c} = ${(p.a + p.b) * p.c}.`,
+              wrong: [
+                [
+                  "True. Multiplying always comes before adding, even with brackets.",
+                  "NPV.ORDER.LEFT-TO-RIGHT",
+                ],
+                ["True. Brackets only matter when there is a division."],
+              ],
             },
-            { text: "True. You always add before you subtract.", code: "NPV.ORDER.LEFT-TO-RIGHT" },
+            {
+              claim: "Putting brackets into a calculation changes its answer.",
+              truth: "sometimes",
+              right:
+                "Sometimes. (2 + 3) + 4 and 2 + (3 + 4) are both 9, but (2 + 3) × 4 = 20 while 2 + 3 × 4 = 14.",
+              wrong: [
+                [
+                  "Always. Brackets are worked out first, so the answer always changes.",
+                  "NPV.ORDER.LEFT-TO-RIGHT",
+                ],
+                ["Never. Brackets are only there to make it tidy.", "NPV.ORDER.LEFT-TO-RIGHT"],
+              ],
+            },
           ],
-          solution: [
-            { say: "Adding and subtracting go left to right; brackets change that order." },
-          ],
-        });
+        );
     }
   },
 

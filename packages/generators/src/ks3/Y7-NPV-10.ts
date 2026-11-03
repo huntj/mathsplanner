@@ -9,6 +9,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Depth 1: (a + b) ÷ (c × d), with a and b to 2 dp and d to 1 dp, stored as whole hundredths and tenths. */
@@ -60,7 +61,7 @@ const story = (p: Params) =>
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-10",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4, 5],
   misconceptions: ["NPV.CALC.MONEY", "NPV.CALC.ROUND-CONTEXT", "NPV.ORDER.LEFT-TO-RIGHT"],
 
@@ -156,49 +157,87 @@ export default defineGenerator<Params>({
       case 4: {
         const s = story(p);
         const g = grouping(p);
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          calculator: true,
-          statement: [
-            `${s.setup} For ${s.sum} the calculator shows `,
-            A.math(g.shown),
-            `. Jo says the answer is ${Math.round(p.total / p.size)} ${s.unit}.`,
-          ],
-          truth: Math.round(p.total / p.size) === g.answer,
-          reasons:
-            Math.round(p.total / p.size) === g.answer
-              ? [
-                  {
-                    text: p.up
-                      ? `True. ${g.other} coaches would leave people behind, so round up.`
-                      : "True. Only whole boxes count, so round down.",
-                    correct: true,
-                  },
-                  {
-                    text: "False: you must always round to the nearest whole number.",
-                    code: "NPV.CALC.ROUND-CONTEXT",
-                  },
-                  { text: `False: write the full answer, ${g.shown}.` },
-                ]
-              : [
-                  {
-                    text: p.up
-                      ? `False. ${Math.round(p.total / p.size)} coaches would leave people behind, so ${g.answer} are needed.`
-                      : `False. Only ${g.answer} boxes can be filled; there are not enough eggs for another.`,
-                    correct: true,
-                  },
-                  {
-                    text: "True: round to the nearest whole number.",
-                    code: "NPV.CALC.ROUND-CONTEXT",
-                  },
-                  { text: `False: write the full answer, ${g.shown}.` },
-                ],
-          solution: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              calculator: true,
+              statement: [
+                `${s.setup} For ${s.sum} the calculator shows `,
+                A.math(g.shown),
+                `. Jo says the answer is ${Math.round(p.total / p.size)} ${s.unit}.`,
+              ],
+              truth: Math.round(p.total / p.size) === g.answer,
+              reasons:
+                Math.round(p.total / p.size) === g.answer
+                  ? [
+                      {
+                        text: p.up
+                          ? `True. ${g.other} coaches would leave people behind, so round up.`
+                          : "True. Only whole boxes count, so round down.",
+                        correct: true,
+                      },
+                      {
+                        text: "False: you must always round to the nearest whole number.",
+                        code: "NPV.CALC.ROUND-CONTEXT",
+                      },
+                      { text: `False: write the full answer, ${g.shown}.` },
+                    ]
+                  : [
+                      {
+                        text: p.up
+                          ? `False. ${Math.round(p.total / p.size)} coaches would leave people behind, so ${g.answer} are needed.`
+                          : `False. Only ${g.answer} boxes can be filled; there are not enough eggs for another.`,
+                        correct: true,
+                      },
+                      {
+                        text: "True: round to the nearest whole number.",
+                        code: "NPV.CALC.ROUND-CONTEXT",
+                      },
+                      { text: `False: write the full answer, ${g.shown}.` },
+                    ],
+              solution: [
+                {
+                  say: `${s.sum} = ${g.shown}. ${p.up ? "Everyone needs a seat, so round up" : "Only full boxes count, so round down"}: ${g.answer} ${s.unit}.`,
+                },
+              ],
+            }),
+          [
             {
-              say: `${s.sum} = ${g.shown}. ${p.up ? "Everyone needs a seat, so round up" : "Only full boxes count, so round down"}: ${g.answer} ${s.unit}.`,
+              statement:
+                "Kit's calculator shows 2.5 for an amount in pounds. He writes the answer as £2.5.",
+              truth: false,
+              right:
+                "False. In money the second decimal place is pence, so it is £2.50: 2 pounds and 50 pence.",
+              wrong: [
+                ["True. Write exactly what the calculator shows.", "NPV.CALC.MONEY"],
+                ["True. £2.5 means £2 and 5p.", "NPV.CALC.MONEY"],
+              ],
+            },
+            {
+              statement:
+                "A calculator shows 4.25 for an amount in pounds. Lia says it means £4.25.",
+              truth: true,
+              right: "True. The two digits after the point are pence: 4 pounds and 25 pence.",
+              wrong: [
+                ["False. It means £4 and 2.5p.", "NPV.CALC.MONEY"],
+                ["False. It means £425."],
+              ],
+            },
+            {
+              claim:
+                "When a calculator answer is a decimal, you round it to the nearest whole number.",
+              truth: "sometimes",
+              right:
+                "Sometimes. 31.2 coaches means 32 coaches, rounded up; 7.8 full boxes means 7, rounded down; and £3.75 is not rounded at all.",
+              wrong: [
+                ["Always. Answers in real life are whole numbers.", "NPV.CALC.ROUND-CONTEXT"],
+                ["Never. Always write every digit the calculator shows."],
+              ],
             },
           ],
-        });
+        );
       }
       default: {
         const s = story(p);

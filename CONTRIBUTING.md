@@ -44,7 +44,8 @@ A generator lives at `packages/generators/src/<key stage>/<ID>.ts`, where the ke
 - **ship an independent `verify`** that recomputes the answer a different way;
 - **reject bad parameter sets** with `accept`, or by calling `reject()` from `params` or `build`, rather than producing degenerate questions;
 - **offer only wrong options that are definitely wrong**: when the answer has several correct names (a square is also a rectangle), use `wrongNames` and `distinctKinds` from `packages/generators/src/shared/shapes.ts` or the same idea;
-- **bump its `version`** whenever a change would alter the question produced for an existing key.
+- **bump its `version`** whenever a change would alter the question produced for an existing key;
+- **vary its reasoning questions**: a pupil practising a skill again and again should meet different claims with different right answers, not one claim with new numbers. List extra claims (some true and some false, or always, sometimes and never) with `orClaims` from `packages/generators/src/shared/variety.ts`. `variety.test.ts` checks every skill on the Learn Maths path: at least three forms, and no one answer right more than 70% of the time.
 
 Draw diagrams with the builders in `@mathsplanner/diagrams` (for example `anglesOnLine` or `triangleSSS`) rather than computing coordinates by hand, and check in your tests that every diagram renders with no `collisions` and no `problems`.
 

@@ -10,7 +10,7 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -75,7 +75,7 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -140,7 +140,7 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -205,7 +205,7 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -283,7 +283,7 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -361,7 +361,7 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -432,14 +432,14 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -451,13 +451,13 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -466,10 +466,19 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -477,7 +486,7 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Dividing by a number less than 1 makes it bigger: 6.5 ÷ 0.5 = 13, the number of halves in 6.5.",
+                  "v": "Always. Decimals make numbers smaller.",
                 },
               ],
               "id": "RA",
@@ -486,7 +495,7 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It is 3.25.",
+                  "v": "Never. Multiplying always makes numbers bigger.",
                 },
               ],
               "id": "RB",
@@ -495,7 +504,7 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Division always gives a smaller answer.",
+                  "v": "Sometimes. 4 × 0.5 = 2 is smaller, but 4 × 1.5 = 6 is bigger. It depends whether the decimal is less than 1.",
                 },
               ],
               "id": "RC",
@@ -507,15 +516,15 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.DECIMAL.POINT-PLACE",
+            "code": "FR.MULTIPLY.ALWAYS-BIGGER",
             "feedback": [],
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "FR.MULTIPLY.ALWAYS-BIGGER",
@@ -525,7 +534,7 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -535,7 +544,7 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Ask: how many 0.5s fit into the number?",
+            "v": "Sometimes. 4 × 0.5 = 2 is smaller, but 4 × 1.5 = 6 is bigger. It depends whether the decimal is less than 1.",
           },
         ],
       },
@@ -543,15 +552,7 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Lou says ",
-      },
-      {
-        "t": "math",
-        "v": "6.5 \\div 0.5",
-      },
-      {
-        "t": "text",
-        "v": " must be smaller than 6.5, because dividing makes numbers smaller.",
+        "v": "Multiplying a positive number by a decimal makes it smaller.",
       },
     ],
   },
@@ -563,131 +564,7 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-03.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Dividing by a number less than 1 makes it bigger: 6.5 ÷ 0.5 = 13, the number of halves in 6.5.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Division always gives a smaller answer.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. It is 3.25.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "FR.MULTIPLY.ALWAYS-BIGGER",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "NPV.DECIMAL.POINT-PLACE",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Ask: how many 0.5s fit into the number?",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Lou says ",
-      },
-      {
-        "t": "math",
-        "v": "6.5 \\div 0.5",
-      },
-      {
-        "t": "text",
-        "v": " must be smaller than 6.5, because dividing makes numbers smaller.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y7-NPV-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -725,7 +602,7 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Division always gives a smaller answer.",
+                  "v": "True. It is 3.25.",
                 },
               ],
               "id": "RA",
@@ -734,7 +611,7 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It is 4.25.",
+                  "v": "True. Division always gives a smaller answer.",
                 },
               ],
               "id": "RB",
@@ -743,7 +620,7 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Dividing by a number less than 1 makes it bigger: 8.5 ÷ 0.5 = 17, the number of halves in 8.5.",
+                  "v": "False. Dividing by a number less than 1 makes it bigger: 6.5 ÷ 0.5 = 13, the number of halves in 6.5.",
                 },
               ],
               "id": "RC",
@@ -758,7 +635,7 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "FR.MULTIPLY.ALWAYS-BIGGER",
+            "code": "NPV.DECIMAL.POINT-PLACE",
             "feedback": [],
           },
           {
@@ -766,7 +643,7 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.DECIMAL.POINT-PLACE",
+            "code": "FR.MULTIPLY.ALWAYS-BIGGER",
             "feedback": [],
           },
         ],
@@ -795,11 +672,136 @@ exports[`Y7-NPV-03.b > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "math",
-        "v": "8.5 \\div 0.5",
+        "v": "6.5 \\div 0.5",
       },
       {
         "t": "text",
-        "v": " must be smaller than 8.5, because dividing makes numbers smaller.",
+        "v": " must be smaller than 6.5, because dividing makes numbers smaller.",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y7-NPV-03.b",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always true",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes true",
+                },
+              ],
+              "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. Multiplying always makes numbers bigger.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. 5 × 0.5 = 2.5 is smaller, but 5 × 1.5 = 7.5 is bigger. It depends whether the decimal is less than 1.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. Decimals make numbers smaller.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "FR.MULTIPLY.ALWAYS-BIGGER",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "FR.MULTIPLY.ALWAYS-BIGGER",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this always, sometimes or never true?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Sometimes. 5 × 0.5 = 2.5 is smaller, but 5 × 1.5 = 7.5 is bigger. It depends whether the decimal is less than 1.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Multiplying a positive number by a decimal makes it smaller.",
       },
     ],
   },

@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -23,7 +24,7 @@ const r = (v: number) => Number(v.toFixed(6));
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-03.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.DECIMAL.POINT-PLACE", "FR.MULTIPLY.ALWAYS-BIGGER"],
 
@@ -89,27 +90,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Lou says ",
-            A.math(`${p.a}.5 \\div 0.5`),
-            ` must be smaller than ${p.a}.5, because dividing makes numbers smaller.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Lou says ",
+                A.math(`${p.a}.5 \\div 0.5`),
+                ` must be smaller than ${p.a}.5, because dividing makes numbers smaller.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Dividing by a number less than 1 makes it bigger: ${p.a}.5 ÷ 0.5 = ${r((p.a + 0.5) * 2)}, the number of halves in ${p.a}.5.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Division always gives a smaller answer.",
+                  code: "FR.MULTIPLY.ALWAYS-BIGGER",
+                },
+                { text: `True. It is ${r((p.a + 0.5) / 2)}.`, code: "NPV.DECIMAL.POINT-PLACE" },
+              ],
+              solution: [{ say: "Ask: how many 0.5s fit into the number?" }],
+            }),
+          [
             {
-              text: `False. Dividing by a number less than 1 makes it bigger: ${p.a}.5 ÷ 0.5 = ${r((p.a + 0.5) * 2)}, the number of halves in ${p.a}.5.`,
-              correct: true,
+              claim: "Multiplying a positive number by a decimal makes it smaller.",
+              truth: "sometimes",
+              right: `Sometimes. ${p.k} × 0.5 = ${p.k / 2} is smaller, but ${p.k} × 1.5 = ${p.k * 1.5} is bigger. It depends whether the decimal is less than 1.`,
+              wrong: [
+                ["Always. Decimals make numbers smaller.", "FR.MULTIPLY.ALWAYS-BIGGER"],
+                ["Never. Multiplying always makes numbers bigger.", "FR.MULTIPLY.ALWAYS-BIGGER"],
+              ],
             },
             {
-              text: "True. Division always gives a smaller answer.",
-              code: "FR.MULTIPLY.ALWAYS-BIGGER",
+              statement: `Sam says $0.${p.a} \\times 10 = ${p.a}$.`,
+              truth: true,
+              right: `True. Each digit moves one place to the left: ${p.a} tenths × 10 = ${p.a} ones.`,
+              wrong: [
+                [`False. It is 0.${p.a}0.`, "NPV.DECIMAL.POINT-PLACE"],
+                [`False. It is 0.0${p.a}.`, "NPV.DECIMAL.POINT-PLACE"],
+              ],
             },
-            { text: `True. It is ${r((p.a + 0.5) / 2)}.`, code: "NPV.DECIMAL.POINT-PLACE" },
+            {
+              statement: `Ava says $0.${p.a} \\times 0.${p.b}$ is bigger than $0.${p.a}$.`,
+              truth: false,
+              right: `False. Taking ${p.b} tenths of 0.${p.a} leaves less than all of it: 0.${p.a} × 0.${p.b} = ${(p.a * p.b) / 100}.`,
+              wrong: [
+                ["True. Multiplying makes numbers bigger.", "FR.MULTIPLY.ALWAYS-BIGGER"],
+                ["True. The answer has more decimal places.", "NPV.DECIMAL.POINT-PLACE"],
+              ],
+            },
           ],
-          solution: [{ say: "Ask: how many 0.5s fit into the number?" }],
-        });
+        );
     }
   },
 

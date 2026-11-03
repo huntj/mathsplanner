@@ -10,7 +10,7 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -111,7 +111,7 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -212,7 +212,7 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -313,7 +313,7 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -383,7 +383,7 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -453,7 +453,7 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -516,14 +516,14 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -534,14 +534,14 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RA",
+          "correct": "C",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -550,10 +550,19 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -561,7 +570,7 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every whole number greater than 1 has exactly one prime factorisation (apart from the order of the factors).",
+                  "v": "Always. Every number has 1 as a factor.",
                 },
               ],
               "id": "RA",
@@ -570,7 +579,7 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Different factor trees give different primes.",
+                  "v": "Never. 1 is not prime, so it is never written in a prime factorisation.",
                 },
               ],
               "id": "RB",
@@ -579,7 +588,7 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. One of them may include 1.",
+                  "v": "Sometimes. When the number is odd.",
                 },
               ],
               "id": "RC",
@@ -591,7 +600,7 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "NPV.FACTOR.NOT-PRIME",
@@ -609,21 +618,25 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
     ],
     "solution": [
       {
-        "math": "60 = 2 \\times 2 \\times 3 \\times 5",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "Never. 1 is not prime, so it is never written in a prime factorisation.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Ali and Bea both write 60 as a product of primes, starting with different factor trees. Bea says they must get the same primes.",
+        "v": "A prime factorisation includes the number 1.",
       },
     ],
   },
@@ -635,7 +648,7 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -673,7 +686,7 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. One of them may include 1.",
+                  "v": "False. Different factor trees give different primes.",
                 },
               ],
               "id": "RA",
@@ -682,7 +695,7 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Different factor trees give different primes.",
+                  "v": "False. One of them may include 1.",
                 },
               ],
               "id": "RB",
@@ -747,7 +760,7 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-04.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -758,8 +771,8 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RC",
+          "correct": "B",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -785,7 +798,7 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. One of them may include 1.",
+                  "v": "False. 4 and 9 are not prime: 36 = 2 × 2 × 3 × 3 = 2² × 3².",
                 },
               ],
               "id": "RA",
@@ -794,7 +807,7 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Different factor trees give different primes.",
+                  "v": "True. 4 × 9 = 36.",
                 },
               ],
               "id": "RB",
@@ -803,7 +816,7 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Every whole number greater than 1 has exactly one prime factorisation (apart from the order of the factors).",
+                  "v": "True. Any factor pair will do.",
                 },
               ],
               "id": "RC",
@@ -815,7 +828,7 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.FACTOR.NOT-PRIME",
@@ -823,7 +836,7 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.FACTOR.NOT-PRIME",
@@ -840,14 +853,26 @@ exports[`Y7-NPV-04.b > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "140 = 2 \\times 2 \\times 5 \\times 7",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. 4 and 9 are not prime: 36 = 2 × 2 × 3 × 3 = 2² × 3².",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Ali and Bea both write 140 as a product of primes, starting with different factor trees. Bea says they must get the same primes.",
+        "v": "Ana writes ",
+      },
+      {
+        "t": "math",
+        "v": "36 = 4 \\times 9",
+      },
+      {
+        "t": "text",
+        "v": " as a product of prime factors.",
       },
     ],
   },

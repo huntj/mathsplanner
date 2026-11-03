@@ -10,7 +10,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-RAT-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -72,7 +72,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-RAT-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -134,7 +134,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-RAT-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -196,7 +196,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-RAT-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -258,7 +258,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-RAT-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -320,7 +320,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-RAT-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -375,14 +375,14 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-RAT-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -393,14 +393,14 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -409,10 +409,19 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -420,7 +429,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. An hour has 100 minutes.",
+                  "v": "Never. Decimal hours never come to whole minutes.",
                 },
               ],
               "id": "RA",
@@ -429,7 +438,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 0.5 of an hour is half of 60 minutes, which is 30 minutes: 1.5 hours = 1 hour 30 minutes.",
+                  "v": "Always. Each tenth of an hour is 6 minutes, so 1.7 hours = 1 hour 42 minutes.",
                 },
               ],
               "id": "RB",
@@ -438,7 +447,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The digits after the point are the minutes.",
+                  "v": "Sometimes. Only for 0.5 hours.",
                 },
               ],
               "id": "RC",
@@ -468,7 +477,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -478,7 +487,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Multiply the decimal part of an hour by 60.",
+            "v": "Always. Each tenth of an hour is 6 minutes, so 1.7 hours = 1 hour 42 minutes.",
           },
         ],
       },
@@ -486,7 +495,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Joe says 1.5 hours is 1 hour 50 minutes.",
+        "v": "A number of hours with one decimal place, such as 1.7 hours, is a whole number of minutes.",
       },
     ],
   },
@@ -498,7 +507,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-RAT-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -614,7 +623,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-RAT-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -625,7 +634,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RC",
           "options": [
             {
@@ -652,7 +661,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. An hour has 100 minutes.",
+                  "v": "False. It is 2 hours 25 minutes: the digits after the point are the minutes.",
                 },
               ],
               "id": "RA",
@@ -661,7 +670,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The digits after the point are the minutes.",
+                  "v": "False. An hour has 100 minutes.",
                 },
               ],
               "id": "RB",
@@ -670,7 +679,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 0.5 of an hour is half of 60 minutes, which is 30 minutes: 1.5 hours = 1 hour 30 minutes.",
+                  "v": "True. 0.25 of an hour is a quarter of 60 minutes, which is 15 minutes.",
                 },
               ],
               "id": "RC",
@@ -710,7 +719,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Multiply the decimal part of an hour by 60.",
+            "v": "True. 0.25 of an hour is a quarter of 60 minutes, which is 15 minutes.",
           },
         ],
       },
@@ -718,7 +727,7 @@ exports[`Y7-RAT-01.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Joe says 1.5 hours is 1 hour 50 minutes.",
+        "v": "Una says 2.25 hours is 2 hours 15 minutes.",
       },
     ],
   },

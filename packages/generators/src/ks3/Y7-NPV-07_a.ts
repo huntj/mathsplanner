@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-07.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MD.SQUARE.DOUBLES", "NPV.POWER.ROOT-HALF"],
 
@@ -72,20 +73,54 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["A square number is even."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["A square number is even."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: `Sometimes. ${p.s % 2 === 0 ? p.s : p.s + 1}² = ${(p.s % 2 === 0 ? p.s : p.s + 1) ** 2} is even, but ${p.s % 2 === 1 ? p.s : p.s + 1}² = ${(p.s % 2 === 1 ? p.s : p.s + 1) ** 2} is odd.`,
+                  correct: true,
+                },
+                { text: "Always. Squaring doubles a number.", code: "MD.SQUARE.DOUBLES" },
+                { text: "Never. Square numbers are always odd." },
+              ],
+              solution: [{ say: "Odd × odd is odd; even × even is even." }],
+            }),
+          [
             {
-              text: `Sometimes. ${p.s % 2 === 0 ? p.s : p.s + 1}² = ${(p.s % 2 === 0 ? p.s : p.s + 1) ** 2} is even, but ${p.s % 2 === 1 ? p.s : p.s + 1}² = ${(p.s % 2 === 1 ? p.s : p.s + 1) ** 2} is odd.`,
-              correct: true,
+              statement: `Ann says $${p.n}^2 = ${p.n * p.n}$.`,
+              truth: true,
+              right: `True. ${p.n} × ${p.n} = ${p.n * p.n}.`,
+              wrong: [
+                [`False. ${p.n}² = ${2 * p.n}.`, "MD.SQUARE.DOUBLES"],
+                ["False. Squaring means adding a number to itself."],
+              ],
             },
-            { text: "Always. Squaring doubles a number.", code: "MD.SQUARE.DOUBLES" },
-            { text: "Never. Square numbers are always odd." },
+            {
+              statement: `Ben says $\\sqrt{${p.s * p.s}} = ${(p.s * p.s) / 2}$.`,
+              truth: false,
+              right: `False. ${p.s} × ${p.s} = ${p.s * p.s}, so √${p.s * p.s} = ${p.s}. Halving gives ${(p.s * p.s) / 2}, which is not the same.`,
+              wrong: [
+                ["True. The square root is half the number.", "NPV.POWER.ROOT-HALF"],
+                ["True. Square root means divide by 2.", "NPV.POWER.ROOT-HALF"],
+              ],
+            },
+            {
+              claim: "A square number ends in the digit 7.",
+              truth: "never",
+              right:
+                "Never. Square numbers end in 0, 1, 4, 5, 6 or 9, so a number ending in 7 is never square.",
+              wrong: [
+                ["Sometimes. 49 is square and has a 7 in it."],
+                ["Always. Any number can be a square number."],
+              ],
+            },
           ],
-          solution: [{ say: "Odd × odd is odd; even × even is even." }],
-        });
+        );
     }
   },
 

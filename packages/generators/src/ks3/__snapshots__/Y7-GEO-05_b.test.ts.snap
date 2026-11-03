@@ -59,7 +59,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -171,7 +171,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -283,7 +283,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -410,7 +410,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -536,7 +536,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -662,7 +662,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -724,7 +724,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -735,8 +735,8 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -762,7 +762,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Angles on a straight line add up to 180°, but these make 190°.",
+                  "v": "False. It is 89° as well.",
                 },
               ],
               "id": "RA",
@@ -771,7 +771,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Angles on a line add up to 360°.",
+                  "v": "True. Angles on a straight line add up to 180°: 180 − 89 = 91.",
                 },
               ],
               "id": "RB",
@@ -780,7 +780,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any two angles can sit on a line.",
+                  "v": "False. It is 271°.",
                 },
               ],
               "id": "RC",
@@ -790,14 +790,6 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "GEO.ANGLES.STRAIGHT-LINE-360",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -820,7 +812,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A straight line is a half turn: 180°.",
+            "v": "True. Angles on a straight line add up to 180°: 180 − 89 = 91.",
           },
         ],
       },
@@ -828,19 +820,19 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sam says two angles of 89° and 101° can sit together on a straight line.",
+        "v": "Two angles sit together on a straight line. One is 89°. Ria says the other is 91°.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -851,14 +843,14 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RC",
+          "correct": "C",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -867,10 +859,19 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -878,7 +879,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Angles on a line add up to 360°.",
+                  "v": "Always. Any two angles can sit on a line.",
                 },
               ],
               "id": "RA",
@@ -887,7 +888,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Any two angles can sit on a line.",
+                  "v": "Never. Two obtuse angles add up to more than 180°, and angles on a line make exactly 180°.",
                 },
               ],
               "id": "RB",
@@ -896,7 +897,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Angles on a straight line add up to 180°, but these make 190°.",
+                  "v": "Sometimes. If they add up to 360°.",
                 },
               ],
               "id": "RC",
@@ -916,7 +917,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "GEO.ANGLES.STRAIGHT-LINE-360",
@@ -926,7 +927,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -936,7 +937,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A straight line is a half turn: 180°.",
+            "v": "Never. Two obtuse angles add up to more than 180°, and angles on a line make exactly 180°.",
           },
         ],
       },
@@ -944,7 +945,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Sam says two angles of 46° and 144° can sit together on a straight line.",
+        "v": "Two obtuse angles can sit together on a straight line.",
       },
     ],
   },
@@ -956,7 +957,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -968,7 +969,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -1003,7 +1004,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Angles on a line add up to 360°.",
+                  "v": "False. Angles on a straight line add up to 180°, but these make 190°.",
                 },
               ],
               "id": "RB",
@@ -1012,7 +1013,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Angles on a straight line add up to 180°, but these make 190°.",
+                  "v": "True. Angles on a line add up to 360°.",
                 },
               ],
               "id": "RC",
@@ -1032,7 +1033,7 @@ exports[`Y7-GEO-05.b > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "GEO.ANGLES.STRAIGHT-LINE-360",

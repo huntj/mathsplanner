@@ -265,7 +265,7 @@ export default defineGenerator({
 
 **Ambiguous answers.** A right answer can have several correct names: a square is also a rectangle, a rhombus, a parallelogram, a kite and a trapezium, and a diameter is also a chord. A wrong option must be definitely wrong, so shape generators pick distractors with `wrongNames` and build match sets with `distinctKinds`, both driven by the shape hierarchy in `generators/src/shared/shapes.ts`. The same care applies anywhere one answer is a special case of another.
 
-**Shared helpers** in `@mathsplanner/core` cover the repeated maths: rationals with BigInt, surds, polynomials, angle and triangle builders, "nice" number pickers (Pythagorean triples, integer-root quadratics, terminating decimals), unit conversion, and LaTeX formatting that prints fractions, mixed numbers and signs correctly. Helpers that only generators need live in `packages/generators/src/shared/`: angle pickers and distractor filters, turns, the shape hierarchy, marked triangle pairs (which read the congruence condition back from their marks), and circles with sectors and segments.
+**Shared helpers** in `@mathsplanner/core` cover the repeated maths: rationals with BigInt, surds, polynomials, angle and triangle builders, "nice" number pickers (Pythagorean triples, integer-root quadratics, terminating decimals), unit conversion, and LaTeX formatting that prints fractions, mixed numbers and signs correctly. Helpers that only generators need live in `packages/generators/src/shared/`: angle pickers and distractor filters, turns, the shape hierarchy, marked triangle pairs (which read the congruence condition back from their marks), and circles with sectors and segments. `shared/variety.ts` gives reasoning questions variety: a generator lists extra claims in a short form, some true and some false or always, sometimes and never, and `orClaims` picks between them and its own question, so practising a skill again does not mean the same claim with the same answer.
 
 ## Quality
 
@@ -302,6 +302,7 @@ mathsplanner/
 │  ├─ statements.json          # from the progression map
 │  ├─ misconceptions.json      # shared misconception catalogue
 │  ├─ topics.txt, topics.json  # statements grouped into topics for planning
+│  ├─ course.txt, course.json  # the Learn Maths path: years, units and skills in order
 │  └─ schema/                  # JSON Schemas for both files
 ├─ packages/
 │  ├─ core/                    # schema types, seeded RNG, exact maths, LaTeX helpers, defineGenerator
@@ -309,10 +310,12 @@ mathsplanner/
 │  ├─ archetypes/              # the 15 question patterns and solution-step builders
 │  ├─ marking/                 # AnswerSpec checking, equivalence, form rules
 │  ├─ render/                  # Question → HTML (KaTeX + SVG), used by web and print
+│  ├─ ui/                      # answer input widgets shared by the apps
 │  └─ generators/              # one file per statement, by stage: eyfs/, ks1/ … ks5/; coverage and `new` scripts
 ├─ apps/
 │  ├─ gallery/                 # browse every statement × depth × numbers × seed; review checklist
-│  └─ practice/                # student-facing web app with input widgets and marking; stateless
+│  ├─ practice/                # student-facing web app with input widgets and marking; stateless
+│  └─ learn/                   # Learn Maths: a pupil's path through the years, progress kept on the device
 ├─ tools/
 │  ├─ import-map/              # progression map → statements.json; data:check
 │  └─ print/                   # worksheet builder → PDF via headless Chromium

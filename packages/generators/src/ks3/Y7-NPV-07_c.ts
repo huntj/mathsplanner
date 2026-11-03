@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const PAIRS: [number, number][] = [
   [2, 5],
@@ -33,7 +34,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-07.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.POWER.ROOT-HALF", "NPV.POWER.TIMES-INDEX"],
 
@@ -84,26 +85,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Eli says ",
-            A.math("\\sqrt[5]{32} = 2"),
-            " because ",
-            A.math("2^5 = 32"),
-            ".",
-          ],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Eli says ",
+                A.math("\\sqrt[5]{32} = 2"),
+                " because ",
+                A.math("2^5 = 32"),
+                ".",
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. A fifth root undoes a fifth power: 2 × 2 × 2 × 2 × 2 = 32.",
+                  correct: true,
+                },
+                { text: "False. 32 ÷ 5 = 6.4.", code: "NPV.POWER.ROOT-HALF" },
+                { text: "False. 2 × 5 = 10, not 32.", code: "NPV.POWER.TIMES-INDEX" },
+              ],
+              solution: [{ say: "Roots and powers are inverses." }],
+            }),
+          [
             {
-              text: "True. A fifth root undoes a fifth power: 2 × 2 × 2 × 2 × 2 = 32.",
-              correct: true,
+              statement: "Fin says $2^5 = 10$.",
+              truth: false,
+              right: "False. 2⁵ = 2 × 2 × 2 × 2 × 2 = 32. It is 2 × 5 that makes 10.",
+              wrong: [
+                ["True. Multiply the number by the power.", "NPV.POWER.TIMES-INDEX"],
+                ["True. 2 to the power 5 means 2 lots of 5.", "NPV.POWER.TIMES-INDEX"],
+              ],
             },
-            { text: "False. 32 ÷ 5 = 6.4.", code: "NPV.POWER.ROOT-HALF" },
-            { text: "False. 2 × 5 = 10, not 32.", code: "NPV.POWER.TIMES-INDEX" },
+            {
+              statement: "Gia says $3^4 = 81$.",
+              truth: true,
+              right: "True. 3 × 3 = 9, 9 × 3 = 27 and 27 × 3 = 81.",
+              wrong: [
+                ["False. 3⁴ = 3 × 4 = 12.", "NPV.POWER.TIMES-INDEX"],
+                ["False. 3⁴ = 4³ = 64."],
+              ],
+            },
+            {
+              claim: "$a^b$ and $b^a$ are equal.",
+              truth: "sometimes",
+              right: "Sometimes. 2⁴ and 4² are both 16, but 2³ = 8 and 3² = 9.",
+              wrong: [
+                [
+                  "Always. You can swap the numbers in a power, as in multiplying.",
+                  "NPV.POWER.TIMES-INDEX",
+                ],
+                ["Never. Swapping the numbers always changes the answer."],
+              ],
+            },
           ],
-          solution: [{ say: "Roots and powers are inverses." }],
-        });
+        );
     }
   },
 

@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { tex } from "../shared/npv.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -23,7 +24,7 @@ const sf1 = (n: number) => {
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-08.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.PLACE.ZERO-PLACEHOLDER", "NPV.ROUND.DP-SF"],
 
@@ -70,20 +71,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["A number rounded to 1 significant figure has exactly one non-zero digit."],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["A number rounded to 1 significant figure has exactly one non-zero digit."],
+              truth: "always",
+              reasons: [
+                {
+                  text: `Always. Every other place becomes 0, e.g. ${tex(p.n).replace(/\{,\}/g, ",")} → ${tex(sf1(p.n)).replace(/\{,\}/g, ",")}; even 96 → 100 has one non-zero digit.`,
+                  correct: true,
+                },
+                {
+                  text: "Sometimes. Zeros at the front count as figures.",
+                  code: "NPV.ROUND.DP-SF",
+                },
+                { text: "Never. Rounding keeps all the digits." },
+              ],
+              solution: [{ say: "Significant figures count from the first non-zero digit." }],
+            }),
+          [
             {
-              text: `Always. Every other place becomes 0, e.g. ${tex(p.n).replace(/\{,\}/g, ",")} → ${tex(sf1(p.n)).replace(/\{,\}/g, ",")}; even 96 → 100 has one non-zero digit.`,
-              correct: true,
+              statement: `Cal says ${p.n} rounded to 1 significant figure is ${Math.round(p.n / 1000)}.`,
+              truth: false,
+              right: `False. Zeros keep the place value: it is ${Math.round(p.n / 1000) * 1000}.`,
+              wrong: [
+                [
+                  "True. One significant figure means just one digit.",
+                  "NPV.PLACE.ZERO-PLACEHOLDER",
+                ],
+                ["True. Just drop the other digits.", "NPV.PLACE.ZERO-PLACEHOLDER"],
+              ],
             },
-            { text: "Sometimes. Zeros at the front count as figures.", code: "NPV.ROUND.DP-SF" },
-            { text: "Never. Rounding keeps all the digits." },
+            {
+              statement: "Dee says 0.0473 rounded to 1 significant figure is 0.05.",
+              truth: true,
+              right:
+                "True. The first significant figure is the 4 hundredths, and the 7 after it rounds it up to 5 hundredths.",
+              wrong: [
+                ["False. The first figure is the 0, so it is 0.0.", "NPV.ROUND.DP-SF"],
+                ["False. It is 0.04, as you always round down."],
+              ],
+            },
+            {
+              claim:
+                "Rounding to 1 significant figure gives the same answer as rounding to 1 decimal place.",
+              truth: "sometimes",
+              right:
+                "Sometimes. 0.47 becomes 0.5 both ways, but 3.47 is 3 to 1 s.f. and 3.5 to 1 d.p.",
+              wrong: [
+                ["Always. They are two names for the same thing.", "NPV.ROUND.DP-SF"],
+                ["Never. They always give different answers.", "NPV.ROUND.DP-SF"],
+              ],
+            },
           ],
-          solution: [{ say: "Significant figures count from the first non-zero digit." }],
-        });
+        );
     }
   },
 

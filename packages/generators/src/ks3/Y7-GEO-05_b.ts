@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { anglesOnLine } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-GEO-05.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.ANGLES.STRAIGHT-LINE-360", "GEO.ANGLES.ADDS-KNOWN"],
 
@@ -83,28 +84,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Sam says two angles of ${p.a}° and ${180 - p.a + 10}° can sit together on a straight line.`,
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Sam says two angles of ${p.a}° and ${180 - p.a + 10}° can sit together on a straight line.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Angles on a straight line add up to 180°, but these make ${p.a + 180 - p.a + 10}°.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Any two angles can sit on a line.",
+                  code: "GEO.ANGLES.STRAIGHT-LINE-360",
+                },
+                {
+                  text: "True. Angles on a line add up to 360°.",
+                  code: "GEO.ANGLES.STRAIGHT-LINE-360",
+                },
+              ],
+              solution: [{ say: "A straight line is a half turn: 180°." }],
+            }),
+          [
+            {
+              statement: `Two angles sit together on a straight line. One is ${p.a}°. Ria says the other is ${180 - p.a}°.`,
+              truth: true,
+              right: `True. Angles on a straight line add up to 180°: 180 − ${p.a} = ${180 - p.a}.`,
+              wrong: [
+                [`False. It is ${360 - p.a}°.`, "GEO.ANGLES.STRAIGHT-LINE-360"],
+                [`False. It is ${p.a}° as well.`],
+              ],
+            },
+            {
+              claim: "Two angles that sit together on a straight line are equal.",
+              truth: "sometimes",
+              right:
+                "Sometimes. They are equal only when both are 90°; 70° and 110° sit on a line too.",
+              wrong: [
+                ["Always. A straight line is cut exactly in half."],
+                ["Never. Angles on a line are always different."],
+              ],
+            },
+            {
+              claim: "Two obtuse angles can sit together on a straight line.",
+              truth: "never",
+              right:
+                "Never. Two obtuse angles add up to more than 180°, and angles on a line make exactly 180°.",
+              wrong: [
+                ["Always. Any two angles can sit on a line.", "GEO.ANGLES.STRAIGHT-LINE-360"],
+                ["Sometimes. If they add up to 360°.", "GEO.ANGLES.STRAIGHT-LINE-360"],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            {
-              text: `False. Angles on a straight line add up to 180°, but these make ${p.a + 180 - p.a + 10}°.`,
-              correct: true,
-            },
-            {
-              text: "True. Any two angles can sit on a line.",
-              code: "GEO.ANGLES.STRAIGHT-LINE-360",
-            },
-            {
-              text: "True. Angles on a line add up to 360°.",
-              code: "GEO.ANGLES.STRAIGHT-LINE-360",
-            },
-          ],
-          solution: [{ say: "A straight line is a half turn: 180°." }],
-        });
+        );
     }
   },
 

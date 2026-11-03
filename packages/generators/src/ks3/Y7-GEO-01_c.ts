@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { parallelogram, SLANTS } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   s: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-GEO-01.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.AREA.SLANT", "MEA.AREA.TRIANGLE-HALF"],
 
@@ -72,22 +73,59 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            "A parallelogram has the same area as a rectangle with the same base and perpendicular height.",
-          ],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "A parallelogram has the same area as a rectangle with the same base and perpendicular height.",
+              ],
+              truth: "always",
+              reasons: [
+                {
+                  text: "Always. Cut the triangle off one end and move it to the other: the parallelogram becomes that rectangle.",
+                  correct: true,
+                },
+                {
+                  text: "Sometimes. Only when the sides are not too slanted.",
+                  code: "MEA.AREA.SLANT",
+                },
+                { text: "Never. The slanted sides make it bigger.", code: "MEA.AREA.SLANT" },
+              ],
+              solution: [{ say: "Area = base × perpendicular height for both." }],
+            }),
+          [
             {
-              text: "Always. Cut the triangle off one end and move it to the other: the parallelogram becomes that rectangle.",
-              correct: true,
+              statement: `Max says a parallelogram with base ${p.b2} cm, sloping side ${p.h2 + 2} cm and perpendicular height ${p.h2} cm has an area of ${p.b2 * (p.h2 + 2)} cm².`,
+              truth: false,
+              right: `False. Use the perpendicular height, not the sloping side: ${p.b2} × ${p.h2} = ${p.b2 * p.h2} cm².`,
+              wrong: [
+                ["True. Multiply the two sides you can see.", "MEA.AREA.SLANT"],
+                ["True. The sloping side is the height.", "MEA.AREA.SLANT"],
+              ],
             },
-            { text: "Sometimes. Only when the sides are not too slanted.", code: "MEA.AREA.SLANT" },
-            { text: "Never. The slanted sides make it bigger.", code: "MEA.AREA.SLANT" },
+            {
+              statement: `Nia says a parallelogram with base ${p.b2} cm and perpendicular height ${p.h2} cm has an area of ${p.b2 * p.h2} cm².`,
+              truth: true,
+              right: "True. Area = base × perpendicular height.",
+              wrong: [
+                [`False. It is half that: ${(p.b2 * p.h2) / 2} cm².`, "MEA.AREA.TRIANGLE-HALF"],
+                ["False. There is no formula for the area of a parallelogram."],
+              ],
+            },
+            {
+              claim: "The area of a parallelogram is its base times one of its other sides.",
+              truth: "sometimes",
+              right:
+                "Sometimes. In a rectangle the other side is the perpendicular height, but in a slanted parallelogram the side is longer than the height.",
+              wrong: [
+                ["Always. Multiply two sides that meet.", "MEA.AREA.SLANT"],
+                ["Never. You always halve it.", "MEA.AREA.TRIANGLE-HALF"],
+              ],
+            },
           ],
-          solution: [{ say: "Area = base × perpendicular height for both." }],
-        });
+        );
     }
   },
 

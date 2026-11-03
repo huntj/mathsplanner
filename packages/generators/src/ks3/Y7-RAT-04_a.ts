@@ -7,6 +7,7 @@
 import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { exactAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   cm: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-RAT-04.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.FRACTION.UNITS"],
 
@@ -73,27 +74,61 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Fay says ${p.p}p as a fraction of £${p.pounds} is `,
-            A.math(`\\frac{${p.p}}{${p.pounds}}`),
-            ".",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Fay says ${p.p}p as a fraction of £${p.pounds} is `,
+                A.math(`\\frac{${p.p}}{${p.pounds}}`),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. £${p.pounds} is ${p.pounds * 100}p, so it is ${p.p}/${p.pounds * 100} = ${toLatex(frac(p.p, p.pounds * 100)).replace(/\\frac\{(\d+)\}\{(\d+)\}/, "$1/$2")}.`,
+                  correct: true,
+                },
+                { text: "True. Put the first amount over the second.", code: "RAT.FRACTION.UNITS" },
+                {
+                  text: "True. Pence and pounds can be mixed in a fraction.",
+                  code: "RAT.FRACTION.UNITS",
+                },
+              ],
+              solution: [{ say: "Use the same units on the top and the bottom." }],
+            }),
+          [
             {
-              text: `False. £${p.pounds} is ${p.pounds * 100}p, so it is ${p.p}/${p.pounds * 100} = ${toLatex(frac(p.p, p.pounds * 100)).replace(/\\frac\{(\d+)\}\{(\d+)\}/, "$1/$2")}.`,
-              correct: true,
+              statement: `Jas says ${p.cm} cm as a fraction of 1 m is $\\frac{${p.cm}}{100}$.`,
+              truth: true,
+              right: `True. 1 m = 100 cm, so it is ${p.cm} out of 100.`,
+              wrong: [
+                [`False. It is ${p.cm}/1.`, "RAT.FRACTION.UNITS"],
+                [`False. It is ${p.cm}/10.`, "RAT.FRACTION.UNITS"],
+              ],
             },
-            { text: "True. Put the first amount over the second.", code: "RAT.FRACTION.UNITS" },
             {
-              text: "True. Pence and pounds can be mixed in a fraction.",
-              code: "RAT.FRACTION.UNITS",
+              statement: `Kai says ${p.min} minutes as a fraction of an hour is $\\frac{${p.min}}{100}$.`,
+              truth: false,
+              right: `False. An hour is 60 minutes, so it is ${p.min}/60.`,
+              wrong: [
+                ["True. There are 100 minutes in an hour.", "RAT.FRACTION.UNITS"],
+                ["True. Fractions of time are always out of 100."],
+              ],
+            },
+            {
+              claim:
+                "To write one quantity as a fraction of another, both must be in the same units.",
+              truth: "always",
+              right: "Always. Otherwise you compare different-sized units, like pence with pounds.",
+              wrong: [
+                ["Sometimes. Only for lengths.", "RAT.FRACTION.UNITS"],
+                ["Never. Fractions do not have units.", "RAT.FRACTION.UNITS"],
+              ],
             },
           ],
-          solution: [{ say: "Use the same units on the top and the bottom." }],
-        });
+        );
     }
   },
 

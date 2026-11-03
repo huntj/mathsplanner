@@ -65,7 +65,7 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -182,7 +182,7 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -299,7 +299,7 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -361,7 +361,7 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -423,7 +423,7 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -485,7 +485,7 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -547,7 +547,7 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -558,7 +558,7 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
           "correctReason": "RC",
           "options": [
             {
@@ -585,7 +585,7 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The one with longer sloping sides has more area.",
+                  "v": "True. Triangles use the same formula as rectangles.",
                 },
               ],
               "id": "RA",
@@ -594,7 +594,7 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Only right-angled triangles use base × height.",
+                  "v": "True. Area is base times height.",
                 },
               ],
               "id": "RB",
@@ -603,7 +603,7 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Area = ½ × base × height = 56 cm² for both. Sliding the top point along does not change the height.",
+                  "v": "False. A triangle is half a rectangle: ½ × 14 × 8 = 56 cm².",
                 },
               ],
               "id": "RC",
@@ -643,7 +643,7 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Only the base and the perpendicular height matter.",
+            "v": "False. A triangle is half a rectangle: ½ × 14 × 8 = 56 cm².",
           },
         ],
       },
@@ -651,7 +651,7 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Lee says two triangles with the same base, 14 cm, and the same perpendicular height, 8 cm, must have the same area, even if they look different.",
+        "v": "Kay says a triangle with base 14 cm and perpendicular height 8 cm has an area of 112 cm².",
       },
     ],
   },
@@ -663,7 +663,7 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -674,7 +674,123 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
+          "correctReason": "RC",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Triangles use the same formula as rectangles.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Area is base times height.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. A triangle is half a rectangle: ½ × 13 × 10 = 65 cm².",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "MEA.AREA.TRIANGLE-HALF",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MEA.AREA.TRIANGLE-HALF",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. A triangle is half a rectangle: ½ × 13 × 10 = 65 cm².",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Kay says a triangle with base 13 cm and perpendicular height 10 cm has an area of 130 cm².",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y7-GEO-01.b",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
           "correctReason": "RA",
           "options": [
             {
@@ -701,7 +817,7 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Area = ½ × base × height = 65 cm² for both. Sliding the top point along does not change the height.",
+                  "v": "False. A triangle is half a rectangle: ½ × 10 × 7 = 35 cm².",
                 },
               ],
               "id": "RA",
@@ -710,7 +826,7 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The one with longer sloping sides has more area.",
+                  "v": "True. Area is base times height.",
                 },
               ],
               "id": "RB",
@@ -719,7 +835,7 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Only right-angled triangles use base × height.",
+                  "v": "True. Triangles use the same formula as rectangles.",
                 },
               ],
               "id": "RC",
@@ -759,7 +875,7 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Only the base and the perpendicular height matter.",
+            "v": "False. A triangle is half a rectangle: ½ × 10 × 7 = 35 cm².",
           },
         ],
       },
@@ -767,123 +883,7 @@ exports[`Y7-GEO-01.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Lee says two triangles with the same base, 13 cm, and the same perpendicular height, 10 cm, must have the same area, even if they look different.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y7-GEO-01.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "A",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Only right-angled triangles use base × height.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. The one with longer sloping sides has more area.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Area = ½ × base × height = 35 cm² for both. Sliding the top point along does not change the height.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "MEA.AREA.TRIANGLE-HALF",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "MEA.AREA.TRIANGLE-HALF",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Only the base and the perpendicular height matter.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Lee says two triangles with the same base, 10 cm, and the same perpendicular height, 7 cm, must have the same area, even if they look different.",
+        "v": "Kay says a triangle with base 10 cm and perpendicular height 7 cm has an area of 70 cm².",
       },
     ],
   },

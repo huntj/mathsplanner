@@ -10,7 +10,7 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -73,7 +73,7 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -136,7 +136,7 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -199,7 +199,7 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -270,7 +270,7 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -341,7 +341,7 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -412,7 +412,7 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -424,7 +424,7 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -450,7 +450,7 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A scale drawing changes lengths but not angles, so a right angle is still 90°.",
+                  "v": "True. Drawings are bigger than real life.",
                 },
               ],
               "id": "RA",
@@ -459,7 +459,7 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 22.5°.",
+                  "v": "False. Going from real life to the drawing, divide by the scale: the wall is drawn 11 ÷ 4 cm long, which is shorter than 11 cm.",
                 },
               ],
               "id": "RB",
@@ -468,7 +468,7 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Everything on the drawing is multiplied by the scale.",
+                  "v": "True. Multiply by the scale to go from real life to the drawing.",
                 },
               ],
               "id": "RC",
@@ -478,14 +478,6 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "GEO.SCALE.DIVIDES",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -508,7 +500,7 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The real shape and the drawing are similar: same angles, scaled lengths.",
+            "v": "False. Going from real life to the drawing, divide by the scale: the wall is drawn 11 ÷ 4 cm long, which is shorter than 11 cm.",
           },
         ],
       },
@@ -516,7 +508,7 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "On a scale drawing where 1 cm represents 4 m, Kai says a right angle on the drawing stands for a 360° angle in real life.",
+        "v": "On a drawing where 1 cm represents 4 m, Zoe says a real wall 11 m long is drawn 44 cm long.",
       },
     ],
   },
@@ -528,123 +520,7 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-03.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. A scale drawing changes lengths but not angles, so a right angle is still 90°.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. Everything on the drawing is multiplied by the scale.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. It is 30°.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "GEO.SCALE.DIVIDES",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "GEO.SCALE.DIVIDES",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "The real shape and the drawing are similar: same angles, scaled lengths.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "On a scale drawing where 1 cm represents 3 m, Kai says a right angle on the drawing stands for a 270° angle in real life.",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y7-GEO-03.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -682,7 +558,7 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Everything on the drawing is multiplied by the scale.",
+                  "v": "True. Multiply by the scale to go from real life to the drawing.",
                 },
               ],
               "id": "RA",
@@ -691,7 +567,7 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It is 30°.",
+                  "v": "True. Drawings are bigger than real life.",
                 },
               ],
               "id": "RB",
@@ -700,7 +576,7 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. A scale drawing changes lengths but not angles, so a right angle is still 90°.",
+                  "v": "False. Going from real life to the drawing, divide by the scale: the wall is drawn 25 ÷ 3 cm long, which is shorter than 25 cm.",
                 },
               ],
               "id": "RC",
@@ -713,14 +589,6 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.SCALE.DIVIDES",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
               "type": "choice",
             },
             "code": "GEO.SCALE.DIVIDES",
@@ -740,7 +608,7 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The real shape and the drawing are similar: same angles, scaled lengths.",
+            "v": "False. Going from real life to the drawing, divide by the scale: the wall is drawn 25 ÷ 3 cm long, which is shorter than 25 cm.",
           },
         ],
       },
@@ -748,7 +616,115 @@ exports[`Y7-GEO-03.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "On a scale drawing where 1 cm represents 3 m, Kai says a right angle on the drawing stands for a 270° angle in real life.",
+        "v": "On a drawing where 1 cm represents 3 m, Zoe says a real wall 25 m long is drawn 75 cm long.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y7-GEO-03.b",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Multiply by the scale to go from real life to the drawing.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Going from real life to the drawing, divide by the scale: the wall is drawn 22 ÷ 3 cm long, which is shorter than 22 cm.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Drawings are bigger than real life.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "GEO.SCALE.DIVIDES",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. Going from real life to the drawing, divide by the scale: the wall is drawn 22 ÷ 3 cm long, which is shorter than 22 cm.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "On a drawing where 1 cm represents 3 m, Zoe says a real wall 22 m long is drawn 66 cm long.",
       },
     ],
   },

@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { gcdOf } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -22,7 +23,7 @@ const r = (v: number) => Number(v.toFixed(6));
 
 export default defineGenerator<Params>({
   id: "Y7-RAT-03.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.SIMPLIFY.SUBTRACT", "RAT.ORDER"],
 
@@ -97,25 +98,58 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [`Dev says the ratio ${p.a} : ${p.b} is the same as ${p.b} : ${p.a}.`],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [`Dev says the ratio ${p.a} : ${p.b} is the same as ${p.b} : ${p.a}.`],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Order matters: ${p.a} : ${p.b} means the first amount is ${p.a}/${p.b} of the second, but ${p.b} : ${p.a} means it is ${p.b}/${p.a} of it.`,
+                  correct: true,
+                },
+                { text: "True. The same numbers are used.", code: "RAT.ORDER" },
+                {
+                  text: "True. Ratios work like adding, where order does not matter.",
+                  code: "RAT.ORDER",
+                },
+              ],
+              solution: [
+                { say: "A ratio a : b can be read as a ÷ b, and division is not commutative." },
+              ],
+            }),
+          [
             {
-              text: `False. Order matters: ${p.a} : ${p.b} means the first amount is ${p.a}/${p.b} of the second, but ${p.b} : ${p.a} means it is ${p.b}/${p.a} of it.`,
-              correct: true,
+              statement: `Dev says ${p.a * p.g} : ${p.b * p.g} = ${p.a} : ${p.b}.`,
+              truth: true,
+              right: `True. Divide both parts by ${p.g}.`,
+              wrong: [
+                [`False. Subtract ${p.g} from both parts instead.`, "RAT.SIMPLIFY.SUBTRACT"],
+                [`False. It is ${p.b} : ${p.a}.`, "RAT.ORDER"],
+              ],
             },
-            { text: "True. The same numbers are used.", code: "RAT.ORDER" },
             {
-              text: "True. Ratios work like adding, where order does not matter.",
-              code: "RAT.ORDER",
+              claim: "A ratio can be written in the form 1 : n, with n a whole number.",
+              truth: "sometimes",
+              right: "Sometimes. 2 : 6 = 1 : 3, but 2 : 5 = 1 : 2.5.",
+              wrong: [
+                ["Always. Divide by the first part and n always comes out whole."],
+                ["Never. The second part can never be a whole number."],
+              ],
+            },
+            {
+              statement: `Ali says ${p.x} : ${p.y} in the form 1 : n is 1 : ${p.y - p.x + 1}.`,
+              truth: false,
+              right: `False. Divide both parts by ${p.x}: 1 : ${p.y / p.x}.`,
+              wrong: [
+                ["True. Take the same amount from both parts.", "RAT.SIMPLIFY.SUBTRACT"],
+                ["True. The first part must become 1, so subtract."],
+              ],
             },
           ],
-          solution: [
-            { say: "A ratio a : b can be read as a ÷ b, and division is not commutative." },
-          ],
-        });
+        );
     }
   },
 

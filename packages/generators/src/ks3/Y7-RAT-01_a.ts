@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const UNITS: [string, string, number][] = [
   ["g", "kg", 1000],
@@ -28,7 +29,7 @@ const r = (v: number) => Number(v.toFixed(6));
 
 export default defineGenerator<Params>({
   id: "Y7-RAT-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.UNITS.DIRECTION"],
 
@@ -83,20 +84,54 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Ivy says 1 litre is 100 ml."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Ivy says 1 litre is 100 ml."],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. Milli means a thousandth: 1 litre = 1000 ml, just as 1 m = 1000 mm.",
+                  correct: true,
+                },
+                { text: "True. Metric units go up in 100s.", code: "RAT.UNITS.DIRECTION" },
+                { text: "True. 1 m = 100 cm, so 1 litre = 100 ml.", code: "RAT.UNITS.DIRECTION" },
+              ],
+              solution: [{ say: "kilo = 1000, centi = 1/100, milli = 1/1000." }],
+            }),
+          [
             {
-              text: "False. Milli means a thousandth: 1 litre = 1000 ml, just as 1 m = 1000 mm.",
-              correct: true,
+              statement: `Ola says ${p.m} kg = ${p.m * 1000} g.`,
+              truth: true,
+              right: "True. 1 kg = 1000 g, so multiply by 1000.",
+              wrong: [
+                [`False. Divide: ${p.m / 1000} g.`, "RAT.UNITS.DIRECTION"],
+                [`False. It is ${p.m * 100} g.`],
+              ],
             },
-            { text: "True. Metric units go up in 100s.", code: "RAT.UNITS.DIRECTION" },
-            { text: "True. 1 m = 100 cm, so 1 litre = 100 ml.", code: "RAT.UNITS.DIRECTION" },
+            {
+              statement: `Pip says ${p.n} cm = ${p.n * 100} m.`,
+              truth: false,
+              right: `False. Metres are bigger, so divide: ${p.n} ÷ 100 = ${p.n / 100} m.`,
+              wrong: [
+                ["True. There are 100 cm in a metre, so multiply by 100.", "RAT.UNITS.DIRECTION"],
+                ["True. Metres are bigger, so the number gets bigger.", "RAT.UNITS.DIRECTION"],
+              ],
+            },
+            {
+              claim:
+                "Changing an amount from a smaller unit to a bigger unit gives a smaller number.",
+              truth: "always",
+              right: "Always. Fewer of the bigger units are needed: 300 cm = 3 m.",
+              wrong: [
+                ["Sometimes. Only for lengths.", "RAT.UNITS.DIRECTION"],
+                ["Never. Bigger units give bigger numbers.", "RAT.UNITS.DIRECTION"],
+              ],
+            },
           ],
-          solution: [{ say: "kilo = 1000, centi = 1/100, milli = 1/1000." }],
-        });
+        );
     }
   },
 

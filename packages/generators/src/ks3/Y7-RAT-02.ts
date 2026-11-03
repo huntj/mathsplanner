@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
 import { gcdOf } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -22,7 +23,7 @@ const ratio = (x: number, y: number) => `${x}:${y}`;
 
 export default defineGenerator<Params>({
   id: "Y7-RAT-02",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.SIMPLIFY.SUBTRACT", "RAT.ORDER"],
 
@@ -99,35 +100,74 @@ export default defineGenerator<Params>({
         });
       default: {
         const shown = p.claimTrue ? ratio(p.a, p.b) : ratio(A0 - p.s, B0 - p.s);
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Asha says ",
-            A.math(`${ratio(A0, B0)} = ${shown}`),
-            p.claimTrue
-              ? `, because she divided both parts by ${p.g}.`
-              : `, because she took ${p.s} from both parts.`,
-          ],
-          truth: p.claimTrue,
-          reasons: p.claimTrue
-            ? [
-                { text: `True. ${how}`, correct: true },
-                {
-                  text: "False. You simplify a ratio by subtracting, not dividing.",
-                  code: "RAT.SIMPLIFY.SUBTRACT",
-                },
-                { text: "False. Ratios cannot be simplified." },
-              ]
-            : [
-                { text: `False. Subtracting changes the ratio. ${how}`, correct: true },
-                {
-                  text: "True. Doing the same to both parts keeps the ratio the same.",
-                  code: "RAT.SIMPLIFY.SUBTRACT",
-                },
-                { text: "True. The numbers are smaller, so it is simpler." },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Asha says ",
+                A.math(`${ratio(A0, B0)} = ${shown}`),
+                p.claimTrue
+                  ? `, because she divided both parts by ${p.g}.`
+                  : `, because she took ${p.s} from both parts.`,
               ],
-          solution: [{ say: how }],
-        });
+              truth: p.claimTrue,
+              reasons: p.claimTrue
+                ? [
+                    { text: `True. ${how}`, correct: true },
+                    {
+                      text: "False. You simplify a ratio by subtracting, not dividing.",
+                      code: "RAT.SIMPLIFY.SUBTRACT",
+                    },
+                    { text: "False. Ratios cannot be simplified." },
+                  ]
+                : [
+                    { text: `False. Subtracting changes the ratio. ${how}`, correct: true },
+                    {
+                      text: "True. Doing the same to both parts keeps the ratio the same.",
+                      code: "RAT.SIMPLIFY.SUBTRACT",
+                    },
+                    { text: "True. The numbers are smaller, so it is simpler." },
+                  ],
+              solution: [{ say: how }],
+            }),
+          [
+            {
+              claim:
+                "Multiplying both parts of a ratio by the same number, not 0, gives an equivalent ratio.",
+              truth: "always",
+              right: "Always. The parts stay in the same proportion: 2 : 3 = 4 : 6 = 20 : 30.",
+              wrong: [
+                ["Sometimes. Only when you multiply by 2."],
+                ["Never. A ratio can only be divided, not multiplied."],
+              ],
+            },
+            {
+              statement:
+                "Gus says adding 1 to both parts of the ratio 2 : 3 gives an equivalent ratio, 3 : 4.",
+              truth: false,
+              right:
+                "False. In 2 : 3 the first part is 2/3 of the second, but in 3 : 4 it is 3/4. Adding changes a ratio.",
+              wrong: [
+                [
+                  "True. Doing the same to both parts keeps the ratio the same.",
+                  "RAT.SIMPLIFY.SUBTRACT",
+                ],
+                ["True. The difference between the parts is still 1."],
+              ],
+            },
+            {
+              statement: "Ben says the ratio 4 : 6 simplifies to 2 : 3.",
+              truth: true,
+              right: "True. Divide both parts by 2, their highest common factor.",
+              wrong: [
+                ["False. Take 2 from both parts: 2 : 4.", "RAT.SIMPLIFY.SUBTRACT"],
+                ["False. It simplifies to 3 : 2.", "RAT.ORDER"],
+              ],
+            },
+          ],
+        );
       }
     }
   },

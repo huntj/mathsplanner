@@ -10,7 +10,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -104,7 +104,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -198,7 +198,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -292,7 +292,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -362,7 +362,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -432,7 +432,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -502,7 +502,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -513,8 +513,8 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -540,7 +540,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 2(l + w) doubles the whole bracket: 2 × 24 = 48.",
+                  "v": "False. Work from left to right: (5 + 7) × 5 = 60.",
                 },
               ],
               "id": "RA",
@@ -549,7 +549,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Double the length, then add the width.",
+                  "v": "False. A formula with three letters cannot be worked out.",
                 },
               ],
               "id": "RB",
@@ -558,7 +558,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The 2 only goes with l.",
+                  "v": "True. at = 7 × 5 = 35, then add u: 5 + 35 = 40.",
                 },
               ],
               "id": "RC",
@@ -570,18 +570,10 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.EXPAND.FIRST-ONLY",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.EXPAND.FIRST-ONLY",
+            "code": "ALG.SUBSTITUTE.ORDER",
             "feedback": [],
           },
         ],
@@ -595,22 +587,58 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "P = 2(15 + 9) = 48",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "True. at = 7 × 5 = 35, then add u: 5 + 35 = 40.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "The perimeter of a rectangle is ",
+        "v": "Using ",
       },
       {
         "t": "math",
-        "v": "P = 2(l + w)",
+        "v": "v = u + at",
       },
       {
         "t": "text",
-        "v": ". Sam says when l = 15 and w = 9, P = 39.",
+        "v": " with ",
+      },
+      {
+        "t": "math",
+        "v": "u = 5",
+      },
+      {
+        "t": "text",
+        "v": ", ",
+      },
+      {
+        "t": "math",
+        "v": "a = 7",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "t = 5",
+      },
+      {
+        "t": "text",
+        "v": ", Kim says ",
+      },
+      {
+        "t": "math",
+        "v": "v = 40",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
@@ -622,7 +650,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -660,7 +688,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 2(l + w) doubles the whole bracket: 2 × 23 = 46.",
+                  "v": "False. lw means l × w: 15 × 8 = 120.",
                 },
               ],
               "id": "RA",
@@ -669,7 +697,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The 2 only goes with l.",
+                  "v": "True. Letters written together are added.",
                 },
               ],
               "id": "RB",
@@ -678,7 +706,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Double the length, then add the width.",
+                  "v": "True. The area is the length plus the width.",
                 },
               ],
               "id": "RC",
@@ -687,24 +715,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "ALG.EXPAND.FIRST-ONLY",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.EXPAND.FIRST-ONLY",
-            "feedback": [],
-          },
-        ],
+        "misconceptions": [],
         "prompt": [
           {
             "t": "text",
@@ -715,22 +726,50 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "P = 2(15 + 8) = 46",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. lw means l × w: 15 × 8 = 120.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "The perimeter of a rectangle is ",
+        "v": "Using ",
       },
       {
         "t": "math",
-        "v": "P = 2(l + w)",
+        "v": "A = lw",
       },
       {
         "t": "text",
-        "v": ". Sam says when l = 15 and w = 8, P = 38.",
+        "v": " with ",
+      },
+      {
+        "t": "math",
+        "v": "l = 15",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "w = 8",
+      },
+      {
+        "t": "text",
+        "v": ", Max says ",
+      },
+      {
+        "t": "math",
+        "v": "A = 23",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },
@@ -742,7 +781,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-02.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -754,7 +793,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -780,7 +819,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Double the length, then add the width.",
+                  "v": "False. lw means l × w: 7 × 6 = 42.",
                 },
               ],
               "id": "RA",
@@ -789,7 +828,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 2(l + w) doubles the whole bracket: 2 × 13 = 26.",
+                  "v": "True. Letters written together are added.",
                 },
               ],
               "id": "RB",
@@ -798,7 +837,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The 2 only goes with l.",
+                  "v": "True. The area is the length plus the width.",
                 },
               ],
               "id": "RC",
@@ -807,24 +846,7 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.EXPAND.FIRST-ONLY",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.EXPAND.FIRST-ONLY",
-            "feedback": [],
-          },
-        ],
+        "misconceptions": [],
         "prompt": [
           {
             "t": "text",
@@ -835,22 +857,50 @@ exports[`Y7-ALG-02.b > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "P = 2(7 + 6) = 26",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. lw means l × w: 7 × 6 = 42.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "The perimeter of a rectangle is ",
+        "v": "Using ",
       },
       {
         "t": "math",
-        "v": "P = 2(l + w)",
+        "v": "A = lw",
       },
       {
         "t": "text",
-        "v": ". Sam says when l = 7 and w = 6, P = 20.",
+        "v": " with ",
+      },
+      {
+        "t": "math",
+        "v": "l = 7",
+      },
+      {
+        "t": "text",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "w = 6",
+      },
+      {
+        "t": "text",
+        "v": ", Max says ",
+      },
+      {
+        "t": "math",
+        "v": "A = 13",
+      },
+      {
+        "t": "text",
+        "v": ".",
       },
     ],
   },

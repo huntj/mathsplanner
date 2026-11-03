@@ -10,7 +10,7 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-03.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -77,7 +77,7 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-03.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -144,7 +144,7 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-03.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -211,7 +211,7 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-03.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -273,7 +273,7 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-03.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -335,7 +335,7 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-03.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -403,14 +403,14 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-03.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -421,14 +421,14 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -437,10 +437,19 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -448,7 +457,7 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The fraction part must be doubled too: 4 wholes and 8/5.",
+                  "v": "Always. A mixed number is at least one whole, plus a fraction on top.",
                 },
               ],
               "id": "RA",
@@ -457,7 +466,7 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Double the whole number and keep the fraction.",
+                  "v": "Never. Anything with a fraction in it is less than 1.",
                 },
               ],
               "id": "RB",
@@ -466,7 +475,7 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Fractions do not change when you multiply.",
+                  "v": "Sometimes. Only when the fraction part is more than a half.",
                 },
               ],
               "id": "RC",
@@ -476,14 +485,6 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "FR.MIXED.CONVERT",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -496,41 +497,37 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
     ],
     "solution": [
       {
-        "math": "\\frac{14}{5} \\times 2 = \\frac{28}{5}",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. A mixed number is at least one whole, plus a fraction on top.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Tom says ",
-      },
-      {
-        "t": "math",
-        "v": "2\\frac{4}{5} \\times 2 = 4\\frac{4}{5}",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "A mixed number is bigger than 1.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-03.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -541,14 +538,14 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RA",
+          "correct": "A",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -557,10 +554,19 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -568,7 +574,7 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The fraction part must be doubled too: 2 wholes and 14/8.",
+                  "v": "Never. Anything with a fraction in it is less than 1.",
                 },
               ],
               "id": "RA",
@@ -577,7 +583,7 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Double the whole number and keep the fraction.",
+                  "v": "Always. A mixed number is at least one whole, plus a fraction on top.",
                 },
               ],
               "id": "RB",
@@ -586,7 +592,7 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Fractions do not change when you multiply.",
+                  "v": "Sometimes. Only when the fraction part is more than a half.",
                 },
               ],
               "id": "RC",
@@ -596,14 +602,6 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "FR.MIXED.CONVERT",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -616,29 +614,25 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
     ],
     "solution": [
       {
-        "math": "\\frac{15}{8} \\times 2 = \\frac{15}{4}",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "Always. A mixed number is at least one whole, plus a fraction on top.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Tom says ",
-      },
-      {
-        "t": "math",
-        "v": "1\\frac{7}{8} \\times 2 = 2\\frac{7}{8}",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "A mixed number is bigger than 1.",
       },
     ],
   },
@@ -650,7 +644,7 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-03.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -661,8 +655,8 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -688,7 +682,7 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Fractions do not change when you multiply.",
+                  "v": "False. The whole number goes on the bottom: 3/11.",
                 },
               ],
               "id": "RA",
@@ -697,7 +691,7 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The fraction part must be doubled too: 6 wholes and 8/5.",
+                  "v": "False. It is 9/5.",
                 },
               ],
               "id": "RB",
@@ -706,7 +700,7 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Double the whole number and keep the fraction.",
+                  "v": "True. 6 wholes make 30 parts of size 1/5; with 3 more, that is 33/5.",
                 },
               ],
               "id": "RC",
@@ -726,7 +720,7 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "FR.MIXED.CONVERT",
@@ -743,18 +737,22 @@ exports[`Y7-NPV-03.d > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "\\frac{19}{5} \\times 2 = \\frac{38}{5}",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "True. 6 wholes make 30 parts of size 1/5; with 3 more, that is 33/5.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Tom says ",
+        "v": "Lily says ",
       },
       {
         "t": "math",
-        "v": "3\\frac{4}{5} \\times 2 = 6\\frac{4}{5}",
+        "v": "6\\frac{3}{5} = \\frac{33}{5}",
       },
       {
         "t": "text",

@@ -10,7 +10,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-04.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -71,7 +71,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-04.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -132,7 +132,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-04.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -193,7 +193,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-04.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -268,7 +268,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-04.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -343,7 +343,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-04.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -418,7 +418,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-04.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -429,7 +429,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
@@ -456,7 +456,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 3 is the highest common factor. A common multiple must be at least as big as both numbers: the LCM is 60.",
+                  "v": "True. 60 is in both times tables (12 × 5 and 15 × 4), and no smaller number is.",
                 },
               ],
               "id": "RA",
@@ -465,7 +465,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 3 goes into both numbers.",
+                  "v": "False. It is 3.",
                 },
               ],
               "id": "RB",
@@ -474,7 +474,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The lowest common multiple is the smallest number in common.",
+                  "v": "False. It is 180, the two numbers multiplied.",
                 },
               ],
               "id": "RC",
@@ -497,7 +497,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.FACTOR.HCF-LCM",
+            "code": "NPV.FACTOR.LCM-PRODUCT",
             "feedback": [],
           },
         ],
@@ -514,7 +514,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Factors go into a number; multiples are in its times table.",
+            "v": "True. 60 is in both times tables (12 × 5 and 15 × 4), and no smaller number is.",
           },
         ],
       },
@@ -522,19 +522,19 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Max says the lowest common multiple of 12 and 15 is 3.",
+        "v": "Lou says the LCM of 12 and 15 is 60.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-04.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -545,14 +545,14 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "C",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -561,10 +561,19 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -572,7 +581,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 3 is the highest common factor. A common multiple must be at least as big as both numbers: the LCM is 63.",
+                  "v": "Never. A common multiple is in both times tables, so it is at least as big as the larger number.",
                 },
               ],
               "id": "RA",
@@ -581,7 +590,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The lowest common multiple is the smallest number in common.",
+                  "v": "Sometimes. When the numbers share a factor.",
                 },
               ],
               "id": "RB",
@@ -590,7 +599,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 3 goes into both numbers.",
+                  "v": "Always. Lowest means smallest.",
                 },
               ],
               "id": "RC",
@@ -620,7 +629,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -630,7 +639,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Factors go into a number; multiples are in its times table.",
+            "v": "Never. A common multiple is in both times tables, so it is at least as big as the larger number.",
           },
         ],
       },
@@ -638,19 +647,19 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Max says the lowest common multiple of 9 and 21 is 3.",
+        "v": "The LCM of two whole numbers is smaller than both of them.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-04.d",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -661,14 +670,14 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "C",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -677,10 +686,19 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -688,7 +706,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 4 is the highest common factor. A common multiple must be at least as big as both numbers: the LCM is 56.",
+                  "v": "Never. A common multiple is in both times tables, so it is at least as big as the larger number.",
                 },
               ],
               "id": "RA",
@@ -697,7 +715,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The lowest common multiple is the smallest number in common.",
+                  "v": "Sometimes. When the numbers share a factor.",
                 },
               ],
               "id": "RB",
@@ -706,7 +724,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 4 goes into both numbers.",
+                  "v": "Always. Lowest means smallest.",
                 },
               ],
               "id": "RC",
@@ -736,7 +754,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -746,7 +764,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Factors go into a number; multiples are in its times table.",
+            "v": "Never. A common multiple is in both times tables, so it is at least as big as the larger number.",
           },
         ],
       },
@@ -754,7 +772,7 @@ exports[`Y7-NPV-04.d > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Max says the lowest common multiple of 8 and 28 is 4.",
+        "v": "The LCM of two whole numbers is smaller than both of them.",
       },
     ],
   },

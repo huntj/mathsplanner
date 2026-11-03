@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { linear } from "../shared/alg.ts";
 import { exactAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   k: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-ALG-04.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.EXPAND.FIRST-ONLY", "ALG.EXPAND.NEGATIVE"],
 
@@ -75,23 +76,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Ben says ", A.math(`-${p.k}(x - ${p.c}) = -${p.k}x - ${p.k * p.c}`), "."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ben says ",
+                A.math(`-${p.k}(x - ${p.c}) = -${p.k}x - ${p.k * p.c}`),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. −${p.k} × −${p.c} = +${p.k * p.c}, so it is −${p.k}x + ${p.k * p.c}.`,
+                  correct: true,
+                },
+                { text: "True. The minus sign goes on every term.", code: "ALG.EXPAND.NEGATIVE" },
+                {
+                  text: `True. Multiply ${p.c} by ${p.k} and keep the sign from the bracket.`,
+                  code: "ALG.EXPAND.NEGATIVE",
+                },
+              ],
+              solution: [{ say: "A negative times a negative is positive." }],
+            }),
+          [
             {
-              text: `False. −${p.k} × −${p.c} = +${p.k * p.c}, so it is −${p.k}x + ${p.k * p.c}.`,
-              correct: true,
+              statement: `Ana says $${p.k}(x + ${p.c}) = ${p.k}x + ${p.k * p.c}$.`,
+              truth: true,
+              right: `True. Multiply both terms by ${p.k}: ${p.k} × x and ${p.k} × ${p.c}.`,
+              wrong: [
+                [`False. It is ${p.k}x + ${p.c}.`, "ALG.EXPAND.FIRST-ONLY"],
+                [`False. It is ${p.k}x + ${p.k + p.c}.`],
+              ],
             },
-            { text: "True. The minus sign goes on every term.", code: "ALG.EXPAND.NEGATIVE" },
             {
-              text: `True. Multiply ${p.c} by ${p.k} and keep the sign from the bracket.`,
-              code: "ALG.EXPAND.NEGATIVE",
+              statement: `Tom says $${p.a}(${p.k}x - ${p.c}) = ${p.a * p.k}x - ${p.c}$.`,
+              truth: false,
+              right: `False. The ${p.a} multiplies both terms: ${p.a * p.k}x − ${p.a * p.c}.`,
+              wrong: [
+                ["True. Only the first term is multiplied.", "ALG.EXPAND.FIRST-ONLY"],
+                ["True. The number after a minus sign stays the same.", "ALG.EXPAND.FIRST-ONLY"],
+              ],
+            },
+            {
+              claim: "$a(b + c) = ab + ac$",
+              truth: "always",
+              right: "Always. a lots of b and c together is a lots of b plus a lots of c.",
+              wrong: [
+                ["Sometimes. Only when the numbers are positive.", "ALG.EXPAND.NEGATIVE"],
+                ["Never. It is ab + c.", "ALG.EXPAND.FIRST-ONLY"],
+              ],
             },
           ],
-          solution: [{ say: "A negative times a negative is positive." }],
-        });
+        );
     }
   },
 

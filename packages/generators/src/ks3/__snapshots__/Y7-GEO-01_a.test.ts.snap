@@ -76,7 +76,7 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -222,7 +222,7 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -368,7 +368,7 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -448,7 +448,7 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -510,7 +510,7 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -572,7 +572,7 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -627,14 +627,14 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -652,7 +652,7 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -661,19 +661,10 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -681,7 +672,7 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. A 1 by 10 rectangle has area 10 and perimeter 22, but a 4 by 4 square has a bigger area, 16, and a smaller perimeter, 16.",
+                  "v": "False. 88 is the area. The perimeter adds the four sides: 38 cm.",
                 },
               ],
               "id": "RA",
@@ -690,7 +681,7 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Bigger shapes go further round.",
+                  "v": "True. Multiply the length by the width.",
                 },
               ],
               "id": "RB",
@@ -699,7 +690,7 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Area and perimeter go in opposite directions.",
+                  "v": "True. Perimeter and area are the same for a rectangle.",
                 },
               ],
               "id": "RC",
@@ -714,7 +705,7 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "MEA.AREA.SAME-PERIMETER",
+            "code": "MEA.PERIMETER.AREA",
             "feedback": [],
           },
           {
@@ -722,14 +713,14 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "MEA.AREA.SAME-PERIMETER",
+            "code": "MEA.PERIMETER.AREA",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -739,7 +730,7 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Area and perimeter measure different things.",
+            "v": "False. 88 is the area. The perimeter adds the four sides: 38 cm.",
           },
         ],
       },
@@ -747,7 +738,7 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A shape with a bigger area also has a bigger perimeter.",
+        "v": "Jon says a 8 cm by 11 cm rectangle has a perimeter of 88 cm.",
       },
     ],
   },
@@ -759,132 +750,7 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-01.a",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RA",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Always true",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Sometimes true",
-                },
-              ],
-              "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Sometimes. A 1 by 10 rectangle has area 10 and perimeter 22, but a 4 by 4 square has a bigger area, 16, and a smaller perimeter, 16.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Always. Bigger shapes go further round.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never. Area and perimeter go in opposite directions.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "MEA.AREA.SAME-PERIMETER",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "MEA.AREA.SAME-PERIMETER",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this always, sometimes or never true?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Area and perimeter measure different things.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "A shape with a bigger area also has a bigger perimeter.",
-      },
-    ],
-  },
-  {
-    "archetype": "always-sometimes-never",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y7-GEO-01.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -931,7 +797,7 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Area and perimeter go in opposite directions.",
+                  "v": "Always. The same perimeter means the same size.",
                 },
               ],
               "id": "RA",
@@ -940,7 +806,7 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. A 1 by 10 rectangle has area 10 and perimeter 22, but a 4 by 4 square has a bigger area, 16, and a smaller perimeter, 16.",
+                  "v": "Sometimes. 1 by 5 and 2 by 4 rectangles both have perimeter 12, but their areas are 5 and 8.",
                 },
               ],
               "id": "RB",
@@ -949,7 +815,7 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Bigger shapes go further round.",
+                  "v": "Never. Two different rectangles can never match.",
                 },
               ],
               "id": "RC",
@@ -962,14 +828,6 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
           {
             "answer": {
               "id": "RA",
-              "type": "choice",
-            },
-            "code": "MEA.AREA.SAME-PERIMETER",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
               "type": "choice",
             },
             "code": "MEA.AREA.SAME-PERIMETER",
@@ -989,7 +847,7 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Area and perimeter measure different things.",
+            "v": "Sometimes. 1 by 5 and 2 by 4 rectangles both have perimeter 12, but their areas are 5 and 8.",
           },
         ],
       },
@@ -997,7 +855,123 @@ exports[`Y7-GEO-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A shape with a bigger area also has a bigger perimeter.",
+        "v": "Two rectangles with the same perimeter have the same area.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y7-GEO-01.a",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "A",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. 8 + 10 + 8 + 10 = 36 cm.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 80 cm.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. It is 18 cm.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "MEA.PERIMETER.AREA",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "MEA.PERIMETER.MISSING-SIDES",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "True. 8 + 10 + 8 + 10 = 36 cm.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Ivy says a 8 cm by 10 cm rectangle has a perimeter of 36 cm.",
       },
     ],
   },

@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-RAT-03.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.SHARE.WRONG-TOTAL", "RAT.ADDITIVE", "RAT.PART-WHOLE"],
 
@@ -89,24 +90,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Ella and Finn share money in the ratio 1 : ${p.b}. Ella says she gets `,
-            A.math(`\\frac{1}{${p.b}}`),
-            " of the money.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Ella and Finn share money in the ratio 1 : ${p.b}. Ella says she gets `,
+                A.math(`\\frac{1}{${p.b}}`),
+                " of the money.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. There are 1 + ${p.b} = ${p.b + 1} parts, so she gets 1/${p.b + 1} of the money.`,
+                  correct: true,
+                },
+                { text: "True. The ratio 1 : n always means 1/n.", code: "RAT.PART-WHOLE" },
+                { text: `True. Finn gets ${p.b} times as much as Ella.`, code: "RAT.PART-WHOLE" },
+              ],
+              solution: [{ say: "Add the parts of the ratio to find the whole." }],
+            }),
+          [
             {
-              text: `False. There are 1 + ${p.b} = ${p.b + 1} parts, so she gets 1/${p.b + 1} of the money.`,
-              correct: true,
+              statement: `Ana and Ben share £${(p.a + p.b) * p.k} in the ratio ${p.a} : ${p.b}. Ana says she gets £${p.a * p.k}.`,
+              truth: true,
+              right: `True. There are ${p.a + p.b} parts, so one part is £${(p.a + p.b) * p.k} ÷ ${p.a + p.b} = £${p.k}, and Ana has ${p.a} of them.`,
+              wrong: [
+                [
+                  `False. Divide £${(p.a + p.b) * p.k} by ${p.a}, the first number.`,
+                  "RAT.SHARE.WRONG-TOTAL",
+                ],
+                ["False. They each get half."],
+              ],
             },
-            { text: "True. The ratio 1 : n always means 1/n.", code: "RAT.PART-WHOLE" },
-            { text: `True. Finn gets ${p.b} times as much as Ella.`, code: "RAT.PART-WHOLE" },
+            {
+              claim: "In the ratio 1 : 3, the second amount is 3 times the first.",
+              truth: "always",
+              right: "Always. For every 1 of the first there are 3 of the second.",
+              wrong: [
+                ["Sometimes. Only when there are 4 things altogether.", "RAT.SHARE.WRONG-TOTAL"],
+                ["Never. The second amount is 3 more than the first.", "RAT.ADDITIVE"],
+              ],
+            },
+            {
+              statement: `Cal says that sharing £${(p.a + p.b) * p.k} in the ratio ${p.a} : ${p.b}, the second person gets £${p.b - p.a} more than the first.`,
+              truth: false,
+              right: `False. One part is £${p.k}, and the second person has ${p.b - p.a} more parts: £${(p.b - p.a) * p.k} more.`,
+              wrong: [
+                ["True. Subtract the numbers in the ratio.", "RAT.ADDITIVE"],
+                ["True. A ratio shows the difference between the amounts.", "RAT.ADDITIVE"],
+              ],
+            },
           ],
-          solution: [{ say: "Add the parts of the ratio to find the whole." }],
-        });
+        );
     }
   },
 

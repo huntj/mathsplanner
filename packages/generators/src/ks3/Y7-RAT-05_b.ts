@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { exactAnswer, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   p: number;
@@ -18,7 +19,7 @@ const r = (v: number) => Number(v.toFixed(6));
 
 export default defineGenerator<Params>({
   id: "Y7-RAT-05.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.PERCENT.MULTIPLIER"],
 
@@ -72,20 +73,56 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Rae says multiplying by 0.8 decreases an amount by 20%."],
-          truth: true,
-          reasons: [
-            { text: "True. 0.8 = 80%, so 80% is left and 20% has been taken away.", correct: true },
-            { text: "False. It decreases it by 80%.", code: "RAT.PERCENT.MULTIPLIER" },
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Rae says multiplying by 0.8 decreases an amount by 20%."],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. 0.8 = 80%, so 80% is left and 20% has been taken away.",
+                  correct: true,
+                },
+                { text: "False. It decreases it by 80%.", code: "RAT.PERCENT.MULTIPLIER" },
+                {
+                  text: "False. Multiplying always increases an amount.",
+                  code: "RAT.PERCENT.MULTIPLIER",
+                },
+              ],
+              solution: [{ say: "Multiplier = 1 − the decrease as a decimal." }],
+            }),
+          [
             {
-              text: "False. Multiplying always increases an amount.",
-              code: "RAT.PERCENT.MULTIPLIER",
+              statement: `Leo says that to increase an amount by ${p.p}%, you multiply it by ${p.p / 100}.`,
+              truth: false,
+              right: `False. Multiplying by ${p.p / 100} finds ${p.p}% of the amount. To increase it by ${p.p}%, multiply by ${(100 + p.p) / 100}.`,
+              wrong: [
+                ["True. The percentage as a decimal is the multiplier.", "RAT.PERCENT.MULTIPLIER"],
+                ["True. Multiplying always increases an amount.", "RAT.PERCENT.MULTIPLIER"],
+              ],
+            },
+            {
+              statement: `Mia says multiplying by ${(100 + p.q) / 100} increases an amount by ${p.q}%.`,
+              truth: true,
+              right: `True. ${(100 + p.q) / 100} = 100% + ${p.q}%: all of the amount, and ${p.q}% more.`,
+              wrong: [
+                [`False. It increases it by ${(100 + p.q) / 100}%.`, "RAT.PERCENT.MULTIPLIER"],
+                [`False. It increases it by ${100 + p.q}%.`, "RAT.PERCENT.MULTIPLIER"],
+              ],
+            },
+            {
+              claim: `A decrease of ${p.q}% and then an increase of ${p.q}% gets you back where you started.`,
+              truth: "never",
+              right: `Never. The increase is ${p.q}% of a smaller amount: × ${(100 - p.q) / 100} × ${(100 + p.q) / 100} = × ${(10000 - p.q * p.q) / 10000}, so you end up below the start.`,
+              wrong: [
+                ["Always. The two changes cancel out.", "RAT.PERCENT.MULTIPLIER"],
+                ["Sometimes. When the amount is 100."],
+              ],
             },
           ],
-          solution: [{ say: "Multiplier = 1 − the decrease as a decimal." }],
-        });
+        );
     }
   },
 

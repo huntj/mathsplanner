@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   primes: number[];
@@ -18,7 +19,7 @@ const show = (xs: number[]) => [...xs].sort((a, b) => a - b).join(" \\times ");
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-04.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.FACTOR.NOT-PRIME", "MD.MULTIPLY.ADDS"],
 
@@ -82,25 +83,58 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            `Ali and Bea both write ${n} as a product of primes, starting with different factor trees. Bea says they must get the same primes.`,
-          ],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                `Ali and Bea both write ${n} as a product of primes, starting with different factor trees. Bea says they must get the same primes.`,
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: "True. Every whole number greater than 1 has exactly one prime factorisation (apart from the order of the factors).",
+                  correct: true,
+                },
+                {
+                  text: "False. Different factor trees give different primes.",
+                  code: "NPV.FACTOR.NOT-PRIME",
+                },
+                { text: "False. One of them may include 1.", code: "NPV.FACTOR.NOT-PRIME" },
+              ],
+              solution: [{ say: "", math: `${n} = ${show(sorted)}` }],
+            }),
+          [
             {
-              text: "True. Every whole number greater than 1 has exactly one prime factorisation (apart from the order of the factors).",
-              correct: true,
+              statement: "Ana writes $36 = 4 \\times 9$ as a product of prime factors.",
+              truth: false,
+              right: "False. 4 and 9 are not prime: 36 = 2 × 2 × 3 × 3 = 2² × 3².",
+              wrong: [
+                ["True. 4 × 9 = 36.", "NPV.FACTOR.NOT-PRIME"],
+                ["True. Any factor pair will do.", "NPV.FACTOR.NOT-PRIME"],
+              ],
             },
             {
-              text: "False. Different factor trees give different primes.",
-              code: "NPV.FACTOR.NOT-PRIME",
+              statement: "Ben says $2^3 \\times 3 = 24$.",
+              truth: true,
+              right: "True. 2³ = 2 × 2 × 2 = 8, and 8 × 3 = 24.",
+              wrong: [
+                ["False. 2³ = 6, so it is 18."],
+                ["False. Powers and multiplying cannot be mixed."],
+              ],
             },
-            { text: "False. One of them may include 1.", code: "NPV.FACTOR.NOT-PRIME" },
+            {
+              claim: "A prime factorisation includes the number 1.",
+              truth: "never",
+              right: "Never. 1 is not prime, so it is never written in a prime factorisation.",
+              wrong: [
+                ["Always. Every number has 1 as a factor.", "NPV.FACTOR.NOT-PRIME"],
+                ["Sometimes. When the number is odd.", "NPV.FACTOR.NOT-PRIME"],
+              ],
+            },
           ],
-          solution: [{ say: "", math: `${n} = ${show(sorted)}` }],
-        });
+        );
     }
   },
 

@@ -10,7 +10,7 @@ exports[`Y7-ALG-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -91,7 +91,7 @@ exports[`Y7-ALG-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -172,7 +172,7 @@ exports[`Y7-ALG-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -253,7 +253,7 @@ exports[`Y7-ALG-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -344,7 +344,7 @@ exports[`Y7-ALG-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -435,7 +435,7 @@ exports[`Y7-ALG-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -526,7 +526,139 @@ exports[`Y7-ALG-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RB",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. You multiply first, then square.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. Only a is squared: 2a² = 2 × a × a. With a = 6 it is 72, but (2a)² = 144.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. The power applies to everything in front of it.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.ORDER.LEFT-TO-RIGHT",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "NPV.ORDER.LEFT-TO-RIGHT",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "Powers are worked out before multiplying.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Zoe says ",
+      },
+      {
+        "t": "math",
+        "v": "2a^2",
+      },
+      {
+        "t": "text",
+        "v": " means ",
+      },
+      {
+        "t": "math",
+        "v": "(2a)^2",
+      },
+      {
+        "t": "text",
+        "v": ".",
+      },
+    ],
+  },
+  {
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "standard",
+      "seed": 1,
+      "statementId": "Y7-ALG-01.b",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -544,7 +676,7 @@ exports[`Y7-ALG-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -553,10 +685,19 @@ exports[`Y7-ALG-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -564,7 +705,7 @@ exports[`Y7-ALG-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Only a is squared: 2a² = 2 × a × a. With a = 6 it is 72, but (2a)² = 144.",
+                  "v": "Sometimes. With a = 6, a² = 36 is bigger than 2a = 12; but with a = 1, a² = 1 is smaller than 2a = 2.",
                 },
               ],
               "id": "RA",
@@ -573,7 +714,7 @@ exports[`Y7-ALG-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You multiply first, then square.",
+                  "v": "Always. Squaring is more than doubling.",
                 },
               ],
               "id": "RB",
@@ -582,7 +723,7 @@ exports[`Y7-ALG-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The power applies to everything in front of it.",
+                  "v": "Never. a² and 2a are the same thing.",
                 },
               ],
               "id": "RC",
@@ -597,7 +738,7 @@ exports[`Y7-ALG-01.b > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.ORDER.LEFT-TO-RIGHT",
+            "code": "MD.SQUARE.DOUBLES",
             "feedback": [],
           },
           {
@@ -605,14 +746,14 @@ exports[`Y7-ALG-01.b > keeps fixed seeds unchanged 1`] = `
               "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.ORDER.LEFT-TO-RIGHT",
+            "code": "MD.SQUARE.DOUBLES",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -622,159 +763,23 @@ exports[`Y7-ALG-01.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Powers are worked out before multiplying.",
+            "v": "Sometimes. With a = 6, a² = 36 is bigger than 2a = 12; but with a = 1, a² = 1 is smaller than 2a = 2.",
           },
         ],
       },
     ],
     "stem": [
       {
+        "t": "math",
+        "v": "a^2",
+      },
+      {
         "t": "text",
-        "v": "Zoe says ",
+        "v": " is bigger than ",
       },
       {
         "t": "math",
-        "v": "2a^2",
-      },
-      {
-        "t": "text",
-        "v": " means ",
-      },
-      {
-        "t": "math",
-        "v": "(2a)^2",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-    ],
-  },
-  {
-    "archetype": "true-or-false-why",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "standard",
-      "seed": 1,
-      "statementId": "Y7-ALG-01.b",
-      "version": "1.0.0",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "B",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False",
-                },
-              ],
-              "id": "B",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. You multiply first, then square.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "True. The power applies to everything in front of it.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "False. Only a is squared: 2a² = 2 × a × a. With a = 6 it is 72, but (2a)² = 144.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "NPV.ORDER.LEFT-TO-RIGHT",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "NPV.ORDER.LEFT-TO-RIGHT",
-            "feedback": [],
-          },
-        ],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this true or false?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Powers are worked out before multiplying.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "Zoe says ",
-      },
-      {
-        "t": "math",
-        "v": "2a^2",
-      },
-      {
-        "t": "text",
-        "v": " means ",
-      },
-      {
-        "t": "math",
-        "v": "(2a)^2",
+        "v": "2a",
       },
       {
         "t": "text",
@@ -790,7 +795,7 @@ exports[`Y7-ALG-01.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-01.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -837,7 +842,7 @@ exports[`Y7-ALG-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You multiply first, then square.",
+                  "v": "True. The power applies to everything in front of it.",
                 },
               ],
               "id": "RB",
@@ -846,7 +851,7 @@ exports[`Y7-ALG-01.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The power applies to everything in front of it.",
+                  "v": "True. You multiply first, then square.",
                 },
               ],
               "id": "RC",

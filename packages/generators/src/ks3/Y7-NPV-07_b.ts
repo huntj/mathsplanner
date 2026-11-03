@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-07.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MD.SQUARE.DOUBLES", "NPV.POWER.ROOT-HALF", "ALG.SUBSTITUTE.NEGATIVE-SQUARE"],
 
@@ -74,23 +75,56 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Dan says ", A.math(`(-${p.n})^3 = ${p.n ** 3}`), "."],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Dan says ", A.math(`(-${p.n})^3 = ${p.n ** 3}`), "."],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. (−${p.n}) × (−${p.n}) = ${p.n * p.n}, then × (−${p.n}) gives −${p.n ** 3}. An odd power of a negative number is negative.`,
+                  correct: true,
+                },
+                {
+                  text: "True. Powers always give positive answers.",
+                  code: "ALG.SUBSTITUTE.NEGATIVE-SQUARE",
+                },
+                { text: "True. The negatives cancel out.", code: "ALG.SUBSTITUTE.NEGATIVE-SQUARE" },
+              ],
+              solution: [{ say: "Count the negative signs: three of them make a negative." }],
+            }),
+          [
             {
-              text: `False. (−${p.n}) × (−${p.n}) = ${p.n * p.n}, then × (−${p.n}) gives −${p.n ** 3}. An odd power of a negative number is negative.`,
-              correct: true,
+              statement: `Dee says $${p.n}^3 = ${p.n ** 3}$.`,
+              truth: true,
+              right: `True. ${p.n} × ${p.n} × ${p.n} = ${p.n ** 3}.`,
+              wrong: [
+                [`False. ${p.n}³ = ${p.n} × 3 = ${3 * p.n}.`, "MD.SQUARE.DOUBLES"],
+                ["False. A cube means multiplying by itself just once."],
+              ],
             },
             {
-              text: "True. Powers always give positive answers.",
-              code: "ALG.SUBSTITUTE.NEGATIVE-SQUARE",
+              statement: `Eve says the cube root of ${p.n ** 3} is ${p.n ** 3} ÷ 3.`,
+              truth: false,
+              right: `False. ${p.n} × ${p.n} × ${p.n} = ${p.n ** 3}, so the cube root is ${p.n}.`,
+              wrong: [
+                ["True. A cube root divides by 3.", "NPV.POWER.ROOT-HALF"],
+                ["True. A root always divides the number.", "NPV.POWER.ROOT-HALF"],
+              ],
             },
-            { text: "True. The negatives cancel out.", code: "ALG.SUBSTITUTE.NEGATIVE-SQUARE" },
+            {
+              claim: "A cube number is even.",
+              truth: "sometimes",
+              right: "Sometimes. 2³ = 8 is even, but 3³ = 27 is odd.",
+              wrong: [
+                ["Always. Cubing makes a number even."],
+                ["Never. Cube numbers are always odd."],
+              ],
+            },
           ],
-          solution: [{ say: "Count the negative signs: three of them make a negative." }],
-        });
+        );
     }
   },
 

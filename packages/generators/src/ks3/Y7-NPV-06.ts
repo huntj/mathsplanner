@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-06",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.INVERSE.WRONG-PAIR"],
 
@@ -128,13 +129,48 @@ export default defineGenerator<Params>({
         ];
         const cl = claims[p.claim] ?? claims[0];
         if (!cl) return reject("no claim");
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: cl.statement,
-          truth: cl.truth,
-          reasons: cl.reasons,
-          solution: [{ say: cl.reasons[0]?.text ?? "" }],
-        });
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: cl.statement,
+              truth: cl.truth,
+              reasons: cl.reasons,
+              solution: [{ say: cl.reasons[0]?.text ?? "" }],
+            }),
+          [
+            {
+              claim:
+                "Multiplying by a number that is not 0, then dividing by the same number, gets you back where you started.",
+              truth: "always",
+              right: "Always. Dividing undoes multiplying, so the two cancel out.",
+              wrong: [
+                ["Sometimes. Only for whole numbers.", "NPV.INVERSE.WRONG-PAIR"],
+                ["Never. You need to multiply again to get back.", "NPV.INVERSE.WRONG-PAIR"],
+              ],
+            },
+            {
+              claim: "Adding 5, then subtracting 3, gets you back where you started.",
+              truth: "never",
+              right:
+                "Never. The inverse of adding 5 is subtracting 5; subtracting 3 leaves you 2 more than you started with.",
+              wrong: [
+                ["Always. Subtracting undoes adding.", "NPV.INVERSE.WRONG-PAIR"],
+                ["Sometimes. If the number is big enough."],
+              ],
+            },
+            {
+              statement: `Tia says that if $${p.a} \\times ${p.b} = ${p.a * p.b}$, then $${p.a * p.b} - ${p.a} = ${p.b}$.`,
+              truth: false,
+              right: `False. The inverse of multiplying is dividing: ${p.a * p.b} ÷ ${p.a} = ${p.b}.`,
+              wrong: [
+                ["True. Subtracting undoes multiplying.", "NPV.INVERSE.WRONG-PAIR"],
+                ["True. Take away the number you multiplied by."],
+              ],
+            },
+          ],
+        );
       }
     }
   },

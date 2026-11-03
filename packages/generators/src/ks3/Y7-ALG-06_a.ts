@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   x: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-ALG-06.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.SOLVE.WRONG-INVERSE"],
 
@@ -67,23 +68,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Kai solves ", A.math(`x - ${p.a} = ${p.x}`), ` and gets x = ${p.x - p.a}.`],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Kai solves ",
+                A.math(`x - ${p.a} = ${p.x}`),
+                ` and gets x = ${p.x - p.a}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. To undo − ${p.a}, add ${p.a}: x = ${p.x + p.a}. Check: ${p.x + p.a} − ${p.a} = ${p.x}.`,
+                  correct: true,
+                },
+                { text: "True. Subtract again to solve.", code: "ALG.SOLVE.WRONG-INVERSE" },
+                {
+                  text: "True. The sign stays the same when you move a number.",
+                  code: "ALG.SOLVE.WRONG-INVERSE",
+                },
+              ],
+              solution: [{ say: "Use the inverse operation, and check by substituting." }],
+            }),
+          [
             {
-              text: `False. To undo − ${p.a}, add ${p.a}: x = ${p.x + p.a}. Check: ${p.x + p.a} − ${p.a} = ${p.x}.`,
-              correct: true,
+              statement: `Lou solves $${p.k}x = ${p.k * p.x}$ and gets $x = ${p.x}$.`,
+              truth: true,
+              right: `True. Divide both sides by ${p.k}: ${p.k * p.x} ÷ ${p.k} = ${p.x}. Check: ${p.k} × ${p.x} = ${p.k * p.x}.`,
+              wrong: [
+                [`False. Subtract ${p.k}: x = ${p.k * p.x - p.k}.`, "ALG.SOLVE.WRONG-INVERSE"],
+                [`False. Multiply by ${p.k}: x = ${p.k * p.k * p.x}.`, "ALG.SOLVE.WRONG-INVERSE"],
+              ],
             },
-            { text: "True. Subtract again to solve.", code: "ALG.SOLVE.WRONG-INVERSE" },
             {
-              text: "True. The sign stays the same when you move a number.",
-              code: "ALG.SOLVE.WRONG-INVERSE",
+              claim: "Adding the same number to both sides of an equation keeps it true.",
+              truth: "always",
+              right: "Always. Both sides change by the same amount, so they stay equal.",
+              wrong: [
+                ["Sometimes. Only if the number is positive.", "ALG.SOLVE.WRONG-INVERSE"],
+                ["Never. You must do the opposite to each side.", "ALG.SOLVE.WRONG-INVERSE"],
+              ],
+            },
+            {
+              statement: `Sam says the solution of $x + ${p.a} = ${p.x + p.a}$ is $x = ${p.x + 2 * p.a}$.`,
+              truth: false,
+              right: `False. Subtract ${p.a} from both sides: x = ${p.x}. Check: ${p.x} + ${p.a} = ${p.x + p.a}.`,
+              wrong: [
+                [`True. Add ${p.a} to both sides.`, "ALG.SOLVE.WRONG-INVERSE"],
+                ["True. Move the number over without changing it.", "ALG.SOLVE.WRONG-INVERSE"],
+              ],
             },
           ],
-          solution: [{ say: "Use the inverse operation, and check by substituting." }],
-        });
+        );
     }
   },
 

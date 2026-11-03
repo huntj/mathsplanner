@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { exactAnswer, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   small: number;
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-RAT-05.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["FR.PERCENT.DIGITS"],
 
@@ -66,23 +67,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Gil says ",
-            A.math("0.5\\%"),
-            " is the same as ",
-            A.math("\\frac{1}{2}"),
-            ".",
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Gil says ",
+                A.math("0.5\\%"),
+                " is the same as ",
+                A.math("\\frac{1}{2}"),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. ½ = 50%. 0.5% is half of 1%, which is 1/200 = 0.005.",
+                  correct: true,
+                },
+                { text: "True. 0.5 is a half.", code: "FR.PERCENT.DIGITS" },
+                { text: "True. The % sign does not change the value.", code: "FR.PERCENT.DIGITS" },
+              ],
+              solution: [{ say: "Divide a percentage by 100 to get the decimal." }],
+            }),
+          [
+            {
+              statement: `Jo says $${p.p}\\% = ${p.p / 100}$.`,
+              truth: true,
+              right: `True. Per cent means out of 100: ${p.p} ÷ 100 = ${p.p / 100}.`,
+              wrong: [
+                [`False. It is ${p.p / 10}.`, "FR.PERCENT.DIGITS"],
+                [`False. It is ${p.p}.0.`],
+              ],
+            },
+            {
+              statement: `Kai says $${p.small}\\% = 0.${p.small}$.`,
+              truth: false,
+              right: `False. ${p.small}% = ${p.small}/100 = 0.0${p.small}. 0.${p.small} is ${p.small * 10}%.`,
+              wrong: [
+                ["True. Put the digits after the decimal point.", "FR.PERCENT.DIGITS"],
+                ["True. Percentages and decimals use the same digits.", "FR.PERCENT.DIGITS"],
+              ],
+            },
+            {
+              claim: "$\\frac{1}{4}$, 0.25 and 25% are the same amount.",
+              truth: "always",
+              right: "Always. ¼ = 25 ÷ 100 = 0.25 = 25%.",
+              wrong: [
+                ["Sometimes. It depends what it is a quarter of."],
+                [
+                  "Never. Fractions, decimals and percentages are different amounts.",
+                  "FR.PERCENT.DIGITS",
+                ],
+              ],
+            },
           ],
-          truth: false,
-          reasons: [
-            { text: "False. ½ = 50%. 0.5% is half of 1%, which is 1/200 = 0.005.", correct: true },
-            { text: "True. 0.5 is a half.", code: "FR.PERCENT.DIGITS" },
-            { text: "True. The % sign does not change the value.", code: "FR.PERCENT.DIGITS" },
-          ],
-          solution: [{ say: "Divide a percentage by 100 to get the decimal." }],
-        });
+        );
     }
   },
 

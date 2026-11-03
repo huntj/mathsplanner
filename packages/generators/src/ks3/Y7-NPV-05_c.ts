@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { signedWrongs } from "../shared/alg.ts";
 import { exactAnswer, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const DECIMALS: [string, number][] = [
   ["0.5", 2],
@@ -25,7 +26,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-05.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.RECIPROCAL.NEGATIVE"],
 
@@ -65,20 +66,53 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [`Ivy says that ${p.n} multiplied by its reciprocal always gives 1.`],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [`Ivy says that ${p.n} multiplied by its reciprocal always gives 1.`],
+              truth: true,
+              reasons: [
+                {
+                  text: `True. ${p.n} × 1/${p.n} = ${p.n}/${p.n} = 1. Any non-zero number times its reciprocal is 1.`,
+                  correct: true,
+                },
+                { text: `False. ${p.n} × (−${p.n}) is negative.`, code: "NPV.RECIPROCAL.NEGATIVE" },
+                { text: "False. It gives 0.", code: "NPV.RECIPROCAL.NEGATIVE" },
+              ],
+              solution: [{ say: "That is what makes it the reciprocal." }],
+            }),
+          [
             {
-              text: `True. ${p.n} × 1/${p.n} = ${p.n}/${p.n} = 1. Any non-zero number times its reciprocal is 1.`,
-              correct: true,
+              statement: `Gil says the reciprocal of ${p.n} is −${p.n}.`,
+              truth: false,
+              right: `False. The reciprocal of ${p.n} is 1/${p.n}, because ${p.n} × 1/${p.n} = 1. −${p.n} is its negative.`,
+              wrong: [
+                ["True. A reciprocal changes the sign.", "NPV.RECIPROCAL.NEGATIVE"],
+                ["True. Reciprocal means opposite.", "NPV.RECIPROCAL.NEGATIVE"],
+              ],
             },
-            { text: `False. ${p.n} × (−${p.n}) is negative.`, code: "NPV.RECIPROCAL.NEGATIVE" },
-            { text: "False. It gives 0.", code: "NPV.RECIPROCAL.NEGATIVE" },
+            {
+              claim: "The reciprocal of a positive number is smaller than the number.",
+              truth: "sometimes",
+              right: `Sometimes. 1/${p.n} is smaller than ${p.n}, but the reciprocal of ½ is 2, which is bigger.`,
+              wrong: [
+                ["Always. A reciprocal is a fraction, so it is small."],
+                ["Never. Reciprocals are always bigger than the number."],
+              ],
+            },
+            {
+              statement: "Fay says the reciprocal of $\\frac{2}{3}$ is $\\frac{3}{2}$.",
+              truth: true,
+              right: "True. Turn the fraction upside down: 2/3 × 3/2 = 1.",
+              wrong: [
+                ["False. It is −2/3.", "NPV.RECIPROCAL.NEGATIVE"],
+                ["False. It is 1/3, the part that is left over."],
+              ],
+            },
           ],
-          solution: [{ say: "That is what makes it the reciprocal." }],
-        });
+        );
     }
   },
 

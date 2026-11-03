@@ -10,7 +10,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -75,7 +75,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -140,7 +140,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -205,7 +205,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -280,7 +280,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -358,7 +358,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -436,7 +436,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -448,7 +448,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RC",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -483,7 +483,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Two negatives always make a positive.",
+                  "v": "False. Adding a negative moves down: −5 − 10 = −15. "Two negatives make a positive" is about multiplying and dividing.",
                 },
               ],
               "id": "RB",
@@ -492,7 +492,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Adding a negative moves down: −5 − 10 = −15. "Two negatives make a positive" is about multiplying and dividing.",
+                  "v": "True. Two negatives always make a positive.",
                 },
               ],
               "id": "RC",
@@ -512,7 +512,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "NPV.NEGATIVE.SIGN-RULE",
@@ -560,7 +560,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -571,8 +571,8 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -598,7 +598,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Two negatives always make a positive.",
+                  "v": "True. Subtracting a negative is the same as adding: 11 + 14 = 25.",
                 },
               ],
               "id": "RA",
@@ -607,7 +607,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Adding a negative moves down: −11 − 14 = −25. "Two negatives make a positive" is about multiplying and dividing.",
+                  "v": "False. It is -3, because you take 14 away.",
                 },
               ],
               "id": "RB",
@@ -616,7 +616,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The minus signs cancel out.",
+                  "v": "False. Two minus signs make the answer negative.",
                 },
               ],
               "id": "RC",
@@ -628,10 +628,10 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.NEGATIVE.SIGN-RULE",
+            "code": "NPV.NEGATIVE.SUBTRACT-NEGATIVE",
             "feedback": [],
           },
           {
@@ -656,7 +656,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Use a number line for adding and subtracting negatives.",
+            "v": "True. Subtracting a negative is the same as adding: 11 + 14 = 25.",
           },
         ],
       },
@@ -664,15 +664,15 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kim says ",
+        "v": "Ola says ",
       },
       {
         "t": "math",
-        "v": "-11 + (-14) = 25",
+        "v": "11 - (-14) = 25",
       },
       {
         "t": "text",
-        "v": " because two negatives make a positive.",
+        "v": ".",
       },
     ],
   },
@@ -684,7 +684,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-03.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -695,7 +695,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
@@ -722,7 +722,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Two negatives always make a positive.",
+                  "v": "False. It is -5, because you take 13 away.",
                 },
               ],
               "id": "RA",
@@ -731,7 +731,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Adding a negative moves down: −8 − 13 = −21. "Two negatives make a positive" is about multiplying and dividing.",
+                  "v": "True. Subtracting a negative is the same as adding: 8 + 13 = 21.",
                 },
               ],
               "id": "RB",
@@ -740,7 +740,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The minus signs cancel out.",
+                  "v": "False. Two minus signs make the answer negative.",
                 },
               ],
               "id": "RC",
@@ -755,7 +755,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.NEGATIVE.SIGN-RULE",
+            "code": "NPV.NEGATIVE.SUBTRACT-NEGATIVE",
             "feedback": [],
           },
           {
@@ -780,7 +780,7 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Use a number line for adding and subtracting negatives.",
+            "v": "True. Subtracting a negative is the same as adding: 8 + 13 = 21.",
           },
         ],
       },
@@ -788,15 +788,15 @@ exports[`Y7-NPV-03.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kim says ",
+        "v": "Ola says ",
       },
       {
         "t": "math",
-        "v": "-8 + (-13) = 21",
+        "v": "8 - (-13) = 21",
       },
       {
         "t": "text",
-        "v": " because two negatives make a positive.",
+        "v": ".",
       },
     ],
   },

@@ -10,7 +10,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -93,7 +93,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -176,7 +176,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -259,7 +259,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -320,7 +320,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -381,7 +381,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -440,14 +440,14 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -459,13 +459,13 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -474,19 +474,10 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -494,7 +485,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. 7 and 13 are prime, but 9 = 3 × 3 and 15 = 3 × 5 are odd and not prime.",
+                  "v": "True. 5 goes into it exactly.",
                 },
               ],
               "id": "RA",
@@ -503,7 +494,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. 2 is the only prime.",
+                  "v": "True. Factors and multiples are the same thing.",
                 },
               ],
               "id": "RB",
@@ -512,7 +503,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Only even numbers can be divided.",
+                  "v": "False. 70 is a multiple of 5, because 5 × 14 = 70. A factor of 5 divides into it, so it cannot be bigger than 5.",
                 },
               ],
               "id": "RC",
@@ -524,17 +515,25 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.FACTOR.NOT-PRIME",
+            "code": "NPV.FACTOR.MULTIPLE-MIXUP",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "NPV.FACTOR.MULTIPLE-MIXUP",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -544,7 +543,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A prime has exactly two factors: 1 and itself.",
+            "v": "False. 70 is a multiple of 5, because 5 × 14 = 70. A factor of 5 divides into it, so it cannot be bigger than 5.",
           },
         ],
       },
@@ -552,7 +551,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "An odd number is prime.",
+        "v": "Eve says 70 is a factor of 5.",
       },
     ],
   },
@@ -564,7 +563,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -575,7 +574,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "C",
           "correctReason": "RC",
           "options": [
             {
@@ -611,7 +610,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. 2 is the only prime.",
+                  "v": "Sometimes. 2 is even and prime.",
                 },
               ],
               "id": "RA",
@@ -620,7 +619,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Only even numbers can be divided.",
+                  "v": "Always. Even numbers share equally, so they are prime.",
                 },
               ],
               "id": "RB",
@@ -629,7 +628,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. 7 and 13 are prime, but 9 = 3 × 3 and 15 = 3 × 5 are odd and not prime.",
+                  "v": "Never. Every even number bigger than 2 has 2 as a factor, as well as 1 and itself.",
                 },
               ],
               "id": "RC",
@@ -639,6 +638,14 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.FACTOR.NOT-PRIME",
+            "feedback": [],
+          },
           {
             "answer": {
               "id": "RB",
@@ -661,7 +668,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A prime has exactly two factors: 1 and itself.",
+            "v": "Never. Every even number bigger than 2 has 2 as a factor, as well as 1 and itself.",
           },
         ],
       },
@@ -669,19 +676,19 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "An odd number is prime.",
+        "v": "An even number bigger than 2 is prime.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-NPV-04.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -699,7 +706,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -708,19 +715,10 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -728,7 +726,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. 2 is the only prime.",
+                  "v": "True. Factors and multiples are the same thing.",
                 },
               ],
               "id": "RA",
@@ -737,7 +735,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. 7 and 13 are prime, but 9 = 3 × 3 and 15 = 3 × 5 are odd and not prime.",
+                  "v": "False. 27 is a multiple of 3, because 3 × 9 = 27. A factor of 3 divides into it, so it cannot be bigger than 3.",
                 },
               ],
               "id": "RB",
@@ -746,7 +744,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. Only even numbers can be divided.",
+                  "v": "True. 3 goes into it exactly.",
                 },
               ],
               "id": "RC",
@@ -758,17 +756,25 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "NPV.FACTOR.MULTIPLE-MIXUP",
+            "feedback": [],
+          },
+          {
+            "answer": {
               "id": "RC",
               "type": "choice",
             },
-            "code": "NPV.FACTOR.NOT-PRIME",
+            "code": "NPV.FACTOR.MULTIPLE-MIXUP",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -778,7 +784,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "A prime has exactly two factors: 1 and itself.",
+            "v": "False. 27 is a multiple of 3, because 3 × 9 = 27. A factor of 3 divides into it, so it cannot be bigger than 3.",
           },
         ],
       },
@@ -786,7 +792,7 @@ exports[`Y7-NPV-04.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "An odd number is prime.",
+        "v": "Eve says 27 is a factor of 3.",
       },
     ],
   },

@@ -2,8 +2,8 @@
 // and the results, which they download or print for the teacher. Nothing leaves the browser.
 import type { Question, Validator } from "@mathsplanner/core";
 import { markQuestion, prepareMarking, type QuestionMark } from "@mathsplanner/marking";
+import { emptyDraft, isComplete, toResponse, type Draft } from "@mathsplanner/ui";
 import { useMemo, useState, type FormEvent } from "react";
-import { emptyDraft, isComplete, toResponse, type Draft } from "./answers.ts";
 import { QuestionView } from "./QuestionView.tsx";
 import { ResultsView } from "./ResultsView.tsx";
 import { answerText, type Attempt } from "./results.ts";

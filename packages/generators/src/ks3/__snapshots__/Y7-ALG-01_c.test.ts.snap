@@ -10,7 +10,7 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -106,7 +106,7 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -202,7 +202,7 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -298,7 +298,7 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -371,7 +371,7 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -444,7 +444,7 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -510,14 +510,14 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -528,14 +528,14 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "C",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -544,10 +544,19 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -555,7 +564,7 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 1/6 of x is smaller than x divided by 6.",
+                  "v": "Always. The brackets make no difference.",
                 },
               ],
               "id": "RA",
@@ -564,7 +573,7 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Dividing by 6 is the same as multiplying by 1/6.",
+                  "v": "Never. 6(x + 1) = 6x + 6, which is always 5 more than 6x + 1.",
                 },
               ],
               "id": "RB",
@@ -573,7 +582,7 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The second one means 1 ÷ 6x.",
+                  "v": "Sometimes. When x is 1.",
                 },
               ],
               "id": "RC",
@@ -588,22 +597,14 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "ALG.FORM.WORDS",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "ALG.FORM.WORDS",
+            "code": "ALG.EXPAND.FIRST-ONLY",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -613,19 +614,15 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Try x = 54: both give 9.",
+            "v": "Never. 6(x + 1) = 6x + 6, which is always 5 more than 6x + 1.",
           },
         ],
       },
     ],
     "stem": [
       {
-        "t": "text",
-        "v": "Ana says ",
-      },
-      {
         "t": "math",
-        "v": "\\frac{x}{6}",
+        "v": "6(x + 1)",
       },
       {
         "t": "text",
@@ -633,11 +630,11 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
       },
       {
         "t": "math",
-        "v": "\\frac{1}{6}x",
+        "v": "6x + 1",
       },
       {
         "t": "text",
-        "v": " mean the same.",
+        "v": " have the same value.",
       },
     ],
   },
@@ -649,7 +646,7 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -687,7 +684,7 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 1/5 of x is smaller than x divided by 5.",
+                  "v": "False. Only x is divided.",
                 },
               ],
               "id": "RA",
@@ -696,7 +693,7 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The second one means 1 ÷ 5x.",
+                  "v": "False. Only the 4 is divided by 5.",
                 },
               ],
               "id": "RB",
@@ -705,7 +702,7 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Dividing by 5 is the same as multiplying by 1/5.",
+                  "v": "True. The fraction line works like a bracket: all of x + 4 is divided by 5.",
                 },
               ],
               "id": "RC",
@@ -745,7 +742,7 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Try x = 30: both give 6.",
+            "v": "True. The fraction line works like a bracket: all of x + 4 is divided by 5.",
           },
         ],
       },
@@ -753,23 +750,23 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ana says ",
+        "v": "Ali says ",
       },
       {
         "t": "math",
-        "v": "\\frac{x}{5}",
+        "v": "\\frac{x + 4}{5}",
       },
       {
         "t": "text",
-        "v": " and ",
+        "v": " means ",
       },
       {
         "t": "math",
-        "v": "\\frac{1}{5}x",
+        "v": "(x + 4) \\div 5",
       },
       {
         "t": "text",
-        "v": " mean the same.",
+        "v": ".",
       },
     ],
   },
@@ -781,7 +778,7 @@ exports[`Y7-ALG-01.c > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-01.c",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

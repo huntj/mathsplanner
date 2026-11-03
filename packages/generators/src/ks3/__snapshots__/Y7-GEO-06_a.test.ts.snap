@@ -67,7 +67,7 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -191,7 +191,7 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -315,7 +315,7 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -382,7 +382,7 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -445,7 +445,7 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -508,7 +508,7 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -564,14 +564,14 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -582,14 +582,14 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RB",
+          "correct": "B",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -598,19 +598,10 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -618,7 +609,7 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. The angles add up to 360°, so there is room.",
+                  "v": "False. They add up to 190°, but the angles of a triangle always add up to 180°.",
                 },
               ],
               "id": "RA",
@@ -627,7 +618,7 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Two obtuse angles already add up to more than 180°, leaving nothing for the third angle.",
+                  "v": "True. Any three angles under 90° make a triangle.",
                 },
               ],
               "id": "RB",
@@ -636,7 +627,7 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. If the triangle is big enough.",
+                  "v": "True. They are all acute, so they fit.",
                 },
               ],
               "id": "RC",
@@ -645,28 +636,11 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.ANGLES.TRIANGLE-360",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "GEO.ANGLES.TRIANGLE-360",
-            "feedback": [],
-          },
-        ],
+        "misconceptions": [],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -676,7 +650,7 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The three angles of any triangle add up to 180°.",
+            "v": "False. They add up to 190°, but the angles of a triangle always add up to 180°.",
           },
         ],
       },
@@ -684,19 +658,19 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A triangle can have two obtuse angles.",
+        "v": "Zak says a triangle can have angles of 50°, 60° and 80°.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -707,14 +681,14 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
+          "correct": "B",
           "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -723,19 +697,10 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -743,7 +708,7 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. If the triangle is big enough.",
+                  "v": "True. Any three angles under 90° make a triangle.",
                 },
               ],
               "id": "RA",
@@ -752,7 +717,7 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. The angles add up to 360°, so there is room.",
+                  "v": "True. They are all acute, so they fit.",
                 },
               ],
               "id": "RB",
@@ -761,7 +726,7 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Two obtuse angles already add up to more than 180°, leaving nothing for the third angle.",
+                  "v": "False. They add up to 190°, but the angles of a triangle always add up to 180°.",
                 },
               ],
               "id": "RC",
@@ -770,28 +735,11 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.ANGLES.TRIANGLE-360",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RB",
-              "type": "choice",
-            },
-            "code": "GEO.ANGLES.TRIANGLE-360",
-            "feedback": [],
-          },
-        ],
+        "misconceptions": [],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -801,7 +749,7 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The three angles of any triangle add up to 180°.",
+            "v": "False. They add up to 190°, but the angles of a triangle always add up to 180°.",
           },
         ],
       },
@@ -809,19 +757,19 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A triangle can have two obtuse angles.",
+        "v": "Zak says a triangle can have angles of 50°, 60° and 80°.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-06.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -832,14 +780,14 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RB",
+          "correct": "B",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -848,19 +796,10 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -868,7 +807,7 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Always. The angles add up to 360°, so there is room.",
+                  "v": "True. They are all acute, so they fit.",
                 },
               ],
               "id": "RA",
@@ -877,7 +816,7 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Never. Two obtuse angles already add up to more than 180°, leaving nothing for the third angle.",
+                  "v": "True. Any three angles under 90° make a triangle.",
                 },
               ],
               "id": "RB",
@@ -886,7 +825,7 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes. If the triangle is big enough.",
+                  "v": "False. They add up to 190°, but the angles of a triangle always add up to 180°.",
                 },
               ],
               "id": "RC",
@@ -895,28 +834,11 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "GEO.ANGLES.TRIANGLE-360",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "GEO.ANGLES.TRIANGLE-360",
-            "feedback": [],
-          },
-        ],
+        "misconceptions": [],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -926,7 +848,7 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "The three angles of any triangle add up to 180°.",
+            "v": "False. They add up to 190°, but the angles of a triangle always add up to 180°.",
           },
         ],
       },
@@ -934,7 +856,7 @@ exports[`Y7-GEO-06.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A triangle can have two obtuse angles.",
+        "v": "Zak says a triangle can have angles of 50°, 60° and 80°.",
       },
     ],
   },

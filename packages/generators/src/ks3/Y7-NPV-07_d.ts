@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   k: number;
@@ -17,7 +18,7 @@ const r3 = (v: number) => Math.round(v * 1000) / 1000;
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-07.d",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.ROOT.EXACT-DECIMAL"],
 
@@ -76,23 +77,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["The square root of a whole number is a whole number."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["The square root of a whole number is a whole number."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: `Sometimes. √${Math.floor(Math.sqrt(p.k)) ** 2} = ${Math.floor(Math.sqrt(p.k))}, but √${p.k} is about ${approx}, which never ends or repeats.`,
+                  correct: true,
+                },
+                {
+                  text: "Always. Calculators show a whole number when you round.",
+                  code: "NPV.ROOT.EXACT-DECIMAL",
+                },
+                { text: "Never. Square roots are always decimals." },
+              ],
+              solution: [{ say: "Only square numbers have whole-number square roots." }],
+            }),
+          [
             {
-              text: `Sometimes. √${Math.floor(Math.sqrt(p.k)) ** 2} = ${Math.floor(Math.sqrt(p.k))}, but √${p.k} is about ${approx}, which never ends or repeats.`,
-              correct: true,
+              statement: `Hal says $\\sqrt{${p.k}}$ is exactly ${approx}.`,
+              truth: false,
+              right: `False. ${approx} is rounded: ${approx} × ${approx} is close to ${p.k} but not exactly ${p.k}. √${p.k} is a decimal that never ends or repeats.`,
+              wrong: [
+                ["True. The calculator shows it, so it is exact.", "NPV.ROOT.EXACT-DECIMAL"],
+                [
+                  "True. A square root always stops after three decimal places.",
+                  "NPV.ROOT.EXACT-DECIMAL",
+                ],
+              ],
             },
             {
-              text: "Always. Calculators show a whole number when you round.",
-              code: "NPV.ROOT.EXACT-DECIMAL",
+              statement: `Ivy says $\\sqrt{${p.k}}$ is between ${Math.floor(Math.sqrt(p.k))} and ${Math.floor(Math.sqrt(p.k)) + 1}.`,
+              truth: true,
+              right: `True. ${Math.floor(Math.sqrt(p.k))}² = ${Math.floor(Math.sqrt(p.k)) ** 2} and ${Math.floor(Math.sqrt(p.k)) + 1}² = ${(Math.floor(Math.sqrt(p.k)) + 1) ** 2}, and ${p.k} is between them.`,
+              wrong: [
+                [`False. It is ${p.k} ÷ 2.`],
+                [
+                  "False. The square root of a whole number is always whole.",
+                  "NPV.ROOT.EXACT-DECIMAL",
+                ],
+              ],
             },
-            { text: "Never. Square roots are always decimals." },
+            {
+              claim: "$\\sqrt{2}$ can be written as a decimal that ends.",
+              truth: "never",
+              right: "Never. √2 = 1.41421… goes on for ever without repeating.",
+              wrong: [
+                ["Always. Every number is a decimal that ends.", "NPV.ROOT.EXACT-DECIMAL"],
+                ["Sometimes. If the calculator is good enough.", "NPV.ROOT.EXACT-DECIMAL"],
+              ],
+            },
           ],
-          solution: [{ say: "Only square numbers have whole-number square roots." }],
-        });
+        );
     }
   },
 

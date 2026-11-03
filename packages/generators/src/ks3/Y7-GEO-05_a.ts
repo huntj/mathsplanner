@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { anglesAtPoint } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-GEO-05.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.ANGLES.POINT-180"],
 
@@ -88,23 +89,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["Angles around a point add up to 180°."],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["Angles around a point add up to 180°."],
+              truth: "never",
+              reasons: [
+                {
+                  text: "Never. Angles around a point make a full turn, 360°. It is angles on a straight line that make 180°.",
+                  correct: true,
+                },
+                { text: "Always. All angle facts total 180°.", code: "GEO.ANGLES.POINT-180" },
+                {
+                  text: "Sometimes. It depends how many angles there are.",
+                  code: "GEO.ANGLES.POINT-180",
+                },
+              ],
+              solution: [{ say: "Full turn: 360°. Half turn: 180°." }],
+            }),
+          [
             {
-              text: "Never. Angles around a point make a full turn, 360°. It is angles on a straight line that make 180°.",
-              correct: true,
+              statement: `Three angles meet at a point. Two of them are ${p.a}° and ${p.b}°. Lu says the third is ${360 - p.a - p.b}°.`,
+              truth: true,
+              right: `True. Angles around a point add up to 360°: 360 − ${p.a} − ${p.b} = ${360 - p.a - p.b}.`,
+              wrong: [
+                [
+                  "False. Angles at a point add up to 180°, so it is smaller.",
+                  "GEO.ANGLES.POINT-180",
+                ],
+                ["False. The third angle must be the biggest."],
+              ],
             },
-            { text: "Always. All angle facts total 180°.", code: "GEO.ANGLES.POINT-180" },
             {
-              text: "Sometimes. It depends how many angles there are.",
-              code: "GEO.ANGLES.POINT-180",
+              statement: "Four equal angles meet at a point. Dan says each one is 45°.",
+              truth: false,
+              right: "False. They share 360°, so each one is 360 ÷ 4 = 90°.",
+              wrong: [
+                ["True. 180° ÷ 4 = 45°.", "GEO.ANGLES.POINT-180"],
+                ["True. Four angles at a point are always 45° each."],
+              ],
+            },
+            {
+              claim: "Three acute angles can fit together around a point.",
+              truth: "never",
+              right:
+                "Never. Three acute angles add up to less than 3 × 90° = 270°, but angles around a point make 360°.",
+              wrong: [
+                ["Always. Small angles fit together easily.", "GEO.ANGLES.POINT-180"],
+                ["Sometimes. If they are all 60°.", "GEO.ANGLES.POINT-180"],
+              ],
             },
           ],
-          solution: [{ say: "Full turn: 360°. Half turn: 180°." }],
-        });
+        );
     }
   },
 

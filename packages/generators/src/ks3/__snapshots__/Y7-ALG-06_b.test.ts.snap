@@ -10,7 +10,7 @@ exports[`Y7-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -75,7 +75,7 @@ exports[`Y7-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -140,7 +140,7 @@ exports[`Y7-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -205,7 +205,7 @@ exports[`Y7-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -270,7 +270,7 @@ exports[`Y7-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -335,7 +335,7 @@ exports[`Y7-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -393,31 +393,32 @@ exports[`Y7-ALG-06.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "spot-the-mistake",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
-      "marks": 1,
-      "minutes": 1,
+      "marks": 2,
+      "minutes": 2,
       "tags": [],
     },
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Line 1",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -426,20 +427,58 @@ exports[`Y7-ALG-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Line 2",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
             },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
+            },
           ],
-          "type": "choice",
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never. Solutions are usually fractions.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Always. Equations are made to come out exactly.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Sometimes. 2x = 6 gives x = 3, but 2x = 5 gives x = 2.5.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
         },
-        "marks": 1,
+        "marks": 2,
         "misconceptions": [],
         "prompt": [
           {
             "t": "text",
-            "v": "Which line contains the first mistake?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -449,7 +488,7 @@ exports[`Y7-ALG-06.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "To undo + 5, subtract 5: 4x = 0, so x = 0.",
+            "v": "Sometimes. 2x = 6 gives x = 3, but 2x = 5 gives x = 2.5.",
           },
         ],
       },
@@ -457,31 +496,7 @@ exports[`Y7-ALG-06.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ali solves ",
-      },
-      {
-        "t": "math",
-        "v": "4x + 5 = 5",
-      },
-      {
-        "t": "text",
-        "v": ".",
-      },
-      {
-        "t": "text",
-        "v": " Line 1: ",
-      },
-      {
-        "t": "math",
-        "v": "4x = 10",
-      },
-      {
-        "t": "text",
-        "v": " Line 2: ",
-      },
-      {
-        "t": "math",
-        "v": "x = 2.5",
+        "v": "The solution of a linear equation is a whole number.",
       },
     ],
   },
@@ -493,7 +508,7 @@ exports[`Y7-ALG-06.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -579,31 +594,32 @@ exports[`Y7-ALG-06.b > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "spot-the-mistake",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-06.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
-      "marks": 1,
-      "minutes": 1,
+      "marks": 2,
+      "minutes": 2,
       "tags": [],
     },
     "parts": [
       {
         "answer": {
-          "correct": "A",
+          "correct": "B",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Line 1",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -612,20 +628,66 @@ exports[`Y7-ALG-06.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Line 2",
+                  "v": "False",
                 },
               ],
               "id": "B",
             },
           ],
-          "type": "choice",
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Subtract the number you can see.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. You always subtract first.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. To undo − 9, add 9 to both sides: 5x = 50, so x = 10.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
         },
-        "marks": 1,
-        "misconceptions": [],
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "ALG.SOLVE.WRONG-INVERSE",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "ALG.SOLVE.WRONG-INVERSE",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
-            "v": "Which line contains the first mistake?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -635,7 +697,7 @@ exports[`Y7-ALG-06.b > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "To undo + 9, subtract 9: 9x = 90, so x = 10.",
+            "v": "False. To undo − 9, add 9 to both sides: 5x = 50, so x = 10.",
           },
         ],
       },
@@ -643,31 +705,15 @@ exports[`Y7-ALG-06.b > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ali solves ",
+        "v": "Max says the first step in solving ",
       },
       {
         "t": "math",
-        "v": "9x + 9 = 99",
+        "v": "5x - 9 = 41",
       },
       {
         "t": "text",
-        "v": ".",
-      },
-      {
-        "t": "text",
-        "v": " Line 1: ",
-      },
-      {
-        "t": "math",
-        "v": "9x = 108",
-      },
-      {
-        "t": "text",
-        "v": " Line 2: ",
-      },
-      {
-        "t": "math",
-        "v": "x = 12",
+        "v": " is to subtract 9 from both sides.",
       },
     ],
   },

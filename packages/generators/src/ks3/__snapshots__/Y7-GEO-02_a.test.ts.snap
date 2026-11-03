@@ -10,7 +10,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -85,7 +85,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -160,7 +160,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -235,7 +235,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -297,7 +297,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -359,7 +359,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -421,7 +421,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-GEO-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -432,7 +432,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
@@ -459,7 +459,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Same volume does not mean same surface area: 276 cm² and 654 cm².",
+                  "v": "True. Volume = length × width × height.",
                 },
               ],
               "id": "RA",
@@ -468,7 +468,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. They are made of the same number of cubes.",
+                  "v": "False. It is 10 + 4 + 7 = 21 cm³.",
                 },
               ],
               "id": "RB",
@@ -477,7 +477,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Volume and surface area always go together.",
+                  "v": "False. The volume is the area of the biggest face.",
                 },
               ],
               "id": "RC",
@@ -492,15 +492,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "MEA.SURFACE.VOLUME",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "MEA.SURFACE.VOLUME",
+            "code": "MEA.VOLUME.ADDS",
             "feedback": [],
           },
         ],
@@ -517,7 +509,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Volume counts the cubes inside; surface area counts the squares outside.",
+            "v": "True. Volume = length × width × height.",
           },
         ],
       },
@@ -525,19 +517,19 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A 10 by 4 by 7 cm cuboid and a 40 by 7 by 1 cm cuboid have the same volume. Ana says they must have the same surface area.",
+        "v": "Ria says a 10 cm by 4 cm by 7 cm cuboid has a volume of 280 cm³.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-GEO-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -548,14 +540,14 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "C",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -564,10 +556,19 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -575,7 +576,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Same volume does not mean same surface area: 328 cm² and 808 cm².",
+                  "v": "Never. All three lengths double, so the volume becomes 2 × 2 × 2 = 8 times as big.",
                 },
               ],
               "id": "RA",
@@ -584,7 +585,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Volume and surface area always go together.",
+                  "v": "Always. Double the edges, double the volume.",
                 },
               ],
               "id": "RB",
@@ -593,7 +594,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. They are made of the same number of cubes.",
+                  "v": "Sometimes. For small cubes.",
                 },
               ],
               "id": "RC",
@@ -608,22 +609,14 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "MEA.SURFACE.VOLUME",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "MEA.SURFACE.VOLUME",
+            "code": "MD.SQUARE.DOUBLES",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -633,7 +626,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Volume counts the cubes inside; surface area counts the squares outside.",
+            "v": "Never. All three lengths double, so the volume becomes 2 × 2 × 2 = 8 times as big.",
           },
         ],
       },
@@ -641,19 +634,19 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A 11 by 4 by 8 cm cuboid and a 44 by 8 by 1 cm cuboid have the same volume. Ana says they must have the same surface area.",
+        "v": "Doubling every edge of a cube doubles its volume.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-GEO-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -664,14 +657,14 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "C",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -680,10 +673,19 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -691,7 +693,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Volume and surface area always go together.",
+                  "v": "Never. All three lengths double, so the volume becomes 2 × 2 × 2 = 8 times as big.",
                 },
               ],
               "id": "RA",
@@ -700,7 +702,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Same volume does not mean same surface area: 166 cm² and 334 cm².",
+                  "v": "Always. Double the edges, double the volume.",
                 },
               ],
               "id": "RB",
@@ -709,7 +711,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. They are made of the same number of cubes.",
+                  "v": "Sometimes. For small cubes.",
                 },
               ],
               "id": "RC",
@@ -721,25 +723,17 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
+              "id": "RB",
               "type": "choice",
             },
-            "code": "MEA.SURFACE.VOLUME",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
-              "type": "choice",
-            },
-            "code": "MEA.SURFACE.VOLUME",
+            "code": "MD.SQUARE.DOUBLES",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -749,7 +743,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Volume counts the cubes inside; surface area counts the squares outside.",
+            "v": "Never. All three lengths double, so the volume becomes 2 × 2 × 2 = 8 times as big.",
           },
         ],
       },
@@ -757,7 +751,7 @@ exports[`Y7-GEO-02.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A 5 by 4 by 7 cm cuboid and a 20 by 7 by 1 cm cuboid have the same volume. Ana says they must have the same surface area.",
+        "v": "Doubling every edge of a cube doubles its volume.",
       },
     ],
   },

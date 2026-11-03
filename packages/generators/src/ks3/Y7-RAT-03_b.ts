@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, frac, reject, toLatex, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText, exactAnswer } from "../shared/counting.ts";
 import { gcdOf } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-RAT-03.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["RAT.PART-WHOLE"],
 
@@ -67,29 +68,68 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [
-            "If ",
-            A.math(`\\frac{1}{${p.b}}`),
-            " of the sweets in a bag are red, the ratio of red sweets to other sweets is ",
-            A.math(`1 : ${p.b}`),
-            ".",
-          ],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [
+                "If ",
+                A.math(`\\frac{1}{${p.b}}`),
+                " of the sweets in a bag are red, the ratio of red sweets to other sweets is ",
+                A.math(`1 : ${p.b}`),
+                ".",
+              ],
+              truth: "never",
+              reasons: [
+                {
+                  text: `Never. 1 part in ${p.b} is red, so ${p.b - 1} parts are other sweets: the ratio is 1 : ${p.b - 1}.`,
+                  correct: true,
+                },
+                {
+                  text: "Always. A fraction and a ratio use the same numbers.",
+                  code: "RAT.PART-WHOLE",
+                },
+                {
+                  text: "Sometimes. It depends how many sweets there are.",
+                  code: "RAT.PART-WHOLE",
+                },
+              ],
+              solution: [
+                { say: "A ratio compares parts; a fraction compares a part with the whole." },
+              ],
+            }),
+          [
             {
-              text: `Never. 1 part in ${p.b} is red, so ${p.b - 1} parts are other sweets: the ratio is 1 : ${p.b - 1}.`,
-              correct: true,
+              statement: `In a class, the ratio of boys to girls is ${p.a} : ${p.b}. Zoe says $\\frac{${p.a}}{${p.a + p.b}}$ of the class are boys.`,
+              truth: true,
+              right: `True. There are ${p.a} + ${p.b} = ${p.a + p.b} parts, and ${p.a} of them are boys.`,
+              wrong: [
+                [`False. It is ${p.a}/${p.b}.`, "RAT.PART-WHOLE"],
+                ["False. A ratio cannot be turned into a fraction."],
+              ],
             },
             {
-              text: "Always. A fraction and a ratio use the same numbers.",
-              code: "RAT.PART-WHOLE",
+              statement: `The ratio of red to blue counters is ${p.a} : ${p.b}. Max says $\\frac{${p.a}}{${p.b}}$ of the counters are red.`,
+              truth: false,
+              right: `False. Out of every ${p.a + p.b} counters, ${p.a} are red: the fraction is ${p.a}/${p.a + p.b}.`,
+              wrong: [
+                ["True. Put the first number over the second.", "RAT.PART-WHOLE"],
+                ["True. A ratio and a fraction mean the same thing.", "RAT.PART-WHOLE"],
+              ],
             },
-            { text: "Sometimes. It depends how many sweets there are.", code: "RAT.PART-WHOLE" },
+            {
+              claim:
+                "If half the people in a group are girls and the rest are boys, the ratio of girls to boys is 1 : 1.",
+              truth: "always",
+              right: "Always. Half are girls and half are boys, so there are as many of each.",
+              wrong: [
+                ["Never. Half means 1 : 2.", "RAT.PART-WHOLE"],
+                ["Sometimes. It depends how big the group is.", "RAT.PART-WHOLE"],
+              ],
+            },
           ],
-          solution: [{ say: "A ratio compares parts; a fraction compares a part with the whole." }],
-        });
+        );
     }
   },
 

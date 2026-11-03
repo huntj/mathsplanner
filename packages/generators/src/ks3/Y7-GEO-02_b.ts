@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { lShape } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   area: number;
@@ -22,7 +23,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-GEO-02.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MEA.VOLUME.ADDS", "AS.MULTISTEP.ONE-STEP", "GEO.SOLIDS.PRISM-PYRAMID"],
 
@@ -94,28 +95,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["A prism has the same cross-section all the way along its length."],
-          truth: "always",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["A prism has the same cross-section all the way along its length."],
+              truth: "always",
+              reasons: [
+                {
+                  text: "Always. That is what makes it a prism, and why volume = cross-section × length works.",
+                  correct: true,
+                },
+                {
+                  text: "Sometimes. A pyramid is a prism that gets smaller.",
+                  code: "GEO.SOLIDS.PRISM-PYRAMID",
+                },
+                {
+                  text: "Never. The ends of a prism are always a different shape.",
+                  code: "GEO.SOLIDS.PRISM-PYRAMID",
+                },
+              ],
+              solution: [
+                { say: "Slice a prism anywhere parallel to its end and you get the same shape." },
+              ],
+            }),
+          [
             {
-              text: "Always. That is what makes it a prism, and why volume = cross-section × length works.",
-              correct: true,
+              statement: `Tim says a prism with a cross-section of ${p.area} cm² and a length of ${p.len} cm has a volume of ${p.area * p.len} cm³.`,
+              truth: true,
+              right: "True. The volume of a prism = the area of its cross-section × its length.",
+              wrong: [
+                [`False. It is ${p.area} + ${p.len} = ${p.area + p.len} cm³.`, "MEA.VOLUME.ADDS"],
+                ["False. You have to divide it by 3 as well.", "GEO.SOLIDS.PRISM-PYRAMID"],
+              ],
             },
             {
-              text: "Sometimes. A pyramid is a prism that gets smaller.",
-              code: "GEO.SOLIDS.PRISM-PYRAMID",
+              statement: "Uma says a square-based pyramid is a prism.",
+              truth: false,
+              right:
+                "False. A pyramid narrows to a point, so its cross-section is not the same all the way along.",
+              wrong: [
+                ["True. It has a square base, like a cube.", "GEO.SOLIDS.PRISM-PYRAMID"],
+                ["True. Any solid with flat faces is a prism.", "GEO.SOLIDS.PRISM-PYRAMID"],
+              ],
             },
             {
-              text: "Never. The ends of a prism are always a different shape.",
-              code: "GEO.SOLIDS.PRISM-PYRAMID",
+              claim: "Two prisms with the same volume have the same length.",
+              truth: "sometimes",
+              right:
+                "Sometimes. Prisms with cross-sections of 10 cm² and 12 cm², and lengths of 6 cm and 5 cm, both hold 60 cm³.",
+              wrong: [
+                ["Always. The same volume means the same shape."],
+                ["Never. Two different prisms can never match."],
+              ],
             },
           ],
-          solution: [
-            { say: "Slice a prism anywhere parallel to its end and you get the same shape." },
-          ],
-        });
+        );
     }
   },
 

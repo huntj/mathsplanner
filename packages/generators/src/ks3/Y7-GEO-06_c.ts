@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const SIDES = [5, 6, 8, 9, 10, 12, 15, 18, 20];
 
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-GEO-06.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.POLYGON.INTERIOR-EXTERIOR"],
 
@@ -74,23 +75,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["A regular polygon can have interior angles of 100°."],
-          truth: "never",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["A regular polygon can have interior angles of 100°."],
+              truth: "never",
+              reasons: [
+                {
+                  text: "Never. The exterior angle would be 80°, and 360° ÷ 80° = 4.5 is not a whole number of sides.",
+                  correct: true,
+                },
+                {
+                  text: "Always. Any angle under 180° works.",
+                  code: "GEO.POLYGON.INTERIOR-EXTERIOR",
+                },
+                {
+                  text: "Sometimes. If it has 100 ÷ 360 sides.",
+                  code: "GEO.POLYGON.INTERIOR-EXTERIOR",
+                },
+              ],
+              solution: [{ say: "The exterior angle must divide 360° exactly." }],
+            }),
+          [
             {
-              text: "Never. The exterior angle would be 80°, and 360° ÷ 80° = 4.5 is not a whole number of sides.",
-              correct: true,
+              statement: `Ivy says each exterior angle of a regular polygon with ${p.n} sides is ${360 / p.n}°.`,
+              truth: true,
+              right: `True. The exterior angles add up to 360°, and there are ${p.n} equal ones: 360 ÷ ${p.n} = ${360 / p.n}.`,
+              wrong: [
+                [`False. It is ${180 - 360 / p.n}°.`, "GEO.POLYGON.INTERIOR-EXTERIOR"],
+                [`False. It is 180 ÷ ${p.n}°.`],
+              ],
             },
-            { text: "Always. Any angle under 180° works.", code: "GEO.POLYGON.INTERIOR-EXTERIOR" },
             {
-              text: "Sometimes. If it has 100 ÷ 360 sides.",
-              code: "GEO.POLYGON.INTERIOR-EXTERIOR",
+              statement: `Ben says each interior angle of a regular polygon with ${p.m} sides is ${360 / p.m}°.`,
+              truth: false,
+              right: `False. ${360 / p.m}° is the exterior angle; the interior angle is 180 − ${360 / p.m} = ${180 - 360 / p.m}°.`,
+              wrong: [
+                ["True. Divide 360° by the number of sides.", "GEO.POLYGON.INTERIOR-EXTERIOR"],
+                [
+                  "True. Interior and exterior angles are the same.",
+                  "GEO.POLYGON.INTERIOR-EXTERIOR",
+                ],
+              ],
+            },
+            {
+              claim:
+                "An interior angle and the exterior angle at the same corner of a polygon add up to 180°.",
+              truth: "always",
+              right: "Always. Together they make a straight line.",
+              wrong: [
+                ["Sometimes. Only in a square.", "GEO.POLYGON.INTERIOR-EXTERIOR"],
+                ["Never. They add up to 360°.", "GEO.POLYGON.INTERIOR-EXTERIOR"],
+              ],
             },
           ],
-          solution: [{ say: "The exterior angle must divide 360° exactly." }],
-        });
+        );
     }
   },
 

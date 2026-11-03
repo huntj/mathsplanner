@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   k: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-ALG-01.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["ALG.FORM.WORDS", "ALG.EXPAND.FIRST-ONLY"],
 
@@ -78,29 +79,62 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Ana says ",
-            A.math(`\\frac{x}{${p.k}}`),
-            " and ",
-            A.math(`\\frac{1}{${p.k}}x`),
-            " mean the same.",
-          ],
-          truth: true,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Ana says ",
+                A.math(`\\frac{x}{${p.k}}`),
+                " and ",
+                A.math(`\\frac{1}{${p.k}}x`),
+                " mean the same.",
+              ],
+              truth: true,
+              reasons: [
+                {
+                  text: `True. Dividing by ${p.k} is the same as multiplying by 1/${p.k}.`,
+                  correct: true,
+                },
+                {
+                  text: `False. 1/${p.k} of x is smaller than x divided by ${p.k}.`,
+                  code: "ALG.FORM.WORDS",
+                },
+                { text: `False. The second one means 1 ÷ ${p.k}x.`, code: "ALG.FORM.WORDS" },
+              ],
+              solution: [{ say: `Try x = ${p.k * p.x}: both give ${p.x}.` }],
+            }),
+          [
             {
-              text: `True. Dividing by ${p.k} is the same as multiplying by 1/${p.k}.`,
-              correct: true,
+              statement: `Lou says $${p.k}(x + ${p.c})$ means $${p.k}x + ${p.c}$.`,
+              truth: false,
+              right: `False. The ${p.k} multiplies everything in the bracket: ${p.k}x + ${p.k * p.c}.`,
+              wrong: [
+                ["True. You only multiply the first term.", "ALG.EXPAND.FIRST-ONLY"],
+                ["True. Brackets do not change anything in algebra.", "ALG.EXPAND.FIRST-ONLY"],
+              ],
             },
             {
-              text: `False. 1/${p.k} of x is smaller than x divided by ${p.k}.`,
-              code: "ALG.FORM.WORDS",
+              statement: `Ali says $\\frac{x + ${p.c}}{${p.k}}$ means $(x + ${p.c}) \\div ${p.k}$.`,
+              truth: true,
+              right: `True. The fraction line works like a bracket: all of x + ${p.c} is divided by ${p.k}.`,
+              wrong: [
+                [`False. Only the ${p.c} is divided by ${p.k}.`, "ALG.FORM.WORDS"],
+                ["False. Only x is divided.", "ALG.FORM.WORDS"],
+              ],
             },
-            { text: `False. The second one means 1 ÷ ${p.k}x.`, code: "ALG.FORM.WORDS" },
+            {
+              claim: `$${p.k}(x + 1)$ and $${p.k}x + 1$ have the same value.`,
+              truth: "never",
+              right: `Never. ${p.k}(x + 1) = ${p.k}x + ${p.k}, which is always ${p.k - 1} more than ${p.k}x + 1.`,
+              wrong: [
+                ["Always. The brackets make no difference.", "ALG.EXPAND.FIRST-ONLY"],
+                ["Sometimes. When x is 1."],
+              ],
+            },
           ],
-          solution: [{ say: `Try x = ${p.k * p.x}: both give ${p.x}.` }],
-        });
+        );
     }
   },
 

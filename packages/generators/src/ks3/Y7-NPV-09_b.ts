@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   v: number;
@@ -16,7 +17,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y7-NPV-09.b",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["NPV.BOUNDS.ENDS"],
 
@@ -77,20 +78,53 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: [`A number that rounds to ${p.t} to the nearest 10 is less than ${p.t}.`],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: [`A number that rounds to ${p.t} to the nearest 10 is less than ${p.t}.`],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: `Sometimes. It can be anything from ${p.t - 5} up to (but not including) ${p.t + 5}: ${p.t - 3} is less, but ${p.t + 3} is more.`,
+                  correct: true,
+                },
+                { text: "Always. Rounding makes numbers bigger.", code: "NPV.BOUNDS.ENDS" },
+                { text: "Never. Rounding makes numbers smaller.", code: "NPV.BOUNDS.ENDS" },
+              ],
+              solution: [{ say: "", math: `${p.t - 5} \\le x < ${p.t + 5}` }],
+            }),
+          [
             {
-              text: `Sometimes. It can be anything from ${p.t - 5} up to (but not including) ${p.t + 5}: ${p.t - 3} is less, but ${p.t + 3} is more.`,
-              correct: true,
+              statement: `Hana says a length that is ${p.t} cm to the nearest 10 cm could be ${p.t - 5} cm.`,
+              truth: true,
+              right: `True. The error interval is ${p.t - 5} ≤ x < ${p.t + 5}, and ${p.t - 5} rounds up to ${p.t}.`,
+              wrong: [
+                [`False. It must be more than ${p.t - 5}.`, "NPV.BOUNDS.ENDS"],
+                [`False. It must be exactly ${p.t}.`],
+              ],
             },
-            { text: "Always. Rounding makes numbers bigger.", code: "NPV.BOUNDS.ENDS" },
-            { text: "Never. Rounding makes numbers smaller.", code: "NPV.BOUNDS.ENDS" },
+            {
+              statement: `Ian says a length that is ${p.t} cm to the nearest 10 cm could be ${p.t + 5} cm.`,
+              truth: false,
+              right: `False. ${p.t + 5} rounds up to ${p.t + 10}, so the interval is ${p.t - 5} ≤ x < ${p.t + 5}.`,
+              wrong: [
+                ["True. It can be up to 5 either side.", "NPV.BOUNDS.ENDS"],
+                [`True. The interval is ${p.t - 5} ≤ x ≤ ${p.t + 5}.`, "NPV.BOUNDS.ENDS"],
+              ],
+            },
+            {
+              claim: `A number that rounds to ${p.v} to the nearest whole number is within 0.5 of ${p.v}.`,
+              truth: "always",
+              right: `Always. It is at least ${p.v - 0.5} and less than ${p.v + 0.5}.`,
+              wrong: [
+                ["Sometimes. It could be up to 1 away.", "NPV.BOUNDS.ENDS"],
+                ["Never. A rounded number could have been anything."],
+              ],
+            },
           ],
-          solution: [{ say: "", math: `${p.t - 5} \\le x < ${p.t + 5}` }],
-        });
+        );
     }
   },
 

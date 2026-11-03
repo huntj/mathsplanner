@@ -10,7 +10,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -80,7 +80,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -150,7 +150,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -220,7 +220,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -276,7 +276,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -346,7 +346,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -402,7 +402,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y7-ALG-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -414,7 +414,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -440,7 +440,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The number on its own is the difference.",
+                  "v": "True. It is the 35th term.",
                 },
               ],
               "id": "RA",
@@ -449,7 +449,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Each time n goes up by 1, 3n goes up by 3, so the terms go up in 3s.",
+                  "v": "True. Any number can be a term of a sequence.",
                 },
               ],
               "id": "RB",
@@ -458,7 +458,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It goes up by the first term each time.",
+                  "v": "False. Every term of 2n is even, and 35 is odd.",
                 },
               ],
               "id": "RC",
@@ -478,7 +478,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.POSITION-RULE",
@@ -495,22 +495,26 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "2, 5, 8, 11",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. Every term of 2n is even, and 35 is odd.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Eva says the sequence with nth term ",
+        "v": "Ana says 35 is a term of the sequence with nth term ",
       },
       {
         "t": "math",
-        "v": "3n - 1",
+        "v": "2n",
       },
       {
         "t": "text",
-        "v": " goes up in 1s.",
+        "v": ".",
       },
     ],
   },
@@ -522,7 +526,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y7-ALG-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -533,8 +537,8 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RA",
+          "correct": "B",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -560,7 +564,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True, but only because the number with n is 3. The terms go up by the number in front of n.",
+                  "v": "True. Any number can be a term of a sequence.",
                 },
               ],
               "id": "RA",
@@ -569,7 +573,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The constant term never matters.",
+                  "v": "True. It is the 27th term.",
                 },
               ],
               "id": "RB",
@@ -578,7 +582,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. It goes up in 1s, like n does.",
+                  "v": "False. Every term of 2n is even, and 27 is odd.",
                 },
               ],
               "id": "RC",
@@ -590,7 +594,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RA",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.POSITION-RULE",
@@ -598,7 +602,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.SEQUENCE.POSITION-RULE",
@@ -615,22 +619,26 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
     ],
     "solution": [
       {
-        "math": "0, 3, 6, 9",
-        "say": [],
+        "say": [
+          {
+            "t": "text",
+            "v": "False. Every term of 2n is even, and 27 is odd.",
+          },
+        ],
       },
     ],
     "stem": [
       {
         "t": "text",
-        "v": "Eva says the sequence with nth term ",
+        "v": "Ana says 27 is a term of the sequence with nth term ",
       },
       {
         "t": "math",
-        "v": "3n - 3",
+        "v": "2n",
       },
       {
         "t": "text",
-        "v": " goes up in 3s.",
+        "v": ".",
       },
     ],
   },
@@ -642,7 +650,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y7-ALG-05.b",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -689,7 +697,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The number on its own is the difference.",
+                  "v": "True. It goes up by the first term each time.",
                 },
               ],
               "id": "RB",
@@ -698,7 +706,7 @@ exports[`Y7-ALG-05.b > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. It goes up by the first term each time.",
+                  "v": "True. The number on its own is the difference.",
                 },
               ],
               "id": "RC",
