@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   n: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y5-MD-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MD.FACTOR.FACTOR-MULTIPLE"],
 
@@ -79,28 +80,63 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Lena says ${p.n} is a multiple of ${m}.`,
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Lena says ${p.n} is a multiple of ${m}.`,
+              truth: false,
+              reasons: [
+                {
+                  text: `False. ${m} is a multiple of ${p.n}, because ${m} = ${p.k} × ${p.n}. ${p.n} is a factor of ${m}.`,
+                  correct: true,
+                },
+                {
+                  text: `True. ${p.n} goes into ${m}, so it is a multiple.`,
+                  code: "MD.FACTOR.FACTOR-MULTIPLE",
+                },
+                {
+                  text: "True. Factors and multiples mean the same thing.",
+                  code: "MD.FACTOR.FACTOR-MULTIPLE",
+                },
+              ],
+              solution: [
+                {
+                  say: "A multiple is in the times table; a factor divides into the number exactly.",
+                },
+              ],
+            }),
+          [
             {
-              text: `False. ${m} is a multiple of ${p.n}, because ${m} = ${p.k} × ${p.n}. ${p.n} is a factor of ${m}.`,
-              correct: true,
+              statement: "Raj says 56 is a multiple of 7.",
+              truth: true,
+              right: "True. 7 × 8 = 56.",
+              wrong: [
+                ["False. 7 is a multiple of 56.", "MD.FACTOR.FACTOR-MULTIPLE"],
+                ["False. 56 is even, and 7 is odd."],
+              ],
             },
             {
-              text: `True. ${p.n} goes into ${m}, so it is a multiple.`,
-              code: "MD.FACTOR.FACTOR-MULTIPLE",
+              claim: "Every multiple of 4 is also a multiple of 2.",
+              truth: "always",
+              right: "Always. 4 = 2 × 2, so 4 lots of anything is 2 lots of double it.",
+              wrong: [
+                ["Sometimes. Only up to 20."],
+                ["Never. 4 and 2 have different times tables.", "MD.FACTOR.FACTOR-MULTIPLE"],
+              ],
             },
             {
-              text: "True. Factors and multiples mean the same thing.",
-              code: "MD.FACTOR.FACTOR-MULTIPLE",
+              claim: "A multiple of 6 is odd.",
+              truth: "never",
+              right: "Never. 6 is even, and every multiple of an even number is even.",
+              wrong: [
+                ["Sometimes. 6 × 3 = 18 has a 1 in it.", "MD.FACTOR.FACTOR-MULTIPLE"],
+                ["Always. Multiples can be any number."],
+              ],
             },
           ],
-          solution: [
-            { say: "A multiple is in the times table; a factor divides into the number exactly." },
-          ],
-        });
+        );
     }
   },
 

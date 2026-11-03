@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const PLACE = ["tenths", "hundredths", "thousandths"];
 
@@ -20,7 +21,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y5-FR-09.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["FR.DECIMAL.PLACE"],
 
@@ -77,27 +78,60 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: ["Nia reads ", A.math(`${p.whole}.0${h}`), ` as "${p.whole} point ${h}".`],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: ["Nia reads ", A.math(`${p.whole}.0${h}`), ` as "${p.whole} point ${h}".`],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The 0 holds the tenths place, so it is ${p.whole} point zero ${h}: ${h} hundredths, not ${h} tenths.`,
+                  correct: true,
+                },
+                { text: "True. Zeros after the point do not matter.", code: "FR.DECIMAL.PLACE" },
+                {
+                  text: `True. ${p.whole}.0${h} and ${p.whole}.${h} are the same number.`,
+                  code: "FR.DECIMAL.PLACE",
+                },
+              ],
+              solution: [
+                {
+                  say: `${p.whole}.0${h} is ${p.whole} and ${h} hundredths; ${p.whole}.${h} is ${p.whole} and ${h} tenths.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. The 0 holds the tenths place, so it is ${p.whole} point zero ${h}: ${h} hundredths, not ${h} tenths.`,
-              correct: true,
+              statement: "Ali says the 5 in $3.452$ is worth 5 hundredths.",
+              truth: true,
+              right: "True. After the point come tenths (4), hundredths (5) and thousandths (2).",
+              wrong: [
+                ["False. It is worth 5 tenths.", "FR.DECIMAL.PLACE"],
+                ["False. It is worth 50."],
+              ],
             },
-            { text: "True. Zeros after the point do not matter.", code: "FR.DECIMAL.PLACE" },
             {
-              text: `True. ${p.whole}.0${h} and ${p.whole}.${h} are the same number.`,
-              code: "FR.DECIMAL.PLACE",
+              statement: "Bea writes four and six hundredths as 4.6.",
+              truth: false,
+              right: "False. 4.6 is four and six tenths. Four and six hundredths is 4.06.",
+              wrong: [
+                ["True. The 6 goes after the point.", "FR.DECIMAL.PLACE"],
+                ["True. Hundredths and tenths are written the same way."],
+              ],
+            },
+            {
+              claim: "The first digit after the decimal point is the tenths.",
+              truth: "always",
+              right: "Always. The places go tenths, hundredths, thousandths.",
+              wrong: [
+                ["Sometimes. It can be the hundredths.", "FR.DECIMAL.PLACE"],
+                ["Never. It is the tens."],
+              ],
             },
           ],
-          solution: [
-            {
-              say: `${p.whole}.0${h} is ${p.whole} and ${h} hundredths; ${p.whole}.${h} is ${p.whole} and ${h} tenths.`,
-            },
-          ],
-        });
+        );
     }
   },
 

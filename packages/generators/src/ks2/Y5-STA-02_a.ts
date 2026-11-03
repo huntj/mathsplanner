@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { tableLatex } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 const CLUBS = ["Football", "Choir", "Chess", "Art"];
 
@@ -23,7 +24,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y5-STA-02.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["AS.PROBLEM.KEYWORD", "AS.MULTISTEP.ONE-STEP"],
 
@@ -94,40 +95,75 @@ export default defineGenerator<Params>({
         const mostClub = CLUBS[p.girls.indexOf(most)] ?? "";
         const bigTotal = CLUBS[totals.indexOf(Math.max(...totals))] ?? "";
         const truth = mostClub === bigTotal;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "The table shows how many boys and girls go to each club.",
-            table(),
-            `Mia says the club with the most children also has the most girls.`,
-          ],
-          truth,
-          reasons: truth
-            ? [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "The table shows how many boys and girls go to each club.",
+                table(),
+                `Mia says the club with the most children also has the most girls.`,
+              ],
+              truth,
+              reasons: truth
+                ? [
+                    {
+                      text: `True. ${bigTotal} has the biggest total and also the most girls, ${most}.`,
+                      correct: true,
+                    },
+                    { text: "False. The biggest club always has the most boys instead." },
+                    { text: "False. You cannot tell from a table." },
+                  ]
+                : [
+                    {
+                      text: `False. ${bigTotal} has the most children, but ${mostClub} has the most girls, ${most}.`,
+                      correct: true,
+                    },
+                    { text: "True. The biggest club must have the most of everyone." },
+                    {
+                      text: "True. The total tells you who has the most girls.",
+                      code: "AS.PROBLEM.KEYWORD",
+                    },
+                  ],
+              solution: [
                 {
-                  text: `True. ${bigTotal} has the biggest total and also the most girls, ${most}.`,
-                  correct: true,
-                },
-                { text: "False. The biggest club always has the most boys instead." },
-                { text: "False. You cannot tell from a table." },
-              ]
-            : [
-                {
-                  text: `False. ${bigTotal} has the most children, but ${mostClub} has the most girls, ${most}.`,
-                  correct: true,
-                },
-                { text: "True. The biggest club must have the most of everyone." },
-                {
-                  text: "True. The total tells you who has the most girls.",
-                  code: "AS.PROBLEM.KEYWORD",
+                  say: "Compare the right column: the Girls column for girls, the Total column for children.",
                 },
               ],
-          solution: [
+            }),
+          [
             {
-              say: "Compare the right column: the Girls column for girls, the Total column for children.",
+              statement:
+                "A table shows 14 boys and 16 girls in a class. Ana says there are 30 children.",
+              truth: true,
+              right: "True. 14 + 16 = 30.",
+              wrong: [
+                ["False. There are 2 more girls, so 2.", "AS.PROBLEM.KEYWORD"],
+                ["False. You need more information.", "AS.MULTISTEP.ONE-STEP"],
+              ],
+            },
+            {
+              claim: "The total column of a table equals the other columns in that row added up.",
+              truth: "always",
+              right: "Always. That is what the total means.",
+              wrong: [
+                ["Sometimes. Only for the first row.", "AS.MULTISTEP.ONE-STEP"],
+                ["Never. Totals are separate counts."],
+              ],
+            },
+            {
+              statement:
+                "A table shows 25 children in a club, 9 of them boys. Raj says there are 34 girls.",
+              truth: false,
+              right: "False. The girls are the total take away the boys: 25 − 9 = 16.",
+              wrong: [
+                ["True. 'How many' means add: 25 + 9.", "AS.PROBLEM.KEYWORD"],
+                ["True. There are more girls than boys."],
+              ],
             },
           ],
-        });
+        );
       }
     }
   },

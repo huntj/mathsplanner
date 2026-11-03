@@ -18,6 +18,7 @@ import {
   TETRA_NET,
   type Solid,
 } from "../shared/solids.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   net: number;
@@ -46,7 +47,7 @@ const PRISM_OR_PYRAMID: Partial<Record<Solid, Solid>> = {
 
 export default defineGenerator<Params>({
   id: "Y5-GEO-01",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 3, 4],
   misconceptions: ["GEO.SOLIDS.PRISM-PYRAMID", "GEO.SOLIDS.FACE-SHAPE"],
 
@@ -123,31 +124,65 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement:
-            "Ola says a square-based pyramid is a prism, because it has a square at one end.",
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement:
+                "Ola says a square-based pyramid is a prism, because it has a square at one end.",
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A prism has the same shape all the way through, with two matching ends. A pyramid narrows to a point.",
+                  correct: true,
+                },
+                {
+                  text: "True. Any shape with a square face is a prism.",
+                  code: "GEO.SOLIDS.PRISM-PYRAMID",
+                },
+                {
+                  text: "True. Prisms and pyramids are the same thing.",
+                  code: "GEO.SOLIDS.PRISM-PYRAMID",
+                },
+              ],
+              solution: [
+                {
+                  say: "Prism: two identical ends joined by rectangles. Pyramid: one base, triangles meeting at a point.",
+                },
+              ],
+            }),
+          [
             {
-              text: "False. A prism has the same shape all the way through, with two matching ends. A pyramid narrows to a point.",
-              correct: true,
+              statement: "Kim says a triangular prism has 5 faces.",
+              truth: true,
+              right: "True. 2 triangles at the ends and 3 rectangles round the sides.",
+              wrong: [
+                ["False. It has 3 faces.", "GEO.SOLIDS.FACE-SHAPE"],
+                ["False. It has 6, like a cube."],
+              ],
             },
             {
-              text: "True. Any shape with a square face is a prism.",
-              code: "GEO.SOLIDS.PRISM-PYRAMID",
+              claim: "A prism has the same shape all the way through.",
+              truth: "always",
+              right: "Always. Slice a prism anywhere along its length and you get the same shape.",
+              wrong: [
+                ["Never. It gets smaller towards the top.", "GEO.SOLIDS.PRISM-PYRAMID"],
+                ["Sometimes. Only for cubes."],
+              ],
             },
             {
-              text: "True. Prisms and pyramids are the same thing.",
-              code: "GEO.SOLIDS.PRISM-PYRAMID",
+              statement: "Gus says a cylinder is a pyramid.",
+              truth: false,
+              right:
+                "False. A pyramid comes to a point. A cylinder has the same circle all the way along.",
+              wrong: [
+                ["True. It has a circle at one end.", "GEO.SOLIDS.PRISM-PYRAMID"],
+                ["True. All round shapes are pyramids."],
+              ],
             },
           ],
-          solution: [
-            {
-              say: "Prism: two identical ends joined by rectangles. Pyramid: one base, triangles meeting at a point.",
-            },
-          ],
-        });
+        );
     }
   },
 

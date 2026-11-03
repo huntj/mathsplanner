@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   rights: number;
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y5-GEO-04.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["GEO.TURNS.FRACTION"],
 
@@ -61,23 +62,56 @@ export default defineGenerator<Params>({
           solution: [{ say: `${p.multiple}° = ${p.multiple / 90} × 90°.` }],
         });
       default:
-        return A.alwaysSometimesNever({
+        return orClaims(
           rng,
-          claim: ["A reflex angle is a multiple of 90°."],
-          truth: "sometimes",
-          reasons: [
+          () =>
+            A.alwaysSometimesNever({
+              rng,
+              claim: ["A reflex angle is a multiple of 90°."],
+              truth: "sometimes",
+              reasons: [
+                {
+                  text: "Sometimes. 270° is reflex and is 3 × 90°, but 200° is reflex and is not a multiple of 90°.",
+                  correct: true,
+                },
+                {
+                  text: "Always. Angles bigger than 180° are made of right angles.",
+                  code: "GEO.TURNS.FRACTION",
+                },
+                { text: "Never. Only acute angles can be multiples of 90°." },
+              ],
+              solution: [{ say: "The multiples of 90° are 90°, 180°, 270° and 360°." }],
+            }),
+          [
             {
-              text: "Sometimes. 270° is reflex and is 3 × 90°, but 200° is reflex and is not a multiple of 90°.",
-              correct: true,
+              statement: "Sam says three quarter turns is 270°.",
+              truth: true,
+              right: "True. Each quarter turn is 90°, and 3 × 90 = 270.",
+              wrong: [
+                ["False. It is 300°.", "GEO.TURNS.FRACTION"],
+                ["False. It is 75°.", "GEO.TURNS.FRACTION"],
+              ],
             },
             {
-              text: "Always. Angles bigger than 180° are made of right angles.",
-              code: "GEO.TURNS.FRACTION",
+              statement: "Ava says 2 right angles make 360°.",
+              truth: false,
+              right: "False. 2 right angles make 2 × 90 = 180°, a straight line.",
+              wrong: [
+                ["True. A right angle is 180°.", "GEO.TURNS.FRACTION"],
+                ["True. Two right angles make a whole turn."],
+              ],
             },
-            { text: "Never. Only acute angles can be multiples of 90°." },
+            {
+              claim: "A whole number of right angles is a multiple of 90°.",
+              truth: "always",
+              right: "Always. Each right angle adds another 90°.",
+              wrong: [
+                ["Sometimes. Only up to 4.", "GEO.TURNS.FRACTION"],
+                ["Never. Right angles add to 100s."],
+              ],
+            },
           ],
-          solution: [{ say: "The multiples of 90° are 90°, 180°, 270° and 360°." }],
-        });
+        );
     }
   },
 

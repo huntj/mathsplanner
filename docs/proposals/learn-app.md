@@ -1,7 +1,7 @@
 # Proposal: Learn Maths, a Duolingo-style practice app for pupils
 
 Status: **agreed on 29 October 2026.** Steps 1 to 6 are built: the course data with Year 7 as
-the pilot section, then Years 8, 9 and 6 (`data/course.txt`, `pnpm data:course`), the shared answer widgets
+the pilot section, then Years 8, 9, 6 and 5 (`data/course.txt`, `pnpm data:course`), the shared answer widgets
 (`@mathsplanner/ui`), and the app with its path, progress, first visit, lessons, practice and
 rewards (`apps/learn`, `pnpm learn`); steps 7 to 10 are to do.
 
@@ -159,6 +159,28 @@ proportion with compound change, inequalities with simultaneous equations):
 | 7   | Compound change and inverse proportion  |      3 |
 | 8   | Graphs and sequences                    |      4 |
 | 9   | Probability                             |      4 |
+
+**Year 5** has 16 units and 80 skills. Fractions are split into two units, before and after the
+shapes unit, so a pupil does not meet eleven fraction skills in a row:
+
+| #   | Unit                               | Skills |
+| --- | ---------------------------------- | -----: |
+| 1   | Place value                        |      5 |
+| 2   | Negative numbers and rounding      |      5 |
+| 3   | Adding and subtracting             |      5 |
+| 4   | Angles                             |      4 |
+| 5   | Factors, multiples and primes      |      6 |
+| 6   | Multiplying and dividing           |      5 |
+| 7   | Squares, cubes and problems        |      3 |
+| 8   | Fractions                          |      6 |
+| 9   | Angles, shapes and transformations |      8 |
+| 10  | Adding and multiplying fractions   |      4 |
+| 11  | Decimals                           |      6 |
+| 12  | Rounding decimals                  |      3 |
+| 13  | Percentages                        |      4 |
+| 14  | Perimeter, area and volume         |      7 |
+| 15  | Measures and time                  |      6 |
+| 16  | Line graphs and tables             |      3 |
 
 **Year 6** has 15 units and 72 skills. Circles join the shapes unit, as naming the parts of a
 circle needs drawing shapes first, and number units alternate with geometry and algebra:

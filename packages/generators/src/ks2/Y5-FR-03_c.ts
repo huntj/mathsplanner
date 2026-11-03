@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { chosenText } from "../shared/counting.ts";
 import { fracTex, gcdOf } from "../shared/fr.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   a: number;
@@ -17,7 +18,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y5-FR-03.c",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["FR.ADD.TOPS-AND-BOTTOMS", "FR.MIXED.CONVERT"],
 
@@ -82,27 +83,62 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Eve says ",
-            A.math(`${fracTex(p.a, p.d)} + ${fracTex(p.b, p.d)} = ${fracTex(p.a + p.b, 2 * p.d)}`),
-            ", which is less than 1.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Eve says ",
+                A.math(
+                  `${fracTex(p.a, p.d)} + ${fracTex(p.b, p.d)} = ${fracTex(p.a + p.b, 2 * p.d)}`,
+                ),
+                ", which is less than 1.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Add only the numerators: ${p.a + p.b}/${p.d}, which is 1 and ${r}/${p.d}.`,
+                  correct: true,
+                },
+                {
+                  text: "True. You add the tops and add the bottoms.",
+                  code: "FR.ADD.TOPS-AND-BOTTOMS",
+                },
+                { text: "True. Two fractions less than 1 always add up to less than 1." },
+              ],
+              solution: [{ say: "", math: `${fracTex(p.a + p.b, p.d)} = ${mixed}` }],
+            }),
+          [
             {
-              text: `False. Add only the numerators: ${p.a + p.b}/${p.d}, which is 1 and ${r}/${p.d}.`,
-              correct: true,
+              statement: "Bea says $\\frac{3}{5} + \\frac{4}{5} = 1\\frac{2}{5}$.",
+              truth: true,
+              right: "True. 3/5 + 4/5 = 7/5, which is 1 whole and 2/5.",
+              wrong: [
+                ["False. It is 7/10.", "FR.ADD.TOPS-AND-BOTTOMS"],
+                ["False. It is 1 7/5.", "FR.MIXED.CONVERT"],
+              ],
             },
             {
-              text: "True. You add the tops and add the bottoms.",
-              code: "FR.ADD.TOPS-AND-BOTTOMS",
+              claim: "Adding two fractions that are each more than a half gives more than 1.",
+              truth: "always",
+              right: "Always. Each is more than 1/2, so together they are more than 1/2 + 1/2 = 1.",
+              wrong: [
+                ["Never. Fractions add up to less than 1.", "FR.ADD.TOPS-AND-BOTTOMS"],
+                ["Sometimes. Only for quarters."],
+              ],
             },
-            { text: "True. Two fractions less than 1 always add up to less than 1." },
+            {
+              statement: "Zac says $\\frac{5}{6} + \\frac{5}{6} = \\frac{10}{12}$.",
+              truth: false,
+              right: "False. Add the tops and keep the bottom: 10/6, which is 1 4/6 or 1 2/3.",
+              wrong: [
+                ["True. Add the tops and the bottoms.", "FR.ADD.TOPS-AND-BOTTOMS"],
+                ["True. 5 + 5 = 10 and 6 + 6 = 12."],
+              ],
+            },
           ],
-          solution: [{ say: "", math: `${fracTex(p.a + p.b, p.d)} = ${mixed}` }],
-        });
+        );
     }
   },
 

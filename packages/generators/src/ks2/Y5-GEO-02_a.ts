@@ -10,6 +10,7 @@ import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { mixFamilies } from "../shared/npv.ts";
 import parent from "./Y5-GEO-02.ts";
+import { withClaims } from "../shared/variety.ts";
 
 const TURNS: [string, number][] = [
   ["a quarter turn", 90],
@@ -78,5 +79,36 @@ const own: GeneratorDefinition<Params> = {
 };
 
 export default defineGenerator(
-  mixFamilies("Y5-GEO-02.a", { 1: own, 2: { ...parent.definition, id: "Y5-GEO-02.a" }, 4: own }),
+  withClaims(
+    mixFamilies("Y5-GEO-02.a", { 1: own, 2: { ...parent.definition, id: "Y5-GEO-02.a" }, 4: own }),
+    [
+      {
+        statement: "Leo says a half turn is 180°.",
+        truth: true,
+        right: "True. A whole turn is 360°, and half of that is 180°.",
+        wrong: [
+          ["False. It is 50°.", "GEO.TURNS.FRACTION"],
+          ["False. It is 90°.", "GEO.TURNS.FRACTION"],
+        ],
+      },
+      {
+        claim: "Making the arms of an angle longer makes the angle bigger.",
+        truth: "never",
+        right: "Never. The angle is the amount of turn between the arms, not how long they are.",
+        wrong: [
+          ["Always. Longer arms show a bigger angle.", "GEO.ANGLES.SIZE-BY-ARMS"],
+          ["Sometimes. Only for small angles.", "GEO.ANGLES.SIZE-BY-ARMS"],
+        ],
+      },
+      {
+        statement: "Mia estimates an angle just smaller than a right angle as about 120°.",
+        truth: false,
+        right: "False. Just smaller than a right angle is a bit less than 90°, about 80°.",
+        wrong: [
+          ["True. 120° is close to a right angle.", "GEO.ANGLES.TYPE-CONFUSED"],
+          ["True. Right angles are 120°.", "GEO.TURNS.FRACTION"],
+        ],
+      },
+    ],
+  ),
 );
