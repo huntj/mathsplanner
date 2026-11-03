@@ -167,8 +167,7 @@ export default defineGenerator<Params>({
   },
 
   verify(p, question) {
-    if (question.key.depth === 4)
-      return (4 * p.side === 2 * (p.l + p.w)) === p.claimTrue;
+    if (question.key.depth === 4) return (4 * p.side === 2 * (p.l + p.w)) === p.claimTrue;
     const n = numberAnswer(question);
     return n === 2 * (p.l + p.w) || n === p.w;
   },
