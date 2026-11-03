@@ -18,6 +18,7 @@ import {
   shapesGrid,
   translate,
 } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   start: Coord;
@@ -30,7 +31,7 @@ const MAX = 10;
 
 export default defineGenerator<Params>({
   id: "Y4-POS-02",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: [
     "POS.TRANSLATE.DIRECTION",
@@ -147,38 +148,74 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            A.figure(
-              shapesGrid(
-                0,
-                MAX,
-                [
-                  { vertices: s, label: "A" },
-                  { vertices: t, label: "B" },
-                ],
-                "Two identical shapes, A and B, on a grid.",
-              ),
-            ),
-            "Ravi says shape B is bigger than shape A, because it has moved.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                A.figure(
+                  shapesGrid(
+                    0,
+                    MAX,
+                    [
+                      { vertices: s, label: "A" },
+                      { vertices: t, label: "B" },
+                    ],
+                    "Two identical shapes, A and B, on a grid.",
+                  ),
+                ),
+                "Ravi says shape B is bigger than shape A, because it has moved.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: "False. A translation only slides a shape. Its size, shape and the way it faces stay the same.",
+                  correct: true,
+                },
+                { text: "True. Moving a shape stretches it.", code: "POS.TRANSFORM.CHANGES-SHAPE" },
+                {
+                  text: "True. Shapes higher up the grid are bigger.",
+                  code: "POS.TRANSFORM.CHANGES-SHAPE",
+                },
+              ],
+              solution: [
+                { say: `B is A moved ${moveWords(p.dx, p.dy)}; every side is the same length.` },
+              ],
+            }),
+          [
             {
-              text: "False. A translation only slides a shape. Its size, shape and the way it faces stay the same.",
-              correct: true,
+              statement:
+                "Sol moves a shape 3 squares right and 2 squares down. He says every corner moved 3 right and 2 down.",
+              truth: true,
+              right: "True. In a translation every point moves the same way.",
+              wrong: [
+                ["False. Only the top corner moves.", "POS.TRANSLATE.DIRECTION"],
+                ["False. The corners move different amounts.", "POS.TRANSFORM.CHANGES-SHAPE"],
+              ],
             },
-            { text: "True. Moving a shape stretches it.", code: "POS.TRANSFORM.CHANGES-SHAPE" },
             {
-              text: "True. Shapes higher up the grid are bigger.",
-              code: "POS.TRANSFORM.CHANGES-SHAPE",
+              claim: "A shape that has been translated is the same size as before.",
+              truth: "always",
+              right: "Always. A translation slides a shape; it does not stretch it.",
+              wrong: [
+                ["Sometimes. It grows if it moves far.", "POS.TRANSFORM.CHANGES-SHAPE"],
+                ["Never. Moving changes the size."],
+              ],
+            },
+            {
+              statement:
+                "Ana counts the empty squares between a shape and its image to find how far it moved.",
+              truth: false,
+              right:
+                "False. Count from one corner to the same corner on the image, not the gap between them.",
+              wrong: [
+                ["True. The gap is how far it moved.", "POS.TRANSLATE.COUNT-GAP"],
+                ["True. Count the squares in between."],
+              ],
             },
           ],
-          solution: [
-            { say: `B is A moved ${moveWords(p.dx, p.dy)}; every side is the same length.` },
-          ],
-        });
+        );
     }
   },
 

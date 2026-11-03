@@ -16,6 +16,7 @@ import {
 } from "@mathsplanner/diagrams";
 import { wrongs } from "../shared/angles.ts";
 import { SHAPE_NAME, SYMMETRY_LINES } from "../shared/shapes.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** A named shape, or a regular polygon with this many sides. */
@@ -90,7 +91,7 @@ const CLAIMS = [
 
 export default defineGenerator<Params>({
   id: "Y4-GEO-03",
-  version: "1.0.1",
+  version: "1.1.0",
   depths: [1, 3, 4],
   misconceptions: ["GEO.SYMMETRY.DIAGONAL"],
 
@@ -161,13 +162,49 @@ export default defineGenerator<Params>({
         });
       default: {
         const c = CLAIMS[p.claim] ?? CLAIMS[0];
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: c?.statement ?? "",
-          truth: c?.truth ?? true,
-          reasons: c?.reasons ?? [],
-          solution: [{ say: c?.reasons[0]?.text ?? "" }],
-        });
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: c?.statement ?? "",
+              truth: c?.truth ?? true,
+              reasons: c?.reasons ?? [],
+              solution: [{ say: c?.reasons[0]?.text ?? "" }],
+            }),
+          [
+            {
+              claim: "A square has 4 lines of symmetry.",
+              truth: "always",
+              right:
+                "Always. Two through the middles of opposite sides and two along the diagonals.",
+              wrong: [
+                ["Never. It has 2.", "GEO.SYMMETRY.DIAGONAL"],
+                ["Sometimes. Only when it sits flat."],
+              ],
+            },
+            {
+              claim: "A diagonal of a rectangle is a line of symmetry.",
+              truth: "sometimes",
+              right:
+                "Sometimes. Only when the rectangle is a square; otherwise folding on a diagonal does not match up.",
+              wrong: [
+                ["Always. Diagonals cut shapes in half.", "GEO.SYMMETRY.DIAGONAL"],
+                ["Never. Even a square has none."],
+              ],
+            },
+            {
+              statement: "Kai says a circle has exactly 2 lines of symmetry.",
+              truth: false,
+              right:
+                "False. Any line through the centre is a line of symmetry, so it has more lines than you can count.",
+              wrong: [
+                ["True. Up-and-down and side-to-side.", "GEO.SYMMETRY.DIAGONAL"],
+                ["True. Every shape has 2."],
+              ],
+            },
+          ],
+        );
       }
     }
   },

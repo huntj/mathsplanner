@@ -10,7 +10,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-07.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -73,7 +73,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-NPV-07.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -136,7 +136,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-07.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -214,7 +214,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-07.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -286,7 +286,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-NPV-07.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -354,7 +354,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-07.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -422,7 +422,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-NPV-07.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -562,7 +562,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-NPV-07.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -600,7 +600,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "You always round down by cutting off digits.",
+                  "v": "True. Look at the tens digit, 4.",
                 },
               ],
               "id": "RA",
@@ -609,7 +609,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Halfway numbers round down.",
+                  "v": "True. Rounding always goes down.",
                 },
               ],
               "id": "RB",
@@ -618,7 +618,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "A number exactly halfway rounds up: 5,195 rounds to 5,200.",
+                  "v": "False. 248 is nearer 250 than 240: the ones digit is 8.",
                 },
               ],
               "id": "RC",
@@ -633,7 +633,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
               "id": "RA",
               "type": "choice",
             },
-            "code": "NPV.ROUND.ALWAYS-DOWN",
+            "code": "NPV.ROUND.WRONG-PLACE",
             "feedback": [],
           },
           {
@@ -641,7 +641,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
               "id": "RB",
               "type": "choice",
             },
-            "code": "NPV.ROUND.HALFWAY",
+            "code": "NPV.ROUND.ALWAYS-DOWN",
             "feedback": [],
           },
         ],
@@ -658,7 +658,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "By convention, halfway rounds up: 5,195 → 5,200.",
+            "v": "False. 248 is nearer 250 than 240: the ones digit is 8.",
           },
         ],
       },
@@ -666,31 +666,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ben says ",
-      },
-      {
-        "t": "math",
-        "v": "5{,}195",
-      },
-      {
-        "t": "text",
-        "v": " to the nearest ",
-      },
-      {
-        "t": "math",
-        "v": "10",
-      },
-      {
-        "t": "text",
-        "v": " is ",
-      },
-      {
-        "t": "math",
-        "v": "5{,}190",
-      },
-      {
-        "t": "text",
-        "v": ", because it is exactly in the middle.",
+        "v": "Dev rounds 248 to the nearest 10 and gets 240.",
       },
     ],
   },
@@ -702,7 +678,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-NPV-07.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -714,7 +690,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -749,7 +725,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "A number exactly halfway rounds up: 1,815 rounds to 1,820.",
+                  "v": "You always round down by cutting off digits.",
                 },
               ],
               "id": "RB",
@@ -758,7 +734,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "You always round down by cutting off digits.",
+                  "v": "A number exactly halfway rounds up: 1,815 rounds to 1,820.",
                 },
               ],
               "id": "RC",
@@ -778,7 +754,7 @@ exports[`Y4-NPV-07.a > keeps fixed seeds unchanged 1`] = `
           },
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "NPV.ROUND.ALWAYS-DOWN",

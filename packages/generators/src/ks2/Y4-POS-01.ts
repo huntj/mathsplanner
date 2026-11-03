@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import type { CartesianSpec, Coord } from "@mathsplanner/diagrams";
 import { chosenFigure, chosenText } from "../shared/counting.ts";
 import { coord, same } from "../shared/pos.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   p: Coord;
@@ -31,7 +32,7 @@ const grid = (
 
 export default defineGenerator<Params>({
   id: "Y4-POS-01",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 3, 4],
   misconceptions: ["ALG.COORD.ORDER"],
 
@@ -128,30 +129,67 @@ export default defineGenerator<Params>({
           solution: [{ say: `Start at (0, 0), go across ${x} and up ${y}.` }],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Tom says ",
-            A.math(right),
-            " and ",
-            A.math(coord([y, x])),
-            " are the same point, because they use the same numbers.",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Tom says ",
+                A.math(right),
+                " and ",
+                A.math(coord([y, x])),
+                " are the same point, because they use the same numbers.",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The first number is how far across and the second how far up, so they are different points.`,
+                  correct: true,
+                },
+                {
+                  text: "True. The order of the numbers does not matter.",
+                  code: "ALG.COORD.ORDER",
+                },
+                { text: "True. You can go up first or across first.", code: "ALG.COORD.ORDER" },
+              ],
+              solution: [
+                {
+                  say: `${right} is ${x} across and ${y} up; ${coord([y, x])} is ${y} across and ${x} up.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `False. The first number is how far across and the second how far up, so they are different points.`,
-              correct: true,
+              statement: "Leo plots (3, 1) by going 3 across and 1 up.",
+              truth: true,
+              right: "True. The first number is across, the second is up.",
+              wrong: [
+                ["False. Go 3 up and 1 across.", "ALG.COORD.ORDER"],
+                ["False. Go 1 across and 3 up."],
+              ],
             },
-            { text: "True. The order of the numbers does not matter.", code: "ALG.COORD.ORDER" },
-            { text: "True. You can go up first or across first.", code: "ALG.COORD.ORDER" },
-          ],
-          solution: [
             {
-              say: `${right} is ${x} across and ${y} up; ${coord([y, x])} is ${y} across and ${x} up.`,
+              claim: "The point (0, 0) is at the corner where the axes meet.",
+              truth: "always",
+              right: "Always. It is the origin: 0 across and 0 up.",
+              wrong: [
+                ["Never. It is at the top.", "ALG.COORD.ORDER"],
+                ["Sometimes. It depends on the grid."],
+              ],
+            },
+            {
+              statement: "Pia says the point (2, 6) is further across than the point (5, 1).",
+              truth: false,
+              right:
+                "False. Across is the first number: 2 is less than 5, so (5, 1) is further across.",
+              wrong: [
+                ["True. 6 is the biggest number.", "ALG.COORD.ORDER"],
+                ["True. The second number is across.", "ALG.COORD.ORDER"],
+              ],
             },
           ],
-        });
+        );
     }
   },
 

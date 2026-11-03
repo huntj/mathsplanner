@@ -58,7 +58,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MEA-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -177,7 +177,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MEA-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -296,7 +296,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MEA-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -367,7 +367,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MEA-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -424,7 +424,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MEA-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -495,7 +495,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MEA-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -692,7 +692,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MEA-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -871,7 +871,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MEA-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1027,7 +1027,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MEA-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1089,83 +1089,14 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "axes": false,
-        "description": "An L-shape and a rectangle drawn on a centimetre grid.",
-        "grid": true,
-        "polygons": [
-          {
-            "shaded": true,
-            "vertices": [
-              [
-                1,
-                1,
-              ],
-              [
-                5,
-                1,
-              ],
-              [
-                5,
-                3,
-              ],
-              [
-                4,
-                3,
-              ],
-              [
-                4,
-                5,
-              ],
-              [
-                1,
-                5,
-              ],
-            ],
-          },
-          {
-            "shaded": true,
-            "vertices": [
-              [
-                7,
-                1,
-              ],
-              [
-                13,
-                1,
-              ],
-              [
-                13,
-                3,
-              ],
-              [
-                7,
-                3,
-              ],
-            ],
-          },
-        ],
-        "type": "cartesian",
-        "x": {
-          "max": 14,
-          "min": 0,
-          "step": 1,
-        },
-        "y": {
-          "max": 6,
-          "min": 0,
-          "step": 1,
-        },
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MEA-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1183,7 +1114,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1192,10 +1123,19 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1203,7 +1143,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The L-shape covers 14 squares and the rectangle covers 12.",
+                  "v": "Sometimes. 4 squares in a row and 4 squares in a 2 by 2 block both have area 4, but perimeters 10 and 8.",
                 },
               ],
               "id": "RA",
@@ -1212,7 +1152,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The taller shape always has the bigger area.",
+                  "v": "Always. Same squares, same edge.",
                 },
               ],
               "id": "RB",
@@ -1221,7 +1161,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. They have the same perimeter, so they have the same area.",
+                  "v": "Never. They are always different.",
                 },
               ],
               "id": "RC",
@@ -1233,7 +1173,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "MEA.PERIMETER.AREA",
@@ -1243,7 +1183,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1253,7 +1193,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "L-shape: 14 cm². Rectangle: 6 × 2 = 12 cm².",
+            "v": "Sometimes. 4 squares in a row and 4 squares in a 2 by 2 block both have area 4, but perimeters 10 and 8.",
           },
         ],
       },
@@ -1261,96 +1201,19 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Each square is 1 cm².",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": "Asha says the two shapes have the same area.",
+        "v": "Two shapes with the same area have the same perimeter.",
       },
     ],
   },
   {
     "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "axes": false,
-        "description": "An L-shape and a rectangle drawn on a centimetre grid.",
-        "grid": true,
-        "polygons": [
-          {
-            "shaded": true,
-            "vertices": [
-              [
-                1,
-                1,
-              ],
-              [
-                6,
-                1,
-              ],
-              [
-                6,
-                2,
-              ],
-              [
-                3,
-                2,
-              ],
-              [
-                3,
-                4,
-              ],
-              [
-                1,
-                4,
-              ],
-            ],
-          },
-          {
-            "shaded": true,
-            "vertices": [
-              [
-                8,
-                1,
-              ],
-              [
-                14,
-                1,
-              ],
-              [
-                14,
-                5,
-              ],
-              [
-                8,
-                5,
-              ],
-            ],
-          },
-        ],
-        "type": "cartesian",
-        "x": {
-          "max": 15,
-          "min": 0,
-          "step": 1,
-        },
-        "y": {
-          "max": 6,
-          "min": 0,
-          "step": 1,
-        },
-      },
-    ],
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MEA-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1361,7 +1224,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
@@ -1388,7 +1251,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The L-shape covers 9 squares and the rectangle covers 24.",
+                  "v": "True. Area is how many squares cover it: 8 squares of 1 cm².",
                 },
               ],
               "id": "RA",
@@ -1397,7 +1260,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The taller shape always has the bigger area.",
+                  "v": "False. Count the edges to find the area.",
                 },
               ],
               "id": "RB",
@@ -1406,7 +1269,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Shapes that look different always have different areas.",
+                  "v": "False. Its area is 8 cm.",
                 },
               ],
               "id": "RC",
@@ -1418,7 +1281,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "MEA.PERIMETER.AREA",
@@ -1438,7 +1301,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "L-shape: 9 cm². Rectangle: 6 × 4 = 24 cm².",
+            "v": "True. Area is how many squares cover it: 8 squares of 1 cm².",
           },
         ],
       },
@@ -1446,96 +1309,19 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Each square is 1 cm².",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": "Asha says the two shapes have the same area.",
+        "v": "A shape is made of 8 squares, each 1 cm². Sam says its area is 8 cm².",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
-    "diagrams": [
-      {
-        "axes": false,
-        "description": "An L-shape and a rectangle drawn on a centimetre grid.",
-        "grid": true,
-        "polygons": [
-          {
-            "shaded": true,
-            "vertices": [
-              [
-                1,
-                1,
-              ],
-              [
-                6,
-                1,
-              ],
-              [
-                6,
-                2,
-              ],
-              [
-                5,
-                2,
-              ],
-              [
-                5,
-                5,
-              ],
-              [
-                1,
-                5,
-              ],
-            ],
-          },
-          {
-            "shaded": true,
-            "vertices": [
-              [
-                8,
-                1,
-              ],
-              [
-                12,
-                1,
-              ],
-              [
-                12,
-                6,
-              ],
-              [
-                8,
-                6,
-              ],
-            ],
-          },
-        ],
-        "type": "cartesian",
-        "x": {
-          "max": 13,
-          "min": 0,
-          "step": 1,
-        },
-        "y": {
-          "max": 7,
-          "min": 0,
-          "step": 1,
-        },
-      },
-    ],
+    "archetype": "always-sometimes-never",
+    "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MEA-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1547,13 +1333,13 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "B",
-          "correctReason": "RB",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1562,10 +1348,19 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1573,7 +1368,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The taller shape always has the bigger area.",
+                  "v": "Sometimes. 4 squares in a row and 4 squares in a 2 by 2 block both have area 4, but perimeters 10 and 8.",
                 },
               ],
               "id": "RA",
@@ -1582,7 +1377,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The L-shape covers 17 squares and the rectangle covers 20.",
+                  "v": "Always. Same squares, same edge.",
                 },
               ],
               "id": "RB",
@@ -1591,7 +1386,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. They have the same perimeter, so they have the same area.",
+                  "v": "Never. They are always different.",
                 },
               ],
               "id": "RC",
@@ -1603,7 +1398,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "MEA.PERIMETER.AREA",
@@ -1613,7 +1408,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1623,7 +1418,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "L-shape: 17 cm². Rectangle: 4 × 5 = 20 cm².",
+            "v": "Sometimes. 4 squares in a row and 4 squares in a 2 by 2 block both have area 4, but perimeters 10 and 8.",
           },
         ],
       },
@@ -1631,15 +1426,7 @@ exports[`Y4-MEA-03 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Each square is 1 cm².",
-      },
-      {
-        "i": 0,
-        "t": "diagram",
-      },
-      {
-        "t": "text",
-        "v": "Asha says the two shapes have the same area.",
+        "v": "Two shapes with the same area have the same perimeter.",
       },
     ],
   },

@@ -9,6 +9,7 @@ import { defineGenerator, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
 import { barChart, distinctValues, TOPICS } from "../shared/sta.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   topic: number;
@@ -19,7 +20,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y4-STA-01.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["STA.SCALE.READ", "AS.PROBLEM.KEYWORD"],
 
@@ -76,24 +77,59 @@ export default defineGenerator<Params>({
         });
       }
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            intro,
-            chart,
-            `Ravi counts the grid lines up to the top of the ${name} bar in ones and says ${value / p.step} chose ${name}.`,
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                intro,
+                chart,
+                `Ravi counts the grid lines up to the top of the ${name} bar in ones and says ${value / p.step} chose ${name}.`,
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. The scale goes up in ${p.step}s, so the bar shows ${value}.`,
+                  correct: true,
+                },
+                { text: "True. Each grid line is worth 1.", code: "STA.SCALE.READ" },
+                {
+                  text: "True. You always count the squares on a bar chart.",
+                  code: "STA.SCALE.READ",
+                },
+              ],
+              solution: [{ say: "Read the numbers on the scale, not the number of grid lines." }],
+            }),
+          [
             {
-              text: `False. The scale goes up in ${p.step}s, so the bar shows ${value}.`,
-              correct: true,
+              statement:
+                "On a bar chart the scale goes up in 2s. A bar reaches 8. Ben says 8 children chose it.",
+              truth: true,
+              right: "True. Read the number on the scale at the top of the bar.",
+              wrong: [["False. Count the lines: 4.", "STA.SCALE.READ"], ["False. Double it: 16."]],
             },
-            { text: "True. Each grid line is worth 1.", code: "STA.SCALE.READ" },
-            { text: "True. You always count the squares on a bar chart.", code: "STA.SCALE.READ" },
+            {
+              claim: "The tallest bar on a bar chart shows the most popular choice.",
+              truth: "always",
+              right: "Always. The taller the bar, the more there are.",
+              wrong: [
+                ["Sometimes. The widest bar shows it.", "STA.SCALE.READ"],
+                ["Never. The shortest bar does."],
+              ],
+            },
+            {
+              statement:
+                "On a bar chart, apples is 12 and pears is 8. Kim says 4 more chose pears than apples.",
+              truth: false,
+              right: "False. 4 more chose apples: 12 − 8 = 4, and apples has the taller bar.",
+              wrong: [
+                ["True. 'More' means the second one.", "AS.PROBLEM.KEYWORD"],
+                ["True. The difference is 4."],
+              ],
+            },
           ],
-          solution: [{ say: "Read the numbers on the scale, not the number of grid lines." }],
-        });
+        );
     }
   },
 

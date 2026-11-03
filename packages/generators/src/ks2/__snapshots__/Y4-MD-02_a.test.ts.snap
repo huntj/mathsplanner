@@ -10,7 +10,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MD-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -76,7 +76,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MD-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -142,7 +142,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MD-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -208,7 +208,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MD-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -277,7 +277,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MD-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -346,7 +346,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MD-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -408,14 +408,14 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MD-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -426,14 +426,14 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -442,10 +442,19 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -453,7 +462,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 6 × 2 = 12, and the answer is 100 times bigger: 1,200.",
+                  "v": "Always. Sharing into 1 group keeps the whole amount in that group.",
                 },
               ],
               "id": "RA",
@@ -462,7 +471,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Count the zeros in the question and put the same number on the end.",
+                  "v": "Sometimes. Only for even numbers.",
                 },
               ],
               "id": "RB",
@@ -471,7 +480,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiplying makes numbers bigger, and it is bigger.",
+                  "v": "Never. It makes it 1.",
                 },
               ],
               "id": "RC",
@@ -483,17 +492,17 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
-            "code": "MD.PLACE.ZEROS",
+            "code": "MD.ZERO-ONE.IDENTITY",
             "feedback": [],
           },
         ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -503,7 +512,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "60 × 20 = 1,200.",
+            "v": "Always. Sharing into 1 group keeps the whole amount in that group.",
           },
         ],
       },
@@ -511,15 +520,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Ivy says ",
-      },
-      {
-        "t": "math",
-        "v": "60 \\times 20 = 120",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Dividing a number by 1 leaves it the same.",
       },
     ],
   },
@@ -531,7 +532,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MD-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -578,7 +579,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Count the zeros in the question and put the same number on the end.",
+                  "v": "True. Multiplying makes numbers bigger, and it is bigger.",
                 },
               ],
               "id": "RB",
@@ -587,7 +588,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiplying makes numbers bigger, and it is bigger.",
+                  "v": "True. Count the zeros in the question and put the same number on the end.",
                 },
               ],
               "id": "RC",
@@ -599,7 +600,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "MD.PLACE.ZEROS",
@@ -647,7 +648,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MD-02.a",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -659,7 +660,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RC",
+          "correctReason": "RA",
           "options": [
             {
               "content": [
@@ -685,7 +686,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. You must use the column method.",
+                  "v": "True. 7 × 4 = 28, and the answer is 1000 times bigger.",
                 },
               ],
               "id": "RA",
@@ -694,7 +695,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Count the zeros: there are fewer zeros in the answer.",
+                  "v": "False. You must use the column method.",
                 },
               ],
               "id": "RB",
@@ -703,7 +704,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. 7 × 4 = 28, and the answer is 1000 times bigger.",
+                  "v": "False. Count the zeros: there are fewer zeros in the answer.",
                 },
               ],
               "id": "RC",
@@ -715,7 +716,7 @@ exports[`Y4-MD-02.a > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RB",
+              "id": "RC",
               "type": "choice",
             },
             "code": "MD.PLACE.ZEROS",

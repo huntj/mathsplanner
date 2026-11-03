@@ -9,6 +9,7 @@ import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core"
 import { wrongs } from "../shared/angles.ts";
 import { chosenText, numberAnswer } from "../shared/counting.ts";
 import { pounds } from "../shared/mea.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** Two amounts in pence, one shown in pence. */
@@ -33,7 +34,7 @@ const r2 = (x: number) => Math.round(x * 100) / 100;
 
 export default defineGenerator<Params>({
   id: "Y4-MEA-04",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4, 5],
   misconceptions: ["MEA.MONEY.POUNDS-PENCE", "MEA.COMPARE.LOOKS", "AS.MULTISTEP.ONE-STEP"],
 
@@ -115,29 +116,62 @@ export default defineGenerator<Params>({
       case 4: {
         const total = r2(p.prices.reduce((s, x) => s + x, 0) / 100);
         const truth = total < p.budget;
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: `Ami buys three things costing ${p.prices.map(pounds).join(", ")}. She says they cost less than £${p.budget}.`,
-          truth,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: `Ami buys three things costing ${p.prices.map(pounds).join(", ")}. She says they cost less than £${p.budget}.`,
+              truth,
+              reasons: [
+                {
+                  text: `${truth ? "True" : "False"}. Each price is 1p less than a whole pound, so the total is ${p.prices.length}p less than £${r2(total + 0.03)}: ${pounds(Math.round(total * 100))}.`,
+                  correct: true,
+                },
+                {
+                  text: `${truth ? "False" : "True"}. Each price is about £${Math.floor(p.prices[0] / 100)}, so the total is about £${p.prices.reduce((s, x) => s + Math.floor(x / 100), 0)}.`,
+                },
+                {
+                  text: `${truth ? "False" : "True"}. Add the pounds and the pence separately: ${p.prices.reduce((s, x) => s + Math.floor(x / 100), 0)} pounds and 297 pence.`,
+                  code: "MEA.MONEY.POUNDS-PENCE",
+                },
+              ],
+              solution: [
+                {
+                  say: `Round each price up a penny: ${p.prices.map((x) => `£${(x + 1) / 100}`).join(" + ")} = £${r2(total + 0.03)}, then take off 3p: ${pounds(Math.round(total * 100))}.`,
+                },
+              ],
+            }),
+          [
             {
-              text: `${truth ? "True" : "False"}. Each price is 1p less than a whole pound, so the total is ${p.prices.length}p less than £${r2(total + 0.03)}: ${pounds(Math.round(total * 100))}.`,
-              correct: true,
+              statement: "Kit has £5. She buys a book for £3.40. She says she gets £1.60 change.",
+              truth: true,
+              right: "True. £3.40 + £1.60 = £5.",
+              wrong: [
+                ["False. She gets £2.60.", "AS.MULTISTEP.ONE-STEP"],
+                ["False. She gets £8.40.", "AS.MULTISTEP.ONE-STEP"],
+              ],
             },
             {
-              text: `${truth ? "False" : "True"}. Each price is about £${Math.floor(p.prices[0] / 100)}, so the total is about £${p.prices.reduce((s, x) => s + Math.floor(x / 100), 0)}.`,
+              claim: "£1 is the same as 100p.",
+              truth: "always",
+              right: "Always. There are 100 pence in a pound.",
+              wrong: [
+                ["Never. £1 is 10p.", "MEA.MONEY.POUNDS-PENCE"],
+                ["Sometimes. Only for coins."],
+              ],
             },
             {
-              text: `${truth ? "False" : "True"}. Add the pounds and the pence separately: ${p.prices.reduce((s, x) => s + Math.floor(x / 100), 0)} pounds and 297 pence.`,
-              code: "MEA.MONEY.POUNDS-PENCE",
+              statement: "Raj writes £2 and 5p as £2.5.",
+              truth: false,
+              right: "False. 5p is £0.05, so it is £2.05. £2.5 is £2 and 50p.",
+              wrong: [
+                ["True. The pence go after the point.", "MEA.MONEY.POUNDS-PENCE"],
+                ["True. 5 pence is 5 tenths of a pound."],
+              ],
             },
           ],
-          solution: [
-            {
-              say: `Round each price up a penny: ${p.prices.map((x) => `£${(x + 1) / 100}`).join(" + ")} = £${r2(total + 0.03)}, then take off 3p: ${pounds(Math.round(total * 100))}.`,
-            },
-          ],
-        });
+        );
       }
       default: {
         const total = p.price * p.count;

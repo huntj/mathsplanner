@@ -42,7 +42,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-GEO-03",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -130,7 +130,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-GEO-03",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -238,7 +238,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-GEO-03",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -439,7 +439,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-GEO-03",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -676,7 +676,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-GEO-03",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -913,7 +913,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-GEO-03",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1005,7 +1005,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-GEO-03",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1043,7 +1043,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only the vertical line counts, so it has 1.",
+                  "v": "Turning the triangle removes its lines of symmetry.",
                 },
               ],
               "id": "RA",
@@ -1052,7 +1052,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Turning the triangle removes its lines of symmetry.",
+                  "v": "Only the vertical line counts, so it has 1.",
                 },
               ],
               "id": "RB",
@@ -1097,14 +1097,14 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-GEO-03",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1116,13 +1116,13 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1131,10 +1131,19 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1142,7 +1151,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Each line from a corner to the middle of the opposite side folds it exactly; turning the shape turns the lines too.",
+                  "v": "Never. It has 2.",
                 },
               ],
               "id": "RA",
@@ -1151,7 +1160,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only the vertical line counts, so it has 1.",
+                  "v": "Sometimes. Only when it sits flat.",
                 },
               ],
               "id": "RB",
@@ -1160,7 +1169,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Turning the triangle removes its lines of symmetry.",
+                  "v": "Always. Two through the middles of opposite sides and two along the diagonals.",
                 },
               ],
               "id": "RC",
@@ -1169,11 +1178,20 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "GEO.SYMMETRY.DIAGONAL",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1183,7 +1201,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Each line from a corner to the middle of the opposite side folds it exactly; turning the shape turns the lines too.",
+            "v": "Always. Two through the middles of opposite sides and two along the diagonals.",
           },
         ],
       },
@@ -1191,7 +1209,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "An equilateral triangle has 3 lines of symmetry, even when it is turned.",
+        "v": "A square has 4 lines of symmetry.",
       },
     ],
   },
@@ -1203,7 +1221,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-GEO-03",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1241,7 +1259,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Every line through the middle of a shape is a line of symmetry.",
+                  "v": "True. Up-and-down and side-to-side.",
                 },
               ],
               "id": "RA",
@@ -1250,7 +1268,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "It has no lines of symmetry because its sides are different lengths.",
+                  "v": "True. Every shape has 2.",
                 },
               ],
               "id": "RB",
@@ -1259,7 +1277,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Folding along a diagonal does not make the halves match, so it has only 2.",
+                  "v": "False. Any line through the centre is a line of symmetry, so it has more lines than you can count.",
                 },
               ],
               "id": "RC",
@@ -1291,7 +1309,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Folding along a diagonal does not make the halves match, so it has only 2.",
+            "v": "False. Any line through the centre is a line of symmetry, so it has more lines than you can count.",
           },
         ],
       },
@@ -1299,7 +1317,7 @@ exports[`Y4-GEO-03 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A rectangle has 4 lines of symmetry: two through the middles of its sides and two along its diagonals.",
+        "v": "Kai says a circle has exactly 2 lines of symmetry.",
       },
     ],
   },

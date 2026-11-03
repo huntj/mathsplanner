@@ -10,7 +10,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MD-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -79,7 +79,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MD-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -148,7 +148,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MD-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -217,7 +217,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MD-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -288,7 +288,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MD-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -359,7 +359,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MD-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -430,7 +430,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-MD-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -441,8 +441,8 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "A",
-          "correctReason": "RB",
+          "correct": "B",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
@@ -468,7 +468,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Changing the numbers always changes the answer.",
+                  "v": "True. Times and add are the same.",
                 },
               ],
               "id": "RA",
@@ -477,7 +477,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Halving 16 and doubling 5 keeps the product the same: both are 80.",
+                  "v": "True. Both use 6 and 5.",
                 },
               ],
               "id": "RB",
@@ -486,7 +486,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Only adding works like that.",
+                  "v": "False. 6 × 5 = 30, but 6 + 5 = 11.",
                 },
               ],
               "id": "RC",
@@ -498,7 +498,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "MD.MULTIPLY.ADDS",
@@ -518,7 +518,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "16 × 5 = 80. If you halve one number, double the other.",
+            "v": "False. 6 × 5 = 30, but 6 + 5 = 11.",
           },
         ],
       },
@@ -526,11 +526,19 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kai says ",
+        "v": "Gil says ",
       },
       {
         "t": "math",
-        "v": "16 \\times 5 = 8 \\times 10",
+        "v": "6 \\times 5",
+      },
+      {
+        "t": "text",
+        "v": " is the same as ",
+      },
+      {
+        "t": "math",
+        "v": "6 + 5",
       },
       {
         "t": "text",
@@ -546,7 +554,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-MD-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -584,7 +592,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Only adding works like that.",
+                  "v": "False. 5 × 7 is one too.",
                 },
               ],
               "id": "RA",
@@ -593,7 +601,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Halving 8 and doubling 5 keeps the product the same: both are 40.",
+                  "v": "True. Those are all the pairs of whole numbers that multiply to 12.",
                 },
               ],
               "id": "RB",
@@ -602,7 +610,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Changing the numbers always changes the answer.",
+                  "v": "False. 12 has only one pair.",
                 },
               ],
               "id": "RC",
@@ -634,7 +642,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "8 × 5 = 40. If you halve one number, double the other.",
+            "v": "True. Those are all the pairs of whole numbers that multiply to 12.",
           },
         ],
       },
@@ -642,15 +650,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kai says ",
-      },
-      {
-        "t": "math",
-        "v": "8 \\times 5 = 4 \\times 10",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Ana says the factor pairs of 12 are 1 × 12, 2 × 6 and 3 × 4.",
       },
     ],
   },
@@ -662,7 +662,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-MD-03",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -700,7 +700,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Only adding works like that.",
+                  "v": "False. 5 × 7 is one too.",
                 },
               ],
               "id": "RA",
@@ -709,7 +709,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Halving 8 and doubling 5 keeps the product the same: both are 40.",
+                  "v": "True. Those are all the pairs of whole numbers that multiply to 12.",
                 },
               ],
               "id": "RB",
@@ -718,7 +718,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. Changing the numbers always changes the answer.",
+                  "v": "False. 12 has only one pair.",
                 },
               ],
               "id": "RC",
@@ -750,7 +750,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "8 × 5 = 40. If you halve one number, double the other.",
+            "v": "True. Those are all the pairs of whole numbers that multiply to 12.",
           },
         ],
       },
@@ -758,15 +758,7 @@ exports[`Y4-MD-03 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Kai says ",
-      },
-      {
-        "t": "math",
-        "v": "8 \\times 5 = 4 \\times 10",
-      },
-      {
-        "t": "text",
-        "v": ".",
+        "v": "Ana says the factor pairs of 12 are 1 × 12, 2 × 6 and 3 × 4.",
       },
     ],
   },

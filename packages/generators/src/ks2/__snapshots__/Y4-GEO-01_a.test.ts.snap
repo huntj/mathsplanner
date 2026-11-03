@@ -54,7 +54,7 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-GEO-01.a",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -189,7 +189,7 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-GEO-01.a",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -324,7 +324,7 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-GEO-01.a",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -415,7 +415,7 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-GEO-01.a",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -502,7 +502,7 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-GEO-01.a",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -589,7 +589,7 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-GEO-01.a",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -676,7 +676,7 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-GEO-01.a",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -687,7 +687,7 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
+          "correct": "A",
           "correctReason": "RA",
           "options": [
             {
@@ -723,7 +723,7 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Two right angles already make 180°, leaving nothing for the third angle.",
+                  "v": "Always. It has at least two equal sides, so it is isosceles too.",
                 },
               ],
               "id": "RA",
@@ -732,7 +732,7 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only if it is isosceles.",
+                  "v": "Never. They are different triangles.",
                 },
               ],
               "id": "RB",
@@ -741,7 +741,7 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "A right-angled triangle has two right angles.",
+                  "v": "Sometimes. Only when it is big.",
                 },
               ],
               "id": "RC",
@@ -750,7 +750,16 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "GEO.SHAPES.HIERARCHY",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
@@ -764,7 +773,7 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Two right angles already make 180°, leaving nothing for the third angle.",
+            "v": "Always. It has at least two equal sides, so it is isosceles too.",
           },
         ],
       },
@@ -772,19 +781,19 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A triangle has two right angles.",
+        "v": "An equilateral triangle is also isosceles.",
       },
     ],
   },
   {
-    "archetype": "always-sometimes-never",
+    "archetype": "true-or-false-why",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-GEO-01.a",
-      "version": "1.0.1",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -795,122 +804,14 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "C",
-          "correctReason": "RC",
-          "options": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Always true",
-                },
-              ],
-              "id": "A",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Sometimes true",
-                },
-              ],
-              "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
-            },
-          ],
-          "reasons": [
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Only if it is isosceles.",
-                },
-              ],
-              "id": "RA",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "A right-angled triangle has two right angles.",
-                },
-              ],
-              "id": "RB",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Two right angles already make 180°, leaving nothing for the third angle.",
-                },
-              ],
-              "id": "RC",
-            },
-          ],
-          "type": "choice-with-reason",
-        },
-        "marks": 2,
-        "misconceptions": [],
-        "prompt": [
-          {
-            "t": "text",
-            "v": "Is this always, sometimes or never true?",
-          },
-        ],
-      },
-    ],
-    "solution": [
-      {
-        "say": [
-          {
-            "t": "text",
-            "v": "Two right angles already make 180°, leaving nothing for the third angle.",
-          },
-        ],
-      },
-    ],
-    "stem": [
-      {
-        "t": "text",
-        "v": "A triangle has two right angles.",
-      },
-    ],
-  },
-  {
-    "archetype": "always-sometimes-never",
-    "diagrams": [],
-    "key": {
-      "depth": 4,
-      "numbers": "stretch",
-      "seed": 1,
-      "statementId": "Y4-GEO-01.a",
-      "version": "1.0.1",
-    },
-    "meta": {
-      "calculator": false,
-      "marks": 2,
-      "minutes": 2,
-      "tags": [],
-    },
-    "parts": [
-      {
-        "answer": {
-          "correct": "C",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "Always true",
+                  "v": "True",
                 },
               ],
               "id": "A",
@@ -919,19 +820,10 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Sometimes true",
+                  "v": "False",
                 },
               ],
               "id": "B",
-            },
-            {
-              "content": [
-                {
-                  "t": "text",
-                  "v": "Never true",
-                },
-              ],
-              "id": "C",
             },
           ],
           "reasons": [
@@ -939,7 +831,7 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Only if it is isosceles.",
+                  "v": "False. It has two equal sides.",
                 },
               ],
               "id": "RA",
@@ -948,7 +840,7 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "Two right angles already make 180°, leaving nothing for the third angle.",
+                  "v": "True. That is what equilateral means: all sides equal.",
                 },
               ],
               "id": "RB",
@@ -957,7 +849,7 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "A right-angled triangle has two right angles.",
+                  "v": "False. It has a right angle.",
                 },
               ],
               "id": "RC",
@@ -966,11 +858,20 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
           "type": "choice-with-reason",
         },
         "marks": 2,
-        "misconceptions": [],
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RA",
+              "type": "choice",
+            },
+            "code": "GEO.SHAPES.HIERARCHY",
+            "feedback": [],
+          },
+        ],
         "prompt": [
           {
             "t": "text",
-            "v": "Is this always, sometimes or never true?",
+            "v": "Is this true or false?",
           },
         ],
       },
@@ -980,7 +881,7 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Two right angles already make 180°, leaving nothing for the third angle.",
+            "v": "True. That is what equilateral means: all sides equal.",
           },
         ],
       },
@@ -988,7 +889,123 @@ exports[`Y4-GEO-01.a > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "A triangle has two right angles.",
+        "v": "Ana says an equilateral triangle has three equal sides.",
+      },
+    ],
+  },
+  {
+    "archetype": "true-or-false-why",
+    "diagrams": [],
+    "key": {
+      "depth": 4,
+      "numbers": "stretch",
+      "seed": 1,
+      "statementId": "Y4-GEO-01.a",
+      "version": "1.1.0",
+    },
+    "meta": {
+      "calculator": false,
+      "marks": 2,
+      "minutes": 2,
+      "tags": [],
+    },
+    "parts": [
+      {
+        "answer": {
+          "correct": "B",
+          "correctReason": "RA",
+          "options": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True",
+                },
+              ],
+              "id": "A",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False",
+                },
+              ],
+              "id": "B",
+            },
+          ],
+          "reasons": [
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "False. A triangle with two equal sides is isosceles whichever way it is turned.",
+                },
+              ],
+              "id": "RA",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Isosceles triangles point up.",
+                },
+              ],
+              "id": "RB",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "True. Turned over it is scalene.",
+                },
+              ],
+              "id": "RC",
+            },
+          ],
+          "type": "choice-with-reason",
+        },
+        "marks": 2,
+        "misconceptions": [
+          {
+            "answer": {
+              "id": "RB",
+              "type": "choice",
+            },
+            "code": "GEO.SHAPES.ORIENTATION",
+            "feedback": [],
+          },
+          {
+            "answer": {
+              "id": "RC",
+              "type": "choice",
+            },
+            "code": "GEO.SHAPES.ORIENTATION",
+            "feedback": [],
+          },
+        ],
+        "prompt": [
+          {
+            "t": "text",
+            "v": "Is this true or false?",
+          },
+        ],
+      },
+    ],
+    "solution": [
+      {
+        "say": [
+          {
+            "t": "text",
+            "v": "False. A triangle with two equal sides is isosceles whichever way it is turned.",
+          },
+        ],
+      },
+    ],
+    "stem": [
+      {
+        "t": "text",
+        "v": "Leo says a triangle is only isosceles when it points upwards.",
       },
     ],
   },

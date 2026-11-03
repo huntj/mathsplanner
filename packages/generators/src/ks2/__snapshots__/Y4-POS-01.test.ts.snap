@@ -35,7 +35,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -160,7 +160,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -285,7 +285,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -431,7 +431,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -586,7 +586,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -741,7 +741,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -920,7 +920,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1090,7 +1090,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1260,7 +1260,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1353,14 +1353,14 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1371,14 +1371,14 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1387,10 +1387,19 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1398,7 +1407,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The order of the numbers does not matter.",
+                  "v": "Sometimes. It depends on the grid.",
                 },
               ],
               "id": "RA",
@@ -1407,7 +1416,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The first number is how far across and the second how far up, so they are different points.",
+                  "v": "Always. It is the origin: 0 across and 0 up.",
                 },
               ],
               "id": "RB",
@@ -1416,7 +1425,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You can go up first or across first.",
+                  "v": "Never. It is at the top.",
                 },
               ],
               "id": "RC",
@@ -1426,14 +1435,6 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
         },
         "marks": 2,
         "misconceptions": [
-          {
-            "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.COORD.ORDER",
-            "feedback": [],
-          },
           {
             "answer": {
               "id": "RC",
@@ -1446,7 +1447,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1456,7 +1457,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "(2, 4) is 2 across and 4 up; (4, 2) is 4 across and 2 up.",
+            "v": "Always. It is the origin: 0 across and 0 up.",
           },
         ],
       },
@@ -1464,35 +1465,19 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Tom says ",
-      },
-      {
-        "t": "math",
-        "v": "(2, 4)",
-      },
-      {
-        "t": "text",
-        "v": " and ",
-      },
-      {
-        "t": "math",
-        "v": "(4, 2)",
-      },
-      {
-        "t": "text",
-        "v": " are the same point, because they use the same numbers.",
+        "v": "The point (0, 0) is at the corner where the axes meet.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1503,14 +1488,14 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
-          "correctReason": "RB",
+          "correct": "A",
+          "correctReason": "RC",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1519,10 +1504,19 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1530,7 +1524,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. You can go up first or across first.",
+                  "v": "Sometimes. It depends on the grid.",
                 },
               ],
               "id": "RA",
@@ -1539,7 +1533,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The first number is how far across and the second how far up, so they are different points.",
+                  "v": "Never. It is at the top.",
                 },
               ],
               "id": "RB",
@@ -1548,7 +1542,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. The order of the numbers does not matter.",
+                  "v": "Always. It is the origin: 0 across and 0 up.",
                 },
               ],
               "id": "RC",
@@ -1560,15 +1554,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
         "misconceptions": [
           {
             "answer": {
-              "id": "RA",
-              "type": "choice",
-            },
-            "code": "ALG.COORD.ORDER",
-            "feedback": [],
-          },
-          {
-            "answer": {
-              "id": "RC",
+              "id": "RB",
               "type": "choice",
             },
             "code": "ALG.COORD.ORDER",
@@ -1578,7 +1564,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1588,7 +1574,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "(5, 4) is 5 across and 4 up; (4, 5) is 4 across and 5 up.",
+            "v": "Always. It is the origin: 0 across and 0 up.",
           },
         ],
       },
@@ -1596,23 +1582,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Tom says ",
-      },
-      {
-        "t": "math",
-        "v": "(5, 4)",
-      },
-      {
-        "t": "text",
-        "v": " and ",
-      },
-      {
-        "t": "math",
-        "v": "(4, 5)",
-      },
-      {
-        "t": "text",
-        "v": " are the same point, because they use the same numbers.",
+        "v": "The point (0, 0) is at the corner where the axes meet.",
       },
     ],
   },
@@ -1624,7 +1594,7 @@ exports[`Y4-POS-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-POS-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,

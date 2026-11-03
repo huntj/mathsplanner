@@ -1,7 +1,7 @@
 # Proposal: Learn Maths, a Duolingo-style practice app for pupils
 
 Status: **agreed on 29 October 2026.** Steps 1 to 6 are built: the course data with Year 7 as
-the pilot section, then Years 8, 9, 6 and 5 (`data/course.txt`, `pnpm data:course`), the shared answer widgets
+the pilot section, then Years 8, 9, 6, 5 and 4 (`data/course.txt`, `pnpm data:course`), the shared answer widgets
 (`@mathsplanner/ui`), and the app with its path, progress, first visit, lessons, practice and
 rewards (`apps/learn`, `pnpm learn`); steps 7 to 10 are to do.
 
@@ -159,6 +159,26 @@ proportion with compound change, inequalities with simultaneous equations):
 | 7   | Compound change and inverse proportion  |      3 |
 | 8   | Graphs and sequences                    |      4 |
 | 9   | Probability                             |      4 |
+
+**Year 4** has 14 units and 65 skills. Rounding comes before written addition and subtraction,
+which use it to estimate and check, and the times tables come before the written methods:
+
+| #   | Unit                            | Skills |
+| --- | ------------------------------- | -----: |
+| 1   | Place value                     |      5 |
+| 2   | Counting and negative numbers   |      4 |
+| 3   | Rounding                        |      4 |
+| 4   | Adding and subtracting          |      4 |
+| 5   | Times tables                    |      6 |
+| 6   | Shapes and symmetry             |      4 |
+| 7   | Multiplying and dividing        |      6 |
+| 8   | Fractions                       |      4 |
+| 9   | Angles and coordinates          |      5 |
+| 10  | Decimals                        |      7 |
+| 11  | Comparing and rounding decimals |      3 |
+| 12  | Measures, perimeter and area    |      6 |
+| 13  | Time                            |      4 |
+| 14  | Bar charts and time graphs      |      3 |
 
 **Year 5** has 16 units and 80 skills. Fractions are split into two units, before and after the
 shapes unit, so a pupil does not meet eleven fraction skills in a row:

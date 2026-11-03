@@ -8,6 +8,7 @@ import * as A from "@mathsplanner/archetypes";
 import { defineGenerator, reject, type QuestionDraft } from "@mathsplanner/core";
 import { wrongs } from "../shared/angles.ts";
 import { numberAnswer } from "../shared/counting.ts";
+import { orClaims } from "../shared/variety.ts";
 
 interface Params {
   /** n = 10t + u, multiplied by k. */
@@ -18,7 +19,7 @@ interface Params {
 
 export default defineGenerator<Params>({
   id: "Y4-MD-05.a",
-  version: "1.0.0",
+  version: "1.1.0",
   depths: [1, 2, 4],
   misconceptions: ["MD.PARTITION.MISSES-PARTS"],
 
@@ -81,29 +82,64 @@ export default defineGenerator<Params>({
           ],
         });
       default:
-        return A.trueOrFalseWhy({
+        return orClaims(
           rng,
-          statement: [
-            "Nadia works out ",
-            A.math(`${n} \\times ${p.k}`),
-            " as ",
-            A.math(`${10 * p.t} \\times ${p.k} + ${p.u} = ${tens + p.u}`),
-            ".",
-          ],
-          truth: false,
-          reasons: [
+          () =>
+            A.trueOrFalseWhy({
+              rng,
+              statement: [
+                "Nadia works out ",
+                A.math(`${n} \\times ${p.k}`),
+                " as ",
+                A.math(`${10 * p.t} \\times ${p.k} + ${p.u} = ${tens + p.u}`),
+                ".",
+              ],
+              truth: false,
+              reasons: [
+                {
+                  text: `False. Both parts must be multiplied: ${tens} + ${ones} = ${answer}.`,
+                  correct: true,
+                },
+                { text: "True. You only multiply the tens.", code: "MD.PARTITION.MISSES-PARTS" },
+                {
+                  text: `True. Adding ${p.u} at the end is the same as multiplying it.`,
+                  code: "MD.PARTITION.MISSES-PARTS",
+                },
+              ],
+              solution: [{ say: "", math: `${n} \\times ${p.k} = ${tens} + ${ones} = ${answer}` }],
+            }),
+          [
             {
-              text: `False. Both parts must be multiplied: ${tens} + ${ones} = ${answer}.`,
-              correct: true,
+              statement:
+                "Kit works out $23 \\times 3$ as $20 \\times 3 + 3 \\times 3 = 60 + 9 = 69$.",
+              truth: true,
+              right: "True. Split 23 into 20 and 3, multiply each part, then add.",
+              wrong: [
+                ["False. It is 20 × 3 + 3 = 63.", "MD.PARTITION.MISSES-PARTS"],
+                ["False. You cannot split numbers to multiply."],
+              ],
             },
-            { text: "True. You only multiply the tens.", code: "MD.PARTITION.MISSES-PARTS" },
             {
-              text: `True. Adding ${p.u} at the end is the same as multiplying it.`,
-              code: "MD.PARTITION.MISSES-PARTS",
+              claim:
+                "To multiply 14 by 5, you can work out $10 \\times 5$ and $4 \\times 5$ and add them.",
+              truth: "always",
+              right: "Always. 14 lots of 5 is 10 lots of 5 and 4 lots of 5: 50 + 20 = 70.",
+              wrong: [
+                ["Never. You must multiply 14 by 5 in one go.", "MD.PARTITION.MISSES-PARTS"],
+                ["Sometimes. Only for even numbers."],
+              ],
+            },
+            {
+              statement: "Max works out $46 \\times 2$ as $40 \\times 2 + 6 = 86$.",
+              truth: false,
+              right: "False. Both parts must be doubled: 40 × 2 + 6 × 2 = 80 + 12 = 92.",
+              wrong: [
+                ["True. Multiply the tens, then add the ones.", "MD.PARTITION.MISSES-PARTS"],
+                ["True. Only the tens need multiplying."],
+              ],
             },
           ],
-          solution: [{ say: "", math: `${n} \\times ${p.k} = ${tens} + ${ones} = ${answer}` }],
-        });
+        );
     }
   },
 

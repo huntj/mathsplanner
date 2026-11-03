@@ -10,7 +10,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-FR-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -75,7 +75,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-FR-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -140,7 +140,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-FR-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -511,7 +511,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-FR-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1006,7 +1006,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-FR-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1477,7 +1477,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-FR-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1590,7 +1590,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
       "numbers": "friendly",
       "seed": 1,
       "statementId": "Y4-FR-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1602,7 +1602,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
       {
         "answer": {
           "correct": "A",
-          "correctReason": "RA",
+          "correctReason": "RB",
           "options": [
             {
               "content": [
@@ -1628,7 +1628,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Multiplying the top and bottom by the same number splits every part into 3, so the amount stays the same.",
+                  "v": "False. The numbers are bigger, so the fraction is bigger.",
                 },
               ],
               "id": "RA",
@@ -1637,7 +1637,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. The numbers are bigger, so the fraction is bigger.",
+                  "v": "True. Multiplying the top and bottom by the same number splits every part into 3, so the amount stays the same.",
                 },
               ],
               "id": "RB",
@@ -1699,14 +1699,14 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "standard",
       "seed": 1,
       "statementId": "Y4-FR-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1724,7 +1724,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1733,10 +1733,19 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1744,7 +1753,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 3/4 and 8/9 are different amounts. Multiply, not add: 3/4 = 15/20.",
+                  "v": "Sometimes. 1/5 is smaller than 1/3, but 4/5 is bigger than 1/3.",
                 },
               ],
               "id": "RA",
@@ -1753,7 +1762,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Doing the same thing to the top and bottom keeps it equal.",
+                  "v": "Always. A bigger bottom means smaller pieces.",
                 },
               ],
               "id": "RB",
@@ -1762,7 +1771,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both fractions are less than 1.",
+                  "v": "Never. Bigger numbers mean bigger fractions.",
                 },
               ],
               "id": "RC",
@@ -1784,7 +1793,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1794,7 +1803,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Equivalent fractions multiply (or divide) the numerator and denominator by the same number.",
+            "v": "Sometimes. 1/5 is smaller than 1/3, but 4/5 is bigger than 1/3.",
           },
         ],
       },
@@ -1802,27 +1811,19 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
     "stem": [
       {
         "t": "text",
-        "v": "Zac says ",
-      },
-      {
-        "t": "math",
-        "v": "\\frac{3}{4} = \\frac{8}{9}",
-      },
-      {
-        "t": "text",
-        "v": ", because he added 5 to the top and bottom.",
+        "v": "A fraction with a bigger denominator is a smaller fraction.",
       },
     ],
   },
   {
-    "archetype": "true-or-false-why",
+    "archetype": "always-sometimes-never",
     "diagrams": [],
     "key": {
       "depth": 4,
       "numbers": "stretch",
       "seed": 1,
       "statementId": "Y4-FR-01",
-      "version": "1.0.0",
+      "version": "1.1.0",
     },
     "meta": {
       "calculator": false,
@@ -1833,14 +1834,14 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
     "parts": [
       {
         "answer": {
-          "correct": "B",
+          "correct": "A",
           "correctReason": "RB",
           "options": [
             {
               "content": [
                 {
                   "t": "text",
-                  "v": "True",
+                  "v": "Always true",
                 },
               ],
               "id": "A",
@@ -1849,10 +1850,19 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False",
+                  "v": "Sometimes true",
                 },
               ],
               "id": "B",
+            },
+            {
+              "content": [
+                {
+                  "t": "text",
+                  "v": "Never true",
+                },
+              ],
+              "id": "C",
             },
           ],
           "reasons": [
@@ -1860,7 +1870,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Both fractions are less than 1.",
+                  "v": "Sometimes. Only for pizzas.",
                 },
               ],
               "id": "RA",
@@ -1869,7 +1879,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "False. 1/6 and 4/9 are different amounts. Multiply, not add: 1/6 = 3/18.",
+                  "v": "Always. Each is half of the whole, cut into different numbers of pieces.",
                 },
               ],
               "id": "RB",
@@ -1878,7 +1888,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
               "content": [
                 {
                   "t": "text",
-                  "v": "True. Doing the same thing to the top and bottom keeps it equal.",
+                  "v": "Never. They have different numbers.",
                 },
               ],
               "id": "RC",
@@ -1900,7 +1910,7 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
         "prompt": [
           {
             "t": "text",
-            "v": "Is this true or false?",
+            "v": "Is this always, sometimes or never true?",
           },
         ],
       },
@@ -1910,23 +1920,35 @@ exports[`Y4-FR-01 > keeps fixed seeds unchanged 1`] = `
         "say": [
           {
             "t": "text",
-            "v": "Equivalent fractions multiply (or divide) the numerator and denominator by the same number.",
+            "v": "Always. Each is half of the whole, cut into different numbers of pieces.",
           },
         ],
       },
     ],
     "stem": [
       {
+        "t": "math",
+        "v": "\\frac{1}{2}",
+      },
+      {
         "t": "text",
-        "v": "Zac says ",
+        "v": ", ",
       },
       {
         "t": "math",
-        "v": "\\frac{1}{6} = \\frac{4}{9}",
+        "v": "\\frac{2}{4}",
       },
       {
         "t": "text",
-        "v": ", because he added 3 to the top and bottom.",
+        "v": " and ",
+      },
+      {
+        "t": "math",
+        "v": "\\frac{4}{8}",
+      },
+      {
+        "t": "text",
+        "v": " are the same amount.",
       },
     ],
   },
