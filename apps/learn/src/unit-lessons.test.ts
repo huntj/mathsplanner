@@ -18,7 +18,7 @@ import {
   type Range,
   type Scene,
 } from "./unit-lessons/index.ts";
-import { scaleToFit, SMALLEST } from "./fit.ts";
+import { fitsAtSmallest, scaleToFit, SMALLEST } from "./fit.ts";
 import { curveY } from "./LineGraph.tsx";
 import { snapToTick } from "./Picture.tsx";
 import {
@@ -474,6 +474,9 @@ describe("unit lesson screens", () => {
     expect(scaleToFit(300, 350)).toBe(1);
     expect(scaleToFit(400, 300)).toBe(0.75);
     expect(scaleToFit(1000, 100)).toBe(SMALLEST);
+    // Too long even then: it may break between its terms instead.
+    expect(fitsAtSmallest(500, 300)).toBe(true);
+    expect(fitsAtSmallest(1000, 300)).toBe(false);
   });
 
   it("fills gaps in any order when the order doesn't matter", () => {

@@ -1981,6 +1981,12 @@ body::before {
   display: inline-block;
 }
 
+/* Only maths too long for any line may break, and only between its terms. */
+.katex.fit-break,
+.ul-nowrap.fit-break {
+  white-space: normal;
+}
+
 .ul-text {
   display: grid;
   gap: 0.6rem;
