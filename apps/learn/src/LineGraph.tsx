@@ -20,6 +20,12 @@ const PAD = 28;
 export type LineTone = "main" | "ghost" | "guess" | "right";
 export type PointTone = "given" | "mine" | "wrong" | "hint";
 
+export interface GraphShape {
+  points: Point[];
+  tone?: "object" | "image" | "ghost";
+  label?: string;
+}
+
 export interface GraphLine {
   rule: Rule;
   tone?: LineTone;
@@ -37,6 +43,8 @@ const clamp = (n: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, n
 export function LineGraph({
   range,
   lines = [],
+  verticals = [],
+  shapes = [],
   points = [],
   star,
   steps = [],
@@ -49,6 +57,10 @@ export function LineGraph({
 }: {
   range: Range;
   lines?: GraphLine[];
+  /** Upright lines, x = a. */
+  verticals?: number[];
+  /** Shapes drawn on the grid. */
+  shapes?: GraphShape[];
   points?: GraphPoint[];
   star?: Point | undefined;
   /** A chain of points to join with steps: across to the next x, then up or down to it. */
@@ -269,6 +281,30 @@ export function LineGraph({
         <g clipPath={`url(#${clipId})`}>
           {lines.map((l, i) => (
             <line key={i} className={`graph-line tone-${l.tone ?? "main"}`} {...lineEnds(l.rule)} />
+          ))}
+          {shapes.map((sh, i) => (
+            <g key={`sh${i}`} className={`graph-shape tone-${sh.tone ?? "object"}`}>
+              <polygon points={sh.points.map((p) => `${sx(p.x)},${sy(p.y)}`).join(" ")} />
+              {sh.label && sh.points[0] && (
+                <text
+                  x={sh.points.reduce((a, p) => a + sx(p.x), 0) / sh.points.length}
+                  y={sh.points.reduce((a, p) => a + sy(p.y), 0) / sh.points.length + 6}
+                  textAnchor="middle"
+                >
+                  {sh.label}
+                </text>
+              )}
+            </g>
+          ))}
+          {verticals.map((x) => (
+            <line
+              key={`v${x}`}
+              className="graph-line tone-mirror"
+              x1={sx(x)}
+              x2={sx(x)}
+              y1={sy(yMin - 1)}
+              y2={sy(yMax + 1)}
+            />
           ))}
           {through && <ThroughLine a={through[0]} b={through[1]} sx={sx} sy={sy} range={range} />}
           {steps.slice(1).map((to, i) => {

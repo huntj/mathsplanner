@@ -34,6 +34,10 @@ export interface Scene {
   star?: Point;
   /** Draw the "1 across, m up" step between neighbouring points of the first line. */
   steps?: boolean;
+  /** Upright lines, x = a, which have no rule y = mx + c. */
+  verticals?: number[];
+  /** Shapes drawn on the grid, such as a triangle to transform and its image. */
+  shapes?: { points: Point[]; tone?: "object" | "image" | "ghost"; label?: string }[];
 }
 
 /** Words, with maths between dollar signs, as elsewhere in the app. */
@@ -80,6 +84,8 @@ export interface Plot {
   table?: boolean;
   /** Join the plotted points with the line when they are all in. */
   rule?: Rule;
+  /** Join the plotted points into a shape, in order, when they are all in. */
+  join?: true;
   /** A hint shown after a wrong tap. */
   hint: Words;
   /** Said once every point is in. */
@@ -224,6 +230,33 @@ export interface CuboidPic {
 export interface SpinnerPic {
   kind: "spinner";
   sectors: { label: string; size: number }[];
+  /** Drawn as a pie chart: no pointer. */
+  pie?: true;
+}
+
+/** A bar chart, or a vertical line chart with `lines`. */
+export interface BarChartPic {
+  kind: "bar-chart";
+  bars: { label: string; value: number }[];
+  /** The top of the scale, and the gap between its marks. */
+  max: number;
+  step: number;
+  lines?: true;
+  /** What the bars count, for the side of the chart. */
+  axis?: string;
+}
+
+/** A free drawing in the picture's units: lines, arcs as from a compass, dots and labels. */
+export interface DrawingPic {
+  kind: "drawing";
+  /** At least this much of the plane is shown, so steps that add to a drawing keep its scale. */
+  frame?: Range;
+  items: (
+    | { line: [Point, Point]; dashed?: true; arrow?: number; tone?: "main" | "soft" | "find" }
+    | { arc: Point; r: number; from: number; to: number }
+    | { dot: Point }
+    | { text: string; at: Point; tone?: "main" | "find" }
+  )[];
 }
 
 export interface TablePic {
@@ -277,7 +310,9 @@ export type Picture =
   | StacksPic
   | RulerPic
   | MathsPic
-  | PlaceValuePic;
+  | PlaceValuePic
+  | BarChartPic
+  | DrawingPic;
 
 /** Type an answer: a number, a fraction or a short expression. */
 export interface Answer {
@@ -365,6 +400,8 @@ export interface Balance {
   a: number;
   b: number;
   c: number;
+  /** Letters on the right too: ax + b = dx + c. */
+  d?: number;
   letter: string;
   done: Words;
 }
@@ -376,7 +413,8 @@ export interface Steps {
   text?: Words;
   picture?: Picture;
   start: Words;
-  stages: { prompt: Words; options: Option[]; then: Words }[];
+  /** Each step's question, and the working it adds; a picture can change with each step. */
+  stages: { prompt: Words; options: Option[]; then: Words; picture?: Picture }[];
   done: Words;
 }
 
@@ -423,9 +461,9 @@ export interface Morph {
   kind: "morph";
   title: Words;
   text: Words;
-  shape: "parallelogram" | "triangle" | "trapezium" | "cuboid";
+  shape: "parallelogram" | "triangle" | "trapezium" | "cuboid" | "circle";
   /** Parallelogram: base, height, slant. Triangle: base, height, apex. Trapezium: top, bottom,
-   *  height, offset. Cuboid: width, depth, height. */
+   *  height, offset. Cuboid: width, depth, height. Circle: radius, and how many slices. */
   dims: number[];
   done: Words;
 }

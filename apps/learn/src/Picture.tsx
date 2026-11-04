@@ -8,8 +8,10 @@ import {
   onLine,
   ruleText,
   type AnglesPic,
+  type BarChartPic,
   type BarsPic,
   type CuboidPic,
+  type DrawingPic,
   type GridPic,
   type NumberLinePic,
   type Picture,
@@ -32,6 +34,8 @@ export function sceneProps(scene: Scene, rise = true) {
     points: (scene.points ?? []).map((at): GraphPoint => ({ at })),
     star: scene.star,
     steps: scene.steps && first ? stepsFor(first, scene) : [],
+    verticals: scene.verticals ?? [],
+    shapes: scene.shapes ?? [],
     rise,
   };
 }
@@ -152,6 +156,10 @@ export function PictureView({ picture }: { picture: Picture }) {
       );
     case "place-value":
       return <PlaceValue pic={picture} />;
+    case "bar-chart":
+      return <BarChart pic={picture} />;
+    case "drawing":
+      return <Drawing pic={picture} />;
   }
 }
 
@@ -618,7 +626,22 @@ function Bars({ pic }: { pic: BarsPic }) {
           {Array.from({ length: r.parts }, (_, j) => (
             <g key={j}>
               <rect
-                className={`pic-part${j < (r.shaded ?? r.parts) ? " shaded" : ""}`}
+                className="pic-part"
+                x={labelW + j * part}
+                y="4"
+                width={part}
+                height={rowH - 12}
+              />
+              {/* Shaded in part when the shading ends partway, as in a pictogram's half symbol. */}
+              <rect
+                className="pic-part shaded"
+                x={labelW + j * part}
+                y="4"
+                width={part * Math.max(0, Math.min(1, (r.shaded ?? r.parts) - j))}
+                height={rowH - 12}
+              />
+              <rect
+                className="pic-part outline"
                 x={labelW + j * part}
                 y="4"
                 width={part}
@@ -820,7 +843,7 @@ export function Spinner({ pic, turn = 0 }: { pic: SpinnerPic; turn?: number }) {
           );
         })}
       </g>
-      <path className="spinner-pointer" d={`M${c - 10} 2 L${c + 10} 2 L${c} 26 Z`} />
+      {!pic.pie && <path className="spinner-pointer" d={`M${c - 10} 2 L${c + 10} 2 L${c} 26 Z`} />}
       <circle className="pic-centre" cx={c} cy={c + 10} r="6" />
     </Svg>
   );
@@ -963,5 +986,156 @@ function PlaceValue({ pic }: { pic: PlaceValuePic }) {
         </tr>
       </tbody>
     </table>
+  );
+}
+
+// Bar charts and vertical line charts.
+
+function BarChart({ pic }: { pic: BarChartPic }) {
+  const left = 40;
+  const top = 12;
+  const plotH = 170;
+  const barGap = 300 / pic.bars.length;
+  const width = left + barGap * pic.bars.length + 10;
+  const height = top + plotH + 34;
+  const y = (v: number) => top + plotH - (v / pic.max) * plotH;
+  const marks = Array.from({ length: Math.floor(pic.max / pic.step) + 1 }, (_, i) => i * pic.step);
+  return (
+    <Svg
+      width={width}
+      height={height}
+      label={`A ${pic.lines ? "vertical line" : "bar"} chart: ${pic.bars.map((b) => `${b.label} ${numberText(b.value)}`).join(", ")}.`}
+    >
+      {marks.map((m) => (
+        <g key={m}>
+          <line className="chart-grid" x1={left} x2={width - 6} y1={y(m)} y2={y(m)} />
+          <text className="pic-label small" x={left - 6} y={y(m) + 4} textAnchor="end">
+            {numberText(m)}
+          </text>
+        </g>
+      ))}
+      {pic.bars.map((b, i) => {
+        const cx = left + barGap * i + barGap / 2;
+        return (
+          <g key={i}>
+            {pic.lines ? (
+              <line className="chart-stick" x1={cx} x2={cx} y1={y(0)} y2={y(b.value)} />
+            ) : (
+              <rect
+                className="chart-bar"
+                x={cx - barGap * 0.32}
+                y={y(b.value)}
+                width={barGap * 0.64}
+                height={y(0) - y(b.value)}
+              />
+            )}
+            <text className="pic-label small" x={cx} y={y(0) + 18} textAnchor="middle">
+              {b.label}
+            </text>
+          </g>
+        );
+      })}
+      <line className="chart-axis" x1={left} x2={width - 6} y1={y(0)} y2={y(0)} />
+      <line className="chart-axis" x1={left} x2={left} y1={top - 4} y2={y(0)} />
+      {pic.axis && (
+        <text className="pic-label small" x={left + 6} y={top + 4}>
+          {pic.axis}
+        </text>
+      )}
+    </Svg>
+  );
+}
+
+// Free drawings: constructions, parallel lines, solids.
+
+function Drawing({ pic }: { pic: DrawingPic }) {
+  const pts: Point[] = [];
+  for (const it of pic.items) {
+    if ("line" in it) pts.push(...it.line);
+    else if ("arc" in it)
+      for (let a = it.from; a <= it.to; a += 10)
+        pts.push({ x: it.arc.x + it.r * Math.cos(rad(a)), y: it.arc.y + it.r * Math.sin(rad(a)) });
+    else if ("dot" in it) pts.push(it.dot);
+    else pts.push(it.at);
+  }
+  // A fixed frame keeps a drawing still while a construction adds to it step by step.
+  if (pic.frame)
+    pts.push({ x: pic.frame.xMin, y: pic.frame.yMin }, { x: pic.frame.xMax, y: pic.frame.yMax });
+  const minX = Math.min(...pts.map((p) => p.x));
+  const maxX = Math.max(...pts.map((p) => p.x));
+  const minY = Math.min(...pts.map((p) => p.y));
+  const maxY = Math.max(...pts.map((p) => p.y));
+  const k = Math.min(260 / (maxX - minX || 1), 200 / (maxY - minY || 1));
+  const pad = 22;
+  const sx = (x: number) => pad + (x - minX) * k;
+  const sy = (y: number) => pad + (maxY - y) * k;
+  return (
+    <Svg
+      width={(maxX - minX) * k + 2 * pad}
+      height={(maxY - minY) * k + 2 * pad}
+      label={`A drawing${pic.items.some((i) => "text" in i) ? `, labelled ${pic.items.flatMap((i) => ("text" in i ? [i.text] : [])).join(", ")}` : ""}.`}
+    >
+      {pic.items.map((it, i) => {
+        if ("line" in it) {
+          const [a, b] = it.line;
+          return (
+            <line
+              key={i}
+              className={`draw-line tone-${it.tone ?? "main"}${it.dashed ? " dashed" : ""}`}
+              x1={sx(a.x)}
+              y1={sy(a.y)}
+              x2={sx(b.x)}
+              y2={sy(b.y)}
+              markerEnd={it.arrow ? "url(#draw-arrow)" : undefined}
+            />
+          );
+        }
+        if ("arc" in it) {
+          const p1 = {
+            x: it.arc.x + it.r * Math.cos(rad(it.from)),
+            y: it.arc.y + it.r * Math.sin(rad(it.from)),
+          };
+          const p2 = {
+            x: it.arc.x + it.r * Math.cos(rad(it.to)),
+            y: it.arc.y + it.r * Math.sin(rad(it.to)),
+          };
+          return (
+            <path
+              key={i}
+              className="draw-arc"
+              d={`M${sx(p1.x)} ${sy(p1.y)} A${it.r * k} ${it.r * k} 0 ${it.to - it.from > 180 ? 1 : 0} 0 ${sx(p2.x)} ${sy(p2.y)}`}
+            />
+          );
+        }
+        if ("dot" in it)
+          return (
+            <circle key={i} className="pic-centre" cx={sx(it.dot.x)} cy={sy(it.dot.y)} r="4" />
+          );
+        return (
+          <text
+            key={i}
+            className={`pic-label${it.tone === "find" ? " find" : ""}`}
+            x={sx(it.at.x)}
+            y={sy(it.at.y) + 6}
+            textAnchor="middle"
+          >
+            {it.text}
+          </text>
+        );
+      })}
+      <defs>
+        <marker
+          id="draw-arrow"
+          viewBox="0 0 10 10"
+          refX="8"
+          refY="5"
+          markerWidth="7"
+          markerHeight="7"
+          orient="auto-start-reverse"
+        >
+          <path d="M0 0 L10 5 L0 10 z" className="draw-arrowhead" />
+        </marker>
+      </defs>
+    </Svg>
   );
 }

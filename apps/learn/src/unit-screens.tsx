@@ -419,7 +419,10 @@ function SortStep({ screen, family, sound, onNext }: Step<Sort>) {
         </div>
         <div
           className="ul-groups"
-          style={{ gridTemplateColumns: `repeat(${Math.min(groups.length, 3)}, 1fr)` }}
+          // Long cards get the width of the screen: groups stack rather than squeeze.
+          style={{
+            gridTemplateColumns: `repeat(${items.some((i) => i.text.length > 16) ? 1 : Math.min(groups.length, 3)}, 1fr)`,
+          }}
         >
           {groups.map((g, gi) => (
             <button
@@ -634,12 +637,27 @@ function ShadeStep({ screen, family, sound, onNext }: Step<Shade>) {
 interface Move {
   text: string;
   /** The equation after a right move; undefined for a wrong one, with why. */
-  after?: { a: number; b: number; c: number };
+  after?: { a: number; b: number; c: number; d?: number };
   why?: string;
 }
 
 /** What can be done next to ax + b = c, the right move first. */
-export function balanceMoves(a: number, b: number, c: number, letter: string): Move[] {
+export function balanceMoves(a: number, b: number, c: number, letter: string, d = 0): Move[] {
+  if (d > 0)
+    return [
+      {
+        text: `Take ${d === 1 ? "" : d}${letter} from both sides`,
+        after: { a: a - d, b, c, d: 0 },
+      },
+      {
+        text: `Take ${d === 1 ? "" : d}${letter} from the right side only`,
+        why: "The scale tips: the right is lighter now. Whatever you do to one side, do to the other.",
+      },
+      {
+        text: `Add ${d === 1 ? "" : d}${letter} to both sides`,
+        why: `It stays level, but there are more ${letter}'s on both sides now, not fewer. Take them away to get the ${letter}'s on one side.`,
+      },
+    ];
   if (b > 0)
     return [
       { text: `Take ${b} from both sides`, after: { a, b: 0, c: c - b } },
@@ -649,7 +667,7 @@ export function balanceMoves(a: number, b: number, c: number, letter: string): M
       },
       {
         text: `Add ${b} to both sides`,
-        why: `It stays level, but now there are more cubes beside the ${letter}s, not fewer. Take them away instead.`,
+        why: `It stays level, but now there are more cubes beside the ${letter}'s, not fewer. Take them away instead.`,
       },
     ];
   if (a > 1)
@@ -657,7 +675,7 @@ export function balanceMoves(a: number, b: number, c: number, letter: string): M
       { text: `Share both sides into ${a} equal groups`, after: { a: 1, b: 0, c: c / a } },
       {
         text: `Take ${a} from both sides`,
-        why: `That takes away cubes, but the ${a} ${letter}s are still together. Share each side into ${a} equal groups, so one group holds one ${letter}.`,
+        why: `That takes away cubes, but the ${a} ${letter}'s are still together. Share each side into ${a} equal groups, so one group holds one ${letter}.`,
       },
       {
         text: "Share the left side only",
@@ -667,25 +685,25 @@ export function balanceMoves(a: number, b: number, c: number, letter: string): M
   return [];
 }
 
-const eqTex = (a: number, b: number, c: number, x: string) =>
-  `$${a === 1 ? "" : a}${x}${b > 0 ? ` + ${b}` : ""} = ${c}$`;
+const eqTex = (a: number, b: number, c: number, x: string, d = 0) =>
+  `$${a === 1 ? "" : a}${x}${b > 0 ? ` + ${b}` : ""} = ${d > 0 ? `${d === 1 ? "" : d}${x} + ` : ""}${c}$`;
 
 function BalanceStep({ screen, family, sound, onNext }: Step<Balance>) {
   const { letter } = screen;
-  const [eq, setEq] = useState({ a: screen.a, b: screen.b, c: screen.c });
-  const [lines, setLines] = useState([eqTex(screen.a, screen.b, screen.c, letter)]);
+  const [eq, setEq] = useState({ a: screen.a, b: screen.b, c: screen.c, d: screen.d ?? 0 });
+  const [lines, setLines] = useState([eqTex(screen.a, screen.b, screen.c, letter, screen.d)]);
   const [why, setWhy] = useState<string>();
   const [tried, setTried] = useState<string[]>([]);
   const [misses, setMisses] = useState(0);
-  const moves = balanceMoves(eq.a, eq.b, eq.c, letter);
+  const moves = balanceMoves(eq.a, eq.b, eq.c, letter, eq.d);
   const done = moves.length === 0;
   const order = useMemo(
     () =>
       shuffled(
         moves.map((_, i) => i),
-        `${eq.a},${eq.b},${eq.c}`,
+        `${eq.a},${eq.b},${eq.c},${eq.d}`,
       ),
-    [eq.a, eq.b, eq.c, moves],
+    [eq.a, eq.b, eq.c, eq.d, moves],
   );
   useChime(done, sound);
   useOops(misses, sound);
@@ -693,17 +711,18 @@ function BalanceStep({ screen, family, sound, onNext }: Step<Balance>) {
 
   const choose = (m: Move) => {
     if (m.after) {
-      setEq(m.after);
-      setLines([...lines, eqTex(m.after.a, m.after.b, m.after.c, letter)]);
+      const next = { d: 0, ...m.after };
+      setEq(next);
+      setLines([...lines, eqTex(next.a, next.b, next.c, letter, next.d)]);
       setWhy(undefined);
       setTried([]);
       setTip(0);
-      if (balanceMoves(m.after.a, m.after.b, m.after.c, letter).length) play("right", sound);
+      if (balanceMoves(next.a, next.b, next.c, letter, next.d).length) play("right", sound);
     } else {
       setWhy(m.why);
       setTried([...tried, m.text]);
       setMisses(misses + 1);
-      setTip(m.text.includes("only") ? 1 : 0);
+      setTip(m.text.includes("left side only") ? 1 : m.text.includes("right side only") ? -1 : 0);
     }
   };
 
@@ -712,7 +731,7 @@ function BalanceStep({ screen, family, sound, onNext }: Step<Balance>) {
       <main className="lesson-main">
         <Title title={screen.title} family={family} />
         <Lead text={screen.text} />
-        <Scale a={eq.a} b={eq.b} c={eq.c} letter={letter} tip={tip} />
+        <Scale a={eq.a} b={eq.b} c={eq.c} d={eq.d} letter={letter} tip={tip} />
         <div className="ul-working" aria-live="polite">
           {lines.map((l, i) => (
             <p key={i} className={i === lines.length - 1 ? "latest" : undefined}>
@@ -780,66 +799,58 @@ export function flow(sizes: number[], left: number, width: number, floor: number
 const BAG = 34;
 const CUBE = 19;
 
-/** The balance: bags of x and unit cubes on the left, cubes on the right. */
+/** The balance: bags of x and unit cubes on each side. */
 function Scale({
   a,
   b,
   c,
+  d,
   letter,
   tip,
 }: {
   a: number;
   b: number;
   c: number;
+  d: number;
   letter: string;
   tip: number;
 }) {
-  const left = flow([...Array<number>(a).fill(BAG), ...Array<number>(b).fill(CUBE)], 12, 138, 96);
-  const right = flow(Array<number>(c).fill(CUBE), 190, 138, 96);
+  const pile = (bags: number, cubes: number) => [
+    ...Array<number>(bags).fill(BAG),
+    ...Array<number>(cubes).fill(CUBE),
+  ];
+  const left = flow(pile(a, b), 12, 138, 96);
+  const right = flow(pile(d, c), 190, 138, 96);
   const top = Math.min(...[...left, ...right].map((p) => p.y), 40);
   const shift = 40 - top;
+  const draw = (p: { x: number; y: number; size: number }, key: string) =>
+    p.size > 20 ? (
+      <g key={key} transform={`translate(${p.x} ${p.y})`}>
+        <rect className="scale-bag" width={BAG} height={BAG} rx="8" />
+        <text className="scale-bag-label" x={BAG / 2} y={BAG / 2 + 7} textAnchor="middle">
+          {letter}
+        </text>
+      </g>
+    ) : (
+      <rect key={key} className="scale-cube" x={p.x} y={p.y} width={CUBE} height={CUBE} rx="3" />
+    );
+  const side = (bags: number, cubes: number) =>
+    [bags ? `${bags} ${letter}${bags > 1 ? "s" : ""}` : "", cubes ? `${cubes} cubes` : ""]
+      .filter(Boolean)
+      .join(" and ");
   return (
     <svg
       className="pic scale"
       viewBox={`0 ${-shift} 340 ${170 + shift}`}
       role="img"
-      aria-label={`A balance: ${a} ${letter}${a > 1 ? "s" : ""}${b ? ` and ${b} cubes` : ""} on the left, ${c} cubes on the right.`}
+      aria-label={`A balance: ${side(a, b)} on the left, ${side(d, c)} on the right.`}
     >
       <g
         className="scale-beam"
         style={{ transform: `rotate(${tip * 8}deg)`, transformOrigin: "170px 104px" }}
       >
-        {left.map((p, i) =>
-          p.size > 20 ? (
-            <g key={`l${i}`} transform={`translate(${p.x} ${p.y})`}>
-              <rect className="scale-bag" width={BAG} height={BAG} rx="8" />
-              <text className="scale-bag-label" x={BAG / 2} y={BAG / 2 + 7} textAnchor="middle">
-                {letter}
-              </text>
-            </g>
-          ) : (
-            <rect
-              key={`l${i}`}
-              className="scale-cube"
-              x={p.x}
-              y={p.y}
-              width={CUBE}
-              height={CUBE}
-              rx="3"
-            />
-          ),
-        )}
-        {right.map((p, i) => (
-          <rect
-            key={`r${i}`}
-            className="scale-cube"
-            x={p.x}
-            y={p.y}
-            width={CUBE}
-            height={CUBE}
-            rx="3"
-          />
-        ))}
+        {left.map((p, i) => draw(p, `l${i}`))}
+        {right.map((p, i) => draw(p, `r${i}`))}
         <line className="scale-arm" x1="10" x2="330" y1="104" y2="104" />
         <path className="scale-pan" d="M6 97 h150 l-8 10 h-134 z" />
         <path className="scale-pan" d="M184 97 h150 l-8 10 h-134 z" />
@@ -859,6 +870,9 @@ function StepsStep({ screen, family, sound, onNext }: Step<Steps>) {
   const [why, setWhy] = useState<string>();
   const [misses, setMisses] = useState(0);
   const current = screen.stages[stage];
+  // The picture of the latest step done that has one, or the screen's own.
+  const pictureAt = screen.stages.slice(0, stage).findLastIndex((st) => st.picture);
+  const picture = screen.stages[pictureAt]?.picture ?? screen.picture;
   const done = !current;
   useChime(done, sound);
   useOops(misses, sound);
@@ -894,7 +908,7 @@ function StepsStep({ screen, family, sound, onNext }: Step<Steps>) {
       <main className="lesson-main">
         <Title title={screen.title} family={family} />
         <Lead text={screen.text} />
-        {screen.picture && <PictureView picture={screen.picture} />}
+        {picture && <PictureView key={pictureAt} picture={picture} />}
         <div className="ul-working" aria-live="polite">
           {lines.map((l, i) => (
             <p key={i} className={i === lines.length - 1 ? "latest" : undefined}>
@@ -1396,6 +1410,8 @@ function MorphStep({ screen, family, sound, onNext }: Step<Morph>) {
                 {value} layer{value === 1 ? "" : "s"} of {w} × {d} = {value * w * d} cubes
               </p>
             </>
+          ) : screen.shape === "circle" ? (
+            <CircleMorph r={screen.dims[0] ?? 1} n={screen.dims[1] ?? 16} t={value / 100} />
           ) : (
             <MorphPicture shape={screen.shape} dims={screen.dims} t={value / 100} />
           )}
@@ -1453,6 +1469,69 @@ function MorphPicture({ shape, dims, t }: { shape: Morph["shape"]; dims: number[
     >
       <polygon className="pic-shape" points={pts(still)} />
       <polygon className={`pic-shape moving${t >= 1 ? " home" : ""}`} points={pts(moving)} />
+    </svg>
+  );
+}
+
+/**
+ * Where each slice of a circle sits at t from 0 (the circle) to 1 (a row of alternating slices,
+ * nearly a rectangle r tall and half the circumference long): its point, and the way it faces.
+ */
+export function circleSlices(r: number, n: number, t: number): { apex: Point; facing: number }[] {
+  const step = 360 / n;
+  const width = (2 * Math.PI * r) / n;
+  const centre = { x: (Math.PI * r) / 2, y: 2.3 * r };
+  return Array.from({ length: n }, (_, k) => {
+    const top = k < n / 2;
+    const j = top ? k : k - n / 2;
+    // The top half's slices point up from the bottom edge; the others hang down from the top.
+    const end = top
+      ? { apex: { x: (j + 1) * width, y: 0 }, facing: 90 }
+      : { apex: { x: j * width + width / 2, y: r }, facing: -90 };
+    const from = (k + 0.5) * step;
+    const turn = ((((end.facing - from) % 360) + 540) % 360) - 180;
+    return {
+      apex: {
+        x: centre.x + (end.apex.x - centre.x) * t,
+        y: centre.y + (end.apex.y - centre.y) * t,
+      },
+      facing: from + turn * t,
+    };
+  });
+}
+
+function CircleMorph({ r, n, t }: { r: number; n: number; t: number }) {
+  const slices = circleSlices(r, n, t);
+  const half = 180 / n;
+  const minX = -0.2 * r;
+  const maxX = Math.PI * r + (Math.PI * r) / n + 0.2 * r;
+  const maxY = 3.4 * r;
+  const minY = -0.1 * r;
+  const k = 300 / (maxX - minX);
+  const sx = (x: number) => (x - minX) * k;
+  const sy = (y: number) => (maxY - y) * k;
+  const at = (p: Point, deg: number) => ({
+    x: p.x + r * Math.cos((deg * Math.PI) / 180),
+    y: p.y + r * Math.sin((deg * Math.PI) / 180),
+  });
+  return (
+    <svg
+      className="pic morph"
+      viewBox={`0 0 ${(maxX - minX) * k} ${(maxY - minY) * k}`}
+      role="img"
+      aria-label={`A circle cut into ${n} slices, ${t >= 1 ? "laid out in a row" : `${Math.round(t * 100)}% of the way to a row`}.`}
+    >
+      {slices.map((s, i) => {
+        const a = at(s.apex, s.facing - half);
+        const b = at(s.apex, s.facing + half);
+        return (
+          <path
+            key={i}
+            className={`pic-shape slice${i < n / 2 ? " moving" : ""}`}
+            d={`M${sx(s.apex.x)} ${sy(s.apex.y)} L${sx(a.x)} ${sy(a.y)} A${r * k} ${r * k} 0 0 0 ${sx(b.x)} ${sy(b.y)} Z`}
+          />
+        );
+      })}
     </svg>
   );
 }
