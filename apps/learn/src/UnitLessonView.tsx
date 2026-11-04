@@ -429,6 +429,11 @@ function PlotStep({ screen, family, sound, onNext }: Step<Plot>) {
           lines={lines}
           points={points}
           steps={steps}
+          verticals={scene.verticals ?? []}
+          shapes={[
+            ...(scene.shapes ?? []),
+            ...(done && screen.join ? [{ points: targets, tone: "image" as const }] : []),
+          ]}
           onTap={tap}
           label={`${describeScene(scene)} Tap a point to plot it, or use the arrow keys and Enter. ${placed.length} of ${targets.length} plotted.`}
         />

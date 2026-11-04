@@ -18,7 +18,18 @@ import { y7Area } from "./y7-area.ts";
 import { y7Rounding } from "./y7-rounding.ts";
 import { y7Averages } from "./y7-averages.ts";
 import { y7Probability } from "./y7-probability.ts";
+import { y8StandardForm } from "./y8-standard-form.ts";
+import { y8Expressions } from "./y8-expressions.ts";
+import { y8Area } from "./y8-area.ts";
+import { y8Percentages } from "./y8-percentages.ts";
+import { y8Equations } from "./y8-equations.ts";
+import { y8Shapes } from "./y8-shapes.ts";
 import { y8Graphs } from "./y8-graphs.ts";
+import { y8Ratio } from "./y8-ratio.ts";
+import { y8Constructions } from "./y8-constructions.ts";
+import { y8Rates } from "./y8-rates.ts";
+import { y8Transformations } from "./y8-transformations.ts";
+import { y8Data } from "./y8-data.ts";
 
 export type * from "./types.ts";
 
@@ -40,10 +51,40 @@ export const UNIT_LESSONS: readonly UnitLesson[] = [
   y7Rounding,
   y7Averages,
   y7Probability,
+  y8StandardForm,
+  y8Expressions,
+  y8Area,
+  y8Percentages,
+  y8Equations,
+  y8Shapes,
   y8Graphs,
+  y8Ratio,
+  y8Constructions,
+  y8Rates,
+  y8Transformations,
+  y8Data,
 ];
 /** Units whose lessons have been reviewed and are open to pupils. */
-export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set(["y8-graphs"]);
+export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
+  "y7-place-value",
+  "y7-notation",
+  "y7-calculating",
+  "y7-lines",
+  "y7-order-of-operations",
+  "y7-simplifying",
+  "y7-factors",
+  "y7-angles",
+  "y7-fdp",
+  "y7-equations",
+  "y7-powers",
+  "y7-ratio",
+  "y7-measures",
+  "y7-area",
+  "y7-rounding",
+  "y7-averages",
+  "y7-probability",
+  "y8-graphs",
+]);
 
 const byUnit = new Map(UNIT_LESSONS.map((l) => [l.unit, l]));
 

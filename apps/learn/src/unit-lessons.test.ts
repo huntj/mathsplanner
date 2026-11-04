@@ -21,6 +21,7 @@ import {
 import { snapToTick } from "./Picture.tsx";
 import {
   balanceMoves,
+  circleSlices,
   factorPairs,
   isPrime,
   matches,
@@ -61,6 +62,7 @@ const words = (lesson: (typeof UNIT_LESSONS)[number]): string[] =>
             st.prompt,
             st.then,
             ...st.options.flatMap((o) => [o.text, o.feedback]),
+            ...pictureWords(st.picture),
           ]),
         );
       if (s.kind === "sort") own.push(...s.groups, ...s.items.flatMap((i) => [i.text, i.why]));
@@ -104,6 +106,13 @@ function checkPicture(p: Picture | undefined) {
       break;
     case "table":
       for (const row of p.rows) if (p.head) expect(row.length).toBe(p.head.length);
+      break;
+    case "bar-chart":
+      for (const b of p.bars) expect(b.value).toBeLessThanOrEqual(p.max);
+      expect(p.max % p.step).toBe(0);
+      break;
+    case "spinner":
+      expect(p.sectors.every((s) => s.size > 0)).toBe(true);
       break;
     case "ruler":
       expect(p.from).toBeLessThan(p.to);
@@ -272,23 +281,36 @@ describe.each(UNIT_LESSONS.map((l) => [l.unit, l] as const))("unit lesson %s", (
           expect(screen.target).toBeLessThanOrEqual(screen.cols * screen.rows);
           break;
         case "balance": {
-          const moves = balanceMoves(screen.a, screen.b, screen.c, screen.letter);
-          expect(moves.length).toBeGreaterThan(0);
-          // It ends on a whole-number answer, with every pile small enough to draw.
-          expect((screen.c - screen.b) % screen.a).toBe(0);
+          const d = screen.d ?? 0;
+          expect(
+            balanceMoves(screen.a, screen.b, screen.c, screen.letter, d).length,
+          ).toBeGreaterThan(0);
+          // More bags on the left, and it ends on a whole-number answer, with every pile small
+          // enough to draw.
+          expect(screen.a).toBeGreaterThan(d);
+          expect((screen.c - screen.b) % (screen.a - d)).toBe(0);
           expect(screen.c - screen.b).toBeGreaterThan(0);
           expect(screen.b).toBeGreaterThanOrEqual(0);
-          expect(screen.c).toBeLessThanOrEqual(24);
-          expect(screen.title).toContain(`= ${screen.c}`);
+          expect(screen.c + d).toBeLessThanOrEqual(24);
+          // Playing every right move ends with the letter alone.
+          let eq = { a: screen.a, b: screen.b, c: screen.c, d };
+          for (let k = 0; k < 3; k++) {
+            const after = balanceMoves(eq.a, eq.b, eq.c, screen.letter, eq.d)[0]?.after;
+            if (after) eq = { d: 0, ...after };
+          }
+          expect(eq).toEqual({ a: 1, b: 0, c: (screen.c - screen.b) / (screen.a - d), d: 0 });
+          expect(screen.done).toContain(`= ${eq.c}`);
           break;
         }
         case "steps":
           checkPicture(screen.picture);
-          for (const st of screen.stages)
+          for (const st of screen.stages) {
             expect(
               st.options.filter((o) => o.correct),
               st.prompt,
             ).toHaveLength(1);
+            checkPicture(st.picture);
+          }
           break;
         case "dial":
           expect(screen.target).toBeGreaterThan(0);
@@ -309,7 +331,10 @@ describe.each(UNIT_LESSONS.map((l) => [l.unit, l] as const))("unit lesson %s", (
           break;
         case "morph":
           expect(screen.dims.every((d) => d > 0)).toBe(true);
-          if (screen.shape !== "cuboid") {
+          if (screen.shape === "circle") {
+            // An even number of slices, so they pair up into a row.
+            expect((screen.dims[1] ?? 0) % 2).toBe(0);
+          } else if (screen.shape !== "cuboid") {
             // At the end, the moving piece and the still one make one shape with no overlap.
             const end = morphPieces(screen.shape, screen.dims, 1);
             expect(end.moving.length).toBeGreaterThan(2);
@@ -348,6 +373,27 @@ describe("unit lesson screens", () => {
     const [second] = balanceMoves(2, 0, 12, "x");
     expect(second?.after).toEqual({ a: 1, b: 0, c: 6 });
     expect(balanceMoves(1, 0, 6, "x")).toEqual([]);
+    // With letters on both sides, the right side's letters go first.
+    const [both] = balanceMoves(5, 3, 15, "x", 2);
+    expect(both?.after).toEqual({ a: 3, b: 3, c: 15, d: 0 });
+  });
+
+  it("lays a circle's slices out in a row half the circumference long", () => {
+    const r = 2;
+    const n = 16;
+    const start = circleSlices(r, n, 0);
+    // At the start every slice points out from the same centre.
+    expect(new Set(start.map((s) => `${s.apex.x},${s.apex.y}`)).size).toBe(1);
+    const end = circleSlices(r, n, 1);
+    const xs = end.map((s) => s.apex.x);
+    expect(Math.max(...xs) - Math.min(...xs)).toBeCloseTo(Math.PI * r - (Math.PI * r) / n, 9);
+    expect(
+      end.every(
+        (s) =>
+          Math.abs(Math.abs(s.facing % 360) - 90) < 1e-9 ||
+          Math.abs(Math.abs(s.facing % 360) - 270) < 1e-9,
+      ),
+    ).toBe(true);
   });
 
   it("splits numbers into factor pairs and writes primes with powers", () => {
