@@ -1965,9 +1965,15 @@ body::before {
 }
 
 /* Unit lessons: Brilliant-style screens to do, not just read. */
-/* Maths in a lesson's words stays on one line. */
-.unit-lesson .katex {
+/* A piece of maths never breaks across lines: it moves down whole, and fit.ts shrinks it if it
+   is too wide even for a line of its own. */
+.katex,
+.ul-nowrap {
   white-space: nowrap;
+}
+
+.ul-nowrap {
+  display: inline-block;
 }
 
 .ul-text {
