@@ -1450,6 +1450,11 @@ body::before {
   padding-block: 0.5rem 2rem;
 }
 
+/* Grid items would otherwise grow to fit wide content and push it off the screen. */
+.lesson-main > * {
+  min-width: 0;
+}
+
 .lesson-intro {
   display: flex;
   align-items: center;
@@ -1965,9 +1970,21 @@ body::before {
 }
 
 /* Unit lessons: Brilliant-style screens to do, not just read. */
-/* Maths in a lesson's words stays on one line. */
-.unit-lesson .katex {
+/* A piece of maths never breaks across lines: it moves down whole, and fit.ts shrinks it if it
+   is too wide even for a line of its own. */
+.katex,
+.ul-nowrap {
   white-space: nowrap;
+}
+
+.ul-nowrap {
+  display: inline-block;
+}
+
+/* Only maths too long for any line may break, and only between its terms. */
+.katex.fit-break,
+.ul-nowrap.fit-break {
+  white-space: normal;
 }
 
 .ul-text {
@@ -3038,6 +3055,14 @@ body::before {
   font-size: var(--step-2);
   line-height: 2.4;
   text-align: center;
+}
+
+/* Gaps sized in em, so they shrink with the maths around them when a line is too wide. */
+.ul-fill .ul-slot {
+  min-width: 2.1em;
+  min-height: 2em;
+  padding: 0 0.3em;
+  font-size: 1em;
 }
 
 .ul-slot.active {

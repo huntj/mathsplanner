@@ -18,12 +18,14 @@ import {
   type Range,
   type Scene,
 } from "./unit-lessons/index.ts";
+import { fitsAtSmallest, scaleToFit, SMALLEST } from "./fit.ts";
 import { curveY } from "./LineGraph.tsx";
 import { snapToTick } from "./Picture.tsx";
 import {
   balanceMoves,
   circleSlices,
   factorPairs,
+  fillGroups,
   fillWrong,
   isPrime,
   matches,
@@ -456,6 +458,25 @@ describe("unit lesson screens", () => {
           const [a, b] = s.ports ?? ["x", "y"];
           expect(wordsHtml(`$${machineRuleTex(s.rule, a, b)}$`)).not.toContain("katex-error");
         }
+  });
+
+  it("keeps maths and its gaps together on one line", () => {
+    const groups = fillGroups("$x^2 + 7x + 12 = (x +$ [] $)(x +$ [] $)$");
+    // One group: the whole equation, gaps and all, so no bracket is split across lines.
+    expect(groups).toHaveLength(1);
+    expect(groups[0]?.filter((t) => t.kind === "slot")).toHaveLength(2);
+    // Words still wrap between themselves, but each sum stays with its gap.
+    const words = fillGroups("Walk: $12 \\times 15° =$ [] and car: $4 \\times 15° =$ []");
+    expect(words.map((g) => g.length)).toEqual([1, 2, 1, 1, 2]);
+  });
+
+  it("shrinks maths only when it is too wide, and never too small to read", () => {
+    expect(scaleToFit(300, 350)).toBe(1);
+    expect(scaleToFit(400, 300)).toBe(0.75);
+    expect(scaleToFit(1000, 100)).toBe(SMALLEST);
+    // Too long even then: it may break between its terms instead.
+    expect(fitsAtSmallest(500, 300)).toBe(true);
+    expect(fitsAtSmallest(1000, 300)).toBe(false);
   });
 
   it("fills gaps in any order when the order doesn't matter", () => {

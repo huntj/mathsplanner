@@ -9,15 +9,19 @@ import { questionStyles } from "@mathsplanner/render";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./App.tsx";
+import { watchMaths } from "./fit.ts";
 
 const style = document.createElement("style");
 style.textContent = questionStyles;
 document.head.prepend(style);
 
 const root = document.getElementById("root");
-if (root)
+if (root) {
   createRoot(root).render(
     <StrictMode>
       <App />
     </StrictMode>,
   );
+  // Keep every piece of maths on one line, shrinking it to fit if it must.
+  watchMaths(root);
+}

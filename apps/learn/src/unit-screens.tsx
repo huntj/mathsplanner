@@ -4,6 +4,7 @@
 // and change a shape with a slider to see why its formula works. Each takes its screen's data
 // and calls onNext once the pupil has done it; a wrong try gets a nudge, never a penalty.
 import {
+  Fragment,
   useEffect,
   useMemo,
   useRef,
@@ -474,6 +475,49 @@ function SortStep({ screen, family, sound, onNext }: Step<Sort>) {
 
 // Filling gaps from chips.
 
+/** A piece of a gap-fill template: a word, some maths, or a gap. */
+export type FillToken =
+  { kind: "word"; text: string; space: boolean } | { kind: "slot"; slot: number; space: boolean };
+
+/**
+ * A template cut into groups that must stay on one line: maths and the gaps next to it stick
+ * together, as in (x + [ ])(x + [ ]), and lines break only between ordinary words.
+ */
+export function fillGroups(template: string): FillToken[][] {
+  const tokens: FillToken[] = [];
+  const pieces = template.split("[]");
+  pieces.forEach((piece, i) => {
+    let space = /^\s/.test(piece);
+    piece.split("$").forEach((part, j) => {
+      if (j % 2 === 1) {
+        tokens.push({ kind: "word", text: `$${part}$`, space });
+        space = false;
+        return;
+      }
+      for (const bit of part.split(/(\s+)/)) {
+        if (!bit) continue;
+        if (/^\s+$/.test(bit)) space = true;
+        else {
+          tokens.push({ kind: "word", text: bit, space });
+          space = false;
+        }
+      }
+    });
+    if (i < pieces.length - 1) tokens.push({ kind: "slot", slot: i, space });
+  });
+  // A new group starts at a space next to an ordinary word; maths and gaps stay glued.
+  const isMaths = (t: FillToken | undefined) =>
+    t !== undefined && (t.kind === "slot" || t.text.startsWith("$"));
+  const groups: FillToken[][] = [];
+  tokens.forEach((t, k) => {
+    const prev = tokens[k - 1];
+    if (groups.length === 0 || (t.space && !(isMaths(t) && isMaths(prev))))
+      groups.push([{ ...t, space: false }]);
+    else groups[groups.length - 1]?.push(t);
+  });
+  return groups;
+}
+
 function FillStep({ screen, family, sound, onNext }: Step<Fill>) {
   const pieces = screen.template.split("[]");
   const slots = pieces.length - 1;
@@ -504,27 +548,39 @@ function FillStep({ screen, family, sound, onNext }: Step<Fill>) {
         <Lead text={screen.text} />
         {screen.picture && <PictureView picture={screen.picture} />}
         <p className="ul-fill">
-          {pieces.map((piece, i) => (
-            <span key={i}>
-              <W text={piece} />
-              {i < slots && (
-                <button
-                  type="button"
-                  className={`ul-slot${filled[i] === undefined ? " empty" : ""}${active === i && !right ? " active" : ""}${wrongAt[i] ? " wrong" : ""}${right ? " right" : ""}`}
-                  onClick={() => {
-                    if (right) return;
-                    setActive(i);
-                    if (filled[i] !== undefined) {
-                      setFilled(filled.map((f, k) => (k === i ? undefined : f)));
-                      setChecked(false);
-                    }
-                  }}
-                  aria-label={`Gap ${i + 1}${filled[i] !== undefined ? `: ${filled[i]}, tap to clear` : ", empty"}`}
-                >
-                  {filled[i] !== undefined ? <W text={filled[i] ?? ""} /> : "?"}
-                </button>
-              )}
-            </span>
+          {fillGroups(screen.template).map((group, g) => (
+            <Fragment key={g}>
+              {g > 0 && " "}
+              <span className="ul-nowrap">
+                {group.map((t, k) =>
+                  t.kind === "slot" ? (
+                    <Fragment key={k}>
+                      {t.space && " "}
+                      <button
+                        type="button"
+                        className={`ul-slot${filled[t.slot] === undefined ? " empty" : ""}${active === t.slot && !right ? " active" : ""}${wrongAt[t.slot] ? " wrong" : ""}${right ? " right" : ""}`}
+                        onClick={() => {
+                          if (right) return;
+                          setActive(t.slot);
+                          if (filled[t.slot] !== undefined) {
+                            setFilled(filled.map((f, j) => (j === t.slot ? undefined : f)));
+                            setChecked(false);
+                          }
+                        }}
+                        aria-label={`Gap ${t.slot + 1}${filled[t.slot] !== undefined ? `: ${filled[t.slot]}, tap to clear` : ", empty"}`}
+                      >
+                        {filled[t.slot] !== undefined ? <W text={filled[t.slot] ?? ""} /> : "?"}
+                      </button>
+                    </Fragment>
+                  ) : (
+                    <Fragment key={k}>
+                      {t.space && " "}
+                      <W text={t.text} />
+                    </Fragment>
+                  ),
+                )}
+              </span>
+            </Fragment>
           ))}
         </p>
         <div className="ul-cards" role="group" aria-label="Chips">
