@@ -579,5 +579,16 @@ polished.
   built from reusable screen kinds (`apps/learn/src/unit-lessons/`), so the next ones are
   mostly writing. Each shows only in teacher mode until it is reviewed, then its unit goes in
   `OPEN_TO_PUPILS`. Once a unit's lesson is done, its skills skip their worked examples.
+- **Smaller lessons, through the unit. Pilot done.** A unit's one lesson can be split into
+  several, each sitting on the path just before the skill it teaches, and each teaching one idea
+  in more depth. Every split lesson follows the same plan: a real problem the pupil can't solve
+  yet; a warm-up of what it builds on; discovering the idea; a worked example shown a step at a
+  time, one done together and some to try (I do, we do, you do); spotting the mistake in someone
+  else's working; solving the opening problem; and an exit check, where a wrong answer comes back
+  once more at the end with new numbers. The pilot splits three units: Year 7 angle facts (six
+  lessons), Year 8 formulae and equations (five), and Year 9 Pythagoras and trigonometry (six:
+  the longest side, a shorter side, sine, cosine, tangent, and working back to an angle). After
+  review, the other units follow a year at a time. A finished lesson skips the worked examples
+  of the skills it teaches.
 - **Question previews** (later): from a skill's sheet, see one question at each level without
   starting a lesson.

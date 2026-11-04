@@ -3438,3 +3438,83 @@ body::before {
   pointer-events: none;
   fill: var(--ink);
 }
+
+/* Worked examples, spot the mistake, and exit checks. */
+.ul-working.worked {
+  gap: 0.6rem;
+}
+
+.worked-problem {
+  font-weight: 700;
+}
+
+.worked-step {
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--line);
+}
+
+.worked-step.latest {
+  animation: ul-drop 260ms ease-out;
+}
+
+.ul-working .worked-line {
+  color: var(--ink);
+  font-size: var(--step-1);
+}
+
+.ul-working .worked-why {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+
+.mistake-line {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.mistake-number {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: var(--locked);
+  color: var(--ink-soft);
+  font-family: var(--display);
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+.ul-option.mistake-line.fine {
+  border-color: var(--right);
+  color: var(--ink);
+  opacity: 0.6;
+}
+
+.ul-option.mistake-line.wrong-line {
+  border-color: var(--wrong);
+  background: var(--wrong-bg);
+  box-shadow: 0 3px 0 var(--wrong);
+  opacity: 1;
+}
+
+.quiz-count {
+  margin: 0;
+  font-family: var(--display);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.quiz-score {
+  margin: 2rem 0 0;
+  text-align: center;
+  font-family: var(--display);
+  font-size: var(--step-3);
+  font-weight: 600;
+  color: var(--biro);
+}

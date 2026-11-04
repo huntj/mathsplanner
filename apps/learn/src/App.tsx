@@ -28,7 +28,13 @@ import {
   yearPlan,
 } from "./practice.ts";
 import { PractiseView, type PracticeStart } from "./PractiseView.tsx";
-import { unitLessonFor, type UnitLesson } from "./unit-lessons/index.ts";
+import {
+  lessonById,
+  lessonId,
+  lessonsFor,
+  lessonTeaches,
+  type UnitLesson,
+} from "./unit-lessons/index.ts";
 import { UnitLessonView, type UnitLessonEnding } from "./UnitLessonView.tsx";
 import {
   dayKey,
@@ -152,7 +158,7 @@ export function App() {
   const startFromPath = (start: Start) => {
     if (!section) return;
     if (start.kind === "lesson") {
-      const lesson = unitLessonFor(start.unit, progress.settings.teacher);
+      const lesson = lessonById(start.id, progress.settings.teacher);
       if (!lesson) return;
       setSelection(undefined);
       setUnitLesson({ lesson });
@@ -167,9 +173,16 @@ export function App() {
       // A level a teacher picked, or the skill's next one.
       const done = start.level ? start.level - 1 : levelOf(progress, start.skill);
       const picked = start.level ? { picked: true as const } : {};
-      // A unit lesson done already taught the idea, so the skill skips its worked example.
-      const unit = unitOf(start.skill)?.id;
-      const taught = unit !== undefined && unit in progress.unitLessons;
+      // A lesson done that teaches this skill already showed the idea, so it skips its worked
+      // example.
+      const unit = unitOf(start.skill);
+      const taught =
+        unit !== undefined &&
+        lessonsFor(unit.id, true).some(
+          (l) =>
+            lessonId(l) in progress.unitLessons &&
+            lessonTeaches(l, unit.skills).includes(start.skill),
+        );
       begin((seed) => {
         const { example, ...plan } = planLesson(start.skill, info, done, reviewFrom, seed);
         return { ...plan, ...(example && !taught ? { example } : {}), ...picked };
@@ -220,7 +233,7 @@ export function App() {
         ending={unitLesson.ending}
         sound={progress.settings.sound}
         onComplete={() => {
-          const next = finishUnitLesson(progress, unitLesson.lesson.unit, today);
+          const next = finishUnitLesson(progress, lessonId(unitLesson.lesson), today);
           setProgress(next);
           setUnitLesson({
             ...unitLesson,

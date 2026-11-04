@@ -511,7 +511,59 @@ export interface Morph {
   done: Words;
 }
 
-export type Screen =
+/** A worked example, shown a line at a time: the "I do" of a lesson. */
+export interface Worked {
+  kind: "worked";
+  title: Words;
+  text?: Words;
+  picture?: Picture;
+  /** The question being worked through. */
+  problem: Words;
+  /** Each line of working, and why it is done. */
+  steps: { line: Words; why: Words }[];
+  done: Words;
+}
+
+/** A worked attempt with one wrong line: tap the line where it goes wrong. */
+export interface Mistake {
+  kind: "mistake";
+  title: Words;
+  text?: Words;
+  picture?: Picture;
+  lines: Words[];
+  /** The line that is wrong, counting from 0. */
+  wrong: number;
+  /** What went wrong, and the right way. */
+  why: Words;
+}
+
+/** One question in an exit check, and one like it with new numbers for a second try. */
+export interface QuizQuestion {
+  prompt: Words;
+  picture?: Picture;
+  /** Typed answers accepted; with options, the first answer must be one of them. */
+  answers: string[];
+  /** Answers to choose from, instead of typing. */
+  options?: Words[];
+  unit?: string;
+  /** Why the answer is what it is, shown after a wrong try. */
+  why: Words;
+}
+
+/** A short check at the end, without hints: a wrong answer comes back once, with new numbers. */
+export interface Quiz {
+  kind: "quiz";
+  title: Words;
+  text?: Words;
+  questions: (QuizQuestion & { retry: QuizQuestion })[];
+}
+
+/** What a screen is for, shown above its title: "Warm-up", "Your turn", "Exit check"… */
+export interface Tagged {
+  tag?: string;
+}
+
+export type Screen = (
   | Explain
   | Machine
   | Plot
@@ -530,11 +582,23 @@ export type Screen =
   | Dial
   | Spin
   | Tree
-  | Morph;
+  | Morph
+  | Worked
+  | Mistake
+  | Quiz
+) &
+  Tagged;
 
 export interface UnitLesson {
-  /** The course unit it opens, as in data/course.json. */
+  /** The course unit it belongs to, as in data/course.json. */
   unit: string;
+  /** Its own id, when a unit has several lessons; the unit's id when it has just one. */
+  id?: string;
+  /** The skill it comes just before on the path; unset, it opens the unit. */
+  before?: string;
+  /** The skills whose worked examples it replaces; by default the skill it comes before, or
+   *  the whole unit's for a lesson that opens it. */
+  teaches?: string[];
   title: Words;
   /** One line for the path and the sheet. */
   summary: Words;

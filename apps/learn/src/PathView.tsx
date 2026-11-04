@@ -2,7 +2,7 @@
 // winding line of nodes, ending in the unit review, and the year review at the very end. Dot waits
 // beside the current skill; a finished skill due for review fades until it is refreshed.
 import type { CourseSection } from "@mathsplanner/core";
-import { useEffect, useRef, type CSSProperties } from "react";
+import { Fragment, useEffect, useRef, type CSSProperties } from "react";
 import { skillText, topicName, type PathNode, type PathUnit, type ReviewState } from "./course.ts";
 import { Dot } from "./Dot.tsx";
 import { familyOf } from "./families.ts";
@@ -18,7 +18,7 @@ import {
 import { yearReviewId } from "./practice.ts";
 import { pathFor } from "./path.ts";
 import type { Progress } from "./progress.ts";
-import { OPEN_TO_PUPILS, unitLessonFor, type UnitLesson } from "./unit-lessons/index.ts";
+import { lessonId, lessonsFor, OPEN_TO_PUPILS, type UnitLesson } from "./unit-lessons/index.ts";
 
 /** How far each node sits from the middle, in rem, repeating down the path. */
 const SWAY = [0, 2.6, 4, 2.6, 0, -2.6, -4, -2.6];
@@ -103,8 +103,41 @@ export function PathView({
       {units.map((u) => {
         const family = familyOf(u.unit.topic);
         const done = u.nodes.filter((n) => n.level >= n.info.pathLevels).length;
-        const lesson = unitLessonFor(u.unit.id, progress.settings.teacher);
-        const lessonDone = u.unit.id in progress.unitLessons;
+        const lessons = lessonsFor(u.unit.id, progress.settings.teacher);
+        const stop = (lesson: UnitLesson, sway: number) => {
+          const done = lessonId(lesson) in progress.unitLessons;
+          return (
+            <li
+              key={`lesson-${lessonId(lesson)}`}
+              className="node-row"
+              style={{ "--sway": `${sway}rem` } as CSSProperties}
+            >
+              <div className="node-wrap">
+                <button
+                  type="button"
+                  className={`lesson-stop${done ? " lesson-stop-done" : ""}`}
+                  onClick={() =>
+                    onSelect({
+                      kind: "lesson",
+                      unit: u,
+                      lesson,
+                      done,
+                      open: OPEN_TO_PUPILS.has(u.unit.id),
+                    })
+                  }
+                >
+                  {done ? <CheckIcon size={30} /> : <IdeaIcon size={32} />}
+                  <span className="visually-hidden">
+                    Lesson: {lesson.title}, {done ? "done" : "not done yet"}
+                  </span>
+                </button>
+                <span className="node-label" aria-hidden="true">
+                  Lesson: {lesson.title}
+                </span>
+              </div>
+            </li>
+          );
+        };
         return (
           <section key={u.unit.id} className={`unit fam-${family}`} aria-labelledby={u.unit.id}>
             <header className="unit-banner">
@@ -120,33 +153,7 @@ export function PathView({
               </p>
             </header>
             <ol className="nodes">
-              {lesson && (
-                <li className="node-row" style={{ "--sway": "0rem" } as CSSProperties}>
-                  <div className="node-wrap">
-                    <button
-                      type="button"
-                      className={`lesson-stop${lessonDone ? " lesson-stop-done" : ""}`}
-                      onClick={() =>
-                        onSelect({
-                          kind: "lesson",
-                          unit: u,
-                          lesson,
-                          done: lessonDone,
-                          open: OPEN_TO_PUPILS.has(u.unit.id),
-                        })
-                      }
-                    >
-                      {lessonDone ? <CheckIcon size={30} /> : <IdeaIcon size={32} />}
-                      <span className="visually-hidden">
-                        Lesson: {lesson.title}, {lessonDone ? "done" : "start here"}
-                      </span>
-                    </button>
-                    <span className="node-label" aria-hidden="true">
-                      Lesson: {lesson.title}
-                    </span>
-                  </div>
-                </li>
-              )}
+              {lessons.filter((l) => !l.before).map((l) => stop(l, 0))}
               {u.nodes.map((node) => {
                 const sway = SWAY[step++ % SWAY.length] ?? 0;
                 const before = previous;
@@ -154,45 +161,53 @@ export function PathView({
                 const style = { "--sway": `${sway}rem` } as CSSProperties;
                 const current = node.state === "current";
                 return (
-                  <li key={node.skill} className="node-row" style={style}>
-                    <div className="node-wrap" ref={current ? currentRef : undefined}>
-                      {current && (
-                        <div className={`dot-beside ${sway > 0 ? "left" : "right"}`}>
-                          <Dot size={58} family={family} />
-                          <span className="bubble">
-                            {node.level > 0 ? "Keep going" : "Start here"}
-                          </span>
-                        </div>
-                      )}
-                      <button
-                        type="button"
-                        className={`node node-${node.state}${node.due ? " node-due" : ""}`}
-                        onClick={() =>
-                          onSelect({ kind: "skill", unit: u, node, ...(before ? { before } : {}) })
-                        }
-                      >
-                        {node.state !== "locked" && (
-                          <Ring done={node.level} total={node.info.levels.length} />
+                  <Fragment key={node.skill}>
+                    {lessons.filter((l) => l.before === node.skill).map((l) => stop(l, sway))}
+                    <li className="node-row" style={style}>
+                      <div className="node-wrap" ref={current ? currentRef : undefined}>
+                        {current && (
+                          <div className={`dot-beside ${sway > 0 ? "left" : "right"}`}>
+                            <Dot size={58} family={family} />
+                            <span className="bubble">
+                              {node.level > 0 ? "Keep going" : "Start here"}
+                            </span>
+                          </div>
                         )}
-                        <span className="node-face">
-                          <NodeFace node={node} family={family} />
-                        </span>
-                        {node.due && (
-                          <span className="due-badge" aria-hidden="true">
-                            <RefreshIcon size={16} />
+                        <button
+                          type="button"
+                          className={`node node-${node.state}${node.due ? " node-due" : ""}`}
+                          onClick={() =>
+                            onSelect({
+                              kind: "skill",
+                              unit: u,
+                              node,
+                              ...(before ? { before } : {}),
+                            })
+                          }
+                        >
+                          {node.state !== "locked" && (
+                            <Ring done={node.level} total={node.info.levels.length} />
+                          )}
+                          <span className="node-face">
+                            <NodeFace node={node} family={family} />
                           </span>
-                        )}
-                        <span className="visually-hidden">
-                          {skillText(node.skill)}, {STATE_WORDS[node.state]}, level {node.level} of{" "}
-                          {node.info.levels.length}
-                          {node.due ? ", due for review" : ""}
+                          {node.due && (
+                            <span className="due-badge" aria-hidden="true">
+                              <RefreshIcon size={16} />
+                            </span>
+                          )}
+                          <span className="visually-hidden">
+                            {skillText(node.skill)}, {STATE_WORDS[node.state]}, level {node.level}{" "}
+                            of {node.info.levels.length}
+                            {node.due ? ", due for review" : ""}
+                          </span>
+                        </button>
+                        <span className="node-label" aria-hidden="true">
+                          {skillText(node.skill)}
                         </span>
-                      </button>
-                      <span className="node-label" aria-hidden="true">
-                        {skillText(node.skill)}
-                      </span>
-                    </div>
-                  </li>
+                      </div>
+                    </li>
+                  </Fragment>
                 );
               })}
               <li className="node-row" style={{ "--sway": "0rem" } as CSSProperties}>

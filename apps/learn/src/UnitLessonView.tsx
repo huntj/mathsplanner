@@ -4,14 +4,25 @@
 // into place. Each screen opens the next once it is done; a wrong try gets a nudge, never a
 // penalty. The lesson ends on a summary, like any other lesson.
 import { useEffect, useMemo, useState } from "react";
-import { course } from "./course.ts";
+import { course, skillText } from "./course.ts";
 import { Dot } from "./Dot.tsx";
 import { familyOf, type Family } from "./families.ts";
 import { StarIcon, StreakIcon } from "./Icons.tsx";
 import { latticeOn, LineGraph, type GraphLine, type GraphPoint } from "./LineGraph.tsx";
 import { play } from "./sounds.ts";
 import { describeScene, PictureView, sceneProps } from "./Picture.tsx";
-import { fmt, say, tex, Title, useChime, Verdict, W, Working, type Step } from "./unit-ui.tsx";
+import {
+  fmt,
+  say,
+  ScreenTag,
+  tex,
+  Title,
+  useChime,
+  Verdict,
+  W,
+  Working,
+  type Step,
+} from "./unit-ui.tsx";
 import { ScreenStepMore } from "./unit-screens.tsx";
 import {
   makesLine,
@@ -103,16 +114,18 @@ export function UnitLessonView({
       </header>
 
       {screen && (
-        <ScreenStep
-          // A fresh screen each time, so nothing carries over from the last one.
-          key={at}
-          screen={screen}
-          first={at === 0}
-          lessonTitle={lesson.title}
-          family={family}
-          sound={sound}
-          onNext={next}
-        />
+        <ScreenTag.Provider value={screen.tag}>
+          <ScreenStep
+            // A fresh screen each time, so nothing carries over from the last one.
+            key={at}
+            screen={screen}
+            first={at === 0}
+            lessonTitle={lesson.title}
+            family={family}
+            sound={sound}
+            onNext={next}
+          />
+        </ScreenTag.Provider>
       )}
 
       {leaving && (
@@ -149,7 +162,14 @@ function ScreenStep({
 }) {
   switch (screen.kind) {
     case "explain":
-      return <ExplainStep screen={screen} eyebrow={first ? lessonTitle : undefined} {...step} />;
+      return (
+        <ExplainStep
+          screen={screen}
+          // The first screen names the lesson, with what the screen is for.
+          eyebrow={first ? [lessonTitle, screen.tag].filter(Boolean).join(" · ") : undefined}
+          {...step}
+        />
+      );
     case "machine":
       return <MachineStep screen={screen} {...step} />;
     case "plot":
@@ -854,7 +874,11 @@ function UnitLessonEnd({
         <p className="lesson-lead">
           <W text={lesson.title} />
         </p>
-        <p className="end-message">You are ready for the unit’s skills.</p>
+        <p className="end-message">
+          {lesson.before
+            ? `You are ready for “${skillText(lesson.before)}”.`
+            : "You are ready for the unit’s skills."}
+        </p>
         <dl className="end-stats">
           <div>
             <dt>XP</dt>
