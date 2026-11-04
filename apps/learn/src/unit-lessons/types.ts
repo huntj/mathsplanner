@@ -38,6 +38,8 @@ export interface Scene {
   verticals?: number[];
   /** Shapes drawn on the grid, such as a triangle to transform and its image. */
   shapes?: { points: Point[]; tone?: "object" | "image" | "ghost"; label?: string }[];
+  /** Curves drawn in full: y = ax² + bx + c, or y = k ÷ x. */
+  curves?: Curve[];
 }
 
 /** Words, with maths between dollar signs, as elsewhere in the app. */
@@ -170,7 +172,9 @@ export interface NumberLinePic {
   /** Hops along the line, drawn as arcs above it. */
   jumps?: { from: number; to: number; label?: string }[];
   /** An interval, with a filled (closed) or empty (open) circle at each end. */
-  interval?: { from: number; to: number; fromClosed: boolean; toClosed: boolean };
+  /** An interval, with a filled (closed) or empty (open) circle at each end. An end left out
+   *  runs off the line with an arrow, as in x > 3. */
+  interval?: { from?: number; to?: number; fromClosed?: boolean; toClosed?: boolean };
 }
 
 /** Rays from a point, at angles in degrees (0 to the right, turning anticlockwise). */
@@ -215,6 +219,12 @@ export interface GridPic {
   cols: number;
   rows: number;
   shaded: number;
+  /** The squares to shade, counting along rows from the top left, instead of the first few. */
+  cells?: number[];
+  /** Labels along the top and down the side, as in a sample space, and a value in each square. */
+  colLabels?: string[];
+  rowLabels?: string[];
+  values?: string[];
 }
 
 /** A cuboid drawn in 3D, as unit cubes when `cubes` is set. */
@@ -253,7 +263,7 @@ export interface DrawingPic {
   frame?: Range;
   items: (
     | { line: [Point, Point]; dashed?: true; arrow?: number; tone?: "main" | "soft" | "find" }
-    | { arc: Point; r: number; from: number; to: number }
+    | { arc: Point; r: number; from: number; to: number; ry?: number; dashed?: true }
     | { dot: Point }
     | { text: string; at: Point; tone?: "main" | "find" }
   )[];
@@ -312,7 +322,9 @@ export type Picture =
   | MathsPic
   | PlaceValuePic
   | BarChartPic
-  | DrawingPic;
+  | DrawingPic
+  | VennPic
+  | DotsPic;
 
 /** Type an answer: a number, a fraction or a short expression. */
 export interface Answer {
@@ -376,11 +388,35 @@ export interface Fill {
   template: Words;
   bank: Words[];
   answers: Words[];
+  /** The gaps can be filled in any order, as in (x + 3)(x + 4). */
+  anyOrder?: true;
   hint: Words;
   done: Words;
 }
 
 /** Tap squares of a grid to shade a given number of them. */
+/** A curve on a coordinate grid. */
+export type Curve =
+  { kind: "quadratic"; a: number; b: number; c: number } | { kind: "inverse"; k: number };
+
+/** Two overlapping sets, with what is in each region. */
+export interface VennPic {
+  kind: "venn";
+  a: string;
+  b: string;
+  onlyA: string[];
+  both: string[];
+  onlyB: string[];
+  neither?: string[];
+}
+
+/** Dot patterns for the first few triangular or square numbers. */
+export interface DotsPic {
+  kind: "dots";
+  shape: "triangle" | "square";
+  terms: number;
+}
+
 export interface Shade {
   kind: "shade";
   title: Words;
@@ -388,6 +424,13 @@ export interface Shade {
   cols: number;
   rows: number;
   target: number;
+  /** The exact squares to shade, counting along rows from the top left; any squares if unset. */
+  cells?: number[];
+  /** Labels along the top and down the side, as in a sample space. */
+  colLabels?: string[];
+  rowLabels?: string[];
+  /** A value in each square, such as the total of two dice. */
+  values?: string[];
   hint: Words;
   done: Words;
 }

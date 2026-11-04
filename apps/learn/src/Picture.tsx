@@ -11,6 +11,7 @@ import {
   type BarChartPic,
   type BarsPic,
   type CuboidPic,
+  type DotsPic,
   type DrawingPic,
   type GridPic,
   type NumberLinePic,
@@ -23,6 +24,7 @@ import {
   type ShapePic,
   type SpinnerPic,
   type StacksPic,
+  type VennPic,
 } from "./unit-lessons/index.ts";
 import { fmt, say, W } from "./unit-ui.tsx";
 
@@ -36,6 +38,7 @@ export function sceneProps(scene: Scene, rise = true) {
     steps: scene.steps && first ? stepsFor(first, scene) : [],
     verticals: scene.verticals ?? [],
     shapes: scene.shapes ?? [],
+    curves: scene.curves ?? [],
     rise,
   };
 }
@@ -160,6 +163,10 @@ export function PictureView({ picture }: { picture: Picture }) {
       return <BarChart pic={picture} />;
     case "drawing":
       return <Drawing pic={picture} />;
+    case "venn":
+      return <Venn pic={picture} />;
+    case "dots":
+      return <Dots pic={picture} />;
   }
 }
 
@@ -282,26 +289,43 @@ export function NumberLine({
         <line className="nl-axis" x1={NL_PAD - 10} x2={NL_W - NL_PAD + 10} y1={y} y2={y} />
         {line.interval && (
           <g className="nl-interval">
+            {/* An end left out runs off the line, with an arrow. */}
             <line
-              x1={nlX(line, line.interval.from)}
-              x2={nlX(line, line.interval.to)}
-              y1={y}
-              y2={y}
+              x1={line.interval.from === undefined ? NL_PAD - 12 : nlX(line, line.interval.from)}
+              x2={line.interval.to === undefined ? NL_W - NL_PAD + 12 : nlX(line, line.interval.to)}
+              y1={y - 14}
+              y2={y - 14}
             />
+            {line.interval.from === undefined && (
+              <path className="nl-arrow" d={`M${NL_PAD - 18} ${y - 14} l9 -6 v12 z`} />
+            )}
+            {line.interval.to === undefined && (
+              <path className="nl-arrow" d={`M${NL_W - NL_PAD + 18} ${y - 14} l-9 -6 v12 z`} />
+            )}
             {(
               [
                 [line.interval.from, line.interval.fromClosed],
                 [line.interval.to, line.interval.toClosed],
               ] as const
-            ).map(([at, closed], i) => (
-              <circle
-                key={i}
-                cx={nlX(line, at)}
-                cy={y}
-                r="6"
-                className={closed ? "closed" : "open"}
-              />
-            ))}
+            ).map(([at, closed], i) =>
+              at === undefined ? null : (
+                <g key={i}>
+                  <line
+                    className="nl-drop"
+                    x1={nlX(line, at)}
+                    x2={nlX(line, at)}
+                    y1={y - 14}
+                    y2={y}
+                  />
+                  <circle
+                    cx={nlX(line, at)}
+                    cy={y - 14}
+                    r="6"
+                    className={closed ? "closed" : "open"}
+                  />
+                </g>
+              ),
+            )}
           </g>
         )}
         {Array.from({ length: ticks + 1 }, (_, i) => {
@@ -677,11 +701,14 @@ export function Grid({
   shadedCells?: ReadonlySet<number>;
   onCell?: (i: number) => void;
 }) {
-  const size = Math.min(52, 300 / pic.cols, 300 / pic.rows);
-  const width = pic.cols * size + 4;
-  const height = pic.rows * size + 4;
-  const isShaded = (i: number) => (shadedCells ? shadedCells.has(i) : i < pic.shaded);
-  const count = shadedCells ? shadedCells.size : pic.shaded;
+  const left = pic.rowLabels ? 30 : 2;
+  const top = pic.colLabels ? 26 : 2;
+  const size = Math.min(52, (300 - left) / pic.cols, 300 / pic.rows);
+  const width = left + pic.cols * size + 2;
+  const height = top + pic.rows * size + 2;
+  const isShaded = (i: number) =>
+    shadedCells ? shadedCells.has(i) : pic.cells ? pic.cells.includes(i) : i < pic.shaded;
+  const count = shadedCells ? shadedCells.size : (pic.cells?.length ?? pic.shaded);
   return (
     <Svg
       width={width}
@@ -689,17 +716,51 @@ export function Grid({
       className={onCell ? "tappable" : undefined}
       label={`A grid of ${pic.cols * pic.rows} squares, ${count} shaded.`}
     >
+      {pic.colLabels?.map((l, i) => (
+        <text
+          key={`c${i}`}
+          className="pic-label small"
+          x={left + (i + 0.5) * size}
+          y={top - 8}
+          textAnchor="middle"
+        >
+          {l}
+        </text>
+      ))}
+      {pic.rowLabels?.map((l, i) => (
+        <text
+          key={`r${i}`}
+          className="pic-label small"
+          x={left - 8}
+          y={top + (i + 0.5) * size + 5}
+          textAnchor="end"
+        >
+          {l}
+        </text>
+      ))}
       {Array.from({ length: pic.cols * pic.rows }, (_, i) => (
         <rect
           key={i}
           className={`pic-cell${isShaded(i) ? " shaded" : ""}`}
-          x={2 + (i % pic.cols) * size}
-          y={2 + Math.floor(i / pic.cols) * size}
+          x={left + (i % pic.cols) * size}
+          y={top + Math.floor(i / pic.cols) * size}
           width={size}
           height={size}
           {...(onCell ? { onPointerDown: () => onCell(i) } : {})}
         />
       ))}
+      {pic.values &&
+        Array.from({ length: pic.cols * pic.rows }, (_, i) => (
+          <text
+            key={`v${i}`}
+            className="pic-label small grid-value"
+            x={left + ((i % pic.cols) + 0.5) * size}
+            y={top + (Math.floor(i / pic.cols) + 0.5) * size + 5}
+            textAnchor="middle"
+          >
+            {pic.values?.[i]}
+          </text>
+        ))}
     </Svg>
   );
 }
@@ -1054,7 +1115,10 @@ function Drawing({ pic }: { pic: DrawingPic }) {
     if ("line" in it) pts.push(...it.line);
     else if ("arc" in it)
       for (let a = it.from; a <= it.to; a += 10)
-        pts.push({ x: it.arc.x + it.r * Math.cos(rad(a)), y: it.arc.y + it.r * Math.sin(rad(a)) });
+        pts.push({
+          x: it.arc.x + it.r * Math.cos(rad(a)),
+          y: it.arc.y + (it.ry ?? it.r) * Math.sin(rad(a)),
+        });
     else if ("dot" in it) pts.push(it.dot);
     else pts.push(it.at);
   }
@@ -1091,19 +1155,21 @@ function Drawing({ pic }: { pic: DrawingPic }) {
           );
         }
         if ("arc" in it) {
+          // An oval when ry is set, as for the ends of a cylinder.
+          const ry = it.ry ?? it.r;
           const p1 = {
             x: it.arc.x + it.r * Math.cos(rad(it.from)),
-            y: it.arc.y + it.r * Math.sin(rad(it.from)),
+            y: it.arc.y + ry * Math.sin(rad(it.from)),
           };
           const p2 = {
             x: it.arc.x + it.r * Math.cos(rad(it.to)),
-            y: it.arc.y + it.r * Math.sin(rad(it.to)),
+            y: it.arc.y + ry * Math.sin(rad(it.to)),
           };
           return (
             <path
               key={i}
-              className="draw-arc"
-              d={`M${sx(p1.x)} ${sy(p1.y)} A${it.r * k} ${it.r * k} 0 ${it.to - it.from > 180 ? 1 : 0} 0 ${sx(p2.x)} ${sy(p2.y)}`}
+              className={`draw-arc${it.ry !== undefined ? " oval" : ""}${it.dashed ? " dashed" : ""}`}
+              d={`M${sx(p1.x)} ${sy(p1.y)} A${it.r * k} ${ry * k} 0 ${it.to - it.from > 180 ? 1 : 0} 0 ${sx(p2.x)} ${sy(p2.y)}`}
             />
           );
         }
@@ -1136,6 +1202,107 @@ function Drawing({ pic }: { pic: DrawingPic }) {
           <path d="M0 0 L10 5 L0 10 z" className="draw-arrowhead" />
         </marker>
       </defs>
+    </Svg>
+  );
+}
+
+// A Venn diagram.
+
+function Venn({ pic }: { pic: VennPic }) {
+  const list = (items: string[], x: number) =>
+    items.map((t, i) => (
+      <text
+        key={`${x}-${i}`}
+        className="pic-label venn-item"
+        x={x}
+        y={118 + (i - (items.length - 1) / 2) * 22}
+        textAnchor="middle"
+      >
+        {t}
+      </text>
+    ));
+  return (
+    <Svg
+      width={340}
+      height={230}
+      label={`A Venn diagram. ${pic.a} only: ${pic.onlyA.join(", ") || "nothing"}. Both: ${pic.both.join(", ") || "nothing"}. ${pic.b} only: ${pic.onlyB.join(", ") || "nothing"}.${pic.neither?.length ? ` Neither: ${pic.neither.join(", ")}.` : ""}`}
+    >
+      <rect className="venn-frame" x="4" y="4" width="332" height="222" rx="10" />
+      <circle className="venn-a" cx="128" cy="118" r="86" />
+      <circle className="venn-b" cx="212" cy="118" r="86" />
+      <text className="pic-label" x="84" y="30" textAnchor="middle">
+        {pic.a}
+      </text>
+      <text className="pic-label" x="256" y="30" textAnchor="middle">
+        {pic.b}
+      </text>
+      {list(pic.onlyA, 88)}
+      {list(pic.both, 170)}
+      {list(pic.onlyB, 252)}
+      {(pic.neither ?? []).map((t, i) => (
+        <text
+          key={`n${i}`}
+          className="pic-label venn-item"
+          x={318 - i * 26}
+          y="214"
+          textAnchor="end"
+        >
+          {t}
+        </text>
+      ))}
+    </Svg>
+  );
+}
+
+// Dot patterns: triangular and square numbers.
+
+function Dots({ pic }: { pic: DotsPic }) {
+  const gap = 13;
+  const terms = Array.from({ length: pic.terms }, (_, i) => i + 1);
+  const widths = terms.map((n) => n * gap);
+  const width = widths.reduce((a, b) => a + b + 22, 0) + 10;
+  const height = pic.terms * gap + 34;
+  let x0 = 12;
+  return (
+    <Svg
+      width={width}
+      height={height}
+      label={`${pic.shape === "triangle" ? "Triangular" : "Square"} numbers as dots: ${terms.map((n) => (pic.shape === "triangle" ? (n * (n + 1)) / 2 : n * n)).join(", ")}.`}
+    >
+      {terms.map((n, t) => {
+        const dots = [];
+        for (let r = 0; r < n; r++) {
+          const inRow = pic.shape === "triangle" ? r + 1 : n;
+          for (let c = 0; c < inRow; c++)
+            dots.push(
+              <circle
+                key={`${r}-${c}`}
+                className="dot-pattern"
+                cx={
+                  x0 + c * gap + (pic.shape === "triangle" ? ((n - inRow) * gap) / 2 : 0) + gap / 2
+                }
+                cy={height - 30 - (n - 1 - r) * gap}
+                r="4.5"
+              />,
+            );
+        }
+        const label = pic.shape === "triangle" ? (n * (n + 1)) / 2 : n * n;
+        const g = (
+          <g key={t}>
+            {dots}
+            <text
+              className="pic-label small"
+              x={x0 + (widths[t] ?? 0) / 2}
+              y={height - 8}
+              textAnchor="middle"
+            >
+              {label}
+            </text>
+          </g>
+        );
+        x0 += (widths[t] ?? 0) + 22;
+        return g;
+      })}
     </Svg>
   );
 }

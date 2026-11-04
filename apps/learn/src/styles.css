@@ -2783,6 +2783,10 @@ body::before {
   border-left: 4px dotted var(--ink-soft);
 }
 
+.pic-table {
+  table-layout: auto;
+}
+
 .pic-table td,
 .pic-table th {
   font-size: var(--step-0);
@@ -3351,4 +3355,61 @@ body::before {
 
 .pic-shape.slice {
   stroke-width: 1.5;
+}
+
+/* Curves, Venn diagrams and dot patterns. */
+.graph-line.curve {
+  fill: none;
+  stroke-linejoin: round;
+}
+
+.venn-frame {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 2;
+}
+
+.venn-a,
+.venn-b {
+  stroke: var(--ink);
+  stroke-width: 2.5;
+}
+
+.venn-a {
+  fill: color-mix(in srgb, var(--number) 18%, transparent);
+}
+
+.venn-b {
+  fill: color-mix(in srgb, var(--fractions) 18%, transparent);
+}
+
+.pic .venn-item {
+  font-size: 15px;
+}
+
+.dot-pattern {
+  fill: var(--c, var(--biro));
+}
+
+.nl-interval .nl-drop {
+  stroke-width: 2;
+  stroke-dasharray: 3 3;
+}
+
+.nl-arrow {
+  fill: var(--biro);
+}
+
+.draw-arc.dashed {
+  stroke-dasharray: 6 5;
+}
+
+.draw-arc.oval {
+  stroke: var(--ink);
+  stroke-width: 2.5;
+}
+
+.pic .grid-value {
+  pointer-events: none;
+  fill: var(--ink);
 }
