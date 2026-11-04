@@ -1165,10 +1165,23 @@ function Drawing({ pic }: { pic: DrawingPic }) {
             x: it.arc.x + it.r * Math.cos(rad(it.to)),
             y: it.arc.y + ry * Math.sin(rad(it.to)),
           };
+          const className = `draw-arc${it.ry !== undefined ? " oval" : ""}${it.dashed ? " dashed" : ""}`;
+          // A whole turn is a circle: an arc that ends where it starts draws nothing.
+          if (it.to - it.from >= 360)
+            return (
+              <ellipse
+                key={i}
+                className={className}
+                cx={sx(it.arc.x)}
+                cy={sy(it.arc.y)}
+                rx={it.r * k}
+                ry={ry * k}
+              />
+            );
           return (
             <path
               key={i}
-              className={`draw-arc${it.ry !== undefined ? " oval" : ""}${it.dashed ? " dashed" : ""}`}
+              className={className}
               d={`M${sx(p1.x)} ${sy(p1.y)} A${it.r * k} ${ry * k} 0 ${it.to - it.from > 180 ? 1 : 0} 0 ${sx(p2.x)} ${sy(p2.y)}`}
             />
           );

@@ -50,7 +50,7 @@ export const UNIT_LESSONS: readonly UnitLesson[] = [
   y7OrderOfOperations,
   y7Simplifying,
   y7Factors,
-  y7Angles,
+  ...y7Angles,
   y7Fdp,
   y7Equations,
   y7Powers,
@@ -64,7 +64,7 @@ export const UNIT_LESSONS: readonly UnitLesson[] = [
   y8Expressions,
   y8Area,
   y8Percentages,
-  y8Equations,
+  ...y8Equations,
   y8Shapes,
   y8Graphs,
   y8Ratio,
@@ -76,7 +76,7 @@ export const UNIT_LESSONS: readonly UnitLesson[] = [
   y9Similarity,
   y9Factorising,
   y9StraightLine,
-  y9Trigonometry,
+  ...y9Trigonometry,
   y9Simultaneous,
   y9Percentages,
   y9Graphs,
@@ -115,11 +115,28 @@ export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
   "y8-data",
 ]);
 
-const byUnit = new Map(UNIT_LESSONS.map((l) => [l.unit, l]));
+/** A lesson's id: its own, or its unit's when the unit has just one lesson. */
+export const lessonId = (lesson: UnitLesson) => lesson.id ?? lesson.unit;
 
-/** The lesson that opens a unit, if it has one and this pupil may see it. */
-export const unitLessonFor = (unit: string, teacher: boolean): UnitLesson | undefined =>
-  teacher || OPEN_TO_PUPILS.has(unit) ? byUnit.get(unit) : undefined;
+const byId = new Map(UNIT_LESSONS.map((l) => [lessonId(l), l]));
+
+const mayShow = (unit: string, teacher: boolean) => teacher || OPEN_TO_PUPILS.has(unit);
+
+/** A unit's lessons that this pupil may see, in path order. */
+export const lessonsFor = (unit: string, teacher: boolean): UnitLesson[] =>
+  mayShow(unit, teacher) ? UNIT_LESSONS.filter((l) => l.unit === unit) : [];
+
+/** A lesson by its id, if this pupil may see it. */
+export function lessonById(id: string, teacher: boolean): UnitLesson | undefined {
+  const lesson = byId.get(id);
+  return lesson && mayShow(lesson.unit, teacher) ? lesson : undefined;
+}
+
+/** The skills a lesson teaches, whose worked examples it replaces once it is done. */
+export const lessonTeaches = (
+  lesson: UnitLesson,
+  unitSkills: readonly string[],
+): readonly string[] => lesson.teaches ?? (lesson.before ? [lesson.before] : unitSkills);
 
 /** y for a given x on a line. */
 export const yOn = (rule: Rule, x: number) => rule.m * x + rule.c;

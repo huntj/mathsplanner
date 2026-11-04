@@ -20,16 +20,20 @@ import type {
   Balance,
   Dial,
   Fill,
+  Mistake,
   Morph,
   Order,
   Place,
   Point,
+  Quiz,
+  QuizQuestion,
   Screen,
   Shade,
   Sort,
   Spin,
   Steps,
   Tree,
+  Worked,
 } from "./unit-lessons/index.ts";
 import { Title, useChime, Verdict, W, Working, type Step } from "./unit-ui.tsx";
 
@@ -68,6 +72,12 @@ export function ScreenStepMore({
       return <TreeStep screen={s} {...step} />;
     case "morph":
       return <MorphStep screen={s} {...step} />;
+    case "worked":
+      return <WorkedStep screen={s} {...step} />;
+    case "mistake":
+      return <MistakeStep screen={s} {...step} />;
+    case "quiz":
+      return <QuizStep screen={s} {...step} />;
   }
 }
 
@@ -1627,5 +1637,260 @@ function CircleMorph({ r, n, t }: { r: number; n: number; t: number }) {
         );
       })}
     </svg>
+  );
+}
+
+// A worked example, a line at a time.
+
+function WorkedStep({ screen, family, onNext }: Step<Worked>) {
+  const [shown, setShown] = useState(0);
+  const done = shown === screen.steps.length;
+  return (
+    <>
+      <main className="lesson-main">
+        <Title title={screen.title} family={family} />
+        <Lead text={screen.text} />
+        {screen.picture && <PictureView picture={screen.picture} />}
+        <div className="ul-working worked" aria-live="polite">
+          <p className="worked-problem">
+            <W text={screen.problem} />
+          </p>
+          {screen.steps.slice(0, shown).map((s, i) => (
+            <div key={i} className={`worked-step${i === shown - 1 ? " latest" : ""}`}>
+              <p className="worked-line">
+                <W text={s.line} />
+              </p>
+              <p className="worked-why">
+                <W text={s.why} />
+              </p>
+            </div>
+          ))}
+        </div>
+      </main>
+      <footer className="lesson-foot">
+        <div className="lesson-foot-inner">
+          {done ? (
+            <>
+              <p className="ul-nudge">
+                <W text={screen.done} />
+              </p>
+              <button
+                type="button"
+                className="button primary big ul-wide"
+                onClick={onNext}
+                autoFocus
+              >
+                Continue
+              </button>
+            </>
+          ) : (
+            <button
+              type="button"
+              className="button primary big ul-wide"
+              onClick={() => setShown(shown + 1)}
+            >
+              {shown === 0 ? "Show the first step" : "Next step"}
+            </button>
+          )}
+        </div>
+      </footer>
+    </>
+  );
+}
+
+// Spot the mistake.
+
+function MistakeStep({ screen, family, sound, onNext }: Step<Mistake>) {
+  const [tried, setTried] = useState<number[]>([]);
+  const [found, setFound] = useState(false);
+  useChime(found, sound);
+  useOops(tried.length, sound);
+  return (
+    <>
+      <main className="lesson-main">
+        <Title title={screen.title} family={family} />
+        <Lead text={screen.text} />
+        {screen.picture && <PictureView picture={screen.picture} />}
+        <div className="ul-options mistake" role="group" aria-label="Tap the line that is wrong">
+          {screen.lines.map((line, i) => (
+            <button
+              key={i}
+              type="button"
+              data-i={i}
+              className={`ul-option mistake-line${tried.includes(i) ? " fine" : ""}${found && i === screen.wrong ? " wrong-line" : ""}`}
+              disabled={found || tried.includes(i)}
+              onClick={() => (i === screen.wrong ? setFound(true) : setTried([...tried, i]))}
+            >
+              <span className="mistake-number">{i + 1}</span>
+              <W text={line} />
+            </button>
+          ))}
+        </div>
+      </main>
+      {found ? (
+        <Verdict
+          right
+          text={screen.why}
+          family={family}
+          seed={screen.wrong}
+          action="Continue"
+          onAction={onNext}
+        />
+      ) : (
+        <Working
+          note={
+            tried.length
+              ? "That line is right. Check the next ones carefully."
+              : "One line has a mistake. Tap it."
+          }
+        />
+      )}
+    </>
+  );
+}
+
+// An exit check: no hints, and a wrong answer comes back once with new numbers.
+
+/** A unit after a number: 70°, but 12 cm. */
+const withUnit = (unit?: string) => (!unit ? "" : unit === "°" ? unit : ` ${unit}`);
+
+interface Turn {
+  q: QuizQuestion;
+  second: boolean;
+}
+
+function QuizStep({ screen, family, sound, onNext }: Step<Quiz>) {
+  const [queue, setQueue] = useState<Turn[]>(() =>
+    screen.questions.map((q) => ({ q, second: false })),
+  );
+  const [value, setValue] = useState("");
+  const [verdict, setVerdict] = useState<"right" | "wrong">();
+  const [firstTime, setFirstTime] = useState(0);
+  const [asked, setAsked] = useState(0);
+  const turn = queue[0];
+  const finished = !turn;
+  useChime(verdict === "right" || finished, sound);
+  useOops(verdict === "wrong" ? asked : 0, sound);
+
+  const mark = (typed: string) => {
+    if (!turn || verdict) return;
+    const right = turn.q.answers.some((a) => matches(typed, a));
+    setAsked(asked + 1);
+    setVerdict(right ? "right" : "wrong");
+    if (right && !turn.second) setFirstTime(firstTime + 1);
+  };
+  const next = () => {
+    if (!turn) return;
+    const rest = queue.slice(1);
+    const original = screen.questions.find((q) => q === turn.q);
+    // A wrong first try comes back at the end, with new numbers.
+    if (verdict === "wrong" && !turn.second && original)
+      rest.push({ q: original.retry, second: true });
+    setQueue(rest);
+    setValue("");
+    setVerdict(undefined);
+  };
+
+  if (finished)
+    return (
+      <>
+        <main className="lesson-main">
+          <Title title={screen.title} family={family} />
+          <p className="quiz-score">
+            {firstTime} of {screen.questions.length} right first time
+          </p>
+        </main>
+        <Verdict
+          right
+          text={
+            firstTime === screen.questions.length
+              ? "Every one right first time: you have got it."
+              : "You put the others right on your second go. Practice will keep it fresh."
+          }
+          family={family}
+          seed={firstTime}
+          action="Continue"
+          onAction={onNext}
+        />
+      </>
+    );
+
+  const numeric = turn.q.answers.every((a) => NUMBER.test(tidy(a)) && !a.trim().startsWith("-"));
+  const position = screen.questions.length - queue.length + 1;
+  return (
+    <form
+      className="lesson-form"
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (value.trim()) mark(value);
+      }}
+    >
+      <main className="lesson-main">
+        <Title title={screen.title} family={family} />
+        <p className="quiz-count">
+          {turn.second
+            ? "Second go, new numbers"
+            : `Question ${Math.min(position, screen.questions.length)} of ${screen.questions.length}`}
+        </p>
+        <p className="lesson-lead">
+          <W text={turn.q.prompt} />
+        </p>
+        {turn.q.picture && <PictureView picture={turn.q.picture} />}
+        {turn.q.options ? (
+          <div className="ul-options" role="group" aria-label="Your answer">
+            {turn.q.options.map((o, i) => (
+              <button
+                key={`${asked}-${i}`}
+                type="button"
+                data-i={i}
+                className={`ul-option${verdict && turn.q.answers.includes(o) ? " right" : ""}`}
+                disabled={verdict !== undefined}
+                onClick={() => mark(o)}
+              >
+                <W text={o} />
+              </button>
+            ))}
+          </div>
+        ) : (
+          <label className="ul-answer">
+            <span className="visually-hidden">Your answer</span>
+            <input
+              key={asked}
+              className="ul-input"
+              value={value}
+              inputMode={numeric ? "decimal" : "text"}
+              autoComplete="off"
+              autoCapitalize="off"
+              spellCheck={false}
+              readOnly={verdict !== undefined}
+              onChange={(e) => setValue(e.target.value)}
+            />
+            {turn.q.unit && <span className="ul-unit">{turn.q.unit}</span>}
+          </label>
+        )}
+      </main>
+      {verdict ? (
+        <Verdict
+          right={verdict === "right"}
+          text={
+            verdict === "right"
+              ? turn.q.why
+              : `The answer is ${turn.q.answers[0]}${withUnit(turn.q.unit)}. ${turn.q.why}${turn.second ? "" : " You will get one like it again at the end."}`
+          }
+          family={family}
+          seed={asked}
+          action="Next"
+          onAction={next}
+        />
+      ) : turn.q.options ? (
+        <Working note="No hints this time: show what you know." />
+      ) : (
+        <Working>
+          <button type="submit" className="button primary big" disabled={!value.trim()}>
+            Check
+          </button>
+        </Working>
+      )}
+    </form>
   );
 }

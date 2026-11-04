@@ -68,7 +68,7 @@ export interface Progress {
   speedBest: number;
   /** The forms of question each skill showed lately (see formOf in skills.ts), newest first. */
   recent: Record<string, string[]>;
-  /** Unit lessons done (see unit-lessons/), by unit id, and the day each was last done. */
+  /** Unit lessons done (see unit-lessons/), by lesson id, and the day each was last done. */
   unitLessons: Record<string, string>;
   /** Set on the example progress, so the app can say it is an example. */
   example?: true;
@@ -240,12 +240,12 @@ export function rememberForms(progress: Progress, shown: Record<string, string[]
   return { ...progress, recent };
 }
 
-/** Records a unit lesson done: its XP, a lesson towards the day's goal, and the day. */
-export function finishUnitLesson(progress: Progress, unit: string, today: string): Progress {
+/** Records a unit lesson done, by its id: its XP, a lesson towards the day's goal, and the day. */
+export function finishUnitLesson(progress: Progress, lesson: string, today: string): Progress {
   return {
     ...progress,
     xp: progress.xp + LESSON_XP,
     days: { ...progress.days, [today]: lessonsOn(progress, today) + 1 },
-    unitLessons: { ...progress.unitLessons, [unit]: today },
+    unitLessons: { ...progress.unitLessons, [lesson]: today },
   };
 }

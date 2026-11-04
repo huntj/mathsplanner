@@ -15,6 +15,7 @@ import {
   TeacherIcon,
 } from "./Icons.tsx";
 import type { Selection } from "./PathView.tsx";
+import { lessonId } from "./unit-lessons/index.ts";
 
 /** What a sheet can start. */
 export type Start =
@@ -25,7 +26,7 @@ export type Start =
     }
   | { kind: "refresh"; skill: string }
   | { kind: "unit"; unit: PathUnit["unit"] }
-  | { kind: "lesson"; unit: string }
+  | { kind: "lesson"; id: string }
   | { kind: "year" };
 
 const NUMBERS_WORDS = {
@@ -144,11 +145,11 @@ function SheetBody({
           {lesson.title}
         </h2>
         <p>
-          {lesson.summary} A hands-on lesson of {lesson.screens.length} short steps, before the
-          unit’s skills.{" "}
+          {lesson.summary} A hands-on lesson of {lesson.screens.length} short steps, before{" "}
+          {lesson.before ? `“${skillText(lesson.before)}”` : "the unit’s skills"}.{" "}
           {done
             ? "You have done it. Do it again any time."
-            : "Its skills skip their worked examples once it is done."}
+            : "Once it is done, the skills it teaches skip their worked examples."}
         </p>
         {teacher && !selection.open && (
           <p className="teacher-note">
@@ -160,7 +161,7 @@ function SheetBody({
           <button
             type="button"
             className="button primary big"
-            onClick={() => onStart({ kind: "lesson", unit: unit.unit.id })}
+            onClick={() => onStart({ kind: "lesson", id: lessonId(lesson) })}
           >
             {done ? "Do it again" : "Start the lesson"}
           </button>

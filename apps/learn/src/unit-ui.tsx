@@ -1,7 +1,7 @@
 // The parts every unit lesson screen shares: words with maths, a heading with Dot, the panel at
 // the foot, and a chime when a screen is done.
 import { renderRich } from "@mathsplanner/render";
-import { useEffect, type ReactNode } from "react";
+import { createContext, useContext, useEffect, type ReactNode } from "react";
 import { Dot } from "./Dot.tsx";
 import type { Family } from "./families.ts";
 import { play } from "./sounds.ts";
@@ -48,6 +48,9 @@ export interface Step<S> {
 }
 
 /** A screen's heading, with Dot. */
+/** What the screen being shown is for ("Warm-up", "Your turn"…), shown over its title. */
+export const ScreenTag = createContext<string | undefined>(undefined);
+
 export function Title({
   title,
   family,
@@ -57,6 +60,8 @@ export function Title({
   family: Family;
   eyebrow?: string | undefined;
 }) {
+  const tag = useContext(ScreenTag);
+  eyebrow ??= tag;
   return (
     <div className="lesson-intro">
       <Dot size={52} family={family} />

@@ -10,7 +10,8 @@ import {
   onLine,
   ruleText,
   ruleThrough,
-  unitLessonFor,
+  lessonId,
+  lessonsFor,
   UNIT_LESSONS,
   yOn,
   type Picture,
@@ -74,6 +75,14 @@ const words = (lesson: (typeof UNIT_LESSONS)[number]): string[] =>
       if (s.kind === "order") own.push(...s.items);
       if (s.kind === "answer") own.push(...(s.wrong ?? []).map((w) => w.feedback));
       if (s.kind === "place") own.push(...s.targets.map((t) => t.label));
+      if (s.kind === "worked") own.push(s.problem, ...s.steps.flatMap((st) => [st.line, st.why]));
+      if (s.kind === "mistake") own.push(...s.lines, s.why);
+      if (s.kind === "quiz")
+        own.push(
+          ...s.questions
+            .flatMap((q) => [q, q.retry])
+            .flatMap((q) => [q.prompt, q.why, ...(q.options ?? [])]),
+        );
       return own;
     }),
   );
@@ -169,11 +178,40 @@ function checkScene(scene: Scene) {
   if (scene.steps && first) expect(latticeOn(first, range).length).toBeGreaterThan(1);
 }
 
-describe.each(UNIT_LESSONS.map((l) => [l.unit, l] as const))("unit lesson %s", (_, lesson) => {
-  it("opens a unit on the course", () => {
-    const units = course.sections.flatMap((s) => s.units.map((u) => u.id));
-    expect(units).toContain(lesson.unit);
+describe("the lessons", () => {
+  it("each have their own id", () => {
+    const ids = UNIT_LESSONS.map(lessonId);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it("come in path order within a unit, each before a skill of its unit", () => {
+    const units = new Map(course.sections.flatMap((s) => s.units).map((u) => [u.id, u]));
+    for (const unit of new Set(UNIT_LESSONS.map((l) => l.unit))) {
+      const skills = units.get(unit)?.skills ?? [];
+      const at = UNIT_LESSONS.filter((l) => l.unit === unit).map((l) =>
+        l.before ? skills.indexOf(l.before) : -1,
+      );
+      expect(
+        at.every((i, k) => k === 0 || i >= (at[k - 1] ?? -1)),
+        unit,
+      ).toBe(true);
+    }
+  });
+});
+
+describe.each(UNIT_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %s", (_, lesson) => {
+  it("belongs to a unit on the course, and teaches its skills", () => {
+    const unit = course.sections.flatMap((s) => s.units).find((u) => u.id === lesson.unit);
+    expect(unit).toBeDefined();
     expect(lesson.screens.length).toBeGreaterThan(3);
+    if (lesson.before) expect(unit?.skills).toContain(lesson.before);
+    for (const skill of lesson.teaches ?? []) expect(unit?.skills).toContain(skill);
+    // A lesson split from a unit starts with a real problem, and ends with an exit check.
+    if (lesson.id) {
+      expect(lesson.screens[0]?.tag, "a hook first").toBe("The problem");
+      expect(lesson.screens.at(-1)?.kind, "an exit check last").toBe("quiz");
+      expect(lesson.screens.some((sc) => sc.tag === "Back to the problem")).toBe(true);
+    }
   });
 
   it("has words that render: balanced $maths$ and **bold**", () => {
@@ -359,6 +397,26 @@ describe.each(UNIT_LESSONS.map((l) => [l.unit, l] as const))("unit lesson %s", (
           expect(isPrime(screen.root)).toBe(false);
           expect(screen.done).toContain(primes(screen.root).join(" \\times "));
           break;
+        case "worked":
+          checkPicture(screen.picture);
+          expect(screen.steps.length).toBeGreaterThan(1);
+          break;
+        case "mistake":
+          checkPicture(screen.picture);
+          expect(screen.lines[screen.wrong]).toBeDefined();
+          expect(screen.lines.length).toBeGreaterThan(2);
+          break;
+        case "quiz":
+          expect(screen.questions.length).toBeGreaterThanOrEqual(2);
+          for (const q of screen.questions)
+            for (const one of [q, q.retry]) {
+              checkPicture(one.picture);
+              expect(one.answers.length).toBeGreaterThan(0);
+              if (one.options) expect(one.options, one.prompt).toContain(one.answers[0]);
+            }
+          // A second go has new numbers: a different question.
+          for (const q of screen.questions) expect(q.retry.prompt).not.toBe(q.prompt);
+          break;
         case "morph":
           expect(screen.dims.every((d) => d > 0)).toBe(true);
           if (screen.shape === "circle") {
@@ -526,10 +584,10 @@ describe("unit lesson helpers", () => {
 
   it("shows a unit lesson only to teachers until it is opened to pupils", () => {
     const unit = UNIT_LESSONS[0]?.unit ?? "";
-    expect(unitLessonFor(unit, true)).toBeDefined();
-    expect(unitLessonFor(unit, false) !== undefined).toBe(OPEN_TO_PUPILS.has(unit));
-    for (const open of OPEN_TO_PUPILS) expect(unitLessonFor(open, false)).toBeDefined();
-    expect(unitLessonFor("no-such-unit", true)).toBeUndefined();
+    expect(lessonsFor(unit, true).length).toBeGreaterThan(0);
+    expect(lessonsFor(unit, false).length > 0).toBe(OPEN_TO_PUPILS.has(unit));
+    for (const open of OPEN_TO_PUPILS) expect(lessonsFor(open, false).length).toBeGreaterThan(0);
+    expect(lessonsFor("no-such-unit", true)).toEqual([]);
   });
 
   it("renders maths and bold in words, and escapes the rest", () => {
