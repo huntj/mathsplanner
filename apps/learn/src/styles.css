@@ -1450,6 +1450,11 @@ body::before {
   padding-block: 0.5rem 2rem;
 }
 
+/* Grid items would otherwise grow to fit wide content and push it off the screen. */
+.lesson-main > * {
+  min-width: 0;
+}
+
 .lesson-intro {
   display: flex;
   align-items: center;
@@ -3044,6 +3049,14 @@ body::before {
   font-size: var(--step-2);
   line-height: 2.4;
   text-align: center;
+}
+
+/* Gaps sized in em, so they shrink with the maths around them when a line is too wide. */
+.ul-fill .ul-slot {
+  min-width: 2.1em;
+  min-height: 2em;
+  padding: 0 0.3em;
+  font-size: 1em;
 }
 
 .ul-slot.active {

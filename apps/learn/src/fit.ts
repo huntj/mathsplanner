@@ -39,8 +39,11 @@ export function fitMaths(root: HTMLElement): void {
   for (const el of all) {
     const box = boxOf(el);
     if (!box) continue;
-    const width = el.getBoundingClientRect().width;
-    const scale = scaleToFit(width, room(box));
+    const rect = el.getBoundingClientRect();
+    // Never wider than the screen, whatever its box: a box can grow to fit what is in it.
+    const boxLeft = Math.max(0, box.getBoundingClientRect().left);
+    const screen = document.documentElement.clientWidth - boxLeft - 16;
+    const scale = scaleToFit(rect.width, Math.min(room(box), screen));
     if (scale < 1) el.style.fontSize = `${scale}em`;
   }
 }
