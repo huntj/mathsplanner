@@ -480,7 +480,9 @@ function FillStep({ screen, family, sound, onNext }: Step<Fill>) {
   const [filled, setFilled] = useState<(string | undefined)[]>(() => Array.from({ length: slots }));
   const [active, setActive] = useState(0);
   const [checked, setChecked] = useState(false);
-  const wrongAt = filled.map((f, i) => checked && f !== screen.answers[i]);
+  const wrongAt = fillWrong(filled, screen.answers, screen.anyOrder === true).map(
+    (w) => checked && w,
+  );
   const right = checked && wrongAt.every((w) => !w);
   useChime(right, sound);
   useOops(checked && !right ? 1 : 0, sound);
@@ -575,12 +577,34 @@ function FillStep({ screen, family, sound, onNext }: Step<Fill>) {
   );
 }
 
+/**
+ * Which gaps are wrong. In any order, a gap is right while its chip is still owed: (x + 4)(x + 3)
+ * is as good as (x + 3)(x + 4), but (x + 3)(x + 3) gets one gap wrong.
+ */
+export function fillWrong(
+  filled: readonly (string | undefined)[],
+  answers: readonly string[],
+  anyOrder: boolean,
+): boolean[] {
+  if (!anyOrder) return filled.map((f, i) => f !== answers[i]);
+  const owed = [...answers];
+  return filled.map((f) => {
+    const at = f === undefined ? -1 : owed.indexOf(f);
+    if (at < 0) return true;
+    owed.splice(at, 1);
+    return false;
+  });
+}
+
 // Shading a grid.
 
 function ShadeStep({ screen, family, sound, onNext }: Step<Shade>) {
   const [cells, setCells] = useState<ReadonlySet<number>>(new Set());
   const [checked, setChecked] = useState(false);
-  const right = checked && cells.size === screen.target;
+  // With exact squares set, those and only those; otherwise any squares, so long as enough.
+  const exact = screen.cells;
+  const right =
+    checked && cells.size === screen.target && (!exact || exact.every((c) => cells.has(c)));
   useChime(right, sound);
   useOops(checked && !right ? 1 : 0, sound);
   const toggle = (i: number) => {
@@ -598,7 +622,15 @@ function ShadeStep({ screen, family, sound, onNext }: Step<Shade>) {
         <Lead text={screen.text} />
         <div className="graph-wrap">
           <Grid
-            pic={{ kind: "grid", cols: screen.cols, rows: screen.rows, shaded: 0 }}
+            pic={{
+              kind: "grid",
+              cols: screen.cols,
+              rows: screen.rows,
+              shaded: 0,
+              ...(screen.colLabels ? { colLabels: screen.colLabels } : {}),
+              ...(screen.rowLabels ? { rowLabels: screen.rowLabels } : {}),
+              ...(screen.values ? { values: screen.values } : {}),
+            }}
             shadedCells={cells}
             onCell={toggle}
           />
@@ -610,7 +642,13 @@ function ShadeStep({ screen, family, sound, onNext }: Step<Shade>) {
       {checked ? (
         <Verdict
           right={right}
-          text={right ? screen.done : `You have shaded ${cells.size}. ${screen.hint}`}
+          text={
+            right
+              ? screen.done
+              : cells.size === screen.target
+                ? `Some of those squares are not right. ${screen.hint}`
+                : `You have shaded ${cells.size}. ${screen.hint}`
+          }
           family={family}
           seed={cells.size}
           action={right ? "Continue" : "Try again"}

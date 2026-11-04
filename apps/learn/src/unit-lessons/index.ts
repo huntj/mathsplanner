@@ -30,6 +30,15 @@ import { y8Constructions } from "./y8-constructions.ts";
 import { y8Rates } from "./y8-rates.ts";
 import { y8Transformations } from "./y8-transformations.ts";
 import { y8Data } from "./y8-data.ts";
+import { y9Indices } from "./y9-indices.ts";
+import { y9Similarity } from "./y9-similarity.ts";
+import { y9Factorising } from "./y9-factorising.ts";
+import { y9StraightLine } from "./y9-straight-line.ts";
+import { y9Trigonometry } from "./y9-trigonometry.ts";
+import { y9Simultaneous } from "./y9-simultaneous.ts";
+import { y9Percentages } from "./y9-percentages.ts";
+import { y9Graphs } from "./y9-graphs.ts";
+import { y9Probability } from "./y9-probability.ts";
 
 export type * from "./types.ts";
 
@@ -63,6 +72,15 @@ export const UNIT_LESSONS: readonly UnitLesson[] = [
   y8Rates,
   y8Transformations,
   y8Data,
+  y9Indices,
+  y9Similarity,
+  y9Factorising,
+  y9StraightLine,
+  y9Trigonometry,
+  y9Simultaneous,
+  y9Percentages,
+  y9Graphs,
+  y9Probability,
 ];
 /** Units whose lessons have been reviewed and are open to pupils. */
 export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
@@ -83,7 +101,18 @@ export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
   "y7-rounding",
   "y7-averages",
   "y7-probability",
+  "y8-standard-form",
+  "y8-expressions",
+  "y8-area",
+  "y8-percentages",
+  "y8-equations",
+  "y8-shapes",
   "y8-graphs",
+  "y8-ratio",
+  "y8-constructions",
+  "y8-rates",
+  "y8-transformations",
+  "y8-data",
 ]);
 
 const byUnit = new Map(UNIT_LESSONS.map((l) => [l.unit, l]));

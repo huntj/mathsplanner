@@ -567,19 +567,17 @@ polished.
 - **Every year group. Done.** Years 1 to 9, GCSE Foundation and GCSE Higher are all on the path,
   each tidied into units with its reasoning questions varied (`withClaims` and `orClaims` in
   `shared/variety.ts`). Every skill on the path passes `variety.test.ts`.
-- **Learning the idea first. Years 7 and 8 done.** A unit can open with a lesson, in the style
+- **Learning the idea first. Years 7 to 9 done.** A unit can open with a lesson, in the style
   of a Brilliant course: short screens where the pupil discovers the idea by doing, before the
-  unit's skills, covering the unit's big idea and every skill in it. Every Year 7 and Year 8
-  unit has one. Year 7's and Year 8's straight-line graphs ("Spot the rule") have been reviewed
-  and are open to pupils; the rest of Year 8 is in teacher mode for review. Year 8's include
-  standard form on zooming number lines, two brackets as a rectangle, a circle sliced and laid
-  out to show why its area is $\pi r^2$, reverse percentages with bar models, equations with
-  the letter on both sides of a balance, angles across parallel lines, ratio as a line through
-  the origin, compass constructions drawn a step at a time, rates, transformations done by
-  tapping where a shape's corners go, and charts and scatter graphs. Lessons are data built
-  from reusable screen kinds (`apps/learn/src/unit-lessons/`), so the next ones are mostly
-  writing. Each shows only in teacher mode until it is reviewed, then its unit goes in
-  `OPEN_TO_PUPILS`. Once a unit's lesson is done, its skills skip their worked examples. Year 9
-  comes next.
+  unit's skills, covering the unit's big idea and every skill in it. Every unit in Years 7, 8
+  and 9 has one. Years 7 and 8 have been reviewed and are open to pupils; Year 9 is in teacher
+  mode for review. Year 9's include the laws of indices found by writing powers out, enlarging
+  shapes from a centre by tapping where their corners go, factorising as a number puzzle, a
+  first proof, gradients from any two points, Pythagoras' squares and the fixed ratios behind
+  sin, cos and tan, simultaneous equations as crossing lines, compound interest and inverse
+  proportion, quadratic curves, and dice sample spaces shaded square by square. Lessons are data
+  built from reusable screen kinds (`apps/learn/src/unit-lessons/`), so the next ones are
+  mostly writing. Each shows only in teacher mode until it is reviewed, then its unit goes in
+  `OPEN_TO_PUPILS`. Once a unit's lesson is done, its skills skip their worked examples.
 - **Question previews** (later): from a skill's sheet, see one question at each level without
   starting a lesson.

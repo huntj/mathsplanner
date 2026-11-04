@@ -10,7 +10,7 @@ import {
   type KeyboardEvent,
   type PointerEvent,
 } from "react";
-import type { Point, Range, Rule } from "./unit-lessons/index.ts";
+import type { Curve, Point, Range, Rule } from "./unit-lessons/index.ts";
 import { yOn } from "./unit-lessons/index.ts";
 
 /** Pixels per unit in the drawing, and room round the grid for the numbers. */
@@ -45,6 +45,7 @@ export function LineGraph({
   lines = [],
   verticals = [],
   shapes = [],
+  curves = [],
   points = [],
   star,
   steps = [],
@@ -61,6 +62,8 @@ export function LineGraph({
   verticals?: number[];
   /** Shapes drawn on the grid. */
   shapes?: GraphShape[];
+  /** Curves drawn in full. */
+  curves?: Curve[];
   points?: GraphPoint[];
   star?: Point | undefined;
   /** A chain of points to join with steps: across to the next x, then up or down to it. */
@@ -282,6 +285,13 @@ export function LineGraph({
           {lines.map((l, i) => (
             <line key={i} className={`graph-line tone-${l.tone ?? "main"}`} {...lineEnds(l.rule)} />
           ))}
+          {curves.map((cv, i) => (
+            <path
+              key={`cv${i}`}
+              className="graph-line tone-main curve"
+              d={curvePath(cv, range, sx, sy)}
+            />
+          ))}
           {shapes.map((sh, i) => (
             <g key={`sh${i}`} className={`graph-shape tone-${sh.tone ?? "object"}`}>
               <polygon points={sh.points.map((p) => `${sx(p.x)},${sy(p.y)}`).join(" ")} />
@@ -407,4 +417,34 @@ function ThroughLine({
       y2={sy(a.y + dy)}
     />
   );
+}
+
+/** y on a curve at x, or undefined where it has none (y = k ÷ x at x = 0). */
+export function curveY(curve: Curve, x: number): number | undefined {
+  if (curve.kind === "quadratic") return curve.a * x * x + curve.b * x + curve.c;
+  return x === 0 ? undefined : curve.k / x;
+}
+
+/** A curve as an SVG path, sampled finely, broken where it leaves the grid far behind. */
+function curvePath(
+  curve: Curve,
+  range: Range,
+  sx: (x: number) => number,
+  sy: (y: number) => number,
+): string {
+  const n = 240;
+  const span = range.yMax - range.yMin;
+  let d = "";
+  let pen = false;
+  for (let i = 0; i <= n; i++) {
+    const x = range.xMin + ((range.xMax - range.xMin) * i) / n;
+    const y = curveY(curve, x);
+    if (y === undefined || y > range.yMax + span || y < range.yMin - span) {
+      pen = false;
+      continue;
+    }
+    d += `${pen ? "L" : "M"}${sx(x).toFixed(1)} ${sy(y).toFixed(1)} `;
+    pen = true;
+  }
+  return d.trim();
 }

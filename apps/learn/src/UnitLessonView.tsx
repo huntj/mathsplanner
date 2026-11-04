@@ -430,6 +430,7 @@ function PlotStep({ screen, family, sound, onNext }: Step<Plot>) {
           points={points}
           steps={steps}
           verticals={scene.verticals ?? []}
+          curves={scene.curves ?? []}
           shapes={[
             ...(scene.shapes ?? []),
             ...(done && screen.join ? [{ points: targets, tone: "image" as const }] : []),

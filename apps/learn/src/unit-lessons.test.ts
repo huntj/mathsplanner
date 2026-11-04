@@ -18,11 +18,13 @@ import {
   type Range,
   type Scene,
 } from "./unit-lessons/index.ts";
+import { curveY } from "./LineGraph.tsx";
 import { snapToTick } from "./Picture.tsx";
 import {
   balanceMoves,
   circleSlices,
   factorPairs,
+  fillWrong,
   isPrime,
   matches,
   morphPieces,
@@ -88,6 +90,12 @@ function checkPicture(p: Picture | undefined) {
       expect(ticks).toBeLessThanOrEqual(40);
       for (const m of p.marks ?? []) expect(m.at >= p.min && m.at <= p.max, `${m.at}`).toBe(true);
       for (const j of p.jumps ?? []) expect(j.from >= p.min && j.to <= p.max).toBe(true);
+      if (p.interval) {
+        const { from, to } = p.interval;
+        expect(from !== undefined || to !== undefined).toBe(true);
+        for (const end of [from, to])
+          if (end !== undefined) expect(end >= p.min && end <= p.max).toBe(true);
+      }
       break;
     }
     case "angles":
@@ -103,6 +111,21 @@ function checkPicture(p: Picture | undefined) {
       break;
     case "grid":
       expect(p.shaded).toBeLessThanOrEqual(p.cols * p.rows);
+      for (const c of p.cells ?? []) expect(c).toBeLessThan(p.cols * p.rows);
+      if (p.values) expect(p.values).toHaveLength(p.cols * p.rows);
+      if (p.colLabels) expect(p.colLabels).toHaveLength(p.cols);
+      if (p.rowLabels) expect(p.rowLabels).toHaveLength(p.rows);
+      break;
+    case "venn":
+      // Nothing in two places at once.
+      {
+        const all = [...p.onlyA, ...p.both, ...p.onlyB, ...(p.neither ?? [])];
+        expect(new Set(all).size).toBe(all.length);
+      }
+      break;
+    case "dots":
+      expect(p.terms).toBeGreaterThan(0);
+      expect(p.terms).toBeLessThanOrEqual(6);
       break;
     case "table":
       for (const row of p.rows) if (p.head) expect(row.length).toBe(p.head.length);
@@ -279,6 +302,11 @@ describe.each(UNIT_LESSONS.map((l) => [l.unit, l] as const))("unit lesson %s", (
         case "shade":
           expect(screen.target).toBeGreaterThan(0);
           expect(screen.target).toBeLessThanOrEqual(screen.cols * screen.rows);
+          if (screen.cells) {
+            expect(new Set(screen.cells).size).toBe(screen.target);
+            for (const c of screen.cells) expect(c).toBeLessThan(screen.cols * screen.rows);
+          }
+          if (screen.values) expect(screen.values).toHaveLength(screen.cols * screen.rows);
           break;
         case "balance": {
           const d = screen.d ?? 0;
@@ -428,6 +456,26 @@ describe("unit lesson screens", () => {
           const [a, b] = s.ports ?? ["x", "y"];
           expect(wordsHtml(`$${machineRuleTex(s.rule, a, b)}$`)).not.toContain("katex-error");
         }
+  });
+
+  it("fills gaps in any order when the order doesn't matter", () => {
+    expect(fillWrong(["4", "3"], ["3", "4"], true)).toEqual([false, false]);
+    expect(fillWrong(["3", "3"], ["3", "4"], true)).toEqual([false, true]);
+    expect(fillWrong(["4", "3"], ["3", "4"], false)).toEqual([true, true]);
+  });
+
+  it("draws curves through the right points", () => {
+    expect(curveY({ kind: "quadratic", a: 1, b: -2, c: -3 }, 3)).toBe(0);
+    expect(curveY({ kind: "inverse", k: 24 }, 4)).toBe(6);
+    expect(curveY({ kind: "inverse", k: 24 }, 0)).toBeUndefined();
+    // Every plotted point on a lesson's curve is on the curve.
+    for (const lesson of UNIT_LESSONS)
+      for (const s of lesson.screens)
+        if (s.kind === "plot" && s.scene.curves?.length && !s.scene.lines?.length)
+          for (const t of s.targets)
+            expect(s.scene.curves.some((c) => Math.abs((curveY(c, t.x) ?? NaN) - t.y) < 1e-9)).toBe(
+              true,
+            );
   });
 
   it("turns lesson maths into plain labels for drawings", () => {
