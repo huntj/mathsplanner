@@ -672,7 +672,10 @@ export const y7Notation: UnitLesson[] = [
           "$3x + 2$, $3x + 2 = 11$ and $3x + 2 > 11$ look alike, but they're different kinds of thing. Only one can be solved to get a single answer.",
           "Which, and what are they called? By the end of this lesson, you can name them all.",
         ],
-        picture: { kind: "maths", tex: "3x + 2 \\qquad 3x + 2 = 11 \\qquad 3x + 2 > 11" },
+        picture: {
+          kind: "maths",
+          tex: "\\begin{array}{c} 3x + 2 \\\\ 3x + 2 = 11 \\\\ 3x + 2 > 11 \\end{array}",
+        },
       },
       {
         kind: "answer",

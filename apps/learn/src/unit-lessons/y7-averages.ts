@@ -709,7 +709,7 @@ export const y7Averages: UnitLesson[] = [
         ],
         picture: {
           kind: "maths",
-          tex: "\\text{average: how big} \\qquad \\text{range: how spread}",
+          tex: "\\begin{array}{c} \\text{average: how big} \\\\ \\text{range: how spread} \\end{array}",
         },
       },
       {

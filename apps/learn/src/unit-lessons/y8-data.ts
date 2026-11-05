@@ -1204,7 +1204,7 @@ export const y8Data: UnitLesson[] = [
         ],
         picture: {
           kind: "maths",
-          tex: "P(\\text{red}) + P(\\text{blue}) + P(\\text{green}) + P(\\text{yellow}) = 1",
+          tex: "\\begin{aligned} &P(\\text{red}) + P(\\text{blue}) \\\\ &+ P(\\text{green}) + P(\\text{yellow}) = 1 \\end{aligned}",
         },
       },
       {

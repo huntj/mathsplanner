@@ -809,7 +809,10 @@ export const y7PlaceValue: UnitLesson[] = [
           "$<$ means 'is less than', $>$ means 'is greater than'. The wide, open end faces the **bigger** number: $3 < 8$, $8 > 3$.",
           "$=$ means equal, $\\ne$ means not equal.",
         ],
-        picture: { kind: "maths", tex: "3 < 8 \\qquad 8 > 3 \\qquad 2 + 2 = 4 \\qquad 5 \\ne 6" },
+        picture: {
+          kind: "maths",
+          tex: "\\begin{array}{c} 3 < 8 \\qquad 8 > 3 \\\\ 2 + 2 = 4 \\qquad 5 \\ne 6 \\end{array}",
+        },
       },
       {
         kind: "choice",

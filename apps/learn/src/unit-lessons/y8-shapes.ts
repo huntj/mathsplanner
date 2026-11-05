@@ -298,7 +298,8 @@ export const y8Shapes: UnitLesson[] = [
           {
             text: "70°",
             correct: true,
-            feedback: "y is vertically opposite the top 70°, so it's 70° too.",
+            feedback:
+              "The top crossing has the same slant, so its up-right angle is 70° too, and y is vertically opposite that: 70°.",
           },
           { text: "110°", feedback: "y is less than a right angle." },
         ],

@@ -33,7 +33,7 @@ const graph = (range: Range, lines: Rule[] = [], points: Point[] = []): Picture 
   ...(points.length ? { points } : {}),
 });
 
-const candle: Range = { xMin: 0, xMax: 10, yMin: 0, yMax: 20 };
+const candle: Range = { xMin: 0, xMax: 6, yMin: 0, yMax: 12 };
 const miles: Range = { xMin: 0, xMax: 10, yMin: 0, yMax: 16 };
 const taxis: Range = { xMin: 0, xMax: 6, yMin: 0, yMax: 12 };
 const taxiA: Rule = { m: 1, c: 4 };
@@ -746,18 +746,18 @@ export const y8Graphs: UnitLesson[] = [
         tag: "The problem",
         title: "A burning candle",
         text: [
-          "A candle's height is $h = 20 - 2t$ cm, after t hours. Here is its graph.",
-          "What do the 20 and the −2 mean? When does it burn out? By the end of this lesson, you can read the story in a graph.",
+          "A candle's height is $h = 12 - 2t$ cm, after t hours. Here is its graph.",
+          "What do the 12 and the −2 mean? When does it burn out? By the end of this lesson, you can read the story in a graph.",
         ],
-        picture: graph(candle, [{ m: -2, c: 20 }]),
+        picture: graph(candle, [{ m: -2, c: 12 }]),
       },
       {
         kind: "answer",
         tag: "Warm-up",
-        title: "$h = 20 - 2t$. Find h when $t = 3$",
-        answers: ["14"],
-        hint: "$20 - 2 \\times 3$.",
-        done: "14 cm after 3 hours.",
+        title: "$h = 12 - 2t$. Find h when $t = 3$",
+        answers: ["6"],
+        hint: "$12 - 2 \\times 3$.",
+        done: "6 cm after 3 hours.",
       },
       {
         kind: "choice",
@@ -771,16 +771,16 @@ export const y8Graphs: UnitLesson[] = [
       {
         kind: "choice",
         tag: "Discover",
-        title: "What does the 20 tell you?",
-        text: "The line starts at h = 20 when t = 0.",
-        picture: graph(candle, [{ m: -2, c: 20 }]),
+        title: "What does the 12 tell you?",
+        text: "The line starts at h = 12 when t = 0.",
+        picture: graph(candle, [{ m: -2, c: 12 }]),
         options: [
           {
-            text: "The candle starts 20 cm tall",
+            text: "The candle starts 12 cm tall",
             correct: true,
             feedback: "At t = 0, before it's lit.",
           },
-          { text: "It burns for 20 hours", feedback: "20 is a height, on the up axis." },
+          { text: "It burns for 12 hours", feedback: "12 is a height, on the up axis." },
         ],
       },
       {
@@ -880,14 +880,14 @@ export const y8Graphs: UnitLesson[] = [
       {
         kind: "choice",
         tag: "Watch out",
-        title: "For the candle, $h = 20 - 2t$, Lou says it shrinks 20 cm an hour. Is he right?",
+        title: "For the candle, $h = 12 - 2t$, Lou says it shrinks 12 cm an hour. Is he right?",
         options: [
           {
-            text: "No: 20 is the start; it shrinks 2 cm an hour",
+            text: "No: 12 is the start; it shrinks 2 cm an hour",
             correct: true,
             feedback: "The rate is the number with t. The number alone is the start.",
           },
-          { text: "Yes", feedback: "After 1 hour, h = 18: it shrank 2 cm." },
+          { text: "Yes", feedback: "After 1 hour, h = 10: it shrank 2 cm." },
         ],
       },
       {
@@ -902,14 +902,14 @@ export const y8Graphs: UnitLesson[] = [
       {
         kind: "answer",
         tag: "Back to the problem",
-        title: "The candle: $h = 20 - 2t$",
+        title: "The candle: $h = 12 - 2t$",
         text: "After how many hours does it burn out (h = 0)?",
-        picture: graph(candle, [{ m: -2, c: 20 }]),
-        answers: ["10"],
+        picture: graph(candle, [{ m: -2, c: 12 }]),
+        answers: ["6"],
         unit: "hours",
-        wrong: [{ answer: "20", feedback: "20 cm at 2 cm an hour: $20 \\div 2$." }],
+        wrong: [{ answer: "12", feedback: "12 cm at 2 cm an hour: $12 \\div 2$." }],
         hint: "Where does the line meet the t-axis?",
-        done: "20 cm at 2 cm an hour: 10 hours.",
+        done: "12 cm at 2 cm an hour: 6 hours.",
       },
       {
         kind: "quiz",
