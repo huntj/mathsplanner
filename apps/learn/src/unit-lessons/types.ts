@@ -266,6 +266,9 @@ export interface DrawingPic {
     | { arc: Point; r: number; from: number; to: number; ry?: number; dashed?: true }
     | { dot: Point }
     | { text: string; at: Point; tone?: "main" | "find" }
+    /** An angle at a corner, from one direction to another anticlockwise (under 180°), with an
+     * arc and its label; a letter or "?" is drawn as one to find. */
+    | { angle: Point; from: number; to: number; label: string }
   )[];
 }
 
@@ -563,6 +566,19 @@ export interface Tagged {
   tag?: string;
 }
 
+/** Label a shape's sides: tap a label, then the side it belongs on. */
+export interface LabelSides {
+  kind: "label";
+  title: Words;
+  text?: Words;
+  shape: ShapePic;
+  /** The labels to place: a short mark shown on the side, its name, and why it goes where it does. */
+  chips: { mark: string; name: string; why: Words }[];
+  /** The mark each side should end up with, side by side (from point i to point i + 1). */
+  answers: (string | null)[];
+  done: Words;
+}
+
 export type Screen = (
   | Explain
   | Machine
@@ -586,6 +602,7 @@ export type Screen = (
   | Worked
   | Mistake
   | Quiz
+  | LabelSides
 ) &
   Tagged;
 

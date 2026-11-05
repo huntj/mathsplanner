@@ -13,13 +13,14 @@ import {
   type PointerEvent,
   type ReactElement,
 } from "react";
-import { Cuboid, Grid, NumberLine, numberText, PictureView, Spinner } from "./Picture.tsx";
+import { Cuboid, Grid, NumberLine, numberText, PictureView, Shape, Spinner } from "./Picture.tsx";
 import { play } from "./sounds.ts";
 import type {
   Answer,
   Balance,
   Dial,
   Fill,
+  LabelSides,
   Mistake,
   Morph,
   Order,
@@ -78,6 +79,8 @@ export function ScreenStepMore({
       return <MistakeStep screen={s} {...step} />;
     case "quiz":
       return <QuizStep screen={s} {...step} />;
+    case "label":
+      return <LabelStep screen={s} {...step} />;
   }
 }
 
@@ -1892,5 +1895,109 @@ function QuizStep({ screen, family, sound, onNext }: Step<Quiz>) {
         </Working>
       )}
     </form>
+  );
+}
+
+// Label the sides: pick a label, then tap the side it goes on. Wrong ones come off, with why.
+
+/** Which placed marks are wrong, side by side, and the chips whose marks they are. */
+export function labelWrong(marks: (string | undefined)[], answers: (string | null)[]): boolean[] {
+  return answers.map((a, i) => marks[i] !== undefined && marks[i] !== a);
+}
+
+function LabelStep({ screen, family, sound, onNext }: Step<LabelSides>) {
+  const sides = screen.shape.points.length;
+  const [marks, setMarks] = useState<(string | undefined)[]>(() => Array.from({ length: sides }));
+  const [active, setActive] = useState<string | undefined>(screen.chips[0]?.mark);
+  const [checked, setChecked] = useState(false);
+  const [tries, setTries] = useState(0);
+  const wrong = labelWrong(marks, screen.answers);
+  const right = checked && !wrong.some(Boolean);
+  useChime(right, sound);
+  useOops(checked && !right ? tries : 0, sound);
+  const placed = (mark: string) => marks.includes(mark);
+  const all = screen.chips.every((c) => placed(c.mark));
+
+  const onSide = (side: number) => {
+    if (right) return;
+    setChecked(false);
+    // Tapping a side with a mark on it takes the mark off, ready to go somewhere else.
+    if (marks[side] !== undefined && (active === undefined || marks[side] === active)) {
+      setActive(marks[side]);
+      setMarks(marks.map((m, i) => (i === side ? undefined : m)));
+      return;
+    }
+    if (active === undefined) return;
+    const next = marks.map((m, i) => (i === side ? active : m === active ? undefined : m));
+    setMarks(next);
+    setActive(screen.chips.find((c) => !next.includes(c.mark))?.mark);
+  };
+  const why = screen.chips
+    .filter((c) => marks.some((m, i) => m === c.mark && wrong[i]))
+    .map((c) => c.why)
+    .join(" ");
+
+  return (
+    <>
+      <main className="lesson-main">
+        <Title title={screen.title} family={family} />
+        <Lead text={screen.text} />
+        <Shape
+          pic={screen.shape}
+          pick={{
+            marks,
+            states: marks.map((m, i) =>
+              !checked || m === undefined ? undefined : wrong[i] ? "wrong" : "right",
+            ),
+            onSide,
+            disabled: right,
+          }}
+        />
+        <div className="ul-cards" role="group" aria-label="Labels">
+          {screen.chips.map((c) => (
+            <button
+              key={c.mark}
+              type="button"
+              className={`ul-chip label-chip${active === c.mark ? " picked" : ""}${placed(c.mark) ? " placed" : ""}`}
+              aria-pressed={active === c.mark}
+              disabled={right}
+              onClick={() => setActive(c.mark)}
+            >
+              <span className="label-mark">{c.mark}</span> {c.name}
+            </button>
+          ))}
+        </div>
+      </main>
+      {checked ? (
+        <Verdict
+          right={right}
+          text={right ? screen.done : why}
+          family={family}
+          seed={tries}
+          action={right ? "Continue" : "Try again"}
+          onAction={() => {
+            if (right) return onNext();
+            const next = marks.map((m, i) => (wrong[i] ? undefined : m));
+            setMarks(next);
+            setActive(screen.chips.find((c) => !next.includes(c.mark))?.mark);
+            setChecked(false);
+          }}
+        />
+      ) : (
+        <Working note={all ? undefined : "Pick a label, then tap the side it goes on."}>
+          <button
+            type="button"
+            className="button primary big"
+            disabled={!all}
+            onClick={() => {
+              setTries(tries + 1);
+              setChecked(true);
+            }}
+          >
+            Check
+          </button>
+        </Working>
+      )}
+    </>
   );
 }

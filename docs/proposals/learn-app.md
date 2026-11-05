@@ -589,6 +589,10 @@ polished.
   lessons), Year 8 formulae and equations (five), and Year 9 Pythagoras and trigonometry (six:
   the longest side, a shorter side, sine, cosine, tangent, and working back to an angle). After
   review, the other units follow a year at a time. A finished lesson skips the worked examples
-  of the skills it teaches.
+  of the skills it teaches. After the first review, each lesson builds up more slowly: every one
+  works a second example together before the pupil goes alone, and the trigonometry lessons
+  have the pupil label a triangle's sides H, O and A by tapping them (four times, turned
+  different ways, before the sine ratio is used), with each worked step starting from the
+  labels.
 - **Question previews** (later): from a skill's sheet, see one question at each level without
   starting a lesson.

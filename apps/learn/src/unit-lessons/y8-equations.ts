@@ -137,6 +137,38 @@ export const y8Equations: UnitLesson[] = [
         done: "Substitute, then work it out in order.",
       },
       {
+        kind: "steps",
+        tag: "Together",
+        title: "The area of a trapezium",
+        text: "One more together, step by step.",
+        picture: { kind: "maths", tex: "A = \\frac{(a + b)h}{2}" },
+        start: "Find A when $a = 5$, $b = 9$ and $h = 4$.",
+        stages: [
+          {
+            prompt: "Substitute:",
+            options: [
+              { text: "$A = \\frac{(5 + 9) \\times 4}{2}$", correct: true, feedback: "" },
+              {
+                text: "$A = \\frac{5 + 9 \\times 4}{2}$",
+                feedback: "Keep the bracket: add a and b before multiplying.",
+              },
+              { text: "$A = \\frac{(5 + 9) + 4}{2}$", feedback: "$(a + b)h$ means multiply by h." },
+            ],
+            then: "$A = \\frac{14 \\times 4}{2}$",
+          },
+          {
+            prompt: "So A is",
+            options: [
+              { text: "28", correct: true, feedback: "" },
+              { text: "56", feedback: "Don't forget to divide by 2." },
+              { text: "20.5", feedback: "Brackets first: $5 + 9 = 14$." },
+            ],
+            then: "$A = \\frac{56}{2} = 28$",
+          },
+        ],
+        done: "Substitute, then brackets first. Now try some on your own.",
+      },
+      {
         kind: "answer",
         tag: "Your turn",
         title: "Celsius to Fahrenheit",
@@ -344,6 +376,37 @@ export const y8Equations: UnitLesson[] = [
           },
         ],
         done: "Check with numbers: $x = 4$ gives $y = 5$, and $\\frac{5 + 7}{3} = 4$ ✓",
+      },
+      {
+        kind: "steps",
+        tag: "Together",
+        title: "Make $a$ the subject of $P = 2a + 2b$",
+        text: "One more together, step by step.",
+        start: "$P = 2a + 2b$",
+        stages: [
+          {
+            prompt: "Undo the + 2b:",
+            options: [
+              { text: "$P - 2b = 2a$", correct: true, feedback: "" },
+              { text: "$P + 2b = 2a$", feedback: "Undo + 2b by taking 2b away." },
+              {
+                text: "$\\frac{P}{2} = a + 2b$",
+                feedback: "Undo the + 2b first: it was done last.",
+              },
+            ],
+            then: "$P - 2b = 2a$",
+          },
+          {
+            prompt: "Undo the × 2:",
+            options: [
+              { text: "$a = \\frac{P - 2b}{2}$", correct: true, feedback: "" },
+              { text: "$a = \\frac{P}{2} - 2b$", feedback: "Divide all of $P - 2b$ by 2." },
+              { text: "$a = 2(P - 2b)$", feedback: "Undo × 2 by dividing." },
+            ],
+            then: "$a = \\frac{P - 2b}{2}$",
+          },
+        ],
+        done: "Check: $a = 3$, $b = 1$ gives $P = 8$, and $\\frac{8 - 2}{2} = 3$ ✓. Now try some on your own.",
       },
       {
         kind: "fill",
@@ -554,6 +617,40 @@ export const y8Equations: UnitLesson[] = [
         d: 1,
         letter: "x",
         done: "$x = 4$. Check: $4 \\times 4 + 1 = 17$ and $4 + 13 = 17$ ✓",
+      },
+      {
+        kind: "steps",
+        tag: "Together",
+        title: "Solve $9x - 4 = 5x + 8$",
+        text: "One more together, step by step.",
+        start: "$9x - 4 = 5x + 8$",
+        stages: [
+          {
+            prompt: "Take the smaller number of x's from both sides:",
+            options: [
+              { text: "$4x - 4 = 8$", correct: true, feedback: "" },
+              { text: "$14x - 4 = 8$", feedback: "Take 5x away, don't add it." },
+            ],
+            then: "$4x - 4 = 8$",
+          },
+          {
+            prompt: "Add 4 to both sides:",
+            options: [
+              { text: "$4x = 12$", correct: true, feedback: "" },
+              { text: "$4x = 4$", feedback: "Undo − 4 by adding 4." },
+            ],
+            then: "$4x = 12$",
+          },
+          {
+            prompt: "So x is",
+            options: [
+              { text: "$x = 3$", correct: true, feedback: "" },
+              { text: "$x = 48$", feedback: "Divide by 4, don't multiply." },
+            ],
+            then: "$x = 3$",
+          },
+        ],
+        done: "Check: $9 \\times 3 - 4 = 23$ and $5 \\times 3 + 8 = 23$ ✓. Now try some on your own.",
       },
       {
         kind: "answer",
@@ -776,6 +873,36 @@ export const y8Equations: UnitLesson[] = [
         done: "Check: $3(5 + 4) = 27$ ✓. Dividing by 3 first is quicker here: $x + 4 = 9$.",
       },
       {
+        kind: "steps",
+        tag: "Together",
+        title: "Solve $5(x - 2) = 35$",
+        text: "One more together, step by step.",
+        start: "$5(x - 2) = 35$",
+        stages: [
+          {
+            prompt: "This time, divide both sides by 5 first:",
+            options: [
+              { text: "$x - 2 = 7$", correct: true, feedback: "" },
+              { text: "$x - 2 = 30$", feedback: "Divide by 5; don't take 5 away." },
+              {
+                text: "$5x - 2 = 7$",
+                feedback: "All of $5(x - 2)$ is divided by 5, leaving $x - 2$.",
+              },
+            ],
+            then: "$x - 2 = 7$",
+          },
+          {
+            prompt: "Add 2 to both sides:",
+            options: [
+              { text: "$x = 9$", correct: true, feedback: "" },
+              { text: "$x = 5$", feedback: "Undo − 2 by adding 2." },
+            ],
+            then: "$x = 9$",
+          },
+        ],
+        done: "Check: $5(9 - 2) = 35$ ✓. Expanding first works too: $5x - 10 = 35$. Now try some on your own.",
+      },
+      {
         kind: "answer",
         tag: "Your turn",
         title: "Solve $2(x - 3) = 14$",
@@ -976,6 +1103,36 @@ export const y8Equations: UnitLesson[] = [
           },
         ],
         done: "Check: $\\frac{7 + 5}{3} = \\frac{12}{3} = 4$ ✓",
+      },
+      {
+        kind: "steps",
+        tag: "Together",
+        title: "Solve $\\frac{x - 3}{4} = 5$",
+        text: "One more together, step by step.",
+        start: "$\\frac{x - 3}{4} = 5$",
+        stages: [
+          {
+            prompt: "All of $x - 3$ is divided by 4. Multiply both sides by 4:",
+            options: [
+              { text: "$x - 3 = 20$", correct: true, feedback: "" },
+              {
+                text: "$x - 3 = \\frac{5}{4}$",
+                feedback: "That divides. Multiplying by 4 undoes ÷ 4.",
+              },
+              { text: "$4x - 3 = 20$", feedback: "All of $x - 3$ comes back." },
+            ],
+            then: "$x - 3 = 20$",
+          },
+          {
+            prompt: "Add 3 to both sides:",
+            options: [
+              { text: "$x = 23$", correct: true, feedback: "" },
+              { text: "$x = 17$", feedback: "Undo − 3 by adding 3." },
+            ],
+            then: "$x = 23$",
+          },
+        ],
+        done: "Check: $\\frac{23 - 3}{4} = 5$ ✓. Now try some on your own.",
       },
       {
         kind: "answer",

@@ -2634,7 +2634,71 @@ body::before {
 
 .pic-angle {
   font-size: 15px;
-  fill: var(--biro) !important;
+}
+
+/* An angle on a shape or drawing: an arc, and its label just past it. */
+.pic-angle-mark path {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 2;
+}
+
+.pic-angle-mark.find path {
+  stroke: var(--biro);
+  stroke-width: 2.5;
+}
+
+.pic .pic-angle-mark.find text {
+  fill: var(--biro);
+}
+
+/* Sides to tap and label. */
+.pic-pick {
+  cursor: pointer;
+  outline: none;
+}
+
+.pic-pick-hit {
+  stroke: transparent;
+  stroke-width: 26;
+  stroke-linecap: round;
+}
+
+.pic-pick-line {
+  stroke: transparent;
+  stroke-width: 7;
+  stroke-linecap: round;
+  transition: stroke 150ms;
+}
+
+.pic-pick:hover .pic-pick-line,
+.pic-pick:focus-visible .pic-pick-line {
+  stroke: color-mix(in srgb, var(--biro) 40%, transparent);
+}
+
+.pic-pick.marked .pic-pick-line {
+  stroke: color-mix(in srgb, var(--biro) 55%, transparent);
+}
+
+.pic-pick.right .pic-pick-line {
+  stroke: var(--right);
+}
+
+.pic-pick.wrong .pic-pick-line {
+  stroke: var(--wrong);
+}
+
+.pic .pic-pick-mark {
+  fill: var(--biro);
+  font-weight: 700;
+}
+
+.pic .pic-pick-mark.right {
+  fill: var(--right);
+}
+
+.pic .pic-pick-mark.wrong {
+  fill: var(--wrong);
 }
 
 .pic-ray {
@@ -3517,4 +3581,21 @@ body::before {
   font-size: var(--step-3);
   font-weight: 600;
   color: var(--biro);
+}
+
+/* Label the sides: each chip shows its mark, as it will appear on the side. */
+.label-chip .label-mark {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.6em;
+  height: 1.6em;
+  margin-right: 0.3em;
+  border-radius: 999px;
+  background: var(--biro);
+  color: var(--surface);
+  font-weight: 700;
+}
+
+.label-chip.placed:not(.picked) {
+  opacity: 0.55;
 }

@@ -3,6 +3,7 @@
 // pattern, a ruler, big maths and a place value chart. Each is drawn in SVG (or HTML for tables)
 // from the theme's colours, so it works in light and dark.
 import { useRef, useState, type KeyboardEvent, type PointerEvent, type ReactNode } from "react";
+import { angleMark, layoutShape, type Pt } from "./labels.ts";
 import { latticeOn, LineGraph, type GraphLine, type GraphPoint } from "./LineGraph.tsx";
 import {
   onLine,
@@ -468,146 +469,145 @@ function Angles({ pic }: { pic: AnglesPic }) {
 
 // Shapes.
 
-function Shape({ pic }: { pic: ShapePic }) {
-  const pts = pic.points;
-  const xs = pts.map((p) => p.x);
-  const ys = pts.map((p) => p.y);
+/** Sides to label by tapping: what is on each, how each was marked, and what a tap does. */
+export interface SidePick {
+  marks: (string | undefined)[];
+  states?: ("right" | "wrong" | undefined)[];
+  onSide: (side: number) => void;
+  disabled?: boolean;
+}
+
+/** An angle's label: a letter or "?" is to be found, and drawn in the "find" colour. */
+const toFind = (label: string) => !/\d|θ/.test(label);
+
+export function Shape({ pic, pick }: { pic: ShapePic; pick?: SidePick }) {
   const extraPts = [
     ...(pic.mirrors ?? []).flat(),
     ...(pic.dashed ?? []).flat(),
     ...(pic.dots ?? []),
   ];
-  const allX = [...xs, ...extraPts.map((p) => p.x)];
-  const allY = [...ys, ...extraPts.map((p) => p.y)];
-  const minX = Math.min(...allX);
-  const maxX = Math.max(...allX);
-  const minY = Math.min(...allY);
-  const maxY = Math.max(...allY);
-  const span = Math.max(maxX - minX, maxY - minY) || 1;
-  const k = 200 / span;
-  const pad = 40;
-  const width = (maxX - minX) * k + 2 * pad;
-  const height = (maxY - minY) * k + 2 * pad;
-  const sx = (x: number) => pad + (x - minX) * k;
-  const sy = (y: number) => pad + (maxY - y) * k;
-  const centre = {
-    x: xs.reduce((a, b) => a + b, 0) / pts.length,
-    y: ys.reduce((a, b) => a + b, 0) / pts.length,
-  };
-  const at = (p: Point) => `${sx(p.x)},${sy(p.y)}`;
-  return (
-    <Svg width={width} height={height} label={shapeLabel(pic)}>
-      <polygon className="pic-shape" points={pts.map(at).join(" ")} />
+  const { scr, sideLabels, angleMarks, names, boxes, sx, sy } = layoutShape(
+    pic,
+    pick ? pick.marks : undefined,
+  );
+  const corner = (i: number) => scr[(i + scr.length) % scr.length] ?? { x: 0, y: 0 };
+
+  const m = 10;
+  const xs = [...scr.map((p) => p.x), ...extraPts.map((p) => sx(p.x))];
+  const ys = [...scr.map((p) => p.y), ...extraPts.map((p) => sy(p.y))];
+  const left = Math.min(...xs, ...boxes.map((b) => b.x - b.hw)) - m;
+  const right = Math.max(...xs, ...boxes.map((b) => b.x + b.hw)) + m;
+  const top = Math.min(...ys, ...boxes.map((b) => b.y - b.hh)) - m;
+  const bottom = Math.max(...ys, ...boxes.map((b) => b.y + b.hh)) + m;
+  const width = right - left;
+  const height = bottom - top;
+  const at = (p: Pt) => `${p.x},${p.y}`;
+  const line = (a: Point, b: Point) => ({ x1: sx(a.x), y1: sy(a.y), x2: sx(b.x), y2: sy(b.y) });
+
+  const body = (
+    <g transform={`translate(${-left} ${-top})`}>
+      <polygon className="pic-shape" points={scr.map(at).join(" ")} />
       {(pic.dashed ?? []).map(([a, b], i) => (
-        <line
-          key={`d${i}`}
-          className="pic-dashed"
-          x1={sx(a.x)}
-          y1={sy(a.y)}
-          x2={sx(b.x)}
-          y2={sy(b.y)}
-        />
+        <line key={`d${i}`} className="pic-dashed" {...line(a, b)} />
       ))}
       {(pic.mirrors ?? []).map(([a, b], i) => (
-        <line
-          key={`m${i}`}
-          className="pic-mirror"
-          x1={sx(a.x)}
-          y1={sy(a.y)}
-          x2={sx(b.x)}
-          y2={sy(b.y)}
-        />
+        <line key={`m${i}`} className="pic-mirror" {...line(a, b)} />
       ))}
       {(pic.square ?? []).map((i) => {
-        const p = pts[i];
-        const a = pts[(i + pts.length - 1) % pts.length];
-        const b = pts[(i + 1) % pts.length];
-        if (!p || !a || !b) return null;
-        const unit = (q: Point) => {
-          const dx = sx(q.x) - sx(p.x);
-          const dy = sy(q.y) - sy(p.y);
-          const l = Math.hypot(dx, dy) || 1;
-          return { x: (dx / l) * 12, y: (dy / l) * 12 };
+        const p = corner(i);
+        const unitTo = (q: Pt) => {
+          const l = Math.hypot(q.x - p.x, q.y - p.y) || 1;
+          return { x: ((q.x - p.x) / l) * 12, y: ((q.y - p.y) / l) * 12 };
         };
-        const u = unit(a);
-        const v = unit(b);
-        const x0 = sx(p.x);
-        const y0 = sy(p.y);
+        const u = unitTo(corner(i - 1));
+        const v = unitTo(corner(i + 1));
         return (
           <path
             key={`s${i}`}
             className="pic-square"
-            d={`M${x0 + u.x} ${y0 + u.y} L${x0 + u.x + v.x} ${y0 + u.y + v.y} L${x0 + v.x} ${y0 + v.y}`}
+            d={`M${p.x + u.x} ${p.y + u.y} L${p.x + u.x + v.x} ${p.y + u.y + v.y} L${p.x + v.x} ${p.y + v.y}`}
           />
         );
       })}
-      {(pic.sides ?? []).map((label, i) => {
-        const a = pts[i];
-        const b = pts[(i + 1) % pts.length];
-        if (!label || !a || !b) return null;
-        const mx = (sx(a.x) + sx(b.x)) / 2;
-        const my = (sy(a.y) + sy(b.y)) / 2;
-        // Out from the middle of the shape.
-        let nx = sy(b.y) - sy(a.y);
-        let ny = -(sx(b.x) - sx(a.x));
-        const l = Math.hypot(nx, ny) || 1;
-        nx /= l;
-        ny /= l;
-        if ((mx - sx(centre.x)) * nx + (my - sy(centre.y)) * ny < 0) {
-          nx = -nx;
-          ny = -ny;
-        }
-        return (
+      {angleMarks.map((mark, i) =>
+        mark ? (
+          <g key={`a${i}`} className={`pic-angle-mark${toFind(mark.text) ? " find" : ""}`}>
+            {mark.arc && (
+              <path
+                d={`M${mark.arc.from.x} ${mark.arc.from.y} A${mark.arc.r} ${mark.arc.r} 0 ${mark.arc.large ? 1 : 0} ${mark.arc.sweep ? 1 : 0} ${mark.arc.to.x} ${mark.arc.to.y}`}
+              />
+            )}
+            <text className="pic-angle" x={mark.label.x} y={mark.label.y + 5} textAnchor="middle">
+              {mark.text}
+            </text>
+          </g>
+        ) : null,
+      )}
+      {pick &&
+        scr.map((a, i) => {
+          const b = corner(i + 1);
+          const state = pick.states?.[i];
+          const mark = pick.marks[i];
+          return (
+            <g
+              key={`p${i}`}
+              className={`pic-pick${mark ? " marked" : ""}${state ? ` ${state}` : ""}`}
+              role="button"
+              tabIndex={pick.disabled ? -1 : 0}
+              aria-label={`Side ${i + 1}${mark ? `: ${mark}` : ", not labelled"}`}
+              aria-disabled={pick.disabled ?? false}
+              onClick={() => !pick.disabled && pick.onSide(i)}
+              onKeyDown={(e) => {
+                if (pick.disabled || (e.key !== "Enter" && e.key !== " ")) return;
+                e.preventDefault();
+                pick.onSide(i);
+              }}
+            >
+              <line className="pic-pick-line" x1={a.x} y1={a.y} x2={b.x} y2={b.y} />
+              <line className="pic-pick-hit" x1={a.x} y1={a.y} x2={b.x} y2={b.y} />
+            </g>
+          );
+        })}
+      {sideLabels.map((l, i) =>
+        l ? (
           <text
             key={`l${i}`}
-            className="pic-label"
-            x={mx + nx * 16}
-            y={my + ny * 16 + 5}
+            className={`pic-label${pick?.marks[i] ? ` pic-pick-mark${pick.states?.[i] ? ` ${pick.states[i]}` : ""}` : ""}`}
+            x={l.box.x}
+            y={l.box.y + 5.5}
             textAnchor="middle"
           >
-            {label}
+            {l.text}
           </text>
-        );
-      })}
-      {(pic.angles ?? []).map((label, i) => {
-        const p = pts[i];
-        if (!label || !p) return null;
-        const dx = sx(centre.x) - sx(p.x);
-        const dy = sy(centre.y) - sy(p.y);
-        const l = Math.hypot(dx, dy) || 1;
-        return (
-          <text
-            key={`a${i}`}
-            className="pic-angle"
-            x={sx(p.x) + (dx / l) * 28}
-            y={sy(p.y) + (dy / l) * 28 + 5}
-            textAnchor="middle"
-          >
-            {label}
+        ) : null,
+      )}
+      {names.map((n, i) =>
+        n ? (
+          <text key={`n${i}`} className="pic-label" x={n.box.x} y={n.box.y + 6} textAnchor="middle">
+            {n.name}
           </text>
-        );
-      })}
-      {(pic.names ?? []).map((name, i) => {
-        const p = pts[i];
-        if (!p || !name) return null;
-        const dx = sx(p.x) - sx(centre.x);
-        const dy = sy(p.y) - sy(centre.y);
-        const l = Math.hypot(dx, dy) || 1;
-        return (
-          <text
-            key={`n${i}`}
-            className="pic-label"
-            x={sx(p.x) + (dx / l) * 16}
-            y={sy(p.y) + (dy / l) * 16 + 6}
-            textAnchor="middle"
-          >
-            {name}
-          </text>
-        );
-      })}
+        ) : null,
+      )}
       {(pic.dots ?? []).map((p, i) => (
         <circle key={`o${i}`} className="pic-centre" cx={sx(p.x)} cy={sy(p.y)} r="4" />
       ))}
+    </g>
+  );
+  if (pick)
+    return (
+      <svg
+        className="pic pic-picking"
+        viewBox={`0 0 ${width} ${height}`}
+        style={{ maxWidth: `${width * 1.15}px` }}
+        role="group"
+        aria-label={`${shapeLabel(pic)} Tap a side to label it.`}
+      >
+        {body}
+      </svg>
+    );
+  return (
+    <Svg width={width} height={height} label={shapeLabel(pic)}>
+      {body}
     </Svg>
   );
 }
@@ -1120,6 +1120,7 @@ function Drawing({ pic }: { pic: DrawingPic }) {
           y: it.arc.y + (it.ry ?? it.r) * Math.sin(rad(a)),
         });
     else if ("dot" in it) pts.push(it.dot);
+    else if ("angle" in it) pts.push(it.angle);
     else pts.push(it.at);
   }
   // A fixed frame keeps a drawing still while a construction adds to it step by step.
@@ -1133,88 +1134,130 @@ function Drawing({ pic }: { pic: DrawingPic }) {
   const pad = 22;
   const sx = (x: number) => pad + (x - minX) * k;
   const sy = (y: number) => pad + (maxY - y) * k;
+  // Angles are marked on screen, and the drawing grows to fit their labels.
+  const marks = pic.items.map((it) => {
+    if (!("angle" in it)) return null;
+    const p = { x: sx(it.angle.x), y: sy(it.angle.y) };
+    const arm = (deg: number) => ({
+      x: p.x + 50 * Math.cos(rad(deg)),
+      y: p.y - 50 * Math.sin(rad(deg)),
+    });
+    return angleMark(p, arm(it.from), arm(it.to), it.label);
+  });
+  const w0 = (maxX - minX) * k + 2 * pad;
+  const h0 = (maxY - minY) * k + 2 * pad;
+  const labels = marks.flatMap((m) => (m ? [m.label] : []));
+  const left = Math.min(0, ...labels.map((b) => b.x - b.hw - 6));
+  const top = Math.min(0, ...labels.map((b) => b.y - b.hh - 6));
+  const right = Math.max(w0, ...labels.map((b) => b.x + b.hw + 6));
+  const bottom = Math.max(h0, ...labels.map((b) => b.y + b.hh + 6));
+  const named = pic.items.flatMap((i) => ("text" in i ? [i.text] : "angle" in i ? [i.label] : []));
   return (
     <Svg
-      width={(maxX - minX) * k + 2 * pad}
-      height={(maxY - minY) * k + 2 * pad}
-      label={`A drawing${pic.items.some((i) => "text" in i) ? `, labelled ${pic.items.flatMap((i) => ("text" in i ? [i.text] : [])).join(", ")}` : ""}.`}
+      width={right - left}
+      height={bottom - top}
+      label={`A drawing${named.length ? `, labelled ${named.join(", ")}` : ""}.`}
     >
-      {pic.items.map((it, i) => {
-        if ("line" in it) {
-          const [a, b] = it.line;
-          return (
-            <line
-              key={i}
-              className={`draw-line tone-${it.tone ?? "main"}${it.dashed ? " dashed" : ""}`}
-              x1={sx(a.x)}
-              y1={sy(a.y)}
-              x2={sx(b.x)}
-              y2={sy(b.y)}
-              markerEnd={it.arrow ? "url(#draw-arrow)" : undefined}
-            />
-          );
-        }
-        if ("arc" in it) {
-          // An oval when ry is set, as for the ends of a cylinder.
-          const ry = it.ry ?? it.r;
-          const p1 = {
-            x: it.arc.x + it.r * Math.cos(rad(it.from)),
-            y: it.arc.y + ry * Math.sin(rad(it.from)),
-          };
-          const p2 = {
-            x: it.arc.x + it.r * Math.cos(rad(it.to)),
-            y: it.arc.y + ry * Math.sin(rad(it.to)),
-          };
-          const className = `draw-arc${it.ry !== undefined ? " oval" : ""}${it.dashed ? " dashed" : ""}`;
-          // A whole turn is a circle: an arc that ends where it starts draws nothing.
-          if (it.to - it.from >= 360)
+      <g transform={`translate(${-left} ${-top})`}>
+        {pic.items.map((it, i) => {
+          const mark = marks[i];
+          if ("angle" in it && mark) {
+            const arc = mark.arc;
             return (
-              <ellipse
+              <g key={i} className={`pic-angle-mark${toFind(it.label) ? " find" : ""}`}>
+                {arc && (
+                  <path
+                    d={`M${arc.from.x} ${arc.from.y} A${arc.r} ${arc.r} 0 ${arc.large ? 1 : 0} ${arc.sweep ? 1 : 0} ${arc.to.x} ${arc.to.y}`}
+                  />
+                )}
+                <text
+                  className="pic-angle"
+                  x={mark.label.x}
+                  y={mark.label.y + 5}
+                  textAnchor="middle"
+                >
+                  {it.label}
+                </text>
+              </g>
+            );
+          }
+          if ("angle" in it) return null;
+          if ("line" in it) {
+            const [a, b] = it.line;
+            return (
+              <line
                 key={i}
-                className={className}
-                cx={sx(it.arc.x)}
-                cy={sy(it.arc.y)}
-                rx={it.r * k}
-                ry={ry * k}
+                className={`draw-line tone-${it.tone ?? "main"}${it.dashed ? " dashed" : ""}`}
+                x1={sx(a.x)}
+                y1={sy(a.y)}
+                x2={sx(b.x)}
+                y2={sy(b.y)}
+                markerEnd={it.arrow ? "url(#draw-arrow)" : undefined}
               />
             );
+          }
+          if ("arc" in it) {
+            // An oval when ry is set, as for the ends of a cylinder.
+            const ry = it.ry ?? it.r;
+            const p1 = {
+              x: it.arc.x + it.r * Math.cos(rad(it.from)),
+              y: it.arc.y + ry * Math.sin(rad(it.from)),
+            };
+            const p2 = {
+              x: it.arc.x + it.r * Math.cos(rad(it.to)),
+              y: it.arc.y + ry * Math.sin(rad(it.to)),
+            };
+            const className = `draw-arc${it.ry !== undefined ? " oval" : ""}${it.dashed ? " dashed" : ""}`;
+            // A whole turn is a circle: an arc that ends where it starts draws nothing.
+            if (it.to - it.from >= 360)
+              return (
+                <ellipse
+                  key={i}
+                  className={className}
+                  cx={sx(it.arc.x)}
+                  cy={sy(it.arc.y)}
+                  rx={it.r * k}
+                  ry={ry * k}
+                />
+              );
+            return (
+              <path
+                key={i}
+                className={className}
+                d={`M${sx(p1.x)} ${sy(p1.y)} A${it.r * k} ${ry * k} 0 ${it.to - it.from > 180 ? 1 : 0} 0 ${sx(p2.x)} ${sy(p2.y)}`}
+              />
+            );
+          }
+          if ("dot" in it)
+            return (
+              <circle key={i} className="pic-centre" cx={sx(it.dot.x)} cy={sy(it.dot.y)} r="4" />
+            );
           return (
-            <path
+            <text
               key={i}
-              className={className}
-              d={`M${sx(p1.x)} ${sy(p1.y)} A${it.r * k} ${ry * k} 0 ${it.to - it.from > 180 ? 1 : 0} 0 ${sx(p2.x)} ${sy(p2.y)}`}
-            />
+              className={`pic-label${it.tone === "find" ? " find" : ""}`}
+              x={sx(it.at.x)}
+              y={sy(it.at.y) + 6}
+              textAnchor="middle"
+            >
+              {it.text}
+            </text>
           );
-        }
-        if ("dot" in it)
-          return (
-            <circle key={i} className="pic-centre" cx={sx(it.dot.x)} cy={sy(it.dot.y)} r="4" />
-          );
-        return (
-          <text
-            key={i}
-            className={`pic-label${it.tone === "find" ? " find" : ""}`}
-            x={sx(it.at.x)}
-            y={sy(it.at.y) + 6}
-            textAnchor="middle"
+        })}
+        <defs>
+          <marker
+            id="draw-arrow"
+            viewBox="0 0 10 10"
+            refX="8"
+            refY="5"
+            markerWidth="7"
+            markerHeight="7"
+            orient="auto-start-reverse"
           >
-            {it.text}
-          </text>
-        );
-      })}
-      <defs>
-        <marker
-          id="draw-arrow"
-          viewBox="0 0 10 10"
-          refX="8"
-          refY="5"
-          markerWidth="7"
-          markerHeight="7"
-          orient="auto-start-reverse"
-        >
-          <path d="M0 0 L10 5 L0 10 z" className="draw-arrowhead" />
-        </marker>
-      </defs>
+            <path d="M0 0 L10 5 L0 10 z" className="draw-arrowhead" />
+          </marker>
+        </defs>
+      </g>
     </Svg>
   );
 }
