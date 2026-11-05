@@ -191,6 +191,20 @@ export const y8Equations: UnitLesson[] = [
         done: "$s = 150 \\div 3 = 50$ km/h.",
       },
       {
+        kind: "choice",
+        tag: "Watch out",
+        title:
+          "$v = u + at$ with $u = 3$, $a = 2$, $t = 5$. Max works out $3 + 2 = 5$, then $5 \\times 5 = 25$. Is he right?",
+        options: [
+          {
+            text: "No: multiply first. $at = 10$, so $v = 13$",
+            correct: true,
+            feedback: "Order of operations still applies in a formula: times before plus.",
+          },
+          { text: "Yes", feedback: "$at$ means $a \\times t$, done before adding u." },
+        ],
+      },
+      {
         kind: "mistake",
         tag: "Spot the mistake",
         title: "Where did it go wrong?",
@@ -427,6 +441,19 @@ export const y8Equations: UnitLesson[] = [
         answers: ["$\\frac{2A}{b}$"],
         hint: "Undo the ÷ 2 first, by multiplying both sides by 2. Then undo × b.",
         done: "$2A = bh$, so $h = \\frac{2A}{b}$.",
+      },
+      {
+        kind: "choice",
+        tag: "Watch out",
+        title: "To make x the subject of $y = x + 5$, Pat writes $x = y + 5$. Is that right?",
+        options: [
+          {
+            text: "No: undo + 5 by taking 5: $x = y - 5$",
+            correct: true,
+            feedback: "Moving a term to the other side uses the inverse operation.",
+          },
+          { text: "Yes", feedback: "Check with x = 1: y = 6, but $6 + 5 = 11$, not 1." },
+        ],
       },
       {
         kind: "mistake",
@@ -671,6 +698,19 @@ export const y8Equations: UnitLesson[] = [
         wrong: [{ answer: "3", feedback: "Add 3 to both sides, don't take it away: $3x = 15$." }],
         hint: "Take 2x from both sides, then add 3.",
         done: "$3x - 3 = 12$, so $3x = 15$ and $x = 5$.",
+      },
+      {
+        kind: "choice",
+        tag: "Watch out",
+        title: "Gus solves $4x = x + 9$ and writes $4x - x = 4$. What's wrong?",
+        options: [
+          {
+            text: "$x$ is $1x$, so $4x - x = 3x$",
+            correct: true,
+            feedback: "Take x from both sides: $3x = 9$, so $x = 3$.",
+          },
+          { text: "Nothing", feedback: "4 lots of x take away 1 lot of x leaves 3 lots." },
+        ],
       },
       {
         kind: "mistake",
@@ -925,6 +965,23 @@ export const y8Equations: UnitLesson[] = [
         done: "$5x + 5 = 3x + 15$, so $2x = 10$ and $x = 5$.",
       },
       {
+        kind: "choice",
+        tag: "Watch out",
+        title:
+          "To solve $4(x + 1) = 20$, Ria divides both sides by 4 first: $x + 1 = 5$. Is that allowed?",
+        options: [
+          {
+            text: "Yes: it's the same on both sides, and gives $x = 4$",
+            correct: true,
+            feedback: "Expanding first works too: $4x + 4 = 20$. Either way, $x = 4$.",
+          },
+          {
+            text: "No: you must expand first",
+            feedback: "Dividing both sides by the same number keeps them balanced.",
+          },
+        ],
+      },
+      {
         kind: "mistake",
         tag: "Spot the mistake",
         title: "Where did it go wrong?",
@@ -1173,6 +1230,19 @@ export const y8Equations: UnitLesson[] = [
           },
         ],
         done: "Look at what's on top of the fraction: undo the last thing that was done first.",
+      },
+      {
+        kind: "choice",
+        tag: "Watch out",
+        title: "To solve $\\frac{x}{4} = 3$, Kim writes $x = \\frac34$. Is she right?",
+        options: [
+          {
+            text: "No: undo ÷ 4 by multiplying by 4: $x = 12$",
+            correct: true,
+            feedback: "Check: $12 \\div 4 = 3$ ✓. $\\frac34 \\div 4$ is far less than 3.",
+          },
+          { text: "Yes", feedback: "Dividing again makes it smaller still. Undo the division." },
+        ],
       },
       {
         kind: "mistake",
