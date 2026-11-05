@@ -3,7 +3,7 @@
 // time, and working back to an angle. Each opens on a real problem the pupil can't solve yet,
 // warms up what it builds on, finds the idea, works an example, does one together, gives one to
 // try, spots a common mistake, solves the opening problem, and ends on an exit check.
-import type { DrawingPic, ShapePic, UnitLesson } from "./types.ts";
+import type { DrawingPic, LabelSides, ShapePic, UnitLesson } from "./types.ts";
 
 const PYTHAGORAS = "Y9-GEO-01.a";
 const SIDE = "Y9-GEO-01.b";
@@ -32,6 +32,100 @@ function right(
     sides: [bottom, upright, hyp],
     angles: [angle, null, null],
     square: [1],
+  };
+}
+
+interface Tri {
+  /** The angle θ, drawn to size. */
+  deg: number;
+  /** θ at the top corner instead of the bottom left. */
+  top?: boolean;
+  /** Turned anticlockwise by this many degrees, after a flip if asked. */
+  turn?: number;
+  flip?: boolean;
+  opp?: string | null;
+  adj?: string | null;
+  hyp?: string | null;
+  /** θ's label: "θ" unless set; "" for none. */
+  angle?: string;
+}
+
+/**
+ * A right-angled triangle any way round, for labelling its sides from θ. Its sides run from the
+ * bottom-left corner to the right angle (0), the right angle to the top (1), and the top back (2).
+ */
+function tri(t: Tri): ShapePic {
+  const base = t.top ? 90 - t.deg : t.deg;
+  const h = Math.min(6 * Math.tan((base * Math.PI) / 180), 9);
+  const a = ((t.turn ?? 0) * Math.PI) / 180;
+  const round = (v: number) => Math.round(v * 100) / 100;
+  const points = [
+    { x: 0, y: 0 },
+    { x: 6, y: 0 },
+    { x: 6, y: h },
+  ].map((p) => {
+    const x = t.flip ? -p.x : p.x;
+    return {
+      x: round(x * Math.cos(a) - p.y * Math.sin(a)),
+      y: round(x * Math.sin(a) + p.y * Math.cos(a)),
+    };
+  });
+  const theta = t.angle ?? "θ";
+  return {
+    kind: "shape",
+    points,
+    sides: t.top
+      ? [t.opp ?? null, t.adj ?? null, t.hyp ?? null]
+      : [t.adj ?? null, t.opp ?? null, t.hyp ?? null],
+    angles: t.top ? [null, null, theta] : [theta, null, null],
+    square: [1],
+  };
+}
+
+const HOA = [
+  {
+    mark: "H",
+    name: "hypotenuse",
+    why: "The hypotenuse is across from the right angle, and the longest side.",
+  },
+  {
+    mark: "O",
+    name: "opposite",
+    why: "The opposite side is across from θ: it doesn't touch θ at all.",
+  },
+  { mark: "A", name: "adjacent", why: "The adjacent side touches θ, and isn't the hypotenuse." },
+];
+
+/** Label a triangle's sides H, O and A from θ. */
+function label(title: string, t: Tri, done: string, text?: string): LabelSides & { tag: string } {
+  return {
+    kind: "label",
+    tag: "Label the sides",
+    title,
+    ...(text ? { text } : {}),
+    shape: tri(t),
+    chips: HOA,
+    answers: t.top ? ["O", "A", "H"] : ["A", "O", "H"],
+    done,
+  };
+}
+
+/** Tap just the hypotenuse. */
+function hypotenuse(
+  title: string,
+  t: Tri,
+  done: string,
+  text?: string,
+): LabelSides & { tag: string } {
+  return {
+    kind: "label",
+    tag: "Discover",
+    title,
+    ...(text ? { text } : {}),
+    shape: tri({ ...t, angle: "" }),
+    chips: HOA.slice(0, 1),
+    answers: [null, null, "H"],
+    done,
   };
 }
 
@@ -216,6 +310,18 @@ export const y9Trigonometry: UnitLesson[] = [
         ],
         picture: squares,
       },
+      hypotenuse(
+        "Tap the hypotenuse",
+        { deg: 36.87 },
+        "Across from the right angle, and the longest side.",
+        "Pick H, then tap the side it goes on.",
+      ),
+      hypotenuse(
+        "And in this one?",
+        { deg: 30, turn: 125, flip: true },
+        "However the triangle is turned, the hypotenuse is across from the right angle.",
+        "The triangle is turned round. Find the right angle first.",
+      ),
       {
         kind: "choice",
         tag: "Discover",
@@ -287,6 +393,41 @@ export const y9Trigonometry: UnitLesson[] = [
           },
         ],
         done: "Square, add, square root.",
+      },
+      {
+        kind: "steps",
+        tag: "Together",
+        title: "Shorter sides of 7 cm and 24 cm",
+        text: "One more together, step by step.",
+        picture: tri({ deg: 16.26, flip: true, adj: "24 cm", opp: "7 cm", hyp: "c", angle: "" }),
+        start: "Find the hypotenuse, c.",
+        stages: [
+          {
+            prompt: "What do you work out first?",
+            options: [
+              { text: "$7^2 + 24^2$", correct: true, feedback: "" },
+              { text: "$7 + 24$", feedback: "It is the squares that add, not the sides." },
+              {
+                text: "$24^2 - 7^2$",
+                feedback: "Taking away is for a shorter side. The hypotenuse adds.",
+              },
+            ],
+            then: "$c^2 = 49 + 576 = 625$",
+          },
+          {
+            prompt: "So c is",
+            options: [
+              { text: "$\\sqrt{625} = 25$ cm", correct: true, feedback: "" },
+              { text: "$625$ cm", feedback: "625 is $c^2$. Take the square root." },
+              {
+                text: "$312.5$ cm",
+                feedback: "Halving doesn't undo squaring: take the square root.",
+              },
+            ],
+            then: "$c = 25$ cm",
+          },
+        ],
+        done: "Square, add, square root, every time. Now try some on your own.",
       },
       {
         kind: "answer",
@@ -530,6 +671,38 @@ export const y9Trigonometry: UnitLesson[] = [
         done: "Square, take away, square root.",
       },
       {
+        kind: "steps",
+        tag: "Together",
+        title: "Hypotenuse 26 cm, one side 10 cm",
+        text: "One more together, step by step.",
+        picture: tri({ deg: 22.62, flip: true, adj: "a", opp: "10 cm", hyp: "26 cm", angle: "" }),
+        start: "Find the other side, a.",
+        stages: [
+          {
+            prompt: "What do you work out first?",
+            options: [
+              { text: "$26^2 - 10^2$", correct: true, feedback: "" },
+              {
+                text: "$26^2 + 10^2$",
+                feedback: "Adding gives a side longer than the hypotenuse.",
+              },
+              { text: "$26 - 10$", feedback: "Work with the squares." },
+            ],
+            then: "$a^2 = 676 - 100 = 576$",
+          },
+          {
+            prompt: "So a is",
+            options: [
+              { text: "$24$ cm", correct: true, feedback: "" },
+              { text: "$576$ cm", feedback: "576 is $a^2$: square root it." },
+              { text: "$288$ cm", feedback: "Square root, don't halve." },
+            ],
+            then: "$a = \\sqrt{576} = 24$ cm",
+          },
+        ],
+        done: "Square, take away, square root. Now try some on your own.",
+      },
+      {
         kind: "answer",
         tag: "Your turn",
         title: "Hypotenuse 10 cm, one side 6 cm",
@@ -697,6 +870,29 @@ export const y9Trigonometry: UnitLesson[] = [
         ],
         picture: right(34, "adjacent", "opposite", "hypotenuse", "θ"),
       },
+      label(
+        "Label the sides from θ",
+        { deg: 34 },
+        "H is across from the right angle, O is across from θ, and A touches θ.",
+        "Pick H, O or A, then tap the side it goes on.",
+      ),
+      label(
+        "θ has moved",
+        { deg: 34, top: true },
+        "The hypotenuse never moves. Which side is opposite and which adjacent depends on where θ is.",
+        "Now θ is at the top. Label the sides from θ again.",
+      ),
+      label(
+        "Turned round",
+        { deg: 40, turn: 180, flip: true },
+        "Right angle first, for H. Then across from θ is O, and the side left, touching θ, is A.",
+        "The same kind of triangle, turned and flipped.",
+      ),
+      label(
+        "Any way round",
+        { deg: 55, turn: 150, flip: true, top: true },
+        "You can label a right-angled triangle any way round: H, then O, then A.",
+      ),
       {
         kind: "choice",
         tag: "Discover",
@@ -760,7 +956,26 @@ export const y9Trigonometry: UnitLesson[] = [
         start: "Find x.",
         stages: [
           {
-            prompt: "x is opposite the 25° angle. Write the ratio:",
+            prompt: "Label the sides from the 25°: x is",
+            options: [
+              {
+                text: "Opposite, and 12 cm is the hypotenuse: use sin",
+                correct: true,
+                feedback: "",
+              },
+              {
+                text: "Adjacent, and 12 cm is the hypotenuse: use cos",
+                feedback: "x doesn't touch the 25°: it's across from it, the opposite.",
+              },
+              {
+                text: "The hypotenuse",
+                feedback: "The hypotenuse is across from the right angle: that's the 12 cm.",
+              },
+            ],
+            then: "x is O and 12 cm is H: use sin.",
+          },
+          {
+            prompt: "Write the ratio:",
             options: [
               { text: "$\\sin 25° = \\frac{x}{12}$", correct: true, feedback: "" },
               {
@@ -791,6 +1006,59 @@ export const y9Trigonometry: UnitLesson[] = [
           },
         ],
         done: "Label, write the ratio, rearrange, calculate.",
+      },
+      {
+        kind: "steps",
+        tag: "Together",
+        title: "Hypotenuse 9 cm, angle 62°",
+        text: "The same steps again, with the triangle turned round.",
+        picture: tri({ deg: 62, top: true, flip: true, opp: "x", hyp: "9 cm", angle: "62°" }),
+        start: "Find x.",
+        stages: [
+          {
+            prompt: "Label the sides from the 62°: x is",
+            options: [
+              {
+                text: "Opposite, and 9 cm is the hypotenuse: use sin",
+                correct: true,
+                feedback: "",
+              },
+              {
+                text: "Adjacent, and 9 cm is the hypotenuse: use cos",
+                feedback: "x doesn't touch the 62°: it's across from it, the opposite.",
+              },
+              {
+                text: "The hypotenuse",
+                feedback: "The hypotenuse is across from the right angle: that's the 9 cm.",
+              },
+            ],
+            then: "x is O and 9 cm is H: use sin.",
+          },
+          {
+            prompt: "Write the ratio:",
+            options: [
+              { text: "$\\sin 62° = \\frac{x}{9}$", correct: true, feedback: "" },
+              {
+                text: "$\\sin 62° = \\frac{9}{x}$",
+                feedback: "sin is opposite ÷ hypotenuse: x on top.",
+              },
+            ],
+            then: "$\\sin 62° = \\frac{x}{9}$",
+          },
+          {
+            prompt: "So x is",
+            options: [
+              { text: "$9 \\sin 62° = 7.9$ cm", correct: true, feedback: "" },
+              {
+                text: "$\\frac{9}{\\sin 62°} = 10.2$ cm",
+                feedback: "That is longer than the hypotenuse: impossible.",
+              },
+              { text: "$\\frac{\\sin 62°}{9} = 0.1$ cm", feedback: "Multiply by 9 to undo ÷ 9." },
+            ],
+            then: "$x = 9 \\times 0.883 = 7.9$ cm",
+          },
+        ],
+        done: "Label, write the ratio, rearrange, calculate. Now it's your turn.",
       },
       {
         kind: "answer",
@@ -963,6 +1231,17 @@ export const y9Trigonometry: UnitLesson[] = [
         ],
         picture: { kind: "maths", tex: "\\cos\\theta = \\frac{\\text{adj}}{\\text{hyp}}" },
       },
+      label(
+        "Which side is adjacent?",
+        { deg: 50, turn: 270 },
+        "cos uses A, the side touching θ, and H.",
+        "cos uses the adjacent side. Label the sides from θ.",
+      ),
+      label(
+        "And here?",
+        { deg: 30, top: true, flip: true, turn: 20 },
+        "H across from the right angle, O across from θ, A touching θ.",
+      ),
       {
         kind: "worked",
         tag: "Worked example",
@@ -1019,6 +1298,59 @@ export const y9Trigonometry: UnitLesson[] = [
           },
         ],
         done: "Next to the angle with the hypotenuse known: cos.",
+      },
+      {
+        kind: "steps",
+        tag: "Together",
+        title: "Hypotenuse 11 cm, angle 35°",
+        text: "The same steps again, with the triangle turned round.",
+        picture: tri({ deg: 35, turn: 90, flip: true, adj: "x", hyp: "11 cm", angle: "35°" }),
+        start: "Find x.",
+        stages: [
+          {
+            prompt: "Label the sides from the 35°: x is",
+            options: [
+              {
+                text: "Adjacent, and 11 cm is the hypotenuse: use cos",
+                correct: true,
+                feedback: "",
+              },
+              {
+                text: "Opposite, and 11 cm is the hypotenuse: use sin",
+                feedback: "x touches the 35°: it's the adjacent side.",
+              },
+              {
+                text: "The hypotenuse",
+                feedback: "The hypotenuse is across from the right angle: that's the 11 cm.",
+              },
+            ],
+            then: "x is A and 11 cm is H: use cos.",
+          },
+          {
+            prompt: "Write the ratio:",
+            options: [
+              { text: "$\\cos 35° = \\frac{x}{11}$", correct: true, feedback: "" },
+              {
+                text: "$\\cos 35° = \\frac{11}{x}$",
+                feedback: "cos is adjacent ÷ hypotenuse: x on top.",
+              },
+            ],
+            then: "$\\cos 35° = \\frac{x}{11}$",
+          },
+          {
+            prompt: "So x is",
+            options: [
+              { text: "$11 \\cos 35° = 9.0$ cm", correct: true, feedback: "" },
+              { text: "$11 \\sin 35° = 6.3$ cm", feedback: "That finds the opposite side." },
+              {
+                text: "$\\frac{11}{\\cos 35°} = 13.4$ cm",
+                feedback: "That is longer than the hypotenuse: impossible.",
+              },
+            ],
+            then: "$x = 11 \\times 0.819 = 9.0$ cm",
+          },
+        ],
+        done: "Label, write the ratio, rearrange, calculate. Now it's your turn.",
       },
       {
         kind: "answer",
@@ -1212,6 +1544,17 @@ export const y9Trigonometry: UnitLesson[] = [
         ],
         picture: { kind: "maths", tex: SOHCAHTOA },
       },
+      label(
+        "No hypotenuse needed",
+        { deg: 40, flip: true },
+        "tan uses just O and A. The hypotenuse is left out.",
+        "Label all three sides from θ.",
+      ),
+      label(
+        "Once more",
+        { deg: 25, top: true, turn: 180 },
+        "Opposite and adjacent are the two tan uses.",
+      ),
       {
         kind: "worked",
         tag: "Worked example",
@@ -1268,6 +1611,56 @@ export const y9Trigonometry: UnitLesson[] = [
           },
         ],
         done: "No hypotenuse involved: tan.",
+      },
+      {
+        kind: "steps",
+        tag: "Together",
+        title: "Adjacent 9 m, angle 52°",
+        text: "The same steps again, with the triangle turned round.",
+        picture: tri({ deg: 52, flip: true, adj: "9 m", opp: "x", angle: "52°" }),
+        start: "Find x.",
+        stages: [
+          {
+            prompt: "Label the sides from the 52°. Which two are involved?",
+            options: [
+              { text: "x is opposite and 9 m adjacent: use tan", correct: true, feedback: "" },
+              {
+                text: "x is opposite and 9 m the hypotenuse: use sin",
+                feedback:
+                  "9 m touches the 52° and isn't across from the right angle: it's the adjacent.",
+              },
+              {
+                text: "x is adjacent and 9 m the hypotenuse: use cos",
+                feedback: "x is across from the 52°: the opposite.",
+              },
+            ],
+            then: "x is O and 9 m is A: use tan.",
+          },
+          {
+            prompt: "Write the ratio:",
+            options: [
+              { text: "$\\tan 52° = \\frac{x}{9}$", correct: true, feedback: "" },
+              {
+                text: "$\\tan 52° = \\frac{9}{x}$",
+                feedback: "tan is opposite ÷ adjacent: x on top.",
+              },
+            ],
+            then: "$\\tan 52° = \\frac{x}{9}$",
+          },
+          {
+            prompt: "So x is",
+            options: [
+              { text: "$9 \\tan 52° = 11.5$ m", correct: true, feedback: "" },
+              { text: "$\\frac{9}{\\tan 52°} = 7.0$ m", feedback: "x is on top: multiply by 9." },
+              {
+                text: "$9 \\sin 52° = 7.1$ m",
+                feedback: "sin needs the hypotenuse; 9 m is the adjacent.",
+              },
+            ],
+            then: "$x = 9 \\times 1.280 = 11.5$ m",
+          },
+        ],
+        done: "Label, pick the ratio, rearrange, calculate. Now it's your turn.",
       },
       {
         kind: "answer",
@@ -1443,6 +1836,12 @@ export const y9Trigonometry: UnitLesson[] = [
           { text: "60°", feedback: "$\\sin 60° = 0.866$. Which angle has a sine of 0.5?" },
         ],
       },
+      label(
+        "Label from θ first",
+        { deg: 35, turn: 270, top: true },
+        "Labelled sides tell you the ratio, whether you want a side or an angle.",
+        "Before choosing a ratio, label the sides from θ.",
+      ),
       {
         kind: "worked",
         tag: "Worked example",
@@ -1503,6 +1902,58 @@ export const y9Trigonometry: UnitLesson[] = [
           },
         ],
         done: "Ratio, then inverse.",
+      },
+      {
+        kind: "steps",
+        tag: "Together",
+        title: "Opposite 8 cm, adjacent 5 cm",
+        text: "The same steps again, with the triangle turned round.",
+        picture: tri({ deg: 58, turn: 90, flip: true, opp: "8 cm", adj: "5 cm" }),
+        start: "Find θ.",
+        stages: [
+          {
+            prompt: "Label the sides from θ. Which two are involved?",
+            options: [
+              { text: "8 cm is opposite and 5 cm adjacent: use tan", correct: true, feedback: "" },
+              {
+                text: "8 cm is the hypotenuse: use sin",
+                feedback: "The hypotenuse is across from the right angle. Neither side we know is.",
+              },
+              {
+                text: "8 cm is adjacent: use cos",
+                feedback: "8 cm is across from θ: the opposite.",
+              },
+            ],
+            then: "8 cm is O and 5 cm is A: use tan.",
+          },
+          {
+            prompt: "Write the ratio:",
+            options: [
+              { text: "$\\tan\\theta = \\frac{8}{5}$", correct: true, feedback: "" },
+              {
+                text: "$\\tan\\theta = \\frac{5}{8}$",
+                feedback: "tan is opposite ÷ adjacent: 8 on top.",
+              },
+            ],
+            then: "$\\tan\\theta = \\frac{8}{5} = 1.6$",
+          },
+          {
+            prompt: "So θ is",
+            options: [
+              { text: "$\\tan^{-1}(1.6) = 58.0°$", correct: true, feedback: "" },
+              {
+                text: "$\\tan(1.6) = 0.03°$",
+                feedback: "That gives a ratio of a tiny angle. Use the inverse.",
+              },
+              {
+                text: "$1.6 \\times 45 = 72°$",
+                feedback: "Angles and ratios aren't in proportion. Use the inverse.",
+              },
+            ],
+            then: "$\\theta = 58.0°$",
+          },
+        ],
+        done: "Label, pick the ratio, then the inverse. Now it's your turn.",
       },
       {
         kind: "answer",

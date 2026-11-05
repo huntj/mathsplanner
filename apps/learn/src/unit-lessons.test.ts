@@ -29,6 +29,7 @@ import {
   fillGroups,
   fillWrong,
   isPrime,
+  labelWrong,
   matches,
   morphPieces,
   plainLabel,
@@ -38,6 +39,7 @@ import {
 } from "./unit-screens.tsx";
 import { machineChoices, machineRuleTex } from "./UnitLessonView.tsx";
 import { wordsHtml } from "./unit-ui.tsx";
+import { angleMark, crosses, layoutShape, overlap, sideLabel, type ShapeLike } from "./labels.ts";
 
 const inside = (r: Range, p: Point) =>
   p.x >= r.xMin && p.x <= r.xMax && p.y >= r.yMin && p.y <= r.yMax;
@@ -77,6 +79,7 @@ const words = (lesson: (typeof UNIT_LESSONS)[number]): string[] =>
       if (s.kind === "place") own.push(...s.targets.map((t) => t.label));
       if (s.kind === "worked") own.push(s.problem, ...s.steps.flatMap((st) => [st.line, st.why]));
       if (s.kind === "mistake") own.push(...s.lines, s.why);
+      if (s.kind === "label") own.push(s.done, ...s.chips.flatMap((c) => [c.name, c.why]));
       if (s.kind === "quiz")
         own.push(
           ...s.questions
@@ -417,6 +420,19 @@ describe.each(UNIT_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %
           // A second go has new numbers: a different question.
           for (const q of screen.questions) expect(q.retry.prompt).not.toBe(q.prompt);
           break;
+        case "label": {
+          checkPicture(screen.shape);
+          expect(screen.answers).toHaveLength(screen.shape.points.length);
+          // Each label goes on exactly one side, and every side's label is on offer.
+          for (const c of screen.chips)
+            expect(screen.answers.filter((a) => a === c.mark)).toHaveLength(1);
+          for (const a of screen.answers)
+            if (a !== null) expect(screen.chips.map((c) => c.mark)).toContain(a);
+          // All right: nothing comes off. One swapped: both come off.
+          const marks = screen.answers.map((a) => a ?? undefined);
+          expect(labelWrong(marks, screen.answers).some(Boolean)).toBe(false);
+          break;
+        }
         case "morph":
           expect(screen.dims.every((d) => d > 0)).toBe(true);
           if (screen.shape === "circle") {
@@ -616,5 +632,66 @@ describe("recording a unit lesson", () => {
     const old: Record<string, unknown> = { ...emptyProgress() };
     delete old.unitLessons;
     expect(readProgress(old).unitLessons).toEqual({});
+  });
+});
+
+describe("labels on shapes", () => {
+  // Every shape in every lesson, wherever it sits: on a screen, a step, a quiz question.
+  const shapes: { where: string; pic: ShapeLike }[] = [];
+  const walk = (v: unknown, where: string) => {
+    if (Array.isArray(v)) v.forEach((x) => walk(x, where));
+    else if (v && typeof v === "object") {
+      const o = v as Record<string, unknown>;
+      if (o.kind === "shape" && Array.isArray(o.points))
+        shapes.push({ where, pic: o as unknown as ShapeLike });
+      else Object.values(o).forEach((x) => walk(x, where));
+    }
+  };
+  for (const lesson of UNIT_LESSONS)
+    lesson.screens.forEach((s, i) => walk(s, `${lessonId(lesson)} screen ${i + 1}`));
+
+  it("finds the shapes", () => {
+    expect(shapes.length).toBeGreaterThan(50);
+  });
+
+  it("never puts a label across a side, or on another label", () => {
+    const bad: string[] = [];
+    for (const { where, pic } of shapes) {
+      const { scr, sideLabels, angleMarks, names } = layoutShape(pic);
+      const sides = scr.map((a, i) => [a, scr[(i + 1) % scr.length] ?? a] as const);
+      const labels = [
+        ...sideLabels.flatMap((l) => (l ? [{ text: l.text, box: l.box }] : [])),
+        ...angleMarks.flatMap((m) => (m ? [{ text: m.text, box: m.label }] : [])),
+        ...names.flatMap((n) => (n ? [{ text: n.name, box: n.box }] : [])),
+      ];
+      for (const l of labels)
+        if (sides.some(([a, b]) => crosses(l.box, a, b)))
+          bad.push(`${where}: "${l.text}" crosses a side`);
+      for (const [i, a] of labels.entries())
+        for (const b of labels.slice(i + 1))
+          if (overlap(a.box, b.box)) bad.push(`${where}: "${a.text}" and "${b.text}" overlap`);
+    }
+    expect(bad).toEqual([]);
+  });
+
+  it("puts an angle's label past its arc, between its arms", () => {
+    // A thin 20° angle, with a wide label.
+    const m = angleMark({ x: 0, y: 0 }, { x: 100, y: 0 }, { x: 94, y: -34 }, "120°");
+    expect(m.arc).toBeDefined();
+    const r = m.arc?.r ?? 0;
+    expect(Math.hypot(m.label.x, m.label.y) - r).toBeGreaterThan(m.label.hh);
+    expect(crosses(m.label, { x: 0, y: 0 }, { x: 100, y: 0 })).toBe(false);
+    expect(crosses(m.label, { x: 0, y: 0 }, { x: 94, y: -34 })).toBe(false);
+  });
+
+  it("puts a side's label outside the side, clear of it", () => {
+    const tri = [
+      { x: 0, y: 100 },
+      { x: 100, y: 100 },
+      { x: 100, y: 0 },
+    ];
+    const box = sideLabel({ x: 100, y: 0 }, { x: 0, y: 100 }, tri, "hypotenuse");
+    expect(box.x + box.y).toBeLessThan(100);
+    expect(crosses(box, { x: 100, y: 0 }, { x: 0, y: 100 })).toBe(false);
   });
 });

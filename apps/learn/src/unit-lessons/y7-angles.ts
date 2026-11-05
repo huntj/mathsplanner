@@ -137,8 +137,8 @@ const laptop: DrawingPic = {
       ],
     },
     { line: [{ x: 5, y: 0 }, at(70, 4.5, { x: 5, y: 0 })] },
-    { text: "110°", at: { x: 4.1, y: 0.8 } },
-    { text: "?", at: { x: 6.1, y: 0.7 }, tone: "find" },
+    { angle: { x: 5, y: 0 }, from: 70, to: 180, label: "110°" },
+    { angle: { x: 5, y: 0 }, from: 0, to: 70, label: "?" },
     { text: "desk", at: { x: 1.5, y: -0.6 } },
   ],
 };
@@ -152,8 +152,8 @@ const scissors: DrawingPic = {
     { arc: at(197.5, 4.2), r: 0.7, from: 0, to: 360 },
     { arc: at(162.5, 4.2), r: 0.7, from: 0, to: 360 },
     { dot: { x: 0, y: 0 } },
-    { text: "35°", at: { x: 1.6, y: 0 } },
-    { text: "?", at: { x: -1.6, y: 0 }, tone: "find" },
+    { angle: { x: 0, y: 0 }, from: -17.5, to: 17.5, label: "35°" },
+    { angle: { x: 0, y: 0 }, from: 162.5, to: 197.5, label: "?" },
     { text: "blades", at: { x: 4.4, y: 2.5 } },
     { text: "handles", at: { x: -4.2, y: 2.7 } },
   ],
@@ -195,9 +195,9 @@ const roof: DrawingPic = {
       ],
       tone: "soft",
     },
-    { text: "35°", at: { x: 1.6, y: 0.4 } },
-    { text: "35°", at: { x: 6.4, y: 0.4 } },
-    { text: "?", at: { x: 4, y: 2.1 }, tone: "find" },
+    { angle: { x: 0, y: 0 }, from: 0, to: 35, label: "35°" },
+    { angle: { x: 8, y: 0 }, from: 145, to: 180, label: "35°" },
+    { angle: { x: 4, y: 2.8 }, from: 215, to: 325, label: "?" },
   ],
 };
 
@@ -212,7 +212,7 @@ function pentagons(turns: number[]): DrawingPic {
       p = q;
     }
   }
-  items.push({ text: "?", at: at(342, 1.5), tone: "find" });
+  items.push({ angle: { x: 0, y: 0 }, from: 324, to: 360, label: "?" });
   return { kind: "drawing", items };
 }
 
@@ -314,6 +314,35 @@ export const y7Angles: UnitLesson[] = [
           },
         ],
         done: "Add what you know, and take it from 360°.",
+      },
+      {
+        kind: "steps",
+        tag: "Together",
+        title: "Five angles meet at a point",
+        text: "One more together, step by step.",
+        picture: fan([0, 60, 130, 200, 290], ["60°", "70°", "70°", "90°", "x"]),
+        start: "Find x.",
+        stages: [
+          {
+            prompt: "Add the angles you know:",
+            options: [
+              { text: "290°", correct: true, feedback: "" },
+              { text: "360°", feedback: "Add only the four angles you know." },
+              { text: "220°", feedback: "Add all four you know, the right angle too." },
+            ],
+            then: "$60 + 70 + 70 + 90 = 290$",
+          },
+          {
+            prompt: "So x is",
+            options: [
+              { text: "70°", correct: true, feedback: "" },
+              { text: "290°", feedback: "290° is the angles you know. Take it from 360°." },
+              { text: "−110°", feedback: "That takes 290 from 180. Round a point, use 360." },
+            ],
+            then: "$x = 360 - 290 = 70°$",
+          },
+        ],
+        done: "The same two steps, however many angles there are. Now try some on your own.",
       },
       {
         kind: "answer",
@@ -525,6 +554,35 @@ export const y7Angles: UnitLesson[] = [
           },
         ],
         done: "Add what you know, and take it from 180°.",
+      },
+      {
+        kind: "steps",
+        tag: "Together",
+        title: "A right angle on a line",
+        text: "One more together, step by step.",
+        picture: fan([0, 90, 125, 180], ["90°", "x", "55°"]),
+        start: "Find x.",
+        stages: [
+          {
+            prompt: "Add the angles you know:",
+            options: [
+              { text: "145°", correct: true, feedback: "" },
+              { text: "180°", feedback: "Add only the two angles you know." },
+              { text: "55°", feedback: "The square is an angle too: 90°." },
+            ],
+            then: "$90 + 55 = 145$",
+          },
+          {
+            prompt: "So x is",
+            options: [
+              { text: "35°", correct: true, feedback: "" },
+              { text: "145°", feedback: "145° is the two you know. Take it from 180°." },
+              { text: "215°", feedback: "On a straight line, take it from 180°, not 360°." },
+            ],
+            then: "$x = 180 - 145 = 35°$",
+          },
+        ],
+        done: "Add what you know, take it from 180°. Now try some on your own.",
       },
       {
         kind: "answer",
@@ -754,6 +812,41 @@ export const y7Angles: UnitLesson[] = [
         done: "Opposite: equal. Next to each other: add to 180°.",
       },
       {
+        kind: "steps",
+        tag: "Together",
+        title: "Find p, q and r",
+        text: "One more together, step by step.",
+        picture: cross(65, ["50°", "p", "q", "r"], ""),
+        start: "Two straight lines cross. One angle is 50°.",
+        stages: [
+          {
+            prompt: "q is opposite the 50°. So q is",
+            options: [
+              { text: "50°", correct: true, feedback: "" },
+              { text: "130°", feedback: "Opposite angles are equal." },
+            ],
+            then: "$q = 50°$",
+          },
+          {
+            prompt: "p is next to the 50°, on a straight line. So p is",
+            options: [
+              { text: "130°", correct: true, feedback: "" },
+              { text: "50°", feedback: "p is next to the 50°, not opposite it." },
+            ],
+            then: "$p = 180 - 50 = 130°$",
+          },
+          {
+            prompt: "r is opposite p. So r is",
+            options: [
+              { text: "130°", correct: true, feedback: "" },
+              { text: "50°", feedback: "r is opposite p, so it equals p." },
+            ],
+            then: "$r = 130°$",
+          },
+        ],
+        done: "Check: $50 + 130 + 50 + 130 = 360$ ✓. Now try some on your own.",
+      },
+      {
         kind: "answer",
         tag: "Your turn",
         title: "Find y",
@@ -971,6 +1064,35 @@ export const y7Angles: UnitLesson[] = [
           },
         ],
         done: "In a right-angled triangle, the other two angles add up to 90°.",
+      },
+      {
+        kind: "steps",
+        tag: "Together",
+        title: "One wide angle",
+        text: "One more together, step by step.",
+        picture: triangle(25, 40, ["25°", "40°", "x"]),
+        start: "Find x.",
+        stages: [
+          {
+            prompt: "Add the two angles you know:",
+            options: [
+              { text: "65°", correct: true, feedback: "" },
+              { text: "180°", feedback: "Add just the two you know." },
+              { text: "15°", feedback: "Add them: $25 + 40$." },
+            ],
+            then: "$25 + 40 = 65$",
+          },
+          {
+            prompt: "So x is",
+            options: [
+              { text: "115°", correct: true, feedback: "" },
+              { text: "65°", feedback: "65° is the two you know. Take it from 180°." },
+              { text: "245°", feedback: "Take it from 180°, not add." },
+            ],
+            then: "$x = 180 - 65 = 115°$",
+          },
+        ],
+        done: "Even with one angle over 90°, the three make 180°. Now try some on your own.",
       },
       {
         kind: "answer",
@@ -1244,6 +1366,39 @@ export const y7Angles: UnitLesson[] = [
         done: "Find the angle sum first, then take away the angles you know.",
       },
       {
+        kind: "steps",
+        tag: "Together",
+        title: "A missing angle in a hexagon",
+        text: "One more together, step by step.",
+        picture: {
+          kind: "shape",
+          points: hexagon,
+          angles: ["130°", "110°", "125°", "120°", "115°", "x"],
+        },
+        start: "Find x.",
+        stages: [
+          {
+            prompt: "A hexagon's angles add up to",
+            options: [
+              { text: "720°", correct: true, feedback: "" },
+              { text: "1080°", feedback: "A hexagon makes $6 - 2 = 4$ triangles, not 6." },
+              { text: "540°", feedback: "540° is a pentagon. A hexagon makes 4 triangles." },
+            ],
+            then: "$(6 - 2) \\times 180 = 720°$",
+          },
+          {
+            prompt: "The five you know add to 600°. So x is",
+            options: [
+              { text: "120°", correct: true, feedback: "" },
+              { text: "600°", feedback: "600° is the five you know. Take it from 720°." },
+              { text: "1320°", feedback: "Take it away from 720°, don't add." },
+            ],
+            then: "$x = 720 - 600 = 120°$",
+          },
+        ],
+        done: "Angle sum first, then take away. Now try some on your own.",
+      },
+      {
         kind: "answer",
         tag: "Your turn",
         title: "Seven sides",
@@ -1483,6 +1638,33 @@ export const y7Angles: UnitLesson[] = [
           },
         ],
         done: "Exterior first: $360 \\div n$. Then interior: 180 − exterior.",
+      },
+      {
+        kind: "steps",
+        tag: "Together",
+        title: "A regular polygon with 20 sides",
+        text: "One more together, step by step.",
+        start: "It has 20 equal sides and angles.",
+        stages: [
+          {
+            prompt: "Its exterior angle is",
+            options: [
+              { text: "18°", correct: true, feedback: "" },
+              { text: "9°", feedback: "Share 360°, not 180°." },
+              { text: "162°", feedback: "That's the interior angle. Exterior first: share 360°." },
+            ],
+            then: "$360 \\div 20 = 18°$",
+          },
+          {
+            prompt: "So its interior angle is",
+            options: [
+              { text: "162°", correct: true, feedback: "" },
+              { text: "342°", feedback: "Interior and exterior add to 180°, not 360°." },
+            ],
+            then: "$180 - 18 = 162°$",
+          },
+        ],
+        done: "Exterior first, then interior. Now try some on your own.",
       },
       {
         kind: "answer",
