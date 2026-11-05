@@ -63,7 +63,7 @@ export const UNIT_LESSONS: readonly UnitLesson[] = [
   ...y8StandardForm,
   ...y8Expressions,
   ...y8Area,
-  y8Percentages,
+  ...y8Percentages,
   ...y8Equations,
   y8Shapes,
   y8Graphs,
