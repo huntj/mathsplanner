@@ -579,7 +579,7 @@ polished.
   built from reusable screen kinds (`apps/learn/src/unit-lessons/`), so the next ones are
   mostly writing. Each shows only in teacher mode until it is reviewed, then its unit goes in
   `OPEN_TO_PUPILS`. Once a unit's lesson is done, its skills skip their worked examples.
-- **Smaller lessons, through the unit. Pilot and Year 9 done.** A unit's one lesson can be split into
+- **Smaller lessons, through the unit. Years 7 to 9 done.** A unit's one lesson can be split into
   several, each sitting on the path just before the skill it teaches, and each teaching one idea
   in more depth. Every split lesson follows the same plan: a real problem the pupil can't solve
   yet; a warm-up of what it builds on; discovering the idea; a worked example shown a step at a
@@ -593,11 +593,16 @@ polished.
   works a second example together before the pupil goes alone, and the trigonometry lessons
   have the pupil label a triangle's sides H, O and A by tapping them (six times, turned
   different ways, before the sine ratio is used), with each worked step starting from the
-  labels. **Year 9** is now split throughout: 38 lessons, one before each skill, in teacher mode
-  for review. Each starts from something quick the pupil can already do and builds the method
+  labels. **Year 9** is now split throughout: 38 lessons, one before each skill, open to pupils
+  after review. Each starts from something quick the pupil can already do and builds the method
   up a step at a time, with real contexts (light years, a growing world population, a tin of
   soup, a tree's shadow, a ramp, gym prices, savings, a car's value, a thrown ball, a dice
   game), and names its common mistakes twice: a "Watch out" question that puts the mistake to
-  the pupil, and a "Spot the mistake" in someone's working. Years 7 and 8 follow after review.
+  the pupil, and a "Spot the mistake" in someone's working. **Years 7 and 8** are split the same
+  way and replace their single lessons for pupils straight away: 72 lessons across Year 7's 17
+  units and 51 across Year 8's 12, one before each skill, with contexts such as the coldest city,
+  a diver below sea level, a recipe for six, a bike wheel, a level crossing, a treasure map, two taxi fares,
+  a round rug and a real gold ring. The two pilot units, Year 7 angle facts and Year 8 formulae
+  and equations, now have a "Watch out" question in every lesson too.
 - **Question previews** (later): from a skill's sheet, see one question at each level without
   starting a lesson.

@@ -371,6 +371,19 @@ export const y7Angles: UnitLesson[] = [
         done: "$360 \\div 3 = 120°$.",
       },
       {
+        kind: "choice",
+        tag: "Watch out",
+        title: "Ella says the angles round a point add up to 180°. Is she right?",
+        options: [
+          {
+            text: "No: round a point is a full turn, 360°",
+            correct: true,
+            feedback: "180° is a half turn, a straight line. All the way round is 360°.",
+          },
+          { text: "Yes", feedback: "Turn all the way round: that's 360°." },
+        ],
+      },
+      {
         kind: "mistake",
         tag: "Spot the mistake",
         title: "Where did it go wrong?",
@@ -606,6 +619,19 @@ export const y7Angles: UnitLesson[] = [
         wrong: [{ answer: "130", feedback: "130° is both x's together. Share it between them." }],
         hint: "The two x's make $180 - 50 = 130°$ between them.",
         done: "$2x = 130°$, so $x = 65°$.",
+      },
+      {
+        kind: "choice",
+        tag: "Watch out",
+        title: "Ben says two angles on a straight line add up to 360°. Is he right?",
+        options: [
+          {
+            text: "No: a straight line is a half turn, 180°",
+            correct: true,
+            feedback: "360° is all the way round a point. A straight line is half of that.",
+          },
+          { text: "Yes", feedback: "A straight line is only half a turn." },
+        ],
       },
       {
         kind: "mistake",
@@ -870,6 +896,20 @@ export const y7Angles: UnitLesson[] = [
         done: "$2x = 80$, so $x = 40°$.",
       },
       {
+        kind: "choice",
+        tag: "Watch out",
+        title: "Two lines cross. Ana says the angles next to each other are equal. Is she right?",
+        options: [
+          {
+            text: "No: angles next to each other add to 180°. Opposite angles are equal",
+            correct: true,
+            feedback:
+              "Neighbours sit on a straight line. It's the vertically opposite ones that match.",
+          },
+          { text: "Yes", feedback: "Look again: one is acute and one is obtuse." },
+        ],
+      },
+      {
         kind: "mistake",
         tag: "Spot the mistake",
         title: "Where did it go wrong?",
@@ -1116,6 +1156,22 @@ export const y7Angles: UnitLesson[] = [
         wrong: [{ answer: "140", feedback: "140° is both base angles. Share it between the two." }],
         hint: "The two base angles share $180 - 40 = 140°$.",
         done: "$140 \\div 2 = 70°$.",
+      },
+      {
+        kind: "choice",
+        tag: "Watch out",
+        title: "Joe says a bigger triangle has a bigger angle sum. Is he right?",
+        options: [
+          {
+            text: "No: every triangle's angles add to 180°",
+            correct: true,
+            feedback: "Making a triangle bigger makes its sides longer, not its angles bigger.",
+          },
+          {
+            text: "Yes",
+            feedback: "Tear the corners off any triangle: they always make a straight line.",
+          },
+        ],
       },
       {
         kind: "mistake",
@@ -1426,6 +1482,19 @@ export const y7Angles: UnitLesson[] = [
         done: "$540 - 120 - 95 - 105 - 110 = 110°$.",
       },
       {
+        kind: "choice",
+        tag: "Watch out",
+        title: "Raj says a pentagon's angles add to 5 × 180° because it has 5 sides. Is he right?",
+        options: [
+          {
+            text: "No: it splits into 3 triangles, so 3 × 180° = 540°",
+            correct: true,
+            feedback: "From one corner, a polygon splits into 2 fewer triangles than it has sides.",
+          },
+          { text: "Yes", feedback: "Draw the diagonals from one corner and count the triangles." },
+        ],
+      },
+      {
         kind: "mistake",
         tag: "Spot the mistake",
         title: "Where did it go wrong?",
@@ -1687,6 +1756,23 @@ export const y7Angles: UnitLesson[] = [
         wrong: [{ answer: "6", feedback: "Six 30° turns make 180°, only half a lap." }],
         hint: "How many 30° turns make a full turn of 360°?",
         done: "$360 \\div 30 = 12$ sides.",
+      },
+      {
+        kind: "choice",
+        tag: "Watch out",
+        title: "Lia says a regular hexagon's interior and exterior angles are equal. Is she right?",
+        options: [
+          {
+            text: "No: they add to 180°. Interior 120°, exterior 60°",
+            correct: true,
+            feedback: "They sit side by side on a straight line, so they add to 180°.",
+          },
+          {
+            text: "Yes",
+            feedback:
+              "One is inside the corner, the other outside on the straight line: 120° and 60°.",
+          },
+        ],
       },
       {
         kind: "mistake",
