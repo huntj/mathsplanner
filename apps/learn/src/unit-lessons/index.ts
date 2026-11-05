@@ -49,7 +49,7 @@ export const UNIT_LESSONS: readonly UnitLesson[] = [
   ...y7Lines,
   ...y7OrderOfOperations,
   ...y7Simplifying,
-  y7Factors,
+  ...y7Factors,
   ...y7Angles,
   y7Fdp,
   y7Equations,
