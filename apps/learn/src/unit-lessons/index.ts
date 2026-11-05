@@ -71,7 +71,7 @@ export const UNIT_LESSONS: readonly UnitLesson[] = [
   ...y8Constructions,
   ...y8Rates,
   ...y8Transformations,
-  y8Data,
+  ...y8Data,
   ...y9Indices,
   ...y9Similarity,
   ...y9Factorising,
