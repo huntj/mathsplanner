@@ -45,7 +45,7 @@ export type * from "./types.ts";
 export const UNIT_LESSONS: readonly UnitLesson[] = [
   ...y7PlaceValue,
   ...y7Notation,
-  y7Calculating,
+  ...y7Calculating,
   y7Lines,
   y7OrderOfOperations,
   y7Simplifying,
