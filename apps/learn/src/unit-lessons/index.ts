@@ -51,7 +51,7 @@ export const UNIT_LESSONS: readonly UnitLesson[] = [
   ...y7Simplifying,
   ...y7Factors,
   ...y7Angles,
-  y7Fdp,
+  ...y7Fdp,
   y7Equations,
   y7Powers,
   y7Ratio,
