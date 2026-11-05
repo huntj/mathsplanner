@@ -269,6 +269,8 @@ export interface DrawingPic {
     /** An angle at a corner, from one direction to another anticlockwise (under 180°), with an
      * arc and its label; a letter or "?" is drawn as one to find. */
     | { angle: Point; from: number; to: number; label: string }
+    /** A side's label, kept level and just outside the side: away from the `inside` point. */
+    | { side: [Point, Point]; label: string; inside: Point; tone?: "main" | "find" }
   )[];
 }
 

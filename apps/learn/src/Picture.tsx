@@ -3,7 +3,7 @@
 // pattern, a ruler, big maths and a place value chart. Each is drawn in SVG (or HTML for tables)
 // from the theme's colours, so it works in light and dark.
 import { useRef, useState, type KeyboardEvent, type PointerEvent, type ReactNode } from "react";
-import { angleMark, layoutShape, type Pt } from "./labels.ts";
+import { angleMark, layoutShape, sideLabel, type Pt } from "./labels.ts";
 import { latticeOn, LineGraph, type GraphLine, type GraphPoint } from "./LineGraph.tsx";
 import {
   onLine,
@@ -1121,6 +1121,7 @@ function Drawing({ pic }: { pic: DrawingPic }) {
         });
     else if ("dot" in it) pts.push(it.dot);
     else if ("angle" in it) pts.push(it.angle);
+    else if ("side" in it) pts.push(...it.side);
     else pts.push(it.at);
   }
   // A fixed frame keeps a drawing still while a construction adds to it step by step.
@@ -1146,12 +1147,23 @@ function Drawing({ pic }: { pic: DrawingPic }) {
   });
   const w0 = (maxX - minX) * k + 2 * pad;
   const h0 = (maxY - minY) * k + 2 * pad;
-  const labels = marks.flatMap((m) => (m ? [m.label] : []));
+  const sides = pic.items.map((it) => {
+    if (!("side" in it)) return null;
+    const [a, b] = it.side.map((p) => ({ x: sx(p.x), y: sy(p.y) }));
+    const inner = { x: sx(it.inside.x), y: sy(it.inside.y) };
+    return a && b ? sideLabel(a, b, [a, b, inner], it.label) : null;
+  });
+  const labels = [
+    ...marks.flatMap((m) => (m ? [m.label] : [])),
+    ...sides.flatMap((b) => (b ? [b] : [])),
+  ];
   const left = Math.min(0, ...labels.map((b) => b.x - b.hw - 6));
   const top = Math.min(0, ...labels.map((b) => b.y - b.hh - 6));
   const right = Math.max(w0, ...labels.map((b) => b.x + b.hw + 6));
   const bottom = Math.max(h0, ...labels.map((b) => b.y + b.hh + 6));
-  const named = pic.items.flatMap((i) => ("text" in i ? [i.text] : "angle" in i ? [i.label] : []));
+  const named = pic.items.flatMap((i) =>
+    "text" in i ? [i.text] : "angle" in i || "side" in i ? [i.label] : [],
+  );
   return (
     <Svg
       width={right - left}
@@ -1182,6 +1194,20 @@ function Drawing({ pic }: { pic: DrawingPic }) {
             );
           }
           if ("angle" in it) return null;
+          if ("side" in it) {
+            const box = sides[i];
+            return box ? (
+              <text
+                key={i}
+                className={`pic-label${it.tone === "find" ? " find" : ""}`}
+                x={box.x}
+                y={box.y + 5.5}
+                textAnchor="middle"
+              >
+                {it.label}
+              </text>
+            ) : null;
+          }
           if ("line" in it) {
             const [a, b] = it.line;
             return (
