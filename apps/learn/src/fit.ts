@@ -89,12 +89,15 @@ export function watchMaths(root: HTMLElement): () => void {
     }
   });
   resized.observe(root);
-  // Web fonts change the width of maths once they load.
+  // Web fonts change the width of maths once they load. The maths fonts load only when maths
+  // first appears, after the page is ready, so fit again whenever any font finishes loading.
   void document.fonts?.ready.then(fit);
+  document.fonts?.addEventListener("loadingdone", fit);
   fit();
   return () => {
     changes.disconnect();
     resized.disconnect();
+    document.fonts?.removeEventListener("loadingdone", fit);
     cancelAnimationFrame(queued);
   };
 }

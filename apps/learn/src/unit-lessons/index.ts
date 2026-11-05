@@ -72,15 +72,15 @@ export const UNIT_LESSONS: readonly UnitLesson[] = [
   y8Rates,
   y8Transformations,
   y8Data,
-  y9Indices,
-  y9Similarity,
-  y9Factorising,
-  y9StraightLine,
+  ...y9Indices,
+  ...y9Similarity,
+  ...y9Factorising,
+  ...y9StraightLine,
   ...y9Trigonometry,
-  y9Simultaneous,
-  y9Percentages,
-  y9Graphs,
-  y9Probability,
+  ...y9Simultaneous,
+  ...y9Percentages,
+  ...y9Graphs,
+  ...y9Probability,
 ];
 /** Units whose lessons have been reviewed and are open to pupils. */
 export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([

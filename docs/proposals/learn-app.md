@@ -579,7 +579,7 @@ polished.
   built from reusable screen kinds (`apps/learn/src/unit-lessons/`), so the next ones are
   mostly writing. Each shows only in teacher mode until it is reviewed, then its unit goes in
   `OPEN_TO_PUPILS`. Once a unit's lesson is done, its skills skip their worked examples.
-- **Smaller lessons, through the unit. Pilot done.** A unit's one lesson can be split into
+- **Smaller lessons, through the unit. Pilot and Year 9 done.** A unit's one lesson can be split into
   several, each sitting on the path just before the skill it teaches, and each teaching one idea
   in more depth. Every split lesson follows the same plan: a real problem the pupil can't solve
   yet; a warm-up of what it builds on; discovering the idea; a worked example shown a step at a
@@ -591,8 +591,13 @@ polished.
   review, the other units follow a year at a time. A finished lesson skips the worked examples
   of the skills it teaches. After the first review, each lesson builds up more slowly: every one
   works a second example together before the pupil goes alone, and the trigonometry lessons
-  have the pupil label a triangle's sides H, O and A by tapping them (four times, turned
+  have the pupil label a triangle's sides H, O and A by tapping them (six times, turned
   different ways, before the sine ratio is used), with each worked step starting from the
-  labels.
+  labels. **Year 9** is now split throughout: 38 lessons, one before each skill, in teacher mode
+  for review. Each starts from something quick the pupil can already do and builds the method
+  up a step at a time, with real contexts (light years, a growing world population, a tin of
+  soup, a tree's shadow, a ramp, gym prices, savings, a car's value, a thrown ball, a dice
+  game), and names its common mistakes twice: a "Watch out" question that puts the mistake to
+  the pupil, and a "Spot the mistake" in someone's working. Years 7 and 8 follow after review.
 - **Question previews** (later): from a skill's sheet, see one question at each level without
   starting a lesson.

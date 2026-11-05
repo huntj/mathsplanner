@@ -893,6 +893,18 @@ export const y9Trigonometry: UnitLesson[] = [
         { deg: 55, turn: 150, flip: true, top: true },
         "You can label a right-angled triangle any way round: H, then O, then A.",
       ),
+      label(
+        "A steep one",
+        { deg: 70, turn: 300 },
+        "θ is big here, so the opposite side is long. It's still not the hypotenuse: that's across from the right angle.",
+        "Careful: the longest-looking side next to θ isn't always the adjacent.",
+      ),
+      label(
+        "One more, at speed",
+        { deg: 20, top: true, turn: 60, flip: true },
+        "H across from the right angle, O across from θ, A touching θ. That's the first step of every trigonometry question.",
+        "Find the right angle, then θ.",
+      ),
       {
         kind: "choice",
         tag: "Discover",
