@@ -113,6 +113,15 @@ export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
   "y8-rates",
   "y8-transformations",
   "y8-data",
+  "y9-indices",
+  "y9-similarity",
+  "y9-factorising",
+  "y9-straight-line",
+  "y9-trigonometry",
+  "y9-simultaneous",
+  "y9-percentages",
+  "y9-graphs",
+  "y9-probability",
 ]);
 
 /** A lesson's id: its own, or its unit's when the unit has just one lesson. */
