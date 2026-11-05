@@ -142,10 +142,7 @@ export const y7Rounding: UnitLesson[] = [
         tag: "Your turn",
         title: "Round 12.951 to 1 dp",
         answers: ["13.0"],
-        wrong: [
-          { answer: "12.10", feedback: "9 + 1 carries: 13.0." },
-          { answer: "13", feedback: "Keep one decimal place: 13.0." },
-        ],
+        wrong: [{ answer: "12.10", feedback: "9 + 1 carries: 13.0." }],
         hint: "12.9|51: the 9 rounds up.",
         done: "13.0.",
       },
