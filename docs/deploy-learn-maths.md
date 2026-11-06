@@ -60,25 +60,25 @@ In **`huntj/learnmaths`** → Settings → Pages:
 3. Once GitHub says the DNS check has passed (after step 5) and the certificate is ready, tick
    **Enforce HTTPS**. This can take up to an hour.
 
-## 5. Point the subdomain at GitHub (Fasthosts)
+## 5. Point the subdomain at GitHub
 
-In the Fasthosts control panel: Domains → `jedhunt.co.uk` → DNS settings (sometimes "Advanced DNS"
-or "Manage DNS") → add a record:
+The DNS for jedhunt.co.uk is managed in **Cloudflare** (see [cloudflare.md](cloudflare.md)), not at
+Fasthosts. In Cloudflare: `jedhunt.co.uk` → DNS → Records → **Add record**:
 
-| Type  | Host / Name  | Points to / Value | TTL     |
-| ----- | ------------ | ----------------- | ------- |
-| CNAME | `learnmaths` | `huntj.github.io` | default |
+| Type  | Name         | Target            | Proxy status |
+| ----- | ------------ | ----------------- | ------------ |
+| CNAME | `learnmaths` | `huntj.github.io` | DNS only     |
 
-Some panels want a full stop at the end (`huntj.github.io.`); either is fine. Nothing else needs
-changing: `mathsplanner` and `www` keep working. The record usually works within an hour, but can
-take up to a day.
+Click the orange cloud so it turns grey ("DNS only") before saving: with the proxy on, GitHub
+cannot issue or renew the site's HTTPS certificate. Nothing else needs changing: `mathsplanner`
+and `www` keep working. The record usually works within a few minutes.
 
 To check it from a terminal: `nslookup learnmaths.jedhunt.co.uk` should mention `huntj.github.io`.
 
 ## 6. Verify the domain with GitHub (recommended)
 
 Your GitHub profile picture → Settings → Pages → **Add a domain** → `jedhunt.co.uk`. GitHub shows
-a `TXT` record (a host like `_github-pages-challenge-huntj` and a code); add it at Fasthosts the
+a `TXT` record (a host like `_github-pages-challenge-huntj` and a code); add it in Cloudflare the
 same way as the CNAME, then choose **Verify**. This stops anyone else's repository taking a
 jedhunt.co.uk subdomain. If you verified the domain for mathsplanner.jedhunt.co.uk already, skip
 this.
