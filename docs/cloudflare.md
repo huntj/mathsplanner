@@ -12,7 +12,7 @@ says where each part of the domain lives. Cloudflare's free plan is enough.
 | mathsplanner.jedhunt.co.uk          | GitHub Pages (this repository)    | **Off** (DNS only)                 |
 | learnmaths.jedhunt.co.uk            | GitHub Pages (`huntj/learnmaths`) | **Off** (DNS only)                 |
 | Email (`@jedhunt.co.uk`)            | Fasthosts mail (livemail.co.uk)   | Off: email can never go through it |
-| ftp.jedhunt.co.uk                   | Fasthosts                         | **Off** (DNS only)                 |
+| ftp, sftp and ssh.jedhunt.co.uk     | Fasthosts (file uploads)          | **Off** (DNS only)                 |
 
 The GitHub Pages subdomains stay DNS only. GitHub already runs them behind its own large network,
 and with the proxy on, GitHub cannot renew their HTTPS certificates (the renewal check reaches
@@ -31,6 +31,8 @@ or the apps stop working.
 | CNAME | `mathsplanner`                  | `huntj.github.io`                              | DNS only     |
 | CNAME | `learnmaths`                    | `huntj.github.io`                              | DNS only     |
 | A     | `ftp`                           | `213.171.193.5`                                | DNS only     |
+| A     | `sftp`                          | `77.68.64.36`                                  | DNS only     |
+| A     | `ssh`                           | `77.68.64.22`                                  | DNS only     |
 | MX    | `jedhunt.co.uk` (`@`)           | `mailserver.livemail.co.uk`, priority `10`     | (not shown)  |
 | TXT   | `jedhunt.co.uk` (`@`)           | `v=spf1 mx a include:_spf.livemail.co.uk ~all` | (not shown)  |
 | TXT   | `_dmarc`                        | `v=DMARC1; p=none;`                            | (not shown)  |
