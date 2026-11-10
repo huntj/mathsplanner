@@ -1,7 +1,7 @@
 # Proposal: Maths City, a city-building version of Learn Maths
 
-Status: **draft for the owner's review (10 November 2026).** No code is written yet. This answers
-the [brief](city-game-brief.md); the first playable version is planned at the end.
+Status: **agreed on 10 November 2026.** Nothing is built yet. This answers the
+[brief](city-game-brief.md); the first playable version is planned at the end.
 
 ## In short
 
