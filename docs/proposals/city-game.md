@@ -211,32 +211,34 @@ and in the atlas.
 
 ### Example numbers: the Place value zone
 
-The first playable version has four quarries and one material. A pupil doing each skill's lesson,
-Learn and Practise in turn sees this:
+The first playable version has four quarries and one material. A pupil who finishes each skill in
+turn (its lesson, then its levels; the first skill has a Picture level, so one more than the
+others), then masters all four, sees this. The economy test checks these figures.
 
 | After lesson | Machines | Stone a minute | The lesson earned |
 | -----------: | -------: | -------------: | ----------------: |
 |            1 |        1 |              2 |               120 |
 |            2 |        1 |              3 |               150 |
-|            3 |        1 |              6 |               240 |
-|            6 |        2 |             12 |               480 |
-|            9 |        3 |             18 |               720 |
-|           12 |        4 |             24 |               960 |
-|           16 |        4 |             36 |             1,440 |
+|            4 |        1 |            7.5 |               300 |
+|            7 |        2 |           13.5 |               540 |
+|           10 |        3 |           19.5 |               780 |
+|           13 |        4 |           25.5 |             1,020 |
+|           17 |        4 |             36 |             1,440 |
 
-Lessons 13 to 16 are the Reason level of each skill, which masters it. With the unit review, the
-zone comes to about 17 lessons and about 12,500 stone. It is spent like this:
+Lessons 14 to 17 are the Reason level of each skill, which masters it. With the unit review, the
+zone comes to 18 lessons and about 21,000 stone when they are done in one sitting, since power
+saved up early is spent at the later, faster rates. It is spent like this:
 
 | Building           |                              Costs | About          |
 | ------------------ | ---------------------------------: | -------------- |
 | Path               |                            5 stone |                |
 | Cottage            | 40 stone, 8% more for each one had | 1 lesson early |
 | Well               |                          150 stone | 1 lesson       |
-| Mason's Yard       |                          400 stone | 2 lessons      |
+| Mason's Yard       |                          400 stone | 1 lesson       |
 | Architect's Office |                          60 blocks | 1 lesson       |
-| The zone monument  |                         400 blocks | 3 to 4 lessons |
+| The zone monument  |                         400 blocks | 3 lessons      |
 
-That is the monument, both special buildings and about 35 cottages with their paths: a small
+That is the monument, both special buildings and about 45 cottages with their paths: a small
 town from two hours' work, with the monument as the last thing built.
 
 ## 3. Growth over months
@@ -257,8 +259,9 @@ idle games, and the numbers cannot run away:
 
 With every Year 7 skill mastered and tuned a lesson earns about 26,000, and with every one
 Legendary about 35,000. That is a rise of about 250 times over a year, steady rather than
-explosive. A whole year comes to two or three million materials, so every number in the game can
-be shown in full, with no made-up units.
+explosive. In the economy test a typical pupil makes about six million materials over the whole year, a keen one
+about seven million and one who never tunes up or masters a skill about one and a half million, so
+every number in the game can be shown in full, with no made-up units.
 
 **Prices follow the same curve.** Ranks come from machines built, which is learning, and each
 rank opens new buildings priced from what a lesson earns at that rank:
