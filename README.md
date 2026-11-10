@@ -53,6 +53,7 @@ pnpm test
 | `pnpm gallery`     | Runs the gallery locally at http://localhost:5173                                              |
 | `pnpm practice`    | Runs the practice app locally at http://localhost:5174                                         |
 | `pnpm learn`       | Runs Learn Maths, the pupils' app, locally at http://localhost:5175                            |
+| `pnpm city`        | Runs Maths City, the city-building game, locally at http://localhost:5176                      |
 | `pnpm print`       | Prints a worksheet to PDF with an installed Chrome or Edge (`pnpm print --help` for options)   |
 | `pnpm new <ID>`    | Scaffolds a generator and its test for a statement                                             |
 
@@ -61,8 +62,10 @@ pnpm test
 ```text
 data/          statements.json, misconceptions.json, topics, the Learn Maths course and schemas
 docs/          design document, progression map, data report and how Learn Maths is put online
-packages/      core, diagrams, archetypes, marking, render, generators, ui (answer widgets)
-apps/          gallery (browse and review), practice (student-facing, stateless) and learn (pupils' path)
+packages/      core, diagrams, archetypes, marking, render, generators, ui (answer widgets),
+               learning (course, lessons and progress) and lesson-player (lesson screens)
+apps/          gallery (browse and review), practice (student-facing, stateless), learn (pupils' path)
+               and city (the path as a city-building game)
 tools/         import-map (statement import and checks) and print (worksheets to PDF)
 ```
 

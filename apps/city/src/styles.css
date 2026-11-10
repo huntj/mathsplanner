@@ -1,0 +1,102 @@
+/* Maths City, so far: a page of counters, in Learn Maths' colours and type. The map's styles and
+   the shared lesson styles join it in the next steps. */
+:root {
+  --paper: #f6f8fc;
+  --surface: #ffffff;
+  --ink: #19212e;
+  --ink-soft: #586377;
+  --line: #d6dde8;
+  --biro: #2142b5;
+  --display: "Fredoka", "Baloo 2", ui-rounded, system-ui, sans-serif;
+  --body: "Andika", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius: 16px;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0f131a;
+    --surface: #171d27;
+    --ink: #e9edf4;
+    --ink-soft: #a3adbf;
+    --line: #2a3342;
+    --biro: #8ea2ff;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  line-height: 1.45;
+}
+
+.city {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+}
+
+.city-head h1 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.city-year {
+  margin: 0.1rem 0 1.25rem;
+  color: var(--ink-soft);
+}
+
+.counters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.counter {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.counter.wide {
+  grid-column: 1 / -1;
+}
+
+.counter-name {
+  color: var(--ink-soft);
+  font-size: 0.84rem;
+}
+
+.counter-value {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.counter-note {
+  color: var(--biro);
+  font-size: 0.84rem;
+}
+
+.city-note {
+  color: var(--ink-soft);
+}
+
+@media (min-width: 40rem) {
+  .counters {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
