@@ -1,0 +1,34 @@
+{
+  "name": "@mathsplanner/lesson-player",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The screens that play a lesson, shared by Learn Maths and Maths City.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huntj/mathsplanner.git",
+    "directory": "packages/lesson-player"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./lesson.css": "./src/lesson.css"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@mathsplanner/core": "workspace:*",
+    "@mathsplanner/learning": "workspace:*",
+    "@mathsplanner/marking": "workspace:*",
+    "@mathsplanner/render": "workspace:*",
+    "@mathsplanner/ui": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "react": "^19.3.1"
+  }
+}

@@ -13,7 +13,7 @@ import {
   ReviewIcon,
   StarIcon,
   TeacherIcon,
-} from "./Icons.tsx";
+} from "@mathsplanner/lesson-player";
 import type { Selection } from "./PathView.tsx";
 import { lessonId } from "@mathsplanner/learning/unit-lessons";
 
