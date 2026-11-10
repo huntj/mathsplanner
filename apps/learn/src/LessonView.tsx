@@ -21,9 +21,9 @@ import {
   type Draft,
 } from "@mathsplanner/ui";
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
-import { skillText, unitOf } from "./course.ts";
+import { skillText, unitOf } from "@mathsplanner/learning";
 import { Dot } from "./Dot.tsx";
-import { familyOf, type Family } from "./families.ts";
+import { familyOf, type Family } from "@mathsplanner/learning";
 import { HeartIcon, SnowflakeIcon, StarIcon, StreakIcon } from "./Icons.tsx";
 import {
   answer,
@@ -39,11 +39,11 @@ import {
   type LessonItem,
   type LessonPlan,
   type LessonSummary,
-} from "./lesson.ts";
-import { describeMisconception } from "./misconceptions.ts";
-import type { Badge } from "./rewards.ts";
+} from "@mathsplanner/learning";
+import { describeMisconception } from "@mathsplanner/learning";
+import type { Badge } from "@mathsplanner/learning";
 import { BadgeMark } from "./BadgeMark.tsx";
-import { formOf, questionFor, type LessonQuestion } from "./skills.ts";
+import { formOf, questionFor, type LessonQuestion } from "@mathsplanner/learning";
 import { play } from "./sounds.ts";
 
 /** The family of a skill's unit, for Dot's shape. */

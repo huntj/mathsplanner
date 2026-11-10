@@ -2,8 +2,8 @@
 // next lesson (or a refresh, when its review is due); or a unit or year review and the way in. In
 // teacher mode every level has its own way in, so a teacher can try any of them.
 import { useEffect, useRef } from "react";
-import { skillText, topicName, type Level, type PathUnit } from "./course.ts";
-import { familyOf } from "./families.ts";
+import { skillText, topicName, type Level, type PathUnit } from "@mathsplanner/learning";
+import { familyOf } from "@mathsplanner/learning";
 import {
   CheckIcon,
   FamilyIcon,
@@ -15,7 +15,7 @@ import {
   TeacherIcon,
 } from "./Icons.tsx";
 import type { Selection } from "./PathView.tsx";
-import { lessonId } from "./unit-lessons/index.ts";
+import { lessonId } from "@mathsplanner/learning/unit-lessons";
 
 /** What a sheet can start. */
 export type Start =

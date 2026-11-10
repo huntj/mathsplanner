@@ -26,7 +26,7 @@ import {
   type SpinnerPic,
   type StacksPic,
   type VennPic,
-} from "./unit-lessons/index.ts";
+} from "@mathsplanner/learning/unit-lessons";
 import { fmt, say, W } from "./unit-ui.tsx";
 
 export function sceneProps(scene: Scene, rise = true) {

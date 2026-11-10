@@ -4,9 +4,9 @@
 // into place. Each screen opens the next once it is done; a wrong try gets a nudge, never a
 // penalty. The lesson ends on a summary, like any other lesson.
 import { useEffect, useMemo, useState } from "react";
-import { course, skillText } from "./course.ts";
+import { course, skillText } from "@mathsplanner/learning";
 import { Dot } from "./Dot.tsx";
-import { familyOf, type Family } from "./families.ts";
+import { familyOf, type Family } from "@mathsplanner/learning";
 import { StarIcon, StreakIcon } from "./Icons.tsx";
 import { latticeOn, LineGraph, type GraphLine, type GraphPoint } from "./LineGraph.tsx";
 import { play } from "./sounds.ts";
@@ -42,7 +42,7 @@ import {
   type Screen,
   type Slider,
   type UnitLesson,
-} from "./unit-lessons/index.ts";
+} from "@mathsplanner/learning/unit-lessons";
 
 /** What the end screen shows, worked out once progress is saved. */
 export interface UnitLessonEnding {

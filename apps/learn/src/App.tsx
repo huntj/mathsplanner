@@ -3,9 +3,9 @@
 // #practise, #you), so the back button works; the path is the start view.
 import type { Stage } from "@mathsplanner/core";
 import { useEffect, useState } from "react";
-import { course, sectionFor, skillText, unitOf } from "./course.ts";
+import { course, sectionFor, skillText, unitOf } from "@mathsplanner/learning";
 import { exampleProgress } from "./example.ts";
-import { planLesson, type LessonPlan, type LessonSummary } from "./lesson.ts";
+import { planLesson, type LessonPlan, type LessonSummary } from "@mathsplanner/learning";
 import { LessonView, type LessonEnding } from "./LessonView.tsx";
 import {
   PathIcon,
@@ -26,7 +26,7 @@ import {
   speedPlan,
   unitPlan,
   yearPlan,
-} from "./practice.ts";
+} from "@mathsplanner/learning";
 import { PractiseView, type PracticeStart } from "./PractiseView.tsx";
 import {
   lessonById,
@@ -34,7 +34,7 @@ import {
   lessonsFor,
   lessonTeaches,
   type UnitLesson,
-} from "./unit-lessons/index.ts";
+} from "@mathsplanner/learning/unit-lessons";
 import { UnitLessonView, type UnitLessonEnding } from "./UnitLessonView.tsx";
 import {
   dayKey,
@@ -50,10 +50,10 @@ import {
   type DailyGoal,
   type Progress,
   type Settings,
-} from "./progress.ts";
-import { settleStreak } from "./rewards.ts";
+} from "@mathsplanner/learning";
+import { settleStreak } from "@mathsplanner/learning";
 import { SkillSheet, type Start } from "./SkillSheet.tsx";
-import { levelsOf, misconceptionsOf, skillsShowing } from "./skills.ts";
+import { levelsOf, misconceptionsOf, skillsShowing } from "@mathsplanner/learning";
 import { WelcomeView } from "./WelcomeView.tsx";
 import { YouView } from "./YouView.tsx";
 

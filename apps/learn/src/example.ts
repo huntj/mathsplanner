@@ -3,15 +3,15 @@
 // mistakes to fix, all but the last two unit reviews done, a two-week streak with a freeze in
 // hand, a speed round best and the badges all that would have earned.
 import type { CourseSection } from "@mathsplanner/core";
-import type { SkillLevels } from "./course.ts";
-import { GAPS, TOP_BOX } from "./memory.ts";
+import type { SkillLevels } from "@mathsplanner/learning";
+import { GAPS, TOP_BOX } from "@mathsplanner/learning";
 import {
   addDays,
   emptyProgress,
   LESSON_XP,
   type Progress,
   type SkillProgress,
-} from "./progress.ts";
+} from "@mathsplanner/learning";
 
 export function exampleProgress(
   section: CourseSection,

@@ -3,10 +3,10 @@
 import type { CourseSection, Stage } from "@mathsplanner/core";
 import { useState } from "react";
 import { BadgeMark } from "./BadgeMark.tsx";
-import { sectionFor, YEARS, yearsReady } from "./course.ts";
+import { sectionFor, YEARS, yearsReady } from "@mathsplanner/learning";
 import { Dot } from "./Dot.tsx";
 import { FEEDBACK_URL } from "./feedback.ts";
-import { BADGES, FREEZE_EVERY } from "./rewards.ts";
+import { BADGES, FREEZE_EVERY } from "@mathsplanner/learning";
 import { pathFor } from "./path.ts";
 import { SnowflakeIcon, StarIcon, StreakIcon } from "./Icons.tsx";
 import {
@@ -17,7 +17,7 @@ import {
   type Progress,
   type Settings,
   type Theme,
-} from "./progress.ts";
+} from "@mathsplanner/learning";
 import { GOAL_WORDS } from "./WelcomeView.tsx";
 
 const THEME_WORDS: Record<Theme, string> = { system: "Match device", light: "Light", dark: "Dark" };

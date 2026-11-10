@@ -65,7 +65,7 @@ pnpm learn         # Learn Maths dev server
 
 ## Learn Maths lessons
 
-Unit lessons are data in `apps/learn/src/unit-lessons/`, one file per unit, split into one
+Unit lessons are data in `packages/learning/src/unit-lessons/`, one file per unit, split into one
 lesson before each skill. Each follows one plan: The problem, Warm-up, Discover, Worked example,
 Together, Your turn, Watch out, Spot the mistake, Back to the problem, Exit check.
 `unit-lessons.test.ts` checks every screen can be completed. A new unit shows only in teacher
