@@ -1,7 +1,7 @@
 // Line icons: one for each topic family, drawn on the path's nodes, and a few for the app itself.
 // They take the text colour, so they work on any background.
 import type { ReactNode } from "react";
-import type { Family } from "./families.ts";
+import type { Family } from "@mathsplanner/learning";
 
 function Icon({
   children,

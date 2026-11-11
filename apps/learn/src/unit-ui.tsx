@@ -3,9 +3,9 @@
 import { renderRich } from "@mathsplanner/render";
 import { createContext, useContext, useEffect, type ReactNode } from "react";
 import { Dot } from "./Dot.tsx";
-import type { Family } from "./families.ts";
+import type { Family } from "@mathsplanner/learning";
 import { play } from "./sounds.ts";
-import { ruleText, type Point, type Rule } from "./unit-lessons/index.ts";
+import { ruleText, type Point, type Rule } from "@mathsplanner/learning/unit-lessons";
 
 export const CHEERS = ["Brilliant!", "Nice one!", "Spot on!", "Great work!", "You got it!", "Yes!"];
 

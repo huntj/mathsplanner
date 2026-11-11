@@ -10,8 +10,8 @@ import {
   type KeyboardEvent,
   type PointerEvent,
 } from "react";
-import type { Curve, Point, Range, Rule } from "./unit-lessons/index.ts";
-import { yOn } from "./unit-lessons/index.ts";
+import type { Curve, Point, Range, Rule } from "@mathsplanner/learning/unit-lessons";
+import { yOn } from "@mathsplanner/learning/unit-lessons";
 
 /** Pixels per unit in the drawing, and room round the grid for the numbers. */
 const UNIT = 36;

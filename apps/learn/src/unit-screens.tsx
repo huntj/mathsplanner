@@ -35,7 +35,7 @@ import type {
   Steps,
   Tree,
   Worked,
-} from "./unit-lessons/index.ts";
+} from "@mathsplanner/learning/unit-lessons";
 import { Title, useChime, Verdict, W, Working, type Step } from "./unit-ui.tsx";
 
 type More = Exclude<

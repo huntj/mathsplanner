@@ -2,17 +2,17 @@
 // mistakes to fix, the unit reviews waiting, and how well the year's finished skills are
 // remembered.
 import type { CourseSection, CourseUnit } from "@mathsplanner/core";
-import { skillText } from "./course.ts";
+import { skillText } from "@mathsplanner/learning";
 import { Dot } from "./Dot.tsx";
-import { familyOf } from "./families.ts";
+import { familyOf } from "@mathsplanner/learning";
 import { ClockIcon, FamilyIcon, RefreshIcon, ReviewIcon } from "./Icons.tsx";
-import { SPEED_SECONDS } from "./lesson.ts";
-import { memoryOf, strengthOf, type Strength } from "./memory.ts";
-import { describeMisconception } from "./misconceptions.ts";
+import { SPEED_SECONDS } from "@mathsplanner/learning";
+import { memoryOf, strengthOf, type Strength } from "@mathsplanner/learning";
+import { describeMisconception } from "@mathsplanner/learning";
 import { pathFor } from "./path.ts";
-import { dueIn, finishedSkills, mistakesToFix, MISTAKES_AT_ONCE } from "./practice.ts";
-import type { Progress } from "./progress.ts";
-import { levelsOf, skillsShowing } from "./skills.ts";
+import { dueIn, finishedSkills, mistakesToFix, MISTAKES_AT_ONCE } from "@mathsplanner/learning";
+import type { Progress } from "@mathsplanner/learning";
+import { levelsOf, skillsShowing } from "@mathsplanner/learning";
 
 export type PracticeStart =
   | { kind: "review" }

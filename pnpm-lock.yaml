@@ -242,6 +242,9 @@ importers:
       '@mathsplanner/generators':
         specifier: workspace:*
         version: link:../../packages/generators
+      '@mathsplanner/learning':
+        specifier: workspace:*
+        version: link:../../packages/learning
       '@mathsplanner/marking':
         specifier: workspace:*
         version: link:../../packages/marking
@@ -361,6 +364,15 @@ importers:
       '@mathsplanner/render':
         specifier: workspace:*
         version: link:../render
+
+  packages/learning:
+    dependencies:
+      '@mathsplanner/core':
+        specifier: workspace:*
+        version: link:../core
+      '@mathsplanner/generators':
+        specifier: workspace:*
+        version: link:../generators
 
   packages/marking:
     dependencies:
