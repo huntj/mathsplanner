@@ -13,9 +13,10 @@ const curve = (
   c: number,
   points: Point[] = [],
   lines: { m: number; c: number }[] = [],
+  shown: Range = range,
 ): Picture => ({
   kind: "graph",
-  range,
+  range: shown,
   curves: [{ kind: "quadratic", a, b, c }],
   ...(points.length ? { points } : {}),
   ...(lines.length ? { lines } : {}),
@@ -592,7 +593,18 @@ export const gfQuadratics: UnitLesson[] = [
           "Set $y = 0$ and factorise: each bracket gives a root. With the $y$-intercept ($c$) and the ∪ or ∩ shape, you can sketch it.",
           "$(x + 4)(x - 2) = 0$: roots $x = -4$ and $x = 2$.",
         ],
-        curve(1, 2, -8, [{ x: 2, y: 0 }]),
+        // Its own range: roots −4 and 2, turning point (−1, −9).
+        curve(
+          1,
+          2,
+          -8,
+          [
+            { x: -4, y: 0 },
+            { x: 2, y: 0 },
+          ],
+          [],
+          { xMin: -6, xMax: 4, yMin: -10, yMax: 6 },
+        ),
       ),
       choose(
         "Discover",

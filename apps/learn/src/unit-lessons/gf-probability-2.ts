@@ -16,13 +16,15 @@ function probabilityTree(
   first: [prob: string, name: string][],
   second: [prob: string, name: string][],
 ): DrawingPic {
-  const mid = [P(3, 4.4), P(3, 1.6)];
-  const leaves = [P(6.6, 5.4), P(6.6, 3.6), P(6.6, 2.4), P(6.6, 0.6)];
+  // Half the room a label needs across, so branches stop short of longer words.
+  const room = (name: string) => 0.2 + 0.13 * name.length;
+  const mid = [P(3.2, 4.4), P(3.2, 1.6)];
+  const leaves = [P(7.2, 5.4), P(7.2, 3.6), P(7.2, 2.4), P(7.2, 0.6)];
   const items: DrawingPic["items"] = [];
   mid.forEach((m, i) => {
     const [prob, name] = first[i] ?? ["", ""];
     items.push(
-      { line: [P(0, 3), P(m.x - 0.6, m.y)] },
+      { line: [P(0, 3), P(m.x - room(name), m.y)] },
       { text: prob, at: P(1.1, i === 0 ? 4.2 : 1.8) },
       { text: name, at: P(m.x, m.y) },
     );
@@ -30,9 +32,11 @@ function probabilityTree(
   leaves.forEach((l, i) => {
     const m = mid[i < 2 ? 0 : 1] ?? P(3, 3);
     const [prob, name] = second[i] ?? ["", ""];
+    const from = P(m.x + room((first[i < 2 ? 0 : 1] ?? ["", ""])[1]), m.y);
+    const to = P(l.x - room(name), l.y);
     items.push(
-      { line: [P(m.x + 0.6, m.y), P(l.x - 0.9, l.y)] },
-      { text: prob, at: P(4.6, (m.y + l.y) / 2 + (l.y > m.y ? 0.45 : -0.45)) },
+      { line: [from, to] },
+      { text: prob, at: P((from.x + to.x) / 2, (from.y + to.y) / 2 + (l.y > m.y ? 0.45 : -0.45)) },
       { text: name, at: P(l.x, l.y) },
     );
   });

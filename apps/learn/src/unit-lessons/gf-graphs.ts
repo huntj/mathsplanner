@@ -19,7 +19,7 @@ function plotted(
     { line: [P(from - 0.3, 0), P(to + 0.3, 0)], arrow: 1 },
     { line: [P(0, frame.yMin), P(0, frame.yMax)], arrow: 1 },
     { text: "x", at: P(to + 0.5, 0.3) },
-    { text: "y", at: P(0.3, frame.yMax) },
+    { text: "y", at: P(0.5, frame.yMax - 0.2) },
   ];
   const n = 24;
   for (let i = 0; i < n; i++) {
@@ -40,10 +40,18 @@ const reciprocal: Picture = {
   range: { xMin: -5, xMax: 5, yMin: -5, yMax: 5 },
   curves: [{ kind: "inverse", k: 1 }],
 };
-const quadratic: Picture = {
+/** The four graphs of the opening problem: y = 2x + 1, y = 3, y = x² and y = −x² + 4. */
+const fourGraphs: Picture = {
   kind: "graph",
   range: { xMin: -4, xMax: 4, yMin: -2, yMax: 8 },
-  curves: [{ kind: "quadratic", a: 1, b: 0, c: 0 }],
+  lines: [
+    { m: 2, c: 1 },
+    { m: 0, c: 3 },
+  ],
+  curves: [
+    { kind: "quadratic", a: 1, b: 0, c: 0 },
+    { kind: "quadratic", a: -1, b: 0, c: 4 },
+  ],
 };
 
 /** A distance–time graph: straight pieces through the given (time, distance) points. */
@@ -53,9 +61,10 @@ function journey(points: [number, number][], tMax: number, dMax: number): Drawin
   const items: DrawingPic["items"] = [
     { line: [P(0, 0), P(6.3, 0)] },
     { line: [P(0, 0), P(0, 4.3)] },
-    { text: "time (min)", at: P(5, -0.6) },
-    { text: "km", at: P(-0.6, 4.2) },
-    { text: String(tMax), at: P(6, -0.3) },
+    { text: "time (min)", at: P(3, -0.9) },
+    { text: "distance (km)", at: P(1.4, 4.8) },
+    { text: "0", at: P(-0.35, -0.35) },
+    { text: String(tMax), at: P(6, -0.4) },
     { text: String(dMax), at: P(-0.4, 4) },
   ];
   points.forEach(([t, d], i) => {
@@ -90,7 +99,7 @@ export const gfGraphs: UnitLesson[] = [
           "“Match each equation to its graph: $y = 2x + 1$, $y = x^2$, $y = -x^2 + 4$, $y = 3$.”",
           "By the end of this lesson, you can recognise the shapes from the equations alone.",
         ],
-        quadratic,
+        fourGraphs,
       ),
       choose("Warm-up", "$y = 2x + 1$ is", "a straight line", "Highest power of $x$ is 1.", [
         ["a curve", "No $x^2$."],
@@ -103,7 +112,7 @@ export const gfGraphs: UnitLesson[] = [
           "**Linear** ($x$ to the power 1): a straight line. **Quadratic** ($x^2$): a symmetrical curve called a **parabola**.",
           "A positive $x^2$ term gives a ∪; a negative one gives a ∩. $y = 3$ is a horizontal line.",
         ],
-        quadratic,
+        fourGraphs,
       ),
       choose("Discover", "$y = -x^2 + 4$ is shaped like", "∩", "Negative $x^2$.", [
         ["∪", "Negative $x^2$ turns it over."],
@@ -118,6 +127,7 @@ export const gfGraphs: UnitLesson[] = [
           ["$y = -x^2 + 4$: ∩, top at (0, 4); $y = 3$: horizontal", "Read each."],
         ],
         "Power and sign tell you the shape.",
+        fourGraphs,
       ),
       steps(
         "Together",
