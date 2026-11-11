@@ -22,7 +22,7 @@ import {
   StarIcon,
 } from "@mathsplanner/lesson-player";
 import { yearReviewId } from "@mathsplanner/learning";
-import { pathFor } from "./path.ts";
+import { pathFor } from "@mathsplanner/learning";
 import type { Progress } from "@mathsplanner/learning";
 import {
   lessonId,

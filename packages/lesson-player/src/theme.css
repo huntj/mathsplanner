@@ -1,0 +1,309 @@
+/* The look both apps share, for @mathsplanner/lesson-player: colours for the light and dark themes,
+   type, the topic families' colours and the key-like buttons. Import it first; each app's own
+   styles and lesson.css build on it. */
+:root {
+  --paper: #f6f8fc;
+  --grid: #e4e9f2;
+  --surface: #ffffff;
+  --ink: #19212e;
+  --ink-soft: #586377;
+  --line: #d6dde8;
+  --biro: #2142b5;
+  --biro-deep: #142c80;
+  --biro-text: #ffffff;
+  --dot: #ff6b3d;
+  --dot-deep: #d24c20;
+  --dot-ink: #2a1a14;
+  --gold: #f0ad16;
+  --gold-deep: #b97f00;
+  --locked: #e2e6ed;
+  --locked-deep: #c3cbd8;
+  --locked-ink: #7f8a9d;
+  --on-colour: #ffffff;
+  --scrim: rgb(16 22 32 / 45%);
+  --right: #1d8a4a;
+  --right-bg: #e2f5e8;
+  --wrong: #c8352b;
+  --wrong-bg: #fde7e4;
+  --nearly-bg: #fff3d1;
+  /* The names the shared answer widgets (@mathsplanner/ui) take their colours from. */
+  --text: var(--ink);
+  --muted: var(--ink-soft);
+  --border: var(--line);
+  --accent: var(--biro);
+
+  --number: #2b6be0;
+  --calculation: #0b8b7f;
+  --fractions: #e0661a;
+  --algebra: #7b4fd8;
+  --ratio: #c03f8f;
+  --measures: #b07c00;
+  --geometry: #2e9447;
+  --statistics: #d3405f;
+  --probability: #66870f;
+
+  --display: "Fredoka", "Baloo 2", ui-rounded, system-ui, sans-serif;
+  --body: "Andika", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
+
+  --step--1: 0.84rem;
+  --step-0: 1rem;
+  --step-1: 1.2rem;
+  --step-2: 1.5rem;
+  --step-3: 2rem;
+  --radius: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f131a;
+    --grid: #19202b;
+    --surface: #171d27;
+    --ink: #e9edf4;
+    --ink-soft: #9ba6b9;
+    --line: #2b3444;
+    --biro: #8fa7ff;
+    --biro-deep: #5a72d6;
+    --biro-text: #0c1328;
+    --dot: #ff8a5e;
+    --dot-deep: #cf5f35;
+    --dot-ink: #2a1a14;
+    --gold: #f5c443;
+    --gold-deep: #b98c17;
+    --locked: #252d3a;
+    --locked-deep: #1a212b;
+    --locked-ink: #6d7890;
+    --on-colour: #0f1420;
+    --scrim: rgb(0 0 0 / 60%);
+    --right: #5fd18b;
+    --right-bg: #15301f;
+    --wrong: #ff8a80;
+    --wrong-bg: #3a1c1b;
+    --nearly-bg: #3a3014;
+    --number: #72a0f5;
+    --calculation: #3fc5b7;
+    --fractions: #f5944c;
+    --algebra: #a98af3;
+    --ratio: #e57dbd;
+    --measures: #e2b23b;
+    --geometry: #5fc878;
+    --statistics: #f17b92;
+    --probability: #a8ca4b;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #0f131a;
+  --grid: #19202b;
+  --surface: #171d27;
+  --ink: #e9edf4;
+  --ink-soft: #9ba6b9;
+  --line: #2b3444;
+  --biro: #8fa7ff;
+  --biro-deep: #5a72d6;
+  --biro-text: #0c1328;
+  --dot: #ff8a5e;
+  --dot-deep: #cf5f35;
+  --dot-ink: #2a1a14;
+  --gold: #f5c443;
+  --gold-deep: #b98c17;
+  --locked: #252d3a;
+  --locked-deep: #1a212b;
+  --locked-ink: #6d7890;
+  --on-colour: #0f1420;
+  --scrim: rgb(0 0 0 / 60%);
+  --right: #5fd18b;
+  --right-bg: #15301f;
+  --wrong: #ff8a80;
+  --wrong-bg: #3a1c1b;
+  --nearly-bg: #3a3014;
+  --number: #72a0f5;
+  --calculation: #3fc5b7;
+  --fractions: #f5944c;
+  --algebra: #a98af3;
+  --ratio: #e57dbd;
+  --measures: #e2b23b;
+  --geometry: #5fc878;
+  --statistics: #f17b92;
+  --probability: #a8ca4b;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background-color: var(--paper);
+  /* 5 mm squares, as in a maths exercise book. */
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 19px 19px;
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: var(--step-0);
+  line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  line-height: 1.15;
+  text-wrap: balance;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--biro);
+  outline-offset: 3px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.muted {
+  color: var(--ink-soft);
+}
+
+.small {
+  font-size: var(--step--1);
+}
+
+.eyebrow {
+  font-family: var(--display);
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* Topic families set --c, the colour of their units and nodes. */
+.fam-number {
+  --c: var(--number);
+}
+.fam-calculation {
+  --c: var(--calculation);
+}
+.fam-fractions {
+  --c: var(--fractions);
+}
+.fam-algebra {
+  --c: var(--algebra);
+}
+.fam-ratio {
+  --c: var(--ratio);
+}
+.fam-measures {
+  --c: var(--measures);
+}
+.fam-geometry {
+  --c: var(--geometry);
+}
+.fam-statistics {
+  --c: var(--statistics);
+}
+.fam-probability {
+  --c: var(--probability);
+}
+[class*="fam-"] {
+  --c-deep: color-mix(in srgb, var(--c) 70%, black);
+  --c-tint: color-mix(in srgb, var(--c) 14%, var(--surface));
+}
+
+/* Buttons: raised like a key, pressed down when tapped. */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.9rem;
+  padding: 0.6rem 1.2rem;
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: 0 3px 0 var(--line);
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+}
+
+a.button {
+  color: inherit;
+  text-decoration: none;
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--line);
+}
+
+.button.primary {
+  background: var(--biro);
+  border-color: var(--biro-deep);
+  box-shadow: 0 3px 0 var(--biro-deep);
+  color: var(--biro-text);
+}
+
+.button.primary:active:not(:disabled) {
+  box-shadow: 0 1px 0 var(--biro-deep);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button.big {
+  width: 100%;
+  font-size: var(--step-1);
+  min-height: 3.4rem;
+}
+
+.button.link {
+  border: 0;
+  box-shadow: none;
+  background: none;
+  color: var(--biro);
+  text-decoration: underline;
+  min-height: 2.4rem;
+}
+
+.small-button {
+  min-height: 2.3rem;
+  padding: 0.3rem 0.9rem;
+  font-size: var(--step--1);
+}
+
+.danger-button {
+  border-color: var(--dot-deep);
+  color: var(--dot-deep);
+}

@@ -69,6 +69,15 @@ export const LEVEL_RATES: Record<LevelName, number> = {
   Reason: 6,
   Legendary: 8,
 };
+/** How a machine looks at each level (see MachineState.stage). */
+export const LEVEL_STAGES: Record<LevelName, number> = {
+  Learn: 2,
+  Practise: 3,
+  Picture: 4,
+  Reason: 5,
+  Legendary: 6,
+};
+export const STAGES_OF_MACHINE = 6;
 /** A finished skill whose review is not due runs tuned: half as fast again. */
 export const TUNED = 1.5;
 
@@ -87,6 +96,8 @@ export interface MachineState {
   tier: number;
   /** The level reached, if any. */
   level?: LevelName;
+  /** How it looks: 0 for a site, 1 once built, then 2 to 6 for Learn up to Legendary. */
+  stage: number;
   /** What it makes each minute while the city has power. */
   rate: number;
   /** A finished skill whose review is not due. */
@@ -127,6 +138,7 @@ export function machineState(
     material: materialOf(skill),
     tier: built ? done + 1 : 0,
     ...(level ? { level } : {}),
+    stage: level ? LEVEL_STAGES[level] : built ? 1 : 0,
     rate: tuned ? plain * TUNED : plain,
     tuned,
     due,

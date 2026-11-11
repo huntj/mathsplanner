@@ -3,9 +3,9 @@
 // #practise, #you), so the back button works; the path is the start view.
 import type { Stage } from "@mathsplanner/core";
 import { useEffect, useState } from "react";
-import { course, sectionFor, skillText, unitOf } from "@mathsplanner/learning";
+import { course, sectionFor, skillText } from "@mathsplanner/learning";
 import { exampleProgress } from "./example.ts";
-import { planLesson, type LessonPlan, type LessonSummary } from "@mathsplanner/learning";
+import { skillLessonPlan, type LessonPlan, type LessonSummary } from "@mathsplanner/learning";
 import { LessonView, type LessonEnding } from "@mathsplanner/lesson-player";
 import {
   PathIcon,
@@ -28,17 +28,10 @@ import {
   yearPlan,
 } from "@mathsplanner/learning";
 import { PractiseView, type PracticeStart } from "./PractiseView.tsx";
-import {
-  lessonById,
-  lessonId,
-  lessonsFor,
-  lessonTeaches,
-  type UnitLesson,
-} from "@mathsplanner/learning/unit-lessons";
+import { lessonById, lessonId, type UnitLesson } from "@mathsplanner/learning/unit-lessons";
 import { UnitLessonView, type UnitLessonEnding } from "@mathsplanner/lesson-player";
 import {
   dayKey,
-  levelOf,
   emptyProgress,
   finishUnitLesson,
   lessonsOn,
@@ -164,29 +157,7 @@ export function App() {
       setUnitLesson({ lesson });
       scrollTo({ top: 0 });
     } else if (start.kind === "skill") {
-      // Review questions come from the skills already finished in this year.
-      const reviewFrom = section.units
-        .flatMap((u) => u.skills)
-        .filter((s) => s !== start.skill && levelOf(progress, s) >= levelsOf(s).pathLevels)
-        .map((s) => ({ skill: s, info: levelsOf(s) }));
-      const info = levelsOf(start.skill);
-      // A level a teacher picked, or the skill's next one.
-      const done = start.level ? start.level - 1 : levelOf(progress, start.skill);
-      const picked = start.level ? { picked: true as const } : {};
-      // A lesson done that teaches this skill already showed the idea, so it skips its worked
-      // example.
-      const unit = unitOf(start.skill);
-      const taught =
-        unit !== undefined &&
-        lessonsFor(unit.id, true).some(
-          (l) =>
-            lessonId(l) in progress.unitLessons &&
-            lessonTeaches(l, unit.skills).includes(start.skill),
-        );
-      begin((seed) => {
-        const { example, ...plan } = planLesson(start.skill, info, done, reviewFrom, seed);
-        return { ...plan, ...(example && !taught ? { example } : {}), ...picked };
-      });
+      begin((seed) => skillLessonPlan(progress, section, start.skill, seed, start.level));
     } else if (start.kind === "refresh")
       begin((seed) => refreshPlan(start.skill, skillText(start.skill), levelsOf, seed));
     else if (start.kind === "unit") begin((seed) => unitPlan(start.unit, levelsOf, seed));

@@ -25,9 +25,10 @@ export function demoCity(
       skill,
       material: materialOf(skill),
       tier,
+      stage: 1 + Math.floor(random() * 6),
       rate: tier + 1,
       tuned: true,
-      due: false,
+      due: random() < 0.1,
     });
   }
   const kinds: BuildingType[] = ["cottage", "cottage", "cottage", "path", "well", "masons-yard"];

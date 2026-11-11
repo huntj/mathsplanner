@@ -4,6 +4,7 @@ import "@fontsource/fredoka/latin-500.css";
 import "@fontsource/fredoka/latin-600.css";
 import "katex/dist/katex.min.css";
 import "@mathsplanner/ui/widgets.css";
+import "@mathsplanner/lesson-player/theme.css";
 import "./styles.css";
 import "@mathsplanner/lesson-player/lesson.css";
 import { questionStyles } from "@mathsplanner/render";

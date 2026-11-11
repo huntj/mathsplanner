@@ -9,7 +9,7 @@ import { ClockIcon, FamilyIcon, RefreshIcon, ReviewIcon } from "@mathsplanner/le
 import { SPEED_SECONDS } from "@mathsplanner/learning";
 import { memoryOf, strengthOf, type Strength } from "@mathsplanner/learning";
 import { describeMisconception } from "@mathsplanner/learning";
-import { pathFor } from "./path.ts";
+import { pathFor } from "@mathsplanner/learning";
 import { dueIn, finishedSkills, mistakesToFix, MISTAKES_AT_ONCE } from "@mathsplanner/learning";
 import type { Progress } from "@mathsplanner/learning";
 import { levelsOf, skillsShowing } from "@mathsplanner/learning";

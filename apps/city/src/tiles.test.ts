@@ -34,12 +34,14 @@ describe("what is on a square", () => {
     if (!spot) throw new Error("No square for the machine");
     const city = placeMachine(newCity(7, 0), outcrop.skill, spot);
     const state = { skill: outcrop.skill, material: "stone" as const, tuned: false, due: false };
-    expect(thingAt(map, placedIn(city, [{ ...state, tier: 0, rate: 0 }]), spot)).toMatchObject({
+    expect(
+      thingAt(map, placedIn(city, [{ ...state, tier: 0, stage: 0, rate: 0 }]), spot),
+    ).toMatchObject({
       art: "site",
       title: "Quarry site",
     });
     expect(
-      thingAt(map, placedIn(city, [{ ...state, tier: 2, rate: 3, due: true }]), spot),
+      thingAt(map, placedIn(city, [{ ...state, tier: 2, stage: 2, rate: 3, due: true }]), spot),
     ).toMatchObject({
       art: "machine-stone",
       title: "Quarry, tier 2",

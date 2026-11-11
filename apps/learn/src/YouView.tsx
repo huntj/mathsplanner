@@ -7,7 +7,7 @@ import { sectionFor, YEARS, yearsReady } from "@mathsplanner/learning";
 import { Dot } from "@mathsplanner/lesson-player";
 import { FEEDBACK_URL } from "./feedback.ts";
 import { BADGES, FREEZE_EVERY } from "@mathsplanner/learning";
-import { pathFor } from "./path.ts";
+import { pathFor } from "@mathsplanner/learning";
 import { SnowflakeIcon, StarIcon, StreakIcon } from "@mathsplanner/lesson-player";
 import {
   DAILY_GOALS,

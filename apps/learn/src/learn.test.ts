@@ -20,7 +20,7 @@ import {
   streak,
 } from "@mathsplanner/learning";
 import { hasGenerator, levelsOf, misconceptionsOf } from "@mathsplanner/learning";
-import { pathFor } from "./path.ts";
+import { pathFor } from "@mathsplanner/learning";
 import topicsFile from "../../../data/topics.json" with { type: "json" };
 
 const names = (info: SkillLevels) => info.levels.map((l) => l.name);
