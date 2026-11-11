@@ -3,6 +3,7 @@
 // two triangles must be congruent, the properties of quadrilaterals and circles, and the faces,
 // edges and vertices of solids. Each starts from something quick, builds the idea a step at a
 // time, names the common mistakes, and ends on an exit check.
+import { parallels } from "./geometry.ts";
 import type { DrawingPic, Point, ShapePic, UnitLesson } from "./types.ts";
 
 const ALTERNATE = "Y8-GEO-05.a";
@@ -11,56 +12,6 @@ const NAMING = "Y8-GEO-02.a";
 const CONGRUENT = "Y8-GEO-02.b";
 const PROPERTIES = "Y8-GEO-03";
 const SOLIDS = "Y8-GEO-06";
-
-type Corner = "up-right" | "up-left" | "down-left" | "down-right";
-interface Mark {
-  on: "lower" | "upper";
-  corner: Corner;
-  label: string;
-}
-
-const off = (p: Point, deg: number, d: number): Point => ({
-  x: p.x + d * Math.cos((deg * Math.PI) / 180),
-  y: p.y + d * Math.sin((deg * Math.PI) / 180),
-});
-
-/** Two parallel lines crossed by a line at `deg`, with angles marked at the crossings. */
-function parallels(deg: number, marks: Mark[], crossing = true): DrawingPic {
-  const lower = { x: 2.4, y: 0 };
-  const upper = { x: 2.4 + 3 / Math.tan((deg * Math.PI) / 180), y: 3 };
-  const range: Record<Corner, [number, number]> = {
-    "up-right": [0, deg],
-    "up-left": [deg, 180],
-    "down-left": [180, 180 + deg],
-    "down-right": [180 + deg, 360],
-  };
-  return {
-    kind: "drawing",
-    items: [
-      {
-        line: [
-          { x: 0, y: 0 },
-          { x: 6, y: 0 },
-        ],
-        ...(crossing ? { arrow: 1 } : {}),
-      },
-      {
-        line: [
-          { x: 0, y: 3 },
-          { x: 6, y: 3 },
-        ],
-        ...(crossing ? { arrow: 1 } : {}),
-      },
-      { line: [off(lower, 180 + deg, 1.2), off(upper, deg, 1.2)], tone: "soft" },
-      ...marks.map((m) => ({
-        angle: m.on === "lower" ? lower : upper,
-        from: range[m.corner][0],
-        to: range[m.corner][1],
-        label: m.label,
-      })),
-    ],
-  };
-}
 
 const triangle = (names: string[], extra: Partial<ShapePic> = {}): ShapePic => ({
   kind: "shape",

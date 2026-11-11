@@ -39,6 +39,41 @@ import { y9Simultaneous } from "./y9-simultaneous.ts";
 import { y9Percentages } from "./y9-percentages.ts";
 import { y9Graphs } from "./y9-graphs.ts";
 import { y9Probability } from "./y9-probability.ts";
+import { gfCalculation } from "./gf-calculation.ts";
+import { gfExpressions1 } from "./gf-expressions-1.ts";
+import { gfFormulae } from "./gf-formulae.ts";
+import { gfStraightLine } from "./gf-straight-line.ts";
+import { gfShapes } from "./gf-shapes.ts";
+import { gfTransformations } from "./gf-transformations.ts";
+import { gfSimilarity } from "./gf-similarity.ts";
+import { gfAngles } from "./gf-angles.ts";
+import { gfFactors } from "./gf-factors.ts";
+import { gfExpressions2 } from "./gf-expressions-2.ts";
+import { gfFdp } from "./gf-fdp.ts";
+import { gfProbability1 } from "./gf-probability-1.ts";
+import { gfPowers } from "./gf-powers.ts";
+import { gfEquations } from "./gf-equations.ts";
+import { gfArea } from "./gf-area.ts";
+import { gfRatio1 } from "./gf-ratio-1.ts";
+import { gfRounding } from "./gf-rounding.ts";
+import { gfSequences } from "./gf-sequences.ts";
+import { gfData } from "./gf-data.ts";
+import { gfRatio2 } from "./gf-ratio-2.ts";
+import { gfPercentages } from "./gf-percentages.ts";
+import { gfMeasures } from "./gf-measures.ts";
+import { gfConstructions } from "./gf-constructions.ts";
+import { gfSimultaneous } from "./gf-simultaneous.ts";
+import { gfAverages } from "./gf-averages.ts";
+import { gfProportion } from "./gf-proportion.ts";
+import { gfCircles } from "./gf-circles.ts";
+import { gfQuadratics } from "./gf-quadratics.ts";
+import { gfRates } from "./gf-rates.ts";
+import { gfTrigonometry } from "./gf-trigonometry.ts";
+import { gfGraphs } from "./gf-graphs.ts";
+import { gfGrowthDecay } from "./gf-growth-decay.ts";
+import { gfProbability2 } from "./gf-probability-2.ts";
+import { gfProof } from "./gf-proof.ts";
+import { gfVectors } from "./gf-vectors.ts";
 
 export type * from "./types.ts";
 
@@ -81,6 +116,41 @@ export const UNIT_LESSONS: readonly UnitLesson[] = [
   ...y9Percentages,
   ...y9Graphs,
   ...y9Probability,
+  ...gfCalculation,
+  ...gfExpressions1,
+  ...gfFormulae,
+  ...gfStraightLine,
+  ...gfShapes,
+  ...gfTransformations,
+  ...gfSimilarity,
+  ...gfAngles,
+  ...gfFactors,
+  ...gfExpressions2,
+  ...gfFdp,
+  ...gfProbability1,
+  ...gfPowers,
+  ...gfEquations,
+  ...gfArea,
+  ...gfRatio1,
+  ...gfRounding,
+  ...gfSequences,
+  ...gfData,
+  ...gfRatio2,
+  ...gfPercentages,
+  ...gfMeasures,
+  ...gfConstructions,
+  ...gfSimultaneous,
+  ...gfAverages,
+  ...gfProportion,
+  ...gfCircles,
+  ...gfQuadratics,
+  ...gfRates,
+  ...gfTrigonometry,
+  ...gfGraphs,
+  ...gfGrowthDecay,
+  ...gfProbability2,
+  ...gfProof,
+  ...gfVectors,
 ];
 /** Units whose lessons have been reviewed and are open to pupils. */
 export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
@@ -122,6 +192,41 @@ export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
   "y9-percentages",
   "y9-graphs",
   "y9-probability",
+  "gf-calculation",
+  "gf-expressions-1",
+  "gf-formulae",
+  "gf-straight-line",
+  "gf-shapes",
+  "gf-transformations",
+  "gf-similarity",
+  "gf-angles",
+  "gf-factors",
+  "gf-expressions-2",
+  "gf-fdp",
+  "gf-probability-1",
+  "gf-powers",
+  "gf-equations",
+  "gf-area",
+  "gf-ratio-1",
+  "gf-rounding",
+  "gf-sequences",
+  "gf-data",
+  "gf-ratio-2",
+  "gf-percentages",
+  "gf-measures",
+  "gf-constructions",
+  "gf-simultaneous",
+  "gf-averages",
+  "gf-proportion",
+  "gf-circles",
+  "gf-quadratics",
+  "gf-rates",
+  "gf-trigonometry",
+  "gf-graphs",
+  "gf-growth-decay",
+  "gf-probability-2",
+  "gf-proof",
+  "gf-vectors",
 ]);
 
 /** A lesson's id: its own, or its unit's when the unit has just one lesson. */
