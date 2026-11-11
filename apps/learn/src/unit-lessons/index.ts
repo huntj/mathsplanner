@@ -51,6 +51,7 @@ import { gfFactors } from "./gf-factors.ts";
 import { gfExpressions2 } from "./gf-expressions-2.ts";
 import { gfFdp } from "./gf-fdp.ts";
 import { gfProbability1 } from "./gf-probability-1.ts";
+import { gfPowers } from "./gf-powers.ts";
 
 export type * from "./types.ts";
 
@@ -105,6 +106,7 @@ export const UNIT_LESSONS: readonly UnitLesson[] = [
   ...gfExpressions2,
   ...gfFdp,
   ...gfProbability1,
+  ...gfPowers,
 ];
 /** Units whose lessons have been reviewed and are open to pupils. */
 export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
@@ -158,6 +160,7 @@ export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
   "gf-expressions-2",
   "gf-fdp",
   "gf-probability-1",
+  "gf-powers",
 ]);
 
 /** A lesson's id: its own, or its unit's when the unit has just one lesson. */
