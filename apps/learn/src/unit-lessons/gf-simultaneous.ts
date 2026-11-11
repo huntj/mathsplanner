@@ -36,7 +36,7 @@ export const gfSimultaneous: UnitLesson[] = [
         ],
         {
           kind: "maths",
-          tex: "\\begin{aligned} 3c + 2t &= 10.5 \\\\ 3c + t &= 9 \\\\ \\hline t &= 1.5 \\end{aligned}",
+          tex: "\\begin{array}{r} 3c + 2t = 10.5 \\\\ 3c + t = 9 \\\\ \\hline t = 1.5 \\end{array}",
         },
       ),
       choose(
@@ -543,7 +543,7 @@ export const gfSimultaneous: UnitLesson[] = [
           min: 0,
           max: 6,
           step: 1,
-          interval: { from: 0, to: 4.125, fromClosed: true, toClosed: true },
+          every: 1,
         },
       ),
       typed("Warm-up", "Solve $4t + 3.5 = 20$", "4.125", "$4t = 16.5$.", "$t = 4.125$."),
