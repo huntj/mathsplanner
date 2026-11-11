@@ -12,7 +12,7 @@ const P = (x: number, y: number): Point => ({ x, y });
  * A two-stage probability tree. `first` labels the two first branches and their outcomes;
  * `second` the four second branches, top to bottom. Probabilities sit beside each branch.
  */
-function probabilityTree(
+export function probabilityTree(
   first: [prob: string, name: string][],
   second: [prob: string, name: string][],
 ): DrawingPic {

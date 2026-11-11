@@ -579,7 +579,7 @@ polished.
   built from reusable screen kinds (`packages/learning/src/unit-lessons/`), so the next ones are
   mostly writing. Each shows only in teacher mode until it is reviewed, then its unit goes in
   `OPEN_TO_PUPILS`. Once a unit's lesson is done, its skills skip their worked examples.
-- **Smaller lessons, through the unit. Years 7 to 9 and GCSE Foundation done.** A unit's one lesson can be split into
+- **Smaller lessons, through the unit. Years 7 to 9, GCSE Foundation and GCSE Higher done.** A unit's one lesson can be split into
   several, each sitting on the path just before the skill it teaches, and each teaching one idea
   in more depth. Every split lesson follows the same plan: a real problem the pupil can't solve
   yet; a warm-up of what it builds on; discovering the idea; a worked example shown a step at a
@@ -610,5 +610,11 @@ polished.
   your working", "Give a reason", "to 3 significant figures"). Contexts include a warren of
   rabbits, a car losing value, two savings accounts, a late bus, sweets from a bag, a walk to the
   shop, a vase filling with water and a drone's journey as vectors.
+  **GCSE Higher** follows the same pattern: 61 lessons across its 13 units, open to pupils
+  straight away, each recapping the Foundation idea before the Higher one (surds, conditional
+  probability, the sine and cosine rules, completing the square, iteration, circle theorems,
+  vector proof, histograms and box plots), with contexts such as a bike lock, similar jugs, a
+  runner's fastest possible speed, rain and umbrellas, a car's stopping distance and two classes'
+  test scores.
 - **Question previews** (later): from a skill's sheet, see one question at each level without
   starting a lesson.
