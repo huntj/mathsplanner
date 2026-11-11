@@ -377,7 +377,7 @@ export const gfFormulae: UnitLesson[] = [
         ],
         {
           kind: "maths",
-          tex: "v = u + at \\;\\Rightarrow\\; v - u = at \\;\\Rightarrow\\; t = \\frac{v - u}{a}",
+          tex: "\\begin{aligned} v &= u + at \\\\ v - u &= at \\\\ t &= \\frac{v - u}{a} \\end{aligned}",
         },
       ),
       choose(
