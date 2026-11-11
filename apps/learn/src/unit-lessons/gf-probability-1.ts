@@ -17,7 +17,7 @@ function frequencyTree(
 ): DrawingPic {
   const root = P(0, 3);
   const mid = [P(3, 4.6), P(3, 1.4)];
-  const leaves = [P(6, 5.4), P(6, 3.8), P(6, 2.2), P(6, 0.6)];
+  const leaves = [P(6.6, 5.4), P(6.6, 3.8), P(6.6, 2.2), P(6.6, 0.6)];
   const items: DrawingPic["items"] = [{ text: total, at: P(-0.4, 3) }];
   mid.forEach((m, i) => {
     items.push({ line: [P(0.4, 3), P(m.x - 0.9, m.y)] }, { text: first[i] ?? "", at: P(m.x, m.y) });
@@ -25,7 +25,7 @@ function frequencyTree(
   leaves.forEach((l, i) => {
     const m = mid[i < 2 ? 0 : 1] ?? root;
     items.push(
-      { line: [P(m.x + 0.9, m.y), P(l.x - 1, l.y)] },
+      { line: [P(m.x + 0.9, m.y), P(l.x - 1.6, l.y)] },
       { text: second[i] ?? "", at: P(l.x, l.y) },
     );
   });
