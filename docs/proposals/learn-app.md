@@ -579,7 +579,7 @@ polished.
   built from reusable screen kinds (`apps/learn/src/unit-lessons/`), so the next ones are
   mostly writing. Each shows only in teacher mode until it is reviewed, then its unit goes in
   `OPEN_TO_PUPILS`. Once a unit's lesson is done, its skills skip their worked examples.
-- **Smaller lessons, through the unit. Years 7 to 9 done.** A unit's one lesson can be split into
+- **Smaller lessons, through the unit. Years 7 to 9 and GCSE Foundation done.** A unit's one lesson can be split into
   several, each sitting on the path just before the skill it teaches, and each teaching one idea
   in more depth. Every split lesson follows the same plan: a real problem the pupil can't solve
   yet; a warm-up of what it builds on; discovering the idea; a worked example shown a step at a
@@ -604,5 +604,11 @@ polished.
   a diver below sea level, a recipe for six, a bike wheel, a level crossing, a treasure map, two taxi fares,
   a round rug and a real gold ring. The two pilot units, Year 7 angle facts and Year 8 formulae
   and equations, now have a "Watch out" question in every lesson too.
+  **GCSE Foundation** is split the same way: 176 lessons across its 35 units, one before each
+  skill, open to pupils straight away. Each recaps the Key Stage 3 idea quickly in its warm-up,
+  then teaches it at GCSE level, and its final problem and exit check use exam wording ("Show
+  your working", "Give a reason", "to 3 significant figures"). Contexts include a warren of
+  rabbits, a car losing value, two savings accounts, a late bus, sweets from a bag, a walk to the
+  shop, a vase filling with water and a drone's journey as vectors.
 - **Question previews** (later): from a skill's sheet, see one question at each level without
   starting a lesson.
