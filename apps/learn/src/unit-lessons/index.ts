@@ -72,6 +72,7 @@ import { gfTrigonometry } from "./gf-trigonometry.ts";
 import { gfGraphs } from "./gf-graphs.ts";
 import { gfGrowthDecay } from "./gf-growth-decay.ts";
 import { gfProbability2 } from "./gf-probability-2.ts";
+import { gfProof } from "./gf-proof.ts";
 
 export type * from "./types.ts";
 
@@ -147,6 +148,7 @@ export const UNIT_LESSONS: readonly UnitLesson[] = [
   ...gfGraphs,
   ...gfGrowthDecay,
   ...gfProbability2,
+  ...gfProof,
 ];
 /** Units whose lessons have been reviewed and are open to pupils. */
 export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
@@ -221,6 +223,7 @@ export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
   "gf-graphs",
   "gf-growth-decay",
   "gf-probability-2",
+  "gf-proof",
 ]);
 
 /** A lesson's id: its own, or its unit's when the unit has just one lesson. */
