@@ -172,9 +172,9 @@ export const gfSequences: UnitLesson[] = [
       choose(
         "Your turn",
         "Is 85 a term of $6n + 1$?",
-        "No: $6n = 84$ gives $n = 14$… so yes, it's the 14th",
-        "Check: $6 \\times 14 + 1 = 85$.",
-        [["No", "$6n = 84$, $n = 14$: it's a term."]],
+        "Yes: it's the 14th term",
+        "$6n = 84$, so $n = 14$, a whole number.",
+        [["No", "$6n = 84$ gives $n = 14$: a whole number."]],
       ),
       choose(
         "Watch out",
@@ -313,11 +313,11 @@ export const gfSequences: UnitLesson[] = [
         ],
         [
           ["Which is square?", "81", ["80", "18"], "$9^2$."],
-          ["Which is square?", "144", ["140", "44"], "$12^2$."],
+          ["Which of these is a square number?", "144", ["140", "44"], "$12^2$."],
         ],
         [
           ["Which is a cube?", "1000", ["100", "300"], "$10^3$."],
-          ["Which is a cube?", "216", ["200", "36"], "$6^3$."],
+          ["Which of these is a cube number?", "216", ["200", "36"], "$6^3$."],
         ],
       ]),
     ],
@@ -645,7 +645,7 @@ export const gfSequences: UnitLesson[] = [
           ["Next: 3, 6, 11, 18, …", "27", ["25", "24"], "+9."],
         ],
         [
-          ["Second differences of 2, 8, 18, 32", "6", ["4", "10"], "6, 10, 14: then 4…"],
+          ["Second differences of 2, 8, 18, 32", "4", ["6", "10"], "First differences 6, 10, 14."],
           ["Second differences of 1, 6, 15, 28", "4", ["5", "9"], "5, 9, 13."],
         ],
         [
