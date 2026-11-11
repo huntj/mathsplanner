@@ -15,6 +15,10 @@ MathsPlanner: a pnpm monorepo of maths question generators and the apps built on
   year (`Y1`… `Y9`, GCSE) into units of skills. Edit `course.txt` and run `pnpm data:course`.
 - `apps/learn`: Learn Maths, the pupils' app, live at https://learnmaths.jedhunt.co.uk. Read its
   README before changing it.
+- `packages/learning`, `packages/lesson-player`: the course, lessons and learning record, and the
+  screens that play a lesson, shared by Learn Maths and Maths City.
+- `apps/city`: Maths City, the course as a city-building game, being built in steps from
+  `docs/proposals/city-game.md`. Read its README before changing it.
 - `apps/gallery`, `apps/practice`: the generator gallery and a practice app.
 - `docs/proposals/`: design documents. New apps and big features start as one, reviewed by the
   owner before any code.
@@ -30,6 +34,7 @@ pnpm typecheck
 pnpm test          # the whole suite takes several minutes: run the files you changed first
 pnpm data:check
 pnpm learn         # Learn Maths dev server
+pnpm city          # Maths City dev server
 ```
 
 - Run Vitest from the repository root, naming the files: `npx vitest run packages/lesson-player/src/unit-lessons.test.ts`.
