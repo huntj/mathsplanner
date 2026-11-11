@@ -42,6 +42,8 @@ import { y9Probability } from "./y9-probability.ts";
 import { gfCalculation } from "./gf-calculation.ts";
 import { gfExpressions1 } from "./gf-expressions-1.ts";
 import { gfFormulae } from "./gf-formulae.ts";
+import { gfStraightLine } from "./gf-straight-line.ts";
+import { gfShapes } from "./gf-shapes.ts";
 
 export type * from "./types.ts";
 
@@ -87,6 +89,8 @@ export const UNIT_LESSONS: readonly UnitLesson[] = [
   ...gfCalculation,
   ...gfExpressions1,
   ...gfFormulae,
+  ...gfStraightLine,
+  ...gfShapes,
 ];
 /** Units whose lessons have been reviewed and are open to pupils. */
 export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
@@ -131,6 +135,8 @@ export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
   "gf-calculation",
   "gf-expressions-1",
   "gf-formulae",
+  "gf-straight-line",
+  "gf-shapes",
 ]);
 
 /** A lesson's id: its own, or its unit's when the unit has just one lesson. */
