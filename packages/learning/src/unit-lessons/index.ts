@@ -74,6 +74,16 @@ import { gfGrowthDecay } from "./gf-growth-decay.ts";
 import { gfProbability2 } from "./gf-probability-2.ts";
 import { gfProof } from "./gf-proof.ts";
 import { gfVectors } from "./gf-vectors.ts";
+import { ghSurds } from "./gh-surds.ts";
+import { ghExpressions } from "./gh-expressions.ts";
+import { ghTransformations } from "./gh-transformations.ts";
+import { ghFdp } from "./gh-fdp.ts";
+import { ghQuadratics } from "./gh-quadratics.ts";
+import { ghProbability } from "./gh-probability.ts";
+import { ghEquations } from "./gh-equations.ts";
+import { ghTrigonometry } from "./gh-trigonometry.ts";
+import { ghSequences } from "./gh-sequences.ts";
+import { ghGraphs } from "./gh-graphs.ts";
 
 export type * from "./types.ts";
 
@@ -151,6 +161,16 @@ export const UNIT_LESSONS: readonly UnitLesson[] = [
   ...gfProbability2,
   ...gfProof,
   ...gfVectors,
+  ...ghSurds,
+  ...ghExpressions,
+  ...ghTransformations,
+  ...ghFdp,
+  ...ghQuadratics,
+  ...ghProbability,
+  ...ghEquations,
+  ...ghTrigonometry,
+  ...ghSequences,
+  ...ghGraphs,
 ];
 /** Units whose lessons have been reviewed and are open to pupils. */
 export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
@@ -227,6 +247,16 @@ export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
   "gf-probability-2",
   "gf-proof",
   "gf-vectors",
+  "gh-surds",
+  "gh-expressions",
+  "gh-transformations",
+  "gh-fdp",
+  "gh-quadratics",
+  "gh-probability",
+  "gh-equations",
+  "gh-trigonometry",
+  "gh-sequences",
+  "gh-graphs",
 ]);
 
 /** A lesson's id: its own, or its unit's when the unit has just one lesson. */
