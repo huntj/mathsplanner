@@ -1,0 +1,24 @@
+{
+  "name": "@mathsplanner/learning",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The course, lessons and a pupil's learning record, shared by Learn Maths and Maths City.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huntj/mathsplanner.git",
+    "directory": "packages/learning"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./unit-lessons": "./src/unit-lessons/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@mathsplanner/core": "workspace:*",
+    "@mathsplanner/generators": "workspace:*"
+  }
+}

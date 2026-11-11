@@ -5,11 +5,12 @@ import "@fontsource/fredoka/latin-600.css";
 import "katex/dist/katex.min.css";
 import "@mathsplanner/ui/widgets.css";
 import "./styles.css";
+import "@mathsplanner/lesson-player/lesson.css";
 import { questionStyles } from "@mathsplanner/render";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./App.tsx";
-import { watchMaths } from "./fit.ts";
+import { watchMaths } from "@mathsplanner/lesson-player";
 
 const style = document.createElement("style");
 style.textContent = questionStyles;

@@ -1,8 +1,15 @@
 import type { CourseSection, Depth } from "@mathsplanner/core";
 import { describe, expect, it } from "vitest";
-import { buildPath, course, skillLevels, YEARS, yearsReady, type SkillLevels } from "./course.ts";
+import {
+  buildPath,
+  course,
+  skillLevels,
+  YEARS,
+  yearsReady,
+  type SkillLevels,
+} from "@mathsplanner/learning";
 import { exampleProgress } from "./example.ts";
-import { familyOf } from "./families.ts";
+import { familyOf } from "@mathsplanner/learning";
 import {
   addDays,
   emptyProgress,
@@ -11,8 +18,8 @@ import {
   saveProgress,
   STORAGE_KEY,
   streak,
-} from "./progress.ts";
-import { hasGenerator, levelsOf, misconceptionsOf } from "./skills.ts";
+} from "@mathsplanner/learning";
+import { hasGenerator, levelsOf, misconceptionsOf } from "@mathsplanner/learning";
 import { pathFor } from "./path.ts";
 import topicsFile from "../../../data/topics.json" with { type: "json" };
 

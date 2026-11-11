@@ -3,7 +3,7 @@
 // The face sits in the middle of every shape (eyes at x 38 and 62, y 50; cheeks at x 29 and 71,
 // y 63), so each shape keeps those points inside it. Logo pairs Dot with the app's name.
 import type { ReactNode } from "react";
-import type { Family } from "./families.ts";
+import type { Family } from "@mathsplanner/learning";
 
 export type Mood = "happy" | "cheer" | "oops";
 

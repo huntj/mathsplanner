@@ -3,10 +3,10 @@
 // with a year to look through.
 import type { Stage } from "@mathsplanner/core";
 import { useState } from "react";
-import { sectionFor, YEARS, yearsReady } from "./course.ts";
-import { Dot, Logo } from "./Dot.tsx";
-import { TeacherIcon } from "./Icons.tsx";
-import { DAILY_GOALS, type DailyGoal } from "./progress.ts";
+import { sectionFor, YEARS, yearsReady } from "@mathsplanner/learning";
+import { Dot, Logo } from "@mathsplanner/lesson-player";
+import { TeacherIcon } from "@mathsplanner/lesson-player";
+import { DAILY_GOALS, type DailyGoal } from "@mathsplanner/learning";
 
 const GOAL_WORDS: Record<DailyGoal, string> = {
   1: "Casual",

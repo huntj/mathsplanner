@@ -1,9 +1,15 @@
 // Every unit lesson must be playable: each screen's answer is reachable, inside its grid, and
 // matches what its words say, so a pupil is never stuck on a screen that cannot be done.
 import { describe, expect, it } from "vitest";
-import { course } from "./course.ts";
+import { course } from "@mathsplanner/learning";
 import { latticeOn } from "./LineGraph.tsx";
-import { emptyProgress, finishUnitLesson, LESSON_XP, lessonsOn, readProgress } from "./progress.ts";
+import {
+  emptyProgress,
+  finishUnitLesson,
+  LESSON_XP,
+  lessonsOn,
+  readProgress,
+} from "@mathsplanner/learning";
 import {
   OPEN_TO_PUPILS,
   makesLine,
@@ -18,7 +24,7 @@ import {
   type Point,
   type Range,
   type Scene,
-} from "./unit-lessons/index.ts";
+} from "@mathsplanner/learning/unit-lessons";
 import { fitsAtSmallest, scaleToFit, SMALLEST } from "./fit.ts";
 import { curveY } from "./LineGraph.tsx";
 import { snapToTick } from "./Picture.tsx";

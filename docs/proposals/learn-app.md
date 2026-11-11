@@ -576,7 +576,7 @@ polished.
   first proof, gradients from any two points, Pythagoras' squares and the fixed ratios behind
   sin, cos and tan, simultaneous equations as crossing lines, compound interest and inverse
   proportion, quadratic curves, and dice sample spaces shaded square by square. Lessons are data
-  built from reusable screen kinds (`apps/learn/src/unit-lessons/`), so the next ones are
+  built from reusable screen kinds (`packages/learning/src/unit-lessons/`), so the next ones are
   mostly writing. Each shows only in teacher mode until it is reviewed, then its unit goes in
   `OPEN_TO_PUPILS`. Once a unit's lesson is done, its skills skip their worked examples.
 - **Smaller lessons, through the unit. Years 7 to 9 and GCSE Foundation done.** A unit's one lesson can be split into

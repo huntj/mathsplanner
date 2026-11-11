@@ -1,5 +1,5 @@
 // A badge's mark: its shape in gold once earned, or outlined until then, with a star at its heart.
-import type { Badge, BadgeShape } from "./rewards.ts";
+import type { Badge, BadgeShape } from "@mathsplanner/learning";
 
 const OUTLINES: Record<BadgeShape, string> = {
   circle: "M24 3a21 21 0 1 1 0 42a21 21 0 1 1 0-42z",

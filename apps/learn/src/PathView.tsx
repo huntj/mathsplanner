@@ -3,9 +3,15 @@
 // beside the current skill; a finished skill due for review fades until it is refreshed.
 import type { CourseSection } from "@mathsplanner/core";
 import { Fragment, useEffect, useRef, type CSSProperties } from "react";
-import { skillText, topicName, type PathNode, type PathUnit, type ReviewState } from "./course.ts";
-import { Dot } from "./Dot.tsx";
-import { familyOf } from "./families.ts";
+import {
+  skillText,
+  topicName,
+  type PathNode,
+  type PathUnit,
+  type ReviewState,
+} from "@mathsplanner/learning";
+import { Dot } from "@mathsplanner/lesson-player";
+import { familyOf } from "@mathsplanner/learning";
 import {
   CheckIcon,
   FamilyIcon,
@@ -14,11 +20,16 @@ import {
   RefreshIcon,
   ReviewIcon,
   StarIcon,
-} from "./Icons.tsx";
-import { yearReviewId } from "./practice.ts";
+} from "@mathsplanner/lesson-player";
+import { yearReviewId } from "@mathsplanner/learning";
 import { pathFor } from "./path.ts";
-import type { Progress } from "./progress.ts";
-import { lessonId, lessonsFor, OPEN_TO_PUPILS, type UnitLesson } from "./unit-lessons/index.ts";
+import type { Progress } from "@mathsplanner/learning";
+import {
+  lessonId,
+  lessonsFor,
+  OPEN_TO_PUPILS,
+  type UnitLesson,
+} from "@mathsplanner/learning/unit-lessons";
 
 /** How far each node sits from the middle, in rem, repeating down the path. */
 const SWAY = [0, 2.6, 4, 2.6, 0, -2.6, -4, -2.6];
