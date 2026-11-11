@@ -84,6 +84,9 @@ import { ghEquations } from "./gh-equations.ts";
 import { ghTrigonometry } from "./gh-trigonometry.ts";
 import { ghSequences } from "./gh-sequences.ts";
 import { ghGraphs } from "./gh-graphs.ts";
+import { ghProportion } from "./gh-proportion.ts";
+import { ghCircles } from "./gh-circles.ts";
+import { ghData } from "./gh-data.ts";
 
 export type * from "./types.ts";
 
@@ -171,6 +174,9 @@ export const UNIT_LESSONS: readonly UnitLesson[] = [
   ...ghTrigonometry,
   ...ghSequences,
   ...ghGraphs,
+  ...ghProportion,
+  ...ghCircles,
+  ...ghData,
 ];
 /** Units whose lessons have been reviewed and are open to pupils. */
 export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
@@ -257,6 +263,9 @@ export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
   "gh-trigonometry",
   "gh-sequences",
   "gh-graphs",
+  "gh-proportion",
+  "gh-circles",
+  "gh-data",
 ]);
 
 /** A lesson's id: its own, or its unit's when the unit has just one lesson. */
