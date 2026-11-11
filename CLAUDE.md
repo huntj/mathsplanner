@@ -32,7 +32,7 @@ pnpm data:check
 pnpm learn         # Learn Maths dev server
 ```
 
-- Run Vitest from the repository root, naming the files: `npx vitest run apps/learn/src/unit-lessons.test.ts`.
+- Run Vitest from the repository root, naming the files: `npx vitest run packages/lesson-player/src/unit-lessons.test.ts`.
   Running it from inside an app directory resolves packages wrongly.
 - Format with `npx prettier --write <files>` before committing; CI fails on unformatted files.
 - TypeScript is strict, with `exactOptionalPropertyTypes` and `noUncheckedIndexedAccess`: no

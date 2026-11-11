@@ -3,9 +3,9 @@
 // remembered.
 import type { CourseSection, CourseUnit } from "@mathsplanner/core";
 import { skillText } from "@mathsplanner/learning";
-import { Dot } from "./Dot.tsx";
+import { Dot } from "@mathsplanner/lesson-player";
 import { familyOf } from "@mathsplanner/learning";
-import { ClockIcon, FamilyIcon, RefreshIcon, ReviewIcon } from "./Icons.tsx";
+import { ClockIcon, FamilyIcon, RefreshIcon, ReviewIcon } from "@mathsplanner/lesson-player";
 import { SPEED_SECONDS } from "@mathsplanner/learning";
 import { memoryOf, strengthOf, type Strength } from "@mathsplanner/learning";
 import { describeMisconception } from "@mathsplanner/learning";

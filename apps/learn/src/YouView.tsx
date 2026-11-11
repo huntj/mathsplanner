@@ -2,13 +2,13 @@
 // way to start again.
 import type { CourseSection, Stage } from "@mathsplanner/core";
 import { useState } from "react";
-import { BadgeMark } from "./BadgeMark.tsx";
+import { BadgeMark } from "@mathsplanner/lesson-player";
 import { sectionFor, YEARS, yearsReady } from "@mathsplanner/learning";
-import { Dot } from "./Dot.tsx";
+import { Dot } from "@mathsplanner/lesson-player";
 import { FEEDBACK_URL } from "./feedback.ts";
 import { BADGES, FREEZE_EVERY } from "@mathsplanner/learning";
 import { pathFor } from "./path.ts";
-import { SnowflakeIcon, StarIcon, StreakIcon } from "./Icons.tsx";
+import { SnowflakeIcon, StarIcon, StreakIcon } from "@mathsplanner/lesson-player";
 import {
   DAILY_GOALS,
   MAX_FREEZES,

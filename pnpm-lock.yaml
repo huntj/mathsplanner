@@ -245,6 +245,9 @@ importers:
       '@mathsplanner/learning':
         specifier: workspace:*
         version: link:../../packages/learning
+      '@mathsplanner/lesson-player':
+        specifier: workspace:*
+        version: link:../../packages/lesson-player
       '@mathsplanner/marking':
         specifier: workspace:*
         version: link:../../packages/marking
@@ -373,6 +376,31 @@ importers:
       '@mathsplanner/generators':
         specifier: workspace:*
         version: link:../generators
+
+  packages/lesson-player:
+    dependencies:
+      '@mathsplanner/core':
+        specifier: workspace:*
+        version: link:../core
+      '@mathsplanner/learning':
+        specifier: workspace:*
+        version: link:../learning
+      '@mathsplanner/marking':
+        specifier: workspace:*
+        version: link:../marking
+      '@mathsplanner/render':
+        specifier: workspace:*
+        version: link:../render
+      '@mathsplanner/ui':
+        specifier: workspace:*
+        version: link:../ui
+    devDependencies:
+      '@types/react':
+        specifier: ^19.3.0
+        version: 19.3.0
+      react:
+        specifier: ^19.3.1
+        version: 19.3.1
 
   packages/marking:
     dependencies:

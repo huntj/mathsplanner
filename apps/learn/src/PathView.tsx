@@ -10,7 +10,7 @@ import {
   type PathUnit,
   type ReviewState,
 } from "@mathsplanner/learning";
-import { Dot } from "./Dot.tsx";
+import { Dot } from "@mathsplanner/lesson-player";
 import { familyOf } from "@mathsplanner/learning";
 import {
   CheckIcon,
@@ -20,7 +20,7 @@ import {
   RefreshIcon,
   ReviewIcon,
   StarIcon,
-} from "./Icons.tsx";
+} from "@mathsplanner/lesson-player";
 import { yearReviewId } from "@mathsplanner/learning";
 import { pathFor } from "./path.ts";
 import type { Progress } from "@mathsplanner/learning";

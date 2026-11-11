@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { course, sectionFor, skillText, unitOf } from "@mathsplanner/learning";
 import { exampleProgress } from "./example.ts";
 import { planLesson, type LessonPlan, type LessonSummary } from "@mathsplanner/learning";
-import { LessonView, type LessonEnding } from "./LessonView.tsx";
+import { LessonView, type LessonEnding } from "@mathsplanner/lesson-player";
 import {
   PathIcon,
   PersonIcon,
@@ -15,7 +15,7 @@ import {
   StarIcon,
   StreakIcon,
   TeacherIcon,
-} from "./Icons.tsx";
+} from "@mathsplanner/lesson-player";
 import { PathView, type Selection } from "./PathView.tsx";
 import {
   finishLesson as recordLesson,
@@ -35,7 +35,7 @@ import {
   lessonTeaches,
   type UnitLesson,
 } from "@mathsplanner/learning/unit-lessons";
-import { UnitLessonView, type UnitLessonEnding } from "./UnitLessonView.tsx";
+import { UnitLessonView, type UnitLessonEnding } from "@mathsplanner/lesson-player";
 import {
   dayKey,
   levelOf,
