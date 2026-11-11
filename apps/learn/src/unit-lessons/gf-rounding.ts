@@ -238,7 +238,10 @@ export const gfRounding: UnitLesson[] = [
           "The first **significant figure** is the first non-zero digit. To 2 s.f., keep two significant digits, then decide with the third.",
           "Fill with zeros to keep the place value: 54 837 → 55 000 (not 55). Zeros at the start of a decimal aren't significant: 0.000674 → 0.00067.",
         ],
-        { kind: "maths", tex: "54\\,837 \\to 55\\,000 \\qquad 0.000674 \\to 0.00067" },
+        {
+          kind: "maths",
+          tex: "\\begin{aligned} 54\\,837 &\\to 55\\,000 \\\\ 0.000674 &\\to 0.00067 \\end{aligned}",
+        },
       ),
       choose("Discover", "3.0571 to 3 s.f.", "3.06", "3, 0, 5; the 7 rounds up.", [
         ["3.05", "7 rounds the 5 up."],
