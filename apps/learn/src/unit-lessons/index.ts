@@ -44,6 +44,8 @@ import { gfExpressions1 } from "./gf-expressions-1.ts";
 import { gfFormulae } from "./gf-formulae.ts";
 import { gfStraightLine } from "./gf-straight-line.ts";
 import { gfShapes } from "./gf-shapes.ts";
+import { gfTransformations } from "./gf-transformations.ts";
+import { gfSimilarity } from "./gf-similarity.ts";
 
 export type * from "./types.ts";
 
@@ -91,6 +93,8 @@ export const UNIT_LESSONS: readonly UnitLesson[] = [
   ...gfFormulae,
   ...gfStraightLine,
   ...gfShapes,
+  ...gfTransformations,
+  ...gfSimilarity,
 ];
 /** Units whose lessons have been reviewed and are open to pupils. */
 export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
@@ -137,6 +141,8 @@ export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
   "gf-formulae",
   "gf-straight-line",
   "gf-shapes",
+  "gf-transformations",
+  "gf-similarity",
 ]);
 
 /** A lesson's id: its own, or its unit's when the unit has just one lesson. */
