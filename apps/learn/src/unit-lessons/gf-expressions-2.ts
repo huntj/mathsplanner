@@ -492,7 +492,7 @@ export const gfExpressions2: UnitLesson[] = [
         ],
         {
           kind: "maths",
-          tex: "x^a \\times x^b = x^{a+b} \\quad \\frac{x^a}{x^b} = x^{a-b} \\quad (x^a)^b = x^{ab}",
+          tex: "\\begin{aligned} x^a \\times x^b &= x^{a+b} \\\\ x^a \\div x^b &= x^{a-b} \\\\ (x^a)^b &= x^{ab} \\end{aligned}",
         },
       ),
       choose("Discover", "$x^5 \\times x^3 =$", "$x^8$", "Add the powers.", [

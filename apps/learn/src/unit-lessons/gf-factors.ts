@@ -158,7 +158,7 @@ export const gfFactors: UnitLesson[] = [
         ],
         {
           kind: "maths",
-          tex: "360 = 2 \\times 2 \\times 2 \\times 3 \\times 3 \\times 5 = 2^3 \\times 3^2 \\times 5",
+          tex: "\\begin{aligned} 360 &= 2 \\times 2 \\times 2 \\times 3 \\times 3 \\times 5 \\\\ &= 2^3 \\times 3^2 \\times 5 \\end{aligned}",
         },
       ),
       {
