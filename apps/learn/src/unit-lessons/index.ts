@@ -39,6 +39,7 @@ import { y9Simultaneous } from "./y9-simultaneous.ts";
 import { y9Percentages } from "./y9-percentages.ts";
 import { y9Graphs } from "./y9-graphs.ts";
 import { y9Probability } from "./y9-probability.ts";
+import { gfCalculation } from "./gf-calculation.ts";
 
 export type * from "./types.ts";
 
@@ -81,6 +82,7 @@ export const UNIT_LESSONS: readonly UnitLesson[] = [
   ...y9Percentages,
   ...y9Graphs,
   ...y9Probability,
+  ...gfCalculation,
 ];
 /** Units whose lessons have been reviewed and are open to pupils. */
 export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
@@ -122,6 +124,7 @@ export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
   "y9-percentages",
   "y9-graphs",
   "y9-probability",
+  "gf-calculation",
 ]);
 
 /** A lesson's id: its own, or its unit's when the unit has just one lesson. */
