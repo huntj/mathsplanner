@@ -58,6 +58,8 @@ import { gfRatio1 } from "./gf-ratio-1.ts";
 import { gfRounding } from "./gf-rounding.ts";
 import { gfSequences } from "./gf-sequences.ts";
 import { gfData } from "./gf-data.ts";
+import { gfRatio2 } from "./gf-ratio-2.ts";
+import { gfPercentages } from "./gf-percentages.ts";
 
 export type * from "./types.ts";
 
@@ -119,6 +121,8 @@ export const UNIT_LESSONS: readonly UnitLesson[] = [
   ...gfRounding,
   ...gfSequences,
   ...gfData,
+  ...gfRatio2,
+  ...gfPercentages,
 ];
 /** Units whose lessons have been reviewed and are open to pupils. */
 export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
@@ -179,6 +183,8 @@ export const OPEN_TO_PUPILS: ReadonlySet<string> = new Set([
   "gf-rounding",
   "gf-sequences",
   "gf-data",
+  "gf-ratio-2",
+  "gf-percentages",
 ]);
 
 /** A lesson's id: its own, or its unit's when the unit has just one lesson. */
