@@ -55,8 +55,8 @@ function curves(
 }
 
 const expAxes: Axes = {
-  x: [-3, 3],
-  y: [-0.5, 8],
+  x: [-3, 2.5],
+  y: [-0.5, 4.8],
   xTicks: [
     [1, "1"],
     [2, "2"],
@@ -65,6 +65,7 @@ const expAxes: Axes = {
   ],
   yTicks: [
     [1, "1"],
+    [2, "2"],
     [4, "4"],
   ],
 };

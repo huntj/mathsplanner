@@ -10,11 +10,11 @@ const P = (x: number, y: number): Point => ({ x, y });
 
 const times: Picture = {
   kind: "table",
-  head: ["Time, t (min)", "Frequency", "Width", "Frequency density"],
+  head: ["Time, $t$ (min)", "Frequency", "Frequency density"],
   rows: [
-    ["0 < t ≤ 10", "20", "10", "2"],
-    ["10 < t ≤ 15", "30", "5", "6"],
-    ["15 < t ≤ 30", "45", "15", "?"],
+    ["$0 < t \\le 10$", "20", "2"],
+    ["$10 < t \\le 15$", "30", "6"],
+    ["$15 < t \\le 30$", "45", "?"],
   ],
 };
 

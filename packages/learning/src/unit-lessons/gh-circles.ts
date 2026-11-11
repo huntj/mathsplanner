@@ -15,7 +15,7 @@ function circle(withTangent: boolean): DrawingPic {
     { line: [P(0, -6), P(0, 6)], arrow: 1, tone: "soft" },
     { arc: P(0, 0), r: 5, from: 0, to: 360 },
     { dot: P(3, 4) },
-    { text: "(3, 4)", at: P(3.9, 4.6) },
+    { text: "(3, 4)", at: P(4.7, 4.7) },
     { text: "5", at: P(5.4, -0.4) },
     { text: "−5", at: P(-5.5, -0.4) },
   ];
