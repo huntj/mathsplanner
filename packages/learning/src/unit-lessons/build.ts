@@ -1,7 +1,16 @@
 // Short builders for the screens of a split lesson, so a unit's lessons read as their content:
 // each makes an ordinary screen of `types.ts`, with its tag. Right answers are listed first; the
 // screens shuffle their options.
-import type { Ask, Option, Picture, QuizQuestion, Screen, UnitLesson, Words } from "./types.ts";
+import type {
+  Ask,
+  Option,
+  Picture,
+  QuizQuestion,
+  Screen,
+  UnitLesson,
+  Variation,
+  Words,
+} from "./types.ts";
 
 /** A wrong option, or a common wrong typed answer, and the nudge for it. */
 export type Wrong = [text: Words, feedback: Words];
@@ -288,3 +297,44 @@ export const questionSet = (
   done: Words,
   e?: Extra,
 ): Screen => ({ kind: "set", tag, title, ...extra(e), items, done });
+
+/** The screens a redraft replaces: the old learning stage and exit check. */
+const REPLACED = new Set(["Worked example", "Together", "Your turn", "Exit check"]);
+
+/**
+ * A lesson redrafted with variation. Its own problem, warm-ups, discovery, Watch out, Spot the
+ * mistake and Back to the problem stay as they were (less any `drop`ped by title); the method
+ * card and the new learning stage go in before Watch out, and the new exit check at the end.
+ */
+export function redraft(
+  original: UnitLesson | undefined,
+  plan: {
+    method: Words[];
+    variation: Variation;
+    learning: Screen[];
+    exit: Screen;
+    picture?: Picture;
+    drop?: Words[];
+  },
+): UnitLesson {
+  if (!original) throw new Error("No lesson to redraft");
+  const kept = original.screens.filter(
+    (s) => !REPLACED.has(s.tag ?? "") && !(plan.drop ?? []).includes(s.title),
+  );
+  const at = kept.findIndex((s) =>
+    ["Watch out", "Spot the mistake", "Back to the problem"].includes(s.tag ?? ""),
+  );
+  const split = at === -1 ? kept.length : at;
+  return {
+    ...original,
+    method: plan.method,
+    variation: plan.variation,
+    screens: [
+      ...kept.slice(0, split),
+      methodCard("The method", plan.method, plan.picture),
+      ...plan.learning,
+      ...kept.slice(split),
+      plan.exit,
+    ],
+  };
+}

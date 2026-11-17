@@ -16,7 +16,7 @@ const circle = (cx: number, cy: number, r: number): DrawItem[] => [
 ];
 
 /** A circle with its diameter, or its radius, drawn and labelled. */
-function measured(across: "d" | "r", label: string): Picture {
+export function measured(across: "d" | "r", label: string): Picture {
   return {
     kind: "drawing",
     items: [

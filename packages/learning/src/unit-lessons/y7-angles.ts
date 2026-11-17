@@ -19,7 +19,7 @@ const at = (deg: number, r: number, from: Point = { x: 0, y: 0 }): Point => ({
 });
 
 /** Angles round a point or on a line: rays, and a label for the gap after each one. */
-const fan = (rays: number[], labels: (string | null)[], find = "x"): AnglesPic => ({
+export const fan = (rays: number[], labels: (string | null)[], find = "x"): AnglesPic => ({
   kind: "angles",
   rays,
   arcs: labels.flatMap((label, i) =>

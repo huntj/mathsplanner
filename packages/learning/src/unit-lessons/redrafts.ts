@@ -4,8 +4,10 @@
 // it replaces, and may split it into several. Teachers see redrafts in place of the originals;
 // once approved, a redraft moves into its unit's file and its entry here goes.
 import { circleTheorems } from "./redraft-gh-circle-theorems.ts";
+import { pilotRedrafts } from "./redraft-pilot.ts";
 import type { UnitLesson } from "./types.ts";
 
 export const REDRAFTS: ReadonlyMap<string, UnitLesson[]> = new Map<string, UnitLesson[]>([
   ["gh-circles/circle-theorems", circleTheorems],
+  ...pilotRedrafts,
 ]);
