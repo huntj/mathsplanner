@@ -50,6 +50,8 @@ export interface Explain {
   kind: "explain";
   title: Words;
   text: Words[];
+  /** Show the text as numbered steps: a method card. */
+  numbered?: true;
   scene?: Scene;
   picture?: Picture;
 }
@@ -312,7 +314,23 @@ export interface PlaceValuePic {
   highlight?: number;
 }
 
+/**
+ * A relationship as a row of boxes joined by signs, such as part = percentage × whole, with the
+ * part being asked for shown as "?" and picked out: the picture moves as the unknown moves.
+ */
+export interface RelationPic {
+  kind: "relation";
+  /** Each box: what it is (a short plain label under it) and its value, or "?" if asked for. */
+  cells: { label: string; value: Words }[];
+  /** The signs between neighbouring boxes, one fewer than the boxes. */
+  joins: Words[];
+  /** The box asked for, counting from 0; its value is "?". Unset when the unknown is a letter
+   *  inside the boxes, such as x in 3x and x + 20°. */
+  asks?: number;
+}
+
 export type Picture =
+  | RelationPic
   | ({ kind: "graph" } & Scene)
   | NumberLinePic
   | AnglesPic
@@ -461,8 +479,11 @@ export interface Steps {
   text?: Words;
   picture?: Picture;
   start: Words;
-  /** Each step's question, and the working it adds; a picture can change with each step. */
-  stages: { prompt: Words; options: Option[]; then: Words; picture?: Picture }[];
+  /**
+   * Each step's question, and the working it adds; a picture can change with each step. Steps
+   * marked `given` at the start are shown already done, so the pupil finishes a faded example.
+   */
+  stages: { prompt: Words; options: Option[]; then: Words; picture?: Picture; given?: true }[];
   done: Words;
 }
 
@@ -545,6 +566,8 @@ export interface Mistake {
 /** One question in an exit check, and one like it with new numbers for a second try. */
 export interface QuizQuestion {
   prompt: Words;
+  /** The part of the relationship it asks for, as named in the lesson's variation map. */
+  asks?: string;
   picture?: Picture;
   /** Typed answers accepted; with options, the first answer must be one of them. */
   answers: string[];
@@ -561,6 +584,54 @@ export interface Quiz {
   title: Words;
   text?: Words;
   questions: (QuizQuestion & { retry: QuizQuestion })[];
+}
+
+/**
+ * One short question in a set or a pair: typed, or chosen from options. It can say what changed
+ * from the question before, and ask the pupil to predict what that does to the answer first
+ * (reflect, expect, check).
+ */
+export interface Ask {
+  prompt: Words;
+  picture?: Picture;
+  /** What changed from the question before, shown picked out above it. */
+  changed?: Words;
+  /** A prediction made before answering; any choice is accepted, and checked once answered. */
+  expect?: { question: Words; options: Option[] };
+  /** The part of the relationship it asks for, as named in the lesson's variation map. */
+  asks?: string;
+  /** Typed answers accepted; with options, the first answer must be one of them. */
+  answers: string[];
+  options?: Words[];
+  unit?: string;
+  /** The nudge after a wrong try. */
+  hint: Words;
+  /** Said once it is right: why the answer is what it is. */
+  why: Words;
+}
+
+/** A worked example with a question just like it underneath: study one, then do the other. */
+export interface Pair {
+  kind: "pair";
+  title: Words;
+  text?: Words;
+  example: { problem: Words; picture?: Picture; steps: { line: Words; why: Words }[] };
+  question: Ask;
+  done: Words;
+}
+
+/**
+ * Several short questions on one screen, one at a time, the earlier ones kept above: the same
+ * method with one thing changed each time, or the same relationship with the unknown moved.
+ */
+export interface QuestionSet {
+  kind: "set";
+  title: Words;
+  text?: Words;
+  /** A picture for the whole set; an item's own picture replaces it while that item is asked. */
+  picture?: Picture;
+  items: Ask[];
+  done: Words;
 }
 
 /** What a screen is for, shown above its title: "Warm-up", "Your turn", "Exit check"… */
@@ -605,6 +676,8 @@ export type Screen = (
   | Mistake
   | Quiz
   | LabelSides
+  | Pair
+  | QuestionSet
 ) &
   Tagged;
 
@@ -621,5 +694,24 @@ export interface UnitLesson {
   title: Words;
   /** One line for the path and the sheet. */
   summary: Words;
+  /**
+   * The method, in two to four short steps worded the same wherever it appears. Once its
+   * "Method" screen has been shown, a Method button brings it back, with the worked example.
+   */
+  method?: Words[];
+  /** What changes in the lesson's questions, and which parts of it can be the unknown. */
+  variation?: Variation;
   screens: Screen[];
+}
+
+/** A lesson's variation map: the relationship, its parts that can be unknown, and what varies. */
+export interface Variation {
+  /** In words, such as "part = percentage × whole". */
+  relationship: Words;
+  /** The parts that can be asked for; the learning stage asks for every one. */
+  unknowns: string[];
+  /** The features its questions vary: numbers, units, context, orientation, picture, wording… */
+  surface: string[];
+  /** Things that look like it but aren't, used in Watch out or the sets. */
+  nonExamples?: Words[];
 }

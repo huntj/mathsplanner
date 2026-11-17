@@ -4,6 +4,7 @@ The screens that play a lesson, in React. They were moved out of `apps/learn` so
 
 - `LessonView.tsx`: a lesson of generated questions, with Check, the feedback panel and the end screen.
 - `UnitLessonView.tsx`, `unit-screens.tsx`, `unit-ui.tsx`: a unit lesson and each kind of screen it can show.
+- `variation-screens.tsx`: the learning stage with variation ([proposal](../../docs/proposals/lesson-variation.md)). A **pair** shows a worked example with a question just like it underneath. A **set** asks short questions one at a time, each able to say what changed from the one before and to ask for a prediction first, which is checked but never marked wrong. A lesson with a `method` gets a Method button once its method card has been shown, which brings back the method and the worked example (not in the exit check).
 - `Picture.tsx`, `LineGraph.tsx`, `labels.ts`: the pictures a screen can show, and where their labels go.
 - `Dot.tsx`, `Icons.tsx`, `BadgeMark.tsx`, `sounds.ts`: Dot and the logo, the icons, the badge marks and the sounds.
 - `fit.ts`: shrinks a piece of maths that is too wide for its line. An app calls `watchMaths` once on its root.

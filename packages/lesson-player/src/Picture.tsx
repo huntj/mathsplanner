@@ -2,13 +2,21 @@
 // point, a labelled shape, bar models, a shaded grid, a cuboid, a spinner, a table, a growing
 // pattern, a ruler, big maths and a place value chart. Each is drawn in SVG (or HTML for tables)
 // from the theme's colours, so it works in light and dark.
-import { useRef, useState, type KeyboardEvent, type PointerEvent, type ReactNode } from "react";
+import {
+  Fragment,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type PointerEvent,
+  type ReactNode,
+} from "react";
 import { angleMark, layoutShape, sideLabel, type Pt } from "./labels.ts";
 import { latticeOn, LineGraph, type GraphLine, type GraphPoint } from "./LineGraph.tsx";
 import {
   onLine,
   ruleText,
   type AnglesPic,
+  type RelationPic,
   type BarChartPic,
   type BarsPic,
   type CuboidPic,
@@ -105,6 +113,8 @@ const sectorColour = (label: string, i: number) =>
 
 export function PictureView({ picture }: { picture: Picture }) {
   switch (picture.kind) {
+    case "relation":
+      return <Relation pic={picture} />;
     case "graph":
       return <LineGraph {...sceneProps(picture)} label={describeScene(picture)} />;
     case "number-line":
@@ -1386,5 +1396,34 @@ function Dots({ pic }: { pic: DotsPic }) {
         return g;
       })}
     </Svg>
+  );
+}
+
+/** A relationship as boxes joined by signs, with the part asked for shown as "?" and picked out. */
+function Relation({ pic }: { pic: RelationPic }) {
+  return (
+    <div
+      className="relation"
+      role="img"
+      aria-label={pic.cells
+        .map((c, i) => `${c.label}: ${i === pic.asks ? "unknown" : c.value.replace(/\$/g, "")}`)
+        .join(", ")}
+    >
+      {pic.cells.map((c, i) => (
+        <Fragment key={i}>
+          {i > 0 && (
+            <span className="relation-join" aria-hidden="true">
+              <W text={pic.joins[i - 1] ?? ""} />
+            </span>
+          )}
+          <span className={`relation-cell${i === pic.asks ? " asked" : ""}`} aria-hidden="true">
+            <span className="relation-value">
+              <W text={c.value} />
+            </span>
+            <span className="relation-label">{c.label}</span>
+          </span>
+        </Fragment>
+      ))}
+    </div>
   );
 }

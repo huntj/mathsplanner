@@ -1,6 +1,9 @@
 // The unit lessons, by unit. A new lesson shows only in teacher mode, so a teacher can try it
-// first; once it has been reviewed, its unit goes in OPEN_TO_PUPILS and everyone sees it.
+// first; once it has been reviewed, its unit goes in OPEN_TO_PUPILS and everyone sees it. A
+// redrafted lesson works the same way: teachers see the redraft in its place, pupils keep the
+// lesson they know, until the redraft is approved and replaces it.
 import type { Point, Rule, UnitLesson } from "./types.ts";
+import { REDRAFTS } from "./redrafts.ts";
 import { y7PlaceValue } from "./y7-place-value.ts";
 import { y7Notation } from "./y7-notation.ts";
 import { y7Calculating } from "./y7-calculating.ts";
@@ -273,15 +276,26 @@ export const lessonId = (lesson: UnitLesson) => lesson.id ?? lesson.unit;
 
 const byId = new Map(UNIT_LESSONS.map((l) => [lessonId(l), l]));
 
+export { REDRAFTS };
+/** Every redrafted lesson, in the order of the lessons they replace. */
+export const REDRAFT_LESSONS: UnitLesson[] = UNIT_LESSONS.flatMap(
+  (l) => REDRAFTS.get(lessonId(l)) ?? [],
+);
+const draftById = new Map(REDRAFT_LESSONS.map((l) => [lessonId(l), l]));
+
 const mayShow = (unit: string, teacher: boolean) => teacher || OPEN_TO_PUPILS.has(unit);
 
-/** A unit's lessons that this pupil may see, in path order. */
+/** A unit's lessons that this pupil may see, in path order; teachers see any redrafts instead. */
 export const lessonsFor = (unit: string, teacher: boolean): UnitLesson[] =>
-  mayShow(unit, teacher) ? UNIT_LESSONS.filter((l) => l.unit === unit) : [];
+  mayShow(unit, teacher)
+    ? UNIT_LESSONS.filter((l) => l.unit === unit).flatMap((l) =>
+        teacher ? (REDRAFTS.get(lessonId(l)) ?? [l]) : [l],
+      )
+    : [];
 
-/** A lesson by its id, if this pupil may see it. */
+/** A lesson by its id, if this pupil may see it; for a teacher, a redraft first. */
 export function lessonById(id: string, teacher: boolean): UnitLesson | undefined {
-  const lesson = byId.get(id);
+  const lesson = (teacher ? draftById.get(id) : undefined) ?? byId.get(id);
   return lesson && mayShow(lesson.unit, teacher) ? lesson : undefined;
 }
 

@@ -37,6 +37,7 @@ import type {
   Worked,
 } from "@mathsplanner/learning/unit-lessons";
 import { Title, useChime, Verdict, W, Working, type Step } from "./unit-ui.tsx";
+import { PairStep, SetStep } from "./variation-screens.tsx";
 
 type More = Exclude<
   Screen,
@@ -81,6 +82,10 @@ export function ScreenStepMore({
       return <QuizStep screen={s} {...step} />;
     case "label":
       return <LabelStep screen={s} {...step} />;
+    case "pair":
+      return <PairStep screen={s} {...step} />;
+    case "set":
+      return <SetStep screen={s} {...step} />;
   }
 }
 
@@ -970,9 +975,19 @@ function Scale({
 
 // A step at a time.
 
+/** How many steps at the start are shown done, for a faded example. */
+export const givenSteps = (screen: Steps) => {
+  const n = screen.stages.findIndex((st) => !st.given);
+  return n === -1 ? screen.stages.length : n;
+};
+
 function StepsStep({ screen, family, sound, onNext }: Step<Steps>) {
-  const [stage, setStage] = useState(0);
-  const [lines, setLines] = useState([screen.start]);
+  const given = givenSteps(screen);
+  const [stage, setStage] = useState(given);
+  const [lines, setLines] = useState([
+    screen.start,
+    ...screen.stages.slice(0, given).map((st) => st.then),
+  ]);
   const [tried, setTried] = useState<number[]>([]);
   const [why, setWhy] = useState<string>();
   const [misses, setMisses] = useState(0);
@@ -1018,7 +1033,16 @@ function StepsStep({ screen, family, sound, onNext }: Step<Steps>) {
         {picture && <PictureView key={pictureAt} picture={picture} />}
         <div className="ul-working" aria-live="polite">
           {lines.map((l, i) => (
-            <p key={i} className={i === lines.length - 1 ? "latest" : undefined}>
+            <p
+              key={i}
+              className={
+                i === lines.length - 1 && i > given
+                  ? "latest"
+                  : i > 0 && i <= given
+                    ? "given"
+                    : undefined
+              }
+            >
               <W text={l} />
             </p>
           ))}
@@ -1059,7 +1083,14 @@ function StepsStep({ screen, family, sound, onNext }: Step<Steps>) {
           onAction={onNext}
         />
       ) : (
-        <Working note={why ?? `Step ${stage + 1} of ${screen.stages.length}.`} />
+        <Working
+          note={
+            why ??
+            (given
+              ? `The first ${given === 1 ? "step is" : `${given} steps are`} done for you. Step ${stage + 1} of ${screen.stages.length}.`
+              : `Step ${stage + 1} of ${screen.stages.length}.`)
+          }
+        />
       )}
     </>
   );

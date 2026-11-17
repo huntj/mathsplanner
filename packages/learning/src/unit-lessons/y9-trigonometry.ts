@@ -35,7 +35,7 @@ function right(
   };
 }
 
-interface Tri {
+export interface Tri {
   /** The angle θ, drawn to size. */
   deg: number;
   /** θ at the top corner instead of the bottom left. */
@@ -54,7 +54,7 @@ interface Tri {
  * A right-angled triangle any way round, for labelling its sides from θ. Its sides run from the
  * bottom-left corner to the right angle (0), the right angle to the top (1), and the top back (2).
  */
-function tri(t: Tri): ShapePic {
+export function tri(t: Tri): ShapePic {
   const base = t.top ? 90 - t.deg : t.deg;
   const h = Math.min(6 * Math.tan((base * Math.PI) / 180), 9);
   const a = ((t.turn ?? 0) * Math.PI) / 180;

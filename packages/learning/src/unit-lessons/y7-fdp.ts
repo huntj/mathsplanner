@@ -8,7 +8,7 @@ const DECIMALS = "Y7-FR-01";
 const PERCENT = "Y7-RAT-05.a";
 const CHANGE = "Y7-RAT-05.b";
 
-const hundred = (shaded: number) => ({ kind: "grid" as const, cols: 10, rows: 10, shaded });
+export const hundred = (shaded: number) => ({ kind: "grid" as const, cols: 10, rows: 10, shaded });
 
 export const y7Fdp: UnitLesson[] = [
   {
