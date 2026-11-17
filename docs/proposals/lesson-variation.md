@@ -223,13 +223,25 @@ short named.
 The method card, pair, faded steps, set screen, unknown picture, "Show me the example", the
 `variation` map type and the new tests. The current lessons don't change in this step.
 
-### Step 2: the pilot (one PR, then a stop)
+### Step 2: the pilot (with step 1 in one PR, then a stop)
 
-Five lessons, chosen because the unknown moves in them most clearly:
+The circle theorems first, at the owner's request, as the hardest topic to teach. The one Higher
+lesson that held every theorem (`gh-circles/circle-theorems`) becomes six:
+
+- the angle at the centre;
+- the angle in a semicircle;
+- angles in the same segment;
+- cyclic quadrilaterals;
+- tangents and radii;
+- the alternate segment.
+
+Each has its own method and diagrams drawn accurately from the numbers. Then five lessons, chosen
+because the unknown moves in them most clearly:
 
 1. Year 7, angles on a straight line (`y7-angles/half-turn`): find either angle, or $x$ when
    the angles are $2x$ and $x + 30$.
-2. Year 7, percentages (`y7-fdp/percentages`): find the part, the percentage or the whole.
+2. Year 7, percentages (`y7-fdp/percentages`): converting between fractions, decimals and
+   percentages, with the missing form moving between the three.
 3. Year 8, the area of a circle (`y8-area/circle-area`): find the area, or the radius or
    diameter from the area.
 4. Year 9, the sine ratio (`y9-trigonometry/sine`): find the opposite side or the hypotenuse,

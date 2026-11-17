@@ -13,10 +13,15 @@ import { Title, useChime, Verdict, W, Working, type Step } from "./unit-ui.tsx";
 export const HasMethod = createContext(false);
 
 const NUMBER = /^-?(\d+\.?\d*|\.\d+)$/;
+/** Units written before the number, as pounds are: £40, not 40 £. */
+const PREFIX = new Set(["£"]);
 const withUnit = (unit?: string) => (!unit ? "" : unit === "°" ? unit : ` ${unit}`);
 
 /** An answer as it is shown once given: the first accepted answer, with its unit. */
-export const shownAnswer = (item: Ask) => `${item.answers[0] ?? ""}${withUnit(item.unit)}`;
+export const shownAnswer = (item: Ask) =>
+  item.unit && PREFIX.has(item.unit)
+    ? `${item.unit}${item.answers[0] ?? ""}`
+    : `${item.answers[0] ?? ""}${withUnit(item.unit)}`;
 
 /** What to say about a prediction once the answer is known. */
 export function expectVerdict(item: Ask, picked: number | undefined): string {
@@ -133,7 +138,8 @@ function AskView({
               <button
                 key={`${tries}-${i}`}
                 type="button"
-                data-i={i}
+                // Its place in the lesson's list, as on other screens, whatever order it's shown in.
+                data-i={item.options?.indexOf(o)}
                 className={`ul-option${verdict && item.answers.includes(o) && (right || gaveUp) ? " right" : ""}`}
                 disabled={verdict !== undefined}
                 onClick={() => mark(o)}
@@ -145,6 +151,7 @@ function AskView({
         ) : (
           <label className="ul-answer">
             <span className="visually-hidden">Your answer</span>
+            {item.unit && PREFIX.has(item.unit) && <span className="ul-unit">{item.unit}</span>}
             <input
               className="ul-input"
               value={value}
@@ -158,7 +165,7 @@ function AskView({
                 if (verdict === "wrong" && !gaveUp) setVerdict(undefined);
               }}
             />
-            {item.unit && <span className="ul-unit">{item.unit}</span>}
+            {item.unit && !PREFIX.has(item.unit) && <span className="ul-unit">{item.unit}</span>}
           </label>
         )}
       </main>
