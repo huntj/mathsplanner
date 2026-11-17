@@ -24,6 +24,7 @@ import {
   type Step,
 } from "./unit-ui.tsx";
 import { ScreenStepMore } from "./unit-screens.tsx";
+import { HasMethod } from "./variation-screens.tsx";
 import {
   makesLine,
   onLine,
@@ -72,6 +73,12 @@ export function UnitLessonView({
     return familyOf(unit?.topic ?? "");
   }, [lesson.unit]);
   const screen = lesson.screens[at];
+  const [methodOpen, setMethodOpen] = useState(false);
+  // The Method button appears once the method card has been shown, but not in the exit check.
+  const methodFrom = lesson.screens.findIndex((s) => s.tag === "Method");
+  const methodHelp =
+    lesson.method !== undefined && methodFrom !== -1 && at > methodFrom && screen?.kind !== "quiz";
+  const example = useMemo(() => exampleOf(lesson), [lesson]);
 
   const next = () => {
     scrollTo({ top: 0 });
@@ -111,21 +118,80 @@ export function UnitLessonView({
         >
           <span style={{ width: `${(at / lesson.screens.length) * 100}%` }} />
         </div>
+        {methodHelp && (
+          <button
+            type="button"
+            className="button method-button"
+            aria-haspopup="dialog"
+            onClick={() => setMethodOpen(true)}
+          >
+            Method
+          </button>
+        )}
       </header>
 
       {screen && (
-        <ScreenTag.Provider value={screen.tag}>
-          <ScreenStep
-            // A fresh screen each time, so nothing carries over from the last one.
-            key={at}
-            screen={screen}
-            first={at === 0}
-            lessonTitle={lesson.title}
-            family={family}
-            sound={sound}
-            onNext={next}
-          />
-        </ScreenTag.Provider>
+        <HasMethod.Provider value={methodHelp}>
+          <ScreenTag.Provider value={screen.tag}>
+            <ScreenStep
+              // A fresh screen each time, so nothing carries over from the last one.
+              key={at}
+              screen={screen}
+              first={at === 0}
+              lessonTitle={lesson.title}
+              family={family}
+              sound={sound}
+              onNext={next}
+            />
+          </ScreenTag.Provider>
+        </HasMethod.Provider>
+      )}
+
+      {methodOpen && lesson.method && (
+        <div
+          className="leave method-sheet"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="method-title"
+          onKeyDown={(e) => e.key === "Escape" && setMethodOpen(false)}
+        >
+          <div className="leave-card method-card">
+            <h2 id="method-title">The method</h2>
+            <ol className="method-list">
+              {lesson.method.map((m, i) => (
+                <li key={i}>
+                  <W text={m} />
+                </li>
+              ))}
+            </ol>
+            {example && (
+              <div className="ul-working worked method-example">
+                <p className="eyebrow">The example</p>
+                <p className="worked-problem">
+                  <W text={example.problem} />
+                </p>
+                {example.steps.map((st, i) => (
+                  <div key={i} className="worked-step">
+                    <p className="worked-line">
+                      <W text={st.line} />
+                    </p>
+                    <p className="worked-why">
+                      <W text={st.why} />
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+            <button
+              type="button"
+              className="button primary big"
+              onClick={() => setMethodOpen(false)}
+              autoFocus
+            >
+              Back to the question
+            </button>
+          </div>
+        </div>
       )}
 
       {leaving && (
@@ -145,6 +211,17 @@ export function UnitLessonView({
       )}
     </div>
   );
+}
+
+/** The lesson's worked example, for the Method sheet: its first pair's, or its worked example. */
+export function exampleOf(
+  lesson: UnitLesson,
+): { problem: string; steps: { line: string; why: string }[] } | undefined {
+  for (const s of lesson.screens) {
+    if (s.kind === "pair") return s.example;
+    if (s.kind === "worked") return { problem: s.problem, steps: s.steps };
+  }
+  return undefined;
 }
 
 function ScreenStep({
@@ -201,13 +278,23 @@ function ExplainStep({
           <LineGraph {...sceneProps(screen.scene)} label={describeScene(screen.scene)} />
         )}
         {screen.picture && <PictureView picture={screen.picture} />}
-        <div className="ul-text">
-          {screen.text.map((t, i) => (
-            <p key={i}>
-              <W text={t} />
-            </p>
-          ))}
-        </div>
+        {screen.numbered ? (
+          <ol className="ul-text method-list">
+            {screen.text.map((t, i) => (
+              <li key={i}>
+                <W text={t} />
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <div className="ul-text">
+            {screen.text.map((t, i) => (
+              <p key={i}>
+                <W text={t} />
+              </p>
+            ))}
+          </div>
+        )}
       </main>
       <footer className="lesson-foot">
         <div className="lesson-foot-inner">

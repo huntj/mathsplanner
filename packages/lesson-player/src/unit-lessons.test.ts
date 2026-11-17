@@ -18,8 +18,11 @@ import {
   ruleThrough,
   lessonId,
   lessonsFor,
+  REDRAFT_LESSONS,
+  REDRAFTS,
   UNIT_LESSONS,
   yOn,
+  type Ask,
   type Picture,
   type Point,
   type Range,
@@ -34,6 +37,7 @@ import {
   factorPairs,
   fillGroups,
   fillWrong,
+  givenSteps,
   isPrime,
   labelWrong,
   matches,
@@ -43,7 +47,8 @@ import {
   sectorAt,
   shuffled,
 } from "./unit-screens.tsx";
-import { machineChoices, machineRuleTex } from "./UnitLessonView.tsx";
+import { exampleOf, machineChoices, machineRuleTex } from "./UnitLessonView.tsx";
+import { expectVerdict } from "./variation-screens.tsx";
 import { wordsHtml } from "./unit-ui.tsx";
 import { angleMark, crosses, layoutShape, overlap, sideLabel, type ShapeLike } from "./labels.ts";
 
@@ -52,11 +57,31 @@ const inside = (r: Range, p: Point) =>
 const whole = (p: Point) => Number.isInteger(p.x) && Number.isInteger(p.y);
 
 const pictureWords = (p: Picture | undefined): string[] =>
-  p?.kind === "table" ? [...(p.head ?? []), ...p.rows.flat()] : [];
+  p?.kind === "table"
+    ? [...(p.head ?? []), ...p.rows.flat()]
+    : p?.kind === "relation"
+      ? [...p.cells.map((c) => c.value), ...p.joins]
+      : [];
+
+/** Every lesson: those pupils see, and the redrafts teachers try in their place. */
+const ALL_LESSONS = [...UNIT_LESSONS, ...REDRAFT_LESSONS];
+
+/** The words of a short question in a set or a pair. */
+const askWords = (a: Ask): string[] => [
+  a.prompt,
+  a.hint,
+  a.why,
+  ...(a.changed ? [a.changed] : []),
+  ...(a.options ?? []),
+  ...(a.expect
+    ? [a.expect.question, ...a.expect.options.flatMap((o) => [o.text, o.feedback])]
+    : []),
+  ...pictureWords(a.picture),
+];
 
 /** Every piece of writing in a lesson, which must all render. */
 const words = (lesson: (typeof UNIT_LESSONS)[number]): string[] =>
-  [lesson.title, lesson.summary].concat(
+  [lesson.title, lesson.summary, ...(lesson.method ?? [])].concat(
     lesson.screens.flatMap((s) => {
       const own: string[] = [s.title];
       if ("text" in s && s.text) own.push(...(Array.isArray(s.text) ? s.text : [s.text]));
@@ -86,6 +111,14 @@ const words = (lesson: (typeof UNIT_LESSONS)[number]): string[] =>
       if (s.kind === "worked") own.push(s.problem, ...s.steps.flatMap((st) => [st.line, st.why]));
       if (s.kind === "mistake") own.push(...s.lines, s.why);
       if (s.kind === "label") own.push(s.done, ...s.chips.flatMap((c) => [c.name, c.why]));
+      if (s.kind === "pair")
+        own.push(
+          s.example.problem,
+          ...s.example.steps.flatMap((st) => [st.line, st.why]),
+          ...pictureWords(s.example.picture),
+          ...askWords(s.question),
+        );
+      if (s.kind === "set") own.push(...s.items.flatMap(askWords));
       if (s.kind === "quiz")
         own.push(
           ...s.questions
@@ -160,6 +193,13 @@ function checkPicture(p: Picture | undefined) {
     case "ruler":
       expect(p.from).toBeLessThan(p.to);
       break;
+    case "relation":
+      // One box asked for, shown as "?", and a sign between each pair of boxes.
+      expect(p.cells.length).toBeGreaterThanOrEqual(2);
+      expect(p.joins).toHaveLength(p.cells.length - 1);
+      expect(p.cells[p.asks]?.value).toBe("?");
+      expect(p.cells.filter((c) => c.value === "?")).toHaveLength(1);
+      break;
     default:
       break;
   }
@@ -188,27 +228,40 @@ function checkScene(scene: Scene) {
 }
 
 describe("the lessons", () => {
-  it("each have their own id", () => {
-    const ids = UNIT_LESSONS.map(lessonId);
-    expect(new Set(ids).size).toBe(ids.length);
+  it("each have their own id, as do the redrafts", () => {
+    for (const list of [UNIT_LESSONS, REDRAFT_LESSONS]) {
+      const ids = list.map(lessonId);
+      expect(new Set(ids).size).toBe(ids.length);
+    }
   });
 
-  it("come in path order within a unit, each before a skill of its unit", () => {
+  it("come in path order within a unit, each before a skill of its unit, for pupils and teachers", () => {
     const units = new Map(course.sections.flatMap((s) => s.units).map((u) => [u.id, u]));
-    for (const unit of new Set(UNIT_LESSONS.map((l) => l.unit))) {
-      const skills = units.get(unit)?.skills ?? [];
-      const at = UNIT_LESSONS.filter((l) => l.unit === unit).map((l) =>
-        l.before ? skills.indexOf(l.before) : -1,
-      );
-      expect(
-        at.every((i, k) => k === 0 || i >= (at[k - 1] ?? -1)),
-        unit,
-      ).toBe(true);
+    for (const unit of new Set(UNIT_LESSONS.map((l) => l.unit)))
+      for (const teacher of [false, true]) {
+        const skills = units.get(unit)?.skills ?? [];
+        const lessons = teacher
+          ? lessonsFor(unit, true)
+          : UNIT_LESSONS.filter((l) => l.unit === unit);
+        const at = lessons.map((l) => (l.before ? skills.indexOf(l.before) : -1));
+        expect(
+          at.every((i, k) => k === 0 || i >= (at[k - 1] ?? -1)),
+          unit,
+        ).toBe(true);
+      }
+  });
+
+  it("redraft only lessons that exist, in the same unit", () => {
+    for (const [id, drafts] of REDRAFTS) {
+      const original = UNIT_LESSONS.find((l) => lessonId(l) === id);
+      expect(original, id).toBeDefined();
+      expect(drafts.length).toBeGreaterThan(0);
+      for (const d of drafts) expect(d.unit).toBe(original?.unit);
     }
   });
 });
 
-describe.each(UNIT_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %s", (_, lesson) => {
+describe.each(ALL_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %s", (_, lesson) => {
   it("belongs to a unit on the course, and teaches its skills", () => {
     const unit = course.sections.flatMap((s) => s.units).find((u) => u.id === lesson.unit);
     expect(unit).toBeDefined();
@@ -381,6 +434,9 @@ describe.each(UNIT_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %
         }
         case "steps":
           checkPicture(screen.picture);
+          // Steps shown done come first, and leave at least one for the pupil.
+          expect(screen.stages.filter((st) => st.given)).toHaveLength(givenSteps(screen));
+          expect(givenSteps(screen)).toBeLessThan(screen.stages.length);
           for (const st of screen.stages) {
             expect(
               st.options.filter((o) => o.correct),
@@ -439,6 +495,19 @@ describe.each(UNIT_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %
           expect(labelWrong(marks, screen.answers).some(Boolean)).toBe(false);
           break;
         }
+        case "pair":
+          checkPicture(screen.example.picture);
+          expect(screen.example.steps.length).toBeGreaterThan(1);
+          checkAsk(screen.question);
+          break;
+        case "set":
+          checkPicture(screen.picture);
+          expect(screen.items.length).toBeGreaterThanOrEqual(3);
+          for (const item of screen.items) checkAsk(item);
+          // Each question differs from the one before.
+          for (let i = 1; i < screen.items.length; i++)
+            expect(screen.items[i]?.prompt).not.toBe(screen.items[i - 1]?.prompt);
+          break;
         case "morph":
           expect(screen.dims.every((d) => d > 0)).toBe(true);
           if (screen.shape === "circle") {
@@ -457,7 +526,70 @@ describe.each(UNIT_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %
       }
     },
   );
+
+  it("has a method card it can show again, and an example for it", () => {
+    if (!lesson.method) return;
+    expect(lesson.method.length).toBeGreaterThanOrEqual(2);
+    expect(lesson.method.length).toBeLessThanOrEqual(5);
+    const card = lesson.screens.find((s) => s.tag === "Method");
+    expect(card?.kind).toBe("explain");
+    expect(card && "numbered" in card && card.numbered).toBe(true);
+    expect(exampleOf(lesson)).toBeDefined();
+  });
+
+  it("follows its variation map: a pair, a set changing one thing at a time, every unknown asked", () => {
+    const map = lesson.variation;
+    if (!map) return;
+    expect(lesson.method, "a lesson with a map has a method").toBeDefined();
+    expect(map.unknowns.length).toBeGreaterThan(0);
+    expect(map.surface.length).toBeGreaterThanOrEqual(3);
+    const kinds = lesson.screens.map((s) => s.kind);
+    expect(kinds, "an example with a question like it").toContain("pair");
+    expect(
+      lesson.screens.some((s) => s.kind === "steps" && givenSteps(s) > 0),
+      "a faded example",
+    ).toBe(true);
+    const sets = lesson.screens.flatMap((s) => (s.kind === "set" ? [s] : []));
+    const items = sets.flatMap((s) => s.items);
+    const pairs = lesson.screens.flatMap((s) => (s.kind === "pair" ? [s.question] : []));
+    // At least three changes are pointed out, and the pupil predicts at some of them.
+    expect(items.filter((i) => i.changed).length, "changes pointed out").toBeGreaterThanOrEqual(3);
+    expect(
+      items.some((i) => i.expect),
+      "reflect, expect, check",
+    ).toBe(true);
+    // Every unknown is asked for in the learning stage, and only unknowns on the map.
+    const asked = new Set([...items, ...pairs].flatMap((i) => (i.asks ? [i.asks] : [])));
+    for (const u of map.unknowns) expect(asked.has(u), `asks for the ${u}`).toBe(true);
+    for (const a of asked) expect(map.unknowns, a).toContain(a);
+    // The exit check moves the unknown too, when there is more than one.
+    const quiz = lesson.screens.find((s) => s.kind === "quiz");
+    const quizAsks = new Set(
+      quiz?.kind === "quiz"
+        ? quiz.questions.flatMap((q) => [q.asks, q.retry.asks]).filter((a) => a !== undefined)
+        : [],
+    );
+    for (const a of quizAsks) expect(map.unknowns, a).toContain(a);
+    if (map.unknowns.length > 1) expect(quizAsks.size).toBeGreaterThanOrEqual(2);
+  });
 });
+
+/** A short question can be answered: its answer is on offer, and its prediction has one right. */
+function checkAsk(a: Ask) {
+  checkPicture(a.picture);
+  expect(a.answers.length, a.prompt).toBeGreaterThan(0);
+  if (a.options) {
+    expect(a.options, a.prompt).toContain(a.answers[0]);
+    expect(new Set(a.options).size, a.prompt).toBe(a.options.length);
+  }
+  if (a.expect) {
+    expect(
+      a.expect.options.filter((o) => o.correct),
+      a.prompt,
+    ).toHaveLength(1);
+    expect(a.expect.options.length).toBeGreaterThan(1);
+  }
+}
 
 describe("unit lesson screens", () => {
   it("marks typed answers however they are written", () => {
@@ -602,6 +734,35 @@ describe("unit lesson helpers", () => {
     expect(makesLine(rule, { x: 0, y: -2 }, { x: 3, y: 1 })).toBe(true);
     expect(makesLine(rule, { x: 0, y: -2 }, { x: 0, y: -2 })).toBe(false);
     expect(makesLine(rule, { x: 0, y: -2 }, { x: 1, y: 0 })).toBe(false);
+  });
+
+  it("checks a prediction against the answer without marking it wrong", () => {
+    const item: Ask = {
+      prompt: "24 out of 80",
+      answers: ["30"],
+      hint: "",
+      why: "Double the part, double the percentage.",
+      expect: {
+        question: "The part doubled. The percentage…",
+        options: [
+          { text: "doubles", correct: true, feedback: "Same whole, twice the part." },
+          { text: "halves", feedback: "" },
+        ],
+      },
+    };
+    expect(expectVerdict(item, 0)).toContain("As you expected");
+    expect(expectVerdict(item, 1)).toContain("Same whole, twice the part.");
+    expect(expectVerdict(item, undefined)).toBe("");
+  });
+
+  it("shows teachers a redraft in place of the lesson it replaces, and pupils the original", () => {
+    for (const [id, drafts] of REDRAFTS) {
+      const unit = drafts[0]?.unit ?? "";
+      expect(lessonsFor(unit, true).map(lessonId)).toEqual(
+        expect.arrayContaining(drafts.map(lessonId)),
+      );
+      if (OPEN_TO_PUPILS.has(unit)) expect(lessonsFor(unit, false).map(lessonId)).toContain(id);
+    }
   });
 
   it("shows a unit lesson only to teachers until it is opened to pupils", () => {

@@ -1,6 +1,6 @@
 # Proposal: variation in the learning stage of every lesson
 
-Status: **draft for the owner's review.** Nothing is built yet. It covers the 398 split lessons
+Status: **agreed on 17 November 2026**, with the owner's answers at the end. Building has started with the pilot. It covers the 398 split lessons
 from Year 7 to GCSE Higher (`packages/learning/src/unit-lessons/`).
 
 ## In short
@@ -274,15 +274,12 @@ worked-example skips still apply.
   new template from the start.
 - **Pupil data.** Nothing is stored or sent beyond what lessons store now.
 
-## Questions for the owner
+## The owner's answers
 
-1. **Length.** Is a lesson of about 16 screens right, or should the second Warm-up go to keep it
-   at 14?
-2. **Reflect, Expect, Check.** Should the prediction be asked only at the two or three changes that
-   teach something (recommended), or before every item?
-3. **Pilot lessons.** Are the five above the right ones, or would you rather pick lessons from
-   your review?
-4. **Your review notes.** Did your review flag particular units or lessons as weak? They can go
-   into the pilot or the first batches.
-5. **Checkpoints.** After the pilot, is a PR per batch enough, or would you like to see each
-   batch's variation maps before its lessons are rewritten?
+1. **Length.** About 16 screens is fine. The number of screens can vary: some lessons need more,
+   some fewer.
+2. **Reflect, Expect, Check.** Ask for a prediction only at the two or three changes that teach
+   something.
+3. **Pilot.** Start with the circle theorems, the hardest topic to teach, and do the five lessons
+   above as well. The one Higher lesson that holds every theorem is split into smaller lessons,
+   each with its own method, so a pupil meets one or two theorems at a time.

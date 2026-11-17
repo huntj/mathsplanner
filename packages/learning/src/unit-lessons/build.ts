@@ -1,7 +1,7 @@
 // Short builders for the screens of a split lesson, so a unit's lessons read as their content:
 // each makes an ordinary screen of `types.ts`, with its tag. Right answers are listed first; the
 // screens shuffle their options.
-import type { Option, Picture, QuizQuestion, Screen, UnitLesson, Words } from "./types.ts";
+import type { Ask, Option, Picture, QuizQuestion, Screen, UnitLesson, Words } from "./types.ts";
 
 /** A wrong option, or a common wrong typed answer, and the nudge for it. */
 export type Wrong = [text: Words, feedback: Words];
@@ -130,11 +130,22 @@ export const mistake = (
   why,
 });
 
-/** An exit-check question: its prompt, right answer, other options and why. */
-export type Q = [prompt: Words, answer: Words, others: Words[], why: Words, picture?: Picture];
+/**
+ * An exit-check question: its prompt, right answer, other options and why, and (for a lesson
+ * with a variation map) the part of the relationship it asks for.
+ */
+export type Q = [
+  prompt: Words,
+  answer: Words,
+  others: Words[],
+  why: Words,
+  picture?: Picture,
+  asks?: string,
+];
 
-const question = ([prompt, answer, others, why, picture]: Q): QuizQuestion => ({
+const question = ([prompt, answer, others, why, picture, asks]: Q): QuizQuestion => ({
   prompt,
+  ...(asks ? { asks } : {}),
   ...(picture ? { picture } : {}),
   options: [answer, ...others],
   answers: [answer],
@@ -158,3 +169,122 @@ export const lesson = (
   summary: Words,
   screens: Screen[],
 ): UnitLesson => ({ unit, id: `${unit}/${slug}`, before, title, summary, screens });
+
+// The learning stage with variation (docs/proposals/lesson-variation.md).
+
+/** The method card: two to four short steps, worded the same wherever the method appears. */
+export const methodCard = (title: Words, method: Words[], picture?: Picture): Screen => ({
+  kind: "explain",
+  tag: "Method",
+  title,
+  text: method,
+  numbered: true,
+  ...(picture ? { picture } : {}),
+});
+
+/** A prediction to make before answering: the question, the right expectation and why, and others. */
+export type Expect = [question: Words, right: Words, why: Words, wrongs: readonly Wrong[]];
+
+/** What else a short question can carry. */
+export interface AskExtra {
+  /** What changed from the question before. */
+  changed?: Words;
+  /** Reflect, expect, check: a prediction first. */
+  expect?: Expect;
+  /** The part of the relationship it asks for. */
+  asks?: string;
+  /** Answers to choose from (besides the right one), instead of typing. */
+  others?: Words[];
+  unit?: string;
+  picture?: Picture;
+}
+
+/** One short question for a set or a pair: prompt, accepted answers, a nudge, and why. */
+export const ask = (
+  prompt: Words,
+  answers: string | string[],
+  hint: Words,
+  why: Words,
+  e: AskExtra = {},
+): Ask => {
+  const accepted = typeof answers === "string" ? [answers] : answers;
+  return {
+    prompt,
+    ...(e.picture ? { picture: e.picture } : {}),
+    ...(e.changed ? { changed: e.changed } : {}),
+    ...(e.expect
+      ? {
+          expect: {
+            question: e.expect[0],
+            options: options(e.expect[1], e.expect[2], e.expect[3]),
+          },
+        }
+      : {}),
+    ...(e.asks ? { asks: e.asks } : {}),
+    answers: accepted,
+    ...(e.others ? { options: [accepted[0] ?? "", ...e.others] } : {}),
+    ...(e.unit ? { unit: e.unit } : {}),
+    hint,
+    why,
+  };
+};
+
+/** A worked example with a question just like it underneath. */
+export const pair = (
+  title: Words,
+  example: { problem: Words; lines: [line: Words, why: Words][]; picture?: Picture },
+  question: Ask,
+  done: Words,
+  text?: Words,
+): Screen => ({
+  kind: "pair",
+  tag: "Example and try",
+  title,
+  ...(text !== undefined ? { text } : {}),
+  example: {
+    problem: example.problem,
+    ...(example.picture ? { picture: example.picture } : {}),
+    steps: example.lines.map(([line, why]) => ({ line, why })),
+  },
+  question,
+  done,
+});
+
+/** A faded example: the first steps shown done, then the pupil does the rest a step at a time. */
+export const fade = (
+  title: Words,
+  start: Words,
+  given: Words[],
+  stages: Stage[],
+  done: Words,
+  picture?: Picture,
+): Screen => ({
+  kind: "steps",
+  tag: "Finish it",
+  title,
+  ...(picture ? { picture } : {}),
+  start,
+  stages: [
+    ...given.map((then) => ({
+      prompt: "",
+      options: [{ text: then, correct: true as const, feedback: "" }],
+      then,
+      given: true as const,
+    })),
+    ...stages.map(([prompt, right, wrong, then]) => ({
+      prompt,
+      options: options(right, "", [wrong]),
+      then,
+    })),
+  ],
+  done,
+});
+
+/** Several short questions on one screen: one thing changed each time, or the unknown moved. */
+export const questionSet = (
+  tag: string,
+  title: Words,
+  items: Ask[],
+  done: Words,
+  e?: Extra,
+): Screen => ({ kind: "set", tag, title, ...extra(e), items, done });
