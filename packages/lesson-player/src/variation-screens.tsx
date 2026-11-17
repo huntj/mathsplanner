@@ -153,7 +153,6 @@ function AskView({
               autoCapitalize="off"
               spellCheck={false}
               readOnly={right || gaveUp}
-              autoFocus
               onChange={(e) => {
                 setValue(e.target.value);
                 if (verdict === "wrong" && !gaveUp) setVerdict(undefined);
@@ -264,8 +263,10 @@ export function SetStep({ screen, family, sound, onNext }: Step<QuestionSet>) {
         )}
         {picture && <PictureView picture={picture} />}
         {at > 0 && (
-          <ol className="set-done" aria-label="Done so far">
-            {screen.items.slice(0, at).map((it, i) => (
+          // The last two answers, to compare with: enough to see what changed, without pushing
+          // the question and its picture off the screen.
+          <ol className="set-done" aria-label="The last answers" start={Math.max(0, at - 2) + 1}>
+            {screen.items.slice(Math.max(0, at - 2), at).map((it, i) => (
               <li key={i}>
                 <W text={it.prompt} className="set-done-prompt" />
                 <span className="set-done-answer">

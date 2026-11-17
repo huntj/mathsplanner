@@ -197,8 +197,11 @@ function checkPicture(p: Picture | undefined) {
       // One box asked for, shown as "?", and a sign between each pair of boxes.
       expect(p.cells.length).toBeGreaterThanOrEqual(2);
       expect(p.joins).toHaveLength(p.cells.length - 1);
-      expect(p.cells[p.asks]?.value).toBe("?");
-      expect(p.cells.filter((c) => c.value === "?")).toHaveLength(1);
+      if (p.asks === undefined) expect(p.cells.some((c) => c.value === "?")).toBe(false);
+      else {
+        expect(p.cells[p.asks]?.value).toBe("?");
+        expect(p.cells.filter((c) => c.value === "?")).toHaveLength(1);
+      }
       break;
     default:
       break;
@@ -504,9 +507,14 @@ describe.each(ALL_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %s
           checkPicture(screen.picture);
           expect(screen.items.length).toBeGreaterThanOrEqual(3);
           for (const item of screen.items) checkAsk(item);
-          // Each question differs from the one before.
-          for (let i = 1; i < screen.items.length; i++)
-            expect(screen.items[i]?.prompt).not.toBe(screen.items[i - 1]?.prompt);
+          // Each question differs from the one before: in its words, or in its picture.
+          for (let i = 1; i < screen.items.length; i++) {
+            const [a, b] = [screen.items[i - 1], screen.items[i]];
+            expect(JSON.stringify([b?.prompt, b?.picture])).not.toBe(
+              JSON.stringify([a?.prompt, a?.picture]),
+            );
+            if (b?.prompt === a?.prompt) expect(b?.changed, b?.prompt).toBeDefined();
+          }
           break;
         case "morph":
           expect(screen.dims.every((d) => d > 0)).toBe(true);

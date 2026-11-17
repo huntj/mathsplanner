@@ -76,7 +76,7 @@ export const worked = (
   question: Words,
   lines: [line: Words, why: Words][],
   done: Words,
-  picture?: Picture,
+  picture?: Picture | undefined,
 ): Screen => ({
   kind: "worked",
   tag: "Worked example",
@@ -97,7 +97,7 @@ export const steps = (
   start: Words,
   stages: Stage[],
   done: Words,
-  picture?: Picture,
+  picture?: Picture | undefined,
 ): Screen => ({
   kind: "steps",
   tag,
@@ -118,7 +118,7 @@ export const mistake = (
   lines: Words[],
   wrong: number,
   why: Words,
-  picture?: Picture,
+  picture?: Picture | undefined,
 ): Screen => ({
   kind: "mistake",
   tag: "Spot the mistake",
@@ -139,7 +139,7 @@ export type Q = [
   answer: Words,
   others: Words[],
   why: Words,
-  picture?: Picture,
+  picture?: Picture | undefined,
   asks?: string,
 ];
 
@@ -257,7 +257,7 @@ export const fade = (
   given: Words[],
   stages: Stage[],
   done: Words,
-  picture?: Picture,
+  picture?: Picture | undefined,
 ): Screen => ({
   kind: "steps",
   tag: "Finish it",

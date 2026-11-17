@@ -324,8 +324,9 @@ export interface RelationPic {
   cells: { label: string; value: Words }[];
   /** The signs between neighbouring boxes, one fewer than the boxes. */
   joins: Words[];
-  /** The box asked for, counting from 0; its value is "?". */
-  asks: number;
+  /** The box asked for, counting from 0; its value is "?". Unset when the unknown is a letter
+   *  inside the boxes, such as x in 3x and x + 20°. */
+  asks?: number;
 }
 
 export type Picture =
