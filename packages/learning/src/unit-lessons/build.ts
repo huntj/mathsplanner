@@ -3,6 +3,8 @@
 // screens shuffle their options.
 import type {
   Ask,
+  DrawingPic,
+  Explore,
   Option,
   Picture,
   QuizQuestion,
@@ -315,12 +317,27 @@ export function redraft(
     exit: Screen;
     picture?: Picture;
     drop?: Words[];
+    /**
+     * Kept screens to replace, by title (or "tag: title" where two share a title): a
+     * diagram-first version of a worded one.
+     */
+    swap?: Record<Words, Screen>;
+    /** Kept screens that may stay words only, by title (or "tag: title"), with the reason. */
+    wordsOnly?: Record<Words, Words>;
+    /** Screens to put just before the method card, such as an Explore. */
+    before?: Screen[];
   },
 ): UnitLesson {
   if (!original) throw new Error("No lesson to redraft");
-  const kept = original.screens.filter(
-    (s) => !REPLACED.has(s.tag ?? "") && !(plan.drop ?? []).includes(s.title),
-  );
+  const kept = original.screens
+    .filter((s) => !REPLACED.has(s.tag ?? "") && !(plan.drop ?? []).includes(s.title))
+    .map((s) => {
+      const key = `${s.tag ?? ""}: ${s.title}`;
+      const swapped = plan.swap?.[key] ?? plan.swap?.[s.title];
+      if (swapped) return swapped;
+      const why = plan.wordsOnly?.[key] ?? plan.wordsOnly?.[s.title];
+      return why ? { ...s, wordsOnly: why } : s;
+    });
   const at = kept.findIndex((s) =>
     ["Watch out", "Spot the mistake", "Back to the problem"].includes(s.tag ?? ""),
   );
@@ -331,6 +348,7 @@ export function redraft(
     variation: plan.variation,
     screens: [
       ...kept.slice(0, split),
+      ...(plan.before ?? []),
       methodCard("The method", plan.method, plan.picture),
       ...plan.learning,
       ...kept.slice(split),
@@ -338,3 +356,52 @@ export function redraft(
     ],
   };
 }
+
+// Hands-on screens (docs/proposals/lesson-interactive.md).
+
+/** Tap the part of a diagram asked for: one name, or several to tap together. */
+export const tap = (
+  tag: string,
+  title: Words,
+  picture: DrawingPic,
+  answers: string | string[],
+  hint: Words,
+  done: Words,
+  e: { text?: Words; wrong?: Record<string, Words> } = {},
+): Screen => ({
+  kind: "tap",
+  tag,
+  title,
+  ...(e.text !== undefined ? { text: e.text } : {}),
+  picture,
+  answers: typeof answers === "string" ? [answers] : answers,
+  ...(e.wrong ? { wrong: e.wrong } : {}),
+  hint,
+  done,
+});
+
+/** A question with one right option: the question, the right one and why, and the others. */
+export type Notice = [question: Words, right: Words, why: Words, wrongs: readonly Wrong[]];
+
+/**
+ * Explore a diagram before the method: drag it and watch what changes. A prediction can come
+ * first; once the pupil has explored, `notice` asks what stayed the same.
+ */
+export const explore = (
+  title: Words,
+  scene: Explore["scene"],
+  notice: Notice,
+  done: Words,
+  e: { text?: Words; expect?: Expect; tag?: string } = {},
+): Screen => ({
+  kind: "explore",
+  tag: e.tag ?? "Explore",
+  title,
+  ...(e.text !== undefined ? { text: e.text } : {}),
+  scene,
+  ...(e.expect
+    ? { expect: { question: e.expect[0], options: options(e.expect[1], e.expect[2], e.expect[3]) } }
+    : {}),
+  notice: { question: notice[0], options: options(notice[1], notice[2], notice[3]) },
+  done,
+});

@@ -111,7 +111,14 @@ const NAMED_COLOURS: Record<string, string> = {
 const sectorColour = (label: string, i: number) =>
   NAMED_COLOURS[label.toLowerCase()] ?? SECTOR_COLOURS[i % SECTOR_COLOURS.length];
 
-export function PictureView({ picture }: { picture: Picture }) {
+export function PictureView({
+  picture,
+  tapping,
+}: {
+  picture: Picture;
+  /** Makes a drawing's tappable parts tappable, on a Tap screen. */
+  tapping?: Tapping;
+}) {
   switch (picture.kind) {
     case "relation":
       return <Relation pic={picture} />;
@@ -173,7 +180,7 @@ export function PictureView({ picture }: { picture: Picture }) {
     case "bar-chart":
       return <BarChart pic={picture} />;
     case "drawing":
-      return <Drawing pic={picture} />;
+      return <Drawing pic={picture} tapping={tapping} />;
     case "venn":
       return <Venn pic={picture} />;
     case "dots":
@@ -1119,7 +1126,18 @@ function BarChart({ pic }: { pic: BarChartPic }) {
 
 // Free drawings: constructions, parallel lines, solids.
 
-function Drawing({ pic }: { pic: DrawingPic }) {
+/** On a Tap screen: what has been tapped, what was tapped wrongly, and what to do on a tap. */
+export interface Tapping {
+  chosen: readonly string[];
+  wrong: readonly string[];
+  onTap: (name: string) => void;
+}
+
+/** How a tappable part is read out: "angle ACB", "line OA", "point P". */
+export const tapName = (name: string) =>
+  name.length === 3 ? `angle ${name}` : name.length === 2 ? `line ${name}` : `point ${name}`;
+
+function Drawing({ pic, tapping }: { pic: DrawingPic; tapping?: Tapping | undefined }) {
   const pts: Point[] = [];
   for (const it of pic.items) {
     if ("line" in it) pts.push(...it.line);
@@ -1280,6 +1298,72 @@ function Drawing({ pic }: { pic: DrawingPic }) {
             </text>
           );
         })}
+        {tapping &&
+          pic.items.map((it, i) => {
+            if (!("tap" in it) || !it.tap) return null;
+            const name = it.tap;
+            const state = tapping.wrong.includes(name)
+              ? " wrong"
+              : tapping.chosen.includes(name)
+                ? " chosen"
+                : "";
+            let shape: ReactNode = null;
+            if ("line" in it) {
+              const [a, b] = it.line;
+              shape = (
+                <>
+                  <line className="tap-glow" x1={sx(a.x)} y1={sy(a.y)} x2={sx(b.x)} y2={sy(b.y)} />
+                  <line className="tap-hit" x1={sx(a.x)} y1={sy(a.y)} x2={sx(b.x)} y2={sy(b.y)} />
+                </>
+              );
+            } else if ("angle" in it) {
+              const p = { x: sx(it.angle.x), y: sy(it.angle.y) };
+              const R = 34;
+              const at = (deg: number) =>
+                `${p.x + R * Math.cos(rad(deg))} ${p.y - R * Math.sin(rad(deg))}`;
+              const label = marks[i]?.label;
+              shape = (
+                <>
+                  <path
+                    className="tap-glow wedge"
+                    d={`M${p.x} ${p.y} L${at(it.from)} A${R} ${R} 0 0 0 ${at(it.to)} Z`}
+                  />
+                  {label && <circle className="tap-hit" cx={label.x} cy={label.y} r="18" />}
+                  <path
+                    className="tap-hit"
+                    d={`M${p.x} ${p.y} L${at(it.from)} A${R} ${R} 0 0 0 ${at(it.to)} Z`}
+                  />
+                </>
+              );
+            } else if ("dot" in it) {
+              shape = (
+                <>
+                  <circle className="tap-glow" cx={sx(it.dot.x)} cy={sy(it.dot.y)} r="12" />
+                  <circle className="tap-hit" cx={sx(it.dot.x)} cy={sy(it.dot.y)} r="18" />
+                </>
+              );
+            }
+            return (
+              <g
+                key={`tap-${i}`}
+                className={`tap-target${state}`}
+                role="button"
+                tabIndex={0}
+                aria-pressed={tapping.chosen.includes(name)}
+                aria-label={tapName(name)}
+                data-tap={name}
+                onClick={() => tapping.onTap(name)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    tapping.onTap(name);
+                  }
+                }}
+              >
+                {shape}
+              </g>
+            );
+          })}
         <defs>
           <marker
             id="draw-arrow"

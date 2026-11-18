@@ -38,6 +38,7 @@ import type {
 } from "@mathsplanner/learning/unit-lessons";
 import { Title, useChime, Verdict, W, Working, type Step } from "./unit-ui.tsx";
 import { PairStep, SetStep } from "./variation-screens.tsx";
+import { ExploreStep, TapStep } from "./interactive-screens.tsx";
 
 type More = Exclude<
   Screen,
@@ -86,6 +87,10 @@ export function ScreenStepMore({
       return <PairStep screen={s} {...step} />;
     case "set":
       return <SetStep screen={s} {...step} />;
+    case "tap":
+      return <TapStep screen={s} {...step} />;
+    case "explore":
+      return <ExploreStep screen={s} {...step} />;
   }
 }
 

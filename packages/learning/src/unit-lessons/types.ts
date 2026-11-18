@@ -264,13 +264,20 @@ export interface DrawingPic {
   /** At least this much of the plane is shown, so steps that add to a drawing keep its scale. */
   frame?: Range;
   items: (
-    | { line: [Point, Point]; dashed?: true; arrow?: number; tone?: "main" | "soft" | "find" }
+    | {
+        line: [Point, Point];
+        dashed?: true;
+        arrow?: number;
+        tone?: "main" | "soft" | "find";
+        /** On a Tap screen, the name the pupil taps it by. */
+        tap?: string;
+      }
     | { arc: Point; r: number; from: number; to: number; ry?: number; dashed?: true }
-    | { dot: Point }
+    | { dot: Point; tap?: string }
     | { text: string; at: Point; tone?: "main" | "find" }
     /** An angle at a corner, from one direction to another anticlockwise (under 180°), with an
      * arc and its label; a letter or "?" is drawn as one to find. */
-    | { angle: Point; from: number; to: number; label: string }
+    | { angle: Point; from: number; to: number; label: string; tap?: string }
     /** A side's label, kept level and just outside the side: away from the `inside` point. */
     | { side: [Point, Point]; label: string; inside: Point; tone?: "main" | "find" }
   )[];
@@ -568,6 +575,8 @@ export interface QuizQuestion {
   prompt: Words;
   /** The part of the relationship it asks for, as named in the lesson's variation map. */
   asks?: string;
+  /** Why this question has no diagram, in a lesson where diagrams come first. */
+  wordsOnly?: Words;
   picture?: Picture;
   /** Typed answers accepted; with options, the first answer must be one of them. */
   answers: string[];
@@ -600,6 +609,8 @@ export interface Ask {
   expect?: { question: Words; options: Option[] };
   /** The part of the relationship it asks for, as named in the lesson's variation map. */
   asks?: string;
+  /** Why this question has no diagram, in a lesson where diagrams come first. */
+  wordsOnly?: Words;
   /** Typed answers accepted; with options, the first answer must be one of them. */
   answers: string[];
   options?: Words[];
@@ -634,9 +645,99 @@ export interface QuestionSet {
   done: Words;
 }
 
+/** Tap the part of a diagram asked for: an angle, a line or a point (or several). */
+export interface Tap {
+  kind: "tap";
+  title: Words;
+  text?: Words;
+  /** A drawing whose tappable items carry a `tap` name. */
+  picture: DrawingPic;
+  /** The names to tap; with more than one, all of them, in any order. */
+  answers: string[];
+  /** Nudges for wrong taps, by name. */
+  wrong?: Record<string, Words>;
+  hint: Words;
+  done: Words;
+}
+
+/** A point in an Explore scene: fixed, on the circle, along a ray, free, or under another. */
+export type ExplorePoint = { name: string; label?: false } & (
+  | { at: Point }
+  /** On the circle about O, at this many degrees; draggable between `drag` degrees. */
+  | { onCircle: number; drag?: [from: number, to: number] }
+  /** Along a ray from a point at a fixed angle, this far out; draggable between `drag`. */
+  | { from: string; deg: number; dist: number; drag?: [min: number, max: number] }
+  /** Anywhere in the `drag` box, snapping to `step`. */
+  | { free: Point; drag: Range; step?: number }
+  /** Straight below another point, on the x-axis. */
+  | { below: string }
+  /** Where a tangent from an outside point touches the circle, on one side or the other. */
+  | { tangentFrom: string; side: 1 | -1 }
+);
+
+/** A live value under an Explore scene. */
+export type Readout = { label: Words; dp?: number } & (
+  | { angle: string }
+  | { sum: string[] }
+  | { ratio: [angle: string, angle: string] }
+  | { length: string }
+  | { lengths: [top: string, bottom: string] }
+  | { circleArea: string }
+  | { circumference: string }
+);
+
+/** Drag points on a diagram and watch angles and lengths change. */
+export interface GeometryScene {
+  kind: "geometry";
+  /** A circle about O of this radius, if any. */
+  circle?: number;
+  /** Draw the circle about O through this point instead, so it grows as the point is dragged. */
+  circleThrough?: string;
+  /** Use the circle for placing points, but don't draw it. */
+  hideCircle?: true;
+  points: ExplorePoint[];
+  lines: string[];
+  dashed?: string[];
+  /** Angles marked with their live size, or with a fixed label. */
+  angles?: { name: string; label?: string }[];
+  readouts: Readout[];
+}
+
+/** Shade a hundred square with a slider, and watch the fraction, decimal and percentage. */
+export interface HundredScene {
+  kind: "hundred";
+  start: number;
+}
+
+/** Share a total in a ratio with a slider, and watch one part and each share. */
+export interface RatioScene {
+  kind: "ratio";
+  rows: { label: string; parts: number }[];
+  total: { min: number; max: number; step: number; start: number };
+  /** A unit before or after the numbers, such as £. */
+  unit?: string;
+}
+
+/**
+ * Explore: a diagram to drag, before the method (or between questions), so the pupil sees what
+ * changes and what stays the same. An optional prediction comes first; once the pupil has
+ * dragged enough, a question asks what they noticed.
+ */
+export interface Explore {
+  kind: "explore";
+  title: Words;
+  text?: Words;
+  scene: GeometryScene | HundredScene | RatioScene;
+  expect?: { question: Words; options: Option[] };
+  notice: { question: Words; options: Option[] };
+  done: Words;
+}
+
 /** What a screen is for, shown above its title: "Warm-up", "Your turn", "Exit check"… */
 export interface Tagged {
   tag?: string;
+  /** Why a question screen has no diagram, in a lesson where diagrams come first. */
+  wordsOnly?: Words;
 }
 
 /** Label a shape's sides: tap a label, then the side it belongs on. */
@@ -678,6 +779,8 @@ export type Screen = (
   | LabelSides
   | Pair
   | QuestionSet
+  | Tap
+  | Explore
 ) &
   Tagged;
 

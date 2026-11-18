@@ -3,15 +3,41 @@
 // and gets a new learning stage: the method, an example beside a question like it, a faded
 // example, a set that changes one thing at a time, a set that moves the unknown, two to try, and
 // an exit check that moves the unknown too.
-import { ask, fade, pair, questionSet, quiz, redraft, typed } from "./build.ts";
+import { ask, choose, explore, fade, pair, questionSet, quiz, redraft, typed } from "./build.ts";
 import { gfRatio1 } from "./gf-ratio-1.ts";
-import type { BarsPic, RelationPic, UnitLesson } from "./types.ts";
+import type {
+  BarsPic,
+  DrawingPic,
+  Picture,
+  RelationPic,
+  Screen,
+  ShapePic,
+  UnitLesson,
+} from "./types.ts";
 import { fan, y7Angles } from "./y7-angles.ts";
 import { hundred, y7Fdp } from "./y7-fdp.ts";
 import { measured, y8Area } from "./y8-area.ts";
 import { tri, y9Trigonometry } from "./y9-trigonometry.ts";
 
 const find = (list: readonly UnitLesson[], id: string) => list.find((l) => l.id === id);
+
+/**
+ * One of a lesson's own screens with some of its fields changed: its words without the numbers,
+ * say, or a diagram added. `tag` picks it out where two screens share a title.
+ */
+function reworded(
+  list: readonly UnitLesson[],
+  id: string,
+  title: string,
+  changes: Partial<Record<"title" | "text" | "picture", unknown>>,
+  tag?: string,
+): Screen {
+  const screen = find(list, id)?.screens.find(
+    (s) => s.title === title && (tag === undefined || s.tag === tag),
+  );
+  if (!screen) throw new Error(`No screen "${title}" in ${id}`);
+  return { ...screen, ...changes } as Screen;
+}
 
 const relation = (cells: [string, string][], joins: string[], asks?: number): RelationPic => ({
   kind: "relation",
@@ -23,25 +49,16 @@ const relation = (cells: [string, string][], joins: string[], asks?: number): Re
 // ---------------------------------------------------------------------------------------------
 // Year 7: angles on a straight line.
 
-/** Two angles on a straight line, the first measured up from the right, the line turned by `turn`. */
-const line2 = (first: number, labels: [string, string], turn = 0) =>
-  fan([turn, turn + first, turn + 180], [labels[0], labels[1], null]);
-/** Three angles on a straight line. */
-const line3 = (a: number, b: number, labels: [string, string, string]) =>
-  fan([0, a, a + b, 180], [labels[0], labels[1], labels[2], null]);
-const lineRel = (a: string, b: string, c: string, asks?: number) =>
-  relation(
-    [
-      ["angle 1", a],
-      ["angle 2", b],
-      ["angle 3", c],
-      ["in all", "180°"],
-    ],
-    ["+", "+", "="],
-    asks,
-  );
+const HALF_TURN = "y7-angles/half-turn";
 
-const halfTurn = redraft(find(y7Angles, "y7-angles/half-turn"), {
+/** Two angles on a straight line, the first measured up from the right, the line turned by `turn`. */
+const line2 = (first: number, labels: [string, string], turn = 0, mark = "x") =>
+  fan([turn, turn + first, turn + 180], [labels[0], labels[1], null], mark);
+/** Three angles on a straight line. */
+const line3 = (a: number, b: number, labels: [string, string, string], mark = "x") =>
+  fan([0, a, a + b, 180], [labels[0], labels[1], labels[2], null], mark);
+
+const halfTurn = redraft(find(y7Angles, HALF_TURN), {
   method: [
     "Check the angles all sit on one straight line.",
     "Add up the angles you know.",
@@ -55,33 +72,97 @@ const halfTurn = redraft(find(y7Angles, "y7-angles/half-turn"), {
     surface: ["numbers", "line turned", "which side", "three angles", "algebra"],
     nonExamples: ["angles that don't sit on one straight line"],
   },
+  wordsOnly: {
+    "What is $180 - 65$?":
+      "A number warm-up: the subtraction the lesson needs, before any diagram.",
+  },
+  swap: {
+    "Ben says two angles on a straight line add up to 360°. Is he right?": choose(
+      "Watch out",
+      "Ben says these two angles add up to 360°. Is he right?",
+      "No: they make a straight line, a half turn, 180°",
+      "360° is all the way round a point. A straight line is half of that.",
+      [["Yes", "A straight line is only half a turn."]],
+      { picture: line2(130, ["130°", "50°"]) },
+    ),
+    "Where did it go wrong?": reworded(y7Angles, HALF_TURN, "Where did it go wrong?", {
+      text: "Mia finds x.",
+    }),
+    "Back to the problem: How far back?": reworded(
+      y7Angles,
+      HALF_TURN,
+      "How far back?",
+      {
+        text: "The keyboard lies flat on the desk. What angle does the back of the screen make with the desk?",
+      },
+      "Back to the problem",
+    ),
+  },
+  before: [
+    explore(
+      "Turn the ray",
+      {
+        kind: "geometry",
+        circle: 3,
+        hideCircle: true,
+        points: [
+          { name: "A", onCircle: 180 },
+          { name: "B", onCircle: 0 },
+          { name: "C", onCircle: 60, drag: [5, 175] },
+        ],
+        lines: ["AB", "OC"],
+        angles: [{ name: "BOC" }, { name: "COA" }],
+        readouts: [
+          { label: "Angle BOC", angle: "BOC" },
+          { label: "Angle COA", angle: "COA" },
+          { label: "Together", sum: ["BOC", "COA"] },
+        ],
+      },
+      [
+        "What did you notice?",
+        "The two angles always add up to 180°",
+        "Together they make the straight line: a half turn.",
+        [
+          ["The two angles are always equal", "Only when the ray points straight up."],
+          ["The total changes as the ray turns", "Look again: it's 180° every time."],
+        ],
+      ],
+      "Angles on a straight line add up to 180°, however the ray turns.",
+      {
+        text: "Drag C round. Watch the two angles on the straight line AB.",
+        expect: [
+          "Before you drag: as one angle grows, the other will…",
+          "shrink by the same amount",
+          "They share the straight line's 180°.",
+          [
+            ["grow too", "Try it and see."],
+            ["stay the same", "Try it and see."],
+          ],
+        ],
+      },
+    ),
+  ],
   learning: [
     pair(
       "Take it from 180°",
       {
-        problem: "Two angles on a straight line are 125° and x. Find x.",
+        problem: "Find x.",
         picture: line2(55, ["x", "125°"]),
         lines: [
           ["$x + 125° = 180°$", "Angles on a straight line add up to 180°."],
           ["$x = 180° - 125° = 55°$", "Take away the angle you know."],
         ],
       },
-      ask(
-        "Two angles on a straight line are 140° and x. Find x.",
-        "40",
-        "Take 140° from 180°.",
-        "40°.",
-        {
-          unit: "°",
-          asks: "angle 1",
-          picture: line2(40, ["x", "140°"]),
-        },
-      ),
+      ask("Find x.", "40", "Take the angle you know from 180°.", "40°: 180° − 140°.", {
+        unit: "°",
+        asks: "angle 1",
+        picture: line2(40, ["x", "140°"]),
+      }),
       "Same line, same 180°.",
     ),
     fade(
       "Finish it",
-      "Three angles on a straight line are 40°, 75° and x. Find x.",
+      "Find x.",
       ["Add the ones you know: $40° + 75° = 115°$."],
       [
         [
@@ -98,12 +179,12 @@ const halfTurn = redraft(find(y7Angles, "y7-angles/half-turn"), {
       "Same method, different look",
       "Find x each time. Watch what changes.",
       [
-        ask("130° and x are on a straight line. Find x.", "50", "180° − 130°.", "50°.", {
+        ask("Find x.", "50", "Take the angle you know from 180°.", "50°.", {
           unit: "°",
           asks: "angle 1",
           picture: line2(50, ["x", "130°"]),
         }),
-        ask("120° and x are on a straight line. Find x.", "60", "180° − 120°.", "60°.", {
+        ask("Find x.", "60", "Take the angle you know from 180°.", "60°.", {
           unit: "°",
           asks: "angle 1",
           changed: "The angle you know went down by 10°.",
@@ -118,22 +199,16 @@ const halfTurn = redraft(find(y7Angles, "y7-angles/half-turn"), {
           ],
           picture: line2(60, ["x", "120°"]),
         }),
+        ask("Find x.", "60", "Still take it from 180°.", "60°: turning the line changes nothing.", {
+          unit: "°",
+          asks: "angle 1",
+          changed: "The line is turned.",
+          picture: line2(60, ["x", "120°"], 35),
+        }),
         ask(
-          "120° and x are on a straight line. Find x.",
+          "Find x.",
           "60",
-          "Still 180° − 120°.",
-          "60°: turning the line changes nothing.",
-          {
-            unit: "°",
-            asks: "angle 1",
-            changed: "The line is turned.",
-            picture: line2(60, ["x", "120°"], 35),
-          },
-        ),
-        ask(
-          "x and 120° are on a straight line. Find x.",
-          "60",
-          "Still 180° − 120°.",
+          "Still take it from 180°.",
           "60°: it doesn't matter which side x is on.",
           {
             unit: "°",
@@ -143,9 +218,9 @@ const halfTurn = redraft(find(y7Angles, "y7-angles/half-turn"), {
           },
         ),
         ask(
-          "35°, 90° and x are on a straight line. Find x.",
+          "Find x.",
           "55",
-          "Add 35° and 90°, then take it from 180°.",
+          "Add the two angles you know, then take it from 180°.",
           "55°: 180° − 125°.",
           {
             unit: "°",
@@ -161,7 +236,7 @@ const halfTurn = redraft(find(y7Angles, "y7-angles/half-turn"), {
           },
         ),
         ask(
-          "x and 2x are on a straight line. Find x.",
+          "Find x.",
           "60",
           "x + 2x = 3x, and 3x = 180°.",
           "60°: then 2x is 120°, and 60° + 120° = 180°.",
@@ -179,119 +254,73 @@ const halfTurn = redraft(find(y7Angles, "y7-angles/half-turn"), {
       "Where's the answer?",
       "Which angle is missing?",
       [
+        ask("Find the angle marked ?.", "60", "Take the other two from 180°.", "60°.", {
+          unit: "°",
+          asks: "angle 3",
+          picture: line3(50, 70, ["50°", "70°", "?"], "?"),
+        }),
+        ask("Find the angle marked ?.", "40", "Take the other two from 180°.", "40°.", {
+          unit: "°",
+          asks: "angle 2",
+          changed: "Now the middle angle is missing.",
+          picture: line3(45, 40, ["45°", "?", "95°"], "?"),
+        }),
+        ask("Find the angle marked ?.", "70", "Take the other two from 180°.", "70°.", {
+          unit: "°",
+          asks: "angle 1",
+          changed: "Now the first angle is missing.",
+          picture: line3(70, 80, ["?", "80°", "30°"], "?"),
+        }),
         ask(
-          "On a straight line, angle 1 is 50° and angle 2 is 70°. Find angle 3.",
-          "60",
-          "Take 50° and 70° from 180°.",
-          "60°.",
-          {
-            unit: "°",
-            asks: "angle 3",
-            picture: lineRel("50°", "70°", "?", 2),
-          },
-        ),
-        ask(
-          "Angle 1 is 45° and angle 3 is 95°. Find angle 2.",
+          "Find x.",
           "40",
-          "Take 45° and 95° from 180°.",
-          "40°.",
-          {
-            unit: "°",
-            asks: "angle 2",
-            changed: "Now the middle angle is missing.",
-            picture: lineRel("45°", "?", "95°", 1),
-          },
-        ),
-        ask(
-          "Angle 2 is 80° and angle 3 is 30°. Find angle 1.",
-          "70",
-          "Take 80° and 30° from 180°.",
-          "70°.",
-          {
-            unit: "°",
-            asks: "angle 1",
-            changed: "Now the first angle is missing.",
-            picture: lineRel("?", "80°", "30°", 0),
-          },
-        ),
-        ask(
-          "Angles 1 and 2 are both x, and angle 3 is 100°. Find x.",
-          "40",
-          "x + x = 80°.",
+          "The two x's make 180° take away the third angle.",
           "40°: 40° + 40° + 100° = 180°.",
           {
             unit: "°",
             asks: "x",
             changed: "Two angles are the same size, x.",
-            picture: lineRel("$x$", "$x$", "100°"),
+            picture: line3(40, 40, ["x", "x", "100°"]),
           },
         ),
       ],
       "Wherever the gap is, the same 180° fills it.",
     ),
-    typed("Your turn", "64° and x are on a straight line. Find x.", "116", "180° − 64°.", "116°.", {
+    typed("Your turn", "Find x.", "116", "Take the angle you know from 180°.", "116°.", {
       unit: "°",
       picture: line2(64, ["64°", "x"], 20),
     }),
-    typed("Your turn", "x, 2x and 90° are on a straight line. Find x.", "30", "3x = 90°.", "30°.", {
+    typed("Your turn", "Find x.", "30", "The three angles add up to 180°, so 3x = 90°.", "30°.", {
       unit: "°",
       picture: line3(30, 60, ["x", "2x", "90°"]),
     }),
   ],
   exit: quiz([
     [
-      [
-        "On a straight line: 105° and x. x?",
-        "75°",
-        ["255°", "85°"],
-        "180° − 105°.",
-        undefined,
-        "angle 1",
-      ],
-      [
-        "On a straight line: 145° and x. x?",
-        "35°",
-        ["215°", "45°"],
-        "180° − 145°.",
-        undefined,
-        "angle 1",
-      ],
+      ["Find x.", "75°", ["255°", "85°"], "180° − 105°.", line2(75, ["x", "105°"]), "angle 1"],
+      ["Find x.", "35°", ["215°", "45°"], "180° − 145°.", line2(145, ["145°", "x"], 30), "angle 1"],
     ],
     [
       [
-        "On a straight line: 30°, x and 65°. x?",
+        "Find x.",
         "85°",
         ["95°", "265°"],
         "180° − 95°.",
-        undefined,
+        line3(30, 85, ["30°", "x", "65°"]),
         "angle 2",
       ],
       [
-        "On a straight line: 50°, x and 45°. x?",
+        "Find x.",
         "85°",
         ["95°", "275°"],
         "180° − 95°.",
-        undefined,
+        line3(50, 85, ["50°", "x", "45°"]),
         "angle 2",
       ],
     ],
     [
-      [
-        "On a straight line: x, x and 120°. x?",
-        "30°",
-        ["60°", "120°"],
-        "2x = 60°.",
-        undefined,
-        "x",
-      ],
-      [
-        "On a straight line: x, x and 80°. x?",
-        "50°",
-        ["100°", "80°"],
-        "2x = 100°.",
-        undefined,
-        "x",
-      ],
+      ["Find x.", "30°", ["60°", "120°"], "2x = 60°.", line3(30, 30, ["x", "x", "120°"]), "x"],
+      ["Find x.", "50°", ["100°", "80°"], "2x = 100°.", line3(50, 50, ["x", "x", "80°"]), "x"],
     ],
   ]),
 });
@@ -315,6 +344,34 @@ const percentages = redraft(find(y7Fdp, "y7-fdp/percentages"), {
     surface: ["numbers", "small percentages", "over 100%", "picture", "words"],
     nonExamples: ["8% is not 0.8"],
   },
+  before: [
+    explore(
+      "Shade the hundred square",
+      { kind: "hundred", start: 25 },
+      [
+        "What did you notice?",
+        "The percentage is how many squares out of 100 are shaded",
+        "Per cent means out of 100: 40 squares shaded is 40%, 0.4 and $\\frac{40}{100}$.",
+        [
+          ["The decimal is the number of squares shaded", "Look again: 40 squares is 0.4, not 40."],
+          ["The fraction is always out of 10", "It's out of 100 before it's simplified."],
+        ],
+      ],
+      "The same shading names a fraction, a decimal and a percentage.",
+      {
+        text: "Drag the slider to shade more or fewer squares. Watch the three ways of writing it.",
+        expect: [
+          "Before you drag: if you shade half the square, the percentage will be…",
+          "50%",
+          "Half of 100 squares is 50 out of 100.",
+          [
+            ["5%", "Try it and see."],
+            ["0.5%", "Try it and see."],
+          ],
+        ],
+      },
+    ),
+  ],
   learning: [
     pair(
       "Out of 100",
@@ -486,18 +543,52 @@ const percentages = redraft(find(y7Fdp, "y7-fdp/percentages"), {
 // ---------------------------------------------------------------------------------------------
 // Year 8: the area of a circle.
 
-const circleRel = (area: string, r2: string, asks?: number) =>
-  relation(
-    [
-      ["area", area],
-      ["pi", "$\\pi$"],
-      ["radius squared", r2],
-    ],
-    ["=", "×"],
-    asks,
-  );
+const CIRCLE_AREA = "y8-area/circle-area";
 
-const circleArea = redraft(find(y8Area, "y8-area/circle-area"), {
+/** A circle with its area written inside, and its radius or diameter marked to find. */
+const withArea = (area: string, across: "d" | "r", label = "?"): Picture => {
+  const pic = measured(across, label);
+  return pic.kind === "drawing"
+    ? { ...pic, items: [...pic.items, { text: `Area ${area}`, at: { x: 0, y: -1.3 } }] }
+    : pic;
+};
+
+/** Half a circle, with its radius marked. */
+const semicircle = (label: string): DrawingPic => ({
+  kind: "drawing",
+  items: [
+    { arc: { x: 0, y: 0 }, r: 3, from: 0, to: 180 },
+    {
+      line: [
+        { x: -3, y: 0 },
+        { x: 0, y: 0 },
+      ],
+    },
+    {
+      line: [
+        { x: 0, y: 0 },
+        { x: 3, y: 0 },
+      ],
+      tone: "find",
+    },
+    { dot: { x: 0, y: 0 } },
+    { text: label, at: { x: 1.5, y: 0.45 }, tone: "find" },
+  ],
+});
+
+/** A rectangle, its sides labelled. */
+const rectangle = (w: number, h: number, sides: [string, string]): ShapePic => ({
+  kind: "shape",
+  points: [
+    { x: 0, y: 0 },
+    { x: w, y: 0 },
+    { x: w, y: h },
+    { x: 0, y: h },
+  ],
+  sides: [sides[0], sides[1], null, null],
+});
+
+const circleArea = redraft(find(y8Area, CIRCLE_AREA), {
   method: [
     "Find the radius. Given the diameter? Halve it.",
     "Square the radius.",
@@ -511,11 +602,78 @@ const circleArea = redraft(find(y8Area, "y8-area/circle-area"), {
     surface: ["numbers", "diameter given", "half a circle", "context", "in terms of π"],
     nonExamples: ["π × d is the circumference, not the area"],
   },
+  wordsOnly: { "Work out $5^2$": "A number warm-up: squaring, before any circle." },
+  swap: {
+    "A rectangle is 6 cm by 3 cm. What is its area?": reworded(
+      y8Area,
+      CIRCLE_AREA,
+      "A rectangle is 6 cm by 3 cm. What is its area?",
+      { title: "Find the area of the rectangle.", picture: rectangle(6, 3, ["6 cm", "3 cm"]) },
+    ),
+    "The rectangle's sides": reworded(y8Area, CIRCLE_AREA, "The rectangle's sides", {
+      picture: rectangle(6, 2, ["πr", "r"]),
+    }),
+    "Radius 3 cm. Nia works out $\\pi \\times 3 \\times 2 = 18.8$ cm². What's wrong?": reworded(
+      y8Area,
+      CIRCLE_AREA,
+      "Radius 3 cm. Nia works out $\\pi \\times 3 \\times 2 = 18.8$ cm². What's wrong?",
+      {
+        title: "Nia works out the area as $\\pi \\times 3 \\times 2 = 18.8$ cm². What's wrong?",
+        picture: measured("r", "3 cm"),
+      },
+    ),
+    "Where did it go wrong?": reworded(y8Area, CIRCLE_AREA, "Where did it go wrong?", {
+      text: "Dev finds the area of this circle.",
+      picture: measured("r", "6 cm"),
+    }),
+    "The round rug, radius 1.5 m": reworded(y8Area, CIRCLE_AREA, "The round rug, radius 1.5 m", {
+      title: "The round rug",
+      picture: measured("r", "1.5 m"),
+    }),
+  },
+  before: [
+    explore(
+      "Grow the circle",
+      {
+        kind: "geometry",
+        circleThrough: "R",
+        points: [{ name: "R", from: "O", deg: 0, dist: 2, drag: [1, 4] }],
+        lines: ["OR"],
+        readouts: [
+          { label: "Radius", length: "OR" },
+          { label: "Area", circleArea: "OR" },
+          { label: "Circumference", circumference: "OR" },
+        ],
+      },
+      [
+        "Drag the radius from 2 cm to 4 cm. What happens to the area?",
+        "It's 4 times as big",
+        "Double the radius and the area goes up 4 times, because the radius is squared: $2^2 = 4$.",
+        [
+          ["It doubles", "Look again: 12.6 cm² becomes 50.3 cm²."],
+          ["It goes up by 2 cm²", "Look again: it grows much faster than the radius."],
+        ],
+      ],
+      "The circumference doubles with the radius, but the area goes up 4 times.",
+      {
+        text: "Drag R to grow and shrink the circle. Watch the area and the circumference.",
+        expect: [
+          "Before you drag: if the radius doubles, the area will…",
+          "be 4 times as big",
+          "The radius is squared in the area.",
+          [
+            ["double", "Try it and see."],
+            ["stay the same", "Try it and see."],
+          ],
+        ],
+      },
+    ),
+  ],
   learning: [
     pair(
       "Square, then times by π",
       {
-        problem: "Radius 5 cm. Find the area, to 1 decimal place.",
+        problem: "Find the area, to 1 decimal place.",
         picture: measured("r", "5 cm"),
         lines: [
           ["$5^2 = 25$", "Square the radius."],
@@ -523,21 +681,17 @@ const circleArea = redraft(find(y8Area, "y8-area/circle-area"), {
         ],
       },
       ask(
-        "Radius 4 cm. Find the area, to 1 decimal place.",
+        "Find the area, to 1 decimal place.",
         "50.3",
-        "$4^2 = 16$, then times by π.",
-        "50.3 cm².",
-        {
-          unit: "cm²",
-          asks: "area",
-          picture: measured("r", "4 cm"),
-        },
+        "Square the radius, then times by π.",
+        "50.3 cm²: $\\pi \\times 16$.",
+        { unit: "cm²", asks: "area", picture: measured("r", "4 cm") },
       ),
       "Radius squared, times π.",
     ),
     fade(
       "Finish it",
-      "Diameter 10 cm. Find the area, to 1 decimal place.",
+      "Find the area, to 1 decimal place.",
       ["Radius = 10 ÷ 2 = 5 cm"],
       [
         [
@@ -560,75 +714,90 @@ const circleArea = redraft(find(y8Area, "y8-area/circle-area"), {
       "Same method, different look",
       "Find each area, to 1 decimal place. Watch what changes.",
       [
-        ask("Radius 3 cm.", "28.3", "$3^2 = 9$, times π.", "28.3 cm².", {
-          unit: "cm²",
-          asks: "area",
-          picture: measured("r", "3 cm"),
-        }),
-        ask("Radius 6 cm.", "113.1", "$6^2 = 36$, times π.", "113.1 cm²: four times 28.3 cm².", {
-          unit: "cm²",
-          asks: "area",
-          changed: "The radius doubled.",
-          expect: [
-            "The radius doubled. The area…",
-            "is 4 times as big",
-            "The radius is squared, and $2^2 = 4$.",
-            [
-              ["doubles", "The radius is squared, so doubling it makes the area 4 times as big."],
-              ["stays the same", "A bigger circle covers more."],
-            ],
-          ],
-          picture: measured("r", "6 cm"),
-        }),
         ask(
-          "Diameter 6 cm.",
+          "Find the area.",
           "28.3",
-          "Halve it: radius 3 cm.",
+          "Square the radius, times π.",
+          "28.3 cm²: $\\pi \\times 9$.",
+          {
+            unit: "cm²",
+            asks: "area",
+            picture: measured("r", "3 cm"),
+          },
+        ),
+        ask(
+          "Find the area.",
+          "113.1",
+          "Square the radius, times π.",
+          "113.1 cm²: four times 28.3 cm².",
+          {
+            unit: "cm²",
+            asks: "area",
+            changed: "The radius doubled.",
+            expect: [
+              "The radius doubled. The area…",
+              "is 4 times as big",
+              "The radius is squared, and $2^2 = 4$.",
+              [
+                ["doubles", "The radius is squared, so doubling it makes the area 4 times as big."],
+                ["stays the same", "A bigger circle covers more."],
+              ],
+            ],
+            picture: measured("r", "6 cm"),
+          },
+        ),
+        ask(
+          "Find the area.",
+          "28.3",
+          "Halve the diameter to get the radius.",
           "28.3 cm²: the first circle again.",
           {
             unit: "cm²",
             asks: "area",
             changed: "You're given the diameter, not the radius.",
             expect: [
-              "Diameter 6 cm is the same circle as radius…",
+              "So the radius is…",
               "3 cm",
               "The radius is half the diameter.",
-              [["6 cm", "The radius is half the diameter."]],
+              [["6 cm", "That's the diameter: halve it."]],
             ],
             picture: measured("d", "6 cm"),
           },
         ),
         ask(
-          "A semicircle with radius 3 cm.",
+          "Find the area of the semicircle.",
           "14.1",
-          "Half of $\\pi \\times 3^2$.",
+          "Find the whole circle's area, then halve it.",
           "14.1 cm²: half of 28.3 cm².",
           {
             unit: "cm²",
             asks: "area",
             changed: "Only half a circle.",
+            picture: semicircle("3 cm"),
           },
         ),
         ask(
-          "A pizza is 30 cm across. Find its area, to the nearest cm².",
+          "Find the pizza's area, to the nearest cm².",
           "707",
-          "30 cm across is the diameter: radius 15 cm.",
-          "707 cm².",
+          "The measurement right across is the diameter: halve it.",
+          "707 cm²: the radius is 15 cm.",
           {
             unit: "cm²",
             asks: "area",
-            changed: "A real one: “across” means the diameter.",
+            changed: "A real one: the pizza is measured right across.",
+            picture: measured("d", "30 cm"),
           },
         ),
         ask(
-          "Radius 7 cm. Give the area in terms of π.",
+          "Give the area in terms of π.",
           "$49\\pi$",
-          "Square 7, and leave π as it is.",
+          "Square the radius, and leave π as it is.",
           "$49\\pi$ cm²: exact, without rounding.",
           {
             asks: "area",
             changed: "Leave π in the answer.",
             others: ["$14\\pi$", "$7\\pi$"],
+            picture: measured("r", "7 cm"),
           },
         ),
       ],
@@ -638,50 +807,51 @@ const circleArea = redraft(find(y8Area, "y8-area/circle-area"), {
       "Where's the answer?",
       "Which part is missing?",
       [
-        ask("Radius 2 cm. Find the area, to 1 d.p.", "12.6", "$2^2 = 4$, times π.", "12.6 cm².", {
+        ask("Find the area, to 1 d.p.", "12.6", "Square the radius, times π.", "12.6 cm².", {
           unit: "cm²",
           asks: "area",
-          picture: circleRel("?", "$2^2$", 0),
+          picture: measured("r", "2 cm"),
         }),
         ask(
-          "The area is 50.3 cm². Find the radius.",
+          "Find the radius.",
           "4",
           "Divide by π to get $r^2$, then square root.",
           "4 cm: $50.3 \\div \\pi = 16$, and $\\sqrt{16} = 4$.",
           {
             unit: "cm",
             asks: "radius",
-            changed: "Now the radius is missing: work backwards.",
+            changed: "Now the area is given and the radius is missing: work backwards.",
             expect: [
               "To work backwards from the area, first…",
               "divide by π",
               "Undo each step in reverse: divide by π, then square root.",
               [["square root", "Undo the last step first: the times by π."]],
             ],
-            picture: circleRel("50.3", "?", 2),
+            picture: withArea("50.3 cm²", "r"),
           },
         ),
         ask(
-          "The area is 314.2 cm². Find the radius.",
+          "Find the radius.",
           "10",
-          "$314.2 \\div \\pi \\approx 100$.",
-          "10 cm.",
+          "Divide by π, then square root.",
+          "10 cm: $314.2 \\div \\pi \\approx 100$.",
           {
             unit: "cm",
             asks: "radius",
-            picture: circleRel("314.2", "?", 2),
+            changed: "A bigger area: the same steps.",
+            picture: withArea("314.2 cm²", "r"),
           },
         ),
         ask(
-          "The area is 28.3 cm². Find the diameter.",
+          "Find the diameter.",
           "6",
-          "Find the radius first: $28.3 \\div \\pi \\approx 9$, so r = 3.",
-          "6 cm: double the radius, 3 cm.",
+          "Find the radius first, then double it.",
+          "6 cm: $28.3 \\div \\pi \\approx 9$, so the radius is 3 cm.",
           {
             unit: "cm",
             asks: "diameter",
             changed: "Now the diameter is missing.",
-            picture: circleRel("28.3", "?", 2),
+            picture: withArea("28.3 cm²", "d"),
           },
         ),
       ],
@@ -689,78 +859,69 @@ const circleArea = redraft(find(y8Area, "y8-area/circle-area"), {
     ),
     typed(
       "Your turn",
-      "Diameter 12 cm. Find the area, to 1 decimal place.",
+      "Find the area, to 1 decimal place.",
       "113.1",
-      "Radius 6 cm.",
-      "113.1 cm².",
-      {
-        unit: "cm²",
-        picture: measured("d", "12 cm"),
-      },
+      "Halve the diameter first.",
+      "113.1 cm²: the radius is 6 cm.",
+      { unit: "cm²", picture: measured("d", "12 cm") },
     ),
-    typed(
-      "Your turn",
-      "The area is 78.5 cm². Find the radius.",
-      "5",
-      "Divide by π, then square root.",
-      "5 cm.",
-      {
-        unit: "cm",
-      },
-    ),
+    typed("Your turn", "Find the radius.", "5", "Divide by π, then square root.", "5 cm.", {
+      unit: "cm",
+      picture: withArea("78.5 cm²", "r"),
+    }),
   ],
   exit: quiz([
     [
       [
-        "Radius 10 cm. Area (1 d.p.)?",
+        "Find the area, to 1 d.p.",
         "314.2 cm²",
         ["62.8 cm²", "31.4 cm²"],
         "$\\pi \\times 100$.",
-        undefined,
+        measured("r", "10 cm"),
         "area",
       ],
       [
-        "Radius 1 cm. Area (1 d.p.)?",
+        "Find the area, to 1 d.p.",
         "3.1 cm²",
         ["6.3 cm²", "1 cm²"],
         "$\\pi \\times 1$.",
-        undefined,
+        measured("r", "1 cm"),
         "area",
       ],
     ],
     [
       [
-        "Area 12.6 cm². Radius?",
+        "Find the radius.",
         "2 cm",
         ["4 cm", "6.3 cm"],
         "$12.6 \\div \\pi \\approx 4$; $\\sqrt{4} = 2$.",
-        undefined,
+        withArea("12.6 cm²", "r"),
         "radius",
       ],
       [
-        "Area 113.1 cm². Radius?",
+        "Find the radius.",
         "6 cm",
         ["36 cm", "12 cm"],
         "$113.1 \\div \\pi \\approx 36$; $\\sqrt{36} = 6$.",
-        undefined,
+        withArea("113.1 cm²", "r"),
         "radius",
       ],
     ],
     [
       [
-        "Area 50.3 cm². Diameter?",
+        "Find the diameter.",
         "8 cm",
         ["4 cm", "16 cm"],
-        "Radius 4 cm, so diameter 8 cm.",
-        undefined,
+        "The radius is 4 cm, so the diameter is 8 cm.",
+        withArea("50.3 cm²", "d"),
         "diameter",
       ],
       [
-        "Area 78.5 cm². Diameter?",
+        "Find the diameter.",
         "10 cm",
         ["5 cm", "25 cm"],
-        "Radius 5 cm, so diameter 10 cm.",
-        undefined,
+        "The radius is 5 cm, so the diameter is 10 cm.",
+        withArea("78.5 cm²", "d"),
         "diameter",
       ],
     ],
@@ -770,18 +931,9 @@ const circleArea = redraft(find(y8Area, "y8-area/circle-area"), {
 // ---------------------------------------------------------------------------------------------
 // Year 9: the sine ratio.
 
-const sinRel = (s: string, o: string, h: string, asks?: number) =>
-  relation(
-    [
-      ["sin θ", s],
-      ["opposite", o],
-      ["hypotenuse", h],
-    ],
-    ["=", "÷"],
-    asks,
-  );
+const SINE = "y9-trigonometry/sine";
 
-const sine = redraft(find(y9Trigonometry, "y9-trigonometry/sine"), {
+const sine = redraft(find(y9Trigonometry, SINE), {
   method: [
     "Label the sides from θ: H across from the right angle, O across from θ, A next to θ.",
     "Sine uses O and H: $\\sin\\theta = \\frac{O}{H}$.",
@@ -796,11 +948,69 @@ const sine = redraft(find(y9Trigonometry, "y9-trigonometry/sine"), {
     surface: ["numbers", "turned triangle", "θ at the top", "bigger angle", "context"],
     nonExamples: ["the adjacent side doesn't go in the sine ratio"],
   },
+  wordsOnly: {
+    "Round 19.284 to 1 decimal place": "A number warm-up: rounding, which every answer here needs.",
+  },
+  swap: {
+    "Where did it go wrong?": reworded(y9Trigonometry, SINE, "Where did it go wrong?", {
+      text: "Ravi finds the side opposite the angle.",
+      picture: tri({ deg: 40, hyp: "8 cm", opp: "x", angle: "40°" }),
+    }),
+    "Back to the problem: How high is the kite?": reworded(
+      y9Trigonometry,
+      SINE,
+      "How high is the kite?",
+      { text: "How high is the kite, to 1 decimal place?" },
+      "Back to the problem",
+    ),
+  },
+  before: [
+    explore(
+      "Stretch the triangle",
+      {
+        kind: "geometry",
+        points: [
+          { name: "A", at: { x: 0, y: 0 } },
+          { name: "C", from: "A", deg: 35, dist: 4, drag: [2, 6.5] },
+          { name: "B", below: "C" },
+        ],
+        lines: ["AB", "BC", "CA"],
+        angles: [{ name: "BAC", label: "35°" }],
+        readouts: [
+          { label: "Opposite, BC", length: "BC" },
+          { label: "Hypotenuse, AC", length: "AC" },
+          { label: "BC ÷ AC", lengths: ["BC", "AC"] },
+        ],
+      },
+      [
+        "What did you notice?",
+        "BC ÷ AC stays the same, about 0.57",
+        "The angle stays 35°, so the triangle keeps its shape: opposite ÷ hypotenuse doesn't change. That number is sin 35°.",
+        [
+          ["BC ÷ AC grows as the triangle grows", "Look again: both sides grow together."],
+          ["BC stays the same", "BC grows as C moves out."],
+        ],
+      ],
+      "For a 35° angle, opposite ÷ hypotenuse is always about 0.57. That's sin 35°.",
+      {
+        text: "Drag C to make the triangle bigger or smaller. The angle at A stays 35°.",
+        expect: [
+          "Before you drag: as the triangle grows, BC ÷ AC will…",
+          "stay the same",
+          "Both sides grow in step, so their ratio doesn't change.",
+          [
+            ["get bigger", "Try it and see."],
+            ["get smaller", "Try it and see."],
+          ],
+        ],
+      },
+    ),
+  ],
   learning: [
     pair(
       "Hypotenuse times sine",
       {
-        problem: "Hypotenuse 10 cm, angle 30°. Find the opposite side.",
+        problem: "Find x.",
         picture: tri({ deg: 30, hyp: "10 cm", opp: "x", angle: "30°" }),
         lines: [
           ["$\\sin 30° = \\frac{x}{10}$", "Sine: opposite over hypotenuse."],
@@ -808,10 +1018,10 @@ const sine = redraft(find(y9Trigonometry, "y9-trigonometry/sine"), {
         ],
       },
       ask(
-        "Hypotenuse 14 cm, angle 30°. Find the opposite side.",
+        "Find x.",
         "7",
-        "$14 \\times \\sin 30°$.",
-        "7 cm.",
+        "Hypotenuse times the sine of the angle.",
+        "7 cm: $14 \\times \\sin 30°$.",
         {
           unit: "cm",
           asks: "opposite",
@@ -822,7 +1032,7 @@ const sine = redraft(find(y9Trigonometry, "y9-trigonometry/sine"), {
     ),
     fade(
       "Finish it",
-      "Hypotenuse 8 cm, angle 40°. Find the opposite side, to 1 decimal place.",
+      "Find x, to 1 decimal place.",
       ["$\\sin 40° = \\frac{x}{8}$"],
       [
         [
@@ -840,12 +1050,12 @@ const sine = redraft(find(y9Trigonometry, "y9-trigonometry/sine"), {
       "Same method, different look",
       "Find x each time, to 1 decimal place. Watch what changes.",
       [
-        ask("Hypotenuse 10 cm, angle 30°.", "5", "$10 \\times \\sin 30°$.", "5 cm.", {
+        ask("Find x.", "5", "Hypotenuse times the sine of the angle.", "5 cm.", {
           unit: "cm",
           asks: "opposite",
           picture: tri({ deg: 30, hyp: "10 cm", opp: "x", angle: "30°" }),
         }),
-        ask("Hypotenuse 20 cm, angle 30°.", "10", "$20 \\times \\sin 30°$.", "10 cm.", {
+        ask("Find x.", "10", "Hypotenuse times the sine of the angle.", "10 cm.", {
           unit: "cm",
           asks: "opposite",
           changed: "The hypotenuse doubled.",
@@ -860,51 +1070,51 @@ const sine = redraft(find(y9Trigonometry, "y9-trigonometry/sine"), {
           ],
           picture: tri({ deg: 30, hyp: "20 cm", opp: "x", angle: "30°" }),
         }),
+        ask("Find x.", "10", "Still hypotenuse times sine.", "10 cm: turning it changes nothing.", {
+          unit: "cm",
+          asks: "opposite",
+          changed: "The triangle is turned.",
+          picture: tri({ deg: 30, hyp: "20 cm", opp: "x", angle: "30°", turn: 100 }),
+        }),
         ask(
-          "Hypotenuse 20 cm, angle 30°.",
-          "10",
-          "Still $20 \\times \\sin 30°$.",
-          "10 cm: turning it changes nothing.",
+          "Find x.",
+          "15.3",
+          "Hypotenuse times the sine of the angle.",
+          "15.3 cm: $20 \\times \\sin 50°$.",
           {
             unit: "cm",
             asks: "opposite",
-            changed: "The triangle is turned.",
-            picture: tri({ deg: 30, hyp: "20 cm", opp: "x", angle: "30°", turn: 100 }),
+            changed: "A bigger angle.",
+            expect: [
+              "The angle grew. The opposite side…",
+              "gets longer",
+              "A steeper slope reaches higher for the same hypotenuse.",
+              [["gets shorter", "Steeper means higher."]],
+            ],
+            picture: tri({ deg: 50, hyp: "20 cm", opp: "x", angle: "50°" }),
           },
         ),
-        ask("Hypotenuse 20 cm, angle 50°.", "15.3", "$20 \\times \\sin 50°$.", "15.3 cm.", {
-          unit: "cm",
-          asks: "opposite",
-          changed: "A bigger angle: 50°.",
-          expect: [
-            "The angle grew. The opposite side…",
-            "gets longer",
-            "A steeper slope reaches higher for the same hypotenuse.",
-            [["gets shorter", "Steeper means higher."]],
-          ],
-          picture: tri({ deg: 50, hyp: "20 cm", opp: "x", angle: "50°" }),
-        }),
         ask(
-          "Hypotenuse 12 cm, angle 35° at the top.",
+          "Find x.",
           "6.9",
           "Label from θ: the opposite side is now along the bottom.",
           "6.9 cm: $12 \\times \\sin 35°$.",
           {
             unit: "cm",
             asks: "opposite",
-            changed: "θ is at the top corner: label again.",
+            changed: "The angle is at the top corner: label again.",
             picture: tri({ deg: 35, top: true, hyp: "12 cm", opp: "x", angle: "35°" }),
           },
         ),
         ask(
-          "A 5 m ladder leans at 70° to the ground. How high up the wall does it reach?",
+          "How high up the wall does the ladder reach?",
           "4.7",
-          "The ladder is the hypotenuse; the height is opposite 70°.",
+          "The ladder is the hypotenuse; the height is opposite the angle.",
           "4.7 m: $5 \\times \\sin 70°$.",
           {
             unit: "m",
             asks: "opposite",
-            changed: "A real one: draw the triangle in your head.",
+            changed: "A real one: a ladder against a wall.",
             picture: tri({ deg: 70, hyp: "5 m", opp: "x", angle: "70°" }),
           },
         ),
@@ -916,21 +1126,21 @@ const sine = redraft(find(y9Trigonometry, "y9-trigonometry/sine"), {
       "Which side is missing?",
       [
         ask(
-          "Hypotenuse 9 cm, angle 25°. Find the opposite side, to 1 d.p.",
+          "Find x, to 1 d.p.",
           "3.8",
-          "$9 \\times \\sin 25°$.",
-          "3.8 cm.",
+          "Hypotenuse times the sine of the angle.",
+          "3.8 cm: $9 \\times \\sin 25°$.",
           {
             unit: "cm",
             asks: "opposite",
-            picture: sinRel("$\\sin 25°$", "?", "9", 1),
+            picture: tri({ deg: 25, hyp: "9 cm", opp: "x", angle: "25°" }),
           },
         ),
         ask(
-          "Opposite 6 cm, angle 30°. Find the hypotenuse.",
+          "Find x.",
           "12",
-          "H is on the bottom: $6 \\div \\sin 30°$.",
-          "12 cm.",
+          "H is on the bottom of the fraction: divide by the sine.",
+          "12 cm: $6 \\div \\sin 30°$.",
           {
             unit: "cm",
             asks: "hypotenuse",
@@ -941,29 +1151,30 @@ const sine = redraft(find(y9Trigonometry, "y9-trigonometry/sine"), {
               "$H = O \\div \\sin\\theta$.",
               [["multiply by sin 30°", "Multiply when O is missing; divide when H is."]],
             ],
-            picture: sinRel("$\\sin 30°$", "6", "?", 2),
+            picture: tri({ deg: 30, opp: "6 cm", hyp: "x", angle: "30°" }),
           },
         ),
         ask(
-          "Opposite 5 cm, angle 40°. Find the hypotenuse, to 1 d.p.",
+          "Find x, to 1 d.p.",
           "7.8",
-          "$5 \\div \\sin 40°$.",
-          "7.8 cm.",
+          "Divide the opposite by the sine.",
+          "7.8 cm: $5 \\div \\sin 40°$.",
           {
             unit: "cm",
             asks: "hypotenuse",
-            picture: sinRel("$\\sin 40°$", "5", "?", 2),
+            changed: "The hypotenuse again, with the triangle turned.",
+            picture: tri({ deg: 40, opp: "5 cm", hyp: "x", angle: "40°", turn: 180 }),
           },
         ),
         ask(
-          "Opposite 7.5 cm, hypotenuse 15 cm. Find sin θ.",
+          "Find sin θ.",
           "0.5",
-          "$7.5 \\div 15$.",
-          "0.5. (The next lesson finds θ from it.)",
+          "Opposite divided by hypotenuse.",
+          "0.5: $7.5 \\div 15$. (The next lesson finds θ from it.)",
           {
             asks: "sin θ",
             changed: "Now both sides are known: the sine is missing.",
-            picture: sinRel("?", "7.5", "15", 0),
+            picture: tri({ deg: 30, opp: "7.5 cm", hyp: "15 cm" }),
           },
         ),
       ],
@@ -971,79 +1182,73 @@ const sine = redraft(find(y9Trigonometry, "y9-trigonometry/sine"), {
     ),
     typed(
       "Your turn",
-      "Hypotenuse 25 cm, angle 18°. Find the opposite side, to 1 d.p.",
+      "Find x, to 1 decimal place.",
       "7.7",
-      "$25 \\times \\sin 18°$.",
-      "7.7 cm.",
-      {
-        unit: "cm",
-        picture: tri({ deg: 18, hyp: "25 cm", opp: "x", angle: "18°", turn: 200 }),
-      },
+      "Hypotenuse times the sine of the angle.",
+      "7.7 cm: $25 \\times \\sin 18°$.",
+      { unit: "cm", picture: tri({ deg: 18, hyp: "25 cm", opp: "x", angle: "18°", turn: 200 }) },
     ),
     typed(
       "Your turn",
-      "Opposite 9 cm, angle 60°. Find the hypotenuse, to 1 d.p.",
+      "Find x, to 1 decimal place.",
       "10.4",
-      "$9 \\div \\sin 60°$.",
-      "10.4 cm.",
-      {
-        unit: "cm",
-        picture: tri({ deg: 60, hyp: "x", opp: "9 cm", angle: "60°" }),
-      },
+      "Divide the opposite by the sine.",
+      "10.4 cm: $9 \\div \\sin 60°$.",
+      { unit: "cm", picture: tri({ deg: 60, hyp: "x", opp: "9 cm", angle: "60°" }) },
     ),
   ],
   exit: quiz([
     [
       [
-        "Hypotenuse 10 cm, angle 30°. Opposite?",
+        "Find x.",
         "5 cm",
         ["20 cm", "8.7 cm"],
         "$10 \\times \\sin 30°$.",
-        undefined,
+        tri({ deg: 30, hyp: "10 cm", opp: "x", angle: "30°" }),
         "opposite",
       ],
       [
-        "Hypotenuse 16 cm, angle 30°. Opposite?",
+        "Find x.",
         "8 cm",
         ["32 cm", "13.9 cm"],
         "$16 \\times \\sin 30°$.",
-        undefined,
+        tri({ deg: 30, hyp: "16 cm", opp: "x", angle: "30°", turn: 150 }),
         "opposite",
       ],
     ],
     [
       [
-        "Opposite 4 cm, angle 30°. Hypotenuse?",
+        "Find x.",
         "8 cm",
         ["2 cm", "4.6 cm"],
         "$4 \\div \\sin 30°$.",
-        undefined,
+        tri({ deg: 30, opp: "4 cm", hyp: "x", angle: "30°" }),
         "hypotenuse",
       ],
       [
-        "Opposite 7 cm, angle 30°. Hypotenuse?",
+        "Find x.",
         "14 cm",
         ["3.5 cm", "8.1 cm"],
         "$7 \\div \\sin 30°$.",
-        undefined,
+        tri({ deg: 30, opp: "7 cm", hyp: "x", angle: "30°", flip: true }),
         "hypotenuse",
       ],
     ],
     [
       [
-        "Opposite 3 cm, hypotenuse 6 cm. sin θ?",
+        "Find sin θ.",
         "0.5",
         ["2", "3"],
         "$3 \\div 6$.",
-        undefined,
+        tri({ deg: 30, opp: "3 cm", hyp: "6 cm" }),
         "sin θ",
       ],
       [
-        "Opposite 9 cm, hypotenuse 12 cm. sin θ?",
+        "Find sin θ.",
         "0.75",
         ["1.33", "3"],
         "$9 \\div 12$.",
-        undefined,
+        tri({ deg: 48.6, opp: "9 cm", hyp: "12 cm", turn: 90 }),
         "sin θ",
       ],
     ],
@@ -1086,6 +1291,42 @@ const sharing = redraft(find(gfRatio1, "gf-ratio-1/part-part"), {
     surface: ["numbers", "three-part ratio", "units", "picture", "difference given"],
     nonExamples: ["the ratio's numbers are not the shares"],
   },
+  before: [
+    explore(
+      "Change the total",
+      {
+        kind: "ratio",
+        rows: [
+          { label: "A", parts: 3 },
+          { label: "B", parts: 5 },
+        ],
+        total: { min: 40, max: 200, step: 8, start: 120 },
+        unit: "£",
+      },
+      [
+        "What stayed the same?",
+        "A always has 3 parts and B 5 parts: 8 parts in all",
+        "The total changes the size of one part, not the number of parts.",
+        [
+          ["A's share stayed the same", "Look again: it grows with the total."],
+          ["One part is always £3", "One part is the total ÷ 8, so it changes."],
+        ],
+      ],
+      "Find one part: the total ÷ 8. Then 3 parts for A and 5 for B.",
+      {
+        text: "Drag the slider to change the total. Watch one part, and each share.",
+        expect: [
+          "Before you drag: if the total goes up, one part will…",
+          "get bigger",
+          "The same 8 parts share a bigger total.",
+          [
+            ["stay the same", "Try it and see."],
+            ["get smaller", "Try it and see."],
+          ],
+        ],
+      },
+    ),
+  ],
   learning: [
     pair(
       "Parts, one part, shares",

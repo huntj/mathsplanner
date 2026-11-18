@@ -2442,3 +2442,210 @@
   margin-bottom: 1.4rem;
   font-size: var(--step-1);
 }
+
+/* Tap the diagram: a wide, invisible touch target over each part, glowing once tapped. */
+.tap-picture svg {
+  touch-action: manipulation;
+}
+
+.tap-target {
+  cursor: pointer;
+  outline: none;
+}
+
+.tap-target .tap-hit {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 26;
+}
+
+.tap-target .tap-glow {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+
+.tap-target .tap-glow.wedge {
+  stroke: none;
+}
+
+.tap-target:hover .tap-glow,
+.tap-target:focus-visible .tap-glow {
+  stroke: color-mix(in srgb, var(--biro) 30%, transparent);
+}
+
+.tap-target:hover .tap-glow.wedge,
+.tap-target:focus-visible .tap-glow.wedge {
+  fill: color-mix(in srgb, var(--biro) 20%, transparent);
+}
+
+.tap-target.chosen .tap-glow {
+  stroke: color-mix(in srgb, var(--biro) 55%, transparent);
+}
+
+.tap-target.chosen .tap-glow.wedge {
+  fill: color-mix(in srgb, var(--biro) 40%, transparent);
+}
+
+.tap-target.wrong .tap-glow {
+  stroke: color-mix(in srgb, var(--wrong) 55%, transparent);
+}
+
+.tap-target.wrong .tap-glow.wedge {
+  fill: color-mix(in srgb, var(--wrong) 35%, transparent);
+}
+
+.tap-target:focus-visible .tap-hit {
+  stroke: var(--biro);
+  stroke-width: 2;
+  stroke-dasharray: 4 3;
+}
+
+/* Explore: a diagram to drag, and its live numbers. */
+.explore-stage {
+  display: grid;
+  justify-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 0.4rem 0.8rem;
+  border: 2px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.explore-svg {
+  max-width: 100%;
+  height: auto;
+  touch-action: none;
+  user-select: none;
+}
+
+/* Labels on an Explore diagram read like those on any other picture, in both themes. */
+.explore-svg text {
+  font-family: var(--display);
+  font-weight: 600;
+  fill: var(--ink);
+}
+
+.explore-svg.locked {
+  opacity: 0.75;
+}
+
+.explore-handle {
+  cursor: grab;
+  outline: none;
+}
+
+.explore-handle.dragging {
+  cursor: grabbing;
+}
+
+.explore-handle-hit {
+  fill: transparent;
+}
+
+.explore-handle-dot {
+  fill: var(--biro);
+  stroke: var(--surface);
+  stroke-width: 3;
+}
+
+.explore-handle:focus-visible .explore-handle-hit,
+.explore-handle.dragging .explore-handle-hit {
+  fill: color-mix(in srgb, var(--biro) 22%, transparent);
+}
+
+.explore-svg.locked .explore-handle {
+  cursor: default;
+}
+
+.explore-readouts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.4rem 1rem;
+  width: 100%;
+  margin: 0;
+  padding: 0 0.4rem;
+}
+
+.explore-readouts div {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--biro) 8%, var(--surface));
+}
+
+.explore-readouts dt {
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+}
+
+.explore-readouts dd {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.explore-range {
+  width: min(100%, 20rem);
+  accent-color: var(--biro);
+}
+
+.explore-hundred {
+  display: grid;
+  justify-items: center;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.explore-grid {
+  width: min(70vw, 13rem);
+}
+
+.explore-grid rect {
+  fill: var(--surface);
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.explore-grid rect.shaded {
+  fill: color-mix(in srgb, var(--dot) 70%, var(--surface));
+}
+
+.explore-ratio {
+  display: grid;
+  gap: 0.5rem;
+  width: 100%;
+  justify-items: center;
+}
+
+.explore-ratio-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.explore-ratio-label {
+  min-width: 1.5rem;
+  font-weight: 700;
+}
+
+.explore-ratio-boxes {
+  display: flex;
+}
+
+.explore-ratio-box {
+  display: grid;
+  place-items: center;
+  min-width: 2.2rem;
+  height: 2.4rem;
+  padding: 0 0.15rem;
+  border: 2px solid var(--line);
+  margin-left: -2px;
+  background: color-mix(in srgb, var(--dot) 18%, var(--surface));
+  font-size: var(--step--1);
+  font-variant-numeric: tabular-nums;
+}
