@@ -10,7 +10,16 @@ import {
   type PointerEvent,
   type ReactNode,
 } from "react";
-import { angleMark, layoutShape, sideLabel, type Pt } from "./labels.ts";
+import {
+  angleMark,
+  circleSegments,
+  clearAngleMark,
+  layoutShape,
+  sideLabel,
+  textSize,
+  type Obstacles,
+  type Pt,
+} from "./labels.ts";
 import { latticeOn, LineGraph, type GraphLine, type GraphPoint } from "./LineGraph.tsx";
 import {
   onLine,
@@ -1159,11 +1168,45 @@ function Drawing({ pic, tapping }: { pic: DrawingPic; tapping?: Tapping | undefi
   const maxX = Math.max(...pts.map((p) => p.x));
   const minY = Math.min(...pts.map((p) => p.y));
   const maxY = Math.max(...pts.map((p) => p.y));
-  const k = Math.min(260 / (maxX - minX || 1), 200 / (maxY - minY || 1));
+  // A busy drawing, such as a circle theorem's, is drawn larger, so its angles have room.
+  const k = pic.big
+    ? Math.min(300 / (maxX - minX || 1), 240 / (maxY - minY || 1))
+    : Math.min(260 / (maxX - minX || 1), 200 / (maxY - minY || 1));
   const pad = 22;
   const sx = (x: number) => pad + (x - minX) * k;
   const sy = (y: number) => pad + (maxY - y) * k;
-  // Angles are marked on screen, and the drawing grows to fit their labels.
+  const sides = pic.items.map((it) => {
+    if (!("side" in it)) return null;
+    const [a, b] = it.side.map((p) => ({ x: sx(p.x), y: sy(p.y) }));
+    const inner = { x: sx(it.inside.x), y: sy(it.inside.y) };
+    return a && b ? sideLabel(a, b, [a, b, inner], it.label) : null;
+  });
+  // Angles are marked on screen, each label clear of the drawing's lines and other labels, and
+  // the drawing grows to fit them.
+  const obstacles: Obstacles = { segments: [], boxes: [] };
+  for (const it of pic.items) {
+    if ("line" in it) {
+      const [a, b] = it.line;
+      obstacles.segments.push([
+        { x: sx(a.x), y: sy(a.y) },
+        { x: sx(b.x), y: sy(b.y) },
+      ]);
+    } else if ("arc" in it && it.ry === undefined && it.to - it.from >= 180) {
+      // A circle, or half of one: near enough, for keeping labels off its edge.
+      obstacles.segments.push(
+        ...circleSegments({ x: sx(it.arc.x), y: sy(it.arc.y) }, it.r * k).filter(([p]) => {
+          const deg = (Math.atan2(sy(it.arc.y) - p.y, p.x - sx(it.arc.x)) * 180) / Math.PI;
+          const d = (((deg - it.from) % 360) + 360) % 360;
+          return d <= it.to - it.from;
+        }),
+      );
+    } else if ("dot" in it) {
+      obstacles.boxes.push({ x: sx(it.dot.x), y: sy(it.dot.y), hw: 4, hh: 4 });
+    } else if ("text" in it) {
+      obstacles.boxes.push({ x: sx(it.at.x), y: sy(it.at.y), ...textSize(it.text) });
+    }
+  }
+  for (const box of sides) if (box) obstacles.boxes.push(box);
   const marks = pic.items.map((it) => {
     if (!("angle" in it)) return null;
     const p = { x: sx(it.angle.x), y: sy(it.angle.y) };
@@ -1171,16 +1214,12 @@ function Drawing({ pic, tapping }: { pic: DrawingPic; tapping?: Tapping | undefi
       x: p.x + 50 * Math.cos(rad(deg)),
       y: p.y - 50 * Math.sin(rad(deg)),
     });
-    return angleMark(p, arm(it.from), arm(it.to), it.label);
+    return it.label
+      ? clearAngleMark(p, arm(it.from), arm(it.to), it.label, obstacles)
+      : angleMark(p, arm(it.from), arm(it.to), it.label);
   });
   const w0 = (maxX - minX) * k + 2 * pad;
   const h0 = (maxY - minY) * k + 2 * pad;
-  const sides = pic.items.map((it) => {
-    if (!("side" in it)) return null;
-    const [a, b] = it.side.map((p) => ({ x: sx(p.x), y: sy(p.y) }));
-    const inner = { x: sx(it.inside.x), y: sy(it.inside.y) };
-    return a && b ? sideLabel(a, b, [a, b, inner], it.label) : null;
-  });
   const labels = [
     ...marks.flatMap((m) => (m ? [m.label] : [])),
     ...sides.flatMap((b) => (b ? [b] : [])),

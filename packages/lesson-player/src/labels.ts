@@ -64,7 +64,7 @@ export function angleMark(
   a: Pt,
   b: Pt,
   text: string,
-  opts: { poly?: Pt[]; square?: boolean; size?: number } = {},
+  opts: { poly?: Pt[]; square?: boolean; size?: number; extra?: number } = {},
 ): AngleMark {
   const u = unit({ x: a.x - p.x, y: a.y - p.y });
   const v = unit({ x: b.x - p.x, y: b.y - p.y });
@@ -88,7 +88,9 @@ export function angleMark(
     r + 5 + reach(bis, hw, hh),
     angle < Math.PI ? Math.max(clear(u), clear(v)) : 0,
   );
-  const label = { x: p.x + bis.x * d, y: p.y + bis.y * d, hw, hh };
+  // Pushed further out, past whatever is in its way, the label leaves its arc where it was.
+  const far = d + (opts.extra ?? 0);
+  const label = { x: p.x + bis.x * far, y: p.y + bis.y * far, hw, hh };
   if (opts.square) return { label };
   // On a thin angle the label sits far out, so the arc reaches out to meet it.
   const arcR = Math.max(r, d - reach(bis, hw, hh) - 6);
@@ -197,4 +199,56 @@ export function layoutShape(pic: ShapeLike, sideMarks?: (string | undefined)[]) 
     return { box, name };
   });
   return { scr, sideLabels, angleMarks, names, boxes, sx, sy };
+}
+
+/** What an angle's label must keep clear of: the drawing's lines, and labels already placed. */
+export interface Obstacles {
+  segments: [Pt, Pt][];
+  boxes: Box[];
+}
+
+/**
+ * An angle's mark with its label pushed out along the bisector, a step at a time, until it is
+ * clear of every line and every label already placed: where chords cross near a corner, the
+ * number moves into the space beyond them. If nothing is clear within reach, the least crowded
+ * place wins. The label is then added to the obstacles, so the next one keeps clear of it.
+ */
+export function clearAngleMark(
+  p: Pt,
+  a: Pt,
+  b: Pt,
+  text: string,
+  obstacles: Obstacles,
+  opts: { poly?: Pt[]; square?: boolean; size?: number } = {},
+): AngleMark {
+  const hits = (box: Box) => {
+    const padded = { ...box, hw: box.hw + 2, hh: box.hh + 2 };
+    return (
+      obstacles.segments.filter(([s, t]) => crosses(padded, s, t)).length +
+      obstacles.boxes.filter((o) => overlap(padded, o)).length
+    );
+  };
+  let best: AngleMark | undefined;
+  let fewest = Infinity;
+  for (let extra = 0; extra <= 36; extra += 4) {
+    const mark = angleMark(p, a, b, text, { ...opts, extra });
+    const n = hits(mark.label);
+    if (n < fewest) {
+      best = mark;
+      fewest = n;
+    }
+    if (n === 0) break;
+  }
+  const chosen = best ?? angleMark(p, a, b, text, opts);
+  obstacles.boxes.push(chosen.label);
+  return chosen;
+}
+
+/** A circle as short straight pieces, for keeping labels off its edge. */
+export function circleSegments(c: Pt, r: number, steps = 48): [Pt, Pt][] {
+  const at = (i: number) => {
+    const t = (i / steps) * 2 * Math.PI;
+    return { x: c.x + r * Math.cos(t), y: c.y + r * Math.sin(t) };
+  };
+  return Array.from({ length: steps }, (_, i): [Pt, Pt] => [at(i), at(i + 1)]);
 }

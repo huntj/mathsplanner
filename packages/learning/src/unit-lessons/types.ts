@@ -261,6 +261,8 @@ export interface BarChartPic {
 /** A free drawing in the picture's units: lines, arcs as from a compass, dots and labels. */
 export interface DrawingPic {
   kind: "drawing";
+  /** Drawn larger: a busy diagram, such as a circle theorem's, whose angles need the room. */
+  big?: true;
   /** At least this much of the plane is shown, so steps that add to a drawing keep its scale. */
   frame?: Range;
   items: (
