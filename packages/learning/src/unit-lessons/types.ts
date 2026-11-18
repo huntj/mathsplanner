@@ -671,6 +671,8 @@ export type ExplorePoint = { name: string; label?: false } & (
   | { free: Point; drag: Range; step?: number }
   /** Straight below another point, on the x-axis. */
   | { below: string }
+  /** Where a tangent from an outside point touches the circle, on one side or the other. */
+  | { tangentFrom: string; side: 1 | -1 }
 );
 
 /** A live value under an Explore scene. */
@@ -689,6 +691,10 @@ export interface GeometryScene {
   kind: "geometry";
   /** A circle about O of this radius, if any. */
   circle?: number;
+  /** Draw the circle about O through this point instead, so it grows as the point is dragged. */
+  circleThrough?: string;
+  /** Use the circle for placing points, but don't draw it. */
+  hideCircle?: true;
   points: ExplorePoint[];
   lines: string[];
   dashed?: string[];

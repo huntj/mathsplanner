@@ -26,6 +26,8 @@ export interface CircleSpec {
   /** For a Tap screen: every line and marked angle can be tapped, by its name ("OA", "ACB").
    * Angles with an empty label are then drawn too, as unlabelled choices. */
   tap?: boolean;
+  /** Labels beside lines, such as a radius of 5 cm: the line ("OA") and its label. */
+  sides?: [string, string][];
 }
 
 /** Where a named point is. */
@@ -119,6 +121,7 @@ export function circlePic(spec: CircleSpec): DrawingPic {
     const dir = P(-Math.sin(rad(d)), Math.cos(rad(d)));
     items.push({
       line: [P(at.x - len * dir.x, at.y - len * dir.y), P(at.x + len * dir.x, at.y + len * dir.y)],
+      ...(spec.tap && a && b ? { tap: `${a}${b}` } : {}),
     });
     for (const n of [a, b])
       if (n && pts[n]) items.push({ text: n, at: nameAt(n, pts[n] as Point, r, spec, pts) });
@@ -130,6 +133,13 @@ export function circlePic(spec: CircleSpec): DrawingPic {
     if (!a || !v || !b) throw new Error(`No angle ${abc}`);
     items.push({ angle: v, ...angleBetween(v, a, b), label, ...(spec.tap ? { tap: abc } : {}) });
   }
+  // Side labels sit outside each line, away from the middle of the drawing.
+  const all = Object.values(pts);
+  const mid = P(
+    all.reduce((t, p) => t + p.x, 0) / all.length,
+    all.reduce((t, p) => t + p.y, 0) / all.length,
+  );
+  for (const [l, label] of spec.sides ?? []) items.push({ side: seg(l), label, inside: mid });
   const tangentEnds = new Set((spec.tangents ?? []).flatMap((t) => t.ends ?? []));
   for (const [name, at] of Object.entries(pts))
     if ((name !== "O" || spec.centre) && !tangentEnds.has(name))

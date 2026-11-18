@@ -503,8 +503,11 @@ describe.each(ALL_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %s
               expect(one.answers.length).toBeGreaterThan(0);
               if (one.options) expect(one.options, one.prompt).toContain(one.answers[0]);
             }
-          // A second go has new numbers: a different question.
-          for (const q of screen.questions) expect(q.retry.prompt).not.toBe(q.prompt);
+          // A second go has new numbers: a different question, or the same words on a new diagram.
+          for (const q of screen.questions)
+            expect(JSON.stringify([q.retry.prompt, q.retry.picture])).not.toBe(
+              JSON.stringify([q.prompt, q.picture]),
+            );
           break;
         case "label": {
           checkPicture(screen.shape);

@@ -1,12 +1,15 @@
-// GCSE Higher, circle theorems (GH-G10), redrafted with variation: six lessons in place of one,
-// each with one theorem and its method. Every lesson shows its example beside a question like it,
-// fades a second example, then changes one thing at a time (the numbers, the way the diagram is
-// turned, where the point sits, algebra, a non-example) and moves the unknown around the
-// relationship. Diagrams are drawn from the numbers, so what a pupil sees is accurate.
+// GCSE Higher, circle theorems (GH-G10), redrafted with variation and diagrams first: six lessons
+// in place of one, each with one theorem and its method. Every question is asked on a diagram,
+// with the given angles marked on it and only what to find in words, as in an exam. Each lesson
+// opens with an Explore (drag a point and watch the angles), shows its example beside a question
+// like it, fades a second example, then changes one thing at a time (the numbers, the way the
+// diagram is turned, where the point sits, algebra, a non-example), has a Tap question, and moves
+// the "?" round the diagram. Diagrams are drawn from the numbers, so what a pupil sees is accurate.
 import {
   ask,
   choose,
   explain,
+  explore,
   fade,
   lesson,
   methodCard,
@@ -15,21 +18,20 @@ import {
   problem,
   questionSet,
   quiz,
+  tap,
   typed,
 } from "./build.ts";
-import { circlePic } from "./circle-pictures.ts";
-import type { DrawingPic, Point, RelationPic, UnitLesson, Variation } from "./types.ts";
+import { circlePic, type CircleSpec } from "./circle-pictures.ts";
+import type { DrawingPic, Point, ShapePic, UnitLesson, Variation } from "./types.ts";
+import { fan } from "./y7-angles.ts";
 
 const U = "gh-circles";
 const SKILL = "GH-G10";
 const P = (x: number, y: number): Point => ({ x, y });
+const rad = (d: number) => (d * Math.PI) / 180;
 
-const relation = (cells: [string, string][], joins: string[], asks?: number): RelationPic => ({
-  kind: "relation",
-  cells: cells.map(([label, value]) => ({ label, value })),
-  joins,
-  ...(asks === undefined ? {} : { asks }),
-});
+/** Extra spec for a diagram: tappable parts, side labels and so on. */
+type More = Partial<Pick<CircleSpec, "tap" | "sides">>;
 
 // The angle at the centre: arc AB faces `turn`; C sits at `c` (on the minor arc, the angle at C
 // stands on the reflex angle).
@@ -99,6 +101,7 @@ function cyclic(
   b: number,
   labels: { A?: string; B?: string; C?: string; D?: string },
   turn = 300,
+  more: More = {},
 ): DrawingPic {
   const q = Math.min(a, b);
   const p = 2 * a - q;
@@ -108,11 +111,11 @@ function cyclic(
   const D = C + q;
   const A = D + s;
   const angles: [string, string][] = [];
-  if (labels.A) angles.push(["DAB", labels.A]);
-  if (labels.B) angles.push(["ABC", labels.B]);
-  if (labels.C) angles.push(["BCD", labels.C]);
-  if (labels.D) angles.push(["CDA", labels.D]);
-  return circlePic({ on: { A, B, C, D }, lines: ["AB", "BC", "CD", "DA"], angles });
+  if (labels.A !== undefined) angles.push(["DAB", labels.A]);
+  if (labels.B !== undefined) angles.push(["ABC", labels.B]);
+  if (labels.C !== undefined) angles.push(["BCD", labels.C]);
+  if (labels.D !== undefined) angles.push(["CDA", labels.D]);
+  return circlePic({ on: { A, B, C, D }, lines: ["AB", "BC", "CD", "DA"], angles, ...more });
 }
 
 // Two tangents from P touch the circle at A and B; angle APB is `p`.
@@ -120,44 +123,67 @@ function kite(
   p: number,
   labels: { P?: string; O?: string; A?: string; B?: string },
   turn = 0,
+  more: More = {},
 ): DrawingPic {
   const r = 2.4;
   const half = (180 - p) / 2;
-  const d = r / Math.cos((half * Math.PI) / 180);
+  const d = r / Math.cos(rad(half));
   const angles: [string, string][] = [];
-  if (labels.P) angles.push(["APB", labels.P]);
-  if (labels.O) angles.push(["AOB", labels.O]);
-  if (labels.A) angles.push(["OAP", labels.A]);
-  if (labels.B) angles.push(["PBO", labels.B]);
+  if (labels.P !== undefined) angles.push(["APB", labels.P]);
+  if (labels.O !== undefined) angles.push(["AOB", labels.O]);
+  if (labels.A !== undefined) angles.push(["OAP", labels.A]);
+  if (labels.B !== undefined) angles.push(["PBO", labels.B]);
+  const lengths = (more.sides ?? []).some(([l]) => l === "OP");
   return circlePic({
     r,
     centre: true,
     on: { A: turn + half, B: turn - half },
-    off: { P: P(d * Math.cos((turn * Math.PI) / 180), d * Math.sin((turn * Math.PI) / 180)) },
+    off: { P: P(d * Math.cos(rad(turn)), d * Math.sin(rad(turn))) },
     lines: ["OA", "OB", "PA", "PB"],
+    ...(lengths ? { dashed: ["OP"] } : {}),
     angles,
+    ...more,
   });
 }
 
 // The alternate segment: the tangent at T (at the bottom) and chord TA make angle x on the right;
-// B is on the far arc, so angle TBA is x too.
+// B is on the far arc, so angle TBA is x too. Angle BAT is (270 − b) ÷ 2.
 function alternate(
   x: number,
   labels: { tangent?: string; B?: string; A?: string; T?: string },
   b = 150,
+  more: More = {},
 ): DrawingPic {
   const angles: [string, string][] = [];
-  if (labels.tangent) angles.push(["STA", labels.tangent]);
-  if (labels.B) angles.push(["TBA", labels.B]);
-  if (labels.A) angles.push(["BAT", labels.A]);
-  if (labels.T) angles.push(["ATB", labels.T]);
+  if (labels.tangent !== undefined) angles.push(["STA", labels.tangent]);
+  if (labels.B !== undefined) angles.push(["TBA", labels.B]);
+  if (labels.A !== undefined) angles.push(["BAT", labels.A]);
+  if (labels.T !== undefined) angles.push(["ATB", labels.T]);
   return circlePic({
     on: { T: 270, A: 270 + 2 * x, B: b },
     lines: ["TA", "TB", "AB"],
     tangents: [{ at: "T", ends: ["R", "S"], len: 3 }],
     angles,
+    ...more,
   });
 }
+
+/** A right-angled triangle for a warm-up: angles at its corners. */
+const rightTriangle = (labels: [string | null, string | null, string | null]): ShapePic => ({
+  kind: "shape",
+  points: [P(0, 0), P(6, 0), P(0, 4)],
+  angles: labels,
+  square: [0],
+});
+
+/** A tangent at T and one chord TA, with A at `a` degrees round the circle. */
+const tangentChord = (a: number, angles: [string, string][]): DrawingPic =>
+  circlePic({
+    on: { T: 270, A: a },
+    lines: ["TA"],
+    tangents: [{ at: "T", ends: ["R", "S"], len: 3 }],
+    angles,
+  });
 
 // ---------------------------------------------------------------------------------------------
 // 1. The angle at the centre.
@@ -168,16 +194,6 @@ const centreMap: Variation = {
   surface: ["numbers", "turned diagram", "where C sits", "reflex angle", "algebra"],
   nonExamples: ["two angles that stand on different arcs"],
 };
-const centreRel = (atCentre: string, atC: string, asks: number) =>
-  relation(
-    [
-      ["angle at the centre", atCentre],
-      ["angle at the circumference", atC],
-    ],
-    ["$= 2 \\times$"],
-    asks,
-  );
-
 const centreMethod = [
   "Find the arc: both angles' arms end at the same two points, A and B.",
   "Check one angle is at the centre O and the other is on the circumference.",
@@ -195,24 +211,81 @@ const angleAtCentre = lesson(
     problem(
       "Find angle ACB",
       [
-        "“O is the centre of the circle. Angle AOB = 130°. Find angle ACB. Give a reason.”",
+        "“O is the centre of the circle. Find angle ACB. Give a reason.”",
         "Circle theorems are rules about the angles in a circle. This lesson is the first, and the others are built on it.",
       ],
       centre(130, ["130°", "?"]),
     ),
-    typed("Warm-up", "Angles at a point add up to", "360", "All the way round.", "360°.", {
-      unit: "°",
-    }),
-    choose(
+    tap(
       "Warm-up",
-      "O is the centre. Which two lines must be the same length?",
-      "OA and OC",
-      "Both are radii.",
+      "Tap both radii.",
+      circlePic({
+        centre: true,
+        on: { A: 205, B: 335, C: 90 },
+        lines: ["OA", "OB", "CA", "CB"],
+        tap: true,
+      }),
+      ["OA", "OB"],
+      "A radius joins the centre O to the circle.",
+      "OA and OB: both go from the centre to the circle, so they're equal.",
+      {
+        wrong: {
+          CA: "CA joins two points on the circle: it's a chord.",
+          CB: "CB joins two points on the circle: it's a chord.",
+        },
+      },
+    ),
+    typed(
+      "Warm-up",
+      "Find the angle marked ?.",
+      "120",
+      "Angles at a point add up to 360°.",
+      "120°.",
+      {
+        unit: "°",
+        picture: fan([0, 130, 240], ["130°", "110°", "?"], "?"),
+      },
+    ),
+    explore(
+      "Move C round the circle",
+      {
+        kind: "geometry",
+        circle: 3,
+        points: [
+          { name: "A", onCircle: 225 },
+          { name: "B", onCircle: 315 },
+          { name: "C", onCircle: 90, drag: [330, 210] },
+        ],
+        lines: ["OA", "OB", "CA", "CB"],
+        angles: [{ name: "AOB" }, { name: "ACB" }],
+        readouts: [
+          { label: "Angle AOB", angle: "AOB" },
+          { label: "Angle ACB", angle: "ACB" },
+          { label: "ACB ÷ AOB", ratio: ["ACB", "AOB"] },
+        ],
+      },
       [
-        ["OA and AC", "AC is a chord, not a radius."],
-        ["AC and BC", "Chords can be any length."],
+        "What did you notice?",
+        "Angle ACB is always half of angle AOB",
+        "The angle at the centre is twice the angle at the circumference.",
+        [
+          ["Angle ACB changes as C moves", "Look again: it stays at 45°."],
+          ["Angle ACB equals angle AOB", "It's half: 45° against 90°."],
+        ],
       ],
-      { picture: centre(100, ["", ""]) },
+      "Wherever C is on the big arc, angle ACB is half of angle AOB.",
+      {
+        text: "Drag C round the circle. Watch the angles at O and at C.",
+        expect: [
+          "Before you drag: as C moves round the circle, angle ACB will…",
+          "stay the same",
+          "It's always half of angle AOB, wherever C is on the big arc.",
+          [
+            ["get bigger near A", "Try it and see."],
+            ["get smaller near A", "Try it and see."],
+          ],
+        ],
+      },
     ),
     explain(
       "Discover",
@@ -223,22 +296,11 @@ const angleAtCentre = lesson(
       ],
       centre(100, ["2x", "x"]),
     ),
-    choose(
-      "Discover",
-      "Angle AOB = 90°. Angle ACB is",
-      "45°",
-      "Half the angle at the centre.",
-      [
-        ["90°", "The angle at the centre is the bigger one."],
-        ["180°", "Double goes the other way: centre = 2 × circumference."],
-      ],
-      { picture: centre(90, ["90°", "?"]) },
-    ),
     methodCard("The method", centreMethod, centre(100, ["2x", "x"])),
     pair(
       "Halve the angle at the centre",
       {
-        problem: "Angle AOB = 80°. Find angle ACB.",
+        problem: "Find angle ACB.",
         picture: centre(80, ["80°", "?"]),
         lines: [
           ["Both angles stand on arc AB.", "Their arms end at A and B."],
@@ -248,22 +310,16 @@ const angleAtCentre = lesson(
           ],
         ],
       },
-      ask(
-        "Angle AOB = 120°. Find angle ACB.",
-        "60",
-        "Halve the angle at the centre.",
-        "60°: half of 120°.",
-        {
-          unit: "°",
-          asks: "circumference",
-          picture: centre(120, ["120°", "?"]),
-        },
-      ),
+      ask("Find angle ACB.", "60", "Halve the angle at the centre.", "60°: half of 120°.", {
+        unit: "°",
+        asks: "circumference",
+        picture: centre(120, ["120°", "?"]),
+      }),
       "Same arc, so halve.",
     ),
     fade(
       "Now double it",
-      "Angle ACB = 35°. Find angle AOB, with a reason.",
+      "Find angle AOB. Give a reason.",
       ["Both angles stand on arc AB."],
       [
         [
@@ -289,12 +345,12 @@ const angleAtCentre = lesson(
       "Same method, different look",
       "Find angle ACB each time. Watch what changes.",
       [
-        ask("Angle AOB = 100°. Find angle ACB.", "50", "Halve 100°.", "50°.", {
+        ask("Find angle ACB.", "50", "Halve the angle at O.", "50°.", {
           unit: "°",
           asks: "circumference",
           picture: centre(100, ["100°", "?"]),
         }),
-        ask("Angle AOB = 140°. Find angle ACB.", "70", "Halve 140°.", "70°.", {
+        ask("Find angle ACB.", "70", "Halve the angle at O.", "70°.", {
           unit: "°",
           asks: "circumference",
           changed: "The angle at the centre went up by 40°.",
@@ -310,9 +366,9 @@ const angleAtCentre = lesson(
           picture: centre(140, ["140°", "?"]),
         }),
         ask(
-          "Angle AOB = 140°. Find angle ACB.",
+          "Find angle ACB.",
           "70",
-          "It's still half of 140°.",
+          "It's still half the angle at O.",
           "Still 70°: turning a diagram changes none of its angles.",
           {
             unit: "°",
@@ -322,9 +378,9 @@ const angleAtCentre = lesson(
           },
         ),
         ask(
-          "Angle AOB = 140°, and C has moved along the big arc. Find angle ACB.",
+          "Find angle ACB.",
           "70",
-          "C is still on the major arc: halve 140°.",
+          "C is still on the major arc: halve the angle at O.",
           "70°: every point on the major arc sees AB at the same angle.",
           {
             unit: "°",
@@ -334,9 +390,9 @@ const angleAtCentre = lesson(
           },
         ),
         ask(
-          "Angle AOB = 100°, but C is on the small arc. Find angle ACB.",
+          "Find angle ACB.",
           "130",
-          "C faces the reflex angle at O: 360° − 100° = 260°. Halve that.",
+          "C faces the reflex angle at O: 360° take away the angle at O. Then halve.",
           "130°: half of the reflex angle, 260°.",
           {
             unit: "°",
@@ -348,7 +404,7 @@ const angleAtCentre = lesson(
               "Now it stands on the reflex angle at O, the big one: 360° − 100° = 260°.",
               [
                 [
-                  "still half of 100°",
+                  "still half the angle marked at O",
                   "C now looks at AB from the other side: use the reflex angle.",
                 ],
               ],
@@ -357,9 +413,9 @@ const angleAtCentre = lesson(
           },
         ),
         ask(
-          "AB is a diameter, so angle AOB = 180°. Find angle ACB.",
+          "AB is a diameter. Find angle ACB.",
           "90",
-          "Halve 180°.",
+          "A, O and B make a straight line: 180° at O. Halve it.",
           "90°: the next lesson's theorem, the angle in a semicircle.",
           {
             unit: "°",
@@ -371,64 +427,76 @@ const angleAtCentre = lesson(
       ],
       "Turned, moved or on the other side: it's the same theorem. Check which arc first.",
     ),
+    tap(
+      "Spot it",
+      "Which angle stands on the same arc as angle AOB? Tap it.",
+      circlePic({
+        centre: true,
+        on: { A: 230, B: 310, C: 95, D: 160, E: 25 },
+        lines: ["OA", "OB", "CA", "CB", "DA", "DE"],
+        angles: [
+          ["AOB", "2x"],
+          ["ACB", ""],
+          ["ADE", ""],
+        ],
+        tap: true,
+      }),
+      "ACB",
+      "Look for the angle whose arms end at A and B.",
+      "Angle ACB: its arms end at A and B, so it stands on arc AB and is half of angle AOB.",
+      {
+        wrong: {
+          ADE: "Its arms end at A and E: it stands on arc AE, not AB.",
+          AOB: "That's the angle at the centre itself.",
+        },
+      },
+    ),
     questionSet(
       "Where's the answer?",
       "Which part is missing?",
       [
-        ask("Angle AOB = 110°. Find angle ACB.", "55", "Halve it.", "55°.", {
+        ask("Find angle ACB.", "55", "Halve it.", "55°.", {
           unit: "°",
           asks: "circumference",
-          picture: centreRel("110°", "?", 1),
+          picture: centre(110, ["110°", "?"]),
         }),
-        ask(
-          "Angle ACB = 35°. Find angle AOB.",
-          "70",
-          "The angle at the centre is double.",
-          "70°.",
-          {
-            unit: "°",
-            asks: "centre",
-            changed: "Now the angle at the centre is missing.",
-            picture: centreRel("?", "35°", 0),
-          },
-        ),
-        ask("Angle ACB = 72°. Find angle AOB.", "144", "Double 72°.", "144°.", {
+        ask("Find angle AOB.", "70", "The angle at the centre is double.", "70°.", {
           unit: "°",
           asks: "centre",
-          picture: centreRel("?", "72°", 0),
+          changed: "Now the angle at the centre is missing.",
+          picture: centre(70, ["?", "35°"], { turn: 200 }),
+        }),
+        ask("Find angle AOB.", "144", "Double the angle at C.", "144°.", {
+          unit: "°",
+          asks: "centre",
+          changed: "New numbers, and the diagram turned the other way.",
+          picture: centre(144, ["?", "72°"], { turn: 330 }),
         }),
         ask(
-          "Angle AOB = 150° and angle ACB = 3y. Find y.",
+          "Find y.",
           "25",
-          "Halve 150° to get angle ACB, then divide by 3.",
+          "Halve the angle at O to get angle ACB, then divide by 3.",
           "ACB = 75°, so 3y = 75 and y = 25.",
           {
             asks: "circumference",
             changed: "The angle at the circumference is written in algebra.",
-            picture: centreRel("150°", "?", 1),
+            picture: centre(150, ["150°", "3y"]),
           },
         ),
       ],
       "First ask which angle is missing, then double or halve.",
       { text: "The angle at the centre is twice the angle at the circumference." },
     ),
-    typed("Your turn", "Angle ACB = 47°. Find angle AOB.", "94", "Double it.", "94°.", {
+    typed("Your turn", "Find angle AOB.", "94", "Double it.", "94°.", {
       unit: "°",
       picture: centre(94, ["?", "47°"], { turn: 200 }),
     }),
-    typed(
-      "Your turn",
-      "Angle AOB = 4x and angle ACB = 50°. Find x.",
-      "25",
-      "AOB = 2 × 50° = 100°, so 4x = 100.",
-      "x = 25.",
-      {
-        picture: centre(100, ["4x", "50°"], { turn: 330 }),
-      },
-    ),
+    typed("Your turn", "Find x.", "25", "Angle AOB is twice angle ACB, so 4x = 100.", "x = 25.", {
+      picture: centre(100, ["4x", "50°"], { turn: 330 }),
+    }),
     choose(
       "Watch out",
-      "Ben says angle AOB = 2 × angle BDE. Is he right?",
+      "Ben says angle AOB is twice angle BDE. Is he right?",
       "No: the two angles stand on different arcs",
       "Angle AOB stands on arc AB; angle BDE stands on arc BE. The theorem needs the same arc.",
       [
@@ -450,7 +518,7 @@ const angleAtCentre = lesson(
       },
     ),
     mistake(
-      "Ola finds angle ACB. Angle AOB = 100°, and C is on the minor arc.",
+      "Ola finds angle ACB. C is on the minor arc.",
       [
         "The angle at the centre is twice the angle at the circumference.",
         "So ACB = 100° ÷ 2",
@@ -462,7 +530,7 @@ const angleAtCentre = lesson(
     ),
     choose(
       "Back to the problem",
-      "“Angle AOB = 130°. Find angle ACB. Give a reason.”",
+      "“Find angle ACB. Give a reason.”",
       "65°, because the angle at the centre is twice the angle at the circumference",
       "Half of 130°, with the theorem as the reason.",
       [
@@ -477,45 +545,48 @@ const angleAtCentre = lesson(
     quiz([
       [
         [
-          "Angle AOB = 150°. Angle ACB?",
+          "Find angle ACB.",
           "75°",
           ["300°", "150°"],
-          "Halve it.",
-          undefined,
+          "Half of 150°.",
+          centre(150, ["150°", "?"]),
           "circumference",
         ],
         [
-          "Angle AOB = 96°. Angle ACB?",
+          "Find angle ACB.",
           "48°",
           ["192°", "96°"],
-          "Halve it.",
-          undefined,
+          "Half of 96°.",
+          centre(96, ["96°", "?"], { turn: 200 }),
           "circumference",
         ],
       ],
       [
-        ["Angle ACB = 41°. Angle AOB?", "82°", ["20.5°", "41°"], "Double it.", undefined, "centre"],
         [
-          "Angle ACB = 63°. Angle AOB?",
+          "Find angle AOB.",
+          "82°",
+          ["20.5°", "41°"],
+          "Double 41°.",
+          centre(82, ["?", "41°"], { turn: 30 }),
+          "centre",
+        ],
+        [
+          "Find angle AOB.",
           "126°",
           ["31.5°", "63°"],
-          "Double it.",
-          undefined,
+          "Double 63°.",
+          centre(126, ["?", "63°"], { turn: 120 }),
           "centre",
         ],
       ],
       [
+        ["Find x.", "24", ["12", "36"], "3x = 2(x + 12) = 2x + 24.", centre(72, ["3x", "x + 12°"])],
         [
-          "Angle AOB = 3x and angle ACB = x + 12°. x?",
-          "24°",
-          ["12°", "36°"],
-          "3x = 2(x + 12) = 2x + 24.",
-        ],
-        [
-          "Angle AOB = 5x and angle ACB = 2x + 10°. x?",
-          "20°",
-          ["10°", "40°"],
+          "Find x.",
+          "20",
+          ["10", "40"],
           "5x = 2(2x + 10) = 4x + 20.",
+          centre(100, ["5x", "2x + 10°"], { turn: 300 }),
         ],
       ],
     ]),
@@ -526,18 +597,6 @@ angleAtCentre.variation = centreMap;
 
 // ---------------------------------------------------------------------------------------------
 // 2. The angle in a semicircle.
-
-const triangleRel = (a: string, b: string, c: string, asks: number) =>
-  relation(
-    [
-      ["angle at A", a],
-      ["angle at B", b],
-      ["angle at C", c],
-      ["in all", "180°"],
-    ],
-    ["+", "+", "="],
-    asks,
-  );
 
 const semicircleMethod = [
   "Spot the diameter: a chord through the centre O.",
@@ -556,30 +615,81 @@ const semicircleLesson = lesson(
     problem(
       "Find angle ABC",
       [
-        "“AB is a diameter of the circle, centre O. Angle CAB = 34°. Find angle ABC. Give reasons.”",
+        "“AB is a diameter of the circle, centre O. Find angle ABC. Give reasons.”",
         "By the end of this lesson, you'll see the right angle hiding in it.",
       ],
       semicircle(34, { A: "34°", B: "?" }),
     ),
+    tap(
+      "Warm-up",
+      "Tap the diameter.",
+      circlePic({
+        centre: true,
+        on: { A: 180, B: 0, C: 60, D: 250 },
+        lines: ["AB", "CA", "CB", "DB"],
+        tap: true,
+      }),
+      "AB",
+      "A diameter is a chord that passes through the centre O.",
+      "AB: it passes through the centre.",
+      {
+        wrong: {
+          CA: "CA doesn't pass through O.",
+          CB: "CB doesn't pass through O.",
+          DB: "DB doesn't pass through O.",
+        },
+      },
+    ),
     typed(
       "Warm-up",
-      "Two angles of a triangle are 90° and 34°. The third angle?",
+      "Find the angle marked ?.",
       "56",
-      "180° − 90° − 34°.",
+      "Angles in a triangle add to 180°.",
       "56°.",
       {
         unit: "°",
+        picture: rightTriangle([null, "34°", "?"]),
       },
     ),
-    choose(
-      "Warm-up",
-      "A diameter is a chord that",
-      "passes through the centre",
-      "Corner to corner of the circle, through O.",
+    explore(
+      "Move C round the circle",
+      {
+        kind: "geometry",
+        circle: 3,
+        points: [
+          { name: "A", onCircle: 180 },
+          { name: "B", onCircle: 0 },
+          { name: "C", onCircle: 60, drag: [10, 170] },
+        ],
+        lines: ["AB", "CA", "CB"],
+        angles: [{ name: "ACB" }, { name: "CAB" }, { name: "ABC" }],
+        readouts: [
+          { label: "Angle ACB", angle: "ACB" },
+          { label: "Angle CAB + angle ABC", sum: ["CAB", "ABC"] },
+        ],
+      },
       [
-        ["touches the circle once", "That's a tangent."],
-        ["joins any two points on the circle", "That's any chord."],
+        "What did you notice?",
+        "Angle ACB is always 90°",
+        "The angle in a semicircle is a right angle, so the other two always share 90°.",
+        [
+          ["Angle ACB changes as C moves", "Look again: it's 90° every time."],
+          ["Angles CAB and ABC are always equal", "Only when C is at the very top."],
+        ],
       ],
+      "Wherever C is, the angle at C is 90°.",
+      {
+        text: "AB is a diameter. Drag C round the top of the circle.",
+        expect: [
+          "Before you drag: as C moves, angle ACB will…",
+          "stay 90°",
+          "Every point on the circle sees the diameter at a right angle.",
+          [
+            ["get bigger", "Try it and see."],
+            ["get smaller", "Try it and see."],
+          ],
+        ],
+      },
     ),
     explain(
       "Discover",
@@ -590,22 +700,11 @@ const semicircleLesson = lesson(
       ],
       semicircle(30, { C: "90°" }),
     ),
-    choose(
-      "Discover",
-      "C moves round the circle. Angle ACB",
-      "is always 90°",
-      "Every point on the circle sees the diameter at a right angle.",
-      [
-        ["gets bigger near A", "It stays 90° until C reaches A or B."],
-        ["is always 180°", "That's the straight angle at O."],
-      ],
-      { picture: semicircle(65, { C: "?" }) },
-    ),
     methodCard("The method", semicircleMethod, semicircle(30, { C: "90°" })),
     pair(
       "Use the right angle",
       {
-        problem: "AB is a diameter. Angle CAB = 25°. Find angle ABC.",
+        problem: "Find angle ABC.",
         picture: semicircle(25, { A: "25°", B: "?" }),
         lines: [
           ["ACB = 90°", "The angle in a semicircle is 90°."],
@@ -613,9 +712,9 @@ const semicircleLesson = lesson(
         ],
       },
       ask(
-        "AB is a diameter. Angle CAB = 40°. Find angle ABC.",
+        "Find angle ABC.",
         "50",
-        "ACB is 90°, so take 90° and 40° from 180°.",
+        "ACB is 90°, so take 90° and the angle at A from 180°.",
         "50°.",
         {
           unit: "°",
@@ -627,7 +726,7 @@ const semicircleLesson = lesson(
     ),
     fade(
       "Finish it",
-      "AB is a diameter. Angle ABC = 58°. Find angle CAB.",
+      "Find angle CAB.",
       ["Angle ACB = 90° (the angle in a semicircle)."],
       [
         [
@@ -644,15 +743,15 @@ const semicircleLesson = lesson(
       "Same method, different look",
       "AB is a diameter each time. Watch what changes.",
       [
-        ask("Angle CAB = 30°. Find angle ABC.", "60", "90° − 30°.", "60°.", {
+        ask("Find angle ABC.", "60", "90° take away the angle at A.", "60°.", {
           unit: "°",
           asks: "angle at B",
           picture: semicircle(30, { A: "30°", B: "?" }),
         }),
-        ask("Angle CAB = 40°. Find angle ABC.", "50", "90° − 40°.", "50°.", {
+        ask("Find angle ABC.", "50", "90° take away the angle at A.", "50°.", {
           unit: "°",
           asks: "angle at B",
-          changed: "Angle CAB went up by 10°.",
+          changed: "The angle at A went up by 10°.",
           expect: [
             "So angle ABC…",
             "goes down by 10°",
@@ -665,9 +764,9 @@ const semicircleLesson = lesson(
           picture: semicircle(40, { A: "40°", B: "?" }),
         }),
         ask(
-          "Angle CAB = 40°. Find angle ABC.",
+          "Find angle ABC.",
           "50",
-          "Still 90° − 40°.",
+          "Still 90° take away the angle at A.",
           "Still 50°: a turned diagram has the same angles.",
           {
             unit: "°",
@@ -677,9 +776,9 @@ const semicircleLesson = lesson(
           },
         ),
         ask(
-          "Angle CAB = 72°. Find angle ABC.",
+          "Find angle ABC.",
           "18",
-          "90° − 72°.",
+          "90° take away the angle at A.",
           "18°: the angle at A is big, so the angle at B is small.",
           {
             unit: "°",
@@ -688,22 +787,16 @@ const semicircleLesson = lesson(
             picture: semicircle(72, { A: "72°", B: "?" }, { below: true }),
           },
         ),
+        ask("Find x.", "30", "x + 2x = 90°.", "3x = 90, so x = 30.", {
+          asks: "angle at A",
+          changed: "The angles are written in algebra.",
+          picture: semicircle(30, { A: "x", B: "2x" }),
+        }),
         ask(
-          "Angle CAB = x and angle ABC = 2x. Find x.",
-          "30",
-          "x + 2x = 90°.",
-          "3x = 90, so x = 30.",
-          {
-            asks: "angle at A",
-            changed: "The angles are written in algebra.",
-            picture: semicircle(30, { A: "x", B: "2x" }),
-          },
-        ),
-        ask(
-          "Chord AB does not pass through O. Is angle ACB 90°?",
+          "Is angle ACB a right angle?",
           "No",
           "It's only 90° when AB is a diameter.",
-          "No: AB isn't a diameter, so there's no semicircle.",
+          "No: AB doesn't pass through O, so there's no semicircle.",
           {
             changed: "This chord misses the centre.",
             others: ["Yes"],
@@ -718,78 +811,107 @@ const semicircleLesson = lesson(
       ],
       "Always check for a diameter first: no diameter, no right angle.",
     ),
+    tap(
+      "Spot it",
+      "AB is a diameter. Tap both right angles.",
+      circlePic({
+        centre: true,
+        on: { A: 180, B: 0, C: 70, D: 300 },
+        lines: ["AB", "CA", "CB", "DA", "DB"],
+        angles: [
+          ["ACB", ""],
+          ["CAB", ""],
+          ["ADB", ""],
+          ["ABC", ""],
+        ],
+        tap: true,
+      }),
+      ["ACB", "ADB"],
+      "Look for the angles whose arms end at A and B, the ends of the diameter.",
+      "Angles ACB and ADB both stand on the diameter AB, so both are 90°.",
+      {
+        wrong: {
+          CAB: "That's at A, an end of the diameter: not a right angle.",
+          ABC: "That's at B, an end of the diameter: not a right angle.",
+        },
+      },
+    ),
     questionSet(
       "Where's the answer?",
       "Which part is missing?",
       [
-        ask("Angle CAB = 28°. Find angle ABC.", "62", "90° − 28°.", "62°.", {
+        ask("Find angle ABC.", "62", "90° take away the angle at A.", "62°.", {
           unit: "°",
           asks: "angle at B",
-          picture: triangleRel("28°", "?", "90°", 1),
+          picture: semicircle(28, { A: "28°", B: "?" }),
         }),
-        ask("Angle ABC = 47°. Find angle CAB.", "43", "90° − 47°.", "43°.", {
+        ask("Find angle CAB.", "43", "90° take away the angle at B.", "43°.", {
           unit: "°",
           asks: "angle at A",
           changed: "Now the angle at A is missing.",
-          picture: triangleRel("?", "47°", "90°", 0),
+          picture: semicircle(43, { A: "?", B: "47°" }, { turn: 40 }),
         }),
         ask(
-          "Angle CAB = 35° and angle ABC = 55°. Find angle ACB.",
+          "Find angle ACB.",
           "90",
           "It's the angle in a semicircle.",
-          "90°, and 35° + 55° + 90° = 180° checks it.",
+          "90°: and the three angles check out, as they add to 180°.",
           {
             unit: "°",
             asks: "angle at C",
             changed: "Now the angle at C is missing.",
-            picture: triangleRel("35°", "55°", "?", 2),
+            picture: semicircle(35, { A: "35°", B: "55°", C: "?" }),
           },
         ),
         ask(
-          "Angle CAB = 2x + 10° and angle ABC = 50°. Find x.",
+          "Find x.",
           "15",
-          "Angle CAB = 90° − 50° = 40°, so 2x + 10 = 40.",
-          "x = 15.",
+          "Angle CAB is 90° take away the angle at B. Then solve.",
+          "CAB = 40°, so 2x + 10 = 40 and x = 15.",
           {
             asks: "angle at A",
-            picture: triangleRel("?", "50°", "90°", 0),
+            changed: "The angle at A is in algebra.",
+            picture: semicircle(40, { A: "2x + 10°", B: "50°" }, { turn: 330 }),
           },
         ),
       ],
       "Whichever angle is missing, the 90° is your way in.",
       { text: "AB is a diameter, so angle C is 90°, and the three angles add to 180°." },
     ),
+    typed("Your turn", "Find angle CAB.", "29", "90° take away the angle at B.", "29°.", {
+      unit: "°",
+      picture: semicircle(29, { A: "?", B: "61°" }, { turn: 30 }),
+    }),
     typed(
       "Your turn",
-      "AB is a diameter. Angle ABC = 61°. Find angle CAB.",
-      "29",
-      "90° − 61°.",
-      "29°.",
-      {
-        unit: "°",
-        picture: semicircle(29, { A: "?", B: "61°" }, { turn: 30 }),
-      },
-    ),
-    typed(
-      "Your turn",
-      "AB is a diameter and AC = BC. Find angle CAB.",
+      "AC = BC. Find angle CAB.",
       "45",
       "The triangle is isosceles and the angles at A and B share 90°.",
       "45°.",
-      {
-        unit: "°",
-        picture: semicircle(45, { A: "?", B: "?" }),
-      },
+      { unit: "°", picture: semicircle(45, { A: "?", B: "?" }) },
     ),
     choose(
       "Watch out",
-      "Zoe says angle ACB is 90° because C is on the circle. What's missing?",
+      "Zoe says angle ACB is a right angle because C is on the circle. What's missing?",
       "AB must be a diameter",
-      "The right angle only stands on a diameter.",
-      [["Nothing: every angle in a circle is 90°", "Only angles standing on a diameter are."]],
+      "The right angle only stands on a diameter, and this chord misses O.",
+      [
+        [
+          "Nothing: every angle in a circle is a right angle",
+          "Only angles standing on a diameter are.",
+        ],
+      ],
+      {
+        picture: circlePic({
+          centre: true,
+          on: { A: 210, B: 330, C: 80 },
+          lines: ["AB", "CA", "CB"],
+          angles: [["ACB", "?"]],
+        }),
+      },
     ),
     mistake(
-      "Leo finds angle ABC. AB is a diameter and angle CAB = 31°.",
+      "Leo finds angle ABC. AB is a diameter.",
       ["ACB = 90° (angle in a semicircle)", "ABC = 180° − 90° + 31°", "ABC = 121°"],
       1,
       "Take away both angles: 180° − 90° − 31° = 59°.",
@@ -797,7 +919,7 @@ const semicircleLesson = lesson(
     ),
     choose(
       "Back to the problem",
-      "“AB is a diameter. Angle CAB = 34°. Find angle ABC. Give reasons.”",
+      "“Find angle ABC. Give reasons.”",
       "56°: the angle in a semicircle is 90°, and angles in a triangle add to 180°",
       "Both reasons, and the angle.",
       [
@@ -812,55 +934,55 @@ const semicircleLesson = lesson(
     quiz([
       [
         [
-          "Diameter AB, angle CAB = 22°. Angle ABC?",
+          "Find angle ABC.",
           "68°",
           ["158°", "22°"],
           "90° − 22°.",
-          undefined,
+          semicircle(22, { A: "22°", B: "?" }),
           "angle at B",
         ],
         [
-          "Diameter AB, angle CAB = 37°. Angle ABC?",
+          "Find angle ABC.",
           "53°",
           ["143°", "37°"],
           "90° − 37°.",
-          undefined,
+          semicircle(37, { A: "37°", B: "?" }, { turn: 60 }),
           "angle at B",
         ],
       ],
       [
         [
-          "Diameter AB, C on the circle. Angle ACB?",
+          "Find angle ACB.",
           "90°",
           ["180°", "45°"],
           "The angle in a semicircle.",
-          undefined,
+          semicircle(50, { C: "?" }),
           "angle at C",
         ],
         [
-          "Diameter PQ, R on the circle. Angle PRQ?",
+          "Find angle ACB.",
           "90°",
           ["180°", "60°"],
           "The angle in a semicircle.",
-          undefined,
+          semicircle(20, { C: "?" }, { turn: 120 }),
           "angle at C",
         ],
       ],
       [
         [
-          "Diameter AB, angle ABC = 2 × angle CAB. Angle CAB?",
-          "30°",
-          ["45°", "60°"],
-          "3 × angle CAB = 90°.",
-          undefined,
+          "Find x.",
+          "30",
+          ["45", "60"],
+          "x + 2x = 90°.",
+          semicircle(30, { A: "x", B: "2x" }),
           "angle at A",
         ],
         [
-          "Diameter AB, angle ABC = 4 × angle CAB. Angle CAB?",
-          "18°",
-          ["22.5°", "72°"],
-          "5 × angle CAB = 90°.",
-          undefined,
+          "Find x.",
+          "18",
+          ["22.5", "72"],
+          "x + 4x = 90°.",
+          semicircle(18, { A: "x", B: "4x" }, { turn: 200 }),
           "angle at A",
         ],
       ],
@@ -879,16 +1001,6 @@ semicircleLesson.variation = {
 // ---------------------------------------------------------------------------------------------
 // 3. Angles in the same segment.
 
-const sameRel = (c: string, d: string, asks: number) =>
-  relation(
-    [
-      ["angle at C", c],
-      ["angle at D", d],
-    ],
-    ["="],
-    asks,
-  );
-
 const sameSegmentMethod = [
   "Find two angles at the circumference whose arms end at the same two points.",
   "Check they're on the same side of that chord: the same segment.",
@@ -906,30 +1018,68 @@ const sameSegment = lesson(
     problem(
       "The bow tie",
       [
-        "“A, B, C and D are on the circle. Angle ACB = 48°. Find angle ADB. Give a reason.”",
+        "“A, B, C and D are on the circle. Find angle ADB. Give a reason.”",
         "The two angles look different. By the end of this lesson, you'll see why they can't be.",
       ],
       bowtie(48, ["48°", "?"]),
     ),
-    typed(
+    typed("Warm-up", "Find angle ACB.", "48", "Halve the angle at the centre.", "48°.", {
+      unit: "°",
+      picture: centre(96, ["96°", "?"]),
+    }),
+    tap(
       "Warm-up",
-      "The angle at the centre on arc AB is 96°. The angle at the circumference on AB?",
-      "48",
-      "Halve it.",
-      "48°.",
+      "Tap the two angles that stand on chord AB.",
+      circlePic({
+        on: { A: 230, B: 310, C: 60, D: 120 },
+        lines: ["CA", "CB", "DA", "DB"],
+        angles: [
+          ["ACB", ""],
+          ["ADB", ""],
+          ["CAD", ""],
+          ["DBC", ""],
+        ],
+        tap: true,
+      }),
+      ["ACB", "ADB"],
+      "Their arms must end at A and B.",
+      "Angles ACB and ADB: both have arms ending at A and B.",
       {
-        unit: "°",
+        wrong: {
+          CAD: "That's at A, with arms to C and D: it stands on chord CD.",
+          DBC: "That's at B, with arms to D and C: it stands on chord CD.",
+        },
       },
     ),
-    choose(
-      "Warm-up",
-      "A segment is the part of a circle",
-      "cut off by a chord",
-      "Like a slice cut off by a straight line.",
+    explore(
+      "Move D along the arc",
+      {
+        kind: "geometry",
+        circle: 3,
+        points: [
+          { name: "A", onCircle: 230 },
+          { name: "B", onCircle: 310 },
+          { name: "C", onCircle: 110 },
+          { name: "D", onCircle: 40, drag: [325, 215] },
+        ],
+        lines: ["CA", "CB", "DA", "DB"],
+        angles: [{ name: "ACB" }, { name: "ADB" }],
+        readouts: [
+          { label: "Angle ACB", angle: "ACB" },
+          { label: "Angle ADB", angle: "ADB" },
+        ],
+      },
       [
-        ["between two radii", "That's a sector."],
-        ["outside the circle", "A segment is inside."],
+        "What did you notice?",
+        "Angle ADB always equals angle ACB",
+        "Both stand on arc AB from the same side: angles in the same segment are equal.",
+        [
+          ["Angle ADB gets bigger near C", "Look again: it stays at 40°."],
+          ["Angle ADB is double angle ACB", "Neither is at the centre: they're equal."],
+        ],
       ],
+      "Anywhere on that arc, the angle on AB is the same.",
+      { text: "Drag D along the top arc. Compare the angles at C and D." },
     ),
     explain(
       "Discover",
@@ -940,29 +1090,18 @@ const sameSegment = lesson(
       ],
       bowtie(48, ["x", "x"]),
     ),
-    choose(
-      "Discover",
-      "D moves round the big arc. Angle ADB",
-      "stays the same",
-      "It always stands on arc AB from the same side.",
-      [
-        ["gets bigger", "It's half the angle at the centre, which doesn't change."],
-        ["gets smaller", "It's half the angle at the centre, which doesn't change."],
-      ],
-      { picture: bowtie(40, ["40°", "?"], { d: 160 }) },
-    ),
     methodCard("The method", sameSegmentMethod, bowtie(48, ["x", "x"])),
     pair(
       "Spot the bow tie",
       {
-        problem: "Angle ACB = 35°. Find angle ADB.",
+        problem: "Find angle ADB.",
         picture: bowtie(35, ["35°", "?"]),
         lines: [
           ["Both stand on arc AB, on the same side.", "Their arms end at A and B."],
           ["ADB = 35°", "Angles in the same segment are equal."],
         ],
       },
-      ask("Angle ACB = 52°. Find angle ADB.", "52", "Same arc, same side: equal.", "52°.", {
+      ask("Find angle ADB.", "52", "Same arc, same side: equal.", "52°.", {
         unit: "°",
         asks: "angle at D",
         picture: bowtie(52, ["52°", "?"]),
@@ -971,7 +1110,7 @@ const sameSegment = lesson(
     ),
     fade(
       "Finish it",
-      "Angle ACB = 40°. Find angle ADB, with a reason.",
+      "Find angle ADB. Give a reason.",
       ["ADB and ACB both stand on arc AB, on the same side."],
       [
         [
@@ -995,15 +1134,15 @@ const sameSegment = lesson(
     ),
     questionSet(
       "Same method, different look",
-      "Find the missing angle each time. Watch what changes.",
+      "Find angle ADB each time. Watch what changes.",
       [
-        ask("Angle ACB = 40°. Find angle ADB.", "40", "Same arc, same side.", "40°.", {
+        ask("Find angle ADB.", "40", "Same arc, same side.", "40°.", {
           unit: "°",
           asks: "angle at D",
           picture: bowtie(40, ["40°", "?"]),
         }),
         ask(
-          "Angle ACB = 40°. Find angle ADB.",
+          "Find angle ADB.",
           "40",
           "Still the same arc.",
           "40°: turning the diagram changes nothing.",
@@ -1014,43 +1153,31 @@ const sameSegment = lesson(
             picture: bowtie(40, ["40°", "?"], { turn: 180 }),
           },
         ),
-        ask(
-          "Angle ACB = 40°. Find angle ADB.",
-          "40",
-          "D is still above AB.",
-          "40°: wherever D is on that arc.",
-          {
-            unit: "°",
-            asks: "angle at D",
-            changed: "D has moved along the arc, close to C.",
-            expect: [
-              "D has moved. Angle ADB…",
-              "stays 40°",
-              "It still stands on arc AB from the same side.",
-              [
-                ["gets smaller", "Its size doesn't depend on where D is on that arc."],
-                ["gets bigger", "Its size doesn't depend on where D is on that arc."],
-              ],
+        ask("Find angle ADB.", "40", "D is still above AB.", "40°: wherever D is on that arc.", {
+          unit: "°",
+          asks: "angle at D",
+          changed: "D has moved along the arc, close to C.",
+          expect: [
+            "D has moved. Angle ADB…",
+            "stays the same",
+            "It still stands on arc AB from the same side.",
+            [
+              ["gets smaller", "Its size doesn't depend on where D is on that arc."],
+              ["gets bigger", "Its size doesn't depend on where D is on that arc."],
             ],
-            picture: bowtie(40, ["40°", "?"], { d: 90 }),
-          },
-        ),
+          ],
+          picture: bowtie(40, ["40°", "?"], { d: 90 }),
+        }),
+        ask("Find x.", "18", "They're equal: 3x = 54.", "x = 18.", {
+          asks: "angle at C",
+          changed: "One angle is in algebra.",
+          picture: bowtie(54, ["3x", "54°"]),
+        }),
         ask(
-          "Angle ACB = 3x and angle ADB = 54°. Find x.",
-          "18",
-          "They're equal: 3x = 54.",
-          "x = 18.",
-          {
-            asks: "angle at C",
-            changed: "One angle is in algebra.",
-            picture: bowtie(54, ["3x", "54°"]),
-          },
-        ),
-        ask(
-          "Angle ACB = 40°, but D is on the other side of AB. Is angle ADB 40°?",
+          "Is angle ADB equal to angle ACB?",
           "No",
           "C and D must be in the same segment.",
-          "No: D is in the other segment. (It's 140°, as ACBD is then a cyclic quadrilateral.)",
+          "No: D is in the other segment, so ACBD is a cyclic quadrilateral and the two add to 180°.",
           {
             changed: "D is now below AB.",
             others: ["Yes"],
@@ -1060,31 +1187,62 @@ const sameSegment = lesson(
       ],
       "Same arc and same side: equal. Other side: not equal.",
     ),
+    tap(
+      "Spot it",
+      "Tap the angle equal to x.",
+      circlePic({
+        on: { A: 230, B: 310, C: 70, D: 130 },
+        lines: ["CA", "CB", "DA", "DB", "CD"],
+        angles: [
+          ["ACB", "x"],
+          ["ADB", ""],
+          ["CAD", ""],
+          ["DBC", ""],
+        ],
+        tap: true,
+      }),
+      "ADB",
+      "Find the other angle standing on the same chord as x, on the same side.",
+      "Angle ADB: it stands on arc AB, like x, from the same side.",
+      {
+        wrong: {
+          CAD: "That stands on chord CD, not AB.",
+          DBC: "That stands on chord CD, not AB.",
+          ACB: "That's x itself.",
+        },
+      },
+    ),
     questionSet(
       "Where's the answer?",
       "Which part is missing?",
       [
-        ask("Angle ACB = 61°. Find angle ADB.", "61", "Equal.", "61°.", {
+        ask("Find angle ADB.", "61", "Equal.", "61°.", {
           unit: "°",
           asks: "angle at D",
-          picture: sameRel("61°", "?", 1),
+          picture: bowtie(61, ["61°", "?"]),
         }),
-        ask("Angle ADB = 29°. Find angle ACB.", "29", "Equal.", "29°.", {
+        ask("Find angle ACB.", "29", "Equal.", "29°.", {
           unit: "°",
           asks: "angle at C",
           changed: "Now the angle at C is missing.",
-          picture: sameRel("?", "29°", 0),
-        }),
-        ask("Angle ACB = 2y + 6° and angle ADB = 44°. Find y.", "19", "2y + 6 = 44.", "y = 19.", {
-          asks: "angle at C",
-          changed: "The angle at C is in algebra.",
-          picture: sameRel("?", "44°", 0),
+          picture: bowtie(29, ["?", "29°"], { turn: 200 }),
         }),
         ask(
-          "In triangle ADB, angle DAB = 70° and angle ABD = 60°. Angle ACB?",
+          "Find y.",
+          "19",
+          "The two angles are equal: make an equation.",
+          "2y + 6 = 44, so y = 19.",
+          {
+            asks: "angle at C",
+            changed: "The angle at C is in algebra.",
+            picture: bowtie(44, ["2y + 6°", "44°"]),
+          },
+        ),
+        ask(
+          "Find angle ACB.",
           "50",
-          "First find ADB: 180° − 70° − 60°.",
-          "ADB = 50°, so ACB = 50°.",
+          "First find angle ADB in its triangle.",
+          "ADB = 180° − 70° − 60° = 50°, so ACB = 50°.",
           {
             unit: "°",
             asks: "third angle",
@@ -1104,42 +1262,42 @@ const sameSegment = lesson(
       "Find the equal pair, then use whatever else you know.",
       { text: "Angles ACB and ADB stand on arc AB on the same side, so they're equal." },
     ),
-    typed("Your turn", "Angle ADB = 33°. Find angle ACB.", "33", "Same segment.", "33°.", {
+    typed("Your turn", "Find angle ACB.", "33", "Same segment.", "33°.", {
       unit: "°",
       picture: bowtie(33, ["?", "33°"], { turn: 300 }),
     }),
     typed(
       "Your turn",
-      "Angle ACB = 5x − 10° and angle ADB = 3x + 20°. Find x.",
+      "Find x.",
       "15",
-      "Equal: 5x − 10 = 3x + 20.",
-      "x = 15.",
+      "They're equal: make an equation and solve it.",
+      "5x − 10 = 3x + 20, so x = 15.",
       {
         picture: bowtie(65, ["5x − 10°", "3x + 20°"]),
       },
     ),
     choose(
       "Watch out",
-      "Raj says angles ACB and ADB are equal. D is on the other side of AB. Is he right?",
+      "Raj says angles ACB and ADB are equal. Is he right?",
       "No: they're in different segments",
-      "Angles on opposite sides of a chord add to 180° instead.",
+      "D is on the other side of AB. Angles on opposite sides of a chord add to 180° instead.",
       [["Yes: they stand on the same arc", "They must be on the same side as well."]],
       { picture: bowtie(40, ["40°", "?"], { dOpposite: true }) },
     ),
     mistake(
-      "Kim finds angle ADB. Angle ACB = 46°.",
+      "Kim finds angle ADB.",
       [
         "ACB and ADB stand on arc AB.",
         "The angle at the circumference is half the angle at the centre.",
         "So ADB = 23°",
       ],
-      2,
-      "Both are at the circumference, on the same side: they're equal. ADB = 46°.",
+      1,
+      "Neither angle is at the centre. Both are at the circumference, on the same side: they're equal. ADB = 46°.",
       bowtie(46, ["46°", "?"]),
     ),
     choose(
       "Back to the problem",
-      "“Angle ACB = 48°. Find angle ADB. Give a reason.”",
+      "“Find angle ADB. Give a reason.”",
       "48°, because angles in the same segment are equal",
       "Same arc, same side.",
       [
@@ -1154,47 +1312,47 @@ const sameSegment = lesson(
     quiz([
       [
         [
-          "Same segment: angle ACB = 57°. Angle ADB?",
+          "Find angle ADB.",
           "57°",
           ["114°", "28.5°"],
           "Equal.",
-          undefined,
+          bowtie(57, ["57°", "?"]),
           "angle at D",
         ],
         [
-          "Same segment: angle ACB = 38°. Angle ADB?",
+          "Find angle ADB.",
           "38°",
           ["76°", "19°"],
           "Equal.",
-          undefined,
+          bowtie(38, ["38°", "?"], { turn: 120 }),
           "angle at D",
         ],
       ],
       [
+        ["Find x.", "32", ["64", "128"], "2x = 64.", bowtie(64, ["2x", "64°"]), "angle at C"],
         [
-          "Same segment: angle ADB = 2x, angle ACB = 64°. x?",
-          "32°",
-          ["64°", "128°"],
-          "2x = 64.",
-          undefined,
-          "angle at C",
-        ],
-        [
-          "Same segment: angle ADB = 3x, angle ACB = 72°. x?",
-          "24°",
-          ["72°", "36°"],
+          "Find x.",
+          "24",
+          ["72", "36"],
           "3x = 72.",
-          undefined,
+          bowtie(72, ["3x", "72°"], { turn: 200 }),
           "angle at C",
         ],
       ],
       [
-        ["Angles in the same segment are", "equal", ["supplementary", "doubled"], "The theorem."],
         [
-          "For the theorem, C and D must be",
-          "on the same side of AB",
-          ["on opposite sides of AB", "at the centre"],
-          "Same segment.",
+          "Is angle ADB equal to angle ACB?",
+          "No",
+          ["Yes"],
+          "D is in the other segment.",
+          bowtie(40, ["40°", "?"], { dOpposite: true }),
+        ],
+        [
+          "Is angle ADB equal to angle ACB?",
+          "Yes",
+          ["No"],
+          "Same arc, same side.",
+          bowtie(35, ["35°", "?"], { turn: 60 }),
         ],
       ],
     ]),
@@ -1211,23 +1369,23 @@ sameSegment.variation = {
 // ---------------------------------------------------------------------------------------------
 // 4. Cyclic quadrilaterals.
 
-const cyclicRel = (one: string, two: string, asks?: number) =>
-  relation(
-    [
-      ["one angle", one],
-      ["the opposite angle", two],
-      ["together", "180°"],
-    ],
-    ["+", "="],
-    asks,
-  );
-
 const cyclicMethod = [
   "Check all four corners are on the circle.",
   "Find the angle opposite the one you know.",
   "Opposite angles add to 180°: take it from 180°.",
   "Give the reason: opposite angles of a cyclic quadrilateral add to 180°.",
 ];
+
+/** O at the centre, with B, C and D on the circle: not a cyclic quadrilateral. */
+const notCyclic = circlePic({
+  centre: true,
+  on: { B: 300, C: 30, D: 110 },
+  lines: ["OB", "BC", "CD", "DO"],
+  angles: [
+    ["DOB", "?"],
+    ["BCD", "?"],
+  ],
+});
 
 const cyclicLesson = lesson(
   U,
@@ -1239,15 +1397,72 @@ const cyclicLesson = lesson(
     problem(
       "Four corners on a circle",
       [
-        "“ABCD is a cyclic quadrilateral. Angle DAB = 70° and angle ABC = 95°. Find angles BCD and CDA. Give reasons.”",
+        "“ABCD is a cyclic quadrilateral. Find angles BCD and CDA. Give reasons.”",
         "By the end of this lesson, you can find both in a line each.",
       ],
       cyclic(70, 95, { A: "70°", B: "95°", C: "?", D: "?" }),
     ),
-    typed("Warm-up", "The angles of a quadrilateral add up to", "360", "Two triangles.", "360°.", {
-      unit: "°",
-    }),
-    typed("Warm-up", "$180° - 70°$", "110", "Subtract.", "110°.", { unit: "°" }),
+    typed(
+      "Warm-up",
+      "The angles of a quadrilateral add to 360°. Find the angle marked ?.",
+      "85",
+      "Take the other three from 360°.",
+      "85°.",
+      { unit: "°", picture: cyclic(70, 95, { A: "70°", B: "95°", C: "110°", D: "?" }) },
+    ),
+    tap(
+      "Warm-up",
+      "Tap the angle opposite angle DAB.",
+      cyclic(70, 95, { A: "x", B: "", C: "", D: "" }, 300, { tap: true }),
+      "BCD",
+      "Opposite means across the shape, not next to it.",
+      "Angle BCD, at C: across from A.",
+      {
+        wrong: {
+          ABC: "B is next to A, not opposite.",
+          CDA: "D is next to A, not opposite.",
+          DAB: "That's angle DAB itself.",
+        },
+      },
+    ),
+    explore(
+      "Move D round its arc",
+      {
+        kind: "geometry",
+        circle: 3,
+        points: [
+          { name: "A", onCircle: 200 },
+          { name: "B", onCircle: 290 },
+          { name: "C", onCircle: 20 },
+          { name: "D", onCircle: 110, drag: [35, 185] },
+        ],
+        lines: ["AB", "BC", "CD", "DA"],
+        angles: [{ name: "DAB" }, { name: "ABC" }, { name: "BCD" }, { name: "CDA" }],
+        readouts: [
+          { label: "Angle A + angle C", sum: ["DAB", "BCD"] },
+          { label: "Angle B + angle D", sum: ["ABC", "CDA"] },
+        ],
+      },
+      [
+        "What did you notice?",
+        "Opposite angles always add up to 180°",
+        "However the shape changes, opposite angles share 180°.",
+        [
+          ["All four angles stay the same", "The angles at A and C change as D moves."],
+          ["Opposite angles are equal", "They add to 180°; they aren't equal."],
+        ],
+      ],
+      "Opposite angles of a cyclic quadrilateral add to 180°.",
+      {
+        text: "Drag D round the circle. Watch the angles change, and the two sums.",
+        expect: [
+          "Before you drag: angle A + angle C will…",
+          "stay the same",
+          "Opposite angles share 180°, however the shape changes.",
+          [["change", "Try it and see."]],
+        ],
+      },
+    ),
     explain(
       "Discover",
       "Opposite angles share a circle",
@@ -1257,29 +1472,18 @@ const cyclicLesson = lesson(
       ],
       cyclic(70, 95, { A: "x", C: "180° − x" }),
     ),
-    choose(
-      "Discover",
-      "Angle DAB = 70°. Angle BCD is",
-      "110°",
-      "Opposite angles add to 180°.",
-      [
-        ["70°", "Opposite angles add to 180°; they're only equal when both are 90°."],
-        ["290°", "That's 360° − 70°, the reflex angle."],
-      ],
-      { picture: cyclic(70, 95, { A: "70°", C: "?" }) },
-    ),
     methodCard("The method", cyclicMethod, cyclic(70, 95, { A: "x", C: "180° − x" })),
     pair(
       "Opposite, then subtract",
       {
-        problem: "ABCD is cyclic. Angle ABC = 100°. Find angle CDA.",
+        problem: "Find angle CDA.",
         picture: cyclic(80, 100, { B: "100°", D: "?" }),
         lines: [
           ["CDA is opposite ABC.", "B and D are opposite corners."],
           ["CDA = 180° − 100° = 80°", "Opposite angles of a cyclic quadrilateral add to 180°."],
         ],
       },
-      ask("ABCD is cyclic. Angle ABC = 85°. Find angle CDA.", "95", "Take 85° from 180°.", "95°.", {
+      ask("Find angle CDA.", "95", "Take the angle at B from 180°.", "95°.", {
         unit: "°",
         asks: "opposite angle",
         picture: cyclic(80, 85, { B: "85°", D: "?" }),
@@ -1288,8 +1492,8 @@ const cyclicLesson = lesson(
     ),
     fade(
       "Finish it",
-      "ABCD is cyclic. Angle BCD = 2x and angle DAB = x. Find x.",
-      ["BCD and DAB are opposite, so they add to 180°."],
+      "Find x.",
+      ["The angles at A and C are opposite, so they add to 180°."],
       [
         [
           "So",
@@ -1306,15 +1510,15 @@ const cyclicLesson = lesson(
       "Same method, different look",
       "ABCD is cyclic each time. Watch what changes.",
       [
-        ask("Angle DAB = 75°. Find angle BCD.", "105", "180° − 75°.", "105°.", {
+        ask("Find angle BCD.", "105", "180° take away the angle at A.", "105°.", {
           unit: "°",
           asks: "opposite angle",
           picture: cyclic(75, 95, { A: "75°", C: "?" }),
         }),
-        ask("Angle DAB = 85°. Find angle BCD.", "95", "180° − 85°.", "95°.", {
+        ask("Find angle BCD.", "95", "180° take away the angle at A.", "95°.", {
           unit: "°",
           asks: "opposite angle",
-          changed: "Angle DAB went up by 10°.",
+          changed: "The angle at A went up by 10°.",
           expect: [
             "So angle BCD…",
             "goes down by 10°",
@@ -1326,23 +1530,17 @@ const cyclicLesson = lesson(
           ],
           picture: cyclic(85, 95, { A: "85°", C: "?" }),
         }),
+        ask("Find angle CDA.", "95", "B and D are the other opposite pair.", "95°.", {
+          unit: "°",
+          asks: "opposite angle",
+          changed: "Now it's the other pair of corners, B and D.",
+          picture: cyclic(85, 85, { B: "85°", D: "?" }),
+        }),
         ask(
-          "Angle ABC = 85°. Find angle CDA.",
+          "Find angle BCD.",
           "95",
-          "B and D are the other opposite pair.",
-          "95°.",
-          {
-            unit: "°",
-            asks: "opposite angle",
-            changed: "Now it's the other pair of corners, B and D.",
-            picture: cyclic(85, 85, { B: "85°", D: "?" }),
-          },
-        ),
-        ask(
-          "Angle DAB = 85°. Find angle BCD.",
-          "95",
-          "Still opposite: 180° − 85°.",
-          "95°: the shape has a different look, but A and C are still opposite.",
+          "Still opposite: 180° take away the angle at A.",
+          "95°: the shape looks different, but A and C are still opposite.",
           {
             unit: "°",
             asks: "opposite angle",
@@ -1351,98 +1549,99 @@ const cyclicLesson = lesson(
           },
         ),
         ask(
-          "Quadrilateral OBCD has its corner O at the centre. Do its opposite angles add to 180°?",
+          "Do the opposite angles of OBCD add to 180°?",
           "No",
           "The rule needs all four corners on the circle.",
-          "No: O isn't on the circle, so OBCD isn't cyclic.",
+          "No: O is the centre, not on the circle, so OBCD isn't cyclic.",
           {
             changed: "One corner is at the centre, not on the circle.",
             others: ["Yes"],
-            picture: circlePic({
-              centre: true,
-              on: { B: 300, C: 30, D: 110 },
-              lines: ["OB", "BC", "CD", "DO"],
-              angles: [
-                ["DOB", "?"],
-                ["BCD", "?"],
-              ],
-            }),
+            picture: notCyclic,
           },
         ),
       ],
       "Opposite and on the circle: add to 180°. A corner off the circle: no rule.",
     ),
+    tap(
+      "Spot it",
+      "Tap the angle that adds to angle ABC to make 180°.",
+      cyclic(75, 95, { A: "", B: "y", C: "", D: "" }, 200, { tap: true }),
+      "CDA",
+      "Opposite means across the shape.",
+      "Angle CDA, at D: across from B.",
+      {
+        wrong: {
+          DAB: "A is next to B, not opposite.",
+          BCD: "C is next to B, not opposite.",
+          ABC: "That's angle ABC itself.",
+        },
+      },
+    ),
     questionSet(
       "Where's the answer?",
       "Which part is missing?",
       [
-        ask("One angle is 112°. Find the angle opposite.", "68", "180° − 112°.", "68°.", {
+        ask("Find angle DAB.", "68", "180° take away the angle at C.", "68°.", {
           unit: "°",
           asks: "opposite angle",
-          picture: cyclicRel("112°", "?", 1),
+          picture: cyclic(68, 100, { A: "?", C: "112°" }),
         }),
-        ask("The angle opposite is 47°. Find the angle.", "133", "180° − 47°.", "133°.", {
+        ask("Find angle CDA.", "133", "180° take away the angle at B.", "133°.", {
           unit: "°",
           asks: "opposite angle",
-          changed: "The other box is missing now.",
-          picture: cyclicRel("?", "47°", 0),
+          changed: "The other pair, and a small angle given.",
+          picture: cyclic(85, 47, { B: "47°", D: "?" }),
         }),
         ask(
-          "Opposite angles are 3x and x + 20°. Find x.",
+          "Find x.",
           "40",
-          "3x + x + 20 = 180.",
-          "4x = 160, so x = 40.",
+          "The two angles add to 180°: make an equation.",
+          "3x + x + 20 = 180, so 4x = 160 and x = 40.",
           {
             asks: "x",
             changed: "Both angles are in algebra.",
-            picture: cyclicRel("$3x$", "$x + 20°$"),
+            picture: cyclic(120, 90, { A: "3x", C: "x + 20°" }),
           },
         ),
         ask(
-          "Opposite angles are 2x + 10° and 3x − 5°. Find x.",
+          "Find x.",
           "35",
-          "2x + 10 + 3x − 5 = 180.",
+          "The two angles add to 180°: make an equation.",
           "5x + 5 = 180, so x = 35.",
           {
             asks: "x",
-            picture: cyclicRel("$2x + 10°$", "$3x - 5°$"),
+            changed: "Both angles have a number added or taken away.",
+            picture: cyclic(80, 95, { A: "2x + 10°", C: "3x − 5°" }, 160),
           },
         ),
       ],
       "One angle known: subtract. Both in algebra: add them, make 180°, solve.",
       { text: "Opposite angles of a cyclic quadrilateral add to 180°." },
     ),
+    typed("Your turn", "Find angle DAB.", "56", "180° take away the angle at C.", "56°.", {
+      unit: "°",
+      picture: cyclic(56, 100, { A: "?", C: "124°" }, 200),
+    }),
     typed(
       "Your turn",
-      "ABCD is cyclic. Angle BCD = 124°. Find angle DAB.",
-      "56",
-      "180° − 124°.",
-      "56°.",
-      {
-        unit: "°",
-        picture: cyclic(56, 100, { A: "?", C: "124°" }, 200),
-      },
-    ),
-    typed(
-      "Your turn",
-      "ABCD is cyclic. Angle ABC = 5x and angle CDA = 4x. Find x.",
+      "Find x.",
       "20",
-      "5x + 4x = 180.",
-      "x = 20.",
+      "B and D are opposite: they add to 180°.",
+      "9x = 180, so x = 20.",
       {
         picture: cyclic(70, 100, { B: "5x", D: "4x" }),
       },
     ),
     choose(
       "Watch out",
-      "Ivy says angles A and B of cyclic quadrilateral ABCD add to 180°. What's wrong?",
+      "Ivy says angles A and B of this cyclic quadrilateral add to 180°. What's wrong?",
       "A and B are next to each other; the rule is for opposite angles",
       "Opposite corners: A with C, B with D.",
       [["Nothing: any two angles add to 180°", "Only opposite ones do."]],
       { picture: cyclic(70, 95, { A: "70°", B: "95°" }) },
     ),
     mistake(
-      "Ben finds angle BCD. ABCD is cyclic and angle DAB = 64°.",
+      "Ben finds angle BCD. ABCD is cyclic.",
       ["BCD is opposite DAB.", "Opposite angles are equal.", "BCD = 64°"],
       1,
       "Opposite angles of a cyclic quadrilateral add to 180°: BCD = 116°.",
@@ -1450,64 +1649,66 @@ const cyclicLesson = lesson(
     ),
     choose(
       "Back to the problem",
-      "“Angle DAB = 70° and angle ABC = 95°. Find angles BCD and CDA.”",
+      "“Find angles BCD and CDA. Give reasons.”",
       "BCD = 110° and CDA = 85°",
       "Each is 180° minus its opposite angle.",
       [
         ["BCD = 95° and CDA = 70°", "Use the opposite angles, not the neighbours."],
-        ["BCD = 110° and CDA = 95°", "CDA is opposite ABC: 180° − 95°."],
+        ["BCD = 110° and CDA = 95°", "CDA is opposite ABC: take that one from 180°."],
       ],
       { picture: cyclic(70, 95, { A: "70°", B: "95°", C: "?", D: "?" }) },
     ),
     quiz([
       [
         [
-          "Cyclic ABCD: angle DAB = 58°. Angle BCD?",
+          "Find angle BCD.",
           "122°",
           ["58°", "302°"],
           "180° − 58°.",
-          undefined,
+          cyclic(58, 95, { A: "58°", C: "?" }),
           "opposite angle",
         ],
         [
-          "Cyclic ABCD: angle ABC = 103°. Angle CDA?",
+          "Find angle CDA.",
           "77°",
           ["103°", "257°"],
           "180° − 103°.",
-          undefined,
+          cyclic(77, 103, { B: "103°", D: "?" }, 200),
           "opposite angle",
         ],
       ],
       [
         [
-          "Cyclic: opposite angles 2x and 7x. x?",
-          "20°",
-          ["36°", "90°"],
-          "9x = 180.",
-          undefined,
+          "Find x.",
+          "20",
+          ["36", "90"],
+          "2x + 7x = 180.",
+          cyclic(40, 95, { A: "2x", C: "7x" }),
           "x",
         ],
         [
-          "Cyclic: opposite angles x and 5x. x?",
-          "30°",
-          ["36°", "60°"],
-          "6x = 180.",
-          undefined,
+          "Find x.",
+          "30",
+          ["36", "60"],
+          "x + 5x = 180.",
+          cyclic(30, 95, { A: "x", C: "5x" }, 160),
           "x",
         ],
       ],
       [
         [
-          "In a cyclic quadrilateral, opposite angles",
-          "add to 180°",
-          ["are equal", "add to 360°"],
-          "The theorem.",
+          "Do the opposite angles of OBCD add to 180°?",
+          "No",
+          ["Yes"],
+          "O is the centre, not on the circle.",
+          notCyclic,
         ],
         [
-          "A quadrilateral is cyclic when",
-          "all four corners are on a circle",
-          ["one corner is at the centre", "its sides are equal"],
-          "Cyclic.",
+          "Do the opposite angles of ABCD add to 180°?",
+          "Yes",
+          ["No"],
+          "All four corners are on the circle.",
+          cyclic(75, 95, { A: "?", C: "?" }, 100),
         ],
       ],
     ]),
@@ -1523,17 +1724,6 @@ cyclicLesson.variation = {
 
 // ---------------------------------------------------------------------------------------------
 // 5. Tangents and radii.
-
-const kiteRel = (o: string, p: string, asks?: number) =>
-  relation(
-    [
-      ["angle at O", o],
-      ["angle at P", p],
-      ["together", "180°"],
-    ],
-    ["+", "="],
-    asks,
-  );
 
 const tangentsMethod = [
   "Mark a right angle wherever a radius meets a tangent.",
@@ -1552,23 +1742,68 @@ const tangentsLesson = lesson(
     problem(
       "Two tangents",
       [
-        "“PA and PB are tangents to the circle, centre O. Angle APB = 50°. Find angle AOB. Give reasons.”",
+        "“PA and PB are tangents to the circle, centre O. Find angle AOB. Give reasons.”",
         "By the end of this lesson, you'll find the two right angles hiding in the picture.",
       ],
       kite(50, { P: "50°", O: "?" }),
     ),
-    typed("Warm-up", "The angles of a quadrilateral add up to", "360", "Two triangles.", "360°.", {
-      unit: "°",
-    }),
-    choose(
+    tap(
       "Warm-up",
-      "A tangent",
-      "touches the circle at one point",
-      "It just touches, without crossing.",
+      "Tap both tangents.",
+      kite(60, {}, 0, { tap: true }),
+      ["PA", "PB"],
+      "A tangent touches the circle at one point, from outside.",
+      "PA and PB: each touches the circle once.",
+      { wrong: { OA: "OA is a radius.", OB: "OB is a radius." } },
+    ),
+    typed(
+      "Warm-up",
+      "The angles of a quadrilateral add to 360°. Find the angle marked ?.",
+      "110",
+      "Take the other three from 360°.",
+      "110°.",
+      { unit: "°", picture: kite(70, { A: "90°", B: "90°", P: "70°", O: "?" }) },
+    ),
+    explore(
+      "Move P away from the circle",
+      {
+        kind: "geometry",
+        circle: 2.4,
+        points: [
+          { name: "P", from: "O", deg: 0, dist: 4.5, drag: [3, 7] },
+          { name: "A", tangentFrom: "P", side: 1 },
+          { name: "B", tangentFrom: "P", side: -1 },
+        ],
+        lines: ["OA", "OB", "PA", "PB"],
+        angles: [{ name: "OAP" }, { name: "APB" }, { name: "AOB" }],
+        readouts: [
+          { label: "PA", length: "PA" },
+          { label: "PB", length: "PB" },
+          { label: "Angle APB + angle AOB", sum: ["APB", "AOB"] },
+        ],
+      },
       [
-        ["cuts the circle twice", "That's a chord, carried on."],
-        ["goes through the centre", "That's a diameter."],
+        "What stayed the same?",
+        "The right angle at A, PA = PB, and angle APB + angle AOB = 180°",
+        "A tangent meets a radius at 90°, and two tangents from a point are equal.",
+        [
+          ["Angle APB stayed the same", "It got smaller as P moved away."],
+          ["PA and PB changed by different amounts", "Look again: they're always equal."],
+        ],
       ],
+      "Right angles at A and B, and equal tangents, however far away P is.",
+      {
+        text: "Drag P along the line. Watch the tangents and the angles.",
+        expect: [
+          "Before you drag: as P moves further away, angle APB will…",
+          "get smaller",
+          "The tangents close up as P moves away.",
+          [
+            ["get bigger", "Try it and see."],
+            ["stay the same", "Try it and see."],
+          ],
+        ],
+      },
     ),
     explain(
       "Discover",
@@ -1579,22 +1814,11 @@ const tangentsLesson = lesson(
       ],
       kite(50, { A: "90°", B: "90°" }),
     ),
-    choose(
-      "Discover",
-      "Angle APB = 50°. Angle AOB is",
-      "130°",
-      "360° − 90° − 90° − 50°.",
-      [
-        ["50°", "They're opposite corners of the kite, not equal."],
-        ["40°", "The two right angles and these two make 360°."],
-      ],
-      { picture: kite(50, { P: "50°", O: "?" }) },
-    ),
     methodCard("The method", tangentsMethod, kite(50, { A: "90°", B: "90°" })),
     pair(
       "The kite",
       {
-        problem: "PA and PB are tangents. Angle APB = 40°. Find angle AOB.",
+        problem: "PA and PB are tangents. Find angle AOB.",
         picture: kite(40, { P: "40°", O: "?" }),
         lines: [
           ["OAP = OBP = 90°", "A tangent meets a radius at 90°."],
@@ -1602,21 +1826,17 @@ const tangentsLesson = lesson(
         ],
       },
       ask(
-        "PA and PB are tangents. Angle APB = 70°. Find angle AOB.",
+        "PA and PB are tangents. Find angle AOB.",
         "110",
-        "Two right angles and 70°, from 360°.",
+        "Two right angles and the angle at P, from 360°.",
         "110°.",
-        {
-          unit: "°",
-          asks: "angle at O",
-          picture: kite(70, { P: "70°", O: "?" }),
-        },
+        { unit: "°", asks: "angle at O", picture: kite(70, { P: "70°", O: "?" }) },
       ),
       "Angle O and angle P always share 180°.",
     ),
     fade(
       "Finish it",
-      "PA and PB are tangents. Angle AOB = 124°. Find angle APB.",
+      "PA and PB are tangents. Find angle APB.",
       ["OAP = OBP = 90° (a tangent meets a radius at 90°)."],
       [
         [
@@ -1633,12 +1853,12 @@ const tangentsLesson = lesson(
       "Same method, different look",
       "PA and PB are tangents each time. Watch what changes.",
       [
-        ask("Angle APB = 60°. Find angle AOB.", "120", "180° − 60°.", "120°.", {
+        ask("Find angle AOB.", "120", "180° take away the angle at P.", "120°.", {
           unit: "°",
           asks: "angle at O",
           picture: kite(60, { P: "60°", O: "?" }),
         }),
-        ask("Angle APB = 80°. Find angle AOB.", "100", "180° − 80°.", "100°.", {
+        ask("Find angle AOB.", "100", "180° take away the angle at P.", "100°.", {
           unit: "°",
           asks: "angle at O",
           changed: "Angle APB went up by 20°.",
@@ -1654,9 +1874,9 @@ const tangentsLesson = lesson(
           picture: kite(80, { P: "80°", O: "?" }),
         }),
         ask(
-          "Angle APB = 80°. Find angle AOB.",
+          "Find angle AOB.",
           "100",
-          "Still 180° − 80°.",
+          "Still 180° take away the angle at P.",
           "100°: the kite is only turned.",
           {
             unit: "°",
@@ -1666,31 +1886,31 @@ const tangentsLesson = lesson(
           },
         ),
         ask(
-          "Angle APB = 80°. Find angle OPA.",
-          "40",
-          "OP cuts the kite into two matching halves.",
-          "40°: half of 80°, as the kite is symmetrical.",
+          "Find angle AOP.",
+          "50",
+          "OP cuts the kite into two matching halves. Find angle AOB first.",
+          "50°: angle AOB is 180° − 80° = 100°, and OP cuts it in half.",
           {
             unit: "°",
-            changed: "Now it's half of the angle at P.",
+            changed: "Now it's half of the kite.",
             picture: circlePic({
               r: 2.4,
               centre: true,
               on: { A: 50, B: -50 },
-              off: { P: P(2.4 / Math.cos((50 * Math.PI) / 180), 0) },
+              off: { P: P(2.4 / Math.cos(rad(50)), 0) },
               lines: ["OA", "OB", "PA", "PB"],
               dashed: ["OP"],
               angles: [
                 ["APB", "80°"],
-                ["OPA", "?"],
+                ["AOP", "?"],
               ],
             }),
           },
         ),
         ask(
-          "Radius OA = 5 cm and OP = 13 cm. Find the tangent PA.",
+          "Find the tangent PA.",
           "12",
-          "Triangle OAP has a right angle at A: Pythagoras.",
+          "Triangle OAP has a right angle at A: use Pythagoras.",
           "12 cm: $13^2 - 5^2 = 144$.",
           {
             unit: "cm",
@@ -1702,37 +1922,61 @@ const tangentsLesson = lesson(
               "A right-angled triangle with two sides known.",
               [["the angle at the centre", "It's a length: use the right angle."]],
             ],
-            picture: kite(45, { A: "90°" }),
+            picture: kite(45, { A: "90°" }, 0, {
+              sides: [
+                ["OA", "5 cm"],
+                ["OP", "13 cm"],
+              ],
+            }),
           },
         ),
       ],
       "Right angles where radius meets tangent; the rest is triangles and quadrilaterals.",
     ),
+    tap(
+      "Spot it",
+      "PA and PB are tangents. Tap both right angles.",
+      kite(60, { A: "", B: "", P: "", O: "" }, 0, { tap: true }),
+      ["OAP", "PBO"],
+      "Look where a radius meets a tangent.",
+      "At A and B, where each radius meets its tangent.",
+      {
+        wrong: {
+          APB: "That's at P, between the tangents.",
+          AOB: "That's at O, between the radii.",
+        },
+      },
+    ),
     questionSet(
       "Where's the answer?",
       "Which part is missing?",
       [
-        ask("Angle AOB = 150°. Find angle APB.", "30", "180° − 150°.", "30°.", {
+        ask("Find angle APB.", "30", "180° take away the angle at O.", "30°.", {
           unit: "°",
           asks: "angle at P",
-          picture: kiteRel("150°", "?", 1),
+          picture: kite(30, { O: "150°", P: "?" }),
         }),
-        ask("Angle APB = 36°. Find angle AOB.", "144", "180° − 36°.", "144°.", {
+        ask("Find angle AOB.", "144", "180° take away the angle at P.", "144°.", {
           unit: "°",
           asks: "angle at O",
           changed: "Now the angle at O is missing.",
-          picture: kiteRel("?", "36°", 0),
+          picture: kite(36, { P: "36°", O: "?" }, 200),
         }),
-        ask("PA = 9 cm. Find PB.", "9", "Tangents from one point are equal.", "9 cm.", {
+        ask("Find PB.", "9", "Tangents from one point are equal.", "9 cm.", {
           unit: "cm",
           asks: "length",
           changed: "Now a length is missing.",
-          picture: kite(60, { P: "60°" }),
+          picture: kite(60, {}, 0, {
+            sides: [
+              ["PA", "9 cm"],
+              ["PB", "?"],
+            ],
+          }),
         }),
-        ask("Angle APB = x and angle AOB = 2x. Find x.", "60", "x + 2x = 180.", "x = 60.", {
+        ask("Find x.", "60", "The angles at O and P add to 180°.", "3x = 180, so x = 60.", {
           asks: "angle at P",
           changed: "Both angles are in algebra.",
-          picture: kiteRel("$2x$", "$x$"),
+          picture: kite(60, { P: "x", O: "2x" }),
         }),
       ],
       "Angle, angle or length: the right angles and equal tangents do the work.",
@@ -1740,34 +1984,39 @@ const tangentsLesson = lesson(
     ),
     typed(
       "Your turn",
-      "PA and PB are tangents. Angle AOB = 98°. Find angle APB.",
+      "PA and PB are tangents. Find angle APB.",
       "82",
-      "180° − 98°.",
+      "180° take away the angle at O.",
       "82°.",
-      {
-        unit: "°",
-        picture: kite(82, { O: "98°", P: "?" }, 200),
-      },
+      { unit: "°", picture: kite(82, { O: "98°", P: "?" }, 200) },
     ),
     typed(
       "Your turn",
-      "Radius 8 cm, tangent PA = 15 cm. Find OP.",
+      "PA is a tangent. Find OP.",
       "17",
-      "Pythagoras: $8^2 + 15^2$.",
+      "Triangle OAP has a right angle at A: use Pythagoras.",
       "17 cm.",
       {
         unit: "cm",
+        picture: kite(56, { A: "90°" }, 0, {
+          sides: [
+            ["OA", "8 cm"],
+            ["PA", "15 cm"],
+            ["OP", "?"],
+          ],
+        }),
       },
     ),
     choose(
       "Watch out",
-      "Ola says angle OAP is 90° because OA is a radius. What else must be true?",
+      "Ola says angle OAP is a right angle because OA is a radius. What else must be true?",
       "PA must be a tangent at A",
       "The right angle is between a tangent and a radius.",
-      [["Nothing: every radius makes 90°", "Only with a tangent at that point."]],
+      [["Nothing: every radius makes a right angle", "Only with a tangent at that point."]],
+      { picture: kite(70, { A: "?" }) },
     ),
     mistake(
-      "Kim finds angle AOB. PA and PB are tangents, and angle APB = 64°.",
+      "Kim finds angle AOB. PA and PB are tangents.",
       ["OAP = OBP = 90°", "AOB = 180° − 64° − 90°", "AOB = 26°"],
       1,
       "OAPB is a quadrilateral: 360° − 90° − 90° − 64° = 116°.",
@@ -1775,7 +2024,7 @@ const tangentsLesson = lesson(
     ),
     choose(
       "Back to the problem",
-      "“Angle APB = 50°. Find angle AOB. Give reasons.”",
+      "“Find angle AOB. Give reasons.”",
       "130°: a tangent meets a radius at 90°, and the angles of a quadrilateral add to 360°",
       "Both reasons, and the angle.",
       [
@@ -1787,55 +2036,67 @@ const tangentsLesson = lesson(
     quiz([
       [
         [
-          "Tangents PA, PB: angle APB = 48°. Angle AOB?",
+          "Find angle AOB.",
           "132°",
           ["48°", "42°"],
           "180° − 48°.",
-          undefined,
+          kite(48, { P: "48°", O: "?" }),
           "angle at O",
         ],
         [
-          "Tangents PA, PB: angle APB = 66°. Angle AOB?",
+          "Find angle AOB.",
           "114°",
           ["66°", "24°"],
           "180° − 66°.",
-          undefined,
+          kite(66, { P: "66°", O: "?" }, 90),
           "angle at O",
         ],
       ],
       [
         [
-          "Tangents PA, PB: angle AOB = 140°. Angle APB?",
+          "Find angle APB.",
           "40°",
           ["140°", "50°"],
           "180° − 140°.",
-          undefined,
+          kite(40, { O: "140°", P: "?" }),
           "angle at P",
         ],
         [
-          "Tangents PA, PB: angle AOB = 110°. Angle APB?",
+          "Find angle APB.",
           "70°",
           ["110°", "20°"],
           "180° − 110°.",
-          undefined,
+          kite(70, { O: "110°", P: "?" }, 200),
           "angle at P",
         ],
       ],
       [
         [
-          "Radius 6 cm, OP = 10 cm. Tangent PA?",
+          "Find PA.",
           "8 cm",
           ["16 cm", "4 cm"],
-          "Pythagoras: $100 - 36 = 64$.",
-          undefined,
+          "Pythagoras: $10^2 - 6^2 = 64$.",
+          kite(74, { A: "90°" }, 0, {
+            sides: [
+              ["OA", "6 cm"],
+              ["OP", "10 cm"],
+              ["PA", "?"],
+            ],
+          }),
           "length",
         ],
         [
-          "Radius 7 cm, OP = 25 cm. Tangent PA?",
+          "Find PA.",
           "24 cm",
           ["18 cm", "32 cm"],
-          "Pythagoras: $625 - 49 = 576$.",
-          undefined,
+          "Pythagoras: $25^2 - 7^2 = 576$.",
+          kite(32, { A: "90°" }, 0, {
+            sides: [
+              ["OA", "7 cm"],
+              ["OP", "25 cm"],
+              ["PA", "?"],
+            ],
+          }),
           "length",
         ],
       ],
@@ -1853,22 +2114,23 @@ tangentsLesson.variation = {
 // ---------------------------------------------------------------------------------------------
 // 6. The alternate segment theorem.
 
-const altRel = (tangent: string, segment: string, asks: number) =>
-  relation(
-    [
-      ["tangent and chord", tangent],
-      ["in the other segment", segment],
-    ],
-    ["="],
-    asks,
-  );
-
 const alternateMethod = [
   "Find the tangent and the point T where it touches.",
   "Pick the chord from T, and the angle between it and the tangent.",
   "Look across the chord: the angle at the circumference on the far side, standing on the same chord.",
   "They're equal. Reason: the alternate segment theorem.",
 ];
+
+/** A tangent at T, chord TA, and C on the same side as the tangent angle: not alternate. */
+const sameSide = circlePic({
+  on: { T: 270, A: 50, C: 340 },
+  lines: ["TA", "TC", "CA"],
+  tangents: [{ at: "T", ends: ["R", "S"], len: 3 }],
+  angles: [
+    ["STA", "70°"],
+    ["TCA", "?"],
+  ],
+});
 
 const alternateLesson = lesson(
   U,
@@ -1880,18 +2142,76 @@ const alternateLesson = lesson(
     problem(
       "Tangent and chord",
       [
-        "“RS is a tangent to the circle at T. Angle STA = 55°. Find angle TBA. Give a reason.”",
+        "“RS is a tangent to the circle at T. Find angle TBA. Give a reason.”",
         "This is the hardest circle theorem to spot. By the end of this lesson, you'll know what to look for.",
       ],
       alternate(55, { tangent: "55°", B: "?" }),
     ),
-    typed("Warm-up", "Angles on a straight line add up to", "180", "Half a turn.", "180°.", {
-      unit: "°",
-    }),
-    choose("Warm-up", "Angles in the same segment are", "equal", "The earlier theorem.", [
-      ["supplementary", "That's opposite angles in a cyclic quadrilateral."],
-      ["double", "That's the centre and the circumference."],
-    ]),
+    tap(
+      "Warm-up",
+      "Tap the tangent.",
+      alternate(55, {}, 150, { tap: true }),
+      "RS",
+      "A tangent touches the circle once, at T.",
+      "RS: it touches the circle at T and doesn't cut it.",
+      { wrong: { TA: "TA is a chord.", TB: "TB is a chord.", AB: "AB is a chord." } },
+    ),
+    typed(
+      "Warm-up",
+      "Find the angle marked ?.",
+      "125",
+      "Angles on a straight line add to 180°.",
+      "125°.",
+      {
+        unit: "°",
+        picture: tangentChord(20, [
+          ["STA", "55°"],
+          ["ATR", "?"],
+        ]),
+      },
+    ),
+    explore(
+      "Move A round the circle",
+      {
+        kind: "geometry",
+        circle: 3,
+        points: [
+          { name: "T", onCircle: 270 },
+          { name: "R", at: P(-3.4, -3) },
+          { name: "S", at: P(3.4, -3) },
+          { name: "A", onCircle: 20, drag: [290, 100] },
+          { name: "B", onCircle: 150 },
+        ],
+        lines: ["RS", "TA", "TB", "AB"],
+        angles: [{ name: "STA" }, { name: "TBA" }],
+        readouts: [
+          { label: "Angle STA", angle: "STA" },
+          { label: "Angle TBA", angle: "TBA" },
+        ],
+      },
+      [
+        "What did you notice?",
+        "Angle TBA always equals angle STA",
+        "The angle between a tangent and a chord equals the angle in the alternate segment.",
+        [
+          ["They add to 180°", "Look again: they're equal."],
+          ["Angle TBA never changes", "It changes with angle STA, every time."],
+        ],
+      ],
+      "Tangent–chord angle = the angle across the chord.",
+      {
+        text: "RS is a tangent at T. Drag A round the circle and watch the two angles.",
+        expect: [
+          "Before you drag: as angle STA grows, angle TBA will…",
+          "grow with it",
+          "They stay equal: the alternate segment theorem.",
+          [
+            ["stay the same", "Try it and see."],
+            ["shrink", "Try it and see."],
+          ],
+        ],
+      },
+    ),
     explain(
       "Discover",
       "Look across the chord",
@@ -1901,44 +2221,29 @@ const alternateLesson = lesson(
       ],
       alternate(55, { tangent: "x", B: "x" }),
     ),
-    choose(
-      "Discover",
-      "Angle STA = 55°. Angle TBA is",
-      "55°",
-      "The angle in the alternate segment.",
-      [
-        ["35°", "They're equal, not adding to 90°."],
-        ["125°", "That's the angle on the other side of T."],
-      ],
-      { picture: alternate(55, { tangent: "55°", B: "?" }) },
-    ),
     methodCard("The method", alternateMethod, alternate(55, { tangent: "x", B: "x" })),
     pair(
       "Across the chord",
       {
-        problem: "RS is a tangent at T. Angle STA = 62°. Find angle TBA.",
+        problem: "RS is a tangent at T. Find angle TBA.",
         picture: alternate(62, { tangent: "62°", B: "?" }),
         lines: [
-          ["Chord TA, tangent TS: the angle between them is 62°.", "Tangent and chord meet at T."],
+          ["The chord is TA, and the tangent–chord angle is STA.", "Tangent and chord meet at T."],
           ["TBA = 62°", "The alternate segment theorem."],
         ],
       },
       ask(
-        "RS is a tangent at T. Angle STA = 48°. Find angle TBA.",
+        "RS is a tangent at T. Find angle TBA.",
         "48",
         "The angle in the alternate segment equals the tangent–chord angle.",
         "48°.",
-        {
-          unit: "°",
-          asks: "segment angle",
-          picture: alternate(48, { tangent: "48°", B: "?" }),
-        },
+        { unit: "°", asks: "segment angle", picture: alternate(48, { tangent: "48°", B: "?" }) },
       ),
       "Tangent–chord angle = angle across the chord.",
     ),
     fade(
       "The other way round",
-      "RS is a tangent at T. Angle TBA = 50°. Find angle STA.",
+      "RS is a tangent at T. Find angle STA.",
       ["Angle TBA stands on chord TA, in the segment away from S."],
       [
         [
@@ -1955,13 +2260,13 @@ const alternateLesson = lesson(
       "Same method, different look",
       "RS is a tangent at T each time. Watch what changes.",
       [
-        ask("Angle STA = 40°. Find angle TBA.", "40", "Alternate segment.", "40°.", {
+        ask("Find angle TBA.", "40", "Alternate segment.", "40°.", {
           unit: "°",
           asks: "segment angle",
           picture: alternate(40, { tangent: "40°", B: "?" }),
         }),
         ask(
-          "Angle STA = 40°. Find angle TBA.",
+          "Find angle TBA.",
           "40",
           "B is still in the alternate segment.",
           "40°: anywhere on that arc, by the same-segment theorem.",
@@ -1971,24 +2276,24 @@ const alternateLesson = lesson(
             changed: "B has moved along its arc.",
             expect: [
               "B has moved. Angle TBA…",
-              "stays 40°",
+              "stays the same",
               "Angles in the same segment are equal.",
               [["changes", "B is still in the alternate segment."]],
             ],
             picture: alternate(40, { tangent: "40°", B: "?" }, 100),
           },
         ),
-        ask("Angle STA = 70°. Find angle TBA.", "70", "Alternate segment.", "70°.", {
+        ask("Find angle TBA.", "70", "Alternate segment.", "70°.", {
           unit: "°",
           asks: "segment angle",
-          changed: "The chord TA is steeper: angle STA is 70°.",
+          changed: "The chord TA is steeper.",
           picture: alternate(70, { tangent: "70°", B: "?" }),
         }),
         ask(
-          "Angle STA = 55° and angle BAT = 60°. Find angle ATB.",
+          "Find angle ATB.",
           "65",
-          "Angle TBA = 55° by the alternate segment theorem; then use the triangle.",
-          "65°: 180° − 55° − 60°.",
+          "Angle TBA equals the tangent–chord angle; then use the triangle.",
+          "65°: angle TBA equals the tangent–chord angle, and the triangle's angles add to 180°.",
           {
             unit: "°",
             changed: "Now the theorem is one step in a longer problem.",
@@ -1996,70 +2301,59 @@ const alternateLesson = lesson(
           },
         ),
         ask(
-          "The angle between the tangent and chord TA is 70°. C is on the same side of TA as S. Is angle TCA 70°?",
+          "Is angle TCA equal to angle STA?",
           "No",
           "The equal angle is across the chord, in the alternate segment.",
-          "No: C is on the wrong side of TA. The angle there is 180° − 70° = 110°.",
+          "No: C is on the same side of TA as S. The angle there is 180° take away the tangent–chord angle.",
           {
             changed: "The point is on the same side as the tangent angle.",
             others: ["Yes"],
-            picture: circlePic({
-              on: { T: 270, A: 50, C: 340 },
-              lines: ["TA", "TC", "CA"],
-              tangents: [{ at: "T", ends: ["R", "S"], len: 3 }],
-              angles: [
-                ["STA", "70°"],
-                ["TCA", "?"],
-              ],
-            }),
+            picture: sameSide,
           },
         ),
       ],
       "Always look across the chord, into the other segment.",
     ),
+    tap(
+      "Spot it",
+      "RS is a tangent at T. Tap the angle equal to x.",
+      alternate(55, { tangent: "x", B: "", A: "", T: "" }, 150, { tap: true }),
+      "TBA",
+      "Look across the chord TA, into the other segment.",
+      "Angle TBA: across chord TA from the tangent angle.",
+      {
+        wrong: {
+          BAT: "That's at A: it stands on chord TB.",
+          ATB: "That's at T, between the two chords.",
+          STA: "That's x itself.",
+        },
+      },
+    ),
     questionSet(
       "Where's the answer?",
       "Which part is missing?",
       [
+        ask("Find angle TBA.", "66", "Equal.", "66°.", {
+          unit: "°",
+          asks: "segment angle",
+          picture: alternate(66, { tangent: "66°", B: "?" }),
+        }),
+        ask("Find angle STA.", "38", "Equal.", "38°.", {
+          unit: "°",
+          asks: "tangent angle",
+          changed: "Now the tangent–chord angle is missing.",
+          picture: alternate(38, { tangent: "?", B: "38°" }, 110),
+        }),
+        ask("Find x.", "18", "The two angles are equal: make an equation.", "4x = 72, so x = 18.", {
+          asks: "tangent angle",
+          changed: "The tangent–chord angle is in algebra.",
+          picture: alternate(72, { tangent: "4x", B: "72°" }),
+        }),
         ask(
-          "The tangent–chord angle is 66°. Find the angle in the alternate segment.",
-          "66",
-          "Equal.",
-          "66°.",
-          {
-            unit: "°",
-            asks: "segment angle",
-            picture: altRel("66°", "?", 1),
-          },
-        ),
-        ask(
-          "The angle in the alternate segment is 38°. Find the tangent–chord angle.",
-          "38",
-          "Equal.",
-          "38°.",
-          {
-            unit: "°",
-            asks: "tangent angle",
-            changed: "Now the tangent–chord angle is missing.",
-            picture: altRel("?", "38°", 0),
-          },
-        ),
-        ask(
-          "The tangent–chord angle is 4x and the angle in the alternate segment is 72°. Find x.",
-          "18",
-          "4x = 72.",
-          "x = 18.",
-          {
-            asks: "tangent angle",
-            changed: "The tangent–chord angle is in algebra.",
-            picture: altRel("?", "72°", 0),
-          },
-        ),
-        ask(
-          "Angle RTB = 58°, between the tangent and chord TB. Find angle TAB.",
+          "Find angle TAB.",
           "58",
           "The other chord, TB: look across it.",
-          "58°: angle RTB equals angle TAB in its alternate segment.",
+          "58°: angle BTR equals angle TAB, in its alternate segment.",
           {
             unit: "°",
             asks: "segment angle",
@@ -2081,7 +2375,7 @@ const alternateLesson = lesson(
     ),
     typed(
       "Your turn",
-      "RS is a tangent at T. Angle TBA = 63°. Find angle STA.",
+      "RS is a tangent at T. Find angle STA.",
       "63",
       "Alternate segment.",
       "63°.",
@@ -2092,31 +2386,32 @@ const alternateLesson = lesson(
     ),
     typed(
       "Your turn",
-      "RS is a tangent at T. Angle STA = 3x + 5° and angle TBA = 59°. Find x.",
+      "RS is a tangent at T. Find x.",
       "18",
-      "3x + 5 = 59.",
-      "x = 18.",
+      "The two angles are equal: make an equation.",
+      "3x + 5 = 59, so x = 18.",
       {
         picture: alternate(59, { tangent: "3x + 5°", B: "59°" }),
       },
     ),
     choose(
       "Watch out",
-      "Ben matches the tangent–chord angle with an angle on the same side of the chord. What's wrong?",
+      "Ben matches the tangent–chord angle with angle TCA, on the same side of the chord. What's wrong?",
       "The equal angle is across the chord, in the other segment",
       "Alternate means the other side.",
       [["Nothing: any angle on the chord matches", "Only the one in the alternate segment."]],
+      { picture: sameSide },
     ),
     mistake(
-      "Zoe finds angle TBA. RS is a tangent at T, and angle STA = 52°.",
+      "Zoe finds angle TBA. RS is a tangent at T.",
       ["The tangent meets the radius at 90°.", "So TBA = 90° − 52°", "TBA = 38°"],
-      1,
-      "There's no radius here. By the alternate segment theorem, TBA = 52°.",
+      0,
+      "There's no radius here: TA is a chord. By the alternate segment theorem, TBA = 52°.",
       alternate(52, { tangent: "52°", B: "?" }),
     ),
     choose(
       "Back to the problem",
-      "“Angle STA = 55°. Find angle TBA. Give a reason.”",
+      "“Find angle TBA. Give a reason.”",
       "55°: the angle between a tangent and a chord equals the angle in the alternate segment",
       "The full theorem as the reason.",
       [
@@ -2131,52 +2426,54 @@ const alternateLesson = lesson(
     quiz([
       [
         [
-          "Tangent–chord angle 47°. Angle in the alternate segment?",
+          "Find angle TBA.",
           "47°",
           ["43°", "133°"],
           "Equal.",
-          undefined,
+          alternate(47, { tangent: "47°", B: "?" }),
           "segment angle",
         ],
         [
-          "Tangent–chord angle 71°. Angle in the alternate segment?",
+          "Find angle TBA.",
           "71°",
           ["19°", "109°"],
           "Equal.",
-          undefined,
+          alternate(71, { tangent: "71°", B: "?" }, 100),
           "segment angle",
         ],
       ],
       [
         [
-          "Angle in the alternate segment 36°. Tangent–chord angle?",
+          "Find angle STA.",
           "36°",
           ["54°", "144°"],
           "Equal.",
-          undefined,
+          alternate(36, { tangent: "?", B: "36°" }),
           "tangent angle",
         ],
         [
-          "Angle in the alternate segment 64°. Tangent–chord angle?",
+          "Find angle STA.",
           "64°",
           ["26°", "116°"],
           "Equal.",
-          undefined,
+          alternate(64, { tangent: "?", B: "64°" }, 120),
           "tangent angle",
         ],
       ],
       [
         [
-          "The equal angle is",
-          "across the chord, in the other segment",
-          ["on the same side as the tangent angle", "at the centre"],
-          "Alternate.",
+          "Find angle ATB.",
+          "65°",
+          ["50°", "115°"],
+          "Angle TBA is 50°, so 180° − 50° − 65°.",
+          alternate(50, { tangent: "50°", A: "65°", T: "?" }, 140),
         ],
         [
-          "The alternate segment theorem needs",
-          "a tangent and a chord from the same point",
-          ["two chords", "a radius and a chord"],
-          "Tangent and chord.",
+          "Find angle ATB.",
+          "70°",
+          ["40°", "110°"],
+          "Angle TBA is 40°, so 180° − 40° − 70°.",
+          alternate(40, { tangent: "40°", A: "70°", T: "?" }, 130),
         ],
       ],
     ]),

@@ -156,9 +156,14 @@ export function placePoints(scene: GeometryScene, at: Positions): Record<string,
     } else if ("free" in p) {
       const v = at[p.name];
       out[p.name] = typeof v === "object" ? v : p.free;
-    } else {
+    } else if ("below" in p) {
       const above = out[p.below];
       out[p.name] = { x: above?.x ?? 0, y: 0 };
+    } else {
+      const e = out[p.tangentFrom] ?? { x: r * 2, y: 0 };
+      const d = Math.max(Math.hypot(e.x, e.y), r + 0.01);
+      const phi = Math.atan2(e.y, e.x) + p.side * Math.acos(r / d);
+      out[p.name] = { x: r * Math.cos(phi), y: r * Math.sin(phi) };
     }
   }
   return out;
@@ -275,11 +280,43 @@ function GeometryView({
   const svg = useRef<SVGSVGElement>(null);
   const [dragging, setDragging] = useState<string>();
   const pts = placePoints(scene, at);
-  const r = scene.circle ?? 0;
+  const through = scene.circleThrough ? pts[scene.circleThrough] : undefined;
+  const r = through ? Math.hypot(through.x, through.y) : (scene.circle ?? 0);
+  const drawCircle = r > 0 && !scene.hideCircle;
+  // The centre O is drawn and named only when the diagram uses it.
+  const joins = [...scene.lines, ...(scene.dashed ?? [])];
+  const usesCentre =
+    !scene.points.some((p) => p.name === "O") &&
+    [...joins, ...(scene.angles ?? []).map((a) => a.name)].some((n) => n.includes("O"));
+  // Its name sits on the side away from the lines that meet there, clear of them and their angle.
+  const centreLabel = (() => {
+    let dx = 0;
+    let dy = 0;
+    for (const l of joins) {
+      if (!l.includes("O")) continue;
+      const q = pts[l.replace("O", "")];
+      if (!q) continue;
+      const d = Math.hypot(q.x, q.y) || 1;
+      dx += q.x / d;
+      dy += q.y / d;
+    }
+    const d = Math.hypot(dx, dy);
+    const ux = d > 0.1 ? -dx / d : 0.6;
+    const uy = d > 0.1 ? -dy / d : -0.8;
+    return { ux, uy };
+  })();
   // A fixed frame: everything any point can reach, so the drawing never jumps while dragging.
   const frame = useMemo(() => {
     const all: Point[] = Object.values(placePoints(scene, startPositions(scene)));
-    if (r) all.push({ x: -r, y: -r }, { x: r, y: r });
+    const reach = scene.circleThrough
+      ? Math.max(
+          ...scene.points.flatMap((p) =>
+            "dist" in p && p.name === scene.circleThrough ? [p.drag?.[1] ?? p.dist] : [],
+          ),
+          r,
+        )
+      : r;
+    if (reach) all.push({ x: -reach, y: -reach }, { x: reach, y: reach });
     for (const p of scene.points) {
       if ("free" in p)
         all.push({ x: p.drag.xMin, y: p.drag.yMin }, { x: p.drag.xMax, y: p.drag.yMax });
@@ -297,7 +334,7 @@ function GeometryView({
       yMin: Math.min(...ys) - 0.8,
       yMax: Math.max(...ys) + 0.8,
     };
-  }, [scene, r]);
+  }, [scene]);
   const k = Math.min(300 / (frame.xMax - frame.xMin), 260 / (frame.yMax - frame.yMin));
   const width = (frame.xMax - frame.xMin) * k;
   const height = (frame.yMax - frame.yMin) * k;
@@ -334,7 +371,7 @@ function GeometryView({
       onPointerUp={() => setDragging(undefined)}
       onPointerCancel={() => setDragging(undefined)}
     >
-      {r > 0 && <circle className="draw-arc" cx={sx(0)} cy={sy(0)} r={r * k} />}
+      {drawCircle && <circle className="draw-arc" cx={sx(0)} cy={sy(0)} r={r * k} />}
       {scene.lines.map((l) => {
         const s = seg(l);
         return s ? <line key={l} className="draw-line tone-main" {...s} /> : null;
@@ -366,7 +403,7 @@ function GeometryView({
           </g>
         );
       })}
-      {r > 0 && <circle className="pic-centre" cx={sx(0)} cy={sy(0)} r="4" />}
+      {usesCentre && <circle className="pic-centre" cx={sx(0)} cy={sy(0)} r="4" />}
       {scene.points.map((p) => {
         const at0 = pts[p.name];
         if (!at0 || p.label === false) return null;
@@ -388,8 +425,13 @@ function GeometryView({
           </text>
         );
       })}
-      {r > 0 && !scene.points.some((p) => p.name === "O") && (
-        <text className="pic-label" x={sx(0) + 12} y={sy(0) + 18}>
+      {usesCentre && (
+        <text
+          className="pic-label"
+          x={sx(0) + centreLabel.ux * 16}
+          y={sy(0) - centreLabel.uy * 16 + 5}
+          textAnchor="middle"
+        >
           O
         </text>
       )}

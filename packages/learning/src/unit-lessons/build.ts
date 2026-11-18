@@ -317,12 +317,27 @@ export function redraft(
     exit: Screen;
     picture?: Picture;
     drop?: Words[];
+    /**
+     * Kept screens to replace, by title (or "tag: title" where two share a title): a
+     * diagram-first version of a worded one.
+     */
+    swap?: Record<Words, Screen>;
+    /** Kept screens that may stay words only, by title (or "tag: title"), with the reason. */
+    wordsOnly?: Record<Words, Words>;
+    /** Screens to put just before the method card, such as an Explore. */
+    before?: Screen[];
   },
 ): UnitLesson {
   if (!original) throw new Error("No lesson to redraft");
-  const kept = original.screens.filter(
-    (s) => !REPLACED.has(s.tag ?? "") && !(plan.drop ?? []).includes(s.title),
-  );
+  const kept = original.screens
+    .filter((s) => !REPLACED.has(s.tag ?? "") && !(plan.drop ?? []).includes(s.title))
+    .map((s) => {
+      const key = `${s.tag ?? ""}: ${s.title}`;
+      const swapped = plan.swap?.[key] ?? plan.swap?.[s.title];
+      if (swapped) return swapped;
+      const why = plan.wordsOnly?.[key] ?? plan.wordsOnly?.[s.title];
+      return why ? { ...s, wordsOnly: why } : s;
+    });
   const at = kept.findIndex((s) =>
     ["Watch out", "Spot the mistake", "Back to the problem"].includes(s.tag ?? ""),
   );
@@ -333,6 +348,7 @@ export function redraft(
     variation: plan.variation,
     screens: [
       ...kept.slice(0, split),
+      ...(plan.before ?? []),
       methodCard("The method", plan.method, plan.picture),
       ...plan.learning,
       ...kept.slice(split),
