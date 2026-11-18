@@ -23,6 +23,9 @@ export interface CircleSpec {
   /** Tangents: a line through a point on the circle at right angles to its radius, with the
    * names of its two ends (or "" for none) and its half-length. */
   tangents?: { at: string; ends?: [string, string]; len?: number }[];
+  /** For a Tap screen: every line and marked angle can be tapped, by its name ("OA", "ACB").
+   * Angles with an empty label are then drawn too, as unlabelled choices. */
+  tap?: boolean;
 }
 
 /** Where a named point is. */
@@ -105,7 +108,7 @@ export function circlePic(spec: CircleSpec): DrawingPic {
     return [a, b] as [Point, Point];
   };
   const items: DrawingPic["items"] = [{ arc: P(0, 0), r, from: 0, to: 360 }];
-  for (const l of spec.lines ?? []) items.push({ line: seg(l) });
+  for (const l of spec.lines ?? []) items.push({ line: seg(l), ...(spec.tap ? { tap: l } : {}) });
   for (const l of spec.dashed ?? []) items.push({ line: seg(l), dashed: true });
   for (const t of spec.tangents ?? []) {
     const [a, b] = t.ends ?? [];
@@ -122,10 +125,10 @@ export function circlePic(spec: CircleSpec): DrawingPic {
   }
   if (spec.centre) items.push({ dot: P(0, 0) });
   for (const [abc, label] of spec.angles ?? []) {
-    if (!label) continue;
+    if (!label && !spec.tap) continue;
     const [a, v, b] = [...abc].map((n) => pts[n]);
     if (!a || !v || !b) throw new Error(`No angle ${abc}`);
-    items.push({ angle: v, ...angleBetween(v, a, b), label });
+    items.push({ angle: v, ...angleBetween(v, a, b), label, ...(spec.tap ? { tap: abc } : {}) });
   }
   const tangentEnds = new Set((spec.tangents ?? []).flatMap((t) => t.ends ?? []));
   for (const [name, at] of Object.entries(pts))

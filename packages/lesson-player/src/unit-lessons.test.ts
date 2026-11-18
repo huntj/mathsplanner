@@ -18,6 +18,7 @@ import {
   ruleThrough,
   lessonId,
   lessonsFor,
+  LIVE_REDRAFTS,
   REDRAFT_LESSONS,
   REDRAFTS,
   UNIT_LESSONS,
@@ -49,6 +50,17 @@ import {
 } from "./unit-screens.tsx";
 import { exampleOf, machineChoices, machineRuleTex } from "./UnitLessonView.tsx";
 import { expectVerdict } from "./variation-screens.tsx";
+import {
+  angleOf,
+  draggable,
+  dragTo,
+  placePoints,
+  readoutValue,
+  sceneReadouts,
+  simplest,
+  startPositions,
+} from "./interactive-screens.tsx";
+import { familyOf } from "@mathsplanner/learning";
 import { wordsHtml } from "./unit-ui.tsx";
 import { angleMark, crosses, layoutShape, overlap, sideLabel, type ShapeLike } from "./labels.ts";
 
@@ -119,6 +131,15 @@ const words = (lesson: (typeof UNIT_LESSONS)[number]): string[] =>
           ...askWords(s.question),
         );
       if (s.kind === "set") own.push(...s.items.flatMap(askWords));
+      if (s.kind === "tap") own.push(...Object.values(s.wrong ?? {}));
+      if (s.kind === "explore")
+        own.push(
+          ...[s.notice, ...(s.expect ? [s.expect] : [])].flatMap((q) => [
+            q.question,
+            ...q.options.flatMap((o) => [o.text, o.feedback]),
+          ]),
+          ...(s.scene.kind === "geometry" ? s.scene.readouts.map((r) => r.label) : []),
+        );
       if (s.kind === "quiz")
         own.push(
           ...s.questions
@@ -516,6 +537,62 @@ describe.each(ALL_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %s
             if (b?.prompt === a?.prompt) expect(b?.changed, b?.prompt).toBeDefined();
           }
           break;
+        case "tap": {
+          checkPicture(screen.picture);
+          // Every answer, and every nudge, names a part the pupil can tap.
+          const taps = screen.picture.items.flatMap((it) =>
+            "tap" in it && it.tap ? [it.tap] : [],
+          );
+          expect(new Set(taps).size, "tap names are unique").toBe(taps.length);
+          for (const a of screen.answers) expect(taps, a).toContain(a);
+          for (const w of Object.keys(screen.wrong ?? {})) expect(taps, w).toContain(w);
+          expect(taps.length, "something else to tap").toBeGreaterThan(screen.answers.length);
+          break;
+        }
+        case "explore": {
+          const one = (q: { options: { correct?: true }[] }) =>
+            expect(q.options.filter((o) => o.correct)).toHaveLength(1);
+          one(screen.notice);
+          if (screen.expect) one(screen.expect);
+          const sc = screen.scene;
+          if (sc.kind === "geometry") {
+            const names = sc.points.map((p) => p.name);
+            expect(new Set(names).size).toBe(names.length);
+            expect(sc.points.some(draggable), "something to drag").toBe(true);
+            const pts = placePoints(sc, startPositions(sc));
+            const known = new Set(Object.keys(pts));
+            for (const l of [...sc.lines, ...(sc.dashed ?? [])])
+              for (const n of l) expect(known.has(n), l).toBe(true);
+            for (const a of sc.angles ?? [])
+              expect(Number.isFinite(angleOf(pts, a.name)), a.name).toBe(true);
+            for (const r of sc.readouts)
+              expect(Number.isFinite(readoutValue(pts, r)), r.label).toBe(true);
+            // Dragging a point keeps it in its range.
+            for (const p of sc.points.filter(draggable)) {
+              const v = dragTo(p, pts, { x: 100, y: 100 });
+              expect(v, p.name).toBeDefined();
+            }
+          } else if (sc.kind === "hundred") {
+            expect(sc.start).toBeGreaterThanOrEqual(0);
+            expect(sc.start).toBeLessThanOrEqual(100);
+          } else {
+            expect(sc.total.min).toBeLessThan(sc.total.max);
+            expect(sc.total.start).toBeGreaterThanOrEqual(sc.total.min);
+            expect(sc.total.start).toBeLessThanOrEqual(sc.total.max);
+            expect(sc.rows.every((r) => r.parts > 0)).toBe(true);
+          }
+          expect(
+            sceneReadouts(
+              sc,
+              sc.kind === "geometry"
+                ? startPositions(sc)
+                : sc.kind === "hundred"
+                  ? sc.start
+                  : sc.total.start,
+            ).length,
+          ).toBeGreaterThan(0);
+          break;
+        }
         case "morph":
           expect(screen.dims.every((d) => d > 0)).toBe(true);
           if (screen.shape === "circle") {
@@ -579,6 +656,110 @@ describe.each(ALL_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %s
     );
     for (const a of quizAsks) expect(map.unknowns, a).toContain(a);
     if (map.unknowns.length > 1) expect(quizAsks.size).toBeGreaterThanOrEqual(2);
+  });
+});
+
+/** Topics whose questions are about a diagram: shapes, angles, graphs and charts. */
+const DIAGRAM_TOPICS = new Set(["straight-line", "graphs", "quadratics", "simultaneous"]);
+const diagramLesson = (lesson: (typeof UNIT_LESSONS)[number]) => {
+  const unit = course.sections.flatMap((s) => s.units).find((u) => u.id === lesson.unit);
+  const fam = familyOf(unit?.topic ?? "");
+  return fam === "geometry" || fam === "statistics" || DIAGRAM_TOPICS.has(unit?.topic ?? "");
+};
+
+/** The numbers written on a picture: its labels with a digit in them. */
+function pictureValues(p: Picture | undefined): string[] {
+  if (!p) return [];
+  const labels: string[] = [];
+  if (p.kind === "drawing")
+    for (const it of p.items) {
+      if ("text" in it) labels.push(it.text);
+      if ("angle" in it || "side" in it) labels.push(it.label);
+    }
+  if (p.kind === "shape")
+    labels.push(
+      ...(p.sides ?? []).flatMap((x) => x ?? []),
+      ...(p.angles ?? []).flatMap((x) => x ?? []),
+    );
+  if (p.kind === "angles") labels.push(...p.arcs.map((a) => a.label));
+  return labels.filter((l) => /\d/.test(l));
+}
+
+/** Every question in a lesson, with the picture it is asked with. */
+function questionsOf(lesson: (typeof UNIT_LESSONS)[number]) {
+  const out: {
+    where: string;
+    text: string;
+    picture: Picture | undefined;
+    wordsOnly: string | undefined;
+  }[] = [];
+  for (const [i, s] of lesson.screens.entries()) {
+    const where = `screen ${i + 1} (${s.kind})`;
+    const own = s.wordsOnly;
+    if (s.kind === "choice" || s.kind === "answer" || s.kind === "mistake")
+      out.push({
+        where,
+        text: [s.title, s.text ?? ""].join(" "),
+        picture: s.picture,
+        wordsOnly: own,
+      });
+    if (s.kind === "steps")
+      out.push({
+        where,
+        text: [s.title, s.start].join(" "),
+        picture: s.picture ?? s.stages.find((st) => st.picture)?.picture,
+        wordsOnly: own,
+      });
+    if (s.kind === "tap") out.push({ where, text: s.title, picture: s.picture, wordsOnly: own });
+    if (s.kind === "pair")
+      out.push({
+        where,
+        text: s.question.prompt,
+        picture: s.question.picture,
+        wordsOnly: s.question.wordsOnly ?? own,
+      });
+    if (s.kind === "set")
+      for (const it of s.items)
+        out.push({
+          where,
+          text: it.prompt,
+          picture: it.picture ?? s.picture,
+          wordsOnly: it.wordsOnly ?? own,
+        });
+    if (s.kind === "quiz")
+      for (const q of s.questions)
+        for (const one of [q, q.retry])
+          out.push({
+            where,
+            text: one.prompt,
+            picture: one.picture,
+            wordsOnly: one.wordsOnly ?? own,
+          });
+  }
+  return out;
+}
+
+describe.each(
+  REDRAFT_LESSONS.filter((l) => l.variation && diagramLesson(l)).map(
+    (l) => [lessonId(l), l] as const,
+  ),
+)("diagram-first lesson %s", (_, lesson) => {
+  it("shows every question on a diagram, unless it says why not", () => {
+    for (const q of questionsOf(lesson)) {
+      if (q.wordsOnly) continue;
+      expect(q.picture, `${q.where}: ${q.text}`).toBeDefined();
+      expect(q.picture?.kind, `${q.where}: a diagram, not a relationship: ${q.text}`).not.toBe(
+        "relation",
+      );
+    }
+  });
+
+  it("puts the given values on the diagram, not in the words", () => {
+    for (const q of questionsOf(lesson))
+      for (const v of pictureValues(q.picture))
+        expect(q.text.includes(v), `${q.where}: "${v}" is on the diagram and in "${q.text}"`).toBe(
+          false,
+        );
   });
 });
 
@@ -763,14 +944,24 @@ describe("unit lesson helpers", () => {
     expect(expectVerdict(item, undefined)).toBe("");
   });
 
-  it("shows teachers a redraft in place of the lesson it replaces, and pupils the original", () => {
+  it("shows teachers a redraft in place of the lesson it replaces, and pupils once it's live", () => {
     for (const [id, drafts] of REDRAFTS) {
       const unit = drafts[0]?.unit ?? "";
       expect(lessonsFor(unit, true).map(lessonId)).toEqual(
         expect.arrayContaining(drafts.map(lessonId)),
       );
-      if (OPEN_TO_PUPILS.has(unit)) expect(lessonsFor(unit, false).map(lessonId)).toContain(id);
+      if (!OPEN_TO_PUPILS.has(unit)) continue;
+      const pupils = lessonsFor(unit, false).map(lessonId);
+      if (LIVE_REDRAFTS.has(id))
+        expect(pupils).toEqual(expect.arrayContaining(drafts.map(lessonId)));
+      else expect(pupils).toContain(id);
     }
+    for (const id of LIVE_REDRAFTS) expect(REDRAFTS.has(id), id).toBe(true);
+  });
+
+  it("writes a fraction in its simplest form", () => {
+    expect(simplest(25, 100)).toBe("$\\frac{1}{4}$");
+    expect(simplest(0, 100)).toBe("$\\frac{0}{1}$");
   });
 
   it("shows a unit lesson only to teachers until it is opened to pupils", () => {

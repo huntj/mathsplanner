@@ -1,6 +1,6 @@
 # Proposal: diagrams first, and answers you drag
 
-Status: **draft for the owner's review.** Nothing is built yet. It adds to the agreed
+Status: **agreed on 18 November 2026**, with the owner's answers below. Building has started with step 1. It adds to the agreed
 [variation proposal](lesson-variation.md) and runs in the same batches, Year 7 to GCSE Higher.
 
 ## In short
@@ -131,20 +131,21 @@ Handles snap to sensible values and move by keyboard too (Tab, then the arrow ke
 
 ### New answer screens
 
-| Screen         | What the pupil does                                                   | Where it's used most                                                                             |
-| -------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| **Drag bars**  | Drags the top of each bar to its value; snaps to the scale            | Bar charts, vertical line charts, histograms (frequency density), frequency diagrams             |
-| **Pie**        | Drags each slice's edge to its angle; snaps to 5°                     | Drawing pie charts                                                                               |
-| **Box plot**   | Drags the five markers along a scale                                  | Drawing box plots from data or quartiles                                                         |
-| **Tap**        | Taps a part of a diagram: an angle, side, point, bar, slice or region | "Tap the angle equal to x", "tap the diameter", "tap the modal bar", "tap where the lines cross" |
-| **Table fill** | Types into blank cells of a table                                     | Tables of values before plotting, two-way tables, frequency trees, ratio tables                  |
-| **Interval**   | Drags the ends on a number line and taps each end open or closed      | Inequalities, error intervals, bounds                                                            |
-| **Bar model**  | Drags dividers to split a bar, or builds bars from boxes              | Ratio, fractions of amounts, percentages, equations                                              |
-| **Venn drag**  | Drags items into the right region                                     | Venn diagrams in probability, HCF and LCM, set notation                                          |
-| **Tree fill**  | Types probabilities onto the branches                                 | Probability trees                                                                                |
-| **Move shape** | Drags, turns and flips a shape onto its image                         | Transformations                                                                                  |
-| **Vector**     | Drags an arrow's tip on squared paper                                 | Column vectors, adding vectors                                                                   |
-| **Scale**      | Drags a pointer to a reading                                          | Reading scales, measures, rounding to the nearest mark                                           |
+| Screen         | What the pupil does                                                            | Where it's used most                                                                             |
+| -------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| **Drag bars**  | Drags the top of each bar to its value; snaps to the scale                     | Bar charts, vertical line charts, histograms (frequency density), frequency diagrams             |
+| **Pie**        | Drags each slice's edge to its angle; snaps to 5°                              | Drawing pie charts                                                                               |
+| **Box plot**   | Drags the five markers along a scale                                           | Drawing box plots from data or quartiles                                                         |
+| **Tap**        | Taps a part of a diagram: an angle, side, point, bar, slice or region          | "Tap the angle equal to x", "tap the diameter", "tap the modal bar", "tap where the lines cross" |
+| **Table fill** | Types into blank cells of a table                                              | Tables of values before plotting, two-way tables, frequency trees, ratio tables                  |
+| **Interval**   | Drags the ends on a number line and taps each end open or closed               | Inequalities, error intervals, bounds                                                            |
+| **Bar model**  | Drags dividers to split a bar, or builds bars from boxes                       | Ratio, fractions of amounts, percentages, equations                                              |
+| **Colour in**  | Taps parts of a bar model or shape to colour them, to show a fraction or ratio | Fractions, equivalent fractions, ratio, percentages                                              |
+| **Venn drag**  | Drags items into the right region                                              | Venn diagrams in probability, HCF and LCM, set notation                                          |
+| **Tree fill**  | Types probabilities onto the branches                                          | Probability trees                                                                                |
+| **Move shape** | Drags, turns and flips a shape onto its image                                  | Transformations                                                                                  |
+| **Vector**     | Drags an arrow's tip on squared paper                                          | Column vectors, adding vectors                                                                   |
+| **Scale**      | Drags a pointer to a reading                                                   | Reading scales, measures, rounding to the nearest mark                                           |
 
 ### Existing ones to use far more
 
@@ -226,15 +227,17 @@ The checks for every batch stay the same:
 - every changed lesson is played through at phone size in light and dark mode, and its
   screenshots are looked at.
 
-## Questions for the owner
+## The owner's answers
 
-1. **Exit checks.** Diagrams, but answered by typing or choosing (recommended, to keep the check
-   quick)? Or hands-on answers in the exit check as well?
-2. **Answer screens.** Is anything missing from the list in part 3, or anything you'd drop? For
-   example, compass constructions you can drag, or nets that fold.
-3. **Explore.** In Discover, before the method (recommended)? Or also inside the variation sets?
-4. **The current pilot.** Should the 11 pilot lessons go to pupils now, or wait for the
-   diagram-first version in step 1?
+1. **Exit checks** stay quick to answer (typing or choosing), and every question in a diagram
+   topic is diagram-first.
+2. **Answer screens: be creative.** The owner has a separate site with many ways to interact,
+   such as bar models that pupils colour in to show a fraction. The list in part 3 is a starting
+   point, not a limit. Colouring in a bar model or a shape to show a fraction is added to it.
+3. **Explore** comes before the method, and can be interleaved with questions where a topic works
+   best that way.
+4. **The pilot lessons go to pupils** each time they are improved. Redrafted lessons in the
+   pilot are now shown to pupils as well as teachers.
 
 ## Appendix: the audit and plan for every unit
 

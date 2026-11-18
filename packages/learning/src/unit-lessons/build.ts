@@ -3,6 +3,8 @@
 // screens shuffle their options.
 import type {
   Ask,
+  DrawingPic,
+  Explore,
   Option,
   Picture,
   QuizQuestion,
@@ -338,3 +340,52 @@ export function redraft(
     ],
   };
 }
+
+// Hands-on screens (docs/proposals/lesson-interactive.md).
+
+/** Tap the part of a diagram asked for: one name, or several to tap together. */
+export const tap = (
+  tag: string,
+  title: Words,
+  picture: DrawingPic,
+  answers: string | string[],
+  hint: Words,
+  done: Words,
+  e: { text?: Words; wrong?: Record<string, Words> } = {},
+): Screen => ({
+  kind: "tap",
+  tag,
+  title,
+  ...(e.text !== undefined ? { text: e.text } : {}),
+  picture,
+  answers: typeof answers === "string" ? [answers] : answers,
+  ...(e.wrong ? { wrong: e.wrong } : {}),
+  hint,
+  done,
+});
+
+/** A question with one right option: the question, the right one and why, and the others. */
+export type Notice = [question: Words, right: Words, why: Words, wrongs: readonly Wrong[]];
+
+/**
+ * Explore a diagram before the method: drag it and watch what changes. A prediction can come
+ * first; once the pupil has explored, `notice` asks what stayed the same.
+ */
+export const explore = (
+  title: Words,
+  scene: Explore["scene"],
+  notice: Notice,
+  done: Words,
+  e: { text?: Words; expect?: Expect; tag?: string } = {},
+): Screen => ({
+  kind: "explore",
+  tag: e.tag ?? "Explore",
+  title,
+  ...(e.text !== undefined ? { text: e.text } : {}),
+  scene,
+  ...(e.expect
+    ? { expect: { question: e.expect[0], options: options(e.expect[1], e.expect[2], e.expect[3]) } }
+    : {}),
+  notice: { question: notice[0], options: options(notice[1], notice[2], notice[3]) },
+  done,
+});
