@@ -1284,6 +1284,24 @@
   font-size: 15px;
 }
 
+/*
+ * Angle values and names wear a halo of the background, so a line passing behind never cuts
+ * through them. It is halfway between the page and a card, so it can't be seen on either.
+ */
+.pic .pic-angle,
+.pic .pic-label:not(.small),
+.explore-svg .pic-angle,
+.explore-svg .pic-label {
+  paint-order: stroke;
+  stroke: var(--pic-halo, color-mix(in srgb, var(--paper, #fff) 50%, var(--surface, #fff)));
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+
+.explore-svg {
+  --pic-halo: var(--surface);
+}
+
 /* An angle on a shape or drawing: an arc, and its label just past it. */
 .pic-angle-mark path {
   fill: none;

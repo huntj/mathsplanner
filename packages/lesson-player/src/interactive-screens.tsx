@@ -21,7 +21,7 @@ import type {
   Readout,
   Tap,
 } from "@mathsplanner/learning/unit-lessons";
-import { angleMark } from "./labels.ts";
+import { circleSegments, clearAngleMark, type Obstacles, type Pt } from "./labels.ts";
 import { PictureView, tapName } from "./Picture.tsx";
 import { play } from "./sounds.ts";
 import { shuffled } from "./unit-screens.tsx";
@@ -358,6 +358,39 @@ function GeometryView({
     const [a, b] = [...l].map((n) => pts[n]);
     return a && b ? { x1: sx(a.x), y1: sy(a.y), x2: sx(b.x), y2: sy(b.y) } : null;
   };
+  // Point names sit away from the centre of the drawing.
+  const names = scene.points.flatMap((p) => {
+    const at0 = pts[p.name];
+    if (!at0 || p.label === false) return [];
+    const cx = (frame.xMin + frame.xMax) / 2;
+    const cy = (frame.yMin + frame.yMax) / 2;
+    const dx = at0.x - (r ? 0 : cx);
+    const dy = at0.y - (r ? 0 : cy);
+    const d = Math.hypot(dx, dy) || 1;
+    return [{ name: p.name, x: sx(at0.x) + (dx / d) * 18, y: sy(at0.y) - (dy / d) * 18 }];
+  });
+  const centreAt = { x: sx(0) + centreLabel.ux * 16, y: sy(0) - centreLabel.uy * 16 };
+  // What angle labels keep clear of: every line, the circle, and the names.
+  const obstacles: Obstacles = {
+    segments: [
+      ...joins.flatMap((l): [Pt, Pt][] => {
+        const s = seg(l);
+        return s
+          ? [
+              [
+                { x: s.x1, y: s.y1 },
+                { x: s.x2, y: s.y2 },
+              ],
+            ]
+          : [];
+      }),
+      ...(drawCircle ? circleSegments({ x: sx(0), y: sy(0) }, r * k) : []),
+    ],
+    boxes: [
+      ...names.map((n) => ({ x: n.x, y: n.y, hw: 7, hh: 8 })),
+      ...(usesCentre ? [{ ...centreAt, hw: 7, hh: 8 }] : []),
+    ],
+  };
 
   return (
     <svg
@@ -389,7 +422,7 @@ function GeometryView({
           return { x: V.x + ((sx(t.x) - V.x) / d) * 50, y: V.y + ((sy(t.y) - V.y) / d) * 50 };
         };
         const label = a.label ?? `${Math.round(angleOf(pts, a.name))}°`;
-        const mark = angleMark(V, arm(p), arm(q), label);
+        const mark = clearAngleMark(V, arm(p), arm(q), label, obstacles);
         return (
           <g key={a.name} className={`pic-angle-mark${a.label === "?" ? " find" : ""}`}>
             {mark.arc && (
@@ -404,34 +437,13 @@ function GeometryView({
         );
       })}
       {usesCentre && <circle className="pic-centre" cx={sx(0)} cy={sy(0)} r="4" />}
-      {scene.points.map((p) => {
-        const at0 = pts[p.name];
-        if (!at0 || p.label === false) return null;
-        // Names sit away from the centre of the drawing.
-        const cx = (frame.xMin + frame.xMax) / 2;
-        const cy = (frame.yMin + frame.yMax) / 2;
-        const dx = at0.x - (r ? 0 : cx);
-        const dy = at0.y - (r ? 0 : cy);
-        const d = Math.hypot(dx, dy) || 1;
-        return (
-          <text
-            key={`n-${p.name}`}
-            className="pic-label"
-            x={sx(at0.x) + (dx / d) * 18}
-            y={sy(at0.y) - (dy / d) * 18 + 6}
-            textAnchor="middle"
-          >
-            {p.name}
-          </text>
-        );
-      })}
+      {names.map((n) => (
+        <text key={`n-${n.name}`} className="pic-label" x={n.x} y={n.y + 6} textAnchor="middle">
+          {n.name}
+        </text>
+      ))}
       {usesCentre && (
-        <text
-          className="pic-label"
-          x={sx(0) + centreLabel.ux * 16}
-          y={sy(0) - centreLabel.uy * 16 + 5}
-          textAnchor="middle"
-        >
+        <text className="pic-label" x={centreAt.x} y={centreAt.y + 5} textAnchor="middle">
           O
         </text>
       )}

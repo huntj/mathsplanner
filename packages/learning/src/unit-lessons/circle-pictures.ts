@@ -149,6 +149,7 @@ export function circlePic(spec: CircleSpec): DrawingPic {
   const m = 0.9;
   return {
     kind: "drawing",
+    big: true,
     frame: {
       xMin: Math.min(-r, ...xs) - m,
       xMax: Math.max(r, ...xs) + m,
