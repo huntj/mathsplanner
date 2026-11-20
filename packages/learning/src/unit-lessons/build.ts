@@ -12,6 +12,7 @@ import type {
   UnitLesson,
   Variation,
   Words,
+  WorkingLine,
 } from "./types.ts";
 
 /** A wrong option, or a common wrong typed answer, and the nudge for it. */
@@ -43,12 +44,20 @@ export const problem = (title: Words, text: Words[], picture?: Picture): Screen 
 });
 
 /** Words to read, with a picture. */
-export const explain = (tag: string, title: Words, text: Words[], picture?: Picture): Screen => ({
+export const explain = (
+  tag: string,
+  title: Words,
+  text: Words[],
+  picture?: Picture,
+  /** An explainer, in Dot's bubble under the text. */
+  bubble?: Words,
+): Screen => ({
   kind: "explain",
   tag,
   title,
   text,
   ...(picture ? { picture } : {}),
+  ...(bubble ? { bubble } : {}),
 });
 
 /** Pick one answer. */
@@ -85,7 +94,7 @@ export const typed = (
 export const worked = (
   title: Words,
   question: Words,
-  lines: [line: Words, why: Words][],
+  lines: Line[],
   done: Words,
   picture?: Picture | undefined,
 ): Screen => ({
@@ -94,12 +103,29 @@ export const worked = (
   title,
   ...(picture ? { picture } : {}),
   problem: question,
-  steps: lines.map(([line, why]) => ({ line, why })),
+  steps: lines.map(lineOf),
   done,
 });
 
 /** One step: its question, the right choice, a wrong one and its nudge, and the working it adds. */
-export type Stage = [prompt: Words, right: Words, wrong: Wrong, then: Words];
+export type Stage = [
+  prompt: Words,
+  right: Words,
+  wrong: Wrong,
+  then: Words,
+  /** The written reason for this line, and Dot's explainer beside it. */
+  more?: { reason?: Words; note?: Words },
+];
+
+/** A line of working as written in a lesson: [line, why], or its parts by name. */
+export type Line = [line: Words, why: Words] | WorkingLine;
+
+const lineOf = (l: Line): WorkingLine => (Array.isArray(l) ? { line: l[0], why: l[1] } : l);
+
+const extraOf = (more: Stage[4]) => ({
+  ...(more?.reason ? { reason: more.reason } : {}),
+  ...(more?.note ? { note: more.note } : {}),
+});
 
 /** Work something out a step at a time. */
 export const steps = (
@@ -115,10 +141,11 @@ export const steps = (
   title,
   ...(picture ? { picture } : {}),
   start,
-  stages: stages.map(([prompt, right, wrong, then]) => ({
+  stages: stages.map(([prompt, right, wrong, then, more]) => ({
     prompt,
     options: options(right, "", [wrong]),
     then,
+    ...extraOf(more),
   })),
   done,
 });
@@ -184,13 +211,19 @@ export const lesson = (
 // The learning stage with variation (docs/proposals/lesson-variation.md).
 
 /** The method card: two to four short steps, worded the same wherever the method appears. */
-export const methodCard = (title: Words, method: Words[], picture?: Picture): Screen => ({
+export const methodCard = (
+  title: Words,
+  method: Words[],
+  picture?: Picture,
+  bubble?: Words,
+): Screen => ({
   kind: "explain",
   tag: "Method",
   title,
   text: method,
   numbered: true,
   ...(picture ? { picture } : {}),
+  ...(bubble ? { bubble } : {}),
 });
 
 /** A prediction to make before answering: the question, the right expectation and why, and others. */
@@ -243,7 +276,7 @@ export const ask = (
 /** A worked example with a question just like it underneath. */
 export const pair = (
   title: Words,
-  example: { problem: Words; lines: [line: Words, why: Words][]; picture?: Picture },
+  example: { problem: Words; lines: Line[]; picture?: Picture },
   question: Ask,
   done: Words,
   text?: Words,
@@ -255,7 +288,7 @@ export const pair = (
   example: {
     problem: example.problem,
     ...(example.picture ? { picture: example.picture } : {}),
-    steps: example.lines.map(([line, why]) => ({ line, why })),
+    steps: example.lines.map(lineOf),
   },
   question,
   done,
@@ -265,7 +298,7 @@ export const pair = (
 export const fade = (
   title: Words,
   start: Words,
-  given: Words[],
+  given: (Words | WorkingLine)[],
   stages: Stage[],
   done: Words,
   picture?: Picture | undefined,
@@ -276,16 +309,20 @@ export const fade = (
   ...(picture ? { picture } : {}),
   start,
   stages: [
-    ...given.map((then) => ({
-      prompt: "",
-      options: [{ text: then, correct: true as const, feedback: "" }],
-      then,
-      given: true as const,
-    })),
-    ...stages.map(([prompt, right, wrong, then]) => ({
+    ...given
+      .map((g) => (typeof g === "string" ? { line: g } : g))
+      .map((g) => ({
+        prompt: "",
+        options: [{ text: g.line, correct: true as const, feedback: "" }],
+        then: g.line,
+        ...extraOf(g),
+        given: true as const,
+      })),
+    ...stages.map(([prompt, right, wrong, then, more]) => ({
       prompt,
       options: options(right, "", [wrong]),
       then,
+      ...extraOf(more),
     })),
   ],
   done,

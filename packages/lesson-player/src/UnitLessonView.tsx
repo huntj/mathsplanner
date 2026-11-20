@@ -3,7 +3,8 @@
 // slider to nudge until a line hits a star, an equation to build from chips, and a line to drag
 // into place. Each screen opens the next once it is done; a wrong try gets a nudge, never a
 // penalty. The lesson ends on a summary, like any other lesson.
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
+import { deviceVoice, screenSpeech, speak } from "./speech.ts";
 import { course, skillText } from "@mathsplanner/learning";
 import { Dot } from "./Dot.tsx";
 import { familyOf, type Family } from "@mathsplanner/learning";
@@ -12,6 +13,7 @@ import { latticeOn, LineGraph, type GraphLine, type GraphPoint } from "./LineGra
 import { play } from "./sounds.ts";
 import { describeScene, PictureView, sceneProps } from "./Picture.tsx";
 import {
+  DotBubble,
   fmt,
   say,
   ScreenTag,
@@ -21,6 +23,7 @@ import {
   Verdict,
   W,
   Working,
+  WorkingStep,
   type Step,
 } from "./unit-ui.tsx";
 import { ScreenStepMore } from "./unit-screens.tsx";
@@ -43,6 +46,7 @@ import {
   type Screen,
   type Slider,
   type UnitLesson,
+  type WorkingLine,
 } from "@mathsplanner/learning/unit-lessons";
 
 /** What the end screen shows, worked out once progress is saved. */
@@ -68,6 +72,7 @@ export function UnitLessonView({
 }) {
   const [at, setAt] = useState(0);
   const [leaving, setLeaving] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
   const family = useMemo(() => {
     const unit = course.sections.flatMap((s) => s.units).find((u) => u.id === lesson.unit);
     return familyOf(unit?.topic ?? "");
@@ -98,7 +103,7 @@ export function UnitLessonView({
     );
 
   return (
-    <div className={`lesson unit-lesson fam-${family}`}>
+    <div className={`lesson unit-lesson fam-${family}`} ref={rootRef}>
       <header className="lesson-bar">
         <button
           type="button"
@@ -118,6 +123,7 @@ export function UnitLessonView({
         >
           <span style={{ width: `${(at / lesson.screens.length) * 100}%` }} />
         </div>
+        <ReadAloud root={rootRef} screenAt={at} />
         {methodHelp && (
           <button
             type="button"
@@ -171,14 +177,7 @@ export function UnitLessonView({
                   <W text={example.problem} />
                 </p>
                 {example.steps.map((st, i) => (
-                  <div key={i} className="worked-step">
-                    <p className="worked-line">
-                      <W text={st.line} />
-                    </p>
-                    <p className="worked-why">
-                      <W text={st.why} />
-                    </p>
-                  </div>
+                  <WorkingStep key={i} step={st} family={family} />
                 ))}
               </div>
             )}
@@ -216,7 +215,7 @@ export function UnitLessonView({
 /** The lesson's worked example, for the Method sheet: its first pair's, or its worked example. */
 export function exampleOf(
   lesson: UnitLesson,
-): { problem: string; steps: { line: string; why: string }[] } | undefined {
+): { problem: string; steps: WorkingLine[] } | undefined {
   for (const s of lesson.screens) {
     if (s.kind === "pair") return s.example;
     if (s.kind === "worked") return { problem: s.problem, steps: s.steps };
@@ -295,6 +294,7 @@ function ExplainStep({
             ))}
           </div>
         )}
+        {screen.bubble && <DotBubble text={screen.bubble} family={family} />}
       </main>
       <footer className="lesson-foot">
         <div className="lesson-foot-inner">
@@ -999,5 +999,72 @@ function UnitLessonEnd({
         </div>
       </footer>
     </div>
+  );
+}
+
+/**
+ * Read aloud: the screen's question, options and Dot's words, spoken by a voice on the device.
+ * Tap again to stop. It stops when the screen changes, and isn't shown without a device voice.
+ */
+function ReadAloud({
+  root,
+  screenAt,
+}: {
+  root: RefObject<HTMLDivElement | null>;
+  screenAt: number;
+}) {
+  const [voice, setVoice] = useState(deviceVoice);
+  const [speaking, setSpeaking] = useState(false);
+  useEffect(() => {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+    // Voices load after the page, on some devices.
+    const update = () => setVoice(deviceVoice());
+    window.speechSynthesis.addEventListener("voiceschanged", update);
+    return () => window.speechSynthesis.removeEventListener("voiceschanged", update);
+  }, []);
+  useEffect(() => {
+    setSpeaking(false);
+    if (typeof window !== "undefined" && "speechSynthesis" in window)
+      window.speechSynthesis.cancel();
+  }, [screenAt]);
+  if (!voice) return null;
+  return (
+    <button
+      type="button"
+      className={`icon-button read-aloud${speaking ? " speaking" : ""}`}
+      aria-label={speaking ? "Stop reading" : "Read aloud"}
+      aria-pressed={speaking}
+      onClick={() => {
+        if (speaking) {
+          window.speechSynthesis.cancel();
+          setSpeaking(false);
+          return;
+        }
+        const el = root.current;
+        if (!el) return;
+        setSpeaking(true);
+        speak(screenSpeech(el), voice, () => setSpeaking(false));
+      }}
+    >
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+        <path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor" />
+        {speaking ? (
+          <path
+            d="M17 9l4 6M21 9l-4 6"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        ) : (
+          <path
+            d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        )}
+      </svg>
+    </button>
   );
 }

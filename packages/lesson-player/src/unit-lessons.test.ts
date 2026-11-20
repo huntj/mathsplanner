@@ -19,6 +19,7 @@ import {
   lessonId,
   lessonsFor,
   LIVE_REDRAFTS,
+  REASONS,
   REDRAFT_LESSONS,
   REDRAFTS,
   UNIT_LESSONS,
@@ -120,13 +121,22 @@ const words = (lesson: (typeof UNIT_LESSONS)[number]): string[] =>
       if (s.kind === "order") own.push(...s.items);
       if (s.kind === "answer") own.push(...(s.wrong ?? []).map((w) => w.feedback));
       if (s.kind === "place") own.push(...s.targets.map((t) => t.label));
-      if (s.kind === "worked") own.push(s.problem, ...s.steps.flatMap((st) => [st.line, st.why]));
+      if (s.kind === "worked")
+        own.push(
+          s.problem,
+          ...s.steps.flatMap((st) => [st.line, st.why ?? "", st.reason ?? "", st.note ?? ""]),
+        );
       if (s.kind === "mistake") own.push(...s.lines, s.why);
       if (s.kind === "label") own.push(s.done, ...s.chips.flatMap((c) => [c.name, c.why]));
       if (s.kind === "pair")
         own.push(
           s.example.problem,
-          ...s.example.steps.flatMap((st) => [st.line, st.why]),
+          ...s.example.steps.flatMap((st) => [
+            st.line,
+            st.why ?? "",
+            st.reason ?? "",
+            st.note ?? "",
+          ]),
           ...pictureWords(s.example.picture),
           ...askWords(s.question),
         );
@@ -765,6 +775,110 @@ describe.each(
         );
   });
 });
+
+/**
+ * Words a pupil reads, as counted for the limits in part 4 of docs/proposals/lesson-interactive.md:
+ * each piece of maths counts as one word, and signs on their own (":", "=", "+") don't count.
+ */
+const wordCount = (t: string | undefined) =>
+  !t
+    ? 0
+    : t
+        .replace(/\$[^$]*\$/g, " M ")
+        .replace(/\*\*/g, "")
+        .split(/\s+/)
+        .filter((w) => /[A-Za-z0-9£]/.test(w)).length;
+const joined = (t: string | string[] | undefined) => (Array.isArray(t) ? t.join(" ") : t);
+
+describe.each(REDRAFT_LESSONS.map((l) => [lessonId(l), l] as const))(
+  "few words in lesson %s",
+  (_, lesson) => {
+    const screens = lesson.screens.map((s, i) => ({ s, where: `screen ${i + 1} (${s.kind})` }));
+
+    it("asks each question in one short sentence, of 12 words or fewer", () => {
+      for (const { s, where } of screens) {
+        const max = s.tag === "Back to the problem" ? 25 : 12;
+        const asks: (string | undefined)[] = [];
+        if (s.kind === "choice" || s.kind === "answer")
+          asks.push([s.title, s.text ?? ""].join(" "));
+        if (s.kind === "mistake") asks.push(s.text);
+        if (s.kind === "tap") asks.push(s.title);
+        if (s.kind === "steps") asks.push(s.start);
+        if (s.kind === "pair") asks.push(s.question.prompt);
+        if (s.kind === "set") asks.push(s.title, s.text, ...s.items.map((i) => i.prompt));
+        if (s.kind === "quiz") asks.push(...s.questions.flatMap((q) => [q.prompt, q.retry.prompt]));
+        for (const a of asks) expect(wordCount(a), `${where}: ${a}`).toBeLessThanOrEqual(max);
+      }
+    });
+
+    it("keeps Dot's bubbles and hints to 15 words", () => {
+      for (const { s, where } of screens) {
+        const said: (string | undefined)[] = [];
+        if (s.kind === "explain") said.push(s.bubble);
+        if (s.kind === "worked") said.push(...s.steps.map((st) => st.note));
+        if (s.kind === "pair") said.push(...s.example.steps.map((st) => st.note), s.question.hint);
+        if (s.kind === "steps") said.push(...s.stages.map((st) => st.note));
+        if (s.kind === "set") said.push(...s.items.map((i) => i.hint));
+        if (s.kind === "answer" || s.kind === "tap") said.push(s.hint);
+        for (const t of said) expect(wordCount(t), `${where}: ${t}`).toBeLessThanOrEqual(15);
+      }
+    });
+
+    it("asks for 40 words of reading, at most, before the pupil acts", () => {
+      for (const { s, where } of screens) {
+        let n = wordCount(s.title) + wordCount(joined("text" in s ? s.text : undefined));
+        if (s.kind === "explain") n += wordCount(s.bubble);
+        if (s.kind === "steps") {
+          n += wordCount(s.start) + wordCount(s.stages.find((st) => !st.given)?.prompt);
+          for (const st of s.stages.filter((g) => g.given))
+            n += wordCount(st.then) + wordCount(st.reason) + wordCount(st.note);
+        }
+        if (s.kind === "pair")
+          n +=
+            wordCount(s.example.problem) +
+            wordCount(s.question.prompt) +
+            s.example.steps.reduce(
+              (a, st) =>
+                a +
+                wordCount(st.line) +
+                wordCount(st.why) +
+                wordCount(st.reason) +
+                wordCount(st.note),
+              0,
+            );
+        if (s.kind === "set") n += wordCount(s.items[0]?.prompt) + wordCount(s.items[0]?.changed);
+        if (s.kind === "explore") n += wordCount(s.expect?.question);
+        expect(n, `${where} reads ${n} words before acting`).toBeLessThanOrEqual(40);
+      }
+    });
+
+    it("writes each reason in the shared words, and keeps explainers apart from it", () => {
+      for (const { s, where } of screens) {
+        const steps =
+          s.kind === "pair"
+            ? s.example.steps
+            : s.kind === "worked"
+              ? s.steps
+              : s.kind === "steps"
+                ? s.stages
+                : [];
+        for (const st of steps) {
+          if (st.reason) expect(REASONS.has(st.reason), `${where}: "${st.reason}"`).toBe(true);
+          // A redrafted lesson splits the old single "why" into a reason and Dot's note.
+          if (s.kind !== "steps") expect("why" in st && st.why, `${where}: a why`).toBeFalsy();
+        }
+        // Dot's note on the example never gives away the answer to the question beside it.
+        if (s.kind === "pair")
+          for (const st of s.example.steps)
+            for (const a of s.question.answers)
+              expect(
+                new RegExp(`(^|[^0-9.])${a}([^0-9.]|$)`).test(st.note ?? ""),
+                `${where}: ${a}`,
+              ).toBe(false);
+      }
+    });
+  },
+);
 
 /** A short question can be answered: its answer is on offer, and its prediction has one right. */
 function checkAsk(a: Ask) {

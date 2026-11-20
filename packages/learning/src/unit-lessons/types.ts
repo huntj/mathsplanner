@@ -46,10 +46,24 @@ export interface Scene {
 export type Words = string;
 
 /** A screen that explains, with Dot and an optional picture. */
+/**
+ * A line of working: the maths; the reason a pupil writes for it, worded as in the method; and
+ * an explainer, shown in Dot's bubble beside it, that never holds anything needed to answer.
+ * Older lessons give one `why` instead of the last two.
+ */
+export interface WorkingLine {
+  line: Words;
+  why?: Words;
+  reason?: Words;
+  note?: Words;
+}
+
 export interface Explain {
   kind: "explain";
   title: Words;
   text: Words[];
+  /** An explainer, in Dot's bubble under the text. */
+  bubble?: Words;
   /** Show the text as numbered steps: a method card. */
   numbered?: true;
   scene?: Scene;
@@ -492,7 +506,16 @@ export interface Steps {
    * Each step's question, and the working it adds; a picture can change with each step. Steps
    * marked `given` at the start are shown already done, so the pupil finishes a faded example.
    */
-  stages: { prompt: Words; options: Option[]; then: Words; picture?: Picture; given?: true }[];
+  stages: {
+    prompt: Words;
+    options: Option[];
+    then: Words;
+    /** The written reason for this line of working, and an explainer in Dot's bubble. */
+    reason?: Words;
+    note?: Words;
+    picture?: Picture;
+    given?: true;
+  }[];
   done: Words;
 }
 
@@ -555,7 +578,7 @@ export interface Worked {
   /** The question being worked through. */
   problem: Words;
   /** Each line of working, and why it is done. */
-  steps: { line: Words; why: Words }[];
+  steps: WorkingLine[];
   done: Words;
 }
 
@@ -628,7 +651,7 @@ export interface Pair {
   kind: "pair";
   title: Words;
   text?: Words;
-  example: { problem: Words; picture?: Picture; steps: { line: Words; why: Words }[] };
+  example: { problem: Words; picture?: Picture; steps: WorkingLine[] };
   question: Ask;
   done: Words;
 }

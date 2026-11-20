@@ -799,8 +799,10 @@ export function ExploreStep({ screen, family, sound, onNext }: Step<Explore>) {
                 ? scene.kind === "geometry"
                   ? "Drag the blue dot, and watch the numbers."
                   : "Drag the slider, and watch the numbers."
-                : wrongNote || "What did you notice?"
+                : "What did you notice?"
           }
+          hint={wrongNote || undefined}
+          family={family}
         />
       )}
     </>
