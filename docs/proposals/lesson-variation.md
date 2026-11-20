@@ -209,7 +209,9 @@ short named.
 8. **Non-example:** where the map lists one, "Watch out" or the variation set includes it ("this
    one looks the same but isn't").
 9. **Weaker learners:** short sentences; no new idea in a question's wording; and a first wrong
-   answer gets a hint that points back to the method step.
+   answer gets a hint that points back to the method step. Words stay within the limits of the
+   [interactive proposal](lesson-interactive.md#4-few-words-and-explainers-in-a-bubble), with
+   explanations in a bubble, apart from the words needed to answer.
 10. **Checks pass:**
     - the lesson tests;
     - a script that recomputes every numerical answer;

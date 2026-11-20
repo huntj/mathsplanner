@@ -5,7 +5,7 @@ Status: **agreed on 18 November 2026**, with the owner's answers below. Building
 
 ## In short
 
-The owner asked for three things across every lesson from Year 7 to GCSE Higher:
+The owner asked for these things across every lesson from Year 7 to GCSE Higher:
 
 1. **Diagrams first.** Questions about shapes, angles, graphs and charts show the diagram, with
    the given values on it, as pupils will meet them in exams. Circle theorem questions in
@@ -14,6 +14,9 @@ The owner asked for three things across every lesson from Year 7 to GCSE Higher:
    what stays the same.
 3. **Answer by doing.** Where it fits, the pupil answers by drawing or dragging rather than
    typing, for example dragging the top of a bar to draw a bar chart.
+4. **Few words** (added on 20 November 2026). Instructions and text are kept to a minimum, as
+   reading ages vary. Text that explains what is happening goes in a bubble beside the working,
+   so pupils can tell it apart from the words they need to answer (part 4).
 
 An audit of all 398 lessons (6396 questions, counting each exit-check question and its retry)
 found how far there is to go:
@@ -30,11 +33,12 @@ found how far there is to go:
 Only 60 of the 2418 exit-check questions have a diagram. Many exit-check questions about
 diagrams test recall ("A scatter graph shows…") rather than asking the pupil to read or draw one.
 
-The plan has three parts, each described below:
+The plan has four parts, each described below:
 
 - **diagram-first questions**, with a test that enforces them;
 - **Explore** screens, where the pupil drags part of a diagram and watches what changes;
-- **answer screens you drag or tap**.
+- **answer screens you drag or tap**;
+- **few words, with explainers in a bubble**.
 
 They are built first, then used in the circle theorems pilot. After the owner's review, they go
 year by year together with the variation work.
@@ -175,6 +179,77 @@ These already exist and are used in only a few lessons today:
 
 Hands-on answers can be used in the learning stage's sets, so a variation set can be five bar
 charts to draw, each changing one thing.
+
+## 4. Few words, and explainers in a bubble
+
+Added on 20 November 2026 at the owner's request. Pupils' reading ages vary widely, so
+instructions and other text are kept to a minimum. Text that explains what is happening is set
+apart in a bubble, so a pupil can always tell the words they need to answer from the words that
+only explain.
+
+### Three kinds of words
+
+| Kind              | What it is                                                  | Where it goes                                                     | Example (circle theorems)                                                                  |
+| ----------------- | ----------------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| **What to do**    | the question or instruction                                 | on the page, under the title, as now                              | "Find angle ACB. Give a reason."                                                           |
+| **The working**   | what a pupil writes in the answer: the maths and its reason | in the working, in the working's style, as in a model exam answer | "ACB = 130° ÷ 2 = 65°" and "(angle at the centre is twice the angle at the circumference)" |
+| **The explainer** | why a step is done, or what to notice                       | in a **speech bubble** beside the working line it explains        | "You need to state the angle and also give a reason why this is true."                     |
+
+So the reason a pupil must write is part of the method and the working, and is worded the same
+way every time. The bubble only says why or what to look at, and never holds anything needed to
+answer the question.
+
+### The bubble
+
+- It comes from the lesson's character, with a tail pointing to the line of working it explains,
+  in a colour kept for explainers in both themes.
+- There is at most one bubble per line of working, and one idea per bubble.
+- It is used on worked examples, the example in an example-and-try, the given steps of a faded
+  example, the method card, Discover, and the line an Explore ends on.
+- Hints and feedback stay in the answer bar at the bottom, which is already set apart.
+
+```
+  Find angle ACB. Give a reason.          ← what to do
+  [diagram: 130° at O, ? at C]
+
+  ACB = 130° ÷ 2 = 65°                    ← the working
+  (angle at the centre is twice     ╭───────────────────────────────╮
+   the angle at the circumference)  │ You need to state the angle   │ ← the explainer
+                                  ◁─┤ and also give a reason why    │
+                                    │ this is true.                 │
+                                    ╰───────────────────────────────╯
+```
+
+### Word limits
+
+These are measured on every new or redrafted lesson, and the tests hold them:
+
+- **Instructions:** one sentence, at most 12 words. A real-life problem may take up to 25, in two
+  short sentences. Given values go on the diagram, not in the words (part 1).
+- **Bubbles:** at most 15 words.
+- **A screen:** at most 40 words to read before the pupil can act, bubbles included.
+- **Plain words:** short sentences, everyday words, and no idioms. Maths words are taught once, in
+  Discover, and then used the same way every time. The target is a reading age of about 9.
+- **Discover and the problem:** one or two short lines, with the picture doing the rest. Anything
+  longer becomes a bubble or a picture.
+
+Today 349 of the 5834 screens ask for more than 40 words before the pupil acts, and 501 of the
+7560 questions are longer than 12 words. There are also 1043 steps of working whose single
+"why" line mixes the written reason with the explanation. Each year batch fixes its own.
+
+### In the player and the tests
+
+- A step of working becomes its line, an optional written `reason` shown in the working, and an
+  optional `note` shown in the bubble, in place of today's single `why`. A method card's step can
+  carry a note too.
+- The tests count words against the limits above. They check that a written reason uses the
+  method's wording, and that a bubble repeats no value from its question.
+
+### Rollout
+
+The 11 pilot lessons are done first, in one PR, and go to pupils as before. After that, every
+year batch in "How the work runs" applies these rules to its lessons along with the variation and
+diagram work.
 
 ## How it fits the lesson plan
 
