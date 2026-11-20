@@ -1,6 +1,6 @@
 # Proposal: diagrams first, and answers you drag
 
-Status: **agreed on 18 November 2026**, with the owner's answers below. Building has started with step 1. It adds to the agreed
+Status: **agreed on 18 November 2026**, and part 4 on 20 November 2026, with the owner's answers below. Building has started with step 1. It adds to the agreed
 [variation proposal](lesson-variation.md) and runs in the same batches, Year 7 to GCSE Higher.
 
 ## In short
@@ -201,12 +201,13 @@ answer the question.
 
 ### The bubble
 
-- It comes from the lesson's character, with a tail pointing to the line of working it explains,
-  in a colour kept for explainers in both themes.
+- It comes from Dot, the app's character, with a tail pointing to the line of working it
+  explains, in a colour kept for explainers in both themes.
 - There is at most one bubble per line of working, and one idea per bubble.
 - It is used on worked examples, the example in an example-and-try, the given steps of a faded
   example, the method card, Discover, and the line an Explore ends on.
-- Hints and feedback stay in the answer bar at the bottom, which is already set apart.
+- Hints and feedback come from Dot in a bubble too, in the answer bar at the bottom.
+- A **read aloud** button speaks the question and Dot's bubbles, with maths said in words ("x squared", "130 degrees"). It uses the device's own voice, so nothing leaves the device.
 
 ```
   Find angle ACB. Give a reason.          ← what to do
@@ -229,7 +230,7 @@ These are measured on every new or redrafted lesson, and the tests hold them:
 - **Bubbles:** at most 15 words.
 - **A screen:** at most 40 words to read before the pupil can act, bubbles included.
 - **Plain words:** short sentences, everyday words, and no idioms. Maths words are taught once, in
-  Discover, and then used the same way every time. The target is a reading age of about 9.
+  Discover, and then used the same way every time. The target is a reading age of 9 to 10.
 - **Discover and the problem:** one or two short lines, with the picture doing the rest. Anything
   longer becomes a bubble or a picture.
 
@@ -313,6 +314,9 @@ The checks for every batch stay the same:
    best that way.
 4. **The pilot lessons go to pupils** each time they are improved. Redrafted lessons in the
    pilot are now shown to pupils as well as teachers.
+5. **Few words** (20 November 2026): the word limits in part 4 are agreed, for reading ages of
+   about 9 to 10. Hints and explainers come from Dot in a bubble, and a read-aloud button is
+   wanted.
 
 ## Appendix: the audit and plan for every unit
 

@@ -67,7 +67,8 @@ pnpm city          # Maths City dev server
   and a screen asks for at most 40 words of reading before the pupil acts.
 - Keep three kinds of words apart: what to do (the question), the working (the maths and the
   written reason, worded as in the method), and explainers (why a step is done, or what to
-  notice). Explainers go in a bubble beside the working, and never hold anything needed to answer.
+  notice). Explainers and hints come from Dot in a bubble, and never hold anything needed to
+  answer. Aim for a reading age of 9 to 10.
   See part 4 of `docs/proposals/lesson-interactive.md`.
 - Maths in words goes between dollar signs and is rendered by KaTeX. Keep plain text (no `$`)
   where a string is shown outside KaTeX, such as lesson summaries and bar-model labels.
