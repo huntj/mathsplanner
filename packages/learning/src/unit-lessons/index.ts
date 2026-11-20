@@ -92,6 +92,7 @@ import { ghCircles } from "./gh-circles.ts";
 import { ghData } from "./gh-data.ts";
 
 export type * from "./types.ts";
+export { REASON, REASONS } from "./reasons.ts";
 
 export const UNIT_LESSONS: readonly UnitLesson[] = [
   ...y7PlaceValue,

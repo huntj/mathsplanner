@@ -7,7 +7,7 @@ import type { Ask, Pair, QuestionSet } from "@mathsplanner/learning/unit-lessons
 import { PictureView } from "./Picture.tsx";
 import { play } from "./sounds.ts";
 import { matches, shuffled, tidy } from "./unit-screens.tsx";
-import { Title, useChime, Verdict, W, Working, type Step } from "./unit-ui.tsx";
+import { Title, useChime, Verdict, W, Working, WorkingStep, type Step } from "./unit-ui.tsx";
 
 /** Whether the lesson has a method card the pupil can open, so hints can point to it. */
 export const HasMethod = createContext(false);
@@ -228,14 +228,7 @@ export function PairStep({ screen, family, sound, onNext }: Step<Pair>) {
             <>
               {screen.example.picture && <PictureView picture={screen.example.picture} />}
               {screen.example.steps.map((s, i) => (
-                <div key={i} className="worked-step">
-                  <p className="worked-line">
-                    <W text={s.line} />
-                  </p>
-                  <p className="worked-why">
-                    <W text={s.why} />
-                  </p>
-                </div>
+                <WorkingStep key={i} step={s} family={family} />
               ))}
             </>
           )}

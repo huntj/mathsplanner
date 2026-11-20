@@ -33,10 +33,20 @@ import type {
   Sort,
   Spin,
   Steps,
+  WorkingLine,
   Tree,
   Worked,
 } from "@mathsplanner/learning/unit-lessons";
-import { Title, useChime, Verdict, W, Working, type Step } from "./unit-ui.tsx";
+import {
+  DotBubble,
+  Title,
+  useChime,
+  Verdict,
+  W,
+  Working,
+  WorkingStep,
+  type Step,
+} from "./unit-ui.tsx";
 import { PairStep, SetStep } from "./variation-screens.tsx";
 import { ExploreStep, TapStep } from "./interactive-screens.tsx";
 
@@ -989,9 +999,15 @@ export const givenSteps = (screen: Steps) => {
 function StepsStep({ screen, family, sound, onNext }: Step<Steps>) {
   const given = givenSteps(screen);
   const [stage, setStage] = useState(given);
-  const [lines, setLines] = useState([
-    screen.start,
-    ...screen.stages.slice(0, given).map((st) => st.then),
+  // The working so far: each line, with its written reason and Dot's explainer, if any.
+  const lineOf = (st: Steps["stages"][number]): WorkingLine => ({
+    line: st.then,
+    ...(st.reason ? { reason: st.reason } : {}),
+    ...(st.note ? { note: st.note } : {}),
+  });
+  const [lines, setLines] = useState<WorkingLine[]>([
+    { line: screen.start },
+    ...screen.stages.slice(0, given).map(lineOf),
   ]);
   const [tried, setTried] = useState<number[]>([]);
   const [why, setWhy] = useState<string>();
@@ -1018,7 +1034,7 @@ function StepsStep({ screen, family, sound, onNext }: Step<Steps>) {
     const o = current?.options[i];
     if (!current || !o) return;
     if (o.correct) {
-      setLines([...lines, current.then]);
+      setLines([...lines, lineOf(current)]);
       setStage(stage + 1);
       setTried([]);
       setWhy(undefined);
@@ -1038,18 +1054,26 @@ function StepsStep({ screen, family, sound, onNext }: Step<Steps>) {
         {picture && <PictureView key={pictureAt} picture={picture} />}
         <div className="ul-working" aria-live="polite">
           {lines.map((l, i) => (
-            <p
+            <div
               key={i}
-              className={
+              className={`working-row${
                 i === lines.length - 1 && i > given
-                  ? "latest"
+                  ? " latest"
                   : i > 0 && i <= given
-                    ? "given"
-                    : undefined
-              }
+                    ? " given"
+                    : ""
+              }`}
             >
-              <W text={l} />
-            </p>
+              <p>
+                <W text={l.line} />
+              </p>
+              {l.reason && (
+                <p className="worked-reason">
+                  <W text={`(${l.reason})`} />
+                </p>
+              )}
+              {l.note && <DotBubble text={l.note} family={family} />}
+            </div>
           ))}
         </div>
         {current && (
@@ -1090,11 +1114,12 @@ function StepsStep({ screen, family, sound, onNext }: Step<Steps>) {
       ) : (
         <Working
           note={
-            why ??
-            (given
+            given
               ? `The first ${given === 1 ? "step is" : `${given} steps are`} done for you. Step ${stage + 1} of ${screen.stages.length}.`
-              : `Step ${stage + 1} of ${screen.stages.length}.`)
+              : `Step ${stage + 1} of ${screen.stages.length}.`
           }
+          hint={why}
+          family={family}
         />
       )}
     </>
@@ -1695,14 +1720,12 @@ function WorkedStep({ screen, family, onNext }: Step<Worked>) {
             <W text={screen.problem} />
           </p>
           {screen.steps.slice(0, shown).map((s, i) => (
-            <div key={i} className={`worked-step${i === shown - 1 ? " latest" : ""}`}>
-              <p className="worked-line">
-                <W text={s.line} />
-              </p>
-              <p className="worked-why">
-                <W text={s.why} />
-              </p>
-            </div>
+            <WorkingStep
+              key={i}
+              step={s}
+              family={family}
+              className={i === shown - 1 ? "latest" : undefined}
+            />
           ))}
         </div>
       </main>

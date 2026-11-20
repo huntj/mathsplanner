@@ -5,6 +5,7 @@
 // an exit check that moves the unknown too.
 import { ask, choose, explore, fade, pair, questionSet, quiz, redraft, typed } from "./build.ts";
 import { gfRatio1 } from "./gf-ratio-1.ts";
+import { REASON } from "./reasons.ts";
 import type {
   BarsPic,
   DrawingPic,
@@ -29,7 +30,7 @@ function reworded(
   list: readonly UnitLesson[],
   id: string,
   title: string,
-  changes: Partial<Record<"title" | "text" | "picture", unknown>>,
+  changes: Partial<Record<"title" | "text" | "picture" | "hint" | "bubble", unknown>>,
   tag?: string,
 ): Screen {
   const screen = find(list, id)?.screens.find(
@@ -60,10 +61,10 @@ const line3 = (a: number, b: number, labels: [string, string, string], mark = "x
 
 const halfTurn = redraft(find(y7Angles, HALF_TURN), {
   method: [
-    "Check the angles all sit on one straight line.",
+    "Check the angles sit on one straight line.",
     "Add up the angles you know.",
-    "Take that total away from 180°.",
-    "Check: all the angles now add up to 180°.",
+    "Take the total away from 180°.",
+    "Check: they all add up to 180°.",
   ],
   picture: line2(60, ["a", "b"]),
   variation: {
@@ -77,6 +78,18 @@ const halfTurn = redraft(find(y7Angles, HALF_TURN), {
       "A number warm-up: the subtraction the lesson needs, before any diagram.",
   },
   swap: {
+    "The problem: How far back?": reworded(
+      y7Angles,
+      HALF_TURN,
+      "How far back?",
+      {
+        text: [
+          "A laptop screen is at 110° to the keyboard.",
+          "What angle is the back of the screen to the desk?",
+        ],
+      },
+      "The problem",
+    ),
     "Ben says two angles on a straight line add up to 360°. Is he right?": choose(
       "Watch out",
       "Ben says these two angles add up to 360°. Is he right?",
@@ -93,7 +106,8 @@ const halfTurn = redraft(find(y7Angles, HALF_TURN), {
       HALF_TURN,
       "How far back?",
       {
-        text: "The keyboard lies flat on the desk. What angle does the back of the screen make with the desk?",
+        text: "The keyboard lies flat on the desk. What angle is the back of the screen to the desk?",
+        hint: "The 110° and the angle behind the screen make a straight line.",
       },
       "Back to the problem",
     ),
@@ -149,8 +163,8 @@ const halfTurn = redraft(find(y7Angles, HALF_TURN), {
         problem: "Find x.",
         picture: line2(55, ["x", "125°"]),
         lines: [
-          ["$x + 125° = 180°$", "Angles on a straight line add up to 180°."],
-          ["$x = 180° - 125° = 55°$", "Take away the angle you know."],
+          { line: "$x + 125° = 180°$", reason: REASON.straightLine },
+          { line: "$x = 180° - 125° = 55°$", note: "Take away the angle you know." },
         ],
       },
       ask("Find x.", "40", "Take the angle you know from 180°.", "40°: 180° − 140°.", {
@@ -333,9 +347,9 @@ const fdpRel = (from: [string, string], to: string) => relation([from, [to, "?"]
 const percentages = redraft(find(y7Fdp, "y7-fdp/percentages"), {
   method: [
     "Per cent means out of 100.",
-    "Percentage to decimal: divide by 100. Decimal to percentage: times by 100.",
+    "Percentage to decimal: divide by 100.",
     "Percentage to fraction: put it over 100, then simplify.",
-    "Fraction to percentage: make it out of 100, or divide top by bottom and times by 100.",
+    "Fraction to percentage: make it out of 100.",
   ],
   picture: hundred(40),
   variation: {
@@ -379,9 +393,12 @@ const percentages = redraft(find(y7Fdp, "y7-fdp/percentages"), {
         problem: "Write 40% as a decimal and as a fraction.",
         picture: hundred(40),
         lines: [
-          ["$40\\% = \\frac{40}{100}$", "Per cent means out of 100."],
-          ["$\\frac{40}{100} = 0.4$", "Divide by 100."],
-          ["$\\frac{40}{100} = \\frac{2}{5}$", "Simplify: divide top and bottom by 20."],
+          { line: "$40\\% = \\frac{40}{100}$", note: "Per cent means out of 100." },
+          { line: "$\\frac{40}{100} = 0.4$" },
+          {
+            line: "$\\frac{40}{100} = \\frac{2}{5}$",
+            note: "Divide top and bottom by 20.",
+          },
         ],
       },
       ask("Write 60% as a decimal.", "0.6", "Divide 60 by 100.", "0.6.", {
@@ -604,6 +621,16 @@ const circleArea = redraft(find(y8Area, CIRCLE_AREA), {
   },
   wordsOnly: { "Work out $5^2$": "A number warm-up: squaring, before any circle." },
   swap: {
+    "The problem: A round rug": reworded(
+      y8Area,
+      CIRCLE_AREA,
+      "A round rug",
+      {
+        text: ["A round rug has a radius of 1.5 m.", "How much floor does it cover?"],
+        bubble: "You can't count squares exactly on a curve.",
+      },
+      "The problem",
+    ),
     "A rectangle is 6 cm by 3 cm. What is its area?": reworded(
       y8Area,
       CIRCLE_AREA,
@@ -676,8 +703,8 @@ const circleArea = redraft(find(y8Area, CIRCLE_AREA), {
         problem: "Find the area, to 1 decimal place.",
         picture: measured("r", "5 cm"),
         lines: [
-          ["$5^2 = 25$", "Square the radius."],
-          ["$\\pi \\times 25 = 78.5$ cm²", "Times by π, and round to 1 d.p."],
+          { line: "$5^2 = 25$", note: "Square the radius." },
+          { line: "$\\pi \\times 25 = 78.5$ cm²", note: "Times by π, and round to 1 d.p." },
         ],
       },
       ask(
@@ -935,10 +962,11 @@ const SINE = "y9-trigonometry/sine";
 
 const sine = redraft(find(y9Trigonometry, SINE), {
   method: [
-    "Label the sides from θ: H across from the right angle, O across from θ, A next to θ.",
+    "Label the sides from θ: H, O and A.",
     "Sine uses O and H: $\\sin\\theta = \\frac{O}{H}$.",
-    "O missing: $O = H \\times \\sin\\theta$. H missing: $H = O \\div \\sin\\theta$.",
-    "Round at the end, to the accuracy asked.",
+    "O missing: $O = H \\times \\sin\\theta$.",
+    "H missing: $H = O \\div \\sin\\theta$.",
+    "Round at the end.",
   ],
   picture: tri({ deg: 35, opp: "O", hyp: "H", adj: "A" }),
   drop: ["Any way round", "A steep one", "One more, at speed"],
@@ -1013,8 +1041,8 @@ const sine = redraft(find(y9Trigonometry, SINE), {
         problem: "Find x.",
         picture: tri({ deg: 30, hyp: "10 cm", opp: "x", angle: "30°" }),
         lines: [
-          ["$\\sin 30° = \\frac{x}{10}$", "Sine: opposite over hypotenuse."],
-          ["$x = 10 \\times \\sin 30° = 5$ cm", "Times both sides by 10."],
+          { line: "$\\sin 30° = \\frac{x}{10}$", note: "Opposite over hypotenuse." },
+          { line: "$x = 10 \\times \\sin 30° = 5$ cm", note: "Times both sides by 10." },
         ],
       },
       ask(
@@ -1274,11 +1302,13 @@ const ratioRel = (one: string, parts: string, total: string, asks?: number) =>
     asks,
   );
 
-const sharing = redraft(find(gfRatio1, "gf-ratio-1/part-part"), {
+const SHARING = "gf-ratio-1/part-part";
+
+const sharing = redraft(find(gfRatio1, SHARING), {
   method: [
-    "Add the ratio's numbers: that's how many parts in all.",
-    "Find one part: divide what you know by how many parts it is.",
-    "Times one part by each share's number of parts.",
+    "Add the ratio's numbers to get the parts.",
+    "One part: divide by the number of parts.",
+    "Times one part by each share's parts.",
     "Check: the shares add up to the total.",
   ],
   picture: bars([
@@ -1312,7 +1342,7 @@ const sharing = redraft(find(gfRatio1, "gf-ratio-1/part-part"), {
           ["One part is always £3", "One part is the total ÷ 8, so it changes."],
         ],
       ],
-      "Find one part: the total ÷ 8. Then 3 parts for A and 5 for B.",
+      "One part is the total ÷ 8. A gets 3 parts, B gets 5.",
       {
         text: "Drag the slider to change the total. Watch one part, and each share.",
         expect: [
@@ -1327,9 +1357,24 @@ const sharing = redraft(find(gfRatio1, "gf-ratio-1/part-part"), {
       },
     ),
   ],
+  swap: {
+    "The problem: The prize": reworded(
+      gfRatio1,
+      SHARING,
+      "The prize",
+      { text: ["Ali and Ben share £120 in the ratio 3 : 5.", "How much does each get?"] },
+      "The problem",
+    ),
+    "Sharing £40 in 3 : 5, Kim gives £3 and £5. What's wrong?": reworded(
+      gfRatio1,
+      SHARING,
+      "Sharing £40 in 3 : 5, Kim gives £3 and £5. What's wrong?",
+      { title: "Kim shares £40 in $3 : 5$: £3 and £5. What's wrong?" },
+    ),
+  },
   learning: [
     pair(
-      "Parts, one part, shares",
+      "Share it",
       {
         problem: "Share £120 in the ratio 3 : 5.",
         picture: bars(
@@ -1340,13 +1385,13 @@ const sharing = redraft(find(gfRatio1, "gf-ratio-1/part-part"), {
           "£120",
         ),
         lines: [
-          ["3 + 5 = 8 parts", "Add the ratio's numbers."],
-          ["£120 ÷ 8 = £15", "One part."],
-          ["3 × £15 = £45 and 5 × £15 = £75", "Each share. Check: £45 + £75 = £120."],
+          { line: "3 + 5 = 8 parts", note: "Add the ratio's numbers." },
+          { line: "£120 ÷ 8 = £15" },
+          { line: "3 × £15 = £45 and 5 × £15 = £75", note: "Check: £45 + £75 = £120." },
         ],
       },
       ask(
-        "Share £80 in the ratio 3 : 5. Find the larger share.",
+        "Share £80 in 3 : 5. Find the larger share.",
         "50",
         "8 parts, so one part is £10.",
         "£50.",
@@ -1432,7 +1477,7 @@ const sharing = redraft(find(gfRatio1, "gf-ratio-1/part-part"), {
           },
         ),
         ask(
-          "Share 2 kg of flour in 3 : 1. Find the larger share in grams.",
+          "Share 2 kg in 3 : 1. Give the larger share in grams.",
           "1500",
           "2 kg = 2000 g; 4 parts of 500 g.",
           "1500 g.",
@@ -1442,23 +1487,17 @@ const sharing = redraft(find(gfRatio1, "gf-ratio-1/part-part"), {
             changed: "Kilograms in, grams out.",
           },
         ),
-        ask(
-          "The bar model shows A : B, with 35 in all. Find B's share.",
-          "21",
-          "5 boxes: one box is 7.",
-          "21.",
-          {
-            asks: "share",
-            changed: "A picture: count the boxes.",
-            picture: bars(
-              [
-                ["A", 2],
-                ["B", 3],
-              ],
-              "35",
-            ),
-          },
-        ),
+        ask("The bar model shows A : B. Find B's share.", "21", "5 boxes: one box is 7.", "21.", {
+          asks: "share",
+          changed: "A picture: count the boxes.",
+          picture: bars(
+            [
+              ["A", 2],
+              ["B", 3],
+            ],
+            "35",
+          ),
+        }),
       ],
       "Parts, one part, shares: whatever's being shared.",
     ),
@@ -1478,7 +1517,7 @@ const sharing = redraft(find(gfRatio1, "gf-ratio-1/part-part"), {
           },
         ),
         ask(
-          "In 4 : 5, the smaller share is £32. Find the larger share.",
+          "In 4 : 5, the smaller share is £32. Find the larger.",
           "40",
           "£32 is 4 parts, so one part is £8.",
           "£40.",
@@ -1508,7 +1547,7 @@ const sharing = redraft(find(gfRatio1, "gf-ratio-1/part-part"), {
           },
         ),
         ask(
-          "In 4 : 5, the larger share is £8 more than the smaller. Find the total.",
+          "In 4 : 5, the shares differ by £8. Find the total.",
           "72",
           "The difference is 1 part: £8.",
           "£72: 9 parts of £8.",
@@ -1524,7 +1563,7 @@ const sharing = redraft(find(gfRatio1, "gf-ratio-1/part-part"), {
     ),
     typed(
       "Your turn",
-      "Red : blue = 2 : 7. There are 35 more blue than red. How many red?",
+      "Red to blue is $2 : 7$. Blue has 35 more. How many red?",
       "14",
       "The difference is 5 parts: one part is 7.",
       "14 red.",
