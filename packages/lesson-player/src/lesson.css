@@ -2304,37 +2304,94 @@
   --explain-edge: color-mix(in srgb, var(--gold, #f5b700) 55%, var(--surface, #fff));
 }
 
+/*
+ * Spot the mistake: someone else's working, on ruled exercise-book paper in blue ink, its lines
+ * numbered in the margin. It looks like a pupil's book, not like answers to choose from.
+ */
+.their-working {
+  margin-top: 0.4rem;
+  padding: 0.6rem 0.8rem 0.8rem 0;
+  border: 2px solid var(--line);
+  border-left: 4px solid var(--wrong);
+  border-radius: 12px;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(2.6rem - 1px),
+      color-mix(in srgb, var(--biro) 22%, transparent) calc(2.6rem - 1px),
+      color-mix(in srgb, var(--biro) 22%, transparent) 2.6rem
+    ),
+    var(--surface);
+  background-position: 0 2.1rem;
+}
+
+.their-working-head {
+  margin: 0 0 0.3rem 0.9rem;
+  color: var(--ink-soft);
+  font-family: var(--display);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .mistake-line {
   display: flex;
   align-items: center;
   gap: 0.7rem;
+  width: 100%;
+  min-height: 2.6rem;
+  padding: 0 0.4rem 0 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  color: var(--biro);
+  font: inherit;
+  font-size: var(--step-1);
+  font-style: italic;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mistake-line:focus-visible {
+  outline: 3px solid var(--biro);
+  outline-offset: -3px;
 }
 
 .mistake-number {
   display: grid;
   place-items: center;
   flex: none;
-  width: 1.8rem;
-  height: 1.8rem;
-  border-radius: 50%;
-  background: var(--locked);
+  width: 2.2rem;
   color: var(--ink-soft);
   font-family: var(--display);
   font-size: var(--step--1);
+  font-style: normal;
   font-weight: 600;
 }
 
-.ul-option.mistake-line.fine {
-  border-color: var(--right);
-  color: var(--ink);
-  opacity: 0.6;
+.mistake-line.fine {
+  cursor: default;
+  opacity: 0.75;
 }
 
-.ul-option.mistake-line.wrong-line {
-  border-color: var(--wrong);
+.mistake-line.fine .mistake-number {
+  color: var(--right);
+}
+
+.mistake-line.wrong-line {
   background: var(--wrong-bg);
-  box-shadow: 0 3px 0 var(--wrong);
-  opacity: 1;
+  color: var(--wrong);
+}
+
+.mistake-line.wrong-line .mistake-text {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.mistake-line.wrong-line .mistake-number {
+  color: var(--wrong);
 }
 
 .quiz-count {
@@ -2866,4 +2923,33 @@
   min-height: 1.9rem;
   line-height: 1.9rem;
   color: var(--ink);
+}
+
+/* A prediction: the diagram before the change beside the one now, so the change is plain. */
+.before-after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.before-after figure {
+  margin: 0;
+  padding: 0.4rem 0.3rem 0.2rem;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.before-after figure:last-child {
+  border-color: var(--gold);
+}
+
+.before-after figcaption {
+  margin: 0 0 0.2rem;
+  color: var(--ink-soft);
+  font-family: var(--display);
+  font-size: var(--step--1);
+  font-weight: 600;
+  text-align: center;
 }

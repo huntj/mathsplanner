@@ -27,7 +27,8 @@ is going.
   - Dot's bubble adds the one condition that matters ("AB is a diameter").
 - **Then an Explore** where the pupil drags the diagram and watches the rule hold.
   - Every part is labelled live, with the values in readouts underneath.
-  - It ends on "What stays the same?".
+  - There is no prediction first: the pupil explores straight away, then is asked "What did
+    you notice?".
 - **Drags stop before the diagram degenerates**, for example before two points meet or an angle
   gets thinner than about 20°, so labels always have room.
 - For a topic without a diagram, the rule is the key fact or relationship, such as
@@ -38,6 +39,8 @@ is going.
 **Job:** check the two or three things the method needs, so a gap shows before it gets in the way.
 
 - One quick screen for each thing: tap, choose or type, on a diagram where there is one.
+- They check only what the pupil knew before the lesson. Nothing that needs the lesson's new
+  idea comes here: a question like "Is ABCD a cyclic quadrilateral?" belongs at the end.
 - They are exactly the prerequisites of the method's steps, and no more. For the semicircle:
   - which line is the diameter;
   - what a triangle's angles add up to;
@@ -63,6 +66,10 @@ is going.
 
 - **One more calc screen** with every line to type, including the line that uses the rule
   ("ACB = ☐", then the reason).
+- **A tap round**, where it helps to spot the parts quickly: the same tap question on three or
+  four diagrams of different shapes, one at a time, such as "Tap two opposite angles" on
+  cyclic quadrilaterals of every shape. Where more than one answer is right, any of them is
+  accepted.
 - **A set of four to six short questions** with the same method each time:
   - the missing value moves round the diagram (B, then A, then C), and each move is pointed out
     in "What's changed";
@@ -77,8 +84,15 @@ is going.
   - algebra (x and 2x);
   - a combined diagram (two triangles on one diameter);
   - a context;
-  - the rule as one step of a longer problem.
+  - the rule as one step of a longer problem;
+  - a non-example, where the rule doesn't apply.
 - Each is pointed out in "What's changed".
+- **Where a change is to predict** ("the angle goes up by 10°: what happens to the other?"),
+  the diagram before the change sits beside the one now, and the change and the question come
+  just above the choices.
+- **Spot the mistake:** someone else's working, set out in their exercise book with their name
+  on it, one line wrong. The pupil taps the wrong line. It looks like a pupil's book, so it is
+  never mistaken for answers to choose from.
 
 ### 6. Exit check
 
@@ -124,8 +138,9 @@ is going.
 - **Reasons from one list.** Written reasons come from `REASON` in `unit-lessons/reasons.ts`,
   worded the same in every lesson. A new reason is added there.
 - **One rule per lesson.** If a lesson needs two rules, it is two lessons.
-- **Labels stay with their angles.** Each angle's value sits by its own arc. No name sits on a
-  line, and a drag stops before labels have no room.
+- **Labels stay with their angles.** Each angle's value sits by its own arc, and every arc on a
+  diagram has the same radius. No name sits on a line, and a drag stops before labels have no
+  room.
 - **Checked in a browser.** Every lesson is played through at 390 × 844 in light and dark mode,
   and every Explore is dragged to both ends of its range.
 

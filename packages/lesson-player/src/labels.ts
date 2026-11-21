@@ -55,9 +55,10 @@ export interface AngleMark {
   label: Box;
 }
 
-/** How far out an angle's label and arc may go, in pixels: further, and they lose their angle. */
+/** How far out an angle's label may go on a drawing, in pixels: further, and it loses its angle. */
 const MAX_LABEL = 62;
-const MAX_ARC = 44;
+/** The one radius of every angle's arc on a drawing. */
+const DRAWING_ARC = 24;
 
 /**
  * The arc and label for the angle at p between the arms to a and b. The angle is the one inside
@@ -92,7 +93,19 @@ export function angleMark(
   }
   // A small angle gets a bigger arc, so the arc and its label have room between the arms.
   const deg = (angle * 180) / Math.PI;
-  const r = opts.square ? 14 : deg < 30 ? 40 : deg < 50 ? 32 : deg < 80 ? 27 : 23;
+  // On a drawing every arc has the same radius, so arcs don't swell and shrink as a point is
+  // dragged; on a shape, a small angle gets a bigger arc, to fit its label between the arms.
+  const r = opts.square
+    ? 14
+    : !opts.poly
+      ? DRAWING_ARC
+      : deg < 30
+        ? 40
+        : deg < 50
+          ? 32
+          : deg < 80
+            ? 27
+            : 23;
   const { hw, hh } = textSize(text, opts.size ?? 15);
   // The label's direction: the bisector, or leaning towards one arm to find room.
   const lean = opts.lean ?? 0.5;
@@ -115,10 +128,7 @@ export function angleMark(
   if (opts.square) return { label };
   // On a thin angle, or one pushed out past a line, the label sits far out, so the arc reaches
   // out to meet it: the number stays joined to its own angle.
-  const arcR = Math.max(
-    r,
-    opts.poly ? far - reach(dir, hw, hh) - 6 : Math.min(far - reach(dir, hw, hh) - 6, MAX_ARC),
-  );
+  const arcR = opts.poly ? Math.max(r, far - reach(dir, hw, hh) - 6) : r;
   // SVG's sweep flag is clockwise on screen: the arc turns from u towards the bisector.
   const turn = Math.atan2(bis.y, bis.x) - Math.atan2(u.y, u.x);
   const sweep = Math.sin(turn) > 0;

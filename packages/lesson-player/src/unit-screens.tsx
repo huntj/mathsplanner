@@ -49,7 +49,7 @@ import {
   type Step,
 } from "./unit-ui.tsx";
 import { PairStep, SetStep } from "./variation-screens.tsx";
-import { ExploreStep, TapStep } from "./interactive-screens.tsx";
+import { ExploreStep, TapSetStep, TapStep } from "./interactive-screens.tsx";
 
 type More = Exclude<
   Screen,
@@ -104,6 +104,8 @@ export function ScreenStepMore({
       return <ExploreStep screen={s} {...step} />;
     case "calc":
       return <CalcStep screen={s} {...step} />;
+    case "tapset":
+      return <TapSetStep screen={s} {...step} />;
   }
 }
 
@@ -1765,7 +1767,16 @@ function WorkedStep({ screen, family, onNext }: Step<Worked>) {
 
 // Spot the mistake.
 
+/** Whose working it is: the name a mistake's words begin with ("Ola finds…"), else someone's. */
+export const workingOf = (text: string | undefined) => {
+  const name = /^([A-Z][a-z]+) (finds|found|works|worked|says|shares|solves|writes)/.exec(
+    text ?? "",
+  )?.[1];
+  return name ?? "Someone";
+};
+
 function MistakeStep({ screen, family, sound, onNext }: Step<Mistake>) {
+  const who = workingOf(screen.text);
   const [tried, setTried] = useState<number[]>([]);
   const [found, setFound] = useState(false);
   useChime(found, sound);
@@ -1776,21 +1787,29 @@ function MistakeStep({ screen, family, sound, onNext }: Step<Mistake>) {
         <Title title={screen.title} family={family} />
         <Lead text={screen.text} />
         {screen.picture && <PictureView picture={screen.picture} />}
-        <div className="ul-options mistake" role="group" aria-label="Tap the line that is wrong">
-          {screen.lines.map((line, i) => (
-            <button
-              key={i}
-              type="button"
-              data-i={i}
-              className={`ul-option mistake-line${tried.includes(i) ? " fine" : ""}${found && i === screen.wrong ? " wrong-line" : ""}`}
-              disabled={found || tried.includes(i)}
-              onClick={() => (i === screen.wrong ? setFound(true) : setTried([...tried, i]))}
-            >
-              <span className="mistake-number">{i + 1}</span>
-              <W text={line} />
-            </button>
-          ))}
-        </div>
+        {/* Someone else's working, as written in their exercise book: not answers to choose. */}
+        <section className="their-working" aria-label={`${who}'s working`}>
+          <p className="their-working-head">
+            <span aria-hidden="true">✎</span> {who}'s working
+          </p>
+          <div role="group" aria-label="Tap the line that is wrong">
+            {screen.lines.map((line, i) => (
+              <button
+                key={i}
+                type="button"
+                data-i={i}
+                className={`mistake-line${tried.includes(i) ? " fine" : ""}${found && i === screen.wrong ? " wrong-line" : ""}`}
+                disabled={found || tried.includes(i)}
+                onClick={() => (i === screen.wrong ? setFound(true) : setTried([...tried, i]))}
+              >
+                <span className="mistake-number" aria-hidden="true">
+                  {found && i === screen.wrong ? "✗" : tried.includes(i) ? "✓" : i + 1}
+                </span>
+                <W text={line} className="mistake-text" />
+              </button>
+            ))}
+          </div>
+        </section>
       </main>
       {found ? (
         <Verdict
@@ -1806,7 +1825,7 @@ function MistakeStep({ screen, family, sound, onNext }: Step<Mistake>) {
           note={
             tried.length
               ? "That line is right. Check the next ones carefully."
-              : "One line has a mistake. Tap it."
+              : `One line of ${who === "Someone" ? "this" : `${who}'s`} working is wrong. Tap it.`
           }
         />
       )}
