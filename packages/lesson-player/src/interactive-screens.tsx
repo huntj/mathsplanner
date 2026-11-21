@@ -20,6 +20,7 @@ import type {
   RatioScene,
   Readout,
   Tap,
+  TapSet,
 } from "@mathsplanner/learning/unit-lessons";
 import { circleSegments, placeAngleMarks, type Obstacles, type Pt } from "./labels.ts";
 import { PictureView, tapName } from "./Picture.tsx";
@@ -52,12 +53,21 @@ export function TapStep({ screen, family, sound, onNext }: Step<Tap>) {
       many ? (c.includes(name) ? c.filter((n) => n !== name) : [...c, name]) : [name],
     );
   };
+  // Right is the answers, in any order, or any one of the other right sets.
+  const sets = [screen.answers, ...(screen.anyOf ?? [])];
   const check = () => {
-    const ok =
-      chosen.length === screen.answers.length && chosen.every((c) => screen.answers.includes(c));
+    const ok = sets.some(
+      (set) => chosen.length === set.length && chosen.every((c) => set.includes(c)),
+    );
     if (ok) setVerdict("right");
     else {
-      setWrong(chosen.filter((c) => !screen.answers.includes(c)));
+      // Marked wrong: what isn't in the right set closest to the pupil's.
+      const closest = sets.reduce((best, set) =>
+        set.filter((c) => chosen.includes(c)).length > best.filter((c) => chosen.includes(c)).length
+          ? set
+          : best,
+      );
+      setWrong(chosen.filter((c) => !closest.includes(c)));
       setTries(tries + 1);
       setVerdict("wrong");
     }
@@ -828,5 +838,33 @@ export function ExploreStep({ screen, family, sound, onNext }: Step<Explore>) {
         />
       )}
     </>
+  );
+}
+
+/** Several Tap questions, one at a time, each on its own diagram: a quick round of spotting. */
+export function TapSetStep({ screen, family, sound, onNext }: Step<TapSet>) {
+  const [at, setAt] = useState(0);
+  const item = screen.items[at];
+  if (!item) return null;
+  const last = at + 1 === screen.items.length;
+  return (
+    <TapStep
+      // A fresh question each time.
+      key={at}
+      screen={{
+        kind: "tap",
+        title: screen.title,
+        text: `Question ${at + 1} of ${screen.items.length}`,
+        picture: item.picture,
+        answers: item.answers,
+        ...(item.anyOf ? { anyOf: item.anyOf } : {}),
+        ...(item.wrong ? { wrong: item.wrong } : {}),
+        hint: item.hint,
+        done: last ? `${item.done} ${screen.done}` : item.done,
+      }}
+      family={family}
+      sound={sound}
+      onNext={() => (last ? onNext() : setAt(at + 1))}
+    />
   );
 }

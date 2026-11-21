@@ -144,15 +144,6 @@ const halfTurn = redraft(find(y7Angles, HALF_TURN), {
       "Angles on a straight line add up to 180°, however the ray turns.",
       {
         text: "Drag C round. Watch the two angles on the straight line AB.",
-        expect: [
-          "Before you drag: as one angle grows, the other will…",
-          "shrink by the same amount",
-          "They share the straight line's 180°.",
-          [
-            ["grow too", "Try it and see."],
-            ["stay the same", "Try it and see."],
-          ],
-        ],
       },
     ),
   ],
@@ -374,15 +365,6 @@ const percentages = redraft(find(y7Fdp, "y7-fdp/percentages"), {
       "The same shading names a fraction, a decimal and a percentage.",
       {
         text: "Drag the slider to shade more or fewer squares. Watch the three ways of writing it.",
-        expect: [
-          "Before you drag: if you shade half the square, the percentage will be…",
-          "50%",
-          "Half of 100 squares is 50 out of 100.",
-          [
-            ["5%", "Try it and see."],
-            ["0.5%", "Try it and see."],
-          ],
-        ],
       },
     ),
   ],
@@ -684,15 +666,6 @@ const circleArea = redraft(find(y8Area, CIRCLE_AREA), {
       "The circumference doubles with the radius, but the area goes up 4 times.",
       {
         text: "Drag R to grow and shrink the circle. Watch the area and the circumference.",
-        expect: [
-          "Before you drag: if the radius doubles, the area will…",
-          "be 4 times as big",
-          "The radius is squared in the area.",
-          [
-            ["double", "Try it and see."],
-            ["stay the same", "Try it and see."],
-          ],
-        ],
       },
     ),
   ],
@@ -1022,15 +995,6 @@ const sine = redraft(find(y9Trigonometry, SINE), {
       "For a 35° angle, opposite ÷ hypotenuse is always about 0.57. That's sin 35°.",
       {
         text: "Drag C to make the triangle bigger or smaller. The angle at A stays 35°.",
-        expect: [
-          "Before you drag: as the triangle grows, BC ÷ AC will…",
-          "stay the same",
-          "Both sides grow in step, so their ratio doesn't change.",
-          [
-            ["get bigger", "Try it and see."],
-            ["get smaller", "Try it and see."],
-          ],
-        ],
       },
     ),
   ],
@@ -1345,15 +1309,6 @@ const sharing = redraft(find(gfRatio1, SHARING), {
       "One part is the total ÷ 8. A gets 3 parts, B gets 5.",
       {
         text: "Drag the slider to change the total. Watch one part, and each share.",
-        expect: [
-          "Before you drag: if the total goes up, one part will…",
-          "get bigger",
-          "The same 8 parts share a bigger total.",
-          [
-            ["stay the same", "Try it and see."],
-            ["get smaller", "Try it and see."],
-          ],
-        ],
       },
     ),
   ],

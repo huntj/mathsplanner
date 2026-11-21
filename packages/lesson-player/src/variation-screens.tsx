@@ -43,9 +43,12 @@ function AskView({
   sound,
   last,
   done,
+  before,
   onDone,
 }: {
   item: Ask;
+  /** The question before's picture, to show beside this one while the pupil predicts. */
+  before?: Ask["picture"] | undefined;
   family: Step<unknown>["family"];
   sound: boolean;
   /** Whether this is the screen's last question, so moving on leaves the screen. */
@@ -101,17 +104,38 @@ function AskView({
   return (
     <form className="lesson-form" onSubmit={submit}>
       <main className="lesson-main ask-main">
-        {item.changed && (
+        {!predicting && item.changed && (
           <p className="ask-changed">
             <span className="ask-changed-tag">What's changed</span> <W text={item.changed} />
           </p>
         )}
-        <p className="lesson-lead ask-prompt">
-          <W text={item.prompt} />
-        </p>
-        {item.picture && <PictureView picture={item.picture} />}
+        {!predicting && (
+          <p className="lesson-lead ask-prompt">
+            <W text={item.prompt} />
+          </p>
+        )}
+        {(!predicting || !before) && item.picture && <PictureView picture={item.picture} />}
         {predicting && item.expect ? (
           <div className="ask-expect">
+            {/* The change, plain to see: the last diagram beside this one. */}
+            {before && item.picture && (
+              <div className="before-after">
+                <figure>
+                  <figcaption>Before</figcaption>
+                  <PictureView picture={before} />
+                </figure>
+                <figure>
+                  <figcaption>Now</figcaption>
+                  <PictureView picture={item.picture} />
+                </figure>
+              </div>
+            )}
+            {/* What changed, then the question, just above the choices. */}
+            {item.changed && (
+              <p className="ask-changed">
+                <span className="ask-changed-tag">What's changed</span> <W text={item.changed} />
+              </p>
+            )}
             <p className="ul-prompt">
               <W text={item.expect.question} />
             </p>
@@ -287,6 +311,7 @@ export function SetStep({ screen, family, sound, onNext }: Step<QuestionSet>) {
           item={item}
           family={family}
           sound={sound}
+          before={screen.items[at - 1]?.picture}
           last={at + 1 === screen.items.length}
           done={screen.done}
           onDone={() => {

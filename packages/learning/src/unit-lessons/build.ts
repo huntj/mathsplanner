@@ -9,6 +9,7 @@ import type {
   Picture,
   QuizQuestion,
   Screen,
+  TapSet,
   UnitLesson,
   Variation,
   Words,
@@ -490,4 +491,13 @@ export const summary = (
   ...(picture ? { picture } : {}),
   book,
   ...(bubble ? { bubble } : {}),
+});
+
+/** A round of Tap questions, one at a time, each on its own diagram. */
+export const tapSet = (tag: string, title: Words, items: TapSet["items"], done: Words): Screen => ({
+  kind: "tapset",
+  tag,
+  title,
+  items,
+  done,
 });

@@ -681,9 +681,20 @@ export interface Tap {
   picture: DrawingPic;
   /** The names to tap; with more than one, all of them, in any order. */
   answers: string[];
+  /** Other sets that are right too, such as the other pair of opposite angles. */
+  anyOf?: string[][];
   /** Nudges for wrong taps, by name. */
   wrong?: Record<string, Words>;
   hint: Words;
+  done: Words;
+}
+
+/** Several Tap questions, one at a time, each on its own diagram. */
+export interface TapSet {
+  kind: "tapset";
+  title: Words;
+  text?: Words;
+  items: Pick<Tap, "picture" | "answers" | "anyOf" | "wrong" | "hint" | "done">[];
   done: Words;
 }
 
@@ -809,6 +820,7 @@ export type Screen = (
   | Tap
   | Explore
   | Calc
+  | TapSet
 ) &
   Tagged;
 

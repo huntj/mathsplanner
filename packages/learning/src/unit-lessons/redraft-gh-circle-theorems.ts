@@ -13,10 +13,12 @@ import {
   explore,
   lesson,
   methodCard,
+  mistake,
   questionSet,
   quiz,
   summary,
   tap,
+  tapSet,
   typed,
   worked,
 } from "./build.ts";
@@ -259,15 +261,6 @@ const angleAtCentre = lesson(
         "Wherever C is on the big arc, angle ACB is half of angle AOB.",
         {
           text: "Drag C round the circle. Watch the angles at O and at C.",
-          expect: [
-            "Before you drag: as C moves round the circle, angle ACB will…",
-            "stay the same",
-            "It's always half of angle AOB, wherever C is on the big arc.",
-            [
-              ["get bigger near A", "Try it and see."],
-              ["get smaller near A", "Try it and see."],
-            ],
-          ],
         },
       ),
     ),
@@ -442,6 +435,18 @@ const angleAtCentre = lesson(
     ),
 
     // 6. Exit check.
+    mistake(
+      "Ola finds angle ACB.",
+      [
+        "The angle at the centre is twice the angle at the circumference.",
+        "So ACB = 100° ÷ 2",
+        "ACB = 50°",
+      ],
+      1,
+      "C faces the reflex angle: 360° − 100° = 260°, so ACB = 130°.",
+      centre(100, ["100°", "?"], { c: 270 }),
+    ),
+
     quiz([
       [
         [
@@ -748,6 +753,14 @@ const semicircleLesson = lesson(
       "Both angles on the diameter are 90°.",
     ),
 
+    mistake(
+      "Leo finds angle ABC.",
+      ["ACB = 90° (angle in a semicircle is 90°)", "ABC = 180° − 90° + 31°", "ABC = 121°"],
+      1,
+      "Take away both angles: 180° − 90° − 31° = 59°.",
+      semicircle(31, { A: "31°", B: "?" }),
+    ),
+
     // 6. Exit check.
     quiz([
       [
@@ -1039,6 +1052,14 @@ const sameSegment = lesson(
       "Same chord, same side: equal. Other side: not equal.",
     ),
 
+    mistake(
+      "Kim finds angle ADB.",
+      ["ADB and ACB stand on chord AB, on the same side.", "So ADB = 46° ÷ 2", "ADB = 23°"],
+      1,
+      "Both angles are at the circumference: they're equal. ADB = 46°.",
+      bowtie(46, ["46°", "?"]),
+    ),
+
     quiz([
       [
         [
@@ -1173,27 +1194,19 @@ const cyclicLesson = lesson(
         "Opposite angles of a cyclic quadrilateral add to 180°.",
         {
           text: "Drag D round the circle. Watch the angles change, and the two sums.",
-          expect: [
-            "Before you drag: angle A + angle C will…",
-            "stay the same",
-            "Opposite angles share 180°, however the shape changes.",
-            [["change", "Try it and see."]],
-          ],
         },
       ),
     ),
 
-    choose(
+    typed(
       "Check you remember",
-      "Is ABCD a cyclic quadrilateral?",
-      "Yes: all four corners are on the circle",
-      "Cyclic means every corner is on the circle.",
-      [["No", "Look again: A, B, C and D are all on the circle."]],
+      "Find the angle marked ?.",
+      "116",
+      "Angles on a straight line add up to 180°.",
+      "116°.",
       {
-        picture: circlePic({
-          on: { A: 200, B: 290, C: 20, D: 110 },
-          lines: ["AB", "BC", "CD", "DA"],
-        }),
+        unit: "°",
+        picture: fan([0, 64, 180], ["64°", "?"], "?"),
       },
     ),
     tap(
@@ -1249,6 +1262,23 @@ const cyclicLesson = lesson(
       "Angle BCD is 105°.",
     ),
 
+    tapSet(
+      "Practise",
+      "Tap two opposite angles.",
+      [
+        [70, 95, 300],
+        [85, 50, 120],
+        [60, 110, 200],
+        [100, 80, 30],
+      ].map(([a = 70, b = 95, turn = 300]) => ({
+        picture: cyclic(a, b, { A: "", B: "", C: "", D: "" }, turn, { tap: true }),
+        answers: ["DAB", "BCD"],
+        anyOf: [["ABC", "CDA"]],
+        hint: "Opposite angles are across the shape, not next to each other.",
+        done: "Opposite: across the shape.",
+      })),
+      "Whatever its shape, opposite corners are across from each other.",
+    ),
     calc(
       "Practise",
       "Find angle CDA.",
@@ -1321,6 +1351,27 @@ const cyclicLesson = lesson(
         ),
       ],
       "On the circle and opposite: they add to 180°.",
+    ),
+
+    choose(
+      "Variation",
+      "Is ABCD a cyclic quadrilateral?",
+      "Yes: all four corners are on the circle",
+      "Cyclic means every corner is on the circle.",
+      [["No", "Look again: A, B, C and D are all on the circle."]],
+      {
+        picture: circlePic({
+          on: { A: 200, B: 290, C: 20, D: 110 },
+          lines: ["AB", "BC", "CD", "DA"],
+        }),
+      },
+    ),
+    mistake(
+      "Ben finds angle BCD.",
+      ["BCD is opposite DAB.", "Opposite angles are equal.", "BCD = 64°"],
+      1,
+      "Opposite angles add up to 180°: BCD = 116°.",
+      cyclic(64, 95, { A: "64°", C: "?" }),
     ),
 
     quiz([
@@ -1454,15 +1505,6 @@ const tangentsLesson = lesson(
         "Right angles at A and B, and equal tangents, however far away P is.",
         {
           text: "Drag P along the line. Watch the tangents and the angles.",
-          expect: [
-            "Before you drag: as P moves further away, angle APB will…",
-            "get smaller",
-            "The tangents close up as P moves away.",
-            [
-              ["get bigger", "Try it and see."],
-              ["stay the same", "Try it and see."],
-            ],
-          ],
         },
       ),
     ),
@@ -1646,6 +1688,14 @@ const tangentsLesson = lesson(
       "Right angles where the radius meets the tangent; equal tangents from one point.",
     ),
 
+    mistake(
+      "Kim finds angle AOB.",
+      ["OAP = OBP = 90°", "AOB = 180° − 64° − 90°", "AOB = 26°"],
+      1,
+      "OAPB is a quadrilateral: 360° − 90° − 90° − 64° = 116°.",
+      kite(64, { P: "64°", O: "?" }),
+    ),
+
     quiz([
       [
         [
@@ -1792,15 +1842,6 @@ const alternateLesson = lesson(
         "Tangent–chord angle = the angle across the chord.",
         {
           text: "RS is a tangent at T. Drag A round the circle and watch the two angles.",
-          expect: [
-            "Before you drag: as angle STA grows, angle TBA will…",
-            "grow with it",
-            "They stay equal: the alternate segment theorem.",
-            [
-              ["stay the same", "Try it and see."],
-              ["shrink", "Try it and see."],
-            ],
-          ],
         },
       ),
     ),
@@ -1954,6 +1995,14 @@ const alternateLesson = lesson(
         ),
       ],
       "Each chord from T has its own pair of equal angles.",
+    ),
+
+    mistake(
+      "Zoe finds angle TBA.",
+      ["TA is a radius, so STA is 90°.", "So TBA = 90° − 52°", "TBA = 38°"],
+      0,
+      "TA is a chord, not a radius. By the alternate segment theorem, TBA = 52°.",
+      alternate(52, { tangent: "52°", B: "?" }),
     ),
 
     quiz([

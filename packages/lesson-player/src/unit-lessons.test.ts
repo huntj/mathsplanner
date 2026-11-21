@@ -29,6 +29,7 @@ import {
   type Point,
   type Range,
   type Scene,
+  type Tap,
 } from "@mathsplanner/learning/unit-lessons";
 import { fitsAtSmallest, scaleToFit, SMALLEST } from "./fit.ts";
 import { curveY } from "./LineGraph.tsx";
@@ -307,6 +308,7 @@ const STEPPED: Record<string, number> = {
   "Your turn": 2,
   Practise: 3,
   Variation: 4,
+  "Spot the mistake": 4,
   "Exit check": 5,
   // Where one fits: circle theorems have none.
   "Real life": 6,
@@ -582,18 +584,13 @@ describe.each(ALL_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %s
             if (b?.prompt === a?.prompt) expect(b?.changed, b?.prompt).toBeDefined();
           }
           break;
-        case "tap": {
-          checkPicture(screen.picture);
-          // Every answer, and every nudge, names a part the pupil can tap.
-          const taps = screen.picture.items.flatMap((it) =>
-            "tap" in it && it.tap ? [it.tap] : [],
-          );
-          expect(new Set(taps).size, "tap names are unique").toBe(taps.length);
-          for (const a of screen.answers) expect(taps, a).toContain(a);
-          for (const w of Object.keys(screen.wrong ?? {})) expect(taps, w).toContain(w);
-          expect(taps.length, "something else to tap").toBeGreaterThan(screen.answers.length);
+        case "tap":
+          checkTap(screen);
           break;
-        }
+        case "tapset":
+          expect(screen.items.length).toBeGreaterThanOrEqual(2);
+          for (const item of screen.items) checkTap(item);
+          break;
         case "calc":
           checkPicture(screen.picture);
           expect(screen.lines.length).toBeGreaterThan(0);
@@ -861,7 +858,7 @@ describe.each(REDRAFT_LESSONS.map((l) => [lessonId(l), l] as const))(
         if (s.kind === "choice" || s.kind === "answer")
           asks.push([s.title, s.text ?? ""].join(" "));
         if (s.kind === "mistake") asks.push(s.text);
-        if (s.kind === "tap" || s.kind === "calc") asks.push(s.title);
+        if (s.kind === "tap" || s.kind === "calc" || s.kind === "tapset") asks.push(s.title);
         if (s.kind === "steps") asks.push(s.start);
         if (s.kind === "pair") asks.push(s.question.prompt);
         if (s.kind === "set") asks.push(s.title, s.text, ...s.items.map((i) => i.prompt));
@@ -880,6 +877,7 @@ describe.each(REDRAFT_LESSONS.map((l) => [lessonId(l), l] as const))(
         if (s.kind === "set") said.push(...s.items.map((i) => i.hint));
         if (s.kind === "answer" || s.kind === "tap") said.push(s.hint);
         if (s.kind === "calc") said.push(...s.lines.map((l) => l.hint));
+        if (s.kind === "tapset") said.push(...s.items.map((i) => i.hint));
         for (const t of said) expect(wordCount(t), `${where}: ${t}`).toBeLessThanOrEqual(15);
       }
     });
@@ -940,6 +938,19 @@ describe.each(REDRAFT_LESSONS.map((l) => [lessonId(l), l] as const))(
     });
   },
 );
+
+/** A Tap question can be done: every answer, and every nudge, names a part the pupil can tap. */
+function checkTap(screen: Pick<Tap, "picture" | "answers" | "anyOf" | "wrong">) {
+  checkPicture(screen.picture);
+  const taps = screen.picture.items.flatMap((it) => ("tap" in it && it.tap ? [it.tap] : []));
+  expect(new Set(taps).size, "tap names are unique").toBe(taps.length);
+  for (const set of [screen.answers, ...(screen.anyOf ?? [])]) {
+    expect(set.length).toBe(screen.answers.length);
+    for (const a of set) expect(taps, a).toContain(a);
+  }
+  for (const w of Object.keys(screen.wrong ?? {})) expect(taps, w).toContain(w);
+  expect(taps.length, "something else to tap").toBeGreaterThan(screen.answers.length);
+}
 
 /** A short question can be answered: its answer is on offer, and its prediction has one right. */
 function checkAsk(a: Ask) {
@@ -1233,12 +1244,21 @@ describe("labels on shapes", () => {
     expect(crosses(m.label, o, b)).toBe(false);
   });
 
+  it("gives every arc on a drawing one radius", () => {
+    for (const b of [
+      { x: 99, y: -14 },
+      { x: 0, y: -100 },
+      { x: -90, y: -40 },
+    ])
+      expect(angleMark({ x: 0, y: 0 }, { x: 100, y: 0 }, b, "60°").arc?.r).toBe(24);
+  });
+
   it("keeps a drawing's thin angle label near its corner, its arc short", () => {
     // On a circle diagram, a label far out along a thin angle loses its angle: it stays close,
     // just past its arc, and its halo carries it over an arm.
     const m = angleMark({ x: 0, y: 0 }, { x: 100, y: 0 }, { x: 99, y: -14 }, "8°");
     expect(Math.hypot(m.label.x, m.label.y)).toBeLessThanOrEqual(62);
-    expect(m.arc?.r ?? 0).toBeLessThanOrEqual(44);
+    expect(m.arc?.r).toBe(24);
     expect(Math.hypot(m.label.x, m.label.y)).toBeGreaterThan(m.arc?.r ?? 0);
   });
 
