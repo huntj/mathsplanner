@@ -1,36 +1,185 @@
-# Draft: the stepped lesson plan
+# Proposal: the stepped lesson template
 
-Status: **draft, 21 November 2026.** This is the owner's plan for "The angle in a semicircle"
-(GCSE Higher, `gh-circles/semicircle`), built for review. Once the owner has reviewed that lesson,
-it becomes a template of principles for the other lessons. Until then, only that lesson uses it.
+Status: **agreed on 21 November 2026**, with the owner's answers below. The owner designed this plan for "The angle
+in a semicircle" (GCSE Higher, `gh-circles/semicircle`), reviewed it live and asked for it to be
+summarised as a template of principles for the other lessons. Only that lesson uses it so far.
 
 It is simpler than the unit plan (The problem, Warm-up, Discover… Exit check), and it is written
-for weaker readers. Each part keeps to the word limits in part 4 of
-[the interactive proposal](lesson-interactive.md#4-few-words-and-explainers-in-a-bubble).
+for weaker readers. It keeps everything already agreed:
 
-## The six parts
+- variation ([proposal](lesson-variation.md));
+- diagrams first, Explore and hands-on answers ([proposal](lesson-interactive.md));
+- few words, with Dot's bubbles (part 4 of that proposal).
 
-| Part                  | Tag on its screens                | In "The angle in a semicircle"                                                                                                                                    |
-| --------------------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1. The rule           | The rule                          | The rule on a diagram with all three angles labelled, then an Explore: drag C round the circle and watch all three angles.                                        |
-| 2. Check you remember | Check you remember                | The prerequisites, one screen each: tap the diameter; what the angles in a triangle add up to; the missing angle in a right-angled triangle.                      |
-| 3. The method         | Method, Worked example, Your turn | The method card (angle C is 90°; add the two known angles; take the total from 180°), the method shown a line at a time, then the pupil types each line's answer. |
-| 4. Practise           | Practise                          | Repetition with the method, a line at a time, then short questions where the missing angle moves: B, then A, then C.                                              |
-| 5. Variation          | Variation                         | The same rule, new looks: the angles as x and 2x (and x and 4x), and two triangles on one diameter.                                                               |
-| 6. Summary            | Summary                           | The rule, a diagram, and what to write in an exercise book to revise from: the rule, a worked example with its reasons.                                           |
+## The parts
 
-## New pieces it uses
+Every lesson has the same parts, in this order: seven always, and a real-life problem where one fits. Each part has a job, a set of screens to do
+it with, and principles that keep it short and clear.
 
-- **Calc screen:** working with a box on each line, typed one line at a time, as in an exercise
-  book. A done line shows its written reason. A wrong try gets Dot's hint, and two wrong tries
-  give the answer.
-- **The exercise-book card:** on the summary, a ruled card headed "Write this in your book".
-- The tests check that a stepped lesson has all six parts, in order, ending on a summary with
-  notes for a book.
+### 1. The rule
 
-## Open for the owner's review
+**Job:** show the one thing the lesson teaches before anything else, so the pupil knows where it
+is going.
 
-- Whether a short exit check belongs after Variation, before the Summary. The owner's plan has
-  none, so this lesson has none.
-- Whether the real-life problem at the start of the unit plan should come back, before the rule.
-- Which other lessons move to this plan, and in what order.
+- **One screen with the rule.**
+  - The rule is a single bold sentence of 12 words or fewer, on a diagram that shows it with
+    everything labelled, the angles that aren't part of the rule too.
+  - Dot's bubble adds the one condition that matters ("AB is a diameter").
+- **Then an Explore** where the pupil drags the diagram and watches the rule hold.
+  - Every part is labelled live, with the values in readouts underneath.
+  - It ends on "What stays the same?".
+- **Drags stop before the diagram degenerates**, for example before two points meet or an angle
+  gets thinner than about 20°, so labels always have room.
+- For a topic without a diagram, the rule is the key fact or relationship, such as
+  "part = percentage × whole". The Explore is a slider or a hundred square that shows it.
+
+### 2. Check you remember
+
+**Job:** check the two or three things the method needs, so a gap shows before it gets in the way.
+
+- One quick screen for each thing: tap, choose or type, on a diagram where there is one.
+- They are exactly the prerequisites of the method's steps, and no more. For the semicircle:
+  - which line is the diameter;
+  - what a triangle's angles add up to;
+  - a missing angle in a right-angled triangle.
+- A wrong answer gets Dot's hint, which names the fact.
+
+### 3. The method
+
+**Job:** show how to do it, then let the pupil do it with every step scaffolded.
+
+- **The method card:** two to four steps, each one short line. The same words are used
+  everywhere the method appears, and the Method button brings it back.
+- **Watch the method:** a worked example revealed a line at a time.
+  - Each line shows the maths, and the written reason in brackets, worded from the shared list.
+  - Dot's bubble on a line explains it, and never holds what is needed to answer.
+- **Your turn:** the same kind of question on a calc screen, where the pupil types the answer on
+  each line in turn ("90° + 25° = ☐", then "180° − 115° = ☐"). The first one can give the fact
+  from the rule on the diagram (C marked 90°).
+
+### 4. Practise
+
+**Job:** repeat the method until it is automatic, then move the missing value.
+
+- **One more calc screen** with every line to type, including the line that uses the rule
+  ("ACB = ☐", then the reason).
+- **A set of four to six short questions** with the same method each time:
+  - the missing value moves round the diagram (B, then A, then C), and each move is pointed out
+    in "What's changed";
+  - turned and reflected diagrams come in here too;
+  - each question is on its diagram, with the values on the diagram and only "Find …" in words.
+
+### 5. Variation
+
+**Job:** show the same rule in the new looks pupils will meet in exams.
+
+- Three or four questions, each a different look:
+  - algebra (x and 2x);
+  - a combined diagram (two triangles on one diameter);
+  - a context;
+  - the rule as one step of a longer problem.
+- Each is pointed out in "What's changed".
+
+### 6. Exit check
+
+**Job:** show which pupils need the lesson again.
+
+- Two or three questions, with no hints, and quick to answer (typing or choosing).
+- Each is on its diagram, and they ask for different unknowns.
+- A wrong answer comes back at the end with new numbers.
+
+### 7. A real-life problem (where one fits)
+
+**Job:** use the rule in the world, once the pupil can do it.
+
+- One problem pupils recognise, after the exit check, such as the laptop screen at 110° for
+  angles on a straight line.
+- It is left out where the topic has no honest real-life use, as for circle theorems.
+
+### 8. Summary
+
+**Job:** finish on what to remember, and give the pupil something to keep.
+
+- The rule in bold, and the diagram with every value marked.
+- **"Write this in your book":** a ruled card with:
+  - the rule;
+  - what to draw;
+  - the method in one sentence;
+  - a worked example with its reasons, as the pupil would set it out in their book.
+- Dot's bubble says to copy it into their book.
+
+## Principles for every part
+
+- **Diagrams first.** Any question about a shape, angle, graph or chart is asked on its diagram,
+  with the given values on the diagram and only what to find in words.
+- **Few words.**
+  - Questions of 12 words or fewer.
+  - Dot's bubbles and hints of 15 words or fewer.
+  - At most 40 words to read before the pupil acts.
+  - A reading age of 9 to 10.
+- **Three kinds of words, kept apart.**
+  - What to do: the question.
+  - The working: the maths, with the written reason in brackets.
+  - Explainers and hints: from Dot, in a bubble.
+- **Reasons from one list.** Written reasons come from `REASON` in `unit-lessons/reasons.ts`,
+  worded the same in every lesson. A new reason is added there.
+- **One rule per lesson.** If a lesson needs two rules, it is two lessons.
+- **Labels stay with their angles.** Each angle's value sits by its own arc. No name sits on a
+  line, and a drag stops before labels have no room.
+- **Checked in a browser.** Every lesson is played through at 390 × 844 in light and dark mode,
+  and every Explore is dragged to both ends of its range.
+
+## Writing a lesson from the template
+
+Before any screens, write a short plan for the lesson. The tests and the review check the lesson
+against it.
+
+| Plan item      | For "The angle in a semicircle"                                                                                |
+| -------------- | -------------------------------------------------------------------------------------------------------------- |
+| The rule       | The angle in a semicircle is 90°.                                                                              |
+| Explore        | Drag C round the circle; watch angles C, A and B.                                                              |
+| Prerequisites  | Spot the diameter; angles in a triangle add up to 180°; missing angle in a right-angled triangle.              |
+| Method         | Angle C is 90°. Add the two angles you know. Take the total away from 180°.                                    |
+| Reasons        | angle in a semicircle is 90°; angles in a triangle add up to 180°.                                             |
+| Where it moves | The missing angle at B, at A, at C.                                                                            |
+| Variations     | x and 2x; x and 4x; two triangles on one diameter.                                                             |
+| Book notes     | The rule; draw the circle, diameter AB and point C; add the two you know and take from 180°; a worked example. |
+
+## In the code and the tests
+
+- A lesson on this plan sets `plan: "stepped"`. Its screens are tagged with the parts:
+  - The rule;
+  - Check you remember;
+  - Method, Worked example and Your turn;
+  - Practise;
+  - Variation;
+  - Exit check;
+  - Real life (where it fits);
+  - Summary.
+- The tests check:
+  - the parts, in order, with only the real-life problem optional;
+  - a summary with book notes;
+  - a calc screen;
+  - at least three changes pointed out;
+  - every unknown on the variation map asked;
+  - the word limits;
+  - the diagram-first rules;
+  - reasons from the shared list.
+- The new pieces are the **calc** screen (`calc-screen.tsx`) and the **book** card on a summary.
+
+## Rollout
+
+1. **The rest of the circle theorems** (five lessons), one PR, to check the template on a whole
+   unit. Then the owner reviews.
+2. **The other pilot lessons:** angles on a straight line (Y7), percentages (Y7), circle area (Y8),
+   the sine ratio (Y9) and sharing in a ratio (GCSE Foundation). These test the template on
+   number, algebra and trigonometry.
+3. **Year by year**, Year 7 to GCSE Higher, in the batches already agreed. Each batch's PR lists
+   every lesson's plan (the table above).
+
+## The owner's answers
+
+1. **Exit check:** yes, a short check before the summary.
+2. **The real-life problem** comes at the end, after the exit check, where it fits. It won't always
+   apply, as for circle theorems.
+3. **The order of rollout** above is right.

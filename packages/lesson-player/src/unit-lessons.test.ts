@@ -307,7 +307,10 @@ const STEPPED: Record<string, number> = {
   "Your turn": 2,
   Practise: 3,
   Variation: 4,
-  Summary: 5,
+  "Exit check": 5,
+  // Where one fits: circle theorems have none.
+  "Real life": 6,
+  Summary: 7,
 };
 
 describe.each(ALL_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %s", (_, lesson) => {
@@ -317,12 +320,14 @@ describe.each(ALL_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %s
     expect(lesson.screens.length).toBeGreaterThan(3);
     if (lesson.before) expect(unit?.skills).toContain(lesson.before);
     for (const skill of lesson.teaches ?? []) expect(unit?.skills).toContain(skill);
-    // A lesson on the stepped plan goes rule, check, method, practise, variation, summary.
+    // A lesson on the stepped plan goes rule, check, method, practise, variation, exit check,
+    // a real-life problem where one fits, and a summary.
     if (lesson.plan === "stepped") {
       const parts = lesson.screens.map((sc) => STEPPED[sc.tag ?? ""] ?? -1);
       expect(parts, "every screen in a part of the plan").not.toContain(-1);
       expect(parts, "the parts in order").toEqual([...parts].sort((x, y) => x - y));
-      expect(new Set(parts).size, "all six parts").toBe(6);
+      for (const part of [0, 1, 2, 3, 4, 5, 7])
+        expect(parts, `part ${part + 1} of the plan`).toContain(part);
       expect(lesson.screens.at(-1)?.tag, "a summary last").toBe("Summary");
       const last = lesson.screens.at(-1);
       expect(last?.kind === "explain" && (last.book ?? []).length > 0, "notes for a book").toBe(
