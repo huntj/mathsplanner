@@ -293,12 +293,22 @@ function GeometryView({
     let dx = 0;
     let dy = 0;
     for (const l of joins) {
-      if (!l.includes("O")) continue;
-      const q = pts[l.replace("O", "")];
-      if (!q) continue;
-      const d = Math.hypot(q.x, q.y) || 1;
-      dx += q.x / d;
-      dy += q.y / d;
+      // A line through the centre, such as a diameter, pushes the name off both ways.
+      const [a, b] = [...l].map((n) => (n === "O" ? { x: 0, y: 0 } : pts[n]));
+      if (!a || !b) continue;
+      const through = Math.abs(a.x * b.y - a.y * b.x) / (Math.hypot(b.x - a.x, b.y - a.y) || 1);
+      if (l.includes("O") || through > 0.05) {
+        const q = pts[l.replace("O", "")];
+        if (!l.includes("O") || !q) continue;
+        const d = Math.hypot(q.x, q.y) || 1;
+        dx += q.x / d;
+        dy += q.y / d;
+      } else {
+        // Its two directions cancel out: lean the name off it, to one side.
+        const len = Math.hypot(b.x - a.x, b.y - a.y) || 1;
+        dx += (b.y - a.y) / len;
+        dy -= (b.x - a.x) / len;
+      }
     }
     const d = Math.hypot(dx, dy);
     const ux = d > 0.1 ? -dx / d : 0.6;

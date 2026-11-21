@@ -122,7 +122,7 @@ const halfTurn = redraft(find(y7Angles, HALF_TURN), {
         points: [
           { name: "A", onCircle: 180 },
           { name: "B", onCircle: 0 },
-          { name: "C", onCircle: 60, drag: [5, 175] },
+          { name: "C", onCircle: 60, drag: [20, 160] },
         ],
         lines: ["AB", "OC"],
         angles: [{ name: "BOC" }, { name: "COA" }],
@@ -999,7 +999,7 @@ const sine = redraft(find(y9Trigonometry, SINE), {
         kind: "geometry",
         points: [
           { name: "A", at: { x: 0, y: 0 } },
-          { name: "C", from: "A", deg: 35, dist: 4, drag: [2, 6.5] },
+          { name: "C", from: "A", deg: 35, dist: 4, drag: [2.5, 6.5] },
           { name: "B", below: "C" },
         ],
         lines: ["AB", "BC", "CA"],
