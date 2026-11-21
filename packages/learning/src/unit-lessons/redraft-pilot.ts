@@ -1,9 +1,21 @@
-// The pilot redrafts beside the circle theorems: one lesson from each stage, chosen because the
-// unknown moves in them clearly. Each keeps its own problem, warm-ups, discovery and mistakes,
-// and gets a new learning stage: the method, an example beside a question like it, a faded
-// example, a set that changes one thing at a time, a set that moves the unknown, two to try, and
-// an exit check that moves the unknown too.
-import { ask, choose, explore, fade, pair, questionSet, quiz, redraft, typed } from "./build.ts";
+// The pilot lessons beside the circle theorems, one from each stage, on the stepped template
+// (docs/proposals/lesson-stepped.md): the rule and an Explore; a check of what the method needs;
+// the method shown, then typed a line at a time; practice with the unknown moving; new looks and
+// a spot-the-mistake; an exit check; a real-life problem; and a summary to copy into a book.
+import {
+  ask,
+  calc,
+  choose,
+  explain,
+  explore,
+  methodCard,
+  mistake,
+  questionSet,
+  quiz,
+  summary,
+  typed,
+  worked,
+} from "./build.ts";
 import { gfRatio1 } from "./gf-ratio-1.ts";
 import { REASON } from "./reasons.ts";
 import type {
@@ -14,6 +26,7 @@ import type {
   Screen,
   ShapePic,
   UnitLesson,
+  Variation,
 } from "./types.ts";
 import { fan, y7Angles } from "./y7-angles.ts";
 import { hundred, y7Fdp } from "./y7-fdp.ts";
@@ -21,6 +34,35 @@ import { measured, y8Area } from "./y8-area.ts";
 import { tri, y9Trigonometry } from "./y9-trigonometry.ts";
 
 const find = (list: readonly UnitLesson[], id: string) => list.find((l) => l.id === id);
+
+/** A screen moved into a part of the lesson plan, by its tag. */
+const tagged = (tag: string, screen: Screen): Screen => ({ ...screen, tag });
+
+/** A question that stays in words, with the reason: a number check, say. */
+const words = (screen: Screen, why: string): Screen => ({ ...screen, wordsOnly: why });
+
+/**
+ * A pilot lesson on the stepped template (docs/proposals/lesson-stepped.md), in place of its
+ * original: the same unit, id and skill, with new screens.
+ */
+function stepped(
+  original: UnitLesson | undefined,
+  plan: { method: string[]; variation: Variation; screens: Screen[] },
+): UnitLesson {
+  if (!original) throw new Error("No lesson to rebuild");
+  return {
+    unit: original.unit,
+    ...(original.id ? { id: original.id } : {}),
+    ...(original.before ? { before: original.before } : {}),
+    ...(original.teaches ? { teaches: original.teaches } : {}),
+    title: original.title,
+    summary: original.summary,
+    plan: "stepped",
+    method: plan.method,
+    variation: plan.variation,
+    screens: plan.screens,
+  };
+}
 
 /**
  * One of a lesson's own screens with some of its fields changed: its words without the numbers,
@@ -30,7 +72,7 @@ function reworded(
   list: readonly UnitLesson[],
   id: string,
   title: string,
-  changes: Partial<Record<"title" | "text" | "picture" | "hint" | "bubble", unknown>>,
+  changes: Partial<Record<"title" | "text" | "picture" | "hint" | "bubble" | "tag", unknown>>,
   tag?: string,
 ): Screen {
   const screen = find(list, id)?.screens.find(
@@ -59,129 +101,176 @@ const line2 = (first: number, labels: [string, string], turn = 0, mark = "x") =>
 const line3 = (a: number, b: number, labels: [string, string, string], mark = "x") =>
   fan([0, a, a + b, 180], [labels[0], labels[1], labels[2], null], mark);
 
-const halfTurn = redraft(find(y7Angles, HALF_TURN), {
-  method: [
-    "Check the angles sit on one straight line.",
-    "Add up the angles you know.",
-    "Take the total away from 180°.",
-    "Check: they all add up to 180°.",
-  ],
-  picture: line2(60, ["a", "b"]),
+const halfTurnMethod = [
+  "Check the angles sit on one straight line.",
+  "Add up the angles you know.",
+  "Take the total away from 180°.",
+];
+
+const halfTurn = stepped(find(y7Angles, HALF_TURN), {
+  method: halfTurnMethod,
   variation: {
     relationship: "the angles on a straight line add up to 180°",
     unknowns: ["angle 1", "angle 2", "angle 3", "x"],
     surface: ["numbers", "line turned", "which side", "three angles", "algebra"],
-    nonExamples: ["angles that don't sit on one straight line"],
   },
-  wordsOnly: {
-    "What is $180 - 65$?":
-      "A number warm-up: the subtraction the lesson needs, before any diagram.",
-  },
-  swap: {
-    "The problem: How far back?": reworded(
-      y7Angles,
-      HALF_TURN,
-      "How far back?",
-      {
-        text: [
-          "A laptop screen is at 110° to the keyboard.",
-          "What angle is the back of the screen to the desk?",
-        ],
-      },
-      "The problem",
+  screens: [
+    explain(
+      "The rule",
+      "Angles on a straight line",
+      ["**Angles on a straight line add up to 180°.**"],
+      line2(60, ["60°", "120°"]),
+      "A straight line is a half turn: 180°.",
     ),
-    "Ben says two angles on a straight line add up to 360°. Is he right?": choose(
-      "Watch out",
-      "Ben says these two angles add up to 360°. Is he right?",
-      "No: they make a straight line, a half turn, 180°",
-      "360° is all the way round a point. A straight line is half of that.",
-      [["Yes", "A straight line is only half a turn."]],
-      { picture: line2(130, ["130°", "50°"]) },
-    ),
-    "Where did it go wrong?": reworded(y7Angles, HALF_TURN, "Where did it go wrong?", {
-      text: "Mia finds x.",
-    }),
-    "Back to the problem: How far back?": reworded(
-      y7Angles,
-      HALF_TURN,
-      "How far back?",
-      {
-        text: "The keyboard lies flat on the desk. What angle is the back of the screen to the desk?",
-        hint: "The 110° and the angle behind the screen make a straight line.",
-      },
-      "Back to the problem",
-    ),
-  },
-  before: [
-    explore(
-      "Turn the ray",
-      {
-        kind: "geometry",
-        circle: 3,
-        hideCircle: true,
-        points: [
-          { name: "A", onCircle: 180 },
-          { name: "B", onCircle: 0 },
-          { name: "C", onCircle: 60, drag: [20, 160] },
-        ],
-        lines: ["AB", "OC"],
-        angles: [{ name: "BOC" }, { name: "COA" }],
-        readouts: [
-          { label: "Angle BOC", angle: "BOC" },
-          { label: "Angle COA", angle: "COA" },
-          { label: "Together", sum: ["BOC", "COA"] },
-        ],
-      },
-      [
-        "What did you notice?",
-        "The two angles always add up to 180°",
-        "Together they make the straight line: a half turn.",
+    tagged(
+      "The rule",
+      explore(
+        "Turn the ray",
+        {
+          kind: "geometry",
+          circle: 3,
+          hideCircle: true,
+          points: [
+            { name: "A", onCircle: 180 },
+            { name: "B", onCircle: 0 },
+            { name: "C", onCircle: 60, drag: [20, 160] },
+          ],
+          lines: ["AB", "OC"],
+          angles: [{ name: "BOC" }, { name: "COA" }],
+          readouts: [
+            { label: "Angle BOC", angle: "BOC" },
+            { label: "Angle COA", angle: "COA" },
+            { label: "Together", sum: ["BOC", "COA"] },
+          ],
+        },
         [
-          ["The two angles are always equal", "Only when the ray points straight up."],
-          ["The total changes as the ray turns", "Look again: it's 180° every time."],
+          "What did you notice?",
+          "The two angles always add up to 180°",
+          "Together they make the straight line: a half turn.",
+          [
+            ["The two angles are always equal", "Only when the ray points straight up."],
+            ["The total changes as the ray turns", "Look again: it's 180° every time."],
+          ],
         ],
-      ],
-      "Angles on a straight line add up to 180°, however the ray turns.",
-      {
-        text: "Drag C round. Watch the two angles on the straight line AB.",
-      },
+        "Angles on a straight line add up to 180°, however the ray turns.",
+        {
+          text: "Drag C round. Watch the two angles on the straight line AB.",
+        },
+      ),
     ),
-  ],
-  learning: [
-    pair(
-      "Take it from 180°",
+
+    typed(
+      "Check you remember",
+      "Find the missing angle.",
+      "180",
+      "A straight line is a half turn.",
+      "180°: a half turn.",
       {
-        problem: "Find x.",
-        picture: line2(55, ["x", "125°"]),
-        lines: [
-          { line: "$x + 125° = 180°$", reason: REASON.straightLine },
-          { line: "$x = 180° - 125° = 55°$", note: "Take away the angle you know." },
-        ],
-      },
-      ask("Find x.", "40", "Take the angle you know from 180°.", "40°: 180° − 140°.", {
         unit: "°",
-        asks: "angle 1",
-        picture: line2(40, ["x", "140°"]),
-      }),
-      "Same line, same 180°.",
+        picture: fan([0, 180], ["?", null], "?"),
+      },
     ),
-    fade(
-      "Finish it",
+    words(
+      typed(
+        "Check you remember",
+        "Work out 180 − 65.",
+        "115",
+        "180 − 60 = 120. Then take away 5 more.",
+        "115.",
+      ),
+      "A number check: the taking away the method needs.",
+    ),
+    words(
+      typed(
+        "Check you remember",
+        "Work out 40 + 75.",
+        "115",
+        "40 + 70 = 110. Then add 5 more.",
+        "115.",
+      ),
+      "A number check: the adding the method needs.",
+    ),
+
+    methodCard("The method", halfTurnMethod, line3(40, 75, ["40°", "75°", "x"])),
+    worked(
+      "Watch the method",
       "Find x.",
-      ["Add the ones you know: $40° + 75° = 115°$."],
       [
-        [
-          "So x is",
-          "$180° - 115° = 65°$",
-          ["$115° - 40° = 75°$", "Take the total from 180°."],
-          "$x = 65°$",
-        ],
+        { line: "$40° + 75° = 115°$", note: "Add the angles you know." },
+        { line: "x = $180° - 115° = 65°$", reason: REASON.straightLine },
       ],
-      "Add what you know, take it from 180°.",
+      "Add, then take away from 180°.",
       line3(40, 75, ["40°", "75°", "x"]),
     ),
+    calc(
+      "Your turn",
+      "Find x.",
+      line2(55, ["x", "125°"]),
+      [
+        [
+          "x = $180° - 125° =$",
+          "55",
+          "Take 125° away from 180°.",
+          { after: "°", reason: REASON.straightLine },
+        ],
+      ],
+      "x is 55°.",
+    ),
+
+    calc(
+      "Practise",
+      "Find x.",
+      line3(35, 90, ["35°", "90°", "x"]),
+      [
+        ["$35° + 90° =$", "125", "Add the angles you know.", { after: "°" }],
+        [
+          "x = $180° - 125° =$",
+          "55",
+          "Take the total away from 180°.",
+          { after: "°", reason: REASON.straightLine },
+        ],
+      ],
+      "x is 55°.",
+    ),
     questionSet(
-      "Same method, different look",
+      "Practise",
+      "Which angle is missing?",
+      [
+        ask("Find the missing angle.", "60", "Take the other two from 180°.", "60°.", {
+          unit: "°",
+          asks: "angle 3",
+          picture: line3(50, 70, ["50°", "70°", "?"], "?"),
+        }),
+        ask("Find the missing angle.", "40", "Take the other two from 180°.", "40°.", {
+          unit: "°",
+          asks: "angle 2",
+          changed: "Now the middle angle is missing.",
+          picture: line3(45, 40, ["45°", "?", "95°"], "?"),
+        }),
+        ask("Find the missing angle.", "70", "Take the other two from 180°.", "70°.", {
+          unit: "°",
+          asks: "angle 1",
+          changed: "Now the first angle is missing.",
+          picture: line3(70, 80, ["?", "80°", "30°"], "?"),
+        }),
+        ask(
+          "Find x.",
+          "40",
+          "The two x's make 180° take away the third angle.",
+          "40°: 40° + 40° + 100° = 180°.",
+          {
+            unit: "°",
+            asks: "x",
+            changed: "Two angles are the same size, x.",
+            picture: line3(40, 40, ["x", "x", "100°"]),
+          },
+        ),
+      ],
+      "Wherever the gap is, the same 180° fills it.",
+    ),
+
+    questionSet(
+      "Variation",
       "Find x each time. Watch what changes.",
       [
         ask("Find x.", "50", "Take the angle you know from 180°.", "50°.", {
@@ -255,79 +344,75 @@ const halfTurn = redraft(find(y7Angles, HALF_TURN), {
       ],
       "Turned, swapped, three angles or algebra: it's always 180°.",
     ),
-    questionSet(
-      "Where's the answer?",
-      "Which angle is missing?",
-      [
-        ask("Find the angle marked ?.", "60", "Take the other two from 180°.", "60°.", {
-          unit: "°",
-          asks: "angle 3",
-          picture: line3(50, 70, ["50°", "70°", "?"], "?"),
-        }),
-        ask("Find the angle marked ?.", "40", "Take the other two from 180°.", "40°.", {
-          unit: "°",
-          asks: "angle 2",
-          changed: "Now the middle angle is missing.",
-          picture: line3(45, 40, ["45°", "?", "95°"], "?"),
-        }),
-        ask("Find the angle marked ?.", "70", "Take the other two from 180°.", "70°.", {
-          unit: "°",
-          asks: "angle 1",
-          changed: "Now the first angle is missing.",
-          picture: line3(70, 80, ["?", "80°", "30°"], "?"),
-        }),
-        ask(
-          "Find x.",
-          "40",
-          "The two x's make 180° take away the third angle.",
-          "40°: 40° + 40° + 100° = 180°.",
-          {
-            unit: "°",
-            asks: "x",
-            changed: "Two angles are the same size, x.",
-            picture: line3(40, 40, ["x", "x", "100°"]),
-          },
-        ),
-      ],
-      "Wherever the gap is, the same 180° fills it.",
+    mistake(
+      "Mia finds x.",
+      ["$35° + 60° + x = 180°$", "$95° + x = 180°$", "$x = 180° + 95°$", "$x = 275°$"],
+      2,
+      "To undo + 95°, take 95° away: x = 180° − 95° = 85°.",
+      fan([0, 35, 95, 180], ["35°", "60°", "x"]),
     ),
-    typed("Your turn", "Find x.", "116", "Take the angle you know from 180°.", "116°.", {
-      unit: "°",
-      picture: line2(64, ["64°", "x"], 20),
-    }),
-    typed("Your turn", "Find x.", "30", "The three angles add up to 180°, so 3x = 90°.", "30°.", {
-      unit: "°",
-      picture: line3(30, 60, ["x", "2x", "90°"]),
-    }),
+
+    quiz([
+      [
+        ["Find x.", "75°", ["255°", "85°"], "180° − 105°.", line2(75, ["x", "105°"]), "angle 1"],
+        [
+          "Find x.",
+          "35°",
+          ["215°", "45°"],
+          "180° − 145°.",
+          line2(145, ["145°", "x"], 30),
+          "angle 1",
+        ],
+      ],
+      [
+        [
+          "Find x.",
+          "85°",
+          ["95°", "265°"],
+          "180° − 95°.",
+          line3(30, 85, ["30°", "x", "65°"]),
+          "angle 2",
+        ],
+        [
+          "Find x.",
+          "85°",
+          ["95°", "275°"],
+          "180° − 95°.",
+          line3(50, 85, ["50°", "x", "45°"]),
+          "angle 2",
+        ],
+      ],
+      [
+        ["Find x.", "30°", ["60°", "120°"], "2x = 60°.", line3(30, 30, ["x", "x", "120°"]), "x"],
+        ["Find x.", "50°", ["100°", "80°"], "2x = 100°.", line3(50, 50, ["x", "x", "80°"]), "x"],
+      ],
+    ]),
+
+    reworded(
+      y7Angles,
+      HALF_TURN,
+      "How far back?",
+      {
+        tag: "Real life",
+        text: "The keyboard lies flat on the desk. What angle is the back of the screen to the desk?",
+        hint: "The 110° and the angle behind the screen make a straight line.",
+      },
+      "Back to the problem",
+    ),
+
+    summary(
+      "What to remember",
+      ["**Angles on a straight line add up to 180°.**"],
+      line3(40, 75, ["40°", "75°", "65°"]),
+      [
+        "**Angles on a straight line add up to 180°.**",
+        "Add the angles you know. Take the total away from 180°.",
+        "$40° + 75° = 115°$",
+        "x = 180° − 115° = 65° (angles on a straight line add up to 180°)",
+      ],
+      "Copy this into your book to revise from.",
+    ),
   ],
-  exit: quiz([
-    [
-      ["Find x.", "75°", ["255°", "85°"], "180° − 105°.", line2(75, ["x", "105°"]), "angle 1"],
-      ["Find x.", "35°", ["215°", "45°"], "180° − 145°.", line2(145, ["145°", "x"], 30), "angle 1"],
-    ],
-    [
-      [
-        "Find x.",
-        "85°",
-        ["95°", "265°"],
-        "180° − 95°.",
-        line3(30, 85, ["30°", "x", "65°"]),
-        "angle 2",
-      ],
-      [
-        "Find x.",
-        "85°",
-        ["95°", "275°"],
-        "180° − 95°.",
-        line3(50, 85, ["50°", "x", "45°"]),
-        "angle 2",
-      ],
-    ],
-    [
-      ["Find x.", "30°", ["60°", "120°"], "2x = 60°.", line3(30, 30, ["x", "x", "120°"]), "x"],
-      ["Find x.", "50°", ["100°", "80°"], "2x = 100°.", line3(50, 50, ["x", "x", "80°"]), "x"],
-    ],
-  ]),
 });
 
 // ---------------------------------------------------------------------------------------------
@@ -335,69 +420,145 @@ const halfTurn = redraft(find(y7Angles, HALF_TURN), {
 
 const fdpRel = (from: [string, string], to: string) => relation([from, [to, "?"]], ["="], 1);
 
-const percentages = redraft(find(y7Fdp, "y7-fdp/percentages"), {
-  method: [
-    "Per cent means out of 100.",
-    "Percentage to decimal: divide by 100.",
-    "Percentage to fraction: put it over 100, then simplify.",
-    "Fraction to percentage: make it out of 100.",
-  ],
-  picture: hundred(40),
+const PERCENT = "y7-fdp/percentages";
+const percentMethod = [
+  "Per cent means out of 100.",
+  "Percentage to decimal: divide by 100.",
+  "Percentage to fraction: put it over 100, then simplify.",
+  "Fraction to percentage: make it out of 100.",
+];
+
+const percentages = stepped(find(y7Fdp, PERCENT), {
+  method: percentMethod,
   variation: {
     relationship: "a fraction, a decimal and a percentage can name the same amount",
     unknowns: ["percentage", "decimal", "fraction"],
     surface: ["numbers", "small percentages", "over 100%", "picture", "words"],
-    nonExamples: ["8% is not 0.8"],
   },
-  before: [
-    explore(
-      "Shade the hundred square",
-      { kind: "hundred", start: 25 },
-      [
-        "What did you notice?",
-        "The percentage is how many squares out of 100 are shaded",
-        "Per cent means out of 100: 40 squares shaded is 40%, 0.4 and $\\frac{40}{100}$.",
+  screens: [
+    explain(
+      "The rule",
+      "Percentages",
+      ["**Per cent means out of 100.**"],
+      hundred(40),
+      "40 squares out of 100 are shaded: that's 40%.",
+    ),
+    tagged(
+      "The rule",
+      explore(
+        "Shade the hundred square",
+        { kind: "hundred", start: 25 },
         [
-          ["The decimal is the number of squares shaded", "Look again: 40 squares is 0.4, not 40."],
-          ["The fraction is always out of 10", "It's out of 100 before it's simplified."],
+          "What did you notice?",
+          "The percentage is how many squares out of 100 are shaded",
+          "Per cent means out of 100: 40 squares shaded is 40%, 0.4 and $\\frac{40}{100}$.",
+          [
+            [
+              "The decimal is the number of squares shaded",
+              "Look again: 40 squares is 0.4, not 40.",
+            ],
+            ["The fraction is always out of 10", "It's out of 100 before it's simplified."],
+          ],
         ],
+        "The same shading names a fraction, a decimal and a percentage.",
+        {
+          text: "Drag the slider to shade more or fewer squares. Watch the three ways of writing it.",
+        },
+      ),
+    ),
+
+    typed(
+      "Check you remember",
+      "How many squares out of 100 are shaded?",
+      "30",
+      "Count the shaded rows of 10.",
+      "30 out of 100.",
+      {
+        picture: hundred(30),
+      },
+    ),
+    typed(
+      "Check you remember",
+      "Work out 40 ÷ 100.",
+      "0.4",
+      "Dividing by 100 moves the digits two places.",
+      "0.4.",
+    ),
+    typed(
+      "Check you remember",
+      "Simplify $\\frac{40}{100}$.",
+      "2/5",
+      "Divide the top and bottom by 20.",
+      "$\\frac25$.",
+    ),
+
+    methodCard("The method", percentMethod, hundred(40)),
+    worked(
+      "Watch the method",
+      "Write 40% as a decimal and as a fraction.",
+      [
+        { line: "$40\\% = \\frac{40}{100}$", note: "Per cent means out of 100." },
+        { line: "$\\frac{40}{100} = 0.4$" },
+        { line: "$\\frac{40}{100} = \\frac{2}{5}$", note: "Divide the top and bottom by 20." },
       ],
-      "The same shading names a fraction, a decimal and a percentage.",
-      {
-        text: "Drag the slider to shade more or fewer squares. Watch the three ways of writing it.",
-      },
+      "Out of 100 first, then a decimal or a fraction.",
+      hundred(40),
     ),
-  ],
-  learning: [
-    pair(
-      "Out of 100",
-      {
-        problem: "Write 40% as a decimal and as a fraction.",
-        picture: hundred(40),
-        lines: [
-          { line: "$40\\% = \\frac{40}{100}$", note: "Per cent means out of 100." },
-          { line: "$\\frac{40}{100} = 0.4$" },
-          {
-            line: "$\\frac{40}{100} = \\frac{2}{5}$",
-            note: "Divide top and bottom by 20.",
-          },
-        ],
-      },
-      ask("Write 60% as a decimal.", "0.6", "Divide 60 by 100.", "0.6.", {
-        asks: "decimal",
-        picture: hundred(60),
-      }),
-      "Out of 100 first, then decimal or fraction.",
+    calc(
+      "Your turn",
+      "Write 60% as a decimal and as a fraction.",
+      hundred(60),
+      [
+        ["$60\\% = \\frac{60}{100} =$", "0.6", "Divide 60 by 100."],
+        ["$\\frac{60}{100} =$", "3/5", "Divide the top and bottom by 20."],
+      ],
+      "60% is 0.6, and $\\frac35$.",
     ),
-    fade(
-      "Finish it",
-      "Write $\\frac{7}{20}$ as a percentage.",
-      ["$\\frac{7}{20} = \\frac{35}{100}$ (times top and bottom by 5)"],
-      [["So as a percentage:", "35%", ["7%", "Use the top once it's out of 100."], "35%"]],
-      "Make it out of 100, and the top is the percentage.",
+
+    calc(
+      "Practise",
+      "Write 0.35 as a percentage.",
+      undefined,
+      [["$0.35 \\times 100 =$", "35", "Times by 100.", { after: "%" }]],
+      "0.35 is 35%.",
     ),
     questionSet(
-      "Same method, different look",
+      "Practise",
+      "Which form is missing?",
+      [
+        ask("Write $\\frac14$ as a percentage.", "25", "$\\frac14 = \\frac{25}{100}$.", "25%.", {
+          unit: "%",
+          asks: "percentage",
+          picture: fdpRel(["fraction", "$\\frac14$"], "percentage"),
+        }),
+        ask("Write 45% as a decimal.", "0.45", "Divide by 100.", "0.45.", {
+          asks: "decimal",
+          changed: "Now the decimal is missing.",
+          picture: fdpRel(["percentage", "45%"], "decimal"),
+        }),
+        ask(
+          "Write 20% as a fraction in its simplest form.",
+          "1/5",
+          "$\\frac{20}{100}$, then simplify.",
+          "$\\frac15$.",
+          {
+            asks: "fraction",
+            changed: "Now the fraction is missing.",
+            picture: fdpRel(["percentage", "20%"], "fraction"),
+          },
+        ),
+        ask("Write 0.07 as a percentage.", "7", "Times by 100.", "7%.", {
+          unit: "%",
+          asks: "percentage",
+          changed: "From a decimal this time.",
+          picture: fdpRel(["decimal", "0.07"], "percentage"),
+        }),
+      ],
+      "Find which form you're given and which you need, then use the matching step.",
+    ),
+
+    questionSet(
+      "Variation",
       "Write each decimal as a percentage. Watch what changes.",
       [
         ask("Write 0.3 as a percentage.", "30", "Times by 100.", "30%.", {
@@ -466,77 +627,58 @@ const percentages = redraft(find(y7Fdp, "y7-fdp/percentages"), {
       ],
       "Decimal, picture or words: per cent always means out of 100.",
     ),
-    questionSet(
-      "Where's the answer?",
-      "Which form is missing?",
+    reworded(y7Fdp, PERCENT, "Where did it go wrong?", {}),
+
+    quiz([
       [
-        ask("Write $\\frac14$ as a percentage.", "25", "$\\frac14 = \\frac{25}{100}$.", "25%.", {
-          unit: "%",
-          asks: "percentage",
-          picture: fdpRel(["fraction", "$\\frac14$"], "percentage"),
-        }),
-        ask("Write 45% as a decimal.", "0.45", "Divide by 100.", "0.45.", {
-          asks: "decimal",
-          changed: "Now the decimal is missing.",
-          picture: fdpRel(["percentage", "45%"], "decimal"),
-        }),
-        ask(
-          "Write 20% as a fraction in its simplest form.",
-          "1/5",
-          "$\\frac{20}{100}$, then simplify.",
-          "$\\frac15$.",
-          {
-            asks: "fraction",
-            changed: "Now the fraction is missing.",
-            picture: fdpRel(["percentage", "20%"], "fraction"),
-          },
-        ),
-        ask("Write 0.07 as a percentage.", "7", "Times by 100.", "7%.", {
-          unit: "%",
-          asks: "percentage",
-          changed: "From a decimal this time.",
-          picture: fdpRel(["decimal", "0.07"], "percentage"),
-        }),
+        ["0.4 as a percentage", "40%", ["4%", "0.4%"], "Times by 100.", undefined, "percentage"],
+        ["0.09 as a percentage", "9%", ["90%", "0.09%"], "Times by 100.", undefined, "percentage"],
       ],
-      "Find which form you're given and which you need, then use the matching step.",
+      [
+        ["35% as a decimal", "0.35", ["3.5", "35"], "Divide by 100.", undefined, "decimal"],
+        ["8% as a decimal", "0.08", ["0.8", "8"], "Divide by 100.", undefined, "decimal"],
+      ],
+      [
+        [
+          "50% as a fraction",
+          "$\\frac12$",
+          ["$\\frac{1}{50}$", "$\\frac{1}{5}$"],
+          "$\\frac{50}{100}$ simplified.",
+          undefined,
+          "fraction",
+        ],
+        [
+          "25% as a fraction",
+          "$\\frac14$",
+          ["$\\frac{1}{25}$", "$\\frac{2}{5}$"],
+          "$\\frac{25}{100}$ simplified.",
+          undefined,
+          "fraction",
+        ],
+      ],
+    ]),
+
+    reworded(
+      y7Fdp,
+      PERCENT,
+      "Which is the best score?",
+      { tag: "Real life" },
+      "Back to the problem",
     ),
-    typed("Your turn", "Write 0.85 as a percentage.", "85", "Times by 100.", "85%.", { unit: "%" }),
-    typed(
-      "Your turn",
-      "Write 30% as a fraction in its simplest form.",
-      "3/10",
-      "$\\frac{30}{100}$, then simplify.",
-      "$\\frac{3}{10}$.",
+
+    summary(
+      "What to remember",
+      ["**Per cent means out of 100.**"],
+      hundred(40),
+      [
+        "**Per cent means out of 100.**",
+        "Percentage to decimal: divide by 100.",
+        "Percentage to fraction: put it over 100, then simplify.",
+        "40% = 0.4 = $\\frac{2}{5}$",
+      ],
+      "Copy this into your book to revise from.",
     ),
   ],
-  exit: quiz([
-    [
-      ["0.4 as a percentage", "40%", ["4%", "0.4%"], "Times by 100.", undefined, "percentage"],
-      ["0.09 as a percentage", "9%", ["90%", "0.09%"], "Times by 100.", undefined, "percentage"],
-    ],
-    [
-      ["35% as a decimal", "0.35", ["3.5", "35"], "Divide by 100.", undefined, "decimal"],
-      ["8% as a decimal", "0.08", ["0.8", "8"], "Divide by 100.", undefined, "decimal"],
-    ],
-    [
-      [
-        "50% as a fraction",
-        "$\\frac12$",
-        ["$\\frac{1}{50}$", "$\\frac{1}{5}$"],
-        "$\\frac{50}{100}$ simplified.",
-        undefined,
-        "fraction",
-      ],
-      [
-        "25% as a fraction",
-        "$\\frac14$",
-        ["$\\frac{1}{25}$", "$\\frac{2}{5}$"],
-        "$\\frac{25}{100}$ simplified.",
-        undefined,
-        "fraction",
-      ],
-    ],
-  ]),
 });
 
 // ---------------------------------------------------------------------------------------------
@@ -587,131 +729,176 @@ const rectangle = (w: number, h: number, sides: [string, string]): ShapePic => (
   sides: [sides[0], sides[1], null, null],
 });
 
-const circleArea = redraft(find(y8Area, CIRCLE_AREA), {
-  method: [
-    "Find the radius. Given the diameter? Halve it.",
-    "Square the radius.",
-    "Times by π.",
-    "Give the units squared, and round as asked.",
-  ],
-  picture: measured("r", "r"),
+const circleAreaMethod = [
+  "Find the radius. Given the diameter? Halve it.",
+  "Square the radius.",
+  "Times by π.",
+  "Give the units squared, and round as asked.",
+];
+
+const circleArea = stepped(find(y8Area, CIRCLE_AREA), {
+  method: circleAreaMethod,
   variation: {
     relationship: "area = π × radius²",
     unknowns: ["area", "radius", "diameter"],
     surface: ["numbers", "diameter given", "half a circle", "context", "in terms of π"],
-    nonExamples: ["π × d is the circumference, not the area"],
   },
-  wordsOnly: { "Work out $5^2$": "A number warm-up: squaring, before any circle." },
-  swap: {
-    "The problem: A round rug": reworded(
-      y8Area,
-      CIRCLE_AREA,
-      "A round rug",
-      {
-        text: ["A round rug has a radius of 1.5 m.", "How much floor does it cover?"],
-        bubble: "You can't count squares exactly on a curve.",
-      },
-      "The problem",
+  screens: [
+    explain(
+      "The rule",
+      "The area of a circle",
+      ["**The area of a circle is π × r².**"],
+      measured("r", "r"),
+      "r is the radius: from the centre to the edge.",
     ),
-    "A rectangle is 6 cm by 3 cm. What is its area?": reworded(
-      y8Area,
-      CIRCLE_AREA,
-      "A rectangle is 6 cm by 3 cm. What is its area?",
-      { title: "Find the area of the rectangle.", picture: rectangle(6, 3, ["6 cm", "3 cm"]) },
-    ),
-    "The rectangle's sides": reworded(y8Area, CIRCLE_AREA, "The rectangle's sides", {
-      picture: rectangle(6, 2, ["πr", "r"]),
-    }),
-    "Radius 3 cm. Nia works out $\\pi \\times 3 \\times 2 = 18.8$ cm². What's wrong?": reworded(
-      y8Area,
-      CIRCLE_AREA,
-      "Radius 3 cm. Nia works out $\\pi \\times 3 \\times 2 = 18.8$ cm². What's wrong?",
-      {
-        title: "Nia works out the area as $\\pi \\times 3 \\times 2 = 18.8$ cm². What's wrong?",
-        picture: measured("r", "3 cm"),
-      },
-    ),
-    "Where did it go wrong?": reworded(y8Area, CIRCLE_AREA, "Where did it go wrong?", {
-      text: "Dev finds the area of this circle.",
-      picture: measured("r", "6 cm"),
-    }),
-    "The round rug, radius 1.5 m": reworded(y8Area, CIRCLE_AREA, "The round rug, radius 1.5 m", {
-      title: "The round rug",
-      picture: measured("r", "1.5 m"),
-    }),
-  },
-  before: [
-    explore(
-      "Grow the circle",
-      {
-        kind: "geometry",
-        circleThrough: "R",
-        points: [{ name: "R", from: "O", deg: 0, dist: 2, drag: [1, 4] }],
-        lines: ["OR"],
-        readouts: [
-          { label: "Radius", length: "OR" },
-          { label: "Area", circleArea: "OR" },
-          { label: "Circumference", circumference: "OR" },
-        ],
-      },
-      [
-        "Drag the radius from 2 cm to 4 cm. What happens to the area?",
-        "It's 4 times as big",
-        "Double the radius and the area goes up 4 times, because the radius is squared: $2^2 = 4$.",
+    tagged(
+      "The rule",
+      explore(
+        "Grow the circle",
+        {
+          kind: "geometry",
+          circleThrough: "R",
+          points: [{ name: "R", from: "O", deg: 0, dist: 2, drag: [1, 4] }],
+          lines: ["OR"],
+          readouts: [
+            { label: "Radius", length: "OR" },
+            { label: "Area", circleArea: "OR" },
+            { label: "Circumference", circumference: "OR" },
+          ],
+        },
         [
-          ["It doubles", "Look again: 12.6 cm² becomes 50.3 cm²."],
-          ["It goes up by 2 cm²", "Look again: it grows much faster than the radius."],
+          "Drag the radius from 2 cm to 4 cm. What happens to the area?",
+          "It's 4 times as big",
+          "Double the radius and the area goes up 4 times, because the radius is squared: $2^2 = 4$.",
+          [
+            ["It doubles", "Look again: 12.6 cm² becomes 50.3 cm²."],
+            ["It goes up by 2 cm²", "Look again: it grows much faster than the radius."],
+          ],
         ],
-      ],
-      "The circumference doubles with the radius, but the area goes up 4 times.",
-      {
-        text: "Drag R to grow and shrink the circle. Watch the area and the circumference.",
-      },
-    ),
-  ],
-  learning: [
-    pair(
-      "Square, then times by π",
-      {
-        problem: "Find the area, to 1 decimal place.",
-        picture: measured("r", "5 cm"),
-        lines: [
-          { line: "$5^2 = 25$", note: "Square the radius." },
-          { line: "$\\pi \\times 25 = 78.5$ cm²", note: "Times by π, and round to 1 d.p." },
-        ],
-      },
-      ask(
-        "Find the area, to 1 decimal place.",
-        "50.3",
-        "Square the radius, then times by π.",
-        "50.3 cm²: $\\pi \\times 16$.",
-        { unit: "cm²", asks: "area", picture: measured("r", "4 cm") },
+        "The circumference doubles with the radius, but the area goes up 4 times.",
+        {
+          text: "Drag R to grow and shrink the circle. Watch the area and the circumference.",
+        },
       ),
-      "Radius squared, times π.",
     ),
-    fade(
-      "Finish it",
+
+    words(
+      typed("Check you remember", "Work out $5^2$.", "25", "$5^2$ means 5 × 5.", "25."),
+      "A number check: squaring, which the method needs.",
+    ),
+    typed(
+      "Check you remember",
+      "Find the radius.",
+      "5",
+      "The radius is half the diameter.",
+      "5 cm.",
+      {
+        unit: "cm",
+        picture: measured("d", "10 cm"),
+      },
+    ),
+    typed(
+      "Check you remember",
+      "Find the area of the rectangle.",
+      "18",
+      "Length times width.",
+      "18 cm².",
+      {
+        unit: "cm²",
+        picture: rectangle(6, 3, ["6 cm", "3 cm"]),
+      },
+    ),
+
+    methodCard("The method", circleAreaMethod, measured("r", "5 cm")),
+    worked(
+      "Watch the method",
       "Find the area, to 1 decimal place.",
-      ["Radius = 10 ÷ 2 = 5 cm"],
       [
-        [
-          "Square it:",
-          "$5^2 = 25$",
-          ["$10^2 = 100$", "Use the radius, not the diameter."],
-          "$r^2 = 25$",
-        ],
-        [
-          "Times by π:",
-          "78.5 cm²",
-          ["31.4 cm²", "That's π × d: the circumference."],
-          "Area = 78.5 cm²",
-        ],
+        { line: "$5^2 = 25$", note: "Square the radius." },
+        { line: "$\\pi \\times 25 = 78.5$ cm²", note: "Times by π, and round to 1 d.p." },
       ],
-      "Halve the diameter first, every time.",
+      "Radius squared, times π.",
+      measured("r", "5 cm"),
+    ),
+    calc(
+      "Your turn",
+      "Find the area, to 1 decimal place.",
+      measured("r", "4 cm"),
+      [
+        ["$4^2 =$", "16", "Square the radius."],
+        ["$\\pi \\times 16 =$", "50.3", "Times by π, then round to 1 d.p.", { after: "cm²" }],
+      ],
+      "The area is 50.3 cm².",
+    ),
+
+    calc(
+      "Practise",
+      "Find the area, to 1 decimal place.",
       measured("d", "10 cm"),
+      [
+        ["r = $10 \\div 2 =$", "5", "Halve the diameter.", { after: "cm" }],
+        ["$5^2 =$", "25", "Square the radius."],
+        ["$\\pi \\times 25 =$", "78.5", "Times by π, then round to 1 d.p.", { after: "cm²" }],
+      ],
+      "The area is 78.5 cm².",
     ),
     questionSet(
-      "Same method, different look",
+      "Practise",
+      "Which part is missing?",
+      [
+        ask("Find the area, to 1 d.p.", "12.6", "Square the radius, times π.", "12.6 cm².", {
+          unit: "cm²",
+          asks: "area",
+          picture: measured("r", "2 cm"),
+        }),
+        ask(
+          "Find the radius.",
+          "4",
+          "Divide by π to get $r^2$, then square root.",
+          "4 cm: $50.3 \\div \\pi = 16$, and $\\sqrt{16} = 4$.",
+          {
+            unit: "cm",
+            asks: "radius",
+            changed: "Now the area is given and the radius is missing: work backwards.",
+            expect: [
+              "To work backwards from the area, first…",
+              "divide by π",
+              "Undo each step in reverse: divide by π, then square root.",
+              [["square root", "Undo the last step first: the times by π."]],
+            ],
+            picture: withArea("50.3 cm²", "r"),
+          },
+        ),
+        ask(
+          "Find the radius.",
+          "10",
+          "Divide by π, then square root.",
+          "10 cm: $314.2 \\div \\pi \\approx 100$.",
+          {
+            unit: "cm",
+            asks: "radius",
+            changed: "A bigger area: the same steps.",
+            picture: withArea("314.2 cm²", "r"),
+          },
+        ),
+        ask(
+          "Find the diameter.",
+          "6",
+          "Find the radius first, then double it.",
+          "6 cm: $28.3 \\div \\pi \\approx 9$, so the radius is 3 cm.",
+          {
+            unit: "cm",
+            asks: "diameter",
+            changed: "Now the diameter is missing.",
+            picture: withArea("28.3 cm²", "d"),
+          },
+        ),
+      ],
+      "Forwards: square, times π. Backwards: divide by π, square root.",
+    ),
+
+    questionSet(
+      "Variation",
       "Find each area, to 1 decimal place. Watch what changes.",
       [
         ask(
@@ -803,129 +990,88 @@ const circleArea = redraft(find(y8Area, CIRCLE_AREA), {
       ],
       "Radius, square, times π: whatever the circle looks like.",
     ),
-    questionSet(
-      "Where's the answer?",
-      "Which part is missing?",
-      [
-        ask("Find the area, to 1 d.p.", "12.6", "Square the radius, times π.", "12.6 cm².", {
-          unit: "cm²",
-          asks: "area",
-          picture: measured("r", "2 cm"),
-        }),
-        ask(
-          "Find the radius.",
-          "4",
-          "Divide by π to get $r^2$, then square root.",
-          "4 cm: $50.3 \\div \\pi = 16$, and $\\sqrt{16} = 4$.",
-          {
-            unit: "cm",
-            asks: "radius",
-            changed: "Now the area is given and the radius is missing: work backwards.",
-            expect: [
-              "To work backwards from the area, first…",
-              "divide by π",
-              "Undo each step in reverse: divide by π, then square root.",
-              [["square root", "Undo the last step first: the times by π."]],
-            ],
-            picture: withArea("50.3 cm²", "r"),
-          },
-        ),
-        ask(
-          "Find the radius.",
-          "10",
-          "Divide by π, then square root.",
-          "10 cm: $314.2 \\div \\pi \\approx 100$.",
-          {
-            unit: "cm",
-            asks: "radius",
-            changed: "A bigger area: the same steps.",
-            picture: withArea("314.2 cm²", "r"),
-          },
-        ),
-        ask(
-          "Find the diameter.",
-          "6",
-          "Find the radius first, then double it.",
-          "6 cm: $28.3 \\div \\pi \\approx 9$, so the radius is 3 cm.",
-          {
-            unit: "cm",
-            asks: "diameter",
-            changed: "Now the diameter is missing.",
-            picture: withArea("28.3 cm²", "d"),
-          },
-        ),
-      ],
-      "Forwards: square, times π. Backwards: divide by π, square root.",
-    ),
-    typed(
-      "Your turn",
-      "Find the area, to 1 decimal place.",
-      "113.1",
-      "Halve the diameter first.",
-      "113.1 cm²: the radius is 6 cm.",
-      { unit: "cm²", picture: measured("d", "12 cm") },
-    ),
-    typed("Your turn", "Find the radius.", "5", "Divide by π, then square root.", "5 cm.", {
-      unit: "cm",
-      picture: withArea("78.5 cm²", "r"),
+    reworded(y8Area, CIRCLE_AREA, "Where did it go wrong?", {
+      text: "Dev finds the area of this circle.",
+      picture: measured("r", "6 cm"),
     }),
+
+    quiz([
+      [
+        [
+          "Find the area, to 1 d.p.",
+          "314.2 cm²",
+          ["62.8 cm²", "31.4 cm²"],
+          "$\\pi \\times 100$.",
+          measured("r", "10 cm"),
+          "area",
+        ],
+        [
+          "Find the area, to 1 d.p.",
+          "3.1 cm²",
+          ["6.3 cm²", "1 cm²"],
+          "$\\pi \\times 1$.",
+          measured("r", "1 cm"),
+          "area",
+        ],
+      ],
+      [
+        [
+          "Find the radius.",
+          "2 cm",
+          ["4 cm", "6.3 cm"],
+          "$12.6 \\div \\pi \\approx 4$; $\\sqrt{4} = 2$.",
+          withArea("12.6 cm²", "r"),
+          "radius",
+        ],
+        [
+          "Find the radius.",
+          "6 cm",
+          ["36 cm", "12 cm"],
+          "$113.1 \\div \\pi \\approx 36$; $\\sqrt{36} = 6$.",
+          withArea("113.1 cm²", "r"),
+          "radius",
+        ],
+      ],
+      [
+        [
+          "Find the diameter.",
+          "8 cm",
+          ["4 cm", "16 cm"],
+          "The radius is 4 cm, so the diameter is 8 cm.",
+          withArea("50.3 cm²", "d"),
+          "diameter",
+        ],
+        [
+          "Find the diameter.",
+          "10 cm",
+          ["5 cm", "25 cm"],
+          "The radius is 5 cm, so the diameter is 10 cm.",
+          withArea("78.5 cm²", "d"),
+          "diameter",
+        ],
+      ],
+    ]),
+
+    reworded(
+      y8Area,
+      CIRCLE_AREA,
+      "The round rug, radius 1.5 m",
+      { tag: "Real life", title: "The round rug", picture: measured("r", "1.5 m") },
+      "Back to the problem",
+    ),
+
+    summary(
+      "What to remember",
+      ["**The area of a circle is π × r².**"],
+      measured("r", "5 cm"),
+      [
+        "**The area of a circle is π × r².**",
+        "Given the diameter? Halve it first.",
+        "$5^2 = 25$, then $\\pi \\times 25 = 78.5$ cm²",
+      ],
+      "Copy this into your book to revise from.",
+    ),
   ],
-  exit: quiz([
-    [
-      [
-        "Find the area, to 1 d.p.",
-        "314.2 cm²",
-        ["62.8 cm²", "31.4 cm²"],
-        "$\\pi \\times 100$.",
-        measured("r", "10 cm"),
-        "area",
-      ],
-      [
-        "Find the area, to 1 d.p.",
-        "3.1 cm²",
-        ["6.3 cm²", "1 cm²"],
-        "$\\pi \\times 1$.",
-        measured("r", "1 cm"),
-        "area",
-      ],
-    ],
-    [
-      [
-        "Find the radius.",
-        "2 cm",
-        ["4 cm", "6.3 cm"],
-        "$12.6 \\div \\pi \\approx 4$; $\\sqrt{4} = 2$.",
-        withArea("12.6 cm²", "r"),
-        "radius",
-      ],
-      [
-        "Find the radius.",
-        "6 cm",
-        ["36 cm", "12 cm"],
-        "$113.1 \\div \\pi \\approx 36$; $\\sqrt{36} = 6$.",
-        withArea("113.1 cm²", "r"),
-        "radius",
-      ],
-    ],
-    [
-      [
-        "Find the diameter.",
-        "8 cm",
-        ["4 cm", "16 cm"],
-        "The radius is 4 cm, so the diameter is 8 cm.",
-        withArea("50.3 cm²", "d"),
-        "diameter",
-      ],
-      [
-        "Find the diameter.",
-        "10 cm",
-        ["5 cm", "25 cm"],
-        "The radius is 5 cm, so the diameter is 10 cm.",
-        withArea("78.5 cm²", "d"),
-        "diameter",
-      ],
-    ],
-  ]),
 });
 
 // ---------------------------------------------------------------------------------------------
@@ -933,113 +1079,199 @@ const circleArea = redraft(find(y8Area, CIRCLE_AREA), {
 
 const SINE = "y9-trigonometry/sine";
 
-const sine = redraft(find(y9Trigonometry, SINE), {
-  method: [
-    "Label the sides from θ: H, O and A.",
-    "Sine uses O and H: $\\sin\\theta = \\frac{O}{H}$.",
-    "O missing: $O = H \\times \\sin\\theta$.",
-    "H missing: $H = O \\div \\sin\\theta$.",
-    "Round at the end.",
-  ],
-  picture: tri({ deg: 35, opp: "O", hyp: "H", adj: "A" }),
-  drop: ["Any way round", "A steep one", "One more, at speed"],
+const sineMethod = [
+  "Label the sides from θ: H, O and A.",
+  "Sine uses O and H: $\\sin\\theta = \\frac{O}{H}$.",
+  "O missing: $O = H \\times \\sin\\theta$.",
+  "H missing: $H = O \\div \\sin\\theta$.",
+  "Round at the end.",
+];
+
+const sine = stepped(find(y9Trigonometry, SINE), {
+  method: sineMethod,
   variation: {
     relationship: "$\\sin\\theta = \\frac{O}{H}$",
     unknowns: ["opposite", "hypotenuse", "sin θ"],
     surface: ["numbers", "turned triangle", "θ at the top", "bigger angle", "context"],
-    nonExamples: ["the adjacent side doesn't go in the sine ratio"],
   },
-  wordsOnly: {
-    "Round 19.284 to 1 decimal place": "A number warm-up: rounding, which every answer here needs.",
-  },
-  swap: {
-    "Where did it go wrong?": reworded(y9Trigonometry, SINE, "Where did it go wrong?", {
-      text: "Ravi finds the side opposite the angle.",
-      picture: tri({ deg: 40, hyp: "8 cm", opp: "x", angle: "40°" }),
-    }),
-    "Back to the problem: How high is the kite?": reworded(
-      y9Trigonometry,
-      SINE,
-      "How high is the kite?",
-      { text: "How high is the kite, to 1 decimal place?" },
-      "Back to the problem",
+  screens: [
+    explain(
+      "The rule",
+      "The sine ratio",
+      ["**Sine is opposite ÷ hypotenuse.**", "$\\sin\\theta = \\frac{O}{H}$"],
+      tri({ deg: 35, opp: "O", hyp: "H", adj: "A" }),
+      "O is opposite θ. H is the longest side.",
     ),
-  },
-  before: [
-    explore(
-      "Stretch the triangle",
-      {
-        kind: "geometry",
-        points: [
-          { name: "A", at: { x: 0, y: 0 } },
-          { name: "C", from: "A", deg: 35, dist: 4, drag: [2.5, 6.5] },
-          { name: "B", below: "C" },
-        ],
-        lines: ["AB", "BC", "CA"],
-        angles: [{ name: "BAC", label: "35°" }],
-        readouts: [
-          { label: "Opposite, BC", length: "BC" },
-          { label: "Hypotenuse, AC", length: "AC" },
-          { label: "BC ÷ AC", lengths: ["BC", "AC"] },
-        ],
-      },
-      [
-        "What did you notice?",
-        "BC ÷ AC stays the same, about 0.57",
-        "The angle stays 35°, so the triangle keeps its shape: opposite ÷ hypotenuse doesn't change. That number is sin 35°.",
-        [
-          ["BC ÷ AC grows as the triangle grows", "Look again: both sides grow together."],
-          ["BC stays the same", "BC grows as C moves out."],
-        ],
-      ],
-      "For a 35° angle, opposite ÷ hypotenuse is always about 0.57. That's sin 35°.",
-      {
-        text: "Drag C to make the triangle bigger or smaller. The angle at A stays 35°.",
-      },
-    ),
-  ],
-  learning: [
-    pair(
-      "Hypotenuse times sine",
-      {
-        problem: "Find x.",
-        picture: tri({ deg: 30, hyp: "10 cm", opp: "x", angle: "30°" }),
-        lines: [
-          { line: "$\\sin 30° = \\frac{x}{10}$", note: "Opposite over hypotenuse." },
-          { line: "$x = 10 \\times \\sin 30° = 5$ cm", note: "Times both sides by 10." },
-        ],
-      },
-      ask(
-        "Find x.",
-        "7",
-        "Hypotenuse times the sine of the angle.",
-        "7 cm: $14 \\times \\sin 30°$.",
+    tagged(
+      "The rule",
+      explore(
+        "Stretch the triangle",
         {
-          unit: "cm",
-          asks: "opposite",
-          picture: tri({ deg: 30, hyp: "14 cm", opp: "x", angle: "30°" }),
+          kind: "geometry",
+          points: [
+            { name: "A", at: { x: 0, y: 0 } },
+            { name: "C", from: "A", deg: 35, dist: 4, drag: [2.5, 6.5] },
+            { name: "B", below: "C" },
+          ],
+          lines: ["AB", "BC", "CA"],
+          angles: [{ name: "BAC", label: "35°" }],
+          readouts: [
+            { label: "Opposite, BC", length: "BC" },
+            { label: "Hypotenuse, AC", length: "AC" },
+            { label: "BC ÷ AC", lengths: ["BC", "AC"] },
+          ],
+        },
+        [
+          "What did you notice?",
+          "BC ÷ AC stays the same, about 0.57",
+          "The angle stays 35°, so the triangle keeps its shape: opposite ÷ hypotenuse doesn't change. That number is sin 35°.",
+          [
+            ["BC ÷ AC grows as the triangle grows", "Look again: both sides grow together."],
+            ["BC stays the same", "BC grows as C moves out."],
+          ],
+        ],
+        "For a 35° angle, opposite ÷ hypotenuse is always about 0.57. That's sin 35°.",
+        {
+          text: "Drag C to make the triangle bigger or smaller. The angle at A stays 35°.",
         },
       ),
-      "O is on top, so multiply.",
     ),
-    fade(
-      "Finish it",
-      "Find x, to 1 decimal place.",
-      ["$\\sin 40° = \\frac{x}{8}$"],
+
+    choose(
+      "Check you remember",
+      "Which side is the hypotenuse?",
+      "r",
+      "The hypotenuse is opposite the right angle: the longest side.",
+      [
+        ["p", "p touches the right angle."],
+        ["q", "q touches the right angle."],
+      ],
+      { picture: tri({ deg: 34, adj: "p", opp: "q", hyp: "r", angle: "" }) },
+    ),
+    choose(
+      "Check you remember",
+      "Which side is opposite θ?",
+      "b",
+      "The opposite side is across from θ.",
+      [
+        ["a", "a touches θ: it's the adjacent side."],
+        ["c", "c is the hypotenuse."],
+      ],
+      { picture: tri({ deg: 34, adj: "a", opp: "b", hyp: "c" }) },
+    ),
+    words(
+      typed(
+        "Check you remember",
+        "Round 19.284 to 1 decimal place.",
+        "19.3",
+        "Look at the second decimal place.",
+        "19.3.",
+      ),
+      "A number check: rounding, which every answer here needs.",
+    ),
+
+    methodCard("The method", sineMethod, tri({ deg: 35, opp: "O", hyp: "H", adj: "A" })),
+    worked(
+      "Watch the method",
+      "Find x.",
+      [
+        { line: "$\\sin 30° = \\frac{x}{10}$", note: "Opposite over hypotenuse." },
+        { line: "$x = 10 \\times \\sin 30° = 5$ cm", note: "Times both sides by 10." },
+      ],
+      "O is on top, so multiply.",
+      tri({ deg: 30, hyp: "10 cm", opp: "x", angle: "30°" }),
+    ),
+    calc(
+      "Your turn",
+      "Find x.",
+      tri({ deg: 30, hyp: "14 cm", opp: "x", angle: "30°" }),
       [
         [
-          "So",
-          "$x = 8 \\times \\sin 40°$",
-          ["$x = 8 \\div \\sin 40°$", "x is on top: multiply."],
-          "$x = 8 \\times \\sin 40°$",
+          "$x = 14 \\times \\sin 30° =$",
+          "7",
+          "Hypotenuse times the sine of the angle.",
+          { after: "cm" },
         ],
-        ["To 1 d.p.:", "5.1 cm", ["12.4 cm", "That's dividing by sin 40°."], "$x = 5.1$ cm"],
       ],
-      "Write the ratio, rearrange, then round.",
+      "x is 7 cm.",
+    ),
+
+    calc(
+      "Practise",
+      "Find x, to 1 decimal place.",
       tri({ deg: 40, hyp: "8 cm", opp: "x", angle: "40°" }),
+      [
+        [
+          "$x = 8 \\times \\sin 40° =$",
+          "5.1",
+          "Use your calculator, then round to 1 d.p.",
+          { after: "cm" },
+        ],
+      ],
+      "x is 5.1 cm.",
     ),
     questionSet(
-      "Same method, different look",
+      "Practise",
+      "Which side is missing?",
+      [
+        ask(
+          "Find x, to 1 d.p.",
+          "3.8",
+          "Hypotenuse times the sine of the angle.",
+          "3.8 cm: $9 \\times \\sin 25°$.",
+          {
+            unit: "cm",
+            asks: "opposite",
+            picture: tri({ deg: 25, hyp: "9 cm", opp: "x", angle: "25°" }),
+          },
+        ),
+        ask(
+          "Find x.",
+          "12",
+          "H is on the bottom of the fraction: divide by the sine.",
+          "12 cm: $6 \\div \\sin 30°$.",
+          {
+            unit: "cm",
+            asks: "hypotenuse",
+            changed: "Now the hypotenuse is missing.",
+            expect: [
+              "H is on the bottom of the fraction. You will…",
+              "divide by sin 30°",
+              "$H = O \\div \\sin\\theta$.",
+              [["multiply by sin 30°", "Multiply when O is missing; divide when H is."]],
+            ],
+            picture: tri({ deg: 30, opp: "6 cm", hyp: "x", angle: "30°" }),
+          },
+        ),
+        ask(
+          "Find x, to 1 d.p.",
+          "7.8",
+          "Divide the opposite by the sine.",
+          "7.8 cm: $5 \\div \\sin 40°$.",
+          {
+            unit: "cm",
+            asks: "hypotenuse",
+            changed: "The hypotenuse again, with the triangle turned.",
+            picture: tri({ deg: 40, opp: "5 cm", hyp: "x", angle: "40°", turn: 180 }),
+          },
+        ),
+        ask(
+          "Find sin θ.",
+          "0.5",
+          "Opposite divided by hypotenuse.",
+          "0.5: $7.5 \\div 15$. (The next lesson finds θ from it.)",
+          {
+            asks: "sin θ",
+            changed: "Now both sides are known: the sine is missing.",
+            picture: tri({ deg: 30, opp: "7.5 cm", hyp: "15 cm" }),
+          },
+        ),
+      ],
+      "O missing: multiply. H missing: divide. Both known: divide O by H.",
+    ),
+
+    questionSet(
+      "Variation",
       "Find x each time, to 1 decimal place. Watch what changes.",
       [
         ask("Find x.", "5", "Hypotenuse times the sine of the angle.", "5 cm.", {
@@ -1113,138 +1345,89 @@ const sine = redraft(find(y9Trigonometry, SINE), {
       ],
       "Label from θ, then O = H × sin θ: whichever way it's drawn.",
     ),
-    questionSet(
-      "Where's the answer?",
-      "Which side is missing?",
+    reworded(y9Trigonometry, SINE, "Where did it go wrong?", {
+      text: "Ravi finds the side opposite the angle.",
+      picture: tri({ deg: 40, hyp: "8 cm", opp: "x", angle: "40°" }),
+    }),
+
+    quiz([
       [
-        ask(
-          "Find x, to 1 d.p.",
-          "3.8",
-          "Hypotenuse times the sine of the angle.",
-          "3.8 cm: $9 \\times \\sin 25°$.",
-          {
-            unit: "cm",
-            asks: "opposite",
-            picture: tri({ deg: 25, hyp: "9 cm", opp: "x", angle: "25°" }),
-          },
-        ),
-        ask(
+        [
           "Find x.",
-          "12",
-          "H is on the bottom of the fraction: divide by the sine.",
-          "12 cm: $6 \\div \\sin 30°$.",
-          {
-            unit: "cm",
-            asks: "hypotenuse",
-            changed: "Now the hypotenuse is missing.",
-            expect: [
-              "H is on the bottom of the fraction. You will…",
-              "divide by sin 30°",
-              "$H = O \\div \\sin\\theta$.",
-              [["multiply by sin 30°", "Multiply when O is missing; divide when H is."]],
-            ],
-            picture: tri({ deg: 30, opp: "6 cm", hyp: "x", angle: "30°" }),
-          },
-        ),
-        ask(
-          "Find x, to 1 d.p.",
-          "7.8",
-          "Divide the opposite by the sine.",
-          "7.8 cm: $5 \\div \\sin 40°$.",
-          {
-            unit: "cm",
-            asks: "hypotenuse",
-            changed: "The hypotenuse again, with the triangle turned.",
-            picture: tri({ deg: 40, opp: "5 cm", hyp: "x", angle: "40°", turn: 180 }),
-          },
-        ),
-        ask(
+          "5 cm",
+          ["20 cm", "8.7 cm"],
+          "$10 \\times \\sin 30°$.",
+          tri({ deg: 30, hyp: "10 cm", opp: "x", angle: "30°" }),
+          "opposite",
+        ],
+        [
+          "Find x.",
+          "8 cm",
+          ["32 cm", "13.9 cm"],
+          "$16 \\times \\sin 30°$.",
+          tri({ deg: 30, hyp: "16 cm", opp: "x", angle: "30°", turn: 150 }),
+          "opposite",
+        ],
+      ],
+      [
+        [
+          "Find x.",
+          "8 cm",
+          ["2 cm", "4.6 cm"],
+          "$4 \\div \\sin 30°$.",
+          tri({ deg: 30, opp: "4 cm", hyp: "x", angle: "30°" }),
+          "hypotenuse",
+        ],
+        [
+          "Find x.",
+          "14 cm",
+          ["3.5 cm", "8.1 cm"],
+          "$7 \\div \\sin 30°$.",
+          tri({ deg: 30, opp: "7 cm", hyp: "x", angle: "30°", flip: true }),
+          "hypotenuse",
+        ],
+      ],
+      [
+        [
           "Find sin θ.",
           "0.5",
-          "Opposite divided by hypotenuse.",
-          "0.5: $7.5 \\div 15$. (The next lesson finds θ from it.)",
-          {
-            asks: "sin θ",
-            changed: "Now both sides are known: the sine is missing.",
-            picture: tri({ deg: 30, opp: "7.5 cm", hyp: "15 cm" }),
-          },
-        ),
+          ["2", "3"],
+          "$3 \\div 6$.",
+          tri({ deg: 30, opp: "3 cm", hyp: "6 cm" }),
+          "sin θ",
+        ],
+        [
+          "Find sin θ.",
+          "0.75",
+          ["1.33", "3"],
+          "$9 \\div 12$.",
+          tri({ deg: 48.6, opp: "9 cm", hyp: "12 cm", turn: 90 }),
+          "sin θ",
+        ],
       ],
-      "O missing: multiply. H missing: divide. Both known: divide O by H.",
+    ]),
+
+    reworded(
+      y9Trigonometry,
+      SINE,
+      "How high is the kite?",
+      { tag: "Real life", text: "How high is the kite, to 1 decimal place?" },
+      "Back to the problem",
     ),
-    typed(
-      "Your turn",
-      "Find x, to 1 decimal place.",
-      "7.7",
-      "Hypotenuse times the sine of the angle.",
-      "7.7 cm: $25 \\times \\sin 18°$.",
-      { unit: "cm", picture: tri({ deg: 18, hyp: "25 cm", opp: "x", angle: "18°", turn: 200 }) },
-    ),
-    typed(
-      "Your turn",
-      "Find x, to 1 decimal place.",
-      "10.4",
-      "Divide the opposite by the sine.",
-      "10.4 cm: $9 \\div \\sin 60°$.",
-      { unit: "cm", picture: tri({ deg: 60, hyp: "x", opp: "9 cm", angle: "60°" }) },
+
+    summary(
+      "What to remember",
+      ["**Sine is opposite ÷ hypotenuse.**", "$\\sin\\theta = \\frac{O}{H}$"],
+      tri({ deg: 30, hyp: "10 cm", opp: "5 cm", angle: "30°" }),
+      [
+        "**Sine is opposite ÷ hypotenuse.**",
+        "$\\sin\\theta = \\frac{O}{H}$",
+        "O missing: O = H × sin θ. H missing: H = O ÷ sin θ.",
+        "$x = 10 \\times \\sin 30° = 5$ cm",
+      ],
+      "Copy this into your book to revise from.",
     ),
   ],
-  exit: quiz([
-    [
-      [
-        "Find x.",
-        "5 cm",
-        ["20 cm", "8.7 cm"],
-        "$10 \\times \\sin 30°$.",
-        tri({ deg: 30, hyp: "10 cm", opp: "x", angle: "30°" }),
-        "opposite",
-      ],
-      [
-        "Find x.",
-        "8 cm",
-        ["32 cm", "13.9 cm"],
-        "$16 \\times \\sin 30°$.",
-        tri({ deg: 30, hyp: "16 cm", opp: "x", angle: "30°", turn: 150 }),
-        "opposite",
-      ],
-    ],
-    [
-      [
-        "Find x.",
-        "8 cm",
-        ["2 cm", "4.6 cm"],
-        "$4 \\div \\sin 30°$.",
-        tri({ deg: 30, opp: "4 cm", hyp: "x", angle: "30°" }),
-        "hypotenuse",
-      ],
-      [
-        "Find x.",
-        "14 cm",
-        ["3.5 cm", "8.1 cm"],
-        "$7 \\div \\sin 30°$.",
-        tri({ deg: 30, opp: "7 cm", hyp: "x", angle: "30°", flip: true }),
-        "hypotenuse",
-      ],
-    ],
-    [
-      [
-        "Find sin θ.",
-        "0.5",
-        ["2", "3"],
-        "$3 \\div 6$.",
-        tri({ deg: 30, opp: "3 cm", hyp: "6 cm" }),
-        "sin θ",
-      ],
-      [
-        "Find sin θ.",
-        "0.75",
-        ["1.33", "3"],
-        "$9 \\div 12$.",
-        tri({ deg: 48.6, opp: "9 cm", hyp: "12 cm", turn: 90 }),
-        "sin θ",
-      ],
-    ],
-  ]),
 });
 
 // ---------------------------------------------------------------------------------------------
@@ -1268,118 +1451,193 @@ const ratioRel = (one: string, parts: string, total: string, asks?: number) =>
 
 const SHARING = "gf-ratio-1/part-part";
 
-const sharing = redraft(find(gfRatio1, SHARING), {
-  method: [
-    "Add the ratio's numbers to get the parts.",
-    "One part: divide by the number of parts.",
-    "Times one part by each share's parts.",
-    "Check: the shares add up to the total.",
-  ],
-  picture: bars([
-    ["A", 3],
-    ["B", 5],
-  ]),
+const sharingMethod = [
+  "Add the ratio's numbers to get the parts.",
+  "One part: divide by the number of parts.",
+  "Times one part by each share's parts.",
+  "Check: the shares add up to the total.",
+];
+
+const sharing = stepped(find(gfRatio1, SHARING), {
+  method: sharingMethod,
   variation: {
     relationship: "each share = one part × its parts, and the total = one part × all the parts",
     unknowns: ["share", "other share", "total"],
     surface: ["numbers", "three-part ratio", "units", "picture", "difference given"],
-    nonExamples: ["the ratio's numbers are not the shares"],
   },
-  before: [
-    explore(
-      "Change the total",
-      {
-        kind: "ratio",
-        rows: [
-          { label: "A", parts: 3 },
-          { label: "B", parts: 5 },
-        ],
-        total: { min: 40, max: 200, step: 8, start: 120 },
-        unit: "£",
-      },
-      [
-        "What stayed the same?",
-        "A always has 3 parts and B 5 parts: 8 parts in all",
-        "The total changes the size of one part, not the number of parts.",
+  screens: [
+    explain(
+      "The rule",
+      "Sharing in a ratio",
+      ["**To share in a ratio, find one part first.**"],
+      bars(
         [
-          ["A's share stayed the same", "Look again: it grows with the total."],
-          ["One part is always £3", "One part is the total ÷ 8, so it changes."],
+          ["A", 3],
+          ["B", 5],
         ],
-      ],
-      "One part is the total ÷ 8. A gets 3 parts, B gets 5.",
-      {
-        text: "Drag the slider to change the total. Watch one part, and each share.",
-      },
+        "£120",
+      ),
+      "Add the ratio's numbers to see how many parts there are.",
     ),
-  ],
-  swap: {
-    "The problem: The prize": reworded(
-      gfRatio1,
-      SHARING,
-      "The prize",
-      { text: ["Ali and Ben share £120 in the ratio 3 : 5.", "How much does each get?"] },
-      "The problem",
-    ),
-    "Sharing £40 in 3 : 5, Kim gives £3 and £5. What's wrong?": reworded(
-      gfRatio1,
-      SHARING,
-      "Sharing £40 in 3 : 5, Kim gives £3 and £5. What's wrong?",
-      { title: "Kim shares £40 in $3 : 5$: £3 and £5. What's wrong?" },
-    ),
-  },
-  learning: [
-    pair(
-      "Share it",
-      {
-        problem: "Share £120 in the ratio 3 : 5.",
-        picture: bars(
-          [
-            ["A", 3],
-            ["B", 5],
-          ],
-          "£120",
-        ),
-        lines: [
-          { line: "3 + 5 = 8 parts", note: "Add the ratio's numbers." },
-          { line: "£120 ÷ 8 = £15" },
-          { line: "3 × £15 = £45 and 5 × £15 = £75", note: "Check: £45 + £75 = £120." },
-        ],
-      },
-      ask(
-        "Share £80 in 3 : 5. Find the larger share.",
-        "50",
-        "8 parts, so one part is £10.",
-        "£50.",
+    tagged(
+      "The rule",
+      explore(
+        "Change the total",
         {
+          kind: "ratio",
+          rows: [
+            { label: "A", parts: 3 },
+            { label: "B", parts: 5 },
+          ],
+          total: { min: 40, max: 200, step: 8, start: 120 },
           unit: "£",
-          asks: "share",
-          picture: bars(
-            [
-              ["A", 3],
-              ["B", 5],
-            ],
-            "£80",
-          ),
+        },
+        [
+          "What stayed the same?",
+          "A always has 3 parts and B 5 parts: 8 parts in all",
+          "The total changes the size of one part, not the number of parts.",
+          [
+            ["A's share stayed the same", "Look again: it grows with the total."],
+            ["One part is always £3", "One part is the total ÷ 8, so it changes."],
+          ],
+        ],
+        "One part is the total ÷ 8. A gets 3 parts, B gets 5.",
+        {
+          text: "Drag the slider to change the total. Watch one part, and each share.",
         },
       ),
-      "Parts, then one part, then shares.",
     ),
-    fade(
-      "Finish it",
-      "Share 42 sweets in the ratio 2 : 5.",
-      ["2 + 5 = 7 parts", "42 ÷ 7 = 6 sweets in one part"],
-      [
+
+    typed("Check you remember", "Work out 3 + 5.", "8", "Count on 5 from 3.", "8."),
+    typed("Check you remember", "Work out £120 ÷ 8.", "15", "120 ÷ 8: halve three times.", "£15.", {
+      unit: "£",
+    }),
+    typed("Check you remember", "Work out 3 × £15.", "45", "Three lots of £15.", "£45.", {
+      unit: "£",
+    }),
+
+    methodCard(
+      "The method",
+      sharingMethod,
+      bars(
         [
-          "So the shares are",
-          "12 and 30",
-          ["2 and 5", "Times each number by one part, 6."],
-          "12 and 30 sweets",
+          ["A", 3],
+          ["B", 5],
         ],
+        "£120",
+      ),
+    ),
+    worked(
+      "Watch the method",
+      "Share £120 in the ratio 3 : 5.",
+      [
+        { line: "3 + 5 = 8 parts", note: "Add the ratio's numbers." },
+        { line: "£120 ÷ 8 = £15" },
+        { line: "3 × £15 = £45 and 5 × £15 = £75", note: "Check: £45 + £75 = £120." },
       ],
-      "Check: 12 + 30 = 42.",
+      "Parts, then one part, then the shares.",
+      bars(
+        [
+          ["A", 3],
+          ["B", 5],
+        ],
+        "£120",
+      ),
+    ),
+    calc(
+      "Your turn",
+      "Share £80 in the ratio 3 : 5.",
+      bars(
+        [
+          ["A", 3],
+          ["B", 5],
+        ],
+        "£80",
+      ),
+      [
+        ["3 + 5 =", "8", "Add the ratio's numbers.", { after: "parts" }],
+        ["One part: £80 ÷ 8 = £", "10", "Divide by the number of parts."],
+        ["A: 3 × £10 = £", "30", "A has 3 parts."],
+        ["B: 5 × £10 = £", "50", "B has 5 parts."],
+      ],
+      "£30 and £50: they add up to £80.",
+    ),
+
+    calc(
+      "Practise",
+      "Share 42 sweets in the ratio 2 : 5.",
+      undefined,
+      [
+        ["2 + 5 =", "7", "Add the ratio's numbers.", { after: "parts" }],
+        ["One part: 42 ÷ 7 =", "6", "Divide by the number of parts."],
+        ["2 × 6 =", "12", "The first share is 2 parts."],
+        ["5 × 6 =", "30", "The second share is 5 parts."],
+      ],
+      "12 and 30 sweets: they add up to 42.",
     ),
     questionSet(
-      "Same method, different look",
+      "Practise",
+      "Which amount is missing?",
+      [
+        ask(
+          "Share £72 in 4 : 5. Find the smaller share.",
+          "32",
+          "9 parts: one part is £8.",
+          "£32.",
+          {
+            unit: "£",
+            asks: "share",
+            picture: ratioRel("?", "9", "£72", 0),
+          },
+        ),
+        ask(
+          "In 4 : 5, the smaller share is £32. Find the larger.",
+          "40",
+          "£32 is 4 parts, so one part is £8.",
+          "£40.",
+          {
+            unit: "£",
+            asks: "other share",
+            changed: "You know one share, not the total.",
+            expect: [
+              "£32 is the smaller share. One part is…",
+              "£32 ÷ 4",
+              "The smaller share is 4 parts.",
+              [["£32 ÷ 9", "£32 isn't the total: it's only 4 parts."]],
+            ],
+            picture: ratioRel("?", "4", "£32", 0),
+          },
+        ),
+        ask(
+          "In 4 : 5, the larger share is £40. Find the total.",
+          "72",
+          "£40 is 5 parts: one part is £8; 9 parts in all.",
+          "£72.",
+          {
+            unit: "£",
+            asks: "total",
+            changed: "Now the total is missing.",
+            picture: ratioRel("£8", "9", "?", 2),
+          },
+        ),
+        ask(
+          "In 4 : 5, the shares differ by £8. Find the total.",
+          "72",
+          "The difference is 1 part: £8.",
+          "£72: 9 parts of £8.",
+          {
+            unit: "£",
+            asks: "total",
+            changed: "You know the difference between the shares.",
+            picture: ratioRel("£8", "9", "?", 2),
+          },
+        ),
+      ],
+      "Ask how many parts you know about, find one part, then build what's missing.",
+    ),
+
+    questionSet(
+      "Variation",
       "Find the share asked for. Watch what changes.",
       [
         ask(
@@ -1456,138 +1714,94 @@ const sharing = redraft(find(gfRatio1, SHARING), {
       ],
       "Parts, one part, shares: whatever's being shared.",
     ),
-    questionSet(
-      "Where's the answer?",
-      "Which amount is missing?",
+    reworded(gfRatio1, SHARING, "Where did it go wrong?", {}),
+
+    quiz([
       [
-        ask(
-          "Share £72 in 4 : 5. Find the smaller share.",
-          "32",
-          "9 parts: one part is £8.",
-          "£32.",
-          {
-            unit: "£",
-            asks: "share",
-            picture: ratioRel("?", "9", "£72", 0),
-          },
-        ),
-        ask(
-          "In 4 : 5, the smaller share is £32. Find the larger.",
-          "40",
-          "£32 is 4 parts, so one part is £8.",
-          "£40.",
-          {
-            unit: "£",
-            asks: "other share",
-            changed: "You know one share, not the total.",
-            expect: [
-              "£32 is the smaller share. One part is…",
-              "£32 ÷ 4",
-              "The smaller share is 4 parts.",
-              [["£32 ÷ 9", "£32 isn't the total: it's only 4 parts."]],
-            ],
-            picture: ratioRel("?", "4", "£32", 0),
-          },
-        ),
-        ask(
-          "In 4 : 5, the larger share is £40. Find the total.",
-          "72",
-          "£40 is 5 parts: one part is £8; 9 parts in all.",
-          "£72.",
-          {
-            unit: "£",
-            asks: "total",
-            changed: "Now the total is missing.",
-            picture: ratioRel("£8", "9", "?", 2),
-          },
-        ),
-        ask(
-          "In 4 : 5, the shares differ by £8. Find the total.",
-          "72",
-          "The difference is 1 part: £8.",
-          "£72: 9 parts of £8.",
-          {
-            unit: "£",
-            asks: "total",
-            changed: "You know the difference between the shares.",
-            picture: ratioRel("£8", "9", "?", 2),
-          },
-        ),
+        [
+          "Share £56 in 3 : 4. Larger share?",
+          "£32",
+          ["£24", "£4"],
+          "7 parts of £8.",
+          undefined,
+          "share",
+        ],
+        [
+          "Share £45 in 2 : 7. Larger share?",
+          "£35",
+          ["£10", "£7"],
+          "9 parts of £5.",
+          undefined,
+          "share",
+        ],
       ],
-      "Ask how many parts you know about, find one part, then build what's missing.",
+      [
+        [
+          "In 2 : 3, the smaller share is £18. Larger share?",
+          "£27",
+          ["£12", "£45"],
+          "One part is £9.",
+          undefined,
+          "other share",
+        ],
+        [
+          "In 3 : 5, the smaller share is £24. Larger share?",
+          "£40",
+          ["£15", "£64"],
+          "One part is £8.",
+          undefined,
+          "other share",
+        ],
+      ],
+      [
+        [
+          "In 1 : 4, the larger share is £20. Total?",
+          "£25",
+          ["£80", "£24"],
+          "One part is £5; 5 parts.",
+          undefined,
+          "total",
+        ],
+        [
+          "In 2 : 5, the larger share is £35. Total?",
+          "£49",
+          ["£70", "£42"],
+          "One part is £7; 7 parts.",
+          undefined,
+          "total",
+        ],
+      ],
+    ]),
+
+    reworded(
+      gfRatio1,
+      SHARING,
+      "“Share £120 in the ratio 3 : 5.”",
+      {
+        tag: "Real life",
+        title: "Ali and Ben share a £120 prize in 3\u00a0:\u00a05. How much each?",
+      },
+      "Back to the problem",
     ),
-    typed(
-      "Your turn",
-      "Red to blue is $2 : 7$. Blue has 35 more. How many red?",
-      "14",
-      "The difference is 5 parts: one part is 7.",
-      "14 red.",
-    ),
-    typed(
-      "Your turn",
-      "Share £150 in 2 : 3 : 5. Find the middle share.",
-      "45",
-      "10 parts: one part is £15.",
-      "£45.",
-      { unit: "£" },
+
+    summary(
+      "What to remember",
+      ["**To share in a ratio, find one part first.**"],
+      bars(
+        [
+          ["A", 3],
+          ["B", 5],
+        ],
+        "£120",
+      ),
+      [
+        "**To share in a ratio, find one part first.**",
+        "Add the ratio's numbers. Divide to find one part. Times by each share's parts.",
+        "£120 in 3 : 5: 8 parts of £15, so £45 and £75",
+      ],
+      "Copy this into your book to revise from.",
     ),
   ],
-  exit: quiz([
-    [
-      [
-        "Share £56 in 3 : 4. Larger share?",
-        "£32",
-        ["£24", "£4"],
-        "7 parts of £8.",
-        undefined,
-        "share",
-      ],
-      [
-        "Share £45 in 2 : 7. Larger share?",
-        "£35",
-        ["£10", "£7"],
-        "9 parts of £5.",
-        undefined,
-        "share",
-      ],
-    ],
-    [
-      [
-        "In 2 : 3, the smaller share is £18. Larger share?",
-        "£27",
-        ["£12", "£45"],
-        "One part is £9.",
-        undefined,
-        "other share",
-      ],
-      [
-        "In 3 : 5, the smaller share is £24. Larger share?",
-        "£40",
-        ["£15", "£64"],
-        "One part is £8.",
-        undefined,
-        "other share",
-      ],
-    ],
-    [
-      [
-        "In 1 : 4, the larger share is £20. Total?",
-        "£25",
-        ["£80", "£24"],
-        "One part is £5; 5 parts.",
-        undefined,
-        "total",
-      ],
-      [
-        "In 2 : 5, the larger share is £35. Total?",
-        "£49",
-        ["£70", "£42"],
-        "One part is £7; 7 parts.",
-        undefined,
-        "total",
-      ],
-    ],
-  ]),
 });
 
 /** The five pilot redrafts, by the id of the lesson each replaces. */

@@ -2,7 +2,8 @@
 
 Status: **agreed on 21 November 2026**, with the owner's answers below. The owner designed this plan for "The angle
 in a semicircle" (GCSE Higher, `gh-circles/semicircle`), reviewed it live and asked for it to be
-summarised as a template of principles for the other lessons. Only that lesson uses it so far.
+summarised as a template of principles for the other lessons. The six circle theorem lessons and
+the five other pilot lessons use it (rollout steps 1 and 2 below).
 
 It is simpler than the unit plan (The problem, Warm-up, Discover… Exit check), and it is written
 for weaker readers. It keeps everything already agreed:
@@ -188,7 +189,8 @@ against it.
    unit. Then the owner reviews.
 2. **The other pilot lessons:** angles on a straight line (Y7), percentages (Y7), circle area (Y8),
    the sine ratio (Y9) and sharing in a ratio (GCSE Foundation). These test the template on
-   number, algebra and trigonometry.
+   number, algebra and trigonometry. Each has a real-life problem after its exit check: the laptop
+   screen, the best test score, the round rug, the kite string and the shared prize.
 3. **Year by year**, Year 7 to GCSE Higher, in the batches already agreed. Each batch's PR lists
    every lesson's plan (the table above).
 
