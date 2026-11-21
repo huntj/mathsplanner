@@ -21,7 +21,7 @@ import type {
   Readout,
   Tap,
 } from "@mathsplanner/learning/unit-lessons";
-import { circleSegments, clearAngleMark, type Obstacles, type Pt } from "./labels.ts";
+import { circleSegments, placeAngleMarks, type Obstacles, type Pt } from "./labels.ts";
 import { PictureView, tapName } from "./Picture.tsx";
 import { play } from "./sounds.ts";
 import { shuffled } from "./unit-screens.tsx";
@@ -392,6 +392,27 @@ function GeometryView({
     ],
   };
 
+  // The angles, marked together: each label clear of the lines, the names and the others.
+  const toMark = (scene.angles ?? []).flatMap((a) => {
+    const [p, v, q] = [...a.name].map((n) => pts[n]);
+    if (!p || !v || !q) return [];
+    const V = { x: sx(v.x), y: sy(v.y) };
+    const arm = (t: Point) => {
+      const d = Math.hypot(sx(t.x) - V.x, sy(t.y) - V.y) || 1;
+      return { x: V.x + ((sx(t.x) - V.x) / d) * 50, y: V.y + ((sy(t.y) - V.y) / d) * 50 };
+    };
+    const label = a.label ?? `${Math.round(angleOf(pts, a.name))}°`;
+    return [{ a, label, m: { p: V, a: arm(p), b: arm(q), text: label } }];
+  });
+  const placed = placeAngleMarks(
+    toMark.map((t) => t.m),
+    obstacles,
+  );
+  const angleMarks = toMark.flatMap((t, i) => {
+    const mark = placed[i];
+    return mark ? [{ a: t.a, label: t.label, mark }] : [];
+  });
+
   return (
     <svg
       ref={svg}
@@ -413,16 +434,7 @@ function GeometryView({
         const s = seg(l);
         return s ? <line key={l} className="draw-line tone-soft dashed" {...s} /> : null;
       })}
-      {(scene.angles ?? []).map((a) => {
-        const [p, v, q] = [...a.name].map((n) => pts[n]);
-        if (!p || !v || !q) return null;
-        const V = { x: sx(v.x), y: sy(v.y) };
-        const arm = (t: Point) => {
-          const d = Math.hypot(sx(t.x) - V.x, sy(t.y) - V.y) || 1;
-          return { x: V.x + ((sx(t.x) - V.x) / d) * 50, y: V.y + ((sy(t.y) - V.y) / d) * 50 };
-        };
-        const label = a.label ?? `${Math.round(angleOf(pts, a.name))}°`;
-        const mark = clearAngleMark(V, arm(p), arm(q), label, obstacles);
+      {angleMarks.map(({ a, label, mark }) => {
         return (
           <g key={a.name} className={`pic-angle-mark${a.label === "?" ? " find" : ""}`}>
             {mark.arc && (

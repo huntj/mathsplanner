@@ -2801,3 +2801,69 @@
 .read-aloud.speaking {
   background: color-mix(in srgb, var(--biro) 24%, transparent);
 }
+
+/* Working with a box to type into, line by line, as in an exercise book. */
+.calc-working {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.ul-working .calc-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--ink);
+}
+
+.calc-line.now {
+  animation: ul-drop 260ms ease-out;
+}
+
+.calc-input.ul-input {
+  width: 5.5rem;
+  padding: 0.35rem 0.5rem;
+  font-size: var(--step-1);
+  text-align: center;
+}
+
+.calc-filled {
+  min-width: 2.5rem;
+  padding: 0.1rem 0.45rem;
+  border-bottom: 3px solid var(--right);
+  color: var(--ink);
+  font-weight: 700;
+  text-align: center;
+}
+
+/* What to write in an exercise book: a ruled card. */
+.book-card {
+  display: grid;
+  gap: 0;
+  margin-top: 0.4rem;
+  padding: 0.75rem 1rem 0.9rem 1.6rem;
+  border: 2px solid var(--line);
+  border-left: 4px solid var(--wrong);
+  border-radius: 12px;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(1.9rem - 1px),
+      color-mix(in srgb, var(--biro) 22%, transparent) calc(1.9rem - 1px),
+      color-mix(in srgb, var(--biro) 22%, transparent) 1.9rem
+    ),
+    var(--surface);
+  background-position: 0 2.2rem;
+}
+
+.book-card .eyebrow {
+  margin: 0 0 0.35rem;
+}
+
+.book-line {
+  margin: 0;
+  min-height: 1.9rem;
+  line-height: 1.9rem;
+  color: var(--ink);
+}

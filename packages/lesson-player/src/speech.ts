@@ -146,6 +146,12 @@ export function wordsToSpeech(text: string): string {
     .trim();
 }
 
+/**
+ * Whether the button is shown. Parked on 21 November 2026: device voices sounded too robotic for
+ * lessons, so it waits until a more natural voice can be used on the device.
+ */
+export const READ_ALOUD = false;
+
 /** What the pupil reads on a screen, in reading order: the question, options, Dot's words. */
 const READ = [
   ".lesson-main h1",

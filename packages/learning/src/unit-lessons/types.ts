@@ -64,6 +64,8 @@ export interface Explain {
   text: Words[];
   /** An explainer, in Dot's bubble under the text. */
   bubble?: Words;
+  /** What to write in an exercise book to revise from, on a summary screen. */
+  book?: Words[];
   /** Show the text as numbered steps: a method card. */
   numbered?: true;
   scene?: Scene;
@@ -806,8 +808,31 @@ export type Screen = (
   | QuestionSet
   | Tap
   | Explore
+  | Calc
 ) &
   Tagged;
+
+/**
+ * Work it out as in an exercise book: lines of working, each with a box to type into, done one
+ * line at a time. A line's reason shows once it is done; a wrong try gets Dot's hint.
+ */
+export interface Calc {
+  kind: "calc";
+  title: Words;
+  text?: Words;
+  picture?: Picture;
+  lines: {
+    /** The working before the box, such as "$90° + 34° =$". */
+    before: Words;
+    answer: string;
+    /** After the box, such as "°". */
+    after?: Words;
+    /** The written reason for the line, in brackets once it is done. */
+    reason?: Words;
+    hint: Words;
+  }[];
+  done: Words;
+}
 
 export interface UnitLesson {
   /** The course unit it belongs to, as in data/course.json. */
@@ -829,6 +854,12 @@ export interface UnitLesson {
   method?: Words[];
   /** What changes in the lesson's questions, and which parts of it can be the unknown. */
   variation?: Variation;
+  /**
+   * The lesson's plan. Unset, it is the unit plan: The problem, Warm-up, Discover… Exit check.
+   * "stepped" is the simpler plan for weaker readers (docs/proposals/lesson-stepped.md): The
+   * rule, Check you remember, Method, Practise, Variation, Summary.
+   */
+  plan?: "stepped";
   screens: Screen[];
 }
 

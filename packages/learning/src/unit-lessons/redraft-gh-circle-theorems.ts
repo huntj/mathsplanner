@@ -7,6 +7,7 @@
 // the "?" round the diagram. Diagrams are drawn from the numbers, so what a pupil sees is accurate.
 import {
   ask,
+  calc,
   choose,
   explain,
   explore,
@@ -18,8 +19,10 @@ import {
   problem,
   questionSet,
   quiz,
+  summary,
   tap,
   typed,
+  worked,
 } from "./build.ts";
 import { circlePic, type CircleSpec } from "./circle-pictures.ts";
 import { REASON } from "./reasons.ts";
@@ -605,14 +608,25 @@ angleAtCentre.method = centreMethod;
 angleAtCentre.variation = centreMap;
 
 // ---------------------------------------------------------------------------------------------
-// 2. The angle in a semicircle.
+// 2. The angle in a semicircle: the stepped plan (docs/proposals/lesson-stepped.md), for weaker
+// readers. The rule first, shown and dragged; a check of what it needs; the method shown, then
+// done a line at a time; practice with the missing angle moving; new looks; and a summary to
+// copy into an exercise book.
 
 const semicircleMethod = [
-  "Find the diameter: a chord through O.",
-  "The angle at the circumference on it is 90°.",
-  "The other two angles add up to 90°.",
-  "Write each angle with its reason.",
+  "Angle C is 90°: the angle in a semicircle.",
+  "Add the two angles you know.",
+  "Take the total away from 180°.",
 ];
+
+/** A diameter AB with two triangles on it: C above, at 2 × `c`, and D below, at 180° + 2 × `d`. */
+const twoTriangles = (c: number, d: number, labels: [string, string][]) =>
+  circlePic({
+    centre: true,
+    on: { A: 180, B: 0, C: 2 * c, D: 180 + 2 * d },
+    lines: ["AB", "CA", "CB", "DA", "DB"],
+    angles: labels,
+  });
 
 const semicircleLesson = lesson(
   U,
@@ -621,44 +635,13 @@ const semicircleLesson = lesson(
   "The angle in a semicircle",
   "An angle standing on a diameter is 90°.",
   [
-    problem(
-      "Find angle ABC",
-      [
-        "“AB is a diameter of the circle, centre O. Find angle ABC. Give reasons.”",
-        "By the end of this lesson, you'll see the right angle hiding in it.",
-      ],
-      semicircle(34, { A: "34°", B: "?" }),
-    ),
-    tap(
-      "Warm-up",
-      "Tap the diameter.",
-      circlePic({
-        centre: true,
-        on: { A: 180, B: 0, C: 60, D: 250 },
-        lines: ["AB", "CA", "CB", "DB"],
-        tap: true,
-      }),
-      "AB",
-      "A diameter is a chord that passes through the centre O.",
-      "AB: it passes through the centre.",
-      {
-        wrong: {
-          CA: "CA doesn't pass through O.",
-          CB: "CB doesn't pass through O.",
-          DB: "DB doesn't pass through O.",
-        },
-      },
-    ),
-    typed(
-      "Warm-up",
-      "Find the angle marked ?.",
-      "56",
-      "Angles in a triangle add to 180°.",
-      "56°.",
-      {
-        unit: "°",
-        picture: rightTriangle([null, "34°", "?"]),
-      },
+    // 1. The rule, and an Explore that shows it.
+    explain(
+      "The rule",
+      "The angle in a semicircle",
+      ["**The angle in a semicircle is 90°.**"],
+      semicircle(30, { A: "30°", B: "60°", C: "90°" }),
+      "AB is a diameter. C can be anywhere on the circle.",
     ),
     explore(
       "Move C round the circle",
@@ -668,343 +651,224 @@ const semicircleLesson = lesson(
         points: [
           { name: "A", onCircle: 180 },
           { name: "B", onCircle: 0 },
-          { name: "C", onCircle: 60, drag: [10, 170] },
+          { name: "C", onCircle: 60, drag: [15, 165] },
         ],
         lines: ["AB", "CA", "CB"],
         angles: [{ name: "ACB" }, { name: "CAB" }, { name: "ABC" }],
         readouts: [
-          { label: "Angle ACB", angle: "ACB" },
-          { label: "Angle CAB + angle ABC", sum: ["CAB", "ABC"] },
+          { label: "Angle C", angle: "ACB" },
+          { label: "Angle A", angle: "CAB" },
+          { label: "Angle B", angle: "ABC" },
         ],
       },
       [
-        "What did you notice?",
-        "Angle ACB is always 90°",
-        "The angle in a semicircle is a right angle, so the other two always share 90°.",
+        "What stays the same?",
+        "Angle C is always 90°",
+        "The angle in a semicircle is 90°. A and B share the other 90°.",
         [
-          ["Angle ACB changes as C moves", "Look again: it's 90° every time."],
-          ["Angles CAB and ABC are always equal", "Only when C is at the very top."],
+          ["Angle A is always 90°", "Look again: angle A changes as C moves."],
+          ["All three angles change", "Look again at angle C."],
         ],
       ],
-      "Wherever C is, the angle at C is 90°.",
-      {
-        text: "AB is a diameter. Drag C round the top of the circle.",
-        expect: [
-          "Before you drag: as C moves, angle ACB will…",
-          "stay 90°",
-          "Every point on the circle sees the diameter at a right angle.",
-          [
-            ["get bigger", "Try it and see."],
-            ["get smaller", "Try it and see."],
-          ],
-        ],
-      },
+      "Angle C is always 90°. Angles A and B add up to 90°.",
+      { text: "Drag C. Watch all three angles.", tag: "The rule" },
     ),
-    explain(
-      "Discover",
-      "A special case",
-      [
-        "AB is a straight line through O, so the angle at O is 180°.",
-        "**So the angle in a semicircle is 90°.**",
-      ],
-      semicircle(30, { C: "90°" }),
-      "Half of 180° is 90°, wherever C is on the circle.",
-    ),
-    methodCard("The method", semicircleMethod, semicircle(30, { C: "90°" })),
-    pair(
-      "Use the right angle",
-      {
-        problem: "Find angle ABC.",
-        picture: semicircle(25, { A: "25°", B: "?" }),
-        lines: [
-          { line: "ACB = 90°", reason: SEMICIRCLE },
-          {
-            line: "ABC = $180° - 90° - 25° = 65°$",
-            reason: TRIANGLE,
-            note: "Take both angles you know away from 180°.",
-          },
-        ],
-      },
-      ask("Find angle ABC.", "50", "ACB is 90°. Take 90° and the angle at A from 180°.", "50°.", {
-        unit: "°",
-        asks: "angle at B",
-        picture: semicircle(40, { A: "40°", B: "?" }),
-      }),
-      "The other two angles always add to 90°.",
-    ),
-    fade(
-      "Finish it",
-      "Find angle CAB.",
-      [{ line: "ACB = 90°", reason: SEMICIRCLE }],
-      [
-        [
-          "So angle CAB is",
-          "$90° - 58° = 32°$",
-          ["$180° - 58° = 122°$", "Take off the right angle too."],
-          "CAB = 32°",
-          { reason: TRIANGLE },
-        ],
-      ],
-      "32°: the two angles share 90°.",
-      semicircle(32, { A: "?", B: "58°" }),
-    ),
-    questionSet(
-      "Same method, different look",
-      "AB is a diameter each time. Watch what changes.",
-      [
-        ask("Find angle ABC.", "60", "90° take away the angle at A.", "60°.", {
-          unit: "°",
-          asks: "angle at B",
-          picture: semicircle(30, { A: "30°", B: "?" }),
-        }),
-        ask("Find angle ABC.", "50", "90° take away the angle at A.", "50°.", {
-          unit: "°",
-          asks: "angle at B",
-          changed: "The angle at A went up by 10°.",
-          expect: [
-            "So angle ABC…",
-            "goes down by 10°",
-            "The two angles share 90°: one up means the other down.",
-            [
-              ["goes up by 10°", "They must still add to 90°."],
-              ["stays the same", "They must still add to 90°."],
-            ],
-          ],
-          picture: semicircle(40, { A: "40°", B: "?" }),
-        }),
-        ask(
-          "Find angle ABC.",
-          "50",
-          "Still 90° take away the angle at A.",
-          "Still 50°: a turned diagram has the same angles.",
-          {
-            unit: "°",
-            asks: "angle at B",
-            changed: "The diameter is upright now.",
-            picture: semicircle(40, { A: "40°", B: "?" }, { turn: 90 }),
-          },
-        ),
-        ask(
-          "Find angle ABC.",
-          "18",
-          "90° take away the angle at A.",
-          "18°: the angle at A is big, so the angle at B is small.",
-          {
-            unit: "°",
-            asks: "angle at B",
-            changed: "C is below the diameter, near A.",
-            picture: semicircle(72, { A: "72°", B: "?" }, { below: true }),
-          },
-        ),
-        ask("Find x.", "30", "x + 2x = 90°.", "3x = 90, so x = 30.", {
-          asks: "angle at A",
-          changed: "The angles are written in algebra.",
-          picture: semicircle(30, { A: "x", B: "2x" }),
-        }),
-        ask(
-          "Is angle ACB a right angle?",
-          "No",
-          "It's only 90° when AB is a diameter.",
-          "No: AB doesn't pass through O, so there's no semicircle.",
-          {
-            changed: "This chord misses the centre.",
-            others: ["Yes"],
-            picture: circlePic({
-              centre: true,
-              on: { A: 200, B: 340, C: 90 },
-              lines: ["AB", "CA", "CB"],
-              angles: [["ACB", "?"]],
-            }),
-          },
-        ),
-      ],
-      "Always check for a diameter first: no diameter, no right angle.",
-    ),
+
+    // 2. Check you remember: what the method needs.
     tap(
-      "Spot it",
-      "AB is a diameter. Tap both right angles.",
+      "Check you remember",
+      "Tap the diameter.",
       circlePic({
         centre: true,
-        on: { A: 180, B: 0, C: 70, D: 300 },
-        lines: ["AB", "CA", "CB", "DA", "DB"],
-        angles: [
-          ["ACB", ""],
-          ["CAB", ""],
-          ["ADB", ""],
-          ["ABC", ""],
-        ],
+        on: { A: 180, B: 0, C: 60, D: 250 },
+        lines: ["AB", "CA", "CB", "DB"],
         tap: true,
       }),
-      ["ACB", "ADB"],
-      "Find the angles whose arms end at A and B.",
-      "Angles ACB and ADB both stand on the diameter AB, so both are 90°.",
+      "AB",
+      "A diameter goes through the centre O.",
+      "AB: it goes through the centre.",
       {
         wrong: {
-          CAB: "That's at A, an end of the diameter: not a right angle.",
-          ABC: "That's at B, an end of the diameter: not a right angle.",
+          CA: "CA doesn't go through O.",
+          CB: "CB doesn't go through O.",
+          DB: "DB doesn't go through O.",
         },
       },
     ),
-    questionSet(
-      "Where's the answer?",
-      "Which part is missing?",
+    choose(
+      "Check you remember",
+      "The angles in a triangle add up to…",
+      "180°",
+      "Angles in a triangle add up to 180°.",
       [
-        ask("Find angle ABC.", "62", "90° take away the angle at A.", "62°.", {
+        ["360°", "That's a full turn, or a quadrilateral."],
+        ["90°", "That's one right angle."],
+      ],
+      {
+        picture: {
+          kind: "shape",
+          points: [P(0, 0), P(6, 0), P(2, 4)],
+          angles: ["a", "b", "c"],
+        },
+      },
+    ),
+    typed(
+      "Check you remember",
+      "Find the angle marked ?.",
+      "56",
+      "The square is 90°. Angles in a triangle add up to 180°.",
+      "56°: 180° − 90° − 34°.",
+      { unit: "°", picture: rightTriangle([null, "34°", "?"]) },
+    ),
+
+    // 3. The method: shown, then done a line at a time.
+    methodCard("The method", semicircleMethod, semicircle(34, { A: "34°", B: "?" })),
+    worked(
+      "Watch the method",
+      "Find angle ABC.",
+      [
+        { line: "ACB = 90°", reason: SEMICIRCLE },
+        { line: "$90° + 34° = 124°$", note: "Add the two angles you know." },
+        {
+          line: "ABC = $180° - 124° = 56°$",
+          reason: TRIANGLE,
+          note: "Take the total away from 180°.",
+        },
+      ],
+      "Add, then take away from 180°.",
+      semicircle(34, { A: "34°", B: "?" }),
+    ),
+    calc(
+      "Your turn",
+      "Find angle ABC.",
+      semicircle(25, { A: "25°", B: "?", C: "90°" }),
+      [
+        ["$90° + 25° =$", "115", "Add the angles at C and A.", { after: "°" }],
+        [
+          "ABC = $180° - 115° =$",
+          "65",
+          "Take 115° away from 180°.",
+          { after: "°", reason: TRIANGLE },
+        ],
+      ],
+      "Angle ABC is 65°.",
+    ),
+
+    // 4. Practise, with the missing angle moving round.
+    calc(
+      "Practise",
+      "Find angle ABC.",
+      semicircle(40, { A: "40°", B: "?" }),
+      [
+        ["ACB =", "90", "The angle in a semicircle.", { after: "°", reason: SEMICIRCLE }],
+        ["$90° + 40° =$", "130", "Add the two angles you know.", { after: "°" }],
+        [
+          "ABC = $180° - 130° =$",
+          "50",
+          "Take 130° away from 180°.",
+          { after: "°", reason: TRIANGLE },
+        ],
+      ],
+      "Angle ABC is 50°.",
+    ),
+    questionSet(
+      "Practise",
+      "Find the missing angle each time.",
+      [
+        ask("Find angle ABC.", "62", "Add the two you know. Take it from 180°.", "62°.", {
           unit: "°",
           asks: "angle at B",
           picture: semicircle(28, { A: "28°", B: "?" }),
         }),
-        ask("Find angle CAB.", "43", "90° take away the angle at B.", "43°.", {
+        ask("Find angle ABC.", "40", "Add the two you know. Take it from 180°.", "40°.", {
+          unit: "°",
+          asks: "angle at B",
+          changed: "The circle is turned.",
+          picture: semicircle(50, { A: "50°", B: "?" }, { turn: 90 }),
+        }),
+        ask("Find angle CAB.", "43", "Add the two you know. Take it from 180°.", "43°.", {
           unit: "°",
           asks: "angle at A",
           changed: "Now the angle at A is missing.",
-          picture: semicircle(43, { A: "?", B: "47°" }, { turn: 40 }),
+          picture: semicircle(43, { A: "?", B: "47°" }),
         }),
-        ask(
-          "Find angle ACB.",
-          "90",
-          "It's the angle in a semicircle.",
-          "90°: and the three angles check out, as they add to 180°.",
-          {
-            unit: "°",
-            asks: "angle at C",
-            changed: "Now the angle at C is missing.",
-            picture: semicircle(35, { A: "35°", B: "55°", C: "?" }),
-          },
-        ),
-        ask(
-          "Find x.",
-          "15",
-          "Angle CAB is 90° take away the angle at B. Then solve.",
-          "CAB = 40°, so 2x + 10 = 40 and x = 15.",
-          {
-            asks: "angle at A",
-            changed: "The angle at A is in algebra.",
-            picture: semicircle(40, { A: "2x + 10°", B: "50°" }, { turn: 330 }),
-          },
-        ),
-      ],
-      "Whichever angle is missing, the 90° is your way in.",
-      { text: "AB is a diameter, so angle C is 90°." },
-    ),
-    typed("Your turn", "Find angle CAB.", "29", "90° take away the angle at B.", "29°.", {
-      unit: "°",
-      picture: semicircle(29, { A: "?", B: "61°" }, { turn: 30 }),
-    }),
-    typed(
-      "Your turn",
-      "AC = BC. Find angle CAB.",
-      "45",
-      "The triangle is isosceles and the angles at A and B share 90°.",
-      "45°.",
-      { unit: "°", picture: semicircle(45, { A: "?", B: "?" }) },
-    ),
-    choose(
-      "Watch out",
-      "Zoe says C on the circle makes ACB 90°. What's missing?",
-      "AB must be a diameter",
-      "The right angle only stands on a diameter, and this chord misses O.",
-      [
-        [
-          "Nothing: every angle in a circle is a right angle",
-          "Only angles standing on a diameter are.",
-        ],
-      ],
-      {
-        picture: circlePic({
-          centre: true,
-          on: { A: 210, B: 330, C: 80 },
-          lines: ["AB", "CA", "CB"],
-          angles: [["ACB", "?"]],
+        ask("Find angle CAB.", "26", "Add the two you know. Take it from 180°.", "26°.", {
+          unit: "°",
+          asks: "angle at A",
+          changed: "C is below the diameter.",
+          picture: semicircle(26, { A: "?", B: "64°" }, { below: true }),
         }),
-      },
+        ask("Find angle ACB.", "90", "It's the angle in a semicircle.", "90°.", {
+          unit: "°",
+          asks: "angle at C",
+          changed: "Now the angle at C is missing.",
+          picture: semicircle(35, { A: "35°", B: "55°", C: "?" }),
+        }),
+      ],
+      "Same method, wherever the missing angle is.",
     ),
-    mistake(
-      "Leo finds angle ABC. AB is a diameter.",
-      ["ACB = 90° (angle in a semicircle)", "ABC = 180° − 90° + 31°", "ABC = 121°"],
-      1,
-      "Take away both angles: 180° − 90° − 31° = 59°.",
-      semicircle(31, { A: "31°", B: "?" }),
+
+    // 5. Variation: algebra, and two triangles on one diameter.
+    questionSet(
+      "Variation",
+      "Same rule, new look.",
+      [
+        ask("Find x.", "30", "Angles A and B add up to 90°: x + 2x = 90°.", "x = 30°.", {
+          asks: "angle at A",
+          picture: semicircle(30, { A: "x", B: "2x" }),
+        }),
+        ask("Find x.", "18", "Angles A and B add up to 90°: x + 4x = 90°.", "x = 18°.", {
+          asks: "angle at A",
+          changed: "Now the angles are x and 4x.",
+          picture: semicircle(18, { A: "x", B: "4x" }, { turn: 200 }),
+        }),
+        ask("Find angle ABC.", "55", "Use triangle ABC. Angle C is 90°.", "55°.", {
+          unit: "°",
+          asks: "angle at B",
+          changed: "Two triangles share the diameter.",
+          picture: twoTriangles(35, 40, [
+            ["CAB", "35°"],
+            ["ABD", "40°"],
+            ["ABC", "?"],
+          ]),
+        }),
+        ask("Find angle DAB.", "50", "Use triangle ABD. Angle D is 90°.", "50°.", {
+          unit: "°",
+          asks: "angle at A",
+          changed: "Now find an angle in the other triangle.",
+          picture: twoTriangles(35, 40, [
+            ["CAB", "35°"],
+            ["ABD", "40°"],
+            ["DAB", "?"],
+          ]),
+        }),
+      ],
+      "Both angles on the diameter are 90°.",
     ),
-    choose(
-      "Back to the problem",
-      "“Find angle ABC. Give reasons.”",
-      "56°: the angle in a semicircle is 90°, and angles in a triangle add to 180°",
-      "Both reasons, and the angle.",
+
+    // 6. Summary, and what to write in an exercise book.
+    summary(
+      "What to remember",
+      ["**The angle in a semicircle is 90°.**"],
+      semicircle(34, { A: "34°", B: "56°", C: "90°" }),
       [
-        ["56°: angles in a triangle add to 180°", "Say why ACB is 90° too."],
-        [
-          "146°: angles on a straight line add to 180°",
-          "Use the triangle, with its right angle at C.",
-        ],
+        "**The angle in a semicircle is 90°.**",
+        "Draw the circle, the diameter AB and the point C.",
+        "To find a missing angle: add the two you know, take it from 180°.",
+        "ACB = 90° (angle in a semicircle is 90°)",
+        "ABC = 180° − 90° − 34° = 56° (angles in a triangle add up to 180°)",
       ],
-      { picture: semicircle(34, { A: "34°", B: "?" }) },
+      "Copy this into your book to revise from.",
     ),
-    quiz([
-      [
-        [
-          "Find angle ABC.",
-          "68°",
-          ["158°", "22°"],
-          "90° − 22°.",
-          semicircle(22, { A: "22°", B: "?" }),
-          "angle at B",
-        ],
-        [
-          "Find angle ABC.",
-          "53°",
-          ["143°", "37°"],
-          "90° − 37°.",
-          semicircle(37, { A: "37°", B: "?" }, { turn: 60 }),
-          "angle at B",
-        ],
-      ],
-      [
-        [
-          "Find angle ACB.",
-          "90°",
-          ["180°", "45°"],
-          "The angle in a semicircle.",
-          semicircle(50, { C: "?" }),
-          "angle at C",
-        ],
-        [
-          "Find angle ACB.",
-          "90°",
-          ["180°", "60°"],
-          "The angle in a semicircle.",
-          semicircle(20, { C: "?" }, { turn: 120 }),
-          "angle at C",
-        ],
-      ],
-      [
-        [
-          "Find x.",
-          "30",
-          ["45", "60"],
-          "x + 2x = 90°.",
-          semicircle(30, { A: "x", B: "2x" }),
-          "angle at A",
-        ],
-        [
-          "Find x.",
-          "18",
-          ["22.5", "72"],
-          "x + 4x = 90°.",
-          semicircle(18, { A: "x", B: "4x" }, { turn: 200 }),
-          "angle at A",
-        ],
-      ],
-    ]),
   ],
 );
+semicircleLesson.plan = "stepped";
 semicircleLesson.method = semicircleMethod;
 semicircleLesson.variation = {
   relationship:
     "the angle on a diameter is 90°, so the other two angles of the triangle add to 90°",
   unknowns: ["angle at A", "angle at B", "angle at C"],
-  surface: ["numbers", "turned diagram", "where C sits", "algebra", "no diameter"],
-  nonExamples: ["an angle on a chord that misses the centre"],
+  surface: ["numbers", "turned diagram", "where C sits", "algebra", "two triangles"],
 };
 
 // ---------------------------------------------------------------------------------------------
