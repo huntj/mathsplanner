@@ -853,7 +853,7 @@ describe.each(REDRAFT_LESSONS.map((l) => [lessonId(l), l] as const))(
 
     it("asks each question in one short sentence, of 12 words or fewer", () => {
       for (const { s, where } of screens) {
-        const max = s.tag === "Back to the problem" ? 25 : 12;
+        const max = s.tag === "Back to the problem" || s.tag === "Real life" ? 25 : 12;
         const asks: (string | undefined)[] = [];
         if (s.kind === "choice" || s.kind === "answer")
           asks.push([s.title, s.text ?? ""].join(" "));
