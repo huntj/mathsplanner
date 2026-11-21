@@ -1,6 +1,6 @@
 # Proposal: the stepped lesson template
 
-Status: **for the owner's review, 21 November 2026.** The owner designed this plan for "The angle
+Status: **agreed on 21 November 2026**, with the owner's answers below. The owner designed this plan for "The angle
 in a semicircle" (GCSE Higher, `gh-circles/semicircle`), reviewed it live and asked for it to be
 summarised as a template of principles for the other lessons. Only that lesson uses it so far.
 
@@ -11,9 +11,9 @@ for weaker readers. It keeps everything already agreed:
 - diagrams first, Explore and hands-on answers ([proposal](lesson-interactive.md));
 - few words, with Dot's bubbles (part 4 of that proposal).
 
-## The six parts
+## The parts
 
-Every lesson has the same six parts, in this order. Each part has a job, a set of screens to do
+Every lesson has the same parts, in this order: six always, and a real-life problem where one fits. Each part has a job, a set of screens to do
 it with, and principles that keep it short and clear.
 
 ### 1. The rule
@@ -80,7 +80,23 @@ is going.
   - the rule as one step of a longer problem.
 - Each is pointed out in "What's changed".
 
-### 6. Summary
+### 6. Exit check
+
+**Job:** show which pupils need the lesson again.
+
+- Two or three questions, with no hints, and quick to answer (typing or choosing).
+- Each is on its diagram, and they ask for different unknowns.
+- A wrong answer comes back at the end with new numbers.
+
+### 7. A real-life problem (where one fits)
+
+**Job:** use the rule in the world, once the pupil can do it.
+
+- One problem pupils recognise, after the exit check, such as the laptop screen at 110° for
+  angles on a straight line.
+- It is left out where the topic has no honest real-life use, as for circle theorems.
+
+### 8. Summary
 
 **Job:** finish on what to remember, and give the pupil something to keep.
 
@@ -137,9 +153,11 @@ against it.
   - Method, Worked example and Your turn;
   - Practise;
   - Variation;
+  - Exit check;
+  - Real life (where it fits);
   - Summary.
 - The tests check:
-  - the six parts, in order;
+  - the parts, in order, with only the real-life problem optional;
   - a summary with book notes;
   - a calc screen;
   - at least three changes pointed out;
@@ -159,11 +177,9 @@ against it.
 3. **Year by year**, Year 7 to GCSE Higher, in the batches already agreed. Each batch's PR lists
    every lesson's plan (the table above).
 
-## Questions for the owner
+## The owner's answers
 
-1. **Exit check:** the semicircle lesson has none. Should each lesson end its Variation part with
-   a short check (two or three questions, no hints), before the Summary? It would show which
-   pupils need the lesson again.
-2. **The problem:** should a real-life problem open each lesson again, before the rule, and come
-   back at the end? The semicircle lesson leaves it out.
-3. **Order of rollout:** is the order above right?
+1. **Exit check:** yes, a short check before the summary.
+2. **The real-life problem** comes at the end, after the exit check, where it fits. It won't always
+   apply, as for circle theorems.
+3. **The order of rollout** above is right.
