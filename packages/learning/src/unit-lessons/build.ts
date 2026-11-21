@@ -442,3 +442,52 @@ export const explore = (
   notice: { question: notice[0], options: options(notice[1], notice[2], notice[3]) },
   done,
 });
+
+/** One line of a calc screen: the working before the box, its answer, then what follows it. */
+export type CalcLine = [
+  before: Words,
+  answer: string,
+  hint: Words,
+  more?: { after?: Words; reason?: Words },
+];
+
+/** Work it out as in an exercise book: the pupil types the answer on each line in turn. */
+export const calc = (
+  tag: string,
+  title: Words,
+  picture: Picture | undefined,
+  lines: CalcLine[],
+  done: Words,
+  e: { text?: Words } = {},
+): Screen => ({
+  kind: "calc",
+  tag,
+  title,
+  ...(e.text !== undefined ? { text: e.text } : {}),
+  ...(picture ? { picture } : {}),
+  lines: lines.map(([before, answer, hint, more]) => ({
+    before,
+    answer,
+    hint,
+    ...(more?.after ? { after: more.after } : {}),
+    ...(more?.reason ? { reason: more.reason } : {}),
+  })),
+  done,
+});
+
+/** The summary: what to remember, with what to write in an exercise book to revise from. */
+export const summary = (
+  title: Words,
+  text: Words[],
+  picture: Picture | undefined,
+  book: Words[],
+  bubble?: Words,
+): Screen => ({
+  kind: "explain",
+  tag: "Summary",
+  title,
+  text,
+  ...(picture ? { picture } : {}),
+  book,
+  ...(bubble ? { bubble } : {}),
+});

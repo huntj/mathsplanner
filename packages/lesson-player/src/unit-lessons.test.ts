@@ -101,6 +101,9 @@ const words = (lesson: (typeof UNIT_LESSONS)[number]): string[] =>
       if ("hint" in s) own.push(s.hint);
       if ("done" in s && s.done) own.push(s.done);
       if ("picture" in s) own.push(...pictureWords(s.picture));
+      if (s.kind === "explain") own.push(...(s.book ?? []), ...(s.bubble ? [s.bubble] : []));
+      if (s.kind === "calc")
+        own.push(...s.lines.flatMap((l) => [l.before, l.hint, l.after ?? "", l.reason ?? ""]));
       if (s.kind === "choice")
         own.push(
           ...s.options.flatMap((o) => [o.text, o.feedback]),
@@ -295,6 +298,18 @@ describe("the lessons", () => {
   });
 });
 
+/** The parts of the stepped plan, in order, by the tags of their screens. */
+const STEPPED: Record<string, number> = {
+  "The rule": 0,
+  "Check you remember": 1,
+  Method: 2,
+  "Worked example": 2,
+  "Your turn": 2,
+  Practise: 3,
+  Variation: 4,
+  Summary: 5,
+};
+
 describe.each(ALL_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %s", (_, lesson) => {
   it("belongs to a unit on the course, and teaches its skills", () => {
     const unit = course.sections.flatMap((s) => s.units).find((u) => u.id === lesson.unit);
@@ -302,8 +317,20 @@ describe.each(ALL_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %s
     expect(lesson.screens.length).toBeGreaterThan(3);
     if (lesson.before) expect(unit?.skills).toContain(lesson.before);
     for (const skill of lesson.teaches ?? []) expect(unit?.skills).toContain(skill);
+    // A lesson on the stepped plan goes rule, check, method, practise, variation, summary.
+    if (lesson.plan === "stepped") {
+      const parts = lesson.screens.map((sc) => STEPPED[sc.tag ?? ""] ?? -1);
+      expect(parts, "every screen in a part of the plan").not.toContain(-1);
+      expect(parts, "the parts in order").toEqual([...parts].sort((x, y) => x - y));
+      expect(new Set(parts).size, "all six parts").toBe(6);
+      expect(lesson.screens.at(-1)?.tag, "a summary last").toBe("Summary");
+      const last = lesson.screens.at(-1);
+      expect(last?.kind === "explain" && (last.book ?? []).length > 0, "notes for a book").toBe(
+        true,
+      );
+    }
     // A lesson split from a unit starts with a real problem, and ends with an exit check.
-    if (lesson.id) {
+    else if (lesson.id) {
       expect(lesson.screens[0]?.tag, "a hook first").toBe("The problem");
       expect(lesson.screens.at(-1)?.kind, "an exit check last").toBe("quiz");
       expect(lesson.screens.some((sc) => sc.tag === "Back to the problem")).toBe(true);
@@ -562,6 +589,14 @@ describe.each(ALL_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %s
           expect(taps.length, "something else to tap").toBeGreaterThan(screen.answers.length);
           break;
         }
+        case "calc":
+          checkPicture(screen.picture);
+          expect(screen.lines.length).toBeGreaterThan(0);
+          for (const l of screen.lines) {
+            expect(l.answer.trim(), l.before).not.toBe("");
+            expect(l.hint.trim(), l.before).not.toBe("");
+          }
+          break;
         case "explore": {
           const one = (q: { options: { correct?: true }[] }) =>
             expect(q.options.filter((o) => o.correct)).toHaveLength(1);
@@ -641,6 +676,18 @@ describe.each(ALL_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %s
     expect(lesson.method, "a lesson with a map has a method").toBeDefined();
     expect(map.unknowns.length).toBeGreaterThan(0);
     expect(map.surface.length).toBeGreaterThanOrEqual(3);
+    if (lesson.plan === "stepped") {
+      // The stepped plan practises with the missing angle moving, and every unknown asked.
+      const its = lesson.screens.flatMap((s) => (s.kind === "set" ? s.items : []));
+      expect(its.filter((i) => i.changed).length, "changes pointed out").toBeGreaterThanOrEqual(3);
+      const asked = new Set(its.flatMap((i) => (i.asks ? [i.asks] : [])));
+      for (const u of map.unknowns) expect(asked.has(u), `asks for the ${u}`).toBe(true);
+      expect(
+        lesson.screens.some((s) => s.kind === "calc"),
+        "the method done a line at a time",
+      ).toBe(true);
+      return;
+    }
     const kinds = lesson.screens.map((s) => s.kind);
     expect(kinds, "an example with a question like it").toContain("pair");
     expect(
@@ -724,6 +771,13 @@ function questionsOf(lesson: (typeof UNIT_LESSONS)[number]) {
         wordsOnly: own,
       });
     if (s.kind === "tap") out.push({ where, text: s.title, picture: s.picture, wordsOnly: own });
+    if (s.kind === "calc")
+      out.push({
+        where,
+        text: [s.title, s.text ?? ""].join(" "),
+        picture: s.picture,
+        wordsOnly: own,
+      });
     if (s.kind === "pair")
       out.push({
         where,
@@ -802,7 +856,7 @@ describe.each(REDRAFT_LESSONS.map((l) => [lessonId(l), l] as const))(
         if (s.kind === "choice" || s.kind === "answer")
           asks.push([s.title, s.text ?? ""].join(" "));
         if (s.kind === "mistake") asks.push(s.text);
-        if (s.kind === "tap") asks.push(s.title);
+        if (s.kind === "tap" || s.kind === "calc") asks.push(s.title);
         if (s.kind === "steps") asks.push(s.start);
         if (s.kind === "pair") asks.push(s.question.prompt);
         if (s.kind === "set") asks.push(s.title, s.text, ...s.items.map((i) => i.prompt));
@@ -820,6 +874,7 @@ describe.each(REDRAFT_LESSONS.map((l) => [lessonId(l), l] as const))(
         if (s.kind === "steps") said.push(...s.stages.map((st) => st.note));
         if (s.kind === "set") said.push(...s.items.map((i) => i.hint));
         if (s.kind === "answer" || s.kind === "tap") said.push(s.hint);
+        if (s.kind === "calc") said.push(...s.lines.map((l) => l.hint));
         for (const t of said) expect(wordCount(t), `${where}: ${t}`).toBeLessThanOrEqual(15);
       }
     });
@@ -848,6 +903,7 @@ describe.each(REDRAFT_LESSONS.map((l) => [lessonId(l), l] as const))(
             );
         if (s.kind === "set") n += wordCount(s.items[0]?.prompt) + wordCount(s.items[0]?.changed);
         if (s.kind === "explore") n += wordCount(s.expect?.question);
+        if (s.kind === "calc") n += wordCount(s.lines[0]?.before);
         expect(n, `${where} reads ${n} words before acting`).toBeLessThanOrEqual(40);
       }
     });

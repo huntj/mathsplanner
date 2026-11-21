@@ -64,7 +64,15 @@ export function angleMark(
   a: Pt,
   b: Pt,
   text: string,
-  opts: { poly?: Pt[]; square?: boolean; size?: number; extra?: number } = {},
+  opts: {
+    poly?: Pt[];
+    square?: boolean;
+    size?: number;
+    /** How much further out than its nearest clear place. */
+    extra?: number;
+    /** Where between the arms, from 0 (on the arm to a) to 1 (on the arm to b); 0.5 by default. */
+    lean?: number;
+  } = {},
 ): AngleMark {
   const u = unit({ x: a.x - p.x, y: a.y - p.y });
   const v = unit({ x: b.x - p.x, y: b.y - p.y });
@@ -82,18 +90,26 @@ export function angleMark(
   const deg = (angle * 180) / Math.PI;
   const r = opts.square ? 14 : deg < 30 ? 40 : deg < 50 ? 32 : deg < 80 ? 27 : 23;
   const { hw, hh } = textSize(text, opts.size ?? 15);
-  const half = Math.sin(Math.min(angle, Math.PI) / 2);
-  const clear = (arm: Pt) => (reach({ x: -arm.y, y: arm.x }, hw, hh) + 3) / Math.max(half, 0.05);
+  // The label's direction: the bisector, or leaning towards one arm to find room.
+  const lean = opts.lean ?? 0.5;
+  const turnTo = Math.sign(u.x * bis.y - u.y * bis.x) || 1;
+  const at = Math.atan2(u.y, u.x) + turnTo * lean * angle;
+  const dir = lean === 0.5 ? bis : { x: Math.cos(at), y: Math.sin(at) };
+  // Far enough out for the label to clear both arms.
+  const clear = (arm: Pt, part: number) =>
+    (reach({ x: -arm.y, y: arm.x }, hw, hh) + 3) /
+    Math.max(Math.sin(Math.min(part, Math.PI / 2)), 0.05);
   const d = Math.max(
-    r + 5 + reach(bis, hw, hh),
-    angle < Math.PI ? Math.max(clear(u), clear(v)) : 0,
+    r + 5 + reach(dir, hw, hh),
+    angle < Math.PI ? Math.max(clear(u, lean * angle), clear(v, (1 - lean) * angle)) : 0,
   );
-  // Pushed further out, past whatever is in its way, the label leaves its arc where it was.
+  // Pushed further out, past whatever is in its way.
   const far = d + (opts.extra ?? 0);
-  const label = { x: p.x + bis.x * far, y: p.y + bis.y * far, hw, hh };
+  const label = { x: p.x + dir.x * far, y: p.y + dir.y * far, hw, hh };
   if (opts.square) return { label };
-  // On a thin angle the label sits far out, so the arc reaches out to meet it.
-  const arcR = Math.max(r, d - reach(bis, hw, hh) - 6);
+  // On a thin angle, or one pushed out past a line, the label sits far out, so the arc reaches
+  // out to meet it: the number stays joined to its own angle.
+  const arcR = Math.max(r, far - reach(dir, hw, hh) - 6);
   // SVG's sweep flag is clockwise on screen: the arc turns from u towards the bisector.
   const turn = Math.atan2(bis.y, bis.x) - Math.atan2(u.y, u.x);
   const sweep = Math.sin(turn) > 0;
@@ -220,24 +236,39 @@ export function clearAngleMark(
   text: string,
   obstacles: Obstacles,
   opts: { poly?: Pt[]; square?: boolean; size?: number } = {},
+  /** Other angles' labels, to keep a little way from so each is plainly its own angle's. */
+  neighbours: Box[] = [],
 ): AngleMark {
+  // The bit of circle through the corner itself is no obstacle: every angle on a circle has it.
+  const near = (q: Pt) => Math.hypot(q.x - p.x, q.y - p.y) < 45;
+  const segments = obstacles.segments.filter(([s, t]) => !(near(s) && near(t)));
   const hits = (box: Box) => {
     const padded = { ...box, hw: box.hw + 2, hh: box.hh + 2 };
     return (
-      obstacles.segments.filter(([s, t]) => crosses(padded, s, t)).length +
+      segments.filter(([s, t]) => crosses(padded, s, t)).length +
       obstacles.boxes.filter((o) => overlap(padded, o)).length
     );
   };
+  // How crowded a place is by other angles' labels: closer than 56px is too close to tell apart.
+  const crowding = (box: Box) =>
+    neighbours.reduce(
+      (sum, o) => sum + 1.5 * Math.max(0, 56 - Math.hypot(box.x - o.x, box.y - o.y)),
+      0,
+    );
   let best: AngleMark | undefined;
-  let fewest = Infinity;
-  for (let extra = 0; extra <= 36; extra += 4) {
-    const mark = angleMark(p, a, b, text, { ...opts, extra });
-    const n = hits(mark.label);
-    if (n < fewest) {
-      best = mark;
-      fewest = n;
+  let least = Infinity;
+  // On the bisector if that's clear and uncrowded; otherwise leaning towards an arm, or further
+  // out, whichever is clear of lines and least crowded, the nearest such place winning.
+  for (const lean of opts.poly ? [0.5] : [0.5, 0.38, 0.62, 0.27, 0.73]) {
+    for (let extra = 0; extra <= 36; extra += 4) {
+      const mark = angleMark(p, a, b, text, { ...opts, extra, lean });
+      const cost =
+        hits(mark.label) * 1000 + crowding(mark.label) + extra * 0.4 + Math.abs(lean - 0.5) * 20;
+      if (cost < least) {
+        best = mark;
+        least = cost;
+      }
     }
-    if (n === 0) break;
   }
   const chosen = best ?? angleMark(p, a, b, text, opts);
   obstacles.boxes.push(chosen.label);
@@ -251,4 +282,47 @@ export function circleSegments(c: Pt, r: number, steps = 48): [Pt, Pt][] {
     return { x: c.x + r * Math.cos(t), y: c.y + r * Math.sin(t) };
   };
   return Array.from({ length: steps }, (_, i): [Pt, Pt] => [at(i), at(i + 1)]);
+}
+
+/** An angle to mark: its corner, a point on each arm, and its label. */
+export interface AngleToMark {
+  p: Pt;
+  a: Pt;
+  b: Pt;
+  text: string;
+}
+
+/**
+ * Marks for several angles, each label clear of the lines and of the others. They are placed
+ * twice: the second time, each label makes room knowing where all the others went.
+ */
+export function placeAngleMarks(angles: AngleToMark[], obstacles: Obstacles): AngleMark[] {
+  const fixed = [...obstacles.boxes];
+  const marks: AngleMark[] = [];
+  for (const m of angles)
+    marks.push(
+      clearAngleMark(
+        m.p,
+        m.a,
+        m.b,
+        m.text,
+        obstacles,
+        {},
+        marks.map((k) => k.label),
+      ),
+    );
+  angles.forEach((m, i) => {
+    const others = marks.flatMap((k, j) => (j === i ? [] : [k.label]));
+    marks[i] = clearAngleMark(
+      m.p,
+      m.a,
+      m.b,
+      m.text,
+      { segments: obstacles.segments, boxes: [...fixed, ...others] },
+      {},
+      others,
+    );
+  });
+  obstacles.boxes.splice(0, obstacles.boxes.length, ...fixed, ...marks.map((k) => k.label));
+  return marks;
 }

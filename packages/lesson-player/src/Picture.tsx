@@ -13,7 +13,7 @@ import {
 import {
   angleMark,
   circleSegments,
-  clearAngleMark,
+  placeAngleMarks,
   layoutShape,
   sideLabel,
   textSize,
@@ -1207,17 +1207,21 @@ function Drawing({ pic, tapping }: { pic: DrawingPic; tapping?: Tapping | undefi
     }
   }
   for (const box of sides) if (box) obstacles.boxes.push(box);
-  const marks = pic.items.map((it) => {
+  const toMark = pic.items.map((it) => {
     if (!("angle" in it)) return null;
     const p = { x: sx(it.angle.x), y: sy(it.angle.y) };
     const arm = (deg: number) => ({
       x: p.x + 50 * Math.cos(rad(deg)),
       y: p.y - 50 * Math.sin(rad(deg)),
     });
-    return it.label
-      ? clearAngleMark(p, arm(it.from), arm(it.to), it.label, obstacles)
-      : angleMark(p, arm(it.from), arm(it.to), it.label);
+    return { p, a: arm(it.from), b: arm(it.to), text: it.label };
   });
+  // Labelled angles are placed together, each clear of the lines and of the others.
+  const labelled = toMark.flatMap((m) => (m?.text ? [m] : []));
+  const placed = placeAngleMarks(labelled, obstacles);
+  const marks = toMark.map((m) =>
+    !m ? null : m.text ? (placed[labelled.indexOf(m)] ?? null) : angleMark(m.p, m.a, m.b, m.text),
+  );
   const w0 = (maxX - minX) * k + 2 * pad;
   const h0 = (maxY - minY) * k + 2 * pad;
   const labels = [

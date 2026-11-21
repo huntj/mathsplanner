@@ -4,7 +4,7 @@
 // into place. Each screen opens the next once it is done; a wrong try gets a nudge, never a
 // penalty. The lesson ends on a summary, like any other lesson.
 import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
-import { deviceVoice, screenSpeech, speak } from "./speech.ts";
+import { deviceVoice, READ_ALOUD, screenSpeech, speak } from "./speech.ts";
 import { course, skillText } from "@mathsplanner/learning";
 import { Dot } from "./Dot.tsx";
 import { familyOf, type Family } from "@mathsplanner/learning";
@@ -123,7 +123,8 @@ export function UnitLessonView({
         >
           <span style={{ width: `${(at / lesson.screens.length) * 100}%` }} />
         </div>
-        <ReadAloud root={rootRef} screenAt={at} />
+        {/* Read aloud is parked until a more natural voice is found: see speech.ts. */}
+        {READ_ALOUD && <ReadAloud root={rootRef} screenAt={at} />}
         {methodHelp && (
           <button
             type="button"
@@ -295,6 +296,16 @@ function ExplainStep({
           </div>
         )}
         {screen.bubble && <DotBubble text={screen.bubble} family={family} />}
+        {screen.book && (
+          <section className="book-card" aria-label="Write this in your book">
+            <p className="eyebrow">Write this in your book</p>
+            {screen.book.map((t, i) => (
+              <p key={i} className="book-line">
+                <W text={t} />
+              </p>
+            ))}
+          </section>
+        )}
       </main>
       <footer className="lesson-foot">
         <div className="lesson-foot-inner">

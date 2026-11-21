@@ -3,6 +3,7 @@
 // balance, work something out a step at a time, turn an angle, spin a spinner, grow a factor tree,
 // and change a shape with a slider to see why its formula works. Each takes its screen's data
 // and calls onNext once the pupil has done it; a wrong try gets a nudge, never a penalty.
+import { CalcStep } from "./calc-screen.tsx";
 import {
   Fragment,
   useEffect,
@@ -101,6 +102,8 @@ export function ScreenStepMore({
       return <TapStep screen={s} {...step} />;
     case "explore":
       return <ExploreStep screen={s} {...step} />;
+    case "calc":
+      return <CalcStep screen={s} {...step} />;
   }
 }
 
