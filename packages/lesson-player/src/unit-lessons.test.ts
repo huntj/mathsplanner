@@ -1213,14 +1213,28 @@ describe("labels on shapes", () => {
     expect(bad).toEqual([]);
   });
 
-  it("puts an angle's label past its arc, between its arms", () => {
-    // A thin 20° angle, with a wide label.
-    const m = angleMark({ x: 0, y: 0 }, { x: 100, y: 0 }, { x: 94, y: -34 }, "120°");
+  it("puts a shape's angle label past its arc, between its arms", () => {
+    // A thin 20° angle, with a wide label, in a triangle.
+    const [o, a, b] = [
+      { x: 0, y: 0 },
+      { x: 100, y: 0 },
+      { x: 94, y: -34 },
+    ];
+    const m = angleMark(o, a, b, "120°", { poly: [o, a, b] });
     expect(m.arc).toBeDefined();
     const r = m.arc?.r ?? 0;
     expect(Math.hypot(m.label.x, m.label.y) - r).toBeGreaterThan(m.label.hh);
-    expect(crosses(m.label, { x: 0, y: 0 }, { x: 100, y: 0 })).toBe(false);
-    expect(crosses(m.label, { x: 0, y: 0 }, { x: 94, y: -34 })).toBe(false);
+    expect(crosses(m.label, o, a)).toBe(false);
+    expect(crosses(m.label, o, b)).toBe(false);
+  });
+
+  it("keeps a drawing's thin angle label near its corner, its arc short", () => {
+    // On a circle diagram, a label far out along a thin angle loses its angle: it stays close,
+    // just past its arc, and its halo carries it over an arm.
+    const m = angleMark({ x: 0, y: 0 }, { x: 100, y: 0 }, { x: 99, y: -14 }, "8°");
+    expect(Math.hypot(m.label.x, m.label.y)).toBeLessThanOrEqual(62);
+    expect(m.arc?.r ?? 0).toBeLessThanOrEqual(44);
+    expect(Math.hypot(m.label.x, m.label.y)).toBeGreaterThan(m.arc?.r ?? 0);
   });
 
   it("puts a side's label outside the side, clear of it", () => {

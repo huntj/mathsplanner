@@ -82,22 +82,44 @@ function nameAt(
     const k = Math.hypot(at.x, at.y) > r + 0.1 ? 0.5 : 0.48;
     return P(at.x + (at.x / away) * k, at.y + (at.y / away) * k);
   }
-  // For O, the direction furthest from every line that leaves it.
-  const used = [...(spec.lines ?? []), ...(spec.dashed ?? [])]
-    .filter((l) => l.includes("O"))
-    .map((l) => pts[l.replace("O", "")])
-    .filter((p): p is Point => p !== undefined)
-    .map((p) => towards(P(0, 0), p));
+  // For O, the direction furthest from every line that leaves it or passes through it (a
+  // diameter), so the name never sits on a line and looks like a second circle. Between equal
+  // gaps, the side away from the other points, where the angles and their labels are.
+  const used: number[] = [];
+  for (const l of [...(spec.lines ?? []), ...(spec.dashed ?? [])]) {
+    const [a, b] = [...l].map((n) => pts[n]);
+    if (!a || !b) continue;
+    if (l.includes("O")) {
+      const other = pts[l.replace("O", "")];
+      if (other) used.push(towards(P(0, 0), other));
+      continue;
+    }
+    // A line through the centre: both its directions.
+    const cross = Math.abs(a.x * b.y - a.y * b.x) / (Math.hypot(b.x - a.x, b.y - a.y) || 1);
+    if (cross < 0.05) used.push(towards(P(0, 0), a), towards(P(0, 0), b));
+  }
+  const others = Object.entries(pts).filter(([n]) => n !== "O");
+  const mean = P(
+    others.reduce((t, [, p]) => t + p.x, 0) / (others.length || 1),
+    others.reduce((t, [, p]) => t + p.y, 0) / (others.length || 1),
+  );
+  const awayFrom = Math.hypot(mean.x, mean.y) > 0.01 ? towards(mean, P(0, 0)) : 315;
   let best = 315;
-  let gap = -1;
+  let score = -Infinity;
   for (let d = 0; d < 360; d += 15) {
-    const g = Math.min(...used.map((u) => Math.min(Math.abs(u - d), 360 - Math.abs(u - d))), 360);
-    if (g > gap) {
-      gap = g;
+    const off = (u: number) => {
+      const x = (((u - d) % 360) + 360) % 360;
+      return Math.min(x, 360 - x);
+    };
+    const gap = Math.min(...used.map(off), 360);
+    // The gap counts most; facing away from the other points breaks a tie.
+    const s = Math.min(gap, 60) * 10 - off(awayFrom);
+    if (s > score) {
+      score = s;
       best = d;
     }
   }
-  return P(0.45 * Math.cos(rad(best)), 0.45 * Math.sin(rad(best)));
+  return P(0.5 * Math.cos(rad(best)), 0.5 * Math.sin(rad(best)));
 }
 
 /** A circle diagram from its spec. */
