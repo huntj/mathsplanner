@@ -13,7 +13,7 @@ for weaker readers. It keeps everything already agreed:
 
 ## The parts
 
-Every lesson has the same parts, in this order: six always, and a real-life problem where one fits. Each part has a job, a set of screens to do
+Every lesson has the same parts, in this order: seven always, and a real-life problem where one fits. Each part has a job, a set of screens to do
 it with, and principles that keep it short and clear.
 
 ### 1. The rule
