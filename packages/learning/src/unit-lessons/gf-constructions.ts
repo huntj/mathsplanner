@@ -19,7 +19,7 @@ const circle = (c: Point, r: number, dashed = false): Item[] => [
 ];
 
 /** A bearing from a point A: a north line, the direction, and the angle clockwise from north. */
-function bearing(deg: number, label: string): DrawingPic {
+export function bearing(deg: number, label: string): DrawingPic {
   const A = P(0, 0);
   const dir = 90 - deg;
   const end = P(4 * Math.cos((dir * Math.PI) / 180), 4 * Math.sin((dir * Math.PI) / 180));
@@ -45,7 +45,7 @@ function bearing(deg: number, label: string): DrawingPic {
 // The perpendicular bisector of AB: arcs from each end crossing above and below.
 const A = P(0, 0);
 const B = P(6, 0);
-const bisector: DrawingPic = {
+export const bisector: DrawingPic = {
   kind: "drawing",
   frame: { xMin: -0.6, xMax: 6.6, yMin: -3.3, yMax: 3.3 },
   items: [
