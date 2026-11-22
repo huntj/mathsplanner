@@ -5,6 +5,7 @@
 // Pupils see a redraft too once its id is in LIVE_REDRAFTS: the owner's choice for the pilot is
 // that its lessons go to pupils each time they improve.
 import { circleTheorems } from "./redraft-gh-circle-theorems.ts";
+import { gfCalculationStepped } from "./redraft-gf-calculation.ts";
 import { pilotRedrafts } from "./redraft-pilot.ts";
 import { y7AnglesStepped } from "./redraft-y7-angles.ts";
 import { y7AreaStepped } from "./redraft-y7-area.ts";
@@ -82,6 +83,7 @@ const ROLLOUT: [string, UnitLesson[]][] = [
   ...y9EquationsStepped,
   ...y9GraphsStepped,
   ...y9ProbabilityStepped,
+  ...gfCalculationStepped,
 ];
 
 export const REDRAFTS: ReadonlyMap<string, UnitLesson[]> = new Map<string, UnitLesson[]>([
