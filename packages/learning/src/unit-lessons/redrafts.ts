@@ -26,6 +26,7 @@ import { y7SimplifyingStepped } from "./redraft-y7-simplifying.ts";
 import { y8EquationsStepped } from "./redraft-y8-equations.ts";
 import { y8MeasureStepped } from "./redraft-y8-measure.ts";
 import { y8NumberStepped } from "./redraft-y8-number.ts";
+import { y8ShapesStepped } from "./redraft-y8-shapes.ts";
 import type { UnitLesson } from "./types.ts";
 
 /**
@@ -54,6 +55,7 @@ const ROLLOUT: [string, UnitLesson[]][] = [
   ...y8NumberStepped,
   ...y8MeasureStepped,
   ...y8EquationsStepped,
+  ...y8ShapesStepped,
 ];
 
 export const REDRAFTS: ReadonlyMap<string, UnitLesson[]> = new Map<string, UnitLesson[]>([
