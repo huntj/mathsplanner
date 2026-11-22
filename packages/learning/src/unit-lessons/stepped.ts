@@ -91,3 +91,43 @@ export function owned(list: readonly UnitLesson[], id: string, tag: string, to: 
   if (!screens.length) throw new Error(`No "${tag}" screens in ${id}`);
   return screens.map((s) => ({ ...s, tag: to }));
 }
+
+/**
+ * A lesson's own worked example, its "why" lines moved into Dot's notes, as the stepped plan
+ * keeps explainers apart from the working.
+ */
+export function workedFrom(
+  list: readonly UnitLesson[],
+  id: string,
+  title = "Watch the method",
+): Screen {
+  const screen = find(list, id)?.screens.find((s) => s.kind === "worked");
+  if (!screen || screen.kind !== "worked") throw new Error(`No worked example in ${id}`);
+  return {
+    ...screen,
+    tag: "Worked example",
+    title,
+    steps: screen.steps.map(({ why, ...rest }) => ({ ...rest, ...(why ? { note: why } : {}) })),
+  };
+}
+
+/** Questions with no picture are words by nature: mark each with the reason. */
+export function worded(screens: Screen[], why: string): Screen[] {
+  const asking = new Set([
+    "answer",
+    "choice",
+    "calc",
+    "set",
+    "steps",
+    "fill",
+    "sort",
+    "mistake",
+    "quiz",
+    "order",
+  ]);
+  return screens.map((s) =>
+    asking.has(s.kind) && !s.wordsOnly && !("picture" in s && s.picture)
+      ? { ...s, wordsOnly: why }
+      : s,
+  );
+}
