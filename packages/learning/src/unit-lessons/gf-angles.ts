@@ -10,7 +10,7 @@ const U = "gf-angles";
 const P = (x: number, y: number): Point => ({ x, y });
 
 /** A triangle with angles a, b and c, and the parallel line through its top drawn or not. */
-const proofTriangle = (parallel: boolean): DrawingPic => ({
+export const proofTriangle = (parallel: boolean): DrawingPic => ({
   kind: "drawing",
   items: [
     { line: [P(0, 0), P(6, 0)] },
