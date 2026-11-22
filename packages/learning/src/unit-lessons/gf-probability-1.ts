@@ -10,7 +10,7 @@ const U = "gf-probability-1";
 const P = (x: number, y: number): Point => ({ x, y });
 
 /** A frequency tree: a total, split two ways, each split two ways again. */
-function frequencyTree(
+export function frequencyTree(
   total: string,
   first: [string, string],
   second: [string, string, string, string],
@@ -33,7 +33,7 @@ function frequencyTree(
 }
 
 const totals = Array.from({ length: 36 }, (_, i) => String(Math.floor(i / 6) + (i % 6) + 2));
-const dice: Picture = {
+export const dice: Picture = {
   kind: "grid",
   cols: 6,
   rows: 6,
