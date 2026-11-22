@@ -11,6 +11,8 @@ import { y7CalculatingStepped } from "./redraft-y7-calculating.ts";
 import { y7EquationsStepped } from "./redraft-y7-equations.ts";
 import { y7FactorsStepped } from "./redraft-y7-factors.ts";
 import { y7FdpStepped } from "./redraft-y7-fdp.ts";
+import { y7LinesStepped } from "./redraft-y7-lines.ts";
+import { y7MeasuresStepped } from "./redraft-y7-measures.ts";
 import { y7NotationStepped } from "./redraft-y7-notation.ts";
 import { y7OrderStepped } from "./redraft-y7-order.ts";
 import { y7PlaceValueStepped } from "./redraft-y7-place-value.ts";
@@ -38,6 +40,8 @@ const ROLLOUT: [string, UnitLesson[]][] = [
   ...y7EquationsStepped,
   ...y7NotationStepped,
   ...y7AnglesStepped,
+  ...y7MeasuresStepped,
+  ...y7LinesStepped,
 ];
 
 export const REDRAFTS: ReadonlyMap<string, UnitLesson[]> = new Map<string, UnitLesson[]>([
