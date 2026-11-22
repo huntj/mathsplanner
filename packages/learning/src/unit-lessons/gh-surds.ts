@@ -7,7 +7,7 @@ import type { Picture, UnitLesson } from "./types.ts";
 
 const U = "gh-surds";
 
-const lock: Picture = {
+export const lock: Picture = {
   kind: "table",
   head: ["Wheel", "1st", "2nd", "3rd", "4th"],
   rows: [["Choices", "10", "10", "10", "10"]],
@@ -242,34 +242,34 @@ export const ghSurds: UnitLesson[] = [
     "A power of ½ is a square root; ⅓ a cube root; the top is a power.",
     [
       problem("Exact values", [
-        "“Work out the exact value of $8^{\\frac23}$.” And “$16^{-\\frac12}$.” No calculator.",
+        "“Work out the exact value of $8^{2/3}$.” And “$16^{-1/2}$.” No calculator.",
         "By the end of this lesson, you can do both.",
       ]),
       typed("Warm-up", "$\\sqrt[3]{8}$", "2", "$2^3 = 8$.", "2."),
       typed("Warm-up", "$2^{-1}$, as a fraction", "1/2", "Negative: reciprocal.", "$\\frac12$."),
       explain("Discover", "Root, then power", [
-        "$a^{\\frac12} = \\sqrt{a}$, since $a^{\\frac12} \\times a^{\\frac12} = a^1$. Likewise $a^{\\frac13} = \\sqrt[3]{a}$.",
-        "In $a^{\\frac{m}{n}}$, the bottom $n$ is the root and the top $m$ the power: **root first**, it keeps numbers small. A minus sign means **one over**.",
+        "$a^{1/2} = \\sqrt{a}$, since $a^{1/2} \\times a^{1/2} = a^1$. Likewise $a^{1/3} = \\sqrt[3]{a}$.",
+        "In $a^{m/n}$, the bottom $n$ is the root and the top $m$ the power: **root first**, it keeps numbers small. A minus sign means **one over**.",
       ]),
-      choose("Discover", "$25^{\\frac12}$", "5", "$\\sqrt{25}$.", [
+      choose("Discover", "$25^{1/2}$", "5", "$\\sqrt{25}$.", [
         ["12.5", "Not half of 25."],
         ["625", "That's $25^2$."],
       ]),
       worked(
         "The first",
-        "Find $8^{\\frac23}$.",
+        "Find $8^{2/3}$.",
         [
           ["$\\sqrt[3]{8} = 2$", "Root (bottom)."],
           ["$2^2 = 4$", "Power (top)."],
         ],
-        "$8^{\\frac23} = 4$.",
+        "$8^{2/3} = 4$.",
       ),
       steps(
         "Together",
-        "Find $16^{-\\frac12}$",
+        "Find $16^{-1/2}$",
         "Deal with the minus last.",
         [
-          ["$16^{\\frac12} =$", "4", ["8", "Square root, not half."], "4"],
+          ["$16^{1/2} =$", "4", ["8", "Square root, not half."], "4"],
           [
             "With the minus:",
             "$\\frac14$",
@@ -277,42 +277,42 @@ export const ghSurds: UnitLesson[] = [
             "$\\frac14$",
           ],
         ],
-        "$16^{-\\frac12} = \\frac14$.",
+        "$16^{-1/2} = \\frac14$.",
       ),
-      choose("Together", "$27^{\\frac23}$", "9", "$3^2$.", [
+      choose("Together", "$27^{2/3}$", "9", "$3^2$.", [
         ["18", "Not $\\frac23$ of 27."],
         ["729", "That's $27^2$."],
       ]),
-      typed("Your turn", "$125^{\\frac13}$", "5", "Cube root.", "5."),
-      typed("Your turn", "$4^{\\frac32}$", "8", "$\\sqrt4 = 2$, $2^3$.", "8."),
+      typed("Your turn", "$125^{1/3}$", "5", "Cube root.", "5."),
+      typed("Your turn", "$4^{3/2}$", "8", "$\\sqrt4 = 2$, $2^3$.", "8."),
       choose(
         "Watch out",
-        "Zoe says $9^{\\frac12} = 4.5$. What's wrong?",
+        "Zoe says $9^{1/2} = 4.5$. What's wrong?",
         "A power of ½ is a square root: 3",
         "Not halving.",
         [["Nothing", "$4.5^2 \\ne 9$."]],
       ),
       mistake(
-        "Leo finds $64^{-\\frac13}$.",
+        "Leo finds $64^{-1/3}$.",
         ["$\\sqrt[3]{64} = 4$", "Negative: $-4$", "So $-4$"],
         1,
         "A negative power means one over: $\\frac14$.",
       ),
-      typed("Back to the problem", "“Work out $8^{\\frac23}$.”", "4", "Root then power.", "4.", {
+      typed("Back to the problem", "“Work out $8^{2/3}$.”", "4", "Root then power.", "4.", {
         wrong: [["16/3", "It's not × ⅔."]],
       }),
       quiz([
         [
-          ["$36^{\\frac12}$", "6", ["18", "1296"], "Root."],
-          ["$49^{\\frac12}$", "7", ["24.5", "2401"], "Root."],
+          ["$36^{1/2}$", "6", ["18", "1296"], "Root."],
+          ["$49^{1/2}$", "7", ["24.5", "2401"], "Root."],
         ],
         [
-          ["$9^{\\frac32}$", "27", ["13.5", "729"], "$3^3$."],
-          ["$16^{\\frac34}$", "8", ["12", "4096"], "$2^3$."],
+          ["$9^{3/2}$", "27", ["13.5", "729"], "$3^3$."],
+          ["$16^{3/4}$", "8", ["12", "4096"], "$2^3$."],
         ],
         [
-          ["$25^{-\\frac12}$", "$\\frac15$", ["−5", "$-\\frac{25}{2}$"], "Reciprocal."],
-          ["$8^{-\\frac13}$", "$\\frac12$", ["−2", "$-\\frac83$"], "Reciprocal."],
+          ["$25^{-1/2}$", "$\\frac15$", ["−5", "$-\\frac{25}{2}$"], "Reciprocal."],
+          ["$8^{-1/3}$", "$\\frac12$", ["−2", "$-\\frac83$"], "Reciprocal."],
         ],
       ]),
     ],
