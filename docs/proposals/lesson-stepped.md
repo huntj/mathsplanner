@@ -1,6 +1,7 @@
 # Proposal: the stepped lesson template
 
-Status: **agreed on 21 November 2026**, with the owner's answers below. The owner designed this plan for "The angle
+Status: **agreed on 21 November 2026**, with the owner's answers below. The owner reviewed the
+five other pilot lessons on 22 November 2026 and approved the template for every lesson. The owner designed this plan for "The angle
 in a semicircle" (GCSE Higher, `gh-circles/semicircle`), reviewed it live and asked for it to be
 summarised as a template of principles for the other lessons. The six circle theorem lessons and
 the five other pilot lessons use it (rollout steps 1 and 2 below).
@@ -33,7 +34,8 @@ is going.
 - **Drags stop before the diagram degenerates**, for example before two points meet or an angle
   gets thinner than about 20°, so labels always have room.
 - For a topic without a diagram, the rule is the key fact or relationship, such as
-  "part = percentage × whole". The Explore is a slider or a hundred square that shows it.
+  "part = percentage × whole". The Explore is a slider, a hundred square, or a number to slide
+  along a number line, watching what it rounds to or becomes.
 
 ### 2. Check you remember
 
@@ -127,6 +129,9 @@ is going.
 
 - **Diagrams first.** Any question about a shape, angle, graph or chart is asked on its diagram,
   with the given values on the diagram and only what to find in words.
+- **Think of a visual first, everywhere.** For every question, ask first whether a picture would
+  help: a number line, a place value chart, a bar model, a hundred square, a balance. Not every
+  question needs one, and a question in words is fine when a picture would add nothing.
 - **Few words.**
   - Questions of 12 words or fewer.
   - Dot's bubbles and hints of 15 words or fewer.
@@ -192,7 +197,8 @@ against it.
    number, algebra and trigonometry. Each has a real-life problem after its exit check: the laptop
    screen, the best test score, the round rug, the kite string and the shared prize.
 3. **Year by year**, Year 7 to GCSE Higher, in the batches already agreed. Each batch's PR lists
-   every lesson's plan (the table above).
+   every lesson's plan (the table above). The batches go in smaller PRs of two or three units,
+   so each one is live, and can be reviewed, sooner. Year 7 so far: place value and rounding.
 
 ## The owner's answers
 
@@ -200,3 +206,6 @@ against it.
 2. **The real-life problem** comes at the end, after the exit check, where it fits. It won't always
    apply, as for circle theorems.
 3. **The order of rollout** above is right.
+4. **The prerequisites** checked in the five pilot lessons are good and correct.
+5. **Visuals:** not every question needs one, but a visual is always thought of first.
+6. **The template** is good to expand to every other lesson.

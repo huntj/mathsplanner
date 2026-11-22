@@ -756,6 +756,43 @@ export interface RatioScene {
   unit?: string;
 }
 
+/** What a number becomes, live under a number-line Explore. */
+export type LineReadout = { label: Words } &
+  /** The number itself. */
+  (
+    | { value: true }
+    /** Rounded to this many decimal places. */
+    | { round: number }
+    /** Rounded to the nearest 10, 100 or 1000. */
+    | { nearest: number }
+    /** Rounded to this many significant figures. */
+    | { sf: number }
+    /** Times by this. */
+    | { times: number }
+    /** Add this. */
+    | { plus: number }
+    /** To this power. */
+    | { power: number }
+  );
+
+/** Slide a number along a number line, and watch what it rounds to, or what it becomes. */
+export interface LineScene {
+  kind: "line";
+  min: number;
+  max: number;
+  /** How far one step of the slider moves the number. */
+  step: number;
+  start: number;
+  /** A tick every `tick`, labelled every `every`th one (1 by default). */
+  tick: number;
+  every?: number;
+  /** Decimal places the number is shown to. */
+  dp: number;
+  readouts: LineReadout[];
+  /** Mark the first readout's value on the line too, such as where the number rounds to. */
+  markFirst?: true;
+}
+
 /**
  * Explore: a diagram to drag, before the method (or between questions), so the pupil sees what
  * changes and what stays the same. An optional prediction comes first; once the pupil has
@@ -765,7 +802,7 @@ export interface Explore {
   kind: "explore";
   title: Words;
   text?: Words;
-  scene: GeometryScene | HundredScene | RatioScene;
+  scene: GeometryScene | HundredScene | RatioScene | LineScene;
   expect?: { question: Words; options: Option[] };
   notice: { question: Words; options: Option[] };
   done: Words;

@@ -15,6 +15,8 @@ import type {
   Explore,
   ExplorePoint,
   GeometryScene,
+  LineReadout,
+  LineScene,
   Option,
   Point,
   RatioScene,
@@ -23,7 +25,7 @@ import type {
   TapSet,
 } from "@mathsplanner/learning/unit-lessons";
 import { circleSegments, placeAngleMarks, type Obstacles, type Pt } from "./labels.ts";
-import { PictureView, tapName } from "./Picture.tsx";
+import { NumberLine, PictureView, tapName } from "./Picture.tsx";
 import { play } from "./sounds.ts";
 import { shuffled } from "./unit-screens.tsx";
 import { Title, useChime, Verdict, W, Working, type Step } from "./unit-ui.tsx";
@@ -616,6 +618,90 @@ function RatioView({
   );
 }
 
+/** A number cut to `dp` places, with no float dust: 0.1 + 0.2 is 0.3. */
+const clean = (v: number, dp = 9) => Number.parseFloat(v.toFixed(dp));
+
+/** Round half up (away from zero), safely past float error. */
+function roundTo(v: number, unit: number): number {
+  const n = Math.abs(v) / unit;
+  const r = Math.floor(n + 0.5 + 1e-9) * unit;
+  return clean(Math.sign(v) * r);
+}
+
+/** What a number becomes under a readout on a number-line Explore. */
+export function lineValue(r: LineReadout, v: number): number {
+  if ("round" in r) return roundTo(v, 10 ** -r.round);
+  if ("nearest" in r) return roundTo(v, r.nearest);
+  if ("sf" in r) {
+    if (v === 0) return 0;
+    const place = Math.floor(Math.log10(Math.abs(v)) + 1e-9) - r.sf + 1;
+    return roundTo(v, 10 ** place);
+  }
+  if ("times" in r) return clean(v * r.times);
+  if ("plus" in r) return clean(v + r.plus);
+  if ("power" in r) return clean(v ** r.power);
+  return clean(v);
+}
+
+/** A number as it is written: a true minus sign, and the places asked for. */
+export function lineText(v: number, dp?: number): string {
+  const t = dp === undefined ? String(clean(v)) : clean(v).toFixed(dp);
+  return t.replace(/^-/, "−");
+}
+
+/** How many places a readout shows: as many as it rounds to, or as the number has. */
+const readoutDp = (r: LineReadout, scene: LineScene) =>
+  "round" in r ? r.round : "value" in r ? scene.dp : undefined;
+
+function LineView({
+  scene,
+  value,
+  locked,
+  onMove,
+}: {
+  scene: LineScene;
+  value: number;
+  locked: boolean;
+  onMove: (v: number) => void;
+}) {
+  const first = scene.readouts[0];
+  const marks: NonNullable<Parameters<typeof NumberLine>[0]["extra"]> = [
+    { at: value, label: lineText(value, scene.dp), tone: "mine" },
+  ];
+  if (scene.markFirst && first) {
+    const to = lineValue(first, value);
+    // A ring, unlabelled: its value is in the first readout, and a label would crowd the number's.
+    if (to !== value) marks.push({ at: to, tone: "hint" });
+  }
+  const steps = Math.round((scene.max - scene.min) / scene.step);
+  return (
+    <div className="explore-line">
+      <NumberLine
+        line={{
+          kind: "number-line",
+          min: scene.min,
+          max: scene.max,
+          step: scene.tick,
+          ...(scene.every ? { every: scene.every } : {}),
+        }}
+        extra={marks}
+        label={`A number line from ${lineText(scene.min)} to ${lineText(scene.max)}, with the number at ${lineText(value, scene.dp)}.`}
+      />
+      <input
+        type="range"
+        className="explore-range"
+        min={0}
+        max={steps}
+        value={Math.round((value - scene.min) / scene.step)}
+        disabled={locked}
+        aria-label="The number"
+        aria-valuetext={lineText(value, scene.dp)}
+        onChange={(e) => onMove(clean(scene.min + Number(e.target.value) * scene.step))}
+      />
+    </div>
+  );
+}
+
 /** What the readouts say for a hundred square, or for a ratio, at a value. */
 export function sceneReadouts(
   scene: Explore["scene"],
@@ -641,6 +727,11 @@ export function sceneReadouts(
       ...scene.rows.map((r) => ({ label: `${r.label}'s share`, value: fmt(one * r.parts) })),
     ];
   }
+  if (scene.kind === "line" && typeof value === "number")
+    return scene.readouts.map((r) => ({
+      label: r.label,
+      value: lineText(lineValue(r, value), readoutDp(r, scene)),
+    }));
   if (scene.kind === "geometry" && typeof value === "object") {
     const pts = placePoints(scene, value);
     return scene.readouts.map((r) => {
@@ -665,7 +756,13 @@ export function ExploreStep({ screen, family, sound, onNext }: Step<Explore>) {
     scene.kind === "geometry" ? startPositions(scene) : {},
   );
   const [value, setValue] = useState(() =>
-    scene.kind === "hundred" ? scene.start : scene.kind === "ratio" ? scene.total.start : 0,
+    scene.kind === "hundred"
+      ? scene.start
+      : scene.kind === "ratio"
+        ? scene.total.start
+        : scene.kind === "line"
+          ? scene.start
+          : 0,
   );
   const [seen, setSeen] = useState<Set<string>>(() => new Set());
   const [predicted, setPredicted] = useState<number>();
@@ -733,6 +830,16 @@ export function ExploreStep({ screen, family, sound, onNext }: Step<Explore>) {
             />
           ) : scene.kind === "hundred" ? (
             <HundredView
+              value={value}
+              locked={locked}
+              onMove={(v) => {
+                setValue(v);
+                record(String(v));
+              }}
+            />
+          ) : scene.kind === "line" ? (
+            <LineView
+              scene={scene}
               value={value}
               locked={locked}
               onMove={(v) => {

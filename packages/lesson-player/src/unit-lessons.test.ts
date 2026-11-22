@@ -152,7 +152,9 @@ const words = (lesson: (typeof UNIT_LESSONS)[number]): string[] =>
             q.question,
             ...q.options.flatMap((o) => [o.text, o.feedback]),
           ]),
-          ...(s.scene.kind === "geometry" ? s.scene.readouts.map((r) => r.label) : []),
+          ...(s.scene.kind === "geometry" || s.scene.kind === "line"
+            ? s.scene.readouts.map((r) => r.label)
+            : []),
         );
       if (s.kind === "quiz")
         own.push(
@@ -625,6 +627,16 @@ describe.each(ALL_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %s
           } else if (sc.kind === "hundred") {
             expect(sc.start).toBeGreaterThanOrEqual(0);
             expect(sc.start).toBeLessThanOrEqual(100);
+          } else if (sc.kind === "line") {
+            // The start is on a step of the slider, inside the line, and every value it can take
+            // reads out as a number.
+            expect(sc.min).toBeLessThan(sc.max);
+            expect(sc.start).toBeGreaterThanOrEqual(sc.min);
+            expect(sc.start).toBeLessThanOrEqual(sc.max);
+            const k = (sc.start - sc.min) / sc.step;
+            expect(Math.abs(k - Math.round(k))).toBeLessThan(1e-9);
+            for (let v = sc.min; v <= sc.max + 1e-9; v += sc.step)
+              for (const r of sceneReadouts(sc, v)) expect(r.value, r.label).toMatch(/^−?\d/);
           } else {
             expect(sc.total.min).toBeLessThan(sc.total.max);
             expect(sc.total.start).toBeGreaterThanOrEqual(sc.total.min);
@@ -636,7 +648,7 @@ describe.each(ALL_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %s
               sc,
               sc.kind === "geometry"
                 ? startPositions(sc)
-                : sc.kind === "hundred"
+                : sc.kind === "hundred" || sc.kind === "line"
                   ? sc.start
                   : sc.total.start,
             ).length,
