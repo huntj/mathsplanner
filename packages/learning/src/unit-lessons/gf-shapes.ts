@@ -15,7 +15,7 @@ const shape = (points: Point[], extra: Partial<ShapePic> = {}): ShapePic => ({
 const P = (x: number, y: number): Point => ({ x, y });
 
 /** An L-shaped solid of four cubes, drawn in oblique view: three in a row and one on top. */
-const lSolid: DrawingPic = (() => {
+export const lSolid: DrawingPic = (() => {
   const o = P(1.2, 0.9);
   const f = [P(0, 0), P(3, 0), P(3, 1), P(1, 1), P(1, 2), P(0, 2)];
   const b = f.map((p) => P(p.x + o.x, p.y + o.y));
