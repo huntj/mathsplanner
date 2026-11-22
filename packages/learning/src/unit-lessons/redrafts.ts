@@ -10,6 +10,7 @@ import { gfExpressionsStepped } from "./redraft-gf-expressions.ts";
 import { gfFormulaeStepped } from "./redraft-gf-formulae.ts";
 import { gfStraightLineStepped } from "./redraft-gf-straight-line.ts";
 import { gfShapesStepped } from "./redraft-gf-shapes.ts";
+import { gfTransformationsStepped } from "./redraft-gf-transformations.ts";
 import { pilotRedrafts } from "./redraft-pilot.ts";
 import { y7AnglesStepped } from "./redraft-y7-angles.ts";
 import { y7AreaStepped } from "./redraft-y7-area.ts";
@@ -92,6 +93,7 @@ const ROLLOUT: [string, UnitLesson[]][] = [
   ...gfFormulaeStepped,
   ...gfStraightLineStepped,
   ...gfShapesStepped,
+  ...gfTransformationsStepped,
 ];
 
 export const REDRAFTS: ReadonlyMap<string, UnitLesson[]> = new Map<string, UnitLesson[]>([
