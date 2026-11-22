@@ -6,6 +6,7 @@
 // that its lessons go to pupils each time they improve.
 import { circleTheorems } from "./redraft-gh-circle-theorems.ts";
 import { pilotRedrafts } from "./redraft-pilot.ts";
+import { y7AnglesStepped } from "./redraft-y7-angles.ts";
 import { y7CalculatingStepped } from "./redraft-y7-calculating.ts";
 import { y7EquationsStepped } from "./redraft-y7-equations.ts";
 import { y7FactorsStepped } from "./redraft-y7-factors.ts";
@@ -36,6 +37,7 @@ const ROLLOUT: [string, UnitLesson[]][] = [
   ...y7RatioStepped,
   ...y7EquationsStepped,
   ...y7NotationStepped,
+  ...y7AnglesStepped,
 ];
 
 export const REDRAFTS: ReadonlyMap<string, UnitLesson[]> = new Map<string, UnitLesson[]>([

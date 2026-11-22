@@ -200,7 +200,7 @@ against it.
    every lesson's plan (the table above). The batches go in smaller PRs of two or three units,
    so each one is live, and can be reviewed, sooner. Year 7 so far: place value and rounding;
    powers, the order of operations and simplifying; factors and calculating; FDP and ratio;
-   sequences and equations, and notation.
+   sequences and equations, and notation; angles.
 
 ## The owner's answers
 
