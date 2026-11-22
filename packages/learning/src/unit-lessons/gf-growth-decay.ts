@@ -7,12 +7,12 @@ import type { Picture, UnitLesson } from "./types.ts";
 
 const U = "gf-growth-decay";
 
-const rabbits: Picture = {
+export const rabbits: Picture = {
   kind: "table",
   head: ["Year", "0", "1", "2", "3"],
   rows: [["Rabbits", "200", "240", "288", "345.6"]],
 };
-const car: Picture = {
+export const car: Picture = {
   kind: "table",
   head: ["Year", "0", "1", "2"],
   rows: [["Value (£)", "12 000", "10 200", "8670"]],
