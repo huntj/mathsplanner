@@ -651,7 +651,7 @@ export function lineText(v: number, dp?: number): string {
 
 /** How many places a readout shows: as many as it rounds to, or as the number has. */
 const readoutDp = (r: LineReadout, scene: LineScene) =>
-  "round" in r ? r.round : "value" in r ? scene.dp : undefined;
+  r.dp ?? ("round" in r ? r.round : "value" in r ? scene.dp : undefined);
 
 function LineView({
   scene,
@@ -728,10 +728,14 @@ export function sceneReadouts(
     ];
   }
   if (scene.kind === "line" && typeof value === "number")
-    return scene.readouts.map((r) => ({
-      label: r.label,
-      value: lineText(lineValue(r, value), readoutDp(r, scene)),
-    }));
+    return scene.readouts.map((r) => {
+      const v = lineValue(r, value);
+      const dp = readoutDp(r, scene);
+      return {
+        label: r.label,
+        value: lineText(r.dp === undefined ? v : roundTo(v, 10 ** -r.dp), dp),
+      };
+    });
   if (scene.kind === "geometry" && typeof value === "object") {
     const pts = placePoints(scene, value);
     return scene.readouts.map((r) => {

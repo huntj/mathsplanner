@@ -198,7 +198,8 @@ against it.
    screen, the best test score, the round rug, the kite string and the shared prize.
 3. **Year by year**, Year 7 to GCSE Higher, in the batches already agreed. Each batch's PR lists
    every lesson's plan (the table above). The batches go in smaller PRs of two or three units,
-   so each one is live, and can be reviewed, sooner. Year 7 so far: place value and rounding.
+   so each one is live, and can be reviewed, sooner. Year 7 so far: place value and rounding;
+   powers, the order of operations and simplifying.
 
 ## The owner's answers
 

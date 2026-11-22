@@ -84,3 +84,10 @@ export const numberLine = (
   ...e,
   marks: marks.map((m) => (typeof m === "number" ? { at: m } : { at: m[0], label: m[1] })),
 });
+
+/** All of a lesson's own screens with a tag, moved to a new one: its "Your turn" gap fills, say. */
+export function owned(list: readonly UnitLesson[], id: string, tag: string, to: string): Screen[] {
+  const screens = find(list, id)?.screens.filter((s) => s.tag === tag) ?? [];
+  if (!screens.length) throw new Error(`No "${tag}" screens in ${id}`);
+  return screens.map((s) => ({ ...s, tag: to }));
+}

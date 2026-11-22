@@ -635,6 +635,11 @@ describe.each(ALL_LESSONS.map((l) => [lessonId(l), l] as const))("unit lesson %s
             expect(sc.start).toBeLessThanOrEqual(sc.max);
             const k = (sc.start - sc.min) / sc.step;
             expect(Math.abs(k - Math.round(k))).toBeLessThan(1e-9);
+            // The ticks, and the slider's steps, land on both ends of the line.
+            for (const gap of [sc.tick, sc.step]) {
+              const n = (sc.max - sc.min) / gap;
+              expect(Math.abs(n - Math.round(n)), `a gap of ${gap}`).toBeLessThan(1e-9);
+            }
             for (let v = sc.min; v <= sc.max + 1e-9; v += sc.step)
               for (const r of sceneReadouts(sc, v)) expect(r.value, r.label).toMatch(/^−?\d/);
           } else {
