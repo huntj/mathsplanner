@@ -6,8 +6,11 @@
 // that its lessons go to pupils each time they improve.
 import { circleTheorems } from "./redraft-gh-circle-theorems.ts";
 import { pilotRedrafts } from "./redraft-pilot.ts";
+import { y7OrderStepped } from "./redraft-y7-order.ts";
 import { y7PlaceValueStepped } from "./redraft-y7-place-value.ts";
+import { y7PowersStepped } from "./redraft-y7-powers.ts";
 import { y7RoundingStepped } from "./redraft-y7-rounding.ts";
+import { y7SimplifyingStepped } from "./redraft-y7-simplifying.ts";
 import type { UnitLesson } from "./types.ts";
 
 /**
@@ -15,7 +18,13 @@ import type { UnitLesson } from "./types.ts";
  * (docs/proposals/lesson-stepped.md). The owner approved the template for every lesson, so these
  * go to pupils as soon as they are merged.
  */
-const ROLLOUT: [string, UnitLesson[]][] = [...y7PlaceValueStepped, ...y7RoundingStepped];
+const ROLLOUT: [string, UnitLesson[]][] = [
+  ...y7PlaceValueStepped,
+  ...y7RoundingStepped,
+  ...y7PowersStepped,
+  ...y7OrderStepped,
+  ...y7SimplifyingStepped,
+];
 
 export const REDRAFTS: ReadonlyMap<string, UnitLesson[]> = new Map<string, UnitLesson[]>([
   ["gh-circles/circle-theorems", circleTheorems],

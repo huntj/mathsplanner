@@ -1,5 +1,6 @@
+import type { LineScene } from "@mathsplanner/learning/unit-lessons";
 import { describe, expect, it } from "vitest";
-import { lineText, lineValue } from "./interactive-screens.tsx";
+import { lineText, lineValue, sceneReadouts } from "./interactive-screens.tsx";
 
 describe("a number-line Explore's readouts", () => {
   it("rounds half up, past float error", () => {
@@ -21,6 +22,21 @@ describe("a number-line Explore's readouts", () => {
     expect(lineValue({ label: "", times: 10 }, 0.07)).toBe(0.7);
     expect(lineValue({ label: "", plus: 0.2 }, 0.1)).toBe(0.3);
     expect(lineValue({ label: "", power: 2 }, 1.1)).toBe(1.21);
+  });
+
+  it("rounds a readout to the places asked for", () => {
+    const scene: LineScene = {
+      kind: "line",
+      min: 1,
+      max: 100,
+      step: 1,
+      start: 30,
+      tick: 10,
+      dp: 0,
+      readouts: [{ label: "Square root", power: 0.5, dp: 2 }],
+    };
+    expect(sceneReadouts(scene, 30)[0]?.value).toBe("5.48");
+    expect(sceneReadouts(scene, 36)[0]?.value).toBe("6.00");
   });
 
   it("writes a number with a true minus and the places asked for", () => {

@@ -757,7 +757,11 @@ export interface RatioScene {
 }
 
 /** What a number becomes, live under a number-line Explore. */
-export type LineReadout = { label: Words } &
+export type LineReadout = {
+  label: Words;
+  /** Decimal places to show it to, rounded: a square root, say. */
+  dp?: number;
+} &
   /** The number itself. */
   (
     | { value: true }
