@@ -14,6 +14,9 @@ import { gfTransformationsStepped } from "./redraft-gf-transformations.ts";
 import { gfSimilarityStepped } from "./redraft-gf-similarity.ts";
 import { gfAnglesStepped } from "./redraft-gf-angles.ts";
 import { gfFactorsStepped } from "./redraft-gf-factors.ts";
+import { gfExpressions2Stepped } from "./redraft-gf-expressions-2.ts";
+import { gfFdpStepped } from "./redraft-gf-fdp.ts";
+import { gfProbability1Stepped } from "./redraft-gf-probability-1.ts";
 import { pilotRedrafts } from "./redraft-pilot.ts";
 import { y7AnglesStepped } from "./redraft-y7-angles.ts";
 import { y7AreaStepped } from "./redraft-y7-area.ts";
@@ -100,6 +103,9 @@ const ROLLOUT: [string, UnitLesson[]][] = [
   ...gfSimilarityStepped,
   ...gfAnglesStepped,
   ...gfFactorsStepped,
+  ...gfExpressions2Stepped,
+  ...gfFdpStepped,
+  ...gfProbability1Stepped,
 ];
 
 export const REDRAFTS: ReadonlyMap<string, UnitLesson[]> = new Map<string, UnitLesson[]>([
