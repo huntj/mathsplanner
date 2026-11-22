@@ -107,7 +107,7 @@ const functions = stepped(find(SL, FUNCTIONS), {
           ask("× 3, then + 2. Output 17. Input?", "5", "17 − 2, then ÷ 3.", "5.", {
             asks: "input",
             expect: [
-              "Ola undoes × 3 first. Right?",
+              "× 3 then + 2: Ola undoes × 3 first. Right?",
               "No",
               "Undo + 2 first: $17 - 2 = 15$, then $15 \\div 3 = 5$.",
               [["Yes", "Which step was done last?"]],
@@ -375,7 +375,7 @@ const parallel = stepped(find(SL, PARALLEL), {
           ask("$2y = 6x - 4$", "3", "Divide by 2 first.", "3.", {
             asks: "gradient",
             expect: [
-              "Lily says the gradient is 6. Right?",
+              "For $2y = 6x - 4$, Lily says the gradient is 6. Right?",
               "No",
               "Divide by 2 first: $y = 3x - 2$.",
               [["Yes", "Get y on its own first."]],
@@ -495,7 +495,7 @@ const pointGradient = stepped(find(SL, POINT), {
           ask("Gradient 4, through $(-2, 1)$", "9", "$1 = -8 + c$.", "9.", {
             asks: "c",
             expect: [
-              "Max gets $c = -7$. Right?",
+              "Gradient 4, through $(-2, 1)$: Max gets $c = -7$. Right?",
               "No",
               "$1 = -8 + c$, so $c = 1 + 8 = 9$.",
               [["Yes", "Undo −8 by adding 8."]],
@@ -633,7 +633,7 @@ const twoPoints = stepped(find(SL, TWO_POINTS), {
             {
               asks: "line",
               expect: [
-                "Mo gets gradient $\\frac12$. Right?",
+                "$(1, 5)$ and $(2, 7)$: Mo gets gradient $\\frac12$. Right?",
                 "No",
                 "Up 2, across 1: gradient 2.",
                 [["Yes", "Up goes on top."]],
@@ -809,7 +809,7 @@ const gradients = stepped(find(SL, GRADIENTS), {
           ask("$(0, 50)$ to $(10, 30)$", neg(-2), "−20 ÷ 10.", "−2.", {
             asks: "gradient",
             expect: [
-              "Ed gets 2. Right?",
+              "$(0, 50)$ to $(10, 30)$: Ed gets gradient 2. Right?",
               "No",
               "$30 - 50 = -20$, and $-20 \\div 10 = -2$.",
               [["Yes", "Is it going up or down?"]],
@@ -962,7 +962,7 @@ const intercepts = stepped(find(SL, INTERCEPTS), {
           ask("$y = 5x - 10$", "2", "$5x = 10$.", "$x = 2$.", {
             asks: "x-intercept",
             expect: [
-              "Zara writes $5x = -10$. Right?",
+              "For $y = 5x - 10$, Zara writes $5x = -10$. Right?",
               "No",
               "Add 10 to both sides: $5x = 10$, so $x = 2$.",
               [["Yes", "Undo − 10 by adding."]],

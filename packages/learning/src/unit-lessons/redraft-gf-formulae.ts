@@ -406,7 +406,7 @@ const standard = stepped(find(F, STD), {
             asks: "value",
             unit: "cm²",
             expect: [
-              "Raj works out $\\pi \\times 12$. Right?",
+              "Radius 6: Raj works out $\\pi \\times 12$. Right?",
               "No",
               "$r^2 = 36$, not 12: $\\pi \\times 36$.",
               [["Yes", "Square it; don't double it."]],
@@ -559,7 +559,7 @@ const rearrange = stepped(find(F, REARR), {
             {
               asks: "rearranged",
               expect: [
-                "Sam writes $x = \\frac{y}{2} + 7$. Right?",
+                "For $y = 2x - 7$, Sam writes $x = \\frac{y}{2} + 7$. Right?",
                 "No",
                 "Undo − 7 first: $x = \\frac{y + 7}{2}$.",
                 [["Yes", "Which step was done last?"]],

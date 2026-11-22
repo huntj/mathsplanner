@@ -862,7 +862,7 @@ const plans = stepped(find(S, PLANS), {
           pick("An upright cylinder, from above", "A circle", ["A rectangle"], "You see its top.", {
             asks: "view",
             expect: [
-              "Ben draws a rectangle for its plan. Right?",
+              "Ben draws a rectangle for an upright cylinder's plan. Right?",
               "No",
               "From above, you see the circular top.",
               [["Yes", "Look straight down."]],
@@ -1048,7 +1048,7 @@ const elevations = stepped(find(S, ELEVATIONS), {
             {
               asks: "view",
               expect: [
-                "Joe says the side view is a circle. Right?",
+                "Joe says a cone's side view is a circle. Right?",
                 "No",
                 "From the side, a cone looks like a triangle.",
                 [["Yes", "Look straight at its side."]],

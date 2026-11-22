@@ -135,7 +135,7 @@ const notation = stepped(find(E1, NOTATION), {
             {
               asks: "expression",
               expect: [
-                "Kim writes $2x + 5^2$. Right?",
+                "For “double x, add 5, square”, Kim writes $2x + 5^2$. Right?",
                 "No",
                 "The square covers all of $2x + 5$: $(2x + 5)^2$.",
                 [["Yes", "What does the square cover?"]],
@@ -436,7 +436,7 @@ const likeTerms = stepped(find(E1, LIKE), {
           pick("$5p - 3q - 2p + q$", "$3p - 2q$", ["$3p - 4q$", "$3p + 2q$"], "$-3q + q$.", {
             asks: "simplified",
             expect: [
-              "Raj gets $3p - 4q$. Right?",
+              "Raj simplifies $5p - 3q - 2p + q$ to $3p - 4q$. Right?",
               "No",
               "$-3q + q = -2q$.",
               [["Yes", "−3 + 1 is −2."]],
@@ -572,7 +572,7 @@ const expand = stepped(find(E1, EXPAND), {
           pick("$10 - 2(x - 3)$", "$16 - 2x$", ["$4 - 2x$", "$7 - 2x$"], "−2 × −3 = +6.", {
             asks: "expanded",
             expect: [
-              "Tom gets $4 - 2x$. Right?",
+              "Tom expands $10 - 2(x - 3)$ to $4 - 2x$. Right?",
               "No",
               "$-2 \\times -3 = +6$: $10 + 6 - 2x$.",
               [["Yes", "Negative times negative."]],
