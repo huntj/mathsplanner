@@ -7,13 +7,13 @@ import { choose, explain, lesson, mistake, problem, quiz, steps, typed, worked }
 import type { Picture, Point, Rule, UnitLesson } from "./types.ts";
 
 const U = "gf-averages";
-const scatter = (points: Point[], lines: Rule[] = []): Picture => ({
+export const scatter = (points: Point[], lines: Rule[] = []): Picture => ({
   kind: "graph",
   range: { xMin: 0, xMax: 10, yMin: 0, yMax: 10 },
   points,
   ...(lines.length ? { lines } : {}),
 });
-const revision = [
+export const revision = [
   { x: 1, y: 2 },
   { x: 2, y: 3 },
   { x: 3, y: 3 },
@@ -23,7 +23,7 @@ const revision = [
   { x: 7, y: 8 },
   { x: 8, y: 8 },
 ];
-const grouped: Picture = {
+export const grouped: Picture = {
   kind: "table",
   head: ["Time $t$ (min)", "Frequency", "Midpoint"],
   rows: [
