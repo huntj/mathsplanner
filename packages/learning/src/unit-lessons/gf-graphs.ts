@@ -9,7 +9,7 @@ const U = "gf-graphs";
 const P = (x: number, y: number): Point => ({ x, y });
 
 /** A curve drawn as short straight pieces over x and y axes, with optional labels. */
-function plotted(
+export function plotted(
   f: (x: number) => number,
   from: number,
   to: number,
@@ -33,15 +33,15 @@ function plotted(
     items,
   };
 }
-const cubic = plotted((x) => x ** 3 / 2, -2, 2, { yMin: -4.2, yMax: 4.2 });
-const negCubic = plotted((x) => -(x ** 3) / 2, -2, 2, { yMin: -4.2, yMax: 4.2 });
-const reciprocal: Picture = {
+export const cubic = plotted((x) => x ** 3 / 2, -2, 2, { yMin: -4.2, yMax: 4.2 });
+export const negCubic = plotted((x) => -(x ** 3) / 2, -2, 2, { yMin: -4.2, yMax: 4.2 });
+export const reciprocal: Picture = {
   kind: "graph",
   range: { xMin: -5, xMax: 5, yMin: -5, yMax: 5 },
   curves: [{ kind: "inverse", k: 1 }],
 };
 /** The four graphs of the opening problem: y = 2x + 1, y = 3, y = x² and y = −x² + 4. */
-const fourGraphs: Picture = {
+export const fourGraphs: Picture = {
   kind: "graph",
   range: { xMin: -4, xMax: 4, yMin: -2, yMax: 8 },
   lines: [
@@ -74,7 +74,7 @@ function journey(points: [number, number][], tMax: number, dMax: number): Drawin
   });
   return { kind: "drawing", items };
 }
-const walk = journey(
+export const walk = journey(
   [
     [0, 0],
     [20, 2],
