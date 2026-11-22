@@ -7,8 +7,10 @@
 import { circleTheorems } from "./redraft-gh-circle-theorems.ts";
 import { pilotRedrafts } from "./redraft-pilot.ts";
 import { y7CalculatingStepped } from "./redraft-y7-calculating.ts";
+import { y7EquationsStepped } from "./redraft-y7-equations.ts";
 import { y7FactorsStepped } from "./redraft-y7-factors.ts";
 import { y7FdpStepped } from "./redraft-y7-fdp.ts";
+import { y7NotationStepped } from "./redraft-y7-notation.ts";
 import { y7OrderStepped } from "./redraft-y7-order.ts";
 import { y7PlaceValueStepped } from "./redraft-y7-place-value.ts";
 import { y7PowersStepped } from "./redraft-y7-powers.ts";
@@ -32,6 +34,8 @@ const ROLLOUT: [string, UnitLesson[]][] = [
   ...y7CalculatingStepped,
   ...y7FdpStepped,
   ...y7RatioStepped,
+  ...y7EquationsStepped,
+  ...y7NotationStepped,
 ];
 
 export const REDRAFTS: ReadonlyMap<string, UnitLesson[]> = new Map<string, UnitLesson[]>([
