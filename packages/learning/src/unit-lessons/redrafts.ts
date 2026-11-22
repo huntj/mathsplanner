@@ -7,6 +7,8 @@
 import { circleTheorems } from "./redraft-gh-circle-theorems.ts";
 import { pilotRedrafts } from "./redraft-pilot.ts";
 import { y7AnglesStepped } from "./redraft-y7-angles.ts";
+import { y7AreaStepped } from "./redraft-y7-area.ts";
+import { y7AveragesStepped } from "./redraft-y7-averages.ts";
 import { y7CalculatingStepped } from "./redraft-y7-calculating.ts";
 import { y7EquationsStepped } from "./redraft-y7-equations.ts";
 import { y7FactorsStepped } from "./redraft-y7-factors.ts";
@@ -17,6 +19,7 @@ import { y7NotationStepped } from "./redraft-y7-notation.ts";
 import { y7OrderStepped } from "./redraft-y7-order.ts";
 import { y7PlaceValueStepped } from "./redraft-y7-place-value.ts";
 import { y7PowersStepped } from "./redraft-y7-powers.ts";
+import { y7ProbabilityStepped } from "./redraft-y7-probability.ts";
 import { y7RatioStepped } from "./redraft-y7-ratio.ts";
 import { y7RoundingStepped } from "./redraft-y7-rounding.ts";
 import { y7SimplifyingStepped } from "./redraft-y7-simplifying.ts";
@@ -42,6 +45,9 @@ const ROLLOUT: [string, UnitLesson[]][] = [
   ...y7AnglesStepped,
   ...y7MeasuresStepped,
   ...y7LinesStepped,
+  ...y7AreaStepped,
+  ...y7AveragesStepped,
+  ...y7ProbabilityStepped,
 ];
 
 export const REDRAFTS: ReadonlyMap<string, UnitLesson[]> = new Map<string, UnitLesson[]>([
