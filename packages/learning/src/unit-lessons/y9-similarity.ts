@@ -48,7 +48,7 @@ const rect = (x0: number, y0: number, x1: number, y1: number): Point[] => [
 ];
 
 /** A triangular prism: a right-angled triangle at the front, stretched back. */
-function prism(base: string, up: string, slope: string, length: string): DrawingPic {
+export function prism(base: string, up: string, slope: string, length: string): DrawingPic {
   const front = [
     { x: 0, y: 0 },
     { x: 4, y: 0 },
@@ -90,7 +90,7 @@ const net: DrawingPic = {
 };
 
 /** A cylinder, with its radius (or diameter, across the top) and height labelled. */
-function cylinder(across: string, height: string, diameter = false): DrawingPic {
+export function cylinder(across: string, height: string, diameter = false): DrawingPic {
   return {
     kind: "drawing",
     items: [
@@ -138,7 +138,7 @@ function cylinder(across: string, height: string, diameter = false): DrawingPic 
 }
 
 /** Two similar triangles side by side, the big one k times the small. */
-function similar(
+export function similar(
   k: number,
   small: [string | null, string | null],
   big: [string | null, string | null],
