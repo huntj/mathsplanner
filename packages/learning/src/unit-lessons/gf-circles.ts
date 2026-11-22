@@ -14,7 +14,7 @@ const ring = (r: number): Item[] => [
 ];
 
 /** A circle with one part picked out. */
-function part(which: "radius" | "diameter" | "chord" | "tangent"): DrawingPic {
+export function part(which: "radius" | "diameter" | "chord" | "tangent"): DrawingPic {
   const pick: Record<typeof which, Item> = {
     radius: { line: [P(0, 0), P(3, 0)], tone: "find" },
     diameter: { line: [P(-3, 0), P(3, 0)], tone: "find" },
