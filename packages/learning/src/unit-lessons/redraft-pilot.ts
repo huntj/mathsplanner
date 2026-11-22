@@ -18,76 +18,12 @@ import {
 } from "./build.ts";
 import { gfRatio1 } from "./gf-ratio-1.ts";
 import { REASON } from "./reasons.ts";
-import type {
-  BarsPic,
-  DrawingPic,
-  Picture,
-  RelationPic,
-  Screen,
-  ShapePic,
-  UnitLesson,
-  Variation,
-} from "./types.ts";
+import { find, relation, reworded, stepped, tagged, words } from "./stepped.ts";
+import type { BarsPic, DrawingPic, Picture, ShapePic, UnitLesson } from "./types.ts";
 import { fan, y7Angles } from "./y7-angles.ts";
 import { hundred, y7Fdp } from "./y7-fdp.ts";
 import { measured, y8Area } from "./y8-area.ts";
 import { tri, y9Trigonometry } from "./y9-trigonometry.ts";
-
-const find = (list: readonly UnitLesson[], id: string) => list.find((l) => l.id === id);
-
-/** A screen moved into a part of the lesson plan, by its tag. */
-const tagged = (tag: string, screen: Screen): Screen => ({ ...screen, tag });
-
-/** A question that stays in words, with the reason: a number check, say. */
-const words = (screen: Screen, why: string): Screen => ({ ...screen, wordsOnly: why });
-
-/**
- * A pilot lesson on the stepped template (docs/proposals/lesson-stepped.md), in place of its
- * original: the same unit, id and skill, with new screens.
- */
-function stepped(
-  original: UnitLesson | undefined,
-  plan: { method: string[]; variation: Variation; screens: Screen[] },
-): UnitLesson {
-  if (!original) throw new Error("No lesson to rebuild");
-  return {
-    unit: original.unit,
-    ...(original.id ? { id: original.id } : {}),
-    ...(original.before ? { before: original.before } : {}),
-    ...(original.teaches ? { teaches: original.teaches } : {}),
-    title: original.title,
-    summary: original.summary,
-    plan: "stepped",
-    method: plan.method,
-    variation: plan.variation,
-    screens: plan.screens,
-  };
-}
-
-/**
- * One of a lesson's own screens with some of its fields changed: its words without the numbers,
- * say, or a diagram added. `tag` picks it out where two screens share a title.
- */
-function reworded(
-  list: readonly UnitLesson[],
-  id: string,
-  title: string,
-  changes: Partial<Record<"title" | "text" | "picture" | "hint" | "bubble" | "tag", unknown>>,
-  tag?: string,
-): Screen {
-  const screen = find(list, id)?.screens.find(
-    (s) => s.title === title && (tag === undefined || s.tag === tag),
-  );
-  if (!screen) throw new Error(`No screen "${title}" in ${id}`);
-  return { ...screen, ...changes } as Screen;
-}
-
-const relation = (cells: [string, string][], joins: string[], asks?: number): RelationPic => ({
-  kind: "relation",
-  cells: cells.map(([label, value]) => ({ label, value })),
-  joins,
-  ...(asks === undefined ? {} : { asks }),
-});
 
 // ---------------------------------------------------------------------------------------------
 // Year 7: angles on a straight line.

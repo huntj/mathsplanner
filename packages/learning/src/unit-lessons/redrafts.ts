@@ -6,11 +6,21 @@
 // that its lessons go to pupils each time they improve.
 import { circleTheorems } from "./redraft-gh-circle-theorems.ts";
 import { pilotRedrafts } from "./redraft-pilot.ts";
+import { y7PlaceValueStepped } from "./redraft-y7-place-value.ts";
+import { y7RoundingStepped } from "./redraft-y7-rounding.ts";
 import type { UnitLesson } from "./types.ts";
+
+/**
+ * Lessons rebuilt on the stepped template in the year-by-year rollout
+ * (docs/proposals/lesson-stepped.md). The owner approved the template for every lesson, so these
+ * go to pupils as soon as they are merged.
+ */
+const ROLLOUT: [string, UnitLesson[]][] = [...y7PlaceValueStepped, ...y7RoundingStepped];
 
 export const REDRAFTS: ReadonlyMap<string, UnitLesson[]> = new Map<string, UnitLesson[]>([
   ["gh-circles/circle-theorems", circleTheorems],
   ...pilotRedrafts,
+  ...ROLLOUT,
 ]);
 
 /** Redrafts pupils see as well as teachers, by the id of the lesson they replace. */
@@ -21,4 +31,5 @@ export const LIVE_REDRAFTS: ReadonlySet<string> = new Set([
   "y8-area/circle-area",
   "y9-trigonometry/sine",
   "gf-ratio-1/part-part",
+  ...ROLLOUT.map(([id]) => id),
 ]);
