@@ -10,6 +10,11 @@ export const REASON = {
   quadrilateral: "angles in a quadrilateral add up to 360°",
   alternate: "alternate segment theorem",
   straightLine: "angles on a straight line add up to 180°",
+  point: "angles at a point add up to 360°",
+  opposite: "vertically opposite angles are equal",
+  polygon: "angles in a polygon add up to (n − 2) × 180°",
+  exterior: "exterior angles of a polygon add up to 360°",
+  interior: "interior and exterior angles add up to 180°",
 } as const;
 
 /** Every reason, for checking. */

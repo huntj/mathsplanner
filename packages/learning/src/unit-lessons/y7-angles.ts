@@ -37,11 +37,11 @@ export const fan = (rays: number[], labels: (string | null)[], find = "x"): Angl
 });
 
 /** Two straight lines crossing, at rays a, 180 - a, 180 + a and 360 - a. */
-const cross = (a: number, labels: (string | null)[], find = "x"): AnglesPic =>
+export const cross = (a: number, labels: (string | null)[], find = "x"): AnglesPic =>
   fan([a, 180 - a, 180 + a, 360 - a], labels, find);
 
 /** A triangle drawn to match its angles at the bottom left and bottom right. */
-function triangle(
+export function triangle(
   left: number,
   right: number,
   labels: (string | null)[],
@@ -61,7 +61,7 @@ function triangle(
 }
 
 /** A right-angled triangle, the right angle at the bottom right. */
-function rightAngled(left: number, labels: (string | null)[]): ShapePic {
+export function rightAngled(left: number, labels: (string | null)[]): ShapePic {
   return {
     kind: "shape",
     points: [
@@ -75,7 +75,7 @@ function rightAngled(left: number, labels: (string | null)[]): ShapePic {
 }
 
 /** A polygon split into triangles by the diagonals from its first corner. */
-function split(points: Point[], angles?: (string | null)[]): ShapePic {
+export function split(points: Point[], angles?: (string | null)[]): ShapePic {
   const first = points[0] ?? { x: 0, y: 0 };
   return {
     kind: "shape",
@@ -85,15 +85,15 @@ function split(points: Point[], angles?: (string | null)[]): ShapePic {
   };
 }
 
-const quad = [
+export const quad = [
   { x: 0, y: 0 },
   { x: 6, y: 0 },
   { x: 5, y: 4 },
   { x: 1, y: 3 },
 ];
-const pentagon = regular(5, 3, 90);
-const hexagon = regular(6, 3, 90);
-const octagon = regular(8, 3, 90);
+export const pentagon = regular(5, 3, 90);
+export const hexagon = regular(6, 3, 90);
+export const octagon = regular(8, 3, 90);
 const garden = [
   { x: 0, y: 0 },
   { x: 6, y: 0 },
