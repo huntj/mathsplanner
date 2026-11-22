@@ -36,6 +36,7 @@ import { y9FactorisingStepped } from "./redraft-y9-factorising.ts";
 import { y9IndicesStepped } from "./redraft-y9-indices.ts";
 import { y9SimilarityStepped } from "./redraft-y9-similarity.ts";
 import { y9StraightLineStepped } from "./redraft-y9-straight-line.ts";
+import { y9TrigonometryStepped } from "./redraft-y9-trigonometry.ts";
 import type { UnitLesson } from "./types.ts";
 
 /**
@@ -74,6 +75,7 @@ const ROLLOUT: [string, UnitLesson[]][] = [
   ...y9SimilarityStepped,
   ...y9FactorisingStepped,
   ...y9StraightLineStepped,
+  ...y9TrigonometryStepped,
 ];
 
 export const REDRAFTS: ReadonlyMap<string, UnitLesson[]> = new Map<string, UnitLesson[]>([

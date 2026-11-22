@@ -130,7 +130,7 @@ function hypotenuse(
 }
 
 /** Two shorter sides and the hypotenuse, as in a 3, 4, 5 triangle. */
-const legs = (a: string | null, b: string | null, c: string | null): ShapePic =>
+export const legs = (a: string | null, b: string | null, c: string | null): ShapePic =>
   right(36.87, a, b, c, "");
 
 const squares: DrawingPic = {
