@@ -199,7 +199,8 @@ against it.
 3. **Year by year**, Year 7 to GCSE Higher, in the batches already agreed. Each batch's PR lists
    every lesson's plan (the table above). The batches go in smaller PRs of two or three units,
    so each one is live, and can be reviewed, sooner. Year 7 is done: all 72 lessons are on
-   the template.
+   the template. Year 8 is done too: all 51 lessons. Number and algebra questions are marked
+   words-only with a reason; geometry, graphs and charts ask every question on its picture.
 
 ## The owner's answers
 
