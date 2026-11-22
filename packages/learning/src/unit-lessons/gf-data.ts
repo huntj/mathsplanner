@@ -10,7 +10,7 @@ const U = "gf-data";
 const P = (x: number, y: number): Point => ({ x, y });
 
 /** Points joined by straight lines over labelled axes: a time series or a frequency polygon. */
-function joined(labels: string[], values: number[], top: number, axis: string): DrawingPic {
+export function joined(labels: string[], values: number[], top: number, axis: string): DrawingPic {
   const h = 5;
   const w = labels.length;
   const y = (v: number) => (v / top) * h;
@@ -30,13 +30,13 @@ function joined(labels: string[], values: number[], top: number, axis: string): 
   return { kind: "drawing", items };
 }
 
-const sales = joined(
+export const sales = joined(
   ["Q1", "Q2", "Q3", "Q4", "Q1", "Q2", "Q3", "Q4"],
   [20, 35, 45, 25, 25, 40, 50, 30],
   50,
   "Ice creams",
 );
-const heights: Picture = {
+export const heights: Picture = {
   kind: "table",
   head: ["Height $h$ (cm)", "Frequency"],
   rows: [
@@ -46,7 +46,7 @@ const heights: Picture = {
     ["$170 \\le h < 180$", "5"],
   ],
 };
-const histogram: Picture = {
+export const histogram: Picture = {
   kind: "bar-chart",
   bars: [
     { label: "140–150", value: 4 },
