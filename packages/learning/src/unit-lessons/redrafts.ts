@@ -23,6 +23,7 @@ import { y7ProbabilityStepped } from "./redraft-y7-probability.ts";
 import { y7RatioStepped } from "./redraft-y7-ratio.ts";
 import { y7RoundingStepped } from "./redraft-y7-rounding.ts";
 import { y7SimplifyingStepped } from "./redraft-y7-simplifying.ts";
+import { y8NumberStepped } from "./redraft-y8-number.ts";
 import type { UnitLesson } from "./types.ts";
 
 /**
@@ -48,6 +49,7 @@ const ROLLOUT: [string, UnitLesson[]][] = [
   ...y7AreaStepped,
   ...y7AveragesStepped,
   ...y7ProbabilityStepped,
+  ...y8NumberStepped,
 ];
 
 export const REDRAFTS: ReadonlyMap<string, UnitLesson[]> = new Map<string, UnitLesson[]>([
