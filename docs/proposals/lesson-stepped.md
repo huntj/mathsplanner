@@ -199,7 +199,7 @@ against it.
 3. **Year by year**, Year 7 to GCSE Higher, in the batches already agreed. Each batch's PR lists
    every lesson's plan (the table above). The batches go in smaller PRs of two or three units,
    so each one is live, and can be reviewed, sooner. Year 7 so far: place value and rounding;
-   powers, the order of operations and simplifying.
+   powers, the order of operations and simplifying; factors and calculating.
 
 ## The owner's answers
 
