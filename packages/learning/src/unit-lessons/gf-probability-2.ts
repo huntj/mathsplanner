@@ -43,7 +43,7 @@ export function probabilityTree(
   return { kind: "drawing", items };
 }
 
-const coinTree = probabilityTree(
+export const coinTree = probabilityTree(
   [
     ["½", "H"],
     ["½", "T"],
@@ -55,7 +55,7 @@ const coinTree = probabilityTree(
     ["½", "T"],
   ],
 );
-const busTree = probabilityTree(
+export const busTree = probabilityTree(
   [
     ["0.3", "Late"],
     ["0.7", "On time"],
@@ -67,7 +67,7 @@ const busTree = probabilityTree(
     ["0.7", "On time"],
   ],
 );
-const sweetTree = probabilityTree(
+export const sweetTree = probabilityTree(
   [
     ["3/5", "Red"],
     ["2/5", "Green"],
@@ -79,7 +79,7 @@ const sweetTree = probabilityTree(
     ["1/4", "Green"],
   ],
 );
-const sports: Picture = {
+export const sports: Picture = {
   kind: "venn",
   a: "Football",
   b: "Tennis",
@@ -89,7 +89,7 @@ const sports: Picture = {
   // A thin space keeps this 5 distinct from the 5 in the overlap: Venn values must be unique.
   neither: ["5\u2009"],
 };
-const spinnerDice: Picture = {
+export const spinnerDice: Picture = {
   kind: "grid",
   cols: 6,
   rows: 3,

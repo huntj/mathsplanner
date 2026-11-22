@@ -39,6 +39,7 @@ import { gfGraphsStepped } from "./redraft-gf-graphs.ts";
 import { gfGrowthDecayStepped } from "./redraft-gf-growth-decay.ts";
 import { gfProofStepped } from "./redraft-gf-proof.ts";
 import { gfVectorsStepped } from "./redraft-gf-vectors.ts";
+import { gfProbability2Stepped } from "./redraft-gf-probability-2.ts";
 import { pilotRedrafts } from "./redraft-pilot.ts";
 import { y7AnglesStepped } from "./redraft-y7-angles.ts";
 import { y7AreaStepped } from "./redraft-y7-area.ts";
@@ -150,6 +151,7 @@ const ROLLOUT: [string, UnitLesson[]][] = [
   ...gfGrowthDecayStepped,
   ...gfProofStepped,
   ...gfVectorsStepped,
+  ...gfProbability2Stepped,
 ];
 
 export const REDRAFTS: ReadonlyMap<string, UnitLesson[]> = new Map<string, UnitLesson[]>([
