@@ -28,6 +28,7 @@ import { gfDataStepped } from "./redraft-gf-data.ts";
 import { gfPercentagesStepped } from "./redraft-gf-percentages.ts";
 import { gfMeasuresStepped } from "./redraft-gf-measures.ts";
 import { gfConstructionsStepped } from "./redraft-gf-constructions.ts";
+import { gfSimultaneousStepped } from "./redraft-gf-simultaneous.ts";
 import { pilotRedrafts } from "./redraft-pilot.ts";
 import { y7AnglesStepped } from "./redraft-y7-angles.ts";
 import { y7AreaStepped } from "./redraft-y7-area.ts";
@@ -128,6 +129,7 @@ const ROLLOUT: [string, UnitLesson[]][] = [
   ...gfPercentagesStepped,
   ...gfMeasuresStepped,
   ...gfConstructionsStepped,
+  ...gfSimultaneousStepped,
 ];
 
 export const REDRAFTS: ReadonlyMap<string, UnitLesson[]> = new Map<string, UnitLesson[]>([
