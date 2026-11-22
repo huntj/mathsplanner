@@ -7,7 +7,7 @@ import type { Picture, Point, Range, UnitLesson } from "./types.ts";
 
 const U = "gf-quadratics";
 const range: Range = { xMin: -3, xMax: 5, yMin: -5, yMax: 6 };
-const curve = (
+export const curve = (
   a: number,
   b: number,
   c: number,
@@ -22,7 +22,7 @@ const curve = (
   ...(lines.length ? { lines } : {}),
 });
 // y = x² − 2x − 3 = (x + 1)(x − 3): roots −1 and 3, y-intercept −3, turning point (1, −4).
-const main = curve(1, -2, -3);
+export const main = curve(1, -2, -3);
 
 export const gfQuadratics: UnitLesson[] = [
   lesson(
