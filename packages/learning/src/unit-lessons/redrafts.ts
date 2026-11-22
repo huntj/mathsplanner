@@ -34,6 +34,7 @@ import { y8ShapesStepped } from "./redraft-y8-shapes.ts";
 import { y8TransformationsStepped } from "./redraft-y8-transformations.ts";
 import { y9EquationsStepped } from "./redraft-y9-equations.ts";
 import { y9FactorisingStepped } from "./redraft-y9-factorising.ts";
+import { y9GraphsStepped } from "./redraft-y9-graphs.ts";
 import { y9IndicesStepped } from "./redraft-y9-indices.ts";
 import { y9SimilarityStepped } from "./redraft-y9-similarity.ts";
 import { y9StraightLineStepped } from "./redraft-y9-straight-line.ts";
@@ -78,6 +79,7 @@ const ROLLOUT: [string, UnitLesson[]][] = [
   ...y9StraightLineStepped,
   ...y9TrigonometryStepped,
   ...y9EquationsStepped,
+  ...y9GraphsStepped,
 ];
 
 export const REDRAFTS: ReadonlyMap<string, UnitLesson[]> = new Map<string, UnitLesson[]>([
