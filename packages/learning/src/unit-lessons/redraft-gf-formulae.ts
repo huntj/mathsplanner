@@ -19,7 +19,7 @@ const pick = (
 const p = (x: number, y: number): Point => ({ x, y });
 
 /** A trapezium: parallel sides a (top) and b (bottom), and its height dashed and labelled. */
-const trap = (a: string, b: string, h: string): DrawingPic => {
+export const trap = (a: string, b: string, h: string): DrawingPic => {
   const mid = p(4, 2);
   return {
     kind: "drawing",
@@ -37,7 +37,7 @@ const trap = (a: string, b: string, h: string): DrawingPic => {
 };
 
 /** A triangle with its base and its height dashed and labelled. */
-const tri = (b: string, h: string): DrawingPic => ({
+export const tri = (b: string, h: string): DrawingPic => ({
   kind: "drawing",
   items: [
     { line: [p(0, 0), p(8, 0)] },
