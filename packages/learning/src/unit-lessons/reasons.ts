@@ -15,6 +15,9 @@ export const REASON = {
   polygon: "angles in a polygon add up to (n − 2) × 180°",
   exterior: "exterior angles of a polygon add up to 360°",
   interior: "interior and exterior angles add up to 180°",
+  zAngles: "alternate angles are equal",
+  fAngles: "corresponding angles are equal",
+  cAngles: "co-interior angles add up to 180°",
 } as const;
 
 /** Every reason, for checking. */

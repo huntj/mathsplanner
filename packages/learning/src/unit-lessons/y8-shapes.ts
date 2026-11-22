@@ -55,7 +55,7 @@ const TWINS: DrawingPic = {
   ].map((line) => ({ line: line as [Point, Point] })),
 };
 
-const PRISM: DrawingPic = {
+export const PRISM: DrawingPic = {
   kind: "drawing",
   items: [
     {
@@ -121,7 +121,7 @@ const PRISM: DrawingPic = {
   ],
 };
 
-const SQUARE_PYRAMID: DrawingPic = {
+export const SQUARE_PYRAMID: DrawingPic = {
   kind: "drawing",
   items: [
     {
