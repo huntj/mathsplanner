@@ -7,7 +7,7 @@ import type { DrawingPic, Point, UnitLesson } from "./types.ts";
 
 const U = "gf-vectors";
 const P = (x: number, y: number): Point => ({ x, y });
-const vec = (x: number | string, y: number | string) =>
+export const vec = (x: number | string, y: number | string) =>
   `$\\begin{pmatrix} ${x} \\\\ ${y} \\end{pmatrix}$`;
 
 interface Arrow {
@@ -18,7 +18,7 @@ interface Arrow {
 }
 
 /** Arrows on squared paper, `w` by `h` squares, each labelled beside its middle. */
-function paper(w: number, h: number, arrows: Arrow[]): DrawingPic {
+export function paper(w: number, h: number, arrows: Arrow[]): DrawingPic {
   const items: DrawingPic["items"] = [];
   for (let x = 0; x <= w; x++) items.push({ line: [P(x, 0), P(x, h)], tone: "soft" });
   for (let y = 0; y <= h; y++) items.push({ line: [P(0, y), P(w, y)], tone: "soft" });
@@ -38,17 +38,17 @@ function paper(w: number, h: number, arrows: Arrow[]): DrawingPic {
   return { kind: "drawing", items };
 }
 
-const shift = paper(7, 5, [{ from: [1, 1], by: [4, 3], label: "a" }]);
-const triangle = paper(8, 5, [
+export const shift = paper(7, 5, [{ from: [1, 1], by: [4, 3], label: "a" }]);
+export const triangle = paper(8, 5, [
   { from: [1, 1], by: [3, 3], label: "a" },
   { from: [4, 4], by: [3, -3], label: "b" },
   { from: [1, 1], by: [6, 0], label: "a + b", tone: "main" },
 ]);
-const scaled = paper(8, 5, [
+export const scaled = paper(8, 5, [
   { from: [1, 3], by: [2, 1], label: "a" },
   { from: [1, 0], by: [6, 3], label: "3a" },
 ]);
-const parallelogram: DrawingPic = {
+export const parallelogram: DrawingPic = {
   kind: "drawing",
   items: [
     { line: [P(0, 0), P(4, 0)], arrow: 1, tone: "find" },
