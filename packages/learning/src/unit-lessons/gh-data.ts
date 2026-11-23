@@ -8,7 +8,7 @@ import type { DrawingPic, Picture, Point, UnitLesson } from "./types.ts";
 const U = "gh-data";
 const P = (x: number, y: number): Point => ({ x, y });
 
-const times: Picture = {
+export const times: Picture = {
   kind: "table",
   head: ["Time, $t$ (min)", "Frequency", "Frequency density"],
   rows: [
@@ -19,7 +19,7 @@ const times: Picture = {
 };
 
 /** A histogram: bars from x0 to x1 with the given frequency densities, scaled to fit. */
-function histogram(
+export function histogram(
   bars: [x0: number, x1: number, fd: number][],
   xTicks: number[],
   fdTicks: number[],
@@ -47,7 +47,7 @@ function histogram(
   }
   return { kind: "drawing", items };
 }
-const histo = histogram(
+export const histo = histogram(
   [
     [0, 10, 2],
     [10, 15, 6],
@@ -96,11 +96,11 @@ function cumulative(quartiles: boolean): DrawingPic {
   }
   return { kind: "drawing", items };
 }
-const cfCurve = cumulative(false);
-const cfQuartiles = cumulative(true);
+export const cfCurve = cumulative(false);
+export const cfQuartiles = cumulative(true);
 
 /** Box plots on one scale from 0 to 60, each [min, Q1, median, Q3, max], labelled. */
-function boxPlots(
+export function boxPlots(
   plots: [label: string, five: [number, number, number, number, number]][],
 ): DrawingPic {
   const sx = (v: number) => v / 10;
@@ -130,11 +130,11 @@ function boxPlots(
     items,
   };
 }
-const twoClasses = boxPlots([
+export const twoClasses = boxPlots([
   ["10B", [15, 25, 35, 40, 55]],
   ["10A", [10, 30, 38, 45, 50]],
 ]);
-const oneClass = boxPlots([["10A", [10, 30, 38, 45, 50]]]);
+export const oneClass = boxPlots([["10A", [10, 30, 38, 45, 50]]]);
 
 export const ghData: UnitLesson[] = [
   lesson(

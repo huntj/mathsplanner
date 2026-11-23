@@ -9,7 +9,7 @@ const U = "gh-trigonometry";
 const P = (x: number, y: number): Point => ({ x, y });
 
 /** A triangle ABC that isn't right-angled, with optional side and angle labels. */
-function triangle(
+export function triangle(
   sides: [ab: string, bc: string, ca: string],
   angles: [a: string, b: string, c: string],
 ): DrawingPic {
@@ -36,10 +36,10 @@ function triangle(
   return { kind: "drawing", items };
 }
 
-const sineRule = triangle(["", "a", "8 cm"], ["40°", "65°", ""]);
-const cosineRule = triangle(["7 cm", "?", "5 cm"], ["60°", "", ""]);
-const areaPic = triangle(["9 cm", "", "6 cm"], ["50°", "", ""]);
-const box: Picture = {
+export const sineRule = triangle(["", "a", "8 cm"], ["40°", "65°", ""]);
+export const cosineRule = triangle(["7 cm", "?", "5 cm"], ["60°", "", ""]);
+export const areaPic = triangle(["9 cm", "", "6 cm"], ["50°", "", ""]);
+export const box: Picture = {
   kind: "cuboid",
   w: 4,
   d: 3,

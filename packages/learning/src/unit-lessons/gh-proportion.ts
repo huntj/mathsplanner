@@ -8,22 +8,22 @@ import type { Picture, UnitLesson } from "./types.ts";
 
 const U = "gh-proportion";
 
-const directSquare: Picture = {
+export const directSquare: Picture = {
   kind: "graph",
   range: { xMin: -1, xMax: 4, yMin: -1, yMax: 10 },
   curves: [{ kind: "quadratic", a: 1, b: 0, c: 0 }],
 };
-const inverse: Picture = {
+export const inverse: Picture = {
   kind: "graph",
   range: { xMin: -1, xMax: 6, yMin: -1, yMax: 6 },
   curves: [{ kind: "inverse", k: 4 }],
 };
-const straight: Picture = {
+export const straight: Picture = {
   kind: "graph",
   range: { xMin: -1, xMax: 5, yMin: -1, yMax: 8 },
   lines: [{ m: 1.5, c: 0 }],
 };
-const chordTangent: Picture = {
+export const chordTangent: Picture = {
   kind: "graph",
   range: { xMin: -1, xMax: 5, yMin: -1, yMax: 10 },
   curves: [{ kind: "quadratic", a: 0.5, b: 0, c: 0 }],
