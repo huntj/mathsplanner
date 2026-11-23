@@ -7,7 +7,7 @@ import type { Picture, UnitLesson } from "./types.ts";
 
 const U = "gh-sequences";
 
-const differences: Picture = {
+export const differences: Picture = {
   kind: "table",
   head: ["n", "1", "2", "3", "4", "5"],
   rows: [
@@ -16,7 +16,7 @@ const differences: Picture = {
     ["2nd difference", "", "", "4", "4", "4"],
   ],
 };
-const savings: Picture = {
+export const savings: Picture = {
   kind: "table",
   head: ["Year", "0", "1", "2", "3"],
   rows: [["Balance (£)", "2000", "1960", "1918.80", "?"]],
