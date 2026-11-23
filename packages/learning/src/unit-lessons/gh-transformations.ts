@@ -9,7 +9,7 @@ const U = "gh-transformations";
 const P = (x: number, y: number): Point => ({ x, y });
 
 const tri = [P(1, 1), P(3, 1), P(1, 2)];
-const negative: Picture = {
+export const negative: Picture = {
   kind: "graph",
   range: { xMin: -7, xMax: 4, yMin: -5, yMax: 3 },
   shapes: [
@@ -19,7 +19,7 @@ const negative: Picture = {
   points: [P(0, 0)],
 };
 const flag = [P(1, 1), P(3, 1), P(3, 2)];
-const combined: Picture = {
+export const combined: Picture = {
   kind: "graph",
   range: { xMin: -4, xMax: 4, yMin: -4, yMax: 4 },
   shapes: [
@@ -28,7 +28,7 @@ const combined: Picture = {
     { points: flag.map((p) => P(-p.x, -p.y)), tone: "image", label: "C" },
   ],
 };
-const jugs: Picture = {
+export const jugs: Picture = {
   kind: "table",
   head: ["", "Small", "Large"],
   rows: [
