@@ -303,7 +303,8 @@ export const ghExpressions: UnitLesson[] = [
         "Expand $(x + 1)(x + 2)(x + 3)$.",
         [
           ["$(x + 1)(x + 2) = x^2 + 3x + 2$", "First two."],
-          ["$(x^2 + 3x + 2)(x + 3) = x^3 + 3x^2 + 3x^2 + 9x + 2x + 6$", "Times the third."],
+          ["$(x^2 + 3x + 2)(x + 3)$", "Times the third."],
+          ["$= x^3 + 3x^2 + 3x^2 + 9x + 2x + 6$", "Every term by every term."],
           ["$= x^3 + 6x^2 + 11x + 6$", "Collect."],
         ],
         "As required.",
