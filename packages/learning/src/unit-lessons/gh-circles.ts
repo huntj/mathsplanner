@@ -29,8 +29,8 @@ function circle(withTangent: boolean): DrawingPic {
   return { kind: "drawing", frame: { xMin: -6.5, xMax: 7.5, yMin: -6.5, yMax: 7.5 }, items };
 }
 
-const plain = circle(false);
-const tangent = circle(true);
+export const plain = circle(false);
+export const tangent = circle(true);
 
 /** A circle with centre O, an arc AB, the angle at the centre and one at the circumference. */
 const theorem: DrawingPic = {
@@ -50,7 +50,7 @@ const theorem: DrawingPic = {
     { angle: P(0, 3), from: 240, to: 300, label: "x" },
   ],
 };
-const triangleVectors: DrawingPic = {
+export const triangleVectors: DrawingPic = {
   kind: "drawing",
   items: [
     { line: [P(0, 0), P(6, 0)], arrow: 1, tone: "find" },
