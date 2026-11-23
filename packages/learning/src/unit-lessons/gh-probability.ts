@@ -8,7 +8,7 @@ import type { Picture, UnitLesson } from "./types.ts";
 
 const U = "gh-probability";
 
-const travel: Picture = {
+export const travel: Picture = {
   kind: "table",
   head: ["", "Bus", "Walk", "Car", "Total"],
   rows: [
@@ -17,7 +17,7 @@ const travel: Picture = {
     ["Total", "50", "75", "25", "150"],
   ],
 };
-const umbrella = probabilityTree(
+export const umbrella = probabilityTree(
   [
     ["0.4", "Rain"],
     ["0.6", "Dry"],
@@ -29,7 +29,7 @@ const umbrella = probabilityTree(
     ["0.8", "None"],
   ],
 );
-const clubs: Picture = {
+export const clubs: Picture = {
   kind: "venn",
   a: "Drama",
   b: "Music",
