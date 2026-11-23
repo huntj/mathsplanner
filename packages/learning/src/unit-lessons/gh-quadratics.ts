@@ -8,7 +8,7 @@ import type { Picture, UnitLesson } from "./types.ts";
 
 const U = "gh-quadratics";
 
-const perpendicular: Picture = {
+export const perpendicular: Picture = {
   kind: "graph",
   range: { xMin: -4, xMax: 4, yMin: -3, yMax: 5 },
   lines: [
@@ -16,7 +16,7 @@ const perpendicular: Picture = {
     { m: -0.5, c: 1 },
   ],
 };
-const turning: Picture = {
+export const turning: Picture = {
   kind: "graph",
   range: { xMin: -2, xMax: 6, yMin: -4, yMax: 6 },
   curves: [{ kind: "quadratic", a: 1, b: -4, c: 1 }],

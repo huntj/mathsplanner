@@ -50,6 +50,7 @@ import { ghCirclesStepped } from "./redraft-gh-circles.ts";
 import { ghTransformationsStepped } from "./redraft-gh-transformations.ts";
 import { ghProportionStepped } from "./redraft-gh-proportion.ts";
 import { ghDataStepped } from "./redraft-gh-data.ts";
+import { ghQuadraticsStepped } from "./redraft-gh-quadratics.ts";
 import { pilotRedrafts } from "./redraft-pilot.ts";
 import { y7AnglesStepped } from "./redraft-y7-angles.ts";
 import { y7AreaStepped } from "./redraft-y7-area.ts";
@@ -172,6 +173,7 @@ const ROLLOUT: [string, UnitLesson[]][] = [
   ...ghTransformationsStepped,
   ...ghProportionStepped,
   ...ghDataStepped,
+  ...ghQuadraticsStepped,
 ];
 
 export const REDRAFTS: ReadonlyMap<string, UnitLesson[]> = new Map<string, UnitLesson[]>([
