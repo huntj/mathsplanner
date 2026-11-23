@@ -9,7 +9,7 @@ import type { DrawingPic, Picture, Point, UnitLesson } from "./types.ts";
 const U = "gh-graphs";
 const P = (x: number, y: number): Point => ({ x, y });
 
-interface Axes {
+export interface Axes {
   /** The drawing's x range, in drawing units. */
   x: [number, number];
   y: [number, number];
@@ -19,7 +19,7 @@ interface Axes {
 }
 
 /** Curves (as short straight pieces) on a pair of axes, with optional tick labels and dashes. */
-function curves(
+export function curves(
   axes: Axes,
   fs: { f: (x: number) => number; from?: number; to?: number; tone?: "find" | "soft" | "main" }[],
   extra: DrawingPic["items"] = [],
@@ -54,7 +54,7 @@ function curves(
   };
 }
 
-const expAxes: Axes = {
+export const expAxes: Axes = {
   x: [-3, 2.5],
   y: [-0.5, 4.8],
   xTicks: [
@@ -69,12 +69,15 @@ const expAxes: Axes = {
     [4, "4"],
   ],
 };
-const exponential = curves(expAxes, [{ f: (x) => 2 ** x }]);
-const twoExps = curves(expAxes, [{ f: (x) => 2 ** x }, { f: (x) => 0.5 ** x, tone: "soft" }]);
+export const exponential = curves(expAxes, [{ f: (x) => 2 ** x }]);
+export const twoExps = curves(expAxes, [
+  { f: (x) => 2 ** x },
+  { f: (x) => 0.5 ** x, tone: "soft" },
+]);
 
 // Angles drawn at one unit per 45°, so 360° is 8 units across.
-const r = (x: number) => (x * 45 * Math.PI) / 180;
-const trigAxes: Axes = {
+export const r = (x: number) => (x * 45 * Math.PI) / 180;
+export const trigAxes: Axes = {
   x: [0, 8.2],
   y: [-1.6, 1.6],
   xTicks: [
@@ -88,9 +91,9 @@ const trigAxes: Axes = {
     [-1, "−1"],
   ],
 };
-const sine = curves(trigAxes, [{ f: (x) => Math.sin(r(x)) }]);
-const cosine = curves(trigAxes, [{ f: (x) => Math.cos(r(x)) }]);
-const tangent = curves(
+export const sine = curves(trigAxes, [{ f: (x) => Math.sin(r(x)) }]);
+export const cosine = curves(trigAxes, [{ f: (x) => Math.cos(r(x)) }]);
+export const tangent = curves(
   { ...trigAxes, y: [-2.5, 2.5], yTicks: [] },
   [
     { f: (x) => Math.tan(r(x)), from: 0, to: 1.85 },
@@ -102,7 +105,7 @@ const tangent = curves(
     { line: [P(6, -2.5), P(6, 2.5)], dashed: true, tone: "soft" },
   ],
 );
-const shifted: Picture = {
+export const shifted: Picture = {
   kind: "graph",
   range: { xMin: -3, xMax: 5, yMin: -2, yMax: 8 },
   curves: [
@@ -110,7 +113,7 @@ const shifted: Picture = {
     { kind: "quadratic", a: 1, b: -4, c: 4 },
   ],
 };
-const curveTangent = curves(
+export const curveTangent = curves(
   {
     x: [0, 4.5],
     y: [0, 8],
@@ -127,7 +130,7 @@ const curveTangent = curves(
   },
   [{ f: (x) => (x * x) / 2 }, { f: (x) => 2 * x - 2, from: 1, to: 4, tone: "soft" }],
 );
-const velocity: DrawingPic = {
+export const velocity: DrawingPic = {
   kind: "drawing",
   items: [
     { line: [P(0, 0), P(6.3, 0)] },
